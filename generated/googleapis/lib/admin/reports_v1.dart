@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Admin SDK lets administrators of enterprise domains to view and manage
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
-class AdminApi {
+class ReportsApi {
   /// View audit reports for your G Suite domain
   static const adminReportsAuditReadonlyScope =
       'https://www.googleapis.com/auth/admin.reports.audit.readonly';
@@ -59,7 +59,7 @@ class AdminApi {
   UserUsageReportResourceApi get userUsageReport =>
       UserUsageReportResourceApi(_requester);
 
-  AdminApi(http.Client client,
+  ReportsApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// A service to modify your BigQuery flat-rate reservations.
-class BigqueryreservationApi {
+class BigQueryReservationApi {
   /// View and manage your data in Google BigQuery
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
@@ -48,7 +48,7 @@ class BigqueryreservationApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  BigqueryreservationApi(http.Client client,
+  BigQueryReservationApi(http.Client client,
       {core.String rootUrl = 'https://bigqueryreservation.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

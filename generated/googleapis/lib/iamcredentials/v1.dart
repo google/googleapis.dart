@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Creates short-lived credentials for impersonating IAM service accounts.
 /// *Note:* This API is tied to the IAM API (iam.googleapis.com). Enabling or
 /// disabling this API will also enable or disable the IAM API.
-class IamcredentialsApi {
+class IAMCredentialsApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -49,7 +49,7 @@ class IamcredentialsApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  IamcredentialsApi(http.Client client,
+  IAMCredentialsApi(http.Client client,
       {core.String rootUrl = 'https://iamcredentials.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

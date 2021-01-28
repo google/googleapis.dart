@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Generates performance reports, generates ad codes, and provides publisher
 /// management capabilities for AdSense Hosts.
-class AdsensehostApi {
+class AdSenseHostApi {
   /// View and manage your AdSense host data and associated accounts
   static const adsensehostScope = 'https://www.googleapis.com/auth/adsensehost';
 
@@ -52,7 +52,7 @@ class AdsensehostApi {
   ReportsResourceApi get reports => ReportsResourceApi(_requester);
   UrlchannelsResourceApi get urlchannels => UrlchannelsResourceApi(_requester);
 
-  AdsensehostApi(http.Client client,
+  AdSenseHostApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adsensehost/v4.1/'})
       : _requester =

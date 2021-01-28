@@ -112,13 +112,13 @@ class DataGaResourceApi {
   /// form ga:XXXX, where XXXX is the Analytics view (profile) ID.
   /// Value must have pattern "ga:[0-9]+".
   ///
-  /// [start_date] - Start date for fetching Analytics data. Requests can
-  /// specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g.,
-  /// today, yesterday, or 7daysAgo). The default value is 7daysAgo.
+  /// [startDate] - Start date for fetching Analytics data. Requests can specify
+  /// a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
+  /// yesterday, or 7daysAgo). The default value is 7daysAgo.
   /// Value must have pattern
   /// "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)".
   ///
-  /// [end_date] - End date for fetching Analytics data. Request can should
+  /// [endDate] - End date for fetching Analytics data. Request can should
   /// specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g.,
   /// today, yesterday, or 7daysAgo). The default value is yesterday.
   /// Value must have pattern
@@ -136,10 +136,10 @@ class DataGaResourceApi {
   /// applied to Analytics data.
   /// Value must have pattern "ga:.+".
   ///
-  /// [include_empty_rows] - The response will include empty rows if this
+  /// [includeEmptyRows] - The response will include empty rows if this
   /// parameter is set to true, the default is true
   ///
-  /// [max_results] - The maximum number of entries to include in this feed.
+  /// [maxResults] - The maximum number of entries to include in this feed.
   ///
   /// [output] - The selected format for the response. Default format is JSON.
   /// Possible string values are:
@@ -161,7 +161,7 @@ class DataGaResourceApi {
   /// the sort order for Analytics data.
   /// Value must have pattern "(-)?ga:.+".
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -176,18 +176,18 @@ class DataGaResourceApi {
   /// this method will complete with the same error.
   async.Future<GaData> get(
     core.String ids,
-    core.String start_date,
-    core.String end_date,
+    core.String startDate,
+    core.String endDate,
     core.String metrics, {
     core.String dimensions,
     core.String filters,
-    core.bool include_empty_rows,
-    core.int max_results,
+    core.bool includeEmptyRows,
+    core.int maxResults,
     core.String output,
     core.String samplingLevel,
     core.String segment,
     core.String sort,
-    core.int start_index,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -201,14 +201,14 @@ class DataGaResourceApi {
       throw core.ArgumentError('Parameter ids is required.');
     }
     _queryParams['ids'] = [ids];
-    if (start_date == null) {
-      throw core.ArgumentError('Parameter start_date is required.');
+    if (startDate == null) {
+      throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams['start-date'] = [start_date];
-    if (end_date == null) {
-      throw core.ArgumentError('Parameter end_date is required.');
+    _queryParams['start-date'] = [startDate];
+    if (endDate == null) {
+      throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams['end-date'] = [end_date];
+    _queryParams['end-date'] = [endDate];
     if (metrics == null) {
       throw core.ArgumentError('Parameter metrics is required.');
     }
@@ -219,11 +219,11 @@ class DataGaResourceApi {
     if (filters != null) {
       _queryParams['filters'] = [filters];
     }
-    if (include_empty_rows != null) {
-      _queryParams['include-empty-rows'] = ['${include_empty_rows}'];
+    if (includeEmptyRows != null) {
+      _queryParams['include-empty-rows'] = ['${includeEmptyRows}'];
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
     if (output != null) {
       _queryParams['output'] = [output];
@@ -237,8 +237,8 @@ class DataGaResourceApi {
     if (sort != null) {
       _queryParams['sort'] = [sort];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -274,13 +274,13 @@ class DataMcfResourceApi {
   /// form ga:XXXX, where XXXX is the Analytics view (profile) ID.
   /// Value must have pattern "ga:[0-9]+".
   ///
-  /// [start_date] - Start date for fetching Analytics data. Requests can
-  /// specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g.,
-  /// today, yesterday, or 7daysAgo). The default value is 7daysAgo.
+  /// [startDate] - Start date for fetching Analytics data. Requests can specify
+  /// a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
+  /// yesterday, or 7daysAgo). The default value is 7daysAgo.
   /// Value must have pattern
   /// "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)".
   ///
-  /// [end_date] - End date for fetching Analytics data. Requests can specify a
+  /// [endDate] - End date for fetching Analytics data. Requests can specify a
   /// start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
   /// yesterday, or 7daysAgo). The default value is 7daysAgo.
   /// Value must have pattern
@@ -299,7 +299,7 @@ class DataMcfResourceApi {
   /// applied to the Analytics data.
   /// Value must have pattern "mcf:.+".
   ///
-  /// [max_results] - The maximum number of entries to include in this feed.
+  /// [maxResults] - The maximum number of entries to include in this feed.
   ///
   /// [samplingLevel] - The desired sampling level.
   /// Possible string values are:
@@ -313,7 +313,7 @@ class DataMcfResourceApi {
   /// the sort order for the Analytics data.
   /// Value must have pattern "(-)?mcf:.+".
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -328,15 +328,15 @@ class DataMcfResourceApi {
   /// this method will complete with the same error.
   async.Future<McfData> get(
     core.String ids,
-    core.String start_date,
-    core.String end_date,
+    core.String startDate,
+    core.String endDate,
     core.String metrics, {
     core.String dimensions,
     core.String filters,
-    core.int max_results,
+    core.int maxResults,
     core.String samplingLevel,
     core.String sort,
-    core.int start_index,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -350,14 +350,14 @@ class DataMcfResourceApi {
       throw core.ArgumentError('Parameter ids is required.');
     }
     _queryParams['ids'] = [ids];
-    if (start_date == null) {
-      throw core.ArgumentError('Parameter start_date is required.');
+    if (startDate == null) {
+      throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams['start-date'] = [start_date];
-    if (end_date == null) {
-      throw core.ArgumentError('Parameter end_date is required.');
+    _queryParams['start-date'] = [startDate];
+    if (endDate == null) {
+      throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams['end-date'] = [end_date];
+    _queryParams['end-date'] = [endDate];
     if (metrics == null) {
       throw core.ArgumentError('Parameter metrics is required.');
     }
@@ -368,8 +368,8 @@ class DataMcfResourceApi {
     if (filters != null) {
       _queryParams['filters'] = [filters];
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
     if (samplingLevel != null) {
       _queryParams['samplingLevel'] = [samplingLevel];
@@ -377,8 +377,8 @@ class DataMcfResourceApi {
     if (sort != null) {
       _queryParams['sort'] = [sort];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -426,7 +426,7 @@ class DataRealtimeResourceApi {
   /// applied to real time data.
   /// Value must have pattern "(ga:.+)|(rt:.+)".
   ///
-  /// [max_results] - The maximum number of entries to include in this feed.
+  /// [maxResults] - The maximum number of entries to include in this feed.
   ///
   /// [sort] - A comma-separated list of dimensions or metrics that determine
   /// the sort order for real time data.
@@ -447,7 +447,7 @@ class DataRealtimeResourceApi {
     core.String metrics, {
     core.String dimensions,
     core.String filters,
-    core.int max_results,
+    core.int maxResults,
     core.String sort,
     core.String $fields,
   }) {
@@ -472,8 +472,8 @@ class DataRealtimeResourceApi {
     if (filters != null) {
       _queryParams['filters'] = [filters];
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
     if (sort != null) {
       _queryParams['sort'] = [sort];
@@ -558,10 +558,10 @@ class ManagementAccountSummariesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [max_results] - The maximum number of account summaries to include in this
+  /// [maxResults] - The maximum number of account summaries to include in this
   /// response, where the largest acceptable value is 1000.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -575,8 +575,8 @@ class ManagementAccountSummariesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountSummaries> list({
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -586,11 +586,11 @@ class ManagementAccountSummariesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -744,10 +744,10 @@ class ManagementAccountUserLinksResourceApi {
   ///
   /// [accountId] - Account ID to retrieve the user links for.
   ///
-  /// [max_results] - The maximum number of account-user links to include in
-  /// this response.
+  /// [maxResults] - The maximum number of account-user links to include in this
+  /// response.
   ///
-  /// [start_index] - An index of the first account-user link to retrieve. Use
+  /// [startIndex] - An index of the first account-user link to retrieve. Use
   /// this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
@@ -763,8 +763,8 @@ class ManagementAccountUserLinksResourceApi {
   /// this method will complete with the same error.
   async.Future<EntityUserLinks> list(
     core.String accountId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -777,11 +777,11 @@ class ManagementAccountUserLinksResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -883,10 +883,9 @@ class ManagementAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [max_results] - The maximum number of accounts to include in this
-  /// response.
+  /// [maxResults] - The maximum number of accounts to include in this response.
   ///
-  /// [start_index] - An index of the first account to retrieve. Use this
+  /// [startIndex] - An index of the first account to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -900,8 +899,8 @@ class ManagementAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Accounts> list({
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -911,11 +910,11 @@ class ManagementAccountsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1012,10 +1011,10 @@ class ManagementCustomDataSourcesResourceApi {
   /// [webPropertyId] - Web property Id for the custom data sources to retrieve.
   /// Value must have pattern "UA-(\d+)-(\d+)".
   ///
-  /// [max_results] - The maximum number of custom data sources to include in
+  /// [maxResults] - The maximum number of custom data sources to include in
   /// this response.
   ///
-  /// [start_index] - A 1-based index of the first custom data source to
+  /// [startIndex] - A 1-based index of the first custom data source to
   /// retrieve. Use this parameter as a pagination mechanism along with the
   /// max-results parameter.
   ///
@@ -1032,8 +1031,8 @@ class ManagementCustomDataSourcesResourceApi {
   async.Future<CustomDataSources> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -1049,11 +1048,11 @@ class ManagementCustomDataSourcesResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1230,10 +1229,10 @@ class ManagementCustomDimensionsResourceApi {
   ///
   /// [webPropertyId] - Web property ID for the custom dimensions to retrieve.
   ///
-  /// [max_results] - The maximum number of custom dimensions to include in this
+  /// [maxResults] - The maximum number of custom dimensions to include in this
   /// response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1249,8 +1248,8 @@ class ManagementCustomDimensionsResourceApi {
   async.Future<CustomDimensions> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -1266,11 +1265,11 @@ class ManagementCustomDimensionsResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1618,10 +1617,10 @@ class ManagementCustomMetricsResourceApi {
   ///
   /// [webPropertyId] - Web property ID for the custom metrics to retrieve.
   ///
-  /// [max_results] - The maximum number of custom metrics to include in this
+  /// [maxResults] - The maximum number of custom metrics to include in this
   /// response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1637,8 +1636,8 @@ class ManagementCustomMetricsResourceApi {
   async.Future<CustomMetrics> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -1654,11 +1653,11 @@ class ManagementCustomMetricsResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2099,10 +2098,10 @@ class ManagementExperimentsResourceApi {
   /// [profileId] - View (Profile) ID to retrieve experiments for.
   /// Value must have pattern "\d+".
   ///
-  /// [max_results] - The maximum number of experiments to include in this
+  /// [maxResults] - The maximum number of experiments to include in this
   /// response.
   ///
-  /// [start_index] - An index of the first experiment to retrieve. Use this
+  /// [startIndex] - An index of the first experiment to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2119,8 +2118,8 @@ class ManagementExperimentsResourceApi {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -2139,11 +2138,11 @@ class ManagementExperimentsResourceApi {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2526,9 +2525,9 @@ class ManagementFiltersResourceApi {
   /// [accountId] - Account ID to retrieve filters for.
   /// Value must have pattern "\d+".
   ///
-  /// [max_results] - The maximum number of filters to include in this response.
+  /// [maxResults] - The maximum number of filters to include in this response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2543,8 +2542,8 @@ class ManagementFiltersResourceApi {
   /// this method will complete with the same error.
   async.Future<Filters> list(
     core.String accountId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -2557,11 +2556,11 @@ class ManagementFiltersResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2886,9 +2885,9 @@ class ManagementGoalsResourceApi {
   /// specific view (profile) ID or '~all', which refers to all the views
   /// (profiles) that user has access to.
   ///
-  /// [max_results] - The maximum number of goals to include in this response.
+  /// [maxResults] - The maximum number of goals to include in this response.
   ///
-  /// [start_index] - An index of the first goal to retrieve. Use this parameter
+  /// [startIndex] - An index of the first goal to retrieve. Use this parameter
   /// as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2905,8 +2904,8 @@ class ManagementGoalsResourceApi {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -2925,11 +2924,11 @@ class ManagementGoalsResourceApi {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3379,10 +3378,10 @@ class ManagementProfileFilterLinksResourceApi {
   /// specific profile ID or '~all', which refers to all the profiles that user
   /// has access to.
   ///
-  /// [max_results] - The maximum number of profile filter links to include in
+  /// [maxResults] - The maximum number of profile filter links to include in
   /// this response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3399,8 +3398,8 @@ class ManagementProfileFilterLinksResourceApi {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -3419,11 +3418,11 @@ class ManagementProfileFilterLinksResourceApi {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3796,10 +3795,10 @@ class ManagementProfileUserLinksResourceApi {
   /// Can either be a specific profile ID or '~all', which refers to all the
   /// profiles that user has access to.
   ///
-  /// [max_results] - The maximum number of profile-user links to include in
-  /// this response.
+  /// [maxResults] - The maximum number of profile-user links to include in this
+  /// response.
   ///
-  /// [start_index] - An index of the first profile-user link to retrieve. Use
+  /// [startIndex] - An index of the first profile-user link to retrieve. Use
   /// this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
@@ -3817,8 +3816,8 @@ class ManagementProfileUserLinksResourceApi {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -3837,11 +3836,11 @@ class ManagementProfileUserLinksResourceApi {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4174,10 +4173,10 @@ class ManagementProfilesResourceApi {
   /// Can either be a specific web property ID or '~all', which refers to all
   /// the web properties to which the user has access.
   ///
-  /// [max_results] - The maximum number of views (profiles) to include in this
+  /// [maxResults] - The maximum number of views (profiles) to include in this
   /// response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4193,8 +4192,8 @@ class ManagementProfilesResourceApi {
   async.Future<Profiles> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -4210,11 +4209,11 @@ class ManagementProfilesResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4607,10 +4606,10 @@ class ManagementRemarketingAudienceResourceApi {
   /// [webPropertyId] - The web property ID of the remarketing audiences to
   /// retrieve.
   ///
-  /// [max_results] - The maximum number of remarketing audiences to include in
+  /// [maxResults] - The maximum number of remarketing audiences to include in
   /// this response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [type] - null
@@ -4628,8 +4627,8 @@ class ManagementRemarketingAudienceResourceApi {
   async.Future<RemarketingAudiences> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String type,
     core.String $fields,
   }) {
@@ -4646,11 +4645,11 @@ class ManagementRemarketingAudienceResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if (type != null) {
       _queryParams['type'] = [type];
@@ -4842,10 +4841,9 @@ class ManagementSegmentsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [max_results] - The maximum number of segments to include in this
-  /// response.
+  /// [maxResults] - The maximum number of segments to include in this response.
   ///
-  /// [start_index] - An index of the first segment to retrieve. Use this
+  /// [startIndex] - An index of the first segment to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4859,8 +4857,8 @@ class ManagementSegmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Segments> list({
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -4870,11 +4868,11 @@ class ManagementSegmentsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5142,10 +5140,10 @@ class ManagementUnsampledReportsResourceApi {
   /// [profileId] - View (Profile) ID to retrieve unsampled reports for. Must be
   /// a specific view (profile) ID, ~all is not supported.
   ///
-  /// [max_results] - The maximum number of unsampled reports to include in this
+  /// [maxResults] - The maximum number of unsampled reports to include in this
   /// response.
   ///
-  /// [start_index] - An index of the first unsampled report to retrieve. Use
+  /// [startIndex] - An index of the first unsampled report to retrieve. Use
   /// this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
@@ -5163,8 +5161,8 @@ class ManagementUnsampledReportsResourceApi {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -5183,11 +5181,11 @@ class ManagementUnsampledReportsResourceApi {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5393,9 +5391,9 @@ class ManagementUploadsResourceApi {
   /// [customDataSourceId] - Custom data source Id for uploads to retrieve.
   /// Value must have pattern ".{22}".
   ///
-  /// [max_results] - The maximum number of uploads to include in this response.
+  /// [maxResults] - The maximum number of uploads to include in this response.
   ///
-  /// [start_index] - A 1-based index of the first upload to retrieve. Use this
+  /// [startIndex] - A 1-based index of the first upload to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5412,8 +5410,8 @@ class ManagementUploadsResourceApi {
     core.String accountId,
     core.String webPropertyId,
     core.String customDataSourceId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -5432,11 +5430,11 @@ class ManagementUploadsResourceApi {
     if (customDataSourceId == null) {
       throw core.ArgumentError('Parameter customDataSourceId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5784,10 +5782,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [webPropertyId] - Web property ID to retrieve the Google Ads links for.
   ///
-  /// [max_results] - The maximum number of webProperty-Google Ads links to
+  /// [maxResults] - The maximum number of webProperty-Google Ads links to
   /// include in this response.
   ///
-  /// [start_index] - An index of the first webProperty-Google Ads link to
+  /// [startIndex] - An index of the first webProperty-Google Ads link to
   /// retrieve. Use this parameter as a pagination mechanism along with the
   /// max-results parameter.
   ///
@@ -5804,8 +5802,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   async.Future<EntityAdWordsLinks> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -5821,11 +5819,11 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6141,10 +6139,10 @@ class ManagementWebpropertiesResourceApi {
   /// specific account ID or '~all', which refers to all the accounts that user
   /// has access to.
   ///
-  /// [max_results] - The maximum number of web properties to include in this
+  /// [maxResults] - The maximum number of web properties to include in this
   /// response.
   ///
-  /// [start_index] - An index of the first entity to retrieve. Use this
+  /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6159,8 +6157,8 @@ class ManagementWebpropertiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Webproperties> list(
     core.String accountId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -6173,11 +6171,11 @@ class ManagementWebpropertiesResourceApi {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6485,10 +6483,10 @@ class ManagementWebpropertyUserLinksResourceApi {
   /// retrieve. Can either be a specific web property ID or '~all', which refers
   /// to all the web properties that user has access to.
   ///
-  /// [max_results] - The maximum number of webProperty-user Links to include in
+  /// [maxResults] - The maximum number of webProperty-user Links to include in
   /// this response.
   ///
-  /// [start_index] - An index of the first webProperty-user link to retrieve.
+  /// [startIndex] - An index of the first webProperty-user link to retrieve.
   /// Use this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
@@ -6505,8 +6503,8 @@ class ManagementWebpropertyUserLinksResourceApi {
   async.Future<EntityUserLinks> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int max_results,
-    core.int start_index,
+    core.int maxResults,
+    core.int startIndex,
     core.String $fields,
   }) {
     core.String _url;
@@ -6522,11 +6520,11 @@ class ManagementWebpropertyUserLinksResourceApi {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    if (max_results != null) {
-      _queryParams['max-results'] = ['${max_results}'];
+    if (maxResults != null) {
+      _queryParams['max-results'] = ['${maxResults}'];
     }
-    if (start_index != null) {
-      _queryParams['start-index'] = ['${start_index}'];
+    if (startIndex != null) {
+      _queryParams['start-index'] = ['${startIndex}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -10469,7 +10467,7 @@ class GaDataQuery {
   core.String dimensions;
 
   /// End date.
-  core.String end_date;
+  core.String endDate;
 
   /// Comma-separated list of dimension or metric filters.
   core.String filters;
@@ -10478,7 +10476,7 @@ class GaDataQuery {
   core.String ids;
 
   /// Maximum results per page.
-  core.int max_results;
+  core.int maxResults;
 
   /// List of analytics metrics.
   core.List<core.String> metrics;
@@ -10493,10 +10491,10 @@ class GaDataQuery {
   core.List<core.String> sort;
 
   /// Start date.
-  core.String start_date;
+  core.String startDate;
 
   /// Start index.
-  core.int start_index;
+  core.int startIndex;
 
   GaDataQuery();
 
@@ -10505,7 +10503,7 @@ class GaDataQuery {
       dimensions = _json['dimensions'] as core.String;
     }
     if (_json.containsKey('end-date')) {
-      end_date = _json['end-date'] as core.String;
+      endDate = _json['end-date'] as core.String;
     }
     if (_json.containsKey('filters')) {
       filters = _json['filters'] as core.String;
@@ -10514,7 +10512,7 @@ class GaDataQuery {
       ids = _json['ids'] as core.String;
     }
     if (_json.containsKey('max-results')) {
-      max_results = _json['max-results'] as core.int;
+      maxResults = _json['max-results'] as core.int;
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -10533,10 +10531,10 @@ class GaDataQuery {
           .toList();
     }
     if (_json.containsKey('start-date')) {
-      start_date = _json['start-date'] as core.String;
+      startDate = _json['start-date'] as core.String;
     }
     if (_json.containsKey('start-index')) {
-      start_index = _json['start-index'] as core.int;
+      startIndex = _json['start-index'] as core.int;
     }
   }
 
@@ -10545,8 +10543,8 @@ class GaDataQuery {
     if (dimensions != null) {
       _json['dimensions'] = dimensions;
     }
-    if (end_date != null) {
-      _json['end-date'] = end_date;
+    if (endDate != null) {
+      _json['end-date'] = endDate;
     }
     if (filters != null) {
       _json['filters'] = filters;
@@ -10554,8 +10552,8 @@ class GaDataQuery {
     if (ids != null) {
       _json['ids'] = ids;
     }
-    if (max_results != null) {
-      _json['max-results'] = max_results;
+    if (maxResults != null) {
+      _json['max-results'] = maxResults;
     }
     if (metrics != null) {
       _json['metrics'] = metrics;
@@ -10569,11 +10567,11 @@ class GaDataQuery {
     if (sort != null) {
       _json['sort'] = sort;
     }
-    if (start_date != null) {
-      _json['start-date'] = start_date;
+    if (startDate != null) {
+      _json['start-date'] = startDate;
     }
-    if (start_index != null) {
-      _json['start-index'] = start_index;
+    if (startIndex != null) {
+      _json['start-index'] = startIndex;
     }
     return _json;
   }
@@ -11704,7 +11702,7 @@ class McfDataQuery {
   core.String dimensions;
 
   /// End date.
-  core.String end_date;
+  core.String endDate;
 
   /// Comma-separated list of dimension or metric filters.
   core.String filters;
@@ -11713,7 +11711,7 @@ class McfDataQuery {
   core.String ids;
 
   /// Maximum results per page.
-  core.int max_results;
+  core.int maxResults;
 
   /// List of analytics metrics.
   core.List<core.String> metrics;
@@ -11728,10 +11726,10 @@ class McfDataQuery {
   core.List<core.String> sort;
 
   /// Start date.
-  core.String start_date;
+  core.String startDate;
 
   /// Start index.
-  core.int start_index;
+  core.int startIndex;
 
   McfDataQuery();
 
@@ -11740,7 +11738,7 @@ class McfDataQuery {
       dimensions = _json['dimensions'] as core.String;
     }
     if (_json.containsKey('end-date')) {
-      end_date = _json['end-date'] as core.String;
+      endDate = _json['end-date'] as core.String;
     }
     if (_json.containsKey('filters')) {
       filters = _json['filters'] as core.String;
@@ -11749,7 +11747,7 @@ class McfDataQuery {
       ids = _json['ids'] as core.String;
     }
     if (_json.containsKey('max-results')) {
-      max_results = _json['max-results'] as core.int;
+      maxResults = _json['max-results'] as core.int;
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -11768,10 +11766,10 @@ class McfDataQuery {
           .toList();
     }
     if (_json.containsKey('start-date')) {
-      start_date = _json['start-date'] as core.String;
+      startDate = _json['start-date'] as core.String;
     }
     if (_json.containsKey('start-index')) {
-      start_index = _json['start-index'] as core.int;
+      startIndex = _json['start-index'] as core.int;
     }
   }
 
@@ -11780,8 +11778,8 @@ class McfDataQuery {
     if (dimensions != null) {
       _json['dimensions'] = dimensions;
     }
-    if (end_date != null) {
-      _json['end-date'] = end_date;
+    if (endDate != null) {
+      _json['end-date'] = endDate;
     }
     if (filters != null) {
       _json['filters'] = filters;
@@ -11789,8 +11787,8 @@ class McfDataQuery {
     if (ids != null) {
       _json['ids'] = ids;
     }
-    if (max_results != null) {
-      _json['max-results'] = max_results;
+    if (maxResults != null) {
+      _json['max-results'] = maxResults;
     }
     if (metrics != null) {
       _json['metrics'] = metrics;
@@ -11804,11 +11802,11 @@ class McfDataQuery {
     if (sort != null) {
       _json['sort'] = sort;
     }
-    if (start_date != null) {
-      _json['start-date'] = start_date;
+    if (startDate != null) {
+      _json['start-date'] = startDate;
     }
-    if (start_index != null) {
-      _json['start-index'] = start_index;
+    if (startIndex != null) {
+      _json['start-index'] = startIndex;
     }
     return _json;
   }
@@ -12946,7 +12944,7 @@ class RealtimeDataQuery {
   core.String ids;
 
   /// Maximum results per page.
-  core.int max_results;
+  core.int maxResults;
 
   /// List of real time metrics.
   core.List<core.String> metrics;
@@ -12967,7 +12965,7 @@ class RealtimeDataQuery {
       ids = _json['ids'] as core.String;
     }
     if (_json.containsKey('max-results')) {
-      max_results = _json['max-results'] as core.int;
+      maxResults = _json['max-results'] as core.int;
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -12992,8 +12990,8 @@ class RealtimeDataQuery {
     if (ids != null) {
       _json['ids'] = ids;
     }
-    if (max_results != null) {
-      _json['max-results'] = max_results;
+    if (maxResults != null) {
+      _json['max-results'] = maxResults;
     }
     if (metrics != null) {
       _json['metrics'] = metrics;
@@ -13734,7 +13732,7 @@ class UnsampledReport {
   UnsampledReportDriveDownloadDetails driveDownloadDetails;
 
   /// The end date for the unsampled report.
-  core.String end_date;
+  core.String endDate;
 
   /// The filters for the unsampled report.
   core.String filters;
@@ -13758,7 +13756,7 @@ class UnsampledReport {
   core.String selfLink;
 
   /// The start date for the unsampled report.
-  core.String start_date;
+  core.String startDate;
 
   /// Status of this unsampled report. Possible values are PENDING, COMPLETED,
   /// or FAILED.
@@ -13800,7 +13798,7 @@ class UnsampledReport {
           _json['driveDownloadDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('end-date')) {
-      end_date = _json['end-date'] as core.String;
+      endDate = _json['end-date'] as core.String;
     }
     if (_json.containsKey('filters')) {
       filters = _json['filters'] as core.String;
@@ -13824,7 +13822,7 @@ class UnsampledReport {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('start-date')) {
-      start_date = _json['start-date'] as core.String;
+      startDate = _json['start-date'] as core.String;
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -13861,8 +13859,8 @@ class UnsampledReport {
     if (driveDownloadDetails != null) {
       _json['driveDownloadDetails'] = driveDownloadDetails.toJson();
     }
-    if (end_date != null) {
-      _json['end-date'] = end_date;
+    if (endDate != null) {
+      _json['end-date'] = endDate;
     }
     if (filters != null) {
       _json['filters'] = filters;
@@ -13885,8 +13883,8 @@ class UnsampledReport {
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
     }
-    if (start_date != null) {
-      _json['start-date'] = start_date;
+    if (startDate != null) {
+      _json['start-date'] = startDate;
     }
     if (status != null) {
       _json['status'] = status;

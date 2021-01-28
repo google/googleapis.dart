@@ -29,10 +29,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const userAgent = 'dart-api-client wrapApi/0.1';
 
-class WrapApiApi {
+class WrapApi {
   final commons.ApiRequester _requester;
 
-  WrapApiApi(http.Client client,
+  WrapApi(http.Client client,
       {core.String rootUrl = 'http://localhost:9090/',
       core.String servicePath = 'api/wrapApi/0.1/'})
       : _requester =

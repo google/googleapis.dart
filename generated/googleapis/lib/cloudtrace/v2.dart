@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// applications can be provided using this API. This library is used to
 /// interact with the Cloud Trace API directly. If you are looking to instrument
 /// your application for Cloud Trace, we recommend using OpenCensus.
-class CloudtraceApi {
+class CloudTraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -56,7 +56,7 @@ class CloudtraceApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudtraceApi(http.Client client,
+  CloudTraceApi(http.Client client,
       {core.String rootUrl = 'https://cloudtrace.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

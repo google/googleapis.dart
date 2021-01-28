@@ -46,7 +46,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Cloud Search provides cloud-based search capabilities over G Suite data. The
 /// Cloud Search API allows indexing of non-G Suite data into Cloud Search.
-class CloudsearchApi {
+class CloudSearchApi {
   /// Index and serve your organization's data with Cloud Search
   static const cloudSearchScope =
       'https://www.googleapis.com/auth/cloud_search';
@@ -93,7 +93,7 @@ class CloudsearchApi {
   SettingsResourceApi get settings => SettingsResourceApi(_requester);
   StatsResourceApi get stats => StatsResourceApi(_requester);
 
-  CloudsearchApi(http.Client client,
+  CloudSearchApi(http.Client client,
       {core.String rootUrl = 'https://cloudsearch.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

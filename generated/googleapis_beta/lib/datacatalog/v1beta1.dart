@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// A fully managed and highly scalable data discovery and metadata management
 /// service.
-class DatacatalogApi {
+class DataCatalogApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -48,7 +48,7 @@ class DatacatalogApi {
   EntriesResourceApi get entries => EntriesResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  DatacatalogApi(http.Client client,
+  DataCatalogApi(http.Client client,
       {core.String rootUrl = 'https://datacatalog.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

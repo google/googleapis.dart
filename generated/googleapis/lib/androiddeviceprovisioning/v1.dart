@@ -37,14 +37,14 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Automates Android zero-touch enrollment for device resellers, customers, and
 /// EMMs.
-class AndroiddeviceprovisioningApi {
+class AndroidProvisioningPartnerApi {
   final commons.ApiRequester _requester;
 
   CustomersResourceApi get customers => CustomersResourceApi(_requester);
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   PartnersResourceApi get partners => PartnersResourceApi(_requester);
 
-  AndroiddeviceprovisioningApi(http.Client client,
+  AndroidProvisioningPartnerApi(http.Client client,
       {core.String rootUrl =
           'https://androiddeviceprovisioning.googleapis.com/',
       core.String servicePath = ''})

@@ -1491,7 +1491,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts;
+      var res = api.AdSenseApi(mock).accounts;
       var arg_accountId = 'foo';
       var arg_tree = true;
       var arg_$fields = 'foo';
@@ -1546,7 +1546,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts;
+      var res = api.AdSenseApi(mock).accounts;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1606,7 +1606,7 @@ void main() {
   unittest.group('resource-AccountsAdclientsResourceApi', () {
     unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.adclients;
+      var res = api.AdSenseApi(mock).accounts.adclients;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_tagPartner = 'foo';
@@ -1679,7 +1679,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.adclients;
+      var res = api.AdSenseApi(mock).accounts.adclients;
       var arg_accountId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -1749,7 +1749,7 @@ void main() {
   unittest.group('resource-AccountsAdunitsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.adunits;
+      var res = api.AdSenseApi(mock).accounts.adunits;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_adUnitId = 'foo';
@@ -1823,7 +1823,7 @@ void main() {
 
     unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.adunits;
+      var res = api.AdSenseApi(mock).accounts.adunits;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_adUnitId = 'foo';
@@ -1903,7 +1903,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.adunits;
+      var res = api.AdSenseApi(mock).accounts.adunits;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_includeInactive = true;
@@ -1987,7 +1987,7 @@ void main() {
   unittest.group('resource-AccountsAdunitsCustomchannelsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.adunits.customchannels;
+      var res = api.AdSenseApi(mock).accounts.adunits.customchannels;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_adUnitId = 'foo';
@@ -2077,7 +2077,7 @@ void main() {
   unittest.group('resource-AccountsAlertsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.alerts;
+      var res = api.AdSenseApi(mock).accounts.alerts;
       var arg_accountId = 'foo';
       var arg_alertId = 'foo';
       var arg_$fields = 'foo';
@@ -2138,7 +2138,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.alerts;
+      var res = api.AdSenseApi(mock).accounts.alerts;
       var arg_accountId = 'foo';
       var arg_locale = 'foo';
       var arg_$fields = 'foo';
@@ -2201,7 +2201,7 @@ void main() {
   unittest.group('resource-AccountsCustomchannelsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.customchannels;
+      var res = api.AdSenseApi(mock).accounts.customchannels;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_customChannelId = 'foo';
@@ -2275,7 +2275,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.customchannels;
+      var res = api.AdSenseApi(mock).accounts.customchannels;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_maxResults = 42;
@@ -2355,7 +2355,7 @@ void main() {
   unittest.group('resource-AccountsCustomchannelsAdunitsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.customchannels.adunits;
+      var res = api.AdSenseApi(mock).accounts.customchannels.adunits;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_customChannelId = 'foo';
@@ -2449,7 +2449,7 @@ void main() {
   unittest.group('resource-AccountsPaymentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.payments;
+      var res = api.AdSenseApi(mock).accounts.payments;
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2513,7 +2513,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.reports;
+      var res = api.AdSenseApi(mock).accounts.reports;
       var arg_accountId = 'foo';
       var arg_startDate = 'foo';
       var arg_endDate = 'foo';
@@ -2613,7 +2613,7 @@ void main() {
   unittest.group('resource-AccountsReportsSavedResourceApi', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.reports.saved;
+      var res = api.AdSenseApi(mock).accounts.reports.saved;
       var arg_accountId = 'foo';
       var arg_savedReportId = 'foo';
       var arg_locale = 'foo';
@@ -2689,7 +2689,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.reports.saved;
+      var res = api.AdSenseApi(mock).accounts.reports.saved;
       var arg_accountId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -2759,7 +2759,7 @@ void main() {
   unittest.group('resource-AccountsSavedadstylesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.savedadstyles;
+      var res = api.AdSenseApi(mock).accounts.savedadstyles;
       var arg_accountId = 'foo';
       var arg_savedAdStyleId = 'foo';
       var arg_$fields = 'foo';
@@ -2822,7 +2822,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.savedadstyles;
+      var res = api.AdSenseApi(mock).accounts.savedadstyles;
       var arg_accountId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -2892,7 +2892,7 @@ void main() {
   unittest.group('resource-AccountsUrlchannelsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).accounts.urlchannels;
+      var res = api.AdSenseApi(mock).accounts.urlchannels;
       var arg_accountId = 'foo';
       var arg_adClientId = 'foo';
       var arg_maxResults = 42;
@@ -2972,7 +2972,7 @@ void main() {
   unittest.group('resource-AdclientsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).adclients;
+      var res = api.AdSenseApi(mock).adclients;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -3032,7 +3032,7 @@ void main() {
   unittest.group('resource-AdunitsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).adunits;
+      var res = api.AdSenseApi(mock).adunits;
       var arg_adClientId = 'foo';
       var arg_adUnitId = 'foo';
       var arg_$fields = 'foo';
@@ -3095,7 +3095,7 @@ void main() {
 
     unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).adunits;
+      var res = api.AdSenseApi(mock).adunits;
       var arg_adClientId = 'foo';
       var arg_adUnitId = 'foo';
       var arg_$fields = 'foo';
@@ -3164,7 +3164,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).adunits;
+      var res = api.AdSenseApi(mock).adunits;
       var arg_adClientId = 'foo';
       var arg_includeInactive = true;
       var arg_maxResults = 42;
@@ -3238,7 +3238,7 @@ void main() {
   unittest.group('resource-AdunitsCustomchannelsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).adunits.customchannels;
+      var res = api.AdSenseApi(mock).adunits.customchannels;
       var arg_adClientId = 'foo';
       var arg_adUnitId = 'foo';
       var arg_maxResults = 42;
@@ -3318,7 +3318,7 @@ void main() {
   unittest.group('resource-AlertsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).alerts;
+      var res = api.AdSenseApi(mock).alerts;
       var arg_alertId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3369,7 +3369,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).alerts;
+      var res = api.AdSenseApi(mock).alerts;
       var arg_locale = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3422,7 +3422,7 @@ void main() {
   unittest.group('resource-CustomchannelsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).customchannels;
+      var res = api.AdSenseApi(mock).customchannels;
       var arg_adClientId = 'foo';
       var arg_customChannelId = 'foo';
       var arg_$fields = 'foo';
@@ -3485,7 +3485,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).customchannels;
+      var res = api.AdSenseApi(mock).customchannels;
       var arg_adClientId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -3555,7 +3555,7 @@ void main() {
   unittest.group('resource-CustomchannelsAdunitsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).customchannels.adunits;
+      var res = api.AdSenseApi(mock).customchannels.adunits;
       var arg_adClientId = 'foo';
       var arg_customChannelId = 'foo';
       var arg_includeInactive = true;
@@ -3639,7 +3639,7 @@ void main() {
   unittest.group('resource-MetadataDimensionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).metadata.dimensions;
+      var res = api.AdSenseApi(mock).metadata.dimensions;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3688,7 +3688,7 @@ void main() {
   unittest.group('resource-MetadataMetricsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).metadata.metrics;
+      var res = api.AdSenseApi(mock).metadata.metrics;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3737,7 +3737,7 @@ void main() {
   unittest.group('resource-PaymentsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).payments;
+      var res = api.AdSenseApi(mock).payments;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3789,7 +3789,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).reports;
+      var res = api.AdSenseApi(mock).reports;
       var arg_startDate = 'foo';
       var arg_endDate = 'foo';
       var arg_accountId = buildUnnamed3664();
@@ -3882,7 +3882,7 @@ void main() {
   unittest.group('resource-ReportsSavedResourceApi', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).reports.saved;
+      var res = api.AdSenseApi(mock).reports.saved;
       var arg_savedReportId = 'foo';
       var arg_locale = 'foo';
       var arg_maxResults = 42;
@@ -3948,7 +3948,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).reports.saved;
+      var res = api.AdSenseApi(mock).reports.saved;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4008,7 +4008,7 @@ void main() {
   unittest.group('resource-SavedadstylesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).savedadstyles;
+      var res = api.AdSenseApi(mock).savedadstyles;
       var arg_savedAdStyleId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4061,7 +4061,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).savedadstyles;
+      var res = api.AdSenseApi(mock).savedadstyles;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -4121,7 +4121,7 @@ void main() {
   unittest.group('resource-UrlchannelsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdsenseApi(mock).urlchannels;
+      var res = api.AdSenseApi(mock).urlchannels;
       var arg_adClientId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';

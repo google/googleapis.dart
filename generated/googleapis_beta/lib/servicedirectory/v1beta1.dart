@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Service Directory is a platform for discovering, publishing, and connecting
 /// services.
-class ServicedirectoryApi {
+class ServiceDirectoryApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class ServicedirectoryApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  ServicedirectoryApi(http.Client client,
+  ServiceDirectoryApi(http.Client client,
       {core.String rootUrl = 'https://servicedirectory.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

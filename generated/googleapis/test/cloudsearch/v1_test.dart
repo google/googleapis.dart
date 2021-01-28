@@ -5763,7 +5763,7 @@ void main() {
   unittest.group('resource-DebugDatasourcesItemsResourceApi', () {
     unittest.test('method--checkAccess', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).debug.datasources.items;
+      var res = api.CloudSearchApi(mock).debug.datasources.items;
       var arg_request = buildPrincipal();
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
@@ -5821,7 +5821,7 @@ void main() {
 
     unittest.test('method--searchByViewUrl', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).debug.datasources.items;
+      var res = api.CloudSearchApi(mock).debug.datasources.items;
       var arg_request = buildSearchItemsByViewUrlRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5878,7 +5878,7 @@ void main() {
   unittest.group('resource-DebugDatasourcesItemsUnmappedidsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).debug.datasources.items.unmappedids;
+      var res = api.CloudSearchApi(mock).debug.datasources.items.unmappedids;
       var arg_parent = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_pageSize = 42;
@@ -5942,7 +5942,7 @@ void main() {
   unittest.group('resource-DebugIdentitysourcesItemsResourceApi', () {
     unittest.test('method--listForunmappedidentity', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).debug.identitysources.items;
+      var res = api.CloudSearchApi(mock).debug.identitysources.items;
       var arg_parent = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_groupResourceName = 'foo';
@@ -6015,7 +6015,7 @@ void main() {
   unittest.group('resource-DebugIdentitysourcesUnmappedidsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).debug.identitysources.unmappedids;
+      var res = api.CloudSearchApi(mock).debug.identitysources.unmappedids;
       var arg_parent = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_pageSize = 42;
@@ -6083,7 +6083,7 @@ void main() {
   unittest.group('resource-IndexingDatasourcesResourceApi', () {
     unittest.test('method--deleteSchema', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources;
+      var res = api.CloudSearchApi(mock).indexing.datasources;
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_$fields = 'foo';
@@ -6136,7 +6136,7 @@ void main() {
 
     unittest.test('method--getSchema', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources;
+      var res = api.CloudSearchApi(mock).indexing.datasources;
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_$fields = 'foo';
@@ -6189,7 +6189,7 @@ void main() {
 
     unittest.test('method--updateSchema', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources;
+      var res = api.CloudSearchApi(mock).indexing.datasources;
       var arg_request = buildUpdateSchemaRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6244,7 +6244,7 @@ void main() {
   unittest.group('resource-IndexingDatasourcesItemsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
       var arg_connectorName = 'foo';
       var arg_debugOptions_enableDebugging = true;
@@ -6308,7 +6308,7 @@ void main() {
 
     unittest.test('method--deleteQueueItems', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildDeleteQueueItemsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6361,7 +6361,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
       var arg_connectorName = 'foo';
       var arg_debugOptions_enableDebugging = true;
@@ -6418,7 +6418,7 @@ void main() {
 
     unittest.test('method--index', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildIndexItemRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6471,7 +6471,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
       var arg_brief = true;
       var arg_connectorName = 'foo';
@@ -6539,7 +6539,7 @@ void main() {
 
     unittest.test('method--poll', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildPollItemsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6592,7 +6592,7 @@ void main() {
 
     unittest.test('method--push', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildPushItemRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6645,7 +6645,7 @@ void main() {
 
     unittest.test('method--unreserve', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildUnreserveItemsRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6698,7 +6698,7 @@ void main() {
 
     unittest.test('method--upload', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).indexing.datasources.items;
+      var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildStartUploadItemRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6756,7 +6756,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).media;
+      var res = api.CloudSearchApi(mock).media;
       var arg_request = buildMedia();
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
@@ -6811,7 +6811,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).operations;
+      var res = api.CloudSearchApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6861,7 +6861,7 @@ void main() {
   unittest.group('resource-OperationsLroResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).operations.lro;
+      var res = api.CloudSearchApi(mock).operations.lro;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6923,7 +6923,7 @@ void main() {
   unittest.group('resource-QueryResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).query;
+      var res = api.CloudSearchApi(mock).query;
       var arg_request = buildSearchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6974,7 +6974,7 @@ void main() {
 
     unittest.test('method--suggest', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).query;
+      var res = api.CloudSearchApi(mock).query;
       var arg_request = buildSuggestRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7027,7 +7027,7 @@ void main() {
   unittest.group('resource-QuerySourcesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).query.sources;
+      var res = api.CloudSearchApi(mock).query.sources;
       var arg_pageToken = 'foo';
       var arg_requestOptions_debugOptions_enableDebugging = true;
       var arg_requestOptions_languageCode = 'foo';
@@ -7100,7 +7100,7 @@ void main() {
   unittest.group('resource-SettingsDatasourcesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.datasources;
+      var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_request = buildDataSource();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7151,7 +7151,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.datasources;
+      var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_$fields = 'foo';
@@ -7204,7 +7204,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.datasources;
+      var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_$fields = 'foo';
@@ -7257,7 +7257,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.datasources;
+      var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_debugOptions_enableDebugging = true;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7316,7 +7316,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.datasources;
+      var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_request = buildUpdateDataSourceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7371,7 +7371,7 @@ void main() {
   unittest.group('resource-SettingsSearchapplicationsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.searchapplications;
+      var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_request = buildSearchApplication();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7422,7 +7422,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.searchapplications;
+      var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_$fields = 'foo';
@@ -7475,7 +7475,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.searchapplications;
+      var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_name = 'foo';
       var arg_debugOptions_enableDebugging = true;
       var arg_$fields = 'foo';
@@ -7528,7 +7528,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.searchapplications;
+      var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_debugOptions_enableDebugging = true;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7588,7 +7588,7 @@ void main() {
 
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.searchapplications;
+      var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_request = buildResetSearchApplicationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7642,7 +7642,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).settings.searchapplications;
+      var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_request = buildSearchApplication();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7697,7 +7697,7 @@ void main() {
   unittest.group('resource-StatsResourceApi', () {
     unittest.test('method--getIndex', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats;
+      var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
@@ -7769,7 +7769,7 @@ void main() {
 
     unittest.test('method--getQuery', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats;
+      var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
@@ -7841,7 +7841,7 @@ void main() {
 
     unittest.test('method--getSession', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats;
+      var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
@@ -7913,7 +7913,7 @@ void main() {
 
     unittest.test('method--getUser', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats;
+      var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
       var arg_fromDate_year = 42;
@@ -7987,7 +7987,7 @@ void main() {
   unittest.group('resource-StatsIndexDatasourcesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats.index.datasources;
+      var res = api.CloudSearchApi(mock).stats.index.datasources;
       var arg_name = 'foo';
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
@@ -8063,7 +8063,7 @@ void main() {
   unittest.group('resource-StatsQuerySearchapplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats.query.searchapplications;
+      var res = api.CloudSearchApi(mock).stats.query.searchapplications;
       var arg_name = 'foo';
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
@@ -8140,7 +8140,7 @@ void main() {
   unittest.group('resource-StatsSessionSearchapplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats.session.searchapplications;
+      var res = api.CloudSearchApi(mock).stats.session.searchapplications;
       var arg_name = 'foo';
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;
@@ -8217,7 +8217,7 @@ void main() {
   unittest.group('resource-StatsUserSearchapplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudsearchApi(mock).stats.user.searchapplications;
+      var res = api.CloudSearchApi(mock).stats.user.searchapplications;
       var arg_name = 'foo';
       var arg_fromDate_day = 42;
       var arg_fromDate_month = 42;

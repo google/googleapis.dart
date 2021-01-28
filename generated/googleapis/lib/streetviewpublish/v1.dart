@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Publishes 360 photos to Google Maps, along with position, orientation, and
 /// connectivity metadata. Apps can offer an interface for positioning,
 /// connecting, and uploading user-generated Street View images.
-class StreetviewpublishApi {
+class StreetViewPublishApi {
   /// Publish and manage your 360 photos on Google Street View
   static const streetviewpublishScope =
       'https://www.googleapis.com/auth/streetviewpublish';
@@ -50,7 +50,7 @@ class StreetviewpublishApi {
   PhotoResourceApi get photo => PhotoResourceApi(_requester);
   PhotosResourceApi get photos => PhotosResourceApi(_requester);
 
-  StreetviewpublishApi(http.Client client,
+  StreetViewPublishApi(http.Client client,
       {core.String rootUrl = 'https://streetviewpublish.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

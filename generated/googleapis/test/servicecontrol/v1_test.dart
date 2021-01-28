@@ -2569,7 +2569,7 @@ void main() {
   unittest.group('resource-ServicesResourceApi', () {
     unittest.test('method--allocateQuota', () {
       var mock = HttpServerMock();
-      var res = api.ServicecontrolApi(mock).services;
+      var res = api.ServiceControlApi(mock).services;
       var arg_request = buildAllocateQuotaRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -2630,7 +2630,7 @@ void main() {
 
     unittest.test('method--check', () {
       var mock = HttpServerMock();
-      var res = api.ServicecontrolApi(mock).services;
+      var res = api.ServiceControlApi(mock).services;
       var arg_request = buildCheckRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -2691,7 +2691,7 @@ void main() {
 
     unittest.test('method--report', () {
       var mock = HttpServerMock();
-      var res = api.ServicecontrolApi(mock).services;
+      var res = api.ServiceControlApi(mock).services;
       var arg_request = buildReportRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';

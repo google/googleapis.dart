@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Registers and manages IoT (Internet of Things) devices that connect to the
 /// Google Cloud Platform.
-class CloudiotApi {
+class CloudIotApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -49,7 +49,7 @@ class CloudiotApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudiotApi(http.Client client,
+  CloudIotApi(http.Client client,
       {core.String rootUrl = 'https://cloudiot.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

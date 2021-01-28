@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages continuous profiling information.
-class CloudprofilerApi {
+class CloudProfilerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -52,7 +52,7 @@ class CloudprofilerApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudprofilerApi(http.Client client,
+  CloudProfilerApi(http.Client client,
       {core.String rootUrl = 'https://cloudprofiler.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

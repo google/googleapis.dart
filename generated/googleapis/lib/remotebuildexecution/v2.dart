@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Supplies a Remote Execution API service for tools such as bazel.
-class RemotebuildexecutionApi {
+class RemoteBuildExecutionApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -50,7 +50,7 @@ class RemotebuildexecutionApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   V2ResourceApi get v2 => V2ResourceApi(_requester);
 
-  RemotebuildexecutionApi(http.Client client,
+  RemoteBuildExecutionApi(http.Client client,
       {core.String rootUrl = 'https://remotebuildexecution.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -649,10 +649,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-ToyApiApi', () {
+  unittest.group('resource-ToyApi', () {
     unittest.test('method--failing', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -697,7 +697,7 @@ void main() {
 
     unittest.test('method--hello', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -744,7 +744,7 @@ void main() {
 
     unittest.test('method--helloListOfClass', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildListOfToyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -797,7 +797,7 @@ void main() {
 
     unittest.test('method--helloListOfListOfClass', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildListOfListOfToyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -850,7 +850,7 @@ void main() {
 
     unittest.test('method--helloMap', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildMapOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -904,7 +904,7 @@ void main() {
 
     unittest.test('method--helloNameAge', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_name = 'foo';
       var arg_age = 42;
       var arg_$fields = 'foo';
@@ -967,7 +967,7 @@ void main() {
 
     unittest.test('method--helloNamePostAge', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildToyAgeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1025,7 +1025,7 @@ void main() {
 
     unittest.test('method--helloNameQueryAgeFoo', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_name = 'foo';
       var arg_age = 42;
       var arg_foo = 'foo';
@@ -1084,7 +1084,7 @@ void main() {
 
     unittest.test('method--helloNestedListList', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildListOfListOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1137,7 +1137,7 @@ void main() {
 
     unittest.test('method--helloNestedListMapList', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildListOfMapOfListOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1190,7 +1190,7 @@ void main() {
 
     unittest.test('method--helloNestedMap', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1239,7 +1239,7 @@ void main() {
 
     unittest.test('method--helloNestedMapListMap', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildMapOfListOfMapOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1293,7 +1293,7 @@ void main() {
 
     unittest.test('method--helloNestedMapMap', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildMapOfMapOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1347,7 +1347,7 @@ void main() {
 
     unittest.test('method--helloPost', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildToyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1401,7 +1401,7 @@ void main() {
 
     unittest.test('method--helloReturnNull', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1450,7 +1450,7 @@ void main() {
 
     unittest.test('method--helloVoid', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1499,7 +1499,7 @@ void main() {
 
     unittest.test('method--noop', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1544,7 +1544,7 @@ void main() {
 
     unittest.test('method--reverseList', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock);
+      var res = api.ToyApi(mock);
       var arg_request = buildListOfString();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1599,7 +1599,7 @@ void main() {
   unittest.group('resource-ComputeResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock).compute;
+      var res = api.ToyApi(mock).compute;
       var arg_resource = 'foo';
       var arg_compute = 'foo';
       var arg_$fields = 'foo';
@@ -1664,7 +1664,7 @@ void main() {
   unittest.group('resource-StorageResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ToyApiApi(mock).storage;
+      var res = api.ToyApi(mock).storage;
       var arg_resource = 'foo';
       var arg_storage = 'foo';
       var arg_$fields = 'foo';

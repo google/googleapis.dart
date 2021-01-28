@@ -4013,7 +4013,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).operations;
+      var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4066,7 +4066,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).operations;
+      var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4114,7 +4114,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).operations;
+      var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4162,7 +4162,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).operations;
+      var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4224,7 +4224,7 @@ void main() {
   unittest.group('resource-ServicesResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services;
+      var res = api.ServiceConsumerManagementApi(mock).services;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4287,7 +4287,7 @@ void main() {
   unittest.group('resource-ServicesTenancyUnitsResourceApi', () {
     unittest.test('method--addProject', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildAddTenantProjectRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4340,7 +4340,7 @@ void main() {
 
     unittest.test('method--applyProjectConfig', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildApplyTenantProjectConfigRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4394,7 +4394,7 @@ void main() {
 
     unittest.test('method--attachProject', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildAttachTenantProjectRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4447,7 +4447,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildCreateTenancyUnitRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4500,7 +4500,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4548,7 +4548,7 @@ void main() {
 
     unittest.test('method--deleteProject', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildDeleteTenantProjectRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4601,7 +4601,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4661,7 +4661,7 @@ void main() {
 
     unittest.test('method--removeProject', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildRemoveTenantProjectRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4714,7 +4714,7 @@ void main() {
 
     unittest.test('method--undeleteProject', () {
       var mock = HttpServerMock();
-      var res = api.ServiceconsumermanagementApi(mock).services.tenancyUnits;
+      var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildUndeleteTenantProjectRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

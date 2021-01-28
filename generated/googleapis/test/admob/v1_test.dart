@@ -898,7 +898,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdmobApi(mock).accounts;
+      var res = api.AdMobApi(mock).accounts;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -946,7 +946,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdmobApi(mock).accounts;
+      var res = api.AdMobApi(mock).accounts;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1004,7 +1004,7 @@ void main() {
   unittest.group('resource-AccountsMediationReportResourceApi', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
-      var res = api.AdmobApi(mock).accounts.mediationReport;
+      var res = api.AdMobApi(mock).accounts.mediationReport;
       var arg_request = buildGenerateMediationReportRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1061,7 +1061,7 @@ void main() {
   unittest.group('resource-AccountsNetworkReportResourceApi', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
-      var res = api.AdmobApi(mock).accounts.networkReport;
+      var res = api.AdMobApi(mock).accounts.networkReport;
       var arg_request = buildGenerateNetworkReportRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';

@@ -280,7 +280,7 @@ void main() {
   unittest.group('resource-AutnumResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).autnum;
+      var res = api.DomainsRDAPApi(mock).autnum;
       var arg_autnumId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -332,7 +332,7 @@ void main() {
   unittest.group('resource-DomainResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).domain;
+      var res = api.DomainsRDAPApi(mock).domain;
       var arg_domainName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -382,7 +382,7 @@ void main() {
   unittest.group('resource-EntityResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).entity;
+      var res = api.DomainsRDAPApi(mock).entity;
       var arg_entityId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -434,7 +434,7 @@ void main() {
   unittest.group('resource-IpResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).ip;
+      var res = api.DomainsRDAPApi(mock).ip;
       var arg_ipId = 'foo';
       var arg_ipId1 = 'foo';
       var arg_$fields = 'foo';
@@ -496,7 +496,7 @@ void main() {
   unittest.group('resource-NameserverResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).nameserver;
+      var res = api.DomainsRDAPApi(mock).nameserver;
       var arg_nameserverId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -548,7 +548,7 @@ void main() {
   unittest.group('resource-V1ResourceApi', () {
     unittest.test('method--getDomains', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).v1;
+      var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -594,7 +594,7 @@ void main() {
 
     unittest.test('method--getEntities', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).v1;
+      var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -640,7 +640,7 @@ void main() {
 
     unittest.test('method--getHelp', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).v1;
+      var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -684,7 +684,7 @@ void main() {
 
     unittest.test('method--getIp', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).v1;
+      var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -728,7 +728,7 @@ void main() {
 
     unittest.test('method--getNameservers', () {
       var mock = HttpServerMock();
-      var res = api.DomainsrdapApi(mock).v1;
+      var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

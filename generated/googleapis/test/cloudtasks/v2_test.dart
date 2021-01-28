@@ -1142,7 +1142,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations;
+      var res = api.CloudTasksApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1190,7 +1190,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations;
+      var res = api.CloudTasksApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1252,7 +1252,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsQueuesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildQueue();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1305,7 +1305,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1353,7 +1353,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1401,7 +1401,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1454,7 +1454,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1514,7 +1514,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildQueue();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1571,7 +1571,7 @@ void main() {
 
     unittest.test('method--pause', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildPauseQueueRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1624,7 +1624,7 @@ void main() {
 
     unittest.test('method--purge', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildPurgeQueueRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1677,7 +1677,7 @@ void main() {
 
     unittest.test('method--resume', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildResumeQueueRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1730,7 +1730,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1783,7 +1783,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues;
+      var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1839,7 +1839,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsQueuesTasksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues.tasks;
+      var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_request = buildCreateTaskRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1892,7 +1892,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues.tasks;
+      var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1940,7 +1940,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues.tasks;
+      var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_name = 'foo';
       var arg_responseView = 'foo';
       var arg_$fields = 'foo';
@@ -1991,7 +1991,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues.tasks;
+      var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2052,7 +2052,7 @@ void main() {
 
     unittest.test('method--run', () {
       var mock = HttpServerMock();
-      var res = api.CloudtasksApi(mock).projects.locations.queues.tasks;
+      var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_request = buildRunTaskRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

@@ -2888,7 +2888,7 @@ void main() {
   unittest.group('resource-BackupRunsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).backupRuns;
+      var res = api.SQLAdminApi(mock).backupRuns;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_id = 'foo';
@@ -2958,7 +2958,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).backupRuns;
+      var res = api.SQLAdminApi(mock).backupRuns;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_id = 'foo';
@@ -3028,7 +3028,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).backupRuns;
+      var res = api.SQLAdminApi(mock).backupRuns;
       var arg_request = buildBackupRun();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3099,7 +3099,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).backupRuns;
+      var res = api.SQLAdminApi(mock).backupRuns;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_maxResults = 42;
@@ -3176,7 +3176,7 @@ void main() {
   unittest.group('resource-DatabasesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).databases;
+      var res = api.SQLAdminApi(mock).databases;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_database = 'foo';
@@ -3246,7 +3246,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).databases;
+      var res = api.SQLAdminApi(mock).databases;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_database = 'foo';
@@ -3316,7 +3316,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).databases;
+      var res = api.SQLAdminApi(mock).databases;
       var arg_request = buildDatabase();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3387,7 +3387,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).databases;
+      var res = api.SQLAdminApi(mock).databases;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -3453,7 +3453,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).databases;
+      var res = api.SQLAdminApi(mock).databases;
       var arg_request = buildDatabase();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3529,7 +3529,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).databases;
+      var res = api.SQLAdminApi(mock).databases;
       var arg_request = buildDatabase();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3607,7 +3607,7 @@ void main() {
   unittest.group('resource-FlagsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).flags;
+      var res = api.SQLAdminApi(mock).flags;
       var arg_databaseVersion = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3658,7 +3658,7 @@ void main() {
   unittest.group('resource-InstancesResourceApi', () {
     unittest.test('method--addServerCa', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -3724,7 +3724,7 @@ void main() {
 
     unittest.test('method--clone', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesCloneRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3795,7 +3795,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -3855,7 +3855,7 @@ void main() {
 
     unittest.test('method--demoteMaster', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesDemoteMasterRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3928,7 +3928,7 @@ void main() {
 
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesExportRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -3999,7 +3999,7 @@ void main() {
 
     unittest.test('method--failover', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesFailoverRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -4071,7 +4071,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4131,7 +4131,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesImportRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -4202,7 +4202,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
       var arg_project = 'foo';
       var arg_$fields = 'foo';
@@ -4263,7 +4263,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_filter = 'foo';
       var arg_maxResults = 42;
@@ -4331,7 +4331,7 @@ void main() {
 
     unittest.test('method--listServerCas', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4398,7 +4398,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -4463,7 +4463,7 @@ void main() {
 
     unittest.test('method--promoteReplica', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4529,7 +4529,7 @@ void main() {
 
     unittest.test('method--resetSslConfig', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4595,7 +4595,7 @@ void main() {
 
     unittest.test('method--restart', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4661,7 +4661,7 @@ void main() {
 
     unittest.test('method--restoreBackup', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesRestoreBackupRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -4734,7 +4734,7 @@ void main() {
 
     unittest.test('method--rotateServerCa', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesRotateServerCaRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -4807,7 +4807,7 @@ void main() {
 
     unittest.test('method--startReplica', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4873,7 +4873,7 @@ void main() {
 
     unittest.test('method--stopReplica', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -4939,7 +4939,7 @@ void main() {
 
     unittest.test('method--truncateLog', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesTruncateLogRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -5012,7 +5012,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).instances;
+      var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -5079,7 +5079,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).operations;
+      var res = api.SQLAdminApi(mock).operations;
       var arg_project = 'foo';
       var arg_operation = 'foo';
       var arg_$fields = 'foo';
@@ -5139,7 +5139,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).operations;
+      var res = api.SQLAdminApi(mock).operations;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_maxResults = 42;
@@ -5210,7 +5210,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesResourceApi', () {
     unittest.test('method--rescheduleMaintenance', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).projects.instances;
+      var res = api.SQLAdminApi(mock).projects.instances;
       var arg_request = buildSqlInstancesRescheduleMaintenanceRequestBody();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -5283,7 +5283,7 @@ void main() {
 
     unittest.test('method--startExternalSync', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).projects.instances;
+      var res = api.SQLAdminApi(mock).projects.instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_syncMode = 'foo';
@@ -5353,7 +5353,7 @@ void main() {
 
     unittest.test('method--verifyExternalSyncSettings', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).projects.instances;
+      var res = api.SQLAdminApi(mock).projects.instances;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_syncMode = 'foo';
@@ -5432,7 +5432,7 @@ void main() {
   unittest.group('resource-SslCertsResourceApi', () {
     unittest.test('method--createEphemeral', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).sslCerts;
+      var res = api.SQLAdminApi(mock).sslCerts;
       var arg_request = buildSslCertsCreateEphemeralRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -5505,7 +5505,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).sslCerts;
+      var res = api.SQLAdminApi(mock).sslCerts;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_sha1Fingerprint = 'foo';
@@ -5576,7 +5576,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).sslCerts;
+      var res = api.SQLAdminApi(mock).sslCerts;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_sha1Fingerprint = 'foo';
@@ -5647,7 +5647,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).sslCerts;
+      var res = api.SQLAdminApi(mock).sslCerts;
       var arg_request = buildSslCertsInsertRequest();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -5718,7 +5718,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).sslCerts;
+      var res = api.SQLAdminApi(mock).sslCerts;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -5786,7 +5786,7 @@ void main() {
   unittest.group('resource-TiersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).tiers;
+      var res = api.SQLAdminApi(mock).tiers;
       var arg_project = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5844,7 +5844,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).users;
+      var res = api.SQLAdminApi(mock).users;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_host = 'foo';
@@ -5915,7 +5915,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).users;
+      var res = api.SQLAdminApi(mock).users;
       var arg_request = buildUser();
       var arg_project = 'foo';
       var arg_instance = 'foo';
@@ -5986,7 +5986,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).users;
+      var res = api.SQLAdminApi(mock).users;
       var arg_project = 'foo';
       var arg_instance = 'foo';
       var arg_$fields = 'foo';
@@ -6052,7 +6052,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.SqladminApi(mock).users;
+      var res = api.SQLAdminApi(mock).users;
       var arg_request = buildUser();
       var arg_project = 'foo';
       var arg_instance = 'foo';

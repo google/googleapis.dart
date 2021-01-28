@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The management interface for Binary Authorization, a system providing policy
 /// control for images deployed to Kubernetes Engine clusters.
-class BinaryauthorizationApi {
+class BinaryAuthorizationApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class BinaryauthorizationApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  BinaryauthorizationApi(http.Client client,
+  BinaryAuthorizationApi(http.Client client,
       {core.String rootUrl = 'https://binaryauthorization.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

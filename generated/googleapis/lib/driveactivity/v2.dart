@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Provides a historical view of activity in Google Drive.
-class DriveactivityApi {
+class DriveActivityApi {
   /// View and add to the activity record of files in your Google Drive
   static const driveActivityScope =
       'https://www.googleapis.com/auth/drive.activity';
@@ -48,7 +48,7 @@ class DriveactivityApi {
 
   ActivityResourceApi get activity => ActivityResourceApi(_requester);
 
-  DriveactivityApi(http.Client client,
+  DriveActivityApi(http.Client client,
       {core.String rootUrl = 'https://driveactivity.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -892,7 +892,7 @@ void main() {
   unittest.group('resource-ManagedShortLinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasedynamiclinksApi(mock).managedShortLinks;
+      var res = api.FirebaseDynamicLinksApi(mock).managedShortLinks;
       var arg_request = buildCreateManagedShortLinkRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -947,7 +947,7 @@ void main() {
   unittest.group('resource-ShortLinksResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasedynamiclinksApi(mock).shortLinks;
+      var res = api.FirebaseDynamicLinksApi(mock).shortLinks;
       var arg_request = buildCreateShortDynamicLinkRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1002,7 +1002,7 @@ void main() {
   unittest.group('resource-V1ResourceApi', () {
     unittest.test('method--getLinkStats', () {
       var mock = HttpServerMock();
-      var res = api.FirebasedynamiclinksApi(mock).v1;
+      var res = api.FirebaseDynamicLinksApi(mock).v1;
       var arg_dynamicLink = 'foo';
       var arg_durationDays = 'foo';
       var arg_sdkVersion = 'foo';
@@ -1067,7 +1067,7 @@ void main() {
 
     unittest.test('method--installAttribution', () {
       var mock = HttpServerMock();
-      var res = api.FirebasedynamiclinksApi(mock).v1;
+      var res = api.FirebaseDynamicLinksApi(mock).v1;
       var arg_request = buildGetIosPostInstallAttributionRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1121,7 +1121,7 @@ void main() {
 
     unittest.test('method--reopenAttribution', () {
       var mock = HttpServerMock();
-      var res = api.FirebasedynamiclinksApi(mock).v1;
+      var res = api.FirebaseDynamicLinksApi(mock).v1;
       var arg_request = buildGetIosReopenAttributionRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

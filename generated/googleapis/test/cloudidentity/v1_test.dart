@@ -1576,7 +1576,7 @@ void main() {
   unittest.group('resource-DevicesResourceApi', () {
     unittest.test('method--cancelWipe', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices;
+      var res = api.CloudIdentityApi(mock).devices;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
       var arg_name = 'foo';
@@ -1631,7 +1631,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices;
+      var res = api.CloudIdentityApi(mock).devices;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1Device();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -1686,7 +1686,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices;
+      var res = api.CloudIdentityApi(mock).devices;
       var arg_name = 'foo';
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -1737,7 +1737,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices;
+      var res = api.CloudIdentityApi(mock).devices;
       var arg_name = 'foo';
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -1790,7 +1790,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices;
+      var res = api.CloudIdentityApi(mock).devices;
       var arg_customer = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -1861,7 +1861,7 @@ void main() {
 
     unittest.test('method--wipe', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices;
+      var res = api.CloudIdentityApi(mock).devices;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
       var arg_name = 'foo';
@@ -1919,7 +1919,7 @@ void main() {
   unittest.group('resource-DevicesDeviceUsersResourceApi', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
       var arg_name = 'foo';
@@ -1974,7 +1974,7 @@ void main() {
 
     unittest.test('method--block', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
       var arg_name = 'foo';
@@ -2030,7 +2030,7 @@ void main() {
 
     unittest.test('method--cancelWipe', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
       var arg_name = 'foo';
@@ -2086,7 +2086,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_name = 'foo';
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -2137,7 +2137,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_name = 'foo';
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -2190,7 +2190,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_parent = 'foo';
       var arg_customer = 'foo';
       var arg_filter = 'foo';
@@ -2260,7 +2260,7 @@ void main() {
 
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_parent = 'foo';
       var arg_androidId = 'foo';
       var arg_pageSize = 42;
@@ -2331,7 +2331,7 @@ void main() {
 
     unittest.test('method--wipe', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
           buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
       var arg_name = 'foo';
@@ -2389,7 +2389,7 @@ void main() {
   unittest.group('resource-DevicesDeviceUsersClientStatesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
       var arg_name = 'foo';
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -2442,7 +2442,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
       var arg_parent = 'foo';
       var arg_customer = 'foo';
       var arg_filter = 'foo';
@@ -2508,7 +2508,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).devices.deviceUsers.clientStates;
+      var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1ClientState();
       var arg_name = 'foo';
       var arg_customer = 'foo';
@@ -2573,7 +2573,7 @@ void main() {
   unittest.group('resource-GroupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_request = buildGroup();
       var arg_initialGroupConfig = 'foo';
       var arg_$fields = 'foo';
@@ -2628,7 +2628,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2676,7 +2676,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2724,7 +2724,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_parent = 'foo';
@@ -2785,7 +2785,7 @@ void main() {
 
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_groupKey_id = 'foo';
       var arg_groupKey_namespace = 'foo';
       var arg_$fields = 'foo';
@@ -2840,7 +2840,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_request = buildGroup();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2897,7 +2897,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups;
+      var res = api.CloudIdentityApi(mock).groups;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_query = 'foo';
@@ -2960,7 +2960,7 @@ void main() {
   unittest.group('resource-GroupsMembershipsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups.memberships;
+      var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_request = buildMembership();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3013,7 +3013,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups.memberships;
+      var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3061,7 +3061,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups.memberships;
+      var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3109,7 +3109,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups.memberships;
+      var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3169,7 +3169,7 @@ void main() {
 
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups.memberships;
+      var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
       var arg_memberKey_id = 'foo';
       var arg_memberKey_namespace = 'foo';
@@ -3227,7 +3227,7 @@ void main() {
 
     unittest.test('method--modifyMembershipRoles', () {
       var mock = HttpServerMock();
-      var res = api.CloudidentityApi(mock).groups.memberships;
+      var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_request = buildModifyMembershipRolesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Examines the call stack and variables of a running application without
 /// stopping or slowing it down.
-class ClouddebuggerApi {
+class CloudDebuggerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -51,7 +51,7 @@ class ClouddebuggerApi {
   ControllerResourceApi get controller => ControllerResourceApi(_requester);
   DebuggerResourceApi get debugger => DebuggerResourceApi(_requester);
 
-  ClouddebuggerApi(http.Client client,
+  CloudDebuggerApi(http.Client client,
       {core.String rootUrl = 'https://clouddebugger.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

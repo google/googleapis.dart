@@ -45,7 +45,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The YouTube Data API v3 is an API that provides access to YouTube data, such
 /// as videos, playlists, and channels.
-class YoutubeApi {
+class YouTubeApi {
   /// Manage your YouTube account
   static const youtubeScope = 'https://www.googleapis.com/auth/youtube';
 
@@ -125,7 +125,7 @@ class YoutubeApi {
   VideosResourceApi get videos => VideosResourceApi(_requester);
   WatermarksResourceApi get watermarks => WatermarksResourceApi(_requester);
 
-  YoutubeApi(http.Client client,
+  YouTubeApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

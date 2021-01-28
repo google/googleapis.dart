@@ -844,7 +844,7 @@ void main() {
   unittest.group('resource-ActivitiesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).activities;
+      var res = api.ReportsApi(mock).activities;
       var arg_userKey = 'foo';
       var arg_applicationName = 'foo';
       var arg_actorIpAddress = 'foo';
@@ -941,7 +941,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).activities;
+      var res = api.ReportsApi(mock).activities;
       var arg_request = buildChannel();
       var arg_userKey = 'foo';
       var arg_applicationName = 'foo';
@@ -1051,7 +1051,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).channels;
+      var res = api.ReportsApi(mock).channels;
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1102,7 +1102,7 @@ void main() {
   unittest.group('resource-CustomerUsageReportsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).customerUsageReports;
+      var res = api.ReportsApi(mock).customerUsageReports;
       var arg_date = 'foo';
       var arg_customerId = 'foo';
       var arg_pageToken = 'foo';
@@ -1167,7 +1167,7 @@ void main() {
   unittest.group('resource-EntityUsageReportsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).entityUsageReports;
+      var res = api.ReportsApi(mock).entityUsageReports;
       var arg_entityType = 'foo';
       var arg_entityKey = 'foo';
       var arg_date = 'foo';
@@ -1260,7 +1260,7 @@ void main() {
   unittest.group('resource-UserUsageReportResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).userUsageReport;
+      var res = api.ReportsApi(mock).userUsageReport;
       var arg_userKey = 'foo';
       var arg_date = 'foo';
       var arg_customerId = 'foo';

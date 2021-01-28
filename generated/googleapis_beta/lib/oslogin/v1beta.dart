@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// You can use OS Login to manage access to your VM instances using IAM roles.
-class OsloginApi {
+class CloudOSLoginApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -55,7 +55,7 @@ class OsloginApi {
 
   UsersResourceApi get users => UsersResourceApi(_requester);
 
-  OsloginApi(http.Client client,
+  CloudOSLoginApi(http.Client client,
       {core.String rootUrl = 'https://oslogin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

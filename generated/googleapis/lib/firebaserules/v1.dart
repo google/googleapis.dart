@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates and manages rules that determine when a Firebase Rules-enabled
 /// service should permit a request.
-class FirebaserulesApi {
+class FirebaseRulesApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -54,7 +54,7 @@ class FirebaserulesApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  FirebaserulesApi(http.Client client,
+  FirebaseRulesApi(http.Client client,
       {core.String rootUrl = 'https://firebaserules.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

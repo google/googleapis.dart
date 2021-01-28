@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         ByteRange;
 
 /// Accesses AdSense publishers' inventory and generates performance reports.
-class AdsenseApi {
+class AdSenseApi {
   /// View and manage your AdSense data
   static const adsenseScope = 'https://www.googleapis.com/auth/adsense';
 
@@ -66,7 +66,7 @@ class AdsenseApi {
       SavedadstylesResourceApi(_requester);
   UrlchannelsResourceApi get urlchannels => UrlchannelsResourceApi(_requester);
 
-  AdsenseApi(http.Client client,
+  AdSenseApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adsense/v1.4/'})
       : _requester =

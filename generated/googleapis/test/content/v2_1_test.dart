@@ -12848,7 +12848,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--authinfo', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -12897,7 +12897,7 @@ void main() {
 
     unittest.test('method--claimwebsite', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_overwrite = true;
@@ -12947,7 +12947,7 @@ void main() {
 
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccountsCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13002,7 +13002,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_force = true;
@@ -13048,7 +13048,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_view = 'foo';
@@ -13096,7 +13096,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -13145,7 +13145,7 @@ void main() {
 
     unittest.test('method--link', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccountsLinkRequest();
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
@@ -13196,7 +13196,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
       var arg_label = 'foo';
       var arg_maxResults = 42;
@@ -13255,7 +13255,7 @@ void main() {
 
     unittest.test('method--listlinks', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_maxResults = 42;
@@ -13310,7 +13310,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
@@ -13361,7 +13361,7 @@ void main() {
 
     unittest.test('method--updatelabels', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounts;
+      var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccountsUpdateLabelsRequest();
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
@@ -13416,7 +13416,7 @@ void main() {
   unittest.group('resource-AccountstatusesResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accountstatuses;
+      var res = api.ShoppingContentApi(mock).accountstatuses;
       var arg_request = buildAccountstatusesCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13473,7 +13473,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accountstatuses;
+      var res = api.ShoppingContentApi(mock).accountstatuses;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_destinations = buildUnnamed3842();
@@ -13522,7 +13522,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accountstatuses;
+      var res = api.ShoppingContentApi(mock).accountstatuses;
       var arg_merchantId = 'foo';
       var arg_destinations = buildUnnamed3843();
       var arg_maxResults = 42;
@@ -13582,7 +13582,7 @@ void main() {
   unittest.group('resource-AccounttaxResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounttax;
+      var res = api.ShoppingContentApi(mock).accounttax;
       var arg_request = buildAccounttaxCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13638,7 +13638,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounttax;
+      var res = api.ShoppingContentApi(mock).accounttax;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -13683,7 +13683,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounttax;
+      var res = api.ShoppingContentApi(mock).accounttax;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -13736,7 +13736,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).accounttax;
+      var res = api.ShoppingContentApi(mock).accounttax;
       var arg_request = buildAccountTax();
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
@@ -13789,7 +13789,7 @@ void main() {
   unittest.group('resource-DatafeedsResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_request = buildDatafeedsCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -13845,7 +13845,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
       var arg_datafeedId = 'foo';
       var arg_$fields = 'foo';
@@ -13888,7 +13888,7 @@ void main() {
 
     unittest.test('method--fetchnow', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
       var arg_datafeedId = 'foo';
       var arg_$fields = 'foo';
@@ -13934,7 +13934,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
       var arg_datafeedId = 'foo';
       var arg_$fields = 'foo';
@@ -13979,7 +13979,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_request = buildDatafeed();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -14028,7 +14028,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -14081,7 +14081,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeeds;
+      var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_request = buildDatafeed();
       var arg_merchantId = 'foo';
       var arg_datafeedId = 'foo';
@@ -14134,7 +14134,7 @@ void main() {
   unittest.group('resource-DatafeedstatusesResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeedstatuses;
+      var res = api.ShoppingContentApi(mock).datafeedstatuses;
       var arg_request = buildDatafeedstatusesCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14191,7 +14191,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeedstatuses;
+      var res = api.ShoppingContentApi(mock).datafeedstatuses;
       var arg_merchantId = 'foo';
       var arg_datafeedId = 'foo';
       var arg_country = 'foo';
@@ -14245,7 +14245,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).datafeedstatuses;
+      var res = api.ShoppingContentApi(mock).datafeedstatuses;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -14301,7 +14301,7 @@ void main() {
   unittest.group('resource-LiasettingsResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_request = buildLiasettingsCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14357,7 +14357,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -14402,7 +14402,7 @@ void main() {
 
     unittest.test('method--getaccessiblegmbaccounts', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -14450,7 +14450,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -14503,7 +14503,7 @@ void main() {
 
     unittest.test('method--listposdataproviders', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -14554,7 +14554,7 @@ void main() {
 
     unittest.test('method--requestgmbaccess', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_gmbEmail = 'foo';
@@ -14605,7 +14605,7 @@ void main() {
 
     unittest.test('method--requestinventoryverification', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_country = 'foo';
@@ -14655,7 +14655,7 @@ void main() {
 
     unittest.test('method--setinventoryverificationcontact', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_contactEmail = 'foo';
@@ -14716,7 +14716,7 @@ void main() {
 
     unittest.test('method--setposdataprovider', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_country = 'foo';
@@ -14775,7 +14775,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).liasettings;
+      var res = api.ShoppingContentApi(mock).liasettings;
       var arg_request = buildLiaSettings();
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
@@ -14828,7 +14828,7 @@ void main() {
   unittest.group('resource-LocalinventoryResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).localinventory;
+      var res = api.ShoppingContentApi(mock).localinventory;
       var arg_request = buildLocalinventoryCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14885,7 +14885,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).localinventory;
+      var res = api.ShoppingContentApi(mock).localinventory;
       var arg_request = buildLocalInventory();
       var arg_merchantId = 'foo';
       var arg_productId = 'foo';
@@ -14938,7 +14938,7 @@ void main() {
   unittest.group('resource-OrderinvoicesResourceApi', () {
     unittest.test('method--createchargeinvoice', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderinvoices;
+      var res = api.ShoppingContentApi(mock).orderinvoices;
       var arg_request = buildOrderinvoicesCreateChargeInvoiceRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -14992,7 +14992,7 @@ void main() {
 
     unittest.test('method--createrefundinvoice', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderinvoices;
+      var res = api.ShoppingContentApi(mock).orderinvoices;
       var arg_request = buildOrderinvoicesCreateRefundInvoiceRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -15048,7 +15048,7 @@ void main() {
   unittest.group('resource-OrderreportsResourceApi', () {
     unittest.test('method--listdisbursements', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreports;
+      var res = api.ShoppingContentApi(mock).orderreports;
       var arg_merchantId = 'foo';
       var arg_disbursementStartDate = 'foo';
       var arg_disbursementEndDate = 'foo';
@@ -15110,7 +15110,7 @@ void main() {
 
     unittest.test('method--listtransactions', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreports;
+      var res = api.ShoppingContentApi(mock).orderreports;
       var arg_merchantId = 'foo';
       var arg_disbursementId = 'foo';
       var arg_transactionStartDate = 'foo';
@@ -15176,7 +15176,7 @@ void main() {
   unittest.group('resource-OrderreturnsResourceApi', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreturns;
+      var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_request = buildOrderreturnsAcknowledgeRequest();
       var arg_merchantId = 'foo';
       var arg_returnId = 'foo';
@@ -15229,7 +15229,7 @@ void main() {
 
     unittest.test('method--createorderreturn', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreturns;
+      var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_request = buildOrderreturnsCreateOrderReturnRequest();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -15281,7 +15281,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreturns;
+      var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_merchantId = 'foo';
       var arg_returnId = 'foo';
       var arg_$fields = 'foo';
@@ -15326,7 +15326,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreturns;
+      var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_merchantId = 'foo';
       var arg_acknowledged = true;
       var arg_createdEndDate = 'foo';
@@ -15415,7 +15415,7 @@ void main() {
 
     unittest.test('method--process', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orderreturns;
+      var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_request = buildOrderreturnsProcessRequest();
       var arg_merchantId = 'foo';
       var arg_returnId = 'foo';
@@ -15469,7 +15469,7 @@ void main() {
   unittest.group('resource-OrdersResourceApi', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersAcknowledgeRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -15521,7 +15521,7 @@ void main() {
 
     unittest.test('method--advancetestorder', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
       var arg_$fields = 'foo';
@@ -15567,7 +15567,7 @@ void main() {
 
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCancelRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -15618,7 +15618,7 @@ void main() {
 
     unittest.test('method--cancellineitem', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCancelLineItemRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -15671,7 +15671,7 @@ void main() {
 
     unittest.test('method--canceltestorderbycustomer', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCancelTestOrderByCustomerRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -15725,7 +15725,7 @@ void main() {
 
     unittest.test('method--createtestorder', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCreateTestOrderRequest();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -15776,7 +15776,7 @@ void main() {
 
     unittest.test('method--createtestreturn', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCreateTestReturnRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -15829,7 +15829,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
       var arg_$fields = 'foo';
@@ -15874,7 +15874,7 @@ void main() {
 
     unittest.test('method--getbymerchantorderid', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
       var arg_merchantOrderId = 'foo';
       var arg_$fields = 'foo';
@@ -15922,7 +15922,7 @@ void main() {
 
     unittest.test('method--gettestordertemplate', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
       var arg_templateName = 'foo';
       var arg_country = 'foo';
@@ -15973,7 +15973,7 @@ void main() {
 
     unittest.test('method--instorerefundlineitem', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersInStoreRefundLineItemRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16027,7 +16027,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
       var arg_acknowledged = true;
       var arg_maxResults = 42;
@@ -16099,7 +16099,7 @@ void main() {
 
     unittest.test('method--refunditem', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersRefundItemRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16150,7 +16150,7 @@ void main() {
 
     unittest.test('method--refundorder', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersRefundOrderRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16202,7 +16202,7 @@ void main() {
 
     unittest.test('method--rejectreturnlineitem', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersRejectReturnLineItemRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16256,7 +16256,7 @@ void main() {
 
     unittest.test('method--returnrefundlineitem', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersReturnRefundLineItemRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16310,7 +16310,7 @@ void main() {
 
     unittest.test('method--setlineitemmetadata', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersSetLineItemMetadataRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16364,7 +16364,7 @@ void main() {
 
     unittest.test('method--shiplineitems', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersShipLineItemsRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16416,7 +16416,7 @@ void main() {
 
     unittest.test('method--updatelineitemshippingdetails', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersUpdateLineItemShippingDetailsRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16471,7 +16471,7 @@ void main() {
 
     unittest.test('method--updatemerchantorderid', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersUpdateMerchantOrderIdRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16525,7 +16525,7 @@ void main() {
 
     unittest.test('method--updateshipment', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).orders;
+      var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersUpdateShipmentRequest();
       var arg_merchantId = 'foo';
       var arg_orderId = 'foo';
@@ -16580,7 +16580,7 @@ void main() {
   unittest.group('resource-PosResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16634,7 +16634,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_merchantId = 'foo';
       var arg_targetMerchantId = 'foo';
       var arg_storeCode = 'foo';
@@ -16679,7 +16679,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_merchantId = 'foo';
       var arg_targetMerchantId = 'foo';
       var arg_storeCode = 'foo';
@@ -16726,7 +16726,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosStore();
       var arg_merchantId = 'foo';
       var arg_targetMerchantId = 'foo';
@@ -16777,7 +16777,7 @@ void main() {
 
     unittest.test('method--inventory', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosInventoryRequest();
       var arg_merchantId = 'foo';
       var arg_targetMerchantId = 'foo';
@@ -16828,7 +16828,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_merchantId = 'foo';
       var arg_targetMerchantId = 'foo';
       var arg_$fields = 'foo';
@@ -16873,7 +16873,7 @@ void main() {
 
     unittest.test('method--sale', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pos;
+      var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosSaleRequest();
       var arg_merchantId = 'foo';
       var arg_targetMerchantId = 'foo';
@@ -16926,7 +16926,7 @@ void main() {
   unittest.group('resource-ProductsResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).products;
+      var res = api.ShoppingContentApi(mock).products;
       var arg_request = buildProductsCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -16981,7 +16981,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).products;
+      var res = api.ShoppingContentApi(mock).products;
       var arg_merchantId = 'foo';
       var arg_productId = 'foo';
       var arg_feedId = 'foo';
@@ -17027,7 +17027,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).products;
+      var res = api.ShoppingContentApi(mock).products;
       var arg_merchantId = 'foo';
       var arg_productId = 'foo';
       var arg_$fields = 'foo';
@@ -17072,7 +17072,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).products;
+      var res = api.ShoppingContentApi(mock).products;
       var arg_request = buildProduct();
       var arg_merchantId = 'foo';
       var arg_feedId = 'foo';
@@ -17124,7 +17124,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).products;
+      var res = api.ShoppingContentApi(mock).products;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -17179,7 +17179,7 @@ void main() {
   unittest.group('resource-ProductstatusesResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).productstatuses;
+      var res = api.ShoppingContentApi(mock).productstatuses;
       var arg_request = buildProductstatusesCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17236,7 +17236,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).productstatuses;
+      var res = api.ShoppingContentApi(mock).productstatuses;
       var arg_merchantId = 'foo';
       var arg_productId = 'foo';
       var arg_destinations = buildUnnamed3850();
@@ -17285,7 +17285,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).productstatuses;
+      var res = api.ShoppingContentApi(mock).productstatuses;
       var arg_merchantId = 'foo';
       var arg_destinations = buildUnnamed3851();
       var arg_maxResults = 42;
@@ -17345,7 +17345,7 @@ void main() {
   unittest.group('resource-PubsubnotificationsettingsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pubsubnotificationsettings;
+      var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17390,7 +17390,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).pubsubnotificationsettings;
+      var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
       var arg_request = buildPubsubNotificationSettings();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -17442,7 +17442,7 @@ void main() {
   unittest.group('resource-RegionalinventoryResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).regionalinventory;
+      var res = api.ShoppingContentApi(mock).regionalinventory;
       var arg_request = buildRegionalinventoryCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17499,7 +17499,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).regionalinventory;
+      var res = api.ShoppingContentApi(mock).regionalinventory;
       var arg_request = buildRegionalInventory();
       var arg_merchantId = 'foo';
       var arg_productId = 'foo';
@@ -17552,7 +17552,7 @@ void main() {
   unittest.group('resource-ReturnaddressResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnaddress;
+      var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_request = buildReturnaddressCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17608,7 +17608,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnaddress;
+      var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_merchantId = 'foo';
       var arg_returnAddressId = 'foo';
       var arg_$fields = 'foo';
@@ -17651,7 +17651,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnaddress;
+      var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_merchantId = 'foo';
       var arg_returnAddressId = 'foo';
       var arg_$fields = 'foo';
@@ -17696,7 +17696,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnaddress;
+      var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_request = buildReturnAddress();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -17745,7 +17745,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnaddress;
+      var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_merchantId = 'foo';
       var arg_country = 'foo';
       var arg_maxResults = 42;
@@ -17805,7 +17805,7 @@ void main() {
   unittest.group('resource-ReturnpolicyResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnpolicy;
+      var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_request = buildReturnpolicyCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -17861,7 +17861,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnpolicy;
+      var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_merchantId = 'foo';
       var arg_returnPolicyId = 'foo';
       var arg_$fields = 'foo';
@@ -17904,7 +17904,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnpolicy;
+      var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_merchantId = 'foo';
       var arg_returnPolicyId = 'foo';
       var arg_$fields = 'foo';
@@ -17949,7 +17949,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnpolicy;
+      var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_request = buildReturnPolicy();
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
@@ -17998,7 +17998,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).returnpolicy;
+      var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -18044,7 +18044,7 @@ void main() {
   unittest.group('resource-SettlementreportsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).settlementreports;
+      var res = api.ShoppingContentApi(mock).settlementreports;
       var arg_merchantId = 'foo';
       var arg_settlementId = 'foo';
       var arg_$fields = 'foo';
@@ -18089,7 +18089,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).settlementreports;
+      var res = api.ShoppingContentApi(mock).settlementreports;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -18153,7 +18153,7 @@ void main() {
   unittest.group('resource-SettlementtransactionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).settlementtransactions;
+      var res = api.ShoppingContentApi(mock).settlementtransactions;
       var arg_merchantId = 'foo';
       var arg_settlementId = 'foo';
       var arg_maxResults = 42;
@@ -18215,7 +18215,7 @@ void main() {
   unittest.group('resource-ShippingsettingsResourceApi', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_request = buildShippingsettingsCustomBatchRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -18272,7 +18272,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -18317,7 +18317,7 @@ void main() {
 
     unittest.test('method--getsupportedcarriers', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -18363,7 +18363,7 @@ void main() {
 
     unittest.test('method--getsupportedholidays', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -18409,7 +18409,7 @@ void main() {
 
     unittest.test('method--getsupportedpickupservices', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -18455,7 +18455,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -18509,7 +18509,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ContentApi(mock).shippingsettings;
+      var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_request = buildShippingSettings();
       var arg_merchantId = 'foo';
       var arg_accountId = 'foo';

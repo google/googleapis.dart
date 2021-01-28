@@ -855,7 +855,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations;
+      var res = api.CloudRedisApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -903,7 +903,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations;
+      var res = api.CloudRedisApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -965,7 +965,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsInstancesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildInstance();
       var arg_parent = 'foo';
       var arg_instanceId = 'foo';
@@ -1022,7 +1022,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1070,7 +1070,7 @@ void main() {
 
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildExportInstanceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1123,7 +1123,7 @@ void main() {
 
     unittest.test('method--failover', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildFailoverInstanceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1176,7 +1176,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1224,7 +1224,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildImportInstanceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1277,7 +1277,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1334,7 +1334,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildInstance();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1391,7 +1391,7 @@ void main() {
 
     unittest.test('method--upgrade', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.instances;
+      var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildUpgradeInstanceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1446,7 +1446,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.operations;
+      var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1494,7 +1494,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.operations;
+      var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1542,7 +1542,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.operations;
+      var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1590,7 +1590,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RedisApi(mock).projects.locations.operations;
+      var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

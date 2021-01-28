@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// This API allows clients to access and modify container and tag
 /// configuration.
-class TagmanagerApi {
+class TagManagerApi {
   /// Delete your Google Tag Manager containers
   static const tagmanagerDeleteContainersScope =
       'https://www.googleapis.com/auth/tagmanager.delete.containers';
@@ -71,7 +71,7 @@ class TagmanagerApi {
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
-  TagmanagerApi(http.Client client,
+  TagManagerApi(http.Client client,
       {core.String rootUrl = 'https://tagmanager.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

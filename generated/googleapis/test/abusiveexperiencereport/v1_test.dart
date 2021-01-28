@@ -110,7 +110,7 @@ void main() {
   unittest.group('resource-SitesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AbusiveexperiencereportApi(mock).sites;
+      var res = api.AbusiveExperienceReportApi(mock).sites;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -160,7 +160,7 @@ void main() {
   unittest.group('resource-ViolatingSitesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AbusiveexperiencereportApi(mock).violatingSites;
+      var res = api.AbusiveExperienceReportApi(mock).violatingSites;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;

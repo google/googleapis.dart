@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides natural language understanding technologies, such as sentiment
 /// analysis, entity recognition, entity sentiment analysis, and other text
 /// annotations, to developers.
-class LanguageApi {
+class CloudNaturalLanguageApi {
   /// Apply machine learning models to reveal the structure and meaning of text
   static const cloudLanguageScope =
       'https://www.googleapis.com/auth/cloud-language';
@@ -52,7 +52,7 @@ class LanguageApi {
 
   DocumentsResourceApi get documents => DocumentsResourceApi(_requester);
 
-  LanguageApi(http.Client client,
+  CloudNaturalLanguageApi(http.Client client,
       {core.String rootUrl = 'https://language.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

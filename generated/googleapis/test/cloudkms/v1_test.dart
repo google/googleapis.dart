@@ -1482,7 +1482,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations;
+      var res = api.CloudKMSApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1530,7 +1530,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations;
+      var res = api.CloudKMSApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1592,7 +1592,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsKeyRingsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_request = buildKeyRing();
       var arg_parent = 'foo';
       var arg_keyRingId = 'foo';
@@ -1649,7 +1649,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1697,7 +1697,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1752,7 +1752,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -1816,7 +1816,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1869,7 +1869,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1925,7 +1925,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildCryptoKey();
       var arg_parent = 'foo';
       var arg_cryptoKeyId = 'foo';
@@ -1987,7 +1987,7 @@ void main() {
 
     unittest.test('method--decrypt', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildDecryptRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2040,7 +2040,7 @@ void main() {
 
     unittest.test('method--encrypt', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildEncryptRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2093,7 +2093,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2141,7 +2141,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -2196,7 +2196,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -2264,7 +2264,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildCryptoKey();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2321,7 +2321,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2374,7 +2374,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2428,7 +2428,7 @@ void main() {
 
     unittest.test('method--updatePrimaryVersion', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildUpdateCryptoKeyPrimaryVersionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2486,7 +2486,7 @@ void main() {
       () {
     unittest.test('method--asymmetricDecrypt', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2545,7 +2545,7 @@ void main() {
 
     unittest.test('method--asymmetricSign', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2603,7 +2603,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2661,7 +2661,7 @@ void main() {
 
     unittest.test('method--destroy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2720,7 +2720,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2773,7 +2773,7 @@ void main() {
 
     unittest.test('method--getPublicKey', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2826,7 +2826,7 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2885,7 +2885,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -2958,7 +2958,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -3020,7 +3020,7 @@ void main() {
 
     unittest.test('method--restore', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock)
+      var res = api.CloudKMSApi(mock)
           .projects
           .locations
           .keyRings
@@ -3081,7 +3081,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsKeyRingsImportJobsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildImportJob();
       var arg_parent = 'foo';
       var arg_importJobId = 'foo';
@@ -3138,7 +3138,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3186,7 +3186,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -3241,7 +3241,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -3305,7 +3305,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3358,7 +3358,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// DoubleClick Bid Manager API allows users to manage and create campaigns and
 /// reports.
-class DoubleclickbidmanagerApi {
+class DoubleClickBidManagerApi {
   /// View and manage your reports in DoubleClick Bid Manager
   static const doubleclickbidmanagerScope =
       'https://www.googleapis.com/auth/doubleclickbidmanager';
@@ -49,7 +49,7 @@ class DoubleclickbidmanagerApi {
   ReportsResourceApi get reports => ReportsResourceApi(_requester);
   SdfResourceApi get sdf => SdfResourceApi(_requester);
 
-  DoubleclickbidmanagerApi(http.Client client,
+  DoubleClickBidManagerApi(http.Client client,
       {core.String rootUrl = 'https://doubleclickbidmanager.googleapis.com/',
       core.String servicePath = 'doubleclickbidmanager/v1.1/'})
       : _requester =

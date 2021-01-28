@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages the execution of large numbers of distributed requests.
-class CloudtasksApi {
+class CloudTasksApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class CloudtasksApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudtasksApi(http.Client client,
+  CloudTasksApi(http.Client client,
       {core.String rootUrl = 'https://cloudtasks.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Retrieves your YouTube Analytics data.
-class YoutubeAnalyticsApi {
+class YouTubeAnalyticsApi {
   /// Manage your YouTube account
   static const youtubeScope = 'https://www.googleapis.com/auth/youtube';
 
@@ -62,7 +62,7 @@ class YoutubeAnalyticsApi {
   GroupsResourceApi get groups => GroupsResourceApi(_requester);
   ReportsResourceApi get reports => ReportsResourceApi(_requester);
 
-  YoutubeAnalyticsApi(http.Client client,
+  YouTubeAnalyticsApi(http.Client client,
       {core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -983,7 +983,7 @@ void main() {
   unittest.group('resource-DocumentsResourceApi', () {
     unittest.test('method--analyzeEntities', () {
       var mock = HttpServerMock();
-      var res = api.LanguageApi(mock).documents;
+      var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitiesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1034,7 +1034,7 @@ void main() {
 
     unittest.test('method--analyzeEntitySentiment', () {
       var mock = HttpServerMock();
-      var res = api.LanguageApi(mock).documents;
+      var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitySentimentRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1087,7 +1087,7 @@ void main() {
 
     unittest.test('method--analyzeSentiment', () {
       var mock = HttpServerMock();
-      var res = api.LanguageApi(mock).documents;
+      var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeSentimentRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1138,7 +1138,7 @@ void main() {
 
     unittest.test('method--analyzeSyntax', () {
       var mock = HttpServerMock();
-      var res = api.LanguageApi(mock).documents;
+      var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeSyntaxRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1189,7 +1189,7 @@ void main() {
 
     unittest.test('method--annotateText', () {
       var mock = HttpServerMock();
-      var res = api.LanguageApi(mock).documents;
+      var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnnotateTextRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1240,7 +1240,7 @@ void main() {
 
     unittest.test('method--classifyText', () {
       var mock = HttpServerMock();
-      var res = api.LanguageApi(mock).documents;
+      var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildClassifyTextRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

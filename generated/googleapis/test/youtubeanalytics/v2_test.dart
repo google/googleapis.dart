@@ -528,7 +528,7 @@ void main() {
   unittest.group('resource-GroupItemsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groupItems;
+      var res = api.YouTubeAnalyticsApi(mock).groupItems;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -582,7 +582,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groupItems;
+      var res = api.YouTubeAnalyticsApi(mock).groupItems;
       var arg_request = buildGroupItem();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -638,7 +638,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groupItems;
+      var res = api.YouTubeAnalyticsApi(mock).groupItems;
       var arg_groupId = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -695,7 +695,7 @@ void main() {
   unittest.group('resource-GroupsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_id = 'foo';
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -749,7 +749,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -805,7 +805,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_id = 'foo';
       var arg_mine = true;
       var arg_onBehalfOfContentOwner = 'foo';
@@ -866,7 +866,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).groups;
+      var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
@@ -924,7 +924,7 @@ void main() {
   unittest.group('resource-ReportsResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      var res = api.YoutubeAnalyticsApi(mock).reports;
+      var res = api.YouTubeAnalyticsApi(mock).reports;
       var arg_currency = 'foo';
       var arg_dimensions = 'foo';
       var arg_endDate = 'foo';

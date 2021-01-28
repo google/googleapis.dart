@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages product items, inventory, and Merchant Center accounts for Google
 /// Shopping.
-class ContentApi {
+class ShoppingContentApi {
   /// Manage your product listings and accounts for Google Shopping
   static const contentScope = 'https://www.googleapis.com/auth/content';
 
@@ -79,7 +79,7 @@ class ContentApi {
   ShippingsettingsResourceApi get shippingsettings =>
       ShippingsettingsResourceApi(_requester);
 
-  ContentApi(http.Client client,
+  ShoppingContentApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'content/v2.1/'})
       : _requester =

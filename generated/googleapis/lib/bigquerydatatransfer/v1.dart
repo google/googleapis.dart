@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Schedule queries or transfer external data from SaaS applications to Google
 /// BigQuery on a regular basis.
-class BigquerydatatransferApi {
+class BigQueryDataTransferApi {
   /// View and manage your data in Google BigQuery
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
@@ -57,7 +57,7 @@ class BigquerydatatransferApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  BigquerydatatransferApi(http.Client client,
+  BigQueryDataTransferApi(http.Client client,
       {core.String rootUrl = 'https://bigquerydatatransfer.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

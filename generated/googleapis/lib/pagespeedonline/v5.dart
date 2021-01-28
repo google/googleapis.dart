@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// with a simple API. It offers tailored suggestions for how you can optimize
 /// your site, and lets you easily integrate PageSpeed Insights analysis into
 /// your development tools and workflow.
-class PagespeedonlineApi {
+class PagespeedInsightsApi {
   /// Associate you with your personal info on Google
   static const openidScope = 'openid';
 
@@ -50,7 +50,7 @@ class PagespeedonlineApi {
   PagespeedapiResourceApi get pagespeedapi =>
       PagespeedapiResourceApi(_requester);
 
-  PagespeedonlineApi(http.Client client,
+  PagespeedInsightsApi(http.Client client,
       {core.String rootUrl = 'https://pagespeedonline.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
@@ -247,7 +247,7 @@ class Categories {
   LighthouseCategoryV5 accessibility;
 
   /// The best practices category, containing all best practices related audits.
-  LighthouseCategoryV5 best_practices;
+  LighthouseCategoryV5 bestPractices;
 
   /// The performance category, containing all performance related audits.
   LighthouseCategoryV5 performance;
@@ -267,7 +267,7 @@ class Categories {
           _json['accessibility'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('best-practices')) {
-      best_practices = LighthouseCategoryV5.fromJson(
+      bestPractices = LighthouseCategoryV5.fromJson(
           _json['best-practices'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('performance')) {
@@ -289,8 +289,8 @@ class Categories {
     if (accessibility != null) {
       _json['accessibility'] = accessibility.toJson();
     }
-    if (best_practices != null) {
-      _json['best-practices'] = best_practices.toJson();
+    if (bestPractices != null) {
+      _json['best-practices'] = bestPractices.toJson();
     }
     if (performance != null) {
       _json['performance'] = performance.toJson();

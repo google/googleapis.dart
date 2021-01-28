@@ -1850,16 +1850,16 @@ api.GaDataQuery buildGaDataQuery() {
   buildCounterGaDataQuery++;
   if (buildCounterGaDataQuery < 3) {
     o.dimensions = 'foo';
-    o.end_date = 'foo';
+    o.endDate = 'foo';
     o.filters = 'foo';
     o.ids = 'foo';
-    o.max_results = 42;
+    o.maxResults = 42;
     o.metrics = buildUnnamed4508();
     o.samplingLevel = 'foo';
     o.segment = 'foo';
     o.sort = buildUnnamed4509();
-    o.start_date = 'foo';
-    o.start_index = 42;
+    o.startDate = 'foo';
+    o.startIndex = 42;
   }
   buildCounterGaDataQuery--;
   return o;
@@ -1869,16 +1869,16 @@ void checkGaDataQuery(api.GaDataQuery o) {
   buildCounterGaDataQuery++;
   if (buildCounterGaDataQuery < 3) {
     unittest.expect(o.dimensions, unittest.equals('foo'));
-    unittest.expect(o.end_date, unittest.equals('foo'));
+    unittest.expect(o.endDate, unittest.equals('foo'));
     unittest.expect(o.filters, unittest.equals('foo'));
     unittest.expect(o.ids, unittest.equals('foo'));
-    unittest.expect(o.max_results, unittest.equals(42));
+    unittest.expect(o.maxResults, unittest.equals(42));
     checkUnnamed4508(o.metrics);
     unittest.expect(o.samplingLevel, unittest.equals('foo'));
     unittest.expect(o.segment, unittest.equals('foo'));
     checkUnnamed4509(o.sort);
-    unittest.expect(o.start_date, unittest.equals('foo'));
-    unittest.expect(o.start_index, unittest.equals(42));
+    unittest.expect(o.startDate, unittest.equals('foo'));
+    unittest.expect(o.startIndex, unittest.equals(42));
   }
   buildCounterGaDataQuery--;
 }
@@ -2478,16 +2478,16 @@ api.McfDataQuery buildMcfDataQuery() {
   buildCounterMcfDataQuery++;
   if (buildCounterMcfDataQuery < 3) {
     o.dimensions = 'foo';
-    o.end_date = 'foo';
+    o.endDate = 'foo';
     o.filters = 'foo';
     o.ids = 'foo';
-    o.max_results = 42;
+    o.maxResults = 42;
     o.metrics = buildUnnamed4517();
     o.samplingLevel = 'foo';
     o.segment = 'foo';
     o.sort = buildUnnamed4518();
-    o.start_date = 'foo';
-    o.start_index = 42;
+    o.startDate = 'foo';
+    o.startIndex = 42;
   }
   buildCounterMcfDataQuery--;
   return o;
@@ -2497,16 +2497,16 @@ void checkMcfDataQuery(api.McfDataQuery o) {
   buildCounterMcfDataQuery++;
   if (buildCounterMcfDataQuery < 3) {
     unittest.expect(o.dimensions, unittest.equals('foo'));
-    unittest.expect(o.end_date, unittest.equals('foo'));
+    unittest.expect(o.endDate, unittest.equals('foo'));
     unittest.expect(o.filters, unittest.equals('foo'));
     unittest.expect(o.ids, unittest.equals('foo'));
-    unittest.expect(o.max_results, unittest.equals(42));
+    unittest.expect(o.maxResults, unittest.equals(42));
     checkUnnamed4517(o.metrics);
     unittest.expect(o.samplingLevel, unittest.equals('foo'));
     unittest.expect(o.segment, unittest.equals('foo'));
     checkUnnamed4518(o.sort);
-    unittest.expect(o.start_date, unittest.equals('foo'));
-    unittest.expect(o.start_index, unittest.equals(42));
+    unittest.expect(o.startDate, unittest.equals('foo'));
+    unittest.expect(o.startIndex, unittest.equals(42));
   }
   buildCounterMcfDataQuery--;
 }
@@ -3077,7 +3077,7 @@ api.RealtimeDataQuery buildRealtimeDataQuery() {
     o.dimensions = 'foo';
     o.filters = 'foo';
     o.ids = 'foo';
-    o.max_results = 42;
+    o.maxResults = 42;
     o.metrics = buildUnnamed4527();
     o.sort = buildUnnamed4528();
   }
@@ -3091,7 +3091,7 @@ void checkRealtimeDataQuery(api.RealtimeDataQuery o) {
     unittest.expect(o.dimensions, unittest.equals('foo'));
     unittest.expect(o.filters, unittest.equals('foo'));
     unittest.expect(o.ids, unittest.equals('foo'));
-    unittest.expect(o.max_results, unittest.equals(42));
+    unittest.expect(o.maxResults, unittest.equals(42));
     checkUnnamed4527(o.metrics);
     checkUnnamed4528(o.sort);
   }
@@ -3509,7 +3509,7 @@ api.UnsampledReport buildUnsampledReport() {
     o.dimensions = 'foo';
     o.downloadType = 'foo';
     o.driveDownloadDetails = buildUnsampledReportDriveDownloadDetails();
-    o.end_date = 'foo';
+    o.endDate = 'foo';
     o.filters = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
@@ -3517,7 +3517,7 @@ api.UnsampledReport buildUnsampledReport() {
     o.profileId = 'foo';
     o.segment = 'foo';
     o.selfLink = 'foo';
-    o.start_date = 'foo';
+    o.startDate = 'foo';
     o.status = 'foo';
     o.title = 'foo';
     o.updated = core.DateTime.parse("2002-02-27T14:01:02");
@@ -3540,7 +3540,7 @@ void checkUnsampledReport(api.UnsampledReport o) {
     unittest.expect(o.downloadType, unittest.equals('foo'));
     checkUnsampledReportDriveDownloadDetails(
         o.driveDownloadDetails as api.UnsampledReportDriveDownloadDetails);
-    unittest.expect(o.end_date, unittest.equals('foo'));
+    unittest.expect(o.endDate, unittest.equals('foo'));
     unittest.expect(o.filters, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -3548,7 +3548,7 @@ void checkUnsampledReport(api.UnsampledReport o) {
     unittest.expect(o.profileId, unittest.equals('foo'));
     unittest.expect(o.segment, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.start_date, unittest.equals('foo'));
+    unittest.expect(o.startDate, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(
@@ -4901,18 +4901,18 @@ void main() {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.ga;
       var arg_ids = 'foo';
-      var arg_start_date = 'foo';
-      var arg_end_date = 'foo';
+      var arg_startDate = 'foo';
+      var arg_endDate = 'foo';
       var arg_metrics = 'foo';
       var arg_dimensions = 'foo';
       var arg_filters = 'foo';
-      var arg_include_empty_rows = true;
-      var arg_max_results = 42;
+      var arg_includeEmptyRows = true;
+      var arg_maxResults = 42;
       var arg_output = 'foo';
       var arg_samplingLevel = 'foo';
       var arg_segment = 'foo';
       var arg_sort = 'foo';
-      var arg_start_index = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4946,9 +4946,9 @@ void main() {
         }
         unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["start-date"].first, unittest.equals(arg_start_date));
+            queryMap["start-date"].first, unittest.equals(arg_startDate));
         unittest.expect(
-            queryMap["end-date"].first, unittest.equals(arg_end_date));
+            queryMap["end-date"].first, unittest.equals(arg_endDate));
         unittest.expect(
             queryMap["metrics"].first, unittest.equals(arg_metrics));
         unittest.expect(
@@ -4956,9 +4956,9 @@ void main() {
         unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(queryMap["include-empty-rows"].first,
-            unittest.equals("$arg_include_empty_rows"));
+            unittest.equals("$arg_includeEmptyRows"));
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["output"].first, unittest.equals(arg_output));
         unittest.expect(queryMap["samplingLevel"].first,
             unittest.equals(arg_samplingLevel));
@@ -4966,7 +4966,7 @@ void main() {
             queryMap["segment"].first, unittest.equals(arg_segment));
         unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4976,16 +4976,16 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_ids, arg_start_date, arg_end_date, arg_metrics,
+          .get(arg_ids, arg_startDate, arg_endDate, arg_metrics,
               dimensions: arg_dimensions,
               filters: arg_filters,
-              include_empty_rows: arg_include_empty_rows,
-              max_results: arg_max_results,
+              includeEmptyRows: arg_includeEmptyRows,
+              maxResults: arg_maxResults,
               output: arg_output,
               samplingLevel: arg_samplingLevel,
               segment: arg_segment,
               sort: arg_sort,
-              start_index: arg_start_index,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGaData(response as api.GaData);
@@ -4998,15 +4998,15 @@ void main() {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.mcf;
       var arg_ids = 'foo';
-      var arg_start_date = 'foo';
-      var arg_end_date = 'foo';
+      var arg_startDate = 'foo';
+      var arg_endDate = 'foo';
       var arg_metrics = 'foo';
       var arg_dimensions = 'foo';
       var arg_filters = 'foo';
-      var arg_max_results = 42;
+      var arg_maxResults = 42;
       var arg_samplingLevel = 'foo';
       var arg_sort = 'foo';
-      var arg_start_index = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5040,9 +5040,9 @@ void main() {
         }
         unittest.expect(queryMap["ids"].first, unittest.equals(arg_ids));
         unittest.expect(
-            queryMap["start-date"].first, unittest.equals(arg_start_date));
+            queryMap["start-date"].first, unittest.equals(arg_startDate));
         unittest.expect(
-            queryMap["end-date"].first, unittest.equals(arg_end_date));
+            queryMap["end-date"].first, unittest.equals(arg_endDate));
         unittest.expect(
             queryMap["metrics"].first, unittest.equals(arg_metrics));
         unittest.expect(
@@ -5050,12 +5050,12 @@ void main() {
         unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["samplingLevel"].first,
             unittest.equals(arg_samplingLevel));
         unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5065,13 +5065,13 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_ids, arg_start_date, arg_end_date, arg_metrics,
+          .get(arg_ids, arg_startDate, arg_endDate, arg_metrics,
               dimensions: arg_dimensions,
               filters: arg_filters,
-              max_results: arg_max_results,
+              maxResults: arg_maxResults,
               samplingLevel: arg_samplingLevel,
               sort: arg_sort,
-              start_index: arg_start_index,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMcfData(response as api.McfData);
@@ -5087,7 +5087,7 @@ void main() {
       var arg_metrics = 'foo';
       var arg_dimensions = 'foo';
       var arg_filters = 'foo';
-      var arg_max_results = 42;
+      var arg_maxResults = 42;
       var arg_sort = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5128,7 +5128,7 @@ void main() {
         unittest.expect(
             queryMap["filters"].first, unittest.equals(arg_filters));
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -5142,7 +5142,7 @@ void main() {
           .get(arg_ids, arg_metrics,
               dimensions: arg_dimensions,
               filters: arg_filters,
-              max_results: arg_max_results,
+              maxResults: arg_maxResults,
               sort: arg_sort,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5155,8 +5155,8 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountSummaries;
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5189,9 +5189,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5202,8 +5202,8 @@ void main() {
       }), true);
       res
           .list(
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAccountSummaries(response as api.AccountSummaries);
@@ -5341,8 +5341,8 @@ void main() {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_accountId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5384,9 +5384,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5397,8 +5397,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEntityUserLinks(response as api.EntityUserLinks);
@@ -5478,8 +5478,8 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accounts;
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5512,9 +5512,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5525,8 +5525,8 @@ void main() {
       }), true);
       res
           .list(
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkAccounts(response as api.Accounts);
@@ -5596,8 +5596,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.customDataSources;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5648,9 +5648,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5661,8 +5661,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCustomDataSources(response as api.CustomDataSources);
@@ -5825,8 +5825,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5877,9 +5877,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5890,8 +5890,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCustomDimensions(response as api.CustomDimensions);
@@ -6222,8 +6222,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6274,9 +6274,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6287,8 +6287,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCustomMetrics(response as api.CustomMetrics);
@@ -6724,8 +6724,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -6785,9 +6785,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -6798,8 +6798,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkExperiments(response as api.Experiments);
@@ -7182,8 +7182,8 @@ void main() {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7225,9 +7225,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7238,8 +7238,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkFilters(response as api.Filters);
@@ -7560,8 +7560,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7621,9 +7621,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7634,8 +7634,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoals(response as api.Goals);
@@ -8081,8 +8081,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8142,9 +8142,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8155,8 +8155,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkProfileFilterLinks(response as api.ProfileFilterLinks);
@@ -8518,8 +8518,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8579,9 +8579,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8592,8 +8592,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEntityUserLinks(response as api.EntityUserLinks);
@@ -8918,8 +8918,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8970,9 +8970,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8983,8 +8983,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkProfiles(response as api.Profiles);
@@ -9377,8 +9377,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9430,9 +9430,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
@@ -9444,8 +9444,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -9618,8 +9618,8 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.segments;
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9652,9 +9652,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -9665,8 +9665,8 @@ void main() {
       }), true);
       res
           .list(
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkSegments(response as api.Segments);
@@ -9934,8 +9934,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_profileId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -9995,9 +9995,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10008,8 +10008,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUnsampledReports(response as api.UnsampledReports);
@@ -10194,8 +10194,8 @@ void main() {
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
       var arg_customDataSourceId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10255,9 +10255,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10268,8 +10268,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId, arg_customDataSourceId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkUploads(response as api.Uploads);
@@ -10590,8 +10590,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -10642,9 +10642,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -10655,8 +10655,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEntityAdWordsLinks(response as api.EntityAdWordsLinks);
@@ -10958,8 +10958,8 @@ void main() {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_accountId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11001,9 +11001,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11014,8 +11014,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkWebproperties(response as api.Webproperties);
@@ -11314,8 +11314,8 @@ void main() {
       var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_accountId = 'foo';
       var arg_webPropertyId = 'foo';
-      var arg_max_results = 42;
-      var arg_start_index = 42;
+      var arg_maxResults = 42;
+      var arg_startIndex = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -11366,9 +11366,9 @@ void main() {
           }
         }
         unittest.expect(core.int.parse(queryMap["max-results"].first),
-            unittest.equals(arg_max_results));
+            unittest.equals(arg_maxResults));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
-            unittest.equals(arg_start_index));
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -11379,8 +11379,8 @@ void main() {
       }), true);
       res
           .list(arg_accountId, arg_webPropertyId,
-              max_results: arg_max_results,
-              start_index: arg_start_index,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEntityUserLinks(response as api.EntityUserLinks);

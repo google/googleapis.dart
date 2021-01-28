@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The Cloud Billing Budget API stores Cloud Billing budgets, which define a
 /// budget plan and the rules to execute as spend is tracked against that plan.
-class BillingbudgetsApi {
+class CloudBillingBudgetApi {
   /// View and manage your Google Cloud Platform billing accounts
   static const cloudBillingScope =
       'https://www.googleapis.com/auth/cloud-billing';
@@ -52,7 +52,7 @@ class BillingbudgetsApi {
   BillingAccountsResourceApi get billingAccounts =>
       BillingAccountsResourceApi(_requester);
 
-  BillingbudgetsApi(http.Client client,
+  CloudBillingBudgetApi(http.Client client,
       {core.String rootUrl = 'https://billingbudgets.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

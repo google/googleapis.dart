@@ -312,7 +312,7 @@ void main() {
   unittest.group('resource-ApplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).applications;
+      var res = api.DataTransferApi(mock).applications;
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -362,7 +362,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).applications;
+      var res = api.DataTransferApi(mock).applications;
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -423,7 +423,7 @@ void main() {
   unittest.group('resource-TransfersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).transfers;
+      var res = api.DataTransferApi(mock).transfers;
       var arg_dataTransferId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -473,7 +473,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).transfers;
+      var res = api.DataTransferApi(mock).transfers;
       var arg_request = buildDataTransfer();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -524,7 +524,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).transfers;
+      var res = api.DataTransferApi(mock).transfers;
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
       var arg_newOwnerUserId = 'foo';

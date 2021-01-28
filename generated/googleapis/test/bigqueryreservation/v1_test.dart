@@ -769,7 +769,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock).operations;
+      var res = api.BigQueryReservationApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -817,7 +817,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock).operations;
+      var res = api.BigQueryReservationApi(mock).operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -879,7 +879,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--getBiReservation', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock).projects.locations;
+      var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -927,7 +927,7 @@ void main() {
 
     unittest.test('method--searchAllAssignments', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock).projects.locations;
+      var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -988,7 +988,7 @@ void main() {
 
     unittest.test('method--searchAssignments', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock).projects.locations;
+      var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1049,7 +1049,7 @@ void main() {
 
     unittest.test('method--updateBiReservation', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock).projects.locations;
+      var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_request = buildBiReservation();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1109,7 +1109,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1171,7 +1171,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1222,7 +1222,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1273,7 +1273,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1334,7 +1334,7 @@ void main() {
 
     unittest.test('method--merge', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1391,7 +1391,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1451,7 +1451,7 @@ void main() {
 
     unittest.test('method--split', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .capacityCommitments;
@@ -1512,7 +1512,7 @@ void main() {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
-          api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
       var arg_request = buildReservation();
       var arg_parent = 'foo';
       var arg_reservationId = 'foo';
@@ -1570,7 +1570,7 @@ void main() {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res =
-          api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1619,7 +1619,7 @@ void main() {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
-          api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1668,7 +1668,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1726,7 +1726,7 @@ void main() {
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
       var res =
-          api.BigqueryreservationApi(mock).projects.locations.reservations;
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
       var arg_request = buildReservation();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1786,7 +1786,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .reservations
@@ -1843,7 +1843,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .reservations
@@ -1895,7 +1895,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .reservations
@@ -1956,7 +1956,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.BigqueryreservationApi(mock)
+      var res = api.BigQueryReservationApi(mock)
           .projects
           .locations
           .reservations

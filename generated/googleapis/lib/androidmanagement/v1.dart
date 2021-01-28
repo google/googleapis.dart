@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The Android Management API provides remote enterprise management of Android
 /// devices and apps.
-class AndroidmanagementApi {
+class AndroidManagementApi {
   /// Manage Android devices and apps for your customers
   static const androidmanagementScope =
       'https://www.googleapis.com/auth/androidmanagement';
@@ -47,7 +47,7 @@ class AndroidmanagementApi {
   EnterprisesResourceApi get enterprises => EnterprisesResourceApi(_requester);
   SignupUrlsResourceApi get signupUrls => SignupUrlsResourceApi(_requester);
 
-  AndroidmanagementApi(http.Client client,
+  AndroidManagementApi(http.Client client,
       {core.String rootUrl = 'https://androidmanagement.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

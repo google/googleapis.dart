@@ -2113,7 +2113,7 @@ void main() {
   unittest.group('resource-FeedsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).feeds;
+      var res = api.CloudAssetApi(mock).feeds;
       var arg_request = buildCreateFeedRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2166,7 +2166,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).feeds;
+      var res = api.CloudAssetApi(mock).feeds;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2214,7 +2214,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).feeds;
+      var res = api.CloudAssetApi(mock).feeds;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2262,7 +2262,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).feeds;
+      var res = api.CloudAssetApi(mock).feeds;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2310,7 +2310,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).feeds;
+      var res = api.CloudAssetApi(mock).feeds;
       var arg_request = buildUpdateFeedRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2365,7 +2365,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).operations;
+      var res = api.CloudAssetApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2415,7 +2415,7 @@ void main() {
   unittest.group('resource-V1ResourceApi', () {
     unittest.test('method--batchGetAssetsHistory', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).v1;
+      var res = api.CloudAssetApi(mock).v1;
       var arg_parent = 'foo';
       var arg_assetNames = buildUnnamed2707();
       var arg_contentType = 'foo';
@@ -2481,7 +2481,7 @@ void main() {
 
     unittest.test('method--exportAssets', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).v1;
+      var res = api.CloudAssetApi(mock).v1;
       var arg_request = buildExportAssetsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2534,7 +2534,7 @@ void main() {
 
     unittest.test('method--searchAllIamPolicies', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).v1;
+      var res = api.CloudAssetApi(mock).v1;
       var arg_scope = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2595,7 +2595,7 @@ void main() {
 
     unittest.test('method--searchAllResources', () {
       var mock = HttpServerMock();
-      var res = api.CloudassetApi(mock).v1;
+      var res = api.CloudAssetApi(mock).v1;
       var arg_scope = 'foo';
       var arg_assetTypes = buildUnnamed2708();
       var arg_orderBy = 'foo';

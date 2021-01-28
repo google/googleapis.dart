@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// API for provisioning and managing identity resources.
-class CloudidentityApi {
+class CloudIdentityApi {
   /// See your device details
   static const cloudIdentityDevicesLookupScope =
       'https://www.googleapis.com/auth/cloud-identity.devices.lookup';
@@ -59,7 +59,7 @@ class CloudidentityApi {
   DevicesResourceApi get devices => DevicesResourceApi(_requester);
   GroupsResourceApi get groups => GroupsResourceApi(_requester);
 
-  CloudidentityApi(http.Client client,
+  CloudIdentityApi(http.Client client,
       {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

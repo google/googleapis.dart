@@ -1805,7 +1805,7 @@ void main() {
   unittest.group('resource-AccountsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts;
+      var res = api.TagManagerApi(mock).accounts;
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1855,7 +1855,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts;
+      var res = api.TagManagerApi(mock).accounts;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1899,7 +1899,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts;
+      var res = api.TagManagerApi(mock).accounts;
       var arg_request = buildAccount();
       var arg_accountId = 'foo';
       var arg_fingerprint = 'foo';
@@ -1960,7 +1960,7 @@ void main() {
   unittest.group('resource-AccountsContainersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagManagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -2021,7 +2021,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagManagerApi(mock).accounts.containers;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -2079,7 +2079,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagManagerApi(mock).accounts.containers;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -2139,7 +2139,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagManagerApi(mock).accounts.containers;
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2195,7 +2195,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers;
+      var res = api.TagManagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -2266,7 +2266,7 @@ void main() {
   unittest.group('resource-AccountsContainersEnvironmentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -2338,7 +2338,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_environmentId = 'foo';
@@ -2407,7 +2407,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_environmentId = 'foo';
@@ -2478,7 +2478,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -2544,7 +2544,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.environments;
+      var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -2626,7 +2626,7 @@ void main() {
   unittest.group('resource-AccountsContainersFoldersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.folders;
+      var res = api.TagManagerApi(mock).accounts.containers.folders;
       var arg_request = buildFolder();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -2698,7 +2698,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.folders;
+      var res = api.TagManagerApi(mock).accounts.containers.folders;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_folderId = 'foo';
@@ -2767,7 +2767,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.folders;
+      var res = api.TagManagerApi(mock).accounts.containers.folders;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_folderId = 'foo';
@@ -2838,7 +2838,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.folders;
+      var res = api.TagManagerApi(mock).accounts.containers.folders;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -2904,7 +2904,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.folders;
+      var res = api.TagManagerApi(mock).accounts.containers.folders;
       var arg_request = buildFolder();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -2985,7 +2985,7 @@ void main() {
   unittest.group('resource-AccountsContainersFoldersEntitiesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.folders.entities;
+      var res = api.TagManagerApi(mock).accounts.containers.folders.entities;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_folderId = 'foo';
@@ -3064,7 +3064,7 @@ void main() {
   unittest.group('resource-AccountsContainersMoveFoldersResourceApi', () {
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.moveFolders;
+      var res = api.TagManagerApi(mock).accounts.containers.moveFolders;
       var arg_request = buildFolder();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -3152,7 +3152,7 @@ void main() {
     unittest.test('method--update', () {
       var mock = HttpServerMock();
       var res =
-          api.TagmanagerApi(mock).accounts.containers.reauthorizeEnvironments;
+          api.TagManagerApi(mock).accounts.containers.reauthorizeEnvironments;
       var arg_request = buildEnvironment();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -3231,7 +3231,7 @@ void main() {
   unittest.group('resource-AccountsContainersTagsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.tags;
+      var res = api.TagManagerApi(mock).accounts.containers.tags;
       var arg_request = buildTag();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -3302,7 +3302,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.tags;
+      var res = api.TagManagerApi(mock).accounts.containers.tags;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_tagId = 'foo';
@@ -3371,7 +3371,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.tags;
+      var res = api.TagManagerApi(mock).accounts.containers.tags;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_tagId = 'foo';
@@ -3441,7 +3441,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.tags;
+      var res = api.TagManagerApi(mock).accounts.containers.tags;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -3507,7 +3507,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.tags;
+      var res = api.TagManagerApi(mock).accounts.containers.tags;
       var arg_request = buildTag();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -3587,7 +3587,7 @@ void main() {
   unittest.group('resource-AccountsContainersTriggersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.triggers;
+      var res = api.TagManagerApi(mock).accounts.containers.triggers;
       var arg_request = buildTrigger();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -3659,7 +3659,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.triggers;
+      var res = api.TagManagerApi(mock).accounts.containers.triggers;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_triggerId = 'foo';
@@ -3728,7 +3728,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.triggers;
+      var res = api.TagManagerApi(mock).accounts.containers.triggers;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_triggerId = 'foo';
@@ -3799,7 +3799,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.triggers;
+      var res = api.TagManagerApi(mock).accounts.containers.triggers;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -3865,7 +3865,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.triggers;
+      var res = api.TagManagerApi(mock).accounts.containers.triggers;
       var arg_request = buildTrigger();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -3946,7 +3946,7 @@ void main() {
   unittest.group('resource-AccountsContainersVariablesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.variables;
+      var res = api.TagManagerApi(mock).accounts.containers.variables;
       var arg_request = buildVariable();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -4018,7 +4018,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.variables;
+      var res = api.TagManagerApi(mock).accounts.containers.variables;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_variableId = 'foo';
@@ -4087,7 +4087,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.variables;
+      var res = api.TagManagerApi(mock).accounts.containers.variables;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_variableId = 'foo';
@@ -4158,7 +4158,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.variables;
+      var res = api.TagManagerApi(mock).accounts.containers.variables;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
@@ -4224,7 +4224,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.variables;
+      var res = api.TagManagerApi(mock).accounts.containers.variables;
       var arg_request = buildVariable();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -4305,7 +4305,7 @@ void main() {
   unittest.group('resource-AccountsContainersVersionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_request = buildCreateContainerVersionRequestVersionOptions();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -4379,7 +4379,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_containerVersionId = 'foo';
@@ -4448,7 +4448,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_containerVersionId = 'foo';
@@ -4519,7 +4519,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_headers = true;
@@ -4595,7 +4595,7 @@ void main() {
 
     unittest.test('method--publish', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_containerVersionId = 'foo';
@@ -4676,7 +4676,7 @@ void main() {
 
     unittest.test('method--restore', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_containerVersionId = 'foo';
@@ -4753,7 +4753,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
       var arg_containerVersionId = 'foo';
@@ -4830,7 +4830,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.containers.versions;
+      var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_request = buildContainerVersion();
       var arg_accountId = 'foo';
       var arg_containerId = 'foo';
@@ -4912,7 +4912,7 @@ void main() {
   unittest.group('resource-AccountsPermissionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.permissions;
+      var res = api.TagManagerApi(mock).accounts.permissions;
       var arg_request = buildUserAccess();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -4973,7 +4973,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.permissions;
+      var res = api.TagManagerApi(mock).accounts.permissions;
       var arg_accountId = 'foo';
       var arg_permissionId = 'foo';
       var arg_$fields = 'foo';
@@ -5031,7 +5031,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.permissions;
+      var res = api.TagManagerApi(mock).accounts.permissions;
       var arg_accountId = 'foo';
       var arg_permissionId = 'foo';
       var arg_$fields = 'foo';
@@ -5091,7 +5091,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.permissions;
+      var res = api.TagManagerApi(mock).accounts.permissions;
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5147,7 +5147,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.TagmanagerApi(mock).accounts.permissions;
+      var res = api.TagManagerApi(mock).accounts.permissions;
       var arg_request = buildUserAccess();
       var arg_accountId = 'foo';
       var arg_permissionId = 'foo';

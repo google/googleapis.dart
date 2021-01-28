@@ -762,7 +762,7 @@ void main() {
   unittest.group('resource-ProjectsConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_request = buildRuntimeConfig();
       var arg_parent = 'foo';
       var arg_requestId = 'foo';
@@ -819,7 +819,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -867,7 +867,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -915,7 +915,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -970,7 +970,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1027,7 +1027,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1080,7 +1080,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1134,7 +1134,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs;
       var arg_request = buildRuntimeConfig();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1189,7 +1189,7 @@ void main() {
   unittest.group('resource-ProjectsConfigsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.operations;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1237,7 +1237,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.operations;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.operations;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1293,7 +1293,7 @@ void main() {
   unittest.group('resource-ProjectsConfigsVariablesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_request = buildVariable();
       var arg_parent = 'foo';
       var arg_requestId = 'foo';
@@ -1350,7 +1350,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_name = 'foo';
       var arg_recursive = true;
       var arg_$fields = 'foo';
@@ -1401,7 +1401,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1449,7 +1449,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1513,7 +1513,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1567,7 +1567,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_request = buildVariable();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1620,7 +1620,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.variables;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
       var arg_request = buildWatchVariableRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1675,7 +1675,7 @@ void main() {
   unittest.group('resource-ProjectsConfigsWaitersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.waiters;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.waiters;
       var arg_request = buildWaiter();
       var arg_parent = 'foo';
       var arg_requestId = 'foo';
@@ -1732,7 +1732,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.waiters;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.waiters;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1780,7 +1780,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.waiters;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.waiters;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1828,7 +1828,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.waiters;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.waiters;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1885,7 +1885,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).projects.configs.waiters;
+      var res = api.CloudRuntimeConfigApi(mock).projects.configs.waiters;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';

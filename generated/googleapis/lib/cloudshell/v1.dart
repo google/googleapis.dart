@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Allows users to start, configure, and connect to interactive shell sessions
 /// running in the cloud.
-class CloudshellApi {
+class CloudShellApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -47,7 +47,7 @@ class CloudshellApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   UsersResourceApi get users => UsersResourceApi(_requester);
 
-  CloudshellApi(http.Client client,
+  CloudShellApi(http.Client client,
       {core.String rootUrl = 'https://cloudshell.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Declares, configures, and deploys complex solutions on Google Cloud
 /// Platform.
-class DeploymentmanagerApi {
+class DeploymentManagerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -64,7 +64,7 @@ class DeploymentmanagerApi {
   ResourcesResourceApi get resources => ResourcesResourceApi(_requester);
   TypesResourceApi get types => TypesResourceApi(_requester);
 
-  DeploymentmanagerApi(http.Client client,
+  DeploymentManagerApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'deploymentmanager/v2/projects/'})
       : _requester =

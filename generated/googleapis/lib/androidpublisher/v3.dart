@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         ByteRange;
 
 /// Lets Android application developers access their Google Play accounts.
-class AndroidpublisherApi {
+class AndroidPublisherApi {
   /// View and manage your Google Play Developer account
   static const androidpublisherScope =
       'https://www.googleapis.com/auth/androidpublisher';
@@ -60,7 +60,7 @@ class AndroidpublisherApi {
   ReviewsResourceApi get reviews => ReviewsResourceApi(_requester);
   SystemapksResourceApi get systemapks => SystemapksResourceApi(_requester);
 
-  AndroidpublisherApi(http.Client client,
+  AndroidPublisherApi(http.Client client,
       {core.String rootUrl = 'https://androidpublisher.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Detects objects, explicit content, and scene changes in videos. It also
 /// specifies the region for annotation and transcribes speech to text. Supports
 /// both asynchronous API and streaming API.
-class VideointelligenceApi {
+class CloudVideoIntelligenceApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -51,7 +51,7 @@ class VideointelligenceApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
   VideosResourceApi get videos => VideosResourceApi(_requester);
 
-  VideointelligenceApi(http.Client client,
+  CloudVideoIntelligenceApi(http.Client client,
       {core.String rootUrl = 'https://videointelligence.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

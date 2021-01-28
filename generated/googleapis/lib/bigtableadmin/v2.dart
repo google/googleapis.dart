@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Administer your Cloud Bigtable tables and instances.
-class BigtableadminApi {
+class BigtableAdminApi {
   /// Administer your Cloud Bigtable tables and clusters
   static const bigtableAdminScope =
       'https://www.googleapis.com/auth/bigtable.admin';
@@ -77,7 +77,7 @@ class BigtableadminApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  BigtableadminApi(http.Client client,
+  BigtableAdminApi(http.Client client,
       {core.String rootUrl = 'https://bigtableadmin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

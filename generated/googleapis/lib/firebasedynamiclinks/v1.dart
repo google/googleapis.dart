@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Programmatically creates and manages Firebase Dynamic Links.
-class FirebasedynamiclinksApi {
+class FirebaseDynamicLinksApi {
   /// View and administer all your Firebase data and settings
   static const firebaseScope = 'https://www.googleapis.com/auth/firebase';
 
@@ -46,7 +46,7 @@ class FirebasedynamiclinksApi {
   ShortLinksResourceApi get shortLinks => ShortLinksResourceApi(_requester);
   V1ResourceApi get v1 => V1ResourceApi(_requester);
 
-  FirebasedynamiclinksApi(http.Client client,
+  FirebaseDynamicLinksApi(http.Client client,
       {core.String rootUrl = 'https://firebasedynamiclinks.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

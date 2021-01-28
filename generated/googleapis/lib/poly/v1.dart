@@ -41,13 +41,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// href="https://poly.google.com">poly.google.com</a> to all, and upload access
 /// to <a href="https://poly.google.com">poly.google.com</a> for whitelisted
 /// accounts.
-class PolyApi {
+class PolyServiceApi {
   final commons.ApiRequester _requester;
 
   AssetsResourceApi get assets => AssetsResourceApi(_requester);
   UsersResourceApi get users => UsersResourceApi(_requester);
 
-  PolyApi(http.Client client,
+  PolyServiceApi(http.Client client,
       {core.String rootUrl = 'https://poly.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

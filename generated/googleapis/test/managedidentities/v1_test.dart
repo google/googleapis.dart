@@ -1718,7 +1718,9 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ManagedidentitiesApi(mock).projects.locations;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1766,7 +1768,9 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ManagedidentitiesApi(mock).projects.locations;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_includeUnrevealedLocations = true;
@@ -1832,8 +1836,11 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalDomainsResourceApi', () {
     unittest.test('method--attachTrust', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildAttachTrustRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1886,8 +1893,11 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildDomain();
       var arg_parent = 'foo';
       var arg_domainName = 'foo';
@@ -1944,8 +1954,11 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1993,8 +2006,11 @@ void main() {
 
     unittest.test('method--detachTrust', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildDetachTrustRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2047,8 +2063,11 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2096,8 +2115,11 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -2152,8 +2174,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -2217,8 +2242,11 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildDomain();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2275,8 +2303,11 @@ void main() {
 
     unittest.test('method--reconfigureTrust', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildReconfigureTrustRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2329,8 +2360,11 @@ void main() {
 
     unittest.test('method--resetAdminPassword', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildResetAdminPasswordRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2384,8 +2418,11 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2438,8 +2475,11 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2493,8 +2533,11 @@ void main() {
 
     unittest.test('method--validateTrust', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.domains;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .domains;
       var arg_request = buildValidateTrustRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2549,8 +2592,11 @@ void main() {
   unittest.group('resource-ProjectsLocationsGlobalOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.operations;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2603,8 +2649,11 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.operations;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2652,8 +2701,11 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.operations;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2701,8 +2753,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res =
-          api.ManagedidentitiesApi(mock).projects.locations.global.operations;
+      var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
+          .projects
+          .locations
+          .global
+          .operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

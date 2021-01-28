@@ -6074,7 +6074,7 @@ void main() {
   unittest.group('resource-ProjectsDocumentsResourceApi', () {
     unittest.test('method--batchProcess', () {
       var mock = HttpServerMock();
-      var res = api.DocumentaiApi(mock).projects.documents;
+      var res = api.DocumentApi(mock).projects.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest();
       var arg_parent = 'foo';
@@ -6130,7 +6130,7 @@ void main() {
 
     unittest.test('method--process', () {
       var mock = HttpServerMock();
-      var res = api.DocumentaiApi(mock).projects.documents;
+      var res = api.DocumentApi(mock).projects.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
       var arg_parent = 'foo';
@@ -6190,7 +6190,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsDocumentsResourceApi', () {
     unittest.test('method--batchProcess', () {
       var mock = HttpServerMock();
-      var res = api.DocumentaiApi(mock).projects.locations.documents;
+      var res = api.DocumentApi(mock).projects.locations.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest();
       var arg_parent = 'foo';
@@ -6246,7 +6246,7 @@ void main() {
 
     unittest.test('method--process', () {
       var mock = HttpServerMock();
-      var res = api.DocumentaiApi(mock).projects.locations.documents;
+      var res = api.DocumentApi(mock).projects.locations.documents;
       var arg_request =
           buildGoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
       var arg_parent = 'foo';
@@ -6306,7 +6306,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DocumentaiApi(mock).projects.locations.operations;
+      var res = api.DocumentApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6357,7 +6357,7 @@ void main() {
   unittest.group('resource-ProjectsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.DocumentaiApi(mock).projects.operations;
+      var res = api.DocumentApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

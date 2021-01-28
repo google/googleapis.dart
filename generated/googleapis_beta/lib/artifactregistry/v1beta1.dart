@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Store and manage build artifacts in a scalable and integrated service built
 /// on Google infrastructure.
-class ArtifactregistryApi {
+class ArtifactRegistryApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -50,7 +50,7 @@ class ArtifactregistryApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  ArtifactregistryApi(http.Client client,
+  ArtifactRegistryApi(http.Client client,
       {core.String rootUrl = 'https://artifactregistry.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

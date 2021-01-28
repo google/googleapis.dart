@@ -37,14 +37,14 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Views Ad Experience Report data, and gets a list of sites that have a
 /// significant number of annoying ads.
-class AdexperiencereportApi {
+class AdExperienceReportApi {
   final commons.ApiRequester _requester;
 
   SitesResourceApi get sites => SitesResourceApi(_requester);
   ViolatingSitesResourceApi get violatingSites =>
       ViolatingSitesResourceApi(_requester);
 
-  AdexperiencereportApi(http.Client client,
+  AdExperienceReportApi(http.Client client,
       {core.String rootUrl = 'https://adexperiencereport.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

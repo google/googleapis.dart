@@ -3931,7 +3931,7 @@ void main() {
   unittest.group('resource-AspsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).asps;
+      var res = api.DirectoryApi(mock).asps;
       var arg_userKey = 'foo';
       var arg_codeId = 42;
       var arg_$fields = 'foo';
@@ -3989,7 +3989,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).asps;
+      var res = api.DirectoryApi(mock).asps;
       var arg_userKey = 'foo';
       var arg_codeId = 42;
       var arg_$fields = 'foo';
@@ -4049,7 +4049,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).asps;
+      var res = api.DirectoryApi(mock).asps;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4107,7 +4107,7 @@ void main() {
   unittest.group('resource-ChannelsResourceApi', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).channels;
+      var res = api.DirectoryApi(mock).channels;
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4158,7 +4158,7 @@ void main() {
   unittest.group('resource-ChromeosdevicesResourceApi', () {
     unittest.test('method--action', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).chromeosdevices;
+      var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsDeviceAction();
       var arg_customerId = 'foo';
       var arg_resourceId = 'foo';
@@ -4228,7 +4228,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).chromeosdevices;
+      var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_customerId = 'foo';
       var arg_deviceId = 'foo';
       var arg_projection = 'foo';
@@ -4292,7 +4292,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).chromeosdevices;
+      var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
       var arg_orderBy = 'foo';
@@ -4376,7 +4376,7 @@ void main() {
 
     unittest.test('method--moveDevicesToOu', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).chromeosdevices;
+      var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsMoveDevicesToOu();
       var arg_customerId = 'foo';
       var arg_orgUnitPath = 'foo';
@@ -4439,7 +4439,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).chromeosdevices;
+      var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsDevice();
       var arg_customerId = 'foo';
       var arg_deviceId = 'foo';
@@ -4508,7 +4508,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).chromeosdevices;
+      var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsDevice();
       var arg_customerId = 'foo';
       var arg_deviceId = 'foo';
@@ -4579,7 +4579,7 @@ void main() {
   unittest.group('resource-CustomersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).customers;
+      var res = api.DirectoryApi(mock).customers;
       var arg_customerKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4629,7 +4629,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).customers;
+      var res = api.DirectoryApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerKey = 'foo';
       var arg_$fields = 'foo';
@@ -4684,7 +4684,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).customers;
+      var res = api.DirectoryApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerKey = 'foo';
       var arg_$fields = 'foo';
@@ -4741,7 +4741,7 @@ void main() {
   unittest.group('resource-DomainAliasesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domainAliases;
+      var res = api.DirectoryApi(mock).domainAliases;
       var arg_customer = 'foo';
       var arg_domainAliasName = 'foo';
       var arg_$fields = 'foo';
@@ -4799,7 +4799,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domainAliases;
+      var res = api.DirectoryApi(mock).domainAliases;
       var arg_customer = 'foo';
       var arg_domainAliasName = 'foo';
       var arg_$fields = 'foo';
@@ -4859,7 +4859,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domainAliases;
+      var res = api.DirectoryApi(mock).domainAliases;
       var arg_request = buildDomainAlias();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -4920,7 +4920,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domainAliases;
+      var res = api.DirectoryApi(mock).domainAliases;
       var arg_customer = 'foo';
       var arg_parentDomainName = 'foo';
       var arg_$fields = 'foo';
@@ -4982,7 +4982,7 @@ void main() {
   unittest.group('resource-DomainsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domains;
+      var res = api.DirectoryApi(mock).domains;
       var arg_customer = 'foo';
       var arg_domainName = 'foo';
       var arg_$fields = 'foo';
@@ -5040,7 +5040,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domains;
+      var res = api.DirectoryApi(mock).domains;
       var arg_customer = 'foo';
       var arg_domainName = 'foo';
       var arg_$fields = 'foo';
@@ -5100,7 +5100,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domains;
+      var res = api.DirectoryApi(mock).domains;
       var arg_request = buildDomains();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -5161,7 +5161,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).domains;
+      var res = api.DirectoryApi(mock).domains;
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5219,7 +5219,7 @@ void main() {
   unittest.group('resource-GroupsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups;
+      var res = api.DirectoryApi(mock).groups;
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5267,7 +5267,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups;
+      var res = api.DirectoryApi(mock).groups;
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5317,7 +5317,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups;
+      var res = api.DirectoryApi(mock).groups;
       var arg_request = buildGroup();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5368,7 +5368,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups;
+      var res = api.DirectoryApi(mock).groups;
       var arg_customer = 'foo';
       var arg_domain = 'foo';
       var arg_maxResults = 42;
@@ -5445,7 +5445,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups;
+      var res = api.DirectoryApi(mock).groups;
       var arg_request = buildGroup();
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
@@ -5500,7 +5500,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups;
+      var res = api.DirectoryApi(mock).groups;
       var arg_request = buildGroup();
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
@@ -5557,7 +5557,7 @@ void main() {
   unittest.group('resource-GroupsAliasesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups.aliases;
+      var res = api.DirectoryApi(mock).groups.aliases;
       var arg_groupKey = 'foo';
       var arg_alias = 'foo';
       var arg_$fields = 'foo';
@@ -5615,7 +5615,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups.aliases;
+      var res = api.DirectoryApi(mock).groups.aliases;
       var arg_request = buildAlias();
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
@@ -5676,7 +5676,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).groups.aliases;
+      var res = api.DirectoryApi(mock).groups.aliases;
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5734,7 +5734,7 @@ void main() {
   unittest.group('resource-MembersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
       var arg_memberKey = 'foo';
       var arg_$fields = 'foo';
@@ -5792,7 +5792,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
       var arg_memberKey = 'foo';
       var arg_$fields = 'foo';
@@ -5852,7 +5852,7 @@ void main() {
 
     unittest.test('method--hasMember', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
       var arg_memberKey = 'foo';
       var arg_$fields = 'foo';
@@ -5912,7 +5912,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_request = buildMember();
       var arg_groupKey = 'foo';
       var arg_$fields = 'foo';
@@ -5973,7 +5973,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
       var arg_includeDerivedMembership = true;
       var arg_maxResults = 42;
@@ -6045,7 +6045,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_request = buildMember();
       var arg_groupKey = 'foo';
       var arg_memberKey = 'foo';
@@ -6110,7 +6110,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).members;
+      var res = api.DirectoryApi(mock).members;
       var arg_request = buildMember();
       var arg_groupKey = 'foo';
       var arg_memberKey = 'foo';
@@ -6178,7 +6178,7 @@ void main() {
   unittest.group('resource-MobiledevicesResourceApi', () {
     unittest.test('method--action', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).mobiledevices;
+      var res = api.DirectoryApi(mock).mobiledevices;
       var arg_request = buildMobileDeviceAction();
       var arg_customerId = 'foo';
       var arg_resourceId = 'foo';
@@ -6248,7 +6248,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).mobiledevices;
+      var res = api.DirectoryApi(mock).mobiledevices;
       var arg_customerId = 'foo';
       var arg_resourceId = 'foo';
       var arg_$fields = 'foo';
@@ -6306,7 +6306,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).mobiledevices;
+      var res = api.DirectoryApi(mock).mobiledevices;
       var arg_customerId = 'foo';
       var arg_resourceId = 'foo';
       var arg_projection = 'foo';
@@ -6370,7 +6370,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).mobiledevices;
+      var res = api.DirectoryApi(mock).mobiledevices;
       var arg_customerId = 'foo';
       var arg_maxResults = 42;
       var arg_orderBy = 'foo';
@@ -6452,7 +6452,7 @@ void main() {
   unittest.group('resource-OrgunitsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).orgunits;
+      var res = api.DirectoryApi(mock).orgunits;
       var arg_customerId = 'foo';
       var arg_orgUnitPath = 'foo';
       var arg_$fields = 'foo';
@@ -6508,7 +6508,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).orgunits;
+      var res = api.DirectoryApi(mock).orgunits;
       var arg_customerId = 'foo';
       var arg_orgUnitPath = 'foo';
       var arg_$fields = 'foo';
@@ -6566,7 +6566,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).orgunits;
+      var res = api.DirectoryApi(mock).orgunits;
       var arg_request = buildOrgUnit();
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -6627,7 +6627,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).orgunits;
+      var res = api.DirectoryApi(mock).orgunits;
       var arg_customerId = 'foo';
       var arg_orgUnitPath = 'foo';
       var arg_type = 'foo';
@@ -6691,7 +6691,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).orgunits;
+      var res = api.DirectoryApi(mock).orgunits;
       var arg_request = buildOrgUnit();
       var arg_customerId = 'foo';
       var arg_orgUnitPath = 'foo';
@@ -6755,7 +6755,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).orgunits;
+      var res = api.DirectoryApi(mock).orgunits;
       var arg_request = buildOrgUnit();
       var arg_customerId = 'foo';
       var arg_orgUnitPath = 'foo';
@@ -6821,7 +6821,7 @@ void main() {
   unittest.group('resource-PrivilegesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).privileges;
+      var res = api.DirectoryApi(mock).privileges;
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6879,7 +6879,7 @@ void main() {
   unittest.group('resource-ResourcesBuildingsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.buildings;
+      var res = api.DirectoryApi(mock).resources.buildings;
       var arg_customer = 'foo';
       var arg_buildingId = 'foo';
       var arg_$fields = 'foo';
@@ -6937,7 +6937,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.buildings;
+      var res = api.DirectoryApi(mock).resources.buildings;
       var arg_customer = 'foo';
       var arg_buildingId = 'foo';
       var arg_$fields = 'foo';
@@ -6997,7 +6997,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.buildings;
+      var res = api.DirectoryApi(mock).resources.buildings;
       var arg_request = buildBuilding();
       var arg_customer = 'foo';
       var arg_coordinatesSource = 'foo';
@@ -7062,7 +7062,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.buildings;
+      var res = api.DirectoryApi(mock).resources.buildings;
       var arg_customer = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -7127,7 +7127,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.buildings;
+      var res = api.DirectoryApi(mock).resources.buildings;
       var arg_request = buildBuilding();
       var arg_customer = 'foo';
       var arg_buildingId = 'foo';
@@ -7196,7 +7196,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.buildings;
+      var res = api.DirectoryApi(mock).resources.buildings;
       var arg_request = buildBuilding();
       var arg_customer = 'foo';
       var arg_buildingId = 'foo';
@@ -7267,7 +7267,7 @@ void main() {
   unittest.group('resource-ResourcesCalendarsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.calendars;
+      var res = api.DirectoryApi(mock).resources.calendars;
       var arg_customer = 'foo';
       var arg_calendarResourceId = 'foo';
       var arg_$fields = 'foo';
@@ -7325,7 +7325,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.calendars;
+      var res = api.DirectoryApi(mock).resources.calendars;
       var arg_customer = 'foo';
       var arg_calendarResourceId = 'foo';
       var arg_$fields = 'foo';
@@ -7385,7 +7385,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.calendars;
+      var res = api.DirectoryApi(mock).resources.calendars;
       var arg_request = buildCalendarResource();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -7446,7 +7446,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.calendars;
+      var res = api.DirectoryApi(mock).resources.calendars;
       var arg_customer = 'foo';
       var arg_maxResults = 42;
       var arg_orderBy = 'foo';
@@ -7518,7 +7518,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.calendars;
+      var res = api.DirectoryApi(mock).resources.calendars;
       var arg_request = buildCalendarResource();
       var arg_customer = 'foo';
       var arg_calendarResourceId = 'foo';
@@ -7584,7 +7584,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.calendars;
+      var res = api.DirectoryApi(mock).resources.calendars;
       var arg_request = buildCalendarResource();
       var arg_customer = 'foo';
       var arg_calendarResourceId = 'foo';
@@ -7652,7 +7652,7 @@ void main() {
   unittest.group('resource-ResourcesFeaturesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_customer = 'foo';
       var arg_featureKey = 'foo';
       var arg_$fields = 'foo';
@@ -7710,7 +7710,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_customer = 'foo';
       var arg_featureKey = 'foo';
       var arg_$fields = 'foo';
@@ -7770,7 +7770,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeature();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -7831,7 +7831,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_customer = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -7896,7 +7896,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeature();
       var arg_customer = 'foo';
       var arg_featureKey = 'foo';
@@ -7962,7 +7962,7 @@ void main() {
 
     unittest.test('method--rename', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeatureRename();
       var arg_customer = 'foo';
       var arg_oldName = 'foo';
@@ -8031,7 +8031,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).resources.features;
+      var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeature();
       var arg_customer = 'foo';
       var arg_featureKey = 'foo';
@@ -8099,7 +8099,7 @@ void main() {
   unittest.group('resource-RoleAssignmentsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roleAssignments;
+      var res = api.DirectoryApi(mock).roleAssignments;
       var arg_customer = 'foo';
       var arg_roleAssignmentId = 'foo';
       var arg_$fields = 'foo';
@@ -8157,7 +8157,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roleAssignments;
+      var res = api.DirectoryApi(mock).roleAssignments;
       var arg_customer = 'foo';
       var arg_roleAssignmentId = 'foo';
       var arg_$fields = 'foo';
@@ -8217,7 +8217,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roleAssignments;
+      var res = api.DirectoryApi(mock).roleAssignments;
       var arg_request = buildRoleAssignment();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -8278,7 +8278,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roleAssignments;
+      var res = api.DirectoryApi(mock).roleAssignments;
       var arg_customer = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -8352,7 +8352,7 @@ void main() {
   unittest.group('resource-RolesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roles;
+      var res = api.DirectoryApi(mock).roles;
       var arg_customer = 'foo';
       var arg_roleId = 'foo';
       var arg_$fields = 'foo';
@@ -8410,7 +8410,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roles;
+      var res = api.DirectoryApi(mock).roles;
       var arg_customer = 'foo';
       var arg_roleId = 'foo';
       var arg_$fields = 'foo';
@@ -8470,7 +8470,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roles;
+      var res = api.DirectoryApi(mock).roles;
       var arg_request = buildRole();
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
@@ -8531,7 +8531,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roles;
+      var res = api.DirectoryApi(mock).roles;
       var arg_customer = 'foo';
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
@@ -8596,7 +8596,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roles;
+      var res = api.DirectoryApi(mock).roles;
       var arg_request = buildRole();
       var arg_customer = 'foo';
       var arg_roleId = 'foo';
@@ -8661,7 +8661,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).roles;
+      var res = api.DirectoryApi(mock).roles;
       var arg_request = buildRole();
       var arg_customer = 'foo';
       var arg_roleId = 'foo';
@@ -8728,7 +8728,7 @@ void main() {
   unittest.group('resource-SchemasResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).schemas;
+      var res = api.DirectoryApi(mock).schemas;
       var arg_customerId = 'foo';
       var arg_schemaKey = 'foo';
       var arg_$fields = 'foo';
@@ -8786,7 +8786,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).schemas;
+      var res = api.DirectoryApi(mock).schemas;
       var arg_customerId = 'foo';
       var arg_schemaKey = 'foo';
       var arg_$fields = 'foo';
@@ -8846,7 +8846,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).schemas;
+      var res = api.DirectoryApi(mock).schemas;
       var arg_request = buildSchema();
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
@@ -8907,7 +8907,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).schemas;
+      var res = api.DirectoryApi(mock).schemas;
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8963,7 +8963,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).schemas;
+      var res = api.DirectoryApi(mock).schemas;
       var arg_request = buildSchema();
       var arg_customerId = 'foo';
       var arg_schemaKey = 'foo';
@@ -9029,7 +9029,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).schemas;
+      var res = api.DirectoryApi(mock).schemas;
       var arg_request = buildSchema();
       var arg_customerId = 'foo';
       var arg_schemaKey = 'foo';
@@ -9097,7 +9097,7 @@ void main() {
   unittest.group('resource-TokensResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).tokens;
+      var res = api.DirectoryApi(mock).tokens;
       var arg_userKey = 'foo';
       var arg_clientId = 'foo';
       var arg_$fields = 'foo';
@@ -9155,7 +9155,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).tokens;
+      var res = api.DirectoryApi(mock).tokens;
       var arg_userKey = 'foo';
       var arg_clientId = 'foo';
       var arg_$fields = 'foo';
@@ -9215,7 +9215,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).tokens;
+      var res = api.DirectoryApi(mock).tokens;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9273,7 +9273,7 @@ void main() {
   unittest.group('resource-TwoStepVerificationResourceApi', () {
     unittest.test('method--turnOff', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).twoStepVerification;
+      var res = api.DirectoryApi(mock).twoStepVerification;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9329,7 +9329,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9377,7 +9377,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_userKey = 'foo';
       var arg_customFieldMask = 'foo';
       var arg_projection = 'foo';
@@ -9440,7 +9440,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_request = buildUser();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9491,7 +9491,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_customFieldMask = 'foo';
       var arg_customer = 'foo';
       var arg_domain = 'foo';
@@ -9580,7 +9580,7 @@ void main() {
 
     unittest.test('method--makeAdmin', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_request = buildUserMakeAdmin();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -9639,7 +9639,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_request = buildUser();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -9694,7 +9694,7 @@ void main() {
 
     unittest.test('method--signOut', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9748,7 +9748,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_request = buildUserUndelete();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -9807,7 +9807,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_request = buildUser();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -9862,7 +9862,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users;
+      var res = api.DirectoryApi(mock).users;
       var arg_request = buildChannel();
       var arg_customFieldMask = 'foo';
       var arg_customer = 'foo';
@@ -9961,7 +9961,7 @@ void main() {
   unittest.group('resource-UsersAliasesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.aliases;
+      var res = api.DirectoryApi(mock).users.aliases;
       var arg_userKey = 'foo';
       var arg_alias = 'foo';
       var arg_$fields = 'foo';
@@ -10019,7 +10019,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.aliases;
+      var res = api.DirectoryApi(mock).users.aliases;
       var arg_request = buildAlias();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -10080,7 +10080,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.aliases;
+      var res = api.DirectoryApi(mock).users.aliases;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10136,7 +10136,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.aliases;
+      var res = api.DirectoryApi(mock).users.aliases;
       var arg_request = buildChannel();
       var arg_userKey = 'foo';
       var arg_event = 'foo';
@@ -10202,7 +10202,7 @@ void main() {
   unittest.group('resource-UsersPhotosResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.photos;
+      var res = api.DirectoryApi(mock).users.photos;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10256,7 +10256,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.photos;
+      var res = api.DirectoryApi(mock).users.photos;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10312,7 +10312,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.photos;
+      var res = api.DirectoryApi(mock).users.photos;
       var arg_request = buildUserPhoto();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -10373,7 +10373,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).users.photos;
+      var res = api.DirectoryApi(mock).users.photos;
       var arg_request = buildUserPhoto();
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
@@ -10436,7 +10436,7 @@ void main() {
   unittest.group('resource-VerificationCodesResourceApi', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).verificationCodes;
+      var res = api.DirectoryApi(mock).verificationCodes;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10490,7 +10490,7 @@ void main() {
 
     unittest.test('method--invalidate', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).verificationCodes;
+      var res = api.DirectoryApi(mock).verificationCodes;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10544,7 +10544,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AdminApi(mock).verificationCodes;
+      var res = api.DirectoryApi(mock).verificationCodes;
       var arg_userKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

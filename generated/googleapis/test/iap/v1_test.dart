@@ -873,7 +873,7 @@ void main() {
   unittest.group('resource-ProjectsBrandsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands;
+      var res = api.CloudIAPApi(mock).projects.brands;
       var arg_request = buildBrand();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -926,7 +926,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands;
+      var res = api.CloudIAPApi(mock).projects.brands;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -974,7 +974,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands;
+      var res = api.CloudIAPApi(mock).projects.brands;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1025,7 +1025,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands.identityAwareProxyClients;
+      var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_request = buildIdentityAwareProxyClient();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1078,7 +1078,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands.identityAwareProxyClients;
+      var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1126,7 +1126,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands.identityAwareProxyClients;
+      var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1174,7 +1174,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands.identityAwareProxyClients;
+      var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1233,7 +1233,7 @@ void main() {
 
     unittest.test('method--resetSecret', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).projects.brands.identityAwareProxyClients;
+      var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_request = buildResetIdentityAwareProxyClientSecretRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1289,7 +1289,7 @@ void main() {
   unittest.group('resource-V1ResourceApi', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).v1;
+      var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1342,7 +1342,7 @@ void main() {
 
     unittest.test('method--getIapSettings', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).v1;
+      var res = api.CloudIAPApi(mock).v1;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1390,7 +1390,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).v1;
+      var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1443,7 +1443,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).v1;
+      var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1497,7 +1497,7 @@ void main() {
 
     unittest.test('method--updateIapSettings', () {
       var mock = HttpServerMock();
-      var res = api.IapApi(mock).v1;
+      var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildIapSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

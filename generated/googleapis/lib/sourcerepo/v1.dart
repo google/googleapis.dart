@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Accesses source code repositories hosted by Google.
-class SourcerepoApi {
+class CloudSourceRepositoriesApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -57,7 +57,7 @@ class SourcerepoApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  SourcerepoApi(http.Client client,
+  CloudSourceRepositoriesApi(http.Client client,
       {core.String rootUrl = 'https://sourcerepo.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

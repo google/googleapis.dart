@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Controls access to cloud applications running on Google Cloud Platform.
-class IapApi {
+class CloudIAPApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -45,7 +45,7 @@ class IapApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
   V1ResourceApi get v1 => V1ResourceApi(_requester);
 
-  IapApi(http.Client client,
+  CloudIAPApi(http.Client client,
       {core.String rootUrl = 'https://iap.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

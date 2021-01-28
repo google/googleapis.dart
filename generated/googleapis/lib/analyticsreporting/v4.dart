@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Accesses Analytics report data.
-class AnalyticsreportingApi {
+class AnalyticsReportingApi {
   /// View and manage your Google Analytics data
   static const analyticsScope = 'https://www.googleapis.com/auth/analytics';
 
@@ -50,7 +50,7 @@ class AnalyticsreportingApi {
   UserActivityResourceApi get userActivity =>
       UserActivityResourceApi(_requester);
 
-  AnalyticsreportingApi(http.Client client,
+  AnalyticsReportingApi(http.Client client,
       {core.String rootUrl = 'https://analyticsreporting.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

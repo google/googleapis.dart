@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The Cloud Filestore API is used for creating and managing cloud file
 /// servers.
-class FileApi {
+class CloudFilestoreApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class FileApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  FileApi(http.Client client,
+  CloudFilestoreApi(http.Client client,
       {core.String rootUrl = 'https://file.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

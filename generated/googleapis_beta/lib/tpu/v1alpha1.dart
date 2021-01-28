@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// TPU API provides customers with access to Google TPU technology.
-class TpuApi {
+class TPUApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class TpuApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  TpuApi(http.Client client,
+  TPUApi(http.Client client,
       {core.String rootUrl = 'https://tpu.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

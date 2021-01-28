@@ -710,7 +710,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).operations;
+      var res = api.CloudShellApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -763,7 +763,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).operations;
+      var res = api.CloudShellApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -811,7 +811,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).operations;
+      var res = api.CloudShellApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -859,7 +859,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).operations;
+      var res = api.CloudShellApi(mock).operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -921,7 +921,7 @@ void main() {
   unittest.group('resource-UsersEnvironmentsResourceApi', () {
     unittest.test('method--addPublicKey', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).users.environments;
+      var res = api.CloudShellApi(mock).users.environments;
       var arg_request = buildAddPublicKeyRequest();
       var arg_environment = 'foo';
       var arg_$fields = 'foo';
@@ -974,7 +974,7 @@ void main() {
 
     unittest.test('method--authorize', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).users.environments;
+      var res = api.CloudShellApi(mock).users.environments;
       var arg_request = buildAuthorizeEnvironmentRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1028,7 +1028,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).users.environments;
+      var res = api.CloudShellApi(mock).users.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1076,7 +1076,7 @@ void main() {
 
     unittest.test('method--removePublicKey', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).users.environments;
+      var res = api.CloudShellApi(mock).users.environments;
       var arg_request = buildRemovePublicKeyRequest();
       var arg_environment = 'foo';
       var arg_$fields = 'foo';
@@ -1129,7 +1129,7 @@ void main() {
 
     unittest.test('method--start', () {
       var mock = HttpServerMock();
-      var res = api.CloudshellApi(mock).users.environments;
+      var res = api.CloudShellApi(mock).users.environments;
       var arg_request = buildStartEnvironmentRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

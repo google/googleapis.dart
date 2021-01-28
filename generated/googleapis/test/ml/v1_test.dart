@@ -3730,7 +3730,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--explain', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects;
+      var res = api.CloudMachineLearningEngineApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1ExplainRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3784,7 +3784,7 @@ void main() {
 
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects;
+      var res = api.CloudMachineLearningEngineApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3833,7 +3833,7 @@ void main() {
 
     unittest.test('method--predict', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects;
+      var res = api.CloudMachineLearningEngineApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1PredictRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3889,7 +3889,7 @@ void main() {
   unittest.group('resource-ProjectsJobsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1CancelJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3943,7 +3943,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3996,7 +3996,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4044,7 +4044,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -4099,7 +4099,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4160,7 +4160,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4217,7 +4217,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4271,7 +4271,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.jobs;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4329,7 +4329,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4377,7 +4377,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.locations;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4438,7 +4438,8 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.operations;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4486,7 +4487,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.operations;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4537,7 +4539,8 @@ void main() {
   unittest.group('resource-ProjectsLocationsStudiesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
       var arg_request = buildGoogleCloudMlV1Study();
       var arg_parent = 'foo';
       var arg_studyId = 'foo';
@@ -4594,7 +4597,8 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4642,7 +4646,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4690,7 +4695,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4742,7 +4748,11 @@ void main() {
   unittest.group('resource-ProjectsLocationsStudiesTrialsResourceApi', () {
     unittest.test('method--addMeasurement', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_request = buildGoogleCloudMlV1AddTrialMeasurementRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4796,7 +4806,11 @@ void main() {
 
     unittest.test('method--checkEarlyStoppingState', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_request =
           buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
       var arg_name = 'foo';
@@ -4853,7 +4867,11 @@ void main() {
 
     unittest.test('method--complete', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_request = buildGoogleCloudMlV1CompleteTrialRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4907,7 +4925,11 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_request = buildGoogleCloudMlV1Trial();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4960,7 +4982,11 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5008,7 +5034,11 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5056,7 +5086,11 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5106,7 +5140,11 @@ void main() {
 
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_request = buildGoogleCloudMlV1StopTrialRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5160,7 +5198,11 @@ void main() {
 
     unittest.test('method--suggest', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.locations.studies.trials;
+      var res = api.CloudMachineLearningEngineApi(mock)
+          .projects
+          .locations
+          .studies
+          .trials;
       var arg_request = buildGoogleCloudMlV1SuggestTrialsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5217,7 +5259,7 @@ void main() {
   unittest.group('resource-ProjectsModelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5270,7 +5312,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5319,7 +5361,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5367,7 +5409,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -5422,7 +5464,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -5484,7 +5526,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -5542,7 +5584,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5596,7 +5638,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5654,7 +5696,8 @@ void main() {
   unittest.group('resource-ProjectsModelsVersionsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models.versions;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1Version();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -5708,7 +5751,8 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models.versions;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5757,7 +5801,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models.versions;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5805,7 +5850,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models.versions;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -5867,7 +5913,8 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models.versions;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1Version();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -5925,7 +5972,8 @@ void main() {
 
     unittest.test('method--setDefault', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.models.versions;
+      var res =
+          api.CloudMachineLearningEngineApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1SetDefaultVersionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5981,7 +6029,7 @@ void main() {
   unittest.group('resource-ProjectsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.operations;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6029,7 +6077,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.operations;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6078,7 +6126,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.MlApi(mock).projects.operations;
+      var res = api.CloudMachineLearningEngineApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

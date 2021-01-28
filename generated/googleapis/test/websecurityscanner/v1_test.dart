@@ -1110,7 +1110,7 @@ void main() {
   unittest.group('resource-ProjectsScanConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_request = buildScanConfig();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1163,7 +1163,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1211,7 +1211,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1259,7 +1259,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1316,7 +1316,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_request = buildScanConfig();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1373,7 +1373,7 @@ void main() {
 
     unittest.test('method--start', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_request = buildStartScanRunRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1428,7 +1428,7 @@ void main() {
   unittest.group('resource-ProjectsScanConfigsScanRunsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs.scanRuns;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1476,7 +1476,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs.scanRuns;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1533,7 +1533,7 @@ void main() {
 
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock).projects.scanConfigs.scanRuns;
+      var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
       var arg_request = buildStopScanRunRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1589,7 +1589,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock)
+      var res = api.WebSecurityScannerApi(mock)
           .projects
           .scanConfigs
           .scanRuns
@@ -1653,7 +1653,7 @@ void main() {
       'resource-ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock)
+      var res = api.WebSecurityScannerApi(mock)
           .projects
           .scanConfigs
           .scanRuns
@@ -1708,7 +1708,7 @@ void main() {
   unittest.group('resource-ProjectsScanConfigsScanRunsFindingsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock)
+      var res = api.WebSecurityScannerApi(mock)
           .projects
           .scanConfigs
           .scanRuns
@@ -1760,7 +1760,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.WebsecurityscannerApi(mock)
+      var res = api.WebSecurityScannerApi(mock)
           .projects
           .scanConfigs
           .scanRuns

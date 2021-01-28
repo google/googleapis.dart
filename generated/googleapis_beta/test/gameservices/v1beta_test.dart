@@ -2632,7 +2632,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations;
+      var res = api.GameServicesApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2680,7 +2680,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations;
+      var res = api.GameServicesApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_includeUnrevealedLocations = true;
@@ -2748,7 +2748,7 @@ void main() {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildGameServerDeployment();
       var arg_parent = 'foo';
       var arg_deploymentId = 'foo';
@@ -2806,7 +2806,7 @@ void main() {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2855,7 +2855,7 @@ void main() {
     unittest.test('method--fetchDeploymentState', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildFetchDeploymentStateRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2911,7 +2911,7 @@ void main() {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2960,7 +2960,7 @@ void main() {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -3016,7 +3016,7 @@ void main() {
     unittest.test('method--getRollout', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3066,7 +3066,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -3133,7 +3133,7 @@ void main() {
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildGameServerDeployment();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3191,7 +3191,7 @@ void main() {
     unittest.test('method--previewRollout', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildGameServerDeploymentRollout();
       var arg_name = 'foo';
       var arg_previewTime = 'foo';
@@ -3257,7 +3257,7 @@ void main() {
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3311,7 +3311,7 @@ void main() {
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3366,7 +3366,7 @@ void main() {
     unittest.test('method--updateRollout', () {
       var mock = HttpServerMock();
       var res =
-          api.GameservicesApi(mock).projects.locations.gameServerDeployments;
+          api.GameServicesApi(mock).projects.locations.gameServerDeployments;
       var arg_request = buildGameServerDeploymentRollout();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3427,7 +3427,7 @@ void main() {
       'resource-ProjectsLocationsGameServerDeploymentsConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .gameServerDeployments
@@ -3488,7 +3488,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .gameServerDeployments
@@ -3540,7 +3540,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .gameServerDeployments
@@ -3592,7 +3592,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .gameServerDeployments
@@ -3663,7 +3663,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.operations;
+      var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3716,7 +3716,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.operations;
+      var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3764,7 +3764,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.operations;
+      var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3812,7 +3812,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.operations;
+      var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3874,7 +3874,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRealmsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.realms;
+      var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
       var arg_parent = 'foo';
       var arg_realmId = 'foo';
@@ -3931,7 +3931,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.realms;
+      var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3979,7 +3979,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.realms;
+      var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4027,7 +4027,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.realms;
+      var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -4091,7 +4091,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.realms;
+      var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4148,7 +4148,7 @@ void main() {
 
     unittest.test('method--previewUpdate', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock).projects.locations.realms;
+      var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
       var arg_name = 'foo';
       var arg_previewTime = 'foo';
@@ -4214,7 +4214,7 @@ void main() {
       'resource-ProjectsLocationsRealmsGameServerClustersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4276,7 +4276,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4328,7 +4328,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4380,7 +4380,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4449,7 +4449,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4510,7 +4510,7 @@ void main() {
 
     unittest.test('method--previewCreate', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4578,7 +4578,7 @@ void main() {
 
     unittest.test('method--previewDelete', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms
@@ -4636,7 +4636,7 @@ void main() {
 
     unittest.test('method--previewUpdate', () {
       var mock = HttpServerMock();
-      var res = api.GameservicesApi(mock)
+      var res = api.GameServicesApi(mock)
           .projects
           .locations
           .realms

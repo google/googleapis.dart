@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages alerts on issues affecting your domain.
-class AlertcenterApi {
+class AlertCenterApi {
   /// See and delete your domain's G Suite alerts, and send alert feedback
   static const appsAlertsScope = 'https://www.googleapis.com/auth/apps.alerts';
 
@@ -45,7 +45,7 @@ class AlertcenterApi {
   AlertsResourceApi get alerts => AlertsResourceApi(_requester);
   V1beta1ResourceApi get v1beta1 => V1beta1ResourceApi(_requester);
 
-  AlertcenterApi(http.Client client,
+  AlertCenterApi(http.Client client,
       {core.String rootUrl = 'https://alertcenter.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

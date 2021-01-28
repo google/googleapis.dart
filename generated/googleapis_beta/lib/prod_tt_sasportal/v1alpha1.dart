@@ -35,7 +35,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-class ProdTtSasportalApi {
+class SASPortalTestingApi {
   /// View your email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
@@ -48,7 +48,7 @@ class ProdTtSasportalApi {
   NodesResourceApi get nodes => NodesResourceApi(_requester);
   PoliciesResourceApi get policies => PoliciesResourceApi(_requester);
 
-  ProdTtSasportalApi(http.Client client,
+  SASPortalTestingApi(http.Client client,
       {core.String rootUrl = 'https://prod-tt-sasportal.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -42,7 +42,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// variables through Google Cloud Platform. In addition, you can also set
 /// Watchers and Waiters that will watch for changes to your data and return
 /// based on certain conditions.
-class RuntimeconfigApi {
+class CloudRuntimeConfigApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -55,7 +55,7 @@ class RuntimeconfigApi {
 
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
 
-  RuntimeconfigApi(http.Client client,
+  CloudRuntimeConfigApi(http.Client client,
       {core.String rootUrl = 'https://runtimeconfig.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

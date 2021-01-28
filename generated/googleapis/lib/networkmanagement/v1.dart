@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The Network Management API provides a collection of network performance
 /// monitoring and diagnostic capabilities.
-class NetworkmanagementApi {
+class NetworkManagementApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class NetworkmanagementApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  NetworkmanagementApi(http.Client client,
+  NetworkManagementApi(http.Client client,
       {core.String rootUrl = 'https://networkmanagement.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

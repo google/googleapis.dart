@@ -40,7 +40,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Accesses the latest features for managing Authorized Buyers accounts,
 /// Real-Time Bidding configurations and auction metrics, and Marketplace
 /// programmatic deals.
-class Adexchangebuyer2Api {
+class AdExchangeBuyerIIApi {
   /// Manage your Ad Exchange buyer account configuration
   static const adexchangeBuyerScope =
       'https://www.googleapis.com/auth/adexchange.buyer';
@@ -50,7 +50,7 @@ class Adexchangebuyer2Api {
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
   BiddersResourceApi get bidders => BiddersResourceApi(_requester);
 
-  Adexchangebuyer2Api(http.Client client,
+  AdExchangeBuyerIIApi(http.Client client,
       {core.String rootUrl = 'https://adexchangebuyer.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

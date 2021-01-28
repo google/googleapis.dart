@@ -37,14 +37,14 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Views Abusive Experience Report data, and gets a list of sites that have a
 /// significant number of abusive experiences.
-class AbusiveexperiencereportApi {
+class AbusiveExperienceReportApi {
   final commons.ApiRequester _requester;
 
   SitesResourceApi get sites => SitesResourceApi(_requester);
   ViolatingSitesResourceApi get violatingSites =>
       ViolatingSitesResourceApi(_requester);
 
-  AbusiveexperiencereportApi(http.Client client,
+  AbusiveExperienceReportApi(http.Client client,
       {core.String rootUrl = 'https://abusiveexperiencereport.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

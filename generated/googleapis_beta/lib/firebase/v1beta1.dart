@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Firebase Management API enables programmatic setup and management of
 /// Firebase projects, including a project's Firebase resources and Firebase
 /// apps.
-class FirebaseApi {
+class FirebaseManagementApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -62,7 +62,7 @@ class FirebaseApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  FirebaseApi(http.Client client,
+  FirebaseManagementApi(http.Client client,
       {core.String rootUrl = 'https://firebase.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

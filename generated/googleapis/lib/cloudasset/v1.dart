@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The cloud asset API manages the history and inventory of cloud resources.
-class CloudassetApi {
+class CloudAssetApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -47,7 +47,7 @@ class CloudassetApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   V1ResourceApi get v1 => V1ResourceApi(_requester);
 
-  CloudassetApi(http.Client client,
+  CloudAssetApi(http.Client client,
       {core.String rootUrl = 'https://cloudasset.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

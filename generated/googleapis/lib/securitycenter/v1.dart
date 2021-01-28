@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Security Command Center API provides access to temporal views of assets and
 /// findings within an organization.
-class SecuritycenterApi {
+class SecurityCommandCenterApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -48,7 +48,7 @@ class SecuritycenterApi {
   OrganizationsResourceApi get organizations =>
       OrganizationsResourceApi(_requester);
 
-  SecuritycenterApi(http.Client client,
+  SecurityCommandCenterApi(http.Client client,
       {core.String rootUrl = 'https://securitycenter.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

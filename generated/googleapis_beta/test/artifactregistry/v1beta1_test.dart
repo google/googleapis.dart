@@ -1254,7 +1254,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations;
+      var res = api.ArtifactRegistryApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1302,7 +1302,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations;
+      var res = api.ArtifactRegistryApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1364,7 +1364,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.operations;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1412,7 +1412,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.operations;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1474,7 +1474,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsRepositoriesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_request = buildRepository();
       var arg_parent = 'foo';
       var arg_repositoryId = 'foo';
@@ -1531,7 +1531,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1579,7 +1579,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1627,7 +1627,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1682,7 +1682,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1739,7 +1739,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_request = buildRepository();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1796,7 +1796,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1849,7 +1849,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock).projects.locations.repositories;
+      var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1906,7 +1906,7 @@ void main() {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
-          api.ArtifactregistryApi(mock).projects.locations.repositories.files;
+          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1955,7 +1955,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.ArtifactregistryApi(mock).projects.locations.repositories.files;
+          api.ArtifactRegistryApi(mock).projects.locations.repositories.files;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2018,7 +2018,7 @@ void main() {
       () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2070,7 +2070,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2122,7 +2122,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2186,7 +2186,7 @@ void main() {
       'resource-ProjectsLocationsRepositoriesPackagesTagsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2246,7 +2246,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2299,7 +2299,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2352,7 +2352,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2417,7 +2417,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2481,7 +2481,7 @@ void main() {
       'resource-ProjectsLocationsRepositoriesPackagesVersionsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2536,7 +2536,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories
@@ -2591,7 +2591,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ArtifactregistryApi(mock)
+      var res = api.ArtifactRegistryApi(mock)
           .projects
           .locations
           .repositories

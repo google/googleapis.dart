@@ -1207,7 +1207,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).media;
+      var res = api.HangoutsChatApi(mock).media;
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1257,7 +1257,7 @@ void main() {
   unittest.group('resource-SpacesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces;
+      var res = api.HangoutsChatApi(mock).spaces;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1305,7 +1305,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces;
+      var res = api.HangoutsChatApi(mock).spaces;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1362,7 +1362,7 @@ void main() {
   unittest.group('resource-SpacesMembersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.members;
+      var res = api.HangoutsChatApi(mock).spaces.members;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1410,7 +1410,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.members;
+      var res = api.HangoutsChatApi(mock).spaces.members;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1469,7 +1469,7 @@ void main() {
   unittest.group('resource-SpacesMessagesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.messages;
+      var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
       var arg_parent = 'foo';
       var arg_threadKey = 'foo';
@@ -1526,7 +1526,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.messages;
+      var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1574,7 +1574,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.messages;
+      var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1622,7 +1622,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.messages;
+      var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1681,7 +1681,7 @@ void main() {
   unittest.group('resource-SpacesMessagesAttachmentsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ChatApi(mock).spaces.messages.attachments;
+      var res = api.HangoutsChatApi(mock).spaces.messages.attachments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

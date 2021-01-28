@@ -330,7 +330,7 @@ void main() {
   unittest.group('resource-ProjectsServiceAccountsResourceApi', () {
     unittest.test('method--generateAccessToken', () {
       var mock = HttpServerMock();
-      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildGenerateAccessTokenRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -384,7 +384,7 @@ void main() {
 
     unittest.test('method--generateIdToken', () {
       var mock = HttpServerMock();
-      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildGenerateIdTokenRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -437,7 +437,7 @@ void main() {
 
     unittest.test('method--signBlob', () {
       var mock = HttpServerMock();
-      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildSignBlobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -490,7 +490,7 @@ void main() {
 
     unittest.test('method--signJwt', () {
       var mock = HttpServerMock();
-      var res = api.IamcredentialsApi(mock).projects.serviceAccounts;
+      var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildSignJwtRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

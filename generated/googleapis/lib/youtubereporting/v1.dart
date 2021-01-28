@@ -46,7 +46,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Schedules reporting jobs containing your YouTube Analytics data and
 /// downloads the resulting bulk data reports in the form of CSV files.
-class YoutubereportingApi {
+class YouTubeReportingApi {
   /// View monetary and non-monetary YouTube Analytics reports for your YouTube
   /// content
   static const ytAnalyticsMonetaryReadonlyScope =
@@ -62,7 +62,7 @@ class YoutubereportingApi {
   MediaResourceApi get media => MediaResourceApi(_requester);
   ReportTypesResourceApi get reportTypes => ReportTypesResourceApi(_requester);
 
-  YoutubereportingApi(http.Client client,
+  YouTubeReportingApi(http.Client client,
       {core.String rootUrl = 'https://youtubereporting.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

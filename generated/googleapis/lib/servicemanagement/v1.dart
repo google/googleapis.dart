@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Google Service Management allows service producers to publish their services
 /// on Google Cloud Platform so that they can be discovered and used by service
 /// consumers.
-class ServicemanagementApi {
+class ServiceManagementApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -61,7 +61,7 @@ class ServicemanagementApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ServicesResourceApi get services => ServicesResourceApi(_requester);
 
-  ServicemanagementApi(http_1.Client client,
+  ServiceManagementApi(http_1.Client client,
       {core.String rootUrl = 'https://servicemanagement.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages the deployment of apps to Android Enterprise devices.
-class AndroidenterpriseApi {
+class AndroidEnterpriseApi {
   /// Manage corporate Android devices
   static const androidenterpriseScope =
       'https://www.googleapis.com/auth/androidenterprise';
@@ -70,7 +70,7 @@ class AndroidenterpriseApi {
   UsersResourceApi get users => UsersResourceApi(_requester);
   WebappsResourceApi get webapps => WebappsResourceApi(_requester);
 
-  AndroidenterpriseApi(http.Client client,
+  AndroidEnterpriseApi(http.Client client,
       {core.String rootUrl = 'https://androidenterprise.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

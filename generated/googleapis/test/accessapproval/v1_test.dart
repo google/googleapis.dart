@@ -423,7 +423,7 @@ void main() {
   unittest.group('resource-FoldersResourceApi', () {
     unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders;
+      var res = api.AccessApprovalApi(mock).folders;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -471,7 +471,7 @@ void main() {
 
     unittest.test('method--getAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders;
+      var res = api.AccessApprovalApi(mock).folders;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -519,7 +519,7 @@ void main() {
 
     unittest.test('method--updateAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders;
+      var res = api.AccessApprovalApi(mock).folders;
       var arg_request = buildAccessApprovalSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -578,7 +578,7 @@ void main() {
   unittest.group('resource-FoldersApprovalRequestsResourceApi', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders.approvalRequests;
+      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -632,7 +632,7 @@ void main() {
 
     unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders.approvalRequests;
+      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -686,7 +686,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders.approvalRequests;
+      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -734,7 +734,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).folders.approvalRequests;
+      var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -797,7 +797,7 @@ void main() {
   unittest.group('resource-OrganizationsResourceApi', () {
     unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations;
+      var res = api.AccessApprovalApi(mock).organizations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -845,7 +845,7 @@ void main() {
 
     unittest.test('method--getAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations;
+      var res = api.AccessApprovalApi(mock).organizations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -893,7 +893,7 @@ void main() {
 
     unittest.test('method--updateAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations;
+      var res = api.AccessApprovalApi(mock).organizations;
       var arg_request = buildAccessApprovalSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -952,7 +952,7 @@ void main() {
   unittest.group('resource-OrganizationsApprovalRequestsResourceApi', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations.approvalRequests;
+      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1006,7 +1006,7 @@ void main() {
 
     unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations.approvalRequests;
+      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1060,7 +1060,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations.approvalRequests;
+      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1108,7 +1108,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).organizations.approvalRequests;
+      var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1171,7 +1171,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects;
+      var res = api.AccessApprovalApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1219,7 +1219,7 @@ void main() {
 
     unittest.test('method--getAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects;
+      var res = api.AccessApprovalApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1267,7 +1267,7 @@ void main() {
 
     unittest.test('method--updateAccessApprovalSettings', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects;
+      var res = api.AccessApprovalApi(mock).projects;
       var arg_request = buildAccessApprovalSettings();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1326,7 +1326,7 @@ void main() {
   unittest.group('resource-ProjectsApprovalRequestsResourceApi', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects.approvalRequests;
+      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1380,7 +1380,7 @@ void main() {
 
     unittest.test('method--dismiss', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects.approvalRequests;
+      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1434,7 +1434,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects.approvalRequests;
+      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1482,7 +1482,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AccessapprovalApi(mock).projects.approvalRequests;
+      var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

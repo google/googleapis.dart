@@ -1135,7 +1135,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.locations;
+      var res = api.SecretManagerApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1183,7 +1183,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.locations;
+      var res = api.SecretManagerApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1245,7 +1245,7 @@ void main() {
   unittest.group('resource-ProjectsSecretsResourceApi', () {
     unittest.test('method--addVersion', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildAddSecretVersionRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1298,7 +1298,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildSecret();
       var arg_parent = 'foo';
       var arg_secretId = 'foo';
@@ -1355,7 +1355,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1403,7 +1403,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1451,7 +1451,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1506,7 +1506,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1563,7 +1563,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildSecret();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1620,7 +1620,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1673,7 +1673,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets;
+      var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1729,7 +1729,7 @@ void main() {
   unittest.group('resource-ProjectsSecretsVersionsResourceApi', () {
     unittest.test('method--access', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets.versions;
+      var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1778,7 +1778,7 @@ void main() {
 
     unittest.test('method--destroy', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets.versions;
+      var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_request = buildDestroySecretVersionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1832,7 +1832,7 @@ void main() {
 
     unittest.test('method--disable', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets.versions;
+      var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_request = buildDisableSecretVersionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1886,7 +1886,7 @@ void main() {
 
     unittest.test('method--enable', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets.versions;
+      var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_request = buildEnableSecretVersionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1939,7 +1939,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets.versions;
+      var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1987,7 +1987,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SecretmanagerApi(mock).projects.secrets.versions;
+      var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';

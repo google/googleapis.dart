@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Access custom machine learning models hosted via Firebase ML.
-class FirebasemlApi {
+class FirebaseMLApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class FirebasemlApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  FirebasemlApi(http.Client client,
+  FirebaseMLApi(http.Client client,
       {core.String rootUrl = 'https://firebaseml.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

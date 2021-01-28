@@ -1312,7 +1312,7 @@ void main() {
   unittest.group('resource-ProjectsOperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.operations;
+      var res = api.FirebaseHostingApi(mock).projects.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1362,7 +1362,7 @@ void main() {
   unittest.group('resource-ProjectsSitesResourceApi', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites;
+      var res = api.FirebaseHostingApi(mock).projects.sites;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1410,7 +1410,7 @@ void main() {
 
     unittest.test('method--updateConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites;
+      var res = api.FirebaseHostingApi(mock).projects.sites;
       var arg_request = buildSiteConfig();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1469,7 +1469,7 @@ void main() {
   unittest.group('resource-ProjectsSitesChannelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels;
       var arg_request = buildChannel();
       var arg_parent = 'foo';
       var arg_channelId = 'foo';
@@ -1526,7 +1526,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1574,7 +1574,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1622,7 +1622,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1679,7 +1679,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels;
       var arg_request = buildChannel();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1738,7 +1738,7 @@ void main() {
   unittest.group('resource-ProjectsSitesChannelsReleasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels.releases;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels.releases;
       var arg_request = buildRelease();
       var arg_parent = 'foo';
       var arg_versionName = 'foo';
@@ -1795,7 +1795,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.channels.releases;
+      var res = api.FirebaseHostingApi(mock).projects.sites.channels.releases;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1854,7 +1854,7 @@ void main() {
   unittest.group('resource-ProjectsSitesDomainsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.domains;
+      var res = api.FirebaseHostingApi(mock).projects.sites.domains;
       var arg_request = buildDomain();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1907,7 +1907,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.domains;
+      var res = api.FirebaseHostingApi(mock).projects.sites.domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1955,7 +1955,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.domains;
+      var res = api.FirebaseHostingApi(mock).projects.sites.domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2003,7 +2003,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.domains;
+      var res = api.FirebaseHostingApi(mock).projects.sites.domains;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2060,7 +2060,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.domains;
+      var res = api.FirebaseHostingApi(mock).projects.sites.domains;
       var arg_request = buildDomain();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2115,7 +2115,7 @@ void main() {
   unittest.group('resource-ProjectsSitesReleasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.releases;
+      var res = api.FirebaseHostingApi(mock).projects.sites.releases;
       var arg_request = buildRelease();
       var arg_parent = 'foo';
       var arg_versionName = 'foo';
@@ -2172,7 +2172,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.releases;
+      var res = api.FirebaseHostingApi(mock).projects.sites.releases;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2231,7 +2231,7 @@ void main() {
   unittest.group('resource-ProjectsSitesVersionsResourceApi', () {
     unittest.test('method--clone', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions;
       var arg_request = buildCloneVersionRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2284,7 +2284,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions;
       var arg_request = buildVersion();
       var arg_parent = 'foo';
       var arg_sizeBytes = 'foo';
@@ -2346,7 +2346,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2394,7 +2394,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2454,7 +2454,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions;
       var arg_request = buildVersion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2511,7 +2511,7 @@ void main() {
 
     unittest.test('method--populateFiles', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions;
       var arg_request = buildPopulateVersionFilesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2568,7 +2568,7 @@ void main() {
   unittest.group('resource-ProjectsSitesVersionsFilesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).projects.sites.versions.files;
+      var res = api.FirebaseHostingApi(mock).projects.sites.versions.files;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2630,7 +2630,7 @@ void main() {
   unittest.group('resource-SitesResourceApi', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites;
+      var res = api.FirebaseHostingApi(mock).sites;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2678,7 +2678,7 @@ void main() {
 
     unittest.test('method--updateConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites;
+      var res = api.FirebaseHostingApi(mock).sites;
       var arg_request = buildSiteConfig();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2737,7 +2737,7 @@ void main() {
   unittest.group('resource-SitesChannelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels;
+      var res = api.FirebaseHostingApi(mock).sites.channels;
       var arg_request = buildChannel();
       var arg_parent = 'foo';
       var arg_channelId = 'foo';
@@ -2794,7 +2794,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels;
+      var res = api.FirebaseHostingApi(mock).sites.channels;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2842,7 +2842,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels;
+      var res = api.FirebaseHostingApi(mock).sites.channels;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2890,7 +2890,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels;
+      var res = api.FirebaseHostingApi(mock).sites.channels;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2947,7 +2947,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels;
+      var res = api.FirebaseHostingApi(mock).sites.channels;
       var arg_request = buildChannel();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3006,7 +3006,7 @@ void main() {
   unittest.group('resource-SitesChannelsReleasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels.releases;
+      var res = api.FirebaseHostingApi(mock).sites.channels.releases;
       var arg_request = buildRelease();
       var arg_parent = 'foo';
       var arg_versionName = 'foo';
@@ -3063,7 +3063,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.channels.releases;
+      var res = api.FirebaseHostingApi(mock).sites.channels.releases;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3122,7 +3122,7 @@ void main() {
   unittest.group('resource-SitesDomainsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.domains;
+      var res = api.FirebaseHostingApi(mock).sites.domains;
       var arg_request = buildDomain();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3175,7 +3175,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.domains;
+      var res = api.FirebaseHostingApi(mock).sites.domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3223,7 +3223,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.domains;
+      var res = api.FirebaseHostingApi(mock).sites.domains;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3271,7 +3271,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.domains;
+      var res = api.FirebaseHostingApi(mock).sites.domains;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3328,7 +3328,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.domains;
+      var res = api.FirebaseHostingApi(mock).sites.domains;
       var arg_request = buildDomain();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3383,7 +3383,7 @@ void main() {
   unittest.group('resource-SitesReleasesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.releases;
+      var res = api.FirebaseHostingApi(mock).sites.releases;
       var arg_request = buildRelease();
       var arg_parent = 'foo';
       var arg_versionName = 'foo';
@@ -3440,7 +3440,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.releases;
+      var res = api.FirebaseHostingApi(mock).sites.releases;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3499,7 +3499,7 @@ void main() {
   unittest.group('resource-SitesVersionsResourceApi', () {
     unittest.test('method--clone', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions;
+      var res = api.FirebaseHostingApi(mock).sites.versions;
       var arg_request = buildCloneVersionRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3552,7 +3552,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions;
+      var res = api.FirebaseHostingApi(mock).sites.versions;
       var arg_request = buildVersion();
       var arg_parent = 'foo';
       var arg_sizeBytes = 'foo';
@@ -3614,7 +3614,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions;
+      var res = api.FirebaseHostingApi(mock).sites.versions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3662,7 +3662,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions;
+      var res = api.FirebaseHostingApi(mock).sites.versions;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3722,7 +3722,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions;
+      var res = api.FirebaseHostingApi(mock).sites.versions;
       var arg_request = buildVersion();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3779,7 +3779,7 @@ void main() {
 
     unittest.test('method--populateFiles', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions;
+      var res = api.FirebaseHostingApi(mock).sites.versions;
       var arg_request = buildPopulateVersionFilesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3836,7 +3836,7 @@ void main() {
   unittest.group('resource-SitesVersionsFilesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebasehostingApi(mock).sites.versions.files;
+      var res = api.FirebaseHostingApi(mock).sites.versions.files;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';

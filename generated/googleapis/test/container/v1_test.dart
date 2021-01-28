@@ -5398,10 +5398,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsClustersWell_knownResourceApi', () {
-    unittest.test('method--getOpenid_configuration', () {
+  unittest.group('resource-ProjectsLocationsClustersWellKnownResourceApi', () {
+    unittest.test('method--getOpenidConfiguration', () {
       var mock = HttpServerMock();
-      var res = api.ContainerApi(mock).projects.locations.clusters.well_known;
+      var res = api.ContainerApi(mock).projects.locations.clusters.wellKnown;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5441,7 +5441,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getOpenid_configuration(arg_parent, $fields: arg_$fields)
+          .getOpenidConfiguration(arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGetOpenIDConfigResponse(response as api.GetOpenIDConfigResponse);
       })));

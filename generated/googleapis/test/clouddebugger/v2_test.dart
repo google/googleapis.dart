@@ -1088,7 +1088,7 @@ void main() {
   unittest.group('resource-ControllerDebuggeesResourceApi', () {
     unittest.test('method--register', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).controller.debuggees;
+      var res = api.CloudDebuggerApi(mock).controller.debuggees;
       var arg_request = buildRegisterDebuggeeRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1141,7 +1141,7 @@ void main() {
   unittest.group('resource-ControllerDebuggeesBreakpointsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).controller.debuggees.breakpoints;
+      var res = api.CloudDebuggerApi(mock).controller.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
       var arg_agentId = 'foo';
       var arg_successOnTimeout = true;
@@ -1211,7 +1211,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).controller.debuggees.breakpoints;
+      var res = api.CloudDebuggerApi(mock).controller.debuggees.breakpoints;
       var arg_request = buildUpdateActiveBreakpointRequest();
       var arg_debuggeeId = 'foo';
       var arg_id = 'foo';
@@ -1280,7 +1280,7 @@ void main() {
   unittest.group('resource-DebuggerDebuggeesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).debugger.debuggees;
+      var res = api.CloudDebuggerApi(mock).debugger.debuggees;
       var arg_clientVersion = 'foo';
       var arg_includeInactive = true;
       var arg_project = 'foo';
@@ -1341,7 +1341,7 @@ void main() {
   unittest.group('resource-DebuggerDebuggeesBreakpointsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).debugger.debuggees.breakpoints;
+      var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
       var arg_breakpointId = 'foo';
       var arg_clientVersion = 'foo';
@@ -1405,7 +1405,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).debugger.debuggees.breakpoints;
+      var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
       var arg_breakpointId = 'foo';
       var arg_clientVersion = 'foo';
@@ -1469,7 +1469,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).debugger.debuggees.breakpoints;
+      var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
       var arg_action_value = 'foo';
       var arg_clientVersion = 'foo';
@@ -1550,7 +1550,7 @@ void main() {
 
     unittest.test('method--set', () {
       var mock = HttpServerMock();
-      var res = api.ClouddebuggerApi(mock).debugger.debuggees.breakpoints;
+      var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_request = buildBreakpoint();
       var arg_debuggeeId = 'foo';
       var arg_canaryOption = 'foo';

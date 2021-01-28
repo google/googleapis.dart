@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Allows users to manage BigQuery connections to external data sources.
-class BigqueryconnectionApi {
+class BigQueryConnectionServiceApi {
   /// View and manage your data in Google BigQuery
   static const bigqueryScope = 'https://www.googleapis.com/auth/bigquery';
 
@@ -47,7 +47,7 @@ class BigqueryconnectionApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  BigqueryconnectionApi(http.Client client,
+  BigQueryConnectionServiceApi(http.Client client,
       {core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Cloud Life Sciences is a suite of services and tools for managing,
 /// processing, and transforming life sciences data.
-class LifesciencesApi {
+class CloudLifeSciencesApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class LifesciencesApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  LifesciencesApi(http.Client client,
+  CloudLifeSciencesApi(http.Client client,
       {core.String rootUrl = 'https://lifesciences.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

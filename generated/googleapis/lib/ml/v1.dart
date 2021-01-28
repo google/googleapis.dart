@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// An API to enable creating and using machine learning models.
-class MlApi {
+class CloudMachineLearningEngineApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -48,7 +48,7 @@ class MlApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  MlApi(http.Client client,
+  CloudMachineLearningEngineApi(http.Client client,
       {core.String rootUrl = 'https://ml.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

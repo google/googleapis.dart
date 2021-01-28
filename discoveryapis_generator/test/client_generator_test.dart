@@ -36,7 +36,7 @@ void main() {
       pubspecFile.copySync(p.join(outputDir.path, 'pubspec.yaml'));
       // Generate the client stubs.
       final results = generateApiFiles(inputPath, outputDir.path);
-      expect(results.length, 2);
+      expect(results.length, 2, reason: 'But got `$results`');
       expect(results[0].success, isTrue);
       expect(results[1].info, isTrue);
       // The generated client stub file is named toyapi.dart.
@@ -70,7 +70,7 @@ void main() {
       final diPair = DescriptionImportPair(description, importMap);
       // Generate the client stubs.
       final results = generateClientStubs([diPair], outputDir.path);
-      expect(results.length, 2);
+      expect(results.length, 2, reason: 'But got `$results`');
       expect(results[0].success, isTrue);
       expect(results[1].info, isTrue);
       // The generated client stub file is named toyapi.dart.

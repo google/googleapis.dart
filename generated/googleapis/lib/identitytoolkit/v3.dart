@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Help the third party sites to implement federated login.
-class IdentitytoolkitApi {
+class IdentityToolkitApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -50,7 +50,7 @@ class IdentitytoolkitApi {
   RelyingpartyResourceApi get relyingparty =>
       RelyingpartyResourceApi(_requester);
 
-  IdentitytoolkitApi(http.Client client,
+  IdentityToolkitApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'identitytoolkit/v3/relyingparty/'})
       : _requester =

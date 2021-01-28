@@ -1401,7 +1401,7 @@ void main() {
   unittest.group('resource-CustomersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers;
+      var res = api.SASPortalTestingApi(mock).customers;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1449,7 +1449,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers;
+      var res = api.SASPortalTestingApi(mock).customers;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1505,7 +1505,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers;
+      var res = api.SASPortalTestingApi(mock).customers;
       var arg_request = buildSasPortalCustomer();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1564,7 +1564,7 @@ void main() {
   unittest.group('resource-CustomersDeploymentsResourceApi', () {
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.deployments;
+      var res = api.SASPortalTestingApi(mock).customers.deployments;
       var arg_request = buildSasPortalMoveDeploymentRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1620,7 +1620,7 @@ void main() {
   unittest.group('resource-CustomersDeploymentsDevicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.deployments.devices;
+      var res = api.SASPortalTestingApi(mock).customers.deployments.devices;
       var arg_request = buildSasPortalDevice();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1673,7 +1673,7 @@ void main() {
 
     unittest.test('method--createSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.deployments.devices;
+      var res = api.SASPortalTestingApi(mock).customers.deployments.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1727,7 +1727,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.deployments.devices;
+      var res = api.SASPortalTestingApi(mock).customers.deployments.devices;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1790,7 +1790,7 @@ void main() {
   unittest.group('resource-CustomersDevicesResourceApi', () {
     unittest.test('method--bulk', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalBulkCreateDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1846,7 +1846,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalDevice();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1899,7 +1899,7 @@ void main() {
 
     unittest.test('method--createSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1953,7 +1953,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2001,7 +2001,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2049,7 +2049,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2110,7 +2110,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalMoveDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2163,7 +2163,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalDevice();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2220,7 +2220,7 @@ void main() {
 
     unittest.test('method--signDevice', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalSignDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2273,7 +2273,7 @@ void main() {
 
     unittest.test('method--updateSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.devices;
+      var res = api.SASPortalTestingApi(mock).customers.devices;
       var arg_request = buildSasPortalUpdateSignedDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2329,7 +2329,7 @@ void main() {
   unittest.group('resource-CustomersNodesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes;
       var arg_request = buildSasPortalNode();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2382,7 +2382,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2430,7 +2430,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2478,7 +2478,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2536,7 +2536,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes;
       var arg_request = buildSasPortalMoveNodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2589,7 +2589,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes;
       var arg_request = buildSasPortalNode();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2648,7 +2648,7 @@ void main() {
   unittest.group('resource-CustomersNodesNodesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes.nodes;
       var arg_request = buildSasPortalNode();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2701,7 +2701,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).customers.nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).customers.nodes.nodes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2761,7 +2761,7 @@ void main() {
   unittest.group('resource-DeploymentsDevicesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).deployments.devices;
+      var res = api.SASPortalTestingApi(mock).deployments.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2809,7 +2809,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).deployments.devices;
+      var res = api.SASPortalTestingApi(mock).deployments.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2857,7 +2857,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).deployments.devices;
+      var res = api.SASPortalTestingApi(mock).deployments.devices;
       var arg_request = buildSasPortalMoveDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2910,7 +2910,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).deployments.devices;
+      var res = api.SASPortalTestingApi(mock).deployments.devices;
       var arg_request = buildSasPortalDevice();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2967,7 +2967,7 @@ void main() {
 
     unittest.test('method--signDevice', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).deployments.devices;
+      var res = api.SASPortalTestingApi(mock).deployments.devices;
       var arg_request = buildSasPortalSignDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3020,7 +3020,7 @@ void main() {
 
     unittest.test('method--updateSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).deployments.devices;
+      var res = api.SASPortalTestingApi(mock).deployments.devices;
       var arg_request = buildSasPortalUpdateSignedDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3076,7 +3076,7 @@ void main() {
   unittest.group('resource-InstallerResourceApi', () {
     unittest.test('method--generateSecret', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).installer;
+      var res = api.SASPortalTestingApi(mock).installer;
       var arg_request = buildSasPortalGenerateSecretRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3129,7 +3129,7 @@ void main() {
 
     unittest.test('method--validate', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).installer;
+      var res = api.SASPortalTestingApi(mock).installer;
       var arg_request = buildSasPortalValidateInstallerRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3185,7 +3185,7 @@ void main() {
   unittest.group('resource-NodesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes;
+      var res = api.SASPortalTestingApi(mock).nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3235,7 +3235,7 @@ void main() {
   unittest.group('resource-NodesDeploymentsResourceApi', () {
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.deployments;
+      var res = api.SASPortalTestingApi(mock).nodes.deployments;
       var arg_request = buildSasPortalMoveDeploymentRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3291,7 +3291,7 @@ void main() {
   unittest.group('resource-NodesDeploymentsDevicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.deployments.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.deployments.devices;
       var arg_request = buildSasPortalDevice();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3344,7 +3344,7 @@ void main() {
 
     unittest.test('method--createSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.deployments.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.deployments.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3398,7 +3398,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.deployments.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.deployments.devices;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3461,7 +3461,7 @@ void main() {
   unittest.group('resource-NodesDevicesResourceApi', () {
     unittest.test('method--bulk', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalBulkCreateDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3517,7 +3517,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalDevice();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3570,7 +3570,7 @@ void main() {
 
     unittest.test('method--createSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3624,7 +3624,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3672,7 +3672,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3720,7 +3720,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3781,7 +3781,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalMoveDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3834,7 +3834,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalDevice();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3891,7 +3891,7 @@ void main() {
 
     unittest.test('method--signDevice', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalSignDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3944,7 +3944,7 @@ void main() {
 
     unittest.test('method--updateSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.devices;
       var arg_request = buildSasPortalUpdateSignedDeviceRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4000,7 +4000,7 @@ void main() {
   unittest.group('resource-NodesNodesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes;
       var arg_request = buildSasPortalNode();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4053,7 +4053,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4101,7 +4101,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4149,7 +4149,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4207,7 +4207,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes;
       var arg_request = buildSasPortalMoveNodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4260,7 +4260,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes;
       var arg_request = buildSasPortalNode();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4319,7 +4319,7 @@ void main() {
   unittest.group('resource-NodesNodesDevicesResourceApi', () {
     unittest.test('method--bulk', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes.devices;
       var arg_request = buildSasPortalBulkCreateDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4375,7 +4375,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes.devices;
       var arg_request = buildSasPortalDevice();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4428,7 +4428,7 @@ void main() {
 
     unittest.test('method--createSigned', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4482,7 +4482,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes.devices;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes.devices;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4545,7 +4545,7 @@ void main() {
   unittest.group('resource-NodesNodesNodesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes.nodes;
       var arg_request = buildSasPortalNode();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4598,7 +4598,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).nodes.nodes.nodes;
+      var res = api.SASPortalTestingApi(mock).nodes.nodes.nodes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4658,7 +4658,7 @@ void main() {
   unittest.group('resource-PoliciesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).policies;
+      var res = api.SASPortalTestingApi(mock).policies;
       var arg_request = buildSasPortalGetPolicyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4709,7 +4709,7 @@ void main() {
 
     unittest.test('method--set', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).policies;
+      var res = api.SASPortalTestingApi(mock).policies;
       var arg_request = buildSasPortalSetPolicyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4760,7 +4760,7 @@ void main() {
 
     unittest.test('method--test', () {
       var mock = HttpServerMock();
-      var res = api.ProdTtSasportalApi(mock).policies;
+      var res = api.SASPortalTestingApi(mock).policies;
       var arg_request = buildSasPortalTestPermissionsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

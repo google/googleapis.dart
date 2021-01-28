@@ -1626,7 +1626,7 @@ void main() {
   unittest.group('resource-CustomersResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1684,7 +1684,8 @@ void main() {
   unittest.group('resource-CustomersConfigurationsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.configurations;
+      var res =
+          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
       var arg_request = buildConfiguration();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1737,7 +1738,8 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.configurations;
+      var res =
+          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1785,7 +1787,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.configurations;
+      var res =
+          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1833,7 +1836,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.configurations;
+      var res =
+          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1883,7 +1887,8 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.configurations;
+      var res =
+          api.AndroidProvisioningPartnerApi(mock).customers.configurations;
       var arg_request = buildConfiguration();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1942,7 +1947,7 @@ void main() {
   unittest.group('resource-CustomersDevicesResourceApi', () {
     unittest.test('method--applyConfiguration', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_request = buildCustomerApplyConfigurationRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1996,7 +2001,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2044,7 +2049,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_parent = 'foo';
       var arg_pageSize = 'foo';
       var arg_pageToken = 'foo';
@@ -2102,7 +2107,7 @@ void main() {
 
     unittest.test('method--removeConfiguration', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_request = buildCustomerRemoveConfigurationRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2156,7 +2161,7 @@ void main() {
 
     unittest.test('method--unclaim', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_request = buildCustomerUnclaimDeviceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2212,7 +2217,7 @@ void main() {
   unittest.group('resource-CustomersDpcsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).customers.dpcs;
+      var res = api.AndroidProvisioningPartnerApi(mock).customers.dpcs;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2262,7 +2267,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).operations;
+      var res = api.AndroidProvisioningPartnerApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2312,7 +2317,7 @@ void main() {
   unittest.group('resource-PartnersCustomersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.customers;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.customers;
       var arg_request = buildCreateCustomerRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2365,7 +2370,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.customers;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.customers;
       var arg_partnerId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2424,7 +2429,7 @@ void main() {
   unittest.group('resource-PartnersDevicesResourceApi', () {
     unittest.test('method--claim', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildClaimDeviceRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2477,7 +2482,7 @@ void main() {
 
     unittest.test('method--claimAsync', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildClaimDevicesRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2530,7 +2535,7 @@ void main() {
 
     unittest.test('method--findByIdentifier', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildFindDevicesByDeviceIdentifierRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2586,7 +2591,7 @@ void main() {
 
     unittest.test('method--findByOwner', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildFindDevicesByOwnerRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2640,7 +2645,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2688,7 +2693,7 @@ void main() {
 
     unittest.test('method--metadata', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUpdateDeviceMetadataRequest();
       var arg_metadataOwnerId = 'foo';
       var arg_deviceId = 'foo';
@@ -2744,7 +2749,7 @@ void main() {
 
     unittest.test('method--unclaim', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUnclaimDeviceRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2797,7 +2802,7 @@ void main() {
 
     unittest.test('method--unclaimAsync', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUnclaimDevicesRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2850,7 +2855,7 @@ void main() {
 
     unittest.test('method--updateMetadataAsync', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.devices;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUpdateDeviceMetadataInBatchRequest();
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
@@ -2906,7 +2911,7 @@ void main() {
   unittest.group('resource-PartnersVendorsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroiddeviceprovisioningApi(mock).partners.vendors;
+      var res = api.AndroidProvisioningPartnerApi(mock).partners.vendors;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2966,7 +2971,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.AndroiddeviceprovisioningApi(mock).partners.vendors.customers;
+          api.AndroidProvisioningPartnerApi(mock).partners.vendors.customers;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';

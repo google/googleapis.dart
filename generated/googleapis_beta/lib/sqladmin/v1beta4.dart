@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// API for Cloud SQL database instance management
-class SqladminApi {
+class SQLAdminApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -56,7 +56,7 @@ class SqladminApi {
   TiersResourceApi get tiers => TiersResourceApi(_requester);
   UsersResourceApi get users => UsersResourceApi(_requester);
 
-  SqladminApi(http.Client client,
+  SQLAdminApi(http.Client client,
       {core.String rootUrl = 'https://sqladmin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

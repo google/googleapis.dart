@@ -285,7 +285,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).operations;
+      var res = api.CloudRuntimeConfigApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -338,7 +338,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).operations;
+      var res = api.CloudRuntimeConfigApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -386,7 +386,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.RuntimeconfigApi(mock).operations;
+      var res = api.CloudRuntimeConfigApi(mock).operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

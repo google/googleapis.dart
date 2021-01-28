@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Cloud Talent Solution provides the capability to create, read, update, and
 /// delete job postings, as well as search jobs based on keywords and filters.
-class JobsApi {
+class CloudTalentSolutionApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -52,7 +52,7 @@ class JobsApi {
   JobsResourceApi get jobs => JobsResourceApi(_requester);
   V2ResourceApi get v2 => V2ResourceApi(_requester);
 
-  JobsApi(http.Client client,
+  CloudTalentSolutionApi(http.Client client,
       {core.String rootUrl = 'https://jobs.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

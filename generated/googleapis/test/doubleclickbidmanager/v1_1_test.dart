@@ -1190,7 +1190,7 @@ void main() {
   unittest.group('resource-LineitemsResourceApi', () {
     unittest.test('method--downloadlineitems', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).lineitems;
+      var res = api.DoubleClickBidManagerApi(mock).lineitems;
       var arg_request = buildDownloadLineItemsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1245,7 +1245,7 @@ void main() {
 
     unittest.test('method--uploadlineitems', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).lineitems;
+      var res = api.DoubleClickBidManagerApi(mock).lineitems;
       var arg_request = buildUploadLineItemsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1301,7 +1301,7 @@ void main() {
   unittest.group('resource-QueriesResourceApi', () {
     unittest.test('method--createquery', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_request = buildQuery();
       var arg_asynchronous = true;
       var arg_$fields = 'foo';
@@ -1359,7 +1359,7 @@ void main() {
 
     unittest.test('method--deletequery', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_queryId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1410,7 +1410,7 @@ void main() {
 
     unittest.test('method--getquery', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_queryId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1463,7 +1463,7 @@ void main() {
 
     unittest.test('method--listqueries', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1521,7 +1521,7 @@ void main() {
 
     unittest.test('method--runquery', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).queries;
+      var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_request = buildRunQueryRequest();
       var arg_queryId = 'foo';
       var arg_asynchronous = true;
@@ -1583,7 +1583,7 @@ void main() {
   unittest.group('resource-ReportsResourceApi', () {
     unittest.test('method--listreports', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).reports;
+      var res = api.DoubleClickBidManagerApi(mock).reports;
       var arg_queryId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1653,7 +1653,7 @@ void main() {
   unittest.group('resource-SdfResourceApi', () {
     unittest.test('method--download', () {
       var mock = HttpServerMock();
-      var res = api.DoubleclickbidmanagerApi(mock).sdf;
+      var res = api.DoubleClickBidManagerApi(mock).sdf;
       var arg_request = buildDownloadRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

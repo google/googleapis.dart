@@ -220,7 +220,7 @@ void main() {
   unittest.group('resource-UsersResourceApi', () {
     unittest.test('method--getLoginProfile', () {
       var mock = HttpServerMock();
-      var res = api.OsloginApi(mock).users;
+      var res = api.CloudOSLoginApi(mock).users;
       var arg_name = 'foo';
       var arg_projectId = 'foo';
       var arg_systemId = 'foo';
@@ -277,7 +277,7 @@ void main() {
 
     unittest.test('method--importSshPublicKey', () {
       var mock = HttpServerMock();
-      var res = api.OsloginApi(mock).users;
+      var res = api.CloudOSLoginApi(mock).users;
       var arg_request = buildSshPublicKey();
       var arg_parent = 'foo';
       var arg_projectId = 'foo';
@@ -337,7 +337,7 @@ void main() {
   unittest.group('resource-UsersProjectsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.OsloginApi(mock).users.projects;
+      var res = api.CloudOSLoginApi(mock).users.projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -387,7 +387,7 @@ void main() {
   unittest.group('resource-UsersSshPublicKeysResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.OsloginApi(mock).users.sshPublicKeys;
+      var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -435,7 +435,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.OsloginApi(mock).users.sshPublicKeys;
+      var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -483,7 +483,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.OsloginApi(mock).users.sshPublicKeys;
+      var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       var arg_request = buildSshPublicKey();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

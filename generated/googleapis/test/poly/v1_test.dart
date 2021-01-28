@@ -611,7 +611,7 @@ void main() {
   unittest.group('resource-AssetsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.PolyApi(mock).assets;
+      var res = api.PolyServiceApi(mock).assets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -659,7 +659,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.PolyApi(mock).assets;
+      var res = api.PolyServiceApi(mock).assets;
       var arg_category = 'foo';
       var arg_curated = true;
       var arg_format = 'foo';
@@ -739,7 +739,7 @@ void main() {
   unittest.group('resource-UsersAssetsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.PolyApi(mock).users.assets;
+      var res = api.PolyServiceApi(mock).users.assets;
       var arg_name = 'foo';
       var arg_format = 'foo';
       var arg_orderBy = 'foo';
@@ -809,7 +809,7 @@ void main() {
   unittest.group('resource-UsersLikedassetsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.PolyApi(mock).users.likedassets;
+      var res = api.PolyServiceApi(mock).users.likedassets;
       var arg_name = 'foo';
       var arg_format = 'foo';
       var arg_orderBy = 'foo';

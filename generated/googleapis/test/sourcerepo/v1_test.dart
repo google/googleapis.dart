@@ -859,7 +859,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects;
+      var res = api.CloudSourceRepositoriesApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -907,7 +907,7 @@ void main() {
 
     unittest.test('method--updateConfig', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects;
+      var res = api.CloudSourceRepositoriesApi(mock).projects;
       var arg_request = buildUpdateProjectConfigRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -962,7 +962,7 @@ void main() {
   unittest.group('resource-ProjectsReposResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_request = buildRepo();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1015,7 +1015,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1063,7 +1063,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1111,7 +1111,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1166,7 +1166,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_name = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1223,7 +1223,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_request = buildUpdateRepoRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1276,7 +1276,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1329,7 +1329,7 @@ void main() {
 
     unittest.test('method--sync', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_request = buildSyncRepoRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1382,7 +1382,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.SourcerepoApi(mock).projects.repos;
+      var res = api.CloudSourceRepositoriesApi(mock).projects.repos;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';

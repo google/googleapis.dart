@@ -2273,7 +2273,7 @@ void main() {
   unittest.group('resource-EditsResourceApi', () {
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits;
+      var res = api.AndroidPublisherApi(mock).edits;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2339,7 +2339,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits;
+      var res = api.AndroidPublisherApi(mock).edits;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2397,7 +2397,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits;
+      var res = api.AndroidPublisherApi(mock).edits;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2457,7 +2457,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits;
+      var res = api.AndroidPublisherApi(mock).edits;
       var arg_request = buildAppEdit();
       var arg_packageName = 'foo';
       var arg_$fields = 'foo';
@@ -2518,7 +2518,7 @@ void main() {
 
     unittest.test('method--validate', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits;
+      var res = api.AndroidPublisherApi(mock).edits;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2586,7 +2586,7 @@ void main() {
   unittest.group('resource-EditsApksResourceApi', () {
     unittest.test('method--addexternallyhosted', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.apks;
+      var res = api.AndroidPublisherApi(mock).edits.apks;
       var arg_request = buildApksAddExternallyHostedRequest();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -2660,7 +2660,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.apks;
+      var res = api.AndroidPublisherApi(mock).edits.apks;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2729,7 +2729,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.apks;
+      var res = api.AndroidPublisherApi(mock).edits.apks;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2797,7 +2797,7 @@ void main() {
   unittest.group('resource-EditsBundlesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.bundles;
+      var res = api.AndroidPublisherApi(mock).edits.bundles;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -2866,7 +2866,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.bundles;
+      var res = api.AndroidPublisherApi(mock).edits.bundles;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_ackBundleInstallationWarning = true;
@@ -2942,7 +2942,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.deobfuscationfiles;
+      var res = api.AndroidPublisherApi(mock).edits.deobfuscationfiles;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_apkVersionCode = 42;
@@ -3027,7 +3027,7 @@ void main() {
   unittest.group('resource-EditsDetailsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.details;
+      var res = api.AndroidPublisherApi(mock).edits.details;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -3093,7 +3093,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.details;
+      var res = api.AndroidPublisherApi(mock).edits.details;
       var arg_request = buildAppDetails();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -3164,7 +3164,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.details;
+      var res = api.AndroidPublisherApi(mock).edits.details;
       var arg_request = buildAppDetails();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -3238,7 +3238,7 @@ void main() {
   unittest.group('resource-EditsExpansionfilesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.expansionfiles;
+      var res = api.AndroidPublisherApi(mock).edits.expansionfiles;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_apkVersionCode = 42;
@@ -3320,7 +3320,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.expansionfiles;
+      var res = api.AndroidPublisherApi(mock).edits.expansionfiles;
       var arg_request = buildExpansionFile();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -3407,7 +3407,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.expansionfiles;
+      var res = api.AndroidPublisherApi(mock).edits.expansionfiles;
       var arg_request = buildExpansionFile();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -3497,7 +3497,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.expansionfiles;
+      var res = api.AndroidPublisherApi(mock).edits.expansionfiles;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_apkVersionCode = 42;
@@ -3582,7 +3582,7 @@ void main() {
   unittest.group('resource-EditsImagesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.images;
+      var res = api.AndroidPublisherApi(mock).edits.images;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_language = 'foo';
@@ -3672,7 +3672,7 @@ void main() {
 
     unittest.test('method--deleteall', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.images;
+      var res = api.AndroidPublisherApi(mock).edits.images;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_language = 'foo';
@@ -3753,7 +3753,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.images;
+      var res = api.AndroidPublisherApi(mock).edits.images;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_language = 'foo';
@@ -3837,7 +3837,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.images;
+      var res = api.AndroidPublisherApi(mock).edits.images;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_language = 'foo';
@@ -3920,7 +3920,7 @@ void main() {
   unittest.group('resource-EditsListingsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.listings;
+      var res = api.AndroidPublisherApi(mock).edits.listings;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_language = 'foo';
@@ -3989,7 +3989,7 @@ void main() {
 
     unittest.test('method--deleteall', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.listings;
+      var res = api.AndroidPublisherApi(mock).edits.listings;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -4053,7 +4053,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.listings;
+      var res = api.AndroidPublisherApi(mock).edits.listings;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_language = 'foo';
@@ -4123,7 +4123,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.listings;
+      var res = api.AndroidPublisherApi(mock).edits.listings;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -4189,7 +4189,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.listings;
+      var res = api.AndroidPublisherApi(mock).edits.listings;
       var arg_request = buildListing();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -4265,7 +4265,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.listings;
+      var res = api.AndroidPublisherApi(mock).edits.listings;
       var arg_request = buildListing();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -4343,7 +4343,7 @@ void main() {
   unittest.group('resource-EditsTestersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.testers;
+      var res = api.AndroidPublisherApi(mock).edits.testers;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_track = 'foo';
@@ -4413,7 +4413,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.testers;
+      var res = api.AndroidPublisherApi(mock).edits.testers;
       var arg_request = buildTesters();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -4489,7 +4489,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.testers;
+      var res = api.AndroidPublisherApi(mock).edits.testers;
       var arg_request = buildTesters();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -4567,7 +4567,7 @@ void main() {
   unittest.group('resource-EditsTracksResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.tracks;
+      var res = api.AndroidPublisherApi(mock).edits.tracks;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_track = 'foo';
@@ -4637,7 +4637,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.tracks;
+      var res = api.AndroidPublisherApi(mock).edits.tracks;
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
@@ -4703,7 +4703,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.tracks;
+      var res = api.AndroidPublisherApi(mock).edits.tracks;
       var arg_request = buildTrack();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -4779,7 +4779,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).edits.tracks;
+      var res = api.AndroidPublisherApi(mock).edits.tracks;
       var arg_request = buildTrack();
       var arg_packageName = 'foo';
       var arg_editId = 'foo';
@@ -4857,7 +4857,7 @@ void main() {
   unittest.group('resource-InappproductsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).inappproducts;
+      var res = api.AndroidPublisherApi(mock).inappproducts;
       var arg_packageName = 'foo';
       var arg_sku = 'foo';
       var arg_$fields = 'foo';
@@ -4915,7 +4915,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).inappproducts;
+      var res = api.AndroidPublisherApi(mock).inappproducts;
       var arg_packageName = 'foo';
       var arg_sku = 'foo';
       var arg_$fields = 'foo';
@@ -4975,7 +4975,7 @@ void main() {
 
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).inappproducts;
+      var res = api.AndroidPublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = 'foo';
       var arg_autoConvertMissingPrices = true;
@@ -5041,7 +5041,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).inappproducts;
+      var res = api.AndroidPublisherApi(mock).inappproducts;
       var arg_packageName = 'foo';
       var arg_maxResults = 42;
       var arg_startIndex = 42;
@@ -5110,7 +5110,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).inappproducts;
+      var res = api.AndroidPublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = 'foo';
       var arg_sku = 'foo';
@@ -5180,7 +5180,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).inappproducts;
+      var res = api.AndroidPublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = 'foo';
       var arg_sku = 'foo';
@@ -5255,7 +5255,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).internalappsharingartifacts;
+      var res = api.AndroidPublisherApi(mock).internalappsharingartifacts;
       var arg_packageName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5317,7 +5317,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).internalappsharingartifacts;
+      var res = api.AndroidPublisherApi(mock).internalappsharingartifacts;
       var arg_packageName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5378,7 +5378,7 @@ void main() {
   unittest.group('resource-OrdersResourceApi', () {
     unittest.test('method--refund', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).orders;
+      var res = api.AndroidPublisherApi(mock).orders;
       var arg_packageName = 'foo';
       var arg_orderId = 'foo';
       var arg_revoke = true;
@@ -5448,7 +5448,7 @@ void main() {
   unittest.group('resource-PurchasesProductsResourceApi', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.products;
+      var res = api.AndroidPublisherApi(mock).purchases.products;
       var arg_request = buildProductPurchasesAcknowledgeRequest();
       var arg_packageName = 'foo';
       var arg_productId = 'foo';
@@ -5529,7 +5529,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.products;
+      var res = api.AndroidPublisherApi(mock).purchases.products;
       var arg_packageName = 'foo';
       var arg_productId = 'foo';
       var arg_token = 'foo';
@@ -5601,7 +5601,7 @@ void main() {
   unittest.group('resource-PurchasesSubscriptionsResourceApi', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.subscriptions;
+      var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
       var arg_request = buildSubscriptionPurchasesAcknowledgeRequest();
       var arg_packageName = 'foo';
       var arg_subscriptionId = 'foo';
@@ -5683,7 +5683,7 @@ void main() {
 
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.subscriptions;
+      var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
       var arg_packageName = 'foo';
       var arg_token = 'foo';
       var arg_$fields = 'foo';
@@ -5747,7 +5747,7 @@ void main() {
 
     unittest.test('method--defer', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.subscriptions;
+      var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
       var arg_request = buildSubscriptionPurchasesDeferRequest();
       var arg_packageName = 'foo';
       var arg_subscriptionId = 'foo';
@@ -5832,7 +5832,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.subscriptions;
+      var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
       var arg_packageName = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_token = 'foo';
@@ -5903,7 +5903,7 @@ void main() {
 
     unittest.test('method--refund', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.subscriptions;
+      var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
       var arg_packageName = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_token = 'foo';
@@ -5978,7 +5978,7 @@ void main() {
 
     unittest.test('method--revoke', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.subscriptions;
+      var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
       var arg_packageName = 'foo';
       var arg_subscriptionId = 'foo';
       var arg_token = 'foo';
@@ -6055,7 +6055,7 @@ void main() {
   unittest.group('resource-PurchasesVoidedpurchasesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).purchases.voidedpurchases;
+      var res = api.AndroidPublisherApi(mock).purchases.voidedpurchases;
       var arg_packageName = 'foo';
       var arg_endTime = 'foo';
       var arg_maxResults = 42;
@@ -6138,7 +6138,7 @@ void main() {
   unittest.group('resource-ReviewsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).reviews;
+      var res = api.AndroidPublisherApi(mock).reviews;
       var arg_packageName = 'foo';
       var arg_reviewId = 'foo';
       var arg_translationLanguage = 'foo';
@@ -6203,7 +6203,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).reviews;
+      var res = api.AndroidPublisherApi(mock).reviews;
       var arg_packageName = 'foo';
       var arg_maxResults = 42;
       var arg_startIndex = 42;
@@ -6275,7 +6275,7 @@ void main() {
 
     unittest.test('method--reply', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).reviews;
+      var res = api.AndroidPublisherApi(mock).reviews;
       var arg_request = buildReviewsReplyRequest();
       var arg_packageName = 'foo';
       var arg_reviewId = 'foo';
@@ -6349,7 +6349,7 @@ void main() {
   unittest.group('resource-SystemapksVariantsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).systemapks.variants;
+      var res = api.AndroidPublisherApi(mock).systemapks.variants;
       var arg_request = buildVariant();
       var arg_packageName = 'foo';
       var arg_versionCode = 'foo';
@@ -6424,7 +6424,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).systemapks.variants;
+      var res = api.AndroidPublisherApi(mock).systemapks.variants;
       var arg_packageName = 'foo';
       var arg_versionCode = 'foo';
       var arg_variantId = 42;
@@ -6499,7 +6499,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).systemapks.variants;
+      var res = api.AndroidPublisherApi(mock).systemapks.variants;
       var arg_packageName = 'foo';
       var arg_versionCode = 'foo';
       var arg_variantId = 42;
@@ -6570,7 +6570,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidpublisherApi(mock).systemapks.variants;
+      var res = api.AndroidPublisherApi(mock).systemapks.variants;
       var arg_packageName = 'foo';
       var arg_versionCode = 'foo';
       var arg_$fields = 'foo';

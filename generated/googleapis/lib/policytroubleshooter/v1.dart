@@ -34,7 +34,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-class PolicytroubleshooterApi {
+class PolicyTroubleshooterApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -43,7 +43,7 @@ class PolicytroubleshooterApi {
 
   IamResourceApi get iam => IamResourceApi(_requester);
 
-  PolicytroubleshooterApi(http.Client client,
+  PolicyTroubleshooterApi(http.Client client,
       {core.String rootUrl = 'https://policytroubleshooter.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

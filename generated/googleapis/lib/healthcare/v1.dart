@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manage, store, and access healthcare data in Google Cloud Platform.
-class HealthcareApi {
+class CloudHealthcareApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class HealthcareApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  HealthcareApi(http.Client client,
+  CloudHealthcareApi(http.Client client,
       {core.String rootUrl = 'https://healthcare.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
@@ -3865,7 +3865,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> Patient_everything(
+  async.Future<HttpBody> PatientEverything(
     core.String name, {
     core.int P_count,
     core.String P_pageToken,
@@ -3948,7 +3948,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> Resource_purge(
+  async.Future<Empty> ResourcePurge(
     core.String name, {
     core.String $fields,
   }) {

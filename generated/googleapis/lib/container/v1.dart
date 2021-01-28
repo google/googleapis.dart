@@ -252,8 +252,8 @@ class ProjectsLocationsClustersResourceApi {
 
   ProjectsLocationsClustersNodePoolsResourceApi get nodePools =>
       ProjectsLocationsClustersNodePoolsResourceApi(_requester);
-  ProjectsLocationsClustersWell_knownResourceApi get well_known =>
-      ProjectsLocationsClustersWell_knownResourceApi(_requester);
+  ProjectsLocationsClustersWellKnownResourceApi get wellKnown =>
+      ProjectsLocationsClustersWellKnownResourceApi(_requester);
 
   ProjectsLocationsClustersResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2024,10 +2024,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   }
 }
 
-class ProjectsLocationsClustersWell_knownResourceApi {
+class ProjectsLocationsClustersWellKnownResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsClustersWell_knownResourceApi(commons.ApiRequester client)
+  ProjectsLocationsClustersWellKnownResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the OIDC discovery document for the cluster. See the [OpenID Connect
@@ -2053,7 +2053,7 @@ class ProjectsLocationsClustersWell_knownResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetOpenIDConfigResponse> getOpenid_configuration(
+  async.Future<GetOpenIDConfigResponse> getOpenidConfiguration(
     core.String parent, {
     core.String $fields,
   }) {

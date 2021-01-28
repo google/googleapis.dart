@@ -45,7 +45,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Display & Video 360 API allows users to manage and create campaigns and
 /// reports.
-class DisplayvideoApi {
+class DisplayVideoApi {
   /// Create, see, edit, and permanently delete your Display & Video 360
   /// entities and reports
   static const displayVideoScope =
@@ -90,7 +90,7 @@ class DisplayvideoApi {
       TargetingTypesResourceApi(_requester);
   UsersResourceApi get users => UsersResourceApi(_requester);
 
-  DisplayvideoApi(http.Client client,
+  DisplayVideoApi(http.Client client,
       {core.String rootUrl = 'https://displayvideo.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

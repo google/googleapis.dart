@@ -43,13 +43,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         ByteRange;
 
 /// Enables bots to fetch information and perform actions in Hangouts Chat.
-class ChatApi {
+class HangoutsChatApi {
   final commons.ApiRequester _requester;
 
   MediaResourceApi get media => MediaResourceApi(_requester);
   SpacesResourceApi get spaces => SpacesResourceApi(_requester);
 
-  ChatApi(http.Client client,
+  HangoutsChatApi(http.Client client,
       {core.String rootUrl = 'https://chat.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

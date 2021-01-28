@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Stores sensitive data such as API keys, passwords, and certificates.
 /// Provides convenience while improving security.
-class SecretmanagerApi {
+class SecretManagerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class SecretmanagerApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  SecretmanagerApi(http.Client client,
+  SecretManagerApi(http.Client client,
       {core.String rootUrl = 'https://secretmanager.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

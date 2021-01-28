@@ -46,13 +46,13 @@ const userAgent = 'dart-api-client toyApi/0.1';
 /// consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 /// cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
 /// non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-class ToyApiApi {
+class ToyApi {
   final commons.ApiRequester _requester;
 
   ComputeResourceApi get compute => ComputeResourceApi(_requester);
   StorageResourceApi get storage => StorageResourceApi(_requester);
 
-  ToyApiApi(http.Client client,
+  ToyApi(http.Client client,
       {core.String rootUrl = 'http://localhost:9090/',
       core.String servicePath = 'api/toyApi/0.1/'})
       : _requester =

@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Provides polling places, early vote locations, contest data, election
 /// officials, and government representatives for U.S. residential addresses.
-class CivicinfoApi {
+class CivicInfoApi {
   final commons.ApiRequester _requester;
 
   DivisionsResourceApi get divisions => DivisionsResourceApi(_requester);
@@ -44,7 +44,7 @@ class CivicinfoApi {
   RepresentativesResourceApi get representatives =>
       RepresentativesResourceApi(_requester);
 
-  CivicinfoApi(http.Client client,
+  CivicInfoApi(http.Client client,
       {core.String rootUrl = 'https://civicinfo.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

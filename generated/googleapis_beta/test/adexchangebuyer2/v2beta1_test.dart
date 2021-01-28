@@ -4467,7 +4467,7 @@ void main() {
   unittest.group('resource-AccountsClientsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients;
       var arg_request = buildClient();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -4528,7 +4528,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients;
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
       var arg_$fields = 'foo';
@@ -4588,7 +4588,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients;
       var arg_accountId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4657,7 +4657,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients;
       var arg_request = buildClient();
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
@@ -4725,7 +4725,7 @@ void main() {
   unittest.group('resource-AccountsClientsInvitationsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients.invitations;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.invitations;
       var arg_request = buildClientUserInvitation();
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
@@ -4797,7 +4797,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients.invitations;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.invitations;
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
       var arg_invitationId = 'foo';
@@ -4868,7 +4868,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients.invitations;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.invitations;
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
       var arg_pageSize = 42;
@@ -4947,7 +4947,7 @@ void main() {
   unittest.group('resource-AccountsClientsUsersResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients.users;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.users;
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
       var arg_userId = 'foo';
@@ -5018,7 +5018,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients.users;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.users;
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
       var arg_pageSize = 42;
@@ -5093,7 +5093,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.clients.users;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.users;
       var arg_request = buildClientUser();
       var arg_accountId = 'foo';
       var arg_clientAccountId = 'foo';
@@ -5171,7 +5171,7 @@ void main() {
   unittest.group('resource-AccountsCreativesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.creatives;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
       var arg_request = buildCreative();
       var arg_accountId = 'foo';
       var arg_duplicateIdMode = 'foo';
@@ -5236,7 +5236,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.creatives;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
       var arg_$fields = 'foo';
@@ -5296,7 +5296,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.creatives;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
       var arg_accountId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -5364,7 +5364,7 @@ void main() {
 
     unittest.test('method--stopWatching', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.creatives;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
       var arg_request = buildStopWatchingCreativeRequest();
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
@@ -5437,7 +5437,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.creatives;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
       var arg_request = buildCreative();
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
@@ -5503,7 +5503,7 @@ void main() {
 
     unittest.test('method--watch', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.creatives;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
       var arg_request = buildWatchCreativeRequest();
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
@@ -5578,7 +5578,7 @@ void main() {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).accounts.creatives.dealAssociations;
+          api.AdExchangeBuyerIIApi(mock).accounts.creatives.dealAssociations;
       var arg_request = buildAddDealAssociationRequest();
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
@@ -5650,7 +5650,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).accounts.creatives.dealAssociations;
+          api.AdExchangeBuyerIIApi(mock).accounts.creatives.dealAssociations;
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
       var arg_pageSize = 42;
@@ -5730,7 +5730,7 @@ void main() {
     unittest.test('method--remove', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).accounts.creatives.dealAssociations;
+          api.AdExchangeBuyerIIApi(mock).accounts.creatives.dealAssociations;
       var arg_request = buildRemoveDealAssociationRequest();
       var arg_accountId = 'foo';
       var arg_creativeId = 'foo';
@@ -5805,7 +5805,7 @@ void main() {
   unittest.group('resource-AccountsFinalizedProposalsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.finalizedProposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.finalizedProposals;
       var arg_accountId = 'foo';
       var arg_filter = 'foo';
       var arg_filterSyntax = 'foo';
@@ -5879,7 +5879,7 @@ void main() {
   unittest.group('resource-AccountsProductsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.products;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.products;
       var arg_accountId = 'foo';
       var arg_productId = 'foo';
       var arg_$fields = 'foo';
@@ -5939,7 +5939,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.products;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.products;
       var arg_accountId = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6009,7 +6009,7 @@ void main() {
   unittest.group('resource-AccountsProposalsResourceApi', () {
     unittest.test('method--accept', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildAcceptProposalRequest();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6081,7 +6081,7 @@ void main() {
 
     unittest.test('method--addNote', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildAddNoteRequest();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6153,7 +6153,7 @@ void main() {
 
     unittest.test('method--cancelNegotiation', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildCancelNegotiationRequest();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6225,7 +6225,7 @@ void main() {
 
     unittest.test('method--completeSetup', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildCompleteSetupRequest();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6297,7 +6297,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildProposal();
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
@@ -6358,7 +6358,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
       var arg_$fields = 'foo';
@@ -6418,7 +6418,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_accountId = 'foo';
       var arg_filter = 'foo';
       var arg_filterSyntax = 'foo';
@@ -6490,7 +6490,7 @@ void main() {
 
     unittest.test('method--pause', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildPauseProposalRequest();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6562,7 +6562,7 @@ void main() {
 
     unittest.test('method--resume', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildResumeProposalRequest();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6634,7 +6634,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
       var arg_request = buildProposal();
       var arg_accountId = 'foo';
       var arg_proposalId = 'foo';
@@ -6702,7 +6702,7 @@ void main() {
   unittest.group('resource-AccountsPublisherProfilesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.publisherProfiles;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.publisherProfiles;
       var arg_accountId = 'foo';
       var arg_publisherProfileId = 'foo';
       var arg_$fields = 'foo';
@@ -6762,7 +6762,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).accounts.publisherProfiles;
+      var res = api.AdExchangeBuyerIIApi(mock).accounts.publisherProfiles;
       var arg_accountId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -6830,7 +6830,7 @@ void main() {
   unittest.group('resource-BiddersAccountsFilterSetsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets;
       var arg_request = buildFilterSet();
       var arg_ownerName = 'foo';
       var arg_isTransient = true;
@@ -6887,7 +6887,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6935,7 +6935,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6983,7 +6983,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets;
       var arg_ownerName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7043,7 +7043,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets.bidMetrics;
+          api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets.bidMetrics;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7103,7 +7103,7 @@ void main() {
       'resource-BiddersAccountsFilterSetsBidResponseErrorsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7169,7 +7169,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7235,7 +7235,7 @@ void main() {
       'resource-BiddersAccountsFilterSetsFilteredBidRequestsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7300,7 +7300,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7364,7 +7364,7 @@ void main() {
       'resource-BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7432,7 +7432,7 @@ void main() {
       'resource-BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7500,7 +7500,7 @@ void main() {
       'resource-BiddersAccountsFilterSetsImpressionMetricsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7565,7 +7565,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).bidders.accounts.filterSets.losingBids;
+          api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets.losingBids;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7626,7 +7626,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .accounts
           .filterSets
@@ -7691,7 +7691,7 @@ void main() {
   unittest.group('resource-BiddersFilterSetsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets;
       var arg_request = buildFilterSet();
       var arg_ownerName = 'foo';
       var arg_isTransient = true;
@@ -7748,7 +7748,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7796,7 +7796,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7844,7 +7844,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets;
       var arg_ownerName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7903,7 +7903,7 @@ void main() {
   unittest.group('resource-BiddersFilterSetsBidMetricsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets.bidMetrics;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets.bidMetrics;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -7963,7 +7963,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).bidders.filterSets.bidResponseErrors;
+          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.bidResponseErrors;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -8024,7 +8024,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .filterSets
           .bidResponsesWithoutBids;
@@ -8090,7 +8090,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).bidders.filterSets.filteredBidRequests;
+          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.filteredBidRequests;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -8150,7 +8150,7 @@ void main() {
   unittest.group('resource-BiddersFilterSetsFilteredBidsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets.filteredBids;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets.filteredBids;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -8210,7 +8210,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .filterSets
           .filteredBids
@@ -8277,8 +8277,11 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res =
-          api.Adexchangebuyer2Api(mock).bidders.filterSets.filteredBids.details;
+      var res = api.AdExchangeBuyerIIApi(mock)
+          .bidders
+          .filterSets
+          .filteredBids
+          .details;
       var arg_filterSetName = 'foo';
       var arg_creativeStatusId = 42;
       var arg_pageSize = 42;
@@ -8341,7 +8344,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.Adexchangebuyer2Api(mock).bidders.filterSets.impressionMetrics;
+          api.AdExchangeBuyerIIApi(mock).bidders.filterSets.impressionMetrics;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -8401,7 +8404,7 @@ void main() {
   unittest.group('resource-BiddersFilterSetsLosingBidsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock).bidders.filterSets.losingBids;
+      var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets.losingBids;
       var arg_filterSetName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -8461,7 +8464,7 @@ void main() {
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.Adexchangebuyer2Api(mock)
+      var res = api.AdExchangeBuyerIIApi(mock)
           .bidders
           .filterSets
           .nonBillableWinningBids;

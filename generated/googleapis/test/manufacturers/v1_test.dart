@@ -653,7 +653,7 @@ void main() {
   unittest.group('resource-AccountsProductsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -702,7 +702,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_name = 'foo';
       var arg_include = buildUnnamed1739();
@@ -753,7 +753,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
       var arg_include = buildUnnamed1740();
       var arg_pageSize = 42;
@@ -813,7 +813,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.ManufacturersApi(mock).accounts.products;
+      var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_request = buildAttributes();
       var arg_parent = 'foo';
       var arg_name = 'foo';

@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages Apache Airflow environments on Google Cloud Platform.
-class ComposerApi {
+class CloudComposerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class ComposerApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  ComposerApi(http.Client client,
+  CloudComposerApi(http.Client client,
       {core.String rootUrl = 'https://composer.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Enables services that service consumers want to use on Google Cloud
 /// Platform, lists the available or enabled services, or disables services that
 /// service consumers no longer use.
-class ServiceusageApi {
+class ServiceUsageApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -57,7 +57,7 @@ class ServiceusageApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ServicesResourceApi get services => ServicesResourceApi(_requester);
 
-  ServiceusageApi(http_1.Client client,
+  ServiceUsageApi(http_1.Client client,
       {core.String rootUrl = 'https://serviceusage.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

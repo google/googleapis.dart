@@ -3337,7 +3337,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--complete', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects;
+      var res = api.CloudTalentSolutionApi(mock).projects;
       var arg_name = 'foo';
       var arg_companyName = 'foo';
       var arg_languageCode = 'foo';
@@ -3413,7 +3413,7 @@ void main() {
   unittest.group('resource-ProjectsClientEventsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.clientEvents;
+      var res = api.CloudTalentSolutionApi(mock).projects.clientEvents;
       var arg_request = buildCreateClientEventRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3468,7 +3468,7 @@ void main() {
   unittest.group('resource-ProjectsCompaniesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.companies;
+      var res = api.CloudTalentSolutionApi(mock).projects.companies;
       var arg_request = buildCreateCompanyRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3521,7 +3521,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.companies;
+      var res = api.CloudTalentSolutionApi(mock).projects.companies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3569,7 +3569,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.companies;
+      var res = api.CloudTalentSolutionApi(mock).projects.companies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3617,7 +3617,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.companies;
+      var res = api.CloudTalentSolutionApi(mock).projects.companies;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3678,7 +3678,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.companies;
+      var res = api.CloudTalentSolutionApi(mock).projects.companies;
       var arg_request = buildUpdateCompanyRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3733,7 +3733,7 @@ void main() {
   unittest.group('resource-ProjectsJobsResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_request = buildBatchDeleteJobsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3786,7 +3786,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_request = buildCreateJobRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -3839,7 +3839,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3887,7 +3887,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3935,7 +3935,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_jobView = 'foo';
@@ -3999,7 +3999,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_request = buildUpdateJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4052,7 +4052,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_request = buildSearchJobsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4105,7 +4105,7 @@ void main() {
 
     unittest.test('method--searchForAlert', () {
       var mock = HttpServerMock();
-      var res = api.JobsApi(mock).projects.jobs;
+      var res = api.CloudTalentSolutionApi(mock).projects.jobs;
       var arg_request = buildSearchJobsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Google Cloud Memorystore for Memcached API is used for creating and managing
 /// Memcached instances in GCP.
-class MemcacheApi {
+class CloudMemorystoreForMemcachedApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class MemcacheApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  MemcacheApi(http.Client client,
+  CloudMemorystoreForMemcachedApi(http.Client client,
       {core.String rootUrl = 'https://memcache.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

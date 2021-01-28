@@ -893,17 +893,30 @@ DartApiClass parseResources(
   DartApiImports imports,
   DartSchemaTypeDB db,
   RestDescription description,
-) =>
-    _parseResource(
-      imports,
-      db,
-      description,
-      description.name,
-      description.description,
-      description.methods,
-      description.resources,
-      '',
-    ) as DartApiClass;
+) {
+  var resourceName =
+      (description.canonicalName ?? description.name).replaceAllMapped(
+    _spaceCapitalRegExp,
+    (match) => match.group(1).toUpperCase(),
+  );
+
+  if (resourceName.toLowerCase().endsWith('api')) {
+    resourceName = resourceName.substring(0, resourceName.length - 3);
+  }
+
+  return _parseResource(
+    imports,
+    db,
+    description,
+    resourceName,
+    description.description,
+    description.methods,
+    description.resources,
+    '',
+  ) as DartApiClass;
+}
+
+final _spaceCapitalRegExp = RegExp(' ([a-zA-Z])');
 
 /// Generates a string representation of all resource classes, beginning with
 /// [apiClass].

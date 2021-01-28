@@ -35,7 +35,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-class FactchecktoolsApi {
+class FactCheckToolsApi {
   /// View your email address
   static const userinfoEmailScope =
       'https://www.googleapis.com/auth/userinfo.email';
@@ -45,7 +45,7 @@ class FactchecktoolsApi {
   ClaimsResourceApi get claims => ClaimsResourceApi(_requester);
   PagesResourceApi get pages => PagesResourceApi(_requester);
 
-  FactchecktoolsApi(http.Client client,
+  FactCheckToolsApi(http.Client client,
       {core.String rootUrl = 'https://factchecktools.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

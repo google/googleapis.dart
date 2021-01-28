@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages lightweight user-provided functions executed in response to events.
-class CloudfunctionsApi {
+class CloudFunctionsApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -45,7 +45,7 @@ class CloudfunctionsApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudfunctionsApi(http.Client client,
+  CloudFunctionsApi(http.Client client,
       {core.String rootUrl = 'https://cloudfunctions.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -63,7 +63,7 @@ void main() {
       // TODO: Implement tests for media download;
 
       var mock = HttpServerMock();
-      var res = api.GroupsmigrationApi(mock).archive;
+      var res = api.GroupsMigrationApi(mock).archive;
       var arg_groupId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

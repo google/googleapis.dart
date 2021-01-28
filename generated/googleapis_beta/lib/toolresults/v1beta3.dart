@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// API to publish and access results from developer tools.
-class ToolresultsApi {
+class ToolResultsApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class ToolresultsApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  ToolresultsApi(http.Client client,
+  ToolResultsApi(http.Client client,
       {core.String rootUrl = 'https://toolresults.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

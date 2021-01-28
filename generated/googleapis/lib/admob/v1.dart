@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The AdMob API allows publishers to programmatically get information about
 /// their AdMob account.
-class AdmobApi {
+class AdMobApi {
   /// See your AdMob data
   static const admobReportScope =
       'https://www.googleapis.com/auth/admob.report';
@@ -46,7 +46,7 @@ class AdmobApi {
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
-  AdmobApi(http.Client client,
+  AdMobApi(http.Client client,
       {core.String rootUrl = 'https://admob.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -35,12 +35,12 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Searches over a website or collection of websites
-class CustomsearchApi {
+class CustomSearchApi {
   final commons.ApiRequester _requester;
 
   CseResourceApi get cse => CseResourceApi(_requester);
 
-  CustomsearchApi(http.Client client,
+  CustomSearchApi(http.Client client,
       {core.String rootUrl = 'https://customsearch.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

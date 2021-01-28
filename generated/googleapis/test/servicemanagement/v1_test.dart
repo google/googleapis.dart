@@ -4080,7 +4080,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).operations;
+      var res = api.ServiceManagementApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4128,7 +4128,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).operations;
+      var res = api.ServiceManagementApi(mock).operations;
       var arg_filter = 'foo';
       var arg_name = 'foo';
       var arg_pageSize = 42;
@@ -4191,7 +4191,7 @@ void main() {
   unittest.group('resource-ServicesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_request = buildManagedService();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4242,7 +4242,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4292,7 +4292,7 @@ void main() {
 
     unittest.test('method--enable', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_request = buildEnableServiceRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -4353,7 +4353,7 @@ void main() {
 
     unittest.test('method--generateConfigReport', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_request = buildGenerateConfigReportRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4406,7 +4406,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4456,7 +4456,7 @@ void main() {
 
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_serviceName = 'foo';
       var arg_configId = 'foo';
       var arg_view = 'foo';
@@ -4518,7 +4518,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4571,7 +4571,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_consumerId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4634,7 +4634,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4687,7 +4687,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4741,7 +4741,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services;
+      var res = api.ServiceManagementApi(mock).services;
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4799,7 +4799,7 @@ void main() {
   unittest.group('resource-ServicesConfigsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.configs;
+      var res = api.ServiceManagementApi(mock).services.configs;
       var arg_request = buildService();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -4860,7 +4860,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.configs;
+      var res = api.ServiceManagementApi(mock).services.configs;
       var arg_serviceName = 'foo';
       var arg_configId = 'foo';
       var arg_view = 'foo';
@@ -4923,7 +4923,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.configs;
+      var res = api.ServiceManagementApi(mock).services.configs;
       var arg_serviceName = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4989,7 +4989,7 @@ void main() {
 
     unittest.test('method--submit', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.configs;
+      var res = api.ServiceManagementApi(mock).services.configs;
       var arg_request = buildSubmitConfigSourceRequest();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -5052,7 +5052,7 @@ void main() {
   unittest.group('resource-ServicesConsumersResourceApi', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.consumers;
+      var res = api.ServiceManagementApi(mock).services.consumers;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5105,7 +5105,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.consumers;
+      var res = api.ServiceManagementApi(mock).services.consumers;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5158,7 +5158,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.consumers;
+      var res = api.ServiceManagementApi(mock).services.consumers;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5214,7 +5214,7 @@ void main() {
   unittest.group('resource-ServicesRolloutsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.rollouts;
+      var res = api.ServiceManagementApi(mock).services.rollouts;
       var arg_request = buildRollout();
       var arg_serviceName = 'foo';
       var arg_$fields = 'foo';
@@ -5275,7 +5275,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.rollouts;
+      var res = api.ServiceManagementApi(mock).services.rollouts;
       var arg_serviceName = 'foo';
       var arg_rolloutId = 'foo';
       var arg_$fields = 'foo';
@@ -5335,7 +5335,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ServicemanagementApi(mock).services.rollouts;
+      var res = api.ServiceManagementApi(mock).services.rollouts;
       var arg_serviceName = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

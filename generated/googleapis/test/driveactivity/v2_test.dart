@@ -1732,7 +1732,7 @@ void main() {
   unittest.group('resource-ActivityResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      var res = api.DriveactivityApi(mock).activity;
+      var res = api.DriveActivityApi(mock).activity;
       var arg_request = buildQueryDriveActivityRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

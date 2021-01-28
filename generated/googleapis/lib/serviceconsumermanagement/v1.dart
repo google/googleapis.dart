@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Manages the service consumers of a Service Infrastructure service.
-class ServiceconsumermanagementApi {
+class ServiceConsumerManagementApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class ServiceconsumermanagementApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ServicesResourceApi get services => ServicesResourceApi(_requester);
 
-  ServiceconsumermanagementApi(http_1.Client client,
+  ServiceConsumerManagementApi(http_1.Client client,
       {core.String rootUrl =
           'https://serviceconsumermanagement.googleapis.com/',
       core.String servicePath = ''})

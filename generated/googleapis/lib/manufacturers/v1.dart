@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Public API for managing Manufacturer Center related data.
-class ManufacturersApi {
+class ManufacturerCenterApi {
   /// Manage your product listings for Google Manufacturer Center
   static const manufacturercenterScope =
       'https://www.googleapis.com/auth/manufacturercenter';
@@ -44,7 +44,7 @@ class ManufacturersApi {
 
   AccountsResourceApi get accounts => AccountsResourceApi(_requester);
 
-  ManufacturersApi(http.Client client,
+  ManufacturerCenterApi(http.Client client,
       {core.String rootUrl = 'https://manufacturers.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

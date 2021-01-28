@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Provides methods for detection, risk analysis, and de-identification of
 /// privacy-sensitive fragments in text, images, and Google Cloud Platform
 /// storage repositories.
-class DlpApi {
+class DLPApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -52,7 +52,7 @@ class DlpApi {
       OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  DlpApi(http.Client client,
+  DLPApi(http.Client client,
       {core.String rootUrl = 'https://dlp.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

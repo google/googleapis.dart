@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manages keys and performs cryptographic operations in a central cloud
 /// service, for direct use by other cloud resources and applications.
-class CloudkmsApi {
+class CloudKMSApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -50,7 +50,7 @@ class CloudkmsApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudkmsApi(http.Client client,
+  CloudKMSApi(http.Client client,
       {core.String rootUrl = 'https://cloudkms.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

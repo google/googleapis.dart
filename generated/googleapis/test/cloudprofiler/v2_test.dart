@@ -167,7 +167,7 @@ void main() {
   unittest.group('resource-ProjectsProfilesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudprofilerApi(mock).projects.profiles;
+      var res = api.CloudProfilerApi(mock).projects.profiles;
       var arg_request = buildCreateProfileRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -220,7 +220,7 @@ void main() {
 
     unittest.test('method--createOffline', () {
       var mock = HttpServerMock();
-      var res = api.CloudprofilerApi(mock).projects.profiles;
+      var res = api.CloudProfilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -273,7 +273,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudprofilerApi(mock).projects.profiles;
+      var res = api.CloudProfilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

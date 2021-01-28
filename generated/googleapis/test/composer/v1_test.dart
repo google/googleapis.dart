@@ -764,7 +764,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsEnvironmentsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.environments;
+      var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_request = buildEnvironment();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -817,7 +817,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.environments;
+      var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -865,7 +865,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.environments;
+      var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -913,7 +913,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.environments;
+      var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -970,7 +970,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.environments;
+      var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_request = buildEnvironment();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1029,7 +1029,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsImageVersionsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.imageVersions;
+      var res = api.CloudComposerApi(mock).projects.locations.imageVersions;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1089,7 +1089,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.operations;
+      var res = api.CloudComposerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1137,7 +1137,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.operations;
+      var res = api.CloudComposerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1185,7 +1185,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.ComposerApi(mock).projects.locations.operations;
+      var res = api.CloudComposerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

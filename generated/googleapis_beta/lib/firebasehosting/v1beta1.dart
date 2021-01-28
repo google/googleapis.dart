@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Firebase Hosting REST API enables programmatic and customizable
 /// deployments to your Firebase-hosted sites. Use this REST API to deploy new
 /// or updated hosting configurations and content files.
-class FirebasehostingApi {
+class FirebaseHostingApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -60,7 +60,7 @@ class FirebasehostingApi {
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
   SitesResourceApi get sites => SitesResourceApi(_requester);
 
-  FirebasehostingApi(http.Client client,
+  FirebaseHostingApi(http.Client client,
       {core.String rootUrl = 'https://firebasehosting.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

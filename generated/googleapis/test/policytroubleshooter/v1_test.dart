@@ -554,7 +554,7 @@ void main() {
   unittest.group('resource-IamResourceApi', () {
     unittest.test('method--troubleshoot', () {
       var mock = HttpServerMock();
-      var res = api.PolicytroubleshooterApi(mock).iam;
+      var res = api.PolicyTroubleshooterApi(mock).iam;
       var arg_request =
           buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
       var arg_$fields = 'foo';

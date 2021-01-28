@@ -74,8 +74,11 @@ class Scope {
 
   /// Returns a valid identifier based on [preferredName] but different from all
   /// other names previously returned by this method.
-  Identifier newIdentifier(String preferredName,
-      {bool removeUnderscores = true, bool global = false}) {
+  Identifier newIdentifier(
+    String preferredName, {
+    bool removeUnderscores = true,
+    bool global = false,
+  }) {
     final identifier = Identifier(Scope.toValidIdentifier(preferredName,
         removeUnderscores: removeUnderscores, global: global));
     identifiers.add(identifier);
@@ -89,17 +92,25 @@ class Scope {
     return child;
   }
 
+  static final _dashStringRegExp = RegExp('\-([a-zA-Z])');
+
   /// Converts [preferredName] to a valid identifier.
-  static String toValidIdentifier(String preferredName,
-      {bool removeUnderscores = true, bool global = false}) {
+  static String toValidIdentifier(
+    String preferredName, {
+    bool removeUnderscores = true,
+    bool global = false,
+  }) {
     // Replace all abc_xyz with abcXyz.
     if (removeUnderscores) {
       preferredName =
           Scope.capitalizeAtChar(preferredName, '_', keepEnding: true);
     }
 
-    preferredName = preferredName.replaceAll('-', '_').replaceAll('.', '_');
-    preferredName = preferredName.replaceAll(_nonAscii, '_');
+    preferredName = preferredName.replaceAllMapped(
+        _dashStringRegExp, (match) => match[1].toUpperCase());
+
+    preferredName =
+        preferredName.replaceAll('-', '_').replaceAll(_nonAscii, '_');
 
     if (preferredName.startsWith(_startsWithDigit)) {
       preferredName = 'D$preferredName';
@@ -231,7 +242,7 @@ class IdentifierNamer {
 
 /// Helper class for allocating unique names for generating an API library.
 class ApiLibraryNamer {
-  String apiClassSuffix;
+  final String apiClassSuffix;
   Scope _libraryScope;
 
   /// NOTE: Only exposed for testing.
@@ -268,11 +279,6 @@ class ApiLibraryNamer {
     name = Scope.capitalize(name);
 
     if (parent != null && parent.isNotEmpty) {
-      // The parent of a resource is either the api class or another resource!
-      if (!parent.endsWith('Api')) {
-        throw ArgumentError('The parent has to end with Api');
-      }
-
       final parentIsApiClass = !parent.endsWith('ResourceApi');
       if (parentIsApiClass) {
         // We never prefix resource names with the api class name.

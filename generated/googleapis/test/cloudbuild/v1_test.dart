@@ -1876,7 +1876,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).operations;
+      var res = api.CloudBuildApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1929,7 +1929,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).operations;
+      var res = api.CloudBuildApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1979,7 +1979,7 @@ void main() {
   unittest.group('resource-ProjectsBuildsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.builds;
+      var res = api.CloudBuildApi(mock).projects.builds;
       var arg_request = buildCancelBuildRequest();
       var arg_projectId = 'foo';
       var arg_id = 'foo';
@@ -2050,7 +2050,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.builds;
+      var res = api.CloudBuildApi(mock).projects.builds;
       var arg_request = buildBuild();
       var arg_projectId = 'foo';
       var arg_parent = 'foo';
@@ -2114,7 +2114,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.builds;
+      var res = api.CloudBuildApi(mock).projects.builds;
       var arg_projectId = 'foo';
       var arg_id = 'foo';
       var arg_name = 'foo';
@@ -2176,7 +2176,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.builds;
+      var res = api.CloudBuildApi(mock).projects.builds;
       var arg_projectId = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2247,7 +2247,7 @@ void main() {
 
     unittest.test('method--retry', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.builds;
+      var res = api.CloudBuildApi(mock).projects.builds;
       var arg_request = buildRetryBuildRequest();
       var arg_projectId = 'foo';
       var arg_id = 'foo';
@@ -2320,7 +2320,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsBuildsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.builds;
+      var res = api.CloudBuildApi(mock).projects.locations.builds;
       var arg_request = buildCancelBuildRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2373,7 +2373,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.builds;
+      var res = api.CloudBuildApi(mock).projects.locations.builds;
       var arg_request = buildBuild();
       var arg_parent = 'foo';
       var arg_projectId = 'foo';
@@ -2430,7 +2430,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.builds;
+      var res = api.CloudBuildApi(mock).projects.locations.builds;
       var arg_name = 'foo';
       var arg_id = 'foo';
       var arg_projectId = 'foo';
@@ -2484,7 +2484,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.builds;
+      var res = api.CloudBuildApi(mock).projects.locations.builds;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2548,7 +2548,7 @@ void main() {
 
     unittest.test('method--retry', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.builds;
+      var res = api.CloudBuildApi(mock).projects.locations.builds;
       var arg_request = buildRetryBuildRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2603,7 +2603,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.operations;
+      var res = api.CloudBuildApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2656,7 +2656,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.locations.operations;
+      var res = api.CloudBuildApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2706,7 +2706,7 @@ void main() {
   unittest.group('resource-ProjectsTriggersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.triggers;
+      var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_request = buildBuildTrigger();
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
@@ -2767,7 +2767,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.triggers;
+      var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';
       var arg_$fields = 'foo';
@@ -2827,7 +2827,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.triggers;
+      var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';
       var arg_$fields = 'foo';
@@ -2887,7 +2887,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.triggers;
+      var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_projectId = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2953,7 +2953,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.triggers;
+      var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_request = buildBuildTrigger();
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';
@@ -3019,7 +3019,7 @@ void main() {
 
     unittest.test('method--run', () {
       var mock = HttpServerMock();
-      var res = api.CloudbuildApi(mock).projects.triggers;
+      var res = api.CloudBuildApi(mock).projects.triggers;
       var arg_request = buildRepoSource();
       var arg_projectId = 'foo';
       var arg_triggerId = 'foo';

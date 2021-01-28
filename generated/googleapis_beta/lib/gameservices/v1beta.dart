@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Deploy and manage infrastructure for global multiplayer gaming experiences.
-class GameservicesApi {
+class GameServicesApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class GameservicesApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  GameservicesApi(http.Client client,
+  GameServicesApi(http.Client client,
       {core.String rootUrl = 'https://gameservices.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

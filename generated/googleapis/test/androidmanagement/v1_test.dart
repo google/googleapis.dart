@@ -3603,7 +3603,7 @@ void main() {
   unittest.group('resource-EnterprisesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises;
+      var res = api.AndroidManagementApi(mock).enterprises;
       var arg_request = buildEnterprise();
       var arg_enterpriseToken = 'foo';
       var arg_projectId = 'foo';
@@ -3667,7 +3667,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises;
+      var res = api.AndroidManagementApi(mock).enterprises;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3715,7 +3715,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises;
+      var res = api.AndroidManagementApi(mock).enterprises;
       var arg_request = buildEnterprise();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3774,7 +3774,7 @@ void main() {
   unittest.group('resource-EnterprisesApplicationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.applications;
+      var res = api.AndroidManagementApi(mock).enterprises.applications;
       var arg_name = 'foo';
       var arg_languageCode = 'foo';
       var arg_$fields = 'foo';
@@ -3827,7 +3827,7 @@ void main() {
   unittest.group('resource-EnterprisesDevicesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices;
+      var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_name = 'foo';
       var arg_wipeDataFlags = buildUnnamed5285();
       var arg_wipeReasonMessage = 'foo';
@@ -3884,7 +3884,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices;
+      var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3932,7 +3932,7 @@ void main() {
 
     unittest.test('method--issueCommand', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices;
+      var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_request = buildCommand();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3985,7 +3985,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices;
+      var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4042,7 +4042,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices;
+      var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_request = buildDevice();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4101,7 +4101,7 @@ void main() {
   unittest.group('resource-EnterprisesDevicesOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices.operations;
+      var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4149,7 +4149,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices.operations;
+      var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4197,7 +4197,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices.operations;
+      var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4245,7 +4245,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.devices.operations;
+      var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -4307,7 +4307,7 @@ void main() {
   unittest.group('resource-EnterprisesEnrollmentTokensResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.enrollmentTokens;
+      var res = api.AndroidManagementApi(mock).enterprises.enrollmentTokens;
       var arg_request = buildEnrollmentToken();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4360,7 +4360,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.enrollmentTokens;
+      var res = api.AndroidManagementApi(mock).enterprises.enrollmentTokens;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4410,7 +4410,7 @@ void main() {
   unittest.group('resource-EnterprisesPoliciesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.policies;
+      var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4458,7 +4458,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.policies;
+      var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4506,7 +4506,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.policies;
+      var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4563,7 +4563,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.policies;
+      var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_request = buildPolicy();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4622,7 +4622,7 @@ void main() {
   unittest.group('resource-EnterprisesWebAppsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.webApps;
+      var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_request = buildWebApp();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4675,7 +4675,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.webApps;
+      var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4723,7 +4723,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.webApps;
+      var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4771,7 +4771,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.webApps;
+      var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4828,7 +4828,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.webApps;
+      var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_request = buildWebApp();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -4887,7 +4887,7 @@ void main() {
   unittest.group('resource-EnterprisesWebTokensResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).enterprises.webTokens;
+      var res = api.AndroidManagementApi(mock).enterprises.webTokens;
       var arg_request = buildWebToken();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4942,7 +4942,7 @@ void main() {
   unittest.group('resource-SignupUrlsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AndroidmanagementApi(mock).signupUrls;
+      var res = api.AndroidManagementApi(mock).signupUrls;
       var arg_callbackUrl = 'foo';
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';

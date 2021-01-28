@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// OS management tools that can be used for patch management, patch compliance,
 /// and configuration management on VM instances.
-class OsconfigApi {
+class OSConfigApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -46,7 +46,7 @@ class OsconfigApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  OsconfigApi(http.Client client,
+  OSConfigApi(http.Client client,
       {core.String rootUrl = 'https://osconfig.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -1298,7 +1298,7 @@ void main() {
   unittest.group('resource-AvailableProjectsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).availableProjects;
+      var res = api.FirebaseManagementApi(mock).availableProjects;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1356,7 +1356,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).operations;
+      var res = api.FirebaseManagementApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1406,7 +1406,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--addFirebase', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildAddFirebaseRequest();
       var arg_project = 'foo';
       var arg_$fields = 'foo';
@@ -1459,7 +1459,7 @@ void main() {
 
     unittest.test('method--addGoogleAnalytics', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildAddGoogleAnalyticsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1512,7 +1512,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1560,7 +1560,7 @@ void main() {
 
     unittest.test('method--getAdminSdkConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1608,7 +1608,7 @@ void main() {
 
     unittest.test('method--getAnalyticsDetails', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1656,7 +1656,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -1712,7 +1712,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildFirebaseProject();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1769,7 +1769,7 @@ void main() {
 
     unittest.test('method--removeAnalytics', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildRemoveAnalyticsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1822,7 +1822,7 @@ void main() {
 
     unittest.test('method--searchApps', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects;
+      var res = api.FirebaseManagementApi(mock).projects;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1885,7 +1885,7 @@ void main() {
   unittest.group('resource-ProjectsAndroidAppsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_request = buildAndroidApp();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1938,7 +1938,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1986,7 +1986,7 @@ void main() {
 
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2034,7 +2034,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2091,7 +2091,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_request = buildAndroidApp();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2150,7 +2150,7 @@ void main() {
   unittest.group('resource-ProjectsAndroidAppsShaResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps.sha;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
       var arg_request = buildShaCertificate();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2203,7 +2203,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps.sha;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2251,7 +2251,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.androidApps.sha;
+      var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2302,7 +2302,7 @@ void main() {
   unittest.group('resource-ProjectsAvailableLocationsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.availableLocations;
+      var res = api.FirebaseManagementApi(mock).projects.availableLocations;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2362,7 +2362,7 @@ void main() {
   unittest.group('resource-ProjectsDefaultLocationResourceApi', () {
     unittest.test('method--finalize', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.defaultLocation;
+      var res = api.FirebaseManagementApi(mock).projects.defaultLocation;
       var arg_request = buildFinalizeDefaultLocationRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2418,7 +2418,7 @@ void main() {
   unittest.group('resource-ProjectsIosAppsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.iosApps;
+      var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_request = buildIosApp();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2471,7 +2471,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.iosApps;
+      var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2519,7 +2519,7 @@ void main() {
 
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.iosApps;
+      var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2567,7 +2567,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.iosApps;
+      var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2624,7 +2624,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.iosApps;
+      var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_request = buildIosApp();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2683,7 +2683,7 @@ void main() {
   unittest.group('resource-ProjectsWebAppsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.webApps;
+      var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_request = buildWebApp();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2736,7 +2736,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.webApps;
+      var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2784,7 +2784,7 @@ void main() {
 
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.webApps;
+      var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2832,7 +2832,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.webApps;
+      var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2889,7 +2889,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.FirebaseApi(mock).projects.webApps;
+      var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_request = buildWebApp();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Read-only public API that lets users search for information about domain
 /// names.
-class DomainsrdapApi {
+class DomainsRDAPApi {
   final commons.ApiRequester _requester;
 
   AutnumResourceApi get autnum => AutnumResourceApi(_requester);
@@ -47,7 +47,7 @@ class DomainsrdapApi {
   NameserverResourceApi get nameserver => NameserverResourceApi(_requester);
   V1ResourceApi get v1 => V1ResourceApi(_requester);
 
-  DomainsrdapApi(http.Client client,
+  DomainsRDAPApi(http.Client client,
       {core.String rootUrl = 'https://domainsrdap.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

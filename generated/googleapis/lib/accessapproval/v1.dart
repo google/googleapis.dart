@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// An API for controlling access to data by Google personnel.
-class AccessapprovalApi {
+class AccessApprovalApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -47,7 +47,7 @@ class AccessapprovalApi {
       OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  AccessapprovalApi(http.Client client,
+  AccessApprovalApi(http.Client client,
       {core.String rootUrl = 'https://accessapproval.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

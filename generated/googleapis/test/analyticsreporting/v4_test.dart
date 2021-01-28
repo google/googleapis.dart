@@ -2256,7 +2256,7 @@ void main() {
   unittest.group('resource-ReportsResourceApi', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
-      var res = api.AnalyticsreportingApi(mock).reports;
+      var res = api.AnalyticsReportingApi(mock).reports;
       var arg_request = buildGetReportsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2309,7 +2309,7 @@ void main() {
   unittest.group('resource-UserActivityResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.AnalyticsreportingApi(mock).userActivity;
+      var res = api.AnalyticsReportingApi(mock).userActivity;
       var arg_request = buildSearchUserActivityRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

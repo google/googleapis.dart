@@ -817,7 +817,7 @@ void main() {
   unittest.group('resource-PhotoResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photo;
+      var res = api.StreetViewPublishApi(mock).photo;
       var arg_request = buildPhoto();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -868,7 +868,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photo;
+      var res = api.StreetViewPublishApi(mock).photo;
       var arg_photoId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -918,7 +918,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photo;
+      var res = api.StreetViewPublishApi(mock).photo;
       var arg_photoId = 'foo';
       var arg_languageCode = 'foo';
       var arg_view = 'foo';
@@ -976,7 +976,7 @@ void main() {
 
     unittest.test('method--startUpload', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photo;
+      var res = api.StreetViewPublishApi(mock).photo;
       var arg_request = buildEmpty();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1027,7 +1027,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photo;
+      var res = api.StreetViewPublishApi(mock).photo;
       var arg_request = buildPhoto();
       var arg_id = 'foo';
       var arg_updateMask = 'foo';
@@ -1088,7 +1088,7 @@ void main() {
   unittest.group('resource-PhotosResourceApi', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photos;
+      var res = api.StreetViewPublishApi(mock).photos;
       var arg_request = buildBatchDeletePhotosRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1140,7 +1140,7 @@ void main() {
 
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photos;
+      var res = api.StreetViewPublishApi(mock).photos;
       var arg_languageCode = 'foo';
       var arg_photoIds = buildUnnamed5731();
       var arg_view = 'foo';
@@ -1197,7 +1197,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photos;
+      var res = api.StreetViewPublishApi(mock).photos;
       var arg_request = buildBatchUpdatePhotosRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1249,7 +1249,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.StreetviewpublishApi(mock).photos;
+      var res = api.StreetViewPublishApi(mock).photos;
       var arg_filter = 'foo';
       var arg_languageCode = 'foo';
       var arg_pageSize = 42;

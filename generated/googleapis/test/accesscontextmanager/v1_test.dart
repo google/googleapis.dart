@@ -1258,7 +1258,7 @@ void main() {
   unittest.group('resource-AccessPoliciesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies;
+      var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_request = buildAccessPolicy();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1309,7 +1309,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies;
+      var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1357,7 +1357,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies;
+      var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1405,7 +1405,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies;
+      var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_parent = 'foo';
@@ -1464,7 +1464,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies;
+      var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_request = buildAccessPolicy();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1523,7 +1523,7 @@ void main() {
   unittest.group('resource-AccessPoliciesAccessLevelsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
+      var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildAccessLevel();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1576,7 +1576,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
+      var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1624,7 +1624,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
+      var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_name = 'foo';
       var arg_accessLevelFormat = 'foo';
       var arg_$fields = 'foo';
@@ -1676,7 +1676,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
+      var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_parent = 'foo';
       var arg_accessLevelFormat = 'foo';
       var arg_pageSize = 42;
@@ -1737,7 +1737,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
+      var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildAccessLevel();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1794,7 +1794,7 @@ void main() {
 
     unittest.test('method--replaceAll', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).accessPolicies.accessLevels;
+      var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildReplaceAccessLevelsRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1850,7 +1850,7 @@ void main() {
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildCommitServicePerimetersRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1905,7 +1905,7 @@ void main() {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildServicePerimeter();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -1959,7 +1959,7 @@ void main() {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2008,7 +2008,7 @@ void main() {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2057,7 +2057,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2116,7 +2116,7 @@ void main() {
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildServicePerimeter();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2174,7 +2174,7 @@ void main() {
     unittest.test('method--replaceAll', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).accessPolicies.servicePerimeters;
+          api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
       var arg_request = buildReplaceServicePerimetersRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2230,7 +2230,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).operations;
+      var res = api.AccessContextManagerApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2283,7 +2283,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).operations;
+      var res = api.AccessContextManagerApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2331,7 +2331,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).operations;
+      var res = api.AccessContextManagerApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2379,7 +2379,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.AccesscontextmanagerApi(mock).operations;
+      var res = api.AccessContextManagerApi(mock).operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2442,7 +2442,7 @@ void main() {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
+          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_request = buildGcpUserAccessBinding();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2496,7 +2496,7 @@ void main() {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
+          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2545,7 +2545,7 @@ void main() {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
+          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2594,7 +2594,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
+          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -2654,7 +2654,7 @@ void main() {
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
       var res =
-          api.AccesscontextmanagerApi(mock).organizations.gcpUserAccessBindings;
+          api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
       var arg_request = buildGcpUserAccessBinding();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';

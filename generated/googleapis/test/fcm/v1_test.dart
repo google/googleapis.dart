@@ -654,7 +654,7 @@ void main() {
   unittest.group('resource-ProjectsMessagesResourceApi', () {
     unittest.test('method--send', () {
       var mock = HttpServerMock();
-      var res = api.FcmApi(mock).projects.messages;
+      var res = api.FirebaseCloudMessagingApi(mock).projects.messages;
       var arg_request = buildSendMessageRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';

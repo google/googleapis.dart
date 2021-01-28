@@ -880,7 +880,7 @@ void main() {
   unittest.group('resource-AgentUsersResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HomegraphApi(mock).agentUsers;
+      var res = api.HomeGraphServiceApi(mock).agentUsers;
       var arg_agentUserId = 'foo';
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
@@ -934,7 +934,7 @@ void main() {
   unittest.group('resource-DevicesResourceApi', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
-      var res = api.HomegraphApi(mock).devices;
+      var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildQueryRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -985,7 +985,7 @@ void main() {
 
     unittest.test('method--reportStateAndNotification', () {
       var mock = HttpServerMock();
-      var res = api.HomegraphApi(mock).devices;
+      var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildReportStateAndNotificationRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1039,7 +1039,7 @@ void main() {
 
     unittest.test('method--requestSync', () {
       var mock = HttpServerMock();
-      var res = api.HomegraphApi(mock).devices;
+      var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildRequestSyncDevicesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1091,7 +1091,7 @@ void main() {
 
     unittest.test('method--sync', () {
       var mock = HttpServerMock();
-      var res = api.HomegraphApi(mock).devices;
+      var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildSyncRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

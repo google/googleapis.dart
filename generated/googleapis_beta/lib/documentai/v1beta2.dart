@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Service to parse structured information from unstructured or semi-structured
 /// documents using state-of-the-art Google AI such as natural language,
 /// computer vision, translation, and AutoML.
-class DocumentaiApi {
+class DocumentApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -48,7 +48,7 @@ class DocumentaiApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  DocumentaiApi(http.Client client,
+  DocumentApi(http.Client client,
       {core.String rootUrl = 'https://documentai.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

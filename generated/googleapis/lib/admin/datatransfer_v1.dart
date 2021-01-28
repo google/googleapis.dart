@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Admin SDK lets administrators of enterprise domains to view and manage
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
-class AdminApi {
+class DataTransferApi {
   /// View and manage data transfers between users in your organization
   static const adminDatatransferScope =
       'https://www.googleapis.com/auth/admin.datatransfer';
@@ -54,7 +54,7 @@ class AdminApi {
       ApplicationsResourceApi(_requester);
   TransfersResourceApi get transfers => TransfersResourceApi(_requester);
 
-  AdminApi(http.Client client,
+  DataTransferApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Provides access to information about profiles and contacts.
-class PeopleApi {
+class PeopleServiceApi {
   /// See, edit, download, and permanently delete your contacts
   static const contactsScope = 'https://www.googleapis.com/auth/contacts';
 
@@ -92,7 +92,7 @@ class PeopleApi {
       OtherContactsResourceApi(_requester);
   PeopleResourceApi get people => PeopleResourceApi(_requester);
 
-  PeopleApi(http.Client client,
+  PeopleServiceApi(http.Client client,
       {core.String rootUrl = 'https://people.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

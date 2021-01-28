@@ -726,7 +726,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations;
+      var res = api.CloudSchedulerApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -774,7 +774,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations;
+      var res = api.CloudSchedulerApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -836,7 +836,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsJobsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -888,7 +888,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -936,7 +936,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -984,7 +984,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1041,7 +1041,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1097,7 +1097,7 @@ void main() {
 
     unittest.test('method--pause', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildPauseJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1150,7 +1150,7 @@ void main() {
 
     unittest.test('method--resume', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildResumeJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1203,7 +1203,7 @@ void main() {
 
     unittest.test('method--run', () {
       var mock = HttpServerMock();
-      var res = api.CloudschedulerApi(mock).projects.locations.jobs;
+      var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildRunJobRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

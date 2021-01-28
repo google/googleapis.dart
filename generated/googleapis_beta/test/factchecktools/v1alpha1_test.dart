@@ -561,7 +561,7 @@ void main() {
   unittest.group('resource-ClaimsResourceApi', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.FactchecktoolsApi(mock).claims;
+      var res = api.FactCheckToolsApi(mock).claims;
       var arg_languageCode = 'foo';
       var arg_maxAgeDays = 42;
       var arg_offset = 42;
@@ -640,7 +640,7 @@ void main() {
   unittest.group('resource-PagesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.FactchecktoolsApi(mock).pages;
+      var res = api.FactCheckToolsApi(mock).pages;
       var arg_request =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
       var arg_$fields = 'foo';
@@ -698,7 +698,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.FactchecktoolsApi(mock).pages;
+      var res = api.FactCheckToolsApi(mock).pages;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -746,7 +746,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.FactchecktoolsApi(mock).pages;
+      var res = api.FactCheckToolsApi(mock).pages;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -797,7 +797,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.FactchecktoolsApi(mock).pages;
+      var res = api.FactCheckToolsApi(mock).pages;
       var arg_offset = 42;
       var arg_organization = 'foo';
       var arg_pageSize = 42;
@@ -866,7 +866,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.FactchecktoolsApi(mock).pages;
+      var res = api.FactCheckToolsApi(mock).pages;
       var arg_request =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
       var arg_name = 'foo';

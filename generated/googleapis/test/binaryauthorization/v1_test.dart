@@ -781,7 +781,7 @@ void main() {
   unittest.group('resource-ProjectsResourceApi', () {
     unittest.test('method--getPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects;
+      var res = api.BinaryAuthorizationApi(mock).projects;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -829,7 +829,7 @@ void main() {
 
     unittest.test('method--updatePolicy', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects;
+      var res = api.BinaryAuthorizationApi(mock).projects;
       var arg_request = buildPolicy();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -884,7 +884,7 @@ void main() {
   unittest.group('resource-ProjectsAttestorsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildAttestor();
       var arg_parent = 'foo';
       var arg_attestorId = 'foo';
@@ -941,7 +941,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -989,7 +989,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1037,7 +1037,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1092,7 +1092,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1149,7 +1149,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1202,7 +1202,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1256,7 +1256,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildAttestor();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1309,7 +1309,7 @@ void main() {
 
     unittest.test('method--validateAttestationOccurrence', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.attestors;
+      var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildValidateAttestationOccurrenceRequest();
       var arg_attestor = 'foo';
       var arg_$fields = 'foo';
@@ -1368,7 +1368,7 @@ void main() {
   unittest.group('resource-ProjectsPolicyResourceApi', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.policy;
+      var res = api.BinaryAuthorizationApi(mock).projects.policy;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -1423,7 +1423,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.policy;
+      var res = api.BinaryAuthorizationApi(mock).projects.policy;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1476,7 +1476,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.BinaryauthorizationApi(mock).projects.policy;
+      var res = api.BinaryAuthorizationApi(mock).projects.policy;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';

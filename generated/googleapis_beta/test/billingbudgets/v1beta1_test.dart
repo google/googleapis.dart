@@ -531,7 +531,7 @@ void main() {
   unittest.group('resource-BillingAccountsBudgetsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BillingbudgetsApi(mock).billingAccounts.budgets;
+      var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_request =
           buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
       var arg_parent = 'foo';
@@ -589,7 +589,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BillingbudgetsApi(mock).billingAccounts.budgets;
+      var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -637,7 +637,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BillingbudgetsApi(mock).billingAccounts.budgets;
+      var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -687,7 +687,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BillingbudgetsApi(mock).billingAccounts.budgets;
+      var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -746,7 +746,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.BillingbudgetsApi(mock).billingAccounts.budgets;
+      var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_request =
           buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
       var arg_name = 'foo';

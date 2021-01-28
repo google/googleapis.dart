@@ -19,7 +19,7 @@ void main() {
           equals('P_a_bc_def_'));
       expect(identifier('_a_bc_def_'), equals('P_aBcDef_'));
       expect(identifier('_a__bc___def_'), equals('P_aBcDef_'));
-      expect(identifier('A-bc'), equals('A_bc'));
+      expect(identifier('A-bc'), equals('ABc'));
       expect(identifier('A.bc'), equals('A_bc'));
       expect(identifier('A\u1234bc'), equals('A_bc'));
     });
@@ -81,7 +81,8 @@ void main() {
           ['B', 'B'],
           ['abc', 'abc'],
           ['AbC', 'AbC'],
-          ['A-c', 'A_c'],
+          ['A-c', 'AC'],
+          ['well-known', 'wellKnown'],
         ];
         for (var tuple in tuples) {
           final name = tuple[0];

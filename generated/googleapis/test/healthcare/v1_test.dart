@@ -2851,7 +2851,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations;
+      var res = api.CloudHealthcareApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2899,7 +2899,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations;
+      var res = api.CloudHealthcareApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2961,7 +2961,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDataset();
       var arg_parent = 'foo';
       var arg_datasetId = 'foo';
@@ -3018,7 +3018,7 @@ void main() {
 
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDeidentifyDatasetRequest();
       var arg_sourceDataset = 'foo';
       var arg_$fields = 'foo';
@@ -3071,7 +3071,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3119,7 +3119,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3167,7 +3167,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -3222,7 +3222,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3279,7 +3279,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDataset();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3336,7 +3336,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3389,7 +3389,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets;
+      var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3446,7 +3446,8 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildDicomStore();
       var arg_parent = 'foo';
       var arg_dicomStoreId = 'foo';
@@ -3503,7 +3504,8 @@ void main() {
 
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildDeidentifyDicomStoreRequest();
       var arg_sourceStore = 'foo';
       var arg_$fields = 'foo';
@@ -3557,7 +3559,8 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3605,7 +3608,8 @@ void main() {
 
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildExportDicomDataRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3658,7 +3662,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3706,7 +3711,8 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -3761,7 +3767,8 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildImportDicomDataRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3814,7 +3821,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -3874,7 +3882,8 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildDicomStore();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3931,7 +3940,8 @@ void main() {
 
     unittest.test('method--searchForInstances', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_parent = 'foo';
       var arg_dicomWebPath = 'foo';
       var arg_$fields = 'foo';
@@ -3981,7 +3991,8 @@ void main() {
 
     unittest.test('method--searchForSeries', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_parent = 'foo';
       var arg_dicomWebPath = 'foo';
       var arg_$fields = 'foo';
@@ -4030,7 +4041,8 @@ void main() {
 
     unittest.test('method--searchForStudies', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_parent = 'foo';
       var arg_dicomWebPath = 'foo';
       var arg_$fields = 'foo';
@@ -4079,7 +4091,8 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4132,7 +4145,8 @@ void main() {
 
     unittest.test('method--storeInstances', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildHttpBody();
       var arg_parent = 'foo';
       var arg_dicomWebPath = 'foo';
@@ -4187,7 +4201,8 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.dicomStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4244,7 +4259,7 @@ void main() {
       'resource-ProjectsLocationsDatasetsDicomStoresStudiesResourceApi', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4298,7 +4313,7 @@ void main() {
 
     unittest.test('method--retrieveMetadata', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4352,7 +4367,7 @@ void main() {
 
     unittest.test('method--retrieveStudy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4406,7 +4421,7 @@ void main() {
 
     unittest.test('method--searchForInstances', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4461,7 +4476,7 @@ void main() {
 
     unittest.test('method--searchForSeries', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4515,7 +4530,7 @@ void main() {
 
     unittest.test('method--storeInstances', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4579,7 +4594,7 @@ void main() {
       () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4634,7 +4649,7 @@ void main() {
 
     unittest.test('method--retrieveMetadata', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4689,7 +4704,7 @@ void main() {
 
     unittest.test('method--retrieveSeries', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4744,7 +4759,7 @@ void main() {
 
     unittest.test('method--searchForInstances', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4804,7 +4819,7 @@ void main() {
       () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4860,7 +4875,7 @@ void main() {
 
     unittest.test('method--retrieveInstance', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4916,7 +4931,7 @@ void main() {
 
     unittest.test('method--retrieveMetadata', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -4972,7 +4987,7 @@ void main() {
 
     unittest.test('method--retrieveRendered', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -5032,7 +5047,7 @@ void main() {
       () {
     unittest.test('method--retrieveFrames', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -5089,7 +5104,7 @@ void main() {
 
     unittest.test('method--retrieveRendered', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -5148,7 +5163,8 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsFhirStoresResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildFhirStore();
       var arg_parent = 'foo';
       var arg_fhirStoreId = 'foo';
@@ -5205,7 +5221,8 @@ void main() {
 
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildDeidentifyFhirStoreRequest();
       var arg_sourceStore = 'foo';
       var arg_$fields = 'foo';
@@ -5258,7 +5275,8 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5306,7 +5324,8 @@ void main() {
 
     unittest.test('method--export', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildExportResourcesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5359,7 +5378,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5407,7 +5427,8 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -5462,7 +5483,8 @@ void main() {
 
     unittest.test('method--import', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildImportResourcesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -5515,7 +5537,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -5575,7 +5598,8 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildFhirStore();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -5632,7 +5656,8 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5685,7 +5710,8 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.fhirStores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -5740,10 +5766,14 @@ void main() {
 
   unittest.group('resource-ProjectsLocationsDatasetsFhirStoresFhirResourceApi',
       () {
-    unittest.test('method--Patient_everything', () {
+    unittest.test('method--PatientEverything', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_P_count = 42;
       var arg_P_pageToken = 'foo';
@@ -5796,7 +5826,7 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.Patient_everything(arg_name,
+      res.PatientEverything(arg_name,
               P_count: arg_P_count,
               P_pageToken: arg_P_pageToken,
               P_since: arg_P_since,
@@ -5809,10 +5839,14 @@ void main() {
       })));
     });
 
-    unittest.test('method--Resource_purge', () {
+    unittest.test('method--ResourcePurge', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5851,7 +5885,7 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.Resource_purge(arg_name, $fields: arg_$fields)
+      res.ResourcePurge(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response as api.Empty);
       })));
@@ -5859,8 +5893,12 @@ void main() {
 
     unittest.test('method--capabilities', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5908,8 +5946,12 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_request = buildHttpBody();
       var arg_parent = 'foo';
       var arg_type = 'foo';
@@ -5963,8 +6005,12 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6012,8 +6058,12 @@ void main() {
 
     unittest.test('method--executeBundle', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_request = buildHttpBody();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -6066,8 +6116,12 @@ void main() {
 
     unittest.test('method--history', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_P_at = 'foo';
       var arg_P_count = 42;
@@ -6130,8 +6184,12 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_request = buildHttpBody();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6184,8 +6242,12 @@ void main() {
 
     unittest.test('method--read', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6233,8 +6295,12 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_request = buildSearchResourcesRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -6287,8 +6353,12 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_request = buildHttpBody();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -6341,8 +6411,12 @@ void main() {
 
     unittest.test('method--vread', () {
       var mock = HttpServerMock();
-      var res =
-          api.HealthcareApi(mock).projects.locations.datasets.fhirStores.fhir;
+      var res = api.CloudHealthcareApi(mock)
+          .projects
+          .locations
+          .datasets
+          .fhirStores
+          .fhir;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6393,7 +6467,8 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildHl7V2Store();
       var arg_parent = 'foo';
       var arg_hl7V2StoreId = 'foo';
@@ -6450,7 +6525,8 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6498,7 +6574,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6546,7 +6623,8 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_resource = 'foo';
       var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = 'foo';
@@ -6601,7 +6679,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -6661,7 +6740,8 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildHl7V2Store();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -6718,7 +6798,8 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6771,7 +6852,8 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -6828,7 +6910,7 @@ void main() {
       'resource-ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -6886,7 +6968,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -6939,7 +7021,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -6994,7 +7076,7 @@ void main() {
 
     unittest.test('method--ingest', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -7052,7 +7134,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -7124,7 +7206,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock)
+      var res = api.CloudHealthcareApi(mock)
           .projects
           .locations
           .datasets
@@ -7188,7 +7270,8 @@ void main() {
   unittest.group('resource-ProjectsLocationsDatasetsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.operations;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -7241,7 +7324,8 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.operations;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7289,7 +7373,8 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.HealthcareApi(mock).projects.locations.datasets.operations;
+      var res =
+          api.CloudHealthcareApi(mock).projects.locations.datasets.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

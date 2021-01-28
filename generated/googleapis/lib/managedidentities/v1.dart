@@ -39,7 +39,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Managed Service for Microsoft Active Directory API is used for managing
 /// a highly available, hardened service running Microsoft Active Directory
 /// (AD).
-class ManagedidentitiesApi {
+class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -48,7 +48,7 @@ class ManagedidentitiesApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  ManagedidentitiesApi(http.Client client,
+  ManagedServiceForMicrosoftActiveDirectoryConsumerApi(http.Client client,
       {core.String rootUrl = 'https://managedidentities.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// An implementation of the Grafeas API, which stores, and enables querying and
 /// retrieval of critical metadata about all of your software artifacts.
-class ContaineranalysisApi {
+class ContainerAnalysisApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -47,7 +47,7 @@ class ContaineranalysisApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  ContaineranalysisApi(http.Client client,
+  ContainerAnalysisApi(http.Client client,
       {core.String rootUrl = 'https://containeranalysis.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

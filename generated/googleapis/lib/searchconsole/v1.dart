@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The Search Console API provides access to both Search Console data (verified
 /// users only) and to public information on an URL basis (anyone)
-class SearchconsoleApi {
+class SearchConsoleApi {
   /// View and manage Search Console data for your verified sites
   static const webmastersScope = 'https://www.googleapis.com/auth/webmasters';
 
@@ -55,7 +55,7 @@ class SearchconsoleApi {
   UrlTestingToolsResourceApi get urlTestingTools =>
       UrlTestingToolsResourceApi(_requester);
 
-  SearchconsoleApi(http.Client client,
+  SearchConsoleApi(http.Client client,
       {core.String rootUrl = 'https://searchconsole.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

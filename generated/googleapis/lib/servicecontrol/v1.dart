@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Provides control plane functionality to managed services, such as logging,
 /// monitoring, and status checks.
-class ServicecontrolApi {
+class ServiceControlApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -50,7 +50,7 @@ class ServicecontrolApi {
 
   ServicesResourceApi get services => ServicesResourceApi(_requester);
 
-  ServicecontrolApi(http.Client client,
+  ServiceControlApi(http.Client client,
       {core.String rootUrl = 'https://servicecontrol.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

@@ -861,7 +861,7 @@ void main() {
   unittest.group('resource-CseResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CustomsearchApi(mock).cse;
+      var res = api.CustomSearchApi(mock).cse;
       var arg_c2coff = 'foo';
       var arg_cr = 'foo';
       var arg_cx = 'foo';
@@ -1022,7 +1022,7 @@ void main() {
   unittest.group('resource-CseSiterestrictResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CustomsearchApi(mock).cse.siterestrict;
+      var res = api.CustomSearchApi(mock).cse.siterestrict;
       var arg_c2coff = 'foo';
       var arg_cr = 'foo';
       var arg_cx = 'foo';

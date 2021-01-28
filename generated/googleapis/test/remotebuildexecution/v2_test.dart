@@ -4124,7 +4124,7 @@ void main() {
   unittest.group('resource-ActionResultsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).actionResults;
+      var res = api.RemoteBuildExecutionApi(mock).actionResults;
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
@@ -4189,7 +4189,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).actionResults;
+      var res = api.RemoteBuildExecutionApi(mock).actionResults;
       var arg_request = buildBuildBazelRemoteExecutionV2ActionResult();
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
@@ -4255,7 +4255,7 @@ void main() {
   unittest.group('resource-ActionsResourceApi', () {
     unittest.test('method--execute', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).actions;
+      var res = api.RemoteBuildExecutionApi(mock).actions;
       var arg_request = buildBuildBazelRemoteExecutionV2ExecuteRequest();
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
@@ -4312,7 +4312,7 @@ void main() {
   unittest.group('resource-BlobsResourceApi', () {
     unittest.test('method--batchRead', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_request = buildBuildBazelRemoteExecutionV2BatchReadBlobsRequest();
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
@@ -4368,7 +4368,7 @@ void main() {
 
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_request =
           buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
       var arg_instanceName = 'foo';
@@ -4426,7 +4426,7 @@ void main() {
 
     unittest.test('method--findMissing', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_request =
           buildBuildBazelRemoteExecutionV2FindMissingBlobsRequest();
       var arg_instanceName = 'foo';
@@ -4484,7 +4484,7 @@ void main() {
 
     unittest.test('method--getTree', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).blobs;
+      var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_instanceName = 'foo';
       var arg_hash = 'foo';
       var arg_sizeBytes = 'foo';
@@ -4547,7 +4547,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--waitExecution', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).operations;
+      var res = api.RemoteBuildExecutionApi(mock).operations;
       var arg_request = buildBuildBazelRemoteExecutionV2WaitExecutionRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4604,7 +4604,7 @@ void main() {
   unittest.group('resource-V2ResourceApi', () {
     unittest.test('method--getCapabilities', () {
       var mock = HttpServerMock();
-      var res = api.RemotebuildexecutionApi(mock).v2;
+      var res = api.RemoteBuildExecutionApi(mock).v2;
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

@@ -2330,7 +2330,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).operations;
+      var res = api.BigtableAdminApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2378,7 +2378,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).operations;
+      var res = api.BigtableAdminApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2426,7 +2426,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).operations;
+      var res = api.BigtableAdminApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2476,7 +2476,7 @@ void main() {
   unittest.group('resource-OperationsProjectsOperationsResourceApi', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).operations.projects.operations;
+      var res = api.BigtableAdminApi(mock).operations.projects.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -2538,7 +2538,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildCreateInstanceRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -2591,7 +2591,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2639,7 +2639,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2687,7 +2687,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2740,7 +2740,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -2791,7 +2791,7 @@ void main() {
 
     unittest.test('method--partialUpdateInstance', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildInstance();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -2848,7 +2848,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2901,7 +2901,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -2955,7 +2955,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances;
+      var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildInstance();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3010,7 +3010,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesAppProfilesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.appProfiles;
+      var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_request = buildAppProfile();
       var arg_parent = 'foo';
       var arg_appProfileId = 'foo';
@@ -3072,7 +3072,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.appProfiles;
+      var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_name = 'foo';
       var arg_ignoreWarnings = true;
       var arg_$fields = 'foo';
@@ -3124,7 +3124,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.appProfiles;
+      var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3172,7 +3172,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.appProfiles;
+      var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -3229,7 +3229,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.appProfiles;
+      var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_request = buildAppProfile();
       var arg_name = 'foo';
       var arg_ignoreWarnings = true;
@@ -3293,7 +3293,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesClustersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_request = buildCluster();
       var arg_parent = 'foo';
       var arg_clusterId = 'foo';
@@ -3350,7 +3350,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3398,7 +3398,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3446,7 +3446,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_parent = 'foo';
       var arg_pageToken = 'foo';
       var arg_$fields = 'foo';
@@ -3497,7 +3497,7 @@ void main() {
 
     unittest.test('method--update', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_request = buildCluster();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -3552,7 +3552,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesClustersBackupsResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildBackup();
       var arg_parent = 'foo';
       var arg_backupId = 'foo';
@@ -3609,7 +3609,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3657,7 +3657,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3705,7 +3705,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3758,7 +3758,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -3822,7 +3822,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildBackup();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -3879,7 +3879,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3932,7 +3932,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.clusters.backups;
+      var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -3988,7 +3988,7 @@ void main() {
   unittest.group('resource-ProjectsInstancesTablesResourceApi', () {
     unittest.test('method--checkConsistency', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildCheckConsistencyRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4041,7 +4041,7 @@ void main() {
 
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildCreateTableRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4094,7 +4094,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4142,7 +4142,7 @@ void main() {
 
     unittest.test('method--dropRowRange', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildDropRowRangeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4195,7 +4195,7 @@ void main() {
 
     unittest.test('method--generateConsistencyToken', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildGenerateConsistencyTokenRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4250,7 +4250,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_name = 'foo';
       var arg_view = 'foo';
       var arg_$fields = 'foo';
@@ -4300,7 +4300,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4353,7 +4353,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -4413,7 +4413,7 @@ void main() {
 
     unittest.test('method--modifyColumnFamilies', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildModifyColumnFamiliesRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -4467,7 +4467,7 @@ void main() {
 
     unittest.test('method--restore', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildRestoreTableRequest();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -4520,7 +4520,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4573,7 +4573,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.instances.tables;
+      var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -4629,7 +4629,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.locations;
+      var res = api.BigtableAdminApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4677,7 +4677,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.BigtableadminApi(mock).projects.locations;
+      var res = api.BigtableAdminApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

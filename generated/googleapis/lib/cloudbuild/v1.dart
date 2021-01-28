@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Creates and manages builds on Google Cloud Platform.
-class CloudbuildApi {
+class CloudBuildApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -45,7 +45,7 @@ class CloudbuildApi {
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudbuildApi(http.Client client,
+  CloudBuildApi(http.Client client,
       {core.String rootUrl = 'https://cloudbuild.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

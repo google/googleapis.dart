@@ -35,7 +35,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-class HomegraphApi {
+class HomeGraphServiceApi {
   /// New Service: https://www.googleapis.com/auth/homegraph
   static const homegraphScope = 'https://www.googleapis.com/auth/homegraph';
 
@@ -44,7 +44,7 @@ class HomegraphApi {
   AgentUsersResourceApi get agentUsers => AgentUsersResourceApi(_requester);
   DevicesResourceApi get devices => DevicesResourceApi(_requester);
 
-  HomegraphApi(http.Client client,
+  HomeGraphServiceApi(http.Client client,
       {core.String rootUrl = 'https://homegraph.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

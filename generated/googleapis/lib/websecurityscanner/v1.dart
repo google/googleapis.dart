@@ -36,7 +36,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Scans your Compute and App Engine apps for common web vulnerabilities.
-class WebsecurityscannerApi {
+class WebSecurityScannerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -45,7 +45,7 @@ class WebsecurityscannerApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  WebsecurityscannerApi(http.Client client,
+  WebSecurityScannerApi(http.Client client,
       {core.String rootUrl = 'https://websecurityscanner.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

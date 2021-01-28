@@ -35,7 +35,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Creates and manages jobs run on a regular recurring schedule.
-class CloudschedulerApi {
+class CloudSchedulerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -44,7 +44,7 @@ class CloudschedulerApi {
 
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  CloudschedulerApi(http.Client client,
+  CloudSchedulerApi(http.Client client,
       {core.String rootUrl = 'https://cloudscheduler.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

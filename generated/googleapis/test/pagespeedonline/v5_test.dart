@@ -79,7 +79,7 @@ api.Categories buildCategories() {
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
     o.accessibility = buildLighthouseCategoryV5();
-    o.best_practices = buildLighthouseCategoryV5();
+    o.bestPractices = buildLighthouseCategoryV5();
     o.performance = buildLighthouseCategoryV5();
     o.pwa = buildLighthouseCategoryV5();
     o.seo = buildLighthouseCategoryV5();
@@ -92,7 +92,7 @@ void checkCategories(api.Categories o) {
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
     checkLighthouseCategoryV5(o.accessibility as api.LighthouseCategoryV5);
-    checkLighthouseCategoryV5(o.best_practices as api.LighthouseCategoryV5);
+    checkLighthouseCategoryV5(o.bestPractices as api.LighthouseCategoryV5);
     checkLighthouseCategoryV5(o.performance as api.LighthouseCategoryV5);
     checkLighthouseCategoryV5(o.pwa as api.LighthouseCategoryV5);
     checkLighthouseCategoryV5(o.seo as api.LighthouseCategoryV5);
@@ -876,7 +876,7 @@ void main() {
   unittest.group('resource-PagespeedapiResourceApi', () {
     unittest.test('method--runpagespeed', () {
       var mock = HttpServerMock();
-      var res = api.PagespeedonlineApi(mock).pagespeedapi;
+      var res = api.PagespeedInsightsApi(mock).pagespeedapi;
       var arg_captchaToken = 'foo';
       var arg_category = buildUnnamed2498();
       var arg_locale = 'foo';

@@ -38,7 +38,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Accesses your bidding-account information, submits creatives for validation,
 /// finds available direct deals, and retrieves performance reports.
-class AdexchangebuyerApi {
+class AdExchangeBuyerApi {
   /// Manage your Ad Exchange buyer account configuration
   static const adexchangeBuyerScope =
       'https://www.googleapis.com/auth/adexchange.buyer';
@@ -63,7 +63,7 @@ class AdexchangebuyerApi {
   ProposalsResourceApi get proposals => ProposalsResourceApi(_requester);
   PubprofilesResourceApi get pubprofiles => PubprofilesResourceApi(_requester);
 
-  AdexchangebuyerApi(http.Client client,
+  AdExchangeBuyerApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
       core.String servicePath = 'adexchangebuyer/v1.4/'})
       : _requester =

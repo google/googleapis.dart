@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Deploy and manage user provided container images that scale automatically
 /// based on HTTP traffic.
-class RunApi {
+class CloudRunApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -47,7 +47,7 @@ class RunApi {
   NamespacesResourceApi get namespaces => NamespacesResourceApi(_requester);
   ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
 
-  RunApi(http.Client client,
+  CloudRunApi(http.Client client,
       {core.String rootUrl = 'https://run.googleapis.com/',
       core.String servicePath = ''})
       : _requester =

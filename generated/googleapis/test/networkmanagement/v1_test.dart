@@ -1701,7 +1701,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock).projects.locations;
+      var res = api.NetworkManagementApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1749,7 +1749,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock).projects.locations;
+      var res = api.NetworkManagementApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1812,7 +1812,7 @@ void main() {
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -1872,7 +1872,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -1924,7 +1924,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -1976,7 +1976,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -2035,7 +2035,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -2104,7 +2104,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -2165,7 +2165,7 @@ void main() {
 
     unittest.test('method--rerun', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -2223,7 +2223,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -2280,7 +2280,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.NetworkmanagementApi(mock)
+      var res = api.NetworkManagementApi(mock)
           .projects
           .locations
           .global
@@ -2341,7 +2341,7 @@ void main() {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res =
-          api.NetworkmanagementApi(mock).projects.locations.global.operations;
+          api.NetworkManagementApi(mock).projects.locations.global.operations;
       var arg_request = buildCancelOperationRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -2395,7 +2395,7 @@ void main() {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res =
-          api.NetworkmanagementApi(mock).projects.locations.global.operations;
+          api.NetworkManagementApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2444,7 +2444,7 @@ void main() {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
-          api.NetworkmanagementApi(mock).projects.locations.global.operations;
+          api.NetworkManagementApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2493,7 +2493,7 @@ void main() {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
-          api.NetworkmanagementApi(mock).projects.locations.global.operations;
+          api.NetworkManagementApi(mock).projects.locations.global.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;

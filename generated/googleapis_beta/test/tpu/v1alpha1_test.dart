@@ -914,7 +914,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations;
+      var res = api.TPUApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -962,7 +962,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations;
+      var res = api.TPUApi(mock).projects.locations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1024,7 +1024,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsAcceleratorTypesResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.acceleratorTypes;
+      var res = api.TPUApi(mock).projects.locations.acceleratorTypes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1072,7 +1072,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.acceleratorTypes;
+      var res = api.TPUApi(mock).projects.locations.acceleratorTypes;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';
@@ -1139,7 +1139,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsNodesResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildNode();
       var arg_parent = 'foo';
       var arg_nodeId = 'foo';
@@ -1195,7 +1195,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1243,7 +1243,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1291,7 +1291,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_parent = 'foo';
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
@@ -1348,7 +1348,7 @@ void main() {
 
     unittest.test('method--reimage', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildReimageNodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1401,7 +1401,7 @@ void main() {
 
     unittest.test('method--start', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildStartNodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1454,7 +1454,7 @@ void main() {
 
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.nodes;
+      var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildStopNodeRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1509,7 +1509,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.operations;
+      var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1557,7 +1557,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.operations;
+      var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1605,7 +1605,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.operations;
+      var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1653,7 +1653,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.operations;
+      var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
       var arg_filter = 'foo';
       var arg_pageSize = 42;
@@ -1715,7 +1715,7 @@ void main() {
   unittest.group('resource-ProjectsLocationsTensorflowVersionsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.tensorflowVersions;
+      var res = api.TPUApi(mock).projects.locations.tensorflowVersions;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1763,7 +1763,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.TpuApi(mock).projects.locations.tensorflowVersions;
+      var res = api.TPUApi(mock).projects.locations.tensorflowVersions;
       var arg_parent = 'foo';
       var arg_filter = 'foo';
       var arg_orderBy = 'foo';

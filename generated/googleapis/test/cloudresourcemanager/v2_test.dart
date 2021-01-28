@@ -873,7 +873,7 @@ void main() {
   unittest.group('resource-FoldersResourceApi', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildFolder();
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
@@ -926,7 +926,7 @@ void main() {
 
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -974,7 +974,7 @@ void main() {
 
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1022,7 +1022,7 @@ void main() {
 
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildGetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1075,7 +1075,7 @@ void main() {
 
     unittest.test('method--list', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_pageSize = 42;
       var arg_pageToken = 'foo';
       var arg_parent = 'foo';
@@ -1137,7 +1137,7 @@ void main() {
 
     unittest.test('method--move', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildMoveFolderRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1190,7 +1190,7 @@ void main() {
 
     unittest.test('method--patch', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildFolder();
       var arg_name = 'foo';
       var arg_updateMask = 'foo';
@@ -1247,7 +1247,7 @@ void main() {
 
     unittest.test('method--search', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildSearchFoldersRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1298,7 +1298,7 @@ void main() {
 
     unittest.test('method--setIamPolicy', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildSetIamPolicyRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1351,7 +1351,7 @@ void main() {
 
     unittest.test('method--testIamPermissions', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildTestIamPermissionsRequest();
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
@@ -1405,7 +1405,7 @@ void main() {
 
     unittest.test('method--undelete', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).folders;
+      var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildUndeleteFolderRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -1460,7 +1460,7 @@ void main() {
   unittest.group('resource-OperationsResourceApi', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
-      var res = api.CloudresourcemanagerApi(mock).operations;
+      var res = api.CloudResourceManagerApi(mock).operations;
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

@@ -673,7 +673,7 @@ void main() {
   unittest.group('resource-ProjectsTracesResourceApi', () {
     unittest.test('method--batchWrite', () {
       var mock = HttpServerMock();
-      var res = api.CloudtraceApi(mock).projects.traces;
+      var res = api.CloudTraceApi(mock).projects.traces;
       var arg_request = buildBatchWriteSpansRequest();
       var arg_name = 'foo';
       var arg_$fields = 'foo';
@@ -728,7 +728,7 @@ void main() {
   unittest.group('resource-ProjectsTracesSpansResourceApi', () {
     unittest.test('method--createSpan', () {
       var mock = HttpServerMock();
-      var res = api.CloudtraceApi(mock).projects.traces.spans;
+      var res = api.CloudTraceApi(mock).projects.traces.spans;
       var arg_request = buildSpan();
       var arg_name = 'foo';
       var arg_$fields = 'foo';

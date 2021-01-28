@@ -37,7 +37,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Creates, reads, and updates metadata for Google Cloud Platform resource
 /// containers.
-class CloudresourcemanagerApi {
+class CloudResourceManagerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
@@ -51,7 +51,7 @@ class CloudresourcemanagerApi {
   FoldersResourceApi get folders => FoldersResourceApi(_requester);
   OperationsResourceApi get operations => OperationsResourceApi(_requester);
 
-  CloudresourcemanagerApi(http.Client client,
+  CloudResourceManagerApi(http.Client client,
       {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
