@@ -20,7 +20,7 @@
 /// TPU API provides customers with access to Google TPU technology.
 ///
 /// For more information, see <https://cloud.google.com/tpu/>
-library googleapis_beta.tpu.v1alpha1;
+library tpu.v1alpha1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

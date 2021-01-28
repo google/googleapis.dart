@@ -21,7 +21,7 @@
 /// monitoring and diagnostic capabilities.
 ///
 /// For more information, see <https://cloud.google.com/>
-library googleapis.networkmanagement.v1;
+library networkmanagement.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

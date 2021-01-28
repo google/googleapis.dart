@@ -21,7 +21,7 @@
 /// BigQuery on a regular basis.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
-library googleapis.bigquerydatatransfer.v1;
+library bigquerydatatransfer.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

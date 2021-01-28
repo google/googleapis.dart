@@ -22,7 +22,7 @@
 /// service consumers no longer use.
 ///
 /// For more information, see <https://cloud.google.com/service-usage/>
-library googleapis.serviceusage.v1;
+library serviceusage.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

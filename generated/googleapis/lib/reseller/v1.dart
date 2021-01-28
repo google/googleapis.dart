@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/reseller/>
-library googleapis.reseller.v1;
+library reseller.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

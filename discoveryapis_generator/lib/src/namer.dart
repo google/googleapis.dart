@@ -244,11 +244,10 @@ class ApiLibraryNamer {
   /// NOTE: Only exposed for testing.
   Scope get libraryScope => _libraryScope;
 
-  String libraryName(String package, String api, String version) {
-    package = Scope.toValidIdentifier(package, removeUnderscores: false);
+  String libraryName(String api, String version) {
     api = Scope.toValidIdentifier(api, removeUnderscores: false);
     version = Scope.toValidIdentifier(version, removeUnderscores: false);
-    return '$package.$api.$version';
+    return '$api.$version';
   }
 
   String clientLibraryName(String package, String api) {

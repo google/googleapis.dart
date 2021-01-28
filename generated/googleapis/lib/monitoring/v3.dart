@@ -25,7 +25,7 @@
 /// documentation.
 ///
 /// For more information, see <https://cloud.google.com/monitoring/api/>
-library googleapis.monitoring.v3;
+library monitoring.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

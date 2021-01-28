@@ -21,7 +21,7 @@
 /// programmatically.
 ///
 /// For more information, see <https://cloud.google.com/billing/>
-library googleapis.cloudbilling.v1;
+library cloudbilling.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

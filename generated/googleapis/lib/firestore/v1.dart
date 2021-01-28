@@ -21,7 +21,7 @@
 /// performance, and ease of application development.
 ///
 /// For more information, see <https://cloud.google.com/firestore>
-library googleapis.firestore.v1;
+library firestore.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

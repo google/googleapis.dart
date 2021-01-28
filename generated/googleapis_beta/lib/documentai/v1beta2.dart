@@ -22,7 +22,7 @@
 /// computer vision, translation, and AutoML.
 ///
 /// For more information, see <https://cloud.google.com/document-ai/docs/>
-library googleapis_beta.documentai.v1beta2;
+library documentai.v1beta2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

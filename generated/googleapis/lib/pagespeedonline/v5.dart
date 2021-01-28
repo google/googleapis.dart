@@ -24,7 +24,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/speed/docs/insights/v5/about>
-library googleapis.pagespeedonline.v5;
+library pagespeedonline.v5;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

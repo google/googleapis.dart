@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/android/work/play/emm-api>
-library googleapis.androidenterprise.v1;
+library androidenterprise.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

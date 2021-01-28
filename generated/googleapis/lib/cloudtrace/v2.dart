@@ -24,7 +24,7 @@
 /// your application for Cloud Trace, we recommend using OpenCensus.
 ///
 /// For more information, see <https://cloud.google.com/trace>
-library googleapis.cloudtrace.v2;
+library cloudtrace.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

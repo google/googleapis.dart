@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/cloud-search/docs/guides/>
-library googleapis.cloudsearch.v1;
+library cloudsearch.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

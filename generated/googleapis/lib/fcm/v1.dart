@@ -21,7 +21,7 @@
 /// deliver messages at no cost.
 ///
 /// For more information, see <https://firebase.google.com/docs/cloud-messaging>
-library googleapis.fcm.v1;
+library fcm.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

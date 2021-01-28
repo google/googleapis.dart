@@ -20,7 +20,7 @@
 /// An API for controlling access to data by Google personnel.
 ///
 /// For more information, see <https://cloud.google.com/access-approval/docs>
-library googleapis.accessapproval.v1;
+library accessapproval.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

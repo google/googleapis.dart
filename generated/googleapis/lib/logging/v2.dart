@@ -23,7 +23,7 @@
 /// documentation at https://cloud.google.com/logging/docs.
 ///
 /// For more information, see <https://cloud.google.com/logging/docs/>
-library googleapis.logging.v2;
+library logging.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

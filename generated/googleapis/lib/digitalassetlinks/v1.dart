@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/digital-asset-links/>
-library googleapis.digitalassetlinks.v1;
+library digitalassetlinks.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

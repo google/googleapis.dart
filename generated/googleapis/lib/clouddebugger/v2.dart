@@ -21,7 +21,7 @@
 /// stopping or slowing it down.
 ///
 /// For more information, see <https://cloud.google.com/debugger>
-library googleapis.clouddebugger.v2;
+library clouddebugger.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

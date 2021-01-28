@@ -21,7 +21,7 @@
 /// reports.
 ///
 /// For more information, see <https://developers.google.com/display-video/>
-library googleapis.displayvideo.v1;
+library displayvideo.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

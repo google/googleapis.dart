@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://code.google.com/apis/books/docs/v1/getting_started.html>
-library googleapis.books.v1;
+library books.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

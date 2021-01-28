@@ -22,7 +22,7 @@
 /// annotations, to developers.
 ///
 /// For more information, see <https://cloud.google.com/natural-language/>
-library googleapis_beta.language.v1beta2;
+library language.v1beta2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

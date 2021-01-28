@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/groups-migration/>
-library googleapis.groupsmigration.v1;
+library groupsmigration.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

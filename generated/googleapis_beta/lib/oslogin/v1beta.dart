@@ -20,7 +20,7 @@
 /// You can use OS Login to manage access to your VM instances using IAM roles.
 ///
 /// For more information, see <https://cloud.google.com/compute/docs/oslogin/>
-library googleapis_beta.oslogin.v1beta;
+library oslogin.v1beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

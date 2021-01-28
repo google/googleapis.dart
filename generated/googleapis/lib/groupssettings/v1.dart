@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/groups-settings/get_started>
-library googleapis.groupssettings.v1;
+library groupssettings.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

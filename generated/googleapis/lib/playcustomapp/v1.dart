@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/android/work/play/custom-app-api/>
-library googleapis.playcustomapp.v1;
+library playcustomapp.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/fit/rest/v1/get-started>
-library googleapis.fitness.v1;
+library fitness.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -26,7 +26,7 @@
 /// infrastructure.
 ///
 /// For more information, see <https://cloud.google.com/data-fusion/docs>
-library googleapis_beta.datafusion.v1beta1;
+library datafusion.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

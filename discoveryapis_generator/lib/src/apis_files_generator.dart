@@ -76,7 +76,6 @@ class ApisFilesGenerator {
           // classes.
           lib = DartApiLibrary.build(
             description,
-            packageName,
             useCorePrefixes: useCorePrefixes,
             isPackage: false,
           );

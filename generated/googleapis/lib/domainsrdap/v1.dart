@@ -21,7 +21,7 @@
 /// names.
 ///
 /// For more information, see <https://developers.google.com/domains/rdap/>
-library googleapis.domainsrdap.v1;
+library domainsrdap.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

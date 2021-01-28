@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/abusive-experience-report/>
-library googleapis.abusiveexperiencereport.v1;
+library abusiveexperiencereport.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

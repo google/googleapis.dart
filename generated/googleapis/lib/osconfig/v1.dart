@@ -21,7 +21,7 @@
 /// and configuration management on VM instances.
 ///
 /// For more information, see <https://cloud.google.com/compute/docs/manage-os>
-library googleapis.osconfig.v1;
+library osconfig.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

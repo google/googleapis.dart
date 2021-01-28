@@ -21,7 +21,7 @@
 /// their games in Game Services.
 ///
 /// For more information, see <https://developers.google.com/games/>
-library googleapis.gamesConfiguration.v1configuration;
+library gamesConfiguration.v1configuration;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

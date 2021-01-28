@@ -20,7 +20,7 @@
 /// Archiving and eDiscovery for G Suite.
 ///
 /// For more information, see <https://developers.google.com/vault>
-library googleapis.vault.v1;
+library vault.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

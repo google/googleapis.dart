@@ -20,7 +20,7 @@
 /// Provides access to information about profiles and contacts.
 ///
 /// For more information, see <https://developers.google.com/people/>
-library googleapis.people.v1;
+library people.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

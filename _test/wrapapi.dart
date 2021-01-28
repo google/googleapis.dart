@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-library wrapapi.wrapApi.D0_1;
+library wrapApi.D0_1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

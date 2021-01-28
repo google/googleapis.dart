@@ -24,7 +24,7 @@
 /// revenue-generating purposes” – please refer to the Web Risk API.
 ///
 /// For more information, see <https://developers.google.com/safe-browsing/>
-library googleapis.safebrowsing.v4;
+library safebrowsing.v4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

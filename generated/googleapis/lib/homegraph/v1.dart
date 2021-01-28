@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/actions/smarthome/create-app#request-sync>
-library googleapis.homegraph.v1;
+library homegraph.v1;
 
 import 'dart:async' as async_1;
 import 'dart:convert' as convert;

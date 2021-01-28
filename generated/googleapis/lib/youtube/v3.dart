@@ -21,7 +21,7 @@
 /// as videos, playlists, and channels.
 ///
 /// For more information, see <https://developers.google.com/youtube/>
-library googleapis.youtube.v3;
+library youtube.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -25,7 +25,7 @@
 /// account credentials API.
 ///
 /// For more information, see <https://cloud.google.com/iam/>
-library googleapis.iam.v1;
+library iam.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

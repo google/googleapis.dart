@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://firebase.google.com/docs/storage/security>
-library googleapis.firebaserules.v1;
+library firebaserules.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

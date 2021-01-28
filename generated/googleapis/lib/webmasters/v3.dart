@@ -20,7 +20,7 @@
 /// View Google Search Console data for your verified sites.
 ///
 /// For more information, see <https://developers.google.com/webmaster-tools/>
-library googleapis.webmasters.v3;
+library webmasters.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

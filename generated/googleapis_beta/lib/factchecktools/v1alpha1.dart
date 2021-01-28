@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/fact-check/tools/api/>
-library googleapis_beta.factchecktools.v1alpha1;
+library factchecktools.v1alpha1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

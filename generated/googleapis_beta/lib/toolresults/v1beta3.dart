@@ -20,7 +20,7 @@
 /// API to publish and access results from developer tools.
 ///
 /// For more information, see <https://firebase.google.com/docs/test-lab/>
-library googleapis_beta.toolresults.v1beta3;
+library toolresults.v1beta3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

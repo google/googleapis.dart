@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/container-analysis/api/reference/rest/>
-library googleapis_beta.containeranalysis.v1beta1;
+library containeranalysis.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

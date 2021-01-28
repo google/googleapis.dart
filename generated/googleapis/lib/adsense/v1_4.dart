@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/adsense/management/>
-library googleapis.adsense.v1_4;
+library adsense.v1_4;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

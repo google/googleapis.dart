@@ -21,7 +21,7 @@
 /// control for images deployed to Kubernetes Engine clusters.
 ///
 /// For more information, see <https://cloud.google.com/binary-authorization/>
-library googleapis.binaryauthorization.v1;
+library binaryauthorization.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -20,7 +20,7 @@
 /// A service to modify your BigQuery flat-rate reservations.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
-library googleapis.bigqueryreservation.v1;
+library bigqueryreservation.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

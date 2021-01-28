@@ -20,7 +20,7 @@
 /// Creates and manages Redis instances on the Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/memorystore/docs/redis/>
-library googleapis.redis.v1;
+library redis.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

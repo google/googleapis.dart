@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started>
-library googleapis.servicenetworking.v1;
+library servicenetworking.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

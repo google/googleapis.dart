@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/spectrum-access-system/>
-library googleapis_beta.prod_tt_sasportal.v1alpha1;
+library prod_tt_sasportal.v1alpha1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

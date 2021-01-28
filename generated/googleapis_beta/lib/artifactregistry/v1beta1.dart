@@ -21,7 +21,7 @@
 /// on Google infrastructure.
 ///
 /// For more information, see <https://cloud.google.com/artifacts/docs/>
-library googleapis_beta.artifactregistry.v1beta1;
+library artifactregistry.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

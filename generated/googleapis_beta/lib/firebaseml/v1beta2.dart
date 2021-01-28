@@ -20,7 +20,7 @@
 /// Access custom machine learning models hosted via Firebase ML.
 ///
 /// For more information, see <https://firebase.google.com>
-library googleapis_beta.firebaseml.v1beta2;
+library firebaseml.v1beta2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

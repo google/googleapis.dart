@@ -22,7 +22,7 @@
 /// storage repositories.
 ///
 /// For more information, see <https://cloud.google.com/dlp/docs/>
-library googleapis.dlp.v2;
+library dlp.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -20,7 +20,7 @@
 /// Manage, store, and access healthcare data in Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/healthcare>
-library googleapis.healthcare.v1;
+library healthcare.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

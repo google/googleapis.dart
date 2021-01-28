@@ -21,7 +21,7 @@
 /// from the Google Play Game service.
 ///
 /// For more information, see <https://developers.google.com/games/>
-library googleapis.gamesManagement.v1management;
+library gamesManagement.v1management;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

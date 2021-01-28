@@ -21,7 +21,7 @@
 /// devices and apps.
 ///
 /// For more information, see <https://developers.google.com/android/management>
-library googleapis.androidmanagement.v1;
+library androidmanagement.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

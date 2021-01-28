@@ -20,7 +20,7 @@
 /// Manages classes, rosters, and invitations in Google Classroom.
 ///
 /// For more information, see <https://developers.google.com/classroom/>
-library googleapis.classroom.v1;
+library classroom.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

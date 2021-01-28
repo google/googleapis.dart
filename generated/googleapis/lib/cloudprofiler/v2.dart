@@ -20,7 +20,7 @@
 /// Manages continuous profiling information.
 ///
 /// For more information, see <https://cloud.google.com/profiler/>
-library googleapis.cloudprofiler.v2;
+library cloudprofiler.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

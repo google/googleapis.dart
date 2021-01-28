@@ -21,7 +21,7 @@
 /// officials, and government representatives for U.S. residential addresses.
 ///
 /// For more information, see <https://developers.google.com/civic-information/>
-library googleapis.civicinfo.v2;
+library civicinfo.v2;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

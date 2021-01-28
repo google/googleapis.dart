@@ -20,7 +20,7 @@
 /// Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/dataproc/>
-library googleapis.dataproc.v1;
+library dataproc.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

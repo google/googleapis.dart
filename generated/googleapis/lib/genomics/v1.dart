@@ -20,7 +20,7 @@
 /// Uploads, processes, queries, and searches Genomics data in the cloud.
 ///
 /// For more information, see <https://cloud.google.com/genomics>
-library googleapis.genomics.v1;
+library genomics.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

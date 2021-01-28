@@ -21,7 +21,7 @@
 /// servers.
 ///
 /// For more information, see <https://cloud.google.com/filestore/>
-library googleapis.file.v1;
+library file.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

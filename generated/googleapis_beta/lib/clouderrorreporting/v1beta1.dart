@@ -22,7 +22,7 @@
 /// errors.
 ///
 /// For more information, see <https://cloud.google.com/error-reporting/>
-library googleapis_beta.clouderrorreporting.v1beta1;
+library clouderrorreporting.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

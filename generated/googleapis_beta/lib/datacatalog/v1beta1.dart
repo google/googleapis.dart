@@ -21,7 +21,7 @@
 /// service.
 ///
 /// For more information, see <https://cloud.google.com/data-catalog/docs/>
-library googleapis_beta.datacatalog.v1beta1;
+library datacatalog.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

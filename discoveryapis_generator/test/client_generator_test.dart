@@ -90,7 +90,6 @@ void main() {
           RestDescription.fromJson(jsonDecode(descriptionJson) as Map);
       final generatedLib = DartApiLibrary.build(
         description,
-        'wrapapi',
         isPackage: false,
       );
 

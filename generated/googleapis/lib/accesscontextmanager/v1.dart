@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/access-context-manager/docs/reference/rest/>
-library googleapis.accesscontextmanager.v1;
+library accesscontextmanager.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

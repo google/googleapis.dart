@@ -20,7 +20,7 @@
 /// Controls access to cloud applications running on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/iap>
-library googleapis.iap.v1;
+library iap.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

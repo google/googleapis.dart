@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/identity-toolkit/v3/>
-library googleapis.identitytoolkit.v3;
+library identitytoolkit.v3;
 
 import 'dart:async' as async;
 import 'dart:collection' as collection;

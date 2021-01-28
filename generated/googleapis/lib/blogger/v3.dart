@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/blogger/docs/3.0/getting_started>
-library googleapis.blogger.v3;
+library blogger.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

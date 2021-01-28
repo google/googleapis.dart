@@ -21,7 +21,7 @@
 /// management capabilities for AdSense Hosts.
 ///
 /// For more information, see <https://developers.google.com/adsense/host/>
-library googleapis.adsensehost.v4_1;
+library adsensehost.v4_1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

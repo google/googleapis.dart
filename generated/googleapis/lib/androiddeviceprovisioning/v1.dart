@@ -21,7 +21,7 @@
 /// EMMs.
 ///
 /// For more information, see <https://developers.google.com/zero-touch/>
-library googleapis.androiddeviceprovisioning.v1;
+library androiddeviceprovisioning.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

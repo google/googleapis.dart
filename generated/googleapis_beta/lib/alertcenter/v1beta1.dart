@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/admin-sdk/alertcenter/>
-library googleapis_beta.alertcenter.v1beta1;
+library alertcenter.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

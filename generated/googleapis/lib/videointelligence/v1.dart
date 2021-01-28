@@ -23,7 +23,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/video-intelligence/docs/>
-library googleapis.videointelligence.v1;
+library videointelligence.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

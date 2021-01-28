@@ -22,7 +22,7 @@
 /// domain.
 ///
 /// For more information, see <http://developers.google.com/admin-sdk/>
-library googleapis.admin.datatransfer_v1;
+library admin.datatransfer_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

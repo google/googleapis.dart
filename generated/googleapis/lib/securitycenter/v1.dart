@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview>
-library googleapis.securitycenter.v1;
+library securitycenter.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

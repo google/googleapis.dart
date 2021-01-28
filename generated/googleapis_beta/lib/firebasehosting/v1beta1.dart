@@ -22,7 +22,7 @@
 /// or updated hosting configurations and content files.
 ///
 /// For more information, see <https://firebase.google.com/docs/hosting/>
-library googleapis_beta.firebasehosting.v1beta1;
+library firebasehosting.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

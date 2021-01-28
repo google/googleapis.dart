@@ -21,7 +21,7 @@
 /// or between Google Cloud Storage buckets.
 ///
 /// For more information, see <https://cloud.google.com/storage-transfer/docs>
-library googleapis.storagetransfer.v1;
+library storagetransfer.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

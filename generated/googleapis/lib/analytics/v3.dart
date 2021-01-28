@@ -20,7 +20,7 @@
 /// Views and manages your Google Analytics data.
 ///
 /// For more information, see <https://developers.google.com/analytics/>
-library googleapis.analytics.v3;
+library analytics.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

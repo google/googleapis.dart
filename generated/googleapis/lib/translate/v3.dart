@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/translate/docs/quickstarts>
-library googleapis.translate.v3;
+library translate.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -22,7 +22,7 @@
 /// apps.
 ///
 /// For more information, see <https://firebase.google.com>
-library googleapis_beta.firebase.v1beta1;
+library firebase.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -20,7 +20,7 @@
 /// A data platform for customers to create, manage, share and query data.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
-library googleapis.bigquery.v2;
+library bigquery.v2;
 
 import 'dart:async' as async;
 import 'dart:collection' as collection;

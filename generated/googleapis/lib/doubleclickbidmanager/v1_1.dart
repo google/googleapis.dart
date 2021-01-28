@@ -21,7 +21,7 @@
 /// reports.
 ///
 /// For more information, see <https://developers.google.com/bid-manager/>
-library googleapis.doubleclickbidmanager.v1_1;
+library doubleclickbidmanager.v1_1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

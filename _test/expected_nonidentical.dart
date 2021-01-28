@@ -25,7 +25,7 @@
 /// non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ///
 /// For more information, see <https://developers.google.com/discovery/>
-library file_test_package.toyApi.D0_1;
+library toyApi.D0_1;
 
 import 'dart:async' as async;
 import 'dart:collection' as collection;

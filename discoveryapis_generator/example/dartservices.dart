@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-library discoveryapis_generator.dartservices.v1;
+library dartservices.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

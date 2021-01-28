@@ -21,7 +21,7 @@
 /// Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/iot>
-library googleapis.cloudiot.v1;
+library cloudiot.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

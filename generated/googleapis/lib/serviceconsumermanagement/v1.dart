@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/service-consumer-management/docs/overview>
-library googleapis.serviceconsumermanagement.v1;
+library serviceconsumermanagement.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/asset-inventory/docs/quickstart>
-library googleapis.cloudasset.v1;
+library cloudasset.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

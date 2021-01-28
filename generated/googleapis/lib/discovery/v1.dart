@@ -21,7 +21,7 @@
 /// available, the resource, and method details for each API.
 ///
 /// For more information, see <https://developers.google.com/discovery/>
-library googleapis.discovery.v1;
+library discovery.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

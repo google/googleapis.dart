@@ -21,7 +21,7 @@
 /// applications.
 ///
 /// For more information, see <https://cloud.google.com/pubsub/docs>
-library googleapis_beta.pubsub.v1beta2;
+library pubsub.v1beta2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

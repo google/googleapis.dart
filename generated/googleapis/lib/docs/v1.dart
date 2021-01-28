@@ -20,7 +20,7 @@
 /// Reads and writes Google Docs documents.
 ///
 /// For more information, see <https://developers.google.com/docs/>
-library googleapis.docs.v1;
+library docs.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

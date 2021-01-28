@@ -133,8 +133,7 @@ const userAgent = 'Dart package:${pubspec.name} / ${pubspec.version}';
     String outputFile,
     RestDescription description,
   ) {
-    final lib =
-        DartApiLibrary.build(description, pubspec.name, isPackage: true);
+    final lib = DartApiLibrary.build(description, isPackage: true);
     writeDartSource(outputFile, lib.librarySource);
     return lib;
   }

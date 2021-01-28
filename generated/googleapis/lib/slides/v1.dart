@@ -20,7 +20,7 @@
 /// Reads and writes Google Slides presentations.
 ///
 /// For more information, see <https://developers.google.com/slides/>
-library googleapis.slides.v1;
+library slides.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -21,7 +21,7 @@
 /// scalable storage for your application.
 ///
 /// For more information, see <https://cloud.google.com/datastore/>
-library googleapis.datastore.v1;
+library datastore.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

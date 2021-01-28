@@ -21,7 +21,7 @@
 /// Shopping.
 ///
 /// For more information, see <https://developers.google.com/shopping-content>
-library googleapis.content.v2_1;
+library content.v2_1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

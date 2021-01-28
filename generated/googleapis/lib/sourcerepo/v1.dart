@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/source-repositories/docs/apis>
-library googleapis.sourcerepo.v1;
+library sourcerepo.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

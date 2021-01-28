@@ -21,7 +21,7 @@
 /// running in the cloud.
 ///
 /// For more information, see <https://cloud.google.com/shell/docs/>
-library googleapis.cloudshell.v1;
+library cloudshell.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

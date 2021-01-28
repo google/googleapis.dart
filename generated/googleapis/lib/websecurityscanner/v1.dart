@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/>
-library googleapis.websecurityscanner.v1;
+library websecurityscanner.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

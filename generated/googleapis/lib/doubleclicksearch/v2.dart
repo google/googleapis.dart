@@ -21,7 +21,7 @@
 /// and downloading reports from Search Ads 360.
 ///
 /// For more information, see <https://developers.google.com/search-ads>
-library googleapis.doubleclicksearch.v2;
+library doubleclicksearch.v2;
 
 import 'dart:async' as async;
 import 'dart:collection' as collection;

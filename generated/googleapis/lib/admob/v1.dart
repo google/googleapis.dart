@@ -21,7 +21,7 @@
 /// their AdMob account.
 ///
 /// For more information, see <https://developers.google.com/admob/api/>
-library googleapis.admob.v1;
+library admob.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

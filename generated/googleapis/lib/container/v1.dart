@@ -21,7 +21,7 @@
 /// Kubernetes technology.
 ///
 /// For more information, see <https://cloud.google.com/container-engine/>
-library googleapis.container.v1;
+library container.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

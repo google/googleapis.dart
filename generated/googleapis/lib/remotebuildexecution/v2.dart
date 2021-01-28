@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/remote-build-execution/docs/>
-library googleapis.remotebuildexecution.v2;
+library remotebuildexecution.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

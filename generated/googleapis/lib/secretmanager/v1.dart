@@ -21,7 +21,7 @@
 /// Provides convenience while improving security.
 ///
 /// For more information, see <https://cloud.google.com/secret-manager/>
-library googleapis.secretmanager.v1;
+library secretmanager.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

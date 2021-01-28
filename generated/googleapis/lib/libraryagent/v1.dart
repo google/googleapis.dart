@@ -20,7 +20,7 @@
 /// A simple Google Example Library API.
 ///
 /// For more information, see <https://cloud.google.com/docs/quota>
-library googleapis.libraryagent.v1;
+library libraryagent.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

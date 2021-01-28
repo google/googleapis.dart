@@ -23,7 +23,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials>
-library googleapis.iamcredentials.v1;
+library iamcredentials.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

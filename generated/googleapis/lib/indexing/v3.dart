@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/search/apis/indexing-api/>
-library googleapis.indexing.v3;
+library indexing.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

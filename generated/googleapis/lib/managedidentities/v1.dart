@@ -22,7 +22,7 @@
 /// (AD).
 ///
 /// For more information, see <https://cloud.google.com/managed-microsoft-ad/>
-library googleapis.managedidentities.v1;
+library managedidentities.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

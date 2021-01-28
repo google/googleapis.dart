@@ -20,7 +20,7 @@
 /// Deploy and manage infrastructure for global multiplayer gaming experiences.
 ///
 /// For more information, see <https://cloud.google.com/solutions/gaming/>
-library googleapis_beta.gameservices.v1beta;
+library gameservices.v1beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

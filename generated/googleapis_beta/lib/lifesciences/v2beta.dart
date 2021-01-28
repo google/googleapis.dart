@@ -21,7 +21,7 @@
 /// processing, and transforming life sciences data.
 ///
 /// For more information, see <https://cloud.google.com/life-sciences>
-library googleapis_beta.lifesciences.v2beta;
+library lifesciences.v2beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

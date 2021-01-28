@@ -21,7 +21,7 @@
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 ///
 /// For more information, see <https://developers.google.com/games/>
-library googleapis.games.v1;
+library games.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -21,7 +21,7 @@
 /// detecting changes, and updating sharing permissions.
 ///
 /// For more information, see <https://developers.google.com/drive/>
-library googleapis.drive.v3;
+library drive.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -21,7 +21,7 @@
 /// list of public URL(s).
 ///
 /// For more information, see <https://developers.google.com/amp/cache/>
-library googleapis.acceleratedmobilepageurl.v1;
+library acceleratedmobilepageurl.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

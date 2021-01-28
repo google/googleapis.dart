@@ -21,7 +21,7 @@
 /// service, for direct use by other cloud resources and applications.
 ///
 /// For more information, see <https://cloud.google.com/kms/>
-library googleapis.cloudkms.v1;
+library cloudkms.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

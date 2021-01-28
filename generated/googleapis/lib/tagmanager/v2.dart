@@ -21,7 +21,7 @@
 /// configuration.
 ///
 /// For more information, see <https://developers.google.com/tag-manager>
-library googleapis.tagmanager.v2;
+library tagmanager.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

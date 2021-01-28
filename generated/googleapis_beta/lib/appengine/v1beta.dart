@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/appengine/docs/admin-api/>
-library googleapis_beta.appengine.v1beta;
+library appengine.v1beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

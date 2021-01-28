@@ -21,7 +21,7 @@
 /// based on HTTP traffic.
 ///
 /// For more information, see <https://cloud.google.com/run/>
-library googleapis.run.v1;
+library run.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

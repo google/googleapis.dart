@@ -20,7 +20,7 @@
 ///
 ///
 /// For more information, see <https://cloud.google.com/iam/>
-library googleapis.policytroubleshooter.v1;
+library policytroubleshooter.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

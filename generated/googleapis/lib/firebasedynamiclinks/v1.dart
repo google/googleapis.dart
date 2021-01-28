@@ -20,7 +20,7 @@
 /// Programmatically creates and manages Firebase Dynamic Links.
 ///
 /// For more information, see <https://firebase.google.com/docs/dynamic-links/>
-library googleapis.firebasedynamiclinks.v1;
+library firebasedynamiclinks.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

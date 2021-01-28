@@ -21,7 +21,7 @@
 /// services.
 ///
 /// For more information, see <https://cloud.google.com/service-directory>
-library googleapis_beta.servicedirectory.v1beta1;
+library servicedirectory.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

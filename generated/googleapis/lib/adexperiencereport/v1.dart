@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/ad-experience-report/>
-library googleapis.adexperiencereport.v1;
+library adexperiencereport.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

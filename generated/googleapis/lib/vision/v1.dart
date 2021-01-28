@@ -22,7 +22,7 @@
 /// explicit content, into applications.
 ///
 /// For more information, see <https://cloud.google.com/vision/>
-library googleapis.vision.v1;
+library vision.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

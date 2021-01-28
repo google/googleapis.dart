@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/analytics/devguides/reporting/core/v4/>
-library googleapis.analyticsreporting.v4;
+library analyticsreporting.v4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

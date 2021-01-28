@@ -20,7 +20,7 @@
 /// Allows users to manage BigQuery connections to external data sources.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
-library googleapis_beta.bigqueryconnection.v1beta1;
+library bigqueryconnection.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

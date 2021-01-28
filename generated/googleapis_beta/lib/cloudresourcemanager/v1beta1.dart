@@ -21,7 +21,7 @@
 /// containers.
 ///
 /// For more information, see <https://cloud.google.com/resource-manager>
-library googleapis_beta.cloudresourcemanager.v1beta1;
+library cloudresourcemanager.v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

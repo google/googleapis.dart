@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/doubleclick-advertisers/>
-library googleapis.dfareporting.v3_4;
+library dfareporting.v3_4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

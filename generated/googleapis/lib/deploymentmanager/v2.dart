@@ -21,7 +21,7 @@
 /// Platform.
 ///
 /// For more information, see <https://cloud.google.com/deployment-manager/>
-library googleapis.deploymentmanager.v2;
+library deploymentmanager.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

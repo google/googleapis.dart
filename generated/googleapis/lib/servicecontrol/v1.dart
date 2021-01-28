@@ -21,7 +21,7 @@
 /// monitoring, and status checks.
 ///
 /// For more information, see <https://cloud.google.com/service-control/>
-library googleapis.servicecontrol.v1;
+library servicecontrol.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

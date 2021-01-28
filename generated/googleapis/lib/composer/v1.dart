@@ -20,7 +20,7 @@
 /// Manages Apache Airflow environments on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/composer/>
-library googleapis.composer.v1;
+library composer.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

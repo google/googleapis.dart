@@ -20,7 +20,7 @@
 /// An API to enable creating and using machine learning models.
 ///
 /// For more information, see <https://cloud.google.com/ml/>
-library googleapis.ml.v1;
+library ml.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

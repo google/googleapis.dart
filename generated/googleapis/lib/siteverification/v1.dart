@@ -20,7 +20,7 @@
 /// Verifies ownership of websites or domains with Google.
 ///
 /// For more information, see <https://developers.google.com/site-verification/>
-library googleapis.siteVerification.v1;
+library siteVerification.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

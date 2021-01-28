@@ -21,7 +21,7 @@
 /// scalable relational database service.
 ///
 /// For more information, see <https://cloud.google.com/spanner/>
-library googleapis.spanner.v1;
+library spanner.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

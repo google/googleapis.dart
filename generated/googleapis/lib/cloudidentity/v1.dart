@@ -20,7 +20,7 @@
 /// API for provisioning and managing identity resources.
 ///
 /// For more information, see <https://cloud.google.com/identity/>
-library googleapis.cloudidentity.v1;
+library cloudidentity.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

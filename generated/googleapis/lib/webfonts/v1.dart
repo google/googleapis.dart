@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/fonts/docs/developer_api>
-library googleapis.webfonts.v1;
+library webfonts.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

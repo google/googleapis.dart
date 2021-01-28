@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/speech-to-text/docs/quickstart-protocol>
-library googleapis_beta.speech.v2beta1;
+library speech.v2beta1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

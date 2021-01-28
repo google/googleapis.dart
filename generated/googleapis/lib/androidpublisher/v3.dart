@@ -20,7 +20,7 @@
 /// Lets Android application developers access their Google Play accounts.
 ///
 /// For more information, see <https://developers.google.com/android-publisher>
-library googleapis.androidpublisher.v3;
+library androidpublisher.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

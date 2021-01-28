@@ -21,7 +21,7 @@
 /// Memcached instances in GCP.
 ///
 /// For more information, see <https://cloud.google.com/memorystore/>
-library googleapis_beta.memcache.v1beta2;
+library memcache.v1beta2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

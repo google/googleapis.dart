@@ -24,7 +24,7 @@
 ///
 ///
 /// For more information, see <https://developers.google.com/poly/>
-library googleapis.poly.v1;
+library poly.v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;

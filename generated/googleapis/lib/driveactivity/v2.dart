@@ -20,7 +20,7 @@
 /// Provides a historical view of activity in Google Drive.
 ///
 /// For more information, see <https://developers.google.com/drive/activity/>
-library googleapis.driveactivity.v2;
+library driveactivity.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

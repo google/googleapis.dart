@@ -20,7 +20,7 @@
 /// Creates and manages builds on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/cloud-build/docs/>
-library googleapis.cloudbuild.v1;
+library cloudbuild.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

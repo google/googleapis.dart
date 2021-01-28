@@ -22,7 +22,7 @@
 /// domain.
 ///
 /// For more information, see <http://developers.google.com/admin-sdk/>
-library googleapis.admin.directory_v1;
+library admin.directory_v1;
 
 import 'dart:async' as async;
 import 'dart:collection' as collection;

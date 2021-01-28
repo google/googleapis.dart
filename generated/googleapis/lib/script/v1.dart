@@ -20,7 +20,7 @@
 /// Manages and executes Google Apps Script projects.
 ///
 /// For more information, see <https://developers.google.com/apps-script/api/>
-library googleapis.script.v1;
+library script.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

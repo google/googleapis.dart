@@ -20,7 +20,7 @@
 /// Reads and writes Google Sheets.
 ///
 /// For more information, see <https://developers.google.com/sheets/>
-library googleapis.sheets.v4;
+library sheets.v4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

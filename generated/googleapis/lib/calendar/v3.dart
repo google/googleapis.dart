@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/calendar/firstapp>
-library googleapis.calendar.v3;
+library calendar.v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/ad-exchange/buyer-rest>
-library googleapis.adexchangebuyer.v1_3;
+library adexchangebuyer.v1_3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

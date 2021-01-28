@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/youtube/reporting/v1/reports/>
-library googleapis.youtubereporting.v1;
+library youtubereporting.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

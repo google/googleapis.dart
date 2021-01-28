@@ -20,7 +20,7 @@
 ///
 ///
 /// For more information, see <http://developers.google.com/cloud-dns>
-library googleapis.dns.v1;
+library dns.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

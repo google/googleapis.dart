@@ -21,7 +21,7 @@
 /// Google infrastructure.
 ///
 /// For more information, see <https://developers.google.com/cloud-test-lab/>
-library googleapis.testing.v1;
+library testing.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

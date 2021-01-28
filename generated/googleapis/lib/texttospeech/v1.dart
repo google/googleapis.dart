@@ -21,7 +21,7 @@
 /// models.
 ///
 /// For more information, see <https://cloud.google.com/text-to-speech/>
-library googleapis.texttospeech.v1;
+library texttospeech.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

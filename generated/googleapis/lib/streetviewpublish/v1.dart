@@ -23,7 +23,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/streetview/publish/>
-library googleapis.streetviewpublish.v1;
+library streetviewpublish.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

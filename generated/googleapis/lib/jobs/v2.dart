@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/talent-solution/job-search/docs/>
-library googleapis.jobs.v2;
+library jobs.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

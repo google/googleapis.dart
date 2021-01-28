@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/chrome/verified-access>
-library googleapis.verifiedaccess.v1;
+library verifiedaccess.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

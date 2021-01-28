@@ -22,7 +22,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/admin-sdk/licensing/>
-library googleapis.licensing.v1;
+library licensing.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

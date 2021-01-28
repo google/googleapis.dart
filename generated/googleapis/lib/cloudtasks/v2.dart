@@ -20,7 +20,7 @@
 /// Manages the execution of large numbers of distributed requests.
 ///
 /// For more information, see <https://cloud.google.com/tasks/>
-library googleapis.cloudtasks.v2;
+library cloudtasks.v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

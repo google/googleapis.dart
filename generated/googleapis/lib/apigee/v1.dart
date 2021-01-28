@@ -24,7 +24,7 @@
 /// free trial for a time period of 60 days.
 ///
 /// For more information, see <https://cloud.google.com/apigee-api-management/>
-library googleapis.apigee.v1;
+library apigee.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

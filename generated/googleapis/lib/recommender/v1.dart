@@ -20,7 +20,7 @@
 ///
 ///
 /// For more information, see <https://cloud.google.com/recommender/docs/>
-library googleapis.recommender.v1;
+library recommender.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

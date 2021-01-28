@@ -21,7 +21,7 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/compute/docs/reference/latest/>
-library googleapis.compute.v1;
+library compute.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

@@ -24,7 +24,7 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/deployment-manager/runtime-configurator/>
-library googleapis.runtimeconfig.v1;
+library runtimeconfig.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

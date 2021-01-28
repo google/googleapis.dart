@@ -21,7 +21,7 @@
 /// apps and devices).
 ///
 /// For more information, see <https://cloud.google.com/dialogflow/>
-library googleapis_beta.dialogflow.v2beta1;
+library dialogflow.v2beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

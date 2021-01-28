@@ -21,7 +21,7 @@
 /// messages, and labels.
 ///
 /// For more information, see <https://developers.google.com/gmail/api/>
-library googleapis.gmail.v1;
+library gmail.v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
