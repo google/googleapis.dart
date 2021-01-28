@@ -761,7 +761,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsEnvironmentsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsEnvironmentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.environments;
@@ -1026,7 +1026,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsImageVersionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsImageVersionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.imageVersions;
@@ -1086,7 +1086,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.operations;

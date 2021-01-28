@@ -1132,7 +1132,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.locations;
@@ -1242,7 +1242,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSecretsResourceApi', () {
+  unittest.group('resource-ProjectsSecretsResource', () {
     unittest.test('method--addVersion', () {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
@@ -1726,7 +1726,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSecretsVersionsResourceApi', () {
+  unittest.group('resource-ProjectsSecretsVersionsResource', () {
     unittest.test('method--access', () {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;

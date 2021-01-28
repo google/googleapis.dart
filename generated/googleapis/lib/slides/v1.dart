@@ -23,8 +23,8 @@
 ///
 /// Create an instance of [SlidesApi] to access these resources:
 ///
-/// - [PresentationsResourceApi]
-///   - [PresentationsPagesResourceApi]
+/// - [PresentationsResource]
+///   - [PresentationsPagesResource]
 library slides.v1;
 
 import 'dart:async' as async;
@@ -70,8 +70,7 @@ class SlidesApi {
 
   final commons.ApiRequester _requester;
 
-  PresentationsResourceApi get presentations =>
-      PresentationsResourceApi(_requester);
+  PresentationsResource get presentations => PresentationsResource(_requester);
 
   SlidesApi(http.Client client,
       {core.String rootUrl = 'https://slides.googleapis.com/',
@@ -80,13 +79,13 @@ class SlidesApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class PresentationsResourceApi {
+class PresentationsResource {
   final commons.ApiRequester _requester;
 
-  PresentationsPagesResourceApi get pages =>
-      PresentationsPagesResourceApi(_requester);
+  PresentationsPagesResource get pages =>
+      PresentationsPagesResource(_requester);
 
-  PresentationsResourceApi(commons.ApiRequester client) : _requester = client;
+  PresentationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Applies one or more updates to the presentation. Each request is validated
   /// before being applied. If any request is not valid, then the entire request
@@ -269,11 +268,10 @@ class PresentationsResourceApi {
   }
 }
 
-class PresentationsPagesResourceApi {
+class PresentationsPagesResource {
   final commons.ApiRequester _requester;
 
-  PresentationsPagesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PresentationsPagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest version of the specified page in the presentation.
   ///

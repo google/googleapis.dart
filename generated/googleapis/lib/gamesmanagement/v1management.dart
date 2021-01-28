@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [GamesManagementApi] to access these resources:
 ///
-/// - [AchievementsResourceApi]
-/// - [ApplicationsResourceApi]
-/// - [EventsResourceApi]
-/// - [PlayersResourceApi]
-/// - [ScoresResourceApi]
+/// - [AchievementsResource]
+/// - [ApplicationsResource]
+/// - [EventsResource]
+/// - [PlayersResource]
+/// - [ScoresResource]
 library gamesManagement.v1management;
 
 import 'dart:async' as async;
@@ -51,13 +51,11 @@ class GamesManagementApi {
 
   final commons.ApiRequester _requester;
 
-  AchievementsResourceApi get achievements =>
-      AchievementsResourceApi(_requester);
-  ApplicationsResourceApi get applications =>
-      ApplicationsResourceApi(_requester);
-  EventsResourceApi get events => EventsResourceApi(_requester);
-  PlayersResourceApi get players => PlayersResourceApi(_requester);
-  ScoresResourceApi get scores => ScoresResourceApi(_requester);
+  AchievementsResource get achievements => AchievementsResource(_requester);
+  ApplicationsResource get applications => ApplicationsResource(_requester);
+  EventsResource get events => EventsResource(_requester);
+  PlayersResource get players => PlayersResource(_requester);
+  ScoresResource get scores => ScoresResource(_requester);
 
   GamesManagementApi(http.Client client,
       {core.String rootUrl = 'https://gamesmanagement.googleapis.com/',
@@ -66,10 +64,10 @@ class GamesManagementApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AchievementsResourceApi {
+class AchievementsResource {
   final commons.ApiRequester _requester;
 
-  AchievementsResourceApi(commons.ApiRequester client) : _requester = client;
+  AchievementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Resets the achievement with the given ID for the currently authenticated
   /// player. This method is only accessible to whitelisted tester accounts for
@@ -325,10 +323,10 @@ class AchievementsResourceApi {
   }
 }
 
-class ApplicationsResourceApi {
+class ApplicationsResource {
   final commons.ApiRequester _requester;
 
-  ApplicationsResourceApi(commons.ApiRequester client) : _requester = client;
+  ApplicationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get the list of players hidden from the given application. This method is
   /// only available to user accounts for your developer console.
@@ -400,10 +398,10 @@ class ApplicationsResourceApi {
   }
 }
 
-class EventsResourceApi {
+class EventsResource {
   final commons.ApiRequester _requester;
 
-  EventsResourceApi(commons.ApiRequester client) : _requester = client;
+  EventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Resets all player progress on the event with the given ID for the
   /// currently authenticated player. This method is only accessible to
@@ -657,10 +655,10 @@ class EventsResourceApi {
   }
 }
 
-class PlayersResourceApi {
+class PlayersResource {
   final commons.ApiRequester _requester;
 
-  PlayersResourceApi(commons.ApiRequester client) : _requester = client;
+  PlayersResource(commons.ApiRequester client) : _requester = client;
 
   /// Hide the given player's leaderboard scores from the given application.
   /// This method is only available to user accounts for your developer console.
@@ -787,10 +785,10 @@ class PlayersResourceApi {
   }
 }
 
-class ScoresResourceApi {
+class ScoresResource {
   final commons.ApiRequester _requester;
 
-  ScoresResourceApi(commons.ApiRequester client) : _requester = client;
+  ScoresResource(commons.ApiRequester client) : _requester = client;
 
   /// Resets scores for the leaderboard with the given ID for the currently
   /// authenticated player. This method is only accessible to whitelisted tester

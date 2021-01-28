@@ -24,69 +24,69 @@
 ///
 /// Create an instance of [DfareportingApi] to access these resources:
 ///
-/// - [AccountActiveAdSummariesResourceApi]
-/// - [AccountPermissionGroupsResourceApi]
-/// - [AccountPermissionsResourceApi]
-/// - [AccountUserProfilesResourceApi]
-/// - [AccountsResourceApi]
-/// - [AdsResourceApi]
-/// - [AdvertiserGroupsResourceApi]
-/// - [AdvertiserLandingPagesResourceApi]
-/// - [AdvertisersResourceApi]
-/// - [BrowsersResourceApi]
-/// - [CampaignCreativeAssociationsResourceApi]
-/// - [CampaignsResourceApi]
-/// - [ChangeLogsResourceApi]
-/// - [CitiesResourceApi]
-/// - [ConnectionTypesResourceApi]
-/// - [ContentCategoriesResourceApi]
-/// - [ConversionsResourceApi]
-/// - [CountriesResourceApi]
-/// - [CreativeAssetsResourceApi]
-/// - [CreativeFieldValuesResourceApi]
-/// - [CreativeFieldsResourceApi]
-/// - [CreativeGroupsResourceApi]
-/// - [CreativesResourceApi]
-/// - [CustomEventsResourceApi]
-/// - [DimensionValuesResourceApi]
-/// - [DirectorySitesResourceApi]
-/// - [DynamicTargetingKeysResourceApi]
-/// - [EventTagsResourceApi]
-/// - [FilesResourceApi]
-/// - [FloodlightActivitiesResourceApi]
-/// - [FloodlightActivityGroupsResourceApi]
-/// - [FloodlightConfigurationsResourceApi]
-/// - [InventoryItemsResourceApi]
-/// - [LanguagesResourceApi]
-/// - [MetrosResourceApi]
-/// - [MobileAppsResourceApi]
-/// - [MobileCarriersResourceApi]
-/// - [OperatingSystemVersionsResourceApi]
-/// - [OperatingSystemsResourceApi]
-/// - [OrderDocumentsResourceApi]
-/// - [OrdersResourceApi]
-/// - [PlacementGroupsResourceApi]
-/// - [PlacementStrategiesResourceApi]
-/// - [PlacementsResourceApi]
-/// - [PlatformTypesResourceApi]
-/// - [PostalCodesResourceApi]
-/// - [ProjectsResourceApi]
-/// - [RegionsResourceApi]
-/// - [RemarketingListSharesResourceApi]
-/// - [RemarketingListsResourceApi]
-/// - [ReportsResourceApi]
-///   - [ReportsCompatibleFieldsResourceApi]
-///   - [ReportsFilesResourceApi]
-/// - [SitesResourceApi]
-/// - [SizesResourceApi]
-/// - [SubaccountsResourceApi]
-/// - [TargetableRemarketingListsResourceApi]
-/// - [TargetingTemplatesResourceApi]
-/// - [UserProfilesResourceApi]
-/// - [UserRolePermissionGroupsResourceApi]
-/// - [UserRolePermissionsResourceApi]
-/// - [UserRolesResourceApi]
-/// - [VideoFormatsResourceApi]
+/// - [AccountActiveAdSummariesResource]
+/// - [AccountPermissionGroupsResource]
+/// - [AccountPermissionsResource]
+/// - [AccountUserProfilesResource]
+/// - [AccountsResource]
+/// - [AdsResource]
+/// - [AdvertiserGroupsResource]
+/// - [AdvertiserLandingPagesResource]
+/// - [AdvertisersResource]
+/// - [BrowsersResource]
+/// - [CampaignCreativeAssociationsResource]
+/// - [CampaignsResource]
+/// - [ChangeLogsResource]
+/// - [CitiesResource]
+/// - [ConnectionTypesResource]
+/// - [ContentCategoriesResource]
+/// - [ConversionsResource]
+/// - [CountriesResource]
+/// - [CreativeAssetsResource]
+/// - [CreativeFieldValuesResource]
+/// - [CreativeFieldsResource]
+/// - [CreativeGroupsResource]
+/// - [CreativesResource]
+/// - [CustomEventsResource]
+/// - [DimensionValuesResource]
+/// - [DirectorySitesResource]
+/// - [DynamicTargetingKeysResource]
+/// - [EventTagsResource]
+/// - [FilesResource]
+/// - [FloodlightActivitiesResource]
+/// - [FloodlightActivityGroupsResource]
+/// - [FloodlightConfigurationsResource]
+/// - [InventoryItemsResource]
+/// - [LanguagesResource]
+/// - [MetrosResource]
+/// - [MobileAppsResource]
+/// - [MobileCarriersResource]
+/// - [OperatingSystemVersionsResource]
+/// - [OperatingSystemsResource]
+/// - [OrderDocumentsResource]
+/// - [OrdersResource]
+/// - [PlacementGroupsResource]
+/// - [PlacementStrategiesResource]
+/// - [PlacementsResource]
+/// - [PlatformTypesResource]
+/// - [PostalCodesResource]
+/// - [ProjectsResource]
+/// - [RegionsResource]
+/// - [RemarketingListSharesResource]
+/// - [RemarketingListsResource]
+/// - [ReportsResource]
+///   - [ReportsCompatibleFieldsResource]
+///   - [ReportsFilesResource]
+/// - [SitesResource]
+/// - [SizesResource]
+/// - [SubaccountsResource]
+/// - [TargetableRemarketingListsResource]
+/// - [TargetingTemplatesResource]
+/// - [UserProfilesResource]
+/// - [UserRolePermissionGroupsResource]
+/// - [UserRolePermissionsResource]
+/// - [UserRolesResource]
+/// - [VideoFormatsResource]
 library dfareporting.v3_4;
 
 import 'dart:async' as async;
@@ -126,103 +126,99 @@ class DfareportingApi {
 
   final commons.ApiRequester _requester;
 
-  AccountActiveAdSummariesResourceApi get accountActiveAdSummaries =>
-      AccountActiveAdSummariesResourceApi(_requester);
-  AccountPermissionGroupsResourceApi get accountPermissionGroups =>
-      AccountPermissionGroupsResourceApi(_requester);
-  AccountPermissionsResourceApi get accountPermissions =>
-      AccountPermissionsResourceApi(_requester);
-  AccountUserProfilesResourceApi get accountUserProfiles =>
-      AccountUserProfilesResourceApi(_requester);
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  AdsResourceApi get ads => AdsResourceApi(_requester);
-  AdvertiserGroupsResourceApi get advertiserGroups =>
-      AdvertiserGroupsResourceApi(_requester);
-  AdvertiserLandingPagesResourceApi get advertiserLandingPages =>
-      AdvertiserLandingPagesResourceApi(_requester);
-  AdvertisersResourceApi get advertisers => AdvertisersResourceApi(_requester);
-  BrowsersResourceApi get browsers => BrowsersResourceApi(_requester);
-  CampaignCreativeAssociationsResourceApi get campaignCreativeAssociations =>
-      CampaignCreativeAssociationsResourceApi(_requester);
-  CampaignsResourceApi get campaigns => CampaignsResourceApi(_requester);
-  ChangeLogsResourceApi get changeLogs => ChangeLogsResourceApi(_requester);
-  CitiesResourceApi get cities => CitiesResourceApi(_requester);
-  ConnectionTypesResourceApi get connectionTypes =>
-      ConnectionTypesResourceApi(_requester);
-  ContentCategoriesResourceApi get contentCategories =>
-      ContentCategoriesResourceApi(_requester);
-  ConversionsResourceApi get conversions => ConversionsResourceApi(_requester);
-  CountriesResourceApi get countries => CountriesResourceApi(_requester);
-  CreativeAssetsResourceApi get creativeAssets =>
-      CreativeAssetsResourceApi(_requester);
-  CreativeFieldValuesResourceApi get creativeFieldValues =>
-      CreativeFieldValuesResourceApi(_requester);
-  CreativeFieldsResourceApi get creativeFields =>
-      CreativeFieldsResourceApi(_requester);
-  CreativeGroupsResourceApi get creativeGroups =>
-      CreativeGroupsResourceApi(_requester);
-  CreativesResourceApi get creatives => CreativesResourceApi(_requester);
-  CustomEventsResourceApi get customEvents =>
-      CustomEventsResourceApi(_requester);
-  DimensionValuesResourceApi get dimensionValues =>
-      DimensionValuesResourceApi(_requester);
-  DirectorySitesResourceApi get directorySites =>
-      DirectorySitesResourceApi(_requester);
-  DynamicTargetingKeysResourceApi get dynamicTargetingKeys =>
-      DynamicTargetingKeysResourceApi(_requester);
-  EventTagsResourceApi get eventTags => EventTagsResourceApi(_requester);
-  FilesResourceApi get files => FilesResourceApi(_requester);
-  FloodlightActivitiesResourceApi get floodlightActivities =>
-      FloodlightActivitiesResourceApi(_requester);
-  FloodlightActivityGroupsResourceApi get floodlightActivityGroups =>
-      FloodlightActivityGroupsResourceApi(_requester);
-  FloodlightConfigurationsResourceApi get floodlightConfigurations =>
-      FloodlightConfigurationsResourceApi(_requester);
-  InventoryItemsResourceApi get inventoryItems =>
-      InventoryItemsResourceApi(_requester);
-  LanguagesResourceApi get languages => LanguagesResourceApi(_requester);
-  MetrosResourceApi get metros => MetrosResourceApi(_requester);
-  MobileAppsResourceApi get mobileApps => MobileAppsResourceApi(_requester);
-  MobileCarriersResourceApi get mobileCarriers =>
-      MobileCarriersResourceApi(_requester);
-  OperatingSystemVersionsResourceApi get operatingSystemVersions =>
-      OperatingSystemVersionsResourceApi(_requester);
-  OperatingSystemsResourceApi get operatingSystems =>
-      OperatingSystemsResourceApi(_requester);
-  OrderDocumentsResourceApi get orderDocuments =>
-      OrderDocumentsResourceApi(_requester);
-  OrdersResourceApi get orders => OrdersResourceApi(_requester);
-  PlacementGroupsResourceApi get placementGroups =>
-      PlacementGroupsResourceApi(_requester);
-  PlacementStrategiesResourceApi get placementStrategies =>
-      PlacementStrategiesResourceApi(_requester);
-  PlacementsResourceApi get placements => PlacementsResourceApi(_requester);
-  PlatformTypesResourceApi get platformTypes =>
-      PlatformTypesResourceApi(_requester);
-  PostalCodesResourceApi get postalCodes => PostalCodesResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  RegionsResourceApi get regions => RegionsResourceApi(_requester);
-  RemarketingListSharesResourceApi get remarketingListShares =>
-      RemarketingListSharesResourceApi(_requester);
-  RemarketingListsResourceApi get remarketingLists =>
-      RemarketingListsResourceApi(_requester);
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
-  SitesResourceApi get sites => SitesResourceApi(_requester);
-  SizesResourceApi get sizes => SizesResourceApi(_requester);
-  SubaccountsResourceApi get subaccounts => SubaccountsResourceApi(_requester);
-  TargetableRemarketingListsResourceApi get targetableRemarketingLists =>
-      TargetableRemarketingListsResourceApi(_requester);
-  TargetingTemplatesResourceApi get targetingTemplates =>
-      TargetingTemplatesResourceApi(_requester);
-  UserProfilesResourceApi get userProfiles =>
-      UserProfilesResourceApi(_requester);
-  UserRolePermissionGroupsResourceApi get userRolePermissionGroups =>
-      UserRolePermissionGroupsResourceApi(_requester);
-  UserRolePermissionsResourceApi get userRolePermissions =>
-      UserRolePermissionsResourceApi(_requester);
-  UserRolesResourceApi get userRoles => UserRolesResourceApi(_requester);
-  VideoFormatsResourceApi get videoFormats =>
-      VideoFormatsResourceApi(_requester);
+  AccountActiveAdSummariesResource get accountActiveAdSummaries =>
+      AccountActiveAdSummariesResource(_requester);
+  AccountPermissionGroupsResource get accountPermissionGroups =>
+      AccountPermissionGroupsResource(_requester);
+  AccountPermissionsResource get accountPermissions =>
+      AccountPermissionsResource(_requester);
+  AccountUserProfilesResource get accountUserProfiles =>
+      AccountUserProfilesResource(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  AdsResource get ads => AdsResource(_requester);
+  AdvertiserGroupsResource get advertiserGroups =>
+      AdvertiserGroupsResource(_requester);
+  AdvertiserLandingPagesResource get advertiserLandingPages =>
+      AdvertiserLandingPagesResource(_requester);
+  AdvertisersResource get advertisers => AdvertisersResource(_requester);
+  BrowsersResource get browsers => BrowsersResource(_requester);
+  CampaignCreativeAssociationsResource get campaignCreativeAssociations =>
+      CampaignCreativeAssociationsResource(_requester);
+  CampaignsResource get campaigns => CampaignsResource(_requester);
+  ChangeLogsResource get changeLogs => ChangeLogsResource(_requester);
+  CitiesResource get cities => CitiesResource(_requester);
+  ConnectionTypesResource get connectionTypes =>
+      ConnectionTypesResource(_requester);
+  ContentCategoriesResource get contentCategories =>
+      ContentCategoriesResource(_requester);
+  ConversionsResource get conversions => ConversionsResource(_requester);
+  CountriesResource get countries => CountriesResource(_requester);
+  CreativeAssetsResource get creativeAssets =>
+      CreativeAssetsResource(_requester);
+  CreativeFieldValuesResource get creativeFieldValues =>
+      CreativeFieldValuesResource(_requester);
+  CreativeFieldsResource get creativeFields =>
+      CreativeFieldsResource(_requester);
+  CreativeGroupsResource get creativeGroups =>
+      CreativeGroupsResource(_requester);
+  CreativesResource get creatives => CreativesResource(_requester);
+  CustomEventsResource get customEvents => CustomEventsResource(_requester);
+  DimensionValuesResource get dimensionValues =>
+      DimensionValuesResource(_requester);
+  DirectorySitesResource get directorySites =>
+      DirectorySitesResource(_requester);
+  DynamicTargetingKeysResource get dynamicTargetingKeys =>
+      DynamicTargetingKeysResource(_requester);
+  EventTagsResource get eventTags => EventTagsResource(_requester);
+  FilesResource get files => FilesResource(_requester);
+  FloodlightActivitiesResource get floodlightActivities =>
+      FloodlightActivitiesResource(_requester);
+  FloodlightActivityGroupsResource get floodlightActivityGroups =>
+      FloodlightActivityGroupsResource(_requester);
+  FloodlightConfigurationsResource get floodlightConfigurations =>
+      FloodlightConfigurationsResource(_requester);
+  InventoryItemsResource get inventoryItems =>
+      InventoryItemsResource(_requester);
+  LanguagesResource get languages => LanguagesResource(_requester);
+  MetrosResource get metros => MetrosResource(_requester);
+  MobileAppsResource get mobileApps => MobileAppsResource(_requester);
+  MobileCarriersResource get mobileCarriers =>
+      MobileCarriersResource(_requester);
+  OperatingSystemVersionsResource get operatingSystemVersions =>
+      OperatingSystemVersionsResource(_requester);
+  OperatingSystemsResource get operatingSystems =>
+      OperatingSystemsResource(_requester);
+  OrderDocumentsResource get orderDocuments =>
+      OrderDocumentsResource(_requester);
+  OrdersResource get orders => OrdersResource(_requester);
+  PlacementGroupsResource get placementGroups =>
+      PlacementGroupsResource(_requester);
+  PlacementStrategiesResource get placementStrategies =>
+      PlacementStrategiesResource(_requester);
+  PlacementsResource get placements => PlacementsResource(_requester);
+  PlatformTypesResource get platformTypes => PlatformTypesResource(_requester);
+  PostalCodesResource get postalCodes => PostalCodesResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  RegionsResource get regions => RegionsResource(_requester);
+  RemarketingListSharesResource get remarketingListShares =>
+      RemarketingListSharesResource(_requester);
+  RemarketingListsResource get remarketingLists =>
+      RemarketingListsResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
+  SitesResource get sites => SitesResource(_requester);
+  SizesResource get sizes => SizesResource(_requester);
+  SubaccountsResource get subaccounts => SubaccountsResource(_requester);
+  TargetableRemarketingListsResource get targetableRemarketingLists =>
+      TargetableRemarketingListsResource(_requester);
+  TargetingTemplatesResource get targetingTemplates =>
+      TargetingTemplatesResource(_requester);
+  UserProfilesResource get userProfiles => UserProfilesResource(_requester);
+  UserRolePermissionGroupsResource get userRolePermissionGroups =>
+      UserRolePermissionGroupsResource(_requester);
+  UserRolePermissionsResource get userRolePermissions =>
+      UserRolePermissionsResource(_requester);
+  UserRolesResource get userRoles => UserRolesResource(_requester);
+  VideoFormatsResource get videoFormats => VideoFormatsResource(_requester);
 
   DfareportingApi(http.Client client,
       {core.String rootUrl = 'https://dfareporting.googleapis.com/',
@@ -231,10 +227,10 @@ class DfareportingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountActiveAdSummariesResourceApi {
+class AccountActiveAdSummariesResource {
   final commons.ApiRequester _requester;
 
-  AccountActiveAdSummariesResourceApi(commons.ApiRequester client)
+  AccountActiveAdSummariesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the account's active ad summary by account ID.
@@ -298,10 +294,10 @@ class AccountActiveAdSummariesResourceApi {
   }
 }
 
-class AccountPermissionGroupsResourceApi {
+class AccountPermissionGroupsResource {
   final commons.ApiRequester _requester;
 
-  AccountPermissionGroupsResourceApi(commons.ApiRequester client)
+  AccountPermissionGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one account permission group by ID.
@@ -418,11 +414,10 @@ class AccountPermissionGroupsResourceApi {
   }
 }
 
-class AccountPermissionsResourceApi {
+class AccountPermissionsResource {
   final commons.ApiRequester _requester;
 
-  AccountPermissionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountPermissionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one account permission by ID.
   ///
@@ -538,10 +533,10 @@ class AccountPermissionsResourceApi {
   }
 }
 
-class AccountUserProfilesResourceApi {
+class AccountUserProfilesResource {
   final commons.ApiRequester _requester;
 
-  AccountUserProfilesResourceApi(commons.ApiRequester client)
+  AccountUserProfilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one account user profile by ID.
@@ -912,10 +907,10 @@ class AccountUserProfilesResourceApi {
   }
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one account by ID.
   ///
@@ -1209,10 +1204,10 @@ class AccountsResourceApi {
   }
 }
 
-class AdsResourceApi {
+class AdsResource {
   final commons.ApiRequester _requester;
 
-  AdsResourceApi(commons.ApiRequester client) : _requester = client;
+  AdsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one ad by ID.
   ///
@@ -1672,11 +1667,10 @@ class AdsResourceApi {
   }
 }
 
-class AdvertiserGroupsResourceApi {
+class AdvertiserGroupsResource {
   final commons.ApiRequester _requester;
 
-  AdvertiserGroupsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AdvertiserGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing advertiser group.
   ///
@@ -2086,10 +2080,10 @@ class AdvertiserGroupsResourceApi {
   }
 }
 
-class AdvertiserLandingPagesResourceApi {
+class AdvertiserLandingPagesResource {
   final commons.ApiRequester _requester;
 
-  AdvertiserLandingPagesResourceApi(commons.ApiRequester client)
+  AdvertiserLandingPagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one landing page by ID.
@@ -2467,10 +2461,10 @@ class AdvertiserLandingPagesResourceApi {
   }
 }
 
-class AdvertisersResourceApi {
+class AdvertisersResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersResourceApi(commons.ApiRequester client) : _requester = client;
+  AdvertisersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one advertiser by ID.
   ///
@@ -2865,10 +2859,10 @@ class AdvertisersResourceApi {
   }
 }
 
-class BrowsersResourceApi {
+class BrowsersResource {
   final commons.ApiRequester _requester;
 
-  BrowsersResourceApi(commons.ApiRequester client) : _requester = client;
+  BrowsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of browsers.
   ///
@@ -2924,10 +2918,10 @@ class BrowsersResourceApi {
   }
 }
 
-class CampaignCreativeAssociationsResourceApi {
+class CampaignCreativeAssociationsResource {
   final commons.ApiRequester _requester;
 
-  CampaignCreativeAssociationsResourceApi(commons.ApiRequester client)
+  CampaignCreativeAssociationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Associates a creative with the specified campaign. This method creates a
@@ -3084,10 +3078,10 @@ class CampaignCreativeAssociationsResourceApi {
   }
 }
 
-class CampaignsResourceApi {
+class CampaignsResource {
   final commons.ApiRequester _requester;
 
-  CampaignsResourceApi(commons.ApiRequester client) : _requester = client;
+  CampaignsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one campaign by ID.
   ///
@@ -3481,10 +3475,10 @@ class CampaignsResourceApi {
   }
 }
 
-class ChangeLogsResourceApi {
+class ChangeLogsResource {
   final commons.ApiRequester _requester;
 
-  ChangeLogsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChangeLogsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one change log by ID.
   ///
@@ -3730,10 +3724,10 @@ class ChangeLogsResourceApi {
   }
 }
 
-class CitiesResourceApi {
+class CitiesResource {
   final commons.ApiRequester _requester;
 
-  CitiesResourceApi(commons.ApiRequester client) : _requester = client;
+  CitiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of cities, possibly filtered.
   ///
@@ -3813,10 +3807,10 @@ class CitiesResourceApi {
   }
 }
 
-class ConnectionTypesResourceApi {
+class ConnectionTypesResource {
   final commons.ApiRequester _requester;
 
-  ConnectionTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  ConnectionTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one connection type by ID.
   ///
@@ -3932,11 +3926,10 @@ class ConnectionTypesResourceApi {
   }
 }
 
-class ContentCategoriesResourceApi {
+class ContentCategoriesResource {
   final commons.ApiRequester _requester;
 
-  ContentCategoriesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ContentCategoriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing content category.
   ///
@@ -4346,10 +4339,10 @@ class ContentCategoriesResourceApi {
   }
 }
 
-class ConversionsResourceApi {
+class ConversionsResource {
   final commons.ApiRequester _requester;
 
-  ConversionsResourceApi(commons.ApiRequester client) : _requester = client;
+  ConversionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts conversions.
   ///
@@ -4470,10 +4463,10 @@ class ConversionsResourceApi {
   }
 }
 
-class CountriesResourceApi {
+class CountriesResource {
   final commons.ApiRequester _requester;
 
-  CountriesResourceApi(commons.ApiRequester client) : _requester = client;
+  CountriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one country by ID.
   ///
@@ -4588,10 +4581,10 @@ class CountriesResourceApi {
   }
 }
 
-class CreativeAssetsResourceApi {
+class CreativeAssetsResource {
   final commons.ApiRequester _requester;
 
-  CreativeAssetsResourceApi(commons.ApiRequester client) : _requester = client;
+  CreativeAssetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts a new creative asset.
   ///
@@ -4675,10 +4668,10 @@ class CreativeAssetsResourceApi {
   }
 }
 
-class CreativeFieldValuesResourceApi {
+class CreativeFieldValuesResource {
   final commons.ApiRequester _requester;
 
-  CreativeFieldValuesResourceApi(commons.ApiRequester client)
+  CreativeFieldValuesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an existing creative field value.
@@ -5132,10 +5125,10 @@ class CreativeFieldValuesResourceApi {
   }
 }
 
-class CreativeFieldsResourceApi {
+class CreativeFieldsResource {
   final commons.ApiRequester _requester;
 
-  CreativeFieldsResourceApi(commons.ApiRequester client) : _requester = client;
+  CreativeFieldsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing creative field.
   ///
@@ -5552,10 +5545,10 @@ class CreativeFieldsResourceApi {
   }
 }
 
-class CreativeGroupsResourceApi {
+class CreativeGroupsResource {
   final commons.ApiRequester _requester;
 
-  CreativeGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  CreativeGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one creative group by ID.
   ///
@@ -5920,10 +5913,10 @@ class CreativeGroupsResourceApi {
   }
 }
 
-class CreativesResourceApi {
+class CreativesResource {
   final commons.ApiRequester _requester;
 
-  CreativesResourceApi(commons.ApiRequester client) : _requester = client;
+  CreativesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one creative by ID.
   ///
@@ -6333,10 +6326,10 @@ class CreativesResourceApi {
   }
 }
 
-class CustomEventsResourceApi {
+class CustomEventsResource {
   final commons.ApiRequester _requester;
 
-  CustomEventsResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomEventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts custom events.
   ///
@@ -6398,10 +6391,10 @@ class CustomEventsResourceApi {
   }
 }
 
-class DimensionValuesResourceApi {
+class DimensionValuesResource {
   final commons.ApiRequester _requester;
 
-  DimensionValuesResourceApi(commons.ApiRequester client) : _requester = client;
+  DimensionValuesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves list of report dimension values for a list of filters.
   ///
@@ -6476,10 +6469,10 @@ class DimensionValuesResourceApi {
   }
 }
 
-class DirectorySitesResourceApi {
+class DirectorySitesResource {
   final commons.ApiRequester _requester;
 
-  DirectorySitesResourceApi(commons.ApiRequester client) : _requester = client;
+  DirectorySitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one directory site by ID.
   ///
@@ -6745,10 +6738,10 @@ class DirectorySitesResourceApi {
   }
 }
 
-class DynamicTargetingKeysResourceApi {
+class DynamicTargetingKeysResource {
   final commons.ApiRequester _requester;
 
-  DynamicTargetingKeysResourceApi(commons.ApiRequester client)
+  DynamicTargetingKeysResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an existing dynamic targeting key.
@@ -6979,10 +6972,10 @@ class DynamicTargetingKeysResourceApi {
   }
 }
 
-class EventTagsResourceApi {
+class EventTagsResource {
   final commons.ApiRequester _requester;
 
-  EventTagsResourceApi(commons.ApiRequester client) : _requester = client;
+  EventTagsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing event tag.
   ///
@@ -7423,10 +7416,10 @@ class EventTagsResourceApi {
   }
 }
 
-class FilesResourceApi {
+class FilesResource {
   final commons.ApiRequester _requester;
 
-  FilesResourceApi(commons.ApiRequester client) : _requester = client;
+  FilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report file by its report ID and file ID. This method supports
   /// media download.
@@ -7598,10 +7591,10 @@ class FilesResourceApi {
   }
 }
 
-class FloodlightActivitiesResourceApi {
+class FloodlightActivitiesResource {
   final commons.ApiRequester _requester;
 
-  FloodlightActivitiesResourceApi(commons.ApiRequester client)
+  FloodlightActivitiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an existing floodlight activity.
@@ -8135,10 +8128,10 @@ class FloodlightActivitiesResourceApi {
   }
 }
 
-class FloodlightActivityGroupsResourceApi {
+class FloodlightActivityGroupsResource {
   final commons.ApiRequester _requester;
 
-  FloodlightActivityGroupsResourceApi(commons.ApiRequester client)
+  FloodlightActivityGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one floodlight activity group by ID.
@@ -8520,10 +8513,10 @@ class FloodlightActivityGroupsResourceApi {
   }
 }
 
-class FloodlightConfigurationsResourceApi {
+class FloodlightConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  FloodlightConfigurationsResourceApi(commons.ApiRequester client)
+  FloodlightConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one floodlight configuration by ID.
@@ -8773,10 +8766,10 @@ class FloodlightConfigurationsResourceApi {
   }
 }
 
-class InventoryItemsResourceApi {
+class InventoryItemsResource {
   final commons.ApiRequester _requester;
 
-  InventoryItemsResourceApi(commons.ApiRequester client) : _requester = client;
+  InventoryItemsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one inventory item by ID.
   ///
@@ -8974,10 +8967,10 @@ class InventoryItemsResourceApi {
   }
 }
 
-class LanguagesResourceApi {
+class LanguagesResource {
   final commons.ApiRequester _requester;
 
-  LanguagesResourceApi(commons.ApiRequester client) : _requester = client;
+  LanguagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of languages.
   ///
@@ -9033,10 +9026,10 @@ class LanguagesResourceApi {
   }
 }
 
-class MetrosResourceApi {
+class MetrosResource {
   final commons.ApiRequester _requester;
 
-  MetrosResourceApi(commons.ApiRequester client) : _requester = client;
+  MetrosResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of metros.
   ///
@@ -9092,10 +9085,10 @@ class MetrosResourceApi {
   }
 }
 
-class MobileAppsResourceApi {
+class MobileAppsResource {
   final commons.ApiRequester _requester;
 
-  MobileAppsResourceApi(commons.ApiRequester client) : _requester = client;
+  MobileAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one mobile app by ID.
   ///
@@ -9246,10 +9239,10 @@ class MobileAppsResourceApi {
   }
 }
 
-class MobileCarriersResourceApi {
+class MobileCarriersResource {
   final commons.ApiRequester _requester;
 
-  MobileCarriersResourceApi(commons.ApiRequester client) : _requester = client;
+  MobileCarriersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one mobile carrier by ID.
   ///
@@ -9365,10 +9358,10 @@ class MobileCarriersResourceApi {
   }
 }
 
-class OperatingSystemVersionsResourceApi {
+class OperatingSystemVersionsResource {
   final commons.ApiRequester _requester;
 
-  OperatingSystemVersionsResourceApi(commons.ApiRequester client)
+  OperatingSystemVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one operating system version by ID.
@@ -9485,11 +9478,10 @@ class OperatingSystemVersionsResourceApi {
   }
 }
 
-class OperatingSystemsResourceApi {
+class OperatingSystemsResource {
   final commons.ApiRequester _requester;
 
-  OperatingSystemsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OperatingSystemsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one operating system by DART ID.
   ///
@@ -9605,10 +9597,10 @@ class OperatingSystemsResourceApi {
   }
 }
 
-class OrderDocumentsResourceApi {
+class OrderDocumentsResource {
   final commons.ApiRequester _requester;
 
-  OrderDocumentsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrderDocumentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one order document by ID.
   ///
@@ -9811,10 +9803,10 @@ class OrderDocumentsResourceApi {
   }
 }
 
-class OrdersResourceApi {
+class OrdersResource {
   final commons.ApiRequester _requester;
 
-  OrdersResourceApi(commons.ApiRequester client) : _requester = client;
+  OrdersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one order by ID.
   ///
@@ -10000,10 +9992,10 @@ class OrdersResourceApi {
   }
 }
 
-class PlacementGroupsResourceApi {
+class PlacementGroupsResource {
   final commons.ApiRequester _requester;
 
-  PlacementGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  PlacementGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one placement group by ID.
   ///
@@ -10456,10 +10448,10 @@ class PlacementGroupsResourceApi {
   }
 }
 
-class PlacementStrategiesResourceApi {
+class PlacementStrategiesResource {
   final commons.ApiRequester _requester;
 
-  PlacementStrategiesResourceApi(commons.ApiRequester client)
+  PlacementStrategiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an existing placement strategy.
@@ -10871,10 +10863,10 @@ class PlacementStrategiesResourceApi {
   }
 }
 
-class PlacementsResourceApi {
+class PlacementsResource {
   final commons.ApiRequester _requester;
 
-  PlacementsResourceApi(commons.ApiRequester client) : _requester = client;
+  PlacementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generates tags for a placement.
   ///
@@ -11409,10 +11401,10 @@ class PlacementsResourceApi {
   }
 }
 
-class PlatformTypesResourceApi {
+class PlatformTypesResource {
   final commons.ApiRequester _requester;
 
-  PlatformTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  PlatformTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one platform type by ID.
   ///
@@ -11528,10 +11520,10 @@ class PlatformTypesResourceApi {
   }
 }
 
-class PostalCodesResourceApi {
+class PostalCodesResource {
   final commons.ApiRequester _requester;
 
-  PostalCodesResourceApi(commons.ApiRequester client) : _requester = client;
+  PostalCodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one postal code by ID.
   ///
@@ -11647,10 +11639,10 @@ class PostalCodesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one project by ID.
   ///
@@ -11821,10 +11813,10 @@ class ProjectsResourceApi {
   }
 }
 
-class RegionsResourceApi {
+class RegionsResource {
   final commons.ApiRequester _requester;
 
-  RegionsResourceApi(commons.ApiRequester client) : _requester = client;
+  RegionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of regions.
   ///
@@ -11880,10 +11872,10 @@ class RegionsResourceApi {
   }
 }
 
-class RemarketingListSharesResourceApi {
+class RemarketingListSharesResource {
   final commons.ApiRequester _requester;
 
-  RemarketingListSharesResourceApi(commons.ApiRequester client)
+  RemarketingListSharesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one remarketing list share by remarketing list ID.
@@ -12073,11 +12065,10 @@ class RemarketingListSharesResourceApi {
   }
 }
 
-class RemarketingListsResourceApi {
+class RemarketingListsResource {
   final commons.ApiRequester _requester;
 
-  RemarketingListsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  RemarketingListsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one remarketing list by ID.
   ///
@@ -12442,14 +12433,14 @@ class RemarketingListsResourceApi {
   }
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsCompatibleFieldsResourceApi get compatibleFields =>
-      ReportsCompatibleFieldsResourceApi(_requester);
-  ReportsFilesResourceApi get files => ReportsFilesResourceApi(_requester);
+  ReportsCompatibleFieldsResource get compatibleFields =>
+      ReportsCompatibleFieldsResource(_requester);
+  ReportsFilesResource get files => ReportsFilesResource(_requester);
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a report by its ID.
   ///
@@ -12918,10 +12909,10 @@ class ReportsResourceApi {
   }
 }
 
-class ReportsCompatibleFieldsResourceApi {
+class ReportsCompatibleFieldsResource {
   final commons.ApiRequester _requester;
 
-  ReportsCompatibleFieldsResourceApi(commons.ApiRequester client)
+  ReportsCompatibleFieldsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the fields that are compatible to be selected in the respective
@@ -12986,10 +12977,10 @@ class ReportsCompatibleFieldsResourceApi {
   }
 }
 
-class ReportsFilesResourceApi {
+class ReportsFilesResource {
   final commons.ApiRequester _requester;
 
-  ReportsFilesResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsFilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report file by its report ID and file ID. This method supports
   /// media download.
@@ -13167,10 +13158,10 @@ class ReportsFilesResourceApi {
   }
 }
 
-class SitesResourceApi {
+class SitesResource {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one site by ID.
   ///
@@ -13578,10 +13569,10 @@ class SitesResourceApi {
   }
 }
 
-class SizesResourceApi {
+class SizesResource {
   final commons.ApiRequester _requester;
 
-  SizesResourceApi(commons.ApiRequester client) : _requester = client;
+  SizesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one size by ID.
   ///
@@ -13783,10 +13774,10 @@ class SizesResourceApi {
   }
 }
 
-class SubaccountsResourceApi {
+class SubaccountsResource {
   final commons.ApiRequester _requester;
 
-  SubaccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  SubaccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one subaccount by ID.
   ///
@@ -14136,10 +14127,10 @@ class SubaccountsResourceApi {
   }
 }
 
-class TargetableRemarketingListsResourceApi {
+class TargetableRemarketingListsResource {
   final commons.ApiRequester _requester;
 
-  TargetableRemarketingListsResourceApi(commons.ApiRequester client)
+  TargetableRemarketingListsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one remarketing list by ID.
@@ -14315,11 +14306,10 @@ class TargetableRemarketingListsResourceApi {
   }
 }
 
-class TargetingTemplatesResourceApi {
+class TargetingTemplatesResource {
   final commons.ApiRequester _requester;
 
-  TargetingTemplatesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetingTemplatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one targeting template by ID.
   ///
@@ -14676,10 +14666,10 @@ class TargetingTemplatesResourceApi {
   }
 }
 
-class UserProfilesResourceApi {
+class UserProfilesResource {
   final commons.ApiRequester _requester;
 
-  UserProfilesResourceApi(commons.ApiRequester client) : _requester = client;
+  UserProfilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one user profile by ID.
   ///
@@ -14778,10 +14768,10 @@ class UserProfilesResourceApi {
   }
 }
 
-class UserRolePermissionGroupsResourceApi {
+class UserRolePermissionGroupsResource {
   final commons.ApiRequester _requester;
 
-  UserRolePermissionGroupsResourceApi(commons.ApiRequester client)
+  UserRolePermissionGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one user role permission group by ID.
@@ -14898,10 +14888,10 @@ class UserRolePermissionGroupsResourceApi {
   }
 }
 
-class UserRolePermissionsResourceApi {
+class UserRolePermissionsResource {
   final commons.ApiRequester _requester;
 
-  UserRolePermissionsResourceApi(commons.ApiRequester client)
+  UserRolePermissionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets one user role permission by ID.
@@ -15024,10 +15014,10 @@ class UserRolePermissionsResourceApi {
   }
 }
 
-class UserRolesResourceApi {
+class UserRolesResource {
   final commons.ApiRequester _requester;
 
-  UserRolesResourceApi(commons.ApiRequester client) : _requester = client;
+  UserRolesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing user role.
   ///
@@ -15445,10 +15435,10 @@ class UserRolesResourceApi {
   }
 }
 
-class VideoFormatsResourceApi {
+class VideoFormatsResource {
   final commons.ApiRequester _requester;
 
-  VideoFormatsResourceApi(commons.ApiRequester client) : _requester = client;
+  VideoFormatsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one video format by ID.
   ///

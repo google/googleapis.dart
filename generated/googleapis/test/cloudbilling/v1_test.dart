@@ -945,7 +945,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsResourceApi', () {
+  unittest.group('resource-BillingAccountsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
@@ -1324,7 +1324,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsProjectsResourceApi', () {
+  unittest.group('resource-BillingAccountsProjectsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts.projects;
@@ -1384,7 +1384,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--getBillingInfo', () {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).projects;
@@ -1487,7 +1487,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).services;
@@ -1544,7 +1544,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesSkusResourceApi', () {
+  unittest.group('resource-ServicesSkusResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).services.skus;

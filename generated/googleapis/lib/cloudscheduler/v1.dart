@@ -23,9 +23,9 @@
 ///
 /// Create an instance of [CloudSchedulerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsJobsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsJobsResource]
 library cloudscheduler.v1;
 
 import 'dart:async' as async;
@@ -48,7 +48,7 @@ class CloudSchedulerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudSchedulerApi(http.Client client,
       {core.String rootUrl = 'https://cloudscheduler.googleapis.com/',
@@ -57,23 +57,22 @@ class CloudSchedulerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsResourceApi get jobs =>
-      ProjectsLocationsJobsResourceApi(_requester);
+  ProjectsLocationsJobsResource get jobs =>
+      ProjectsLocationsJobsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -198,10 +197,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsJobsResourceApi {
+class ProjectsLocationsJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a job.

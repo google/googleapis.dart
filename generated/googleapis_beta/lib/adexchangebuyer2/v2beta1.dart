@@ -26,40 +26,40 @@
 ///
 /// Create an instance of [AdExchangeBuyerIIApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsClientsResourceApi]
-///     - [AccountsClientsInvitationsResourceApi]
-///     - [AccountsClientsUsersResourceApi]
-///   - [AccountsCreativesResourceApi]
-///     - [AccountsCreativesDealAssociationsResourceApi]
-///   - [AccountsFinalizedProposalsResourceApi]
-///   - [AccountsProductsResourceApi]
-///   - [AccountsProposalsResourceApi]
-///   - [AccountsPublisherProfilesResourceApi]
-/// - [BiddersResourceApi]
-///   - [BiddersAccountsResourceApi]
-///     - [BiddersAccountsFilterSetsResourceApi]
-///       - [BiddersAccountsFilterSetsBidMetricsResourceApi]
-///       - [BiddersAccountsFilterSetsBidResponseErrorsResourceApi]
-///       - [BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi]
-///       - [BiddersAccountsFilterSetsFilteredBidRequestsResourceApi]
-///       - [BiddersAccountsFilterSetsFilteredBidsResourceApi]
-///         - [BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi]
-///         - [BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi]
-///       - [BiddersAccountsFilterSetsImpressionMetricsResourceApi]
-///       - [BiddersAccountsFilterSetsLosingBidsResourceApi]
-///       - [BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi]
-///   - [BiddersFilterSetsResourceApi]
-///     - [BiddersFilterSetsBidMetricsResourceApi]
-///     - [BiddersFilterSetsBidResponseErrorsResourceApi]
-///     - [BiddersFilterSetsBidResponsesWithoutBidsResourceApi]
-///     - [BiddersFilterSetsFilteredBidRequestsResourceApi]
-///     - [BiddersFilterSetsFilteredBidsResourceApi]
-///       - [BiddersFilterSetsFilteredBidsCreativesResourceApi]
-///       - [BiddersFilterSetsFilteredBidsDetailsResourceApi]
-///     - [BiddersFilterSetsImpressionMetricsResourceApi]
-///     - [BiddersFilterSetsLosingBidsResourceApi]
-///     - [BiddersFilterSetsNonBillableWinningBidsResourceApi]
+/// - [AccountsResource]
+///   - [AccountsClientsResource]
+///     - [AccountsClientsInvitationsResource]
+///     - [AccountsClientsUsersResource]
+///   - [AccountsCreativesResource]
+///     - [AccountsCreativesDealAssociationsResource]
+///   - [AccountsFinalizedProposalsResource]
+///   - [AccountsProductsResource]
+///   - [AccountsProposalsResource]
+///   - [AccountsPublisherProfilesResource]
+/// - [BiddersResource]
+///   - [BiddersAccountsResource]
+///     - [BiddersAccountsFilterSetsResource]
+///       - [BiddersAccountsFilterSetsBidMetricsResource]
+///       - [BiddersAccountsFilterSetsBidResponseErrorsResource]
+///       - [BiddersAccountsFilterSetsBidResponsesWithoutBidsResource]
+///       - [BiddersAccountsFilterSetsFilteredBidRequestsResource]
+///       - [BiddersAccountsFilterSetsFilteredBidsResource]
+///         - [BiddersAccountsFilterSetsFilteredBidsCreativesResource]
+///         - [BiddersAccountsFilterSetsFilteredBidsDetailsResource]
+///       - [BiddersAccountsFilterSetsImpressionMetricsResource]
+///       - [BiddersAccountsFilterSetsLosingBidsResource]
+///       - [BiddersAccountsFilterSetsNonBillableWinningBidsResource]
+///   - [BiddersFilterSetsResource]
+///     - [BiddersFilterSetsBidMetricsResource]
+///     - [BiddersFilterSetsBidResponseErrorsResource]
+///     - [BiddersFilterSetsBidResponsesWithoutBidsResource]
+///     - [BiddersFilterSetsFilteredBidRequestsResource]
+///     - [BiddersFilterSetsFilteredBidsResource]
+///       - [BiddersFilterSetsFilteredBidsCreativesResource]
+///       - [BiddersFilterSetsFilteredBidsDetailsResource]
+///     - [BiddersFilterSetsImpressionMetricsResource]
+///     - [BiddersFilterSetsLosingBidsResource]
+///     - [BiddersFilterSetsNonBillableWinningBidsResource]
 library adexchangebuyer2.v2beta1;
 
 import 'dart:async' as async;
@@ -84,8 +84,8 @@ class AdExchangeBuyerIIApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  BiddersResourceApi get bidders => BiddersResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  BiddersResource get bidders => BiddersResource(_requester);
 
   AdExchangeBuyerIIApi(http.Client client,
       {core.String rootUrl = 'https://adexchangebuyer.googleapis.com/',
@@ -94,34 +94,32 @@ class AdExchangeBuyerIIApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsClientsResourceApi get clients =>
-      AccountsClientsResourceApi(_requester);
-  AccountsCreativesResourceApi get creatives =>
-      AccountsCreativesResourceApi(_requester);
-  AccountsFinalizedProposalsResourceApi get finalizedProposals =>
-      AccountsFinalizedProposalsResourceApi(_requester);
-  AccountsProductsResourceApi get products =>
-      AccountsProductsResourceApi(_requester);
-  AccountsProposalsResourceApi get proposals =>
-      AccountsProposalsResourceApi(_requester);
-  AccountsPublisherProfilesResourceApi get publisherProfiles =>
-      AccountsPublisherProfilesResourceApi(_requester);
+  AccountsClientsResource get clients => AccountsClientsResource(_requester);
+  AccountsCreativesResource get creatives =>
+      AccountsCreativesResource(_requester);
+  AccountsFinalizedProposalsResource get finalizedProposals =>
+      AccountsFinalizedProposalsResource(_requester);
+  AccountsProductsResource get products => AccountsProductsResource(_requester);
+  AccountsProposalsResource get proposals =>
+      AccountsProposalsResource(_requester);
+  AccountsPublisherProfilesResource get publisherProfiles =>
+      AccountsPublisherProfilesResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class AccountsClientsResourceApi {
+class AccountsClientsResource {
   final commons.ApiRequester _requester;
 
-  AccountsClientsInvitationsResourceApi get invitations =>
-      AccountsClientsInvitationsResourceApi(_requester);
-  AccountsClientsUsersResourceApi get users =>
-      AccountsClientsUsersResourceApi(_requester);
+  AccountsClientsInvitationsResource get invitations =>
+      AccountsClientsInvitationsResource(_requester);
+  AccountsClientsUsersResource get users =>
+      AccountsClientsUsersResource(_requester);
 
-  AccountsClientsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsClientsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new client buyer.
   ///
@@ -390,10 +388,10 @@ class AccountsClientsResourceApi {
   }
 }
 
-class AccountsClientsInvitationsResourceApi {
+class AccountsClientsInvitationsResource {
   final commons.ApiRequester _requester;
 
-  AccountsClientsInvitationsResourceApi(commons.ApiRequester client)
+  AccountsClientsInvitationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates and sends out an email invitation to access an Ad Exchange client
@@ -620,10 +618,10 @@ class AccountsClientsInvitationsResourceApi {
   }
 }
 
-class AccountsClientsUsersResourceApi {
+class AccountsClientsUsersResource {
   final commons.ApiRequester _requester;
 
-  AccountsClientsUsersResourceApi(commons.ApiRequester client)
+  AccountsClientsUsersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves an existing client user.
@@ -855,14 +853,13 @@ class AccountsClientsUsersResourceApi {
   }
 }
 
-class AccountsCreativesResourceApi {
+class AccountsCreativesResource {
   final commons.ApiRequester _requester;
 
-  AccountsCreativesDealAssociationsResourceApi get dealAssociations =>
-      AccountsCreativesDealAssociationsResourceApi(_requester);
+  AccountsCreativesDealAssociationsResource get dealAssociations =>
+      AccountsCreativesDealAssociationsResource(_requester);
 
-  AccountsCreativesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsCreativesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a creative.
   ///
@@ -1290,10 +1287,10 @@ class AccountsCreativesResourceApi {
   }
 }
 
-class AccountsCreativesDealAssociationsResourceApi {
+class AccountsCreativesDealAssociationsResource {
   final commons.ApiRequester _requester;
 
-  AccountsCreativesDealAssociationsResourceApi(commons.ApiRequester client)
+  AccountsCreativesDealAssociationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Associate an existing deal with a creative.
@@ -1520,10 +1517,10 @@ class AccountsCreativesDealAssociationsResourceApi {
   }
 }
 
-class AccountsFinalizedProposalsResourceApi {
+class AccountsFinalizedProposalsResource {
   final commons.ApiRequester _requester;
 
-  AccountsFinalizedProposalsResourceApi(commons.ApiRequester client)
+  AccountsFinalizedProposalsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List finalized proposals, regardless if a proposal is being renegotiated.
@@ -1619,11 +1616,10 @@ class AccountsFinalizedProposalsResourceApi {
   }
 }
 
-class AccountsProductsResourceApi {
+class AccountsProductsResource {
   final commons.ApiRequester _requester;
 
-  AccountsProductsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsProductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the requested product by ID.
   ///
@@ -1761,11 +1757,10 @@ class AccountsProductsResourceApi {
   }
 }
 
-class AccountsProposalsResourceApi {
+class AccountsProposalsResource {
   final commons.ApiRequester _requester;
 
-  AccountsProposalsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsProposalsResource(commons.ApiRequester client) : _requester = client;
 
   /// Mark the proposal as accepted at the given revision number. If the number
   /// does not match the server's revision number an `ABORTED` error message
@@ -2473,10 +2468,10 @@ class AccountsProposalsResourceApi {
   }
 }
 
-class AccountsPublisherProfilesResourceApi {
+class AccountsPublisherProfilesResource {
   final commons.ApiRequester _requester;
 
-  AccountsPublisherProfilesResourceApi(commons.ApiRequester client)
+  AccountsPublisherProfilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the requested publisher profile by id.
@@ -2605,52 +2600,49 @@ class AccountsPublisherProfilesResourceApi {
   }
 }
 
-class BiddersResourceApi {
+class BiddersResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsResourceApi get accounts =>
-      BiddersAccountsResourceApi(_requester);
-  BiddersFilterSetsResourceApi get filterSets =>
-      BiddersFilterSetsResourceApi(_requester);
+  BiddersAccountsResource get accounts => BiddersAccountsResource(_requester);
+  BiddersFilterSetsResource get filterSets =>
+      BiddersFilterSetsResource(_requester);
 
-  BiddersResourceApi(commons.ApiRequester client) : _requester = client;
+  BiddersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class BiddersAccountsResourceApi {
+class BiddersAccountsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsResourceApi get filterSets =>
-      BiddersAccountsFilterSetsResourceApi(_requester);
+  BiddersAccountsFilterSetsResource get filterSets =>
+      BiddersAccountsFilterSetsResource(_requester);
 
-  BiddersAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  BiddersAccountsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class BiddersAccountsFilterSetsResourceApi {
+class BiddersAccountsFilterSetsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsBidMetricsResourceApi get bidMetrics =>
-      BiddersAccountsFilterSetsBidMetricsResourceApi(_requester);
-  BiddersAccountsFilterSetsBidResponseErrorsResourceApi get bidResponseErrors =>
-      BiddersAccountsFilterSetsBidResponseErrorsResourceApi(_requester);
-  BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi
+  BiddersAccountsFilterSetsBidMetricsResource get bidMetrics =>
+      BiddersAccountsFilterSetsBidMetricsResource(_requester);
+  BiddersAccountsFilterSetsBidResponseErrorsResource get bidResponseErrors =>
+      BiddersAccountsFilterSetsBidResponseErrorsResource(_requester);
+  BiddersAccountsFilterSetsBidResponsesWithoutBidsResource
       get bidResponsesWithoutBids =>
-          BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi(
-              _requester);
-  BiddersAccountsFilterSetsFilteredBidRequestsResourceApi
+          BiddersAccountsFilterSetsBidResponsesWithoutBidsResource(_requester);
+  BiddersAccountsFilterSetsFilteredBidRequestsResource
       get filteredBidRequests =>
-          BiddersAccountsFilterSetsFilteredBidRequestsResourceApi(_requester);
-  BiddersAccountsFilterSetsFilteredBidsResourceApi get filteredBids =>
-      BiddersAccountsFilterSetsFilteredBidsResourceApi(_requester);
-  BiddersAccountsFilterSetsImpressionMetricsResourceApi get impressionMetrics =>
-      BiddersAccountsFilterSetsImpressionMetricsResourceApi(_requester);
-  BiddersAccountsFilterSetsLosingBidsResourceApi get losingBids =>
-      BiddersAccountsFilterSetsLosingBidsResourceApi(_requester);
-  BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi
+          BiddersAccountsFilterSetsFilteredBidRequestsResource(_requester);
+  BiddersAccountsFilterSetsFilteredBidsResource get filteredBids =>
+      BiddersAccountsFilterSetsFilteredBidsResource(_requester);
+  BiddersAccountsFilterSetsImpressionMetricsResource get impressionMetrics =>
+      BiddersAccountsFilterSetsImpressionMetricsResource(_requester);
+  BiddersAccountsFilterSetsLosingBidsResource get losingBids =>
+      BiddersAccountsFilterSetsLosingBidsResource(_requester);
+  BiddersAccountsFilterSetsNonBillableWinningBidsResource
       get nonBillableWinningBids =>
-          BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi(
-              _requester);
+          BiddersAccountsFilterSetsNonBillableWinningBidsResource(_requester);
 
-  BiddersAccountsFilterSetsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates the specified filter set for the account with the given account
@@ -2916,10 +2908,10 @@ class BiddersAccountsFilterSetsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsBidMetricsResourceApi {
+class BiddersAccountsFilterSetsBidMetricsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsBidMetricsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsBidMetricsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all metrics that are measured in terms of number of bids.
@@ -2999,10 +2991,10 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
+class BiddersAccountsFilterSetsBidResponseErrorsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsBidResponseErrorsResourceApi(
+  BiddersAccountsFilterSetsBidResponseErrorsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3084,10 +3076,10 @@ class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
+class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi(
+  BiddersAccountsFilterSetsBidResponsesWithoutBidsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3170,10 +3162,10 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
+class BiddersAccountsFilterSetsFilteredBidRequestsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsFilteredBidRequestsResourceApi(
+  BiddersAccountsFilterSetsFilteredBidRequestsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3255,15 +3247,15 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsFilteredBidsResourceApi {
+class BiddersAccountsFilterSetsFilteredBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi get creatives =>
-      BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi(_requester);
-  BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi get details =>
-      BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi(_requester);
+  BiddersAccountsFilterSetsFilteredBidsCreativesResource get creatives =>
+      BiddersAccountsFilterSetsFilteredBidsCreativesResource(_requester);
+  BiddersAccountsFilterSetsFilteredBidsDetailsResource get details =>
+      BiddersAccountsFilterSetsFilteredBidsDetailsResource(_requester);
 
-  BiddersAccountsFilterSetsFilteredBidsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsFilteredBidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bids were filtered, with the number of bids
@@ -3344,10 +3336,10 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
+class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi(
+  BiddersAccountsFilterSetsFilteredBidsCreativesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3439,10 +3431,10 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
+class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi(
+  BiddersAccountsFilterSetsFilteredBidsDetailsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3536,10 +3528,10 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
+class BiddersAccountsFilterSetsImpressionMetricsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsImpressionMetricsResourceApi(
+  BiddersAccountsFilterSetsImpressionMetricsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3620,10 +3612,10 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsLosingBidsResourceApi {
+class BiddersAccountsFilterSetsLosingBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsLosingBidsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsLosingBidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bids lost in the auction, with the number of
@@ -3704,10 +3696,10 @@ class BiddersAccountsFilterSetsLosingBidsResourceApi {
   }
 }
 
-class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
+class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi(
+  BiddersAccountsFilterSetsNonBillableWinningBidsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3789,30 +3781,28 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
   }
 }
 
-class BiddersFilterSetsResourceApi {
+class BiddersFilterSetsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsBidMetricsResourceApi get bidMetrics =>
-      BiddersFilterSetsBidMetricsResourceApi(_requester);
-  BiddersFilterSetsBidResponseErrorsResourceApi get bidResponseErrors =>
-      BiddersFilterSetsBidResponseErrorsResourceApi(_requester);
-  BiddersFilterSetsBidResponsesWithoutBidsResourceApi
+  BiddersFilterSetsBidMetricsResource get bidMetrics =>
+      BiddersFilterSetsBidMetricsResource(_requester);
+  BiddersFilterSetsBidResponseErrorsResource get bidResponseErrors =>
+      BiddersFilterSetsBidResponseErrorsResource(_requester);
+  BiddersFilterSetsBidResponsesWithoutBidsResource
       get bidResponsesWithoutBids =>
-          BiddersFilterSetsBidResponsesWithoutBidsResourceApi(_requester);
-  BiddersFilterSetsFilteredBidRequestsResourceApi get filteredBidRequests =>
-      BiddersFilterSetsFilteredBidRequestsResourceApi(_requester);
-  BiddersFilterSetsFilteredBidsResourceApi get filteredBids =>
-      BiddersFilterSetsFilteredBidsResourceApi(_requester);
-  BiddersFilterSetsImpressionMetricsResourceApi get impressionMetrics =>
-      BiddersFilterSetsImpressionMetricsResourceApi(_requester);
-  BiddersFilterSetsLosingBidsResourceApi get losingBids =>
-      BiddersFilterSetsLosingBidsResourceApi(_requester);
-  BiddersFilterSetsNonBillableWinningBidsResourceApi
-      get nonBillableWinningBids =>
-          BiddersFilterSetsNonBillableWinningBidsResourceApi(_requester);
+          BiddersFilterSetsBidResponsesWithoutBidsResource(_requester);
+  BiddersFilterSetsFilteredBidRequestsResource get filteredBidRequests =>
+      BiddersFilterSetsFilteredBidRequestsResource(_requester);
+  BiddersFilterSetsFilteredBidsResource get filteredBids =>
+      BiddersFilterSetsFilteredBidsResource(_requester);
+  BiddersFilterSetsImpressionMetricsResource get impressionMetrics =>
+      BiddersFilterSetsImpressionMetricsResource(_requester);
+  BiddersFilterSetsLosingBidsResource get losingBids =>
+      BiddersFilterSetsLosingBidsResource(_requester);
+  BiddersFilterSetsNonBillableWinningBidsResource get nonBillableWinningBids =>
+      BiddersFilterSetsNonBillableWinningBidsResource(_requester);
 
-  BiddersFilterSetsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  BiddersFilterSetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates the specified filter set for the account with the given account
   /// ID.
@@ -4077,10 +4067,10 @@ class BiddersFilterSetsResourceApi {
   }
 }
 
-class BiddersFilterSetsBidMetricsResourceApi {
+class BiddersFilterSetsBidMetricsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsBidMetricsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsBidMetricsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all metrics that are measured in terms of number of bids.
@@ -4160,10 +4150,10 @@ class BiddersFilterSetsBidMetricsResourceApi {
   }
 }
 
-class BiddersFilterSetsBidResponseErrorsResourceApi {
+class BiddersFilterSetsBidResponseErrorsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsBidResponseErrorsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsBidResponseErrorsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all errors that occurred in bid responses, with the number of bid
@@ -4244,11 +4234,10 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
   }
 }
 
-class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
+class BiddersFilterSetsBidResponsesWithoutBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsBidResponsesWithoutBidsResourceApi(
-      commons.ApiRequester client)
+  BiddersFilterSetsBidResponsesWithoutBidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bid responses were considered to have no
@@ -4330,10 +4319,10 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
   }
 }
 
-class BiddersFilterSetsFilteredBidRequestsResourceApi {
+class BiddersFilterSetsFilteredBidRequestsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsFilteredBidRequestsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsFilteredBidRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons that caused a bid request not to be sent for an
@@ -4414,15 +4403,15 @@ class BiddersFilterSetsFilteredBidRequestsResourceApi {
   }
 }
 
-class BiddersFilterSetsFilteredBidsResourceApi {
+class BiddersFilterSetsFilteredBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsFilteredBidsCreativesResourceApi get creatives =>
-      BiddersFilterSetsFilteredBidsCreativesResourceApi(_requester);
-  BiddersFilterSetsFilteredBidsDetailsResourceApi get details =>
-      BiddersFilterSetsFilteredBidsDetailsResourceApi(_requester);
+  BiddersFilterSetsFilteredBidsCreativesResource get creatives =>
+      BiddersFilterSetsFilteredBidsCreativesResource(_requester);
+  BiddersFilterSetsFilteredBidsDetailsResource get details =>
+      BiddersFilterSetsFilteredBidsDetailsResource(_requester);
 
-  BiddersFilterSetsFilteredBidsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsFilteredBidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bids were filtered, with the number of bids
@@ -4503,10 +4492,10 @@ class BiddersFilterSetsFilteredBidsResourceApi {
   }
 }
 
-class BiddersFilterSetsFilteredBidsCreativesResourceApi {
+class BiddersFilterSetsFilteredBidsCreativesResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsFilteredBidsCreativesResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsFilteredBidsCreativesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all creatives associated with a specific reason for which bids were
@@ -4597,10 +4586,10 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
   }
 }
 
-class BiddersFilterSetsFilteredBidsDetailsResourceApi {
+class BiddersFilterSetsFilteredBidsDetailsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsFilteredBidsDetailsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsFilteredBidsDetailsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all details associated with a specific reason for which bids were
@@ -4693,10 +4682,10 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
   }
 }
 
-class BiddersFilterSetsImpressionMetricsResourceApi {
+class BiddersFilterSetsImpressionMetricsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsImpressionMetricsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsImpressionMetricsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all metrics that are measured in terms of number of impressions.
@@ -4776,10 +4765,10 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
   }
 }
 
-class BiddersFilterSetsLosingBidsResourceApi {
+class BiddersFilterSetsLosingBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsLosingBidsResourceApi(commons.ApiRequester client)
+  BiddersFilterSetsLosingBidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bids lost in the auction, with the number of
@@ -4860,11 +4849,10 @@ class BiddersFilterSetsLosingBidsResourceApi {
   }
 }
 
-class BiddersFilterSetsNonBillableWinningBidsResourceApi {
+class BiddersFilterSetsNonBillableWinningBidsResource {
   final commons.ApiRequester _requester;
 
-  BiddersFilterSetsNonBillableWinningBidsResourceApi(
-      commons.ApiRequester client)
+  BiddersFilterSetsNonBillableWinningBidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which winning bids were not billable, with the number

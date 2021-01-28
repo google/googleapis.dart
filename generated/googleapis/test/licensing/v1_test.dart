@@ -142,7 +142,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LicenseAssignmentsResourceApi', () {
+  unittest.group('resource-LicenseAssignmentsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;

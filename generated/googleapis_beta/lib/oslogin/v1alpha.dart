@@ -23,9 +23,9 @@
 ///
 /// Create an instance of [CloudOSLoginApi] to access these resources:
 ///
-/// - [UsersResourceApi]
-///   - [UsersProjectsResourceApi]
-///   - [UsersSshPublicKeysResourceApi]
+/// - [UsersResource]
+///   - [UsersProjectsResource]
+///   - [UsersSshPublicKeysResource]
 library oslogin.v1alpha;
 
 import 'dart:async' as async;
@@ -59,7 +59,7 @@ class CloudOSLoginApi {
 
   final commons.ApiRequester _requester;
 
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   CloudOSLoginApi(http.Client client,
       {core.String rootUrl = 'https://oslogin.googleapis.com/',
@@ -68,14 +68,14 @@ class CloudOSLoginApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersProjectsResourceApi get projects => UsersProjectsResourceApi(_requester);
-  UsersSshPublicKeysResourceApi get sshPublicKeys =>
-      UsersSshPublicKeysResourceApi(_requester);
+  UsersProjectsResource get projects => UsersProjectsResource(_requester);
+  UsersSshPublicKeysResource get sshPublicKeys =>
+      UsersSshPublicKeysResource(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the profile information used for logging in to a virtual machine
   /// on Google Compute Engine.
@@ -225,10 +225,10 @@ class UsersResourceApi {
   }
 }
 
-class UsersProjectsResourceApi {
+class UsersProjectsResource {
   final commons.ApiRequester _requester;
 
-  UsersProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a POSIX account.
   ///
@@ -297,11 +297,10 @@ class UsersProjectsResourceApi {
   }
 }
 
-class UsersSshPublicKeysResourceApi {
+class UsersSshPublicKeysResource {
   final commons.ApiRequester _requester;
 
-  UsersSshPublicKeysResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  UsersSshPublicKeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an SSH public key.
   ///

@@ -25,18 +25,18 @@
 ///
 /// Create an instance of [AdExchangeBuyerApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-/// - [BillingInfoResourceApi]
-/// - [BudgetResourceApi]
-/// - [CreativesResourceApi]
-/// - [MarketplacedealsResourceApi]
-/// - [MarketplacenotesResourceApi]
-/// - [MarketplaceprivateauctionResourceApi]
-/// - [PerformanceReportResourceApi]
-/// - [PretargetingConfigResourceApi]
-/// - [ProductsResourceApi]
-/// - [ProposalsResourceApi]
-/// - [PubprofilesResourceApi]
+/// - [AccountsResource]
+/// - [BillingInfoResource]
+/// - [BudgetResource]
+/// - [CreativesResource]
+/// - [MarketplacedealsResource]
+/// - [MarketplacenotesResource]
+/// - [MarketplaceprivateauctionResource]
+/// - [PerformanceReportResource]
+/// - [PretargetingConfigResource]
+/// - [ProductsResource]
+/// - [ProposalsResource]
+/// - [PubprofilesResource]
 library adexchangebuyer.v1_4;
 
 import 'dart:async' as async;
@@ -60,23 +60,23 @@ class AdExchangeBuyerApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  BillingInfoResourceApi get billingInfo => BillingInfoResourceApi(_requester);
-  BudgetResourceApi get budget => BudgetResourceApi(_requester);
-  CreativesResourceApi get creatives => CreativesResourceApi(_requester);
-  MarketplacedealsResourceApi get marketplacedeals =>
-      MarketplacedealsResourceApi(_requester);
-  MarketplacenotesResourceApi get marketplacenotes =>
-      MarketplacenotesResourceApi(_requester);
-  MarketplaceprivateauctionResourceApi get marketplaceprivateauction =>
-      MarketplaceprivateauctionResourceApi(_requester);
-  PerformanceReportResourceApi get performanceReport =>
-      PerformanceReportResourceApi(_requester);
-  PretargetingConfigResourceApi get pretargetingConfig =>
-      PretargetingConfigResourceApi(_requester);
-  ProductsResourceApi get products => ProductsResourceApi(_requester);
-  ProposalsResourceApi get proposals => ProposalsResourceApi(_requester);
-  PubprofilesResourceApi get pubprofiles => PubprofilesResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  BillingInfoResource get billingInfo => BillingInfoResource(_requester);
+  BudgetResource get budget => BudgetResource(_requester);
+  CreativesResource get creatives => CreativesResource(_requester);
+  MarketplacedealsResource get marketplacedeals =>
+      MarketplacedealsResource(_requester);
+  MarketplacenotesResource get marketplacenotes =>
+      MarketplacenotesResource(_requester);
+  MarketplaceprivateauctionResource get marketplaceprivateauction =>
+      MarketplaceprivateauctionResource(_requester);
+  PerformanceReportResource get performanceReport =>
+      PerformanceReportResource(_requester);
+  PretargetingConfigResource get pretargetingConfig =>
+      PretargetingConfigResource(_requester);
+  ProductsResource get products => ProductsResource(_requester);
+  ProposalsResource get proposals => ProposalsResource(_requester);
+  PubprofilesResource get pubprofiles => PubprofilesResource(_requester);
 
   AdExchangeBuyerApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -85,10 +85,10 @@ class AdExchangeBuyerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one account by ID.
   ///
@@ -316,10 +316,10 @@ class AccountsResourceApi {
   }
 }
 
-class BillingInfoResourceApi {
+class BillingInfoResource {
   final commons.ApiRequester _requester;
 
-  BillingInfoResourceApi(commons.ApiRequester client) : _requester = client;
+  BillingInfoResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the billing information for one account specified by account ID.
   ///
@@ -419,10 +419,10 @@ class BillingInfoResourceApi {
   }
 }
 
-class BudgetResourceApi {
+class BudgetResource {
   final commons.ApiRequester _requester;
 
-  BudgetResourceApi(commons.ApiRequester client) : _requester = client;
+  BudgetResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the budget information for the adgroup specified by the accountId
   /// and billingId.
@@ -618,10 +618,10 @@ class BudgetResourceApi {
   }
 }
 
-class CreativesResourceApi {
+class CreativesResource {
   final commons.ApiRequester _requester;
 
-  CreativesResourceApi(commons.ApiRequester client) : _requester = client;
+  CreativesResource(commons.ApiRequester client) : _requester = client;
 
   /// Add a deal id association for the creative.
   ///
@@ -1034,11 +1034,10 @@ class CreativesResourceApi {
   }
 }
 
-class MarketplacedealsResourceApi {
+class MarketplacedealsResource {
   final commons.ApiRequester _requester;
 
-  MarketplacedealsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  MarketplacedealsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete the specified deals from the proposal
   ///
@@ -1277,11 +1276,10 @@ class MarketplacedealsResourceApi {
   }
 }
 
-class MarketplacenotesResourceApi {
+class MarketplacenotesResource {
   final commons.ApiRequester _requester;
 
-  MarketplacenotesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  MarketplacenotesResource(commons.ApiRequester client) : _requester = client;
 
   /// Add notes to the proposal
   ///
@@ -1404,10 +1402,10 @@ class MarketplacenotesResourceApi {
   }
 }
 
-class MarketplaceprivateauctionResourceApi {
+class MarketplaceprivateauctionResource {
   final commons.ApiRequester _requester;
 
-  MarketplaceprivateauctionResourceApi(commons.ApiRequester client)
+  MarketplaceprivateauctionResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Update a given private auction proposal
@@ -1469,11 +1467,10 @@ class MarketplaceprivateauctionResourceApi {
   }
 }
 
-class PerformanceReportResourceApi {
+class PerformanceReportResource {
   final commons.ApiRequester _requester;
 
-  PerformanceReportResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PerformanceReportResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the authenticated user's list of performance metrics.
   ///
@@ -1560,11 +1557,10 @@ class PerformanceReportResourceApi {
   }
 }
 
-class PretargetingConfigResourceApi {
+class PretargetingConfigResource {
   final commons.ApiRequester _requester;
 
-  PretargetingConfigResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PretargetingConfigResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing pretargeting config.
   ///
@@ -1927,10 +1923,10 @@ class PretargetingConfigResourceApi {
   }
 }
 
-class ProductsResourceApi {
+class ProductsResource {
   final commons.ApiRequester _requester;
 
-  ProductsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the requested product by id.
   ///
@@ -2034,10 +2030,10 @@ class ProductsResourceApi {
   }
 }
 
-class ProposalsResourceApi {
+class ProposalsResource {
   final commons.ApiRequester _requester;
 
-  ProposalsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProposalsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get a proposal given its id
   ///
@@ -2412,10 +2408,10 @@ class ProposalsResourceApi {
   }
 }
 
-class PubprofilesResourceApi {
+class PubprofilesResource {
   final commons.ApiRequester _requester;
 
-  PubprofilesResourceApi(commons.ApiRequester client) : _requester = client;
+  PubprofilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the requested publisher profile(s) by publisher accountId.
   ///

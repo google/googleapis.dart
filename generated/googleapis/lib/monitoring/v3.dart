@@ -28,20 +28,20 @@
 ///
 /// Create an instance of [MonitoringApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsAlertPoliciesResourceApi]
-///   - [ProjectsCollectdTimeSeriesResourceApi]
-///   - [ProjectsGroupsResourceApi]
-///     - [ProjectsGroupsMembersResourceApi]
-///   - [ProjectsMetricDescriptorsResourceApi]
-///   - [ProjectsMonitoredResourceDescriptorsResourceApi]
-///   - [ProjectsNotificationChannelDescriptorsResourceApi]
-///   - [ProjectsNotificationChannelsResourceApi]
-///   - [ProjectsTimeSeriesResourceApi]
-///   - [ProjectsUptimeCheckConfigsResourceApi]
-/// - [ServicesResourceApi]
-///   - [ServicesServiceLevelObjectivesResourceApi]
-/// - [UptimeCheckIpsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsAlertPoliciesResource]
+///   - [ProjectsCollectdTimeSeriesResource]
+///   - [ProjectsGroupsResource]
+///     - [ProjectsGroupsMembersResource]
+///   - [ProjectsMetricDescriptorsResource]
+///   - [ProjectsMonitoredResourceDescriptorsResource]
+///   - [ProjectsNotificationChannelDescriptorsResource]
+///   - [ProjectsNotificationChannelsResource]
+///   - [ProjectsTimeSeriesResource]
+///   - [ProjectsUptimeCheckConfigsResource]
+/// - [ServicesResource]
+///   - [ServicesServiceLevelObjectivesResource]
+/// - [UptimeCheckIpsResource]
 library monitoring.v3;
 
 import 'dart:async' as async;
@@ -81,10 +81,10 @@ class MonitoringApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
-  UptimeCheckIpsResourceApi get uptimeCheckIps =>
-      UptimeCheckIpsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  ServicesResource get services => ServicesResource(_requester);
+  UptimeCheckIpsResource get uptimeCheckIps =>
+      UptimeCheckIpsResource(_requester);
 
   MonitoringApi(http.Client client,
       {core.String rootUrl = 'https://monitoring.googleapis.com/',
@@ -93,36 +93,36 @@ class MonitoringApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAlertPoliciesResourceApi get alertPolicies =>
-      ProjectsAlertPoliciesResourceApi(_requester);
-  ProjectsCollectdTimeSeriesResourceApi get collectdTimeSeries =>
-      ProjectsCollectdTimeSeriesResourceApi(_requester);
-  ProjectsGroupsResourceApi get groups => ProjectsGroupsResourceApi(_requester);
-  ProjectsMetricDescriptorsResourceApi get metricDescriptors =>
-      ProjectsMetricDescriptorsResourceApi(_requester);
-  ProjectsMonitoredResourceDescriptorsResourceApi
+  ProjectsAlertPoliciesResource get alertPolicies =>
+      ProjectsAlertPoliciesResource(_requester);
+  ProjectsCollectdTimeSeriesResource get collectdTimeSeries =>
+      ProjectsCollectdTimeSeriesResource(_requester);
+  ProjectsGroupsResource get groups => ProjectsGroupsResource(_requester);
+  ProjectsMetricDescriptorsResource get metricDescriptors =>
+      ProjectsMetricDescriptorsResource(_requester);
+  ProjectsMonitoredResourceDescriptorsResource
       get monitoredResourceDescriptors =>
-          ProjectsMonitoredResourceDescriptorsResourceApi(_requester);
-  ProjectsNotificationChannelDescriptorsResourceApi
+          ProjectsMonitoredResourceDescriptorsResource(_requester);
+  ProjectsNotificationChannelDescriptorsResource
       get notificationChannelDescriptors =>
-          ProjectsNotificationChannelDescriptorsResourceApi(_requester);
-  ProjectsNotificationChannelsResourceApi get notificationChannels =>
-      ProjectsNotificationChannelsResourceApi(_requester);
-  ProjectsTimeSeriesResourceApi get timeSeries =>
-      ProjectsTimeSeriesResourceApi(_requester);
-  ProjectsUptimeCheckConfigsResourceApi get uptimeCheckConfigs =>
-      ProjectsUptimeCheckConfigsResourceApi(_requester);
+          ProjectsNotificationChannelDescriptorsResource(_requester);
+  ProjectsNotificationChannelsResource get notificationChannels =>
+      ProjectsNotificationChannelsResource(_requester);
+  ProjectsTimeSeriesResource get timeSeries =>
+      ProjectsTimeSeriesResource(_requester);
+  ProjectsUptimeCheckConfigsResource get uptimeCheckConfigs =>
+      ProjectsUptimeCheckConfigsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsAlertPoliciesResourceApi {
+class ProjectsAlertPoliciesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAlertPoliciesResourceApi(commons.ApiRequester client)
+  ProjectsAlertPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new alerting policy.
@@ -478,10 +478,10 @@ class ProjectsAlertPoliciesResourceApi {
   }
 }
 
-class ProjectsCollectdTimeSeriesResourceApi {
+class ProjectsCollectdTimeSeriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsCollectdTimeSeriesResourceApi(commons.ApiRequester client)
+  ProjectsCollectdTimeSeriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Stackdriver Monitoring Agent only: Creates a new time series.This method
@@ -548,13 +548,13 @@ class ProjectsCollectdTimeSeriesResourceApi {
   }
 }
 
-class ProjectsGroupsResourceApi {
+class ProjectsGroupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsGroupsMembersResourceApi get members =>
-      ProjectsGroupsMembersResourceApi(_requester);
+  ProjectsGroupsMembersResource get members =>
+      ProjectsGroupsMembersResource(_requester);
 
-  ProjectsGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new group.
   ///
@@ -901,10 +901,10 @@ class ProjectsGroupsResourceApi {
   }
 }
 
-class ProjectsGroupsMembersResourceApi {
+class ProjectsGroupsMembersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsGroupsMembersResourceApi(commons.ApiRequester client)
+  ProjectsGroupsMembersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the monitored resources that are members of a group.
@@ -1002,10 +1002,10 @@ class ProjectsGroupsMembersResourceApi {
   }
 }
 
-class ProjectsMetricDescriptorsResourceApi {
+class ProjectsMetricDescriptorsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsMetricDescriptorsResourceApi(commons.ApiRequester client)
+  ProjectsMetricDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new metric descriptor. User-created metric descriptors define
@@ -1266,10 +1266,10 @@ class ProjectsMetricDescriptorsResourceApi {
   }
 }
 
-class ProjectsMonitoredResourceDescriptorsResourceApi {
+class ProjectsMonitoredResourceDescriptorsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsMonitoredResourceDescriptorsResourceApi(commons.ApiRequester client)
+  ProjectsMonitoredResourceDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a single monitored resource descriptor. This method does not require
@@ -1413,10 +1413,10 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   }
 }
 
-class ProjectsNotificationChannelDescriptorsResourceApi {
+class ProjectsNotificationChannelDescriptorsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsNotificationChannelDescriptorsResourceApi(commons.ApiRequester client)
+  ProjectsNotificationChannelDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a single channel descriptor. The descriptor indicates which fields
@@ -1551,10 +1551,10 @@ class ProjectsNotificationChannelDescriptorsResourceApi {
   }
 }
 
-class ProjectsNotificationChannelsResourceApi {
+class ProjectsNotificationChannelsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsNotificationChannelsResourceApi(commons.ApiRequester client)
+  ProjectsNotificationChannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new notification channel, representing a single notification
@@ -2107,11 +2107,10 @@ class ProjectsNotificationChannelsResourceApi {
   }
 }
 
-class ProjectsTimeSeriesResourceApi {
+class ProjectsTimeSeriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTimeSeriesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsTimeSeriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates or adds data to one or more time series. The response is empty if
   /// all time series in the request were written. If any time series could not
@@ -2582,10 +2581,10 @@ class ProjectsTimeSeriesResourceApi {
   }
 }
 
-class ProjectsUptimeCheckConfigsResourceApi {
+class ProjectsUptimeCheckConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsUptimeCheckConfigsResourceApi(commons.ApiRequester client)
+  ProjectsUptimeCheckConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new Uptime check configuration.
@@ -2906,13 +2905,13 @@ class ProjectsUptimeCheckConfigsResourceApi {
   }
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesServiceLevelObjectivesResourceApi get serviceLevelObjectives =>
-      ServicesServiceLevelObjectivesResourceApi(_requester);
+  ServicesServiceLevelObjectivesResource get serviceLevelObjectives =>
+      ServicesServiceLevelObjectivesResource(_requester);
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a Service.
   ///
@@ -3240,10 +3239,10 @@ class ServicesResourceApi {
   }
 }
 
-class ServicesServiceLevelObjectivesResourceApi {
+class ServicesServiceLevelObjectivesResource {
   final commons.ApiRequester _requester;
 
-  ServicesServiceLevelObjectivesResourceApi(commons.ApiRequester client)
+  ServicesServiceLevelObjectivesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a ServiceLevelObjective for the given Service.
@@ -3607,10 +3606,10 @@ class ServicesServiceLevelObjectivesResourceApi {
   }
 }
 
-class UptimeCheckIpsResourceApi {
+class UptimeCheckIpsResource {
   final commons.ApiRequester _requester;
 
-  UptimeCheckIpsResourceApi(commons.ApiRequester client) : _requester = client;
+  UptimeCheckIpsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the list of IP addresses that checkers run from
   ///

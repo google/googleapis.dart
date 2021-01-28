@@ -570,7 +570,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AchievementsResourceApi', () {
+  unittest.group('resource-AchievementsResource', () {
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).achievements;
@@ -827,7 +827,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ApplicationsResourceApi', () {
+  unittest.group('resource-ApplicationsResource', () {
     unittest.test('method--listHidden', () {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).applications;
@@ -894,7 +894,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EventsResourceApi', () {
+  unittest.group('resource-EventsResource', () {
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).events;
@@ -1142,7 +1142,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlayersResourceApi', () {
+  unittest.group('resource-PlayersResource', () {
     unittest.test('method--hide', () {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).players;
@@ -1260,7 +1260,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ScoresResourceApi', () {
+  unittest.group('resource-ScoresResource', () {
     unittest.test('method--reset', () {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).scores;

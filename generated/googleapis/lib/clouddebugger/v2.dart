@@ -24,12 +24,12 @@
 ///
 /// Create an instance of [CloudDebuggerApi] to access these resources:
 ///
-/// - [ControllerResourceApi]
-///   - [ControllerDebuggeesResourceApi]
-///     - [ControllerDebuggeesBreakpointsResourceApi]
-/// - [DebuggerResourceApi]
-///   - [DebuggerDebuggeesResourceApi]
-///     - [DebuggerDebuggeesBreakpointsResourceApi]
+/// - [ControllerResource]
+///   - [ControllerDebuggeesResource]
+///     - [ControllerDebuggeesBreakpointsResource]
+/// - [DebuggerResource]
+///   - [DebuggerDebuggeesResource]
+///     - [DebuggerDebuggeesBreakpointsResource]
 library clouddebugger.v2;
 
 import 'dart:async' as async;
@@ -57,8 +57,8 @@ class CloudDebuggerApi {
 
   final commons.ApiRequester _requester;
 
-  ControllerResourceApi get controller => ControllerResourceApi(_requester);
-  DebuggerResourceApi get debugger => DebuggerResourceApi(_requester);
+  ControllerResource get controller => ControllerResource(_requester);
+  DebuggerResource get debugger => DebuggerResource(_requester);
 
   CloudDebuggerApi(http.Client client,
       {core.String rootUrl = 'https://clouddebugger.googleapis.com/',
@@ -67,22 +67,22 @@ class CloudDebuggerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ControllerResourceApi {
+class ControllerResource {
   final commons.ApiRequester _requester;
 
-  ControllerDebuggeesResourceApi get debuggees =>
-      ControllerDebuggeesResourceApi(_requester);
+  ControllerDebuggeesResource get debuggees =>
+      ControllerDebuggeesResource(_requester);
 
-  ControllerResourceApi(commons.ApiRequester client) : _requester = client;
+  ControllerResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ControllerDebuggeesResourceApi {
+class ControllerDebuggeesResource {
   final commons.ApiRequester _requester;
 
-  ControllerDebuggeesBreakpointsResourceApi get breakpoints =>
-      ControllerDebuggeesBreakpointsResourceApi(_requester);
+  ControllerDebuggeesBreakpointsResource get breakpoints =>
+      ControllerDebuggeesBreakpointsResource(_requester);
 
-  ControllerDebuggeesResourceApi(commons.ApiRequester client)
+  ControllerDebuggeesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Registers the debuggee with the controller service. All agents attached to
@@ -143,10 +143,10 @@ class ControllerDebuggeesResourceApi {
   }
 }
 
-class ControllerDebuggeesBreakpointsResourceApi {
+class ControllerDebuggeesBreakpointsResource {
   final commons.ApiRequester _requester;
 
-  ControllerDebuggeesBreakpointsResourceApi(commons.ApiRequester client)
+  ControllerDebuggeesBreakpointsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the list of all active breakpoints for the debuggee. The
@@ -310,23 +310,22 @@ class ControllerDebuggeesBreakpointsResourceApi {
   }
 }
 
-class DebuggerResourceApi {
+class DebuggerResource {
   final commons.ApiRequester _requester;
 
-  DebuggerDebuggeesResourceApi get debuggees =>
-      DebuggerDebuggeesResourceApi(_requester);
+  DebuggerDebuggeesResource get debuggees =>
+      DebuggerDebuggeesResource(_requester);
 
-  DebuggerResourceApi(commons.ApiRequester client) : _requester = client;
+  DebuggerResource(commons.ApiRequester client) : _requester = client;
 }
 
-class DebuggerDebuggeesResourceApi {
+class DebuggerDebuggeesResource {
   final commons.ApiRequester _requester;
 
-  DebuggerDebuggeesBreakpointsResourceApi get breakpoints =>
-      DebuggerDebuggeesBreakpointsResourceApi(_requester);
+  DebuggerDebuggeesBreakpointsResource get breakpoints =>
+      DebuggerDebuggeesBreakpointsResource(_requester);
 
-  DebuggerDebuggeesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  DebuggerDebuggeesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all the debuggees that the user has access to.
   ///
@@ -395,10 +394,10 @@ class DebuggerDebuggeesResourceApi {
   }
 }
 
-class DebuggerDebuggeesBreakpointsResourceApi {
+class DebuggerDebuggeesBreakpointsResource {
   final commons.ApiRequester _requester;
 
-  DebuggerDebuggeesBreakpointsResourceApi(commons.ApiRequester client)
+  DebuggerDebuggeesBreakpointsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the breakpoint from the debuggee.

@@ -432,7 +432,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SpeechApi(mock).projects.locations.operations;

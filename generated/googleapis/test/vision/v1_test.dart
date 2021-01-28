@@ -13023,7 +13023,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FilesResourceApi', () {
+  unittest.group('resource-FilesResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).files;
@@ -13129,7 +13129,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ImagesResourceApi', () {
+  unittest.group('resource-ImagesResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).images;
@@ -13235,7 +13235,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LocationsOperationsResourceApi', () {
+  unittest.group('resource-LocationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).locations.operations;
@@ -13285,7 +13285,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).operations;
@@ -13496,7 +13496,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsFilesResourceApi', () {
+  unittest.group('resource-ProjectsFilesResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.files;
@@ -13606,7 +13606,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsImagesResourceApi', () {
+  unittest.group('resource-ProjectsImagesResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.images;
@@ -13716,7 +13716,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsFilesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsFilesResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.files;
@@ -13826,7 +13826,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsImagesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsImagesResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.images;
@@ -13936,7 +13936,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.operations;
@@ -13986,7 +13986,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsProductSetsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsProductSetsResource', () {
     unittest.test('method--addProduct', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
@@ -14416,8 +14416,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsProductSetsProductsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsProductSetsProductsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets.products;
@@ -14477,7 +14476,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsProductsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsProductsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
@@ -14799,7 +14798,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsProductsReferenceImagesResourceApi',
+  unittest.group('resource-ProjectsLocationsProductsReferenceImagesResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -15013,7 +15012,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.operations;

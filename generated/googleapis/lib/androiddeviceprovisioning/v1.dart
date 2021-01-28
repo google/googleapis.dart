@@ -25,16 +25,16 @@
 /// Create an instance of [AndroidProvisioningPartnerApi] to access these
 /// resources:
 ///
-/// - [CustomersResourceApi]
-///   - [CustomersConfigurationsResourceApi]
-///   - [CustomersDevicesResourceApi]
-///   - [CustomersDpcsResourceApi]
-/// - [OperationsResourceApi]
-/// - [PartnersResourceApi]
-///   - [PartnersCustomersResourceApi]
-///   - [PartnersDevicesResourceApi]
-///   - [PartnersVendorsResourceApi]
-///     - [PartnersVendorsCustomersResourceApi]
+/// - [CustomersResource]
+///   - [CustomersConfigurationsResource]
+///   - [CustomersDevicesResource]
+///   - [CustomersDpcsResource]
+/// - [OperationsResource]
+/// - [PartnersResource]
+///   - [PartnersCustomersResource]
+///   - [PartnersDevicesResource]
+///   - [PartnersVendorsResource]
+///     - [PartnersVendorsCustomersResource]
 library androiddeviceprovisioning.v1;
 
 import 'dart:async' as async;
@@ -54,9 +54,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class AndroidProvisioningPartnerApi {
   final commons.ApiRequester _requester;
 
-  CustomersResourceApi get customers => CustomersResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  PartnersResourceApi get partners => PartnersResourceApi(_requester);
+  CustomersResource get customers => CustomersResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  PartnersResource get partners => PartnersResource(_requester);
 
   AndroidProvisioningPartnerApi(http.Client client,
       {core.String rootUrl =
@@ -66,16 +66,15 @@ class AndroidProvisioningPartnerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CustomersResourceApi {
+class CustomersResource {
   final commons.ApiRequester _requester;
 
-  CustomersConfigurationsResourceApi get configurations =>
-      CustomersConfigurationsResourceApi(_requester);
-  CustomersDevicesResourceApi get devices =>
-      CustomersDevicesResourceApi(_requester);
-  CustomersDpcsResourceApi get dpcs => CustomersDpcsResourceApi(_requester);
+  CustomersConfigurationsResource get configurations =>
+      CustomersConfigurationsResource(_requester);
+  CustomersDevicesResource get devices => CustomersDevicesResource(_requester);
+  CustomersDpcsResource get dpcs => CustomersDpcsResource(_requester);
 
-  CustomersResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomersResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the user's customer accounts.
   ///
@@ -136,10 +135,10 @@ class CustomersResourceApi {
   }
 }
 
-class CustomersConfigurationsResourceApi {
+class CustomersConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  CustomersConfigurationsResourceApi(commons.ApiRequester client)
+  CustomersConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new configuration. Once created, a customer can apply the
@@ -437,11 +436,10 @@ class CustomersConfigurationsResourceApi {
   }
 }
 
-class CustomersDevicesResourceApi {
+class CustomersDevicesResource {
   final commons.ApiRequester _requester;
 
-  CustomersDevicesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  CustomersDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Applies a Configuration to the device to register the device for
   /// zero-touch enrollment. After applying a configuration to a device, the
@@ -748,10 +746,10 @@ class CustomersDevicesResourceApi {
   }
 }
 
-class CustomersDpcsResourceApi {
+class CustomersDpcsResource {
   final commons.ApiRequester _requester;
 
-  CustomersDpcsResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomersDpcsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the DPCs (device policy controllers) that support zero-touch
   /// enrollment.
@@ -808,10 +806,10 @@ class CustomersDpcsResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -867,24 +865,21 @@ class OperationsResourceApi {
   }
 }
 
-class PartnersResourceApi {
+class PartnersResource {
   final commons.ApiRequester _requester;
 
-  PartnersCustomersResourceApi get customers =>
-      PartnersCustomersResourceApi(_requester);
-  PartnersDevicesResourceApi get devices =>
-      PartnersDevicesResourceApi(_requester);
-  PartnersVendorsResourceApi get vendors =>
-      PartnersVendorsResourceApi(_requester);
+  PartnersCustomersResource get customers =>
+      PartnersCustomersResource(_requester);
+  PartnersDevicesResource get devices => PartnersDevicesResource(_requester);
+  PartnersVendorsResource get vendors => PartnersVendorsResource(_requester);
 
-  PartnersResourceApi(commons.ApiRequester client) : _requester = client;
+  PartnersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class PartnersCustomersResourceApi {
+class PartnersCustomersResource {
   final commons.ApiRequester _requester;
 
-  PartnersCustomersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PartnersCustomersResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a customer for zero-touch enrollment. After the method returns
   /// successfully, admin and owner roles can manage devices and EMM configs by
@@ -1020,10 +1015,10 @@ class PartnersCustomersResourceApi {
   }
 }
 
-class PartnersDevicesResourceApi {
+class PartnersDevicesResource {
   final commons.ApiRequester _requester;
 
-  PartnersDevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  PartnersDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Claims a device for a customer and adds it to zero-touch enrollment. If
   /// the device is already claimed by another customer, the call returns an
@@ -1577,13 +1572,13 @@ class PartnersDevicesResourceApi {
   }
 }
 
-class PartnersVendorsResourceApi {
+class PartnersVendorsResource {
   final commons.ApiRequester _requester;
 
-  PartnersVendorsCustomersResourceApi get customers =>
-      PartnersVendorsCustomersResourceApi(_requester);
+  PartnersVendorsCustomersResource get customers =>
+      PartnersVendorsCustomersResource(_requester);
 
-  PartnersVendorsResourceApi(commons.ApiRequester client) : _requester = client;
+  PartnersVendorsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the vendors of the partner.
   ///
@@ -1653,10 +1648,10 @@ class PartnersVendorsResourceApi {
   }
 }
 
-class PartnersVendorsCustomersResourceApi {
+class PartnersVendorsCustomersResource {
   final commons.ApiRequester _requester;
 
-  PartnersVendorsCustomersResourceApi(commons.ApiRequester client)
+  PartnersVendorsCustomersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the customers of the vendor.

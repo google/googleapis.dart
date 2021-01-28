@@ -9219,7 +9219,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpreadsheetsResourceApi', () {
+  unittest.group('resource-SpreadsheetsResource', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
       var res = api.SheetsApi(mock).spreadsheets;
@@ -9455,7 +9455,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpreadsheetsDeveloperMetadataResourceApi', () {
+  unittest.group('resource-SpreadsheetsDeveloperMetadataResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SheetsApi(mock).spreadsheets.developerMetadata;
@@ -9580,7 +9580,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpreadsheetsSheetsResourceApi', () {
+  unittest.group('resource-SpreadsheetsSheetsResource', () {
     unittest.test('method--copyTo', () {
       var mock = HttpServerMock();
       var res = api.SheetsApi(mock).spreadsheets.sheets;
@@ -9655,7 +9655,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpreadsheetsValuesResourceApi', () {
+  unittest.group('resource-SpreadsheetsValuesResource', () {
     unittest.test('method--append', () {
       var mock = HttpServerMock();
       var res = api.SheetsApi(mock).spreadsheets.values;

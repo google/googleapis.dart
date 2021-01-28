@@ -26,11 +26,11 @@
 /// Create an instance of [ManagedServiceForMicrosoftActiveDirectoryConsumerApi]
 /// to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsGlobalResourceApi]
-///       - [ProjectsLocationsGlobalDomainsResourceApi]
-///       - [ProjectsLocationsGlobalOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsGlobalResource]
+///       - [ProjectsLocationsGlobalDomainsResource]
+///       - [ProjectsLocationsGlobalOperationsResource]
 library managedidentities.v1;
 
 import 'dart:async' as async;
@@ -55,7 +55,7 @@ class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ManagedServiceForMicrosoftActiveDirectoryConsumerApi(http.Client client,
       {core.String rootUrl = 'https://managedidentities.googleapis.com/',
@@ -64,23 +64,22 @@ class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalResourceApi get global =>
-      ProjectsLocationsGlobalResourceApi(_requester);
+  ProjectsLocationsGlobalResource get global =>
+      ProjectsLocationsGlobalResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -214,22 +213,22 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsGlobalResourceApi {
+class ProjectsLocationsGlobalResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalDomainsResourceApi get domains =>
-      ProjectsLocationsGlobalDomainsResourceApi(_requester);
-  ProjectsLocationsGlobalOperationsResourceApi get operations =>
-      ProjectsLocationsGlobalOperationsResourceApi(_requester);
+  ProjectsLocationsGlobalDomainsResource get domains =>
+      ProjectsLocationsGlobalDomainsResource(_requester);
+  ProjectsLocationsGlobalOperationsResource get operations =>
+      ProjectsLocationsGlobalOperationsResource(_requester);
 
-  ProjectsLocationsGlobalResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGlobalResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsGlobalDomainsResourceApi {
+class ProjectsLocationsGlobalDomainsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalDomainsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGlobalDomainsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds an AD trust to a domain.
@@ -1065,10 +1064,10 @@ class ProjectsLocationsGlobalDomainsResourceApi {
   }
 }
 
-class ProjectsLocationsGlobalOperationsResourceApi {
+class ProjectsLocationsGlobalOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGlobalOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server

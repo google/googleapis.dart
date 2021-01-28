@@ -1139,7 +1139,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations;
@@ -1249,7 +1249,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsQueuesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsQueuesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
@@ -1836,7 +1836,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsQueuesTasksResourceApi', () {
+  unittest.group('resource-ProjectsLocationsQueuesTasksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;

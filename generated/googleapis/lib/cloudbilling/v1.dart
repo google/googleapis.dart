@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [CloudbillingApi] to access these resources:
 ///
-/// - [BillingAccountsResourceApi]
-///   - [BillingAccountsProjectsResourceApi]
-/// - [ProjectsResourceApi]
-/// - [ServicesResourceApi]
-///   - [ServicesSkusResourceApi]
+/// - [BillingAccountsResource]
+///   - [BillingAccountsProjectsResource]
+/// - [ProjectsResource]
+/// - [ServicesResource]
+///   - [ServicesSkusResource]
 library cloudbilling.v1;
 
 import 'dart:async' as async;
@@ -60,10 +60,10 @@ class CloudbillingApi {
 
   final commons.ApiRequester _requester;
 
-  BillingAccountsResourceApi get billingAccounts =>
-      BillingAccountsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
+  BillingAccountsResource get billingAccounts =>
+      BillingAccountsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  ServicesResource get services => ServicesResource(_requester);
 
   CloudbillingApi(http.Client client,
       {core.String rootUrl = 'https://cloudbilling.googleapis.com/',
@@ -72,13 +72,13 @@ class CloudbillingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BillingAccountsResourceApi {
+class BillingAccountsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsProjectsResourceApi get projects =>
-      BillingAccountsProjectsResourceApi(_requester);
+  BillingAccountsProjectsResource get projects =>
+      BillingAccountsProjectsResource(_requester);
 
-  BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  BillingAccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a billing account. This method can only be used to create [billing
   /// subaccounts](https://cloud.google.com/billing/docs/concepts) by Google
@@ -537,10 +537,10 @@ class BillingAccountsResourceApi {
   }
 }
 
-class BillingAccountsProjectsResourceApi {
+class BillingAccountsProjectsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsProjectsResourceApi(commons.ApiRequester client)
+  BillingAccountsProjectsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the projects associated with a billing account. The current
@@ -617,10 +617,10 @@ class BillingAccountsProjectsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the billing information for a project. The current authenticated user
   /// must have [permission to view the
@@ -765,12 +765,12 @@ class ProjectsResourceApi {
   }
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesSkusResourceApi get skus => ServicesSkusResourceApi(_requester);
+  ServicesSkusResource get skus => ServicesSkusResource(_requester);
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all public cloud services.
   ///
@@ -832,10 +832,10 @@ class ServicesResourceApi {
   }
 }
 
-class ServicesSkusResourceApi {
+class ServicesSkusResource {
   final commons.ApiRequester _requester;
 
-  ServicesSkusResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesSkusResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all publicly available SKUs for a given cloud service.
   ///

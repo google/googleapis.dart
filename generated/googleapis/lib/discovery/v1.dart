@@ -24,7 +24,7 @@
 ///
 /// Create an instance of [DiscoveryApi] to access these resources:
 ///
-/// - [ApisResourceApi]
+/// - [ApisResource]
 library discovery.v1;
 
 import 'dart:async' as async;
@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class DiscoveryApi {
   final commons.ApiRequester _requester;
 
-  ApisResourceApi get apis => ApisResourceApi(_requester);
+  ApisResource get apis => ApisResource(_requester);
 
   DiscoveryApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -52,10 +52,10 @@ class DiscoveryApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ApisResourceApi {
+class ApisResource {
   final commons.ApiRequester _requester;
 
-  ApisResourceApi(commons.ApiRequester client) : _requester = client;
+  ApisResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieve the description of a particular version of an api.
   ///

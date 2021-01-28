@@ -7909,7 +7909,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--deleteSnapshots', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects;
@@ -8038,7 +8038,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsCatalogTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsCatalogTemplatesResource', () {
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.catalogTemplates;
@@ -8301,7 +8301,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsCatalogTemplatesTemplateVersionsResourceApi',
+  unittest.group('resource-ProjectsCatalogTemplatesTemplateVersionsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -8359,7 +8359,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobsResourceApi', () {
+  unittest.group('resource-ProjectsJobsResource', () {
     unittest.test('method--aggregated', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.jobs;
@@ -8863,7 +8863,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobsDebugResourceApi', () {
+  unittest.group('resource-ProjectsJobsDebugResource', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.jobs.debug;
@@ -9009,7 +9009,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobsMessagesResourceApi', () {
+  unittest.group('resource-ProjectsJobsMessagesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.jobs.messages;
@@ -9102,7 +9102,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobsWorkItemsResourceApi', () {
+  unittest.group('resource-ProjectsJobsWorkItemsResource', () {
     unittest.test('method--lease', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.jobs.workItems;
@@ -9249,7 +9249,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--workerMessages', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations;
@@ -9324,7 +9324,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsFlexTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsFlexTemplatesResource', () {
     unittest.test('method--launch', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.flexTemplates;
@@ -9399,7 +9399,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.jobs;
@@ -9955,7 +9955,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsDebugResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsDebugResource', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.jobs.debug;
@@ -10121,7 +10121,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsMessagesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsMessagesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.jobs.messages;
@@ -10220,7 +10220,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsSnapshotsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsSnapshotsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.jobs.snapshots;
@@ -10298,7 +10298,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsStagesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsStagesResource', () {
     unittest.test('method--getExecutionDetails', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.jobs.stages;
@@ -10404,7 +10404,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsWorkItemsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsWorkItemsResource', () {
     unittest.test('method--lease', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.jobs.workItems;
@@ -10572,7 +10572,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsSnapshotsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsSnapshotsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.snapshots;
@@ -10785,7 +10785,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsSqlResourceApi', () {
+  unittest.group('resource-ProjectsLocationsSqlResource', () {
     unittest.test('method--validate', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.sql;
@@ -10856,7 +10856,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.locations.templates;
@@ -11092,7 +11092,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSnapshotsResourceApi', () {
+  unittest.group('resource-ProjectsSnapshotsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.snapshots;
@@ -11220,7 +11220,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTemplateVersionsResourceApi', () {
+  unittest.group('resource-ProjectsTemplateVersionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.templateVersions;
@@ -11280,7 +11280,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataflowApi(mock).projects.templates;

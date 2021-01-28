@@ -3356,7 +3356,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DevicesResourceApi', () {
+  unittest.group('resource-DevicesResource', () {
     unittest.test('method--forceReportUpload', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
@@ -3807,7 +3807,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesResourceApi', () {
+  unittest.group('resource-EnterprisesResource', () {
     unittest.test('method--acknowledgeNotificationSet', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
@@ -4577,7 +4577,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EntitlementsResourceApi', () {
+  unittest.group('resource-EntitlementsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).entitlements;
@@ -4864,7 +4864,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GrouplicensesResourceApi', () {
+  unittest.group('resource-GrouplicensesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).grouplicenses;
@@ -4983,7 +4983,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GrouplicenseusersResourceApi', () {
+  unittest.group('resource-GrouplicenseusersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).grouplicenseusers;
@@ -5052,7 +5052,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstallsResourceApi', () {
+  unittest.group('resource-InstallsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).installs;
@@ -5378,7 +5378,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagedconfigurationsfordeviceResourceApi', () {
+  unittest.group('resource-ManagedconfigurationsfordeviceResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsfordevice;
@@ -5711,7 +5711,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagedconfigurationsforuserResourceApi', () {
+  unittest.group('resource-ManagedconfigurationsforuserResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsforuser;
@@ -6002,7 +6002,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagedconfigurationssettingsResourceApi', () {
+  unittest.group('resource-ManagedconfigurationssettingsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationssettings;
@@ -6072,7 +6072,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PermissionsResourceApi', () {
+  unittest.group('resource-PermissionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).permissions;
@@ -6127,7 +6127,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProductsResourceApi', () {
+  unittest.group('resource-ProductsResource', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
@@ -6610,7 +6610,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServiceaccountkeysResourceApi', () {
+  unittest.group('resource-ServiceaccountkeysResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).serviceaccountkeys;
@@ -6788,7 +6788,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StorelayoutclustersResourceApi', () {
+  unittest.group('resource-StorelayoutclustersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutclusters;
@@ -7145,7 +7145,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StorelayoutpagesResourceApi', () {
+  unittest.group('resource-StorelayoutpagesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutpages;
@@ -7449,7 +7449,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
@@ -8025,7 +8025,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-WebappsResourceApi', () {
+  unittest.group('resource-WebappsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).webapps;

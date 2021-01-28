@@ -282,7 +282,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TextResourceApi', () {
+  unittest.group('resource-TextResource', () {
     unittest.test('method--synthesize', () {
       var mock = HttpServerMock();
       var res = api.TexttospeechApi(mock).text;
@@ -335,7 +335,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VoicesResourceApi', () {
+  unittest.group('resource-VoicesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.TexttospeechApi(mock).voices;

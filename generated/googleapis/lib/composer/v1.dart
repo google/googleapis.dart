@@ -23,11 +23,11 @@
 ///
 /// Create an instance of [CloudComposerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsEnvironmentsResourceApi]
-///     - [ProjectsLocationsImageVersionsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsEnvironmentsResource]
+///     - [ProjectsLocationsImageVersionsResource]
+///     - [ProjectsLocationsOperationsResource]
 library composer.v1;
 
 import 'dart:async' as async;
@@ -50,7 +50,7 @@ class CloudComposerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudComposerApi(http.Client client,
       {core.String rootUrl = 'https://composer.googleapis.com/',
@@ -59,33 +59,32 @@ class CloudComposerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEnvironmentsResourceApi get environments =>
-      ProjectsLocationsEnvironmentsResourceApi(_requester);
-  ProjectsLocationsImageVersionsResourceApi get imageVersions =>
-      ProjectsLocationsImageVersionsResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsEnvironmentsResource get environments =>
+      ProjectsLocationsEnvironmentsResource(_requester);
+  ProjectsLocationsImageVersionsResource get imageVersions =>
+      ProjectsLocationsImageVersionsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsEnvironmentsResourceApi {
+class ProjectsLocationsEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEnvironmentsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a new environment.
@@ -452,10 +451,10 @@ class ProjectsLocationsEnvironmentsResourceApi {
   }
 }
 
-class ProjectsLocationsImageVersionsResourceApi {
+class ProjectsLocationsImageVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsImageVersionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsImageVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List ImageVersions for provided location.
@@ -527,10 +526,10 @@ class ProjectsLocationsImageVersionsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a long-running operation. This method indicates that the client is

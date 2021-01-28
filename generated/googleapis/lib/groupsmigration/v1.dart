@@ -25,7 +25,7 @@
 ///
 /// Create an instance of [GroupsMigrationApi] to access these resources:
 ///
-/// - [ArchiveResourceApi]
+/// - [ArchiveResource]
 library groupsmigration.v1;
 
 import 'dart:async' as async;
@@ -56,7 +56,7 @@ class GroupsMigrationApi {
 
   final commons.ApiRequester _requester;
 
-  ArchiveResourceApi get archive => ArchiveResourceApi(_requester);
+  ArchiveResource get archive => ArchiveResource(_requester);
 
   GroupsMigrationApi(http.Client client,
       {core.String rootUrl = 'https://groupsmigration.googleapis.com/',
@@ -65,10 +65,10 @@ class GroupsMigrationApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ArchiveResourceApi {
+class ArchiveResource {
   final commons.ApiRequester _requester;
 
-  ArchiveResourceApi(commons.ApiRequester client) : _requester = client;
+  ArchiveResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts a new mail into the archive of the Google group.
   ///

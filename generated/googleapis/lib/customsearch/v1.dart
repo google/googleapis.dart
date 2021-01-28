@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [CustomSearchApi] to access these resources:
 ///
-/// - [CseResourceApi]
-///   - [CseSiterestrictResourceApi]
+/// - [CseResource]
+///   - [CseSiterestrictResource]
 library customsearch.v1;
 
 import 'dart:async' as async;
@@ -43,7 +43,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class CustomSearchApi {
   final commons.ApiRequester _requester;
 
-  CseResourceApi get cse => CseResourceApi(_requester);
+  CseResource get cse => CseResource(_requester);
 
   CustomSearchApi(http.Client client,
       {core.String rootUrl = 'https://customsearch.googleapis.com/',
@@ -52,13 +52,13 @@ class CustomSearchApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CseResourceApi {
+class CseResource {
   final commons.ApiRequester _requester;
 
-  CseSiterestrictResourceApi get siterestrict =>
-      CseSiterestrictResourceApi(_requester);
+  CseSiterestrictResource get siterestrict =>
+      CseSiterestrictResource(_requester);
 
-  CseResourceApi(commons.ApiRequester client) : _requester = client;
+  CseResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns metadata about the search performed, metadata about the engine
   /// used for the search, and the search results.
@@ -436,10 +436,10 @@ class CseResourceApi {
   }
 }
 
-class CseSiterestrictResourceApi {
+class CseSiterestrictResource {
   final commons.ApiRequester _requester;
 
-  CseSiterestrictResourceApi(commons.ApiRequester client) : _requester = client;
+  CseSiterestrictResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns metadata about the search performed, metadata about the engine
   /// used for the search, and the search results. Uses a small set of url

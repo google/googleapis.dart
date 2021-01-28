@@ -25,8 +25,8 @@
 ///
 /// Create an instance of [CloudBillingBudgetApi] to access these resources:
 ///
-/// - [BillingAccountsResourceApi]
-///   - [BillingAccountsBudgetsResourceApi]
+/// - [BillingAccountsResource]
+///   - [BillingAccountsBudgetsResource]
 library billingbudgets.v1beta1;
 
 import 'dart:async' as async;
@@ -54,8 +54,8 @@ class CloudBillingBudgetApi {
 
   final commons.ApiRequester _requester;
 
-  BillingAccountsResourceApi get billingAccounts =>
-      BillingAccountsResourceApi(_requester);
+  BillingAccountsResource get billingAccounts =>
+      BillingAccountsResource(_requester);
 
   CloudBillingBudgetApi(http.Client client,
       {core.String rootUrl = 'https://billingbudgets.googleapis.com/',
@@ -64,19 +64,19 @@ class CloudBillingBudgetApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BillingAccountsResourceApi {
+class BillingAccountsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsBudgetsResourceApi get budgets =>
-      BillingAccountsBudgetsResourceApi(_requester);
+  BillingAccountsBudgetsResource get budgets =>
+      BillingAccountsBudgetsResource(_requester);
 
-  BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  BillingAccountsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class BillingAccountsBudgetsResourceApi {
+class BillingAccountsBudgetsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsBudgetsResourceApi(commons.ApiRequester client)
+  BillingAccountsBudgetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new budget. See Quotas and limits for more information on the

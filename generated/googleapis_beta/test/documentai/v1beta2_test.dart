@@ -6071,7 +6071,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDocumentsResourceApi', () {
+  unittest.group('resource-ProjectsDocumentsResource', () {
     unittest.test('method--batchProcess', () {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.documents;
@@ -6187,7 +6187,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDocumentsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDocumentsResource', () {
     unittest.test('method--batchProcess', () {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations.documents;
@@ -6303,7 +6303,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations.operations;
@@ -6354,7 +6354,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.operations;

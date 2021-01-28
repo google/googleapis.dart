@@ -24,38 +24,38 @@
 ///
 /// Create an instance of [DialogflowApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsAgentResourceApi]
-///     - [ProjectsAgentEntityTypesResourceApi]
-///       - [ProjectsAgentEntityTypesEntitiesResourceApi]
-///     - [ProjectsAgentEnvironmentsResourceApi]
-///       - [ProjectsAgentEnvironmentsUsersResourceApi]
-///         - [ProjectsAgentEnvironmentsUsersSessionsResourceApi]
-///           - [ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi]
-///           - [ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi]
-///     - [ProjectsAgentIntentsResourceApi]
-///     - [ProjectsAgentKnowledgeBasesResourceApi]
-///       - [ProjectsAgentKnowledgeBasesDocumentsResourceApi]
-///     - [ProjectsAgentSessionsResourceApi]
-///       - [ProjectsAgentSessionsContextsResourceApi]
-///       - [ProjectsAgentSessionsEntityTypesResourceApi]
-///   - [ProjectsKnowledgeBasesResourceApi]
-///     - [ProjectsKnowledgeBasesDocumentsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsAgentResourceApi]
-///       - [ProjectsLocationsAgentEntityTypesResourceApi]
-///         - [ProjectsLocationsAgentEntityTypesEntitiesResourceApi]
-///       - [ProjectsLocationsAgentEnvironmentsResourceApi]
-///         - [ProjectsLocationsAgentEnvironmentsUsersResourceApi]
-///           - [ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi]
-/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi]
-/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi]
-///       - [ProjectsLocationsAgentIntentsResourceApi]
-///       - [ProjectsLocationsAgentSessionsResourceApi]
-///         - [ProjectsLocationsAgentSessionsContextsResourceApi]
-///         - [ProjectsLocationsAgentSessionsEntityTypesResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///   - [ProjectsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsAgentResource]
+///     - [ProjectsAgentEntityTypesResource]
+///       - [ProjectsAgentEntityTypesEntitiesResource]
+///     - [ProjectsAgentEnvironmentsResource]
+///       - [ProjectsAgentEnvironmentsUsersResource]
+///         - [ProjectsAgentEnvironmentsUsersSessionsResource]
+///           - [ProjectsAgentEnvironmentsUsersSessionsContextsResource]
+///           - [ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource]
+///     - [ProjectsAgentIntentsResource]
+///     - [ProjectsAgentKnowledgeBasesResource]
+///       - [ProjectsAgentKnowledgeBasesDocumentsResource]
+///     - [ProjectsAgentSessionsResource]
+///       - [ProjectsAgentSessionsContextsResource]
+///       - [ProjectsAgentSessionsEntityTypesResource]
+///   - [ProjectsKnowledgeBasesResource]
+///     - [ProjectsKnowledgeBasesDocumentsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAgentResource]
+///       - [ProjectsLocationsAgentEntityTypesResource]
+///         - [ProjectsLocationsAgentEntityTypesEntitiesResource]
+///       - [ProjectsLocationsAgentEnvironmentsResource]
+///         - [ProjectsLocationsAgentEnvironmentsUsersResource]
+///           - [ProjectsLocationsAgentEnvironmentsUsersSessionsResource]
+/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource]
+/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource]
+///       - [ProjectsLocationsAgentIntentsResource]
+///       - [ProjectsLocationsAgentSessionsResource]
+///         - [ProjectsLocationsAgentSessionsContextsResource]
+///         - [ProjectsLocationsAgentSessionsEntityTypesResource]
+///     - [ProjectsLocationsOperationsResource]
+///   - [ProjectsOperationsResource]
 library dialogflow.v2beta1;
 
 import 'dart:async' as async;
@@ -82,7 +82,7 @@ class DialogflowApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DialogflowApi(http.Client client,
       {core.String rootUrl = 'https://dialogflow.googleapis.com/',
@@ -91,18 +91,18 @@ class DialogflowApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentResourceApi get agent => ProjectsAgentResourceApi(_requester);
-  ProjectsKnowledgeBasesResourceApi get knowledgeBases =>
-      ProjectsKnowledgeBasesResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
+  ProjectsAgentResource get agent => ProjectsAgentResource(_requester);
+  ProjectsKnowledgeBasesResource get knowledgeBases =>
+      ProjectsKnowledgeBasesResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified agent.
   ///
@@ -282,21 +282,21 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsAgentResourceApi {
+class ProjectsAgentResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEntityTypesResourceApi get entityTypes =>
-      ProjectsAgentEntityTypesResourceApi(_requester);
-  ProjectsAgentEnvironmentsResourceApi get environments =>
-      ProjectsAgentEnvironmentsResourceApi(_requester);
-  ProjectsAgentIntentsResourceApi get intents =>
-      ProjectsAgentIntentsResourceApi(_requester);
-  ProjectsAgentKnowledgeBasesResourceApi get knowledgeBases =>
-      ProjectsAgentKnowledgeBasesResourceApi(_requester);
-  ProjectsAgentSessionsResourceApi get sessions =>
-      ProjectsAgentSessionsResourceApi(_requester);
+  ProjectsAgentEntityTypesResource get entityTypes =>
+      ProjectsAgentEntityTypesResource(_requester);
+  ProjectsAgentEnvironmentsResource get environments =>
+      ProjectsAgentEnvironmentsResource(_requester);
+  ProjectsAgentIntentsResource get intents =>
+      ProjectsAgentIntentsResource(_requester);
+  ProjectsAgentKnowledgeBasesResource get knowledgeBases =>
+      ProjectsAgentKnowledgeBasesResource(_requester);
+  ProjectsAgentSessionsResource get sessions =>
+      ProjectsAgentSessionsResource(_requester);
 
-  ProjectsAgentResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsAgentResource(commons.ApiRequester client) : _requester = client;
 
   /// Exports the specified agent to a ZIP file. Operation
   ///
@@ -820,13 +820,13 @@ class ProjectsAgentResourceApi {
   }
 }
 
-class ProjectsAgentEntityTypesResourceApi {
+class ProjectsAgentEntityTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEntityTypesEntitiesResourceApi get entities =>
-      ProjectsAgentEntityTypesEntitiesResourceApi(_requester);
+  ProjectsAgentEntityTypesEntitiesResource get entities =>
+      ProjectsAgentEntityTypesEntitiesResource(_requester);
 
-  ProjectsAgentEntityTypesResourceApi(commons.ApiRequester client)
+  ProjectsAgentEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes entity types in the specified agent. Operation
@@ -1294,10 +1294,10 @@ class ProjectsAgentEntityTypesResourceApi {
   }
 }
 
-class ProjectsAgentEntityTypesEntitiesResourceApi {
+class ProjectsAgentEntityTypesEntitiesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEntityTypesEntitiesResourceApi(commons.ApiRequester client)
+  ProjectsAgentEntityTypesEntitiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates multiple new entities in the specified entity type. Operation
@@ -1489,13 +1489,13 @@ class ProjectsAgentEntityTypesEntitiesResourceApi {
   }
 }
 
-class ProjectsAgentEnvironmentsResourceApi {
+class ProjectsAgentEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEnvironmentsUsersResourceApi get users =>
-      ProjectsAgentEnvironmentsUsersResourceApi(_requester);
+  ProjectsAgentEnvironmentsUsersResource get users =>
+      ProjectsAgentEnvironmentsUsersResource(_requester);
 
-  ProjectsAgentEnvironmentsResourceApi(commons.ApiRequester client)
+  ProjectsAgentEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the list of all non-draft environments of the specified agent.
@@ -1568,27 +1568,25 @@ class ProjectsAgentEnvironmentsResourceApi {
   }
 }
 
-class ProjectsAgentEnvironmentsUsersResourceApi {
+class ProjectsAgentEnvironmentsUsersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEnvironmentsUsersSessionsResourceApi get sessions =>
-      ProjectsAgentEnvironmentsUsersSessionsResourceApi(_requester);
+  ProjectsAgentEnvironmentsUsersSessionsResource get sessions =>
+      ProjectsAgentEnvironmentsUsersSessionsResource(_requester);
 
-  ProjectsAgentEnvironmentsUsersResourceApi(commons.ApiRequester client)
+  ProjectsAgentEnvironmentsUsersResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsAgentEnvironmentsUsersSessionsResourceApi {
+class ProjectsAgentEnvironmentsUsersSessionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi get contexts =>
-      ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi(_requester);
-  ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
-      get entityTypes =>
-          ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi(
-              _requester);
+  ProjectsAgentEnvironmentsUsersSessionsContextsResource get contexts =>
+      ProjectsAgentEnvironmentsUsersSessionsContextsResource(_requester);
+  ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource get entityTypes =>
+      ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource(_requester);
 
-  ProjectsAgentEnvironmentsUsersSessionsResourceApi(commons.ApiRequester client)
+  ProjectsAgentEnvironmentsUsersSessionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes all active contexts in the specified session.
@@ -1730,10 +1728,10 @@ class ProjectsAgentEnvironmentsUsersSessionsResourceApi {
   }
 }
 
-class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
+class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi(
+  ProjectsAgentEnvironmentsUsersSessionsContextsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2079,10 +2077,10 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
   }
 }
 
-class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
+class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi(
+  ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2439,10 +2437,10 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
   }
 }
 
-class ProjectsAgentIntentsResourceApi {
+class ProjectsAgentIntentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentIntentsResourceApi(commons.ApiRequester client)
+  ProjectsAgentIntentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes intents in the specified agent. Operation
@@ -2953,13 +2951,13 @@ class ProjectsAgentIntentsResourceApi {
   }
 }
 
-class ProjectsAgentKnowledgeBasesResourceApi {
+class ProjectsAgentKnowledgeBasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentKnowledgeBasesDocumentsResourceApi get documents =>
-      ProjectsAgentKnowledgeBasesDocumentsResourceApi(_requester);
+  ProjectsAgentKnowledgeBasesDocumentsResource get documents =>
+      ProjectsAgentKnowledgeBasesDocumentsResource(_requester);
 
-  ProjectsAgentKnowledgeBasesResourceApi(commons.ApiRequester client)
+  ProjectsAgentKnowledgeBasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a knowledge base. Note: The `projects.agent.knowledgeBases`
@@ -3300,10 +3298,10 @@ class ProjectsAgentKnowledgeBasesResourceApi {
   }
 }
 
-class ProjectsAgentKnowledgeBasesDocumentsResourceApi {
+class ProjectsAgentKnowledgeBasesDocumentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentKnowledgeBasesDocumentsResourceApi(commons.ApiRequester client)
+  ProjectsAgentKnowledgeBasesDocumentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new document. Note: The
@@ -3704,15 +3702,15 @@ class ProjectsAgentKnowledgeBasesDocumentsResourceApi {
   }
 }
 
-class ProjectsAgentSessionsResourceApi {
+class ProjectsAgentSessionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentSessionsContextsResourceApi get contexts =>
-      ProjectsAgentSessionsContextsResourceApi(_requester);
-  ProjectsAgentSessionsEntityTypesResourceApi get entityTypes =>
-      ProjectsAgentSessionsEntityTypesResourceApi(_requester);
+  ProjectsAgentSessionsContextsResource get contexts =>
+      ProjectsAgentSessionsContextsResource(_requester);
+  ProjectsAgentSessionsEntityTypesResource get entityTypes =>
+      ProjectsAgentSessionsEntityTypesResource(_requester);
 
-  ProjectsAgentSessionsResourceApi(commons.ApiRequester client)
+  ProjectsAgentSessionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes all active contexts in the specified session.
@@ -3852,10 +3850,10 @@ class ProjectsAgentSessionsResourceApi {
   }
 }
 
-class ProjectsAgentSessionsContextsResourceApi {
+class ProjectsAgentSessionsContextsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentSessionsContextsResourceApi(commons.ApiRequester client)
+  ProjectsAgentSessionsContextsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a context. If the specified context already exists, overrides the
@@ -4198,10 +4196,10 @@ class ProjectsAgentSessionsContextsResourceApi {
   }
 }
 
-class ProjectsAgentSessionsEntityTypesResourceApi {
+class ProjectsAgentSessionsEntityTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentSessionsEntityTypesResourceApi(commons.ApiRequester client)
+  ProjectsAgentSessionsEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a session entity type. If the specified session entity type
@@ -4555,13 +4553,13 @@ class ProjectsAgentSessionsEntityTypesResourceApi {
   }
 }
 
-class ProjectsKnowledgeBasesResourceApi {
+class ProjectsKnowledgeBasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsKnowledgeBasesDocumentsResourceApi get documents =>
-      ProjectsKnowledgeBasesDocumentsResourceApi(_requester);
+  ProjectsKnowledgeBasesDocumentsResource get documents =>
+      ProjectsKnowledgeBasesDocumentsResource(_requester);
 
-  ProjectsKnowledgeBasesResourceApi(commons.ApiRequester client)
+  ProjectsKnowledgeBasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a knowledge base. Note: The `projects.agent.knowledgeBases`
@@ -4902,10 +4900,10 @@ class ProjectsKnowledgeBasesResourceApi {
   }
 }
 
-class ProjectsKnowledgeBasesDocumentsResourceApi {
+class ProjectsKnowledgeBasesDocumentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsKnowledgeBasesDocumentsResourceApi(commons.ApiRequester client)
+  ProjectsKnowledgeBasesDocumentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new document. Note: The
@@ -5306,16 +5304,15 @@ class ProjectsKnowledgeBasesDocumentsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentResourceApi get agent =>
-      ProjectsLocationsAgentResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsAgentResource get agent =>
+      ProjectsLocationsAgentResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified agent.
   ///
@@ -5495,19 +5492,19 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentResourceApi {
+class ProjectsLocationsAgentResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEntityTypesResourceApi get entityTypes =>
-      ProjectsLocationsAgentEntityTypesResourceApi(_requester);
-  ProjectsLocationsAgentEnvironmentsResourceApi get environments =>
-      ProjectsLocationsAgentEnvironmentsResourceApi(_requester);
-  ProjectsLocationsAgentIntentsResourceApi get intents =>
-      ProjectsLocationsAgentIntentsResourceApi(_requester);
-  ProjectsLocationsAgentSessionsResourceApi get sessions =>
-      ProjectsLocationsAgentSessionsResourceApi(_requester);
+  ProjectsLocationsAgentEntityTypesResource get entityTypes =>
+      ProjectsLocationsAgentEntityTypesResource(_requester);
+  ProjectsLocationsAgentEnvironmentsResource get environments =>
+      ProjectsLocationsAgentEnvironmentsResource(_requester);
+  ProjectsLocationsAgentIntentsResource get intents =>
+      ProjectsLocationsAgentIntentsResource(_requester);
+  ProjectsLocationsAgentSessionsResource get sessions =>
+      ProjectsLocationsAgentSessionsResource(_requester);
 
-  ProjectsLocationsAgentResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAgentResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Exports the specified agent to a ZIP file. Operation
@@ -6034,13 +6031,13 @@ class ProjectsLocationsAgentResourceApi {
   }
 }
 
-class ProjectsLocationsAgentEntityTypesResourceApi {
+class ProjectsLocationsAgentEntityTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEntityTypesEntitiesResourceApi get entities =>
-      ProjectsLocationsAgentEntityTypesEntitiesResourceApi(_requester);
+  ProjectsLocationsAgentEntityTypesEntitiesResource get entities =>
+      ProjectsLocationsAgentEntityTypesEntitiesResource(_requester);
 
-  ProjectsLocationsAgentEntityTypesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAgentEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes entity types in the specified agent. Operation
@@ -6511,11 +6508,10 @@ class ProjectsLocationsAgentEntityTypesResourceApi {
   }
 }
 
-class ProjectsLocationsAgentEntityTypesEntitiesResourceApi {
+class ProjectsLocationsAgentEntityTypesEntitiesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEntityTypesEntitiesResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsAgentEntityTypesEntitiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates multiple new entities in the specified entity type. Operation
@@ -6710,13 +6706,13 @@ class ProjectsLocationsAgentEntityTypesEntitiesResourceApi {
   }
 }
 
-class ProjectsLocationsAgentEnvironmentsResourceApi {
+class ProjectsLocationsAgentEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEnvironmentsUsersResourceApi get users =>
-      ProjectsLocationsAgentEnvironmentsUsersResourceApi(_requester);
+  ProjectsLocationsAgentEnvironmentsUsersResource get users =>
+      ProjectsLocationsAgentEnvironmentsUsersResource(_requester);
 
-  ProjectsLocationsAgentEnvironmentsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAgentEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the list of all non-draft environments of the specified agent.
@@ -6789,30 +6785,29 @@ class ProjectsLocationsAgentEnvironmentsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentEnvironmentsUsersResourceApi {
+class ProjectsLocationsAgentEnvironmentsUsersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi get sessions =>
-      ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi(_requester);
+  ProjectsLocationsAgentEnvironmentsUsersSessionsResource get sessions =>
+      ProjectsLocationsAgentEnvironmentsUsersSessionsResource(_requester);
 
-  ProjectsLocationsAgentEnvironmentsUsersResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsAgentEnvironmentsUsersResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi {
+class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
+  ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource
       get contexts =>
-          ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi(
+          ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource(
               _requester);
-  ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
+  ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource
       get entityTypes =>
-          ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi(
+          ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource(
               _requester);
 
-  ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi(
+  ProjectsLocationsAgentEnvironmentsUsersSessionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -6955,10 +6950,10 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi {
+class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi(
+  ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -7304,10 +7299,10 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
+class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi(
+  ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -7664,10 +7659,10 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
   }
 }
 
-class ProjectsLocationsAgentIntentsResourceApi {
+class ProjectsLocationsAgentIntentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentIntentsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAgentIntentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes intents in the specified agent. Operation
@@ -8181,15 +8176,15 @@ class ProjectsLocationsAgentIntentsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentSessionsResourceApi {
+class ProjectsLocationsAgentSessionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentSessionsContextsResourceApi get contexts =>
-      ProjectsLocationsAgentSessionsContextsResourceApi(_requester);
-  ProjectsLocationsAgentSessionsEntityTypesResourceApi get entityTypes =>
-      ProjectsLocationsAgentSessionsEntityTypesResourceApi(_requester);
+  ProjectsLocationsAgentSessionsContextsResource get contexts =>
+      ProjectsLocationsAgentSessionsContextsResource(_requester);
+  ProjectsLocationsAgentSessionsEntityTypesResource get entityTypes =>
+      ProjectsLocationsAgentSessionsEntityTypesResource(_requester);
 
-  ProjectsLocationsAgentSessionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAgentSessionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes all active contexts in the specified session.
@@ -8331,10 +8326,10 @@ class ProjectsLocationsAgentSessionsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentSessionsContextsResourceApi {
+class ProjectsLocationsAgentSessionsContextsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentSessionsContextsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAgentSessionsContextsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a context. If the specified context already exists, overrides the
@@ -8679,11 +8674,10 @@ class ProjectsLocationsAgentSessionsContextsResourceApi {
   }
 }
 
-class ProjectsLocationsAgentSessionsEntityTypesResourceApi {
+class ProjectsLocationsAgentSessionsEntityTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAgentSessionsEntityTypesResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsAgentSessionsEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a session entity type. If the specified session entity type
@@ -9039,10 +9033,10 @@ class ProjectsLocationsAgentSessionsEntityTypesResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -9243,11 +9237,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not

@@ -25,12 +25,12 @@
 ///
 /// Create an instance of [SecurityCommandCenterApi] to access these resources:
 ///
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsAssetsResourceApi]
-///   - [OrganizationsNotificationConfigsResourceApi]
-///   - [OrganizationsOperationsResourceApi]
-///   - [OrganizationsSourcesResourceApi]
-///     - [OrganizationsSourcesFindingsResourceApi]
+/// - [OrganizationsResource]
+///   - [OrganizationsAssetsResource]
+///   - [OrganizationsNotificationConfigsResource]
+///   - [OrganizationsOperationsResource]
+///   - [OrganizationsSourcesResource]
+///     - [OrganizationsSourcesFindingsResource]
 library securitycenter.v1;
 
 import 'dart:async' as async;
@@ -54,8 +54,7 @@ class SecurityCommandCenterApi {
 
   final commons.ApiRequester _requester;
 
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
 
   SecurityCommandCenterApi(http.Client client,
       {core.String rootUrl = 'https://securitycenter.googleapis.com/',
@@ -64,19 +63,19 @@ class SecurityCommandCenterApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsAssetsResourceApi get assets =>
-      OrganizationsAssetsResourceApi(_requester);
-  OrganizationsNotificationConfigsResourceApi get notificationConfigs =>
-      OrganizationsNotificationConfigsResourceApi(_requester);
-  OrganizationsOperationsResourceApi get operations =>
-      OrganizationsOperationsResourceApi(_requester);
-  OrganizationsSourcesResourceApi get sources =>
-      OrganizationsSourcesResourceApi(_requester);
+  OrganizationsAssetsResource get assets =>
+      OrganizationsAssetsResource(_requester);
+  OrganizationsNotificationConfigsResource get notificationConfigs =>
+      OrganizationsNotificationConfigsResource(_requester);
+  OrganizationsOperationsResource get operations =>
+      OrganizationsOperationsResource(_requester);
+  OrganizationsSourcesResource get sources =>
+      OrganizationsSourcesResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the settings for an organization.
   ///
@@ -199,10 +198,10 @@ class OrganizationsResourceApi {
   }
 }
 
-class OrganizationsAssetsResourceApi {
+class OrganizationsAssetsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsAssetsResourceApi(commons.ApiRequester client)
+  OrganizationsAssetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Filters an organization's assets and groups them by their specified
@@ -576,10 +575,10 @@ class OrganizationsAssetsResourceApi {
   }
 }
 
-class OrganizationsNotificationConfigsResourceApi {
+class OrganizationsNotificationConfigsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsNotificationConfigsResourceApi(commons.ApiRequester client)
+  OrganizationsNotificationConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a notification config.
@@ -897,10 +896,10 @@ class OrganizationsNotificationConfigsResourceApi {
   }
 }
 
-class OrganizationsOperationsResourceApi {
+class OrganizationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsOperationsResourceApi(commons.ApiRequester client)
+  OrganizationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1148,13 +1147,13 @@ class OrganizationsOperationsResourceApi {
   }
 }
 
-class OrganizationsSourcesResourceApi {
+class OrganizationsSourcesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSourcesFindingsResourceApi get findings =>
-      OrganizationsSourcesFindingsResourceApi(_requester);
+  OrganizationsSourcesFindingsResource get findings =>
+      OrganizationsSourcesFindingsResource(_requester);
 
-  OrganizationsSourcesResourceApi(commons.ApiRequester client)
+  OrganizationsSourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a source.
@@ -1588,10 +1587,10 @@ class OrganizationsSourcesResourceApi {
   }
 }
 
-class OrganizationsSourcesFindingsResourceApi {
+class OrganizationsSourcesFindingsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSourcesFindingsResourceApi(commons.ApiRequester client)
+  OrganizationsSourcesFindingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a finding. The corresponding source must exist for finding

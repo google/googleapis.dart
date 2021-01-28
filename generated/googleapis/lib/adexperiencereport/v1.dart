@@ -25,8 +25,8 @@
 ///
 /// Create an instance of [AdExperienceReportApi] to access these resources:
 ///
-/// - [SitesResourceApi]
-/// - [ViolatingSitesResourceApi]
+/// - [SitesResource]
+/// - [ViolatingSitesResource]
 library adexperiencereport.v1;
 
 import 'dart:async' as async;
@@ -45,9 +45,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class AdExperienceReportApi {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi get sites => SitesResourceApi(_requester);
-  ViolatingSitesResourceApi get violatingSites =>
-      ViolatingSitesResourceApi(_requester);
+  SitesResource get sites => SitesResource(_requester);
+  ViolatingSitesResource get violatingSites =>
+      ViolatingSitesResource(_requester);
 
   AdExperienceReportApi(http.Client client,
       {core.String rootUrl = 'https://adexperiencereport.googleapis.com/',
@@ -56,10 +56,10 @@ class AdExperienceReportApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class SitesResourceApi {
+class SitesResource {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a site's Ad Experience Report summary.
   ///
@@ -115,10 +115,10 @@ class SitesResourceApi {
   }
 }
 
-class ViolatingSitesResourceApi {
+class ViolatingSitesResource {
   final commons.ApiRequester _requester;
 
-  ViolatingSitesResourceApi(commons.ApiRequester client) : _requester = client;
+  ViolatingSitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists sites that are failing in the Ad Experience Report on at least one
   /// platform.

@@ -2447,7 +2447,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AchievementDefinitionsResourceApi', () {
+  unittest.group('resource-AchievementDefinitionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievementDefinitions;
@@ -2510,7 +2510,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AchievementsResourceApi', () {
+  unittest.group('resource-AchievementsResource', () {
     unittest.test('method--increment', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
@@ -2878,7 +2878,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ApplicationsResourceApi', () {
+  unittest.group('resource-ApplicationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).applications;
@@ -3038,7 +3038,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EventsResourceApi', () {
+  unittest.group('resource-EventsResource', () {
     unittest.test('method--listByPlayer', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).events;
@@ -3213,7 +3213,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LeaderboardsResourceApi', () {
+  unittest.group('resource-LeaderboardsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).leaderboards;
@@ -3327,7 +3327,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MetagameResourceApi', () {
+  unittest.group('resource-MetagameResource', () {
     unittest.test('method--getMetagameConfig', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).metagame;
@@ -3448,7 +3448,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlayersResourceApi', () {
+  unittest.group('resource-PlayersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).players;
@@ -3566,7 +3566,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RevisionsResourceApi', () {
+  unittest.group('resource-RevisionsResource', () {
     unittest.test('method--check', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).revisions;
@@ -3617,7 +3617,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ScoresResourceApi', () {
+  unittest.group('resource-ScoresResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).scores;
@@ -3990,7 +3990,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SnapshotsResourceApi', () {
+  unittest.group('resource-SnapshotsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).snapshots;
@@ -4114,7 +4114,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatsResourceApi', () {
+  unittest.group('resource-StatsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).stats;

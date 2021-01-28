@@ -7786,7 +7786,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-HybridIssuersResourceApi', () {
+  unittest.group('resource-HybridIssuersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).hybrid.issuers;
@@ -7838,7 +7838,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsResourceApi', () {
+  unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
@@ -8213,7 +8213,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsAnalyticsDatastoresResourceApi', () {
+  unittest.group('resource-OrganizationsAnalyticsDatastoresResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
@@ -8531,7 +8531,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApiproductsResourceApi', () {
+  unittest.group('resource-OrganizationsApiproductsResource', () {
     unittest.test('method--attributes', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
@@ -8866,7 +8866,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApiproductsAttributesResourceApi', () {
+  unittest.group('resource-OrganizationsApiproductsAttributesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
@@ -9071,7 +9071,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApisResourceApi', () {
+  unittest.group('resource-OrganizationsApisResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis;
@@ -9296,7 +9296,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApisDeploymentsResourceApi', () {
+  unittest.group('resource-OrganizationsApisDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.deployments;
@@ -9348,7 +9348,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApisKeyvaluemapsResourceApi', () {
+  unittest.group('resource-OrganizationsApisKeyvaluemapsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
@@ -9454,7 +9454,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApisRevisionsResourceApi', () {
+  unittest.group('resource-OrganizationsApisRevisionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.revisions;
@@ -9615,8 +9615,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApisRevisionsDeploymentsResourceApi',
-      () {
+  unittest.group('resource-OrganizationsApisRevisionsDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.revisions.deployments;
@@ -9668,7 +9667,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsAppsResourceApi', () {
+  unittest.group('resource-OrganizationsAppsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apps;
@@ -9802,7 +9801,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDeploymentsResourceApi', () {
+  unittest.group('resource-OrganizationsDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.deployments;
@@ -9857,7 +9856,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDevelopersResourceApi', () {
+  unittest.group('resource-OrganizationsDevelopersResource', () {
     unittest.test('method--attributes', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
@@ -10244,7 +10243,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDevelopersAppsResourceApi', () {
+  unittest.group('resource-OrganizationsDevelopersAppsResource', () {
     unittest.test('method--attributes', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
@@ -10638,8 +10637,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDevelopersAppsAttributesResourceApi',
-      () {
+  unittest.group('resource-OrganizationsDevelopersAppsAttributesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
@@ -10844,7 +10842,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDevelopersAppsKeysResourceApi', () {
+  unittest.group('resource-OrganizationsDevelopersAppsKeysResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
@@ -11117,8 +11115,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-OrganizationsDevelopersAppsKeysApiproductsResourceApi', () {
+  unittest.group('resource-OrganizationsDevelopersAppsKeysApiproductsResource',
+      () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res =
@@ -11223,8 +11221,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDevelopersAppsKeysCreateResourceApi',
-      () {
+  unittest.group('resource-OrganizationsDevelopersAppsKeysCreateResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
@@ -11282,7 +11279,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDevelopersAttributesResourceApi', () {
+  unittest.group('resource-OrganizationsDevelopersAttributesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
@@ -11486,7 +11483,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvgroupsResourceApi', () {
+  unittest.group('resource-OrganizationsEnvgroupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups;
@@ -11762,7 +11759,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvgroupsAttachmentsResourceApi', () {
+  unittest.group('resource-OrganizationsEnvgroupsAttachmentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
@@ -11977,7 +11974,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
@@ -12675,7 +12672,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsAnalyticsAdminResourceApi',
+  unittest.group('resource-OrganizationsEnvironmentsAnalyticsAdminResource',
       () {
     unittest.test('method--getSchemav2', () {
       var mock = HttpServerMock();
@@ -12729,8 +12726,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-OrganizationsEnvironmentsAnalyticsExportsResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsAnalyticsExportsResource',
+      () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -12889,7 +12886,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsApisDeploymentsResourceApi',
+  unittest.group('resource-OrganizationsEnvironmentsApisDeploymentsResource',
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
@@ -12942,8 +12939,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsApisRevisionsResourceApi',
-      () {
+  unittest.group('resource-OrganizationsEnvironmentsApisRevisionsResource', () {
     unittest.test('method--deploy', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
@@ -13105,7 +13101,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi',
+      'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -13344,7 +13340,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi',
+      'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource',
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
@@ -13404,8 +13400,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi',
-      () {
+      'resource-OrganizationsEnvironmentsApisRevisionsDeploymentsResource', () {
     unittest.test('method--generateDeployChangeReport', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
@@ -13521,7 +13516,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsCachesResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsCachesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.caches;
@@ -13571,8 +13566,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsDeploymentsResourceApi',
-      () {
+  unittest.group('resource-OrganizationsEnvironmentsDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.deployments;
@@ -13627,7 +13621,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsFlowhooksResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsFlowhooksResource', () {
     unittest.test('method--attachSharedFlowToFlowHook', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
@@ -13783,7 +13777,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsKeystoresResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsKeystoresResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keystores;
@@ -13940,8 +13934,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-OrganizationsEnvironmentsKeystoresAliasesResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsKeystoresAliasesResource',
+      () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -14275,8 +14269,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsKeyvaluemapsResourceApi',
-      () {
+  unittest.group('resource-OrganizationsEnvironmentsKeyvaluemapsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
@@ -14382,7 +14375,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsOptimizedStatsResourceApi',
+  unittest.group('resource-OrganizationsEnvironmentsOptimizedStatsResource',
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
@@ -14487,7 +14480,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsQueriesResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsQueriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.queries;
@@ -14712,7 +14705,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsReferencesResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsReferencesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.references;
@@ -14922,8 +14915,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsResourcefilesResourceApi',
-      () {
+  unittest.group('resource-OrganizationsEnvironmentsResourcefilesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
@@ -15246,8 +15238,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi',
-      () {
+      'resource-OrganizationsEnvironmentsSharedflowsDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
@@ -15304,7 +15295,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-OrganizationsEnvironmentsSharedflowsRevisionsResourceApi', () {
+      'resource-OrganizationsEnvironmentsSharedflowsRevisionsResource', () {
     unittest.test('method--deploy', () {
       var mock = HttpServerMock();
       var res =
@@ -15458,7 +15449,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsStatsResourceApi', () {
+  unittest.group('resource-OrganizationsEnvironmentsStatsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.stats;
@@ -15560,8 +15551,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsEnvironmentsTargetserversResourceApi',
-      () {
+  unittest.group('resource-OrganizationsEnvironmentsTargetserversResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.targetservers;
@@ -15773,7 +15763,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsInstancesResourceApi', () {
+  unittest.group('resource-OrganizationsInstancesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances;
@@ -16043,7 +16033,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsInstancesAttachmentsResourceApi', () {
+  unittest.group('resource-OrganizationsInstancesAttachmentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.attachments;
@@ -16258,7 +16248,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsKeyvaluemapsResourceApi', () {
+  unittest.group('resource-OrganizationsKeyvaluemapsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
@@ -16364,7 +16354,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsOperationsResourceApi', () {
+  unittest.group('resource-OrganizationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.operations;
@@ -16477,7 +16467,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsReportsResourceApi', () {
+  unittest.group('resource-OrganizationsReportsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.reports;
@@ -16741,7 +16731,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSharedflowsResourceApi', () {
+  unittest.group('resource-OrganizationsSharedflowsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows;
@@ -16960,7 +16950,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSharedflowsDeploymentsResourceApi', () {
+  unittest.group('resource-OrganizationsSharedflowsDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows.deployments;
@@ -17012,7 +17002,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSharedflowsRevisionsResourceApi', () {
+  unittest.group('resource-OrganizationsSharedflowsRevisionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
@@ -17174,7 +17164,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-OrganizationsSharedflowsRevisionsDeploymentsResourceApi', () {
+      'resource-OrganizationsSharedflowsRevisionsDeploymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
@@ -17227,7 +17217,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSitesApicategoriesResourceApi', () {
+  unittest.group('resource-OrganizationsSitesApicategoriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sites.apicategories;
@@ -17488,7 +17478,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--provisionOrganization', () {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).projects;

@@ -1488,7 +1488,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts;
@@ -1603,7 +1603,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsAdclientsResourceApi', () {
+  unittest.group('resource-AccountsAdclientsResource', () {
     unittest.test('method--getAdCode', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.adclients;
@@ -1746,7 +1746,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsAdunitsResourceApi', () {
+  unittest.group('resource-AccountsAdunitsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.adunits;
@@ -1984,7 +1984,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsAdunitsCustomchannelsResourceApi', () {
+  unittest.group('resource-AccountsAdunitsCustomchannelsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.adunits.customchannels;
@@ -2074,7 +2074,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsAlertsResourceApi', () {
+  unittest.group('resource-AccountsAlertsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.alerts;
@@ -2198,7 +2198,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsCustomchannelsResourceApi', () {
+  unittest.group('resource-AccountsCustomchannelsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.customchannels;
@@ -2352,7 +2352,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsCustomchannelsAdunitsResourceApi', () {
+  unittest.group('resource-AccountsCustomchannelsAdunitsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.customchannels.adunits;
@@ -2446,7 +2446,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsPaymentsResourceApi', () {
+  unittest.group('resource-AccountsPaymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.payments;
@@ -2507,7 +2507,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsReportsResourceApi', () {
+  unittest.group('resource-AccountsReportsResource', () {
     unittest.test('method--generate', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -2610,7 +2610,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsReportsSavedResourceApi', () {
+  unittest.group('resource-AccountsReportsSavedResource', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.reports.saved;
@@ -2756,7 +2756,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsSavedadstylesResourceApi', () {
+  unittest.group('resource-AccountsSavedadstylesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.savedadstyles;
@@ -2889,7 +2889,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsUrlchannelsResourceApi', () {
+  unittest.group('resource-AccountsUrlchannelsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).accounts.urlchannels;
@@ -2969,7 +2969,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdclientsResourceApi', () {
+  unittest.group('resource-AdclientsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).adclients;
@@ -3029,7 +3029,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdunitsResourceApi', () {
+  unittest.group('resource-AdunitsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).adunits;
@@ -3235,7 +3235,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdunitsCustomchannelsResourceApi', () {
+  unittest.group('resource-AdunitsCustomchannelsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).adunits.customchannels;
@@ -3315,7 +3315,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AlertsResourceApi', () {
+  unittest.group('resource-AlertsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).alerts;
@@ -3419,7 +3419,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomchannelsResourceApi', () {
+  unittest.group('resource-CustomchannelsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).customchannels;
@@ -3552,7 +3552,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomchannelsAdunitsResourceApi', () {
+  unittest.group('resource-CustomchannelsAdunitsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).customchannels.adunits;
@@ -3636,7 +3636,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MetadataDimensionsResourceApi', () {
+  unittest.group('resource-MetadataDimensionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).metadata.dimensions;
@@ -3685,7 +3685,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MetadataMetricsResourceApi', () {
+  unittest.group('resource-MetadataMetricsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).metadata.metrics;
@@ -3734,7 +3734,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PaymentsResourceApi', () {
+  unittest.group('resource-PaymentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).payments;
@@ -3783,7 +3783,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsResourceApi', () {
+  unittest.group('resource-ReportsResource', () {
     unittest.test('method--generate', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -3879,7 +3879,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsSavedResourceApi', () {
+  unittest.group('resource-ReportsSavedResource', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).reports.saved;
@@ -4005,7 +4005,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SavedadstylesResourceApi', () {
+  unittest.group('resource-SavedadstylesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).savedadstyles;
@@ -4118,7 +4118,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UrlchannelsResourceApi', () {
+  unittest.group('resource-UrlchannelsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdSenseApi(mock).urlchannels;

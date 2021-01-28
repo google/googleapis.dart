@@ -25,8 +25,8 @@
 /// Create an instance of [CloudSourceRepositoriesApi] to access these
 /// resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsReposResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsReposResource]
 library sourcerepo.v1;
 
 import 'dart:async' as async;
@@ -61,7 +61,7 @@ class CloudSourceRepositoriesApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudSourceRepositoriesApi(http.Client client,
       {core.String rootUrl = 'https://sourcerepo.googleapis.com/',
@@ -70,12 +70,12 @@ class CloudSourceRepositoriesApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsReposResourceApi get repos => ProjectsReposResourceApi(_requester);
+  ProjectsReposResource get repos => ProjectsReposResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the Cloud Source Repositories configuration of the project.
   ///
@@ -190,10 +190,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsReposResourceApi {
+class ProjectsReposResource {
   final commons.ApiRequester _requester;
 
-  ProjectsReposResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsReposResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a repo in the given project with the given name. If the named
   /// repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.

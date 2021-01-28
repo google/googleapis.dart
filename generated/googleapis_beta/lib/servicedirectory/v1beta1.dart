@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [ServiceDirectoryApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsNamespacesResourceApi]
-///       - [ProjectsLocationsNamespacesServicesResourceApi]
-///         - [ProjectsLocationsNamespacesServicesEndpointsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsNamespacesResource]
+///       - [ProjectsLocationsNamespacesServicesResource]
+///         - [ProjectsLocationsNamespacesServicesEndpointsResource]
 library servicedirectory.v1beta1;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class ServiceDirectoryApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ServiceDirectoryApi(http.Client client,
       {core.String rootUrl = 'https://servicedirectory.googleapis.com/',
@@ -61,23 +61,22 @@ class ServiceDirectoryApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsNamespacesResourceApi get namespaces =>
-      ProjectsLocationsNamespacesResourceApi(_requester);
+  ProjectsLocationsNamespacesResource get namespaces =>
+      ProjectsLocationsNamespacesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -203,13 +202,13 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsNamespacesResourceApi {
+class ProjectsLocationsNamespacesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsNamespacesServicesResourceApi get services =>
-      ProjectsLocationsNamespacesServicesResourceApi(_requester);
+  ProjectsLocationsNamespacesServicesResource get services =>
+      ProjectsLocationsNamespacesServicesResource(_requester);
 
-  ProjectsLocationsNamespacesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsNamespacesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a namespace, and returns the new Namespace.
@@ -739,13 +738,13 @@ class ProjectsLocationsNamespacesResourceApi {
   }
 }
 
-class ProjectsLocationsNamespacesServicesResourceApi {
+class ProjectsLocationsNamespacesServicesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsNamespacesServicesEndpointsResourceApi get endpoints =>
-      ProjectsLocationsNamespacesServicesEndpointsResourceApi(_requester);
+  ProjectsLocationsNamespacesServicesEndpointsResource get endpoints =>
+      ProjectsLocationsNamespacesServicesEndpointsResource(_requester);
 
-  ProjectsLocationsNamespacesServicesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsNamespacesServicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a service, and returns the new Service.
@@ -1336,10 +1335,10 @@ class ProjectsLocationsNamespacesServicesResourceApi {
   }
 }
 
-class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
+class ProjectsLocationsNamespacesServicesEndpointsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsNamespacesServicesEndpointsResourceApi(
+  ProjectsLocationsNamespacesServicesEndpointsResource(
       commons.ApiRequester client)
       : _requester = client;
 

@@ -3679,8 +3679,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAutoscalingPoliciesResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsAutoscalingPoliciesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
@@ -4102,7 +4101,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsWorkflowTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsWorkflowTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
@@ -4641,7 +4640,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRegionsAutoscalingPoliciesResourceApi', () {
+  unittest.group('resource-ProjectsRegionsAutoscalingPoliciesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
@@ -5063,7 +5062,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRegionsClustersResourceApi', () {
+  unittest.group('resource-ProjectsRegionsClustersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
@@ -5697,7 +5696,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRegionsJobsResourceApi', () {
+  unittest.group('resource-ProjectsRegionsJobsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
@@ -6388,7 +6387,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRegionsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsRegionsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
@@ -6754,7 +6753,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRegionsWorkflowTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsRegionsWorkflowTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;

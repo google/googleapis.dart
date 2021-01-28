@@ -23,10 +23,10 @@
 ///
 /// Create an instance of [SheetsApi] to access these resources:
 ///
-/// - [SpreadsheetsResourceApi]
-///   - [SpreadsheetsDeveloperMetadataResourceApi]
-///   - [SpreadsheetsSheetsResourceApi]
-///   - [SpreadsheetsValuesResourceApi]
+/// - [SpreadsheetsResource]
+///   - [SpreadsheetsDeveloperMetadataResource]
+///   - [SpreadsheetsSheetsResource]
+///   - [SpreadsheetsValuesResource]
 library sheets.v4;
 
 import 'dart:async' as async;
@@ -64,8 +64,7 @@ class SheetsApi {
 
   final commons.ApiRequester _requester;
 
-  SpreadsheetsResourceApi get spreadsheets =>
-      SpreadsheetsResourceApi(_requester);
+  SpreadsheetsResource get spreadsheets => SpreadsheetsResource(_requester);
 
   SheetsApi(http.Client client,
       {core.String rootUrl = 'https://sheets.googleapis.com/',
@@ -74,17 +73,17 @@ class SheetsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class SpreadsheetsResourceApi {
+class SpreadsheetsResource {
   final commons.ApiRequester _requester;
 
-  SpreadsheetsDeveloperMetadataResourceApi get developerMetadata =>
-      SpreadsheetsDeveloperMetadataResourceApi(_requester);
-  SpreadsheetsSheetsResourceApi get sheets =>
-      SpreadsheetsSheetsResourceApi(_requester);
-  SpreadsheetsValuesResourceApi get values =>
-      SpreadsheetsValuesResourceApi(_requester);
+  SpreadsheetsDeveloperMetadataResource get developerMetadata =>
+      SpreadsheetsDeveloperMetadataResource(_requester);
+  SpreadsheetsSheetsResource get sheets =>
+      SpreadsheetsSheetsResource(_requester);
+  SpreadsheetsValuesResource get values =>
+      SpreadsheetsValuesResource(_requester);
 
-  SpreadsheetsResourceApi(commons.ApiRequester client) : _requester = client;
+  SpreadsheetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Applies one or more updates to the spreadsheet. Each request is validated
   /// before being applied. If any request is not valid then the entire request
@@ -352,10 +351,10 @@ class SpreadsheetsResourceApi {
   }
 }
 
-class SpreadsheetsDeveloperMetadataResourceApi {
+class SpreadsheetsDeveloperMetadataResource {
   final commons.ApiRequester _requester;
 
-  SpreadsheetsDeveloperMetadataResourceApi(commons.ApiRequester client)
+  SpreadsheetsDeveloperMetadataResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the developer metadata with the specified ID. The caller must
@@ -483,11 +482,10 @@ class SpreadsheetsDeveloperMetadataResourceApi {
   }
 }
 
-class SpreadsheetsSheetsResourceApi {
+class SpreadsheetsSheetsResource {
   final commons.ApiRequester _requester;
 
-  SpreadsheetsSheetsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SpreadsheetsSheetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Copies a single sheet from a spreadsheet to another spreadsheet. Returns
   /// the properties of the newly created sheet.
@@ -558,11 +556,10 @@ class SpreadsheetsSheetsResourceApi {
   }
 }
 
-class SpreadsheetsValuesResourceApi {
+class SpreadsheetsValuesResource {
   final commons.ApiRequester _requester;
 
-  SpreadsheetsValuesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SpreadsheetsValuesResource(commons.ApiRequester client) : _requester = client;
 
   /// Appends values to a spreadsheet. The input range is used to search for
   /// existing data and find a "table" within that range. Values will be

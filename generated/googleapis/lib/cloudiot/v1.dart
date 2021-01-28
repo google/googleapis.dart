@@ -24,14 +24,14 @@
 ///
 /// Create an instance of [CloudIotApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsRegistriesResourceApi]
-///       - [ProjectsLocationsRegistriesDevicesResourceApi]
-///         - [ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi]
-///         - [ProjectsLocationsRegistriesDevicesStatesResourceApi]
-///       - [ProjectsLocationsRegistriesGroupsResourceApi]
-///         - [ProjectsLocationsRegistriesGroupsDevicesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsRegistriesResource]
+///       - [ProjectsLocationsRegistriesDevicesResource]
+///         - [ProjectsLocationsRegistriesDevicesConfigVersionsResource]
+///         - [ProjectsLocationsRegistriesDevicesStatesResource]
+///       - [ProjectsLocationsRegistriesGroupsResource]
+///         - [ProjectsLocationsRegistriesGroupsDevicesResource]
 library cloudiot.v1;
 
 import 'dart:async' as async;
@@ -58,7 +58,7 @@ class CloudIotApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudIotApi(http.Client client,
       {core.String rootUrl = 'https://cloudiot.googleapis.com/',
@@ -67,34 +67,33 @@ class CloudIotApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesResourceApi get registries =>
-      ProjectsLocationsRegistriesResourceApi(_requester);
+  ProjectsLocationsRegistriesResource get registries =>
+      ProjectsLocationsRegistriesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsRegistriesResourceApi {
+class ProjectsLocationsRegistriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesDevicesResourceApi get devices =>
-      ProjectsLocationsRegistriesDevicesResourceApi(_requester);
-  ProjectsLocationsRegistriesGroupsResourceApi get groups =>
-      ProjectsLocationsRegistriesGroupsResourceApi(_requester);
+  ProjectsLocationsRegistriesDevicesResource get devices =>
+      ProjectsLocationsRegistriesDevicesResource(_requester);
+  ProjectsLocationsRegistriesGroupsResource get groups =>
+      ProjectsLocationsRegistriesGroupsResource(_requester);
 
-  ProjectsLocationsRegistriesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRegistriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Associates the device with the gateway.
@@ -725,17 +724,15 @@ class ProjectsLocationsRegistriesResourceApi {
   }
 }
 
-class ProjectsLocationsRegistriesDevicesResourceApi {
+class ProjectsLocationsRegistriesDevicesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi
-      get configVersions =>
-          ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi(
-              _requester);
-  ProjectsLocationsRegistriesDevicesStatesResourceApi get states =>
-      ProjectsLocationsRegistriesDevicesStatesResourceApi(_requester);
+  ProjectsLocationsRegistriesDevicesConfigVersionsResource get configVersions =>
+      ProjectsLocationsRegistriesDevicesConfigVersionsResource(_requester);
+  ProjectsLocationsRegistriesDevicesStatesResource get states =>
+      ProjectsLocationsRegistriesDevicesStatesResource(_requester);
 
-  ProjectsLocationsRegistriesDevicesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRegistriesDevicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a device in a device registry.
@@ -1263,10 +1260,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   }
 }
 
-class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
+class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi(
+  ProjectsLocationsRegistriesDevicesConfigVersionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1339,11 +1336,10 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
   }
 }
 
-class ProjectsLocationsRegistriesDevicesStatesResourceApi {
+class ProjectsLocationsRegistriesDevicesStatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesDevicesStatesResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsRegistriesDevicesStatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the last few versions of the device state in descending order (i.e.:
@@ -1412,13 +1408,13 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   }
 }
 
-class ProjectsLocationsRegistriesGroupsResourceApi {
+class ProjectsLocationsRegistriesGroupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesGroupsDevicesResourceApi get devices =>
-      ProjectsLocationsRegistriesGroupsDevicesResourceApi(_requester);
+  ProjectsLocationsRegistriesGroupsDevicesResource get devices =>
+      ProjectsLocationsRegistriesGroupsDevicesResource(_requester);
 
-  ProjectsLocationsRegistriesGroupsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRegistriesGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -1613,11 +1609,10 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
   }
 }
 
-class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
+class ProjectsLocationsRegistriesGroupsDevicesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesGroupsDevicesResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsRegistriesGroupsDevicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List devices in a device registry.

@@ -29,11 +29,11 @@
 ///
 /// Create an instance of [DataFusionApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsInstancesResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsVersionsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsInstancesResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsVersionsResource]
 library datafusion.v1beta1;
 
 import 'dart:async' as async;
@@ -62,7 +62,7 @@ class DataFusionApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DataFusionApi(http.Client client,
       {core.String rootUrl = 'https://datafusion.googleapis.com/',
@@ -71,27 +71,26 @@ class DataFusionApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInstancesResourceApi get instances =>
-      ProjectsLocationsInstancesResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsVersionsResourceApi get versions =>
-      ProjectsLocationsVersionsResourceApi(_requester);
+  ProjectsLocationsInstancesResource get instances =>
+      ProjectsLocationsInstancesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsVersionsResource get versions =>
+      ProjectsLocationsVersionsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -226,10 +225,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsInstancesResourceApi {
+class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInstancesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new Data Fusion instance in the specified project and location.
@@ -886,10 +885,10 @@ class ProjectsLocationsInstancesResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1149,10 +1148,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsVersionsResourceApi {
+class ProjectsLocationsVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsVersionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists possible versions for Data Fusion instances in the specified project

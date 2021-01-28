@@ -3334,7 +3334,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--complete', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects;
@@ -3410,7 +3410,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsClientEventsResourceApi', () {
+  unittest.group('resource-ProjectsClientEventsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.clientEvents;
@@ -3465,7 +3465,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsCompaniesResourceApi', () {
+  unittest.group('resource-ProjectsCompaniesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.companies;
@@ -3730,7 +3730,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobsResourceApi', () {
+  unittest.group('resource-ProjectsJobsResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.jobs;

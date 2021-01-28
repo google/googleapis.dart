@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [SpeechApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
 library speech.v2beta1;
 
 import 'dart:async' as async;
@@ -48,7 +48,7 @@ class SpeechApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   SpeechApi(http.Client client,
       {core.String rootUrl = 'https://speech.googleapis.com/',
@@ -57,29 +57,28 @@ class SpeechApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this

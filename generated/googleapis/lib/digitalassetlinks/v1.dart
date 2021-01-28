@@ -25,8 +25,8 @@
 ///
 /// Create an instance of [DigitalassetlinksApi] to access these resources:
 ///
-/// - [AssetlinksResourceApi]
-/// - [StatementsResourceApi]
+/// - [AssetlinksResource]
+/// - [StatementsResource]
 library digitalassetlinks.v1;
 
 import 'dart:async' as async;
@@ -45,8 +45,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class DigitalassetlinksApi {
   final commons.ApiRequester _requester;
 
-  AssetlinksResourceApi get assetlinks => AssetlinksResourceApi(_requester);
-  StatementsResourceApi get statements => StatementsResourceApi(_requester);
+  AssetlinksResource get assetlinks => AssetlinksResource(_requester);
+  StatementsResource get statements => StatementsResource(_requester);
 
   DigitalassetlinksApi(http.Client client,
       {core.String rootUrl = 'https://digitalassetlinks.googleapis.com/',
@@ -55,10 +55,10 @@ class DigitalassetlinksApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AssetlinksResourceApi {
+class AssetlinksResource {
   final commons.ApiRequester _requester;
 
-  AssetlinksResourceApi(commons.ApiRequester client) : _requester = client;
+  AssetlinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Determines whether the specified (directional) relationship exists between
   /// the specified source and target assets. The relation describes the intent
@@ -239,10 +239,10 @@ class AssetlinksResourceApi {
   }
 }
 
-class StatementsResourceApi {
+class StatementsResource {
   final commons.ApiRequester _requester;
 
-  StatementsResourceApi(commons.ApiRequester client) : _requester = client;
+  StatementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of all statements from a given source that match the
   /// specified target and statement string. The API guarantees that all

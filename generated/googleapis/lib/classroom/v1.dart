@@ -23,20 +23,20 @@
 ///
 /// Create an instance of [ClassroomApi] to access these resources:
 ///
-/// - [CoursesResourceApi]
-///   - [CoursesAliasesResourceApi]
-///   - [CoursesAnnouncementsResourceApi]
-///   - [CoursesCourseWorkResourceApi]
-///     - [CoursesCourseWorkStudentSubmissionsResourceApi]
-///   - [CoursesCourseWorkMaterialsResourceApi]
-///   - [CoursesStudentsResourceApi]
-///   - [CoursesTeachersResourceApi]
-///   - [CoursesTopicsResourceApi]
-/// - [InvitationsResourceApi]
-/// - [RegistrationsResourceApi]
-/// - [UserProfilesResourceApi]
-///   - [UserProfilesGuardianInvitationsResourceApi]
-///   - [UserProfilesGuardiansResourceApi]
+/// - [CoursesResource]
+///   - [CoursesAliasesResource]
+///   - [CoursesAnnouncementsResource]
+///   - [CoursesCourseWorkResource]
+///     - [CoursesCourseWorkStudentSubmissionsResource]
+///   - [CoursesCourseWorkMaterialsResource]
+///   - [CoursesStudentsResource]
+///   - [CoursesTeachersResource]
+///   - [CoursesTopicsResource]
+/// - [InvitationsResource]
+/// - [RegistrationsResource]
+/// - [UserProfilesResource]
+///   - [UserProfilesGuardianInvitationsResource]
+///   - [UserProfilesGuardiansResource]
 library classroom.v1;
 
 import 'dart:async' as async;
@@ -146,12 +146,10 @@ class ClassroomApi {
 
   final commons.ApiRequester _requester;
 
-  CoursesResourceApi get courses => CoursesResourceApi(_requester);
-  InvitationsResourceApi get invitations => InvitationsResourceApi(_requester);
-  RegistrationsResourceApi get registrations =>
-      RegistrationsResourceApi(_requester);
-  UserProfilesResourceApi get userProfiles =>
-      UserProfilesResourceApi(_requester);
+  CoursesResource get courses => CoursesResource(_requester);
+  InvitationsResource get invitations => InvitationsResource(_requester);
+  RegistrationsResource get registrations => RegistrationsResource(_requester);
+  UserProfilesResource get userProfiles => UserProfilesResource(_requester);
 
   ClassroomApi(http.Client client,
       {core.String rootUrl = 'https://classroom.googleapis.com/',
@@ -160,24 +158,21 @@ class ClassroomApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CoursesResourceApi {
+class CoursesResource {
   final commons.ApiRequester _requester;
 
-  CoursesAliasesResourceApi get aliases =>
-      CoursesAliasesResourceApi(_requester);
-  CoursesAnnouncementsResourceApi get announcements =>
-      CoursesAnnouncementsResourceApi(_requester);
-  CoursesCourseWorkResourceApi get courseWork =>
-      CoursesCourseWorkResourceApi(_requester);
-  CoursesCourseWorkMaterialsResourceApi get courseWorkMaterials =>
-      CoursesCourseWorkMaterialsResourceApi(_requester);
-  CoursesStudentsResourceApi get students =>
-      CoursesStudentsResourceApi(_requester);
-  CoursesTeachersResourceApi get teachers =>
-      CoursesTeachersResourceApi(_requester);
-  CoursesTopicsResourceApi get topics => CoursesTopicsResourceApi(_requester);
+  CoursesAliasesResource get aliases => CoursesAliasesResource(_requester);
+  CoursesAnnouncementsResource get announcements =>
+      CoursesAnnouncementsResource(_requester);
+  CoursesCourseWorkResource get courseWork =>
+      CoursesCourseWorkResource(_requester);
+  CoursesCourseWorkMaterialsResource get courseWorkMaterials =>
+      CoursesCourseWorkMaterialsResource(_requester);
+  CoursesStudentsResource get students => CoursesStudentsResource(_requester);
+  CoursesTeachersResource get teachers => CoursesTeachersResource(_requester);
+  CoursesTopicsResource get topics => CoursesTopicsResource(_requester);
 
-  CoursesResourceApi(commons.ApiRequester client) : _requester = client;
+  CoursesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a course. The user specified in `ownerId` is the owner of the
   /// created course and added as a teacher. This method returns the following
@@ -575,10 +570,10 @@ class CoursesResourceApi {
   }
 }
 
-class CoursesAliasesResourceApi {
+class CoursesAliasesResource {
   final commons.ApiRequester _requester;
 
-  CoursesAliasesResourceApi(commons.ApiRequester client) : _requester = client;
+  CoursesAliasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an alias for a course. This method returns the following error
   /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
@@ -785,10 +780,10 @@ class CoursesAliasesResourceApi {
   }
 }
 
-class CoursesAnnouncementsResourceApi {
+class CoursesAnnouncementsResource {
   final commons.ApiRequester _requester;
 
-  CoursesAnnouncementsResourceApi(commons.ApiRequester client)
+  CoursesAnnouncementsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an announcement. This method returns the following error codes: *
@@ -1247,14 +1242,13 @@ class CoursesAnnouncementsResourceApi {
   }
 }
 
-class CoursesCourseWorkResourceApi {
+class CoursesCourseWorkResource {
   final commons.ApiRequester _requester;
 
-  CoursesCourseWorkStudentSubmissionsResourceApi get studentSubmissions =>
-      CoursesCourseWorkStudentSubmissionsResourceApi(_requester);
+  CoursesCourseWorkStudentSubmissionsResource get studentSubmissions =>
+      CoursesCourseWorkStudentSubmissionsResource(_requester);
 
-  CoursesCourseWorkResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  CoursesCourseWorkResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates course work. The resulting course work (and corresponding student
   /// submissions) are associated with the Developer Console project of the
@@ -1723,10 +1717,10 @@ class CoursesCourseWorkResourceApi {
   }
 }
 
-class CoursesCourseWorkStudentSubmissionsResourceApi {
+class CoursesCourseWorkStudentSubmissionsResource {
   final commons.ApiRequester _requester;
 
-  CoursesCourseWorkStudentSubmissionsResourceApi(commons.ApiRequester client)
+  CoursesCourseWorkStudentSubmissionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns a student submission. * `PERMISSION_DENIED` if the requesting user
@@ -2364,10 +2358,10 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   }
 }
 
-class CoursesCourseWorkMaterialsResourceApi {
+class CoursesCourseWorkMaterialsResource {
   final commons.ApiRequester _requester;
 
-  CoursesCourseWorkMaterialsResourceApi(commons.ApiRequester client)
+  CoursesCourseWorkMaterialsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a course work material. This method returns the following error
@@ -2769,10 +2763,10 @@ class CoursesCourseWorkMaterialsResourceApi {
   }
 }
 
-class CoursesStudentsResourceApi {
+class CoursesStudentsResource {
   final commons.ApiRequester _requester;
 
-  CoursesStudentsResourceApi(commons.ApiRequester client) : _requester = client;
+  CoursesStudentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a user as a student of a course. This method returns the following
   /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
@@ -3057,10 +3051,10 @@ class CoursesStudentsResourceApi {
   }
 }
 
-class CoursesTeachersResourceApi {
+class CoursesTeachersResource {
   final commons.ApiRequester _requester;
 
-  CoursesTeachersResourceApi(commons.ApiRequester client) : _requester = client;
+  CoursesTeachersResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a teacher of a course. This method returns the following error
   /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
@@ -3337,10 +3331,10 @@ class CoursesTeachersResourceApi {
   }
 }
 
-class CoursesTopicsResourceApi {
+class CoursesTopicsResource {
   final commons.ApiRequester _requester;
 
-  CoursesTopicsResourceApi(commons.ApiRequester client) : _requester = client;
+  CoursesTopicsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a topic. This method returns the following error codes: *
   /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
@@ -3688,10 +3682,10 @@ class CoursesTopicsResourceApi {
   }
 }
 
-class InvitationsResourceApi {
+class InvitationsResource {
   final commons.ApiRequester _requester;
 
-  InvitationsResourceApi(commons.ApiRequester client) : _requester = client;
+  InvitationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Accepts an invitation, removing it and adding the invited user to the
   /// teachers or students (as appropriate) of the specified course. Only the
@@ -4000,10 +3994,10 @@ class InvitationsResourceApi {
   }
 }
 
-class RegistrationsResourceApi {
+class RegistrationsResource {
   final commons.ApiRequester _requester;
 
-  RegistrationsResourceApi(commons.ApiRequester client) : _requester = client;
+  RegistrationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a `Registration`, causing Classroom to start sending notifications
   /// from the provided `feed` to the destination provided in
@@ -4131,15 +4125,15 @@ class RegistrationsResourceApi {
   }
 }
 
-class UserProfilesResourceApi {
+class UserProfilesResource {
   final commons.ApiRequester _requester;
 
-  UserProfilesGuardianInvitationsResourceApi get guardianInvitations =>
-      UserProfilesGuardianInvitationsResourceApi(_requester);
-  UserProfilesGuardiansResourceApi get guardians =>
-      UserProfilesGuardiansResourceApi(_requester);
+  UserProfilesGuardianInvitationsResource get guardianInvitations =>
+      UserProfilesGuardianInvitationsResource(_requester);
+  UserProfilesGuardiansResource get guardians =>
+      UserProfilesGuardiansResource(_requester);
 
-  UserProfilesResourceApi(commons.ApiRequester client) : _requester = client;
+  UserProfilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a user profile. This method returns the following error codes: *
   /// `PERMISSION_DENIED` if the requesting user is not permitted to access this
@@ -4199,10 +4193,10 @@ class UserProfilesResourceApi {
   }
 }
 
-class UserProfilesGuardianInvitationsResourceApi {
+class UserProfilesGuardianInvitationsResource {
   final commons.ApiRequester _requester;
 
-  UserProfilesGuardianInvitationsResourceApi(commons.ApiRequester client)
+  UserProfilesGuardianInvitationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a guardian invitation, and sends an email to the guardian asking
@@ -4549,10 +4543,10 @@ class UserProfilesGuardianInvitationsResourceApi {
   }
 }
 
-class UserProfilesGuardiansResourceApi {
+class UserProfilesGuardiansResource {
   final commons.ApiRequester _requester;
 
-  UserProfilesGuardiansResourceApi(commons.ApiRequester client)
+  UserProfilesGuardiansResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a guardian. The guardian will no longer receive guardian

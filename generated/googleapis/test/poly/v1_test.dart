@@ -608,7 +608,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AssetsResourceApi', () {
+  unittest.group('resource-AssetsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).assets;
@@ -736,7 +736,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersAssetsResourceApi', () {
+  unittest.group('resource-UsersAssetsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).users.assets;
@@ -806,7 +806,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersLikedassetsResourceApi', () {
+  unittest.group('resource-UsersLikedassetsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).users.likedassets;

@@ -23,9 +23,9 @@
 ///
 /// Create an instance of [YouTubeAnalyticsApi] to access these resources:
 ///
-/// - [GroupItemsResourceApi]
-/// - [GroupsResourceApi]
-/// - [ReportsResourceApi]
+/// - [GroupItemsResource]
+/// - [GroupsResource]
+/// - [ReportsResource]
 library youtubeAnalytics.v2;
 
 import 'dart:async' as async;
@@ -64,9 +64,9 @@ class YouTubeAnalyticsApi {
 
   final commons.ApiRequester _requester;
 
-  GroupItemsResourceApi get groupItems => GroupItemsResourceApi(_requester);
-  GroupsResourceApi get groups => GroupsResourceApi(_requester);
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
+  GroupItemsResource get groupItems => GroupItemsResource(_requester);
+  GroupsResource get groups => GroupsResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
 
   YouTubeAnalyticsApi(http.Client client,
       {core.String rootUrl = 'https://youtubeanalytics.googleapis.com/',
@@ -75,10 +75,10 @@ class YouTubeAnalyticsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class GroupItemsResourceApi {
+class GroupItemsResource {
   final commons.ApiRequester _requester;
 
-  GroupItemsResourceApi(commons.ApiRequester client) : _requester = client;
+  GroupItemsResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes an item from a group.
   ///
@@ -280,10 +280,10 @@ class GroupItemsResourceApi {
   }
 }
 
-class GroupsResourceApi {
+class GroupsResource {
   final commons.ApiRequester _requester;
 
-  GroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  GroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a group.
   ///
@@ -572,10 +572,10 @@ class GroupsResourceApi {
   }
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieve your YouTube Analytics reports.
   ///

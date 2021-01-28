@@ -23,7 +23,7 @@
 ///
 /// Create an instance of [DocsApi] to access these resources:
 ///
-/// - [DocumentsResourceApi]
+/// - [DocumentsResource]
 library docs.v1;
 
 import 'dart:async' as async;
@@ -60,7 +60,7 @@ class DocsApi {
 
   final commons.ApiRequester _requester;
 
-  DocumentsResourceApi get documents => DocumentsResourceApi(_requester);
+  DocumentsResource get documents => DocumentsResource(_requester);
 
   DocsApi(http.Client client,
       {core.String rootUrl = 'https://docs.googleapis.com/',
@@ -69,10 +69,10 @@ class DocsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DocumentsResourceApi {
+class DocumentsResource {
   final commons.ApiRequester _requester;
 
-  DocumentsResourceApi(commons.ApiRequester client) : _requester = client;
+  DocumentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Applies one or more updates to the document. Each request is validated
   /// before being applied. If any request is not valid, then the entire request

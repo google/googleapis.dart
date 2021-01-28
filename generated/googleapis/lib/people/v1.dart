@@ -23,11 +23,11 @@
 ///
 /// Create an instance of [PeopleServiceApi] to access these resources:
 ///
-/// - [ContactGroupsResourceApi]
-///   - [ContactGroupsMembersResourceApi]
-/// - [OtherContactsResourceApi]
-/// - [PeopleResourceApi]
-///   - [PeopleConnectionsResourceApi]
+/// - [ContactGroupsResource]
+///   - [ContactGroupsMembersResource]
+/// - [OtherContactsResource]
+/// - [PeopleResource]
+///   - [PeopleConnectionsResource]
 library people.v1;
 
 import 'dart:async' as async;
@@ -94,11 +94,9 @@ class PeopleServiceApi {
 
   final commons.ApiRequester _requester;
 
-  ContactGroupsResourceApi get contactGroups =>
-      ContactGroupsResourceApi(_requester);
-  OtherContactsResourceApi get otherContacts =>
-      OtherContactsResourceApi(_requester);
-  PeopleResourceApi get people => PeopleResourceApi(_requester);
+  ContactGroupsResource get contactGroups => ContactGroupsResource(_requester);
+  OtherContactsResource get otherContacts => OtherContactsResource(_requester);
+  PeopleResource get people => PeopleResource(_requester);
 
   PeopleServiceApi(http.Client client,
       {core.String rootUrl = 'https://people.googleapis.com/',
@@ -107,13 +105,13 @@ class PeopleServiceApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ContactGroupsResourceApi {
+class ContactGroupsResource {
   final commons.ApiRequester _requester;
 
-  ContactGroupsMembersResourceApi get members =>
-      ContactGroupsMembersResourceApi(_requester);
+  ContactGroupsMembersResource get members =>
+      ContactGroupsMembersResource(_requester);
 
-  ContactGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  ContactGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get a list of contact groups owned by the authenticated user by specifying
   /// a list of contact group resource names.
@@ -478,10 +476,10 @@ class ContactGroupsResourceApi {
   }
 }
 
-class ContactGroupsMembersResourceApi {
+class ContactGroupsMembersResource {
   final commons.ApiRequester _requester;
 
-  ContactGroupsMembersResourceApi(commons.ApiRequester client)
+  ContactGroupsMembersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Modify the members of a contact group owned by the authenticated user. The
@@ -549,10 +547,10 @@ class ContactGroupsMembersResourceApi {
   }
 }
 
-class OtherContactsResourceApi {
+class OtherContactsResource {
   final commons.ApiRequester _requester;
 
-  OtherContactsResourceApi(commons.ApiRequester client) : _requester = client;
+  OtherContactsResource(commons.ApiRequester client) : _requester = client;
 
   /// Copies an "Other contact" to a new contact in the user's "myContacts"
   /// group
@@ -708,13 +706,13 @@ class OtherContactsResourceApi {
   }
 }
 
-class PeopleResourceApi {
+class PeopleResource {
   final commons.ApiRequester _requester;
 
-  PeopleConnectionsResourceApi get connections =>
-      PeopleConnectionsResourceApi(_requester);
+  PeopleConnectionsResource get connections =>
+      PeopleConnectionsResource(_requester);
 
-  PeopleResourceApi(commons.ApiRequester client) : _requester = client;
+  PeopleResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a new contact and return the person resource for that contact. The
   /// request throws a 400 error if more than one field is specified on a field
@@ -1468,11 +1466,10 @@ class PeopleResourceApi {
   }
 }
 
-class PeopleConnectionsResourceApi {
+class PeopleConnectionsResource {
   final commons.ApiRequester _requester;
 
-  PeopleConnectionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PeopleConnectionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Provides a list of the authenticated user's contacts. The request throws a
   /// 400 error if 'personFields' is not specified.

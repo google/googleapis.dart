@@ -23,8 +23,8 @@
 ///
 /// Create an instance of [TasksApi] to access these resources:
 ///
-/// - [TasklistsResourceApi]
-/// - [TasksResourceApi]
+/// - [TasklistsResource]
+/// - [TasksResource]
 library tasks.v1;
 
 import 'dart:async' as async;
@@ -50,8 +50,8 @@ class TasksApi {
 
   final commons.ApiRequester _requester;
 
-  TasklistsResourceApi get tasklists => TasklistsResourceApi(_requester);
-  TasksResourceApi get tasks => TasksResourceApi(_requester);
+  TasklistsResource get tasklists => TasklistsResource(_requester);
+  TasksResource get tasks => TasksResource(_requester);
 
   TasksApi(http.Client client,
       {core.String rootUrl = 'https://tasks.googleapis.com/',
@@ -60,10 +60,10 @@ class TasksApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class TasklistsResourceApi {
+class TasklistsResource {
   final commons.ApiRequester _requester;
 
-  TasklistsResourceApi(commons.ApiRequester client) : _requester = client;
+  TasklistsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the authenticated user's specified task list.
   ///
@@ -391,10 +391,10 @@ class TasklistsResourceApi {
   }
 }
 
-class TasksResourceApi {
+class TasksResource {
   final commons.ApiRequester _requester;
 
-  TasksResourceApi(commons.ApiRequester client) : _requester = client;
+  TasksResource(commons.ApiRequester client) : _requester = client;
 
   /// Clears all completed tasks from the specified task list. The affected
   /// tasks will be marked as 'hidden' and no longer be returned by default when

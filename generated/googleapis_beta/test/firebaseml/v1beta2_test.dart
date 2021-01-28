@@ -419,7 +419,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsModelsResourceApi', () {
+  unittest.group('resource-ProjectsModelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseMLApi(mock).projects.models;
@@ -687,7 +687,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.FirebaseMLApi(mock).projects.operations;

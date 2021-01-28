@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [CloudResourceManagerApi] to access these resources:
 ///
-/// - [OrganizationsResourceApi]
-/// - [ProjectsResourceApi]
+/// - [OrganizationsResource]
+/// - [ProjectsResource]
 library cloudresourcemanager.v1beta1;
 
 import 'dart:async' as async;
@@ -53,9 +53,8 @@ class CloudResourceManagerApi {
 
   final commons.ApiRequester _requester;
 
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudResourceManagerApi(http.Client client,
       {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
@@ -64,10 +63,10 @@ class CloudResourceManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Fetches an Organization resource identified by the specified resource
   /// name.
@@ -458,10 +457,10 @@ class OrganizationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Project resource. Initially, the Project resource is owned by
   /// its creator exclusively. The creator can later grant permission to others

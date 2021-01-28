@@ -3763,7 +3763,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.ServiceUsageApi(mock).operations;
@@ -3975,7 +3975,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--batchEnable', () {
       var mock = HttpServerMock();
       var res = api.ServiceUsageApi(mock).services;

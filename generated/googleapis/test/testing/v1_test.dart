@@ -2926,7 +2926,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ApplicationDetailServiceResourceApi', () {
+  unittest.group('resource-ApplicationDetailServiceResource', () {
     unittest.test('method--getApkDetails', () {
       var mock = HttpServerMock();
       var res = api.TestingApi(mock).applicationDetailService;
@@ -2979,7 +2979,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTestMatricesResourceApi', () {
+  unittest.group('resource-ProjectsTestMatricesResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.TestingApi(mock).projects.testMatrices;
@@ -3172,7 +3172,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TestEnvironmentCatalogResourceApi', () {
+  unittest.group('resource-TestEnvironmentCatalogResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.TestingApi(mock).testEnvironmentCatalog;

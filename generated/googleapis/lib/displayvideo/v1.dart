@@ -24,42 +24,42 @@
 ///
 /// Create an instance of [DisplayVideoApi] to access these resources:
 ///
-/// - [AdvertisersResourceApi]
-///   - [AdvertisersAssetsResourceApi]
-///   - [AdvertisersCampaignsResourceApi]
-///   - [AdvertisersChannelsResourceApi]
-///     - [AdvertisersChannelsSitesResourceApi]
-///   - [AdvertisersCreativesResourceApi]
-///   - [AdvertisersInsertionOrdersResourceApi]
-///   - [AdvertisersLineItemsResourceApi]
-///     - [AdvertisersLineItemsTargetingTypesResourceApi]
-/// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi]
-///   - [AdvertisersLocationListsResourceApi]
-///     - [AdvertisersLocationListsAssignedLocationsResourceApi]
-///   - [AdvertisersNegativeKeywordListsResourceApi]
-///     - [AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi]
-///   - [AdvertisersTargetingTypesResourceApi]
-///     - [AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi]
-/// - [CombinedAudiencesResourceApi]
-/// - [CustomBiddingAlgorithmsResourceApi]
-/// - [CustomListsResourceApi]
-/// - [FirstAndThirdPartyAudiencesResourceApi]
-/// - [FloodlightGroupsResourceApi]
-/// - [GoogleAudiencesResourceApi]
-/// - [InventorySourceGroupsResourceApi]
-///   - [InventorySourceGroupsAssignedInventorySourcesResourceApi]
-/// - [InventorySourcesResourceApi]
-/// - [MediaResourceApi]
-/// - [PartnersResourceApi]
-///   - [PartnersChannelsResourceApi]
-///     - [PartnersChannelsSitesResourceApi]
-///   - [PartnersTargetingTypesResourceApi]
-///     - [PartnersTargetingTypesAssignedTargetingOptionsResourceApi]
-/// - [SdfdownloadtasksResourceApi]
-///   - [SdfdownloadtasksOperationsResourceApi]
-/// - [TargetingTypesResourceApi]
-///   - [TargetingTypesTargetingOptionsResourceApi]
-/// - [UsersResourceApi]
+/// - [AdvertisersResource]
+///   - [AdvertisersAssetsResource]
+///   - [AdvertisersCampaignsResource]
+///   - [AdvertisersChannelsResource]
+///     - [AdvertisersChannelsSitesResource]
+///   - [AdvertisersCreativesResource]
+///   - [AdvertisersInsertionOrdersResource]
+///   - [AdvertisersLineItemsResource]
+///     - [AdvertisersLineItemsTargetingTypesResource]
+/// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource]
+///   - [AdvertisersLocationListsResource]
+///     - [AdvertisersLocationListsAssignedLocationsResource]
+///   - [AdvertisersNegativeKeywordListsResource]
+///     - [AdvertisersNegativeKeywordListsNegativeKeywordsResource]
+///   - [AdvertisersTargetingTypesResource]
+///     - [AdvertisersTargetingTypesAssignedTargetingOptionsResource]
+/// - [CombinedAudiencesResource]
+/// - [CustomBiddingAlgorithmsResource]
+/// - [CustomListsResource]
+/// - [FirstAndThirdPartyAudiencesResource]
+/// - [FloodlightGroupsResource]
+/// - [GoogleAudiencesResource]
+/// - [InventorySourceGroupsResource]
+///   - [InventorySourceGroupsAssignedInventorySourcesResource]
+/// - [InventorySourcesResource]
+/// - [MediaResource]
+/// - [PartnersResource]
+///   - [PartnersChannelsResource]
+///     - [PartnersChannelsSitesResource]
+///   - [PartnersTargetingTypesResource]
+///     - [PartnersTargetingTypesAssignedTargetingOptionsResource]
+/// - [SdfdownloadtasksResource]
+///   - [SdfdownloadtasksOperationsResource]
+/// - [TargetingTypesResource]
+///   - [TargetingTypesTargetingOptionsResource]
+/// - [UsersResource]
 library displayvideo.v1;
 
 import 'dart:async' as async;
@@ -105,29 +105,29 @@ class DisplayVideoApi {
 
   final commons.ApiRequester _requester;
 
-  AdvertisersResourceApi get advertisers => AdvertisersResourceApi(_requester);
-  CombinedAudiencesResourceApi get combinedAudiences =>
-      CombinedAudiencesResourceApi(_requester);
-  CustomBiddingAlgorithmsResourceApi get customBiddingAlgorithms =>
-      CustomBiddingAlgorithmsResourceApi(_requester);
-  CustomListsResourceApi get customLists => CustomListsResourceApi(_requester);
-  FirstAndThirdPartyAudiencesResourceApi get firstAndThirdPartyAudiences =>
-      FirstAndThirdPartyAudiencesResourceApi(_requester);
-  FloodlightGroupsResourceApi get floodlightGroups =>
-      FloodlightGroupsResourceApi(_requester);
-  GoogleAudiencesResourceApi get googleAudiences =>
-      GoogleAudiencesResourceApi(_requester);
-  InventorySourceGroupsResourceApi get inventorySourceGroups =>
-      InventorySourceGroupsResourceApi(_requester);
-  InventorySourcesResourceApi get inventorySources =>
-      InventorySourcesResourceApi(_requester);
-  MediaResourceApi get media => MediaResourceApi(_requester);
-  PartnersResourceApi get partners => PartnersResourceApi(_requester);
-  SdfdownloadtasksResourceApi get sdfdownloadtasks =>
-      SdfdownloadtasksResourceApi(_requester);
-  TargetingTypesResourceApi get targetingTypes =>
-      TargetingTypesResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  AdvertisersResource get advertisers => AdvertisersResource(_requester);
+  CombinedAudiencesResource get combinedAudiences =>
+      CombinedAudiencesResource(_requester);
+  CustomBiddingAlgorithmsResource get customBiddingAlgorithms =>
+      CustomBiddingAlgorithmsResource(_requester);
+  CustomListsResource get customLists => CustomListsResource(_requester);
+  FirstAndThirdPartyAudiencesResource get firstAndThirdPartyAudiences =>
+      FirstAndThirdPartyAudiencesResource(_requester);
+  FloodlightGroupsResource get floodlightGroups =>
+      FloodlightGroupsResource(_requester);
+  GoogleAudiencesResource get googleAudiences =>
+      GoogleAudiencesResource(_requester);
+  InventorySourceGroupsResource get inventorySourceGroups =>
+      InventorySourceGroupsResource(_requester);
+  InventorySourcesResource get inventorySources =>
+      InventorySourcesResource(_requester);
+  MediaResource get media => MediaResource(_requester);
+  PartnersResource get partners => PartnersResource(_requester);
+  SdfdownloadtasksResource get sdfdownloadtasks =>
+      SdfdownloadtasksResource(_requester);
+  TargetingTypesResource get targetingTypes =>
+      TargetingTypesResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   DisplayVideoApi(http.Client client,
       {core.String rootUrl = 'https://displayvideo.googleapis.com/',
@@ -136,29 +136,28 @@ class DisplayVideoApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AdvertisersResourceApi {
+class AdvertisersResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersAssetsResourceApi get assets =>
-      AdvertisersAssetsResourceApi(_requester);
-  AdvertisersCampaignsResourceApi get campaigns =>
-      AdvertisersCampaignsResourceApi(_requester);
-  AdvertisersChannelsResourceApi get channels =>
-      AdvertisersChannelsResourceApi(_requester);
-  AdvertisersCreativesResourceApi get creatives =>
-      AdvertisersCreativesResourceApi(_requester);
-  AdvertisersInsertionOrdersResourceApi get insertionOrders =>
-      AdvertisersInsertionOrdersResourceApi(_requester);
-  AdvertisersLineItemsResourceApi get lineItems =>
-      AdvertisersLineItemsResourceApi(_requester);
-  AdvertisersLocationListsResourceApi get locationLists =>
-      AdvertisersLocationListsResourceApi(_requester);
-  AdvertisersNegativeKeywordListsResourceApi get negativeKeywordLists =>
-      AdvertisersNegativeKeywordListsResourceApi(_requester);
-  AdvertisersTargetingTypesResourceApi get targetingTypes =>
-      AdvertisersTargetingTypesResourceApi(_requester);
+  AdvertisersAssetsResource get assets => AdvertisersAssetsResource(_requester);
+  AdvertisersCampaignsResource get campaigns =>
+      AdvertisersCampaignsResource(_requester);
+  AdvertisersChannelsResource get channels =>
+      AdvertisersChannelsResource(_requester);
+  AdvertisersCreativesResource get creatives =>
+      AdvertisersCreativesResource(_requester);
+  AdvertisersInsertionOrdersResource get insertionOrders =>
+      AdvertisersInsertionOrdersResource(_requester);
+  AdvertisersLineItemsResource get lineItems =>
+      AdvertisersLineItemsResource(_requester);
+  AdvertisersLocationListsResource get locationLists =>
+      AdvertisersLocationListsResource(_requester);
+  AdvertisersNegativeKeywordListsResource get negativeKeywordLists =>
+      AdvertisersNegativeKeywordListsResource(_requester);
+  AdvertisersTargetingTypesResource get targetingTypes =>
+      AdvertisersTargetingTypesResource(_requester);
 
-  AdvertisersResourceApi(commons.ApiRequester client) : _requester = client;
+  AdvertisersResource(commons.ApiRequester client) : _requester = client;
 
   /// Audits an advertiser. Returns the counts of used entities per resource
   /// type under the advertiser provided. Used entities count towards their
@@ -708,11 +707,10 @@ class AdvertisersResourceApi {
   }
 }
 
-class AdvertisersAssetsResourceApi {
+class AdvertisersAssetsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersAssetsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AdvertisersAssetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Uploads an asset. Returns the ID of the newly uploaded asset if
   /// successful. The asset file size should be no more than 10 MB for images,
@@ -789,10 +787,10 @@ class AdvertisersAssetsResourceApi {
   }
 }
 
-class AdvertisersCampaignsResourceApi {
+class AdvertisersCampaignsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersCampaignsResourceApi(commons.ApiRequester client)
+  AdvertisersCampaignsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new campaign. Returns the newly created campaign if successful.
@@ -1152,13 +1150,13 @@ class AdvertisersCampaignsResourceApi {
   }
 }
 
-class AdvertisersChannelsResourceApi {
+class AdvertisersChannelsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersChannelsSitesResourceApi get sites =>
-      AdvertisersChannelsSitesResourceApi(_requester);
+  AdvertisersChannelsSitesResource get sites =>
+      AdvertisersChannelsSitesResource(_requester);
 
-  AdvertisersChannelsResourceApi(commons.ApiRequester client)
+  AdvertisersChannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new channel. Returns the newly created channel if successful.
@@ -1471,10 +1469,10 @@ class AdvertisersChannelsResourceApi {
   }
 }
 
-class AdvertisersChannelsSitesResourceApi {
+class AdvertisersChannelsSitesResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersChannelsSitesResourceApi(commons.ApiRequester client)
+  AdvertisersChannelsSitesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Bulk edits sites under a single channel. The operation will delete the
@@ -1806,10 +1804,10 @@ class AdvertisersChannelsSitesResourceApi {
   }
 }
 
-class AdvertisersCreativesResourceApi {
+class AdvertisersCreativesResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersCreativesResourceApi(commons.ApiRequester client)
+  AdvertisersCreativesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new creative. Returns the newly created creative if successful.
@@ -2191,10 +2189,10 @@ class AdvertisersCreativesResourceApi {
   }
 }
 
-class AdvertisersInsertionOrdersResourceApi {
+class AdvertisersInsertionOrdersResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersInsertionOrdersResourceApi(commons.ApiRequester client)
+  AdvertisersInsertionOrdersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new insertion order. Returns the newly created insertion order
@@ -2570,13 +2568,13 @@ class AdvertisersInsertionOrdersResourceApi {
   }
 }
 
-class AdvertisersLineItemsResourceApi {
+class AdvertisersLineItemsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersLineItemsTargetingTypesResourceApi get targetingTypes =>
-      AdvertisersLineItemsTargetingTypesResourceApi(_requester);
+  AdvertisersLineItemsTargetingTypesResource get targetingTypes =>
+      AdvertisersLineItemsTargetingTypesResource(_requester);
 
-  AdvertisersLineItemsResourceApi(commons.ApiRequester client)
+  AdvertisersLineItemsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Bulk edits targeting options under a single line item. The operation will
@@ -3138,22 +3136,22 @@ class AdvertisersLineItemsResourceApi {
   }
 }
 
-class AdvertisersLineItemsTargetingTypesResourceApi {
+class AdvertisersLineItemsTargetingTypesResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi
+  AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource
       get assignedTargetingOptions =>
-          AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi(
+          AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource(
               _requester);
 
-  AdvertisersLineItemsTargetingTypesResourceApi(commons.ApiRequester client)
+  AdvertisersLineItemsTargetingTypesResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
+class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi(
+  AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3843,13 +3841,13 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi {
   }
 }
 
-class AdvertisersLocationListsResourceApi {
+class AdvertisersLocationListsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersLocationListsAssignedLocationsResourceApi get assignedLocations =>
-      AdvertisersLocationListsAssignedLocationsResourceApi(_requester);
+  AdvertisersLocationListsAssignedLocationsResource get assignedLocations =>
+      AdvertisersLocationListsAssignedLocationsResource(_requester);
 
-  AdvertisersLocationListsResourceApi(commons.ApiRequester client)
+  AdvertisersLocationListsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new location list. Returns the newly created location list if
@@ -4147,11 +4145,10 @@ class AdvertisersLocationListsResourceApi {
   }
 }
 
-class AdvertisersLocationListsAssignedLocationsResourceApi {
+class AdvertisersLocationListsAssignedLocationsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersLocationListsAssignedLocationsResourceApi(
-      commons.ApiRequester client)
+  AdvertisersLocationListsAssignedLocationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Bulk edits multiple assignments between locations and a single location
@@ -4469,15 +4466,14 @@ class AdvertisersLocationListsAssignedLocationsResourceApi {
   }
 }
 
-class AdvertisersNegativeKeywordListsResourceApi {
+class AdvertisersNegativeKeywordListsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi
+  AdvertisersNegativeKeywordListsNegativeKeywordsResource
       get negativeKeywords =>
-          AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi(
-              _requester);
+          AdvertisersNegativeKeywordListsNegativeKeywordsResource(_requester);
 
-  AdvertisersNegativeKeywordListsResourceApi(commons.ApiRequester client)
+  AdvertisersNegativeKeywordListsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new negative keyword list. Returns the newly created negative
@@ -4820,10 +4816,10 @@ class AdvertisersNegativeKeywordListsResourceApi {
   }
 }
 
-class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
+class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi(
+  AdvertisersNegativeKeywordListsNegativeKeywordsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -5148,22 +5144,21 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi {
   }
 }
 
-class AdvertisersTargetingTypesResourceApi {
+class AdvertisersTargetingTypesResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi
+  AdvertisersTargetingTypesAssignedTargetingOptionsResource
       get assignedTargetingOptions =>
-          AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi(
-              _requester);
+          AdvertisersTargetingTypesAssignedTargetingOptionsResource(_requester);
 
-  AdvertisersTargetingTypesResourceApi(commons.ApiRequester client)
+  AdvertisersTargetingTypesResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
+class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   final commons.ApiRequester _requester;
 
-  AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi(
+  AdvertisersTargetingTypesAssignedTargetingOptionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -5806,11 +5801,10 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi {
   }
 }
 
-class CombinedAudiencesResourceApi {
+class CombinedAudiencesResource {
   final commons.ApiRequester _requester;
 
-  CombinedAudiencesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  CombinedAudiencesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a combined audience.
   ///
@@ -5977,10 +5971,10 @@ class CombinedAudiencesResourceApi {
   }
 }
 
-class CustomBiddingAlgorithmsResourceApi {
+class CustomBiddingAlgorithmsResource {
   final commons.ApiRequester _requester;
 
-  CustomBiddingAlgorithmsResourceApi(commons.ApiRequester client)
+  CustomBiddingAlgorithmsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a custom bidding algorithm.
@@ -6161,10 +6155,10 @@ class CustomBiddingAlgorithmsResourceApi {
   }
 }
 
-class CustomListsResourceApi {
+class CustomListsResource {
   final commons.ApiRequester _requester;
 
-  CustomListsResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomListsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a custom list.
   ///
@@ -6317,10 +6311,10 @@ class CustomListsResourceApi {
   }
 }
 
-class FirstAndThirdPartyAudiencesResourceApi {
+class FirstAndThirdPartyAudiencesResource {
   final commons.ApiRequester _requester;
 
-  FirstAndThirdPartyAudiencesResourceApi(commons.ApiRequester client)
+  FirstAndThirdPartyAudiencesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a first and third party audience.
@@ -6493,11 +6487,10 @@ class FirstAndThirdPartyAudiencesResourceApi {
   }
 }
 
-class FloodlightGroupsResourceApi {
+class FloodlightGroupsResource {
   final commons.ApiRequester _requester;
 
-  FloodlightGroupsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  FloodlightGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a Floodlight group.
   ///
@@ -6633,10 +6626,10 @@ class FloodlightGroupsResourceApi {
   }
 }
 
-class GoogleAudiencesResourceApi {
+class GoogleAudiencesResource {
   final commons.ApiRequester _requester;
 
-  GoogleAudiencesResourceApi(commons.ApiRequester client) : _requester = client;
+  GoogleAudiencesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a Google audience.
   ///
@@ -6803,14 +6796,14 @@ class GoogleAudiencesResourceApi {
   }
 }
 
-class InventorySourceGroupsResourceApi {
+class InventorySourceGroupsResource {
   final commons.ApiRequester _requester;
 
-  InventorySourceGroupsAssignedInventorySourcesResourceApi
+  InventorySourceGroupsAssignedInventorySourcesResource
       get assignedInventorySources =>
-          InventorySourceGroupsAssignedInventorySourcesResourceApi(_requester);
+          InventorySourceGroupsAssignedInventorySourcesResource(_requester);
 
-  InventorySourceGroupsResourceApi(commons.ApiRequester client)
+  InventorySourceGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new inventory source group. Returns the newly created inventory
@@ -7198,10 +7191,10 @@ class InventorySourceGroupsResourceApi {
   }
 }
 
-class InventorySourceGroupsAssignedInventorySourcesResourceApi {
+class InventorySourceGroupsAssignedInventorySourcesResource {
   final commons.ApiRequester _requester;
 
-  InventorySourceGroupsAssignedInventorySourcesResourceApi(
+  InventorySourceGroupsAssignedInventorySourcesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -7541,11 +7534,10 @@ class InventorySourceGroupsAssignedInventorySourcesResourceApi {
   }
 }
 
-class InventorySourcesResourceApi {
+class InventorySourcesResource {
   final commons.ApiRequester _requester;
 
-  InventorySourcesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  InventorySourcesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets an inventory source.
   ///
@@ -7711,10 +7703,10 @@ class InventorySourcesResourceApi {
   }
 }
 
-class MediaResourceApi {
+class MediaResource {
   final commons.ApiRequester _requester;
 
-  MediaResourceApi(commons.ApiRequester client) : _requester = client;
+  MediaResource(commons.ApiRequester client) : _requester = client;
 
   /// Downloads media. Download is supported on the URI
   /// `/download/{resource_name=**}?alt=media.` **Note**: Download requests will
@@ -7788,15 +7780,14 @@ class MediaResourceApi {
   }
 }
 
-class PartnersResourceApi {
+class PartnersResource {
   final commons.ApiRequester _requester;
 
-  PartnersChannelsResourceApi get channels =>
-      PartnersChannelsResourceApi(_requester);
-  PartnersTargetingTypesResourceApi get targetingTypes =>
-      PartnersTargetingTypesResourceApi(_requester);
+  PartnersChannelsResource get channels => PartnersChannelsResource(_requester);
+  PartnersTargetingTypesResource get targetingTypes =>
+      PartnersTargetingTypesResource(_requester);
 
-  PartnersResourceApi(commons.ApiRequester client) : _requester = client;
+  PartnersResource(commons.ApiRequester client) : _requester = client;
 
   /// Bulk edits targeting options under a single partner. The operation will
   /// delete the assigned targeting options provided in
@@ -7999,14 +7990,13 @@ class PartnersResourceApi {
   }
 }
 
-class PartnersChannelsResourceApi {
+class PartnersChannelsResource {
   final commons.ApiRequester _requester;
 
-  PartnersChannelsSitesResourceApi get sites =>
-      PartnersChannelsSitesResourceApi(_requester);
+  PartnersChannelsSitesResource get sites =>
+      PartnersChannelsSitesResource(_requester);
 
-  PartnersChannelsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PartnersChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new channel. Returns the newly created channel if successful.
   ///
@@ -8318,10 +8308,10 @@ class PartnersChannelsResourceApi {
   }
 }
 
-class PartnersChannelsSitesResourceApi {
+class PartnersChannelsSitesResource {
   final commons.ApiRequester _requester;
 
-  PartnersChannelsSitesResourceApi(commons.ApiRequester client)
+  PartnersChannelsSitesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Bulk edits sites under a single channel. The operation will delete the
@@ -8653,21 +8643,21 @@ class PartnersChannelsSitesResourceApi {
   }
 }
 
-class PartnersTargetingTypesResourceApi {
+class PartnersTargetingTypesResource {
   final commons.ApiRequester _requester;
 
-  PartnersTargetingTypesAssignedTargetingOptionsResourceApi
+  PartnersTargetingTypesAssignedTargetingOptionsResource
       get assignedTargetingOptions =>
-          PartnersTargetingTypesAssignedTargetingOptionsResourceApi(_requester);
+          PartnersTargetingTypesAssignedTargetingOptionsResource(_requester);
 
-  PartnersTargetingTypesResourceApi(commons.ApiRequester client)
+  PartnersTargetingTypesResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
+class PartnersTargetingTypesAssignedTargetingOptionsResource {
   final commons.ApiRequester _requester;
 
-  PartnersTargetingTypesAssignedTargetingOptionsResourceApi(
+  PartnersTargetingTypesAssignedTargetingOptionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -9310,14 +9300,13 @@ class PartnersTargetingTypesAssignedTargetingOptionsResourceApi {
   }
 }
 
-class SdfdownloadtasksResourceApi {
+class SdfdownloadtasksResource {
   final commons.ApiRequester _requester;
 
-  SdfdownloadtasksOperationsResourceApi get operations =>
-      SdfdownloadtasksOperationsResourceApi(_requester);
+  SdfdownloadtasksOperationsResource get operations =>
+      SdfdownloadtasksOperationsResource(_requester);
 
-  SdfdownloadtasksResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SdfdownloadtasksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an SDF Download Task. Returns an Operation. An SDF Download Task
   /// is a long-running, asynchronous operation. The metadata type of this
@@ -9377,10 +9366,10 @@ class SdfdownloadtasksResourceApi {
   }
 }
 
-class SdfdownloadtasksOperationsResourceApi {
+class SdfdownloadtasksOperationsResource {
   final commons.ApiRequester _requester;
 
-  SdfdownloadtasksOperationsResourceApi(commons.ApiRequester client)
+  SdfdownloadtasksOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of an asynchronous SDF download task operation.
@@ -9436,19 +9425,19 @@ class SdfdownloadtasksOperationsResourceApi {
   }
 }
 
-class TargetingTypesResourceApi {
+class TargetingTypesResource {
   final commons.ApiRequester _requester;
 
-  TargetingTypesTargetingOptionsResourceApi get targetingOptions =>
-      TargetingTypesTargetingOptionsResourceApi(_requester);
+  TargetingTypesTargetingOptionsResource get targetingOptions =>
+      TargetingTypesTargetingOptionsResource(_requester);
 
-  TargetingTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  TargetingTypesResource(commons.ApiRequester client) : _requester = client;
 }
 
-class TargetingTypesTargetingOptionsResourceApi {
+class TargetingTypesTargetingOptionsResource {
   final commons.ApiRequester _requester;
 
-  TargetingTypesTargetingOptionsResourceApi(commons.ApiRequester client)
+  TargetingTypesTargetingOptionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a single targeting option.
@@ -9786,10 +9775,10 @@ class TargetingTypesTargetingOptionsResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Bulk edits user roles for a user. The operation will delete the assigned
   /// user roles provided in

@@ -528,7 +528,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsBudgetsResourceApi', () {
+  unittest.group('resource-BillingAccountsBudgetsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;

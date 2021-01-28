@@ -150,7 +150,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-WebfontsResourceApi', () {
+  unittest.group('resource-WebfontsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.WebfontsApi(mock).webfonts;

@@ -24,12 +24,12 @@
 ///
 /// Create an instance of [CloudKMSApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsKeyRingsResourceApi]
-///       - [ProjectsLocationsKeyRingsCryptoKeysResourceApi]
-///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi]
-///       - [ProjectsLocationsKeyRingsImportJobsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsKeyRingsResource]
+///       - [ProjectsLocationsKeyRingsCryptoKeysResource]
+///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource]
+///       - [ProjectsLocationsKeyRingsImportJobsResource]
 library cloudkms.v1;
 
 import 'dart:async' as async;
@@ -57,7 +57,7 @@ class CloudKMSApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudKMSApi(http.Client client,
       {core.String rootUrl = 'https://cloudkms.googleapis.com/',
@@ -66,23 +66,22 @@ class CloudKMSApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsKeyRingsResourceApi get keyRings =>
-      ProjectsLocationsKeyRingsResourceApi(_requester);
+  ProjectsLocationsKeyRingsResource get keyRings =>
+      ProjectsLocationsKeyRingsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -207,15 +206,15 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsKeyRingsResourceApi {
+class ProjectsLocationsKeyRingsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsKeyRingsCryptoKeysResourceApi get cryptoKeys =>
-      ProjectsLocationsKeyRingsCryptoKeysResourceApi(_requester);
-  ProjectsLocationsKeyRingsImportJobsResourceApi get importJobs =>
-      ProjectsLocationsKeyRingsImportJobsResourceApi(_requester);
+  ProjectsLocationsKeyRingsCryptoKeysResource get cryptoKeys =>
+      ProjectsLocationsKeyRingsCryptoKeysResource(_requester);
+  ProjectsLocationsKeyRingsImportJobsResource get importJobs =>
+      ProjectsLocationsKeyRingsImportJobsResource(_requester);
 
-  ProjectsLocationsKeyRingsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsKeyRingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a new KeyRing in a given Project and Location.
@@ -622,15 +621,15 @@ class ProjectsLocationsKeyRingsResourceApi {
   }
 }
 
-class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
+class ProjectsLocationsKeyRingsCryptoKeysResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi
+  ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource
       get cryptoKeyVersions =>
-          ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi(
+          ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource(
               _requester);
 
-  ProjectsLocationsKeyRingsCryptoKeysResourceApi(commons.ApiRequester client)
+  ProjectsLocationsKeyRingsCryptoKeysResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a new CryptoKey within a KeyRing. CryptoKey.purpose and
@@ -1317,10 +1316,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   }
 }
 
-class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
+class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi(
+  ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1981,10 +1980,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   }
 }
 
-class ProjectsLocationsKeyRingsImportJobsResourceApi {
+class ProjectsLocationsKeyRingsImportJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsKeyRingsImportJobsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsKeyRingsImportJobsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a new ImportJob within a KeyRing. ImportJob.import_method is

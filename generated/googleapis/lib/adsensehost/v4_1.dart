@@ -24,15 +24,15 @@
 ///
 /// Create an instance of [AdSenseHostApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsAdclientsResourceApi]
-///   - [AccountsAdunitsResourceApi]
-///   - [AccountsReportsResourceApi]
-/// - [AdclientsResourceApi]
-/// - [AssociationsessionsResourceApi]
-/// - [CustomchannelsResourceApi]
-/// - [ReportsResourceApi]
-/// - [UrlchannelsResourceApi]
+/// - [AccountsResource]
+///   - [AccountsAdclientsResource]
+///   - [AccountsAdunitsResource]
+///   - [AccountsReportsResource]
+/// - [AdclientsResource]
+/// - [AssociationsessionsResource]
+/// - [CustomchannelsResource]
+/// - [ReportsResource]
+/// - [UrlchannelsResource]
 library adsensehost.v4_1;
 
 import 'dart:async' as async;
@@ -55,14 +55,14 @@ class AdSenseHostApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  AdclientsResourceApi get adclients => AdclientsResourceApi(_requester);
-  AssociationsessionsResourceApi get associationsessions =>
-      AssociationsessionsResourceApi(_requester);
-  CustomchannelsResourceApi get customchannels =>
-      CustomchannelsResourceApi(_requester);
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
-  UrlchannelsResourceApi get urlchannels => UrlchannelsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  AdclientsResource get adclients => AdclientsResource(_requester);
+  AssociationsessionsResource get associationsessions =>
+      AssociationsessionsResource(_requester);
+  CustomchannelsResource get customchannels =>
+      CustomchannelsResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
+  UrlchannelsResource get urlchannels => UrlchannelsResource(_requester);
 
   AdSenseHostApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -71,17 +71,15 @@ class AdSenseHostApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdclientsResourceApi get adclients =>
-      AccountsAdclientsResourceApi(_requester);
-  AccountsAdunitsResourceApi get adunits =>
-      AccountsAdunitsResourceApi(_requester);
-  AccountsReportsResourceApi get reports =>
-      AccountsReportsResourceApi(_requester);
+  AccountsAdclientsResource get adclients =>
+      AccountsAdclientsResource(_requester);
+  AccountsAdunitsResource get adunits => AccountsAdunitsResource(_requester);
+  AccountsReportsResource get reports => AccountsReportsResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get information about the selected associated AdSense account.
   ///
@@ -185,11 +183,10 @@ class AccountsResourceApi {
   }
 }
 
-class AccountsAdclientsResourceApi {
+class AccountsAdclientsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdclientsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsAdclientsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get information about one of the ad clients in the specified publisher's
   /// AdSense account.
@@ -320,10 +317,10 @@ class AccountsAdclientsResourceApi {
   }
 }
 
-class AccountsAdunitsResourceApi {
+class AccountsAdunitsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdunitsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsAdunitsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete the specified ad unit from the specified publisher AdSense account.
   ///
@@ -823,10 +820,10 @@ class AccountsAdunitsResourceApi {
   }
 }
 
-class AccountsReportsResourceApi {
+class AccountsReportsResource {
   final commons.ApiRequester _requester;
 
-  AccountsReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
   /// parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -954,10 +951,10 @@ class AccountsReportsResourceApi {
   }
 }
 
-class AdclientsResourceApi {
+class AdclientsResource {
   final commons.ApiRequester _requester;
 
-  AdclientsResourceApi(commons.ApiRequester client) : _requester = client;
+  AdclientsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get information about one of the ad clients in the Host AdSense account.
   ///
@@ -1070,10 +1067,10 @@ class AdclientsResourceApi {
   }
 }
 
-class AssociationsessionsResourceApi {
+class AssociationsessionsResource {
   final commons.ApiRequester _requester;
 
-  AssociationsessionsResourceApi(commons.ApiRequester client)
+  AssociationsessionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create an association session for initiating an association with an
@@ -1210,10 +1207,10 @@ class AssociationsessionsResourceApi {
   }
 }
 
-class CustomchannelsResourceApi {
+class CustomchannelsResource {
   final commons.ApiRequester _requester;
 
-  CustomchannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomchannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete a specific custom channel from the host AdSense account.
   ///
@@ -1590,10 +1587,10 @@ class CustomchannelsResourceApi {
   }
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
   /// parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -1714,10 +1711,10 @@ class ReportsResourceApi {
   }
 }
 
-class UrlchannelsResourceApi {
+class UrlchannelsResource {
   final commons.ApiRequester _requester;
 
-  UrlchannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  UrlchannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete a URL channel from the host AdSense account.
   ///

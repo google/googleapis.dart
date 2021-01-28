@@ -23,11 +23,11 @@
 ///
 /// Create an instance of [ScriptApi] to access these resources:
 ///
-/// - [ProcessesResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsDeploymentsResourceApi]
-///   - [ProjectsVersionsResourceApi]
-/// - [ScriptsResourceApi]
+/// - [ProcessesResource]
+/// - [ProjectsResource]
+///   - [ProjectsDeploymentsResource]
+///   - [ProjectsVersionsResource]
+/// - [ScriptsResource]
 library script.v1;
 
 import 'dart:async' as async;
@@ -113,9 +113,9 @@ class ScriptApi {
 
   final commons.ApiRequester _requester;
 
-  ProcessesResourceApi get processes => ProcessesResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  ScriptsResourceApi get scripts => ScriptsResourceApi(_requester);
+  ProcessesResource get processes => ProcessesResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  ScriptsResource get scripts => ScriptsResource(_requester);
 
   ScriptApi(http.Client client,
       {core.String rootUrl = 'https://script.googleapis.com/',
@@ -124,10 +124,10 @@ class ScriptApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProcessesResourceApi {
+class ProcessesResource {
   final commons.ApiRequester _requester;
 
-  ProcessesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProcessesResource(commons.ApiRequester client) : _requester = client;
 
   /// List information about processes made by or on behalf of a user, such as
   /// process type and current status.
@@ -396,15 +396,14 @@ class ProcessesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDeploymentsResourceApi get deployments =>
-      ProjectsDeploymentsResourceApi(_requester);
-  ProjectsVersionsResourceApi get versions =>
-      ProjectsVersionsResourceApi(_requester);
+  ProjectsDeploymentsResource get deployments =>
+      ProjectsDeploymentsResource(_requester);
+  ProjectsVersionsResource get versions => ProjectsVersionsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new, empty script project with no script files and a base
   /// manifest file.
@@ -702,10 +701,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsDeploymentsResourceApi {
+class ProjectsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDeploymentsResourceApi(commons.ApiRequester client)
+  ProjectsDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a deployment of an Apps Script project.
@@ -1021,11 +1020,10 @@ class ProjectsDeploymentsResourceApi {
   }
 }
 
-class ProjectsVersionsResourceApi {
+class ProjectsVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsVersionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsVersionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new immutable version using the current code, with a unique
   /// version number.
@@ -1214,10 +1212,10 @@ class ProjectsVersionsResourceApi {
   }
 }
 
-class ScriptsResourceApi {
+class ScriptsResource {
   final commons.ApiRequester _requester;
 
-  ScriptsResourceApi(commons.ApiRequester client) : _requester = client;
+  ScriptsResource(commons.ApiRequester client) : _requester = client;
 
   /// Runs a function in an Apps Script project. The script project must be
   /// deployed for use with the Apps Script API and the calling application must

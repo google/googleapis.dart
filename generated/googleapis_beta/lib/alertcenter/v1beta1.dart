@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [AlertCenterApi] to access these resources:
 ///
-/// - [AlertsResourceApi]
-///   - [AlertsFeedbackResourceApi]
-/// - [V1beta1ResourceApi]
+/// - [AlertsResource]
+///   - [AlertsFeedbackResource]
+/// - [V1beta1Resource]
 library alertcenter.v1beta1;
 
 import 'dart:async' as async;
@@ -48,8 +48,8 @@ class AlertCenterApi {
 
   final commons.ApiRequester _requester;
 
-  AlertsResourceApi get alerts => AlertsResourceApi(_requester);
-  V1beta1ResourceApi get v1beta1 => V1beta1ResourceApi(_requester);
+  AlertsResource get alerts => AlertsResource(_requester);
+  V1beta1Resource get v1beta1 => V1beta1Resource(_requester);
 
   AlertCenterApi(http.Client client,
       {core.String rootUrl = 'https://alertcenter.googleapis.com/',
@@ -58,13 +58,12 @@ class AlertCenterApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AlertsResourceApi {
+class AlertsResource {
   final commons.ApiRequester _requester;
 
-  AlertsFeedbackResourceApi get feedback =>
-      AlertsFeedbackResourceApi(_requester);
+  AlertsFeedbackResource get feedback => AlertsFeedbackResource(_requester);
 
-  AlertsResourceApi(commons.ApiRequester client) : _requester = client;
+  AlertsResource(commons.ApiRequester client) : _requester = client;
 
   /// Performs batch delete operation on alerts.
   ///
@@ -503,10 +502,10 @@ class AlertsResourceApi {
   }
 }
 
-class AlertsFeedbackResourceApi {
+class AlertsFeedbackResource {
   final commons.ApiRequester _requester;
 
-  AlertsFeedbackResourceApi(commons.ApiRequester client) : _requester = client;
+  AlertsFeedbackResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates new feedback for an alert. Attempting to create a feedback for a
   /// non-existent alert returns `NOT_FOUND` error. Attempting to create a
@@ -653,10 +652,10 @@ class AlertsFeedbackResourceApi {
   }
 }
 
-class V1beta1ResourceApi {
+class V1beta1Resource {
   final commons.ApiRequester _requester;
 
-  V1beta1ResourceApi(commons.ApiRequester client) : _requester = client;
+  V1beta1Resource(commons.ApiRequester client) : _requester = client;
 
   /// Returns customer-level settings.
   ///

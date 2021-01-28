@@ -1255,7 +1255,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccessPoliciesResourceApi', () {
+  unittest.group('resource-AccessPoliciesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies;
@@ -1520,7 +1520,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccessPoliciesAccessLevelsResourceApi', () {
+  unittest.group('resource-AccessPoliciesAccessLevelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
@@ -1846,7 +1846,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccessPoliciesServicePerimetersResourceApi', () {
+  unittest.group('resource-AccessPoliciesServicePerimetersResource', () {
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
       var res =
@@ -2227,7 +2227,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).operations;
@@ -2438,7 +2438,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsGcpUserAccessBindingsResourceApi', () {
+  unittest.group('resource-OrganizationsGcpUserAccessBindingsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =

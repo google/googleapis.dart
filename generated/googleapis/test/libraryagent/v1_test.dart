@@ -191,7 +191,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ShelvesResourceApi', () {
+  unittest.group('resource-ShelvesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves;
@@ -299,7 +299,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ShelvesBooksResourceApi', () {
+  unittest.group('resource-ShelvesBooksResource', () {
     unittest.test('method--borrow', () {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves.books;

@@ -22,23 +22,23 @@
 ///
 /// Create an instance of [SasportalApi] to access these resources:
 ///
-/// - [CustomersResourceApi]
-///   - [CustomersDeploymentsResourceApi]
-///     - [CustomersDeploymentsDevicesResourceApi]
-///   - [CustomersDevicesResourceApi]
-///   - [CustomersNodesResourceApi]
-///     - [CustomersNodesNodesResourceApi]
-/// - [DeploymentsResourceApi]
-///   - [DeploymentsDevicesResourceApi]
-/// - [InstallerResourceApi]
-/// - [NodesResourceApi]
-///   - [NodesDeploymentsResourceApi]
-///     - [NodesDeploymentsDevicesResourceApi]
-///   - [NodesDevicesResourceApi]
-///   - [NodesNodesResourceApi]
-///     - [NodesNodesDevicesResourceApi]
-///     - [NodesNodesNodesResourceApi]
-/// - [PoliciesResourceApi]
+/// - [CustomersResource]
+///   - [CustomersDeploymentsResource]
+///     - [CustomersDeploymentsDevicesResource]
+///   - [CustomersDevicesResource]
+///   - [CustomersNodesResource]
+///     - [CustomersNodesNodesResource]
+/// - [DeploymentsResource]
+///   - [DeploymentsDevicesResource]
+/// - [InstallerResource]
+/// - [NodesResource]
+///   - [NodesDeploymentsResource]
+///     - [NodesDeploymentsDevicesResource]
+///   - [NodesDevicesResource]
+///   - [NodesNodesResource]
+///     - [NodesNodesDevicesResource]
+///     - [NodesNodesNodesResource]
+/// - [PoliciesResource]
 library sasportal.v1alpha1;
 
 import 'dart:async' as async;
@@ -60,11 +60,11 @@ class SasportalApi {
 
   final commons.ApiRequester _requester;
 
-  CustomersResourceApi get customers => CustomersResourceApi(_requester);
-  DeploymentsResourceApi get deployments => DeploymentsResourceApi(_requester);
-  InstallerResourceApi get installer => InstallerResourceApi(_requester);
-  NodesResourceApi get nodes => NodesResourceApi(_requester);
-  PoliciesResourceApi get policies => PoliciesResourceApi(_requester);
+  CustomersResource get customers => CustomersResource(_requester);
+  DeploymentsResource get deployments => DeploymentsResource(_requester);
+  InstallerResource get installer => InstallerResource(_requester);
+  NodesResource get nodes => NodesResource(_requester);
+  PoliciesResource get policies => PoliciesResource(_requester);
 
   SasportalApi(http.Client client,
       {core.String rootUrl = 'https://sasportal.googleapis.com/',
@@ -73,16 +73,15 @@ class SasportalApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CustomersResourceApi {
+class CustomersResource {
   final commons.ApiRequester _requester;
 
-  CustomersDeploymentsResourceApi get deployments =>
-      CustomersDeploymentsResourceApi(_requester);
-  CustomersDevicesResourceApi get devices =>
-      CustomersDevicesResourceApi(_requester);
-  CustomersNodesResourceApi get nodes => CustomersNodesResourceApi(_requester);
+  CustomersDeploymentsResource get deployments =>
+      CustomersDeploymentsResource(_requester);
+  CustomersDevicesResource get devices => CustomersDevicesResource(_requester);
+  CustomersNodesResource get nodes => CustomersNodesResource(_requester);
 
-  CustomersResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomersResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a requested customer.
   ///
@@ -260,13 +259,13 @@ class CustomersResourceApi {
   }
 }
 
-class CustomersDeploymentsResourceApi {
+class CustomersDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  CustomersDeploymentsDevicesResourceApi get devices =>
-      CustomersDeploymentsDevicesResourceApi(_requester);
+  CustomersDeploymentsDevicesResource get devices =>
+      CustomersDeploymentsDevicesResource(_requester);
 
-  CustomersDeploymentsResourceApi(commons.ApiRequester client)
+  CustomersDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Moves a deployment under another node or customer.
@@ -329,10 +328,10 @@ class CustomersDeploymentsResourceApi {
   }
 }
 
-class CustomersDeploymentsDevicesResourceApi {
+class CustomersDeploymentsDevicesResource {
   final commons.ApiRequester _requester;
 
-  CustomersDeploymentsDevicesResourceApi(commons.ApiRequester client)
+  CustomersDeploymentsDevicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a device under a node or customer.
@@ -532,11 +531,10 @@ class CustomersDeploymentsDevicesResourceApi {
   }
 }
 
-class CustomersDevicesResourceApi {
+class CustomersDevicesResource {
   final commons.ApiRequester _requester;
 
-  CustomersDevicesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  CustomersDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a device under a node or customer. Returned devices are unordered.
   ///
@@ -1142,13 +1140,13 @@ class CustomersDevicesResourceApi {
   }
 }
 
-class CustomersNodesResourceApi {
+class CustomersNodesResource {
   final commons.ApiRequester _requester;
 
-  CustomersNodesNodesResourceApi get nodes =>
-      CustomersNodesNodesResourceApi(_requester);
+  CustomersNodesNodesResource get nodes =>
+      CustomersNodesNodesResource(_requester);
 
-  CustomersNodesResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomersNodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new node.
   ///
@@ -1506,10 +1504,10 @@ class CustomersNodesResourceApi {
   }
 }
 
-class CustomersNodesNodesResourceApi {
+class CustomersNodesNodesResource {
   final commons.ApiRequester _requester;
 
-  CustomersNodesNodesResourceApi(commons.ApiRequester client)
+  CustomersNodesNodesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new node.
@@ -1641,20 +1639,19 @@ class CustomersNodesNodesResourceApi {
   }
 }
 
-class DeploymentsResourceApi {
+class DeploymentsResource {
   final commons.ApiRequester _requester;
 
-  DeploymentsDevicesResourceApi get devices =>
-      DeploymentsDevicesResourceApi(_requester);
+  DeploymentsDevicesResource get devices =>
+      DeploymentsDevicesResource(_requester);
 
-  DeploymentsResourceApi(commons.ApiRequester client) : _requester = client;
+  DeploymentsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class DeploymentsDevicesResourceApi {
+class DeploymentsDevicesResource {
   final commons.ApiRequester _requester;
 
-  DeploymentsDevicesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  DeploymentsDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a device.
   ///
@@ -2004,10 +2001,10 @@ class DeploymentsDevicesResourceApi {
   }
 }
 
-class InstallerResourceApi {
+class InstallerResource {
   final commons.ApiRequester _requester;
 
-  InstallerResourceApi(commons.ApiRequester client) : _requester = client;
+  InstallerResource(commons.ApiRequester client) : _requester = client;
 
   /// Generates a secret to be used with the ValidateInstaller method
   ///
@@ -2112,15 +2109,15 @@ class InstallerResourceApi {
   }
 }
 
-class NodesResourceApi {
+class NodesResource {
   final commons.ApiRequester _requester;
 
-  NodesDeploymentsResourceApi get deployments =>
-      NodesDeploymentsResourceApi(_requester);
-  NodesDevicesResourceApi get devices => NodesDevicesResourceApi(_requester);
-  NodesNodesResourceApi get nodes => NodesNodesResourceApi(_requester);
+  NodesDeploymentsResource get deployments =>
+      NodesDeploymentsResource(_requester);
+  NodesDevicesResource get devices => NodesDevicesResource(_requester);
+  NodesNodesResource get nodes => NodesNodesResource(_requester);
 
-  NodesResourceApi(commons.ApiRequester client) : _requester = client;
+  NodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a requested node.
   ///
@@ -2175,14 +2172,13 @@ class NodesResourceApi {
   }
 }
 
-class NodesDeploymentsResourceApi {
+class NodesDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  NodesDeploymentsDevicesResourceApi get devices =>
-      NodesDeploymentsDevicesResourceApi(_requester);
+  NodesDeploymentsDevicesResource get devices =>
+      NodesDeploymentsDevicesResource(_requester);
 
-  NodesDeploymentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  NodesDeploymentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Moves a deployment under another node or customer.
   ///
@@ -2244,10 +2240,10 @@ class NodesDeploymentsResourceApi {
   }
 }
 
-class NodesDeploymentsDevicesResourceApi {
+class NodesDeploymentsDevicesResource {
   final commons.ApiRequester _requester;
 
-  NodesDeploymentsDevicesResourceApi(commons.ApiRequester client)
+  NodesDeploymentsDevicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a device under a node or customer.
@@ -2447,10 +2443,10 @@ class NodesDeploymentsDevicesResourceApi {
   }
 }
 
-class NodesDevicesResourceApi {
+class NodesDevicesResource {
   final commons.ApiRequester _requester;
 
-  NodesDevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  NodesDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a device under a node or customer. Returned devices are unordered.
   ///
@@ -3056,15 +3052,14 @@ class NodesDevicesResourceApi {
   }
 }
 
-class NodesNodesResourceApi {
+class NodesNodesResource {
   final commons.ApiRequester _requester;
 
-  NodesNodesDevicesResourceApi get devices =>
-      NodesNodesDevicesResourceApi(_requester);
-  NodesNodesNodesResourceApi get nodes =>
-      NodesNodesNodesResourceApi(_requester);
+  NodesNodesDevicesResource get devices =>
+      NodesNodesDevicesResource(_requester);
+  NodesNodesNodesResource get nodes => NodesNodesNodesResource(_requester);
 
-  NodesNodesResourceApi(commons.ApiRequester client) : _requester = client;
+  NodesNodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new node.
   ///
@@ -3422,11 +3417,10 @@ class NodesNodesResourceApi {
   }
 }
 
-class NodesNodesDevicesResourceApi {
+class NodesNodesDevicesResource {
   final commons.ApiRequester _requester;
 
-  NodesNodesDevicesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  NodesNodesDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a device under a node or customer. Returned devices are unordered.
   ///
@@ -3685,10 +3679,10 @@ class NodesNodesDevicesResourceApi {
   }
 }
 
-class NodesNodesNodesResourceApi {
+class NodesNodesNodesResource {
   final commons.ApiRequester _requester;
 
-  NodesNodesNodesResourceApi(commons.ApiRequester client) : _requester = client;
+  NodesNodesNodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new node.
   ///
@@ -3819,10 +3813,10 @@ class NodesNodesNodesResourceApi {
   }
 }
 
-class PoliciesResourceApi {
+class PoliciesResource {
   final commons.ApiRequester _requester;
 
-  PoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+  PoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the access control policy for a resource. Returns an empty policy if
   /// the resource exists and does not have a policy set.

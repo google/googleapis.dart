@@ -23,7 +23,7 @@
 ///
 /// Create an instance of [SiteVerificationApi] to access these resources:
 ///
-/// - [WebResourceResourceApi]
+/// - [WebResourceResource]
 library siteVerification.v1;
 
 import 'dart:async' as async;
@@ -50,7 +50,7 @@ class SiteVerificationApi {
 
   final commons.ApiRequester _requester;
 
-  WebResourceResourceApi get webResource => WebResourceResourceApi(_requester);
+  WebResourceResource get webResource => WebResourceResource(_requester);
 
   SiteVerificationApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -59,10 +59,10 @@ class SiteVerificationApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class WebResourceResourceApi {
+class WebResourceResource {
   final commons.ApiRequester _requester;
 
-  WebResourceResourceApi(commons.ApiRequester client) : _requester = client;
+  WebResourceResource(commons.ApiRequester client) : _requester = client;
 
   /// Relinquish ownership of a website or domain.
   ///

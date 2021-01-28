@@ -23,11 +23,11 @@
 ///
 /// Create an instance of [CloudIdentityApi] to access these resources:
 ///
-/// - [DevicesResourceApi]
-///   - [DevicesDeviceUsersResourceApi]
-///     - [DevicesDeviceUsersClientStatesResourceApi]
-/// - [GroupsResourceApi]
-///   - [GroupsMembershipsResourceApi]
+/// - [DevicesResource]
+///   - [DevicesDeviceUsersResource]
+///     - [DevicesDeviceUsersClientStatesResource]
+/// - [GroupsResource]
+///   - [GroupsMembershipsResource]
 library cloudidentity.v1;
 
 import 'dart:async' as async;
@@ -64,8 +64,8 @@ class CloudIdentityApi {
 
   final commons.ApiRequester _requester;
 
-  DevicesResourceApi get devices => DevicesResourceApi(_requester);
-  GroupsResourceApi get groups => GroupsResourceApi(_requester);
+  DevicesResource get devices => DevicesResource(_requester);
+  GroupsResource get groups => GroupsResource(_requester);
 
   CloudIdentityApi(http.Client client,
       {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
@@ -74,13 +74,13 @@ class CloudIdentityApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DevicesResourceApi {
+class DevicesResource {
   final commons.ApiRequester _requester;
 
-  DevicesDeviceUsersResourceApi get deviceUsers =>
-      DevicesDeviceUsersResourceApi(_requester);
+  DevicesDeviceUsersResource get deviceUsers =>
+      DevicesDeviceUsersResource(_requester);
 
-  DevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  DevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancels an unfinished device wipe. This operation can be used to cancel
   /// device wipe in the gap between the wipe operation returning success and
@@ -512,14 +512,13 @@ class DevicesResourceApi {
   }
 }
 
-class DevicesDeviceUsersResourceApi {
+class DevicesDeviceUsersResource {
   final commons.ApiRequester _requester;
 
-  DevicesDeviceUsersClientStatesResourceApi get clientStates =>
-      DevicesDeviceUsersClientStatesResourceApi(_requester);
+  DevicesDeviceUsersClientStatesResource get clientStates =>
+      DevicesDeviceUsersClientStatesResource(_requester);
 
-  DevicesDeviceUsersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  DevicesDeviceUsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Approves device to access user data.
   ///
@@ -1116,10 +1115,10 @@ class DevicesDeviceUsersResourceApi {
   }
 }
 
-class DevicesDeviceUsersClientStatesResourceApi {
+class DevicesDeviceUsersClientStatesResource {
   final commons.ApiRequester _requester;
 
-  DevicesDeviceUsersClientStatesResourceApi(commons.ApiRequester client)
+  DevicesDeviceUsersClientStatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the client state for the device user
@@ -1378,13 +1377,13 @@ class DevicesDeviceUsersClientStatesResourceApi {
   }
 }
 
-class GroupsResourceApi {
+class GroupsResource {
   final commons.ApiRequester _requester;
 
-  GroupsMembershipsResourceApi get memberships =>
-      GroupsMembershipsResourceApi(_requester);
+  GroupsMembershipsResource get memberships =>
+      GroupsMembershipsResource(_requester);
 
-  GroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  GroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Group.
   ///
@@ -1841,11 +1840,10 @@ class GroupsResourceApi {
   }
 }
 
-class GroupsMembershipsResourceApi {
+class GroupsMembershipsResource {
   final commons.ApiRequester _requester;
 
-  GroupsMembershipsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  GroupsMembershipsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Membership.
   ///

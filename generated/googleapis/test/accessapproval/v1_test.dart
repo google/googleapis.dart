@@ -420,7 +420,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersResourceApi', () {
+  unittest.group('resource-FoldersResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders;
@@ -575,7 +575,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersApprovalRequestsResourceApi', () {
+  unittest.group('resource-FoldersApprovalRequestsResource', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders.approvalRequests;
@@ -794,7 +794,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsResourceApi', () {
+  unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations;
@@ -949,7 +949,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsApprovalRequestsResourceApi', () {
+  unittest.group('resource-OrganizationsApprovalRequestsResource', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
@@ -1168,7 +1168,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--deleteAccessApprovalSettings', () {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects;
@@ -1323,7 +1323,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsApprovalRequestsResourceApi', () {
+  unittest.group('resource-ProjectsApprovalRequestsResource', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects.approvalRequests;

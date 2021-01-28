@@ -1309,7 +1309,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.operations;
@@ -1359,7 +1359,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesResourceApi', () {
+  unittest.group('resource-ProjectsSitesResource', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites;
@@ -1466,7 +1466,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesChannelsResourceApi', () {
+  unittest.group('resource-ProjectsSitesChannelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites.channels;
@@ -1735,7 +1735,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesChannelsReleasesResourceApi', () {
+  unittest.group('resource-ProjectsSitesChannelsReleasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites.channels.releases;
@@ -1851,7 +1851,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesDomainsResourceApi', () {
+  unittest.group('resource-ProjectsSitesDomainsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites.domains;
@@ -2112,7 +2112,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesReleasesResourceApi', () {
+  unittest.group('resource-ProjectsSitesReleasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites.releases;
@@ -2228,7 +2228,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesVersionsResourceApi', () {
+  unittest.group('resource-ProjectsSitesVersionsResource', () {
     unittest.test('method--clone', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites.versions;
@@ -2565,7 +2565,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSitesVersionsFilesResourceApi', () {
+  unittest.group('resource-ProjectsSitesVersionsFilesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).projects.sites.versions.files;
@@ -2627,7 +2627,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesResourceApi', () {
+  unittest.group('resource-SitesResource', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites;
@@ -2734,7 +2734,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesChannelsResourceApi', () {
+  unittest.group('resource-SitesChannelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites.channels;
@@ -3003,7 +3003,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesChannelsReleasesResourceApi', () {
+  unittest.group('resource-SitesChannelsReleasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites.channels.releases;
@@ -3119,7 +3119,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesDomainsResourceApi', () {
+  unittest.group('resource-SitesDomainsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites.domains;
@@ -3380,7 +3380,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesReleasesResourceApi', () {
+  unittest.group('resource-SitesReleasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites.releases;
@@ -3496,7 +3496,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesVersionsResourceApi', () {
+  unittest.group('resource-SitesVersionsResource', () {
     unittest.test('method--clone', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites.versions;
@@ -3833,7 +3833,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesVersionsFilesResourceApi', () {
+  unittest.group('resource-SitesVersionsFilesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.FirebaseHostingApi(mock).sites.versions.files;

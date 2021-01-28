@@ -23,7 +23,7 @@
 ///
 /// Create an instance of [GenomicsApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
+/// - [OperationsResource]
 library genomics.v1;
 
 import 'dart:async' as async;
@@ -49,7 +49,7 @@ class GenomicsApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
 
   GenomicsApi(http.Client client,
       {core.String rootUrl = 'https://genomics.googleapis.com/',
@@ -58,10 +58,10 @@ class GenomicsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not

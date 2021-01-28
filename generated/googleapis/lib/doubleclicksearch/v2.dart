@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [DoubleclicksearchApi] to access these resources:
 ///
-/// - [ConversionResourceApi]
-/// - [ReportsResourceApi]
-/// - [SavedColumnsResourceApi]
+/// - [ConversionResource]
+/// - [ReportsResource]
+/// - [SavedColumnsResource]
 library doubleclicksearch.v2;
 
 import 'dart:async' as async;
@@ -59,10 +59,9 @@ class DoubleclicksearchApi {
 
   final commons.ApiRequester _requester;
 
-  ConversionResourceApi get conversion => ConversionResourceApi(_requester);
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
-  SavedColumnsResourceApi get savedColumns =>
-      SavedColumnsResourceApi(_requester);
+  ConversionResource get conversion => ConversionResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
+  SavedColumnsResource get savedColumns => SavedColumnsResource(_requester);
 
   DoubleclicksearchApi(http.Client client,
       {core.String rootUrl = 'https://doubleclicksearch.googleapis.com/',
@@ -71,10 +70,10 @@ class DoubleclicksearchApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ConversionResourceApi {
+class ConversionResource {
   final commons.ApiRequester _requester;
 
-  ConversionResourceApi(commons.ApiRequester client) : _requester = client;
+  ConversionResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of conversions from a DoubleClick Search engine account.
   ///
@@ -358,10 +357,10 @@ class ConversionResourceApi {
   }
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generates and returns a report immediately.
   ///
@@ -584,10 +583,10 @@ class ReportsResourceApi {
   }
 }
 
-class SavedColumnsResourceApi {
+class SavedColumnsResource {
   final commons.ApiRequester _requester;
 
-  SavedColumnsResourceApi(commons.ApiRequester client) : _requester = client;
+  SavedColumnsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieve the list of saved columns for a specified advertiser.
   ///

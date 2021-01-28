@@ -277,7 +277,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AutnumResourceApi', () {
+  unittest.group('resource-AutnumResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).autnum;
@@ -329,7 +329,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DomainResourceApi', () {
+  unittest.group('resource-DomainResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).domain;
@@ -379,7 +379,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EntityResourceApi', () {
+  unittest.group('resource-EntityResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).entity;
@@ -431,7 +431,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-IpResourceApi', () {
+  unittest.group('resource-IpResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).ip;
@@ -493,7 +493,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NameserverResourceApi', () {
+  unittest.group('resource-NameserverResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).nameserver;
@@ -545,7 +545,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V1ResourceApi', () {
+  unittest.group('resource-V1Resource', () {
     unittest.test('method--getDomains', () {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).v1;

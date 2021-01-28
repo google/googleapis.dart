@@ -4010,7 +4010,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).operations;
@@ -4221,7 +4221,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services;
@@ -4284,7 +4284,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesTenancyUnitsResourceApi', () {
+  unittest.group('resource-ServicesTenancyUnitsResource', () {
     unittest.test('method--addProject', () {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;

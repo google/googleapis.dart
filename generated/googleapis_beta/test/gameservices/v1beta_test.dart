@@ -2629,7 +2629,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations;
@@ -2743,8 +2743,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGameServerDeploymentsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsGameServerDeploymentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -3424,7 +3423,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsGameServerDeploymentsConfigsResourceApi', () {
+      'resource-ProjectsLocationsGameServerDeploymentsConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
@@ -3660,7 +3659,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.operations;
@@ -3871,7 +3870,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRealmsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRealmsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
@@ -4210,8 +4209,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsLocationsRealmsGameServerClustersResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRealmsGameServerClustersResource',
+      () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)

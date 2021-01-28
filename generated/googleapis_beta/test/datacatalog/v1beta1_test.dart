@@ -2092,7 +2092,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CatalogResourceApi', () {
+  unittest.group('resource-CatalogResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).catalog;
@@ -2150,7 +2150,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EntriesResourceApi', () {
+  unittest.group('resource-EntriesResource', () {
     unittest.test('method--lookup', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).entries;
@@ -2209,7 +2209,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsEntryGroupsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsEntryGroupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
@@ -2653,7 +2653,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
@@ -3043,7 +3043,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsEntryGroupsEntriesTagsResourceApi',
+  unittest.group('resource-ProjectsLocationsEntryGroupsEntriesTagsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -3271,7 +3271,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsEntryGroupsTagsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsEntryGroupsTagsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
@@ -3494,7 +3494,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTagTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsTagTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
@@ -3876,7 +3876,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTagTemplatesFieldsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsTagTemplatesFieldsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
@@ -4106,7 +4106,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi', () {
+      'resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResource', () {
     unittest.test('method--rename', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock)
@@ -4172,7 +4172,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTaxonomiesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsTaxonomiesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
@@ -4724,8 +4724,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTaxonomiesPolicyTagsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsTaxonomiesPolicyTagsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =

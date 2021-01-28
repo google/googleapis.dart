@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [BinaryAuthorizationApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsAttestorsResourceApi]
-///   - [ProjectsPolicyResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsAttestorsResource]
+///   - [ProjectsPolicyResource]
 library binaryauthorization.v1;
 
 import 'dart:async' as async;
@@ -50,7 +50,7 @@ class BinaryAuthorizationApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   BinaryAuthorizationApi(http.Client client,
       {core.String rootUrl = 'https://binaryauthorization.googleapis.com/',
@@ -59,14 +59,14 @@ class BinaryAuthorizationApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAttestorsResourceApi get attestors =>
-      ProjectsAttestorsResourceApi(_requester);
-  ProjectsPolicyResourceApi get policy => ProjectsPolicyResourceApi(_requester);
+  ProjectsAttestorsResource get attestors =>
+      ProjectsAttestorsResource(_requester);
+  ProjectsPolicyResource get policy => ProjectsPolicyResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// A policy specifies the attestors that must attest to a container image,
   /// before the project is allowed to deploy that image. There is at most one
@@ -187,11 +187,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsAttestorsResourceApi {
+class ProjectsAttestorsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAttestorsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsAttestorsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an attestor, and returns a copy of the new attestor. Returns
   /// NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request
@@ -754,10 +753,10 @@ class ProjectsAttestorsResourceApi {
   }
 }
 
-class ProjectsPolicyResourceApi {
+class ProjectsPolicyResource {
   final commons.ApiRequester _requester;
 
-  ProjectsPolicyResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsPolicyResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the access control policy for a resource. Returns an empty policy if
   /// the resource exists and does not have a policy set.

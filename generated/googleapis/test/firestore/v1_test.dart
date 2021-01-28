@@ -3173,7 +3173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDatabasesResourceApi', () {
+  unittest.group('resource-ProjectsDatabasesResource', () {
     unittest.test('method--exportDocuments', () {
       var mock = HttpServerMock();
       var res = api.FirestoreApi(mock).projects.databases;
@@ -3285,7 +3285,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDatabasesCollectionGroupsFieldsResourceApi',
+  unittest.group('resource-ProjectsDatabasesCollectionGroupsFieldsResource',
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
@@ -3461,7 +3461,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDatabasesCollectionGroupsIndexesResourceApi',
+  unittest.group('resource-ProjectsDatabasesCollectionGroupsIndexesResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -3682,7 +3682,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDatabasesDocumentsResourceApi', () {
+  unittest.group('resource-ProjectsDatabasesDocumentsResource', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       var res = api.FirestoreApi(mock).projects.databases.documents;
@@ -4545,7 +4545,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDatabasesOperationsResourceApi', () {
+  unittest.group('resource-ProjectsDatabasesOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.FirestoreApi(mock).projects.databases.operations;
@@ -4760,7 +4760,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.FirestoreApi(mock).projects.locations;

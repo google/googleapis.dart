@@ -23,13 +23,13 @@
 ///
 /// Create an instance of [CloudBuildApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsBuildsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsBuildsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///   - [ProjectsTriggersResourceApi]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsBuildsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBuildsResource]
+///     - [ProjectsLocationsOperationsResource]
+///   - [ProjectsTriggersResource]
 library cloudbuild.v1;
 
 import 'dart:async' as async;
@@ -52,8 +52,8 @@ class CloudBuildApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudBuildApi(http.Client client,
       {core.String rootUrl = 'https://cloudbuild.googleapis.com/',
@@ -62,10 +62,10 @@ class CloudBuildApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -186,22 +186,21 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsBuildsResourceApi get builds => ProjectsBuildsResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsTriggersResourceApi get triggers =>
-      ProjectsTriggersResourceApi(_requester);
+  ProjectsBuildsResource get builds => ProjectsBuildsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsTriggersResource get triggers => ProjectsTriggersResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsBuildsResourceApi {
+class ProjectsBuildsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsBuildsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsBuildsResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancels a build in progress.
   ///
@@ -566,22 +565,21 @@ class ProjectsBuildsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsBuildsResourceApi get builds =>
-      ProjectsLocationsBuildsResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsBuildsResource get builds =>
+      ProjectsLocationsBuildsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsBuildsResourceApi {
+class ProjectsLocationsBuildsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsBuildsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsBuildsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Cancels a build in progress.
@@ -927,10 +925,10 @@ class ProjectsLocationsBuildsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1054,11 +1052,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsTriggersResourceApi {
+class ProjectsTriggersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTriggersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsTriggersResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new `BuildTrigger`. This API is experimental.
   ///

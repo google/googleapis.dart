@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [StoragetransferApi] to access these resources:
 ///
-/// - [GoogleServiceAccountsResourceApi]
-/// - [TransferJobsResourceApi]
-/// - [TransferOperationsResourceApi]
+/// - [GoogleServiceAccountsResource]
+/// - [TransferJobsResource]
+/// - [TransferOperationsResource]
 library storagetransfer.v1;
 
 import 'dart:async' as async;
@@ -50,12 +50,11 @@ class StoragetransferApi {
 
   final commons.ApiRequester _requester;
 
-  GoogleServiceAccountsResourceApi get googleServiceAccounts =>
-      GoogleServiceAccountsResourceApi(_requester);
-  TransferJobsResourceApi get transferJobs =>
-      TransferJobsResourceApi(_requester);
-  TransferOperationsResourceApi get transferOperations =>
-      TransferOperationsResourceApi(_requester);
+  GoogleServiceAccountsResource get googleServiceAccounts =>
+      GoogleServiceAccountsResource(_requester);
+  TransferJobsResource get transferJobs => TransferJobsResource(_requester);
+  TransferOperationsResource get transferOperations =>
+      TransferOperationsResource(_requester);
 
   StoragetransferApi(http.Client client,
       {core.String rootUrl = 'https://storagetransfer.googleapis.com/',
@@ -64,10 +63,10 @@ class StoragetransferApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class GoogleServiceAccountsResourceApi {
+class GoogleServiceAccountsResource {
   final commons.ApiRequester _requester;
 
-  GoogleServiceAccountsResourceApi(commons.ApiRequester client)
+  GoogleServiceAccountsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the Google service account that is used by Storage Transfer
@@ -130,10 +129,10 @@ class GoogleServiceAccountsResourceApi {
   }
 }
 
-class TransferJobsResourceApi {
+class TransferJobsResource {
   final commons.ApiRequester _requester;
 
-  TransferJobsResourceApi(commons.ApiRequester client) : _requester = client;
+  TransferJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a transfer job that runs periodically.
   ///
@@ -377,11 +376,10 @@ class TransferJobsResourceApi {
   }
 }
 
-class TransferOperationsResourceApi {
+class TransferOperationsResource {
   final commons.ApiRequester _requester;
 
-  TransferOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TransferOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancels a transfer. Use the transferOperations.get method to check if the
   /// cancellation succeeded or if the operation completed despite the `cancel`

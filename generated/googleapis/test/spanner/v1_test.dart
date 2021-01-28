@@ -3543,7 +3543,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstanceConfigsResourceApi', () {
+  unittest.group('resource-ProjectsInstanceConfigsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instanceConfigs;
@@ -3651,7 +3651,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesResourceApi', () {
+  unittest.group('resource-ProjectsInstancesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances;
@@ -4078,7 +4078,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesBackupOperationsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesBackupOperationsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.backupOperations;
@@ -4141,7 +4141,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesBackupsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesBackupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.backups;
@@ -4573,7 +4573,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesBackupsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesBackupsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.backups.operations;
@@ -4779,7 +4779,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesDatabaseOperationsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesDatabaseOperationsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.databaseOperations;
@@ -4842,7 +4842,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesDatabasesResourceApi', () {
+  unittest.group('resource-ProjectsInstancesDatabasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.databases;
@@ -5364,8 +5364,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesDatabasesOperationsResourceApi',
-      () {
+  unittest.group('resource-ProjectsInstancesDatabasesOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.databases.operations;
@@ -5571,7 +5570,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesDatabasesSessionsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesDatabasesSessionsResource', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.databases.sessions;
@@ -6366,7 +6365,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesOperationsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.SpannerApi(mock).projects.instances.operations;

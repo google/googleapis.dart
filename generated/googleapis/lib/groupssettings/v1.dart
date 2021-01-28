@@ -24,7 +24,7 @@
 ///
 /// Create an instance of [GroupssettingsApi] to access these resources:
 ///
-/// - [GroupsResourceApi]
+/// - [GroupsResource]
 library groupssettings.v1;
 
 import 'dart:async' as async;
@@ -47,7 +47,7 @@ class GroupssettingsApi {
 
   final commons.ApiRequester _requester;
 
-  GroupsResourceApi get groups => GroupsResourceApi(_requester);
+  GroupsResource get groups => GroupsResource(_requester);
 
   GroupssettingsApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -56,10 +56,10 @@ class GroupssettingsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class GroupsResourceApi {
+class GroupsResource {
   final commons.ApiRequester _requester;
 
-  GroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  GroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one resource by id.
   ///

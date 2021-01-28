@@ -2253,7 +2253,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsResourceApi', () {
+  unittest.group('resource-ReportsResource', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsReportingApi(mock).reports;
@@ -2306,7 +2306,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserActivityResourceApi', () {
+  unittest.group('resource-UserActivityResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsReportingApi(mock).userActivity;

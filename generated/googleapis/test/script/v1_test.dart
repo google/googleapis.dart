@@ -1541,7 +1541,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProcessesResourceApi', () {
+  unittest.group('resource-ProcessesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).processes;
@@ -1729,7 +1729,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects;
@@ -2018,7 +2018,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDeploymentsResourceApi', () {
+  unittest.group('resource-ProjectsDeploymentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.deployments;
@@ -2332,7 +2332,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsVersionsResourceApi', () {
+  unittest.group('resource-ProjectsVersionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.versions;
@@ -2520,7 +2520,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ScriptsResourceApi', () {
+  unittest.group('resource-ScriptsResource', () {
     unittest.test('method--run', () {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).scripts;

@@ -1802,7 +1802,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts;
@@ -1957,7 +1957,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersResourceApi', () {
+  unittest.group('resource-AccountsContainersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers;
@@ -2263,7 +2263,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersEnvironmentsResourceApi', () {
+  unittest.group('resource-AccountsContainersEnvironmentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
@@ -2623,7 +2623,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersFoldersResourceApi', () {
+  unittest.group('resource-AccountsContainersFoldersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.folders;
@@ -2982,7 +2982,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersFoldersEntitiesResourceApi', () {
+  unittest.group('resource-AccountsContainersFoldersEntitiesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.folders.entities;
@@ -3061,7 +3061,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersMoveFoldersResourceApi', () {
+  unittest.group('resource-AccountsContainersMoveFoldersResource', () {
     unittest.test('method--update', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.moveFolders;
@@ -3147,8 +3147,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-AccountsContainersReauthorizeEnvironmentsResourceApi', () {
+  unittest.group('resource-AccountsContainersReauthorizeEnvironmentsResource',
+      () {
     unittest.test('method--update', () {
       var mock = HttpServerMock();
       var res =
@@ -3228,7 +3228,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersTagsResourceApi', () {
+  unittest.group('resource-AccountsContainersTagsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.tags;
@@ -3584,7 +3584,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersTriggersResourceApi', () {
+  unittest.group('resource-AccountsContainersTriggersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.triggers;
@@ -3943,7 +3943,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersVariablesResourceApi', () {
+  unittest.group('resource-AccountsContainersVariablesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.variables;
@@ -4302,7 +4302,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsContainersVersionsResourceApi', () {
+  unittest.group('resource-AccountsContainersVersionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
@@ -4909,7 +4909,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsPermissionsResourceApi', () {
+  unittest.group('resource-AccountsPermissionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.permissions;

@@ -28,15 +28,15 @@
 ///
 /// Create an instance of [IamApi] to access these resources:
 ///
-/// - [IamPoliciesResourceApi]
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsRolesResourceApi]
-/// - [PermissionsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsRolesResourceApi]
-///   - [ProjectsServiceAccountsResourceApi]
-///     - [ProjectsServiceAccountsKeysResourceApi]
-/// - [RolesResourceApi]
+/// - [IamPoliciesResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsRolesResource]
+/// - [PermissionsResource]
+/// - [ProjectsResource]
+///   - [ProjectsRolesResource]
+///   - [ProjectsServiceAccountsResource]
+///     - [ProjectsServiceAccountsKeysResource]
+/// - [RolesResource]
 library iam.v1;
 
 import 'dart:async' as async;
@@ -64,12 +64,11 @@ class IamApi {
 
   final commons.ApiRequester _requester;
 
-  IamPoliciesResourceApi get iamPolicies => IamPoliciesResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  PermissionsResourceApi get permissions => PermissionsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  RolesResourceApi get roles => RolesResourceApi(_requester);
+  IamPoliciesResource get iamPolicies => IamPoliciesResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  PermissionsResource get permissions => PermissionsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  RolesResource get roles => RolesResource(_requester);
 
   IamApi(http.Client client,
       {core.String rootUrl = 'https://iam.googleapis.com/',
@@ -78,10 +77,10 @@ class IamApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class IamPoliciesResourceApi {
+class IamPoliciesResource {
   final commons.ApiRequester _requester;
 
-  IamPoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+  IamPoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lints, or validates, an IAM policy. Currently checks the
   /// google.iam.v1.Binding.condition field, which contains a condition
@@ -192,20 +191,19 @@ class IamPoliciesResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsRolesResourceApi get roles =>
-      OrganizationsRolesResourceApi(_requester);
+  OrganizationsRolesResource get roles =>
+      OrganizationsRolesResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class OrganizationsRolesResourceApi {
+class OrganizationsRolesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsRolesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OrganizationsRolesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new custom Role.
   ///
@@ -688,10 +686,10 @@ class OrganizationsRolesResourceApi {
   }
 }
 
-class PermissionsResourceApi {
+class PermissionsResource {
   final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
+  PermissionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists every permission that you can test on a resource. A permission is
   /// testable if you can check whether a member has that permission on the
@@ -747,20 +745,20 @@ class PermissionsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRolesResourceApi get roles => ProjectsRolesResourceApi(_requester);
-  ProjectsServiceAccountsResourceApi get serviceAccounts =>
-      ProjectsServiceAccountsResourceApi(_requester);
+  ProjectsRolesResource get roles => ProjectsRolesResource(_requester);
+  ProjectsServiceAccountsResource get serviceAccounts =>
+      ProjectsServiceAccountsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsRolesResourceApi {
+class ProjectsRolesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRolesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsRolesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new custom Role.
   ///
@@ -1243,13 +1241,13 @@ class ProjectsRolesResourceApi {
   }
 }
 
-class ProjectsServiceAccountsResourceApi {
+class ProjectsServiceAccountsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountsKeysResourceApi get keys =>
-      ProjectsServiceAccountsKeysResourceApi(_requester);
+  ProjectsServiceAccountsKeysResource get keys =>
+      ProjectsServiceAccountsKeysResource(_requester);
 
-  ProjectsServiceAccountsResourceApi(commons.ApiRequester client)
+  ProjectsServiceAccountsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a ServiceAccount.
@@ -2199,10 +2197,10 @@ class ProjectsServiceAccountsResourceApi {
   }
 }
 
-class ProjectsServiceAccountsKeysResourceApi {
+class ProjectsServiceAccountsKeysResource {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountsKeysResourceApi(commons.ApiRequester client)
+  ProjectsServiceAccountsKeysResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a ServiceAccountKey.
@@ -2523,10 +2521,10 @@ class ProjectsServiceAccountsKeysResourceApi {
   }
 }
 
-class RolesResourceApi {
+class RolesResource {
   final commons.ApiRequester _requester;
 
-  RolesResourceApi(commons.ApiRequester client) : _requester = client;
+  RolesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the definition of a Role.
   ///

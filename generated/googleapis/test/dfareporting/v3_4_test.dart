@@ -13332,7 +13332,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountActiveAdSummariesResourceApi', () {
+  unittest.group('resource-AccountActiveAdSummariesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).accountActiveAdSummaries;
@@ -13397,7 +13397,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountPermissionGroupsResourceApi', () {
+  unittest.group('resource-AccountPermissionGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).accountPermissionGroups;
@@ -13523,7 +13523,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountPermissionsResourceApi', () {
+  unittest.group('resource-AccountPermissionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).accountPermissions;
@@ -13648,7 +13648,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountUserProfilesResourceApi', () {
+  unittest.group('resource-AccountUserProfilesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).accountUserProfiles;
@@ -14003,7 +14003,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).accounts;
@@ -14285,7 +14285,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdsResourceApi', () {
+  unittest.group('resource-AdsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).ads;
@@ -14691,7 +14691,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertiserGroupsResourceApi', () {
+  unittest.group('resource-AdvertiserGroupsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).advertiserGroups;
@@ -15095,7 +15095,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertiserLandingPagesResourceApi', () {
+  unittest.group('resource-AdvertiserLandingPagesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).advertiserLandingPages;
@@ -15455,7 +15455,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersResourceApi', () {
+  unittest.group('resource-AdvertisersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).advertisers;
@@ -15821,7 +15821,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BrowsersResourceApi', () {
+  unittest.group('resource-BrowsersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).browsers;
@@ -15882,7 +15882,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CampaignCreativeAssociationsResourceApi', () {
+  unittest.group('resource-CampaignCreativeAssociationsResource', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).campaignCreativeAssociations;
@@ -16045,7 +16045,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CampaignsResourceApi', () {
+  unittest.group('resource-CampaignsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).campaigns;
@@ -16416,7 +16416,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChangeLogsResourceApi', () {
+  unittest.group('resource-ChangeLogsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).changeLogs;
@@ -16578,7 +16578,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CitiesResourceApi', () {
+  unittest.group('resource-CitiesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).cities;
@@ -16655,7 +16655,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ConnectionTypesResourceApi', () {
+  unittest.group('resource-ConnectionTypesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).connectionTypes;
@@ -16780,7 +16780,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ContentCategoriesResourceApi', () {
+  unittest.group('resource-ContentCategoriesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).contentCategories;
@@ -17184,7 +17184,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ConversionsResourceApi', () {
+  unittest.group('resource-ConversionsResource', () {
     unittest.test('method--batchinsert', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).conversions;
@@ -17318,7 +17318,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CountriesResourceApi', () {
+  unittest.group('resource-CountriesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).countries;
@@ -17442,7 +17442,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativeAssetsResourceApi', () {
+  unittest.group('resource-CreativeAssetsResource', () {
     unittest.test('method--insert', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -17522,7 +17522,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativeFieldValuesResourceApi', () {
+  unittest.group('resource-CreativeFieldValuesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).creativeFieldValues;
@@ -17990,7 +17990,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativeFieldsResourceApi', () {
+  unittest.group('resource-CreativeFieldsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).creativeFields;
@@ -18398,7 +18398,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativeGroupsResourceApi', () {
+  unittest.group('resource-CreativeGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).creativeGroups;
@@ -18749,7 +18749,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativesResourceApi', () {
+  unittest.group('resource-CreativesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).creatives;
@@ -19129,7 +19129,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomEventsResourceApi', () {
+  unittest.group('resource-CustomEventsResource', () {
     unittest.test('method--batchinsert', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).customEvents;
@@ -19197,7 +19197,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DimensionValuesResourceApi', () {
+  unittest.group('resource-DimensionValuesResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).dimensionValues;
@@ -19272,7 +19272,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DirectorySitesResourceApi', () {
+  unittest.group('resource-DirectorySitesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).directorySites;
@@ -19507,7 +19507,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DynamicTargetingKeysResourceApi', () {
+  unittest.group('resource-DynamicTargetingKeysResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).dynamicTargetingKeys;
@@ -19716,7 +19716,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EventTagsResourceApi', () {
+  unittest.group('resource-EventTagsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).eventTags;
@@ -20134,7 +20134,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FilesResourceApi', () {
+  unittest.group('resource-FilesResource', () {
     unittest.test('method--get', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -20281,7 +20281,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FloodlightActivitiesResourceApi', () {
+  unittest.group('resource-FloodlightActivitiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).floodlightActivities;
@@ -20780,7 +20780,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FloodlightActivityGroupsResourceApi', () {
+  unittest.group('resource-FloodlightActivityGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).floodlightActivityGroups;
@@ -21135,7 +21135,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FloodlightConfigurationsResourceApi', () {
+  unittest.group('resource-FloodlightConfigurationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).floodlightConfigurations;
@@ -21393,7 +21393,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InventoryItemsResourceApi', () {
+  unittest.group('resource-InventoryItemsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).inventoryItems;
@@ -21571,7 +21571,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LanguagesResourceApi', () {
+  unittest.group('resource-LanguagesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).languages;
@@ -21632,7 +21632,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MetrosResourceApi', () {
+  unittest.group('resource-MetrosResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).metros;
@@ -21693,7 +21693,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MobileAppsResourceApi', () {
+  unittest.group('resource-MobileAppsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).mobileApps;
@@ -21837,7 +21837,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MobileCarriersResourceApi', () {
+  unittest.group('resource-MobileCarriersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).mobileCarriers;
@@ -21962,7 +21962,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperatingSystemVersionsResourceApi', () {
+  unittest.group('resource-OperatingSystemVersionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).operatingSystemVersions;
@@ -22088,7 +22088,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperatingSystemsResourceApi', () {
+  unittest.group('resource-OperatingSystemsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).operatingSystems;
@@ -22213,7 +22213,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrderDocumentsResourceApi', () {
+  unittest.group('resource-OrderDocumentsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).orderDocuments;
@@ -22392,7 +22392,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrdersResourceApi', () {
+  unittest.group('resource-OrdersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).orders;
@@ -22563,7 +22563,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlacementGroupsResourceApi', () {
+  unittest.group('resource-PlacementGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).placementGroups;
@@ -22957,7 +22957,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlacementStrategiesResourceApi', () {
+  unittest.group('resource-PlacementStrategiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).placementStrategies;
@@ -23361,7 +23361,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlacementsResourceApi', () {
+  unittest.group('resource-PlacementsResource', () {
     unittest.test('method--generatetags', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).placements;
@@ -23837,7 +23837,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlatformTypesResourceApi', () {
+  unittest.group('resource-PlatformTypesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).platformTypes;
@@ -23962,7 +23962,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PostalCodesResourceApi', () {
+  unittest.group('resource-PostalCodesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).postalCodes;
@@ -24086,7 +24086,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).projects;
@@ -24238,7 +24238,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionsResourceApi', () {
+  unittest.group('resource-RegionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).regions;
@@ -24299,7 +24299,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RemarketingListSharesResourceApi', () {
+  unittest.group('resource-RemarketingListSharesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).remarketingListShares;
@@ -24494,7 +24494,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RemarketingListsResourceApi', () {
+  unittest.group('resource-RemarketingListsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).remarketingLists;
@@ -24844,7 +24844,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsResourceApi', () {
+  unittest.group('resource-ReportsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).reports;
@@ -25323,7 +25323,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsCompatibleFieldsResourceApi', () {
+  unittest.group('resource-ReportsCompatibleFieldsResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).reports.compatibleFields;
@@ -25389,7 +25389,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsFilesResourceApi', () {
+  unittest.group('resource-ReportsFilesResource', () {
     unittest.test('method--get', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -25553,7 +25553,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesResourceApi', () {
+  unittest.group('resource-SitesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).sites;
@@ -25933,7 +25933,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SizesResourceApi', () {
+  unittest.group('resource-SizesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).sizes;
@@ -26137,7 +26137,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SubaccountsResourceApi', () {
+  unittest.group('resource-SubaccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).subaccounts;
@@ -26479,7 +26479,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetableRemarketingListsResourceApi', () {
+  unittest.group('resource-TargetableRemarketingListsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).targetableRemarketingLists;
@@ -26633,7 +26633,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetingTemplatesResourceApi', () {
+  unittest.group('resource-TargetingTemplatesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).targetingTemplates;
@@ -26980,7 +26980,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserProfilesResourceApi', () {
+  unittest.group('resource-UserProfilesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).userProfiles;
@@ -27082,7 +27082,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserRolePermissionGroupsResourceApi', () {
+  unittest.group('resource-UserRolePermissionGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).userRolePermissionGroups;
@@ -27208,7 +27208,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserRolePermissionsResourceApi', () {
+  unittest.group('resource-UserRolePermissionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).userRolePermissions;
@@ -27335,7 +27335,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserRolesResourceApi', () {
+  unittest.group('resource-UserRolesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).userRoles;
@@ -27746,7 +27746,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VideoFormatsResourceApi', () {
+  unittest.group('resource-VideoFormatsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DfareportingApi(mock).videoFormats;

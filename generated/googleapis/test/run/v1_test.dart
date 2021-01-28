@@ -2834,7 +2834,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NamespacesAuthorizeddomainsResourceApi', () {
+  unittest.group('resource-NamespacesAuthorizeddomainsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).namespaces.authorizeddomains;
@@ -2894,7 +2894,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NamespacesConfigurationsResourceApi', () {
+  unittest.group('resource-NamespacesConfigurationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).namespaces.configurations;
@@ -3021,7 +3021,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NamespacesDomainmappingsResourceApi', () {
+  unittest.group('resource-NamespacesDomainmappingsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).namespaces.domainmappings;
@@ -3261,7 +3261,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NamespacesRevisionsResourceApi', () {
+  unittest.group('resource-NamespacesRevisionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).namespaces.revisions;
@@ -3447,7 +3447,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NamespacesRoutesResourceApi', () {
+  unittest.group('resource-NamespacesRoutesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).namespaces.routes;
@@ -3573,7 +3573,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NamespacesServicesResourceApi', () {
+  unittest.group('resource-NamespacesServicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).namespaces.services;
@@ -3865,7 +3865,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAuthorizeddomainsResourceApi', () {
+  unittest.group('resource-ProjectsAuthorizeddomainsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.authorizeddomains;
@@ -3925,7 +3925,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations;
@@ -3987,7 +3987,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAuthorizeddomainsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAuthorizeddomainsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations.authorizeddomains;
@@ -4047,7 +4047,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsConfigurationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsConfigurationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations.configurations;
@@ -4174,7 +4174,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDomainmappingsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDomainmappingsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations.domainmappings;
@@ -4414,7 +4414,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRevisionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRevisionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations.revisions;
@@ -4600,7 +4600,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRoutesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRoutesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations.routes;
@@ -4726,7 +4726,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsServicesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsServicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRunApi(mock).projects.locations.services;

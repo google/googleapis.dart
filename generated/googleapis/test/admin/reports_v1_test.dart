@@ -841,7 +841,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ActivitiesResourceApi', () {
+  unittest.group('resource-ActivitiesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).activities;
@@ -1048,7 +1048,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelsResourceApi', () {
+  unittest.group('resource-ChannelsResource', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).channels;
@@ -1099,7 +1099,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomerUsageReportsResourceApi', () {
+  unittest.group('resource-CustomerUsageReportsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).customerUsageReports;
@@ -1164,7 +1164,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EntityUsageReportsResourceApi', () {
+  unittest.group('resource-EntityUsageReportsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).entityUsageReports;
@@ -1257,7 +1257,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserUsageReportResourceApi', () {
+  unittest.group('resource-UserUsageReportResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).userUsageReport;

@@ -24,7 +24,7 @@
 ///
 /// Create an instance of [IndexingApi] to access these resources:
 ///
-/// - [UrlNotificationsResourceApi]
+/// - [UrlNotificationsResource]
 library indexing.v3;
 
 import 'dart:async' as async;
@@ -46,8 +46,8 @@ class IndexingApi {
 
   final commons.ApiRequester _requester;
 
-  UrlNotificationsResourceApi get urlNotifications =>
-      UrlNotificationsResourceApi(_requester);
+  UrlNotificationsResource get urlNotifications =>
+      UrlNotificationsResource(_requester);
 
   IndexingApi(http.Client client,
       {core.String rootUrl = 'https://indexing.googleapis.com/',
@@ -56,11 +56,10 @@ class IndexingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class UrlNotificationsResourceApi {
+class UrlNotificationsResource {
   final commons.ApiRequester _requester;
 
-  UrlNotificationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  UrlNotificationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets metadata about a Web Document. This method can _only_ be used to
   /// query URLs that were previously seen in successful Indexing API

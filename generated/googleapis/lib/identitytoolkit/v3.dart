@@ -24,7 +24,7 @@
 ///
 /// Create an instance of [IdentityToolkitApi] to access these resources:
 ///
-/// - [RelyingpartyResourceApi]
+/// - [RelyingpartyResource]
 library identitytoolkit.v3;
 
 import 'dart:async' as async;
@@ -51,8 +51,7 @@ class IdentityToolkitApi {
 
   final commons.ApiRequester _requester;
 
-  RelyingpartyResourceApi get relyingparty =>
-      RelyingpartyResourceApi(_requester);
+  RelyingpartyResource get relyingparty => RelyingpartyResource(_requester);
 
   IdentityToolkitApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -61,10 +60,10 @@ class IdentityToolkitApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class RelyingpartyResourceApi {
+class RelyingpartyResource {
   final commons.ApiRequester _requester;
 
-  RelyingpartyResourceApi(commons.ApiRequester client) : _requester = client;
+  RelyingpartyResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates the URI used by the IdP to authenticate the user.
   ///

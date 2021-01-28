@@ -23,11 +23,11 @@
 ///
 /// Create an instance of [HangoutsChatApi] to access these resources:
 ///
-/// - [MediaResourceApi]
-/// - [SpacesResourceApi]
-///   - [SpacesMembersResourceApi]
-///   - [SpacesMessagesResourceApi]
-///     - [SpacesMessagesAttachmentsResourceApi]
+/// - [MediaResource]
+/// - [SpacesResource]
+///   - [SpacesMembersResource]
+///   - [SpacesMessagesResource]
+///     - [SpacesMessagesAttachmentsResource]
 library chat.v1;
 
 import 'dart:async' as async;
@@ -54,8 +54,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class HangoutsChatApi {
   final commons.ApiRequester _requester;
 
-  MediaResourceApi get media => MediaResourceApi(_requester);
-  SpacesResourceApi get spaces => SpacesResourceApi(_requester);
+  MediaResource get media => MediaResource(_requester);
+  SpacesResource get spaces => SpacesResource(_requester);
 
   HangoutsChatApi(http.Client client,
       {core.String rootUrl = 'https://chat.googleapis.com/',
@@ -64,10 +64,10 @@ class HangoutsChatApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class MediaResourceApi {
+class MediaResource {
   final commons.ApiRequester _requester;
 
-  MediaResourceApi(commons.ApiRequester client) : _requester = client;
+  MediaResource(commons.ApiRequester client) : _requester = client;
 
   /// Downloads media. Download is supported on the URI
   /// `/v1/media/{+name}?alt=media`.
@@ -139,14 +139,13 @@ class MediaResourceApi {
   }
 }
 
-class SpacesResourceApi {
+class SpacesResource {
   final commons.ApiRequester _requester;
 
-  SpacesMembersResourceApi get members => SpacesMembersResourceApi(_requester);
-  SpacesMessagesResourceApi get messages =>
-      SpacesMessagesResourceApi(_requester);
+  SpacesMembersResource get members => SpacesMembersResource(_requester);
+  SpacesMessagesResource get messages => SpacesMessagesResource(_requester);
 
-  SpacesResourceApi(commons.ApiRequester client) : _requester = client;
+  SpacesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a space.
   ///
@@ -261,10 +260,10 @@ class SpacesResourceApi {
   }
 }
 
-class SpacesMembersResourceApi {
+class SpacesMembersResource {
   final commons.ApiRequester _requester;
 
-  SpacesMembersResourceApi(commons.ApiRequester client) : _requester = client;
+  SpacesMembersResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a membership.
   ///
@@ -391,13 +390,13 @@ class SpacesMembersResourceApi {
   }
 }
 
-class SpacesMessagesResourceApi {
+class SpacesMessagesResource {
   final commons.ApiRequester _requester;
 
-  SpacesMessagesAttachmentsResourceApi get attachments =>
-      SpacesMessagesAttachmentsResourceApi(_requester);
+  SpacesMessagesAttachmentsResource get attachments =>
+      SpacesMessagesAttachmentsResource(_requester);
 
-  SpacesMessagesResourceApi(commons.ApiRequester client) : _requester = client;
+  SpacesMessagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a message.
   ///
@@ -643,10 +642,10 @@ class SpacesMessagesResourceApi {
   }
 }
 
-class SpacesMessagesAttachmentsResourceApi {
+class SpacesMessagesAttachmentsResource {
   final commons.ApiRequester _requester;
 
-  SpacesMessagesAttachmentsResourceApi(commons.ApiRequester client)
+  SpacesMessagesAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the metadata of a message attachment. The attachment data is fetched

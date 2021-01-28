@@ -558,7 +558,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ClaimsResourceApi', () {
+  unittest.group('resource-ClaimsResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).claims;
@@ -637,7 +637,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PagesResourceApi', () {
+  unittest.group('resource-PagesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).pages;

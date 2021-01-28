@@ -1916,7 +1916,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AclResourceApi', () {
+  unittest.group('resource-AclResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
@@ -2411,7 +2411,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CalendarListResourceApi', () {
+  unittest.group('resource-CalendarListResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
@@ -2852,7 +2852,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CalendarsResourceApi', () {
+  unittest.group('resource-CalendarsResource', () {
     unittest.test('method--clear', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
@@ -3185,7 +3185,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelsResourceApi', () {
+  unittest.group('resource-ChannelsResource', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).channels;
@@ -3239,7 +3239,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ColorsResourceApi', () {
+  unittest.group('resource-ColorsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).colors;
@@ -3288,7 +3288,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EventsResourceApi', () {
+  unittest.group('resource-EventsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
@@ -4296,7 +4296,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FreebusyResourceApi', () {
+  unittest.group('resource-FreebusyResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).freebusy;
@@ -4352,7 +4352,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SettingsResourceApi', () {
+  unittest.group('resource-SettingsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).settings;

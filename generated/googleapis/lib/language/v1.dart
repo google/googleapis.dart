@@ -25,7 +25,7 @@
 ///
 /// Create an instance of [CloudNaturalLanguageApi] to access these resources:
 ///
-/// - [DocumentsResourceApi]
+/// - [DocumentsResource]
 library language.v1;
 
 import 'dart:async' as async;
@@ -54,7 +54,7 @@ class CloudNaturalLanguageApi {
 
   final commons.ApiRequester _requester;
 
-  DocumentsResourceApi get documents => DocumentsResourceApi(_requester);
+  DocumentsResource get documents => DocumentsResource(_requester);
 
   CloudNaturalLanguageApi(http.Client client,
       {core.String rootUrl = 'https://language.googleapis.com/',
@@ -63,10 +63,10 @@ class CloudNaturalLanguageApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DocumentsResourceApi {
+class DocumentsResource {
   final commons.ApiRequester _requester;
 
-  DocumentsResourceApi(commons.ApiRequester client) : _requester = client;
+  DocumentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Finds named entities (currently proper names and common nouns) in the text
   /// along with entity types, salience, mentions for each entity, and other

@@ -22,8 +22,8 @@
 ///
 /// Create an instance of [FactCheckToolsApi] to access these resources:
 ///
-/// - [ClaimsResourceApi]
-/// - [PagesResourceApi]
+/// - [ClaimsResource]
+/// - [PagesResource]
 library factchecktools.v1alpha1;
 
 import 'dart:async' as async;
@@ -45,8 +45,8 @@ class FactCheckToolsApi {
 
   final commons.ApiRequester _requester;
 
-  ClaimsResourceApi get claims => ClaimsResourceApi(_requester);
-  PagesResourceApi get pages => PagesResourceApi(_requester);
+  ClaimsResource get claims => ClaimsResource(_requester);
+  PagesResource get pages => PagesResource(_requester);
 
   FactCheckToolsApi(http.Client client,
       {core.String rootUrl = 'https://factchecktools.googleapis.com/',
@@ -55,10 +55,10 @@ class FactCheckToolsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ClaimsResourceApi {
+class ClaimsResource {
   final commons.ApiRequester _requester;
 
-  ClaimsResourceApi(commons.ApiRequester client) : _requester = client;
+  ClaimsResource(commons.ApiRequester client) : _requester = client;
 
   /// Search through fact-checked claims.
   ///
@@ -165,10 +165,10 @@ class ClaimsResourceApi {
   }
 }
 
-class PagesResourceApi {
+class PagesResource {
   final commons.ApiRequester _requester;
 
-  PagesResourceApi(commons.ApiRequester client) : _requester = client;
+  PagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create `ClaimReview` markup on a page.
   ///

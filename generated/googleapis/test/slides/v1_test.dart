@@ -4684,7 +4684,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PresentationsResourceApi', () {
+  unittest.group('resource-PresentationsResource', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
       var res = api.SlidesApi(mock).presentations;
@@ -4848,7 +4848,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PresentationsPagesResourceApi', () {
+  unittest.group('resource-PresentationsPagesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SlidesApi(mock).presentations.pages;

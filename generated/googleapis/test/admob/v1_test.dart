@@ -895,7 +895,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts;
@@ -1001,7 +1001,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsMediationReportResourceApi', () {
+  unittest.group('resource-AccountsMediationReportResource', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts.mediationReport;
@@ -1058,7 +1058,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsNetworkReportResourceApi', () {
+  unittest.group('resource-AccountsNetworkReportResource', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts.networkReport;

@@ -23,26 +23,26 @@
 ///
 /// Create an instance of [AndroidPublisherApi] to access these resources:
 ///
-/// - [EditsResourceApi]
-///   - [EditsApksResourceApi]
-///   - [EditsBundlesResourceApi]
-///   - [EditsDeobfuscationfilesResourceApi]
-///   - [EditsDetailsResourceApi]
-///   - [EditsExpansionfilesResourceApi]
-///   - [EditsImagesResourceApi]
-///   - [EditsListingsResourceApi]
-///   - [EditsTestersResourceApi]
-///   - [EditsTracksResourceApi]
-/// - [InappproductsResourceApi]
-/// - [InternalappsharingartifactsResourceApi]
-/// - [OrdersResourceApi]
-/// - [PurchasesResourceApi]
-///   - [PurchasesProductsResourceApi]
-///   - [PurchasesSubscriptionsResourceApi]
-///   - [PurchasesVoidedpurchasesResourceApi]
-/// - [ReviewsResourceApi]
-/// - [SystemapksResourceApi]
-///   - [SystemapksVariantsResourceApi]
+/// - [EditsResource]
+///   - [EditsApksResource]
+///   - [EditsBundlesResource]
+///   - [EditsDeobfuscationfilesResource]
+///   - [EditsDetailsResource]
+///   - [EditsExpansionfilesResource]
+///   - [EditsImagesResource]
+///   - [EditsListingsResource]
+///   - [EditsTestersResource]
+///   - [EditsTracksResource]
+/// - [InappproductsResource]
+/// - [InternalappsharingartifactsResource]
+/// - [OrdersResource]
+/// - [PurchasesResource]
+///   - [PurchasesProductsResource]
+///   - [PurchasesSubscriptionsResource]
+///   - [PurchasesVoidedpurchasesResource]
+/// - [ReviewsResource]
+/// - [SystemapksResource]
+///   - [SystemapksVariantsResource]
 library androidpublisher.v3;
 
 import 'dart:async' as async;
@@ -73,15 +73,14 @@ class AndroidPublisherApi {
 
   final commons.ApiRequester _requester;
 
-  EditsResourceApi get edits => EditsResourceApi(_requester);
-  InappproductsResourceApi get inappproducts =>
-      InappproductsResourceApi(_requester);
-  InternalappsharingartifactsResourceApi get internalappsharingartifacts =>
-      InternalappsharingartifactsResourceApi(_requester);
-  OrdersResourceApi get orders => OrdersResourceApi(_requester);
-  PurchasesResourceApi get purchases => PurchasesResourceApi(_requester);
-  ReviewsResourceApi get reviews => ReviewsResourceApi(_requester);
-  SystemapksResourceApi get systemapks => SystemapksResourceApi(_requester);
+  EditsResource get edits => EditsResource(_requester);
+  InappproductsResource get inappproducts => InappproductsResource(_requester);
+  InternalappsharingartifactsResource get internalappsharingartifacts =>
+      InternalappsharingartifactsResource(_requester);
+  OrdersResource get orders => OrdersResource(_requester);
+  PurchasesResource get purchases => PurchasesResource(_requester);
+  ReviewsResource get reviews => ReviewsResource(_requester);
+  SystemapksResource get systemapks => SystemapksResource(_requester);
 
   AndroidPublisherApi(http.Client client,
       {core.String rootUrl = 'https://androidpublisher.googleapis.com/',
@@ -90,22 +89,22 @@ class AndroidPublisherApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class EditsResourceApi {
+class EditsResource {
   final commons.ApiRequester _requester;
 
-  EditsApksResourceApi get apks => EditsApksResourceApi(_requester);
-  EditsBundlesResourceApi get bundles => EditsBundlesResourceApi(_requester);
-  EditsDeobfuscationfilesResourceApi get deobfuscationfiles =>
-      EditsDeobfuscationfilesResourceApi(_requester);
-  EditsDetailsResourceApi get details => EditsDetailsResourceApi(_requester);
-  EditsExpansionfilesResourceApi get expansionfiles =>
-      EditsExpansionfilesResourceApi(_requester);
-  EditsImagesResourceApi get images => EditsImagesResourceApi(_requester);
-  EditsListingsResourceApi get listings => EditsListingsResourceApi(_requester);
-  EditsTestersResourceApi get testers => EditsTestersResourceApi(_requester);
-  EditsTracksResourceApi get tracks => EditsTracksResourceApi(_requester);
+  EditsApksResource get apks => EditsApksResource(_requester);
+  EditsBundlesResource get bundles => EditsBundlesResource(_requester);
+  EditsDeobfuscationfilesResource get deobfuscationfiles =>
+      EditsDeobfuscationfilesResource(_requester);
+  EditsDetailsResource get details => EditsDetailsResource(_requester);
+  EditsExpansionfilesResource get expansionfiles =>
+      EditsExpansionfilesResource(_requester);
+  EditsImagesResource get images => EditsImagesResource(_requester);
+  EditsListingsResource get listings => EditsListingsResource(_requester);
+  EditsTestersResource get testers => EditsTestersResource(_requester);
+  EditsTracksResource get tracks => EditsTracksResource(_requester);
 
-  EditsResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsResource(commons.ApiRequester client) : _requester = client;
 
   /// Commits an app edit.
   ///
@@ -404,10 +403,10 @@ class EditsResourceApi {
   }
 }
 
-class EditsApksResourceApi {
+class EditsApksResource {
   final commons.ApiRequester _requester;
 
-  EditsApksResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsApksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new APK without uploading the APK itself to Google Play, instead
   /// hosting the APK at a specified URL. This function is only available to
@@ -626,10 +625,10 @@ class EditsApksResourceApi {
   }
 }
 
-class EditsBundlesResourceApi {
+class EditsBundlesResource {
   final commons.ApiRequester _requester;
 
-  EditsBundlesResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsBundlesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all current Android App Bundles of the app and edit.
   ///
@@ -793,10 +792,10 @@ class EditsBundlesResourceApi {
   }
 }
 
-class EditsDeobfuscationfilesResourceApi {
+class EditsDeobfuscationfilesResource {
   final commons.ApiRequester _requester;
 
-  EditsDeobfuscationfilesResourceApi(commons.ApiRequester client)
+  EditsDeobfuscationfilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Uploads a new deobfuscation file and attaches to the specified APK.
@@ -913,10 +912,10 @@ class EditsDeobfuscationfilesResourceApi {
   }
 }
 
-class EditsDetailsResourceApi {
+class EditsDetailsResource {
   final commons.ApiRequester _requester;
 
-  EditsDetailsResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsDetailsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets details of an app.
   ///
@@ -1114,10 +1113,10 @@ class EditsDetailsResourceApi {
   }
 }
 
-class EditsExpansionfilesResourceApi {
+class EditsExpansionfilesResource {
   final commons.ApiRequester _requester;
 
-  EditsExpansionfilesResourceApi(commons.ApiRequester client)
+  EditsExpansionfilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Fetches the expansion file configuration for the specified APK.
@@ -1494,10 +1493,10 @@ class EditsExpansionfilesResourceApi {
   }
 }
 
-class EditsImagesResourceApi {
+class EditsImagesResource {
   final commons.ApiRequester _requester;
 
-  EditsImagesResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsImagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the image (specified by id) from the edit.
   ///
@@ -1894,10 +1893,10 @@ class EditsImagesResourceApi {
   }
 }
 
-class EditsListingsResourceApi {
+class EditsListingsResource {
   final commons.ApiRequester _requester;
 
-  EditsListingsResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsListingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a localized store listing.
   ///
@@ -2305,10 +2304,10 @@ class EditsListingsResourceApi {
   }
 }
 
-class EditsTestersResourceApi {
+class EditsTestersResource {
   final commons.ApiRequester _requester;
 
-  EditsTestersResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsTestersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets testers.
   ///
@@ -2524,10 +2523,10 @@ class EditsTestersResourceApi {
   }
 }
 
-class EditsTracksResourceApi {
+class EditsTracksResource {
   final commons.ApiRequester _requester;
 
-  EditsTracksResourceApi(commons.ApiRequester client) : _requester = client;
+  EditsTracksResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a track.
   ///
@@ -2804,10 +2803,10 @@ class EditsTracksResourceApi {
   }
 }
 
-class InappproductsResourceApi {
+class InappproductsResource {
   final commons.ApiRequester _requester;
 
-  InappproductsResourceApi(commons.ApiRequester client) : _requester = client;
+  InappproductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an in-app product (i.e. a managed product or a subscriptions).
   ///
@@ -3224,10 +3223,10 @@ class InappproductsResourceApi {
   }
 }
 
-class InternalappsharingartifactsResourceApi {
+class InternalappsharingartifactsResource {
   final commons.ApiRequester _requester;
 
-  InternalappsharingartifactsResourceApi(commons.ApiRequester client)
+  InternalappsharingartifactsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Uploads an APK to internal app sharing. If you are using the Google API
@@ -3391,10 +3390,10 @@ class InternalappsharingartifactsResourceApi {
   }
 }
 
-class OrdersResourceApi {
+class OrdersResource {
   final commons.ApiRequester _requester;
 
-  OrdersResourceApi(commons.ApiRequester client) : _requester = client;
+  OrdersResource(commons.ApiRequester client) : _requester = client;
 
   /// Refund a user's subscription or in-app purchase order.
   ///
@@ -3469,24 +3468,23 @@ class OrdersResourceApi {
   }
 }
 
-class PurchasesResourceApi {
+class PurchasesResource {
   final commons.ApiRequester _requester;
 
-  PurchasesProductsResourceApi get products =>
-      PurchasesProductsResourceApi(_requester);
-  PurchasesSubscriptionsResourceApi get subscriptions =>
-      PurchasesSubscriptionsResourceApi(_requester);
-  PurchasesVoidedpurchasesResourceApi get voidedpurchases =>
-      PurchasesVoidedpurchasesResourceApi(_requester);
+  PurchasesProductsResource get products =>
+      PurchasesProductsResource(_requester);
+  PurchasesSubscriptionsResource get subscriptions =>
+      PurchasesSubscriptionsResource(_requester);
+  PurchasesVoidedpurchasesResource get voidedpurchases =>
+      PurchasesVoidedpurchasesResource(_requester);
 
-  PurchasesResourceApi(commons.ApiRequester client) : _requester = client;
+  PurchasesResource(commons.ApiRequester client) : _requester = client;
 }
 
-class PurchasesProductsResourceApi {
+class PurchasesProductsResource {
   final commons.ApiRequester _requester;
 
-  PurchasesProductsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PurchasesProductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Acknowledges a purchase of an inapp item.
   ///
@@ -3637,10 +3635,10 @@ class PurchasesProductsResourceApi {
   }
 }
 
-class PurchasesSubscriptionsResourceApi {
+class PurchasesSubscriptionsResource {
   final commons.ApiRequester _requester;
 
-  PurchasesSubscriptionsResourceApi(commons.ApiRequester client)
+  PurchasesSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Acknowledges a subscription purchase.
@@ -4080,10 +4078,10 @@ class PurchasesSubscriptionsResourceApi {
   }
 }
 
-class PurchasesVoidedpurchasesResourceApi {
+class PurchasesVoidedpurchasesResource {
   final commons.ApiRequester _requester;
 
-  PurchasesVoidedpurchasesResourceApi(commons.ApiRequester client)
+  PurchasesVoidedpurchasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the purchases that were canceled, refunded or charged-back.
@@ -4198,10 +4196,10 @@ class PurchasesVoidedpurchasesResourceApi {
   }
 }
 
-class ReviewsResourceApi {
+class ReviewsResource {
   final commons.ApiRequester _requester;
 
-  ReviewsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReviewsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a single review.
   ///
@@ -4413,20 +4411,19 @@ class ReviewsResourceApi {
   }
 }
 
-class SystemapksResourceApi {
+class SystemapksResource {
   final commons.ApiRequester _requester;
 
-  SystemapksVariantsResourceApi get variants =>
-      SystemapksVariantsResourceApi(_requester);
+  SystemapksVariantsResource get variants =>
+      SystemapksVariantsResource(_requester);
 
-  SystemapksResourceApi(commons.ApiRequester client) : _requester = client;
+  SystemapksResource(commons.ApiRequester client) : _requester = client;
 }
 
-class SystemapksVariantsResourceApi {
+class SystemapksVariantsResource {
   final commons.ApiRequester _requester;
 
-  SystemapksVariantsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SystemapksVariantsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an APK which is suitable for inclusion in a system image from an
   /// already uploaded Android App Bundle.

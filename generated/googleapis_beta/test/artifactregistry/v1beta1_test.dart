@@ -1251,7 +1251,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ArtifactRegistryApi(mock).projects.locations;
@@ -1361,7 +1361,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ArtifactRegistryApi(mock).projects.locations.operations;
@@ -1471,7 +1471,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRepositoriesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRepositoriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ArtifactRegistryApi(mock).projects.locations.repositories;
@@ -1902,7 +1902,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRepositoriesFilesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRepositoriesFilesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
@@ -2014,8 +2014,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRepositoriesPackagesResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsRepositoriesPackagesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ArtifactRegistryApi(mock)
@@ -2182,8 +2181,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsLocationsRepositoriesPackagesTagsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRepositoriesPackagesTagsResource',
+      () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ArtifactRegistryApi(mock)
@@ -2478,7 +2477,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsRepositoriesPackagesVersionsResourceApi', () {
+      'resource-ProjectsLocationsRepositoriesPackagesVersionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ArtifactRegistryApi(mock)

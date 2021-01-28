@@ -1667,7 +1667,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsBucketsResourceApi', () {
+  unittest.group('resource-BillingAccountsBucketsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.buckets;
@@ -1717,7 +1717,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsExclusionsResourceApi', () {
+  unittest.group('resource-BillingAccountsExclusionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.exclusions;
@@ -1982,7 +1982,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsLocationsBucketsResourceApi', () {
+  unittest.group('resource-BillingAccountsLocationsBucketsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
@@ -2256,7 +2256,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsLogsResourceApi', () {
+  unittest.group('resource-BillingAccountsLogsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.logs;
@@ -2363,7 +2363,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingAccountsSinksResourceApi', () {
+  unittest.group('resource-BillingAccountsSinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
@@ -2700,7 +2700,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EntriesResourceApi', () {
+  unittest.group('resource-EntriesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).entries;
@@ -2804,7 +2804,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ExclusionsResourceApi', () {
+  unittest.group('resource-ExclusionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).exclusions;
@@ -3069,7 +3069,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersExclusionsResourceApi', () {
+  unittest.group('resource-FoldersExclusionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.exclusions;
@@ -3334,7 +3334,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersLocationsBucketsResourceApi', () {
+  unittest.group('resource-FoldersLocationsBucketsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
@@ -3656,7 +3656,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersLogsResourceApi', () {
+  unittest.group('resource-FoldersLogsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.logs;
@@ -3763,7 +3763,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersSinksResourceApi', () {
+  unittest.group('resource-FoldersSinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
@@ -4100,7 +4100,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LocationsBucketsResourceApi', () {
+  unittest.group('resource-LocationsBucketsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
@@ -4422,7 +4422,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LogsResourceApi', () {
+  unittest.group('resource-LogsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).logs;
@@ -4529,7 +4529,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MonitoredResourceDescriptorsResourceApi', () {
+  unittest.group('resource-MonitoredResourceDescriptorsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).monitoredResourceDescriptors;
@@ -4588,7 +4588,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsResourceApi', () {
+  unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--getCmekSettings', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations;
@@ -4695,7 +4695,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsExclusionsResourceApi', () {
+  unittest.group('resource-OrganizationsExclusionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.exclusions;
@@ -4960,7 +4960,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsLocationsBucketsResourceApi', () {
+  unittest.group('resource-OrganizationsLocationsBucketsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
@@ -5282,7 +5282,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsLogsResourceApi', () {
+  unittest.group('resource-OrganizationsLogsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.logs;
@@ -5389,7 +5389,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSinksResourceApi', () {
+  unittest.group('resource-OrganizationsSinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
@@ -5726,7 +5726,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsExclusionsResourceApi', () {
+  unittest.group('resource-ProjectsExclusionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.exclusions;
@@ -5991,7 +5991,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsBucketsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsBucketsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
@@ -6313,7 +6313,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLogsResourceApi', () {
+  unittest.group('resource-ProjectsLogsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.logs;
@@ -6420,7 +6420,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsMetricsResourceApi', () {
+  unittest.group('resource-ProjectsMetricsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.metrics;
@@ -6681,7 +6681,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSinksResourceApi', () {
+  unittest.group('resource-ProjectsSinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
@@ -7018,7 +7018,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SinksResourceApi', () {
+  unittest.group('resource-SinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).sinks;
@@ -7293,7 +7293,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V2ResourceApi', () {
+  unittest.group('resource-V2Resource', () {
     unittest.test('method--getCmekSettings', () {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).v2;

@@ -25,31 +25,31 @@
 ///
 /// Create an instance of [DirectoryApi] to access these resources:
 ///
-/// - [AspsResourceApi]
-/// - [ChannelsResourceApi]
-/// - [ChromeosdevicesResourceApi]
-/// - [CustomersResourceApi]
-/// - [DomainAliasesResourceApi]
-/// - [DomainsResourceApi]
-/// - [GroupsResourceApi]
-///   - [GroupsAliasesResourceApi]
-/// - [MembersResourceApi]
-/// - [MobiledevicesResourceApi]
-/// - [OrgunitsResourceApi]
-/// - [PrivilegesResourceApi]
-/// - [ResourcesResourceApi]
-///   - [ResourcesBuildingsResourceApi]
-///   - [ResourcesCalendarsResourceApi]
-///   - [ResourcesFeaturesResourceApi]
-/// - [RoleAssignmentsResourceApi]
-/// - [RolesResourceApi]
-/// - [SchemasResourceApi]
-/// - [TokensResourceApi]
-/// - [TwoStepVerificationResourceApi]
-/// - [UsersResourceApi]
-///   - [UsersAliasesResourceApi]
-///   - [UsersPhotosResourceApi]
-/// - [VerificationCodesResourceApi]
+/// - [AspsResource]
+/// - [ChannelsResource]
+/// - [ChromeosdevicesResource]
+/// - [CustomersResource]
+/// - [DomainAliasesResource]
+/// - [DomainsResource]
+/// - [GroupsResource]
+///   - [GroupsAliasesResource]
+/// - [MembersResource]
+/// - [MobiledevicesResource]
+/// - [OrgunitsResource]
+/// - [PrivilegesResource]
+/// - [ResourcesResource]
+///   - [ResourcesBuildingsResource]
+///   - [ResourcesCalendarsResource]
+///   - [ResourcesFeaturesResource]
+/// - [RoleAssignmentsResource]
+/// - [RolesResource]
+/// - [SchemasResource]
+/// - [TokensResource]
+/// - [TwoStepVerificationResource]
+/// - [UsersResource]
+///   - [UsersAliasesResource]
+///   - [UsersPhotosResource]
+/// - [VerificationCodesResource]
 library admin.directory_v1;
 
 import 'dart:async' as async;
@@ -179,31 +179,29 @@ class DirectoryApi {
 
   final commons.ApiRequester _requester;
 
-  AspsResourceApi get asps => AspsResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  ChromeosdevicesResourceApi get chromeosdevices =>
-      ChromeosdevicesResourceApi(_requester);
-  CustomersResourceApi get customers => CustomersResourceApi(_requester);
-  DomainAliasesResourceApi get domainAliases =>
-      DomainAliasesResourceApi(_requester);
-  DomainsResourceApi get domains => DomainsResourceApi(_requester);
-  GroupsResourceApi get groups => GroupsResourceApi(_requester);
-  MembersResourceApi get members => MembersResourceApi(_requester);
-  MobiledevicesResourceApi get mobiledevices =>
-      MobiledevicesResourceApi(_requester);
-  OrgunitsResourceApi get orgunits => OrgunitsResourceApi(_requester);
-  PrivilegesResourceApi get privileges => PrivilegesResourceApi(_requester);
-  ResourcesResourceApi get resources => ResourcesResourceApi(_requester);
-  RoleAssignmentsResourceApi get roleAssignments =>
-      RoleAssignmentsResourceApi(_requester);
-  RolesResourceApi get roles => RolesResourceApi(_requester);
-  SchemasResourceApi get schemas => SchemasResourceApi(_requester);
-  TokensResourceApi get tokens => TokensResourceApi(_requester);
-  TwoStepVerificationResourceApi get twoStepVerification =>
-      TwoStepVerificationResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
-  VerificationCodesResourceApi get verificationCodes =>
-      VerificationCodesResourceApi(_requester);
+  AspsResource get asps => AspsResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  ChromeosdevicesResource get chromeosdevices =>
+      ChromeosdevicesResource(_requester);
+  CustomersResource get customers => CustomersResource(_requester);
+  DomainAliasesResource get domainAliases => DomainAliasesResource(_requester);
+  DomainsResource get domains => DomainsResource(_requester);
+  GroupsResource get groups => GroupsResource(_requester);
+  MembersResource get members => MembersResource(_requester);
+  MobiledevicesResource get mobiledevices => MobiledevicesResource(_requester);
+  OrgunitsResource get orgunits => OrgunitsResource(_requester);
+  PrivilegesResource get privileges => PrivilegesResource(_requester);
+  ResourcesResource get resources => ResourcesResource(_requester);
+  RoleAssignmentsResource get roleAssignments =>
+      RoleAssignmentsResource(_requester);
+  RolesResource get roles => RolesResource(_requester);
+  SchemasResource get schemas => SchemasResource(_requester);
+  TokensResource get tokens => TokensResource(_requester);
+  TwoStepVerificationResource get twoStepVerification =>
+      TwoStepVerificationResource(_requester);
+  UsersResource get users => UsersResource(_requester);
+  VerificationCodesResource get verificationCodes =>
+      VerificationCodesResource(_requester);
 
   DirectoryApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -212,10 +210,10 @@ class DirectoryApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AspsResourceApi {
+class AspsResource {
   final commons.ApiRequester _requester;
 
-  AspsResourceApi(commons.ApiRequester client) : _requester = client;
+  AspsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete an ASP issued by a user.
   ///
@@ -391,10 +389,10 @@ class AspsResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Stop watching resources through this channel.
   ///
@@ -447,10 +445,10 @@ class ChannelsResourceApi {
   }
 }
 
-class ChromeosdevicesResourceApi {
+class ChromeosdevicesResource {
   final commons.ApiRequester _requester;
 
-  ChromeosdevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ChromeosdevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Take action on Chrome OS Device
   ///
@@ -925,10 +923,10 @@ class ChromeosdevicesResourceApi {
   }
 }
 
-class CustomersResourceApi {
+class CustomersResource {
   final commons.ApiRequester _requester;
 
-  CustomersResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a customer.
   ///
@@ -1096,10 +1094,10 @@ class CustomersResourceApi {
   }
 }
 
-class DomainAliasesResourceApi {
+class DomainAliasesResource {
   final commons.ApiRequester _requester;
 
-  DomainAliasesResourceApi(commons.ApiRequester client) : _requester = client;
+  DomainAliasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a domain Alias of the customer.
   ///
@@ -1340,10 +1338,10 @@ class DomainAliasesResourceApi {
   }
 }
 
-class DomainsResourceApi {
+class DomainsResource {
   final commons.ApiRequester _requester;
 
-  DomainsResourceApi(commons.ApiRequester client) : _requester = client;
+  DomainsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a domain of the customer.
   ///
@@ -1574,12 +1572,12 @@ class DomainsResourceApi {
   }
 }
 
-class GroupsResourceApi {
+class GroupsResource {
   final commons.ApiRequester _requester;
 
-  GroupsAliasesResourceApi get aliases => GroupsAliasesResourceApi(_requester);
+  GroupsAliasesResource get aliases => GroupsAliasesResource(_requester);
 
-  GroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  GroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete Group
   ///
@@ -1958,10 +1956,10 @@ class GroupsResourceApi {
   }
 }
 
-class GroupsAliasesResourceApi {
+class GroupsAliasesResource {
   final commons.ApiRequester _requester;
 
-  GroupsAliasesResourceApi(commons.ApiRequester client) : _requester = client;
+  GroupsAliasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Remove a alias for the group
   ///
@@ -2133,10 +2131,10 @@ class GroupsAliasesResourceApi {
   }
 }
 
-class MembersResourceApi {
+class MembersResource {
   final commons.ApiRequester _requester;
 
-  MembersResourceApi(commons.ApiRequester client) : _requester = client;
+  MembersResource(commons.ApiRequester client) : _requester = client;
 
   /// Remove membership.
   ///
@@ -2592,10 +2590,10 @@ class MembersResourceApi {
   }
 }
 
-class MobiledevicesResourceApi {
+class MobiledevicesResource {
   final commons.ApiRequester _requester;
 
-  MobiledevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  MobiledevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Take action on Mobile Device
   ///
@@ -2906,10 +2904,10 @@ class MobiledevicesResourceApi {
   }
 }
 
-class OrgunitsResourceApi {
+class OrgunitsResource {
   final commons.ApiRequester _requester;
 
-  OrgunitsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrgunitsResource(commons.ApiRequester client) : _requester = client;
 
   /// Remove organizational unit
   ///
@@ -3291,10 +3289,10 @@ class OrgunitsResourceApi {
   }
 }
 
-class PrivilegesResourceApi {
+class PrivilegesResource {
   final commons.ApiRequester _requester;
 
-  PrivilegesResourceApi(commons.ApiRequester client) : _requester = client;
+  PrivilegesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a paginated list of all privileges for a customer.
   ///
@@ -3350,24 +3348,23 @@ class PrivilegesResourceApi {
   }
 }
 
-class ResourcesResourceApi {
+class ResourcesResource {
   final commons.ApiRequester _requester;
 
-  ResourcesBuildingsResourceApi get buildings =>
-      ResourcesBuildingsResourceApi(_requester);
-  ResourcesCalendarsResourceApi get calendars =>
-      ResourcesCalendarsResourceApi(_requester);
-  ResourcesFeaturesResourceApi get features =>
-      ResourcesFeaturesResourceApi(_requester);
+  ResourcesBuildingsResource get buildings =>
+      ResourcesBuildingsResource(_requester);
+  ResourcesCalendarsResource get calendars =>
+      ResourcesCalendarsResource(_requester);
+  ResourcesFeaturesResource get features =>
+      ResourcesFeaturesResource(_requester);
 
-  ResourcesResourceApi(commons.ApiRequester client) : _requester = client;
+  ResourcesResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ResourcesBuildingsResourceApi {
+class ResourcesBuildingsResource {
   final commons.ApiRequester _requester;
 
-  ResourcesBuildingsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ResourcesBuildingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a building.
   ///
@@ -3798,11 +3795,10 @@ class ResourcesBuildingsResourceApi {
   }
 }
 
-class ResourcesCalendarsResourceApi {
+class ResourcesCalendarsResource {
   final commons.ApiRequester _requester;
 
-  ResourcesCalendarsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ResourcesCalendarsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a calendar resource.
   ///
@@ -4221,11 +4217,10 @@ class ResourcesCalendarsResourceApi {
   }
 }
 
-class ResourcesFeaturesResourceApi {
+class ResourcesFeaturesResource {
   final commons.ApiRequester _requester;
 
-  ResourcesFeaturesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ResourcesFeaturesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a feature.
   ///
@@ -4679,10 +4674,10 @@ class ResourcesFeaturesResourceApi {
   }
 }
 
-class RoleAssignmentsResourceApi {
+class RoleAssignmentsResource {
   final commons.ApiRequester _requester;
 
-  RoleAssignmentsResourceApi(commons.ApiRequester client) : _requester = client;
+  RoleAssignmentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a role assignment.
   ///
@@ -4944,10 +4939,10 @@ class RoleAssignmentsResourceApi {
   }
 }
 
-class RolesResourceApi {
+class RolesResource {
   final commons.ApiRequester _requester;
 
-  RolesResourceApi(commons.ApiRequester client) : _requester = client;
+  RolesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a role.
   ///
@@ -5321,10 +5316,10 @@ class RolesResourceApi {
   }
 }
 
-class SchemasResourceApi {
+class SchemasResource {
   final commons.ApiRequester _requester;
 
-  SchemasResourceApi(commons.ApiRequester client) : _requester = client;
+  SchemasResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete schema
   ///
@@ -5685,10 +5680,10 @@ class SchemasResourceApi {
   }
 }
 
-class TokensResourceApi {
+class TokensResource {
   final commons.ApiRequester _requester;
 
-  TokensResourceApi(commons.ApiRequester client) : _requester = client;
+  TokensResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete all access tokens issued by a user for an application.
   ///
@@ -5865,10 +5860,10 @@ class TokensResourceApi {
   }
 }
 
-class TwoStepVerificationResourceApi {
+class TwoStepVerificationResource {
   final commons.ApiRequester _requester;
 
-  TwoStepVerificationResourceApi(commons.ApiRequester client)
+  TwoStepVerificationResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Turn off 2-Step Verification for user.
@@ -5925,13 +5920,13 @@ class TwoStepVerificationResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersAliasesResourceApi get aliases => UsersAliasesResourceApi(_requester);
-  UsersPhotosResourceApi get photos => UsersPhotosResourceApi(_requester);
+  UsersAliasesResource get aliases => UsersAliasesResource(_requester);
+  UsersPhotosResource get photos => UsersPhotosResource(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete user
   ///
@@ -6696,10 +6691,10 @@ class UsersResourceApi {
   }
 }
 
-class UsersAliasesResourceApi {
+class UsersAliasesResource {
   final commons.ApiRequester _requester;
 
-  UsersAliasesResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersAliasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Remove a alias for the user
   ///
@@ -6939,10 +6934,10 @@ class UsersAliasesResourceApi {
   }
 }
 
-class UsersPhotosResourceApi {
+class UsersPhotosResource {
   final commons.ApiRequester _requester;
 
-  UsersPhotosResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersPhotosResource(commons.ApiRequester client) : _requester = client;
 
   /// Remove photos for the user
   ///
@@ -7165,11 +7160,10 @@ class UsersPhotosResourceApi {
   }
 }
 
-class VerificationCodesResourceApi {
+class VerificationCodesResource {
   final commons.ApiRequester _requester;
 
-  VerificationCodesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  VerificationCodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate new backup verification codes for the user.
   ///

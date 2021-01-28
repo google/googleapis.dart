@@ -1220,7 +1220,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudFunctionsApi(mock).operations;
@@ -1331,7 +1331,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudFunctionsApi(mock).projects.locations;
@@ -1393,7 +1393,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsFunctionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsFunctionsResource', () {
     unittest.test('method--call', () {
       var mock = HttpServerMock();
       var res = api.CloudFunctionsApi(mock).projects.locations.functions;

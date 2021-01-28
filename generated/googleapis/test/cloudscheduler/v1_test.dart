@@ -723,7 +723,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations;
@@ -833,7 +833,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;

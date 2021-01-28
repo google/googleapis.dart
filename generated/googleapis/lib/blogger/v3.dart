@@ -25,14 +25,14 @@
 ///
 /// Create an instance of [BloggerApi] to access these resources:
 ///
-/// - [BlogUserInfosResourceApi]
-/// - [BlogsResourceApi]
-/// - [CommentsResourceApi]
-/// - [PageViewsResourceApi]
-/// - [PagesResourceApi]
-/// - [PostUserInfosResourceApi]
-/// - [PostsResourceApi]
-/// - [UsersResourceApi]
+/// - [BlogUserInfosResource]
+/// - [BlogsResource]
+/// - [CommentsResource]
+/// - [PageViewsResource]
+/// - [PagesResource]
+/// - [PostUserInfosResource]
+/// - [PostsResource]
+/// - [UsersResource]
 library blogger.v3;
 
 import 'dart:async' as async;
@@ -59,16 +59,14 @@ class BloggerApi {
 
   final commons.ApiRequester _requester;
 
-  BlogUserInfosResourceApi get blogUserInfos =>
-      BlogUserInfosResourceApi(_requester);
-  BlogsResourceApi get blogs => BlogsResourceApi(_requester);
-  CommentsResourceApi get comments => CommentsResourceApi(_requester);
-  PageViewsResourceApi get pageViews => PageViewsResourceApi(_requester);
-  PagesResourceApi get pages => PagesResourceApi(_requester);
-  PostUserInfosResourceApi get postUserInfos =>
-      PostUserInfosResourceApi(_requester);
-  PostsResourceApi get posts => PostsResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  BlogUserInfosResource get blogUserInfos => BlogUserInfosResource(_requester);
+  BlogsResource get blogs => BlogsResource(_requester);
+  CommentsResource get comments => CommentsResource(_requester);
+  PageViewsResource get pageViews => PageViewsResource(_requester);
+  PagesResource get pages => PagesResource(_requester);
+  PostUserInfosResource get postUserInfos => PostUserInfosResource(_requester);
+  PostsResource get posts => PostsResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   BloggerApi(http.Client client,
       {core.String rootUrl = 'https://blogger.googleapis.com/',
@@ -77,10 +75,10 @@ class BloggerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BlogUserInfosResourceApi {
+class BlogUserInfosResource {
   final commons.ApiRequester _requester;
 
-  BlogUserInfosResourceApi(commons.ApiRequester client) : _requester = client;
+  BlogUserInfosResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one blog and user info pair by blog id and user id.
   ///
@@ -149,10 +147,10 @@ class BlogUserInfosResourceApi {
   }
 }
 
-class BlogsResourceApi {
+class BlogsResource {
   final commons.ApiRequester _requester;
 
-  BlogsResourceApi(commons.ApiRequester client) : _requester = client;
+  BlogsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a blog by id.
   ///
@@ -363,10 +361,10 @@ class BlogsResourceApi {
   }
 }
 
-class CommentsResourceApi {
+class CommentsResource {
   final commons.ApiRequester _requester;
 
-  CommentsResourceApi(commons.ApiRequester client) : _requester = client;
+  CommentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Marks a comment as not spam by blog id, post id and comment id.
   ///
@@ -918,10 +916,10 @@ class CommentsResourceApi {
   }
 }
 
-class PageViewsResourceApi {
+class PageViewsResource {
   final commons.ApiRequester _requester;
 
-  PageViewsResourceApi(commons.ApiRequester client) : _requester = client;
+  PageViewsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets page views by blog id.
   ///
@@ -981,10 +979,10 @@ class PageViewsResourceApi {
   }
 }
 
-class PagesResourceApi {
+class PagesResource {
   final commons.ApiRequester _requester;
 
-  PagesResourceApi(commons.ApiRequester client) : _requester = client;
+  PagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a page by blog id and page id.
   ///
@@ -1537,10 +1535,10 @@ class PagesResourceApi {
   }
 }
 
-class PostUserInfosResourceApi {
+class PostUserInfosResource {
   final commons.ApiRequester _requester;
 
-  PostUserInfosResourceApi(commons.ApiRequester client) : _requester = client;
+  PostUserInfosResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one post and user info pair, by post_id and user_id.
   ///
@@ -1741,10 +1739,10 @@ class PostUserInfosResourceApi {
   }
 }
 
-class PostsResourceApi {
+class PostsResource {
   final commons.ApiRequester _requester;
 
-  PostsResourceApi(commons.ApiRequester client) : _requester = client;
+  PostsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a post by blog id and post id.
   ///
@@ -2554,10 +2552,10 @@ class PostsResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one user by user_id.
   ///

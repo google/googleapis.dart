@@ -684,7 +684,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SearchanalyticsResourceApi', () {
+  unittest.group('resource-SearchanalyticsResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).searchanalytics;
@@ -749,7 +749,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitemapsResourceApi', () {
+  unittest.group('resource-SitemapsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sitemaps;
@@ -987,7 +987,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesResourceApi', () {
+  unittest.group('resource-SitesResource', () {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sites;
@@ -1179,7 +1179,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UrlTestingToolsMobileFriendlyTestResourceApi', () {
+  unittest.group('resource-UrlTestingToolsMobileFriendlyTestResource', () {
     unittest.test('method--run', () {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).urlTestingTools.mobileFriendlyTest;

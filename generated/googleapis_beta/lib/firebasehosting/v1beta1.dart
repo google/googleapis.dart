@@ -25,22 +25,22 @@
 ///
 /// Create an instance of [FirebaseHostingApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsOperationsResourceApi]
-///   - [ProjectsSitesResourceApi]
-///     - [ProjectsSitesChannelsResourceApi]
-///       - [ProjectsSitesChannelsReleasesResourceApi]
-///     - [ProjectsSitesDomainsResourceApi]
-///     - [ProjectsSitesReleasesResourceApi]
-///     - [ProjectsSitesVersionsResourceApi]
-///       - [ProjectsSitesVersionsFilesResourceApi]
-/// - [SitesResourceApi]
-///   - [SitesChannelsResourceApi]
-///     - [SitesChannelsReleasesResourceApi]
-///   - [SitesDomainsResourceApi]
-///   - [SitesReleasesResourceApi]
-///   - [SitesVersionsResourceApi]
-///     - [SitesVersionsFilesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsOperationsResource]
+///   - [ProjectsSitesResource]
+///     - [ProjectsSitesChannelsResource]
+///       - [ProjectsSitesChannelsReleasesResource]
+///     - [ProjectsSitesDomainsResource]
+///     - [ProjectsSitesReleasesResource]
+///     - [ProjectsSitesVersionsResource]
+///       - [ProjectsSitesVersionsFilesResource]
+/// - [SitesResource]
+///   - [SitesChannelsResource]
+///     - [SitesChannelsReleasesResource]
+///   - [SitesDomainsResource]
+///   - [SitesReleasesResource]
+///   - [SitesVersionsResource]
+///     - [SitesVersionsFilesResource]
 library firebasehosting.v1beta1;
 
 import 'dart:async' as async;
@@ -76,8 +76,8 @@ class FirebaseHostingApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  SitesResourceApi get sites => SitesResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  SitesResource get sites => SitesResource(_requester);
 
   FirebaseHostingApi(http.Client client,
       {core.String rootUrl = 'https://firebasehosting.googleapis.com/',
@@ -86,21 +86,20 @@ class FirebaseHostingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
-  ProjectsSitesResourceApi get sites => ProjectsSitesResourceApi(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
+  ProjectsSitesResource get sites => ProjectsSitesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -156,19 +155,19 @@ class ProjectsOperationsResourceApi {
   }
 }
 
-class ProjectsSitesResourceApi {
+class ProjectsSitesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesChannelsResourceApi get channels =>
-      ProjectsSitesChannelsResourceApi(_requester);
-  ProjectsSitesDomainsResourceApi get domains =>
-      ProjectsSitesDomainsResourceApi(_requester);
-  ProjectsSitesReleasesResourceApi get releases =>
-      ProjectsSitesReleasesResourceApi(_requester);
-  ProjectsSitesVersionsResourceApi get versions =>
-      ProjectsSitesVersionsResourceApi(_requester);
+  ProjectsSitesChannelsResource get channels =>
+      ProjectsSitesChannelsResource(_requester);
+  ProjectsSitesDomainsResource get domains =>
+      ProjectsSitesDomainsResource(_requester);
+  ProjectsSitesReleasesResource get releases =>
+      ProjectsSitesReleasesResource(_requester);
+  ProjectsSitesVersionsResource get versions =>
+      ProjectsSitesVersionsResource(_requester);
 
-  ProjectsSitesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsSitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Hosting metadata for a specific site.
   ///
@@ -293,13 +292,13 @@ class ProjectsSitesResourceApi {
   }
 }
 
-class ProjectsSitesChannelsResourceApi {
+class ProjectsSitesChannelsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesChannelsReleasesResourceApi get releases =>
-      ProjectsSitesChannelsReleasesResourceApi(_requester);
+  ProjectsSitesChannelsReleasesResource get releases =>
+      ProjectsSitesChannelsReleasesResource(_requester);
 
-  ProjectsSitesChannelsResourceApi(commons.ApiRequester client)
+  ProjectsSitesChannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new channel in the specified site.
@@ -606,10 +605,10 @@ class ProjectsSitesChannelsResourceApi {
   }
 }
 
-class ProjectsSitesChannelsReleasesResourceApi {
+class ProjectsSitesChannelsReleasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesChannelsReleasesResourceApi(commons.ApiRequester client)
+  ProjectsSitesChannelsReleasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new release which makes the content of the specified version
@@ -751,10 +750,10 @@ class ProjectsSitesChannelsReleasesResourceApi {
   }
 }
 
-class ProjectsSitesDomainsResourceApi {
+class ProjectsSitesDomainsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesDomainsResourceApi(commons.ApiRequester client)
+  ProjectsSitesDomainsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a domain mapping on the specified site.
@@ -1046,10 +1045,10 @@ class ProjectsSitesDomainsResourceApi {
   }
 }
 
-class ProjectsSitesReleasesResourceApi {
+class ProjectsSitesReleasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesReleasesResourceApi(commons.ApiRequester client)
+  ProjectsSitesReleasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new release which makes the content of the specified version
@@ -1191,13 +1190,13 @@ class ProjectsSitesReleasesResourceApi {
   }
 }
 
-class ProjectsSitesVersionsResourceApi {
+class ProjectsSitesVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesVersionsFilesResourceApi get files =>
-      ProjectsSitesVersionsFilesResourceApi(_requester);
+  ProjectsSitesVersionsFilesResource get files =>
+      ProjectsSitesVersionsFilesResource(_requester);
 
-  ProjectsSitesVersionsResourceApi(commons.ApiRequester client)
+  ProjectsSitesVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new version on the target site using the content of the
@@ -1603,10 +1602,10 @@ class ProjectsSitesVersionsResourceApi {
   }
 }
 
-class ProjectsSitesVersionsFilesResourceApi {
+class ProjectsSitesVersionsFilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSitesVersionsFilesResourceApi(commons.ApiRequester client)
+  ProjectsSitesVersionsFilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the remaining files to be uploaded for the specified version.
@@ -1691,15 +1690,15 @@ class ProjectsSitesVersionsFilesResourceApi {
   }
 }
 
-class SitesResourceApi {
+class SitesResource {
   final commons.ApiRequester _requester;
 
-  SitesChannelsResourceApi get channels => SitesChannelsResourceApi(_requester);
-  SitesDomainsResourceApi get domains => SitesDomainsResourceApi(_requester);
-  SitesReleasesResourceApi get releases => SitesReleasesResourceApi(_requester);
-  SitesVersionsResourceApi get versions => SitesVersionsResourceApi(_requester);
+  SitesChannelsResource get channels => SitesChannelsResource(_requester);
+  SitesDomainsResource get domains => SitesDomainsResource(_requester);
+  SitesReleasesResource get releases => SitesReleasesResource(_requester);
+  SitesVersionsResource get versions => SitesVersionsResource(_requester);
 
-  SitesResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Hosting metadata for a specific site.
   ///
@@ -1824,13 +1823,13 @@ class SitesResourceApi {
   }
 }
 
-class SitesChannelsResourceApi {
+class SitesChannelsResource {
   final commons.ApiRequester _requester;
 
-  SitesChannelsReleasesResourceApi get releases =>
-      SitesChannelsReleasesResourceApi(_requester);
+  SitesChannelsReleasesResource get releases =>
+      SitesChannelsReleasesResource(_requester);
 
-  SitesChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new channel in the specified site.
   ///
@@ -2136,10 +2135,10 @@ class SitesChannelsResourceApi {
   }
 }
 
-class SitesChannelsReleasesResourceApi {
+class SitesChannelsReleasesResource {
   final commons.ApiRequester _requester;
 
-  SitesChannelsReleasesResourceApi(commons.ApiRequester client)
+  SitesChannelsReleasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new release which makes the content of the specified version
@@ -2281,10 +2280,10 @@ class SitesChannelsReleasesResourceApi {
   }
 }
 
-class SitesDomainsResourceApi {
+class SitesDomainsResource {
   final commons.ApiRequester _requester;
 
-  SitesDomainsResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesDomainsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a domain mapping on the specified site.
   ///
@@ -2575,10 +2574,10 @@ class SitesDomainsResourceApi {
   }
 }
 
-class SitesReleasesResourceApi {
+class SitesReleasesResource {
   final commons.ApiRequester _requester;
 
-  SitesReleasesResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesReleasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new release which makes the content of the specified version
   /// actively display on the appropriate URL(s).
@@ -2719,13 +2718,13 @@ class SitesReleasesResourceApi {
   }
 }
 
-class SitesVersionsResourceApi {
+class SitesVersionsResource {
   final commons.ApiRequester _requester;
 
-  SitesVersionsFilesResourceApi get files =>
-      SitesVersionsFilesResourceApi(_requester);
+  SitesVersionsFilesResource get files =>
+      SitesVersionsFilesResource(_requester);
 
-  SitesVersionsResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesVersionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new version on the target site using the content of the
   /// specified version.
@@ -3130,11 +3129,10 @@ class SitesVersionsResourceApi {
   }
 }
 
-class SitesVersionsFilesResourceApi {
+class SitesVersionsFilesResource {
   final commons.ApiRequester _requester;
 
-  SitesVersionsFilesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SitesVersionsFilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the remaining files to be uploaded for the specified version.
   ///

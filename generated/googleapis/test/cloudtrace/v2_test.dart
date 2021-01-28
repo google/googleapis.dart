@@ -670,7 +670,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTracesResourceApi', () {
+  unittest.group('resource-ProjectsTracesResource', () {
     unittest.test('method--batchWrite', () {
       var mock = HttpServerMock();
       var res = api.CloudTraceApi(mock).projects.traces;
@@ -725,7 +725,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTracesSpansResourceApi', () {
+  unittest.group('resource-ProjectsTracesSpansResource', () {
     unittest.test('method--createSpan', () {
       var mock = HttpServerMock();
       var res = api.CloudTraceApi(mock).projects.traces.spans;

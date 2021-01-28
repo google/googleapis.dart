@@ -23,10 +23,10 @@
 ///
 /// Create an instance of [CloudTasksApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsQueuesResourceApi]
-///       - [ProjectsLocationsQueuesTasksResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsQueuesResource]
+///       - [ProjectsLocationsQueuesTasksResource]
 library cloudtasks.v2;
 
 import 'dart:async' as async;
@@ -49,7 +49,7 @@ class CloudTasksApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudTasksApi(http.Client client,
       {core.String rootUrl = 'https://cloudtasks.googleapis.com/',
@@ -58,23 +58,22 @@ class CloudTasksApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsQueuesResourceApi get queues =>
-      ProjectsLocationsQueuesResourceApi(_requester);
+  ProjectsLocationsQueuesResource get queues =>
+      ProjectsLocationsQueuesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -199,13 +198,13 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsQueuesResourceApi {
+class ProjectsLocationsQueuesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsQueuesTasksResourceApi get tasks =>
-      ProjectsLocationsQueuesTasksResourceApi(_requester);
+  ProjectsLocationsQueuesTasksResource get tasks =>
+      ProjectsLocationsQueuesTasksResource(_requester);
 
-  ProjectsLocationsQueuesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsQueuesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a queue. Queues created with this method allow tasks to live for a
@@ -935,10 +934,10 @@ class ProjectsLocationsQueuesResourceApi {
   }
 }
 
-class ProjectsLocationsQueuesTasksResourceApi {
+class ProjectsLocationsQueuesTasksResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsQueuesTasksResourceApi(commons.ApiRequester client)
+  ProjectsLocationsQueuesTasksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a task and adds it to a queue. Tasks cannot be updated after

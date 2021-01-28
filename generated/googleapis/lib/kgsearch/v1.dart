@@ -23,7 +23,7 @@
 ///
 /// Create an instance of [KgsearchApi] to access these resources:
 ///
-/// - [EntitiesResourceApi]
+/// - [EntitiesResource]
 library kgsearch.v1;
 
 import 'dart:async' as async;
@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class KgsearchApi {
   final commons.ApiRequester _requester;
 
-  EntitiesResourceApi get entities => EntitiesResourceApi(_requester);
+  EntitiesResource get entities => EntitiesResource(_requester);
 
   KgsearchApi(http.Client client,
       {core.String rootUrl = 'https://kgsearch.googleapis.com/',
@@ -50,10 +50,10 @@ class KgsearchApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class EntitiesResourceApi {
+class EntitiesResource {
   final commons.ApiRequester _requester;
 
-  EntitiesResourceApi(commons.ApiRequester client) : _requester = client;
+  EntitiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Searches Knowledge Graph for entities that match the constraints. A list
   /// of matched entities will be returned in response, which will be in JSON-LD

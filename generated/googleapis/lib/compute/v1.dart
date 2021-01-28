@@ -24,80 +24,80 @@
 ///
 /// Create an instance of [ComputeApi] to access these resources:
 ///
-/// - [AcceleratorTypesResourceApi]
-/// - [AddressesResourceApi]
-/// - [AutoscalersResourceApi]
-/// - [BackendBucketsResourceApi]
-/// - [BackendServicesResourceApi]
-/// - [DiskTypesResourceApi]
-/// - [DisksResourceApi]
-/// - [ExternalVpnGatewaysResourceApi]
-/// - [FirewallsResourceApi]
-/// - [ForwardingRulesResourceApi]
-/// - [GlobalAddressesResourceApi]
-/// - [GlobalForwardingRulesResourceApi]
-/// - [GlobalNetworkEndpointGroupsResourceApi]
-/// - [GlobalOperationsResourceApi]
-/// - [HealthChecksResourceApi]
-/// - [HttpHealthChecksResourceApi]
-/// - [HttpsHealthChecksResourceApi]
-/// - [ImagesResourceApi]
-/// - [InstanceGroupManagersResourceApi]
-/// - [InstanceGroupsResourceApi]
-/// - [InstanceTemplatesResourceApi]
-/// - [InstancesResourceApi]
-/// - [InterconnectAttachmentsResourceApi]
-/// - [InterconnectLocationsResourceApi]
-/// - [InterconnectsResourceApi]
-/// - [LicenseCodesResourceApi]
-/// - [LicensesResourceApi]
-/// - [MachineTypesResourceApi]
-/// - [NetworkEndpointGroupsResourceApi]
-/// - [NetworksResourceApi]
-/// - [NodeGroupsResourceApi]
-/// - [NodeTemplatesResourceApi]
-/// - [NodeTypesResourceApi]
-/// - [PacketMirroringsResourceApi]
-/// - [ProjectsResourceApi]
-/// - [RegionAutoscalersResourceApi]
-/// - [RegionBackendServicesResourceApi]
-/// - [RegionCommitmentsResourceApi]
-/// - [RegionDiskTypesResourceApi]
-/// - [RegionDisksResourceApi]
-/// - [RegionHealthCheckServicesResourceApi]
-/// - [RegionHealthChecksResourceApi]
-/// - [RegionInstanceGroupManagersResourceApi]
-/// - [RegionInstanceGroupsResourceApi]
-/// - [RegionNetworkEndpointGroupsResourceApi]
-/// - [RegionNotificationEndpointsResourceApi]
-/// - [RegionOperationsResourceApi]
-/// - [RegionSslCertificatesResourceApi]
-/// - [RegionTargetHttpProxiesResourceApi]
-/// - [RegionTargetHttpsProxiesResourceApi]
-/// - [RegionUrlMapsResourceApi]
-/// - [RegionsResourceApi]
-/// - [ReservationsResourceApi]
-/// - [ResourcePoliciesResourceApi]
-/// - [RoutersResourceApi]
-/// - [RoutesResourceApi]
-/// - [SecurityPoliciesResourceApi]
-/// - [SnapshotsResourceApi]
-/// - [SslCertificatesResourceApi]
-/// - [SslPoliciesResourceApi]
-/// - [SubnetworksResourceApi]
-/// - [TargetGrpcProxiesResourceApi]
-/// - [TargetHttpProxiesResourceApi]
-/// - [TargetHttpsProxiesResourceApi]
-/// - [TargetInstancesResourceApi]
-/// - [TargetPoolsResourceApi]
-/// - [TargetSslProxiesResourceApi]
-/// - [TargetTcpProxiesResourceApi]
-/// - [TargetVpnGatewaysResourceApi]
-/// - [UrlMapsResourceApi]
-/// - [VpnGatewaysResourceApi]
-/// - [VpnTunnelsResourceApi]
-/// - [ZoneOperationsResourceApi]
-/// - [ZonesResourceApi]
+/// - [AcceleratorTypesResource]
+/// - [AddressesResource]
+/// - [AutoscalersResource]
+/// - [BackendBucketsResource]
+/// - [BackendServicesResource]
+/// - [DiskTypesResource]
+/// - [DisksResource]
+/// - [ExternalVpnGatewaysResource]
+/// - [FirewallsResource]
+/// - [ForwardingRulesResource]
+/// - [GlobalAddressesResource]
+/// - [GlobalForwardingRulesResource]
+/// - [GlobalNetworkEndpointGroupsResource]
+/// - [GlobalOperationsResource]
+/// - [HealthChecksResource]
+/// - [HttpHealthChecksResource]
+/// - [HttpsHealthChecksResource]
+/// - [ImagesResource]
+/// - [InstanceGroupManagersResource]
+/// - [InstanceGroupsResource]
+/// - [InstanceTemplatesResource]
+/// - [InstancesResource]
+/// - [InterconnectAttachmentsResource]
+/// - [InterconnectLocationsResource]
+/// - [InterconnectsResource]
+/// - [LicenseCodesResource]
+/// - [LicensesResource]
+/// - [MachineTypesResource]
+/// - [NetworkEndpointGroupsResource]
+/// - [NetworksResource]
+/// - [NodeGroupsResource]
+/// - [NodeTemplatesResource]
+/// - [NodeTypesResource]
+/// - [PacketMirroringsResource]
+/// - [ProjectsResource]
+/// - [RegionAutoscalersResource]
+/// - [RegionBackendServicesResource]
+/// - [RegionCommitmentsResource]
+/// - [RegionDiskTypesResource]
+/// - [RegionDisksResource]
+/// - [RegionHealthCheckServicesResource]
+/// - [RegionHealthChecksResource]
+/// - [RegionInstanceGroupManagersResource]
+/// - [RegionInstanceGroupsResource]
+/// - [RegionNetworkEndpointGroupsResource]
+/// - [RegionNotificationEndpointsResource]
+/// - [RegionOperationsResource]
+/// - [RegionSslCertificatesResource]
+/// - [RegionTargetHttpProxiesResource]
+/// - [RegionTargetHttpsProxiesResource]
+/// - [RegionUrlMapsResource]
+/// - [RegionsResource]
+/// - [ReservationsResource]
+/// - [ResourcePoliciesResource]
+/// - [RoutersResource]
+/// - [RoutesResource]
+/// - [SecurityPoliciesResource]
+/// - [SnapshotsResource]
+/// - [SslCertificatesResource]
+/// - [SslPoliciesResource]
+/// - [SubnetworksResource]
+/// - [TargetGrpcProxiesResource]
+/// - [TargetHttpProxiesResource]
+/// - [TargetHttpsProxiesResource]
+/// - [TargetInstancesResource]
+/// - [TargetPoolsResource]
+/// - [TargetSslProxiesResource]
+/// - [TargetTcpProxiesResource]
+/// - [TargetVpnGatewaysResource]
+/// - [UrlMapsResource]
+/// - [VpnGatewaysResource]
+/// - [VpnTunnelsResource]
+/// - [ZoneOperationsResource]
+/// - [ZonesResource]
 library compute.v1;
 
 import 'dart:async' as async;
@@ -139,130 +139,123 @@ class ComputeApi {
 
   final commons.ApiRequester _requester;
 
-  AcceleratorTypesResourceApi get acceleratorTypes =>
-      AcceleratorTypesResourceApi(_requester);
-  AddressesResourceApi get addresses => AddressesResourceApi(_requester);
-  AutoscalersResourceApi get autoscalers => AutoscalersResourceApi(_requester);
-  BackendBucketsResourceApi get backendBuckets =>
-      BackendBucketsResourceApi(_requester);
-  BackendServicesResourceApi get backendServices =>
-      BackendServicesResourceApi(_requester);
-  DiskTypesResourceApi get diskTypes => DiskTypesResourceApi(_requester);
-  DisksResourceApi get disks => DisksResourceApi(_requester);
-  ExternalVpnGatewaysResourceApi get externalVpnGateways =>
-      ExternalVpnGatewaysResourceApi(_requester);
-  FirewallsResourceApi get firewalls => FirewallsResourceApi(_requester);
-  ForwardingRulesResourceApi get forwardingRules =>
-      ForwardingRulesResourceApi(_requester);
-  GlobalAddressesResourceApi get globalAddresses =>
-      GlobalAddressesResourceApi(_requester);
-  GlobalForwardingRulesResourceApi get globalForwardingRules =>
-      GlobalForwardingRulesResourceApi(_requester);
-  GlobalNetworkEndpointGroupsResourceApi get globalNetworkEndpointGroups =>
-      GlobalNetworkEndpointGroupsResourceApi(_requester);
-  GlobalOperationsResourceApi get globalOperations =>
-      GlobalOperationsResourceApi(_requester);
-  HealthChecksResourceApi get healthChecks =>
-      HealthChecksResourceApi(_requester);
-  HttpHealthChecksResourceApi get httpHealthChecks =>
-      HttpHealthChecksResourceApi(_requester);
-  HttpsHealthChecksResourceApi get httpsHealthChecks =>
-      HttpsHealthChecksResourceApi(_requester);
-  ImagesResourceApi get images => ImagesResourceApi(_requester);
-  InstanceGroupManagersResourceApi get instanceGroupManagers =>
-      InstanceGroupManagersResourceApi(_requester);
-  InstanceGroupsResourceApi get instanceGroups =>
-      InstanceGroupsResourceApi(_requester);
-  InstanceTemplatesResourceApi get instanceTemplates =>
-      InstanceTemplatesResourceApi(_requester);
-  InstancesResourceApi get instances => InstancesResourceApi(_requester);
-  InterconnectAttachmentsResourceApi get interconnectAttachments =>
-      InterconnectAttachmentsResourceApi(_requester);
-  InterconnectLocationsResourceApi get interconnectLocations =>
-      InterconnectLocationsResourceApi(_requester);
-  InterconnectsResourceApi get interconnects =>
-      InterconnectsResourceApi(_requester);
-  LicenseCodesResourceApi get licenseCodes =>
-      LicenseCodesResourceApi(_requester);
-  LicensesResourceApi get licenses => LicensesResourceApi(_requester);
-  MachineTypesResourceApi get machineTypes =>
-      MachineTypesResourceApi(_requester);
-  NetworkEndpointGroupsResourceApi get networkEndpointGroups =>
-      NetworkEndpointGroupsResourceApi(_requester);
-  NetworksResourceApi get networks => NetworksResourceApi(_requester);
-  NodeGroupsResourceApi get nodeGroups => NodeGroupsResourceApi(_requester);
-  NodeTemplatesResourceApi get nodeTemplates =>
-      NodeTemplatesResourceApi(_requester);
-  NodeTypesResourceApi get nodeTypes => NodeTypesResourceApi(_requester);
-  PacketMirroringsResourceApi get packetMirrorings =>
-      PacketMirroringsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  RegionAutoscalersResourceApi get regionAutoscalers =>
-      RegionAutoscalersResourceApi(_requester);
-  RegionBackendServicesResourceApi get regionBackendServices =>
-      RegionBackendServicesResourceApi(_requester);
-  RegionCommitmentsResourceApi get regionCommitments =>
-      RegionCommitmentsResourceApi(_requester);
-  RegionDiskTypesResourceApi get regionDiskTypes =>
-      RegionDiskTypesResourceApi(_requester);
-  RegionDisksResourceApi get regionDisks => RegionDisksResourceApi(_requester);
-  RegionHealthCheckServicesResourceApi get regionHealthCheckServices =>
-      RegionHealthCheckServicesResourceApi(_requester);
-  RegionHealthChecksResourceApi get regionHealthChecks =>
-      RegionHealthChecksResourceApi(_requester);
-  RegionInstanceGroupManagersResourceApi get regionInstanceGroupManagers =>
-      RegionInstanceGroupManagersResourceApi(_requester);
-  RegionInstanceGroupsResourceApi get regionInstanceGroups =>
-      RegionInstanceGroupsResourceApi(_requester);
-  RegionNetworkEndpointGroupsResourceApi get regionNetworkEndpointGroups =>
-      RegionNetworkEndpointGroupsResourceApi(_requester);
-  RegionNotificationEndpointsResourceApi get regionNotificationEndpoints =>
-      RegionNotificationEndpointsResourceApi(_requester);
-  RegionOperationsResourceApi get regionOperations =>
-      RegionOperationsResourceApi(_requester);
-  RegionSslCertificatesResourceApi get regionSslCertificates =>
-      RegionSslCertificatesResourceApi(_requester);
-  RegionTargetHttpProxiesResourceApi get regionTargetHttpProxies =>
-      RegionTargetHttpProxiesResourceApi(_requester);
-  RegionTargetHttpsProxiesResourceApi get regionTargetHttpsProxies =>
-      RegionTargetHttpsProxiesResourceApi(_requester);
-  RegionUrlMapsResourceApi get regionUrlMaps =>
-      RegionUrlMapsResourceApi(_requester);
-  RegionsResourceApi get regions => RegionsResourceApi(_requester);
-  ReservationsResourceApi get reservations =>
-      ReservationsResourceApi(_requester);
-  ResourcePoliciesResourceApi get resourcePolicies =>
-      ResourcePoliciesResourceApi(_requester);
-  RoutersResourceApi get routers => RoutersResourceApi(_requester);
-  RoutesResourceApi get routes => RoutesResourceApi(_requester);
-  SecurityPoliciesResourceApi get securityPolicies =>
-      SecurityPoliciesResourceApi(_requester);
-  SnapshotsResourceApi get snapshots => SnapshotsResourceApi(_requester);
-  SslCertificatesResourceApi get sslCertificates =>
-      SslCertificatesResourceApi(_requester);
-  SslPoliciesResourceApi get sslPolicies => SslPoliciesResourceApi(_requester);
-  SubnetworksResourceApi get subnetworks => SubnetworksResourceApi(_requester);
-  TargetGrpcProxiesResourceApi get targetGrpcProxies =>
-      TargetGrpcProxiesResourceApi(_requester);
-  TargetHttpProxiesResourceApi get targetHttpProxies =>
-      TargetHttpProxiesResourceApi(_requester);
-  TargetHttpsProxiesResourceApi get targetHttpsProxies =>
-      TargetHttpsProxiesResourceApi(_requester);
-  TargetInstancesResourceApi get targetInstances =>
-      TargetInstancesResourceApi(_requester);
-  TargetPoolsResourceApi get targetPools => TargetPoolsResourceApi(_requester);
-  TargetSslProxiesResourceApi get targetSslProxies =>
-      TargetSslProxiesResourceApi(_requester);
-  TargetTcpProxiesResourceApi get targetTcpProxies =>
-      TargetTcpProxiesResourceApi(_requester);
-  TargetVpnGatewaysResourceApi get targetVpnGateways =>
-      TargetVpnGatewaysResourceApi(_requester);
-  UrlMapsResourceApi get urlMaps => UrlMapsResourceApi(_requester);
-  VpnGatewaysResourceApi get vpnGateways => VpnGatewaysResourceApi(_requester);
-  VpnTunnelsResourceApi get vpnTunnels => VpnTunnelsResourceApi(_requester);
-  ZoneOperationsResourceApi get zoneOperations =>
-      ZoneOperationsResourceApi(_requester);
-  ZonesResourceApi get zones => ZonesResourceApi(_requester);
+  AcceleratorTypesResource get acceleratorTypes =>
+      AcceleratorTypesResource(_requester);
+  AddressesResource get addresses => AddressesResource(_requester);
+  AutoscalersResource get autoscalers => AutoscalersResource(_requester);
+  BackendBucketsResource get backendBuckets =>
+      BackendBucketsResource(_requester);
+  BackendServicesResource get backendServices =>
+      BackendServicesResource(_requester);
+  DiskTypesResource get diskTypes => DiskTypesResource(_requester);
+  DisksResource get disks => DisksResource(_requester);
+  ExternalVpnGatewaysResource get externalVpnGateways =>
+      ExternalVpnGatewaysResource(_requester);
+  FirewallsResource get firewalls => FirewallsResource(_requester);
+  ForwardingRulesResource get forwardingRules =>
+      ForwardingRulesResource(_requester);
+  GlobalAddressesResource get globalAddresses =>
+      GlobalAddressesResource(_requester);
+  GlobalForwardingRulesResource get globalForwardingRules =>
+      GlobalForwardingRulesResource(_requester);
+  GlobalNetworkEndpointGroupsResource get globalNetworkEndpointGroups =>
+      GlobalNetworkEndpointGroupsResource(_requester);
+  GlobalOperationsResource get globalOperations =>
+      GlobalOperationsResource(_requester);
+  HealthChecksResource get healthChecks => HealthChecksResource(_requester);
+  HttpHealthChecksResource get httpHealthChecks =>
+      HttpHealthChecksResource(_requester);
+  HttpsHealthChecksResource get httpsHealthChecks =>
+      HttpsHealthChecksResource(_requester);
+  ImagesResource get images => ImagesResource(_requester);
+  InstanceGroupManagersResource get instanceGroupManagers =>
+      InstanceGroupManagersResource(_requester);
+  InstanceGroupsResource get instanceGroups =>
+      InstanceGroupsResource(_requester);
+  InstanceTemplatesResource get instanceTemplates =>
+      InstanceTemplatesResource(_requester);
+  InstancesResource get instances => InstancesResource(_requester);
+  InterconnectAttachmentsResource get interconnectAttachments =>
+      InterconnectAttachmentsResource(_requester);
+  InterconnectLocationsResource get interconnectLocations =>
+      InterconnectLocationsResource(_requester);
+  InterconnectsResource get interconnects => InterconnectsResource(_requester);
+  LicenseCodesResource get licenseCodes => LicenseCodesResource(_requester);
+  LicensesResource get licenses => LicensesResource(_requester);
+  MachineTypesResource get machineTypes => MachineTypesResource(_requester);
+  NetworkEndpointGroupsResource get networkEndpointGroups =>
+      NetworkEndpointGroupsResource(_requester);
+  NetworksResource get networks => NetworksResource(_requester);
+  NodeGroupsResource get nodeGroups => NodeGroupsResource(_requester);
+  NodeTemplatesResource get nodeTemplates => NodeTemplatesResource(_requester);
+  NodeTypesResource get nodeTypes => NodeTypesResource(_requester);
+  PacketMirroringsResource get packetMirrorings =>
+      PacketMirroringsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  RegionAutoscalersResource get regionAutoscalers =>
+      RegionAutoscalersResource(_requester);
+  RegionBackendServicesResource get regionBackendServices =>
+      RegionBackendServicesResource(_requester);
+  RegionCommitmentsResource get regionCommitments =>
+      RegionCommitmentsResource(_requester);
+  RegionDiskTypesResource get regionDiskTypes =>
+      RegionDiskTypesResource(_requester);
+  RegionDisksResource get regionDisks => RegionDisksResource(_requester);
+  RegionHealthCheckServicesResource get regionHealthCheckServices =>
+      RegionHealthCheckServicesResource(_requester);
+  RegionHealthChecksResource get regionHealthChecks =>
+      RegionHealthChecksResource(_requester);
+  RegionInstanceGroupManagersResource get regionInstanceGroupManagers =>
+      RegionInstanceGroupManagersResource(_requester);
+  RegionInstanceGroupsResource get regionInstanceGroups =>
+      RegionInstanceGroupsResource(_requester);
+  RegionNetworkEndpointGroupsResource get regionNetworkEndpointGroups =>
+      RegionNetworkEndpointGroupsResource(_requester);
+  RegionNotificationEndpointsResource get regionNotificationEndpoints =>
+      RegionNotificationEndpointsResource(_requester);
+  RegionOperationsResource get regionOperations =>
+      RegionOperationsResource(_requester);
+  RegionSslCertificatesResource get regionSslCertificates =>
+      RegionSslCertificatesResource(_requester);
+  RegionTargetHttpProxiesResource get regionTargetHttpProxies =>
+      RegionTargetHttpProxiesResource(_requester);
+  RegionTargetHttpsProxiesResource get regionTargetHttpsProxies =>
+      RegionTargetHttpsProxiesResource(_requester);
+  RegionUrlMapsResource get regionUrlMaps => RegionUrlMapsResource(_requester);
+  RegionsResource get regions => RegionsResource(_requester);
+  ReservationsResource get reservations => ReservationsResource(_requester);
+  ResourcePoliciesResource get resourcePolicies =>
+      ResourcePoliciesResource(_requester);
+  RoutersResource get routers => RoutersResource(_requester);
+  RoutesResource get routes => RoutesResource(_requester);
+  SecurityPoliciesResource get securityPolicies =>
+      SecurityPoliciesResource(_requester);
+  SnapshotsResource get snapshots => SnapshotsResource(_requester);
+  SslCertificatesResource get sslCertificates =>
+      SslCertificatesResource(_requester);
+  SslPoliciesResource get sslPolicies => SslPoliciesResource(_requester);
+  SubnetworksResource get subnetworks => SubnetworksResource(_requester);
+  TargetGrpcProxiesResource get targetGrpcProxies =>
+      TargetGrpcProxiesResource(_requester);
+  TargetHttpProxiesResource get targetHttpProxies =>
+      TargetHttpProxiesResource(_requester);
+  TargetHttpsProxiesResource get targetHttpsProxies =>
+      TargetHttpsProxiesResource(_requester);
+  TargetInstancesResource get targetInstances =>
+      TargetInstancesResource(_requester);
+  TargetPoolsResource get targetPools => TargetPoolsResource(_requester);
+  TargetSslProxiesResource get targetSslProxies =>
+      TargetSslProxiesResource(_requester);
+  TargetTcpProxiesResource get targetTcpProxies =>
+      TargetTcpProxiesResource(_requester);
+  TargetVpnGatewaysResource get targetVpnGateways =>
+      TargetVpnGatewaysResource(_requester);
+  UrlMapsResource get urlMaps => UrlMapsResource(_requester);
+  VpnGatewaysResource get vpnGateways => VpnGatewaysResource(_requester);
+  VpnTunnelsResource get vpnTunnels => VpnTunnelsResource(_requester);
+  ZoneOperationsResource get zoneOperations =>
+      ZoneOperationsResource(_requester);
+  ZonesResource get zones => ZonesResource(_requester);
 
   ComputeApi(http.Client client,
       {core.String rootUrl = 'https://compute.googleapis.com/',
@@ -271,11 +264,10 @@ class ComputeApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AcceleratorTypesResourceApi {
+class AcceleratorTypesResource {
   final commons.ApiRequester _requester;
 
-  AcceleratorTypesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AcceleratorTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of accelerator types.
   ///
@@ -618,10 +610,10 @@ class AcceleratorTypesResourceApi {
   }
 }
 
-class AddressesResourceApi {
+class AddressesResource {
   final commons.ApiRequester _requester;
 
-  AddressesResourceApi(commons.ApiRequester client) : _requester = client;
+  AddressesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of addresses.
   ///
@@ -1135,10 +1127,10 @@ class AddressesResourceApi {
   }
 }
 
-class AutoscalersResourceApi {
+class AutoscalersResource {
   final commons.ApiRequester _requester;
 
-  AutoscalersResourceApi(commons.ApiRequester client) : _requester = client;
+  AutoscalersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of autoscalers.
   ///
@@ -1844,10 +1836,10 @@ class AutoscalersResourceApi {
   }
 }
 
-class BackendBucketsResourceApi {
+class BackendBucketsResource {
   final commons.ApiRequester _requester;
 
-  BackendBucketsResourceApi(commons.ApiRequester client) : _requester = client;
+  BackendBucketsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a key for validating requests with signed URLs for this backend
   /// bucket.
@@ -2538,10 +2530,10 @@ class BackendBucketsResourceApi {
   }
 }
 
-class BackendServicesResourceApi {
+class BackendServicesResource {
   final commons.ApiRequester _requester;
 
-  BackendServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  BackendServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a key for validating requests with signed URLs for this backend
   /// service.
@@ -3532,10 +3524,10 @@ class BackendServicesResourceApi {
   }
 }
 
-class DiskTypesResourceApi {
+class DiskTypesResource {
   final commons.ApiRequester _requester;
 
-  DiskTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  DiskTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of disk types.
   ///
@@ -3876,10 +3868,10 @@ class DiskTypesResourceApi {
   }
 }
 
-class DisksResourceApi {
+class DisksResource {
   final commons.ApiRequester _requester;
 
-  DisksResourceApi(commons.ApiRequester client) : _requester = client;
+  DisksResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds existing resource policies to a disk. You can only add one policy
   /// which will be applied to this disk for scheduling snapshot creation.
@@ -5129,10 +5121,10 @@ class DisksResourceApi {
   }
 }
 
-class ExternalVpnGatewaysResourceApi {
+class ExternalVpnGatewaysResource {
   final commons.ApiRequester _requester;
 
-  ExternalVpnGatewaysResourceApi(commons.ApiRequester client)
+  ExternalVpnGatewaysResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified externalVpnGateway.
@@ -5618,10 +5610,10 @@ class ExternalVpnGatewaysResourceApi {
   }
 }
 
-class FirewallsResourceApi {
+class FirewallsResource {
   final commons.ApiRequester _requester;
 
-  FirewallsResourceApi(commons.ApiRequester client) : _requester = client;
+  FirewallsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified firewall.
   ///
@@ -6137,10 +6129,10 @@ class FirewallsResourceApi {
   }
 }
 
-class ForwardingRulesResourceApi {
+class ForwardingRulesResource {
   final commons.ApiRequester _requester;
 
-  ForwardingRulesResourceApi(commons.ApiRequester client) : _requester = client;
+  ForwardingRulesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of forwarding rules.
   ///
@@ -6851,10 +6843,10 @@ class ForwardingRulesResourceApi {
   }
 }
 
-class GlobalAddressesResourceApi {
+class GlobalAddressesResource {
   final commons.ApiRequester _requester;
 
-  GlobalAddressesResourceApi(commons.ApiRequester client) : _requester = client;
+  GlobalAddressesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified address resource.
   ///
@@ -7197,10 +7189,10 @@ class GlobalAddressesResourceApi {
   }
 }
 
-class GlobalForwardingRulesResourceApi {
+class GlobalForwardingRulesResource {
   final commons.ApiRequester _requester;
 
-  GlobalForwardingRulesResourceApi(commons.ApiRequester client)
+  GlobalForwardingRulesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified GlobalForwardingRule resource.
@@ -7724,10 +7716,10 @@ class GlobalForwardingRulesResourceApi {
   }
 }
 
-class GlobalNetworkEndpointGroupsResourceApi {
+class GlobalNetworkEndpointGroupsResource {
   final commons.ApiRequester _requester;
 
-  GlobalNetworkEndpointGroupsResourceApi(commons.ApiRequester client)
+  GlobalNetworkEndpointGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Attach a network endpoint to the specified network endpoint group.
@@ -8377,11 +8369,10 @@ class GlobalNetworkEndpointGroupsResourceApi {
   }
 }
 
-class GlobalOperationsResourceApi {
+class GlobalOperationsResource {
   final commons.ApiRequester _requester;
 
-  GlobalOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  GlobalOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of all operations.
   ///
@@ -8842,10 +8833,10 @@ class GlobalOperationsResourceApi {
   }
 }
 
-class HealthChecksResourceApi {
+class HealthChecksResource {
   final commons.ApiRequester _requester;
 
-  HealthChecksResourceApi(commons.ApiRequester client) : _requester = client;
+  HealthChecksResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of all HealthCheck resources, regional and global,
   /// available to the specified project.
@@ -9499,11 +9490,10 @@ class HealthChecksResourceApi {
   }
 }
 
-class HttpHealthChecksResourceApi {
+class HttpHealthChecksResource {
   final commons.ApiRequester _requester;
 
-  HttpHealthChecksResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  HttpHealthChecksResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified HttpHealthCheck resource.
   ///
@@ -10023,11 +10013,10 @@ class HttpHealthChecksResourceApi {
   }
 }
 
-class HttpsHealthChecksResourceApi {
+class HttpsHealthChecksResource {
   final commons.ApiRequester _requester;
 
-  HttpsHealthChecksResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  HttpsHealthChecksResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified HttpsHealthCheck resource.
   ///
@@ -10547,10 +10536,10 @@ class HttpsHealthChecksResourceApi {
   }
 }
 
-class ImagesResourceApi {
+class ImagesResource {
   final commons.ApiRequester _requester;
 
-  ImagesResourceApi(commons.ApiRequester client) : _requester = client;
+  ImagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified image.
   ///
@@ -11423,10 +11412,10 @@ class ImagesResourceApi {
   }
 }
 
-class InstanceGroupManagersResourceApi {
+class InstanceGroupManagersResource {
   final commons.ApiRequester _requester;
 
-  InstanceGroupManagersResourceApi(commons.ApiRequester client)
+  InstanceGroupManagersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Flags the specified instances to be removed from the managed instance
@@ -13539,10 +13528,10 @@ class InstanceGroupManagersResourceApi {
   }
 }
 
-class InstanceGroupsResourceApi {
+class InstanceGroupsResource {
   final commons.ApiRequester _requester;
 
-  InstanceGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  InstanceGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a list of instances to the specified instance group. All of the
   /// instances in the instance group must be in the same network/subnetwork.
@@ -14493,11 +14482,10 @@ class InstanceGroupsResourceApi {
   }
 }
 
-class InstanceTemplatesResourceApi {
+class InstanceTemplatesResource {
   final commons.ApiRequester _requester;
 
-  InstanceTemplatesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  InstanceTemplatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified instance template. Deleting an instance template is
   /// permanent and cannot be undone. It is not possible to delete templates
@@ -15060,10 +15048,10 @@ class InstanceTemplatesResourceApi {
   }
 }
 
-class InstancesResourceApi {
+class InstancesResource {
   final commons.ApiRequester _requester;
 
-  InstancesResourceApi(commons.ApiRequester client) : _requester = client;
+  InstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds an access config to an instance's network interface.
   ///
@@ -18951,10 +18939,10 @@ class InstancesResourceApi {
   }
 }
 
-class InterconnectAttachmentsResourceApi {
+class InterconnectAttachmentsResource {
   final commons.ApiRequester _requester;
 
-  InterconnectAttachmentsResourceApi(commons.ApiRequester client)
+  InterconnectAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves an aggregated list of interconnect attachments.
@@ -19574,10 +19562,10 @@ class InterconnectAttachmentsResourceApi {
   }
 }
 
-class InterconnectLocationsResourceApi {
+class InterconnectLocationsResource {
   final commons.ApiRequester _requester;
 
-  InterconnectLocationsResourceApi(commons.ApiRequester client)
+  InterconnectLocationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the details for the specified interconnect location. Gets a list
@@ -19769,10 +19757,10 @@ class InterconnectLocationsResourceApi {
   }
 }
 
-class InterconnectsResourceApi {
+class InterconnectsResource {
   final commons.ApiRequester _requester;
 
-  InterconnectsResourceApi(commons.ApiRequester client) : _requester = client;
+  InterconnectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified interconnect.
   ///
@@ -20267,10 +20255,10 @@ class InterconnectsResourceApi {
   }
 }
 
-class LicenseCodesResourceApi {
+class LicenseCodesResource {
   final commons.ApiRequester _requester;
 
-  LicenseCodesResourceApi(commons.ApiRequester client) : _requester = client;
+  LicenseCodesResource(commons.ApiRequester client) : _requester = client;
 
   /// Return a specified license code. License codes are mirrored across all
   /// projects that have permissions to read the License Code.  Caution This
@@ -20411,10 +20399,10 @@ class LicenseCodesResourceApi {
   }
 }
 
-class LicensesResourceApi {
+class LicensesResource {
   final commons.ApiRequester _requester;
 
-  LicensesResourceApi(commons.ApiRequester client) : _requester = client;
+  LicensesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified license.  Caution This resource is intended for use
   /// only by third-party partners who are creating Cloud Marketplace images.
@@ -20982,10 +20970,10 @@ class LicensesResourceApi {
   }
 }
 
-class MachineTypesResourceApi {
+class MachineTypesResource {
   final commons.ApiRequester _requester;
 
-  MachineTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  MachineTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of machine types.
   ///
@@ -21328,10 +21316,10 @@ class MachineTypesResourceApi {
   }
 }
 
-class NetworkEndpointGroupsResourceApi {
+class NetworkEndpointGroupsResource {
   final commons.ApiRequester _requester;
 
-  NetworkEndpointGroupsResourceApi(commons.ApiRequester client)
+  NetworkEndpointGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves the list of network endpoint groups and sorts them by zone.
@@ -22268,10 +22256,10 @@ class NetworkEndpointGroupsResourceApi {
   }
 }
 
-class NetworksResourceApi {
+class NetworksResource {
   final commons.ApiRequester _requester;
 
-  NetworksResourceApi(commons.ApiRequester client) : _requester = client;
+  NetworksResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a peering to the specified network.
   ///
@@ -23197,10 +23185,10 @@ class NetworksResourceApi {
   }
 }
 
-class NodeGroupsResourceApi {
+class NodeGroupsResource {
   final commons.ApiRequester _requester;
 
-  NodeGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  NodeGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds specified number of nodes to the node group.
   ///
@@ -24485,10 +24473,10 @@ class NodeGroupsResourceApi {
   }
 }
 
-class NodeTemplatesResourceApi {
+class NodeTemplatesResource {
   final commons.ApiRequester _requester;
 
-  NodeTemplatesResourceApi(commons.ApiRequester client) : _requester = client;
+  NodeTemplatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of node templates.
   ///
@@ -25244,10 +25232,10 @@ class NodeTemplatesResourceApi {
   }
 }
 
-class NodeTypesResourceApi {
+class NodeTypesResource {
   final commons.ApiRequester _requester;
 
-  NodeTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  NodeTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of node types.
   ///
@@ -25588,11 +25576,10 @@ class NodeTypesResourceApi {
   }
 }
 
-class PacketMirroringsResourceApi {
+class PacketMirroringsResource {
   final commons.ApiRequester _requester;
 
-  PacketMirroringsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PacketMirroringsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of packetMirrorings.
   ///
@@ -26284,10 +26271,10 @@ class PacketMirroringsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Disable this project as a shared VPC host project.
   ///
@@ -27319,11 +27306,10 @@ class ProjectsResourceApi {
   }
 }
 
-class RegionAutoscalersResourceApi {
+class RegionAutoscalersResource {
   final commons.ApiRequester _requester;
 
-  RegionAutoscalersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  RegionAutoscalersResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified autoscaler.
   ///
@@ -27893,10 +27879,10 @@ class RegionAutoscalersResourceApi {
   }
 }
 
-class RegionBackendServicesResourceApi {
+class RegionBackendServicesResource {
   final commons.ApiRequester _requester;
 
-  RegionBackendServicesResourceApi(commons.ApiRequester client)
+  RegionBackendServicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified regional BackendService resource.
@@ -28554,11 +28540,10 @@ class RegionBackendServicesResourceApi {
   }
 }
 
-class RegionCommitmentsResourceApi {
+class RegionCommitmentsResource {
   final commons.ApiRequester _requester;
 
-  RegionCommitmentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  RegionCommitmentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of commitments.
   ///
@@ -28987,10 +28972,10 @@ class RegionCommitmentsResourceApi {
   }
 }
 
-class RegionDiskTypesResourceApi {
+class RegionDiskTypesResource {
   final commons.ApiRequester _requester;
 
-  RegionDiskTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  RegionDiskTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the specified regional disk type. Gets a list of available disk
   /// types by making a list() request.
@@ -29198,10 +29183,10 @@ class RegionDiskTypesResourceApi {
   }
 }
 
-class RegionDisksResourceApi {
+class RegionDisksResource {
   final commons.ApiRequester _requester;
 
-  RegionDisksResourceApi(commons.ApiRequester client) : _requester = client;
+  RegionDisksResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds existing resource policies to a regional disk. You can only add one
   /// policy which will be applied to this disk for scheduling snapshot
@@ -30304,10 +30289,10 @@ class RegionDisksResourceApi {
   }
 }
 
-class RegionHealthCheckServicesResourceApi {
+class RegionHealthCheckServicesResource {
   final commons.ApiRequester _requester;
 
-  RegionHealthCheckServicesResourceApi(commons.ApiRequester client)
+  RegionHealthCheckServicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified regional HealthCheckService.
@@ -30783,11 +30768,10 @@ class RegionHealthCheckServicesResourceApi {
   }
 }
 
-class RegionHealthChecksResourceApi {
+class RegionHealthChecksResource {
   final commons.ApiRequester _requester;
 
-  RegionHealthChecksResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  RegionHealthChecksResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified HealthCheck resource.
   ///
@@ -31361,10 +31345,10 @@ class RegionHealthChecksResourceApi {
   }
 }
 
-class RegionInstanceGroupManagersResourceApi {
+class RegionInstanceGroupManagersResource {
   final commons.ApiRequester _requester;
 
-  RegionInstanceGroupManagersResourceApi(commons.ApiRequester client)
+  RegionInstanceGroupManagersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Flags the specified instances to be immediately removed from the managed
@@ -33322,10 +33306,10 @@ class RegionInstanceGroupManagersResourceApi {
   }
 }
 
-class RegionInstanceGroupsResourceApi {
+class RegionInstanceGroupsResource {
   final commons.ApiRequester _requester;
 
-  RegionInstanceGroupsResourceApi(commons.ApiRequester client)
+  RegionInstanceGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns the specified instance group resource.
@@ -33772,10 +33756,10 @@ class RegionInstanceGroupsResourceApi {
   }
 }
 
-class RegionNetworkEndpointGroupsResourceApi {
+class RegionNetworkEndpointGroupsResource {
   final commons.ApiRequester _requester;
 
-  RegionNetworkEndpointGroupsResourceApi(commons.ApiRequester client)
+  RegionNetworkEndpointGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified network endpoint group. Note that the NEG cannot be
@@ -34158,10 +34142,10 @@ class RegionNetworkEndpointGroupsResourceApi {
   }
 }
 
-class RegionNotificationEndpointsResourceApi {
+class RegionNotificationEndpointsResource {
   final commons.ApiRequester _requester;
 
-  RegionNotificationEndpointsResourceApi(commons.ApiRequester client)
+  RegionNotificationEndpointsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified NotificationEndpoint in the given region
@@ -34545,11 +34529,10 @@ class RegionNotificationEndpointsResourceApi {
   }
 }
 
-class RegionOperationsResourceApi {
+class RegionOperationsResource {
   final commons.ApiRequester _requester;
 
-  RegionOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  RegionOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified region-specific Operations resource.
   ///
@@ -34912,10 +34895,10 @@ class RegionOperationsResourceApi {
   }
 }
 
-class RegionSslCertificatesResourceApi {
+class RegionSslCertificatesResource {
   final commons.ApiRequester _requester;
 
-  RegionSslCertificatesResourceApi(commons.ApiRequester client)
+  RegionSslCertificatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified SslCertificate resource in the region.
@@ -35299,10 +35282,10 @@ class RegionSslCertificatesResourceApi {
   }
 }
 
-class RegionTargetHttpProxiesResourceApi {
+class RegionTargetHttpProxiesResource {
   final commons.ApiRequester _requester;
 
-  RegionTargetHttpProxiesResourceApi(commons.ApiRequester client)
+  RegionTargetHttpProxiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified TargetHttpProxy resource.
@@ -35781,10 +35764,10 @@ class RegionTargetHttpProxiesResourceApi {
   }
 }
 
-class RegionTargetHttpsProxiesResourceApi {
+class RegionTargetHttpsProxiesResource {
   final commons.ApiRequester _requester;
 
-  RegionTargetHttpsProxiesResourceApi(commons.ApiRequester client)
+  RegionTargetHttpsProxiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified TargetHttpsProxy resource.
@@ -36359,10 +36342,10 @@ class RegionTargetHttpsProxiesResourceApi {
   }
 }
 
-class RegionUrlMapsResourceApi {
+class RegionUrlMapsResource {
   final commons.ApiRequester _requester;
 
-  RegionUrlMapsResourceApi(commons.ApiRequester client) : _requester = client;
+  RegionUrlMapsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified UrlMap resource.
   ///
@@ -36976,10 +36959,10 @@ class RegionUrlMapsResourceApi {
   }
 }
 
-class RegionsResourceApi {
+class RegionsResource {
   final commons.ApiRequester _requester;
 
-  RegionsResourceApi(commons.ApiRequester client) : _requester = client;
+  RegionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the specified Region resource. Gets a list of available regions by
   /// making a list() request.
@@ -37167,10 +37150,10 @@ class RegionsResourceApi {
   }
 }
 
-class ReservationsResourceApi {
+class ReservationsResource {
   final commons.ApiRequester _requester;
 
-  ReservationsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReservationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of reservations.
   ///
@@ -38021,11 +38004,10 @@ class ReservationsResourceApi {
   }
 }
 
-class ResourcePoliciesResourceApi {
+class ResourcePoliciesResource {
   final commons.ApiRequester _requester;
 
-  ResourcePoliciesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ResourcePoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of resource policies.
   ///
@@ -38780,10 +38762,10 @@ class ResourcePoliciesResourceApi {
   }
 }
 
-class RoutersResourceApi {
+class RoutersResource {
   final commons.ApiRequester _requester;
 
-  RoutersResourceApi(commons.ApiRequester client) : _requester = client;
+  RoutersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of routers.
   ///
@@ -39787,10 +39769,10 @@ class RoutersResourceApi {
   }
 }
 
-class RoutesResourceApi {
+class RoutesResource {
   final commons.ApiRequester _requester;
 
-  RoutesResourceApi(commons.ApiRequester client) : _requester = client;
+  RoutesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified Route resource.
   ///
@@ -40132,11 +40114,10 @@ class RoutesResourceApi {
   }
 }
 
-class SecurityPoliciesResourceApi {
+class SecurityPoliciesResource {
   final commons.ApiRequester _requester;
 
-  SecurityPoliciesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SecurityPoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts a rule into a security policy.
   ///
@@ -40977,10 +40958,10 @@ class SecurityPoliciesResourceApi {
   }
 }
 
-class SnapshotsResourceApi {
+class SnapshotsResource {
   final commons.ApiRequester _requester;
 
-  SnapshotsResourceApi(commons.ApiRequester client) : _requester = client;
+  SnapshotsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified Snapshot resource. Keep in mind that deleting a
   /// single snapshot might not necessarily delete all the data on that
@@ -41536,10 +41517,10 @@ class SnapshotsResourceApi {
   }
 }
 
-class SslCertificatesResourceApi {
+class SslCertificatesResource {
   final commons.ApiRequester _requester;
 
-  SslCertificatesResourceApi(commons.ApiRequester client) : _requester = client;
+  SslCertificatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of all SslCertificate resources, regional and global,
   /// available to the specified project.
@@ -42022,10 +42003,10 @@ class SslCertificatesResourceApi {
   }
 }
 
-class SslPoliciesResourceApi {
+class SslPoliciesResource {
   final commons.ApiRequester _requester;
 
-  SslPoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+  SslPoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified SSL policy. The SSL policy resource can be deleted
   /// only if it is not in use by any TargetHttpsProxy or TargetSslProxy
@@ -42576,10 +42557,10 @@ class SslPoliciesResourceApi {
   }
 }
 
-class SubnetworksResourceApi {
+class SubnetworksResource {
   final commons.ApiRequester _requester;
 
-  SubnetworksResourceApi(commons.ApiRequester client) : _requester = client;
+  SubnetworksResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of subnetworks.
   ///
@@ -43759,11 +43740,10 @@ class SubnetworksResourceApi {
   }
 }
 
-class TargetGrpcProxiesResourceApi {
+class TargetGrpcProxiesResource {
   final commons.ApiRequester _requester;
 
-  TargetGrpcProxiesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetGrpcProxiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified TargetGrpcProxy in the given scope
   ///
@@ -44195,11 +44175,10 @@ class TargetGrpcProxiesResourceApi {
   }
 }
 
-class TargetHttpProxiesResourceApi {
+class TargetHttpProxiesResource {
   final commons.ApiRequester _requester;
 
-  TargetHttpProxiesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetHttpProxiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of all TargetHttpProxy resources, regional and global,
   /// available to the specified project.
@@ -44856,11 +44835,10 @@ class TargetHttpProxiesResourceApi {
   }
 }
 
-class TargetHttpsProxiesResourceApi {
+class TargetHttpsProxiesResource {
   final commons.ApiRequester _requester;
 
-  TargetHttpsProxiesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetHttpsProxiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of all TargetHttpsProxy resources, regional and global,
   /// available to the specified project.
@@ -45691,10 +45669,10 @@ class TargetHttpsProxiesResourceApi {
   }
 }
 
-class TargetInstancesResourceApi {
+class TargetInstancesResource {
   final commons.ApiRequester _requester;
 
-  TargetInstancesResourceApi(commons.ApiRequester client) : _requester = client;
+  TargetInstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of target instances.
   ///
@@ -46212,10 +46190,10 @@ class TargetInstancesResourceApi {
   }
 }
 
-class TargetPoolsResourceApi {
+class TargetPoolsResource {
   final commons.ApiRequester _requester;
 
-  TargetPoolsResourceApi(commons.ApiRequester client) : _requester = client;
+  TargetPoolsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds health check URLs to a target pool.
   ///
@@ -47295,11 +47273,10 @@ class TargetPoolsResourceApi {
   }
 }
 
-class TargetSslProxiesResourceApi {
+class TargetSslProxiesResource {
   final commons.ApiRequester _requester;
 
-  TargetSslProxiesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetSslProxiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified TargetSslProxy resource.
   ///
@@ -47995,11 +47972,10 @@ class TargetSslProxiesResourceApi {
   }
 }
 
-class TargetTcpProxiesResourceApi {
+class TargetTcpProxiesResource {
   final commons.ApiRequester _requester;
 
-  TargetTcpProxiesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetTcpProxiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified TargetTcpProxy resource.
   ///
@@ -48520,11 +48496,10 @@ class TargetTcpProxiesResourceApi {
   }
 }
 
-class TargetVpnGatewaysResourceApi {
+class TargetVpnGatewaysResource {
   final commons.ApiRequester _requester;
 
-  TargetVpnGatewaysResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  TargetVpnGatewaysResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of target VPN gateways.
   ///
@@ -49042,10 +49017,10 @@ class TargetVpnGatewaysResourceApi {
   }
 }
 
-class UrlMapsResourceApi {
+class UrlMapsResource {
   final commons.ApiRequester _requester;
 
-  UrlMapsResourceApi(commons.ApiRequester client) : _requester = client;
+  UrlMapsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of all UrlMap resources, regional and global, available
   /// to the specified project.
@@ -49855,10 +49830,10 @@ class UrlMapsResourceApi {
   }
 }
 
-class VpnGatewaysResourceApi {
+class VpnGatewaysResource {
   final commons.ApiRequester _requester;
 
-  VpnGatewaysResourceApi(commons.ApiRequester client) : _requester = client;
+  VpnGatewaysResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of VPN gateways.
   ///
@@ -50624,10 +50599,10 @@ class VpnGatewaysResourceApi {
   }
 }
 
-class VpnTunnelsResourceApi {
+class VpnTunnelsResource {
   final commons.ApiRequester _requester;
 
-  VpnTunnelsResourceApi(commons.ApiRequester client) : _requester = client;
+  VpnTunnelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an aggregated list of VPN tunnels.
   ///
@@ -51143,10 +51118,10 @@ class VpnTunnelsResourceApi {
   }
 }
 
-class ZoneOperationsResourceApi {
+class ZoneOperationsResource {
   final commons.ApiRequester _requester;
 
-  ZoneOperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  ZoneOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified zone-specific Operations resource.
   ///
@@ -51509,10 +51484,10 @@ class ZoneOperationsResourceApi {
   }
 }
 
-class ZonesResourceApi {
+class ZonesResource {
   final commons.ApiRequester _requester;
 
-  ZonesResourceApi(commons.ApiRequester client) : _requester = client;
+  ZonesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the specified Zone resource. Gets a list of available zones by
   /// making a list() request.

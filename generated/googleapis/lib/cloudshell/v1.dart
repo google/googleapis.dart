@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [CloudShellApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [UsersResourceApi]
-///   - [UsersEnvironmentsResourceApi]
+/// - [OperationsResource]
+/// - [UsersResource]
+///   - [UsersEnvironmentsResource]
 library cloudshell.v1;
 
 import 'dart:async' as async;
@@ -50,8 +50,8 @@ class CloudShellApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   CloudShellApi(http.Client client,
       {core.String rootUrl = 'https://cloudshell.googleapis.com/',
@@ -60,10 +60,10 @@ class CloudShellApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -316,20 +316,19 @@ class OperationsResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersEnvironmentsResourceApi get environments =>
-      UsersEnvironmentsResourceApi(_requester);
+  UsersEnvironmentsResource get environments =>
+      UsersEnvironmentsResource(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class UsersEnvironmentsResourceApi {
+class UsersEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  UsersEnvironmentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  UsersEnvironmentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a public SSH key to an environment, allowing clients with the
   /// corresponding private key to connect to that environment via SSH. If a key

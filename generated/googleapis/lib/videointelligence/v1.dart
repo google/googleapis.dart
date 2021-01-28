@@ -26,18 +26,18 @@
 ///
 /// Create an instance of [CloudVideoIntelligenceApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-///   - [OperationsProjectsResourceApi]
-///     - [OperationsProjectsLocationsResourceApi]
-///       - [OperationsProjectsLocationsOperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsCorporaResourceApi]
-///       - [ProjectsLocationsCorporaOperationsResourceApi]
-///     - [ProjectsLocationsCorpuraResourceApi]
-///       - [ProjectsLocationsCorpuraOperationsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-/// - [VideosResourceApi]
+/// - [OperationsResource]
+///   - [OperationsProjectsResource]
+///     - [OperationsProjectsLocationsResource]
+///       - [OperationsProjectsLocationsOperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsCorporaResource]
+///       - [ProjectsLocationsCorporaOperationsResource]
+///     - [ProjectsLocationsCorpuraResource]
+///       - [ProjectsLocationsCorpuraOperationsResource]
+///     - [ProjectsLocationsOperationsResource]
+/// - [VideosResource]
 library videointelligence.v1;
 
 import 'dart:async' as async;
@@ -62,9 +62,9 @@ class CloudVideoIntelligenceApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  VideosResourceApi get videos => VideosResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  VideosResource get videos => VideosResource(_requester);
 
   CloudVideoIntelligenceApi(http.Client client,
       {core.String rootUrl = 'https://videointelligence.googleapis.com/',
@@ -73,39 +73,38 @@ class CloudVideoIntelligenceApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsProjectsResourceApi get projects =>
-      OperationsProjectsResourceApi(_requester);
+  OperationsProjectsResource get projects =>
+      OperationsProjectsResource(_requester);
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class OperationsProjectsResourceApi {
+class OperationsProjectsResource {
   final commons.ApiRequester _requester;
 
-  OperationsProjectsLocationsResourceApi get locations =>
-      OperationsProjectsLocationsResourceApi(_requester);
+  OperationsProjectsLocationsResource get locations =>
+      OperationsProjectsLocationsResource(_requester);
 
-  OperationsProjectsResourceApi(commons.ApiRequester client)
+  OperationsProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OperationsProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OperationsProjectsLocationsOperationsResource get operations =>
+      OperationsProjectsLocationsOperationsResource(_requester);
+
+  OperationsProjectsLocationsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OperationsProjectsLocationsResourceApi {
+class OperationsProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsProjectsLocationsOperationsResourceApi get operations =>
-      OperationsProjectsLocationsOperationsResourceApi(_requester);
-
-  OperationsProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class OperationsProjectsLocationsOperationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  OperationsProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  OperationsProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -283,43 +282,42 @@ class OperationsProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCorporaResourceApi get corpora =>
-      ProjectsLocationsCorporaResourceApi(_requester);
-  ProjectsLocationsCorpuraResourceApi get corpura =>
-      ProjectsLocationsCorpuraResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsCorporaResource get corpora =>
+      ProjectsLocationsCorporaResource(_requester);
+  ProjectsLocationsCorpuraResource get corpura =>
+      ProjectsLocationsCorpuraResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsCorporaResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCorporaOperationsResource get operations =>
+      ProjectsLocationsCorporaOperationsResource(_requester);
+
+  ProjectsLocationsCorporaResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsCorporaResourceApi {
+class ProjectsLocationsCorporaOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCorporaOperationsResourceApi get operations =>
-      ProjectsLocationsCorporaOperationsResourceApi(_requester);
-
-  ProjectsLocationsCorporaResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsLocationsCorporaOperationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsCorporaOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsCorporaOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -378,20 +376,20 @@ class ProjectsLocationsCorporaOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsCorpuraResourceApi {
+class ProjectsLocationsCorpuraResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCorpuraOperationsResourceApi get operations =>
-      ProjectsLocationsCorpuraOperationsResourceApi(_requester);
+  ProjectsLocationsCorpuraOperationsResource get operations =>
+      ProjectsLocationsCorpuraOperationsResource(_requester);
 
-  ProjectsLocationsCorpuraResourceApi(commons.ApiRequester client)
+  ProjectsLocationsCorpuraResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsCorpuraOperationsResourceApi {
+class ProjectsLocationsCorpuraOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCorpuraOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsCorpuraOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -450,10 +448,10 @@ class ProjectsLocationsCorpuraOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -714,10 +712,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class VideosResourceApi {
+class VideosResource {
   final commons.ApiRequester _requester;
 
-  VideosResourceApi(commons.ApiRequester client) : _requester = client;
+  VideosResource(commons.ApiRequester client) : _requester = client;
 
   /// Performs asynchronous video annotation. Progress and results can be
   /// retrieved through the `google.longrunning.Operations` interface.

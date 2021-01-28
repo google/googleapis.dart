@@ -23,12 +23,12 @@
 ///
 /// Create an instance of [BigQueryReservationApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsCapacityCommitmentsResourceApi]
-///     - [ProjectsLocationsReservationsResourceApi]
-///       - [ProjectsLocationsReservationsAssignmentsResourceApi]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsCapacityCommitmentsResource]
+///     - [ProjectsLocationsReservationsResource]
+///       - [ProjectsLocationsReservationsAssignmentsResource]
 library bigqueryreservation.v1;
 
 import 'dart:async' as async;
@@ -54,8 +54,8 @@ class BigQueryReservationApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   BigQueryReservationApi(http.Client client,
       {core.String rootUrl = 'https://bigqueryreservation.googleapis.com/',
@@ -64,10 +64,10 @@ class BigQueryReservationApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a long-running operation. This method indicates that the client is
   /// no longer interested in the operation result. It does not cancel the
@@ -202,25 +202,24 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCapacityCommitmentsResourceApi get capacityCommitments =>
-      ProjectsLocationsCapacityCommitmentsResourceApi(_requester);
-  ProjectsLocationsReservationsResourceApi get reservations =>
-      ProjectsLocationsReservationsResourceApi(_requester);
+  ProjectsLocationsCapacityCommitmentsResource get capacityCommitments =>
+      ProjectsLocationsCapacityCommitmentsResource(_requester);
+  ProjectsLocationsReservationsResource get reservations =>
+      ProjectsLocationsReservationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a BI reservation.
   ///
@@ -520,10 +519,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsCapacityCommitmentsResourceApi {
+class ProjectsLocationsCapacityCommitmentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsCapacityCommitmentsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsCapacityCommitmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new capacity commitment resource.
@@ -974,13 +973,13 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
   }
 }
 
-class ProjectsLocationsReservationsResourceApi {
+class ProjectsLocationsReservationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsReservationsAssignmentsResourceApi get assignments =>
-      ProjectsLocationsReservationsAssignmentsResourceApi(_requester);
+  ProjectsLocationsReservationsAssignmentsResource get assignments =>
+      ProjectsLocationsReservationsAssignmentsResource(_requester);
 
-  ProjectsLocationsReservationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsReservationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new reservation resource.
@@ -1294,11 +1293,10 @@ class ProjectsLocationsReservationsResourceApi {
   }
 }
 
-class ProjectsLocationsReservationsAssignmentsResourceApi {
+class ProjectsLocationsReservationsAssignmentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsReservationsAssignmentsResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsReservationsAssignmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an assignment object which allows the given project to submit jobs

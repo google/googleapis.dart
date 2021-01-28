@@ -3919,7 +3919,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--getSettings', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects;
@@ -4033,7 +4033,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsHistoriesResourceApi', () {
+  unittest.group('resource-ProjectsHistoriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories;
@@ -4229,7 +4229,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsHistoriesExecutionsResourceApi', () {
+  unittest.group('resource-ProjectsHistoriesExecutionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions;
@@ -4531,7 +4531,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsHistoriesExecutionsClustersResourceApi', () {
+  unittest.group('resource-ProjectsHistoriesExecutionsClustersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.clusters;
@@ -4692,7 +4692,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsHistoriesExecutionsEnvironmentsResourceApi',
+  unittest.group('resource-ProjectsHistoriesExecutionsEnvironmentsResource',
       () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
@@ -4863,7 +4863,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsHistoriesExecutionsStepsResourceApi', () {
+  unittest.group('resource-ProjectsHistoriesExecutionsStepsResource', () {
     unittest.test('method--accessibilityClusters', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
@@ -5442,7 +5442,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi',
+      'resource-ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -5544,8 +5544,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi',
-      () {
+      'resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
@@ -5838,7 +5837,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi',
+      'resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource',
       () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
@@ -6064,8 +6063,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsHistoriesExecutionsStepsTestCasesResourceApi', () {
+  unittest.group('resource-ProjectsHistoriesExecutionsStepsTestCasesResource',
+      () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
@@ -6264,8 +6263,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsHistoriesExecutionsStepsThumbnailsResourceApi', () {
+  unittest.group('resource-ProjectsHistoriesExecutionsStepsThumbnailsResource',
+      () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)

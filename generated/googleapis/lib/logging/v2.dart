@@ -26,40 +26,40 @@
 ///
 /// Create an instance of [LoggingApi] to access these resources:
 ///
-/// - [BillingAccountsResourceApi]
-///   - [BillingAccountsBucketsResourceApi]
-///   - [BillingAccountsExclusionsResourceApi]
-///   - [BillingAccountsLocationsResourceApi]
-///     - [BillingAccountsLocationsBucketsResourceApi]
-///   - [BillingAccountsLogsResourceApi]
-///   - [BillingAccountsSinksResourceApi]
-/// - [EntriesResourceApi]
-/// - [ExclusionsResourceApi]
-/// - [FoldersResourceApi]
-///   - [FoldersExclusionsResourceApi]
-///   - [FoldersLocationsResourceApi]
-///     - [FoldersLocationsBucketsResourceApi]
-///   - [FoldersLogsResourceApi]
-///   - [FoldersSinksResourceApi]
-/// - [LocationsResourceApi]
-///   - [LocationsBucketsResourceApi]
-/// - [LogsResourceApi]
-/// - [MonitoredResourceDescriptorsResourceApi]
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsExclusionsResourceApi]
-///   - [OrganizationsLocationsResourceApi]
-///     - [OrganizationsLocationsBucketsResourceApi]
-///   - [OrganizationsLogsResourceApi]
-///   - [OrganizationsSinksResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsExclusionsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsBucketsResourceApi]
-///   - [ProjectsLogsResourceApi]
-///   - [ProjectsMetricsResourceApi]
-///   - [ProjectsSinksResourceApi]
-/// - [SinksResourceApi]
-/// - [V2ResourceApi]
+/// - [BillingAccountsResource]
+///   - [BillingAccountsBucketsResource]
+///   - [BillingAccountsExclusionsResource]
+///   - [BillingAccountsLocationsResource]
+///     - [BillingAccountsLocationsBucketsResource]
+///   - [BillingAccountsLogsResource]
+///   - [BillingAccountsSinksResource]
+/// - [EntriesResource]
+/// - [ExclusionsResource]
+/// - [FoldersResource]
+///   - [FoldersExclusionsResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsBucketsResource]
+///   - [FoldersLogsResource]
+///   - [FoldersSinksResource]
+/// - [LocationsResource]
+///   - [LocationsBucketsResource]
+/// - [LogsResource]
+/// - [MonitoredResourceDescriptorsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsExclusionsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsBucketsResource]
+///   - [OrganizationsLogsResource]
+///   - [OrganizationsSinksResource]
+/// - [ProjectsResource]
+///   - [ProjectsExclusionsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBucketsResource]
+///   - [ProjectsLogsResource]
+///   - [ProjectsMetricsResource]
+///   - [ProjectsSinksResource]
+/// - [SinksResource]
+/// - [V2Resource]
 library logging.v2;
 
 import 'dart:async' as async;
@@ -101,20 +101,19 @@ class LoggingApi {
 
   final commons.ApiRequester _requester;
 
-  BillingAccountsResourceApi get billingAccounts =>
-      BillingAccountsResourceApi(_requester);
-  EntriesResourceApi get entries => EntriesResourceApi(_requester);
-  ExclusionsResourceApi get exclusions => ExclusionsResourceApi(_requester);
-  FoldersResourceApi get folders => FoldersResourceApi(_requester);
-  LocationsResourceApi get locations => LocationsResourceApi(_requester);
-  LogsResourceApi get logs => LogsResourceApi(_requester);
-  MonitoredResourceDescriptorsResourceApi get monitoredResourceDescriptors =>
-      MonitoredResourceDescriptorsResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  SinksResourceApi get sinks => SinksResourceApi(_requester);
-  V2ResourceApi get v2 => V2ResourceApi(_requester);
+  BillingAccountsResource get billingAccounts =>
+      BillingAccountsResource(_requester);
+  EntriesResource get entries => EntriesResource(_requester);
+  ExclusionsResource get exclusions => ExclusionsResource(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
+  LocationsResource get locations => LocationsResource(_requester);
+  LogsResource get logs => LogsResource(_requester);
+  MonitoredResourceDescriptorsResource get monitoredResourceDescriptors =>
+      MonitoredResourceDescriptorsResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  SinksResource get sinks => SinksResource(_requester);
+  V2Resource get v2 => V2Resource(_requester);
 
   LoggingApi(http.Client client,
       {core.String rootUrl = 'https://logging.googleapis.com/',
@@ -123,27 +122,27 @@ class LoggingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BillingAccountsResourceApi {
+class BillingAccountsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsBucketsResourceApi get buckets =>
-      BillingAccountsBucketsResourceApi(_requester);
-  BillingAccountsExclusionsResourceApi get exclusions =>
-      BillingAccountsExclusionsResourceApi(_requester);
-  BillingAccountsLocationsResourceApi get locations =>
-      BillingAccountsLocationsResourceApi(_requester);
-  BillingAccountsLogsResourceApi get logs =>
-      BillingAccountsLogsResourceApi(_requester);
-  BillingAccountsSinksResourceApi get sinks =>
-      BillingAccountsSinksResourceApi(_requester);
+  BillingAccountsBucketsResource get buckets =>
+      BillingAccountsBucketsResource(_requester);
+  BillingAccountsExclusionsResource get exclusions =>
+      BillingAccountsExclusionsResource(_requester);
+  BillingAccountsLocationsResource get locations =>
+      BillingAccountsLocationsResource(_requester);
+  BillingAccountsLogsResource get logs =>
+      BillingAccountsLogsResource(_requester);
+  BillingAccountsSinksResource get sinks =>
+      BillingAccountsSinksResource(_requester);
 
-  BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  BillingAccountsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class BillingAccountsBucketsResourceApi {
+class BillingAccountsBucketsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsBucketsResourceApi(commons.ApiRequester client)
+  BillingAccountsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a bucket (Beta).
@@ -203,10 +202,10 @@ class BillingAccountsBucketsResourceApi {
   }
 }
 
-class BillingAccountsExclusionsResourceApi {
+class BillingAccountsExclusionsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsExclusionsResourceApi(commons.ApiRequester client)
+  BillingAccountsExclusionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new exclusion in a specified parent resource. Only log entries
@@ -535,20 +534,20 @@ class BillingAccountsExclusionsResourceApi {
   }
 }
 
-class BillingAccountsLocationsResourceApi {
+class BillingAccountsLocationsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsLocationsBucketsResourceApi get buckets =>
-      BillingAccountsLocationsBucketsResourceApi(_requester);
+  BillingAccountsLocationsBucketsResource get buckets =>
+      BillingAccountsLocationsBucketsResource(_requester);
 
-  BillingAccountsLocationsResourceApi(commons.ApiRequester client)
+  BillingAccountsLocationsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class BillingAccountsLocationsBucketsResourceApi {
+class BillingAccountsLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsLocationsBucketsResourceApi(commons.ApiRequester client)
+  BillingAccountsLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a bucket that can be used to store log entries. Once a bucket has
@@ -901,10 +900,10 @@ class BillingAccountsLocationsBucketsResourceApi {
   }
 }
 
-class BillingAccountsLogsResourceApi {
+class BillingAccountsLogsResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsLogsResourceApi(commons.ApiRequester client)
+  BillingAccountsLogsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
@@ -1041,10 +1040,10 @@ class BillingAccountsLogsResourceApi {
   }
 }
 
-class BillingAccountsSinksResourceApi {
+class BillingAccountsSinksResource {
   final commons.ApiRequester _requester;
 
-  BillingAccountsSinksResourceApi(commons.ApiRequester client)
+  BillingAccountsSinksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a sink that exports specified log entries to a destination. The
@@ -1497,10 +1496,10 @@ class BillingAccountsSinksResourceApi {
   }
 }
 
-class EntriesResourceApi {
+class EntriesResource {
   final commons.ApiRequester _requester;
 
-  EntriesResourceApi(commons.ApiRequester client) : _requester = client;
+  EntriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists log entries. Use this method to retrieve log entries that originated
   /// from a project/folder/organization/billing account. For ways to export log
@@ -1612,10 +1611,10 @@ class EntriesResourceApi {
   }
 }
 
-class ExclusionsResourceApi {
+class ExclusionsResource {
   final commons.ApiRequester _requester;
 
-  ExclusionsResourceApi(commons.ApiRequester client) : _requester = client;
+  ExclusionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new exclusion in a specified parent resource. Only log entries
   /// belonging to that resource can be excluded. You can have up to 10
@@ -1943,24 +1942,23 @@ class ExclusionsResourceApi {
   }
 }
 
-class FoldersResourceApi {
+class FoldersResource {
   final commons.ApiRequester _requester;
 
-  FoldersExclusionsResourceApi get exclusions =>
-      FoldersExclusionsResourceApi(_requester);
-  FoldersLocationsResourceApi get locations =>
-      FoldersLocationsResourceApi(_requester);
-  FoldersLogsResourceApi get logs => FoldersLogsResourceApi(_requester);
-  FoldersSinksResourceApi get sinks => FoldersSinksResourceApi(_requester);
+  FoldersExclusionsResource get exclusions =>
+      FoldersExclusionsResource(_requester);
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+  FoldersLogsResource get logs => FoldersLogsResource(_requester);
+  FoldersSinksResource get sinks => FoldersSinksResource(_requester);
 
-  FoldersResourceApi(commons.ApiRequester client) : _requester = client;
+  FoldersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class FoldersExclusionsResourceApi {
+class FoldersExclusionsResource {
   final commons.ApiRequester _requester;
 
-  FoldersExclusionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  FoldersExclusionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new exclusion in a specified parent resource. Only log entries
   /// belonging to that resource can be excluded. You can have up to 10
@@ -2288,20 +2286,19 @@ class FoldersExclusionsResourceApi {
   }
 }
 
-class FoldersLocationsResourceApi {
+class FoldersLocationsResource {
   final commons.ApiRequester _requester;
 
-  FoldersLocationsBucketsResourceApi get buckets =>
-      FoldersLocationsBucketsResourceApi(_requester);
+  FoldersLocationsBucketsResource get buckets =>
+      FoldersLocationsBucketsResource(_requester);
 
-  FoldersLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class FoldersLocationsBucketsResourceApi {
+class FoldersLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
-  FoldersLocationsBucketsResourceApi(commons.ApiRequester client)
+  FoldersLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a bucket that can be used to store log entries. Once a bucket has
@@ -2707,10 +2704,10 @@ class FoldersLocationsBucketsResourceApi {
   }
 }
 
-class FoldersLogsResourceApi {
+class FoldersLogsResource {
   final commons.ApiRequester _requester;
 
-  FoldersLogsResourceApi(commons.ApiRequester client) : _requester = client;
+  FoldersLogsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
@@ -2846,10 +2843,10 @@ class FoldersLogsResourceApi {
   }
 }
 
-class FoldersSinksResourceApi {
+class FoldersSinksResource {
   final commons.ApiRequester _requester;
 
-  FoldersSinksResourceApi(commons.ApiRequester client) : _requester = client;
+  FoldersSinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a sink that exports specified log entries to a destination. The
   /// export of newly-ingested log entries begins immediately, unless the sink's
@@ -3301,20 +3298,18 @@ class FoldersSinksResourceApi {
   }
 }
 
-class LocationsResourceApi {
+class LocationsResource {
   final commons.ApiRequester _requester;
 
-  LocationsBucketsResourceApi get buckets =>
-      LocationsBucketsResourceApi(_requester);
+  LocationsBucketsResource get buckets => LocationsBucketsResource(_requester);
 
-  LocationsResourceApi(commons.ApiRequester client) : _requester = client;
+  LocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class LocationsBucketsResourceApi {
+class LocationsBucketsResource {
   final commons.ApiRequester _requester;
 
-  LocationsBucketsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  LocationsBucketsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a bucket that can be used to store log entries. Once a bucket has
   /// been created, the region cannot be changed.
@@ -3719,10 +3714,10 @@ class LocationsBucketsResourceApi {
   }
 }
 
-class LogsResourceApi {
+class LogsResource {
   final commons.ApiRequester _requester;
 
-  LogsResourceApi(commons.ApiRequester client) : _requester = client;
+  LogsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
@@ -3858,10 +3853,10 @@ class LogsResourceApi {
   }
 }
 
-class MonitoredResourceDescriptorsResourceApi {
+class MonitoredResourceDescriptorsResource {
   final commons.ApiRequester _requester;
 
-  MonitoredResourceDescriptorsResourceApi(commons.ApiRequester client)
+  MonitoredResourceDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the descriptors for monitored resource types used by Logging.
@@ -3927,19 +3922,18 @@ class MonitoredResourceDescriptorsResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsExclusionsResourceApi get exclusions =>
-      OrganizationsExclusionsResourceApi(_requester);
-  OrganizationsLocationsResourceApi get locations =>
-      OrganizationsLocationsResourceApi(_requester);
-  OrganizationsLogsResourceApi get logs =>
-      OrganizationsLogsResourceApi(_requester);
-  OrganizationsSinksResourceApi get sinks =>
-      OrganizationsSinksResourceApi(_requester);
+  OrganizationsExclusionsResource get exclusions =>
+      OrganizationsExclusionsResource(_requester);
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+  OrganizationsLogsResource get logs => OrganizationsLogsResource(_requester);
+  OrganizationsSinksResource get sinks =>
+      OrganizationsSinksResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
   /// the Logs Router can currently only be configured for GCP organizations.
@@ -4092,10 +4086,10 @@ class OrganizationsResourceApi {
   }
 }
 
-class OrganizationsExclusionsResourceApi {
+class OrganizationsExclusionsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsExclusionsResourceApi(commons.ApiRequester client)
+  OrganizationsExclusionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new exclusion in a specified parent resource. Only log entries
@@ -4424,20 +4418,20 @@ class OrganizationsExclusionsResourceApi {
   }
 }
 
-class OrganizationsLocationsResourceApi {
+class OrganizationsLocationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsBucketsResourceApi get buckets =>
-      OrganizationsLocationsBucketsResourceApi(_requester);
+  OrganizationsLocationsBucketsResource get buckets =>
+      OrganizationsLocationsBucketsResource(_requester);
 
-  OrganizationsLocationsResourceApi(commons.ApiRequester client)
+  OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OrganizationsLocationsBucketsResourceApi {
+class OrganizationsLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsBucketsResourceApi(commons.ApiRequester client)
+  OrganizationsLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a bucket that can be used to store log entries. Once a bucket has
@@ -4847,11 +4841,10 @@ class OrganizationsLocationsBucketsResourceApi {
   }
 }
 
-class OrganizationsLogsResourceApi {
+class OrganizationsLogsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLogsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OrganizationsLogsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
@@ -4987,11 +4980,10 @@ class OrganizationsLogsResourceApi {
   }
 }
 
-class OrganizationsSinksResourceApi {
+class OrganizationsSinksResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSinksResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OrganizationsSinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a sink that exports specified log entries to a destination. The
   /// export of newly-ingested log entries begins immediately, unless the sink's
@@ -5443,26 +5435,24 @@ class OrganizationsSinksResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsExclusionsResourceApi get exclusions =>
-      ProjectsExclusionsResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsLogsResourceApi get logs => ProjectsLogsResourceApi(_requester);
-  ProjectsMetricsResourceApi get metrics =>
-      ProjectsMetricsResourceApi(_requester);
-  ProjectsSinksResourceApi get sinks => ProjectsSinksResourceApi(_requester);
+  ProjectsExclusionsResource get exclusions =>
+      ProjectsExclusionsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsLogsResource get logs => ProjectsLogsResource(_requester);
+  ProjectsMetricsResource get metrics => ProjectsMetricsResource(_requester);
+  ProjectsSinksResource get sinks => ProjectsSinksResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsExclusionsResourceApi {
+class ProjectsExclusionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsExclusionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsExclusionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new exclusion in a specified parent resource. Only log entries
   /// belonging to that resource can be excluded. You can have up to 10
@@ -5790,20 +5780,19 @@ class ProjectsExclusionsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsBucketsResourceApi get buckets =>
-      ProjectsLocationsBucketsResourceApi(_requester);
+  ProjectsLocationsBucketsResource get buckets =>
+      ProjectsLocationsBucketsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsBucketsResourceApi {
+class ProjectsLocationsBucketsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsBucketsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsBucketsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a bucket that can be used to store log entries. Once a bucket has
@@ -6209,10 +6198,10 @@ class ProjectsLocationsBucketsResourceApi {
   }
 }
 
-class ProjectsLogsResourceApi {
+class ProjectsLogsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLogsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsLogsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
@@ -6348,10 +6337,10 @@ class ProjectsLogsResourceApi {
   }
 }
 
-class ProjectsMetricsResourceApi {
+class ProjectsMetricsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsMetricsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsMetricsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a logs-based metric.
   ///
@@ -6650,10 +6639,10 @@ class ProjectsMetricsResourceApi {
   }
 }
 
-class ProjectsSinksResourceApi {
+class ProjectsSinksResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSinksResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsSinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a sink that exports specified log entries to a destination. The
   /// export of newly-ingested log entries begins immediately, unless the sink's
@@ -7105,10 +7094,10 @@ class ProjectsSinksResourceApi {
   }
 }
 
-class SinksResourceApi {
+class SinksResource {
   final commons.ApiRequester _requester;
 
-  SinksResourceApi(commons.ApiRequester client) : _requester = client;
+  SinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a sink that exports specified log entries to a destination. The
   /// export of newly-ingested log entries begins immediately, unless the sink's
@@ -7467,10 +7456,10 @@ class SinksResourceApi {
   }
 }
 
-class V2ResourceApi {
+class V2Resource {
   final commons.ApiRequester _requester;
 
-  V2ResourceApi(commons.ApiRequester client) : _requester = client;
+  V2Resource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
   /// the Logs Router can currently only be configured for GCP organizations.

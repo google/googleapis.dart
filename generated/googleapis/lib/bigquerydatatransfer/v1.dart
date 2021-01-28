@@ -24,16 +24,16 @@
 ///
 /// Create an instance of [BigQueryDataTransferApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsDataSourcesResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsDataSourcesResourceApi]
-///     - [ProjectsLocationsTransferConfigsResourceApi]
-///       - [ProjectsLocationsTransferConfigsRunsResourceApi]
-///         - [ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi]
-///   - [ProjectsTransferConfigsResourceApi]
-///     - [ProjectsTransferConfigsRunsResourceApi]
-///       - [ProjectsTransferConfigsRunsTransferLogsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsDataSourcesResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDataSourcesResource]
+///     - [ProjectsLocationsTransferConfigsResource]
+///       - [ProjectsLocationsTransferConfigsRunsResource]
+///         - [ProjectsLocationsTransferConfigsRunsTransferLogsResource]
+///   - [ProjectsTransferConfigsResource]
+///     - [ProjectsTransferConfigsRunsResource]
+///       - [ProjectsTransferConfigsRunsTransferLogsResource]
 library bigquerydatatransfer.v1;
 
 import 'dart:async' as async;
@@ -68,7 +68,7 @@ class BigQueryDataTransferApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   BigQueryDataTransferApi(http.Client client,
       {core.String rootUrl = 'https://bigquerydatatransfer.googleapis.com/',
@@ -77,23 +77,23 @@ class BigQueryDataTransferApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDataSourcesResourceApi get dataSources =>
-      ProjectsDataSourcesResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsTransferConfigsResourceApi get transferConfigs =>
-      ProjectsTransferConfigsResourceApi(_requester);
+  ProjectsDataSourcesResource get dataSources =>
+      ProjectsDataSourcesResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsTransferConfigsResource get transferConfigs =>
+      ProjectsTransferConfigsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsDataSourcesResourceApi {
+class ProjectsDataSourcesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDataSourcesResourceApi(commons.ApiRequester client)
+  ProjectsDataSourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns true if valid credentials exist for the given data source and
@@ -291,16 +291,15 @@ class ProjectsDataSourcesResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDataSourcesResourceApi get dataSources =>
-      ProjectsLocationsDataSourcesResourceApi(_requester);
-  ProjectsLocationsTransferConfigsResourceApi get transferConfigs =>
-      ProjectsLocationsTransferConfigsResourceApi(_requester);
+  ProjectsLocationsDataSourcesResource get dataSources =>
+      ProjectsLocationsDataSourcesResource(_requester);
+  ProjectsLocationsTransferConfigsResource get transferConfigs =>
+      ProjectsLocationsTransferConfigsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -425,10 +424,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsDataSourcesResourceApi {
+class ProjectsLocationsDataSourcesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDataSourcesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDataSourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns true if valid credentials exist for the given data source and
@@ -628,13 +627,13 @@ class ProjectsLocationsDataSourcesResourceApi {
   }
 }
 
-class ProjectsLocationsTransferConfigsResourceApi {
+class ProjectsLocationsTransferConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTransferConfigsRunsResourceApi get runs =>
-      ProjectsLocationsTransferConfigsRunsResourceApi(_requester);
+  ProjectsLocationsTransferConfigsRunsResource get runs =>
+      ProjectsLocationsTransferConfigsRunsResource(_requester);
 
-  ProjectsLocationsTransferConfigsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTransferConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new data transfer configuration.
@@ -1175,15 +1174,13 @@ class ProjectsLocationsTransferConfigsResourceApi {
   }
 }
 
-class ProjectsLocationsTransferConfigsRunsResourceApi {
+class ProjectsLocationsTransferConfigsRunsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi
-      get transferLogs =>
-          ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi(
-              _requester);
+  ProjectsLocationsTransferConfigsRunsTransferLogsResource get transferLogs =>
+      ProjectsLocationsTransferConfigsRunsTransferLogsResource(_requester);
 
-  ProjectsLocationsTransferConfigsRunsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTransferConfigsRunsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified transfer run.
@@ -1386,10 +1383,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   }
 }
 
-class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
+class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi(
+  ProjectsLocationsTransferConfigsRunsTransferLogsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1474,13 +1471,13 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   }
 }
 
-class ProjectsTransferConfigsResourceApi {
+class ProjectsTransferConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTransferConfigsRunsResourceApi get runs =>
-      ProjectsTransferConfigsRunsResourceApi(_requester);
+  ProjectsTransferConfigsRunsResource get runs =>
+      ProjectsTransferConfigsRunsResource(_requester);
 
-  ProjectsTransferConfigsResourceApi(commons.ApiRequester client)
+  ProjectsTransferConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new data transfer configuration.
@@ -2016,13 +2013,13 @@ class ProjectsTransferConfigsResourceApi {
   }
 }
 
-class ProjectsTransferConfigsRunsResourceApi {
+class ProjectsTransferConfigsRunsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTransferConfigsRunsTransferLogsResourceApi get transferLogs =>
-      ProjectsTransferConfigsRunsTransferLogsResourceApi(_requester);
+  ProjectsTransferConfigsRunsTransferLogsResource get transferLogs =>
+      ProjectsTransferConfigsRunsTransferLogsResource(_requester);
 
-  ProjectsTransferConfigsRunsResourceApi(commons.ApiRequester client)
+  ProjectsTransferConfigsRunsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified transfer run.
@@ -2224,11 +2221,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   }
 }
 
-class ProjectsTransferConfigsRunsTransferLogsResourceApi {
+class ProjectsTransferConfigsRunsTransferLogsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTransferConfigsRunsTransferLogsResourceApi(
-      commons.ApiRequester client)
+  ProjectsTransferConfigsRunsTransferLogsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Returns user facing log messages for the data transfer run.

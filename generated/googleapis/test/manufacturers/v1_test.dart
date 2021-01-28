@@ -650,7 +650,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsProductsResourceApi', () {
+  unittest.group('resource-AccountsProductsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ManufacturerCenterApi(mock).accounts.products;

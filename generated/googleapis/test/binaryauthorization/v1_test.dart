@@ -778,7 +778,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--getPolicy', () {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects;
@@ -881,7 +881,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAttestorsResourceApi', () {
+  unittest.group('resource-ProjectsAttestorsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
@@ -1365,7 +1365,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsPolicyResourceApi', () {
+  unittest.group('resource-ProjectsPolicyResource', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.policy;

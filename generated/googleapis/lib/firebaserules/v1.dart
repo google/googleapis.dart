@@ -25,9 +25,9 @@
 ///
 /// Create an instance of [FirebaseRulesApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsReleasesResourceApi]
-///   - [ProjectsRulesetsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsReleasesResource]
+///   - [ProjectsRulesetsResource]
 library firebaserules.v1;
 
 import 'dart:async' as async;
@@ -58,7 +58,7 @@ class FirebaseRulesApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseRulesApi(http.Client client,
       {core.String rootUrl = 'https://firebaserules.googleapis.com/',
@@ -67,15 +67,13 @@ class FirebaseRulesApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsReleasesResourceApi get releases =>
-      ProjectsReleasesResourceApi(_requester);
-  ProjectsRulesetsResourceApi get rulesets =>
-      ProjectsRulesetsResourceApi(_requester);
+  ProjectsReleasesResource get releases => ProjectsReleasesResource(_requester);
+  ProjectsRulesetsResource get rulesets => ProjectsRulesetsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Test `Source` for syntactic and semantic correctness. Issues present, if
   /// any, will be returned to the caller with a description, severity, and
@@ -151,11 +149,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsReleasesResourceApi {
+class ProjectsReleasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsReleasesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsReleasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a `Release`. Release names should reflect the developer's
   /// deployment practices. For example, the release name may include the
@@ -554,11 +551,10 @@ class ProjectsReleasesResourceApi {
   }
 }
 
-class ProjectsRulesetsResourceApi {
+class ProjectsRulesetsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRulesetsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsRulesetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a `Ruleset` from `Source`. The `Ruleset` is given a unique
   /// generated name which is returned to the caller. `Source` containing

@@ -12845,7 +12845,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--authinfo', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
@@ -13413,7 +13413,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountstatusesResourceApi', () {
+  unittest.group('resource-AccountstatusesResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accountstatuses;
@@ -13579,7 +13579,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccounttaxResourceApi', () {
+  unittest.group('resource-AccounttaxResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounttax;
@@ -13786,7 +13786,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DatafeedsResourceApi', () {
+  unittest.group('resource-DatafeedsResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
@@ -14131,7 +14131,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DatafeedstatusesResourceApi', () {
+  unittest.group('resource-DatafeedstatusesResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeedstatuses;
@@ -14298,7 +14298,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiasettingsResourceApi', () {
+  unittest.group('resource-LiasettingsResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
@@ -14825,7 +14825,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LocalinventoryResourceApi', () {
+  unittest.group('resource-LocalinventoryResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).localinventory;
@@ -14935,7 +14935,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrderinvoicesResourceApi', () {
+  unittest.group('resource-OrderinvoicesResource', () {
     unittest.test('method--createchargeinvoice', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderinvoices;
@@ -15045,7 +15045,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrderreportsResourceApi', () {
+  unittest.group('resource-OrderreportsResource', () {
     unittest.test('method--listdisbursements', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreports;
@@ -15173,7 +15173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrderreturnsResourceApi', () {
+  unittest.group('resource-OrderreturnsResource', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreturns;
@@ -15466,7 +15466,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrdersResourceApi', () {
+  unittest.group('resource-OrdersResource', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
@@ -16577,7 +16577,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PosResourceApi', () {
+  unittest.group('resource-PosResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
@@ -16923,7 +16923,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProductsResourceApi', () {
+  unittest.group('resource-ProductsResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).products;
@@ -17176,7 +17176,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProductstatusesResourceApi', () {
+  unittest.group('resource-ProductstatusesResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).productstatuses;
@@ -17342,7 +17342,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PubsubnotificationsettingsResourceApi', () {
+  unittest.group('resource-PubsubnotificationsettingsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
@@ -17439,7 +17439,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionalinventoryResourceApi', () {
+  unittest.group('resource-RegionalinventoryResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regionalinventory;
@@ -17549,7 +17549,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReturnaddressResourceApi', () {
+  unittest.group('resource-ReturnaddressResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnaddress;
@@ -17802,7 +17802,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReturnpolicyResourceApi', () {
+  unittest.group('resource-ReturnpolicyResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicy;
@@ -18041,7 +18041,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SettlementreportsResourceApi', () {
+  unittest.group('resource-SettlementreportsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).settlementreports;
@@ -18150,7 +18150,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SettlementtransactionsResourceApi', () {
+  unittest.group('resource-SettlementtransactionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).settlementtransactions;
@@ -18212,7 +18212,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ShippingsettingsResourceApi', () {
+  unittest.group('resource-ShippingsettingsResource', () {
     unittest.test('method--custombatch', () {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;

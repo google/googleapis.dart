@@ -766,7 +766,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).operations;
@@ -876,7 +876,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--getBiReservation', () {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).projects.locations;
@@ -1105,8 +1105,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsCapacityCommitmentsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsCapacityCommitmentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
@@ -1508,7 +1507,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsReservationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsReservationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -1782,7 +1781,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsReservationsAssignmentsResourceApi',
+  unittest.group('resource-ProjectsLocationsReservationsAssignmentsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();

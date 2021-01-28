@@ -8422,7 +8422,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AbuseReportsResourceApi', () {
+  unittest.group('resource-AbuseReportsResource', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).abuseReports;
@@ -8477,7 +8477,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ActivitiesResourceApi', () {
+  unittest.group('resource-ActivitiesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).activities;
@@ -8558,7 +8558,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CaptionsResourceApi', () {
+  unittest.group('resource-CaptionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).captions;
@@ -8880,7 +8880,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelBannersResourceApi', () {
+  unittest.group('resource-ChannelBannersResource', () {
     unittest.test('method--insert', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -8949,7 +8949,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelSectionsResourceApi', () {
+  unittest.group('resource-ChannelSectionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).channelSections;
@@ -9189,7 +9189,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelsResourceApi', () {
+  unittest.group('resource-ChannelsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).channels;
@@ -9335,7 +9335,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CommentThreadsResourceApi', () {
+  unittest.group('resource-CommentThreadsResource', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).commentThreads;
@@ -9531,7 +9531,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CommentsResourceApi', () {
+  unittest.group('resource-CommentsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).comments;
@@ -9852,7 +9852,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-I18nLanguagesResourceApi', () {
+  unittest.group('resource-I18nLanguagesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).i18nLanguages;
@@ -9904,7 +9904,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-I18nRegionsResourceApi', () {
+  unittest.group('resource-I18nRegionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).i18nRegions;
@@ -9956,7 +9956,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiveBroadcastsResourceApi', () {
+  unittest.group('resource-LiveBroadcastsResource', () {
     unittest.test('method--bind', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).liveBroadcasts;
@@ -10413,7 +10413,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiveChatBansResourceApi', () {
+  unittest.group('resource-LiveChatBansResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).liveChatBans;
@@ -10514,7 +10514,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiveChatMessagesResourceApi', () {
+  unittest.group('resource-LiveChatMessagesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).liveChatMessages;
@@ -10683,7 +10683,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiveChatModeratorsResourceApi', () {
+  unittest.group('resource-LiveChatModeratorsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).liveChatModerators;
@@ -10845,7 +10845,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiveStreamsResourceApi', () {
+  unittest.group('resource-LiveStreamsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).liveStreams;
@@ -11097,7 +11097,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MembersResourceApi', () {
+  unittest.group('resource-MembersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).members;
@@ -11167,7 +11167,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MembershipsLevelsResourceApi', () {
+  unittest.group('resource-MembershipsLevelsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).membershipsLevels;
@@ -11218,7 +11218,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlaylistItemsResourceApi', () {
+  unittest.group('resource-PlaylistItemsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).playlistItems;
@@ -11459,7 +11459,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PlaylistsResourceApi', () {
+  unittest.group('resource-PlaylistsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).playlists;
@@ -11710,7 +11710,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SearchResourceApi', () {
+  unittest.group('resource-SearchResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).search;
@@ -11878,7 +11878,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SponsorsResourceApi', () {
+  unittest.group('resource-SponsorsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).sponsors;
@@ -11940,7 +11940,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SubscriptionsResourceApi', () {
+  unittest.group('resource-SubscriptionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).subscriptions;
@@ -12131,7 +12131,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SuperChatEventsResourceApi', () {
+  unittest.group('resource-SuperChatEventsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).superChatEvents;
@@ -12194,7 +12194,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TestsResourceApi', () {
+  unittest.group('resource-TestsResource', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).tests;
@@ -12249,7 +12249,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ThirdPartyLinksResourceApi', () {
+  unittest.group('resource-ThirdPartyLinksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).thirdPartyLinks;
@@ -12465,7 +12465,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ThumbnailsResourceApi', () {
+  unittest.group('resource-ThumbnailsResource', () {
     unittest.test('method--set', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -12524,7 +12524,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VideoAbuseReportReasonsResourceApi', () {
+  unittest.group('resource-VideoAbuseReportReasonsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).videoAbuseReportReasons;
@@ -12578,7 +12578,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VideoCategoriesResourceApi', () {
+  unittest.group('resource-VideoCategoriesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).videoCategories;
@@ -12640,7 +12640,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VideosResourceApi', () {
+  unittest.group('resource-VideosResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeApi(mock).videos;
@@ -13076,7 +13076,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-WatermarksResourceApi', () {
+  unittest.group('resource-WatermarksResource', () {
     unittest.test('method--set', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;

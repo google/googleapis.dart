@@ -2327,7 +2327,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).operations;
@@ -2473,7 +2473,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsProjectsOperationsResourceApi', () {
+  unittest.group('resource-OperationsProjectsOperationsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).operations.projects.operations;
@@ -2535,7 +2535,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesResourceApi', () {
+  unittest.group('resource-ProjectsInstancesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
@@ -3007,7 +3007,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesAppProfilesResourceApi', () {
+  unittest.group('resource-ProjectsInstancesAppProfilesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
@@ -3290,7 +3290,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesClustersResourceApi', () {
+  unittest.group('resource-ProjectsInstancesClustersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters;
@@ -3549,7 +3549,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesClustersBackupsResourceApi', () {
+  unittest.group('resource-ProjectsInstancesClustersBackupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
@@ -3985,7 +3985,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesTablesResourceApi', () {
+  unittest.group('resource-ProjectsInstancesTablesResource', () {
     unittest.test('method--checkConsistency', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
@@ -4626,7 +4626,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.locations;

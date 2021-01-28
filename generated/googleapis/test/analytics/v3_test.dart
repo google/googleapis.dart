@@ -4896,7 +4896,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DataGaResourceApi', () {
+  unittest.group('resource-DataGaResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.ga;
@@ -4993,7 +4993,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DataMcfResourceApi', () {
+  unittest.group('resource-DataMcfResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.mcf;
@@ -5079,7 +5079,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DataRealtimeResourceApi', () {
+  unittest.group('resource-DataRealtimeResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.realtime;
@@ -5151,7 +5151,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementAccountSummariesResourceApi', () {
+  unittest.group('resource-ManagementAccountSummariesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountSummaries;
@@ -5211,7 +5211,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementAccountUserLinksResourceApi', () {
+  unittest.group('resource-ManagementAccountUserLinksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountUserLinks;
@@ -5474,7 +5474,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementAccountsResourceApi', () {
+  unittest.group('resource-ManagementAccountsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accounts;
@@ -5534,7 +5534,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementClientIdResourceApi', () {
+  unittest.group('resource-ManagementClientIdResource', () {
     unittest.test('method--hashClientId', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.clientId;
@@ -5590,7 +5590,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementCustomDataSourcesResourceApi', () {
+  unittest.group('resource-ManagementCustomDataSourcesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDataSources;
@@ -5670,7 +5670,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementCustomDimensionsResourceApi', () {
+  unittest.group('resource-ManagementCustomDimensionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDimensions;
@@ -6067,7 +6067,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementCustomMetricsResourceApi', () {
+  unittest.group('resource-ManagementCustomMetricsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customMetrics;
@@ -6464,7 +6464,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementExperimentsResourceApi', () {
+  unittest.group('resource-ManagementExperimentsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
@@ -6987,7 +6987,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementFiltersResourceApi', () {
+  unittest.group('resource-ManagementFiltersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
@@ -7384,7 +7384,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementGoalsResourceApi', () {
+  unittest.group('resource-ManagementGoalsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.goals;
@@ -7823,7 +7823,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementProfileFilterLinksResourceApi', () {
+  unittest.group('resource-ManagementProfileFilterLinksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
@@ -8344,7 +8344,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementProfileUserLinksResourceApi', () {
+  unittest.group('resource-ManagementProfileUserLinksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileUserLinks;
@@ -8691,7 +8691,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementProfilesResourceApi', () {
+  unittest.group('resource-ManagementProfilesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
@@ -9150,7 +9150,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementRemarketingAudienceResourceApi', () {
+  unittest.group('resource-ManagementRemarketingAudienceResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
@@ -9614,7 +9614,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementSegmentsResourceApi', () {
+  unittest.group('resource-ManagementSegmentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.segments;
@@ -9674,7 +9674,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementUnsampledReportsResourceApi', () {
+  unittest.group('resource-ManagementUnsampledReportsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.unsampledReports;
@@ -10017,7 +10017,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementUploadsResourceApi', () {
+  unittest.group('resource-ManagementUploadsResource', () {
     unittest.test('method--deleteUploadData', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.uploads;
@@ -10360,7 +10360,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementWebPropertyAdWordsLinksResourceApi', () {
+  unittest.group('resource-ManagementWebPropertyAdWordsLinksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
@@ -10826,7 +10826,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementWebpropertiesResourceApi', () {
+  unittest.group('resource-ManagementWebpropertiesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
@@ -11161,7 +11161,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagementWebpropertyUserLinksResourceApi', () {
+  unittest.group('resource-ManagementWebpropertyUserLinksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
@@ -11467,7 +11467,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MetadataColumnsResourceApi', () {
+  unittest.group('resource-MetadataColumnsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).metadata.columns;
@@ -11528,7 +11528,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProvisioningResourceApi', () {
+  unittest.group('resource-ProvisioningResource', () {
     unittest.test('method--createAccountTicket', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).provisioning;
@@ -11638,7 +11638,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserDeletionUserDeletionRequestResourceApi', () {
+  unittest.group('resource-UserDeletionUserDeletionRequestResource', () {
     unittest.test('method--upsert', () {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).userDeletion.userDeletionRequest;

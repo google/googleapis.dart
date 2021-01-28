@@ -2885,7 +2885,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BackupRunsResourceApi', () {
+  unittest.group('resource-BackupRunsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).backupRuns;
@@ -3173,7 +3173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DatabasesResourceApi', () {
+  unittest.group('resource-DatabasesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
@@ -3604,7 +3604,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FlagsResourceApi', () {
+  unittest.group('resource-FlagsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).flags;
@@ -3655,7 +3655,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstancesResourceApi', () {
+  unittest.group('resource-InstancesResource', () {
     unittest.test('method--addServerCa', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
@@ -5076,7 +5076,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).operations;
@@ -5207,7 +5207,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInstancesResourceApi', () {
+  unittest.group('resource-ProjectsInstancesResource', () {
     unittest.test('method--rescheduleMaintenance', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).projects.instances;
@@ -5429,7 +5429,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SslCertsResourceApi', () {
+  unittest.group('resource-SslCertsResource', () {
     unittest.test('method--createEphemeral', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).sslCerts;
@@ -5783,7 +5783,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TiersResourceApi', () {
+  unittest.group('resource-TiersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).tiers;
@@ -5841,7 +5841,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).users;

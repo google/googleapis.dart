@@ -1325,7 +1325,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DivisionsResourceApi', () {
+  unittest.group('resource-DivisionsResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).divisions;
@@ -1375,7 +1375,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ElectionsResourceApi', () {
+  unittest.group('resource-ElectionsResource', () {
     unittest.test('method--electionQuery', () {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).elections;
@@ -1485,7 +1485,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RepresentativesResourceApi', () {
+  unittest.group('resource-RepresentativesResource', () {
     unittest.test('method--representativeInfoByAddress', () {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).representatives;

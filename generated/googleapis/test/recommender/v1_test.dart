@@ -993,8 +993,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsInsightTypesInsightsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsInsightTypesInsightsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res =
@@ -1168,7 +1167,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsRecommendersRecommendationsResourceApi', () {
+      'resource-ProjectsLocationsRecommendersRecommendationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)

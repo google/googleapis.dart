@@ -24,12 +24,12 @@
 ///
 /// Create an instance of [DomainsRDAPApi] to access these resources:
 ///
-/// - [AutnumResourceApi]
-/// - [DomainResourceApi]
-/// - [EntityResourceApi]
-/// - [IpResourceApi]
-/// - [NameserverResourceApi]
-/// - [V1ResourceApi]
+/// - [AutnumResource]
+/// - [DomainResource]
+/// - [EntityResource]
+/// - [IpResource]
+/// - [NameserverResource]
+/// - [V1Resource]
 library domainsrdap.v1;
 
 import 'dart:async' as async;
@@ -49,12 +49,12 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class DomainsRDAPApi {
   final commons.ApiRequester _requester;
 
-  AutnumResourceApi get autnum => AutnumResourceApi(_requester);
-  DomainResourceApi get domain => DomainResourceApi(_requester);
-  EntityResourceApi get entity => EntityResourceApi(_requester);
-  IpResourceApi get ip => IpResourceApi(_requester);
-  NameserverResourceApi get nameserver => NameserverResourceApi(_requester);
-  V1ResourceApi get v1 => V1ResourceApi(_requester);
+  AutnumResource get autnum => AutnumResource(_requester);
+  DomainResource get domain => DomainResource(_requester);
+  EntityResource get entity => EntityResource(_requester);
+  IpResource get ip => IpResource(_requester);
+  NameserverResource get nameserver => NameserverResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   DomainsRDAPApi(http.Client client,
       {core.String rootUrl = 'https://domainsrdap.googleapis.com/',
@@ -63,10 +63,10 @@ class DomainsRDAPApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AutnumResourceApi {
+class AutnumResource {
   final commons.ApiRequester _requester;
 
-  AutnumResourceApi(commons.ApiRequester client) : _requester = client;
+  AutnumResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
   /// not support it. The response is a formatted 501 error.
@@ -121,10 +121,10 @@ class AutnumResourceApi {
   }
 }
 
-class DomainResourceApi {
+class DomainResource {
   final commons.ApiRequester _requester;
 
-  DomainResourceApi(commons.ApiRequester client) : _requester = client;
+  DomainResource(commons.ApiRequester client) : _requester = client;
 
   /// Look up RDAP information for a domain by name.
   ///
@@ -178,10 +178,10 @@ class DomainResourceApi {
   }
 }
 
-class EntityResourceApi {
+class EntityResource {
   final commons.ApiRequester _requester;
 
-  EntityResourceApi(commons.ApiRequester client) : _requester = client;
+  EntityResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
   /// not support it. The response is a formatted 501 error.
@@ -236,10 +236,10 @@ class EntityResourceApi {
   }
 }
 
-class IpResourceApi {
+class IpResource {
   final commons.ApiRequester _requester;
 
-  IpResourceApi(commons.ApiRequester client) : _requester = client;
+  IpResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
   /// not support it. The response is a formatted 501 error.
@@ -303,10 +303,10 @@ class IpResourceApi {
   }
 }
 
-class NameserverResourceApi {
+class NameserverResource {
   final commons.ApiRequester _requester;
 
-  NameserverResourceApi(commons.ApiRequester client) : _requester = client;
+  NameserverResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
   /// not support it. The response is a formatted 501 error.
@@ -361,10 +361,10 @@ class NameserverResourceApi {
   }
 }
 
-class V1ResourceApi {
+class V1Resource {
   final commons.ApiRequester _requester;
 
-  V1ResourceApi(commons.ApiRequester client) : _requester = client;
+  V1Resource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
   /// not support it. The response is a formatted 501 error.

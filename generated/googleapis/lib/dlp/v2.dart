@@ -25,33 +25,33 @@
 ///
 /// Create an instance of [DLPApi] to access these resources:
 ///
-/// - [InfoTypesResourceApi]
-/// - [LocationsResourceApi]
-///   - [LocationsInfoTypesResourceApi]
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsDeidentifyTemplatesResourceApi]
-///   - [OrganizationsInspectTemplatesResourceApi]
-///   - [OrganizationsLocationsResourceApi]
-///     - [OrganizationsLocationsDeidentifyTemplatesResourceApi]
-///     - [OrganizationsLocationsInspectTemplatesResourceApi]
-///     - [OrganizationsLocationsStoredInfoTypesResourceApi]
-///   - [OrganizationsStoredInfoTypesResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsContentResourceApi]
-///   - [ProjectsDeidentifyTemplatesResourceApi]
-///   - [ProjectsDlpJobsResourceApi]
-///   - [ProjectsImageResourceApi]
-///   - [ProjectsInspectTemplatesResourceApi]
-///   - [ProjectsJobTriggersResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsContentResourceApi]
-///     - [ProjectsLocationsDeidentifyTemplatesResourceApi]
-///     - [ProjectsLocationsDlpJobsResourceApi]
-///     - [ProjectsLocationsImageResourceApi]
-///     - [ProjectsLocationsInspectTemplatesResourceApi]
-///     - [ProjectsLocationsJobTriggersResourceApi]
-///     - [ProjectsLocationsStoredInfoTypesResourceApi]
-///   - [ProjectsStoredInfoTypesResourceApi]
+/// - [InfoTypesResource]
+/// - [LocationsResource]
+///   - [LocationsInfoTypesResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsDeidentifyTemplatesResource]
+///   - [OrganizationsInspectTemplatesResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsDeidentifyTemplatesResource]
+///     - [OrganizationsLocationsInspectTemplatesResource]
+///     - [OrganizationsLocationsStoredInfoTypesResource]
+///   - [OrganizationsStoredInfoTypesResource]
+/// - [ProjectsResource]
+///   - [ProjectsContentResource]
+///   - [ProjectsDeidentifyTemplatesResource]
+///   - [ProjectsDlpJobsResource]
+///   - [ProjectsImageResource]
+///   - [ProjectsInspectTemplatesResource]
+///   - [ProjectsJobTriggersResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsContentResource]
+///     - [ProjectsLocationsDeidentifyTemplatesResource]
+///     - [ProjectsLocationsDlpJobsResource]
+///     - [ProjectsLocationsImageResource]
+///     - [ProjectsLocationsInspectTemplatesResource]
+///     - [ProjectsLocationsJobTriggersResource]
+///     - [ProjectsLocationsStoredInfoTypesResource]
+///   - [ProjectsStoredInfoTypesResource]
 library dlp.v2;
 
 import 'dart:async' as async;
@@ -76,11 +76,10 @@ class DLPApi {
 
   final commons.ApiRequester _requester;
 
-  InfoTypesResourceApi get infoTypes => InfoTypesResourceApi(_requester);
-  LocationsResourceApi get locations => LocationsResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  InfoTypesResource get infoTypes => InfoTypesResource(_requester);
+  LocationsResource get locations => LocationsResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DLPApi(http.Client client,
       {core.String rootUrl = 'https://dlp.googleapis.com/',
@@ -89,10 +88,10 @@ class DLPApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class InfoTypesResourceApi {
+class InfoTypesResource {
   final commons.ApiRequester _requester;
 
-  InfoTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  InfoTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a list of the sensitive information types that the DLP API
   /// supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
@@ -170,20 +169,19 @@ class InfoTypesResourceApi {
   }
 }
 
-class LocationsResourceApi {
+class LocationsResource {
   final commons.ApiRequester _requester;
 
-  LocationsInfoTypesResourceApi get infoTypes =>
-      LocationsInfoTypesResourceApi(_requester);
+  LocationsInfoTypesResource get infoTypes =>
+      LocationsInfoTypesResource(_requester);
 
-  LocationsResourceApi(commons.ApiRequester client) : _requester = client;
+  LocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class LocationsInfoTypesResourceApi {
+class LocationsInfoTypesResource {
   final commons.ApiRequester _requester;
 
-  LocationsInfoTypesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  LocationsInfoTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a list of the sensitive information types that the DLP API
   /// supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
@@ -263,25 +261,25 @@ class LocationsInfoTypesResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
-      OrganizationsDeidentifyTemplatesResourceApi(_requester);
-  OrganizationsInspectTemplatesResourceApi get inspectTemplates =>
-      OrganizationsInspectTemplatesResourceApi(_requester);
-  OrganizationsLocationsResourceApi get locations =>
-      OrganizationsLocationsResourceApi(_requester);
-  OrganizationsStoredInfoTypesResourceApi get storedInfoTypes =>
-      OrganizationsStoredInfoTypesResourceApi(_requester);
+  OrganizationsDeidentifyTemplatesResource get deidentifyTemplates =>
+      OrganizationsDeidentifyTemplatesResource(_requester);
+  OrganizationsInspectTemplatesResource get inspectTemplates =>
+      OrganizationsInspectTemplatesResource(_requester);
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+  OrganizationsStoredInfoTypesResource get storedInfoTypes =>
+      OrganizationsStoredInfoTypesResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class OrganizationsDeidentifyTemplatesResourceApi {
+class OrganizationsDeidentifyTemplatesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDeidentifyTemplatesResourceApi(commons.ApiRequester client)
+  OrganizationsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a DeidentifyTemplate for re-using frequently used configuration
@@ -634,10 +632,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   }
 }
 
-class OrganizationsInspectTemplatesResourceApi {
+class OrganizationsInspectTemplatesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsInspectTemplatesResourceApi(commons.ApiRequester client)
+  OrganizationsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an InspectTemplate for re-using frequently used configuration for
@@ -989,26 +987,24 @@ class OrganizationsInspectTemplatesResourceApi {
   }
 }
 
-class OrganizationsLocationsResourceApi {
+class OrganizationsLocationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsDeidentifyTemplatesResourceApi
-      get deidentifyTemplates =>
-          OrganizationsLocationsDeidentifyTemplatesResourceApi(_requester);
-  OrganizationsLocationsInspectTemplatesResourceApi get inspectTemplates =>
-      OrganizationsLocationsInspectTemplatesResourceApi(_requester);
-  OrganizationsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
-      OrganizationsLocationsStoredInfoTypesResourceApi(_requester);
+  OrganizationsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
+      OrganizationsLocationsDeidentifyTemplatesResource(_requester);
+  OrganizationsLocationsInspectTemplatesResource get inspectTemplates =>
+      OrganizationsLocationsInspectTemplatesResource(_requester);
+  OrganizationsLocationsStoredInfoTypesResource get storedInfoTypes =>
+      OrganizationsLocationsStoredInfoTypesResource(_requester);
 
-  OrganizationsLocationsResourceApi(commons.ApiRequester client)
+  OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OrganizationsLocationsDeidentifyTemplatesResourceApi {
+class OrganizationsLocationsDeidentifyTemplatesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsDeidentifyTemplatesResourceApi(
-      commons.ApiRequester client)
+  OrganizationsLocationsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a DeidentifyTemplate for re-using frequently used configuration
@@ -1364,10 +1360,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
   }
 }
 
-class OrganizationsLocationsInspectTemplatesResourceApi {
+class OrganizationsLocationsInspectTemplatesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsInspectTemplatesResourceApi(commons.ApiRequester client)
+  OrganizationsLocationsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an InspectTemplate for re-using frequently used configuration for
@@ -1722,10 +1718,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
   }
 }
 
-class OrganizationsLocationsStoredInfoTypesResourceApi {
+class OrganizationsLocationsStoredInfoTypesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsStoredInfoTypesResourceApi(commons.ApiRequester client)
+  OrganizationsLocationsStoredInfoTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a pre-built stored infoType to be used for inspection. See
@@ -2080,10 +2076,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
   }
 }
 
-class OrganizationsStoredInfoTypesResourceApi {
+class OrganizationsStoredInfoTypesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsStoredInfoTypesResourceApi(commons.ApiRequester client)
+  OrganizationsStoredInfoTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a pre-built stored infoType to be used for inspection. See
@@ -2435,32 +2431,30 @@ class OrganizationsStoredInfoTypesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsContentResourceApi get content =>
-      ProjectsContentResourceApi(_requester);
-  ProjectsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
-      ProjectsDeidentifyTemplatesResourceApi(_requester);
-  ProjectsDlpJobsResourceApi get dlpJobs =>
-      ProjectsDlpJobsResourceApi(_requester);
-  ProjectsImageResourceApi get image => ProjectsImageResourceApi(_requester);
-  ProjectsInspectTemplatesResourceApi get inspectTemplates =>
-      ProjectsInspectTemplatesResourceApi(_requester);
-  ProjectsJobTriggersResourceApi get jobTriggers =>
-      ProjectsJobTriggersResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsStoredInfoTypesResourceApi get storedInfoTypes =>
-      ProjectsStoredInfoTypesResourceApi(_requester);
+  ProjectsContentResource get content => ProjectsContentResource(_requester);
+  ProjectsDeidentifyTemplatesResource get deidentifyTemplates =>
+      ProjectsDeidentifyTemplatesResource(_requester);
+  ProjectsDlpJobsResource get dlpJobs => ProjectsDlpJobsResource(_requester);
+  ProjectsImageResource get image => ProjectsImageResource(_requester);
+  ProjectsInspectTemplatesResource get inspectTemplates =>
+      ProjectsInspectTemplatesResource(_requester);
+  ProjectsJobTriggersResource get jobTriggers =>
+      ProjectsJobTriggersResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsStoredInfoTypesResource get storedInfoTypes =>
+      ProjectsStoredInfoTypesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsContentResourceApi {
+class ProjectsContentResource {
   final commons.ApiRequester _requester;
 
-  ProjectsContentResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsContentResource(commons.ApiRequester client) : _requester = client;
 
   /// De-identifies potentially sensitive info from a ContentItem. This method
   /// has limits on input size and output size. See
@@ -2683,10 +2677,10 @@ class ProjectsContentResourceApi {
   }
 }
 
-class ProjectsDeidentifyTemplatesResourceApi {
+class ProjectsDeidentifyTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDeidentifyTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a DeidentifyTemplate for re-using frequently used configuration
@@ -3039,10 +3033,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
   }
 }
 
-class ProjectsDlpJobsResourceApi {
+class ProjectsDlpJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDlpJobsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsDlpJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running DlpJob. The server
   /// makes a best effort to cancel the DlpJob, but success is not guaranteed.
@@ -3415,10 +3409,10 @@ class ProjectsDlpJobsResourceApi {
   }
 }
 
-class ProjectsImageResourceApi {
+class ProjectsImageResource {
   final commons.ApiRequester _requester;
 
-  ProjectsImageResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsImageResource(commons.ApiRequester client) : _requester = client;
 
   /// Redacts potentially sensitive info from an image. This method has limits
   /// on input size, processing time, and output size. See
@@ -3495,10 +3489,10 @@ class ProjectsImageResourceApi {
   }
 }
 
-class ProjectsInspectTemplatesResourceApi {
+class ProjectsInspectTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInspectTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an InspectTemplate for re-using frequently used configuration for
@@ -3850,10 +3844,10 @@ class ProjectsInspectTemplatesResourceApi {
   }
 }
 
-class ProjectsJobTriggersResourceApi {
+class ProjectsJobTriggersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobTriggersResourceApi(commons.ApiRequester client)
+  ProjectsJobTriggersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Activate a job trigger. Causes the immediate execute of a trigger instead
@@ -4274,32 +4268,31 @@ class ProjectsJobTriggersResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsContentResourceApi get content =>
-      ProjectsLocationsContentResourceApi(_requester);
-  ProjectsLocationsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
-      ProjectsLocationsDeidentifyTemplatesResourceApi(_requester);
-  ProjectsLocationsDlpJobsResourceApi get dlpJobs =>
-      ProjectsLocationsDlpJobsResourceApi(_requester);
-  ProjectsLocationsImageResourceApi get image =>
-      ProjectsLocationsImageResourceApi(_requester);
-  ProjectsLocationsInspectTemplatesResourceApi get inspectTemplates =>
-      ProjectsLocationsInspectTemplatesResourceApi(_requester);
-  ProjectsLocationsJobTriggersResourceApi get jobTriggers =>
-      ProjectsLocationsJobTriggersResourceApi(_requester);
-  ProjectsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
-      ProjectsLocationsStoredInfoTypesResourceApi(_requester);
+  ProjectsLocationsContentResource get content =>
+      ProjectsLocationsContentResource(_requester);
+  ProjectsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
+      ProjectsLocationsDeidentifyTemplatesResource(_requester);
+  ProjectsLocationsDlpJobsResource get dlpJobs =>
+      ProjectsLocationsDlpJobsResource(_requester);
+  ProjectsLocationsImageResource get image =>
+      ProjectsLocationsImageResource(_requester);
+  ProjectsLocationsInspectTemplatesResource get inspectTemplates =>
+      ProjectsLocationsInspectTemplatesResource(_requester);
+  ProjectsLocationsJobTriggersResource get jobTriggers =>
+      ProjectsLocationsJobTriggersResource(_requester);
+  ProjectsLocationsStoredInfoTypesResource get storedInfoTypes =>
+      ProjectsLocationsStoredInfoTypesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsContentResourceApi {
+class ProjectsLocationsContentResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsContentResourceApi(commons.ApiRequester client)
+  ProjectsLocationsContentResource(commons.ApiRequester client)
       : _requester = client;
 
   /// De-identifies potentially sensitive info from a ContentItem. This method
@@ -4523,10 +4516,10 @@ class ProjectsLocationsContentResourceApi {
   }
 }
 
-class ProjectsLocationsDeidentifyTemplatesResourceApi {
+class ProjectsLocationsDeidentifyTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDeidentifyTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDeidentifyTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a DeidentifyTemplate for re-using frequently used configuration
@@ -4882,10 +4875,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
   }
 }
 
-class ProjectsLocationsDlpJobsResourceApi {
+class ProjectsLocationsDlpJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDlpJobsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDlpJobsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running DlpJob. The server
@@ -5386,10 +5379,10 @@ class ProjectsLocationsDlpJobsResourceApi {
   }
 }
 
-class ProjectsLocationsImageResourceApi {
+class ProjectsLocationsImageResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsImageResourceApi(commons.ApiRequester client)
+  ProjectsLocationsImageResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Redacts potentially sensitive info from an image. This method has limits
@@ -5467,10 +5460,10 @@ class ProjectsLocationsImageResourceApi {
   }
 }
 
-class ProjectsLocationsInspectTemplatesResourceApi {
+class ProjectsLocationsInspectTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInspectTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsInspectTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an InspectTemplate for re-using frequently used configuration for
@@ -5825,10 +5818,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
   }
 }
 
-class ProjectsLocationsJobTriggersResourceApi {
+class ProjectsLocationsJobTriggersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobTriggersResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobTriggersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Activate a job trigger. Causes the immediate execute of a trigger instead
@@ -6319,10 +6312,10 @@ class ProjectsLocationsJobTriggersResourceApi {
   }
 }
 
-class ProjectsLocationsStoredInfoTypesResourceApi {
+class ProjectsLocationsStoredInfoTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsStoredInfoTypesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsStoredInfoTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a pre-built stored infoType to be used for inspection. See
@@ -6677,10 +6670,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
   }
 }
 
-class ProjectsStoredInfoTypesResourceApi {
+class ProjectsStoredInfoTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsStoredInfoTypesResourceApi(commons.ApiRequester client)
+  ProjectsStoredInfoTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a pre-built stored infoType to be used for inspection. See

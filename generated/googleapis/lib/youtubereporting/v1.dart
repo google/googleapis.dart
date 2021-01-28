@@ -25,10 +25,10 @@
 ///
 /// Create an instance of [YouTubeReportingApi] to access these resources:
 ///
-/// - [JobsResourceApi]
-///   - [JobsReportsResourceApi]
-/// - [MediaResourceApi]
-/// - [ReportTypesResourceApi]
+/// - [JobsResource]
+///   - [JobsReportsResource]
+/// - [MediaResource]
+/// - [ReportTypesResource]
 library youtubereporting.v1;
 
 import 'dart:async' as async;
@@ -65,9 +65,9 @@ class YouTubeReportingApi {
 
   final commons.ApiRequester _requester;
 
-  JobsResourceApi get jobs => JobsResourceApi(_requester);
-  MediaResourceApi get media => MediaResourceApi(_requester);
-  ReportTypesResourceApi get reportTypes => ReportTypesResourceApi(_requester);
+  JobsResource get jobs => JobsResource(_requester);
+  MediaResource get media => MediaResource(_requester);
+  ReportTypesResource get reportTypes => ReportTypesResource(_requester);
 
   YouTubeReportingApi(http.Client client,
       {core.String rootUrl = 'https://youtubereporting.googleapis.com/',
@@ -76,12 +76,12 @@ class YouTubeReportingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class JobsResourceApi {
+class JobsResource {
   final commons.ApiRequester _requester;
 
-  JobsReportsResourceApi get reports => JobsReportsResourceApi(_requester);
+  JobsReportsResource get reports => JobsReportsResource(_requester);
 
-  JobsResourceApi(commons.ApiRequester client) : _requester = client;
+  JobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a job and returns it.
   ///
@@ -335,10 +335,10 @@ class JobsResourceApi {
   }
 }
 
-class JobsReportsResourceApi {
+class JobsReportsResource {
   final commons.ApiRequester _requester;
 
-  JobsReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  JobsReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the metadata of a specific report.
   ///
@@ -505,10 +505,10 @@ class JobsReportsResourceApi {
   }
 }
 
-class MediaResourceApi {
+class MediaResource {
   final commons.ApiRequester _requester;
 
-  MediaResourceApi(commons.ApiRequester client) : _requester = client;
+  MediaResource(commons.ApiRequester client) : _requester = client;
 
   /// Method for media download. Download is supported on the URI
   /// `/v1/media/{+name}?alt=media`.
@@ -580,10 +580,10 @@ class MediaResourceApi {
   }
 }
 
-class ReportTypesResourceApi {
+class ReportTypesResource {
   final commons.ApiRequester _requester;
 
-  ReportTypesResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportTypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists report types.
   ///

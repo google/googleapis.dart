@@ -25,11 +25,11 @@
 ///
 /// Create an instance of [ContainerAnalysisApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsNotesResourceApi]
-///     - [ProjectsNotesOccurrencesResourceApi]
-///   - [ProjectsOccurrencesResourceApi]
-///   - [ProjectsScanConfigsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsNotesResource]
+///     - [ProjectsNotesOccurrencesResource]
+///   - [ProjectsOccurrencesResource]
+///   - [ProjectsScanConfigsResource]
 library containeranalysis.v1beta1;
 
 import 'dart:async' as async;
@@ -53,7 +53,7 @@ class ContainerAnalysisApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ContainerAnalysisApi(http.Client client,
       {core.String rootUrl = 'https://containeranalysis.googleapis.com/',
@@ -62,25 +62,25 @@ class ContainerAnalysisApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsNotesResourceApi get notes => ProjectsNotesResourceApi(_requester);
-  ProjectsOccurrencesResourceApi get occurrences =>
-      ProjectsOccurrencesResourceApi(_requester);
-  ProjectsScanConfigsResourceApi get scanConfigs =>
-      ProjectsScanConfigsResourceApi(_requester);
+  ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
+  ProjectsOccurrencesResource get occurrences =>
+      ProjectsOccurrencesResource(_requester);
+  ProjectsScanConfigsResource get scanConfigs =>
+      ProjectsScanConfigsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsNotesResourceApi {
+class ProjectsNotesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsNotesOccurrencesResourceApi get occurrences =>
-      ProjectsNotesOccurrencesResourceApi(_requester);
+  ProjectsNotesOccurrencesResource get occurrences =>
+      ProjectsNotesOccurrencesResource(_requester);
 
-  ProjectsNotesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsNotesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates new notes in batch.
   ///
@@ -650,10 +650,10 @@ class ProjectsNotesResourceApi {
   }
 }
 
-class ProjectsNotesOccurrencesResourceApi {
+class ProjectsNotesOccurrencesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsNotesOccurrencesResourceApi(commons.ApiRequester client)
+  ProjectsNotesOccurrencesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists occurrences referencing the specified note. Provider projects can
@@ -732,10 +732,10 @@ class ProjectsNotesOccurrencesResourceApi {
   }
 }
 
-class ProjectsOccurrencesResourceApi {
+class ProjectsOccurrencesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOccurrencesResourceApi(commons.ApiRequester client)
+  ProjectsOccurrencesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates new occurrences in batch.
@@ -1421,10 +1421,10 @@ class ProjectsOccurrencesResourceApi {
   }
 }
 
-class ProjectsScanConfigsResourceApi {
+class ProjectsScanConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsResourceApi(commons.ApiRequester client)
+  ProjectsScanConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the specified scan configuration.

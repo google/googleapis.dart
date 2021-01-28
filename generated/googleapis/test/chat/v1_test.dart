@@ -1201,7 +1201,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MediaResourceApi', () {
+  unittest.group('resource-MediaResource', () {
     unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -1254,7 +1254,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpacesResourceApi', () {
+  unittest.group('resource-SpacesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces;
@@ -1359,7 +1359,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpacesMembersResourceApi', () {
+  unittest.group('resource-SpacesMembersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.members;
@@ -1466,7 +1466,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpacesMessagesResourceApi', () {
+  unittest.group('resource-SpacesMessagesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages;
@@ -1678,7 +1678,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpacesMessagesAttachmentsResourceApi', () {
+  unittest.group('resource-SpacesMessagesAttachmentsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages.attachments;

@@ -23,8 +23,8 @@
 ///
 /// Create an instance of [CloudProfilerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsProfilesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsProfilesResource]
 library cloudprofiler.v2;
 
 import 'dart:async' as async;
@@ -55,7 +55,7 @@ class CloudProfilerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudProfilerApi(http.Client client,
       {core.String rootUrl = 'https://cloudprofiler.googleapis.com/',
@@ -64,20 +64,18 @@ class CloudProfilerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsProfilesResourceApi get profiles =>
-      ProjectsProfilesResourceApi(_requester);
+  ProjectsProfilesResource get profiles => ProjectsProfilesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsProfilesResourceApi {
+class ProjectsProfilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsProfilesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsProfilesResource(commons.ApiRequester client) : _requester = client;
 
   /// CreateProfile creates a new profile resource in the online mode. The
   /// server ensures that the new profiles are created at a constant rate per

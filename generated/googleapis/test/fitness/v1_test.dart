@@ -956,7 +956,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersDataSourcesResourceApi', () {
+  unittest.group('resource-UsersDataSourcesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources;
@@ -1196,7 +1196,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersDataSourcesDataPointChangesResourceApi', () {
+  unittest.group('resource-UsersDataSourcesDataPointChangesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources.dataPointChanges;
@@ -1251,7 +1251,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersDataSourcesDatasetsResourceApi', () {
+  unittest.group('resource-UsersDataSourcesDatasetsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources.datasets;
@@ -1414,7 +1414,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersDatasetResourceApi', () {
+  unittest.group('resource-UsersDatasetResource', () {
     unittest.test('method--aggregate', () {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataset;
@@ -1465,7 +1465,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSessionsResourceApi', () {
+  unittest.group('resource-UsersSessionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.sessions;

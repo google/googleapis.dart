@@ -8802,7 +8802,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersResourceApi', () {
+  unittest.group('resource-AdvertisersResource', () {
     unittest.test('method--audit', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
@@ -9251,7 +9251,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersAssetsResourceApi', () {
+  unittest.group('resource-AdvertisersAssetsResource', () {
     unittest.test('method--upload', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -9309,7 +9309,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersCampaignsResourceApi', () {
+  unittest.group('resource-AdvertisersCampaignsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.campaigns;
@@ -9584,7 +9584,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersChannelsResourceApi', () {
+  unittest.group('resource-AdvertisersChannelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels;
@@ -9827,7 +9827,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersChannelsSitesResourceApi', () {
+  unittest.group('resource-AdvertisersChannelsSitesResource', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels.sites;
@@ -10092,7 +10092,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersCreativesResourceApi', () {
+  unittest.group('resource-AdvertisersCreativesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.creatives;
@@ -10367,7 +10367,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersInsertionOrdersResourceApi', () {
+  unittest.group('resource-AdvertisersInsertionOrdersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
@@ -10643,7 +10643,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersLineItemsResourceApi', () {
+  unittest.group('resource-AdvertisersLineItemsResource', () {
     unittest.test('method--bulkEditLineItemAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
@@ -11046,7 +11046,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi',
+      'resource-AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -11296,7 +11296,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersLocationListsResourceApi', () {
+  unittest.group('resource-AdvertisersLocationListsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.locationLists;
@@ -11523,8 +11523,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-AdvertisersLocationListsAssignedLocationsResourceApi', () {
+  unittest.group('resource-AdvertisersLocationListsAssignedLocationsResource',
+      () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       var res =
@@ -11821,7 +11821,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AdvertisersNegativeKeywordListsResourceApi', () {
+  unittest.group('resource-AdvertisersNegativeKeywordListsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.negativeKeywordLists;
@@ -12093,8 +12093,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi',
-      () {
+      'resource-AdvertisersNegativeKeywordListsNegativeKeywordsResource', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
@@ -12365,8 +12364,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi',
-      () {
+      'resource-AdvertisersTargetingTypesAssignedTargetingOptionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
@@ -12606,7 +12604,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CombinedAudiencesResourceApi', () {
+  unittest.group('resource-CombinedAudiencesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).combinedAudiences;
@@ -12736,7 +12734,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomBiddingAlgorithmsResourceApi', () {
+  unittest.group('resource-CustomBiddingAlgorithmsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).customBiddingAlgorithms;
@@ -12867,7 +12865,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomListsResourceApi', () {
+  unittest.group('resource-CustomListsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).customLists;
@@ -12987,7 +12985,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FirstAndThirdPartyAudiencesResourceApi', () {
+  unittest.group('resource-FirstAndThirdPartyAudiencesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).firstAndThirdPartyAudiences;
@@ -13119,7 +13117,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FloodlightGroupsResourceApi', () {
+  unittest.group('resource-FloodlightGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).floodlightGroups;
@@ -13237,7 +13235,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GoogleAudiencesResourceApi', () {
+  unittest.group('resource-GoogleAudiencesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).googleAudiences;
@@ -13367,7 +13365,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InventorySourceGroupsResourceApi', () {
+  unittest.group('resource-InventorySourceGroupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySourceGroups;
@@ -13685,7 +13683,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-InventorySourceGroupsAssignedInventorySourcesResourceApi', () {
+      'resource-InventorySourceGroupsAssignedInventorySourcesResource', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
@@ -13946,7 +13944,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InventorySourcesResourceApi', () {
+  unittest.group('resource-InventorySourcesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySources;
@@ -14071,7 +14069,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MediaResourceApi', () {
+  unittest.group('resource-MediaResource', () {
     unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -14124,7 +14122,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersResourceApi', () {
+  unittest.group('resource-PartnersResource', () {
     unittest.test('method--bulkEditPartnerAssignedTargetingOptions', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners;
@@ -14293,7 +14291,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersChannelsResourceApi', () {
+  unittest.group('resource-PartnersChannelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels;
@@ -14536,7 +14534,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersChannelsSitesResourceApi', () {
+  unittest.group('resource-PartnersChannelsSitesResource', () {
     unittest.test('method--bulkEdit', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels.sites;
@@ -14802,7 +14800,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-PartnersTargetingTypesAssignedTargetingOptionsResourceApi', () {
+      'resource-PartnersTargetingTypesAssignedTargetingOptionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
@@ -15041,7 +15039,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SdfdownloadtasksResourceApi', () {
+  unittest.group('resource-SdfdownloadtasksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).sdfdownloadtasks;
@@ -15095,7 +15093,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SdfdownloadtasksOperationsResourceApi', () {
+  unittest.group('resource-SdfdownloadtasksOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).sdfdownloadtasks.operations;
@@ -15145,7 +15143,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetingTypesTargetingOptionsResourceApi', () {
+  unittest.group('resource-TargetingTypesTargetingOptionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).targetingTypes.targetingOptions;
@@ -15269,7 +15267,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--bulkEditAssignedUserRoles', () {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;

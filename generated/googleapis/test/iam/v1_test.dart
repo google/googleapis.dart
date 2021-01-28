@@ -1617,7 +1617,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-IamPoliciesResourceApi', () {
+  unittest.group('resource-IamPoliciesResource', () {
     unittest.test('method--lintPolicy', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).iamPolicies;
@@ -1723,7 +1723,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsRolesResourceApi', () {
+  unittest.group('resource-OrganizationsRolesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
@@ -2050,7 +2050,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PermissionsResourceApi', () {
+  unittest.group('resource-PermissionsResource', () {
     unittest.test('method--queryTestablePermissions', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).permissions;
@@ -2105,7 +2105,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRolesResourceApi', () {
+  unittest.group('resource-ProjectsRolesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
@@ -2432,7 +2432,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsServiceAccountsResourceApi', () {
+  unittest.group('resource-ProjectsServiceAccountsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
@@ -3179,7 +3179,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsServiceAccountsKeysResourceApi', () {
+  unittest.group('resource-ProjectsServiceAccountsKeysResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts.keys;
@@ -3439,7 +3439,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RolesResourceApi', () {
+  unittest.group('resource-RolesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).roles;

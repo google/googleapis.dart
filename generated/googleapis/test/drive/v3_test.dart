@@ -2173,7 +2173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AboutResourceApi', () {
+  unittest.group('resource-AboutResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).about;
@@ -2222,7 +2222,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChangesResourceApi', () {
+  unittest.group('resource-ChangesResource', () {
     unittest.test('method--getStartPageToken', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).changes;
@@ -2495,7 +2495,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelsResourceApi', () {
+  unittest.group('resource-ChannelsResource', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).channels;
@@ -2549,7 +2549,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CommentsResourceApi', () {
+  unittest.group('resource-CommentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
@@ -2887,7 +2887,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DrivesResourceApi', () {
+  unittest.group('resource-DrivesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
@@ -3301,7 +3301,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FilesResourceApi', () {
+  unittest.group('resource-FilesResource', () {
     unittest.test('method--copy', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
@@ -4077,7 +4077,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PermissionsResourceApi', () {
+  unittest.group('resource-PermissionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
@@ -4499,7 +4499,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RepliesResourceApi', () {
+  unittest.group('resource-RepliesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
@@ -4884,7 +4884,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RevisionsResourceApi', () {
+  unittest.group('resource-RevisionsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).revisions;
@@ -5153,7 +5153,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TeamdrivesResourceApi', () {
+  unittest.group('resource-TeamdrivesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).teamdrives;

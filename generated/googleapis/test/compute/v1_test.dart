@@ -35050,7 +35050,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AcceleratorTypesResourceApi', () {
+  unittest.group('resource-AcceleratorTypesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).acceleratorTypes;
@@ -35232,7 +35232,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AddressesResourceApi', () {
+  unittest.group('resource-AddressesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).addresses;
@@ -35517,7 +35517,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AutoscalersResourceApi', () {
+  unittest.group('resource-AutoscalersResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).autoscalers;
@@ -35920,7 +35920,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BackendBucketsResourceApi', () {
+  unittest.group('resource-BackendBucketsResource', () {
     unittest.test('method--addSignedUrlKey', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).backendBuckets;
@@ -36347,7 +36347,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BackendServicesResourceApi', () {
+  unittest.group('resource-BackendServicesResource', () {
     unittest.test('method--addSignedUrlKey', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).backendServices;
@@ -36949,7 +36949,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DiskTypesResourceApi', () {
+  unittest.group('resource-DiskTypesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).diskTypes;
@@ -37130,7 +37130,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DisksResourceApi', () {
+  unittest.group('resource-DisksResource', () {
     unittest.test('method--addResourcePolicies', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).disks;
@@ -37858,7 +37858,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ExternalVpnGatewaysResourceApi', () {
+  unittest.group('resource-ExternalVpnGatewaysResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).externalVpnGateways;
@@ -38173,7 +38173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FirewallsResourceApi', () {
+  unittest.group('resource-FirewallsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).firewalls;
@@ -38494,7 +38494,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ForwardingRulesResourceApi', () {
+  unittest.group('resource-ForwardingRulesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).forwardingRules;
@@ -38891,7 +38891,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GlobalAddressesResourceApi', () {
+  unittest.group('resource-GlobalAddressesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).globalAddresses;
@@ -39104,7 +39104,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GlobalForwardingRulesResourceApi', () {
+  unittest.group('resource-GlobalForwardingRulesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).globalForwardingRules;
@@ -39425,7 +39425,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GlobalNetworkEndpointGroupsResourceApi', () {
+  unittest.group('resource-GlobalNetworkEndpointGroupsResource', () {
     unittest.test('method--attachNetworkEndpoints', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).globalNetworkEndpointGroups;
@@ -39821,7 +39821,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GlobalOperationsResourceApi', () {
+  unittest.group('resource-GlobalOperationsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).globalOperations;
@@ -40088,7 +40088,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-HealthChecksResourceApi', () {
+  unittest.group('resource-HealthChecksResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).healthChecks;
@@ -40478,7 +40478,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-HttpHealthChecksResourceApi', () {
+  unittest.group('resource-HttpHealthChecksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).httpHealthChecks;
@@ -40799,7 +40799,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-HttpsHealthChecksResourceApi', () {
+  unittest.group('resource-HttpsHealthChecksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).httpsHealthChecks;
@@ -41120,7 +41120,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ImagesResourceApi', () {
+  unittest.group('resource-ImagesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).images;
@@ -41695,7 +41695,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstanceGroupManagersResourceApi', () {
+  unittest.group('resource-InstanceGroupManagersResource', () {
     unittest.test('method--abandonInstances', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).instanceGroupManagers;
@@ -42860,7 +42860,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstanceGroupsResourceApi', () {
+  unittest.group('resource-InstanceGroupsResource', () {
     unittest.test('method--addInstances', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).instanceGroups;
@@ -43388,7 +43388,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstanceTemplatesResourceApi', () {
+  unittest.group('resource-InstanceTemplatesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).instanceTemplates;
@@ -43754,7 +43754,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstancesResourceApi', () {
+  unittest.group('resource-InstancesResource', () {
     unittest.test('method--addAccessConfig', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).instances;
@@ -45969,7 +45969,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InterconnectAttachmentsResourceApi', () {
+  unittest.group('resource-InterconnectAttachmentsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).interconnectAttachments;
@@ -46319,7 +46319,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InterconnectLocationsResourceApi', () {
+  unittest.group('resource-InterconnectLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).interconnectLocations;
@@ -46430,7 +46430,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InterconnectsResourceApi', () {
+  unittest.group('resource-InterconnectsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).interconnects;
@@ -46744,7 +46744,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LicenseCodesResourceApi', () {
+  unittest.group('resource-LicenseCodesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).licenseCodes;
@@ -46842,7 +46842,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LicensesResourceApi', () {
+  unittest.group('resource-LicensesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).licenses;
@@ -47208,7 +47208,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MachineTypesResourceApi', () {
+  unittest.group('resource-MachineTypesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).machineTypes;
@@ -47390,7 +47390,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NetworkEndpointGroupsResourceApi', () {
+  unittest.group('resource-NetworkEndpointGroupsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).networkEndpointGroups;
@@ -47919,7 +47919,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NetworksResourceApi', () {
+  unittest.group('resource-NetworksResource', () {
     unittest.test('method--addPeering', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).networks;
@@ -48476,7 +48476,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodeGroupsResourceApi', () {
+  unittest.group('resource-NodeGroupsResource', () {
     unittest.test('method--addNodes', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).nodeGroups;
@@ -49208,7 +49208,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodeTemplatesResourceApi', () {
+  unittest.group('resource-NodeTemplatesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).nodeTemplates;
@@ -49651,7 +49651,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodeTypesResourceApi', () {
+  unittest.group('resource-NodeTypesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).nodeTypes;
@@ -49832,7 +49832,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PacketMirroringsResourceApi', () {
+  unittest.group('resource-PacketMirroringsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).packetMirrorings;
@@ -50227,7 +50227,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--disableXpnHost', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).projects;
@@ -50921,7 +50921,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionAutoscalersResourceApi', () {
+  unittest.group('resource-RegionAutoscalersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionAutoscalers;
@@ -51256,7 +51256,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionBackendServicesResourceApi', () {
+  unittest.group('resource-RegionBackendServicesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionBackendServices;
@@ -51637,7 +51637,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionCommitmentsResourceApi', () {
+  unittest.group('resource-RegionCommitmentsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionCommitments;
@@ -51872,7 +51872,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionDiskTypesResourceApi', () {
+  unittest.group('resource-RegionDiskTypesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionDiskTypes;
@@ -51985,7 +51985,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionDisksResourceApi', () {
+  unittest.group('resource-RegionDisksResource', () {
     unittest.test('method--addResourcePolicies', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionDisks;
@@ -52642,7 +52642,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionHealthCheckServicesResourceApi', () {
+  unittest.group('resource-RegionHealthCheckServicesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionHealthCheckServices;
@@ -52915,7 +52915,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionHealthChecksResourceApi', () {
+  unittest.group('resource-RegionHealthChecksResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionHealthChecks;
@@ -53242,7 +53242,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionInstanceGroupManagersResourceApi', () {
+  unittest.group('resource-RegionInstanceGroupManagersResource', () {
     unittest.test('method--abandonInstances', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionInstanceGroupManagers;
@@ -54349,7 +54349,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionInstanceGroupsResourceApi', () {
+  unittest.group('resource-RegionInstanceGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionInstanceGroups;
@@ -54594,7 +54594,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionNetworkEndpointGroupsResourceApi', () {
+  unittest.group('resource-RegionNetworkEndpointGroupsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionNetworkEndpointGroups;
@@ -54812,7 +54812,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionNotificationEndpointsResourceApi', () {
+  unittest.group('resource-RegionNotificationEndpointsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionNotificationEndpoints;
@@ -55030,7 +55030,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionOperationsResourceApi', () {
+  unittest.group('resource-RegionOperationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionOperations;
@@ -55233,7 +55233,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionSslCertificatesResourceApi', () {
+  unittest.group('resource-RegionSslCertificatesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionSslCertificates;
@@ -55451,7 +55451,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionTargetHttpProxiesResourceApi', () {
+  unittest.group('resource-RegionTargetHttpProxiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionTargetHttpProxies;
@@ -55724,7 +55724,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionTargetHttpsProxiesResourceApi', () {
+  unittest.group('resource-RegionTargetHttpsProxiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionTargetHttpsProxies;
@@ -56056,7 +56056,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionUrlMapsResourceApi', () {
+  unittest.group('resource-RegionUrlMapsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regionUrlMaps;
@@ -56436,7 +56436,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegionsResourceApi', () {
+  unittest.group('resource-RegionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).regions;
@@ -56547,7 +56547,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReservationsResourceApi', () {
+  unittest.group('resource-ReservationsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).reservations;
@@ -57044,7 +57044,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResourcePoliciesResourceApi', () {
+  unittest.group('resource-ResourcePoliciesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).resourcePolicies;
@@ -57488,7 +57488,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RoutersResourceApi', () {
+  unittest.group('resource-RoutersResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).routers;
@@ -58049,7 +58049,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RoutesResourceApi', () {
+  unittest.group('resource-RoutesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).routes;
@@ -58262,7 +58262,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SecurityPoliciesResourceApi', () {
+  unittest.group('resource-SecurityPoliciesResource', () {
     unittest.test('method--addRule', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).securityPolicies;
@@ -58798,7 +58798,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SnapshotsResourceApi', () {
+  unittest.group('resource-SnapshotsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).snapshots;
@@ -59162,7 +59162,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SslCertificatesResourceApi', () {
+  unittest.group('resource-SslCertificatesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).sslCertificates;
@@ -59444,7 +59444,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SslPoliciesResourceApi', () {
+  unittest.group('resource-SslPoliciesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).sslPolicies;
@@ -59777,7 +59777,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SubnetworksResourceApi', () {
+  unittest.group('resource-SubnetworksResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).subnetworks;
@@ -60458,7 +60458,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetGrpcProxiesResourceApi', () {
+  unittest.group('resource-TargetGrpcProxiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetGrpcProxies;
@@ -60725,7 +60725,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetHttpProxiesResourceApi', () {
+  unittest.group('resource-TargetHttpProxiesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetHttpProxies;
@@ -61115,7 +61115,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetHttpsProxiesResourceApi', () {
+  unittest.group('resource-TargetHttpsProxiesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetHttpsProxies;
@@ -61615,7 +61615,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetInstancesResourceApi', () {
+  unittest.group('resource-TargetInstancesResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetInstances;
@@ -61901,7 +61901,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetPoolsResourceApi', () {
+  unittest.group('resource-TargetPoolsResource', () {
     unittest.test('method--addHealthCheck', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetPools;
@@ -62523,7 +62523,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetSslProxiesResourceApi', () {
+  unittest.group('resource-TargetSslProxiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetSslProxies;
@@ -62955,7 +62955,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetTcpProxiesResourceApi', () {
+  unittest.group('resource-TargetTcpProxiesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetTcpProxies;
@@ -63278,7 +63278,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TargetVpnGatewaysResourceApi', () {
+  unittest.group('resource-TargetVpnGatewaysResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).targetVpnGateways;
@@ -63565,7 +63565,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UrlMapsResourceApi', () {
+  unittest.group('resource-UrlMapsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).urlMaps;
@@ -64058,7 +64058,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VpnGatewaysResourceApi', () {
+  unittest.group('resource-VpnGatewaysResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).vpnGateways;
@@ -64499,7 +64499,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VpnTunnelsResourceApi', () {
+  unittest.group('resource-VpnTunnelsResource', () {
     unittest.test('method--aggregatedList', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).vpnTunnels;
@@ -64784,7 +64784,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ZoneOperationsResourceApi', () {
+  unittest.group('resource-ZoneOperationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).zoneOperations;
@@ -64987,7 +64987,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ZonesResourceApi', () {
+  unittest.group('resource-ZonesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ComputeApi(mock).zones;

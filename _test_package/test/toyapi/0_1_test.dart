@@ -1596,7 +1596,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ComputeResourceApi', () {
+  unittest.group('resource-ComputeResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock).compute;
@@ -1661,7 +1661,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StorageResourceApi', () {
+  unittest.group('resource-StorageResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock).storage;

@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [SpeechApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-/// - [SpeechResourceApi]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
+/// - [SpeechResource]
 library speech.v1;
 
 import 'dart:async' as async;
@@ -51,9 +51,9 @@ class SpeechApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  SpeechResourceApi get speech => SpeechResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  SpeechResource get speech => SpeechResource(_requester);
 
   SpeechApi(http.Client client,
       {core.String rootUrl = 'https://speech.googleapis.com/',
@@ -62,10 +62,10 @@ class SpeechApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -198,29 +198,28 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -357,10 +356,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class SpeechResourceApi {
+class SpeechResource {
   final commons.ApiRequester _requester;
 
-  SpeechResourceApi(commons.ApiRequester client) : _requester = client;
+  SpeechResource(commons.ApiRequester client) : _requester = client;
 
   /// Performs asynchronous speech recognition: receive results via the
   /// google.longrunning.Operations interface. Returns either an

@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [ResellerApi] to access these resources:
 ///
-/// - [CustomersResourceApi]
-/// - [ResellernotifyResourceApi]
-/// - [SubscriptionsResourceApi]
+/// - [CustomersResource]
+/// - [ResellernotifyResource_1]
+/// - [SubscriptionsResource]
 library reseller.v1;
 
 import 'dart:async' as async;
@@ -52,11 +52,10 @@ class ResellerApi {
 
   final commons.ApiRequester _requester;
 
-  CustomersResourceApi get customers => CustomersResourceApi(_requester);
-  ResellernotifyResourceApi get resellernotify =>
-      ResellernotifyResourceApi(_requester);
-  SubscriptionsResourceApi get subscriptions =>
-      SubscriptionsResourceApi(_requester);
+  CustomersResource get customers => CustomersResource(_requester);
+  ResellernotifyResource_1 get resellernotify =>
+      ResellernotifyResource_1(_requester);
+  SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
 
   ResellerApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -65,10 +64,10 @@ class ResellerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CustomersResourceApi {
+class CustomersResource {
   final commons.ApiRequester _requester;
 
-  CustomersResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomersResource(commons.ApiRequester client) : _requester = client;
 
   /// Get a customer account.
   ///
@@ -304,10 +303,10 @@ class CustomersResourceApi {
   }
 }
 
-class ResellernotifyResourceApi {
+class ResellernotifyResource_1 {
   final commons.ApiRequester _requester;
 
-  ResellernotifyResourceApi(commons.ApiRequester client) : _requester = client;
+  ResellernotifyResource_1(commons.ApiRequester client) : _requester = client;
 
   /// Returns all the details of the watch corresponding to the reseller.
   ///
@@ -459,10 +458,10 @@ class ResellernotifyResourceApi {
   }
 }
 
-class SubscriptionsResourceApi {
+class SubscriptionsResource {
   final commons.ApiRequester _requester;
 
-  SubscriptionsResourceApi(commons.ApiRequester client) : _requester = client;
+  SubscriptionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Activates a subscription previously suspended by the reseller
   ///

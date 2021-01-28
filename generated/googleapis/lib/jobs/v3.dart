@@ -25,10 +25,10 @@
 ///
 /// Create an instance of [CloudTalentSolutionApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsClientEventsResourceApi]
-///   - [ProjectsCompaniesResourceApi]
-///   - [ProjectsJobsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsClientEventsResource]
+///   - [ProjectsCompaniesResource]
+///   - [ProjectsJobsResource]
 library jobs.v3;
 
 import 'dart:async' as async;
@@ -55,7 +55,7 @@ class CloudTalentSolutionApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudTalentSolutionApi(http.Client client,
       {core.String rootUrl = 'https://jobs.googleapis.com/',
@@ -64,16 +64,16 @@ class CloudTalentSolutionApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsClientEventsResourceApi get clientEvents =>
-      ProjectsClientEventsResourceApi(_requester);
-  ProjectsCompaniesResourceApi get companies =>
-      ProjectsCompaniesResourceApi(_requester);
-  ProjectsJobsResourceApi get jobs => ProjectsJobsResourceApi(_requester);
+  ProjectsClientEventsResource get clientEvents =>
+      ProjectsClientEventsResource(_requester);
+  ProjectsCompaniesResource get companies =>
+      ProjectsCompaniesResource(_requester);
+  ProjectsJobsResource get jobs => ProjectsJobsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Completes the specified prefix with keyword suggestions. Intended for use
   /// by a job search auto-complete search box.
@@ -208,10 +208,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsClientEventsResourceApi {
+class ProjectsClientEventsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsClientEventsResourceApi(commons.ApiRequester client)
+  ProjectsClientEventsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Report events issued when end user interacts with customer's application
@@ -280,11 +280,10 @@ class ProjectsClientEventsResourceApi {
   }
 }
 
-class ProjectsCompaniesResourceApi {
+class ProjectsCompaniesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsCompaniesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsCompaniesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new company entity.
   ///
@@ -593,10 +592,10 @@ class ProjectsCompaniesResourceApi {
   }
 }
 
-class ProjectsJobsResourceApi {
+class ProjectsJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a list of Jobs by filter.
   ///

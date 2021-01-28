@@ -24,31 +24,31 @@
 ///
 /// Create an instance of [BooksApi] to access these resources:
 ///
-/// - [BookshelvesResourceApi]
-///   - [BookshelvesVolumesResourceApi]
-/// - [CloudloadingResourceApi]
-/// - [DictionaryResourceApi]
-/// - [FamilysharingResourceApi]
-/// - [LayersResourceApi]
-///   - [LayersAnnotationDataResourceApi]
-///   - [LayersVolumeAnnotationsResourceApi]
-/// - [MyconfigResourceApi]
-/// - [MylibraryResourceApi]
-///   - [MylibraryAnnotationsResourceApi]
-///   - [MylibraryBookshelvesResourceApi]
-///     - [MylibraryBookshelvesVolumesResourceApi]
-///   - [MylibraryReadingpositionsResourceApi]
-/// - [NotificationResourceApi]
-/// - [OnboardingResourceApi]
-/// - [PersonalizedstreamResourceApi]
-/// - [PromoofferResourceApi]
-/// - [SeriesResourceApi]
-///   - [SeriesMembershipResourceApi]
-/// - [VolumesResourceApi]
-///   - [VolumesAssociatedResourceApi]
-///   - [VolumesMybooksResourceApi]
-///   - [VolumesRecommendedResourceApi]
-///   - [VolumesUseruploadedResourceApi]
+/// - [BookshelvesResource]
+///   - [BookshelvesVolumesResource]
+/// - [CloudloadingResource]
+/// - [DictionaryResource]
+/// - [FamilysharingResource]
+/// - [LayersResource]
+///   - [LayersAnnotationDataResource]
+///   - [LayersVolumeAnnotationsResource]
+/// - [MyconfigResource]
+/// - [MylibraryResource]
+///   - [MylibraryAnnotationsResource]
+///   - [MylibraryBookshelvesResource]
+///     - [MylibraryBookshelvesVolumesResource]
+///   - [MylibraryReadingpositionsResource]
+/// - [NotificationResource]
+/// - [OnboardingResource]
+/// - [PersonalizedstreamResource]
+/// - [PromoofferResource]
+/// - [SeriesResource]
+///   - [SeriesMembershipResource]
+/// - [VolumesResource]
+///   - [VolumesAssociatedResource]
+///   - [VolumesMybooksResource]
+///   - [VolumesRecommendedResource]
+///   - [VolumesUseruploadedResource]
 library books.v1;
 
 import 'dart:async' as async;
@@ -70,23 +70,20 @@ class BooksApi {
 
   final commons.ApiRequester _requester;
 
-  BookshelvesResourceApi get bookshelves => BookshelvesResourceApi(_requester);
-  CloudloadingResourceApi get cloudloading =>
-      CloudloadingResourceApi(_requester);
-  DictionaryResourceApi get dictionary => DictionaryResourceApi(_requester);
-  FamilysharingResourceApi get familysharing =>
-      FamilysharingResourceApi(_requester);
-  LayersResourceApi get layers => LayersResourceApi(_requester);
-  MyconfigResourceApi get myconfig => MyconfigResourceApi(_requester);
-  MylibraryResourceApi get mylibrary => MylibraryResourceApi(_requester);
-  NotificationResourceApi get notification =>
-      NotificationResourceApi(_requester);
-  OnboardingResourceApi get onboarding => OnboardingResourceApi(_requester);
-  PersonalizedstreamResourceApi get personalizedstream =>
-      PersonalizedstreamResourceApi(_requester);
-  PromoofferResourceApi get promooffer => PromoofferResourceApi(_requester);
-  SeriesResourceApi get series => SeriesResourceApi(_requester);
-  VolumesResourceApi get volumes => VolumesResourceApi(_requester);
+  BookshelvesResource get bookshelves => BookshelvesResource(_requester);
+  CloudloadingResource get cloudloading => CloudloadingResource(_requester);
+  DictionaryResource get dictionary => DictionaryResource(_requester);
+  FamilysharingResource get familysharing => FamilysharingResource(_requester);
+  LayersResource get layers => LayersResource(_requester);
+  MyconfigResource get myconfig => MyconfigResource(_requester);
+  MylibraryResource get mylibrary => MylibraryResource(_requester);
+  NotificationResource get notification => NotificationResource(_requester);
+  OnboardingResource get onboarding => OnboardingResource(_requester);
+  PersonalizedstreamResource get personalizedstream =>
+      PersonalizedstreamResource(_requester);
+  PromoofferResource get promooffer => PromoofferResource(_requester);
+  SeriesResource get series => SeriesResource(_requester);
+  VolumesResource get volumes => VolumesResource(_requester);
 
   BooksApi(http.Client client,
       {core.String rootUrl = 'https://books.googleapis.com/',
@@ -95,13 +92,13 @@ class BooksApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BookshelvesResourceApi {
+class BookshelvesResource {
   final commons.ApiRequester _requester;
 
-  BookshelvesVolumesResourceApi get volumes =>
-      BookshelvesVolumesResourceApi(_requester);
+  BookshelvesVolumesResource get volumes =>
+      BookshelvesVolumesResource(_requester);
 
-  BookshelvesResourceApi(commons.ApiRequester client) : _requester = client;
+  BookshelvesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves metadata for a specific bookshelf for the specified user.
   ///
@@ -228,11 +225,10 @@ class BookshelvesResourceApi {
   }
 }
 
-class BookshelvesVolumesResourceApi {
+class BookshelvesVolumesResource {
   final commons.ApiRequester _requester;
 
-  BookshelvesVolumesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  BookshelvesVolumesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves volumes in a specific bookshelf for the specified user.
   ///
@@ -320,10 +316,10 @@ class BookshelvesVolumesResourceApi {
   }
 }
 
-class CloudloadingResourceApi {
+class CloudloadingResource {
   final commons.ApiRequester _requester;
 
-  CloudloadingResourceApi(commons.ApiRequester client) : _requester = client;
+  CloudloadingResource(commons.ApiRequester client) : _requester = client;
 
   /// Add a user-upload volume and triggers processing.
   ///
@@ -499,10 +495,10 @@ class CloudloadingResourceApi {
   }
 }
 
-class DictionaryResourceApi {
+class DictionaryResource {
   final commons.ApiRequester _requester;
 
-  DictionaryResourceApi(commons.ApiRequester client) : _requester = client;
+  DictionaryResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a list of offline dictionary metadata available
   ///
@@ -555,10 +551,10 @@ class DictionaryResourceApi {
   }
 }
 
-class FamilysharingResourceApi {
+class FamilysharingResource {
   final commons.ApiRequester _requester;
 
-  FamilysharingResourceApi(commons.ApiRequester client) : _requester = client;
+  FamilysharingResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information regarding the family that the user is part of.
   ///
@@ -738,15 +734,15 @@ class FamilysharingResourceApi {
   }
 }
 
-class LayersResourceApi {
+class LayersResource {
   final commons.ApiRequester _requester;
 
-  LayersAnnotationDataResourceApi get annotationData =>
-      LayersAnnotationDataResourceApi(_requester);
-  LayersVolumeAnnotationsResourceApi get volumeAnnotations =>
-      LayersVolumeAnnotationsResourceApi(_requester);
+  LayersAnnotationDataResource get annotationData =>
+      LayersAnnotationDataResource(_requester);
+  LayersVolumeAnnotationsResource get volumeAnnotations =>
+      LayersVolumeAnnotationsResource(_requester);
 
-  LayersResourceApi(commons.ApiRequester client) : _requester = client;
+  LayersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the layer summary for a volume.
   ///
@@ -898,10 +894,10 @@ class LayersResourceApi {
   }
 }
 
-class LayersAnnotationDataResourceApi {
+class LayersAnnotationDataResource {
   final commons.ApiRequester _requester;
 
-  LayersAnnotationDataResourceApi(commons.ApiRequester client)
+  LayersAnnotationDataResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the annotation data.
@@ -1153,10 +1149,10 @@ class LayersAnnotationDataResourceApi {
   }
 }
 
-class LayersVolumeAnnotationsResourceApi {
+class LayersVolumeAnnotationsResource {
   final commons.ApiRequester _requester;
 
-  LayersVolumeAnnotationsResourceApi(commons.ApiRequester client)
+  LayersVolumeAnnotationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the volume annotation.
@@ -1384,10 +1380,10 @@ class LayersVolumeAnnotationsResourceApi {
   }
 }
 
-class MyconfigResourceApi {
+class MyconfigResource {
   final commons.ApiRequester _requester;
 
-  MyconfigResourceApi(commons.ApiRequester client) : _requester = client;
+  MyconfigResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the current settings for the user.
   ///
@@ -1749,23 +1745,23 @@ class MyconfigResourceApi {
   }
 }
 
-class MylibraryResourceApi {
+class MylibraryResource {
   final commons.ApiRequester _requester;
 
-  MylibraryAnnotationsResourceApi get annotations =>
-      MylibraryAnnotationsResourceApi(_requester);
-  MylibraryBookshelvesResourceApi get bookshelves =>
-      MylibraryBookshelvesResourceApi(_requester);
-  MylibraryReadingpositionsResourceApi get readingpositions =>
-      MylibraryReadingpositionsResourceApi(_requester);
+  MylibraryAnnotationsResource get annotations =>
+      MylibraryAnnotationsResource(_requester);
+  MylibraryBookshelvesResource get bookshelves =>
+      MylibraryBookshelvesResource(_requester);
+  MylibraryReadingpositionsResource get readingpositions =>
+      MylibraryReadingpositionsResource(_requester);
 
-  MylibraryResourceApi(commons.ApiRequester client) : _requester = client;
+  MylibraryResource(commons.ApiRequester client) : _requester = client;
 }
 
-class MylibraryAnnotationsResourceApi {
+class MylibraryAnnotationsResource {
   final commons.ApiRequester _requester;
 
-  MylibraryAnnotationsResourceApi(commons.ApiRequester client)
+  MylibraryAnnotationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an annotation.
@@ -2133,13 +2129,13 @@ class MylibraryAnnotationsResourceApi {
   }
 }
 
-class MylibraryBookshelvesResourceApi {
+class MylibraryBookshelvesResource {
   final commons.ApiRequester _requester;
 
-  MylibraryBookshelvesVolumesResourceApi get volumes =>
-      MylibraryBookshelvesVolumesResourceApi(_requester);
+  MylibraryBookshelvesVolumesResource get volumes =>
+      MylibraryBookshelvesVolumesResource(_requester);
 
-  MylibraryBookshelvesResourceApi(commons.ApiRequester client)
+  MylibraryBookshelvesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds a volume to a bookshelf.
@@ -2530,10 +2526,10 @@ class MylibraryBookshelvesResourceApi {
   }
 }
 
-class MylibraryBookshelvesVolumesResourceApi {
+class MylibraryBookshelvesVolumesResource {
   final commons.ApiRequester _requester;
 
-  MylibraryBookshelvesVolumesResourceApi(commons.ApiRequester client)
+  MylibraryBookshelvesVolumesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets volume information for volumes on a bookshelf.
@@ -2636,10 +2632,10 @@ class MylibraryBookshelvesVolumesResourceApi {
   }
 }
 
-class MylibraryReadingpositionsResourceApi {
+class MylibraryReadingpositionsResource {
   final commons.ApiRequester _requester;
 
-  MylibraryReadingpositionsResourceApi(commons.ApiRequester client)
+  MylibraryReadingpositionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves my reading position information for a volume.
@@ -2806,10 +2802,10 @@ class MylibraryReadingpositionsResourceApi {
   }
 }
 
-class NotificationResourceApi {
+class NotificationResource {
   final commons.ApiRequester _requester;
 
-  NotificationResourceApi(commons.ApiRequester client) : _requester = client;
+  NotificationResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns notification details for a given notification id.
   ///
@@ -2876,10 +2872,10 @@ class NotificationResourceApi {
   }
 }
 
-class OnboardingResourceApi {
+class OnboardingResource {
   final commons.ApiRequester _requester;
 
-  OnboardingResourceApi(commons.ApiRequester client) : _requester = client;
+  OnboardingResource(commons.ApiRequester client) : _requester = client;
 
   /// List categories for onboarding experience.
   ///
@@ -3014,11 +3010,10 @@ class OnboardingResourceApi {
   }
 }
 
-class PersonalizedstreamResourceApi {
+class PersonalizedstreamResource {
   final commons.ApiRequester _requester;
 
-  PersonalizedstreamResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PersonalizedstreamResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a stream of personalized book clusters
   ///
@@ -3091,10 +3086,10 @@ class PersonalizedstreamResourceApi {
   }
 }
 
-class PromoofferResourceApi {
+class PromoofferResource {
   final commons.ApiRequester _requester;
 
-  PromoofferResourceApi(commons.ApiRequester client) : _requester = client;
+  PromoofferResource(commons.ApiRequester client) : _requester = client;
 
   /// Accepts the promo offer.
   ///
@@ -3355,13 +3350,13 @@ class PromoofferResourceApi {
   }
 }
 
-class SeriesResourceApi {
+class SeriesResource {
   final commons.ApiRequester _requester;
 
-  SeriesMembershipResourceApi get membership =>
-      SeriesMembershipResourceApi(_requester);
+  SeriesMembershipResource get membership =>
+      SeriesMembershipResource(_requester);
 
-  SeriesResourceApi(commons.ApiRequester client) : _requester = client;
+  SeriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns Series metadata for the given series ids.
   ///
@@ -3414,11 +3409,10 @@ class SeriesResourceApi {
   }
 }
 
-class SeriesMembershipResourceApi {
+class SeriesMembershipResource {
   final commons.ApiRequester _requester;
 
-  SeriesMembershipResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SeriesMembershipResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns Series membership data given the series id.
   ///
@@ -3485,19 +3479,18 @@ class SeriesMembershipResourceApi {
   }
 }
 
-class VolumesResourceApi {
+class VolumesResource {
   final commons.ApiRequester _requester;
 
-  VolumesAssociatedResourceApi get associated =>
-      VolumesAssociatedResourceApi(_requester);
-  VolumesMybooksResourceApi get mybooks =>
-      VolumesMybooksResourceApi(_requester);
-  VolumesRecommendedResourceApi get recommended =>
-      VolumesRecommendedResourceApi(_requester);
-  VolumesUseruploadedResourceApi get useruploaded =>
-      VolumesUseruploadedResourceApi(_requester);
+  VolumesAssociatedResource get associated =>
+      VolumesAssociatedResource(_requester);
+  VolumesMybooksResource get mybooks => VolumesMybooksResource(_requester);
+  VolumesRecommendedResource get recommended =>
+      VolumesRecommendedResource(_requester);
+  VolumesUseruploadedResource get useruploaded =>
+      VolumesUseruploadedResource(_requester);
 
-  VolumesResourceApi(commons.ApiRequester client) : _requester = client;
+  VolumesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets volume information for a single volume.
   ///
@@ -3755,11 +3748,10 @@ class VolumesResourceApi {
   }
 }
 
-class VolumesAssociatedResourceApi {
+class VolumesAssociatedResource {
   final commons.ApiRequester _requester;
 
-  VolumesAssociatedResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  VolumesAssociatedResource(commons.ApiRequester client) : _requester = client;
 
   /// Return a list of associated books.
   ///
@@ -3850,10 +3842,10 @@ class VolumesAssociatedResourceApi {
   }
 }
 
-class VolumesMybooksResourceApi {
+class VolumesMybooksResource {
   final commons.ApiRequester _requester;
 
-  VolumesMybooksResourceApi(commons.ApiRequester client) : _requester = client;
+  VolumesMybooksResource(commons.ApiRequester client) : _requester = client;
 
   /// Return a list of books in My Library.
   ///
@@ -3945,11 +3937,10 @@ class VolumesMybooksResourceApi {
   }
 }
 
-class VolumesRecommendedResourceApi {
+class VolumesRecommendedResource {
   final commons.ApiRequester _requester;
 
-  VolumesRecommendedResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  VolumesRecommendedResource(commons.ApiRequester client) : _requester = client;
 
   /// Return a list of recommended books for the current user.
   ///
@@ -4095,10 +4086,10 @@ class VolumesRecommendedResourceApi {
   }
 }
 
-class VolumesUseruploadedResourceApi {
+class VolumesUseruploadedResource {
   final commons.ApiRequester _requester;
 
-  VolumesUseruploadedResourceApi(commons.ApiRequester client)
+  VolumesUseruploadedResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Return a list of books uploaded by the current user.

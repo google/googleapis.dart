@@ -23,8 +23,8 @@
 ///
 /// Create an instance of [LibraryagentApi] to access these resources:
 ///
-/// - [ShelvesResourceApi]
-///   - [ShelvesBooksResourceApi]
+/// - [ShelvesResource]
+///   - [ShelvesBooksResource]
 library libraryagent.v1;
 
 import 'dart:async' as async;
@@ -46,7 +46,7 @@ class LibraryagentApi {
 
   final commons.ApiRequester _requester;
 
-  ShelvesResourceApi get shelves => ShelvesResourceApi(_requester);
+  ShelvesResource get shelves => ShelvesResource(_requester);
 
   LibraryagentApi(http.Client client,
       {core.String rootUrl = 'https://libraryagent.googleapis.com/',
@@ -55,12 +55,12 @@ class LibraryagentApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ShelvesResourceApi {
+class ShelvesResource {
   final commons.ApiRequester _requester;
 
-  ShelvesBooksResourceApi get books => ShelvesBooksResourceApi(_requester);
+  ShelvesBooksResource get books => ShelvesBooksResource(_requester);
 
-  ShelvesResourceApi(commons.ApiRequester client) : _requester = client;
+  ShelvesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a shelf. Returns NOT_FOUND if the shelf does not exist.
   ///
@@ -177,10 +177,10 @@ class ShelvesResourceApi {
   }
 }
 
-class ShelvesBooksResourceApi {
+class ShelvesBooksResource {
   final commons.ApiRequester _requester;
 
-  ShelvesBooksResourceApi(commons.ApiRequester client) : _requester = client;
+  ShelvesBooksResource(commons.ApiRequester client) : _requester = client;
 
   /// Borrow a book from the library. Returns the book if it is borrowed
   /// successfully. Returns NOT_FOUND if the book does not exist in the library.

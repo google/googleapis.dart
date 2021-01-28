@@ -4077,7 +4077,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ServiceManagementApi(mock).operations;
@@ -4188,7 +4188,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceManagementApi(mock).services;
@@ -4796,7 +4796,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesConfigsResourceApi', () {
+  unittest.group('resource-ServicesConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceManagementApi(mock).services.configs;
@@ -5049,7 +5049,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesConsumersResourceApi', () {
+  unittest.group('resource-ServicesConsumersResource', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       var res = api.ServiceManagementApi(mock).services.consumers;
@@ -5211,7 +5211,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesRolloutsResourceApi', () {
+  unittest.group('resource-ServicesRolloutsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceManagementApi(mock).services.rollouts;

@@ -759,7 +759,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsConfigsResourceApi', () {
+  unittest.group('resource-ProjectsConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRuntimeConfigApi(mock).projects.configs;
@@ -1186,7 +1186,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsConfigsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsConfigsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudRuntimeConfigApi(mock).projects.configs.operations;
@@ -1290,7 +1290,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsConfigsVariablesResourceApi', () {
+  unittest.group('resource-ProjectsConfigsVariablesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRuntimeConfigApi(mock).projects.configs.variables;
@@ -1672,7 +1672,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsConfigsWaitersResourceApi', () {
+  unittest.group('resource-ProjectsConfigsWaitersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudRuntimeConfigApi(mock).projects.configs.waiters;

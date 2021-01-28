@@ -10388,7 +10388,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--deleteAgent', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects;
@@ -10548,7 +10548,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentResourceApi', () {
+  unittest.group('resource-ProjectsAgentResource', () {
     unittest.test('method--export', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent;
@@ -10993,7 +10993,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentEntityTypesResourceApi', () {
+  unittest.group('resource-ProjectsAgentEntityTypesResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.entityTypes;
@@ -11396,7 +11396,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentEntityTypesEntitiesResourceApi', () {
+  unittest.group('resource-ProjectsAgentEntityTypesEntitiesResource', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.entityTypes.entities;
@@ -11569,7 +11569,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentEnvironmentsResourceApi', () {
+  unittest.group('resource-ProjectsAgentEnvironmentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.environments;
@@ -11630,8 +11630,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentEnvironmentsUsersSessionsResourceApi',
-      () {
+  unittest.group('resource-ProjectsAgentEnvironmentsUsersSessionsResource', () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
       var res =
@@ -11740,7 +11739,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi', () {
+      'resource-ProjectsAgentEnvironmentsUsersSessionsContextsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock)
@@ -12046,8 +12045,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi',
-      () {
+      'resource-ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock)
@@ -12352,7 +12350,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentIntentsResourceApi', () {
+  unittest.group('resource-ProjectsAgentIntentsResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.intents;
@@ -12776,7 +12774,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentKnowledgeBasesResourceApi', () {
+  unittest.group('resource-ProjectsAgentKnowledgeBasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.knowledgeBases;
@@ -13056,8 +13054,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentKnowledgeBasesDocumentsResourceApi',
-      () {
+  unittest.group('resource-ProjectsAgentKnowledgeBasesDocumentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
@@ -13391,7 +13388,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentSessionsResourceApi', () {
+  unittest.group('resource-ProjectsAgentSessionsResource', () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.sessions;
@@ -13497,7 +13494,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentSessionsContextsResourceApi', () {
+  unittest.group('resource-ProjectsAgentSessionsContextsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.sessions.contexts;
@@ -13772,7 +13769,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAgentSessionsEntityTypesResourceApi', () {
+  unittest.group('resource-ProjectsAgentSessionsEntityTypesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
@@ -14047,7 +14044,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsKnowledgeBasesResourceApi', () {
+  unittest.group('resource-ProjectsKnowledgeBasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.knowledgeBases;
@@ -14327,7 +14324,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsKnowledgeBasesDocumentsResourceApi', () {
+  unittest.group('resource-ProjectsKnowledgeBasesDocumentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.knowledgeBases.documents;
@@ -14661,7 +14658,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--deleteAgent', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations;
@@ -14821,7 +14818,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAgentResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentResource', () {
     unittest.test('method--export', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations.agent;
@@ -15266,7 +15263,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAgentEntityTypesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentEntityTypesResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations.agent.entityTypes;
@@ -15669,8 +15666,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsLocationsAgentEntityTypesEntitiesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentEntityTypesEntitiesResource',
+      () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
       var res =
@@ -15846,7 +15843,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAgentEnvironmentsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentEnvironmentsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations.agent.environments;
@@ -15908,8 +15905,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi',
-      () {
+      'resource-ProjectsLocationsAgentEnvironmentsUsersSessionsResource', () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock)
@@ -16028,7 +16024,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi',
+      'resource-ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -16340,7 +16336,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi',
+      'resource-ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -16651,7 +16647,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAgentIntentsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentIntentsResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations.agent.intents;
@@ -17075,7 +17071,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAgentSessionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentSessionsResource', () {
     unittest.test('method--deleteContexts', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations.agent.sessions;
@@ -17181,8 +17177,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAgentSessionsContextsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsAgentSessionsContextsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -17462,8 +17457,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsLocationsAgentSessionsEntityTypesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAgentSessionsEntityTypesResource',
+      () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -17743,7 +17738,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.locations.operations;
@@ -17904,7 +17899,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DialogflowApi(mock).projects.operations;

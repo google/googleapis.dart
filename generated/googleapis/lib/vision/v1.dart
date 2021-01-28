@@ -25,23 +25,23 @@
 ///
 /// Create an instance of [VisionApi] to access these resources:
 ///
-/// - [FilesResourceApi]
-/// - [ImagesResourceApi]
-/// - [LocationsResourceApi]
-///   - [LocationsOperationsResourceApi]
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsFilesResourceApi]
-///   - [ProjectsImagesResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsFilesResourceApi]
-///     - [ProjectsLocationsImagesResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsProductSetsResourceApi]
-///       - [ProjectsLocationsProductSetsProductsResourceApi]
-///     - [ProjectsLocationsProductsResourceApi]
-///       - [ProjectsLocationsProductsReferenceImagesResourceApi]
-///   - [ProjectsOperationsResourceApi]
+/// - [FilesResource]
+/// - [ImagesResource]
+/// - [LocationsResource]
+///   - [LocationsOperationsResource]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsFilesResource]
+///   - [ProjectsImagesResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsFilesResource]
+///     - [ProjectsLocationsImagesResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsProductSetsResource]
+///       - [ProjectsLocationsProductSetsProductsResource]
+///     - [ProjectsLocationsProductsResource]
+///       - [ProjectsLocationsProductsReferenceImagesResource]
+///   - [ProjectsOperationsResource]
 library vision.v1;
 
 import 'dart:async' as async;
@@ -70,11 +70,11 @@ class VisionApi {
 
   final commons.ApiRequester _requester;
 
-  FilesResourceApi get files => FilesResourceApi(_requester);
-  ImagesResourceApi get images => ImagesResourceApi(_requester);
-  LocationsResourceApi get locations => LocationsResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  FilesResource get files => FilesResource(_requester);
+  ImagesResource get images => ImagesResource(_requester);
+  LocationsResource get locations => LocationsResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   VisionApi(http.Client client,
       {core.String rootUrl = 'https://vision.googleapis.com/',
@@ -83,10 +83,10 @@ class VisionApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class FilesResourceApi {
+class FilesResource {
   final commons.ApiRequester _requester;
 
-  FilesResourceApi(commons.ApiRequester client) : _requester = client;
+  FilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Service that performs image detection and annotation for a batch of files.
   /// Now only "application/pdf", "image/tiff" and "image/gif" are supported.
@@ -200,10 +200,10 @@ class FilesResourceApi {
   }
 }
 
-class ImagesResourceApi {
+class ImagesResource {
   final commons.ApiRequester _requester;
 
-  ImagesResourceApi(commons.ApiRequester client) : _requester = client;
+  ImagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Run image detection and annotation for a batch of images.
   ///
@@ -313,19 +313,19 @@ class ImagesResourceApi {
   }
 }
 
-class LocationsResourceApi {
+class LocationsResource {
   final commons.ApiRequester _requester;
 
-  LocationsOperationsResourceApi get operations =>
-      LocationsOperationsResourceApi(_requester);
+  LocationsOperationsResource get operations =>
+      LocationsOperationsResource(_requester);
 
-  LocationsResourceApi(commons.ApiRequester client) : _requester = client;
+  LocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class LocationsOperationsResourceApi {
+class LocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  LocationsOperationsResourceApi(commons.ApiRequester client)
+  LocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -382,10 +382,10 @@ class LocationsOperationsResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -638,23 +638,23 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsFilesResourceApi get files => ProjectsFilesResourceApi(_requester);
-  ProjectsImagesResourceApi get images => ProjectsImagesResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
+  ProjectsFilesResource get files => ProjectsFilesResource(_requester);
+  ProjectsImagesResource get images => ProjectsImagesResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsFilesResourceApi {
+class ProjectsFilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsFilesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsFilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Service that performs image detection and annotation for a batch of files.
   /// Now only "application/pdf", "image/tiff" and "image/gif" are supported.
@@ -794,10 +794,10 @@ class ProjectsFilesResourceApi {
   }
 }
 
-class ProjectsImagesResourceApi {
+class ProjectsImagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsImagesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsImagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Run image detection and annotation for a batch of images.
   ///
@@ -933,28 +933,27 @@ class ProjectsImagesResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsFilesResourceApi get files =>
-      ProjectsLocationsFilesResourceApi(_requester);
-  ProjectsLocationsImagesResourceApi get images =>
-      ProjectsLocationsImagesResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsProductSetsResourceApi get productSets =>
-      ProjectsLocationsProductSetsResourceApi(_requester);
-  ProjectsLocationsProductsResourceApi get products =>
-      ProjectsLocationsProductsResourceApi(_requester);
+  ProjectsLocationsFilesResource get files =>
+      ProjectsLocationsFilesResource(_requester);
+  ProjectsLocationsImagesResource get images =>
+      ProjectsLocationsImagesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsProductSetsResource get productSets =>
+      ProjectsLocationsProductSetsResource(_requester);
+  ProjectsLocationsProductsResource get products =>
+      ProjectsLocationsProductsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsFilesResourceApi {
+class ProjectsLocationsFilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsFilesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsFilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Service that performs image detection and annotation for a batch of files.
@@ -1095,10 +1094,10 @@ class ProjectsLocationsFilesResourceApi {
   }
 }
 
-class ProjectsLocationsImagesResourceApi {
+class ProjectsLocationsImagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsImagesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsImagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Run image detection and annotation for a batch of images.
@@ -1235,10 +1234,10 @@ class ProjectsLocationsImagesResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1296,13 +1295,13 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsProductSetsResourceApi {
+class ProjectsLocationsProductSetsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsProductSetsProductsResourceApi get products =>
-      ProjectsLocationsProductSetsProductsResourceApi(_requester);
+  ProjectsLocationsProductSetsProductsResource get products =>
+      ProjectsLocationsProductSetsProductsResource(_requester);
 
-  ProjectsLocationsProductSetsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsProductSetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds a Product to the specified ProductSet. If the Product is already
@@ -1821,10 +1820,10 @@ class ProjectsLocationsProductSetsResourceApi {
   }
 }
 
-class ProjectsLocationsProductSetsProductsResourceApi {
+class ProjectsLocationsProductSetsProductsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsProductSetsProductsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsProductSetsProductsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the Products in a ProductSet, in an unspecified order. If the
@@ -1900,13 +1899,13 @@ class ProjectsLocationsProductSetsProductsResourceApi {
   }
 }
 
-class ProjectsLocationsProductsResourceApi {
+class ProjectsLocationsProductsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsProductsReferenceImagesResourceApi get referenceImages =>
-      ProjectsLocationsProductsReferenceImagesResourceApi(_requester);
+  ProjectsLocationsProductsReferenceImagesResource get referenceImages =>
+      ProjectsLocationsProductsReferenceImagesResource(_requester);
 
-  ProjectsLocationsProductsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsProductsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates and returns a new product resource. Possible errors: * Returns
@@ -2310,11 +2309,10 @@ class ProjectsLocationsProductsResourceApi {
   }
 }
 
-class ProjectsLocationsProductsReferenceImagesResourceApi {
+class ProjectsLocationsProductsReferenceImagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsProductsReferenceImagesResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsProductsReferenceImagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates and returns a new ReferenceImage resource. The `bounding_poly`
@@ -2587,11 +2585,10 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API

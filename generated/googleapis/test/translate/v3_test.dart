@@ -1192,7 +1192,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--detectLanguage', () {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects;
@@ -1356,7 +1356,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--batchTranslateText', () {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
@@ -1681,7 +1681,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlossariesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsGlossariesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.glossaries;
@@ -1892,7 +1892,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.operations;

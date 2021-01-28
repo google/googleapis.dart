@@ -856,7 +856,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--getConfig', () {
       var mock = HttpServerMock();
       var res = api.CloudSourceRepositoriesApi(mock).projects;
@@ -959,7 +959,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsReposResourceApi', () {
+  unittest.group('resource-ProjectsReposResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudSourceRepositoriesApi(mock).projects.repos;

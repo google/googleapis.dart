@@ -24,16 +24,16 @@
 ///
 /// Create an instance of [StorageApi] to access these resources:
 ///
-/// - [BucketAccessControlsResourceApi]
-/// - [BucketsResourceApi]
-/// - [ChannelsResourceApi]
-/// - [DefaultObjectAccessControlsResourceApi]
-/// - [NotificationsResourceApi]
-/// - [ObjectAccessControlsResourceApi]
-/// - [ObjectsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsHmacKeysResourceApi]
-///   - [ProjectsServiceAccountResourceApi]
+/// - [BucketAccessControlsResource]
+/// - [BucketsResource]
+/// - [ChannelsResource]
+/// - [DefaultObjectAccessControlsResource]
+/// - [NotificationsResource]
+/// - [ObjectAccessControlsResource]
+/// - [ObjectsResource]
+/// - [ProjectsResource]
+///   - [ProjectsHmacKeysResource]
+///   - [ProjectsServiceAccountResource]
 library storage.v1;
 
 import 'dart:async' as async;
@@ -80,18 +80,17 @@ class StorageApi {
 
   final commons.ApiRequester _requester;
 
-  BucketAccessControlsResourceApi get bucketAccessControls =>
-      BucketAccessControlsResourceApi(_requester);
-  BucketsResourceApi get buckets => BucketsResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  DefaultObjectAccessControlsResourceApi get defaultObjectAccessControls =>
-      DefaultObjectAccessControlsResourceApi(_requester);
-  NotificationsResourceApi get notifications =>
-      NotificationsResourceApi(_requester);
-  ObjectAccessControlsResourceApi get objectAccessControls =>
-      ObjectAccessControlsResourceApi(_requester);
-  ObjectsResourceApi get objects => ObjectsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  BucketAccessControlsResource get bucketAccessControls =>
+      BucketAccessControlsResource(_requester);
+  BucketsResource get buckets => BucketsResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  DefaultObjectAccessControlsResource get defaultObjectAccessControls =>
+      DefaultObjectAccessControlsResource(_requester);
+  NotificationsResource get notifications => NotificationsResource(_requester);
+  ObjectAccessControlsResource get objectAccessControls =>
+      ObjectAccessControlsResource(_requester);
+  ObjectsResource get objects => ObjectsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   StorageApi(http.Client client,
       {core.String rootUrl = 'https://storage.googleapis.com/',
@@ -100,10 +99,10 @@ class StorageApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BucketAccessControlsResourceApi {
+class BucketAccessControlsResource {
   final commons.ApiRequester _requester;
 
-  BucketAccessControlsResourceApi(commons.ApiRequester client)
+  BucketAccessControlsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Permanently deletes the ACL entry for the specified entity on the
@@ -559,10 +558,10 @@ class BucketAccessControlsResourceApi {
   }
 }
 
-class BucketsResourceApi {
+class BucketsResource {
   final commons.ApiRequester _requester;
 
-  BucketsResourceApi(commons.ApiRequester client) : _requester = client;
+  BucketsResource(commons.ApiRequester client) : _requester = client;
 
   /// Permanently deletes an empty bucket.
   ///
@@ -1499,10 +1498,10 @@ class BucketsResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Stop watching resources through this channel
   ///
@@ -1555,10 +1554,10 @@ class ChannelsResourceApi {
   }
 }
 
-class DefaultObjectAccessControlsResourceApi {
+class DefaultObjectAccessControlsResource {
   final commons.ApiRequester _requester;
 
-  DefaultObjectAccessControlsResourceApi(commons.ApiRequester client)
+  DefaultObjectAccessControlsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Permanently deletes the default object ACL entry for the specified entity
@@ -2031,10 +2030,10 @@ class DefaultObjectAccessControlsResourceApi {
   }
 }
 
-class NotificationsResourceApi {
+class NotificationsResource {
   final commons.ApiRequester _requester;
 
-  NotificationsResourceApi(commons.ApiRequester client) : _requester = client;
+  NotificationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Permanently deletes a notification subscription.
   ///
@@ -2324,10 +2323,10 @@ class NotificationsResourceApi {
   }
 }
 
-class ObjectAccessControlsResourceApi {
+class ObjectAccessControlsResource {
   final commons.ApiRequester _requester;
 
-  ObjectAccessControlsResourceApi(commons.ApiRequester client)
+  ObjectAccessControlsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Permanently deletes the ACL entry for the specified entity on the
@@ -2883,10 +2882,10 @@ class ObjectAccessControlsResourceApi {
   }
 }
 
-class ObjectsResourceApi {
+class ObjectsResource {
   final commons.ApiRequester _requester;
 
-  ObjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ObjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Concatenates a list of existing objects into a new object in the same
   /// bucket.
@@ -4729,22 +4728,20 @@ class ObjectsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHmacKeysResourceApi get hmacKeys =>
-      ProjectsHmacKeysResourceApi(_requester);
-  ProjectsServiceAccountResourceApi get serviceAccount =>
-      ProjectsServiceAccountResourceApi(_requester);
+  ProjectsHmacKeysResource get hmacKeys => ProjectsHmacKeysResource(_requester);
+  ProjectsServiceAccountResource get serviceAccount =>
+      ProjectsServiceAccountResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsHmacKeysResourceApi {
+class ProjectsHmacKeysResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHmacKeysResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsHmacKeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new HMAC key for the specified service account.
   ///
@@ -5104,10 +5101,10 @@ class ProjectsHmacKeysResourceApi {
   }
 }
 
-class ProjectsServiceAccountResourceApi {
+class ProjectsServiceAccountResource {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountResourceApi(commons.ApiRequester client)
+  ProjectsServiceAccountResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get the email address of this project's Google Cloud Storage service

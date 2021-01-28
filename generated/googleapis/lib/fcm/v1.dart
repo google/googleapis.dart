@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [FirebaseCloudMessagingApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsMessagesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsMessagesResource]
 library fcm.v1;
 
 import 'dart:async' as async;
@@ -49,7 +49,7 @@ class FirebaseCloudMessagingApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseCloudMessagingApi(http.Client client,
       {core.String rootUrl = 'https://fcm.googleapis.com/',
@@ -58,20 +58,18 @@ class FirebaseCloudMessagingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsMessagesResourceApi get messages =>
-      ProjectsMessagesResourceApi(_requester);
+  ProjectsMessagesResource get messages => ProjectsMessagesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsMessagesResourceApi {
+class ProjectsMessagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsMessagesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsMessagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Send a message to specified target (a registration token, topic or
   /// condition).

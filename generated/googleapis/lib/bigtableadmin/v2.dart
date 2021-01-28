@@ -23,16 +23,16 @@
 ///
 /// Create an instance of [BigtableAdminApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-///   - [OperationsProjectsResourceApi]
-///     - [OperationsProjectsOperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsInstancesResourceApi]
-///     - [ProjectsInstancesAppProfilesResourceApi]
-///     - [ProjectsInstancesClustersResourceApi]
-///       - [ProjectsInstancesClustersBackupsResourceApi]
-///     - [ProjectsInstancesTablesResourceApi]
-///   - [ProjectsLocationsResourceApi]
+/// - [OperationsResource]
+///   - [OperationsProjectsResource]
+///     - [OperationsProjectsOperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsInstancesResource]
+///     - [ProjectsInstancesAppProfilesResource]
+///     - [ProjectsInstancesClustersResource]
+///       - [ProjectsInstancesClustersBackupsResource]
+///     - [ProjectsInstancesTablesResource]
+///   - [ProjectsLocationsResource]
 library bigtableadmin.v2;
 
 import 'dart:async' as async;
@@ -87,8 +87,8 @@ class BigtableAdminApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   BigtableAdminApi(http.Client client,
       {core.String rootUrl = 'https://bigtableadmin.googleapis.com/',
@@ -97,13 +97,13 @@ class BigtableAdminApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsProjectsResourceApi get projects =>
-      OperationsProjectsResourceApi(_requester);
+  OperationsProjectsResource get projects =>
+      OperationsProjectsResource(_requester);
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -272,20 +272,19 @@ class OperationsResourceApi {
   }
 }
 
-class OperationsProjectsResourceApi {
+class OperationsProjectsResource {
   final commons.ApiRequester _requester;
 
-  OperationsProjectsOperationsResourceApi get operations =>
-      OperationsProjectsOperationsResourceApi(_requester);
+  OperationsProjectsOperationsResource get operations =>
+      OperationsProjectsOperationsResource(_requester);
 
-  OperationsProjectsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OperationsProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class OperationsProjectsOperationsResourceApi {
+class OperationsProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsProjectsOperationsResourceApi(commons.ApiRequester client)
+  OperationsProjectsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists operations that match the specified filter in the request. If the
@@ -368,29 +367,28 @@ class OperationsProjectsOperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesResourceApi get instances =>
-      ProjectsInstancesResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsInstancesResource get instances =>
+      ProjectsInstancesResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsInstancesResourceApi {
+class ProjectsInstancesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesAppProfilesResourceApi get appProfiles =>
-      ProjectsInstancesAppProfilesResourceApi(_requester);
-  ProjectsInstancesClustersResourceApi get clusters =>
-      ProjectsInstancesClustersResourceApi(_requester);
-  ProjectsInstancesTablesResourceApi get tables =>
-      ProjectsInstancesTablesResourceApi(_requester);
+  ProjectsInstancesAppProfilesResource get appProfiles =>
+      ProjectsInstancesAppProfilesResource(_requester);
+  ProjectsInstancesClustersResource get clusters =>
+      ProjectsInstancesClustersResource(_requester);
+  ProjectsInstancesTablesResource get tables =>
+      ProjectsInstancesTablesResource(_requester);
 
-  ProjectsInstancesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsInstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create an instance within a project.
   ///
@@ -929,10 +927,10 @@ class ProjectsInstancesResourceApi {
   }
 }
 
-class ProjectsInstancesAppProfilesResourceApi {
+class ProjectsInstancesAppProfilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesAppProfilesResourceApi(commons.ApiRequester client)
+  ProjectsInstancesAppProfilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an app profile within an instance.
@@ -1278,13 +1276,13 @@ class ProjectsInstancesAppProfilesResourceApi {
   }
 }
 
-class ProjectsInstancesClustersResourceApi {
+class ProjectsInstancesClustersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesClustersBackupsResourceApi get backups =>
-      ProjectsInstancesClustersBackupsResourceApi(_requester);
+  ProjectsInstancesClustersBackupsResource get backups =>
+      ProjectsInstancesClustersBackupsResource(_requester);
 
-  ProjectsInstancesClustersResourceApi(commons.ApiRequester client)
+  ProjectsInstancesClustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a cluster within an instance.
@@ -1582,10 +1580,10 @@ class ProjectsInstancesClustersResourceApi {
   }
 }
 
-class ProjectsInstancesClustersBackupsResourceApi {
+class ProjectsInstancesClustersBackupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesClustersBackupsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesClustersBackupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts creating a new Cloud Bigtable Backup. The returned backup
@@ -2147,10 +2145,10 @@ class ProjectsInstancesClustersBackupsResourceApi {
   }
 }
 
-class ProjectsInstancesTablesResourceApi {
+class ProjectsInstancesTablesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesTablesResourceApi(commons.ApiRequester client)
+  ProjectsInstancesTablesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Checks replication consistency based on a consistency token, that is, if
@@ -2929,11 +2927,10 @@ class ProjectsInstancesTablesResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///

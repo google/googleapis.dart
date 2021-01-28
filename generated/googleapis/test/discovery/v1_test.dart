@@ -1017,7 +1017,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ApisResourceApi', () {
+  unittest.group('resource-ApisResource', () {
     unittest.test('method--getRest', () {
       var mock = HttpServerMock();
       var res = api.DiscoveryApi(mock).apis;

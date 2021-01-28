@@ -911,7 +911,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations;
@@ -1021,7 +1021,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsAcceleratorTypesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsAcceleratorTypesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.acceleratorTypes;
@@ -1136,7 +1136,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsNodesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsNodesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
@@ -1506,7 +1506,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.operations;
@@ -1712,7 +1712,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTensorflowVersionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsTensorflowVersionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.tensorflowVersions;

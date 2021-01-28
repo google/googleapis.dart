@@ -23,10 +23,10 @@
 ///
 /// Create an instance of [CloudIAPApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsBrandsResourceApi]
-///     - [ProjectsBrandsIdentityAwareProxyClientsResourceApi]
-/// - [V1ResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsBrandsResource]
+///     - [ProjectsBrandsIdentityAwareProxyClientsResource]
+/// - [V1Resource]
 library iap.v1;
 
 import 'dart:async' as async;
@@ -49,8 +49,8 @@ class CloudIAPApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  V1ResourceApi get v1 => V1ResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   CloudIAPApi(http.Client client,
       {core.String rootUrl = 'https://iap.googleapis.com/',
@@ -59,22 +59,22 @@ class CloudIAPApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsBrandsResourceApi get brands => ProjectsBrandsResourceApi(_requester);
+  ProjectsBrandsResource get brands => ProjectsBrandsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsBrandsResourceApi {
+class ProjectsBrandsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsBrandsIdentityAwareProxyClientsResourceApi
+  ProjectsBrandsIdentityAwareProxyClientsResource
       get identityAwareProxyClients =>
-          ProjectsBrandsIdentityAwareProxyClientsResourceApi(_requester);
+          ProjectsBrandsIdentityAwareProxyClientsResource(_requester);
 
-  ProjectsBrandsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsBrandsResource(commons.ApiRequester client) : _requester = client;
 
   /// Constructs a new OAuth brand for the project if one does not exist. The
   /// created brand is "internal only", meaning that OAuth clients created under
@@ -246,11 +246,10 @@ class ProjectsBrandsResourceApi {
   }
 }
 
-class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
+class ProjectsBrandsIdentityAwareProxyClientsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsBrandsIdentityAwareProxyClientsResourceApi(
-      commons.ApiRequester client)
+  ProjectsBrandsIdentityAwareProxyClientsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by
@@ -567,10 +566,10 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
   }
 }
 
-class V1ResourceApi {
+class V1Resource {
   final commons.ApiRequester _requester;
 
-  V1ResourceApi(commons.ApiRequester client) : _requester = client;
+  V1Resource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the access control policy for an Identity-Aware Proxy protected
   /// resource. More information about managing access via IAP can be found at:

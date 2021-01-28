@@ -25,33 +25,33 @@
 ///
 /// Create an instance of [CloudSearchApi] to access these resources:
 ///
-/// - [DebugResourceApi]
-///   - [DebugDatasourcesResourceApi]
-///     - [DebugDatasourcesItemsResourceApi]
-///       - [DebugDatasourcesItemsUnmappedidsResourceApi]
-///   - [DebugIdentitysourcesResourceApi]
-///     - [DebugIdentitysourcesItemsResourceApi]
-///     - [DebugIdentitysourcesUnmappedidsResourceApi]
-/// - [IndexingResourceApi]
-///   - [IndexingDatasourcesResourceApi]
-///     - [IndexingDatasourcesItemsResourceApi]
-/// - [MediaResourceApi]
-/// - [OperationsResourceApi]
-///   - [OperationsLroResourceApi]
-/// - [QueryResourceApi]
-///   - [QuerySourcesResourceApi]
-/// - [SettingsResourceApi]
-///   - [SettingsDatasourcesResourceApi]
-///   - [SettingsSearchapplicationsResourceApi]
-/// - [StatsResourceApi]
-///   - [StatsIndexResourceApi]
-///     - [StatsIndexDatasourcesResourceApi]
-///   - [StatsQueryResourceApi]
-///     - [StatsQuerySearchapplicationsResourceApi]
-///   - [StatsSessionResourceApi]
-///     - [StatsSessionSearchapplicationsResourceApi]
-///   - [StatsUserResourceApi]
-///     - [StatsUserSearchapplicationsResourceApi]
+/// - [DebugResource]
+///   - [DebugDatasourcesResource]
+///     - [DebugDatasourcesItemsResource]
+///       - [DebugDatasourcesItemsUnmappedidsResource]
+///   - [DebugIdentitysourcesResource]
+///     - [DebugIdentitysourcesItemsResource]
+///     - [DebugIdentitysourcesUnmappedidsResource]
+/// - [IndexingResource]
+///   - [IndexingDatasourcesResource]
+///     - [IndexingDatasourcesItemsResource]
+/// - [MediaResource]
+/// - [OperationsResource]
+///   - [OperationsLroResource]
+/// - [QueryResource]
+///   - [QuerySourcesResource]
+/// - [SettingsResource]
+///   - [SettingsDatasourcesResource]
+///   - [SettingsSearchapplicationsResource]
+/// - [StatsResource]
+///   - [StatsIndexResource]
+///     - [StatsIndexDatasourcesResource]
+///   - [StatsQueryResource]
+///     - [StatsQuerySearchapplicationsResource]
+///   - [StatsSessionResource]
+///     - [StatsSessionSearchapplicationsResource]
+///   - [StatsUserResource]
+///     - [StatsUserSearchapplicationsResource]
 library cloudsearch.v1;
 
 import 'dart:async' as async;
@@ -115,13 +115,13 @@ class CloudSearchApi {
 
   final commons.ApiRequester _requester;
 
-  DebugResourceApi get debug => DebugResourceApi(_requester);
-  IndexingResourceApi get indexing => IndexingResourceApi(_requester);
-  MediaResourceApi get media => MediaResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  QueryResourceApi get query => QueryResourceApi(_requester);
-  SettingsResourceApi get settings => SettingsResourceApi(_requester);
-  StatsResourceApi get stats => StatsResourceApi(_requester);
+  DebugResource get debug => DebugResource(_requester);
+  IndexingResource get indexing => IndexingResource(_requester);
+  MediaResource get media => MediaResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  QueryResource get query => QueryResource(_requester);
+  SettingsResource get settings => SettingsResource(_requester);
+  StatsResource get stats => StatsResource(_requester);
 
   CloudSearchApi(http.Client client,
       {core.String rootUrl = 'https://cloudsearch.googleapis.com/',
@@ -130,34 +130,33 @@ class CloudSearchApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DebugResourceApi {
+class DebugResource {
   final commons.ApiRequester _requester;
 
-  DebugDatasourcesResourceApi get datasources =>
-      DebugDatasourcesResourceApi(_requester);
-  DebugIdentitysourcesResourceApi get identitysources =>
-      DebugIdentitysourcesResourceApi(_requester);
+  DebugDatasourcesResource get datasources =>
+      DebugDatasourcesResource(_requester);
+  DebugIdentitysourcesResource get identitysources =>
+      DebugIdentitysourcesResource(_requester);
 
-  DebugResourceApi(commons.ApiRequester client) : _requester = client;
+  DebugResource(commons.ApiRequester client) : _requester = client;
 }
 
-class DebugDatasourcesResourceApi {
+class DebugDatasourcesResource {
   final commons.ApiRequester _requester;
 
-  DebugDatasourcesItemsResourceApi get items =>
-      DebugDatasourcesItemsResourceApi(_requester);
+  DebugDatasourcesItemsResource get items =>
+      DebugDatasourcesItemsResource(_requester);
 
-  DebugDatasourcesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  DebugDatasourcesResource(commons.ApiRequester client) : _requester = client;
 }
 
-class DebugDatasourcesItemsResourceApi {
+class DebugDatasourcesItemsResource {
   final commons.ApiRequester _requester;
 
-  DebugDatasourcesItemsUnmappedidsResourceApi get unmappedids =>
-      DebugDatasourcesItemsUnmappedidsResourceApi(_requester);
+  DebugDatasourcesItemsUnmappedidsResource get unmappedids =>
+      DebugDatasourcesItemsUnmappedidsResource(_requester);
 
-  DebugDatasourcesItemsResourceApi(commons.ApiRequester client)
+  DebugDatasourcesItemsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Checks whether an item is accessible by specified principal. **Note:**
@@ -292,10 +291,10 @@ class DebugDatasourcesItemsResourceApi {
   }
 }
 
-class DebugDatasourcesItemsUnmappedidsResourceApi {
+class DebugDatasourcesItemsUnmappedidsResource {
   final commons.ApiRequester _requester;
 
-  DebugDatasourcesItemsUnmappedidsResourceApi(commons.ApiRequester client)
+  DebugDatasourcesItemsUnmappedidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all unmapped identities for a specific item. **Note:** This API
@@ -378,22 +377,22 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   }
 }
 
-class DebugIdentitysourcesResourceApi {
+class DebugIdentitysourcesResource {
   final commons.ApiRequester _requester;
 
-  DebugIdentitysourcesItemsResourceApi get items =>
-      DebugIdentitysourcesItemsResourceApi(_requester);
-  DebugIdentitysourcesUnmappedidsResourceApi get unmappedids =>
-      DebugIdentitysourcesUnmappedidsResourceApi(_requester);
+  DebugIdentitysourcesItemsResource get items =>
+      DebugIdentitysourcesItemsResource(_requester);
+  DebugIdentitysourcesUnmappedidsResource get unmappedids =>
+      DebugIdentitysourcesUnmappedidsResource(_requester);
 
-  DebugIdentitysourcesResourceApi(commons.ApiRequester client)
+  DebugIdentitysourcesResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class DebugIdentitysourcesItemsResourceApi {
+class DebugIdentitysourcesItemsResource {
   final commons.ApiRequester _requester;
 
-  DebugIdentitysourcesItemsResourceApi(commons.ApiRequester client)
+  DebugIdentitysourcesItemsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists names of items associated with an unmapped identity. **Note:** This
@@ -489,10 +488,10 @@ class DebugIdentitysourcesItemsResourceApi {
   }
 }
 
-class DebugIdentitysourcesUnmappedidsResourceApi {
+class DebugIdentitysourcesUnmappedidsResource {
   final commons.ApiRequester _requester;
 
-  DebugIdentitysourcesUnmappedidsResourceApi(commons.ApiRequester client)
+  DebugIdentitysourcesUnmappedidsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists unmapped user identities for an identity source. **Note:** This API
@@ -593,22 +592,22 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   }
 }
 
-class IndexingResourceApi {
+class IndexingResource {
   final commons.ApiRequester _requester;
 
-  IndexingDatasourcesResourceApi get datasources =>
-      IndexingDatasourcesResourceApi(_requester);
+  IndexingDatasourcesResource get datasources =>
+      IndexingDatasourcesResource(_requester);
 
-  IndexingResourceApi(commons.ApiRequester client) : _requester = client;
+  IndexingResource(commons.ApiRequester client) : _requester = client;
 }
 
-class IndexingDatasourcesResourceApi {
+class IndexingDatasourcesResource {
   final commons.ApiRequester _requester;
 
-  IndexingDatasourcesItemsResourceApi get items =>
-      IndexingDatasourcesItemsResourceApi(_requester);
+  IndexingDatasourcesItemsResource get items =>
+      IndexingDatasourcesItemsResource(_requester);
 
-  IndexingDatasourcesResourceApi(commons.ApiRequester client)
+  IndexingDatasourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the schema of a data source. **Note:** This API requires an admin
@@ -803,10 +802,10 @@ class IndexingDatasourcesResourceApi {
   }
 }
 
-class IndexingDatasourcesItemsResourceApi {
+class IndexingDatasourcesItemsResource {
   final commons.ApiRequester _requester;
 
-  IndexingDatasourcesItemsResourceApi(commons.ApiRequester client)
+  IndexingDatasourcesItemsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes Item resource for the specified resource name. This API requires
@@ -1464,10 +1463,10 @@ class IndexingDatasourcesItemsResourceApi {
   }
 }
 
-class MediaResourceApi {
+class MediaResource {
   final commons.ApiRequester _requester;
 
-  MediaResourceApi(commons.ApiRequester client) : _requester = client;
+  MediaResource(commons.ApiRequester client) : _requester = client;
 
   /// Uploads media for indexing. The upload endpoint supports direct and
   /// resumable upload protocols and is intended for large items that can not be
@@ -1553,12 +1552,12 @@ class MediaResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsLroResourceApi get lro => OperationsLroResourceApi(_requester);
+  OperationsLroResource get lro => OperationsLroResource(_requester);
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -1614,10 +1613,10 @@ class OperationsResourceApi {
   }
 }
 
-class OperationsLroResourceApi {
+class OperationsLroResource {
   final commons.ApiRequester _requester;
 
-  OperationsLroResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsLroResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists operations that match the specified filter in the request. If the
   /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
@@ -1698,12 +1697,12 @@ class OperationsLroResourceApi {
   }
 }
 
-class QueryResourceApi {
+class QueryResource {
   final commons.ApiRequester _requester;
 
-  QuerySourcesResourceApi get sources => QuerySourcesResourceApi(_requester);
+  QuerySourcesResource get sources => QuerySourcesResource(_requester);
 
-  QueryResourceApi(commons.ApiRequester client) : _requester = client;
+  QueryResource(commons.ApiRequester client) : _requester = client;
 
   /// The Cloud Search Query API provides the search method, which returns the
   /// most relevant results from a user query. The results can come from G Suite
@@ -1819,10 +1818,10 @@ class QueryResourceApi {
   }
 }
 
-class QuerySourcesResourceApi {
+class QuerySourcesResource {
   final commons.ApiRequester _requester;
 
-  QuerySourcesResourceApi(commons.ApiRequester client) : _requester = client;
+  QuerySourcesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns list of sources that user can use for Search and Suggest APIs.
   /// **Note:** This API requires a standard end user account to execute. A
@@ -1928,21 +1927,21 @@ class QuerySourcesResourceApi {
   }
 }
 
-class SettingsResourceApi {
+class SettingsResource {
   final commons.ApiRequester _requester;
 
-  SettingsDatasourcesResourceApi get datasources =>
-      SettingsDatasourcesResourceApi(_requester);
-  SettingsSearchapplicationsResourceApi get searchapplications =>
-      SettingsSearchapplicationsResourceApi(_requester);
+  SettingsDatasourcesResource get datasources =>
+      SettingsDatasourcesResource(_requester);
+  SettingsSearchapplicationsResource get searchapplications =>
+      SettingsSearchapplicationsResource(_requester);
 
-  SettingsResourceApi(commons.ApiRequester client) : _requester = client;
+  SettingsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class SettingsDatasourcesResourceApi {
+class SettingsDatasourcesResource {
   final commons.ApiRequester _requester;
 
-  SettingsDatasourcesResourceApi(commons.ApiRequester client)
+  SettingsDatasourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a datasource. **Note:** This API requires an admin account to
@@ -2247,10 +2246,10 @@ class SettingsDatasourcesResourceApi {
   }
 }
 
-class SettingsSearchapplicationsResourceApi {
+class SettingsSearchapplicationsResource {
   final commons.ApiRequester _requester;
 
-  SettingsSearchapplicationsResourceApi(commons.ApiRequester client)
+  SettingsSearchapplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a search application. **Note:** This API requires an admin account
@@ -2618,15 +2617,15 @@ class SettingsSearchapplicationsResourceApi {
   }
 }
 
-class StatsResourceApi {
+class StatsResource {
   final commons.ApiRequester _requester;
 
-  StatsIndexResourceApi get index => StatsIndexResourceApi(_requester);
-  StatsQueryResourceApi get query => StatsQueryResourceApi(_requester);
-  StatsSessionResourceApi get session => StatsSessionResourceApi(_requester);
-  StatsUserResourceApi get user => StatsUserResourceApi(_requester);
+  StatsIndexResource get index => StatsIndexResource(_requester);
+  StatsQueryResource get query => StatsQueryResource(_requester);
+  StatsSessionResource get session => StatsSessionResource(_requester);
+  StatsUserResource get user => StatsUserResource(_requester);
 
-  StatsResourceApi(commons.ApiRequester client) : _requester = client;
+  StatsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets indexed item statistics aggreggated across all data sources. This API
   /// only returns statistics for previous dates; it doesn't return statistics
@@ -2968,19 +2967,19 @@ class StatsResourceApi {
   }
 }
 
-class StatsIndexResourceApi {
+class StatsIndexResource {
   final commons.ApiRequester _requester;
 
-  StatsIndexDatasourcesResourceApi get datasources =>
-      StatsIndexDatasourcesResourceApi(_requester);
+  StatsIndexDatasourcesResource get datasources =>
+      StatsIndexDatasourcesResource(_requester);
 
-  StatsIndexResourceApi(commons.ApiRequester client) : _requester = client;
+  StatsIndexResource(commons.ApiRequester client) : _requester = client;
 }
 
-class StatsIndexDatasourcesResourceApi {
+class StatsIndexDatasourcesResource {
   final commons.ApiRequester _requester;
 
-  StatsIndexDatasourcesResourceApi(commons.ApiRequester client)
+  StatsIndexDatasourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets indexed item statistics for a single data source. **Note:** This API
@@ -3076,19 +3075,19 @@ class StatsIndexDatasourcesResourceApi {
   }
 }
 
-class StatsQueryResourceApi {
+class StatsQueryResource {
   final commons.ApiRequester _requester;
 
-  StatsQuerySearchapplicationsResourceApi get searchapplications =>
-      StatsQuerySearchapplicationsResourceApi(_requester);
+  StatsQuerySearchapplicationsResource get searchapplications =>
+      StatsQuerySearchapplicationsResource(_requester);
 
-  StatsQueryResourceApi(commons.ApiRequester client) : _requester = client;
+  StatsQueryResource(commons.ApiRequester client) : _requester = client;
 }
 
-class StatsQuerySearchapplicationsResourceApi {
+class StatsQuerySearchapplicationsResource {
   final commons.ApiRequester _requester;
 
-  StatsQuerySearchapplicationsResourceApi(commons.ApiRequester client)
+  StatsQuerySearchapplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get the query statistics for search application. **Note:** This API
@@ -3184,19 +3183,19 @@ class StatsQuerySearchapplicationsResourceApi {
   }
 }
 
-class StatsSessionResourceApi {
+class StatsSessionResource {
   final commons.ApiRequester _requester;
 
-  StatsSessionSearchapplicationsResourceApi get searchapplications =>
-      StatsSessionSearchapplicationsResourceApi(_requester);
+  StatsSessionSearchapplicationsResource get searchapplications =>
+      StatsSessionSearchapplicationsResource(_requester);
 
-  StatsSessionResourceApi(commons.ApiRequester client) : _requester = client;
+  StatsSessionResource(commons.ApiRequester client) : _requester = client;
 }
 
-class StatsSessionSearchapplicationsResourceApi {
+class StatsSessionSearchapplicationsResource {
   final commons.ApiRequester _requester;
 
-  StatsSessionSearchapplicationsResourceApi(commons.ApiRequester client)
+  StatsSessionSearchapplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get the # of search sessions, % of successful sessions with a click query
@@ -3293,19 +3292,19 @@ class StatsSessionSearchapplicationsResourceApi {
   }
 }
 
-class StatsUserResourceApi {
+class StatsUserResource {
   final commons.ApiRequester _requester;
 
-  StatsUserSearchapplicationsResourceApi get searchapplications =>
-      StatsUserSearchapplicationsResourceApi(_requester);
+  StatsUserSearchapplicationsResource get searchapplications =>
+      StatsUserSearchapplicationsResource(_requester);
 
-  StatsUserResourceApi(commons.ApiRequester client) : _requester = client;
+  StatsUserResource(commons.ApiRequester client) : _requester = client;
 }
 
-class StatsUserSearchapplicationsResourceApi {
+class StatsUserSearchapplicationsResource {
   final commons.ApiRequester _requester;
 
-  StatsUserSearchapplicationsResourceApi(commons.ApiRequester client)
+  StatsUserSearchapplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get the users statistics for search application. **Note:** This API

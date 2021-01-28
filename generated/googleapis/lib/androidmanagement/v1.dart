@@ -24,15 +24,15 @@
 ///
 /// Create an instance of [AndroidManagementApi] to access these resources:
 ///
-/// - [EnterprisesResourceApi]
-///   - [EnterprisesApplicationsResourceApi]
-///   - [EnterprisesDevicesResourceApi]
-///     - [EnterprisesDevicesOperationsResourceApi]
-///   - [EnterprisesEnrollmentTokensResourceApi]
-///   - [EnterprisesPoliciesResourceApi]
-///   - [EnterprisesWebAppsResourceApi]
-///   - [EnterprisesWebTokensResourceApi]
-/// - [SignupUrlsResourceApi]
+/// - [EnterprisesResource]
+///   - [EnterprisesApplicationsResource]
+///   - [EnterprisesDevicesResource]
+///     - [EnterprisesDevicesOperationsResource]
+///   - [EnterprisesEnrollmentTokensResource]
+///   - [EnterprisesPoliciesResource]
+///   - [EnterprisesWebAppsResource]
+///   - [EnterprisesWebTokensResource]
+/// - [SignupUrlsResource]
 library androidmanagement.v1;
 
 import 'dart:async' as async;
@@ -56,8 +56,8 @@ class AndroidManagementApi {
 
   final commons.ApiRequester _requester;
 
-  EnterprisesResourceApi get enterprises => EnterprisesResourceApi(_requester);
-  SignupUrlsResourceApi get signupUrls => SignupUrlsResourceApi(_requester);
+  EnterprisesResource get enterprises => EnterprisesResource(_requester);
+  SignupUrlsResource get signupUrls => SignupUrlsResource(_requester);
 
   AndroidManagementApi(http.Client client,
       {core.String rootUrl = 'https://androidmanagement.googleapis.com/',
@@ -66,23 +66,23 @@ class AndroidManagementApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class EnterprisesResourceApi {
+class EnterprisesResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesApplicationsResourceApi get applications =>
-      EnterprisesApplicationsResourceApi(_requester);
-  EnterprisesDevicesResourceApi get devices =>
-      EnterprisesDevicesResourceApi(_requester);
-  EnterprisesEnrollmentTokensResourceApi get enrollmentTokens =>
-      EnterprisesEnrollmentTokensResourceApi(_requester);
-  EnterprisesPoliciesResourceApi get policies =>
-      EnterprisesPoliciesResourceApi(_requester);
-  EnterprisesWebAppsResourceApi get webApps =>
-      EnterprisesWebAppsResourceApi(_requester);
-  EnterprisesWebTokensResourceApi get webTokens =>
-      EnterprisesWebTokensResourceApi(_requester);
+  EnterprisesApplicationsResource get applications =>
+      EnterprisesApplicationsResource(_requester);
+  EnterprisesDevicesResource get devices =>
+      EnterprisesDevicesResource(_requester);
+  EnterprisesEnrollmentTokensResource get enrollmentTokens =>
+      EnterprisesEnrollmentTokensResource(_requester);
+  EnterprisesPoliciesResource get policies =>
+      EnterprisesPoliciesResource(_requester);
+  EnterprisesWebAppsResource get webApps =>
+      EnterprisesWebAppsResource(_requester);
+  EnterprisesWebTokensResource get webTokens =>
+      EnterprisesWebTokensResource(_requester);
 
-  EnterprisesResourceApi(commons.ApiRequester client) : _requester = client;
+  EnterprisesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an enterprise. This is the last step in the enterprise signup
   /// flow.
@@ -276,10 +276,10 @@ class EnterprisesResourceApi {
   }
 }
 
-class EnterprisesApplicationsResourceApi {
+class EnterprisesApplicationsResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesApplicationsResourceApi(commons.ApiRequester client)
+  EnterprisesApplicationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets info about an application.
@@ -344,14 +344,13 @@ class EnterprisesApplicationsResourceApi {
   }
 }
 
-class EnterprisesDevicesResourceApi {
+class EnterprisesDevicesResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesDevicesOperationsResourceApi get operations =>
-      EnterprisesDevicesOperationsResourceApi(_requester);
+  EnterprisesDevicesOperationsResource get operations =>
+      EnterprisesDevicesOperationsResource(_requester);
 
-  EnterprisesDevicesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  EnterprisesDevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a device. This operation wipes the device.
   ///
@@ -667,10 +666,10 @@ class EnterprisesDevicesResourceApi {
   }
 }
 
-class EnterprisesDevicesOperationsResourceApi {
+class EnterprisesDevicesOperationsResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesDevicesOperationsResourceApi(commons.ApiRequester client)
+  EnterprisesDevicesOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -921,10 +920,10 @@ class EnterprisesDevicesOperationsResourceApi {
   }
 }
 
-class EnterprisesEnrollmentTokensResourceApi {
+class EnterprisesEnrollmentTokensResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesEnrollmentTokensResourceApi(commons.ApiRequester client)
+  EnterprisesEnrollmentTokensResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an enrollment token for a given enterprise.
@@ -1042,10 +1041,10 @@ class EnterprisesEnrollmentTokensResourceApi {
   }
 }
 
-class EnterprisesPoliciesResourceApi {
+class EnterprisesPoliciesResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesPoliciesResourceApi(commons.ApiRequester client)
+  EnterprisesPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a policy. This operation is only permitted if no devices are
@@ -1287,11 +1286,10 @@ class EnterprisesPoliciesResourceApi {
   }
 }
 
-class EnterprisesWebAppsResourceApi {
+class EnterprisesWebAppsResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesWebAppsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  EnterprisesWebAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a web app.
   ///
@@ -1590,10 +1588,10 @@ class EnterprisesWebAppsResourceApi {
   }
 }
 
-class EnterprisesWebTokensResourceApi {
+class EnterprisesWebTokensResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesWebTokensResourceApi(commons.ApiRequester client)
+  EnterprisesWebTokensResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a web token to access an embeddable managed Google Play web UI for
@@ -1657,10 +1655,10 @@ class EnterprisesWebTokensResourceApi {
   }
 }
 
-class SignupUrlsResourceApi {
+class SignupUrlsResource {
   final commons.ApiRequester _requester;
 
-  SignupUrlsResourceApi(commons.ApiRequester client) : _requester = client;
+  SignupUrlsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an enterprise signup URL.
   ///

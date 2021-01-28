@@ -1958,7 +1958,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DeploymentsResourceApi', () {
+  unittest.group('resource-DeploymentsResource', () {
     unittest.test('method--cancelPreview', () {
       var mock = HttpServerMock();
       var res = api.DeploymentManagerApi(mock).deployments;
@@ -2547,7 +2547,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManifestsResourceApi', () {
+  unittest.group('resource-ManifestsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DeploymentManagerApi(mock).manifests;
@@ -2656,7 +2656,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DeploymentManagerApi(mock).operations;
@@ -2763,7 +2763,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResourcesResourceApi', () {
+  unittest.group('resource-ResourcesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DeploymentManagerApi(mock).resources;
@@ -2872,7 +2872,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TypesResourceApi', () {
+  unittest.group('resource-TypesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DeploymentManagerApi(mock).types;

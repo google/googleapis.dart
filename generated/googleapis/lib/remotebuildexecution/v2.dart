@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [RemoteBuildExecutionApi] to access these resources:
 ///
-/// - [ActionResultsResourceApi]
-/// - [ActionsResourceApi]
-/// - [BlobsResourceApi]
-/// - [OperationsResourceApi]
-/// - [V2ResourceApi]
+/// - [ActionResultsResource]
+/// - [ActionsResource]
+/// - [BlobsResource]
+/// - [OperationsResource]
+/// - [V2Resource]
 library remotebuildexecution.v2;
 
 import 'dart:async' as async;
@@ -51,12 +51,11 @@ class RemoteBuildExecutionApi {
 
   final commons.ApiRequester _requester;
 
-  ActionResultsResourceApi get actionResults =>
-      ActionResultsResourceApi(_requester);
-  ActionsResourceApi get actions => ActionsResourceApi(_requester);
-  BlobsResourceApi get blobs => BlobsResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  V2ResourceApi get v2 => V2ResourceApi(_requester);
+  ActionResultsResource get actionResults => ActionResultsResource(_requester);
+  ActionsResource get actions => ActionsResource(_requester);
+  BlobsResource get blobs => BlobsResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  V2Resource get v2 => V2Resource(_requester);
 
   RemoteBuildExecutionApi(http.Client client,
       {core.String rootUrl = 'https://remotebuildexecution.googleapis.com/',
@@ -65,10 +64,10 @@ class RemoteBuildExecutionApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ActionResultsResourceApi {
+class ActionResultsResource {
   final commons.ApiRequester _requester;
 
-  ActionResultsResourceApi(commons.ApiRequester client) : _requester = client;
+  ActionResultsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieve a cached execution result. Implementations SHOULD ensure that any
   /// blobs referenced from the ContentAddressableStorage are available at the
@@ -273,10 +272,10 @@ class ActionResultsResourceApi {
   }
 }
 
-class ActionsResourceApi {
+class ActionsResource {
   final commons.ApiRequester _requester;
 
-  ActionsResourceApi(commons.ApiRequester client) : _requester = client;
+  ActionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Execute an action remotely. In order to execute an action, the client must
   /// first upload all of the inputs, the Command to run, and the Action into
@@ -383,10 +382,10 @@ class ActionsResourceApi {
   }
 }
 
-class BlobsResourceApi {
+class BlobsResource {
   final commons.ApiRequester _requester;
 
-  BlobsResourceApi(commons.ApiRequester client) : _requester = client;
+  BlobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Download many blobs at once. The server may enforce a limit of the
   /// combined total size of blobs to be downloaded using this API. This limit
@@ -709,10 +708,10 @@ class BlobsResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Wait for an execution operation to complete. When the client initially
   /// makes the request, the server immediately responds with the current status
@@ -780,10 +779,10 @@ class OperationsResourceApi {
   }
 }
 
-class V2ResourceApi {
+class V2Resource {
   final commons.ApiRequester _requester;
 
-  V2ResourceApi(commons.ApiRequester client) : _requester = client;
+  V2Resource(commons.ApiRequester client) : _requester = client;
 
   /// GetCapabilities returns the server capabilities configuration of the
   /// remote endpoint. Only the capabilities of the services supported by the

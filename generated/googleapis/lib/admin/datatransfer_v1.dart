@@ -25,8 +25,8 @@
 ///
 /// Create an instance of [DataTransferApi] to access these resources:
 ///
-/// - [ApplicationsResourceApi]
-/// - [TransfersResourceApi]
+/// - [ApplicationsResource]
+/// - [TransfersResource]
 library admin.datatransfer_v1;
 
 import 'dart:async' as async;
@@ -55,9 +55,8 @@ class DataTransferApi {
 
   final commons.ApiRequester _requester;
 
-  ApplicationsResourceApi get applications =>
-      ApplicationsResourceApi(_requester);
-  TransfersResourceApi get transfers => TransfersResourceApi(_requester);
+  ApplicationsResource get applications => ApplicationsResource(_requester);
+  TransfersResource get transfers => TransfersResource(_requester);
 
   DataTransferApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -66,10 +65,10 @@ class DataTransferApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ApplicationsResourceApi {
+class ApplicationsResource {
   final commons.ApiRequester _requester;
 
-  ApplicationsResourceApi(commons.ApiRequester client) : _requester = client;
+  ApplicationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves information about an application for the given application ID.
   ///
@@ -188,10 +187,10 @@ class ApplicationsResourceApi {
   }
 }
 
-class TransfersResourceApi {
+class TransfersResource {
   final commons.ApiRequester _requester;
 
-  TransfersResourceApi(commons.ApiRequester client) : _requester = client;
+  TransfersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a data transfer request by its resource ID.
   ///

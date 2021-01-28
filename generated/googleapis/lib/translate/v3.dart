@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [TranslateApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsGlossariesResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsGlossariesResource]
+///     - [ProjectsLocationsOperationsResource]
 library translate.v3;
 
 import 'dart:async' as async;
@@ -54,7 +54,7 @@ class TranslateApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   TranslateApi(http.Client client,
       {core.String rootUrl = 'https://translation.googleapis.com/',
@@ -63,13 +63,13 @@ class TranslateApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Detects the language of text within a request.
   ///
@@ -287,16 +287,15 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlossariesResourceApi get glossaries =>
-      ProjectsLocationsGlossariesResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsGlossariesResource get glossaries =>
+      ProjectsLocationsGlossariesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Translates a large volume of text in asynchronous batch mode. This
   /// function provides real-time output as the inputs are being processed. If
@@ -705,10 +704,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsGlossariesResourceApi {
+class ProjectsLocationsGlossariesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlossariesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGlossariesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a glossary and returns the long-running operation. Returns
@@ -971,10 +970,10 @@ class ProjectsLocationsGlossariesResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server

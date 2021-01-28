@@ -23,20 +23,19 @@
 ///
 /// Create an instance of [CloudHealthcareApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsDatasetsResourceApi]
-///       - [ProjectsLocationsDatasetsDicomStoresResourceApi]
-///         - [ProjectsLocationsDatasetsDicomStoresStudiesResourceApi]
-///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi]
-/// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi]
-/// -
-/// [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi]
-///       - [ProjectsLocationsDatasetsFhirStoresResourceApi]
-///         - [ProjectsLocationsDatasetsFhirStoresFhirResourceApi]
-///       - [ProjectsLocationsDatasetsHl7V2StoresResourceApi]
-///         - [ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi]
-///       - [ProjectsLocationsDatasetsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDatasetsResource]
+///       - [ProjectsLocationsDatasetsDicomStoresResource]
+///         - [ProjectsLocationsDatasetsDicomStoresStudiesResource]
+///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource]
+/// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource]
+/// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource]
+///       - [ProjectsLocationsDatasetsFhirStoresResource]
+///         - [ProjectsLocationsDatasetsFhirStoresFhirResource]
+///       - [ProjectsLocationsDatasetsHl7V2StoresResource]
+///         - [ProjectsLocationsDatasetsHl7V2StoresMessagesResource]
+///       - [ProjectsLocationsDatasetsOperationsResource]
 library healthcare.v1;
 
 import 'dart:async' as async;
@@ -59,7 +58,7 @@ class CloudHealthcareApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudHealthcareApi(http.Client client,
       {core.String rootUrl = 'https://healthcare.googleapis.com/',
@@ -68,23 +67,22 @@ class CloudHealthcareApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsResourceApi get datasets =>
-      ProjectsLocationsDatasetsResourceApi(_requester);
+  ProjectsLocationsDatasetsResource get datasets =>
+      ProjectsLocationsDatasetsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -209,19 +207,19 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsResourceApi {
+class ProjectsLocationsDatasetsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsDicomStoresResourceApi get dicomStores =>
-      ProjectsLocationsDatasetsDicomStoresResourceApi(_requester);
-  ProjectsLocationsDatasetsFhirStoresResourceApi get fhirStores =>
-      ProjectsLocationsDatasetsFhirStoresResourceApi(_requester);
-  ProjectsLocationsDatasetsHl7V2StoresResourceApi get hl7V2Stores =>
-      ProjectsLocationsDatasetsHl7V2StoresResourceApi(_requester);
-  ProjectsLocationsDatasetsOperationsResourceApi get operations =>
-      ProjectsLocationsDatasetsOperationsResourceApi(_requester);
+  ProjectsLocationsDatasetsDicomStoresResource get dicomStores =>
+      ProjectsLocationsDatasetsDicomStoresResource(_requester);
+  ProjectsLocationsDatasetsFhirStoresResource get fhirStores =>
+      ProjectsLocationsDatasetsFhirStoresResource(_requester);
+  ProjectsLocationsDatasetsHl7V2StoresResource get hl7V2Stores =>
+      ProjectsLocationsDatasetsHl7V2StoresResource(_requester);
+  ProjectsLocationsDatasetsOperationsResource get operations =>
+      ProjectsLocationsDatasetsOperationsResource(_requester);
 
-  ProjectsLocationsDatasetsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDatasetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new health dataset. Results are returned through the Operation
@@ -800,13 +798,13 @@ class ProjectsLocationsDatasetsResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsDicomStoresResourceApi {
+class ProjectsLocationsDatasetsDicomStoresResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsDicomStoresStudiesResourceApi get studies =>
-      ProjectsLocationsDatasetsDicomStoresStudiesResourceApi(_requester);
+  ProjectsLocationsDatasetsDicomStoresStudiesResource get studies =>
+      ProjectsLocationsDatasetsDicomStoresStudiesResource(_requester);
 
-  ProjectsLocationsDatasetsDicomStoresResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDatasetsDicomStoresResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new DICOM store within the parent dataset.
@@ -1821,13 +1819,13 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
+class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi get series =>
-      ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi(_requester);
+  ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource get series =>
+      ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource(_requester);
 
-  ProjectsLocationsDatasetsDicomStoresStudiesResourceApi(
+  ProjectsLocationsDatasetsDicomStoresStudiesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2273,15 +2271,15 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
+class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi
+  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource
       get instances =>
-          ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi(
+          ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource(
               _requester);
 
-  ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi(
+  ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2578,15 +2576,15 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
+class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi
+  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource
       get frames =>
-          ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi(
+          ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource(
               _requester);
 
-  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi(
+  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2889,10 +2887,10 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi {
+class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi(
+  ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -3046,13 +3044,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
   }
 }
 
-class ProjectsLocationsDatasetsFhirStoresResourceApi {
+class ProjectsLocationsDatasetsFhirStoresResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsFhirStoresFhirResourceApi get fhir =>
-      ProjectsLocationsDatasetsFhirStoresFhirResourceApi(_requester);
+  ProjectsLocationsDatasetsFhirStoresFhirResource get fhir =>
+      ProjectsLocationsDatasetsFhirStoresFhirResource(_requester);
 
-  ProjectsLocationsDatasetsFhirStoresResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDatasetsFhirStoresResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new FHIR store within the parent dataset.
@@ -3813,11 +3811,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
+class ProjectsLocationsDatasetsFhirStoresFhirResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsFhirStoresFhirResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsDatasetsFhirStoresFhirResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves a Patient resource and resources related to that patient.
@@ -4786,13 +4783,13 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
+class ProjectsLocationsDatasetsHl7V2StoresResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi get messages =>
-      ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi(_requester);
+  ProjectsLocationsDatasetsHl7V2StoresMessagesResource get messages =>
+      ProjectsLocationsDatasetsHl7V2StoresMessagesResource(_requester);
 
-  ProjectsLocationsDatasetsHl7V2StoresResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDatasetsHl7V2StoresResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new HL7v2 store within the parent dataset.
@@ -5315,10 +5312,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
+class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi(
+  ProjectsLocationsDatasetsHl7V2StoresMessagesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -5765,10 +5762,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
   }
 }
 
-class ProjectsLocationsDatasetsOperationsResourceApi {
+class ProjectsLocationsDatasetsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDatasetsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDatasetsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server

@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [CivicInfoApi] to access these resources:
 ///
-/// - [DivisionsResourceApi]
-/// - [ElectionsResourceApi]
-/// - [RepresentativesResourceApi]
+/// - [DivisionsResource]
+/// - [ElectionsResource]
+/// - [RepresentativesResource]
 library civicinfo.v2;
 
 import 'dart:async' as async;
@@ -45,10 +45,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class CivicInfoApi {
   final commons.ApiRequester _requester;
 
-  DivisionsResourceApi get divisions => DivisionsResourceApi(_requester);
-  ElectionsResourceApi get elections => ElectionsResourceApi(_requester);
-  RepresentativesResourceApi get representatives =>
-      RepresentativesResourceApi(_requester);
+  DivisionsResource get divisions => DivisionsResource(_requester);
+  ElectionsResource get elections => ElectionsResource(_requester);
+  RepresentativesResource get representatives =>
+      RepresentativesResource(_requester);
 
   CivicInfoApi(http.Client client,
       {core.String rootUrl = 'https://civicinfo.googleapis.com/',
@@ -57,10 +57,10 @@ class CivicInfoApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DivisionsResourceApi {
+class DivisionsResource {
   final commons.ApiRequester _requester;
 
-  DivisionsResourceApi(commons.ApiRequester client) : _requester = client;
+  DivisionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Searches for political divisions by their natural name or OCD ID.
   ///
@@ -118,10 +118,10 @@ class DivisionsResourceApi {
   }
 }
 
-class ElectionsResourceApi {
+class ElectionsResource {
   final commons.ApiRequester _requester;
 
-  ElectionsResourceApi(commons.ApiRequester client) : _requester = client;
+  ElectionsResource(commons.ApiRequester client) : _requester = client;
 
   /// List of available elections to query.
   ///
@@ -249,10 +249,10 @@ class ElectionsResourceApi {
   }
 }
 
-class RepresentativesResourceApi {
+class RepresentativesResource {
   final commons.ApiRequester _requester;
 
-  RepresentativesResourceApi(commons.ApiRequester client) : _requester = client;
+  RepresentativesResource(commons.ApiRequester client) : _requester = client;
 
   /// Looks up political geography and representative information for a single
   /// address.

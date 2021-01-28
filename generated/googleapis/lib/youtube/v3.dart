@@ -24,36 +24,36 @@
 ///
 /// Create an instance of [YouTubeApi] to access these resources:
 ///
-/// - [AbuseReportsResourceApi]
-/// - [ActivitiesResourceApi]
-/// - [CaptionsResourceApi]
-/// - [ChannelBannersResourceApi]
-/// - [ChannelSectionsResourceApi]
-/// - [ChannelsResourceApi]
-/// - [CommentThreadsResourceApi]
-/// - [CommentsResourceApi]
-/// - [I18nLanguagesResourceApi]
-/// - [I18nRegionsResourceApi]
-/// - [LiveBroadcastsResourceApi]
-/// - [LiveChatBansResourceApi]
-/// - [LiveChatMessagesResourceApi]
-/// - [LiveChatModeratorsResourceApi]
-/// - [LiveStreamsResourceApi]
-/// - [MembersResourceApi]
-/// - [MembershipsLevelsResourceApi]
-/// - [PlaylistItemsResourceApi]
-/// - [PlaylistsResourceApi]
-/// - [SearchResourceApi]
-/// - [SponsorsResourceApi]
-/// - [SubscriptionsResourceApi]
-/// - [SuperChatEventsResourceApi]
-/// - [TestsResourceApi]
-/// - [ThirdPartyLinksResourceApi]
-/// - [ThumbnailsResourceApi]
-/// - [VideoAbuseReportReasonsResourceApi]
-/// - [VideoCategoriesResourceApi]
-/// - [VideosResourceApi]
-/// - [WatermarksResourceApi]
+/// - [AbuseReportsResource]
+/// - [ActivitiesResource]
+/// - [CaptionsResource]
+/// - [ChannelBannersResource]
+/// - [ChannelSectionsResource]
+/// - [ChannelsResource]
+/// - [CommentThreadsResource]
+/// - [CommentsResource]
+/// - [I18nLanguagesResource]
+/// - [I18nRegionsResource]
+/// - [LiveBroadcastsResource]
+/// - [LiveChatBansResource]
+/// - [LiveChatMessagesResource]
+/// - [LiveChatModeratorsResource]
+/// - [LiveStreamsResource]
+/// - [MembersResource]
+/// - [MembershipsLevelsResource]
+/// - [PlaylistItemsResource]
+/// - [PlaylistsResource]
+/// - [SearchResource]
+/// - [SponsorsResource]
+/// - [SubscriptionsResource]
+/// - [SuperChatEventsResource]
+/// - [TestsResource]
+/// - [ThirdPartyLinksResource]
+/// - [ThumbnailsResource]
+/// - [VideoAbuseReportReasonsResource]
+/// - [VideoCategoriesResource]
+/// - [VideosResource]
+/// - [WatermarksResource]
 library youtube.v3;
 
 import 'dart:async' as async;
@@ -111,52 +111,47 @@ class YouTubeApi {
 
   final commons.ApiRequester _requester;
 
-  AbuseReportsResourceApi get abuseReports =>
-      AbuseReportsResourceApi(_requester);
-  ActivitiesResourceApi get activities => ActivitiesResourceApi(_requester);
-  CaptionsResourceApi get captions => CaptionsResourceApi(_requester);
-  ChannelBannersResourceApi get channelBanners =>
-      ChannelBannersResourceApi(_requester);
-  ChannelSectionsResourceApi get channelSections =>
-      ChannelSectionsResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  CommentThreadsResourceApi get commentThreads =>
-      CommentThreadsResourceApi(_requester);
-  CommentsResourceApi get comments => CommentsResourceApi(_requester);
-  I18nLanguagesResourceApi get i18nLanguages =>
-      I18nLanguagesResourceApi(_requester);
-  I18nRegionsResourceApi get i18nRegions => I18nRegionsResourceApi(_requester);
-  LiveBroadcastsResourceApi get liveBroadcasts =>
-      LiveBroadcastsResourceApi(_requester);
-  LiveChatBansResourceApi get liveChatBans =>
-      LiveChatBansResourceApi(_requester);
-  LiveChatMessagesResourceApi get liveChatMessages =>
-      LiveChatMessagesResourceApi(_requester);
-  LiveChatModeratorsResourceApi get liveChatModerators =>
-      LiveChatModeratorsResourceApi(_requester);
-  LiveStreamsResourceApi get liveStreams => LiveStreamsResourceApi(_requester);
-  MembersResourceApi get members => MembersResourceApi(_requester);
-  MembershipsLevelsResourceApi get membershipsLevels =>
-      MembershipsLevelsResourceApi(_requester);
-  PlaylistItemsResourceApi get playlistItems =>
-      PlaylistItemsResourceApi(_requester);
-  PlaylistsResourceApi get playlists => PlaylistsResourceApi(_requester);
-  SearchResourceApi get search => SearchResourceApi(_requester);
-  SponsorsResourceApi get sponsors => SponsorsResourceApi(_requester);
-  SubscriptionsResourceApi get subscriptions =>
-      SubscriptionsResourceApi(_requester);
-  SuperChatEventsResourceApi get superChatEvents =>
-      SuperChatEventsResourceApi(_requester);
-  TestsResourceApi get tests => TestsResourceApi(_requester);
-  ThirdPartyLinksResourceApi get thirdPartyLinks =>
-      ThirdPartyLinksResourceApi(_requester);
-  ThumbnailsResourceApi get thumbnails => ThumbnailsResourceApi(_requester);
-  VideoAbuseReportReasonsResourceApi get videoAbuseReportReasons =>
-      VideoAbuseReportReasonsResourceApi(_requester);
-  VideoCategoriesResourceApi get videoCategories =>
-      VideoCategoriesResourceApi(_requester);
-  VideosResourceApi get videos => VideosResourceApi(_requester);
-  WatermarksResourceApi get watermarks => WatermarksResourceApi(_requester);
+  AbuseReportsResource get abuseReports => AbuseReportsResource(_requester);
+  ActivitiesResource get activities => ActivitiesResource(_requester);
+  CaptionsResource get captions => CaptionsResource(_requester);
+  ChannelBannersResource get channelBanners =>
+      ChannelBannersResource(_requester);
+  ChannelSectionsResource get channelSections =>
+      ChannelSectionsResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  CommentThreadsResource get commentThreads =>
+      CommentThreadsResource(_requester);
+  CommentsResource get comments => CommentsResource(_requester);
+  I18nLanguagesResource get i18nLanguages => I18nLanguagesResource(_requester);
+  I18nRegionsResource get i18nRegions => I18nRegionsResource(_requester);
+  LiveBroadcastsResource get liveBroadcasts =>
+      LiveBroadcastsResource(_requester);
+  LiveChatBansResource get liveChatBans => LiveChatBansResource(_requester);
+  LiveChatMessagesResource get liveChatMessages =>
+      LiveChatMessagesResource(_requester);
+  LiveChatModeratorsResource get liveChatModerators =>
+      LiveChatModeratorsResource(_requester);
+  LiveStreamsResource get liveStreams => LiveStreamsResource(_requester);
+  MembersResource get members => MembersResource(_requester);
+  MembershipsLevelsResource get membershipsLevels =>
+      MembershipsLevelsResource(_requester);
+  PlaylistItemsResource get playlistItems => PlaylistItemsResource(_requester);
+  PlaylistsResource get playlists => PlaylistsResource(_requester);
+  SearchResource get search => SearchResource(_requester);
+  SponsorsResource get sponsors => SponsorsResource(_requester);
+  SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
+  SuperChatEventsResource get superChatEvents =>
+      SuperChatEventsResource(_requester);
+  TestsResource get tests => TestsResource(_requester);
+  ThirdPartyLinksResource get thirdPartyLinks =>
+      ThirdPartyLinksResource(_requester);
+  ThumbnailsResource get thumbnails => ThumbnailsResource(_requester);
+  VideoAbuseReportReasonsResource get videoAbuseReportReasons =>
+      VideoAbuseReportReasonsResource(_requester);
+  VideoCategoriesResource get videoCategories =>
+      VideoCategoriesResource(_requester);
+  VideosResource get videos => VideosResource(_requester);
+  WatermarksResource get watermarks => WatermarksResource(_requester);
 
   YouTubeApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -165,10 +160,10 @@ class YouTubeApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AbuseReportsResourceApi {
+class AbuseReportsResource {
   final commons.ApiRequester _requester;
 
-  AbuseReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  AbuseReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts a new resource into this collection.
   ///
@@ -231,10 +226,10 @@ class AbuseReportsResourceApi {
   }
 }
 
-class ActivitiesResourceApi {
+class ActivitiesResource {
   final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
+  ActivitiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
   ///
@@ -347,10 +342,10 @@ class ActivitiesResourceApi {
   }
 }
 
-class CaptionsResourceApi {
+class CaptionsResource {
   final commons.ApiRequester _requester;
 
-  CaptionsResourceApi(commons.ApiRequester client) : _requester = client;
+  CaptionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -820,10 +815,10 @@ class CaptionsResourceApi {
   }
 }
 
-class ChannelBannersResourceApi {
+class ChannelBannersResource {
   final commons.ApiRequester _requester;
 
-  ChannelBannersResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelBannersResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts a new resource into this collection.
   ///
@@ -939,10 +934,10 @@ class ChannelBannersResourceApi {
   }
 }
 
-class ChannelSectionsResourceApi {
+class ChannelSectionsResource {
   final commons.ApiRequester _requester;
 
-  ChannelSectionsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelSectionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -1286,10 +1281,10 @@ class ChannelSectionsResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
   ///
@@ -1504,10 +1499,10 @@ class ChannelsResourceApi {
   }
 }
 
-class CommentThreadsResourceApi {
+class CommentThreadsResource {
   final commons.ApiRequester _requester;
 
-  CommentThreadsResourceApi(commons.ApiRequester client) : _requester = client;
+  CommentThreadsResource(commons.ApiRequester client) : _requester = client;
 
   /// Inserts a new resource into this collection.
   ///
@@ -1768,10 +1763,10 @@ class CommentThreadsResourceApi {
   }
 }
 
-class CommentsResourceApi {
+class CommentsResource {
   final commons.ApiRequester _requester;
 
-  CommentsResourceApi(commons.ApiRequester client) : _requester = client;
+  CommentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -2164,10 +2159,10 @@ class CommentsResourceApi {
   }
 }
 
-class I18nLanguagesResourceApi {
+class I18nLanguagesResource {
   final commons.ApiRequester _requester;
 
-  I18nLanguagesResourceApi(commons.ApiRequester client) : _requester = client;
+  I18nLanguagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
   ///
@@ -2230,10 +2225,10 @@ class I18nLanguagesResourceApi {
   }
 }
 
-class I18nRegionsResourceApi {
+class I18nRegionsResource {
   final commons.ApiRequester _requester;
 
-  I18nRegionsResourceApi(commons.ApiRequester client) : _requester = client;
+  I18nRegionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
   ///
@@ -2295,10 +2290,10 @@ class I18nRegionsResourceApi {
   }
 }
 
-class LiveBroadcastsResourceApi {
+class LiveBroadcastsResource {
   final commons.ApiRequester _requester;
 
-  LiveBroadcastsResourceApi(commons.ApiRequester client) : _requester = client;
+  LiveBroadcastsResource(commons.ApiRequester client) : _requester = client;
 
   /// Bind a broadcast to a stream.
   ///
@@ -3089,10 +3084,10 @@ class LiveBroadcastsResourceApi {
   }
 }
 
-class LiveChatBansResourceApi {
+class LiveChatBansResource {
   final commons.ApiRequester _requester;
 
-  LiveChatBansResourceApi(commons.ApiRequester client) : _requester = client;
+  LiveChatBansResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a chat ban.
   ///
@@ -3207,11 +3202,10 @@ class LiveChatBansResourceApi {
   }
 }
 
-class LiveChatMessagesResourceApi {
+class LiveChatMessagesResource {
   final commons.ApiRequester _requester;
 
-  LiveChatMessagesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  LiveChatMessagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a chat message.
   ///
@@ -3415,11 +3409,10 @@ class LiveChatMessagesResourceApi {
   }
 }
 
-class LiveChatModeratorsResourceApi {
+class LiveChatModeratorsResource {
   final commons.ApiRequester _requester;
 
-  LiveChatModeratorsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  LiveChatModeratorsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a chat moderator.
   ///
@@ -3611,10 +3604,10 @@ class LiveChatModeratorsResourceApi {
   }
 }
 
-class LiveStreamsResourceApi {
+class LiveStreamsResource {
   final commons.ApiRequester _requester;
 
-  LiveStreamsResourceApi(commons.ApiRequester client) : _requester = client;
+  LiveStreamsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing stream for the authenticated user.
   ///
@@ -4028,10 +4021,10 @@ class LiveStreamsResourceApi {
   }
 }
 
-class MembersResourceApi {
+class MembersResource {
   final commons.ApiRequester _requester;
 
-  MembersResourceApi(commons.ApiRequester client) : _requester = client;
+  MembersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of members that match the request criteria for a channel.
   ///
@@ -4127,11 +4120,10 @@ class MembersResourceApi {
   }
 }
 
-class MembershipsLevelsResourceApi {
+class MembershipsLevelsResource {
   final commons.ApiRequester _requester;
 
-  MembershipsLevelsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  MembershipsLevelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of all pricing levels offered by a creator to the fans.
   ///
@@ -4188,10 +4180,10 @@ class MembershipsLevelsResourceApi {
   }
 }
 
-class PlaylistItemsResourceApi {
+class PlaylistItemsResource {
   final commons.ApiRequester _requester;
 
-  PlaylistItemsResourceApi(commons.ApiRequester client) : _requester = client;
+  PlaylistItemsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -4527,10 +4519,10 @@ class PlaylistItemsResourceApi {
   }
 }
 
-class PlaylistsResourceApi {
+class PlaylistsResource {
   final commons.ApiRequester _requester;
 
-  PlaylistsResourceApi(commons.ApiRequester client) : _requester = client;
+  PlaylistsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -4911,10 +4903,10 @@ class PlaylistsResourceApi {
   }
 }
 
-class SearchResourceApi {
+class SearchResource {
   final commons.ApiRequester _requester;
 
-  SearchResourceApi(commons.ApiRequester client) : _requester = client;
+  SearchResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of search resources
   ///
@@ -5238,10 +5230,10 @@ class SearchResourceApi {
   }
 }
 
-class SponsorsResourceApi {
+class SponsorsResource {
   final commons.ApiRequester _requester;
 
-  SponsorsResourceApi(commons.ApiRequester client) : _requester = client;
+  SponsorsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of sponsors that match the request criteria for a
   /// channel.
@@ -5323,10 +5315,10 @@ class SponsorsResourceApi {
   }
 }
 
-class SubscriptionsResourceApi {
+class SubscriptionsResource {
   final commons.ApiRequester _requester;
 
-  SubscriptionsResourceApi(commons.ApiRequester client) : _requester = client;
+  SubscriptionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -5599,10 +5591,10 @@ class SubscriptionsResourceApi {
   }
 }
 
-class SuperChatEventsResourceApi {
+class SuperChatEventsResource {
   final commons.ApiRequester _requester;
 
-  SuperChatEventsResourceApi(commons.ApiRequester client) : _requester = client;
+  SuperChatEventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
   ///
@@ -5679,10 +5671,10 @@ class SuperChatEventsResourceApi {
   }
 }
 
-class TestsResourceApi {
+class TestsResource {
   final commons.ApiRequester _requester;
 
-  TestsResourceApi(commons.ApiRequester client) : _requester = client;
+  TestsResource(commons.ApiRequester client) : _requester = client;
 
   /// POST method.
   ///
@@ -5742,10 +5734,10 @@ class TestsResourceApi {
   }
 }
 
-class ThirdPartyLinksResourceApi {
+class ThirdPartyLinksResource {
   final commons.ApiRequester _requester;
 
-  ThirdPartyLinksResourceApi(commons.ApiRequester client) : _requester = client;
+  ThirdPartyLinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -6008,10 +6000,10 @@ class ThirdPartyLinksResourceApi {
   }
 }
 
-class ThumbnailsResourceApi {
+class ThumbnailsResource {
   final commons.ApiRequester _requester;
 
-  ThumbnailsResourceApi(commons.ApiRequester client) : _requester = client;
+  ThumbnailsResource(commons.ApiRequester client) : _requester = client;
 
   /// As this is not an insert in a strict sense (it supports uploading/setting
   /// of a thumbnail for multiple videos, which doesn't result in creation of a
@@ -6101,10 +6093,10 @@ class ThumbnailsResourceApi {
   }
 }
 
-class VideoAbuseReportReasonsResourceApi {
+class VideoAbuseReportReasonsResource {
   final commons.ApiRequester _requester;
 
-  VideoAbuseReportReasonsResourceApi(commons.ApiRequester client)
+  VideoAbuseReportReasonsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
@@ -6167,10 +6159,10 @@ class VideoAbuseReportReasonsResourceApi {
   }
 }
 
-class VideoCategoriesResourceApi {
+class VideoCategoriesResource {
   final commons.ApiRequester _requester;
 
-  VideoCategoriesResourceApi(commons.ApiRequester client) : _requester = client;
+  VideoCategoriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of resources, possibly filtered.
   ///
@@ -6246,10 +6238,10 @@ class VideoCategoriesResourceApi {
   }
 }
 
-class VideosResourceApi {
+class VideosResource {
   final commons.ApiRequester _requester;
 
-  VideosResourceApi(commons.ApiRequester client) : _requester = client;
+  VideosResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a resource.
   ///
@@ -6900,10 +6892,10 @@ class VideosResourceApi {
   }
 }
 
-class WatermarksResourceApi {
+class WatermarksResource {
   final commons.ApiRequester _requester;
 
-  WatermarksResourceApi(commons.ApiRequester client) : _requester = client;
+  WatermarksResource(commons.ApiRequester client) : _requester = client;
 
   /// Allows upload of watermark image and setting it for a channel.
   ///

@@ -1715,7 +1715,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
@@ -1833,7 +1833,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlobalDomainsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsGlobalDomainsResource', () {
     unittest.test('method--attachTrust', () {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
@@ -2589,7 +2589,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlobalOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsGlobalOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)

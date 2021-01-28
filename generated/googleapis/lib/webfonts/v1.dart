@@ -25,7 +25,7 @@
 ///
 /// Create an instance of [WebfontsApi] to access these resources:
 ///
-/// - [WebfontsResourceApi]
+/// - [WebfontsResource]
 library webfonts.v1;
 
 import 'dart:async' as async;
@@ -44,7 +44,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class WebfontsApi {
   final commons.ApiRequester _requester;
 
-  WebfontsResourceApi get webfonts => WebfontsResourceApi(_requester);
+  WebfontsResource get webfonts => WebfontsResource(_requester);
 
   WebfontsApi(http.Client client,
       {core.String rootUrl = 'https://webfonts.googleapis.com/',
@@ -53,10 +53,10 @@ class WebfontsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class WebfontsResourceApi {
+class WebfontsResource {
   final commons.ApiRequester _requester;
 
-  WebfontsResourceApi(commons.ApiRequester client) : _requester = client;
+  WebfontsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the list of fonts currently served by the Google Fonts Developer
   /// API.

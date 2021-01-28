@@ -23,7 +23,7 @@
 ///
 /// Create an instance of [DriveActivityApi] to access these resources:
 ///
-/// - [ActivityResourceApi]
+/// - [ActivityResource]
 library driveactivity.v2;
 
 import 'dart:async' as async;
@@ -50,7 +50,7 @@ class DriveActivityApi {
 
   final commons.ApiRequester _requester;
 
-  ActivityResourceApi get activity => ActivityResourceApi(_requester);
+  ActivityResource get activity => ActivityResource(_requester);
 
   DriveActivityApi(http.Client client,
       {core.String rootUrl = 'https://driveactivity.googleapis.com/',
@@ -59,10 +59,10 @@ class DriveActivityApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ActivityResourceApi {
+class ActivityResource {
   final commons.ApiRequester _requester;
 
-  ActivityResourceApi(commons.ApiRequester client) : _requester = client;
+  ActivityResource(commons.ApiRequester client) : _requester = client;
 
   /// Query past activity in Google Drive.
   ///

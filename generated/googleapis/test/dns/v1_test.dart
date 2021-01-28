@@ -1395,7 +1395,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChangesResourceApi', () {
+  unittest.group('resource-ChangesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).changes;
@@ -1628,7 +1628,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DnsKeysResourceApi', () {
+  unittest.group('resource-DnsKeysResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).dnsKeys;
@@ -1788,7 +1788,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagedZoneOperationsResourceApi', () {
+  unittest.group('resource-ManagedZoneOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZoneOperations;
@@ -1944,7 +1944,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagedZonesResourceApi', () {
+  unittest.group('resource-ManagedZonesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
@@ -2344,7 +2344,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PoliciesResourceApi', () {
+  unittest.group('resource-PoliciesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
@@ -2740,7 +2740,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).projects;
@@ -2796,7 +2796,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResourceRecordSetsResourceApi', () {
+  unittest.group('resource-ResourceRecordSetsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).resourceRecordSets;

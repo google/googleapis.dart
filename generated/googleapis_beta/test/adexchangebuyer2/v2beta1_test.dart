@@ -4464,7 +4464,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsClientsResourceApi', () {
+  unittest.group('resource-AccountsClientsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.clients;
@@ -4722,7 +4722,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsClientsInvitationsResourceApi', () {
+  unittest.group('resource-AccountsClientsInvitationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.invitations;
@@ -4944,7 +4944,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsClientsUsersResourceApi', () {
+  unittest.group('resource-AccountsClientsUsersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.clients.users;
@@ -5168,7 +5168,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsCreativesResourceApi', () {
+  unittest.group('resource-AccountsCreativesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.creatives;
@@ -5574,7 +5574,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsCreativesDealAssociationsResourceApi', () {
+  unittest.group('resource-AccountsCreativesDealAssociationsResource', () {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
       var res =
@@ -5802,7 +5802,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsFinalizedProposalsResourceApi', () {
+  unittest.group('resource-AccountsFinalizedProposalsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.finalizedProposals;
@@ -5876,7 +5876,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsProductsResourceApi', () {
+  unittest.group('resource-AccountsProductsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.products;
@@ -6006,7 +6006,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsProposalsResourceApi', () {
+  unittest.group('resource-AccountsProposalsResource', () {
     unittest.test('method--accept', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.proposals;
@@ -6699,7 +6699,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsPublisherProfilesResourceApi', () {
+  unittest.group('resource-AccountsPublisherProfilesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).accounts.publisherProfiles;
@@ -6827,7 +6827,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersAccountsFilterSetsResourceApi', () {
+  unittest.group('resource-BiddersAccountsFilterSetsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).bidders.accounts.filterSets;
@@ -7039,7 +7039,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersAccountsFilterSetsBidMetricsResourceApi', () {
+  unittest.group('resource-BiddersAccountsFilterSetsBidMetricsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
@@ -7099,8 +7099,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-BiddersAccountsFilterSetsBidResponseErrorsResourceApi', () {
+  unittest.group('resource-BiddersAccountsFilterSetsBidResponseErrorsResource',
+      () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7165,8 +7165,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi',
-      () {
+      'resource-BiddersAccountsFilterSetsBidResponsesWithoutBidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7232,7 +7231,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-BiddersAccountsFilterSetsFilteredBidRequestsResourceApi', () {
+      'resource-BiddersAccountsFilterSetsFilteredBidRequestsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7296,8 +7295,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersAccountsFilterSetsFilteredBidsResourceApi',
-      () {
+  unittest.group('resource-BiddersAccountsFilterSetsFilteredBidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7361,7 +7359,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi', () {
+      'resource-BiddersAccountsFilterSetsFilteredBidsCreativesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7429,7 +7427,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi', () {
+      'resource-BiddersAccountsFilterSetsFilteredBidsDetailsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7496,8 +7494,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-BiddersAccountsFilterSetsImpressionMetricsResourceApi', () {
+  unittest.group('resource-BiddersAccountsFilterSetsImpressionMetricsResource',
+      () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7561,7 +7559,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersAccountsFilterSetsLosingBidsResourceApi', () {
+  unittest.group('resource-BiddersAccountsFilterSetsLosingBidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
@@ -7622,8 +7620,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi',
-      () {
+      'resource-BiddersAccountsFilterSetsNonBillableWinningBidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -7688,7 +7685,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsResourceApi', () {
+  unittest.group('resource-BiddersFilterSetsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets;
@@ -7900,7 +7897,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsBidMetricsResourceApi', () {
+  unittest.group('resource-BiddersFilterSetsBidMetricsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets.bidMetrics;
@@ -7959,7 +7956,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsBidResponseErrorsResourceApi', () {
+  unittest.group('resource-BiddersFilterSetsBidResponseErrorsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
@@ -8020,7 +8017,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsBidResponsesWithoutBidsResourceApi',
+  unittest.group('resource-BiddersFilterSetsBidResponsesWithoutBidsResource',
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
@@ -8085,8 +8082,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsFilteredBidRequestsResourceApi',
-      () {
+  unittest.group('resource-BiddersFilterSetsFilteredBidRequestsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
@@ -8147,7 +8143,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsFilteredBidsResourceApi', () {
+  unittest.group('resource-BiddersFilterSetsFilteredBidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets.filteredBids;
@@ -8206,8 +8202,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsFilteredBidsCreativesResourceApi',
-      () {
+  unittest.group('resource-BiddersFilterSetsFilteredBidsCreativesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -8273,8 +8268,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsFilteredBidsDetailsResourceApi',
-      () {
+  unittest.group('resource-BiddersFilterSetsFilteredBidsDetailsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock)
@@ -8340,7 +8334,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsImpressionMetricsResourceApi', () {
+  unittest.group('resource-BiddersFilterSetsImpressionMetricsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =
@@ -8401,7 +8395,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsLosingBidsResourceApi', () {
+  unittest.group('resource-BiddersFilterSetsLosingBidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerIIApi(mock).bidders.filterSets.losingBids;
@@ -8460,7 +8454,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BiddersFilterSetsNonBillableWinningBidsResourceApi',
+  unittest.group('resource-BiddersFilterSetsNonBillableWinningBidsResource',
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();

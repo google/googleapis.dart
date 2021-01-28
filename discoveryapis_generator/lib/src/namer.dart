@@ -240,7 +240,7 @@ class IdentifierNamer {
   }
 }
 
-const _resourceApiName = 'ResourceApi';
+const _resourceApiName = 'Resource';
 
 /// Helper class for allocating unique names for generating an API library.
 class ApiLibraryNamer {

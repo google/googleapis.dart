@@ -276,7 +276,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AssetlinksResourceApi', () {
+  unittest.group('resource-AssetlinksResource', () {
     unittest.test('method--check', () {
       var mock = HttpServerMock();
       var res = api.DigitalassetlinksApi(mock).assetlinks;
@@ -359,7 +359,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatementsResourceApi', () {
+  unittest.group('resource-StatementsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DigitalassetlinksApi(mock).statements;

@@ -1698,7 +1698,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.NetworkManagementApi(mock).projects.locations;
@@ -1808,7 +1808,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlobalConnectivityTestsResourceApi',
+  unittest.group('resource-ProjectsLocationsGlobalConnectivityTestsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -2337,7 +2337,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlobalOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsGlobalOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res =

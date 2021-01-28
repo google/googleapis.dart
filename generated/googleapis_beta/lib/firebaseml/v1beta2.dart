@@ -23,9 +23,9 @@
 ///
 /// Create an instance of [FirebaseMLApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsModelsResourceApi]
-///   - [ProjectsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsModelsResource]
+///   - [ProjectsOperationsResource]
 library firebaseml.v1beta2;
 
 import 'dart:async' as async;
@@ -48,7 +48,7 @@ class FirebaseMLApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseMLApi(http.Client client,
       {core.String rootUrl = 'https://firebaseml.googleapis.com/',
@@ -57,20 +57,20 @@ class FirebaseMLApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsModelsResourceApi get models => ProjectsModelsResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
+  ProjectsModelsResource get models => ProjectsModelsResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsModelsResourceApi {
+class ProjectsModelsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsModelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsModelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a model in Firebase ML. The longrunning operation will eventually
   /// return a Model
@@ -378,11 +378,10 @@ class ProjectsModelsResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API

@@ -1872,7 +1872,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--getProfile', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users;
@@ -2045,7 +2045,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersDraftsResourceApi', () {
+  unittest.group('resource-UsersDraftsResource', () {
     unittest.test('method--create', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -2435,7 +2435,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersHistoryResourceApi', () {
+  unittest.group('resource-UsersHistoryResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.history;
@@ -2514,7 +2514,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersLabelsResourceApi', () {
+  unittest.group('resource-UsersLabelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
@@ -2881,7 +2881,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersMessagesResourceApi', () {
+  unittest.group('resource-UsersMessagesResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
@@ -3623,7 +3623,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersMessagesAttachmentsResourceApi', () {
+  unittest.group('resource-UsersMessagesAttachmentsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages.attachments;
@@ -3695,7 +3695,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSettingsResourceApi', () {
+  unittest.group('resource-UsersSettingsResource', () {
     unittest.test('method--getAutoForwarding', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
@@ -4282,7 +4282,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSettingsDelegatesResourceApi', () {
+  unittest.group('resource-UsersSettingsDelegatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.delegates;
@@ -4519,7 +4519,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSettingsFiltersResourceApi', () {
+  unittest.group('resource-UsersSettingsFiltersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.filters;
@@ -4756,7 +4756,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSettingsForwardingAddressesResourceApi', () {
+  unittest.group('resource-UsersSettingsForwardingAddressesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.forwardingAddresses;
@@ -4994,7 +4994,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSettingsSendAsResourceApi', () {
+  unittest.group('resource-UsersSettingsSendAsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
@@ -5426,7 +5426,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSettingsSendAsSmimeInfoResourceApi', () {
+  unittest.group('resource-UsersSettingsSendAsSmimeInfoResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
@@ -5778,7 +5778,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersThreadsResourceApi', () {
+  unittest.group('resource-UsersThreadsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;

@@ -4055,7 +4055,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAlertPoliciesResourceApi', () {
+  unittest.group('resource-ProjectsAlertPoliciesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.alertPolicies;
@@ -4328,7 +4328,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsCollectdTimeSeriesResourceApi', () {
+  unittest.group('resource-ProjectsCollectdTimeSeriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.collectdTimeSeries;
@@ -4385,7 +4385,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsGroupsResourceApi', () {
+  unittest.group('resource-ProjectsGroupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups;
@@ -4669,7 +4669,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsGroupsMembersResourceApi', () {
+  unittest.group('resource-ProjectsGroupsMembersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups.members;
@@ -4739,7 +4739,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsMetricDescriptorsResourceApi', () {
+  unittest.group('resource-ProjectsMetricDescriptorsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.metricDescriptors;
@@ -4951,8 +4951,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsMonitoredResourceDescriptorsResourceApi',
-      () {
+  unittest.group('resource-ProjectsMonitoredResourceDescriptorsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
@@ -5065,8 +5064,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsNotificationChannelDescriptorsResourceApi',
-      () {
+  unittest.group('resource-ProjectsNotificationChannelDescriptorsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannelDescriptors;
@@ -5176,7 +5174,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsNotificationChannelsResourceApi', () {
+  unittest.group('resource-ProjectsNotificationChannelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
@@ -5615,7 +5613,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTimeSeriesResourceApi', () {
+  unittest.group('resource-ProjectsTimeSeriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.timeSeries;
@@ -5815,7 +5813,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsUptimeCheckConfigsResourceApi', () {
+  unittest.group('resource-ProjectsUptimeCheckConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
@@ -6081,7 +6079,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services;
@@ -6353,7 +6351,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesServiceLevelObjectivesResourceApi', () {
+  unittest.group('resource-ServicesServiceLevelObjectivesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
@@ -6633,7 +6631,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UptimeCheckIpsResourceApi', () {
+  unittest.group('resource-UptimeCheckIpsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).uptimeCheckIps;

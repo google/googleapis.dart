@@ -781,7 +781,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ServiceDirectoryApi(mock).projects.locations;
@@ -891,7 +891,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsNamespacesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsNamespacesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceDirectoryApi(mock).projects.locations.namespaces;
@@ -1327,7 +1327,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsNamespacesServicesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsNamespacesServicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -1826,7 +1826,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsNamespacesServicesEndpointsResourceApi', () {
+      'resource-ProjectsLocationsNamespacesServicesEndpointsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceDirectoryApi(mock)

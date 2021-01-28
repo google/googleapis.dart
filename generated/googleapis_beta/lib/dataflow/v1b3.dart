@@ -23,27 +23,27 @@
 ///
 /// Create an instance of [DataflowApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsCatalogTemplatesResourceApi]
-///     - [ProjectsCatalogTemplatesTemplateVersionsResourceApi]
-///   - [ProjectsJobsResourceApi]
-///     - [ProjectsJobsDebugResourceApi]
-///     - [ProjectsJobsMessagesResourceApi]
-///     - [ProjectsJobsWorkItemsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsFlexTemplatesResourceApi]
-///     - [ProjectsLocationsJobsResourceApi]
-///       - [ProjectsLocationsJobsDebugResourceApi]
-///       - [ProjectsLocationsJobsMessagesResourceApi]
-///       - [ProjectsLocationsJobsSnapshotsResourceApi]
-///       - [ProjectsLocationsJobsStagesResourceApi]
-///       - [ProjectsLocationsJobsWorkItemsResourceApi]
-///     - [ProjectsLocationsSnapshotsResourceApi]
-///     - [ProjectsLocationsSqlResourceApi]
-///     - [ProjectsLocationsTemplatesResourceApi]
-///   - [ProjectsSnapshotsResourceApi]
-///   - [ProjectsTemplateVersionsResourceApi]
-///   - [ProjectsTemplatesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsCatalogTemplatesResource]
+///     - [ProjectsCatalogTemplatesTemplateVersionsResource]
+///   - [ProjectsJobsResource]
+///     - [ProjectsJobsDebugResource]
+///     - [ProjectsJobsMessagesResource]
+///     - [ProjectsJobsWorkItemsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsFlexTemplatesResource]
+///     - [ProjectsLocationsJobsResource]
+///       - [ProjectsLocationsJobsDebugResource]
+///       - [ProjectsLocationsJobsMessagesResource]
+///       - [ProjectsLocationsJobsSnapshotsResource]
+///       - [ProjectsLocationsJobsStagesResource]
+///       - [ProjectsLocationsJobsWorkItemsResource]
+///     - [ProjectsLocationsSnapshotsResource]
+///     - [ProjectsLocationsSqlResource]
+///     - [ProjectsLocationsTemplatesResource]
+///   - [ProjectsSnapshotsResource]
+///   - [ProjectsTemplateVersionsResource]
+///   - [ProjectsTemplatesResource]
 library dataflow.v1b3;
 
 import 'dart:async' as async;
@@ -77,7 +77,7 @@ class DataflowApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DataflowApi(http.Client client,
       {core.String rootUrl = 'https://dataflow.googleapis.com/',
@@ -86,22 +86,22 @@ class DataflowApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsCatalogTemplatesResourceApi get catalogTemplates =>
-      ProjectsCatalogTemplatesResourceApi(_requester);
-  ProjectsJobsResourceApi get jobs => ProjectsJobsResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsSnapshotsResourceApi get snapshots =>
-      ProjectsSnapshotsResourceApi(_requester);
-  ProjectsTemplateVersionsResourceApi get templateVersions =>
-      ProjectsTemplateVersionsResourceApi(_requester);
-  ProjectsTemplatesResourceApi get templates =>
-      ProjectsTemplatesResourceApi(_requester);
+  ProjectsCatalogTemplatesResource get catalogTemplates =>
+      ProjectsCatalogTemplatesResource(_requester);
+  ProjectsJobsResource get jobs => ProjectsJobsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsSnapshotsResource get snapshots =>
+      ProjectsSnapshotsResource(_requester);
+  ProjectsTemplateVersionsResource get templateVersions =>
+      ProjectsTemplateVersionsResource(_requester);
+  ProjectsTemplatesResource get templates =>
+      ProjectsTemplatesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a snapshot.
   ///
@@ -229,13 +229,13 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsCatalogTemplatesResourceApi {
+class ProjectsCatalogTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsCatalogTemplatesTemplateVersionsResourceApi get templateVersions =>
-      ProjectsCatalogTemplatesTemplateVersionsResourceApi(_requester);
+  ProjectsCatalogTemplatesTemplateVersionsResource get templateVersions =>
+      ProjectsCatalogTemplatesTemplateVersionsResource(_requester);
 
-  ProjectsCatalogTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsCatalogTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new TemplateVersion (Important: not new Template) entry in the
@@ -537,11 +537,10 @@ class ProjectsCatalogTemplatesResourceApi {
   }
 }
 
-class ProjectsCatalogTemplatesTemplateVersionsResourceApi {
+class ProjectsCatalogTemplatesTemplateVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsCatalogTemplatesTemplateVersionsResourceApi(
-      commons.ApiRequester client)
+  ProjectsCatalogTemplatesTemplateVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new Template with TemplateVersion. Requires project_id(projects)
@@ -609,17 +608,16 @@ class ProjectsCatalogTemplatesTemplateVersionsResourceApi {
   }
 }
 
-class ProjectsJobsResourceApi {
+class ProjectsJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsDebugResourceApi get debug =>
-      ProjectsJobsDebugResourceApi(_requester);
-  ProjectsJobsMessagesResourceApi get messages =>
-      ProjectsJobsMessagesResourceApi(_requester);
-  ProjectsJobsWorkItemsResourceApi get workItems =>
-      ProjectsJobsWorkItemsResourceApi(_requester);
+  ProjectsJobsDebugResource get debug => ProjectsJobsDebugResource(_requester);
+  ProjectsJobsMessagesResource get messages =>
+      ProjectsJobsMessagesResource(_requester);
+  ProjectsJobsWorkItemsResource get workItems =>
+      ProjectsJobsWorkItemsResource(_requester);
 
-  ProjectsJobsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// List the jobs of a project across all regions.
   ///
@@ -1252,11 +1250,10 @@ class ProjectsJobsResourceApi {
   }
 }
 
-class ProjectsJobsDebugResourceApi {
+class ProjectsJobsDebugResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsDebugResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsJobsDebugResource(commons.ApiRequester client) : _requester = client;
 
   /// Get encoded debug configuration for component. Not cacheable.
   ///
@@ -1393,10 +1390,10 @@ class ProjectsJobsDebugResourceApi {
   }
 }
 
-class ProjectsJobsMessagesResourceApi {
+class ProjectsJobsMessagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsMessagesResourceApi(commons.ApiRequester client)
+  ProjectsJobsMessagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Request the job status. To request the status of a job, we recommend using
@@ -1534,10 +1531,10 @@ class ProjectsJobsMessagesResourceApi {
   }
 }
 
-class ProjectsJobsWorkItemsResourceApi {
+class ProjectsJobsWorkItemsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsWorkItemsResourceApi(commons.ApiRequester client)
+  ProjectsJobsWorkItemsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Leases a dataflow WorkItem to run.
@@ -1675,22 +1672,21 @@ class ProjectsJobsWorkItemsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsFlexTemplatesResourceApi get flexTemplates =>
-      ProjectsLocationsFlexTemplatesResourceApi(_requester);
-  ProjectsLocationsJobsResourceApi get jobs =>
-      ProjectsLocationsJobsResourceApi(_requester);
-  ProjectsLocationsSnapshotsResourceApi get snapshots =>
-      ProjectsLocationsSnapshotsResourceApi(_requester);
-  ProjectsLocationsSqlResourceApi get sql =>
-      ProjectsLocationsSqlResourceApi(_requester);
-  ProjectsLocationsTemplatesResourceApi get templates =>
-      ProjectsLocationsTemplatesResourceApi(_requester);
+  ProjectsLocationsFlexTemplatesResource get flexTemplates =>
+      ProjectsLocationsFlexTemplatesResource(_requester);
+  ProjectsLocationsJobsResource get jobs =>
+      ProjectsLocationsJobsResource(_requester);
+  ProjectsLocationsSnapshotsResource get snapshots =>
+      ProjectsLocationsSnapshotsResource(_requester);
+  ProjectsLocationsSqlResource get sql =>
+      ProjectsLocationsSqlResource(_requester);
+  ProjectsLocationsTemplatesResource get templates =>
+      ProjectsLocationsTemplatesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Send a worker_message to the service.
   ///
@@ -1762,10 +1758,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsFlexTemplatesResourceApi {
+class ProjectsLocationsFlexTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsFlexTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsFlexTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Launch a job with a FlexTemplate.
@@ -1839,21 +1835,21 @@ class ProjectsLocationsFlexTemplatesResourceApi {
   }
 }
 
-class ProjectsLocationsJobsResourceApi {
+class ProjectsLocationsJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsDebugResourceApi get debug =>
-      ProjectsLocationsJobsDebugResourceApi(_requester);
-  ProjectsLocationsJobsMessagesResourceApi get messages =>
-      ProjectsLocationsJobsMessagesResourceApi(_requester);
-  ProjectsLocationsJobsSnapshotsResourceApi get snapshots =>
-      ProjectsLocationsJobsSnapshotsResourceApi(_requester);
-  ProjectsLocationsJobsStagesResourceApi get stages =>
-      ProjectsLocationsJobsStagesResourceApi(_requester);
-  ProjectsLocationsJobsWorkItemsResourceApi get workItems =>
-      ProjectsLocationsJobsWorkItemsResourceApi(_requester);
+  ProjectsLocationsJobsDebugResource get debug =>
+      ProjectsLocationsJobsDebugResource(_requester);
+  ProjectsLocationsJobsMessagesResource get messages =>
+      ProjectsLocationsJobsMessagesResource(_requester);
+  ProjectsLocationsJobsSnapshotsResource get snapshots =>
+      ProjectsLocationsJobsSnapshotsResource(_requester);
+  ProjectsLocationsJobsStagesResource get stages =>
+      ProjectsLocationsJobsStagesResource(_requester);
+  ProjectsLocationsJobsWorkItemsResource get workItems =>
+      ProjectsLocationsJobsWorkItemsResource(_requester);
 
-  ProjectsLocationsJobsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Cloud Dataflow job. To create a job, we recommend using
@@ -2484,10 +2480,10 @@ class ProjectsLocationsJobsResourceApi {
   }
 }
 
-class ProjectsLocationsJobsDebugResourceApi {
+class ProjectsLocationsJobsDebugResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsDebugResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsDebugResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get encoded debug configuration for component. Not cacheable.
@@ -2645,10 +2641,10 @@ class ProjectsLocationsJobsDebugResourceApi {
   }
 }
 
-class ProjectsLocationsJobsMessagesResourceApi {
+class ProjectsLocationsJobsMessagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsMessagesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsMessagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Request the job status. To request the status of a job, we recommend using
@@ -2788,10 +2784,10 @@ class ProjectsLocationsJobsMessagesResourceApi {
   }
 }
 
-class ProjectsLocationsJobsSnapshotsResourceApi {
+class ProjectsLocationsJobsSnapshotsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsSnapshotsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsSnapshotsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists snapshots.
@@ -2864,10 +2860,10 @@ class ProjectsLocationsJobsSnapshotsResourceApi {
   }
 }
 
-class ProjectsLocationsJobsStagesResourceApi {
+class ProjectsLocationsJobsStagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsStagesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsStagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Request detailed information about the execution status of a stage of the
@@ -2980,10 +2976,10 @@ class ProjectsLocationsJobsStagesResourceApi {
   }
 }
 
-class ProjectsLocationsJobsWorkItemsResourceApi {
+class ProjectsLocationsJobsWorkItemsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsJobsWorkItemsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsJobsWorkItemsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Leases a dataflow WorkItem to run.
@@ -3141,10 +3137,10 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   }
 }
 
-class ProjectsLocationsSnapshotsResourceApi {
+class ProjectsLocationsSnapshotsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsSnapshotsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsSnapshotsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a snapshot.
@@ -3352,10 +3348,10 @@ class ProjectsLocationsSnapshotsResourceApi {
   }
 }
 
-class ProjectsLocationsSqlResourceApi {
+class ProjectsLocationsSqlResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsSqlResourceApi(commons.ApiRequester client)
+  ProjectsLocationsSqlResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm
@@ -3432,10 +3428,10 @@ class ProjectsLocationsSqlResourceApi {
   }
 }
 
-class ProjectsLocationsTemplatesResourceApi {
+class ProjectsLocationsTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Cloud Dataflow job from a template.
@@ -3688,11 +3684,10 @@ class ProjectsLocationsTemplatesResourceApi {
   }
 }
 
-class ProjectsSnapshotsResourceApi {
+class ProjectsSnapshotsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSnapshotsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsSnapshotsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a snapshot.
   ///
@@ -3826,10 +3821,10 @@ class ProjectsSnapshotsResourceApi {
   }
 }
 
-class ProjectsTemplateVersionsResourceApi {
+class ProjectsTemplateVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTemplateVersionsResourceApi(commons.ApiRequester client)
+  ProjectsTemplateVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List TemplateVersions using project_id and an optional display_name field.
@@ -3905,11 +3900,10 @@ class ProjectsTemplateVersionsResourceApi {
   }
 }
 
-class ProjectsTemplatesResourceApi {
+class ProjectsTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTemplatesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsTemplatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Cloud Dataflow job from a template.
   ///

@@ -23,9 +23,9 @@
 ///
 /// Create an instance of [WebmastersApi] to access these resources:
 ///
-/// - [SearchanalyticsResourceApi]
-/// - [SitemapsResourceApi]
-/// - [SitesResourceApi]
+/// - [SearchanalyticsResource]
+/// - [SitemapsResource]
+/// - [SitesResource]
 library webmasters.v3;
 
 import 'dart:async' as async;
@@ -51,10 +51,10 @@ class WebmastersApi {
 
   final commons.ApiRequester _requester;
 
-  SearchanalyticsResourceApi get searchanalytics =>
-      SearchanalyticsResourceApi(_requester);
-  SitemapsResourceApi get sitemaps => SitemapsResourceApi(_requester);
-  SitesResourceApi get sites => SitesResourceApi(_requester);
+  SearchanalyticsResource get searchanalytics =>
+      SearchanalyticsResource(_requester);
+  SitemapsResource get sitemaps => SitemapsResource(_requester);
+  SitesResource get sites => SitesResource(_requester);
 
   WebmastersApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -63,10 +63,10 @@ class WebmastersApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class SearchanalyticsResourceApi {
+class SearchanalyticsResource {
   final commons.ApiRequester _requester;
 
-  SearchanalyticsResourceApi(commons.ApiRequester client) : _requester = client;
+  SearchanalyticsResource(commons.ApiRequester client) : _requester = client;
 
   /// Query your data with filters and parameters that you define. Returns zero
   /// or more rows grouped by the row keys that you define. You must define a
@@ -136,10 +136,10 @@ class SearchanalyticsResourceApi {
   }
 }
 
-class SitemapsResourceApi {
+class SitemapsResource {
   final commons.ApiRequester _requester;
 
-  SitemapsResourceApi(commons.ApiRequester client) : _requester = client;
+  SitemapsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a sitemap from this site.
   ///
@@ -386,10 +386,10 @@ class SitemapsResourceApi {
   }
 }
 
-class SitesResourceApi {
+class SitesResource {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds a site to the set of the user's sites in Search Console.
   ///

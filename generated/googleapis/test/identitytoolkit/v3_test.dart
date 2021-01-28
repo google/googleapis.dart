@@ -2156,7 +2156,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RelyingpartyResourceApi', () {
+  unittest.group('resource-RelyingpartyResource', () {
     unittest.test('method--createAuthUri', () {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;

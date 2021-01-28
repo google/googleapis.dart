@@ -23,9 +23,9 @@
 ///
 /// Create an instance of [FirebaseDynamicLinksApi] to access these resources:
 ///
-/// - [ManagedShortLinksResourceApi]
-/// - [ShortLinksResourceApi]
-/// - [V1ResourceApi]
+/// - [ManagedShortLinksResource]
+/// - [ShortLinksResource]
+/// - [V1Resource]
 library firebasedynamiclinks.v1;
 
 import 'dart:async' as async;
@@ -47,10 +47,10 @@ class FirebaseDynamicLinksApi {
 
   final commons.ApiRequester _requester;
 
-  ManagedShortLinksResourceApi get managedShortLinks =>
-      ManagedShortLinksResourceApi(_requester);
-  ShortLinksResourceApi get shortLinks => ShortLinksResourceApi(_requester);
-  V1ResourceApi get v1 => V1ResourceApi(_requester);
+  ManagedShortLinksResource get managedShortLinks =>
+      ManagedShortLinksResource(_requester);
+  ShortLinksResource get shortLinks => ShortLinksResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   FirebaseDynamicLinksApi(http.Client client,
       {core.String rootUrl = 'https://firebasedynamiclinks.googleapis.com/',
@@ -59,11 +59,10 @@ class FirebaseDynamicLinksApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ManagedShortLinksResourceApi {
+class ManagedShortLinksResource {
   final commons.ApiRequester _requester;
 
-  ManagedShortLinksResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagedShortLinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a managed short Dynamic Link given either a valid long Dynamic
   /// Link or details such as Dynamic Link domain, Android and iOS app
@@ -125,10 +124,10 @@ class ManagedShortLinksResourceApi {
   }
 }
 
-class ShortLinksResourceApi {
+class ShortLinksResource {
   final commons.ApiRequester _requester;
 
-  ShortLinksResourceApi(commons.ApiRequester client) : _requester = client;
+  ShortLinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a short Dynamic Link given either a valid long Dynamic Link or
   /// details such as Dynamic Link domain, Android and iOS app information. The
@@ -187,10 +186,10 @@ class ShortLinksResourceApi {
   }
 }
 
-class V1ResourceApi {
+class V1Resource {
   final commons.ApiRequester _requester;
 
-  V1ResourceApi(commons.ApiRequester client) : _requester = client;
+  V1Resource(commons.ApiRequester client) : _requester = client;
 
   /// Fetches analytics stats of a short Dynamic Link for a given duration.
   /// Metrics include number of clicks, redirects, installs, app first opens,

@@ -525,7 +525,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersResourceApi', () {
+  unittest.group('resource-CustomersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).customers;
@@ -754,7 +754,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResellernotifyResourceApi', () {
+  unittest.group('resource-ResellernotifyResource_1', () {
     unittest.test('method--getwatchdetails', () {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).resellernotify;
@@ -915,7 +915,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SubscriptionsResourceApi', () {
+  unittest.group('resource-SubscriptionsResource', () {
     unittest.test('method--activate', () {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;

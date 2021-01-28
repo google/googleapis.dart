@@ -256,7 +256,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TasklistsResourceApi', () {
+  unittest.group('resource-TasklistsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
@@ -572,7 +572,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TasksResourceApi', () {
+  unittest.group('resource-TasksResource', () {
     unittest.test('method--clear', () {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;

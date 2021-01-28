@@ -2848,7 +2848,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations;
@@ -2958,7 +2958,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDatasetsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDatasetsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
@@ -3442,8 +3442,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDatasetsDicomStoresResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsDatasetsDicomStoresResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -4255,8 +4254,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsLocationsDatasetsDicomStoresStudiesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDatasetsDicomStoresStudiesResource',
+      () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
@@ -4590,8 +4589,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi',
-      () {
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
@@ -4815,7 +4813,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi',
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource',
       () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
@@ -5043,7 +5041,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi',
+      'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource',
       () {
     unittest.test('method--retrieveFrames', () {
       var mock = HttpServerMock();
@@ -5160,7 +5158,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDatasetsFhirStoresResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDatasetsFhirStoresResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -5764,7 +5762,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDatasetsFhirStoresFhirResourceApi',
+  unittest.group('resource-ProjectsLocationsDatasetsFhirStoresFhirResource',
       () {
     unittest.test('method--PatientEverything', () {
       var mock = HttpServerMock();
@@ -6463,8 +6461,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDatasetsHl7V2StoresResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsDatasetsHl7V2StoresResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -6907,7 +6904,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi', () {
+      'resource-ProjectsLocationsDatasetsHl7V2StoresMessagesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
@@ -7267,7 +7264,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDatasetsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDatasetsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res =

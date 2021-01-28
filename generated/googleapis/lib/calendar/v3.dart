@@ -24,14 +24,14 @@
 ///
 /// Create an instance of [CalendarApi] to access these resources:
 ///
-/// - [AclResourceApi]
-/// - [CalendarListResourceApi]
-/// - [CalendarsResourceApi]
-/// - [ChannelsResourceApi]
-/// - [ColorsResourceApi]
-/// - [EventsResourceApi]
-/// - [FreebusyResourceApi]
-/// - [SettingsResourceApi]
+/// - [AclResource]
+/// - [CalendarListResource]
+/// - [CalendarsResource]
+/// - [ChannelsResource]
+/// - [ColorsResource]
+/// - [EventsResource]
+/// - [FreebusyResource]
+/// - [SettingsResource]
 library calendar.v3;
 
 import 'dart:async' as async;
@@ -70,15 +70,14 @@ class CalendarApi {
 
   final commons.ApiRequester _requester;
 
-  AclResourceApi get acl => AclResourceApi(_requester);
-  CalendarListResourceApi get calendarList =>
-      CalendarListResourceApi(_requester);
-  CalendarsResourceApi get calendars => CalendarsResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  ColorsResourceApi get colors => ColorsResourceApi(_requester);
-  EventsResourceApi get events => EventsResourceApi(_requester);
-  FreebusyResourceApi get freebusy => FreebusyResourceApi(_requester);
-  SettingsResourceApi get settings => SettingsResourceApi(_requester);
+  AclResource get acl => AclResource(_requester);
+  CalendarListResource get calendarList => CalendarListResource(_requester);
+  CalendarsResource get calendars => CalendarsResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  ColorsResource get colors => ColorsResource(_requester);
+  EventsResource get events => EventsResource(_requester);
+  FreebusyResource get freebusy => FreebusyResource(_requester);
+  SettingsResource get settings => SettingsResource(_requester);
 
   CalendarApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -87,10 +86,10 @@ class CalendarApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AclResourceApi {
+class AclResource {
   final commons.ApiRequester _requester;
 
-  AclResourceApi(commons.ApiRequester client) : _requester = client;
+  AclResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an access control rule.
   ///
@@ -616,10 +615,10 @@ class AclResourceApi {
   }
 }
 
-class CalendarListResourceApi {
+class CalendarListResource {
   final commons.ApiRequester _requester;
 
-  CalendarListResourceApi(commons.ApiRequester client) : _requester = client;
+  CalendarListResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes a calendar from the user's calendar list.
   ///
@@ -1141,10 +1140,10 @@ class CalendarListResourceApi {
   }
 }
 
-class CalendarsResourceApi {
+class CalendarsResource {
   final commons.ApiRequester _requester;
 
-  CalendarsResourceApi(commons.ApiRequester client) : _requester = client;
+  CalendarsResource(commons.ApiRequester client) : _requester = client;
 
   /// Clears a primary calendar. This operation deletes all events associated
   /// with the primary calendar of an account.
@@ -1472,10 +1471,10 @@ class CalendarsResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Stop watching resources through this channel
   ///
@@ -1528,10 +1527,10 @@ class ChannelsResourceApi {
   }
 }
 
-class ColorsResourceApi {
+class ColorsResource {
   final commons.ApiRequester _requester;
 
-  ColorsResourceApi(commons.ApiRequester client) : _requester = client;
+  ColorsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the color definitions for calendars and events.
   ///
@@ -1578,10 +1577,10 @@ class ColorsResourceApi {
   }
 }
 
-class EventsResourceApi {
+class EventsResource {
   final commons.ApiRequester _requester;
 
-  EventsResourceApi(commons.ApiRequester client) : _requester = client;
+  EventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an event.
   ///
@@ -2956,10 +2955,10 @@ class EventsResourceApi {
   }
 }
 
-class FreebusyResourceApi {
+class FreebusyResource {
   final commons.ApiRequester _requester;
 
-  FreebusyResourceApi(commons.ApiRequester client) : _requester = client;
+  FreebusyResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns free/busy information for a set of calendars.
   ///
@@ -3013,10 +3012,10 @@ class FreebusyResourceApi {
   }
 }
 
-class SettingsResourceApi {
+class SettingsResource {
   final commons.ApiRequester _requester;
 
-  SettingsResourceApi(commons.ApiRequester client) : _requester = client;
+  SettingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a single user setting.
   ///

@@ -119,7 +119,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UrlNotificationsResourceApi', () {
+  unittest.group('resource-UrlNotificationsResource', () {
     unittest.test('method--getMetadata', () {
       var mock = HttpServerMock();
       var res = api.IndexingApi(mock).urlNotifications;

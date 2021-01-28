@@ -164,7 +164,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsProfilesResourceApi', () {
+  unittest.group('resource-ProjectsProfilesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudProfilerApi(mock).projects.profiles;

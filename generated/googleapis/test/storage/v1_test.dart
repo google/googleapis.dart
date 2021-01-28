@@ -1894,7 +1894,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BucketAccessControlsResourceApi', () {
+  unittest.group('resource-BucketAccessControlsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
@@ -2333,7 +2333,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BucketsResourceApi', () {
+  unittest.group('resource-BucketsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
@@ -3094,7 +3094,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelsResourceApi', () {
+  unittest.group('resource-ChannelsResource', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).channels;
@@ -3148,7 +3148,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DefaultObjectAccessControlsResourceApi', () {
+  unittest.group('resource-DefaultObjectAccessControlsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
@@ -3595,7 +3595,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NotificationsResourceApi', () {
+  unittest.group('resource-NotificationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).notifications;
@@ -3880,7 +3880,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ObjectAccessControlsResourceApi', () {
+  unittest.group('resource-ObjectAccessControlsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
@@ -4403,7 +4403,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ObjectsResourceApi', () {
+  unittest.group('resource-ObjectsResource', () {
     unittest.test('method--compose', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
@@ -5782,7 +5782,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsHmacKeysResourceApi', () {
+  unittest.group('resource-ProjectsHmacKeysResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.hmacKeys;
@@ -6134,7 +6134,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsServiceAccountResourceApi', () {
+  unittest.group('resource-ProjectsServiceAccountResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.serviceAccount;

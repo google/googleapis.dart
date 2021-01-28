@@ -240,14 +240,14 @@ void main() {
         namer.import('foo');
         namer.import('method'); // will collide with method name
         namer.import('BookApi'); // will collide with api class, schema class
-        namer.import('FooBarResourceApi');
+        namer.import('FooBarResource'); // will collide with the resource class
 
         namer.apiClass('Book');
 
         namer.schemaClass('Book');
         namer.schemaClass('chapter');
         namer.schemaClass('BookApi'); // Will collide with api class
-        namer.schemaClass('BooksResourceApi');
+        namer.schemaClass('BooksResource'); //
 
         namer.resourceClass('Gustav');
         namer.resourceClass('FooBar');
@@ -262,17 +262,17 @@ void main() {
         expect(iscope.identifiers[0].name, equals('foo'));
         expect(iscope.identifiers[1].name, equals('method_1'));
         expect(iscope.identifiers[2].name, equals('BookApi_2'));
-        expect(iscope.identifiers[3].name, equals('FooBarResourceApi_1'));
+        expect(iscope.identifiers[3].name, equals('FooBarResource_1'));
 
         final lscope = namer.libraryScope;
         expect(lscope.identifiers[0].name, equals('BookApi'));
         expect(lscope.identifiers[1].name, equals('Book'));
         expect(lscope.identifiers[2].name, equals('Chapter'));
         expect(lscope.identifiers[3].name, equals('BookApi_1'));
-        expect(lscope.identifiers[4].name, equals('BooksResourceApi'));
-        expect(lscope.identifiers[5].name, equals('GustavResourceApi'));
-        expect(lscope.identifiers[6].name, equals('FooBarResourceApi'));
-        expect(lscope.identifiers[7].name, equals('BooksResourceApi_1'));
+        expect(lscope.identifiers[4].name, equals('BooksResource'));
+        expect(lscope.identifiers[5].name, equals('GustavResource'));
+        expect(lscope.identifiers[6].name, equals('FooBarResource'));
+        expect(lscope.identifiers[7].name, equals('BooksResource_1'));
       });
     });
   });

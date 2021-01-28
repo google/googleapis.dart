@@ -24,7 +24,7 @@
 ///
 /// Create an instance of [ServiceControlApi] to access these resources:
 ///
-/// - [ServicesResourceApi]
+/// - [ServicesResource]
 library servicecontrol.v1;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class ServiceControlApi {
 
   final commons.ApiRequester _requester;
 
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
+  ServicesResource get services => ServicesResource(_requester);
 
   ServiceControlApi(http.Client client,
       {core.String rootUrl = 'https://servicecontrol.googleapis.com/',
@@ -61,10 +61,10 @@ class ServiceControlApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Attempts to allocate quota for the specified consumer. It should be called
   /// before the operation is executed. This method requires the

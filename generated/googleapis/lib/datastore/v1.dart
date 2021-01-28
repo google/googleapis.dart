@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [DatastoreApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsIndexesResourceApi]
-///   - [ProjectsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsIndexesResource]
+///   - [ProjectsOperationsResource]
 library datastore.v1;
 
 import 'dart:async' as async;
@@ -53,7 +53,7 @@ class DatastoreApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DatastoreApi(http.Client client,
       {core.String rootUrl = 'https://datastore.googleapis.com/',
@@ -62,15 +62,14 @@ class DatastoreApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsIndexesResourceApi get indexes =>
-      ProjectsIndexesResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
+  ProjectsIndexesResource get indexes => ProjectsIndexesResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Allocates IDs for the given keys, which is useful for referencing an
   /// entity before it is inserted.
@@ -625,10 +624,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsIndexesResourceApi {
+class ProjectsIndexesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsIndexesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsIndexesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates the specified index. A newly created index's initial state is
   /// `CREATING`. On completion of the returned google.longrunning.Operation,
@@ -898,11 +897,10 @@ class ProjectsIndexesResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not

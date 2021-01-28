@@ -3600,7 +3600,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesResourceApi', () {
+  unittest.group('resource-EnterprisesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises;
@@ -3771,7 +3771,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesApplicationsResourceApi', () {
+  unittest.group('resource-EnterprisesApplicationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.applications;
@@ -3824,7 +3824,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesDevicesResourceApi', () {
+  unittest.group('resource-EnterprisesDevicesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices;
@@ -4098,7 +4098,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesDevicesOperationsResourceApi', () {
+  unittest.group('resource-EnterprisesDevicesOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
@@ -4304,7 +4304,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesEnrollmentTokensResourceApi', () {
+  unittest.group('resource-EnterprisesEnrollmentTokensResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.enrollmentTokens;
@@ -4407,7 +4407,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesPoliciesResourceApi', () {
+  unittest.group('resource-EnterprisesPoliciesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.policies;
@@ -4619,7 +4619,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesWebAppsResourceApi', () {
+  unittest.group('resource-EnterprisesWebAppsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webApps;
@@ -4884,7 +4884,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EnterprisesWebTokensResourceApi', () {
+  unittest.group('resource-EnterprisesWebTokensResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webTokens;
@@ -4939,7 +4939,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SignupUrlsResourceApi', () {
+  unittest.group('resource-SignupUrlsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).signupUrls;

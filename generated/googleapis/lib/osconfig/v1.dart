@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [OSConfigApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsPatchDeploymentsResourceApi]
-///   - [ProjectsPatchJobsResourceApi]
-///     - [ProjectsPatchJobsInstanceDetailsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsPatchDeploymentsResource]
+///   - [ProjectsPatchJobsResource]
+///     - [ProjectsPatchJobsInstanceDetailsResource]
 library osconfig.v1;
 
 import 'dart:async' as async;
@@ -51,7 +51,7 @@ class OSConfigApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   OSConfigApi(http.Client client,
       {core.String rootUrl = 'https://osconfig.googleapis.com/',
@@ -60,21 +60,21 @@ class OSConfigApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsPatchDeploymentsResourceApi get patchDeployments =>
-      ProjectsPatchDeploymentsResourceApi(_requester);
-  ProjectsPatchJobsResourceApi get patchJobs =>
-      ProjectsPatchJobsResourceApi(_requester);
+  ProjectsPatchDeploymentsResource get patchDeployments =>
+      ProjectsPatchDeploymentsResource(_requester);
+  ProjectsPatchJobsResource get patchJobs =>
+      ProjectsPatchJobsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsPatchDeploymentsResourceApi {
+class ProjectsPatchDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsPatchDeploymentsResourceApi(commons.ApiRequester client)
+  ProjectsPatchDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create an OS Config patch deployment.
@@ -324,14 +324,13 @@ class ProjectsPatchDeploymentsResourceApi {
   }
 }
 
-class ProjectsPatchJobsResourceApi {
+class ProjectsPatchJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsPatchJobsInstanceDetailsResourceApi get instanceDetails =>
-      ProjectsPatchJobsInstanceDetailsResourceApi(_requester);
+  ProjectsPatchJobsInstanceDetailsResource get instanceDetails =>
+      ProjectsPatchJobsInstanceDetailsResource(_requester);
 
-  ProjectsPatchJobsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsPatchJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancel a patch job. The patch job must be active. Canceled patch jobs
   /// cannot be restarted.
@@ -580,10 +579,10 @@ class ProjectsPatchJobsResourceApi {
   }
 }
 
-class ProjectsPatchJobsInstanceDetailsResourceApi {
+class ProjectsPatchJobsInstanceDetailsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsPatchJobsInstanceDetailsResourceApi(commons.ApiRequester client)
+  ProjectsPatchJobsInstanceDetailsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get a list of instance details for a given patch job.

@@ -858,7 +858,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CseResourceApi', () {
+  unittest.group('resource-CseResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CustomSearchApi(mock).cse;
@@ -1019,7 +1019,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CseSiterestrictResourceApi', () {
+  unittest.group('resource-CseSiterestrictResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CustomSearchApi(mock).cse.siterestrict;

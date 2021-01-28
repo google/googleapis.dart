@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [NetworkManagementApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsGlobalResourceApi]
-///       - [ProjectsLocationsGlobalConnectivityTestsResourceApi]
-///       - [ProjectsLocationsGlobalOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsGlobalResource]
+///       - [ProjectsLocationsGlobalConnectivityTestsResource]
+///       - [ProjectsLocationsGlobalOperationsResource]
 library networkmanagement.v1;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class NetworkManagementApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   NetworkManagementApi(http.Client client,
       {core.String rootUrl = 'https://networkmanagement.googleapis.com/',
@@ -61,23 +61,22 @@ class NetworkManagementApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalResourceApi get global =>
-      ProjectsLocationsGlobalResourceApi(_requester);
+  ProjectsLocationsGlobalResource get global =>
+      ProjectsLocationsGlobalResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -202,23 +201,22 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsGlobalResourceApi {
+class ProjectsLocationsGlobalResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalConnectivityTestsResourceApi get connectivityTests =>
-      ProjectsLocationsGlobalConnectivityTestsResourceApi(_requester);
-  ProjectsLocationsGlobalOperationsResourceApi get operations =>
-      ProjectsLocationsGlobalOperationsResourceApi(_requester);
+  ProjectsLocationsGlobalConnectivityTestsResource get connectivityTests =>
+      ProjectsLocationsGlobalConnectivityTestsResource(_requester);
+  ProjectsLocationsGlobalOperationsResource get operations =>
+      ProjectsLocationsGlobalOperationsResource(_requester);
 
-  ProjectsLocationsGlobalResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGlobalResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsGlobalConnectivityTestsResourceApi {
+class ProjectsLocationsGlobalConnectivityTestsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalConnectivityTestsResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsGlobalConnectivityTestsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new Connectivity Test. After you create a test, the reachability
@@ -842,10 +840,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
   }
 }
 
-class ProjectsLocationsGlobalOperationsResourceApi {
+class ProjectsLocationsGlobalOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGlobalOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server

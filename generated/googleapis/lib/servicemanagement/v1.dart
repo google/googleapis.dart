@@ -25,11 +25,11 @@
 ///
 /// Create an instance of [ServiceManagementApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ServicesResourceApi]
-///   - [ServicesConfigsResourceApi]
-///   - [ServicesConsumersResourceApi]
-///   - [ServicesRolloutsResourceApi]
+/// - [OperationsResource]
+/// - [ServicesResource]
+///   - [ServicesConfigsResource]
+///   - [ServicesConsumersResource]
+///   - [ServicesRolloutsResource]
 library servicemanagement.v1;
 
 import 'dart:async' as async;
@@ -66,8 +66,8 @@ class ServiceManagementApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ServicesResource get services => ServicesResource(_requester);
 
   ServiceManagementApi(http_1.Client client,
       {core.String rootUrl = 'https://servicemanagement.googleapis.com/',
@@ -76,10 +76,10 @@ class ServiceManagementApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -217,17 +217,15 @@ class OperationsResourceApi {
   }
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesConfigsResourceApi get configs =>
-      ServicesConfigsResourceApi(_requester);
-  ServicesConsumersResourceApi get consumers =>
-      ServicesConsumersResourceApi(_requester);
-  ServicesRolloutsResourceApi get rollouts =>
-      ServicesRolloutsResourceApi(_requester);
+  ServicesConfigsResource get configs => ServicesConfigsResource(_requester);
+  ServicesConsumersResource get consumers =>
+      ServicesConsumersResource(_requester);
+  ServicesRolloutsResource get rollouts => ServicesRolloutsResource(_requester);
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new managed service. A managed service is immutable, and is
   /// subject to mandatory 30-day data retention. You cannot move a service or
@@ -915,10 +913,10 @@ class ServicesResourceApi {
   }
 }
 
-class ServicesConfigsResourceApi {
+class ServicesConfigsResource {
   final commons.ApiRequester _requester;
 
-  ServicesConfigsResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesConfigsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new service configuration (version) for a managed service. This
   /// method only stores the service configuration. To roll out the service
@@ -1197,11 +1195,10 @@ class ServicesConfigsResourceApi {
   }
 }
 
-class ServicesConsumersResourceApi {
+class ServicesConsumersResource {
   final commons.ApiRequester _requester;
 
-  ServicesConsumersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ServicesConsumersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the access control policy for a resource. Returns an empty policy if
   /// the resource exists and does not have a policy set.
@@ -1395,11 +1392,10 @@ class ServicesConsumersResourceApi {
   }
 }
 
-class ServicesRolloutsResourceApi {
+class ServicesRolloutsResource {
   final commons.ApiRequester _requester;
 
-  ServicesRolloutsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ServicesRolloutsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new service configuration rollout. Based on rollout, the Google
   /// Service Management will roll out the service configurations to different

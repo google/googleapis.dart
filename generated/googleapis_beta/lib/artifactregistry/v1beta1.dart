@@ -24,14 +24,14 @@
 ///
 /// Create an instance of [ArtifactRegistryApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsRepositoriesResourceApi]
-///       - [ProjectsLocationsRepositoriesFilesResourceApi]
-///       - [ProjectsLocationsRepositoriesPackagesResourceApi]
-///         - [ProjectsLocationsRepositoriesPackagesTagsResourceApi]
-///         - [ProjectsLocationsRepositoriesPackagesVersionsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRepositoriesResource]
+///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesPackagesResource]
+///         - [ProjectsLocationsRepositoriesPackagesTagsResource]
+///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
 library artifactregistry.v1beta1;
 
 import 'dart:async' as async;
@@ -59,7 +59,7 @@ class ArtifactRegistryApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ArtifactRegistryApi(http.Client client,
       {core.String rootUrl = 'https://artifactregistry.googleapis.com/',
@@ -68,25 +68,24 @@ class ArtifactRegistryApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsRepositoriesResourceApi get repositories =>
-      ProjectsLocationsRepositoriesResourceApi(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRepositoriesResource get repositories =>
+      ProjectsLocationsRepositoriesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -212,10 +211,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -353,15 +352,15 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsRepositoriesResourceApi {
+class ProjectsLocationsRepositoriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRepositoriesFilesResourceApi get files =>
-      ProjectsLocationsRepositoriesFilesResourceApi(_requester);
-  ProjectsLocationsRepositoriesPackagesResourceApi get packages =>
-      ProjectsLocationsRepositoriesPackagesResourceApi(_requester);
+  ProjectsLocationsRepositoriesFilesResource get files =>
+      ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesPackagesResource get packages =>
+      ProjectsLocationsRepositoriesPackagesResource(_requester);
 
-  ProjectsLocationsRepositoriesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRepositoriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a repository. The returned Operation will finish once the
@@ -870,10 +869,10 @@ class ProjectsLocationsRepositoriesResourceApi {
   }
 }
 
-class ProjectsLocationsRepositoriesFilesResourceApi {
+class ProjectsLocationsRepositoriesFilesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRepositoriesFilesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRepositoriesFilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a file.
@@ -1009,15 +1008,15 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
   }
 }
 
-class ProjectsLocationsRepositoriesPackagesResourceApi {
+class ProjectsLocationsRepositoriesPackagesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRepositoriesPackagesTagsResourceApi get tags =>
-      ProjectsLocationsRepositoriesPackagesTagsResourceApi(_requester);
-  ProjectsLocationsRepositoriesPackagesVersionsResourceApi get versions =>
-      ProjectsLocationsRepositoriesPackagesVersionsResourceApi(_requester);
+  ProjectsLocationsRepositoriesPackagesTagsResource get tags =>
+      ProjectsLocationsRepositoriesPackagesTagsResource(_requester);
+  ProjectsLocationsRepositoriesPackagesVersionsResource get versions =>
+      ProjectsLocationsRepositoriesPackagesVersionsResource(_requester);
 
-  ProjectsLocationsRepositoriesPackagesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRepositoriesPackagesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a package and all of its versions and tags. The returned operation
@@ -1194,11 +1193,10 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
   }
 }
 
-class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
+class ProjectsLocationsRepositoriesPackagesTagsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRepositoriesPackagesTagsResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsRepositoriesPackagesTagsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a tag.
@@ -1515,10 +1513,10 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
   }
 }
 
-class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
+class ProjectsLocationsRepositoriesPackagesVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRepositoriesPackagesVersionsResourceApi(
+  ProjectsLocationsRepositoriesPackagesVersionsResource(
       commons.ApiRequester client)
       : _requester = client;
 

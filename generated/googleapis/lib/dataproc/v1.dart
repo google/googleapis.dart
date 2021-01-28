@@ -23,16 +23,16 @@
 ///
 /// Create an instance of [DataprocApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsAutoscalingPoliciesResourceApi]
-///     - [ProjectsLocationsWorkflowTemplatesResourceApi]
-///   - [ProjectsRegionsResourceApi]
-///     - [ProjectsRegionsAutoscalingPoliciesResourceApi]
-///     - [ProjectsRegionsClustersResourceApi]
-///     - [ProjectsRegionsJobsResourceApi]
-///     - [ProjectsRegionsOperationsResourceApi]
-///     - [ProjectsRegionsWorkflowTemplatesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAutoscalingPoliciesResource]
+///     - [ProjectsLocationsWorkflowTemplatesResource]
+///   - [ProjectsRegionsResource]
+///     - [ProjectsRegionsAutoscalingPoliciesResource]
+///     - [ProjectsRegionsClustersResource]
+///     - [ProjectsRegionsJobsResource]
+///     - [ProjectsRegionsOperationsResource]
+///     - [ProjectsRegionsWorkflowTemplatesResource]
 library dataproc.v1;
 
 import 'dart:async' as async;
@@ -55,7 +55,7 @@ class DataprocApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DataprocApi(http.Client client,
       {core.String rootUrl = 'https://dataproc.googleapis.com/',
@@ -64,33 +64,31 @@ class DataprocApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsRegionsResourceApi get regions =>
-      ProjectsRegionsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsRegionsResource get regions => ProjectsRegionsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAutoscalingPoliciesResourceApi get autoscalingPolicies =>
-      ProjectsLocationsAutoscalingPoliciesResourceApi(_requester);
-  ProjectsLocationsWorkflowTemplatesResourceApi get workflowTemplates =>
-      ProjectsLocationsWorkflowTemplatesResourceApi(_requester);
+  ProjectsLocationsAutoscalingPoliciesResource get autoscalingPolicies =>
+      ProjectsLocationsAutoscalingPoliciesResource(_requester);
+  ProjectsLocationsWorkflowTemplatesResource get workflowTemplates =>
+      ProjectsLocationsWorkflowTemplatesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsAutoscalingPoliciesResourceApi {
+class ProjectsLocationsAutoscalingPoliciesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAutoscalingPoliciesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAutoscalingPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates new autoscaling policy.
@@ -615,10 +613,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   }
 }
 
-class ProjectsLocationsWorkflowTemplatesResourceApi {
+class ProjectsLocationsWorkflowTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsWorkflowTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsWorkflowTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates new workflow template.
@@ -1323,27 +1321,27 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   }
 }
 
-class ProjectsRegionsResourceApi {
+class ProjectsRegionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRegionsAutoscalingPoliciesResourceApi get autoscalingPolicies =>
-      ProjectsRegionsAutoscalingPoliciesResourceApi(_requester);
-  ProjectsRegionsClustersResourceApi get clusters =>
-      ProjectsRegionsClustersResourceApi(_requester);
-  ProjectsRegionsJobsResourceApi get jobs =>
-      ProjectsRegionsJobsResourceApi(_requester);
-  ProjectsRegionsOperationsResourceApi get operations =>
-      ProjectsRegionsOperationsResourceApi(_requester);
-  ProjectsRegionsWorkflowTemplatesResourceApi get workflowTemplates =>
-      ProjectsRegionsWorkflowTemplatesResourceApi(_requester);
+  ProjectsRegionsAutoscalingPoliciesResource get autoscalingPolicies =>
+      ProjectsRegionsAutoscalingPoliciesResource(_requester);
+  ProjectsRegionsClustersResource get clusters =>
+      ProjectsRegionsClustersResource(_requester);
+  ProjectsRegionsJobsResource get jobs =>
+      ProjectsRegionsJobsResource(_requester);
+  ProjectsRegionsOperationsResource get operations =>
+      ProjectsRegionsOperationsResource(_requester);
+  ProjectsRegionsWorkflowTemplatesResource get workflowTemplates =>
+      ProjectsRegionsWorkflowTemplatesResource(_requester);
 
-  ProjectsRegionsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsRegionsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsRegionsAutoscalingPoliciesResourceApi {
+class ProjectsRegionsAutoscalingPoliciesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRegionsAutoscalingPoliciesResourceApi(commons.ApiRequester client)
+  ProjectsRegionsAutoscalingPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates new autoscaling policy.
@@ -1868,10 +1866,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   }
 }
 
-class ProjectsRegionsClustersResourceApi {
+class ProjectsRegionsClustersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRegionsClustersResourceApi(commons.ApiRequester client)
+  ProjectsRegionsClustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a cluster in a project. The returned Operation.metadata will be
@@ -2601,10 +2599,10 @@ class ProjectsRegionsClustersResourceApi {
   }
 }
 
-class ProjectsRegionsJobsResourceApi {
+class ProjectsRegionsJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRegionsJobsResourceApi(commons.ApiRequester client)
+  ProjectsRegionsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts a job cancellation request. To access the job resource after
@@ -3342,10 +3340,10 @@ class ProjectsRegionsJobsResourceApi {
   }
 }
 
-class ProjectsRegionsOperationsResourceApi {
+class ProjectsRegionsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRegionsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsRegionsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -3784,10 +3782,10 @@ class ProjectsRegionsOperationsResourceApi {
   }
 }
 
-class ProjectsRegionsWorkflowTemplatesResourceApi {
+class ProjectsRegionsWorkflowTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsRegionsWorkflowTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsRegionsWorkflowTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates new workflow template.

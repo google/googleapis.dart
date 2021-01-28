@@ -707,7 +707,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudShellApi(mock).operations;
@@ -918,7 +918,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersEnvironmentsResourceApi', () {
+  unittest.group('resource-UsersEnvironmentsResource', () {
     unittest.test('method--addPublicKey', () {
       var mock = HttpServerMock();
       var res = api.CloudShellApi(mock).users.environments;

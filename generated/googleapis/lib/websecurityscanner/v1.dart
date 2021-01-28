@@ -24,12 +24,12 @@
 ///
 /// Create an instance of [WebSecurityScannerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsScanConfigsResourceApi]
-///     - [ProjectsScanConfigsScanRunsResourceApi]
-///       - [ProjectsScanConfigsScanRunsCrawledUrlsResourceApi]
-///       - [ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi]
-///       - [ProjectsScanConfigsScanRunsFindingsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsScanConfigsResource]
+///     - [ProjectsScanConfigsScanRunsResource]
+///       - [ProjectsScanConfigsScanRunsCrawledUrlsResource]
+///       - [ProjectsScanConfigsScanRunsFindingTypeStatsResource]
+///       - [ProjectsScanConfigsScanRunsFindingsResource]
 library websecurityscanner.v1;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class WebSecurityScannerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   WebSecurityScannerApi(http.Client client,
       {core.String rootUrl = 'https://websecurityscanner.googleapis.com/',
@@ -61,22 +61,22 @@ class WebSecurityScannerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsResourceApi get scanConfigs =>
-      ProjectsScanConfigsResourceApi(_requester);
+  ProjectsScanConfigsResource get scanConfigs =>
+      ProjectsScanConfigsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsScanConfigsResourceApi {
+class ProjectsScanConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsScanRunsResourceApi get scanRuns =>
-      ProjectsScanConfigsScanRunsResourceApi(_requester);
+  ProjectsScanConfigsScanRunsResource get scanRuns =>
+      ProjectsScanConfigsScanRunsResource(_requester);
 
-  ProjectsScanConfigsResourceApi(commons.ApiRequester client)
+  ProjectsScanConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new ScanConfig.
@@ -447,17 +447,17 @@ class ProjectsScanConfigsResourceApi {
   }
 }
 
-class ProjectsScanConfigsScanRunsResourceApi {
+class ProjectsScanConfigsScanRunsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsScanRunsCrawledUrlsResourceApi get crawledUrls =>
-      ProjectsScanConfigsScanRunsCrawledUrlsResourceApi(_requester);
-  ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi get findingTypeStats =>
-      ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi(_requester);
-  ProjectsScanConfigsScanRunsFindingsResourceApi get findings =>
-      ProjectsScanConfigsScanRunsFindingsResourceApi(_requester);
+  ProjectsScanConfigsScanRunsCrawledUrlsResource get crawledUrls =>
+      ProjectsScanConfigsScanRunsCrawledUrlsResource(_requester);
+  ProjectsScanConfigsScanRunsFindingTypeStatsResource get findingTypeStats =>
+      ProjectsScanConfigsScanRunsFindingTypeStatsResource(_requester);
+  ProjectsScanConfigsScanRunsFindingsResource get findings =>
+      ProjectsScanConfigsScanRunsFindingsResource(_requester);
 
-  ProjectsScanConfigsScanRunsResourceApi(commons.ApiRequester client)
+  ProjectsScanConfigsScanRunsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a ScanRun.
@@ -647,10 +647,10 @@ class ProjectsScanConfigsScanRunsResourceApi {
   }
 }
 
-class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
+class ProjectsScanConfigsScanRunsCrawledUrlsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsScanRunsCrawledUrlsResourceApi(commons.ApiRequester client)
+  ProjectsScanConfigsScanRunsCrawledUrlsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List CrawledUrls under a given ScanRun.
@@ -727,10 +727,10 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   }
 }
 
-class ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi {
+class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi(
+  ProjectsScanConfigsScanRunsFindingTypeStatsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -792,10 +792,10 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi {
   }
 }
 
-class ProjectsScanConfigsScanRunsFindingsResourceApi {
+class ProjectsScanConfigsScanRunsFindingsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsScanConfigsScanRunsFindingsResourceApi(commons.ApiRequester client)
+  ProjectsScanConfigsScanRunsFindingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a Finding.

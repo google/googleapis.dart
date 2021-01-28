@@ -27,9 +27,9 @@
 ///
 /// Create an instance of [CloudTraceApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsTracesResourceApi]
-///     - [ProjectsTracesSpansResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsTracesResource]
+///     - [ProjectsTracesSpansResource]
 library cloudtrace.v2;
 
 import 'dart:async' as async;
@@ -60,7 +60,7 @@ class CloudTraceApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudTraceApi(http.Client client,
       {core.String rootUrl = 'https://cloudtrace.googleapis.com/',
@@ -69,21 +69,21 @@ class CloudTraceApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTracesResourceApi get traces => ProjectsTracesResourceApi(_requester);
+  ProjectsTracesResource get traces => ProjectsTracesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsTracesResourceApi {
+class ProjectsTracesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTracesSpansResourceApi get spans =>
-      ProjectsTracesSpansResourceApi(_requester);
+  ProjectsTracesSpansResource get spans =>
+      ProjectsTracesSpansResource(_requester);
 
-  ProjectsTracesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsTracesResource(commons.ApiRequester client) : _requester = client;
 
   /// Sends new spans to new or existing traces. You cannot update existing
   /// spans.
@@ -147,10 +147,10 @@ class ProjectsTracesResourceApi {
   }
 }
 
-class ProjectsTracesSpansResourceApi {
+class ProjectsTracesSpansResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTracesSpansResourceApi(commons.ApiRequester client)
+  ProjectsTracesSpansResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new span.

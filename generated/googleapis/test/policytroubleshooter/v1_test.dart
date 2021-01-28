@@ -551,7 +551,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-IamResourceApi', () {
+  unittest.group('resource-IamResource', () {
     unittest.test('method--troubleshoot', () {
       var mock = HttpServerMock();
       var res = api.PolicyTroubleshooterApi(mock).iam;

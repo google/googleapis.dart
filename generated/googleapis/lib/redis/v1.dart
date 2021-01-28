@@ -23,10 +23,10 @@
 ///
 /// Create an instance of [CloudRedisApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsInstancesResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsInstancesResource]
+///     - [ProjectsLocationsOperationsResource]
 library redis.v1;
 
 import 'dart:async' as async;
@@ -49,7 +49,7 @@ class CloudRedisApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudRedisApi(http.Client client,
       {core.String rootUrl = 'https://redis.googleapis.com/',
@@ -58,25 +58,24 @@ class CloudRedisApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInstancesResourceApi get instances =>
-      ProjectsLocationsInstancesResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsInstancesResource get instances =>
+      ProjectsLocationsInstancesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -201,10 +200,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsInstancesResourceApi {
+class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInstancesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Redis instance based on the specified tier and memory size. By
@@ -796,10 +795,10 @@ class ProjectsLocationsInstancesResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server

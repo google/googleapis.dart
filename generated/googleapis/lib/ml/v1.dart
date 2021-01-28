@@ -24,15 +24,15 @@
 /// Create an instance of [CloudMachineLearningEngineApi] to access these
 /// resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsJobsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsStudiesResourceApi]
-///       - [ProjectsLocationsStudiesTrialsResourceApi]
-///   - [ProjectsModelsResourceApi]
-///     - [ProjectsModelsVersionsResourceApi]
-///   - [ProjectsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsJobsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsStudiesResource]
+///       - [ProjectsLocationsStudiesTrialsResource]
+///   - [ProjectsModelsResource]
+///     - [ProjectsModelsVersionsResource]
+///   - [ProjectsOperationsResource]
 library ml.v1;
 
 import 'dart:async' as async;
@@ -59,7 +59,7 @@ class CloudMachineLearningEngineApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudMachineLearningEngineApi(http.Client client,
       {core.String rootUrl = 'https://ml.googleapis.com/',
@@ -68,17 +68,17 @@ class CloudMachineLearningEngineApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsResourceApi get jobs => ProjectsJobsResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsModelsResourceApi get models => ProjectsModelsResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
+  ProjectsJobsResource get jobs => ProjectsJobsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsModelsResource get models => ProjectsModelsResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Performs explanation on the data in the request. {% dynamic include
   /// "/ai-platform/includes/___explain-request" %}
@@ -259,10 +259,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsJobsResourceApi {
+class ProjectsJobsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsJobsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancels a running job.
   ///
@@ -790,16 +790,15 @@ class ProjectsJobsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsStudiesResourceApi get studies =>
-      ProjectsLocationsStudiesResourceApi(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsStudiesResource get studies =>
+      ProjectsLocationsStudiesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get the complete list of CMLE capabilities in a location, along with their
   /// location-specific properties.
@@ -927,10 +926,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1050,13 +1049,13 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsStudiesResourceApi {
+class ProjectsLocationsStudiesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsStudiesTrialsResourceApi get trials =>
-      ProjectsLocationsStudiesTrialsResourceApi(_requester);
+  ProjectsLocationsStudiesTrialsResource get trials =>
+      ProjectsLocationsStudiesTrialsResource(_requester);
 
-  ProjectsLocationsStudiesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsStudiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a study.
@@ -1285,10 +1284,10 @@ class ProjectsLocationsStudiesResourceApi {
   }
 }
 
-class ProjectsLocationsStudiesTrialsResourceApi {
+class ProjectsLocationsStudiesTrialsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsStudiesTrialsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsStudiesTrialsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds a measurement of the objective metrics to a trial. This measurement
@@ -1814,13 +1813,13 @@ class ProjectsLocationsStudiesTrialsResourceApi {
   }
 }
 
-class ProjectsModelsResourceApi {
+class ProjectsModelsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsModelsVersionsResourceApi get versions =>
-      ProjectsModelsVersionsResourceApi(_requester);
+  ProjectsModelsVersionsResource get versions =>
+      ProjectsModelsVersionsResource(_requester);
 
-  ProjectsModelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsModelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a model which will later contain one or more versions. You must
   /// add at least one version before you can request predictions from the
@@ -2341,10 +2340,10 @@ class ProjectsModelsResourceApi {
   }
 }
 
-class ProjectsModelsVersionsResourceApi {
+class ProjectsModelsVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsModelsVersionsResourceApi(commons.ApiRequester client)
+  ProjectsModelsVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new version of a model from a trained TensorFlow model. If the
@@ -2742,11 +2741,10 @@ class ProjectsModelsVersionsResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not

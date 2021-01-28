@@ -25,10 +25,10 @@
 ///
 /// Create an instance of [ClouderrorreportingApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsEventsResourceApi]
-///   - [ProjectsGroupStatsResourceApi]
-///   - [ProjectsGroupsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsEventsResource]
+///   - [ProjectsGroupStatsResource]
+///   - [ProjectsGroupsResource]
 library clouderrorreporting.v1beta1;
 
 import 'dart:async' as async;
@@ -53,7 +53,7 @@ class ClouderrorreportingApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ClouderrorreportingApi(http.Client client,
       {core.String rootUrl = 'https://clouderrorreporting.googleapis.com/',
@@ -62,15 +62,15 @@ class ClouderrorreportingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsEventsResourceApi get events => ProjectsEventsResourceApi(_requester);
-  ProjectsGroupStatsResourceApi get groupStats =>
-      ProjectsGroupStatsResourceApi(_requester);
-  ProjectsGroupsResourceApi get groups => ProjectsGroupsResourceApi(_requester);
+  ProjectsEventsResource get events => ProjectsEventsResource(_requester);
+  ProjectsGroupStatsResource get groupStats =>
+      ProjectsGroupStatsResource(_requester);
+  ProjectsGroupsResource get groups => ProjectsGroupsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes all error events of a given project.
   ///
@@ -131,10 +131,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsEventsResourceApi {
+class ProjectsEventsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsEventsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsEventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the specified events.
   ///
@@ -323,11 +323,10 @@ class ProjectsEventsResourceApi {
   }
 }
 
-class ProjectsGroupStatsResourceApi {
+class ProjectsGroupStatsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsGroupStatsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsGroupStatsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the specified groups.
   ///
@@ -499,10 +498,10 @@ class ProjectsGroupStatsResourceApi {
   }
 }
 
-class ProjectsGroupsResourceApi {
+class ProjectsGroupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsGroupsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get the specified group.
   ///

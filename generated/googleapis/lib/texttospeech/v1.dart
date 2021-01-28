@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [TexttospeechApi] to access these resources:
 ///
-/// - [TextResourceApi]
-/// - [VoicesResourceApi]
+/// - [TextResource]
+/// - [VoicesResource]
 library texttospeech.v1;
 
 import 'dart:async' as async;
@@ -49,8 +49,8 @@ class TexttospeechApi {
 
   final commons.ApiRequester _requester;
 
-  TextResourceApi get text => TextResourceApi(_requester);
-  VoicesResourceApi get voices => VoicesResourceApi(_requester);
+  TextResource get text => TextResource(_requester);
+  VoicesResource get voices => VoicesResource(_requester);
 
   TexttospeechApi(http.Client client,
       {core.String rootUrl = 'https://texttospeech.googleapis.com/',
@@ -59,10 +59,10 @@ class TexttospeechApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class TextResourceApi {
+class TextResource {
   final commons.ApiRequester _requester;
 
-  TextResourceApi(commons.ApiRequester client) : _requester = client;
+  TextResource(commons.ApiRequester client) : _requester = client;
 
   /// Synthesizes speech synchronously: receive results after all text input has
   /// been processed.
@@ -117,10 +117,10 @@ class TextResourceApi {
   }
 }
 
-class VoicesResourceApi {
+class VoicesResource {
   final commons.ApiRequester _requester;
 
-  VoicesResourceApi(commons.ApiRequester client) : _requester = client;
+  VoicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a list of Voice supported for synthesis.
   ///

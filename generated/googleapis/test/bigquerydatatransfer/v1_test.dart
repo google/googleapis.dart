@@ -1138,7 +1138,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDataSourcesResourceApi', () {
+  unittest.group('resource-ProjectsDataSourcesResource', () {
     unittest.test('method--checkValidCreds', () {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.dataSources;
@@ -1298,7 +1298,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.locations;
@@ -1408,7 +1408,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDataSourcesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDataSourcesResource', () {
     unittest.test('method--checkValidCreds', () {
       var mock = HttpServerMock();
       var res =
@@ -1571,7 +1571,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTransferConfigsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsTransferConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -1984,8 +1984,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsTransferConfigsRunsResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsTransferConfigsRunsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
@@ -2160,8 +2159,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi',
-      () {
+      'resource-ProjectsLocationsTransferConfigsRunsTransferLogsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
@@ -2229,7 +2227,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTransferConfigsResourceApi', () {
+  unittest.group('resource-ProjectsTransferConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
@@ -2635,7 +2633,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTransferConfigsRunsResourceApi', () {
+  unittest.group('resource-ProjectsTransferConfigsRunsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
@@ -2797,7 +2795,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTransferConfigsRunsTransferLogsResourceApi',
+  unittest.group('resource-ProjectsTransferConfigsRunsTransferLogsResource',
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();

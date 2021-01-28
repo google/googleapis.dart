@@ -171,7 +171,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserinfoResourceApi', () {
+  unittest.group('resource-UserinfoResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.Oauth2Api(mock).userinfo;
@@ -217,7 +217,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserinfoV2MeResourceApi', () {
+  unittest.group('resource-UserinfoV2MeResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.Oauth2Api(mock).userinfo.v2.me;

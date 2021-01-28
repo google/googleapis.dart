@@ -24,9 +24,9 @@
 /// Create an instance of [BigQueryConnectionServiceApi] to access these
 /// resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsConnectionsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsConnectionsResource]
 library bigqueryconnection.v1beta1;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class BigQueryConnectionServiceApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   BigQueryConnectionServiceApi(http.Client client,
       {core.String rootUrl = 'https://bigqueryconnection.googleapis.com/',
@@ -61,29 +61,28 @@ class BigQueryConnectionServiceApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsConnectionsResourceApi get connections =>
-      ProjectsLocationsConnectionsResourceApi(_requester);
+  ProjectsLocationsConnectionsResource get connections =>
+      ProjectsLocationsConnectionsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsConnectionsResourceApi {
+class ProjectsLocationsConnectionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsConnectionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsConnectionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new connection.

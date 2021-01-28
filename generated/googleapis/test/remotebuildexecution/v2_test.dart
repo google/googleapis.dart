@@ -4121,7 +4121,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ActionResultsResourceApi', () {
+  unittest.group('resource-ActionResultsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).actionResults;
@@ -4252,7 +4252,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ActionsResourceApi', () {
+  unittest.group('resource-ActionsResource', () {
     unittest.test('method--execute', () {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).actions;
@@ -4309,7 +4309,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BlobsResourceApi', () {
+  unittest.group('resource-BlobsResource', () {
     unittest.test('method--batchRead', () {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).blobs;
@@ -4544,7 +4544,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--waitExecution', () {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).operations;
@@ -4601,7 +4601,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V2ResourceApi', () {
+  unittest.group('resource-V2Resource', () {
     unittest.test('method--getCapabilities', () {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).v2;

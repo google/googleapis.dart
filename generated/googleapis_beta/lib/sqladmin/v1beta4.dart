@@ -23,16 +23,16 @@
 ///
 /// Create an instance of [SQLAdminApi] to access these resources:
 ///
-/// - [BackupRunsResourceApi]
-/// - [DatabasesResourceApi]
-/// - [FlagsResourceApi]
-/// - [InstancesResourceApi]
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsInstancesResourceApi]
-/// - [SslCertsResourceApi]
-/// - [TiersResourceApi]
-/// - [UsersResourceApi]
+/// - [BackupRunsResource]
+/// - [DatabasesResource]
+/// - [FlagsResource]
+/// - [InstancesResource]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsInstancesResource]
+/// - [SslCertsResource]
+/// - [TiersResource]
+/// - [UsersResource]
 library sqladmin.v1beta4;
 
 import 'dart:async' as async;
@@ -59,15 +59,15 @@ class SQLAdminApi {
 
   final commons.ApiRequester _requester;
 
-  BackupRunsResourceApi get backupRuns => BackupRunsResourceApi(_requester);
-  DatabasesResourceApi get databases => DatabasesResourceApi(_requester);
-  FlagsResourceApi get flags => FlagsResourceApi(_requester);
-  InstancesResourceApi get instances => InstancesResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  SslCertsResourceApi get sslCerts => SslCertsResourceApi(_requester);
-  TiersResourceApi get tiers => TiersResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  BackupRunsResource get backupRuns => BackupRunsResource(_requester);
+  DatabasesResource get databases => DatabasesResource(_requester);
+  FlagsResource get flags => FlagsResource(_requester);
+  InstancesResource get instances => InstancesResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  SslCertsResource get sslCerts => SslCertsResource(_requester);
+  TiersResource get tiers => TiersResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   SQLAdminApi(http.Client client,
       {core.String rootUrl = 'https://sqladmin.googleapis.com/',
@@ -76,10 +76,10 @@ class SQLAdminApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class BackupRunsResourceApi {
+class BackupRunsResource {
   final commons.ApiRequester _requester;
 
-  BackupRunsResourceApi(commons.ApiRequester client) : _requester = client;
+  BackupRunsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the backup taken by a backup run.
   ///
@@ -359,10 +359,10 @@ class BackupRunsResourceApi {
   }
 }
 
-class DatabasesResourceApi {
+class DatabasesResource {
   final commons.ApiRequester _requester;
 
-  DatabasesResourceApi(commons.ApiRequester client) : _requester = client;
+  DatabasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a database from a Cloud SQL instance.
   ///
@@ -776,10 +776,10 @@ class DatabasesResourceApi {
   }
 }
 
-class FlagsResourceApi {
+class FlagsResource {
   final commons.ApiRequester _requester;
 
-  FlagsResourceApi(commons.ApiRequester client) : _requester = client;
+  FlagsResource(commons.ApiRequester client) : _requester = client;
 
   /// List all available database flags for Cloud SQL instances.
   ///
@@ -835,10 +835,10 @@ class FlagsResourceApi {
   }
 }
 
-class InstancesResourceApi {
+class InstancesResource {
   final commons.ApiRequester _requester;
 
-  InstancesResourceApi(commons.ApiRequester client) : _requester = client;
+  InstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Add a new trusted Certificate Authority (CA) version for the specified
   /// instance. Required to prepare for a certificate rotation. If a CA version
@@ -2201,10 +2201,10 @@ class InstancesResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves an instance operation that has been performed on an instance.
   ///
@@ -2339,20 +2339,19 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesResourceApi get instances =>
-      ProjectsInstancesResourceApi(_requester);
+  ProjectsInstancesResource get instances =>
+      ProjectsInstancesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsInstancesResourceApi {
+class ProjectsInstancesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsInstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Reschedules the maintenance on the given instance.
   ///
@@ -2575,10 +2574,10 @@ class ProjectsInstancesResourceApi {
   }
 }
 
-class SslCertsResourceApi {
+class SslCertsResource {
   final commons.ApiRequester _requester;
 
-  SslCertsResourceApi(commons.ApiRequester client) : _requester = client;
+  SslCertsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generates a short-lived X509 certificate containing the provided public
   /// key and signed by a private key specific to the target instance. Users may
@@ -2917,10 +2916,10 @@ class SslCertsResourceApi {
   }
 }
 
-class TiersResourceApi {
+class TiersResource {
   final commons.ApiRequester _requester;
 
-  TiersResourceApi(commons.ApiRequester client) : _requester = client;
+  TiersResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all available machine types (tiers) for Cloud SQL, for example,
   /// db-n1-standard-1. For related information, see Pricing.
@@ -2977,10 +2976,10 @@ class TiersResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a user from a Cloud SQL instance.
   ///

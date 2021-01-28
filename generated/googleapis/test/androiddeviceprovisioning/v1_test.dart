@@ -1623,7 +1623,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersResourceApi', () {
+  unittest.group('resource-CustomersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers;
@@ -1681,7 +1681,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersConfigurationsResourceApi', () {
+  unittest.group('resource-CustomersConfigurationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -1944,7 +1944,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersDevicesResourceApi', () {
+  unittest.group('resource-CustomersDevicesResource', () {
     unittest.test('method--applyConfiguration', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
@@ -2214,7 +2214,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersDpcsResourceApi', () {
+  unittest.group('resource-CustomersDpcsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.dpcs;
@@ -2264,7 +2264,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).operations;
@@ -2314,7 +2314,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersCustomersResourceApi', () {
+  unittest.group('resource-PartnersCustomersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.customers;
@@ -2426,7 +2426,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersDevicesResourceApi', () {
+  unittest.group('resource-PartnersDevicesResource', () {
     unittest.test('method--claim', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
@@ -2908,7 +2908,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersVendorsResourceApi', () {
+  unittest.group('resource-PartnersVendorsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.vendors;
@@ -2967,7 +2967,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PartnersVendorsCustomersResourceApi', () {
+  unittest.group('resource-PartnersVendorsCustomersResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res =

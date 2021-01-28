@@ -38,8 +38,8 @@ const userAgent = 'dart-api-client toyApi/0.1';
 class ToyApi {
   final commons.ApiRequester _requester;
 
-  ComputeResourceApi get compute => ComputeResourceApi(_requester);
-  StorageResourceApi get storage => StorageResourceApi(_requester);
+  ComputeResource get compute => ComputeResource(_requester);
+  StorageResource get storage => StorageResource(_requester);
 
   ToyApi(http.Client client,
       {core.String rootUrl = 'http://localhost:9090/',
@@ -978,10 +978,10 @@ class ToyApi {
   }
 }
 
-class ComputeResourceApi {
+class ComputeResource {
   final commons.ApiRequester _requester;
 
-  ComputeResourceApi(commons.ApiRequester client) : _requester = client;
+  ComputeResource(commons.ApiRequester client) : _requester = client;
 
   /// Request parameters:
   ///
@@ -1042,10 +1042,10 @@ class ComputeResourceApi {
   }
 }
 
-class StorageResourceApi {
+class StorageResource {
   final commons.ApiRequester _requester;
 
-  StorageResourceApi(commons.ApiRequester client) : _requester = client;
+  StorageResource(commons.ApiRequester client) : _requester = client;
 
   /// Request parameters:
   ///

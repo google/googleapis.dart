@@ -3928,7 +3928,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AspsResourceApi', () {
+  unittest.group('resource-AspsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).asps;
@@ -4104,7 +4104,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChannelsResourceApi', () {
+  unittest.group('resource-ChannelsResource', () {
     unittest.test('method--stop', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).channels;
@@ -4155,7 +4155,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChromeosdevicesResourceApi', () {
+  unittest.group('resource-ChromeosdevicesResource', () {
     unittest.test('method--action', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
@@ -4576,7 +4576,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersResourceApi', () {
+  unittest.group('resource-CustomersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).customers;
@@ -4738,7 +4738,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DomainAliasesResourceApi', () {
+  unittest.group('resource-DomainAliasesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domainAliases;
@@ -4979,7 +4979,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DomainsResourceApi', () {
+  unittest.group('resource-DomainsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domains;
@@ -5216,7 +5216,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupsResourceApi', () {
+  unittest.group('resource-GroupsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
@@ -5554,7 +5554,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupsAliasesResourceApi', () {
+  unittest.group('resource-GroupsAliasesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups.aliases;
@@ -5731,7 +5731,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MembersResourceApi', () {
+  unittest.group('resource-MembersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
@@ -6175,7 +6175,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MobiledevicesResourceApi', () {
+  unittest.group('resource-MobiledevicesResource', () {
     unittest.test('method--action', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).mobiledevices;
@@ -6449,7 +6449,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrgunitsResourceApi', () {
+  unittest.group('resource-OrgunitsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
@@ -6818,7 +6818,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PrivilegesResourceApi', () {
+  unittest.group('resource-PrivilegesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).privileges;
@@ -6876,7 +6876,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResourcesBuildingsResourceApi', () {
+  unittest.group('resource-ResourcesBuildingsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
@@ -7264,7 +7264,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResourcesCalendarsResourceApi', () {
+  unittest.group('resource-ResourcesCalendarsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
@@ -7649,7 +7649,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ResourcesFeaturesResourceApi', () {
+  unittest.group('resource-ResourcesFeaturesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
@@ -8096,7 +8096,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RoleAssignmentsResourceApi', () {
+  unittest.group('resource-RoleAssignmentsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roleAssignments;
@@ -8349,7 +8349,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RolesResourceApi', () {
+  unittest.group('resource-RolesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
@@ -8725,7 +8725,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SchemasResourceApi', () {
+  unittest.group('resource-SchemasResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
@@ -9094,7 +9094,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TokensResourceApi', () {
+  unittest.group('resource-TokensResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).tokens;
@@ -9270,7 +9270,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TwoStepVerificationResourceApi', () {
+  unittest.group('resource-TwoStepVerificationResource', () {
     unittest.test('method--turnOff', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).twoStepVerification;
@@ -9326,7 +9326,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
@@ -9958,7 +9958,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersAliasesResourceApi', () {
+  unittest.group('resource-UsersAliasesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.aliases;
@@ -10199,7 +10199,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersPhotosResourceApi', () {
+  unittest.group('resource-UsersPhotosResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.photos;
@@ -10433,7 +10433,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VerificationCodesResourceApi', () {
+  unittest.group('resource-VerificationCodesResource', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).verificationCodes;

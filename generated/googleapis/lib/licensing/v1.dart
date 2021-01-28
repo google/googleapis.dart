@@ -25,7 +25,7 @@
 ///
 /// Create an instance of [LicensingApi] to access these resources:
 ///
-/// - [LicenseAssignmentsResourceApi]
+/// - [LicenseAssignmentsResource]
 library licensing.v1;
 
 import 'dart:async' as async;
@@ -49,8 +49,8 @@ class LicensingApi {
 
   final commons.ApiRequester _requester;
 
-  LicenseAssignmentsResourceApi get licenseAssignments =>
-      LicenseAssignmentsResourceApi(_requester);
+  LicenseAssignmentsResource get licenseAssignments =>
+      LicenseAssignmentsResource(_requester);
 
   LicensingApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -59,11 +59,10 @@ class LicensingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class LicenseAssignmentsResourceApi {
+class LicenseAssignmentsResource {
   final commons.ApiRequester _requester;
 
-  LicenseAssignmentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  LicenseAssignmentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Revoke a license.
   ///

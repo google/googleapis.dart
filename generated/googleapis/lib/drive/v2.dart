@@ -24,20 +24,20 @@
 ///
 /// Create an instance of [DriveApi] to access these resources:
 ///
-/// - [AboutResourceApi]
-/// - [AppsResourceApi]
-/// - [ChangesResourceApi]
-/// - [ChannelsResourceApi]
-/// - [ChildrenResourceApi]
-/// - [CommentsResourceApi]
-/// - [DrivesResourceApi]
-/// - [FilesResourceApi]
-/// - [ParentsResourceApi]
-/// - [PermissionsResourceApi]
-/// - [PropertiesResourceApi]
-/// - [RepliesResourceApi]
-/// - [RevisionsResourceApi]
-/// - [TeamdrivesResourceApi]
+/// - [AboutResource]
+/// - [AppsResource]
+/// - [ChangesResource]
+/// - [ChannelsResource]
+/// - [ChildrenResource]
+/// - [CommentsResource]
+/// - [DrivesResource]
+/// - [FilesResource]
+/// - [ParentsResource]
+/// - [PermissionsResource]
+/// - [PropertiesResource]
+/// - [RepliesResource]
+/// - [RevisionsResource]
+/// - [TeamdrivesResource]
 library drive.v2;
 
 import 'dart:async' as async;
@@ -100,20 +100,20 @@ class DriveApi {
 
   final commons.ApiRequester _requester;
 
-  AboutResourceApi get about => AboutResourceApi(_requester);
-  AppsResourceApi get apps => AppsResourceApi(_requester);
-  ChangesResourceApi get changes => ChangesResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  ChildrenResourceApi get children => ChildrenResourceApi(_requester);
-  CommentsResourceApi get comments => CommentsResourceApi(_requester);
-  DrivesResourceApi get drives => DrivesResourceApi(_requester);
-  FilesResourceApi get files => FilesResourceApi(_requester);
-  ParentsResourceApi get parents => ParentsResourceApi(_requester);
-  PermissionsResourceApi get permissions => PermissionsResourceApi(_requester);
-  PropertiesResourceApi get properties => PropertiesResourceApi(_requester);
-  RepliesResourceApi get replies => RepliesResourceApi(_requester);
-  RevisionsResourceApi get revisions => RevisionsResourceApi(_requester);
-  TeamdrivesResourceApi get teamdrives => TeamdrivesResourceApi(_requester);
+  AboutResource get about => AboutResource(_requester);
+  AppsResource get apps => AppsResource(_requester);
+  ChangesResource get changes => ChangesResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  ChildrenResource get children => ChildrenResource(_requester);
+  CommentsResource get comments => CommentsResource(_requester);
+  DrivesResource get drives => DrivesResource(_requester);
+  FilesResource get files => FilesResource(_requester);
+  ParentsResource get parents => ParentsResource(_requester);
+  PermissionsResource get permissions => PermissionsResource(_requester);
+  PropertiesResource get properties => PropertiesResource(_requester);
+  RepliesResource get replies => RepliesResource(_requester);
+  RevisionsResource get revisions => RevisionsResource(_requester);
+  TeamdrivesResource get teamdrives => TeamdrivesResource(_requester);
 
   DriveApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -122,10 +122,10 @@ class DriveApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AboutResourceApi {
+class AboutResource {
   final commons.ApiRequester _requester;
 
-  AboutResourceApi(commons.ApiRequester client) : _requester = client;
+  AboutResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the information about the current user along with Drive API settings
   ///
@@ -194,10 +194,10 @@ class AboutResourceApi {
   }
 }
 
-class AppsResourceApi {
+class AppsResource {
   final commons.ApiRequester _requester;
 
-  AppsResourceApi(commons.ApiRequester client) : _requester = client;
+  AppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a specific app.
   ///
@@ -322,10 +322,10 @@ class AppsResourceApi {
   }
 }
 
-class ChangesResourceApi {
+class ChangesResource {
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi(commons.ApiRequester client) : _requester = client;
+  ChangesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deprecated - Use changes.getStartPageToken and changes.list to retrieve
   /// recent changes.
@@ -776,10 +776,10 @@ class ChangesResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Stop watching resources through this channel
   ///
@@ -832,10 +832,10 @@ class ChannelsResourceApi {
   }
 }
 
-class ChildrenResourceApi {
+class ChildrenResource {
   final commons.ApiRequester _requester;
 
-  ChildrenResourceApi(commons.ApiRequester client) : _requester = client;
+  ChildrenResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes a child from a folder.
   ///
@@ -1129,10 +1129,10 @@ class ChildrenResourceApi {
   }
 }
 
-class CommentsResourceApi {
+class CommentsResource {
   final commons.ApiRequester _requester;
 
-  CommentsResourceApi(commons.ApiRequester client) : _requester = client;
+  CommentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a comment.
   ///
@@ -1527,10 +1527,10 @@ class CommentsResourceApi {
   }
 }
 
-class DrivesResourceApi {
+class DrivesResource {
   final commons.ApiRequester _requester;
 
-  DrivesResourceApi(commons.ApiRequester client) : _requester = client;
+  DrivesResource(commons.ApiRequester client) : _requester = client;
 
   /// Permanently deletes a shared drive for which the user is an organizer. The
   /// shared drive cannot contain any untrashed items.
@@ -1938,10 +1938,10 @@ class DrivesResourceApi {
   }
 }
 
-class FilesResourceApi {
+class FilesResource {
   final commons.ApiRequester _requester;
 
-  FilesResourceApi(commons.ApiRequester client) : _requester = client;
+  FilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a copy of the specified file. Folders cannot be copied.
   ///
@@ -3524,10 +3524,10 @@ class FilesResourceApi {
   }
 }
 
-class ParentsResourceApi {
+class ParentsResource {
   final commons.ApiRequester _requester;
 
-  ParentsResourceApi(commons.ApiRequester client) : _requester = client;
+  ParentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes a parent from a file.
   ///
@@ -3791,10 +3791,10 @@ class ParentsResourceApi {
   }
 }
 
-class PermissionsResourceApi {
+class PermissionsResource {
   final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
+  PermissionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a permission from a file or shared drive.
   ///
@@ -4428,10 +4428,10 @@ class PermissionsResourceApi {
   }
 }
 
-class PropertiesResourceApi {
+class PropertiesResource {
   final commons.ApiRequester _requester;
 
-  PropertiesResourceApi(commons.ApiRequester client) : _requester = client;
+  PropertiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a property.
   ///
@@ -4815,10 +4815,10 @@ class PropertiesResourceApi {
   }
 }
 
-class RepliesResourceApi {
+class RepliesResource {
   final commons.ApiRequester _requester;
 
-  RepliesResourceApi(commons.ApiRequester client) : _requester = client;
+  RepliesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a reply.
   ///
@@ -5262,10 +5262,10 @@ class RepliesResourceApi {
   }
 }
 
-class RevisionsResourceApi {
+class RevisionsResource {
   final commons.ApiRequester _requester;
 
-  RevisionsResourceApi(commons.ApiRequester client) : _requester = client;
+  RevisionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Permanently deletes a file version. You can only delete revisions for
   /// files with binary content, like images or videos. Revisions for other
@@ -5585,10 +5585,10 @@ class RevisionsResourceApi {
   }
 }
 
-class TeamdrivesResourceApi {
+class TeamdrivesResource {
   final commons.ApiRequester _requester;
 
-  TeamdrivesResourceApi(commons.ApiRequester client) : _requester = client;
+  TeamdrivesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deprecated use drives.delete instead.
   ///

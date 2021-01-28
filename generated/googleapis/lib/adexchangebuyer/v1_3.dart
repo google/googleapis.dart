@@ -25,13 +25,13 @@
 ///
 /// Create an instance of [AdExchangeBuyerApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-/// - [BillingInfoResourceApi]
-/// - [BudgetResourceApi]
-/// - [CreativesResourceApi]
-/// - [DirectDealsResourceApi]
-/// - [PerformanceReportResourceApi]
-/// - [PretargetingConfigResourceApi]
+/// - [AccountsResource]
+/// - [BillingInfoResource]
+/// - [BudgetResource]
+/// - [CreativesResource]
+/// - [DirectDealsResource]
+/// - [PerformanceReportResource]
+/// - [PretargetingConfigResource]
 library adexchangebuyer.v1_3;
 
 import 'dart:async' as async;
@@ -55,15 +55,15 @@ class AdExchangeBuyerApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  BillingInfoResourceApi get billingInfo => BillingInfoResourceApi(_requester);
-  BudgetResourceApi get budget => BudgetResourceApi(_requester);
-  CreativesResourceApi get creatives => CreativesResourceApi(_requester);
-  DirectDealsResourceApi get directDeals => DirectDealsResourceApi(_requester);
-  PerformanceReportResourceApi get performanceReport =>
-      PerformanceReportResourceApi(_requester);
-  PretargetingConfigResourceApi get pretargetingConfig =>
-      PretargetingConfigResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  BillingInfoResource get billingInfo => BillingInfoResource(_requester);
+  BudgetResource get budget => BudgetResource(_requester);
+  CreativesResource get creatives => CreativesResource(_requester);
+  DirectDealsResource get directDeals => DirectDealsResource(_requester);
+  PerformanceReportResource get performanceReport =>
+      PerformanceReportResource(_requester);
+  PretargetingConfigResource get pretargetingConfig =>
+      PretargetingConfigResource(_requester);
 
   AdExchangeBuyerApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -72,10 +72,10 @@ class AdExchangeBuyerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one account by ID.
   ///
@@ -285,10 +285,10 @@ class AccountsResourceApi {
   }
 }
 
-class BillingInfoResourceApi {
+class BillingInfoResource {
   final commons.ApiRequester _requester;
 
-  BillingInfoResourceApi(commons.ApiRequester client) : _requester = client;
+  BillingInfoResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the billing information for one account specified by account ID.
   ///
@@ -388,10 +388,10 @@ class BillingInfoResourceApi {
   }
 }
 
-class BudgetResourceApi {
+class BudgetResource {
   final commons.ApiRequester _requester;
 
-  BudgetResourceApi(commons.ApiRequester client) : _requester = client;
+  BudgetResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the budget information for the adgroup specified by the accountId
   /// and billingId.
@@ -587,10 +587,10 @@ class BudgetResourceApi {
   }
 }
 
-class CreativesResourceApi {
+class CreativesResource {
   final commons.ApiRequester _requester;
 
-  CreativesResourceApi(commons.ApiRequester client) : _requester = client;
+  CreativesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the status for a single creative. A creative will be available 30-40
   /// minutes after submission.
@@ -790,10 +790,10 @@ class CreativesResourceApi {
   }
 }
 
-class DirectDealsResourceApi {
+class DirectDealsResource {
   final commons.ApiRequester _requester;
 
-  DirectDealsResourceApi(commons.ApiRequester client) : _requester = client;
+  DirectDealsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets one direct deal by ID.
   ///
@@ -892,11 +892,10 @@ class DirectDealsResourceApi {
   }
 }
 
-class PerformanceReportResourceApi {
+class PerformanceReportResource {
   final commons.ApiRequester _requester;
 
-  PerformanceReportResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PerformanceReportResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the authenticated user's list of performance metrics.
   ///
@@ -983,11 +982,10 @@ class PerformanceReportResourceApi {
   }
 }
 
-class PretargetingConfigResourceApi {
+class PretargetingConfigResource {
   final commons.ApiRequester _requester;
 
-  PretargetingConfigResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  PretargetingConfigResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing pretargeting config.
   ///

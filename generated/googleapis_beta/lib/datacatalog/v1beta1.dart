@@ -24,19 +24,19 @@
 ///
 /// Create an instance of [DataCatalogApi] to access these resources:
 ///
-/// - [CatalogResourceApi]
-/// - [EntriesResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsEntryGroupsResourceApi]
-///       - [ProjectsLocationsEntryGroupsEntriesResourceApi]
-///         - [ProjectsLocationsEntryGroupsEntriesTagsResourceApi]
-///       - [ProjectsLocationsEntryGroupsTagsResourceApi]
-///     - [ProjectsLocationsTagTemplatesResourceApi]
-///       - [ProjectsLocationsTagTemplatesFieldsResourceApi]
-///         - [ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi]
-///     - [ProjectsLocationsTaxonomiesResourceApi]
-///       - [ProjectsLocationsTaxonomiesPolicyTagsResourceApi]
+/// - [CatalogResource]
+/// - [EntriesResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsEntryGroupsResource]
+///       - [ProjectsLocationsEntryGroupsEntriesResource]
+///         - [ProjectsLocationsEntryGroupsEntriesTagsResource]
+///       - [ProjectsLocationsEntryGroupsTagsResource]
+///     - [ProjectsLocationsTagTemplatesResource]
+///       - [ProjectsLocationsTagTemplatesFieldsResource]
+///         - [ProjectsLocationsTagTemplatesFieldsEnumValuesResource]
+///     - [ProjectsLocationsTaxonomiesResource]
+///       - [ProjectsLocationsTaxonomiesPolicyTagsResource]
 library datacatalog.v1beta1;
 
 import 'dart:async' as async;
@@ -60,9 +60,9 @@ class DataCatalogApi {
 
   final commons.ApiRequester _requester;
 
-  CatalogResourceApi get catalog => CatalogResourceApi(_requester);
-  EntriesResourceApi get entries => EntriesResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  CatalogResource get catalog => CatalogResource(_requester);
+  EntriesResource get entries => EntriesResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DataCatalogApi(http.Client client,
       {core.String rootUrl = 'https://datacatalog.googleapis.com/',
@@ -71,10 +71,10 @@ class DataCatalogApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CatalogResourceApi {
+class CatalogResource {
   final commons.ApiRequester _requester;
 
-  CatalogResourceApi(commons.ApiRequester client) : _requester = client;
+  CatalogResource(commons.ApiRequester client) : _requester = client;
 
   /// Searches Data Catalog for multiple resources like entries, tags that match
   /// a query. This is a custom method
@@ -138,10 +138,10 @@ class CatalogResourceApi {
   }
 }
 
-class EntriesResourceApi {
+class EntriesResource {
   final commons.ApiRequester _requester;
 
-  EntriesResourceApi(commons.ApiRequester client) : _requester = client;
+  EntriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Get an entry by target resource name. This method allows clients to use
   /// the resource name from the source Google Cloud Platform service to get the
@@ -215,38 +215,37 @@ class EntriesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEntryGroupsResourceApi get entryGroups =>
-      ProjectsLocationsEntryGroupsResourceApi(_requester);
-  ProjectsLocationsTagTemplatesResourceApi get tagTemplates =>
-      ProjectsLocationsTagTemplatesResourceApi(_requester);
-  ProjectsLocationsTaxonomiesResourceApi get taxonomies =>
-      ProjectsLocationsTaxonomiesResourceApi(_requester);
+  ProjectsLocationsEntryGroupsResource get entryGroups =>
+      ProjectsLocationsEntryGroupsResource(_requester);
+  ProjectsLocationsTagTemplatesResource get tagTemplates =>
+      ProjectsLocationsTagTemplatesResource(_requester);
+  ProjectsLocationsTaxonomiesResource get taxonomies =>
+      ProjectsLocationsTaxonomiesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsEntryGroupsResourceApi {
+class ProjectsLocationsEntryGroupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEntryGroupsEntriesResourceApi get entries =>
-      ProjectsLocationsEntryGroupsEntriesResourceApi(_requester);
-  ProjectsLocationsEntryGroupsTagsResourceApi get tags =>
-      ProjectsLocationsEntryGroupsTagsResourceApi(_requester);
+  ProjectsLocationsEntryGroupsEntriesResource get entries =>
+      ProjectsLocationsEntryGroupsEntriesResource(_requester);
+  ProjectsLocationsEntryGroupsTagsResource get tags =>
+      ProjectsLocationsEntryGroupsTagsResource(_requester);
 
-  ProjectsLocationsEntryGroupsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsEntryGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// A maximum of 10,000 entry groups may be created per organization across
@@ -801,13 +800,13 @@ class ProjectsLocationsEntryGroupsResourceApi {
   }
 }
 
-class ProjectsLocationsEntryGroupsEntriesResourceApi {
+class ProjectsLocationsEntryGroupsEntriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEntryGroupsEntriesTagsResourceApi get tags =>
-      ProjectsLocationsEntryGroupsEntriesTagsResourceApi(_requester);
+  ProjectsLocationsEntryGroupsEntriesTagsResource get tags =>
+      ProjectsLocationsEntryGroupsEntriesTagsResource(_requester);
 
-  ProjectsLocationsEntryGroupsEntriesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsEntryGroupsEntriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an entry. Only entries of 'FILESET' type or user-specified type
@@ -1298,11 +1297,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
   }
 }
 
-class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
+class ProjectsLocationsEntryGroupsEntriesTagsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEntryGroupsEntriesTagsResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsEntryGroupsEntriesTagsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a tag on an Entry. Note: The project identified by the `parent`
@@ -1569,10 +1567,10 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
   }
 }
 
-class ProjectsLocationsEntryGroupsTagsResourceApi {
+class ProjectsLocationsEntryGroupsTagsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsEntryGroupsTagsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsEntryGroupsTagsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a tag on an Entry. Note: The project identified by the `parent`
@@ -1839,13 +1837,13 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
   }
 }
 
-class ProjectsLocationsTagTemplatesResourceApi {
+class ProjectsLocationsTagTemplatesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTagTemplatesFieldsResourceApi get fields =>
-      ProjectsLocationsTagTemplatesFieldsResourceApi(_requester);
+  ProjectsLocationsTagTemplatesFieldsResource get fields =>
+      ProjectsLocationsTagTemplatesFieldsResource(_requester);
 
-  ProjectsLocationsTagTemplatesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTagTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a tag template. The user should enable the Data Catalog API in the
@@ -2324,13 +2322,13 @@ class ProjectsLocationsTagTemplatesResourceApi {
   }
 }
 
-class ProjectsLocationsTagTemplatesFieldsResourceApi {
+class ProjectsLocationsTagTemplatesFieldsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi get enumValues =>
-      ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi(_requester);
+  ProjectsLocationsTagTemplatesFieldsEnumValuesResource get enumValues =>
+      ProjectsLocationsTagTemplatesFieldsEnumValuesResource(_requester);
 
-  ProjectsLocationsTagTemplatesFieldsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTagTemplatesFieldsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a field in a tag template. The user should enable the Data Catalog
@@ -2620,10 +2618,10 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
   }
 }
 
-class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
+class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi(
+  ProjectsLocationsTagTemplatesFieldsEnumValuesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2691,13 +2689,13 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
   }
 }
 
-class ProjectsLocationsTaxonomiesResourceApi {
+class ProjectsLocationsTaxonomiesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTaxonomiesPolicyTagsResourceApi get policyTags =>
-      ProjectsLocationsTaxonomiesPolicyTagsResourceApi(_requester);
+  ProjectsLocationsTaxonomiesPolicyTagsResource get policyTags =>
+      ProjectsLocationsTaxonomiesPolicyTagsResource(_requester);
 
-  ProjectsLocationsTaxonomiesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTaxonomiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a taxonomy in the specified project.
@@ -3328,10 +3326,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
   }
 }
 
-class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
+class ProjectsLocationsTaxonomiesPolicyTagsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTaxonomiesPolicyTagsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTaxonomiesPolicyTagsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a policy tag in the specified taxonomy.

@@ -24,19 +24,19 @@
 ///
 /// Create an instance of [GmailApi] to access these resources:
 ///
-/// - [UsersResourceApi]
-///   - [UsersDraftsResourceApi]
-///   - [UsersHistoryResourceApi]
-///   - [UsersLabelsResourceApi]
-///   - [UsersMessagesResourceApi]
-///     - [UsersMessagesAttachmentsResourceApi]
-///   - [UsersSettingsResourceApi]
-///     - [UsersSettingsDelegatesResourceApi]
-///     - [UsersSettingsFiltersResourceApi]
-///     - [UsersSettingsForwardingAddressesResourceApi]
-///     - [UsersSettingsSendAsResourceApi]
-///       - [UsersSettingsSendAsSmimeInfoResourceApi]
-///   - [UsersThreadsResourceApi]
+/// - [UsersResource]
+///   - [UsersDraftsResource]
+///   - [UsersHistoryResource]
+///   - [UsersLabelsResource]
+///   - [UsersMessagesResource]
+///     - [UsersMessagesAttachmentsResource]
+///   - [UsersSettingsResource]
+///     - [UsersSettingsDelegatesResource]
+///     - [UsersSettingsFiltersResource]
+///     - [UsersSettingsForwardingAddressesResource]
+///     - [UsersSettingsSendAsResource]
+///       - [UsersSettingsSendAsSmimeInfoResource]
+///   - [UsersThreadsResource]
 library gmail.v1;
 
 import 'dart:async' as async;
@@ -119,7 +119,7 @@ class GmailApi {
 
   final commons.ApiRequester _requester;
 
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   GmailApi(http.Client client,
       {core.String rootUrl = 'https://gmail.googleapis.com/',
@@ -128,17 +128,17 @@ class GmailApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersDraftsResourceApi get drafts => UsersDraftsResourceApi(_requester);
-  UsersHistoryResourceApi get history => UsersHistoryResourceApi(_requester);
-  UsersLabelsResourceApi get labels => UsersLabelsResourceApi(_requester);
-  UsersMessagesResourceApi get messages => UsersMessagesResourceApi(_requester);
-  UsersSettingsResourceApi get settings => UsersSettingsResourceApi(_requester);
-  UsersThreadsResourceApi get threads => UsersThreadsResourceApi(_requester);
+  UsersDraftsResource get drafts => UsersDraftsResource(_requester);
+  UsersHistoryResource get history => UsersHistoryResource(_requester);
+  UsersLabelsResource get labels => UsersLabelsResource(_requester);
+  UsersMessagesResource get messages => UsersMessagesResource(_requester);
+  UsersSettingsResource get settings => UsersSettingsResource(_requester);
+  UsersThreadsResource get threads => UsersThreadsResource(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the current user's Gmail profile.
   ///
@@ -305,10 +305,10 @@ class UsersResourceApi {
   }
 }
 
-class UsersDraftsResourceApi {
+class UsersDraftsResource {
   final commons.ApiRequester _requester;
 
-  UsersDraftsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersDraftsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new draft with the `DRAFT` label.
   ///
@@ -781,10 +781,10 @@ class UsersDraftsResourceApi {
   }
 }
 
-class UsersHistoryResourceApi {
+class UsersHistoryResource {
   final commons.ApiRequester _requester;
 
-  UsersHistoryResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersHistoryResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the history of all changes to the given mailbox. History results are
   /// returned in chronological order (increasing `historyId`).
@@ -883,10 +883,10 @@ class UsersHistoryResourceApi {
   }
 }
 
-class UsersLabelsResourceApi {
+class UsersLabelsResource {
   final commons.ApiRequester _requester;
 
-  UsersLabelsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersLabelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new label.
   ///
@@ -1255,13 +1255,13 @@ class UsersLabelsResourceApi {
   }
 }
 
-class UsersMessagesResourceApi {
+class UsersMessagesResource {
   final commons.ApiRequester _requester;
 
-  UsersMessagesAttachmentsResourceApi get attachments =>
-      UsersMessagesAttachmentsResourceApi(_requester);
+  UsersMessagesAttachmentsResource get attachments =>
+      UsersMessagesAttachmentsResource(_requester);
 
-  UsersMessagesResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersMessagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes many messages by message ID. Provides no guarantees that messages
   /// were not already deleted or even existed at all.
@@ -2105,10 +2105,10 @@ class UsersMessagesResourceApi {
   }
 }
 
-class UsersMessagesAttachmentsResourceApi {
+class UsersMessagesAttachmentsResource {
   final commons.ApiRequester _requester;
 
-  UsersMessagesAttachmentsResourceApi(commons.ApiRequester client)
+  UsersMessagesAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the specified message attachment.
@@ -2181,19 +2181,19 @@ class UsersMessagesAttachmentsResourceApi {
   }
 }
 
-class UsersSettingsResourceApi {
+class UsersSettingsResource {
   final commons.ApiRequester _requester;
 
-  UsersSettingsDelegatesResourceApi get delegates =>
-      UsersSettingsDelegatesResourceApi(_requester);
-  UsersSettingsFiltersResourceApi get filters =>
-      UsersSettingsFiltersResourceApi(_requester);
-  UsersSettingsForwardingAddressesResourceApi get forwardingAddresses =>
-      UsersSettingsForwardingAddressesResourceApi(_requester);
-  UsersSettingsSendAsResourceApi get sendAs =>
-      UsersSettingsSendAsResourceApi(_requester);
+  UsersSettingsDelegatesResource get delegates =>
+      UsersSettingsDelegatesResource(_requester);
+  UsersSettingsFiltersResource get filters =>
+      UsersSettingsFiltersResource(_requester);
+  UsersSettingsForwardingAddressesResource get forwardingAddresses =>
+      UsersSettingsForwardingAddressesResource(_requester);
+  UsersSettingsSendAsResource get sendAs =>
+      UsersSettingsSendAsResource(_requester);
 
-  UsersSettingsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersSettingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the auto-forwarding setting for the specified account.
   ///
@@ -2773,10 +2773,10 @@ class UsersSettingsResourceApi {
   }
 }
 
-class UsersSettingsDelegatesResourceApi {
+class UsersSettingsDelegatesResource {
   final commons.ApiRequester _requester;
 
-  UsersSettingsDelegatesResourceApi(commons.ApiRequester client)
+  UsersSettingsDelegatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds a delegate with its verification status set directly to `accepted`,
@@ -3034,10 +3034,10 @@ class UsersSettingsDelegatesResourceApi {
   }
 }
 
-class UsersSettingsFiltersResourceApi {
+class UsersSettingsFiltersResource {
   final commons.ApiRequester _requester;
 
-  UsersSettingsFiltersResourceApi(commons.ApiRequester client)
+  UsersSettingsFiltersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a filter. Note: you can only create a maximum of 1,000 filters.
@@ -3274,10 +3274,10 @@ class UsersSettingsFiltersResourceApi {
   }
 }
 
-class UsersSettingsForwardingAddressesResourceApi {
+class UsersSettingsForwardingAddressesResource {
   final commons.ApiRequester _requester;
 
-  UsersSettingsForwardingAddressesResourceApi(commons.ApiRequester client)
+  UsersSettingsForwardingAddressesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a forwarding address. If ownership verification is required, a
@@ -3522,13 +3522,13 @@ class UsersSettingsForwardingAddressesResourceApi {
   }
 }
 
-class UsersSettingsSendAsResourceApi {
+class UsersSettingsSendAsResource {
   final commons.ApiRequester _requester;
 
-  UsersSettingsSendAsSmimeInfoResourceApi get smimeInfo =>
-      UsersSettingsSendAsSmimeInfoResourceApi(_requester);
+  UsersSettingsSendAsSmimeInfoResource get smimeInfo =>
+      UsersSettingsSendAsSmimeInfoResource(_requester);
 
-  UsersSettingsSendAsResourceApi(commons.ApiRequester client)
+  UsersSettingsSendAsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail
@@ -3976,10 +3976,10 @@ class UsersSettingsSendAsResourceApi {
   }
 }
 
-class UsersSettingsSendAsSmimeInfoResourceApi {
+class UsersSettingsSendAsSmimeInfoResource {
   final commons.ApiRequester _requester;
 
-  UsersSettingsSendAsSmimeInfoResourceApi(commons.ApiRequester client)
+  UsersSettingsSendAsSmimeInfoResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes the specified S/MIME config for the specified send-as alias.
@@ -4323,10 +4323,10 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
   }
 }
 
-class UsersThreadsResourceApi {
+class UsersThreadsResource {
   final commons.ApiRequester _requester;
 
-  UsersThreadsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersThreadsResource(commons.ApiRequester client) : _requester = client;
 
   /// Immediately and permanently deletes the specified thread. This operation
   /// cannot be undone. Prefer `threads.trash` instead.

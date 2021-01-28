@@ -2470,7 +2470,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--allocateIds', () {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
@@ -3025,7 +3025,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsIndexesResourceApi', () {
+  unittest.group('resource-ProjectsIndexesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.indexes;
@@ -3282,7 +3282,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.operations;

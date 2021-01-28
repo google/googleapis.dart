@@ -23,12 +23,12 @@
 ///
 /// Create an instance of [AccessApprovalApi] to access these resources:
 ///
-/// - [FoldersResourceApi]
-///   - [FoldersApprovalRequestsResourceApi]
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsApprovalRequestsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsApprovalRequestsResourceApi]
+/// - [FoldersResource]
+///   - [FoldersApprovalRequestsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsApprovalRequestsResource]
+/// - [ProjectsResource]
+///   - [ProjectsApprovalRequestsResource]
 library accessapproval.v1;
 
 import 'dart:async' as async;
@@ -51,10 +51,9 @@ class AccessApprovalApi {
 
   final commons.ApiRequester _requester;
 
-  FoldersResourceApi get folders => FoldersResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   AccessApprovalApi(http.Client client,
       {core.String rootUrl = 'https://accessapproval.googleapis.com/',
@@ -63,13 +62,13 @@ class AccessApprovalApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class FoldersResourceApi {
+class FoldersResource {
   final commons.ApiRequester _requester;
 
-  FoldersApprovalRequestsResourceApi get approvalRequests =>
-      FoldersApprovalRequestsResourceApi(_requester);
+  FoldersApprovalRequestsResource get approvalRequests =>
+      FoldersApprovalRequestsResource(_requester);
 
-  FoldersResourceApi(commons.ApiRequester client) : _requester = client;
+  FoldersResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the settings associated with a project, folder, or organization.
   /// This will have the effect of disabling Access Approval for the project,
@@ -255,10 +254,10 @@ class FoldersResourceApi {
   }
 }
 
-class FoldersApprovalRequestsResourceApi {
+class FoldersApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
-  FoldersApprovalRequestsResourceApi(commons.ApiRequester client)
+  FoldersApprovalRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Approves a request and returns the updated ApprovalRequest. Returns
@@ -516,13 +515,13 @@ class FoldersApprovalRequestsResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApprovalRequestsResourceApi get approvalRequests =>
-      OrganizationsApprovalRequestsResourceApi(_requester);
+  OrganizationsApprovalRequestsResource get approvalRequests =>
+      OrganizationsApprovalRequestsResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the settings associated with a project, folder, or organization.
   /// This will have the effect of disabling Access Approval for the project,
@@ -708,10 +707,10 @@ class OrganizationsResourceApi {
   }
 }
 
-class OrganizationsApprovalRequestsResourceApi {
+class OrganizationsApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApprovalRequestsResourceApi(commons.ApiRequester client)
+  OrganizationsApprovalRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Approves a request and returns the updated ApprovalRequest. Returns
@@ -969,13 +968,13 @@ class OrganizationsApprovalRequestsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsApprovalRequestsResourceApi get approvalRequests =>
-      ProjectsApprovalRequestsResourceApi(_requester);
+  ProjectsApprovalRequestsResource get approvalRequests =>
+      ProjectsApprovalRequestsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the settings associated with a project, folder, or organization.
   /// This will have the effect of disabling Access Approval for the project,
@@ -1161,10 +1160,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsApprovalRequestsResourceApi {
+class ProjectsApprovalRequestsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsApprovalRequestsResourceApi(commons.ApiRequester client)
+  ProjectsApprovalRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Approves a request and returns the updated ApprovalRequest. Returns

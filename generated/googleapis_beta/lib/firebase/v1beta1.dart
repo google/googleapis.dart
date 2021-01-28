@@ -25,15 +25,15 @@
 ///
 /// Create an instance of [FirebaseManagementApi] to access these resources:
 ///
-/// - [AvailableProjectsResourceApi]
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsAndroidAppsResourceApi]
-///     - [ProjectsAndroidAppsShaResourceApi]
-///   - [ProjectsAvailableLocationsResourceApi]
-///   - [ProjectsDefaultLocationResourceApi]
-///   - [ProjectsIosAppsResourceApi]
-///   - [ProjectsWebAppsResourceApi]
+/// - [AvailableProjectsResource]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsAndroidAppsResource]
+///     - [ProjectsAndroidAppsShaResource]
+///   - [ProjectsAvailableLocationsResource]
+///   - [ProjectsDefaultLocationResource]
+///   - [ProjectsIosAppsResource]
+///   - [ProjectsWebAppsResource]
 library firebase.v1beta1;
 
 import 'dart:async' as async;
@@ -69,10 +69,10 @@ class FirebaseManagementApi {
 
   final commons.ApiRequester _requester;
 
-  AvailableProjectsResourceApi get availableProjects =>
-      AvailableProjectsResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  AvailableProjectsResource get availableProjects =>
+      AvailableProjectsResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseManagementApi(http.Client client,
       {core.String rootUrl = 'https://firebase.googleapis.com/',
@@ -81,11 +81,10 @@ class FirebaseManagementApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AvailableProjectsResourceApi {
+class AvailableProjectsResource {
   final commons.ApiRequester _requester;
 
-  AvailableProjectsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AvailableProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists each [Google Cloud Platform (GCP) `Project`]
   /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -157,10 +156,10 @@ class AvailableProjectsResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -216,21 +215,19 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAndroidAppsResourceApi get androidApps =>
-      ProjectsAndroidAppsResourceApi(_requester);
-  ProjectsAvailableLocationsResourceApi get availableLocations =>
-      ProjectsAvailableLocationsResourceApi(_requester);
-  ProjectsDefaultLocationResourceApi get defaultLocation =>
-      ProjectsDefaultLocationResourceApi(_requester);
-  ProjectsIosAppsResourceApi get iosApps =>
-      ProjectsIosAppsResourceApi(_requester);
-  ProjectsWebAppsResourceApi get webApps =>
-      ProjectsWebAppsResourceApi(_requester);
+  ProjectsAndroidAppsResource get androidApps =>
+      ProjectsAndroidAppsResource(_requester);
+  ProjectsAvailableLocationsResource get availableLocations =>
+      ProjectsAvailableLocationsResource(_requester);
+  ProjectsDefaultLocationResource get defaultLocation =>
+      ProjectsDefaultLocationResource(_requester);
+  ProjectsIosAppsResource get iosApps => ProjectsIosAppsResource(_requester);
+  ProjectsWebAppsResource get webApps => ProjectsWebAppsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds Firebase resources to the specified existing [Google Cloud Platform
   /// (GCP) `Project`]
@@ -893,13 +890,13 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsAndroidAppsResourceApi {
+class ProjectsAndroidAppsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAndroidAppsShaResourceApi get sha =>
-      ProjectsAndroidAppsShaResourceApi(_requester);
+  ProjectsAndroidAppsShaResource get sha =>
+      ProjectsAndroidAppsShaResource(_requester);
 
-  ProjectsAndroidAppsResourceApi(commons.ApiRequester client)
+  ProjectsAndroidAppsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Requests the creation of a new AndroidApp in the specified
@@ -1235,10 +1232,10 @@ class ProjectsAndroidAppsResourceApi {
   }
 }
 
-class ProjectsAndroidAppsShaResourceApi {
+class ProjectsAndroidAppsShaResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAndroidAppsShaResourceApi(commons.ApiRequester client)
+  ProjectsAndroidAppsShaResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds a ShaCertificate to the specified AndroidApp.
@@ -1424,10 +1421,10 @@ class ProjectsAndroidAppsShaResourceApi {
   }
 }
 
-class ProjectsAvailableLocationsResourceApi {
+class ProjectsAvailableLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAvailableLocationsResourceApi(commons.ApiRequester client)
+  ProjectsAvailableLocationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the valid Google Cloud Platform (GCP) resource locations for the
@@ -1523,10 +1520,10 @@ class ProjectsAvailableLocationsResourceApi {
   }
 }
 
-class ProjectsDefaultLocationResourceApi {
+class ProjectsDefaultLocationResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDefaultLocationResourceApi(commons.ApiRequester client)
+  ProjectsDefaultLocationResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Sets the default Google Cloud Platform (GCP) resource location for the
@@ -1620,10 +1617,10 @@ class ProjectsDefaultLocationResourceApi {
   }
 }
 
-class ProjectsIosAppsResourceApi {
+class ProjectsIosAppsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsIosAppsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsIosAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Requests the creation of a new IosApp in the specified FirebaseProject.
   /// The result of this call is an `Operation` which can be used to track the
@@ -1954,10 +1951,10 @@ class ProjectsIosAppsResourceApi {
   }
 }
 
-class ProjectsWebAppsResourceApi {
+class ProjectsWebAppsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsWebAppsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsWebAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Requests the creation of a new WebApp in the specified FirebaseProject.
   /// The result of this call is an `Operation` which can be used to track the

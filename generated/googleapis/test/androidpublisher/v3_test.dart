@@ -2270,7 +2270,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsResourceApi', () {
+  unittest.group('resource-EditsResource', () {
     unittest.test('method--commit', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits;
@@ -2583,7 +2583,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsApksResourceApi', () {
+  unittest.group('resource-EditsApksResource', () {
     unittest.test('method--addexternallyhosted', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.apks;
@@ -2794,7 +2794,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsBundlesResourceApi', () {
+  unittest.group('resource-EditsBundlesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.bundles;
@@ -2936,7 +2936,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsDeobfuscationfilesResourceApi', () {
+  unittest.group('resource-EditsDeobfuscationfilesResource', () {
     unittest.test('method--upload', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -3024,7 +3024,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsDetailsResourceApi', () {
+  unittest.group('resource-EditsDetailsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.details;
@@ -3235,7 +3235,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsExpansionfilesResourceApi', () {
+  unittest.group('resource-EditsExpansionfilesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.expansionfiles;
@@ -3579,7 +3579,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsImagesResourceApi', () {
+  unittest.group('resource-EditsImagesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.images;
@@ -3917,7 +3917,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsListingsResourceApi', () {
+  unittest.group('resource-EditsListingsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.listings;
@@ -4340,7 +4340,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsTestersResourceApi', () {
+  unittest.group('resource-EditsTestersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.testers;
@@ -4564,7 +4564,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EditsTracksResourceApi', () {
+  unittest.group('resource-EditsTracksResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).edits.tracks;
@@ -4854,7 +4854,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InappproductsResourceApi', () {
+  unittest.group('resource-InappproductsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).inappproducts;
@@ -5249,7 +5249,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InternalappsharingartifactsResourceApi', () {
+  unittest.group('resource-InternalappsharingartifactsResource', () {
     unittest.test('method--uploadapk', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -5375,7 +5375,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrdersResourceApi', () {
+  unittest.group('resource-OrdersResource', () {
     unittest.test('method--refund', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).orders;
@@ -5445,7 +5445,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PurchasesProductsResourceApi', () {
+  unittest.group('resource-PurchasesProductsResource', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).purchases.products;
@@ -5598,7 +5598,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PurchasesSubscriptionsResourceApi', () {
+  unittest.group('resource-PurchasesSubscriptionsResource', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).purchases.subscriptions;
@@ -6052,7 +6052,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PurchasesVoidedpurchasesResourceApi', () {
+  unittest.group('resource-PurchasesVoidedpurchasesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).purchases.voidedpurchases;
@@ -6135,7 +6135,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReviewsResourceApi', () {
+  unittest.group('resource-ReviewsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).reviews;
@@ -6346,7 +6346,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SystemapksVariantsResourceApi', () {
+  unittest.group('resource-SystemapksVariantsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AndroidPublisherApi(mock).systemapks.variants;

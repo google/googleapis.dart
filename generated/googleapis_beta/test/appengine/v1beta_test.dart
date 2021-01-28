@@ -2985,7 +2985,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsResourceApi', () {
+  unittest.group('resource-AppsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps;
@@ -3208,7 +3208,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsAuthorizedCertificatesResourceApi', () {
+  unittest.group('resource-AppsAuthorizedCertificatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedCertificates;
@@ -3537,7 +3537,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsAuthorizedDomainsResourceApi', () {
+  unittest.group('resource-AppsAuthorizedDomainsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedDomains;
@@ -3605,7 +3605,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsDomainMappingsResourceApi', () {
+  unittest.group('resource-AppsDomainMappingsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.domainMappings;
@@ -3927,7 +3927,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsFirewallIngressRulesResourceApi', () {
+  unittest.group('resource-AppsFirewallIngressRulesResource', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
@@ -4311,7 +4311,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsLocationsResourceApi', () {
+  unittest.group('resource-AppsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.locations;
@@ -4441,7 +4441,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsOperationsResourceApi', () {
+  unittest.group('resource-AppsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.operations;
@@ -4571,7 +4571,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsServicesResourceApi', () {
+  unittest.group('resource-AppsServicesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services;
@@ -4832,7 +4832,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsServicesVersionsResourceApi', () {
+  unittest.group('resource-AppsServicesVersionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions;
@@ -5206,7 +5206,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AppsServicesVersionsInstancesResourceApi', () {
+  unittest.group('resource-AppsServicesVersionsInstancesResource', () {
     unittest.test('method--debug', () {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions.instances;

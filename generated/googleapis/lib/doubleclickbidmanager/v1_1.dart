@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [DoubleClickBidManagerApi] to access these resources:
 ///
-/// - [LineitemsResourceApi]
-/// - [QueriesResourceApi]
-/// - [ReportsResourceApi]
-/// - [SdfResourceApi]
+/// - [LineitemsResource]
+/// - [QueriesResource]
+/// - [ReportsResource]
+/// - [SdfResource]
 library doubleclickbidmanager.v1_1;
 
 import 'dart:async' as async;
@@ -51,10 +51,10 @@ class DoubleClickBidManagerApi {
 
   final commons.ApiRequester _requester;
 
-  LineitemsResourceApi get lineitems => LineitemsResourceApi(_requester);
-  QueriesResourceApi get queries => QueriesResourceApi(_requester);
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
-  SdfResourceApi get sdf => SdfResourceApi(_requester);
+  LineitemsResource get lineitems => LineitemsResource(_requester);
+  QueriesResource get queries => QueriesResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
+  SdfResource get sdf => SdfResource(_requester);
 
   DoubleClickBidManagerApi(http.Client client,
       {core.String rootUrl = 'https://doubleclickbidmanager.googleapis.com/',
@@ -63,10 +63,10 @@ class DoubleClickBidManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class LineitemsResourceApi {
+class LineitemsResource {
   final commons.ApiRequester _requester;
 
-  LineitemsResourceApi(commons.ApiRequester client) : _requester = client;
+  LineitemsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves line items in CSV format. YouTube & partners line items are not
   /// supported.
@@ -173,10 +173,10 @@ class LineitemsResourceApi {
   }
 }
 
-class QueriesResourceApi {
+class QueriesResource {
   final commons.ApiRequester _requester;
 
-  QueriesResourceApi(commons.ApiRequester client) : _requester = client;
+  QueriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a query.
   ///
@@ -456,10 +456,10 @@ class QueriesResourceApi {
   }
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves stored reports.
   ///
@@ -526,10 +526,10 @@ class ReportsResourceApi {
   }
 }
 
-class SdfResourceApi {
+class SdfResource {
   final commons.ApiRequester _requester;
 
-  SdfResourceApi(commons.ApiRequester client) : _requester = client;
+  SdfResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves entities in SDF format.
   ///

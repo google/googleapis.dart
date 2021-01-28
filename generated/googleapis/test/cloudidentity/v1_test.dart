@@ -1573,7 +1573,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DevicesResourceApi', () {
+  unittest.group('resource-DevicesResource', () {
     unittest.test('method--cancelWipe', () {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
@@ -1916,7 +1916,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DevicesDeviceUsersResourceApi', () {
+  unittest.group('resource-DevicesDeviceUsersResource', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
@@ -2386,7 +2386,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DevicesDeviceUsersClientStatesResourceApi', () {
+  unittest.group('resource-DevicesDeviceUsersClientStatesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
@@ -2570,7 +2570,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupsResourceApi', () {
+  unittest.group('resource-GroupsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
@@ -2957,7 +2957,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupsMembershipsResourceApi', () {
+  unittest.group('resource-GroupsMembershipsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;

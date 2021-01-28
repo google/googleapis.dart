@@ -26,8 +26,8 @@
 ///
 /// Create an instance of [IAMCredentialsApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsServiceAccountsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsServiceAccountsResource]
 library iamcredentials.v1;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class IAMCredentialsApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   IAMCredentialsApi(http.Client client,
       {core.String rootUrl = 'https://iamcredentials.googleapis.com/',
@@ -61,19 +61,19 @@ class IAMCredentialsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountsResourceApi get serviceAccounts =>
-      ProjectsServiceAccountsResourceApi(_requester);
+  ProjectsServiceAccountsResource get serviceAccounts =>
+      ProjectsServiceAccountsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsServiceAccountsResourceApi {
+class ProjectsServiceAccountsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountsResourceApi(commons.ApiRequester client)
+  ProjectsServiceAccountsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Generates an OAuth 2.0 access token for a service account.

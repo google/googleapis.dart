@@ -23,10 +23,10 @@
 ///
 /// Create an instance of [CloudFunctionsApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsFunctionsResourceApi]
+/// - [OperationsResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsFunctionsResource]
 library cloudfunctions.v1;
 
 import 'dart:async' as async;
@@ -49,8 +49,8 @@ class CloudFunctionsApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudFunctionsApi(http.Client client,
       {core.String rootUrl = 'https://cloudfunctions.googleapis.com/',
@@ -59,10 +59,10 @@ class CloudFunctionsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -203,23 +203,22 @@ class OperationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsFunctionsResourceApi get functions =>
-      ProjectsLocationsFunctionsResourceApi(_requester);
+  ProjectsLocationsFunctionsResource get functions =>
+      ProjectsLocationsFunctionsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists information about the supported locations for this service.
   ///
@@ -293,10 +292,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsFunctionsResourceApi {
+class ProjectsLocationsFunctionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsFunctionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsFunctionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Synchronously invokes a deployed Cloud Function. To be used for testing

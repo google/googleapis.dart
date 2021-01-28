@@ -3820,7 +3820,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CompaniesResourceApi', () {
+  unittest.group('resource-CompaniesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).companies;
@@ -4086,7 +4086,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CompaniesJobsResourceApi', () {
+  unittest.group('resource-CompaniesJobsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).companies.jobs;
@@ -4157,7 +4157,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-JobsResourceApi', () {
+  unittest.group('resource-JobsResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).jobs;
@@ -4680,7 +4680,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V2ResourceApi', () {
+  unittest.group('resource-V2Resource', () {
     unittest.test('method--complete', () {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).v2;

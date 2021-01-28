@@ -1398,7 +1398,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersResourceApi', () {
+  unittest.group('resource-CustomersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers;
@@ -1561,7 +1561,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersDeploymentsResourceApi', () {
+  unittest.group('resource-CustomersDeploymentsResource', () {
     unittest.test('method--move', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
@@ -1617,7 +1617,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersDeploymentsDevicesResourceApi', () {
+  unittest.group('resource-CustomersDeploymentsDevicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments.devices;
@@ -1787,7 +1787,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersDevicesResourceApi', () {
+  unittest.group('resource-CustomersDevicesResource', () {
     unittest.test('method--bulk', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
@@ -2326,7 +2326,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersNodesResourceApi', () {
+  unittest.group('resource-CustomersNodesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
@@ -2645,7 +2645,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CustomersNodesNodesResourceApi', () {
+  unittest.group('resource-CustomersNodesNodesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.nodes;
@@ -2758,7 +2758,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DeploymentsDevicesResourceApi', () {
+  unittest.group('resource-DeploymentsDevicesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
@@ -3073,7 +3073,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InstallerResourceApi', () {
+  unittest.group('resource-InstallerResource', () {
     unittest.test('method--generateSecret', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).installer;
@@ -3182,7 +3182,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesResourceApi', () {
+  unittest.group('resource-NodesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes;
@@ -3232,7 +3232,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesDeploymentsResourceApi', () {
+  unittest.group('resource-NodesDeploymentsResource', () {
     unittest.test('method--move', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments;
@@ -3288,7 +3288,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesDeploymentsDevicesResourceApi', () {
+  unittest.group('resource-NodesDeploymentsDevicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments.devices;
@@ -3458,7 +3458,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesDevicesResourceApi', () {
+  unittest.group('resource-NodesDevicesResource', () {
     unittest.test('method--bulk', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
@@ -3997,7 +3997,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesNodesResourceApi', () {
+  unittest.group('resource-NodesNodesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
@@ -4316,7 +4316,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesNodesDevicesResourceApi', () {
+  unittest.group('resource-NodesNodesDevicesResource', () {
     unittest.test('method--bulk', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.devices;
@@ -4542,7 +4542,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NodesNodesNodesResourceApi', () {
+  unittest.group('resource-NodesNodesNodesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.nodes;
@@ -4655,7 +4655,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PoliciesResourceApi', () {
+  unittest.group('resource-PoliciesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).policies;

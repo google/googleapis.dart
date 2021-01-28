@@ -1046,7 +1046,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EncodedFullHashesResourceApi', () {
+  unittest.group('resource-EncodedFullHashesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).encodedFullHashes;
@@ -1107,7 +1107,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EncodedUpdatesResourceApi', () {
+  unittest.group('resource-EncodedUpdatesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).encodedUpdates;
@@ -1169,7 +1169,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FullHashesResourceApi', () {
+  unittest.group('resource-FullHashesResource', () {
     unittest.test('method--find', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).fullHashes;
@@ -1222,7 +1222,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ThreatHitsResourceApi', () {
+  unittest.group('resource-ThreatHitsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatHits;
@@ -1275,7 +1275,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ThreatListUpdatesResourceApi', () {
+  unittest.group('resource-ThreatListUpdatesResource', () {
     unittest.test('method--fetch', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatListUpdates;
@@ -1330,7 +1330,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ThreatListsResourceApi', () {
+  unittest.group('resource-ThreatListsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatLists;
@@ -1376,7 +1376,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ThreatMatchesResourceApi', () {
+  unittest.group('resource-ThreatMatchesResource', () {
     unittest.test('method--find', () {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatMatches;

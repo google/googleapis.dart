@@ -1328,7 +1328,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRegistriesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRegistriesResource', () {
     unittest.test('method--bindDeviceToGateway', () {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
@@ -1864,7 +1864,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRegistriesDevicesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRegistriesDevicesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
@@ -2270,8 +2270,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi',
-      () {
+      'resource-ProjectsLocationsRegistriesDevicesConfigVersionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock)
@@ -2330,7 +2329,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRegistriesDevicesStatesResourceApi',
+  unittest.group('resource-ProjectsLocationsRegistriesDevicesStatesResource',
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
@@ -2385,7 +2384,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRegistriesGroupsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsRegistriesGroupsResource', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.groups;
@@ -2547,7 +2546,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsRegistriesGroupsDevicesResourceApi',
+  unittest.group('resource-ProjectsLocationsRegistriesGroupsDevicesResource',
       () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();

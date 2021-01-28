@@ -327,7 +327,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsServiceAccountsResourceApi', () {
+  unittest.group('resource-ProjectsServiceAccountsResource', () {
     unittest.test('method--generateAccessToken', () {
       var mock = HttpServerMock();
       var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;

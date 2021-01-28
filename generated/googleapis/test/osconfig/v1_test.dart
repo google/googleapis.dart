@@ -1285,7 +1285,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsPatchDeploymentsResourceApi', () {
+  unittest.group('resource-ProjectsPatchDeploymentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.OSConfigApi(mock).projects.patchDeployments;
@@ -1498,7 +1498,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsPatchJobsResourceApi', () {
+  unittest.group('resource-ProjectsPatchJobsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.OSConfigApi(mock).projects.patchJobs;
@@ -1714,7 +1714,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsPatchJobsInstanceDetailsResourceApi', () {
+  unittest.group('resource-ProjectsPatchJobsInstanceDetailsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.OSConfigApi(mock).projects.patchJobs.instanceDetails;

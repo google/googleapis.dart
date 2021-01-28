@@ -254,7 +254,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-WebResourceResourceApi', () {
+  unittest.group('resource-WebResourceResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;

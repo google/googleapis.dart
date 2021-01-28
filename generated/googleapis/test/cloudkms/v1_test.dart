@@ -1479,7 +1479,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations;
@@ -1589,7 +1589,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsKeyRingsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsKeyRingsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
@@ -1922,7 +1922,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysResourceApi', () {
+  unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
@@ -2482,7 +2482,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi',
+      'resource-ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource',
       () {
     unittest.test('method--asymmetricDecrypt', () {
       var mock = HttpServerMock();
@@ -3078,7 +3078,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsKeyRingsImportJobsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsKeyRingsImportJobsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;

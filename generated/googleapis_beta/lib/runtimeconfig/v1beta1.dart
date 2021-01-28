@@ -27,11 +27,11 @@
 ///
 /// Create an instance of [CloudRuntimeConfigApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsConfigsResourceApi]
-///     - [ProjectsConfigsOperationsResourceApi]
-///     - [ProjectsConfigsVariablesResourceApi]
-///     - [ProjectsConfigsWaitersResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsConfigsResource]
+///     - [ProjectsConfigsOperationsResource]
+///     - [ProjectsConfigsVariablesResource]
+///     - [ProjectsConfigsWaitersResource]
 library runtimeconfig.v1beta1;
 
 import 'dart:async' as async;
@@ -61,7 +61,7 @@ class CloudRuntimeConfigApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudRuntimeConfigApi(http.Client client,
       {core.String rootUrl = 'https://runtimeconfig.googleapis.com/',
@@ -70,26 +70,25 @@ class CloudRuntimeConfigApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsConfigsResourceApi get configs =>
-      ProjectsConfigsResourceApi(_requester);
+  ProjectsConfigsResource get configs => ProjectsConfigsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsConfigsResourceApi {
+class ProjectsConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsConfigsOperationsResourceApi get operations =>
-      ProjectsConfigsOperationsResourceApi(_requester);
-  ProjectsConfigsVariablesResourceApi get variables =>
-      ProjectsConfigsVariablesResourceApi(_requester);
-  ProjectsConfigsWaitersResourceApi get waiters =>
-      ProjectsConfigsWaitersResourceApi(_requester);
+  ProjectsConfigsOperationsResource get operations =>
+      ProjectsConfigsOperationsResource(_requester);
+  ProjectsConfigsVariablesResource get variables =>
+      ProjectsConfigsVariablesResource(_requester);
+  ProjectsConfigsWaitersResource get waiters =>
+      ProjectsConfigsWaitersResource(_requester);
 
-  ProjectsConfigsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsConfigsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new RuntimeConfig resource. The configuration name must be
   /// unique within project.
@@ -600,10 +599,10 @@ class ProjectsConfigsResourceApi {
   }
 }
 
-class ProjectsConfigsOperationsResourceApi {
+class ProjectsConfigsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsConfigsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsConfigsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -726,10 +725,10 @@ class ProjectsConfigsOperationsResourceApi {
   }
 }
 
-class ProjectsConfigsVariablesResourceApi {
+class ProjectsConfigsVariablesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsConfigsVariablesResourceApi(commons.ApiRequester client)
+  ProjectsConfigsVariablesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a variable within the given configuration. You cannot create a
@@ -1206,10 +1205,10 @@ class ProjectsConfigsVariablesResourceApi {
   }
 }
 
-class ProjectsConfigsWaitersResourceApi {
+class ProjectsConfigsWaitersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsConfigsWaitersResourceApi(commons.ApiRequester client)
+  ProjectsConfigsWaitersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Waiter resource. This operation returns a long-running Operation

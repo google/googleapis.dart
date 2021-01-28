@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [AnalyticsReportingApi] to access these resources:
 ///
-/// - [ReportsResourceApi]
-/// - [UserActivityResourceApi]
+/// - [ReportsResource]
+/// - [UserActivityResource]
 library analyticsreporting.v4;
 
 import 'dart:async' as async;
@@ -51,9 +51,8 @@ class AnalyticsReportingApi {
 
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
-  UserActivityResourceApi get userActivity =>
-      UserActivityResourceApi(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
+  UserActivityResource get userActivity => UserActivityResource(_requester);
 
   AnalyticsReportingApi(http.Client client,
       {core.String rootUrl = 'https://analyticsreporting.googleapis.com/',
@@ -62,10 +61,10 @@ class AnalyticsReportingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the Analytics data.
   ///
@@ -119,10 +118,10 @@ class ReportsResourceApi {
   }
 }
 
-class UserActivityResourceApi {
+class UserActivityResource {
   final commons.ApiRequester _requester;
 
-  UserActivityResourceApi(commons.ApiRequester client) : _requester = client;
+  UserActivityResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns User Activity data.
   ///

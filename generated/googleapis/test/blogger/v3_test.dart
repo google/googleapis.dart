@@ -1429,7 +1429,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BlogUserInfosResourceApi', () {
+  unittest.group('resource-BlogUserInfosResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).blogUserInfos;
@@ -1495,7 +1495,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BlogsResourceApi', () {
+  unittest.group('resource-BlogsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).blogs;
@@ -1673,7 +1673,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CommentsResourceApi', () {
+  unittest.group('resource-CommentsResource', () {
     unittest.test('method--approve', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).comments;
@@ -2219,7 +2219,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PageViewsResourceApi', () {
+  unittest.group('resource-PageViewsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).pageViews;
@@ -2279,7 +2279,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PagesResourceApi', () {
+  unittest.group('resource-PagesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).pages;
@@ -2821,7 +2821,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PostUserInfosResourceApi', () {
+  unittest.group('resource-PostUserInfosResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).postUserInfos;
@@ -2997,7 +2997,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PostsResourceApi', () {
+  unittest.group('resource-PostsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).posts;
@@ -3742,7 +3742,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).users;

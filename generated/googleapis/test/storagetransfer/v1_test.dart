@@ -1121,7 +1121,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GoogleServiceAccountsResourceApi', () {
+  unittest.group('resource-GoogleServiceAccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).googleServiceAccounts;
@@ -1173,7 +1173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TransferJobsResourceApi', () {
+  unittest.group('resource-TransferJobsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferJobs;
@@ -1388,7 +1388,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TransferOperationsResourceApi', () {
+  unittest.group('resource-TransferOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferOperations;

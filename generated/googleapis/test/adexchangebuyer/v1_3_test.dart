@@ -1678,7 +1678,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).accounts;
@@ -1896,7 +1896,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingInfoResourceApi', () {
+  unittest.group('resource-BillingInfoResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).billingInfo;
@@ -1998,7 +1998,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BudgetResourceApi', () {
+  unittest.group('resource-BudgetResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).budget;
@@ -2201,7 +2201,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativesResourceApi', () {
+  unittest.group('resource-CreativesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
@@ -2390,7 +2390,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DirectDealsResourceApi', () {
+  unittest.group('resource-DirectDealsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).directDeals;
@@ -2492,7 +2492,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PerformanceReportResourceApi', () {
+  unittest.group('resource-PerformanceReportResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).performanceReport;
@@ -2561,7 +2561,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PretargetingConfigResourceApi', () {
+  unittest.group('resource-PretargetingConfigResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;

@@ -873,7 +873,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PagespeedapiResourceApi', () {
+  unittest.group('resource-PagespeedapiResource', () {
     unittest.test('method--runpagespeed', () {
       var mock = HttpServerMock();
       var res = api.PagespeedInsightsApi(mock).pagespeedapi;

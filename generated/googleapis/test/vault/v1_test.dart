@@ -1751,7 +1751,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MattersResourceApi', () {
+  unittest.group('resource-MattersResource', () {
     unittest.test('method--addPermissions', () {
       var mock = HttpServerMock();
       var res = api.VaultApi(mock).matters;
@@ -2329,7 +2329,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MattersExportsResourceApi', () {
+  unittest.group('resource-MattersExportsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.VaultApi(mock).matters.exports;
@@ -2577,7 +2577,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MattersHoldsResourceApi', () {
+  unittest.group('resource-MattersHoldsResource', () {
     unittest.test('method--addHeldAccounts', () {
       var mock = HttpServerMock();
       var res = api.VaultApi(mock).matters.holds;
@@ -3040,7 +3040,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MattersHoldsAccountsResourceApi', () {
+  unittest.group('resource-MattersHoldsAccountsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.VaultApi(mock).matters.holds.accounts;
@@ -3249,7 +3249,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MattersSavedQueriesResourceApi', () {
+  unittest.group('resource-MattersSavedQueriesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.VaultApi(mock).matters.savedQueries;
@@ -3497,7 +3497,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.VaultApi(mock).operations;

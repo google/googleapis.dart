@@ -877,7 +877,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AgentUsersResourceApi', () {
+  unittest.group('resource-AgentUsersResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).agentUsers;
@@ -931,7 +931,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DevicesResourceApi', () {
+  unittest.group('resource-DevicesResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).devices;

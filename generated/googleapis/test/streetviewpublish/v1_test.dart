@@ -814,7 +814,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PhotoResourceApi', () {
+  unittest.group('resource-PhotoResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photo;
@@ -1085,7 +1085,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PhotosResourceApi', () {
+  unittest.group('resource-PhotosResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photos;

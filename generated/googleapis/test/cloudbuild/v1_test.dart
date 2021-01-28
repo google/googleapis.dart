@@ -1873,7 +1873,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudBuildApi(mock).operations;
@@ -1976,7 +1976,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsBuildsResourceApi', () {
+  unittest.group('resource-ProjectsBuildsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudBuildApi(mock).projects.builds;
@@ -2317,7 +2317,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsBuildsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsBuildsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudBuildApi(mock).projects.locations.builds;
@@ -2600,7 +2600,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudBuildApi(mock).projects.locations.operations;
@@ -2703,7 +2703,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTriggersResourceApi', () {
+  unittest.group('resource-ProjectsTriggersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudBuildApi(mock).projects.triggers;

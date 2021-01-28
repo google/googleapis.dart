@@ -24,17 +24,17 @@
 ///
 /// Create an instance of [AppengineApi] to access these resources:
 ///
-/// - [AppsResourceApi]
-///   - [AppsAuthorizedCertificatesResourceApi]
-///   - [AppsAuthorizedDomainsResourceApi]
-///   - [AppsDomainMappingsResourceApi]
-///   - [AppsFirewallResourceApi]
-///     - [AppsFirewallIngressRulesResourceApi]
-///   - [AppsLocationsResourceApi]
-///   - [AppsOperationsResourceApi]
-///   - [AppsServicesResourceApi]
-///     - [AppsServicesVersionsResourceApi]
-///       - [AppsServicesVersionsInstancesResourceApi]
+/// - [AppsResource]
+///   - [AppsAuthorizedCertificatesResource]
+///   - [AppsAuthorizedDomainsResource]
+///   - [AppsDomainMappingsResource]
+///   - [AppsFirewallResource]
+///     - [AppsFirewallIngressRulesResource]
+///   - [AppsLocationsResource]
+///   - [AppsOperationsResource]
+///   - [AppsServicesResource]
+///     - [AppsServicesVersionsResource]
+///       - [AppsServicesVersionsInstancesResource]
 library appengine.v1beta;
 
 import 'dart:async' as async;
@@ -65,7 +65,7 @@ class AppengineApi {
 
   final commons.ApiRequester _requester;
 
-  AppsResourceApi get apps => AppsResourceApi(_requester);
+  AppsResource get apps => AppsResource(_requester);
 
   AppengineApi(http.Client client,
       {core.String rootUrl = 'https://appengine.googleapis.com/',
@@ -74,23 +74,21 @@ class AppengineApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AppsResourceApi {
+class AppsResource {
   final commons.ApiRequester _requester;
 
-  AppsAuthorizedCertificatesResourceApi get authorizedCertificates =>
-      AppsAuthorizedCertificatesResourceApi(_requester);
-  AppsAuthorizedDomainsResourceApi get authorizedDomains =>
-      AppsAuthorizedDomainsResourceApi(_requester);
-  AppsDomainMappingsResourceApi get domainMappings =>
-      AppsDomainMappingsResourceApi(_requester);
-  AppsFirewallResourceApi get firewall => AppsFirewallResourceApi(_requester);
-  AppsLocationsResourceApi get locations =>
-      AppsLocationsResourceApi(_requester);
-  AppsOperationsResourceApi get operations =>
-      AppsOperationsResourceApi(_requester);
-  AppsServicesResourceApi get services => AppsServicesResourceApi(_requester);
+  AppsAuthorizedCertificatesResource get authorizedCertificates =>
+      AppsAuthorizedCertificatesResource(_requester);
+  AppsAuthorizedDomainsResource get authorizedDomains =>
+      AppsAuthorizedDomainsResource(_requester);
+  AppsDomainMappingsResource get domainMappings =>
+      AppsDomainMappingsResource(_requester);
+  AppsFirewallResource get firewall => AppsFirewallResource(_requester);
+  AppsLocationsResource get locations => AppsLocationsResource(_requester);
+  AppsOperationsResource get operations => AppsOperationsResource(_requester);
+  AppsServicesResource get services => AppsServicesResource(_requester);
 
-  AppsResourceApi(commons.ApiRequester client) : _requester = client;
+  AppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an App Engine application for a Google Cloud Platform project.
   /// Required fields: id - The ID of the target Cloud Platform project.
@@ -334,10 +332,10 @@ class AppsResourceApi {
   }
 }
 
-class AppsAuthorizedCertificatesResourceApi {
+class AppsAuthorizedCertificatesResource {
   final commons.ApiRequester _requester;
 
-  AppsAuthorizedCertificatesResourceApi(commons.ApiRequester client)
+  AppsAuthorizedCertificatesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Uploads the specified SSL certificate.
@@ -697,10 +695,10 @@ class AppsAuthorizedCertificatesResourceApi {
   }
 }
 
-class AppsAuthorizedDomainsResourceApi {
+class AppsAuthorizedDomainsResource {
   final commons.ApiRequester _requester;
 
-  AppsAuthorizedDomainsResourceApi(commons.ApiRequester client)
+  AppsAuthorizedDomainsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all domains the user is authorized to administer.
@@ -770,11 +768,10 @@ class AppsAuthorizedDomainsResourceApi {
   }
 }
 
-class AppsDomainMappingsResourceApi {
+class AppsDomainMappingsResource {
   final commons.ApiRequester _requester;
 
-  AppsDomainMappingsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AppsDomainMappingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Maps a domain to an application. A user must be authorized to administer a
   /// domain in order to map it to an application. For a list of available
@@ -1119,19 +1116,19 @@ class AppsDomainMappingsResourceApi {
   }
 }
 
-class AppsFirewallResourceApi {
+class AppsFirewallResource {
   final commons.ApiRequester _requester;
 
-  AppsFirewallIngressRulesResourceApi get ingressRules =>
-      AppsFirewallIngressRulesResourceApi(_requester);
+  AppsFirewallIngressRulesResource get ingressRules =>
+      AppsFirewallIngressRulesResource(_requester);
 
-  AppsFirewallResourceApi(commons.ApiRequester client) : _requester = client;
+  AppsFirewallResource(commons.ApiRequester client) : _requester = client;
 }
 
-class AppsFirewallIngressRulesResourceApi {
+class AppsFirewallIngressRulesResource {
   final commons.ApiRequester _requester;
 
-  AppsFirewallIngressRulesResourceApi(commons.ApiRequester client)
+  AppsFirewallIngressRulesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Replaces the entire firewall ruleset in one bulk operation. This overrides
@@ -1526,10 +1523,10 @@ class AppsFirewallIngressRulesResourceApi {
   }
 }
 
-class AppsLocationsResourceApi {
+class AppsLocationsResource {
   final commons.ApiRequester _requester;
 
-  AppsLocationsResourceApi(commons.ApiRequester client) : _requester = client;
+  AppsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -1663,10 +1660,10 @@ class AppsLocationsResourceApi {
   }
 }
 
-class AppsOperationsResourceApi {
+class AppsOperationsResource {
   final commons.ApiRequester _requester;
 
-  AppsOperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  AppsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -1809,13 +1806,13 @@ class AppsOperationsResourceApi {
   }
 }
 
-class AppsServicesResourceApi {
+class AppsServicesResource {
   final commons.ApiRequester _requester;
 
-  AppsServicesVersionsResourceApi get versions =>
-      AppsServicesVersionsResourceApi(_requester);
+  AppsServicesVersionsResource get versions =>
+      AppsServicesVersionsResource(_requester);
 
-  AppsServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  AppsServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the specified service and all enclosed versions.
   ///
@@ -2093,13 +2090,13 @@ class AppsServicesResourceApi {
   }
 }
 
-class AppsServicesVersionsResourceApi {
+class AppsServicesVersionsResource {
   final commons.ApiRequester _requester;
 
-  AppsServicesVersionsInstancesResourceApi get instances =>
-      AppsServicesVersionsInstancesResourceApi(_requester);
+  AppsServicesVersionsInstancesResource get instances =>
+      AppsServicesVersionsInstancesResource(_requester);
 
-  AppsServicesVersionsResourceApi(commons.ApiRequester client)
+  AppsServicesVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deploys code and resource files to a new version.
@@ -2516,10 +2513,10 @@ class AppsServicesVersionsResourceApi {
   }
 }
 
-class AppsServicesVersionsInstancesResourceApi {
+class AppsServicesVersionsInstancesResource {
   final commons.ApiRequester _requester;
 
-  AppsServicesVersionsInstancesResourceApi(commons.ApiRequester client)
+  AppsServicesVersionsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Enables debugging on a VM instance. This allows you to use the SSH command

@@ -173,7 +173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ChallengeResourceApi', () {
+  unittest.group('resource-ChallengeResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.VerifiedaccessApi(mock).challenge;

@@ -26,8 +26,8 @@
 /// Create an instance of [AbusiveExperienceReportApi] to access these
 /// resources:
 ///
-/// - [SitesResourceApi]
-/// - [ViolatingSitesResourceApi]
+/// - [SitesResource]
+/// - [ViolatingSitesResource]
 library abusiveexperiencereport.v1;
 
 import 'dart:async' as async;
@@ -46,9 +46,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class AbusiveExperienceReportApi {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi get sites => SitesResourceApi(_requester);
-  ViolatingSitesResourceApi get violatingSites =>
-      ViolatingSitesResourceApi(_requester);
+  SitesResource get sites => SitesResource(_requester);
+  ViolatingSitesResource get violatingSites =>
+      ViolatingSitesResource(_requester);
 
   AbusiveExperienceReportApi(http.Client client,
       {core.String rootUrl = 'https://abusiveexperiencereport.googleapis.com/',
@@ -57,10 +57,10 @@ class AbusiveExperienceReportApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class SitesResourceApi {
+class SitesResource {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi(commons.ApiRequester client) : _requester = client;
+  SitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a site's Abusive Experience Report summary.
   ///
@@ -116,10 +116,10 @@ class SitesResourceApi {
   }
 }
 
-class ViolatingSitesResourceApi {
+class ViolatingSitesResource {
   final commons.ApiRequester _requester;
 
-  ViolatingSitesResourceApi(commons.ApiRequester client) : _requester = client;
+  ViolatingSitesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists sites that are failing in the Abusive Experience Report.
   ///

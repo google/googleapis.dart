@@ -1295,7 +1295,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AvailableProjectsResourceApi', () {
+  unittest.group('resource-AvailableProjectsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).availableProjects;
@@ -1353,7 +1353,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).operations;
@@ -1403,7 +1403,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--addFirebase', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
@@ -1882,7 +1882,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAndroidAppsResourceApi', () {
+  unittest.group('resource-ProjectsAndroidAppsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps;
@@ -2147,7 +2147,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAndroidAppsShaResourceApi', () {
+  unittest.group('resource-ProjectsAndroidAppsShaResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
@@ -2299,7 +2299,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAvailableLocationsResourceApi', () {
+  unittest.group('resource-ProjectsAvailableLocationsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.availableLocations;
@@ -2359,7 +2359,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDefaultLocationResourceApi', () {
+  unittest.group('resource-ProjectsDefaultLocationResource', () {
     unittest.test('method--finalize', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.defaultLocation;
@@ -2415,7 +2415,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsIosAppsResourceApi', () {
+  unittest.group('resource-ProjectsIosAppsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.iosApps;
@@ -2680,7 +2680,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsWebAppsResourceApi', () {
+  unittest.group('resource-ProjectsWebAppsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.webApps;

@@ -7716,7 +7716,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InfoTypesResourceApi', () {
+  unittest.group('resource-InfoTypesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).infoTypes;
@@ -7781,7 +7781,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LocationsInfoTypesResourceApi', () {
+  unittest.group('resource-LocationsInfoTypesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).locations.infoTypes;
@@ -7845,7 +7845,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsDeidentifyTemplatesResourceApi', () {
+  unittest.group('resource-OrganizationsDeidentifyTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.deidentifyTemplates;
@@ -8128,7 +8128,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsInspectTemplatesResourceApi', () {
+  unittest.group('resource-OrganizationsInspectTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.inspectTemplates;
@@ -8407,8 +8407,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-OrganizationsLocationsDeidentifyTemplatesResourceApi', () {
+  unittest.group('resource-OrganizationsLocationsDeidentifyTemplatesResource',
+      () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
@@ -8691,8 +8691,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsLocationsInspectTemplatesResourceApi',
-      () {
+  unittest.group('resource-OrganizationsLocationsInspectTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.inspectTemplates;
@@ -8971,8 +8970,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsLocationsStoredInfoTypesResourceApi',
-      () {
+  unittest.group('resource-OrganizationsLocationsStoredInfoTypesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
@@ -9248,7 +9246,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsStoredInfoTypesResourceApi', () {
+  unittest.group('resource-OrganizationsStoredInfoTypesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.storedInfoTypes;
@@ -9524,7 +9522,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsContentResourceApi', () {
+  unittest.group('resource-ProjectsContentResource', () {
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.content;
@@ -9694,7 +9692,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDeidentifyTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsDeidentifyTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.deidentifyTemplates;
@@ -9977,7 +9975,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsDlpJobsResourceApi', () {
+  unittest.group('resource-ProjectsDlpJobsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.dlpJobs;
@@ -10256,7 +10254,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsImageResourceApi', () {
+  unittest.group('resource-ProjectsImageResource', () {
     unittest.test('method--redact', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.image;
@@ -10314,7 +10312,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsInspectTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsInspectTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.inspectTemplates;
@@ -10593,7 +10591,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobTriggersResourceApi', () {
+  unittest.group('resource-ProjectsJobTriggersResource', () {
     unittest.test('method--activate', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
@@ -10926,7 +10924,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsContentResourceApi', () {
+  unittest.group('resource-ProjectsLocationsContentResource', () {
     unittest.test('method--deidentify', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.content;
@@ -11096,8 +11094,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDeidentifyTemplatesResourceApi',
-      () {
+  unittest.group('resource-ProjectsLocationsDeidentifyTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
@@ -11380,7 +11377,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsDlpJobsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsDlpJobsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
@@ -11769,7 +11766,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsImageResourceApi', () {
+  unittest.group('resource-ProjectsLocationsImageResource', () {
     unittest.test('method--redact', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.image;
@@ -11827,7 +11824,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsInspectTemplatesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsInspectTemplatesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.inspectTemplates;
@@ -12106,7 +12103,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsJobTriggersResourceApi', () {
+  unittest.group('resource-ProjectsLocationsJobTriggersResource', () {
     unittest.test('method--activate', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
@@ -12495,7 +12492,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsStoredInfoTypesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsStoredInfoTypesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.storedInfoTypes;
@@ -12771,7 +12768,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsStoredInfoTypesResourceApi', () {
+  unittest.group('resource-ProjectsStoredInfoTypesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.storedInfoTypes;

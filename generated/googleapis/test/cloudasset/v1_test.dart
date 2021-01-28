@@ -2110,7 +2110,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FeedsResourceApi', () {
+  unittest.group('resource-FeedsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).feeds;
@@ -2362,7 +2362,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).operations;
@@ -2412,7 +2412,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V1ResourceApi', () {
+  unittest.group('resource-V1Resource', () {
     unittest.test('method--batchGetAssetsHistory', () {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;

@@ -25,11 +25,11 @@
 ///
 /// Create an instance of [ReportsApi] to access these resources:
 ///
-/// - [ActivitiesResourceApi]
-/// - [ChannelsResourceApi]
-/// - [CustomerUsageReportsResourceApi]
-/// - [EntityUsageReportsResourceApi]
-/// - [UserUsageReportResourceApi]
+/// - [ActivitiesResource]
+/// - [ChannelsResource]
+/// - [CustomerUsageReportsResource]
+/// - [EntityUsageReportsResource]
+/// - [UserUsageReportResource]
 library admin.reports_v1;
 
 import 'dart:async' as async;
@@ -58,14 +58,14 @@ class ReportsApi {
 
   final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi get activities => ActivitiesResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  CustomerUsageReportsResourceApi get customerUsageReports =>
-      CustomerUsageReportsResourceApi(_requester);
-  EntityUsageReportsResourceApi get entityUsageReports =>
-      EntityUsageReportsResourceApi(_requester);
-  UserUsageReportResourceApi get userUsageReport =>
-      UserUsageReportResourceApi(_requester);
+  ActivitiesResource get activities => ActivitiesResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  CustomerUsageReportsResource get customerUsageReports =>
+      CustomerUsageReportsResource(_requester);
+  EntityUsageReportsResource get entityUsageReports =>
+      EntityUsageReportsResource(_requester);
+  UserUsageReportResource get userUsageReport =>
+      UserUsageReportResource(_requester);
 
   ReportsApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -74,10 +74,10 @@ class ReportsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ActivitiesResourceApi {
+class ActivitiesResource {
   final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
+  ActivitiesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of activities for a specific customer's account and
   /// application such as the Admin console application or the Google Drive
@@ -577,10 +577,10 @@ class ActivitiesResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Stop watching resources through this channel.
   ///
@@ -633,10 +633,10 @@ class ChannelsResourceApi {
   }
 }
 
-class CustomerUsageReportsResourceApi {
+class CustomerUsageReportsResource {
   final commons.ApiRequester _requester;
 
-  CustomerUsageReportsResourceApi(commons.ApiRequester client)
+  CustomerUsageReportsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves a report which is a collection of properties and statistics for
@@ -736,11 +736,10 @@ class CustomerUsageReportsResourceApi {
   }
 }
 
-class EntityUsageReportsResourceApi {
+class EntityUsageReportsResource {
   final commons.ApiRequester _requester;
 
-  EntityUsageReportsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  EntityUsageReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report which is a collection of properties and statistics for
   /// entities used by users within the account. For more information, see the
@@ -895,10 +894,10 @@ class EntityUsageReportsResourceApi {
   }
 }
 
-class UserUsageReportResourceApi {
+class UserUsageReportResource {
   final commons.ApiRequester _requester;
 
-  UserUsageReportResourceApi(commons.ApiRequester client) : _requester = client;
+  UserUsageReportResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report which is a collection of properties and statistics for
   /// a set of users with the account. For more information, see the User Usage

@@ -21,13 +21,13 @@
 ///
 /// Create an instance of [DnsApi] to access these resources:
 ///
-/// - [ChangesResourceApi]
-/// - [DnsKeysResourceApi]
-/// - [ManagedZoneOperationsResourceApi]
-/// - [ManagedZonesResourceApi]
-/// - [PoliciesResourceApi]
-/// - [ProjectsResourceApi]
-/// - [ResourceRecordSetsResourceApi]
+/// - [ChangesResource]
+/// - [DnsKeysResource]
+/// - [ManagedZoneOperationsResource]
+/// - [ManagedZonesResource]
+/// - [PoliciesResource]
+/// - [ProjectsResource]
+/// - [ResourceRecordSetsResource]
 library dns.v1;
 
 import 'dart:async' as async;
@@ -61,16 +61,15 @@ class DnsApi {
 
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi get changes => ChangesResourceApi(_requester);
-  DnsKeysResourceApi get dnsKeys => DnsKeysResourceApi(_requester);
-  ManagedZoneOperationsResourceApi get managedZoneOperations =>
-      ManagedZoneOperationsResourceApi(_requester);
-  ManagedZonesResourceApi get managedZones =>
-      ManagedZonesResourceApi(_requester);
-  PoliciesResourceApi get policies => PoliciesResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  ResourceRecordSetsResourceApi get resourceRecordSets =>
-      ResourceRecordSetsResourceApi(_requester);
+  ChangesResource get changes => ChangesResource(_requester);
+  DnsKeysResource get dnsKeys => DnsKeysResource(_requester);
+  ManagedZoneOperationsResource get managedZoneOperations =>
+      ManagedZoneOperationsResource(_requester);
+  ManagedZonesResource get managedZones => ManagedZonesResource(_requester);
+  PoliciesResource get policies => PoliciesResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  ResourceRecordSetsResource get resourceRecordSets =>
+      ResourceRecordSetsResource(_requester);
 
   DnsApi(http.Client client,
       {core.String rootUrl = 'https://dns.googleapis.com/',
@@ -79,10 +78,10 @@ class DnsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ChangesResourceApi {
+class ChangesResource {
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi(commons.ApiRequester client) : _requester = client;
+  ChangesResource(commons.ApiRequester client) : _requester = client;
 
   /// Atomically update the ResourceRecordSet collection.
   ///
@@ -327,10 +326,10 @@ class ChangesResourceApi {
   }
 }
 
-class DnsKeysResourceApi {
+class DnsKeysResource {
   final commons.ApiRequester _requester;
 
-  DnsKeysResourceApi(commons.ApiRequester client) : _requester = client;
+  DnsKeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Fetch the representation of an existing DnsKey.
   ///
@@ -501,10 +500,10 @@ class DnsKeysResourceApi {
   }
 }
 
-class ManagedZoneOperationsResourceApi {
+class ManagedZoneOperationsResource {
   final commons.ApiRequester _requester;
 
-  ManagedZoneOperationsResourceApi(commons.ApiRequester client)
+  ManagedZoneOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Fetch the representation of an existing Operation.
@@ -668,10 +667,10 @@ class ManagedZoneOperationsResourceApi {
   }
 }
 
-class ManagedZonesResourceApi {
+class ManagedZonesResource {
   final commons.ApiRequester _requester;
 
-  ManagedZonesResourceApi(commons.ApiRequester client) : _requester = client;
+  ManagedZonesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a new ManagedZone.
   ///
@@ -1099,10 +1098,10 @@ class ManagedZonesResourceApi {
   }
 }
 
-class PoliciesResourceApi {
+class PoliciesResource {
   final commons.ApiRequester _requester;
 
-  PoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+  PoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a new Policy
   ///
@@ -1525,10 +1524,10 @@ class PoliciesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Fetch the representation of an existing Project.
   ///
@@ -1589,11 +1588,10 @@ class ProjectsResourceApi {
   }
 }
 
-class ResourceRecordSetsResourceApi {
+class ResourceRecordSetsResource {
   final commons.ApiRequester _requester;
 
-  ResourceRecordSetsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ResourceRecordSetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Enumerate ResourceRecordSets that have been created but not yet deleted.
   ///

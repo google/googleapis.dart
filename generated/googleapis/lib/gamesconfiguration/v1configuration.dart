@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [GamesConfigurationApi] to access these resources:
 ///
-/// - [AchievementConfigurationsResourceApi]
-/// - [ImageConfigurationsResourceApi]
-/// - [LeaderboardConfigurationsResourceApi]
+/// - [AchievementConfigurationsResource]
+/// - [ImageConfigurationsResource]
+/// - [LeaderboardConfigurationsResource]
 library gamesConfiguration.v1configuration;
 
 import 'dart:async' as async;
@@ -58,12 +58,12 @@ class GamesConfigurationApi {
 
   final commons.ApiRequester _requester;
 
-  AchievementConfigurationsResourceApi get achievementConfigurations =>
-      AchievementConfigurationsResourceApi(_requester);
-  ImageConfigurationsResourceApi get imageConfigurations =>
-      ImageConfigurationsResourceApi(_requester);
-  LeaderboardConfigurationsResourceApi get leaderboardConfigurations =>
-      LeaderboardConfigurationsResourceApi(_requester);
+  AchievementConfigurationsResource get achievementConfigurations =>
+      AchievementConfigurationsResource(_requester);
+  ImageConfigurationsResource get imageConfigurations =>
+      ImageConfigurationsResource(_requester);
+  LeaderboardConfigurationsResource get leaderboardConfigurations =>
+      LeaderboardConfigurationsResource(_requester);
 
   GamesConfigurationApi(http.Client client,
       {core.String rootUrl = 'https://gamesconfiguration.googleapis.com/',
@@ -72,10 +72,10 @@ class GamesConfigurationApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AchievementConfigurationsResourceApi {
+class AchievementConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  AchievementConfigurationsResourceApi(commons.ApiRequester client)
+  AchievementConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete the achievement configuration with the given ID.
@@ -368,10 +368,10 @@ class AchievementConfigurationsResourceApi {
   }
 }
 
-class ImageConfigurationsResourceApi {
+class ImageConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  ImageConfigurationsResourceApi(commons.ApiRequester client)
+  ImageConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Uploads an image for a resource with the given ID and image type.
@@ -452,10 +452,10 @@ class ImageConfigurationsResourceApi {
   }
 }
 
-class LeaderboardConfigurationsResourceApi {
+class LeaderboardConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  LeaderboardConfigurationsResourceApi(commons.ApiRequester client)
+  LeaderboardConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete the leaderboard configuration with the given ID.

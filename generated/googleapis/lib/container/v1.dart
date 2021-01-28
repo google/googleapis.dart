@@ -24,18 +24,18 @@
 ///
 /// Create an instance of [ContainerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsAggregatedResourceApi]
-///     - [ProjectsAggregatedUsableSubnetworksResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsClustersResourceApi]
-///       - [ProjectsLocationsClustersNodePoolsResourceApi]
-///       - [ProjectsLocationsClustersWellKnownResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///   - [ProjectsZonesResourceApi]
-///     - [ProjectsZonesClustersResourceApi]
-///       - [ProjectsZonesClustersNodePoolsResourceApi]
-///     - [ProjectsZonesOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsAggregatedResource]
+///     - [ProjectsAggregatedUsableSubnetworksResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsClustersResource]
+///       - [ProjectsLocationsClustersNodePoolsResource]
+///       - [ProjectsLocationsClustersWellKnownResource]
+///     - [ProjectsLocationsOperationsResource]
+///   - [ProjectsZonesResource]
+///     - [ProjectsZonesClustersResource]
+///       - [ProjectsZonesClustersNodePoolsResource]
+///     - [ProjectsZonesOperationsResource]
 library container.v1;
 
 import 'dart:async' as async;
@@ -59,7 +59,7 @@ class ContainerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ContainerApi(http.Client client,
       {core.String rootUrl = 'https://container.googleapis.com/',
@@ -68,32 +68,31 @@ class ContainerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAggregatedResourceApi get aggregated =>
-      ProjectsAggregatedResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsZonesResourceApi get zones => ProjectsZonesResourceApi(_requester);
+  ProjectsAggregatedResource get aggregated =>
+      ProjectsAggregatedResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsZonesResource get zones => ProjectsZonesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsAggregatedResourceApi {
+class ProjectsAggregatedResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAggregatedUsableSubnetworksResourceApi get usableSubnetworks =>
-      ProjectsAggregatedUsableSubnetworksResourceApi(_requester);
+  ProjectsAggregatedUsableSubnetworksResource get usableSubnetworks =>
+      ProjectsAggregatedUsableSubnetworksResource(_requester);
 
-  ProjectsAggregatedResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsAggregatedResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsAggregatedUsableSubnetworksResourceApi {
+class ProjectsAggregatedUsableSubnetworksResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAggregatedUsableSubnetworksResourceApi(commons.ApiRequester client)
+  ProjectsAggregatedUsableSubnetworksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists subnetworks that are usable for creating clusters in a project.
@@ -178,16 +177,15 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsClustersResourceApi get clusters =>
-      ProjectsLocationsClustersResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsClustersResource get clusters =>
+      ProjectsLocationsClustersResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns configuration info about the Google Kubernetes Engine service.
   ///
@@ -262,15 +260,15 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsClustersResourceApi {
+class ProjectsLocationsClustersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsClustersNodePoolsResourceApi get nodePools =>
-      ProjectsLocationsClustersNodePoolsResourceApi(_requester);
-  ProjectsLocationsClustersWellKnownResourceApi get wellKnown =>
-      ProjectsLocationsClustersWellKnownResourceApi(_requester);
+  ProjectsLocationsClustersNodePoolsResource get nodePools =>
+      ProjectsLocationsClustersNodePoolsResource(_requester);
+  ProjectsLocationsClustersWellKnownResource get wellKnown =>
+      ProjectsLocationsClustersWellKnownResource(_requester);
 
-  ProjectsLocationsClustersResourceApi(commons.ApiRequester client)
+  ProjectsLocationsClustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Completes master IP rotation.
@@ -1415,10 +1413,10 @@ class ProjectsLocationsClustersResourceApi {
   }
 }
 
-class ProjectsLocationsClustersNodePoolsResourceApi {
+class ProjectsLocationsClustersNodePoolsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsClustersNodePoolsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsClustersNodePoolsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a node pool for a cluster.
@@ -2039,10 +2037,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   }
 }
 
-class ProjectsLocationsClustersWellKnownResourceApi {
+class ProjectsLocationsClustersWellKnownResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsClustersWellKnownResourceApi(commons.ApiRequester client)
+  ProjectsLocationsClustersWellKnownResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the OIDC discovery document for the cluster. See the [OpenID Connect
@@ -2106,10 +2104,10 @@ class ProjectsLocationsClustersWellKnownResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Cancels the specified operation.
@@ -2324,15 +2322,15 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsZonesResourceApi {
+class ProjectsZonesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsZonesClustersResourceApi get clusters =>
-      ProjectsZonesClustersResourceApi(_requester);
-  ProjectsZonesOperationsResourceApi get operations =>
-      ProjectsZonesOperationsResourceApi(_requester);
+  ProjectsZonesClustersResource get clusters =>
+      ProjectsZonesClustersResource(_requester);
+  ProjectsZonesOperationsResource get operations =>
+      ProjectsZonesOperationsResource(_requester);
 
-  ProjectsZonesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsZonesResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns configuration info about the Google Kubernetes Engine service.
   ///
@@ -2408,13 +2406,13 @@ class ProjectsZonesResourceApi {
   }
 }
 
-class ProjectsZonesClustersResourceApi {
+class ProjectsZonesClustersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsZonesClustersNodePoolsResourceApi get nodePools =>
-      ProjectsZonesClustersNodePoolsResourceApi(_requester);
+  ProjectsZonesClustersNodePoolsResource get nodePools =>
+      ProjectsZonesClustersNodePoolsResource(_requester);
 
-  ProjectsZonesClustersResourceApi(commons.ApiRequester client)
+  ProjectsZonesClustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Sets the addons for a specific cluster.
@@ -3780,10 +3778,10 @@ class ProjectsZonesClustersResourceApi {
   }
 }
 
-class ProjectsZonesClustersNodePoolsResourceApi {
+class ProjectsZonesClustersNodePoolsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsZonesClustersNodePoolsResourceApi(commons.ApiRequester client)
+  ProjectsZonesClustersNodePoolsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Sets the autoscaling settings for the specified node pool.
@@ -4580,10 +4578,10 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   }
 }
 
-class ProjectsZonesOperationsResourceApi {
+class ProjectsZonesOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsZonesOperationsResourceApi(commons.ApiRequester client)
+  ProjectsZonesOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Cancels the specified operation.

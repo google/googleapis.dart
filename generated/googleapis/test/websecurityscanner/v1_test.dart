@@ -1107,7 +1107,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsScanConfigsResourceApi', () {
+  unittest.group('resource-ProjectsScanConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
@@ -1425,7 +1425,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsScanConfigsScanRunsResourceApi', () {
+  unittest.group('resource-ProjectsScanConfigsScanRunsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
@@ -1585,8 +1585,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsScanConfigsScanRunsCrawledUrlsResourceApi',
-      () {
+  unittest.group('resource-ProjectsScanConfigsScanRunsCrawledUrlsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)
@@ -1649,8 +1648,8 @@ void main() {
     });
   });
 
-  unittest.group(
-      'resource-ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi', () {
+  unittest.group('resource-ProjectsScanConfigsScanRunsFindingTypeStatsResource',
+      () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)
@@ -1705,7 +1704,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsScanConfigsScanRunsFindingsResourceApi', () {
+  unittest.group('resource-ProjectsScanConfigsScanRunsFindingsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)

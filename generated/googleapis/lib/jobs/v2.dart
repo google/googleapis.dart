@@ -25,10 +25,10 @@
 ///
 /// Create an instance of [CloudTalentSolutionApi] to access these resources:
 ///
-/// - [CompaniesResourceApi]
-///   - [CompaniesJobsResourceApi]
-/// - [JobsResourceApi]
-/// - [V2ResourceApi]
+/// - [CompaniesResource]
+///   - [CompaniesJobsResource]
+/// - [JobsResource]
+/// - [V2Resource]
 library jobs.v2;
 
 import 'dart:async' as async;
@@ -55,9 +55,9 @@ class CloudTalentSolutionApi {
 
   final commons.ApiRequester _requester;
 
-  CompaniesResourceApi get companies => CompaniesResourceApi(_requester);
-  JobsResourceApi get jobs => JobsResourceApi(_requester);
-  V2ResourceApi get v2 => V2ResourceApi(_requester);
+  CompaniesResource get companies => CompaniesResource(_requester);
+  JobsResource get jobs => JobsResource(_requester);
+  V2Resource get v2 => V2Resource(_requester);
 
   CloudTalentSolutionApi(http.Client client,
       {core.String rootUrl = 'https://jobs.googleapis.com/',
@@ -66,12 +66,12 @@ class CloudTalentSolutionApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class CompaniesResourceApi {
+class CompaniesResource {
   final commons.ApiRequester _requester;
 
-  CompaniesJobsResourceApi get jobs => CompaniesJobsResourceApi(_requester);
+  CompaniesJobsResource get jobs => CompaniesJobsResource(_requester);
 
-  CompaniesResourceApi(commons.ApiRequester client) : _requester = client;
+  CompaniesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new company entity.
   ///
@@ -369,10 +369,10 @@ class CompaniesResourceApi {
   }
 }
 
-class CompaniesJobsResourceApi {
+class CompaniesJobsResource {
   final commons.ApiRequester _requester;
 
-  CompaniesJobsResourceApi(commons.ApiRequester client) : _requester = client;
+  CompaniesJobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deprecated. Use ListJobs instead. Lists all jobs associated with a
   /// company.
@@ -471,10 +471,10 @@ class CompaniesJobsResourceApi {
   }
 }
 
-class JobsResourceApi {
+class JobsResource {
   final commons.ApiRequester _requester;
 
-  JobsResourceApi(commons.ApiRequester client) : _requester = client;
+  JobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a list of Job postings by filter.
   ///
@@ -1052,10 +1052,10 @@ class JobsResourceApi {
   }
 }
 
-class V2ResourceApi {
+class V2Resource {
   final commons.ApiRequester _requester;
 
-  V2ResourceApi(commons.ApiRequester client) : _requester = client;
+  V2Resource(commons.ApiRequester client) : _requester = client;
 
   /// Completes the specified prefix with job keyword suggestions. Intended for
   /// use by a job search auto-complete search box.

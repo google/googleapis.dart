@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [CloudLifeSciencesApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsPipelinesResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsPipelinesResource]
 library lifesciences.v2beta;
 
 import 'dart:async' as async;
@@ -51,7 +51,7 @@ class CloudLifeSciencesApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudLifeSciencesApi(http.Client client,
       {core.String rootUrl = 'https://lifesciences.googleapis.com/',
@@ -60,25 +60,24 @@ class CloudLifeSciencesApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsPipelinesResourceApi get pipelines =>
-      ProjectsLocationsPipelinesResourceApi(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsPipelinesResource get pipelines =>
+      ProjectsLocationsPipelinesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -204,10 +203,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -416,10 +415,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsPipelinesResourceApi {
+class ProjectsLocationsPipelinesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsPipelinesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsPipelinesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Runs a pipeline. The returned Operation's metadata field will contain a

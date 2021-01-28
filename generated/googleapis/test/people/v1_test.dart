@@ -3004,7 +3004,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ContactGroupsResourceApi', () {
+  unittest.group('resource-ContactGroupsResource', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
@@ -3330,7 +3330,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ContactGroupsMembersResourceApi', () {
+  unittest.group('resource-ContactGroupsMembersResource', () {
     unittest.test('method--modify', () {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups.members;
@@ -3388,7 +3388,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OtherContactsResourceApi', () {
+  unittest.group('resource-OtherContactsResource', () {
     unittest.test('method--copyOtherContactToMyContactsGroup', () {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).otherContacts;
@@ -3513,7 +3513,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PeopleResourceApi', () {
+  unittest.group('resource-PeopleResource', () {
     unittest.test('method--createContact', () {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
@@ -4066,7 +4066,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PeopleConnectionsResourceApi', () {
+  unittest.group('resource-PeopleConnectionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people.connections;

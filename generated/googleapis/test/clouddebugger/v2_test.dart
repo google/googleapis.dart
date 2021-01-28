@@ -1085,7 +1085,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ControllerDebuggeesResourceApi', () {
+  unittest.group('resource-ControllerDebuggeesResource', () {
     unittest.test('method--register', () {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).controller.debuggees;
@@ -1138,7 +1138,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ControllerDebuggeesBreakpointsResourceApi', () {
+  unittest.group('resource-ControllerDebuggeesBreakpointsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).controller.debuggees.breakpoints;
@@ -1277,7 +1277,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DebuggerDebuggeesResourceApi', () {
+  unittest.group('resource-DebuggerDebuggeesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees;
@@ -1338,7 +1338,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DebuggerDebuggeesBreakpointsResourceApi', () {
+  unittest.group('resource-DebuggerDebuggeesBreakpointsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;

@@ -21,12 +21,12 @@
 ///
 /// Create an instance of [RecommenderApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsInsightTypesResourceApi]
-///       - [ProjectsLocationsInsightTypesInsightsResourceApi]
-///     - [ProjectsLocationsRecommendersResourceApi]
-///       - [ProjectsLocationsRecommendersRecommendationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsInsightTypesResource]
+///       - [ProjectsLocationsInsightTypesInsightsResource]
+///     - [ProjectsLocationsRecommendersResource]
+///       - [ProjectsLocationsRecommendersRecommendationsResource]
 library recommender.v1;
 
 import 'dart:async' as async;
@@ -48,7 +48,7 @@ class RecommenderApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   RecommenderApi(http.Client client,
       {core.String rootUrl = 'https://recommender.googleapis.com/',
@@ -57,41 +57,40 @@ class RecommenderApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInsightTypesResourceApi get insightTypes =>
-      ProjectsLocationsInsightTypesResourceApi(_requester);
-  ProjectsLocationsRecommendersResourceApi get recommenders =>
-      ProjectsLocationsRecommendersResourceApi(_requester);
+  ProjectsLocationsInsightTypesResource get insightTypes =>
+      ProjectsLocationsInsightTypesResource(_requester);
+  ProjectsLocationsRecommendersResource get recommenders =>
+      ProjectsLocationsRecommendersResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsInsightTypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInsightTypesInsightsResource get insights =>
+      ProjectsLocationsInsightTypesInsightsResource(_requester);
+
+  ProjectsLocationsInsightTypesResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsInsightTypesResourceApi {
+class ProjectsLocationsInsightTypesInsightsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsInsightTypesInsightsResourceApi get insights =>
-      ProjectsLocationsInsightTypesInsightsResourceApi(_requester);
-
-  ProjectsLocationsInsightTypesResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsLocationsInsightTypesInsightsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsInsightTypesInsightsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsInsightTypesInsightsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the requested insight. Requires the recommender.*.get IAM permission
@@ -299,20 +298,20 @@ class ProjectsLocationsInsightTypesInsightsResourceApi {
   }
 }
 
-class ProjectsLocationsRecommendersResourceApi {
+class ProjectsLocationsRecommendersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRecommendersRecommendationsResourceApi get recommendations =>
-      ProjectsLocationsRecommendersRecommendationsResourceApi(_requester);
+  ProjectsLocationsRecommendersRecommendationsResource get recommendations =>
+      ProjectsLocationsRecommendersRecommendationsResource(_requester);
 
-  ProjectsLocationsRecommendersResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRecommendersResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsLocationsRecommendersRecommendationsResourceApi {
+class ProjectsLocationsRecommendersRecommendationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRecommendersRecommendationsResourceApi(
+  ProjectsLocationsRecommendersRecommendationsResource(
       commons.ApiRequester client)
       : _requester = client;
 

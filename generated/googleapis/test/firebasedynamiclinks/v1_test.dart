@@ -889,7 +889,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ManagedShortLinksResourceApi', () {
+  unittest.group('resource-ManagedShortLinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).managedShortLinks;
@@ -944,7 +944,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ShortLinksResourceApi', () {
+  unittest.group('resource-ShortLinksResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).shortLinks;
@@ -999,7 +999,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V1ResourceApi', () {
+  unittest.group('resource-V1Resource', () {
     unittest.test('method--getLinkStats', () {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).v1;

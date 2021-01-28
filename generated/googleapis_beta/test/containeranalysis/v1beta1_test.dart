@@ -3366,7 +3366,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsNotesResourceApi', () {
+  unittest.group('resource-ProjectsNotesResource', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
@@ -3850,7 +3850,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsNotesOccurrencesResourceApi', () {
+  unittest.group('resource-ProjectsNotesOccurrencesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes.occurrences;
@@ -3913,7 +3913,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOccurrencesResourceApi', () {
+  unittest.group('resource-ProjectsOccurrencesResource', () {
     unittest.test('method--batchCreate', () {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
@@ -4496,7 +4496,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsScanConfigsResourceApi', () {
+  unittest.group('resource-ProjectsScanConfigsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.scanConfigs;

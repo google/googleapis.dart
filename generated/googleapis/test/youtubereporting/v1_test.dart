@@ -718,7 +718,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-JobsResourceApi', () {
+  unittest.group('resource-JobsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs;
@@ -948,7 +948,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-JobsReportsResourceApi', () {
+  unittest.group('resource-JobsReportsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs.reports;
@@ -1096,7 +1096,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MediaResourceApi', () {
+  unittest.group('resource-MediaResource', () {
     unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -1149,7 +1149,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportTypesResourceApi', () {
+  unittest.group('resource-ReportTypesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).reportTypes;

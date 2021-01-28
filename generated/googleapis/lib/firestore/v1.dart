@@ -24,14 +24,14 @@
 ///
 /// Create an instance of [FirestoreApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsDatabasesResourceApi]
-///     - [ProjectsDatabasesCollectionGroupsResourceApi]
-///       - [ProjectsDatabasesCollectionGroupsFieldsResourceApi]
-///       - [ProjectsDatabasesCollectionGroupsIndexesResourceApi]
-///     - [ProjectsDatabasesDocumentsResourceApi]
-///     - [ProjectsDatabasesOperationsResourceApi]
-///   - [ProjectsLocationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsDatabasesResource]
+///     - [ProjectsDatabasesCollectionGroupsResource]
+///       - [ProjectsDatabasesCollectionGroupsFieldsResource]
+///       - [ProjectsDatabasesCollectionGroupsIndexesResource]
+///     - [ProjectsDatabasesDocumentsResource]
+///     - [ProjectsDatabasesOperationsResource]
+///   - [ProjectsLocationsResource]
 library firestore.v1;
 
 import 'dart:async' as async;
@@ -58,7 +58,7 @@ class FirestoreApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   FirestoreApi(http.Client client,
       {core.String rootUrl = 'https://firestore.googleapis.com/',
@@ -67,29 +67,28 @@ class FirestoreApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesResourceApi get databases =>
-      ProjectsDatabasesResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsDatabasesResource get databases =>
+      ProjectsDatabasesResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsDatabasesResourceApi {
+class ProjectsDatabasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesCollectionGroupsResourceApi get collectionGroups =>
-      ProjectsDatabasesCollectionGroupsResourceApi(_requester);
-  ProjectsDatabasesDocumentsResourceApi get documents =>
-      ProjectsDatabasesDocumentsResourceApi(_requester);
-  ProjectsDatabasesOperationsResourceApi get operations =>
-      ProjectsDatabasesOperationsResourceApi(_requester);
+  ProjectsDatabasesCollectionGroupsResource get collectionGroups =>
+      ProjectsDatabasesCollectionGroupsResource(_requester);
+  ProjectsDatabasesDocumentsResource get documents =>
+      ProjectsDatabasesDocumentsResource(_requester);
+  ProjectsDatabasesOperationsResource get operations =>
+      ProjectsDatabasesOperationsResource(_requester);
 
-  ProjectsDatabasesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsDatabasesResource(commons.ApiRequester client) : _requester = client;
 
   /// Exports a copy of all or a subset of documents from Google Cloud Firestore
   /// to another storage system, such as Google Cloud Storage. Recent updates to
@@ -225,23 +224,22 @@ class ProjectsDatabasesResourceApi {
   }
 }
 
-class ProjectsDatabasesCollectionGroupsResourceApi {
+class ProjectsDatabasesCollectionGroupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesCollectionGroupsFieldsResourceApi get fields =>
-      ProjectsDatabasesCollectionGroupsFieldsResourceApi(_requester);
-  ProjectsDatabasesCollectionGroupsIndexesResourceApi get indexes =>
-      ProjectsDatabasesCollectionGroupsIndexesResourceApi(_requester);
+  ProjectsDatabasesCollectionGroupsFieldsResource get fields =>
+      ProjectsDatabasesCollectionGroupsFieldsResource(_requester);
+  ProjectsDatabasesCollectionGroupsIndexesResource get indexes =>
+      ProjectsDatabasesCollectionGroupsIndexesResource(_requester);
 
-  ProjectsDatabasesCollectionGroupsResourceApi(commons.ApiRequester client)
+  ProjectsDatabasesCollectionGroupsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
+class ProjectsDatabasesCollectionGroupsFieldsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesCollectionGroupsFieldsResourceApi(
-      commons.ApiRequester client)
+  ProjectsDatabasesCollectionGroupsFieldsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the metadata and configuration for a Field.
@@ -472,11 +470,10 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   }
 }
 
-class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
+class ProjectsDatabasesCollectionGroupsIndexesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesCollectionGroupsIndexesResourceApi(
-      commons.ApiRequester client)
+  ProjectsDatabasesCollectionGroupsIndexesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a composite index. This returns a google.longrunning.Operation
@@ -725,10 +722,10 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
   }
 }
 
-class ProjectsDatabasesDocumentsResourceApi {
+class ProjectsDatabasesDocumentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesDocumentsResourceApi(commons.ApiRequester client)
+  ProjectsDatabasesDocumentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets multiple documents. Documents returned by this method are not
@@ -1788,10 +1785,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   }
 }
 
-class ProjectsDatabasesOperationsResourceApi {
+class ProjectsDatabasesOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDatabasesOperationsResourceApi(commons.ApiRequester client)
+  ProjectsDatabasesOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -2050,11 +2047,10 @@ class ProjectsDatabasesOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///

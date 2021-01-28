@@ -23,12 +23,12 @@
 ///
 /// Create an instance of [VaultApi] to access these resources:
 ///
-/// - [MattersResourceApi]
-///   - [MattersExportsResourceApi]
-///   - [MattersHoldsResourceApi]
-///     - [MattersHoldsAccountsResourceApi]
-///   - [MattersSavedQueriesResourceApi]
-/// - [OperationsResourceApi]
+/// - [MattersResource]
+///   - [MattersExportsResource]
+///   - [MattersHoldsResource]
+///     - [MattersHoldsAccountsResource]
+///   - [MattersSavedQueriesResource]
+/// - [OperationsResource]
 library vault.v1;
 
 import 'dart:async' as async;
@@ -54,8 +54,8 @@ class VaultApi {
 
   final commons.ApiRequester _requester;
 
-  MattersResourceApi get matters => MattersResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  MattersResource get matters => MattersResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
 
   VaultApi(http.Client client,
       {core.String rootUrl = 'https://vault.googleapis.com/',
@@ -64,16 +64,15 @@ class VaultApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class MattersResourceApi {
+class MattersResource {
   final commons.ApiRequester _requester;
 
-  MattersExportsResourceApi get exports =>
-      MattersExportsResourceApi(_requester);
-  MattersHoldsResourceApi get holds => MattersHoldsResourceApi(_requester);
-  MattersSavedQueriesResourceApi get savedQueries =>
-      MattersSavedQueriesResourceApi(_requester);
+  MattersExportsResource get exports => MattersExportsResource(_requester);
+  MattersHoldsResource get holds => MattersHoldsResource(_requester);
+  MattersSavedQueriesResource get savedQueries =>
+      MattersSavedQueriesResource(_requester);
 
-  MattersResourceApi(commons.ApiRequester client) : _requester = client;
+  MattersResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds an account as a matter collaborator.
   ///
@@ -671,10 +670,10 @@ class MattersResourceApi {
   }
 }
 
-class MattersExportsResourceApi {
+class MattersExportsResource {
   final commons.ApiRequester _requester;
 
-  MattersExportsResourceApi(commons.ApiRequester client) : _requester = client;
+  MattersExportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an Export.
   ///
@@ -916,13 +915,13 @@ class MattersExportsResourceApi {
   }
 }
 
-class MattersHoldsResourceApi {
+class MattersHoldsResource {
   final commons.ApiRequester _requester;
 
-  MattersHoldsAccountsResourceApi get accounts =>
-      MattersHoldsAccountsResourceApi(_requester);
+  MattersHoldsAccountsResource get accounts =>
+      MattersHoldsAccountsResource(_requester);
 
-  MattersHoldsResourceApi(commons.ApiRequester client) : _requester = client;
+  MattersHoldsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds HeldAccounts to a hold. Returns a list of accounts that have been
   /// successfully added. Accounts can only be added to an existing
@@ -1401,10 +1400,10 @@ class MattersHoldsResourceApi {
   }
 }
 
-class MattersHoldsAccountsResourceApi {
+class MattersHoldsAccountsResource {
   final commons.ApiRequester _requester;
 
-  MattersHoldsAccountsResourceApi(commons.ApiRequester client)
+  MattersHoldsAccountsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Adds a HeldAccount to a hold. Accounts can only be added to a hold that
@@ -1608,10 +1607,10 @@ class MattersHoldsAccountsResourceApi {
   }
 }
 
-class MattersSavedQueriesResourceApi {
+class MattersSavedQueriesResource {
   final commons.ApiRequester _requester;
 
-  MattersSavedQueriesResourceApi(commons.ApiRequester client)
+  MattersSavedQueriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a saved query.
@@ -1864,10 +1863,10 @@ class MattersSavedQueriesResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a long-running operation. This method indicates that the client is
   /// no longer interested in the operation result. It does not cancel the

@@ -24,22 +24,22 @@
 ///
 /// Create an instance of [AndroidEnterpriseApi] to access these resources:
 ///
-/// - [DevicesResourceApi]
-/// - [EnterprisesResourceApi]
-/// - [EntitlementsResourceApi]
-/// - [GrouplicensesResourceApi]
-/// - [GrouplicenseusersResourceApi]
-/// - [InstallsResourceApi]
-/// - [ManagedconfigurationsfordeviceResourceApi]
-/// - [ManagedconfigurationsforuserResourceApi]
-/// - [ManagedconfigurationssettingsResourceApi]
-/// - [PermissionsResourceApi]
-/// - [ProductsResourceApi]
-/// - [ServiceaccountkeysResourceApi]
-/// - [StorelayoutclustersResourceApi]
-/// - [StorelayoutpagesResourceApi]
-/// - [UsersResourceApi]
-/// - [WebappsResourceApi]
+/// - [DevicesResource]
+/// - [EnterprisesResource]
+/// - [EntitlementsResource]
+/// - [GrouplicensesResource]
+/// - [GrouplicenseusersResource]
+/// - [InstallsResource]
+/// - [ManagedconfigurationsfordeviceResource]
+/// - [ManagedconfigurationsforuserResource]
+/// - [ManagedconfigurationssettingsResource]
+/// - [PermissionsResource]
+/// - [ProductsResource]
+/// - [ServiceaccountkeysResource]
+/// - [StorelayoutclustersResource]
+/// - [StorelayoutpagesResource]
+/// - [UsersResource]
+/// - [WebappsResource]
 library androidenterprise.v1;
 
 import 'dart:async' as async;
@@ -62,32 +62,29 @@ class AndroidEnterpriseApi {
 
   final commons.ApiRequester _requester;
 
-  DevicesResourceApi get devices => DevicesResourceApi(_requester);
-  EnterprisesResourceApi get enterprises => EnterprisesResourceApi(_requester);
-  EntitlementsResourceApi get entitlements =>
-      EntitlementsResourceApi(_requester);
-  GrouplicensesResourceApi get grouplicenses =>
-      GrouplicensesResourceApi(_requester);
-  GrouplicenseusersResourceApi get grouplicenseusers =>
-      GrouplicenseusersResourceApi(_requester);
-  InstallsResourceApi get installs => InstallsResourceApi(_requester);
-  ManagedconfigurationsfordeviceResourceApi
-      get managedconfigurationsfordevice =>
-          ManagedconfigurationsfordeviceResourceApi(_requester);
-  ManagedconfigurationsforuserResourceApi get managedconfigurationsforuser =>
-      ManagedconfigurationsforuserResourceApi(_requester);
-  ManagedconfigurationssettingsResourceApi get managedconfigurationssettings =>
-      ManagedconfigurationssettingsResourceApi(_requester);
-  PermissionsResourceApi get permissions => PermissionsResourceApi(_requester);
-  ProductsResourceApi get products => ProductsResourceApi(_requester);
-  ServiceaccountkeysResourceApi get serviceaccountkeys =>
-      ServiceaccountkeysResourceApi(_requester);
-  StorelayoutclustersResourceApi get storelayoutclusters =>
-      StorelayoutclustersResourceApi(_requester);
-  StorelayoutpagesResourceApi get storelayoutpages =>
-      StorelayoutpagesResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
-  WebappsResourceApi get webapps => WebappsResourceApi(_requester);
+  DevicesResource get devices => DevicesResource(_requester);
+  EnterprisesResource get enterprises => EnterprisesResource(_requester);
+  EntitlementsResource get entitlements => EntitlementsResource(_requester);
+  GrouplicensesResource get grouplicenses => GrouplicensesResource(_requester);
+  GrouplicenseusersResource get grouplicenseusers =>
+      GrouplicenseusersResource(_requester);
+  InstallsResource get installs => InstallsResource(_requester);
+  ManagedconfigurationsfordeviceResource get managedconfigurationsfordevice =>
+      ManagedconfigurationsfordeviceResource(_requester);
+  ManagedconfigurationsforuserResource get managedconfigurationsforuser =>
+      ManagedconfigurationsforuserResource(_requester);
+  ManagedconfigurationssettingsResource get managedconfigurationssettings =>
+      ManagedconfigurationssettingsResource(_requester);
+  PermissionsResource get permissions => PermissionsResource(_requester);
+  ProductsResource get products => ProductsResource(_requester);
+  ServiceaccountkeysResource get serviceaccountkeys =>
+      ServiceaccountkeysResource(_requester);
+  StorelayoutclustersResource get storelayoutclusters =>
+      StorelayoutclustersResource(_requester);
+  StorelayoutpagesResource get storelayoutpages =>
+      StorelayoutpagesResource(_requester);
+  UsersResource get users => UsersResource(_requester);
+  WebappsResource get webapps => WebappsResource(_requester);
 
   AndroidEnterpriseApi(http.Client client,
       {core.String rootUrl = 'https://androidenterprise.googleapis.com/',
@@ -96,10 +93,10 @@ class AndroidEnterpriseApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DevicesResourceApi {
+class DevicesResource {
   final commons.ApiRequester _requester;
 
-  DevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  DevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Uploads a report containing any changes in app states on the device since
   /// the last report was generated. You can call this method up to 3 times
@@ -534,10 +531,10 @@ class DevicesResourceApi {
   }
 }
 
-class EnterprisesResourceApi {
+class EnterprisesResource {
   final commons.ApiRequester _requester;
 
-  EnterprisesResourceApi(commons.ApiRequester client) : _requester = client;
+  EnterprisesResource(commons.ApiRequester client) : _requester = client;
 
   /// Acknowledges notifications that were received from
   /// Enterprises.PullNotificationSet to prevent subsequent calls from returning
@@ -1379,10 +1376,10 @@ class EnterprisesResourceApi {
   }
 }
 
-class EntitlementsResourceApi {
+class EntitlementsResource {
   final commons.ApiRequester _requester;
 
-  EntitlementsResourceApi(commons.ApiRequester client) : _requester = client;
+  EntitlementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes an entitlement to an app for a user.
   ///
@@ -1667,10 +1664,10 @@ class EntitlementsResourceApi {
   }
 }
 
-class GrouplicensesResourceApi {
+class GrouplicensesResource {
   final commons.ApiRequester _requester;
 
-  GrouplicensesResourceApi(commons.ApiRequester client) : _requester = client;
+  GrouplicensesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves details of an enterprise's group license for a product.
   ///
@@ -1788,11 +1785,10 @@ class GrouplicensesResourceApi {
   }
 }
 
-class GrouplicenseusersResourceApi {
+class GrouplicenseusersResource {
   final commons.ApiRequester _requester;
 
-  GrouplicenseusersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  GrouplicenseusersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the IDs of the users who have been granted entitlements under
   /// the license.
@@ -1858,10 +1854,10 @@ class GrouplicenseusersResourceApi {
   }
 }
 
-class InstallsResourceApi {
+class InstallsResource {
   final commons.ApiRequester _requester;
 
-  InstallsResourceApi(commons.ApiRequester client) : _requester = client;
+  InstallsResource(commons.ApiRequester client) : _requester = client;
 
   /// Requests to remove an app from a device. A call to get or list will still
   /// show the app as installed on the device until it is actually removed.
@@ -2170,10 +2166,10 @@ class InstallsResourceApi {
   }
 }
 
-class ManagedconfigurationsfordeviceResourceApi {
+class ManagedconfigurationsfordeviceResource {
   final commons.ApiRequester _requester;
 
-  ManagedconfigurationsfordeviceResourceApi(commons.ApiRequester client)
+  ManagedconfigurationsfordeviceResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Removes a per-device managed configuration for an app for the specified
@@ -2488,10 +2484,10 @@ class ManagedconfigurationsfordeviceResourceApi {
   }
 }
 
-class ManagedconfigurationsforuserResourceApi {
+class ManagedconfigurationsforuserResource {
   final commons.ApiRequester _requester;
 
-  ManagedconfigurationsforuserResourceApi(commons.ApiRequester client)
+  ManagedconfigurationsforuserResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Removes a per-user managed configuration for an app for the specified
@@ -2779,10 +2775,10 @@ class ManagedconfigurationsforuserResourceApi {
   }
 }
 
-class ManagedconfigurationssettingsResourceApi {
+class ManagedconfigurationssettingsResource {
   final commons.ApiRequester _requester;
 
-  ManagedconfigurationssettingsResourceApi(commons.ApiRequester client)
+  ManagedconfigurationssettingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all the managed configurations settings for the specified app.
@@ -2848,10 +2844,10 @@ class ManagedconfigurationssettingsResourceApi {
   }
 }
 
-class PermissionsResourceApi {
+class PermissionsResource {
   final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
+  PermissionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves details of an Android app permission for display to an
   /// enterprise admin.
@@ -2914,10 +2910,10 @@ class PermissionsResourceApi {
   }
 }
 
-class ProductsResourceApi {
+class ProductsResource {
   final commons.ApiRequester _requester;
 
-  ProductsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Approves the specified product and the relevant app permissions, if any.
   /// The maximum number of products that you can approve per enterprise
@@ -3419,11 +3415,10 @@ class ProductsResourceApi {
   }
 }
 
-class ServiceaccountkeysResourceApi {
+class ServiceaccountkeysResource {
   final commons.ApiRequester _requester;
 
-  ServiceaccountkeysResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ServiceaccountkeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes and invalidates the specified credentials for the service account
   /// associated with this enterprise. The calling service account must have
@@ -3608,10 +3603,10 @@ class ServiceaccountkeysResourceApi {
   }
 }
 
-class StorelayoutclustersResourceApi {
+class StorelayoutclustersResource {
   final commons.ApiRequester _requester;
 
-  StorelayoutclustersResourceApi(commons.ApiRequester client)
+  StorelayoutclustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a cluster.
@@ -3952,11 +3947,10 @@ class StorelayoutclustersResourceApi {
   }
 }
 
-class StorelayoutpagesResourceApi {
+class StorelayoutpagesResource {
   final commons.ApiRequester _requester;
 
-  StorelayoutpagesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  StorelayoutpagesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a store page.
   ///
@@ -4253,10 +4247,10 @@ class StorelayoutpagesResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Deleted an EMM-managed user.
   ///
@@ -4828,10 +4822,10 @@ class UsersResourceApi {
   }
 }
 
-class WebappsResourceApi {
+class WebappsResource {
   final commons.ApiRequester _requester;
 
-  WebappsResourceApi(commons.ApiRequester client) : _requester = client;
+  WebappsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes an existing web app.
   ///

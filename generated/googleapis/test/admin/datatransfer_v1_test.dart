@@ -309,7 +309,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ApplicationsResourceApi', () {
+  unittest.group('resource-ApplicationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).applications;
@@ -420,7 +420,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TransfersResourceApi', () {
+  unittest.group('resource-TransfersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).transfers;

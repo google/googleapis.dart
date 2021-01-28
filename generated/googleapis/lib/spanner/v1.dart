@@ -24,17 +24,17 @@
 ///
 /// Create an instance of [SpannerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsInstanceConfigsResourceApi]
-///   - [ProjectsInstancesResourceApi]
-///     - [ProjectsInstancesBackupOperationsResourceApi]
-///     - [ProjectsInstancesBackupsResourceApi]
-///       - [ProjectsInstancesBackupsOperationsResourceApi]
-///     - [ProjectsInstancesDatabaseOperationsResourceApi]
-///     - [ProjectsInstancesDatabasesResourceApi]
-///       - [ProjectsInstancesDatabasesOperationsResourceApi]
-///       - [ProjectsInstancesDatabasesSessionsResourceApi]
-///     - [ProjectsInstancesOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsInstanceConfigsResource]
+///   - [ProjectsInstancesResource]
+///     - [ProjectsInstancesBackupOperationsResource]
+///     - [ProjectsInstancesBackupsResource]
+///       - [ProjectsInstancesBackupsOperationsResource]
+///     - [ProjectsInstancesDatabaseOperationsResource]
+///     - [ProjectsInstancesDatabasesResource]
+///       - [ProjectsInstancesDatabasesOperationsResource]
+///       - [ProjectsInstancesDatabasesSessionsResource]
+///     - [ProjectsInstancesOperationsResource]
 library spanner.v1;
 
 import 'dart:async' as async;
@@ -66,7 +66,7 @@ class SpannerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   SpannerApi(http.Client client,
       {core.String rootUrl = 'https://spanner.googleapis.com/',
@@ -75,21 +75,21 @@ class SpannerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstanceConfigsResourceApi get instanceConfigs =>
-      ProjectsInstanceConfigsResourceApi(_requester);
-  ProjectsInstancesResourceApi get instances =>
-      ProjectsInstancesResourceApi(_requester);
+  ProjectsInstanceConfigsResource get instanceConfigs =>
+      ProjectsInstanceConfigsResource(_requester);
+  ProjectsInstancesResource get instances =>
+      ProjectsInstancesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsInstanceConfigsResourceApi {
+class ProjectsInstanceConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstanceConfigsResourceApi(commons.ApiRequester client)
+  ProjectsInstanceConfigsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets information about a particular instance configuration.
@@ -216,22 +216,21 @@ class ProjectsInstanceConfigsResourceApi {
   }
 }
 
-class ProjectsInstancesResourceApi {
+class ProjectsInstancesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesBackupOperationsResourceApi get backupOperations =>
-      ProjectsInstancesBackupOperationsResourceApi(_requester);
-  ProjectsInstancesBackupsResourceApi get backups =>
-      ProjectsInstancesBackupsResourceApi(_requester);
-  ProjectsInstancesDatabaseOperationsResourceApi get databaseOperations =>
-      ProjectsInstancesDatabaseOperationsResourceApi(_requester);
-  ProjectsInstancesDatabasesResourceApi get databases =>
-      ProjectsInstancesDatabasesResourceApi(_requester);
-  ProjectsInstancesOperationsResourceApi get operations =>
-      ProjectsInstancesOperationsResourceApi(_requester);
+  ProjectsInstancesBackupOperationsResource get backupOperations =>
+      ProjectsInstancesBackupOperationsResource(_requester);
+  ProjectsInstancesBackupsResource get backups =>
+      ProjectsInstancesBackupsResource(_requester);
+  ProjectsInstancesDatabaseOperationsResource get databaseOperations =>
+      ProjectsInstancesDatabaseOperationsResource(_requester);
+  ProjectsInstancesDatabasesResource get databases =>
+      ProjectsInstancesDatabasesResource(_requester);
+  ProjectsInstancesOperationsResource get operations =>
+      ProjectsInstancesOperationsResource(_requester);
 
-  ProjectsInstancesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsInstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an instance and begins preparing it to begin serving. The returned
   /// long-running operation can be used to track the progress of preparing the
@@ -781,10 +780,10 @@ class ProjectsInstancesResourceApi {
   }
 }
 
-class ProjectsInstancesBackupOperationsResourceApi {
+class ProjectsInstancesBackupOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesBackupOperationsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesBackupOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the backup long-running operations in the given instance. A backup
@@ -896,13 +895,13 @@ class ProjectsInstancesBackupOperationsResourceApi {
   }
 }
 
-class ProjectsInstancesBackupsResourceApi {
+class ProjectsInstancesBackupsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesBackupsOperationsResourceApi get operations =>
-      ProjectsInstancesBackupsOperationsResourceApi(_requester);
+  ProjectsInstancesBackupsOperationsResource get operations =>
+      ProjectsInstancesBackupsOperationsResource(_requester);
 
-  ProjectsInstancesBackupsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesBackupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts creating a new Cloud Spanner Backup. The returned backup
@@ -1455,10 +1454,10 @@ class ProjectsInstancesBackupsResourceApi {
   }
 }
 
-class ProjectsInstancesBackupsOperationsResourceApi {
+class ProjectsInstancesBackupsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesBackupsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesBackupsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1710,10 +1709,10 @@ class ProjectsInstancesBackupsOperationsResourceApi {
   }
 }
 
-class ProjectsInstancesDatabaseOperationsResourceApi {
+class ProjectsInstancesDatabaseOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesDatabaseOperationsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesDatabaseOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists database longrunning-operations. A database operation has a name of
@@ -1823,15 +1822,15 @@ class ProjectsInstancesDatabaseOperationsResourceApi {
   }
 }
 
-class ProjectsInstancesDatabasesResourceApi {
+class ProjectsInstancesDatabasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesDatabasesOperationsResourceApi get operations =>
-      ProjectsInstancesDatabasesOperationsResourceApi(_requester);
-  ProjectsInstancesDatabasesSessionsResourceApi get sessions =>
-      ProjectsInstancesDatabasesSessionsResourceApi(_requester);
+  ProjectsInstancesDatabasesOperationsResource get operations =>
+      ProjectsInstancesDatabasesOperationsResource(_requester);
+  ProjectsInstancesDatabasesSessionsResource get sessions =>
+      ProjectsInstancesDatabasesSessionsResource(_requester);
 
-  ProjectsInstancesDatabasesResourceApi(commons.ApiRequester client)
+  ProjectsInstancesDatabasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new Cloud Spanner database and starts to prepare it for serving.
@@ -2464,10 +2463,10 @@ class ProjectsInstancesDatabasesResourceApi {
   }
 }
 
-class ProjectsInstancesDatabasesOperationsResourceApi {
+class ProjectsInstancesDatabasesOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesDatabasesOperationsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesDatabasesOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -2719,10 +2718,10 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   }
 }
 
-class ProjectsInstancesDatabasesSessionsResourceApi {
+class ProjectsInstancesDatabasesSessionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesDatabasesSessionsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesDatabasesSessionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates multiple new sessions. This API can be used to initialize a
@@ -3718,10 +3717,10 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   }
 }
 
-class ProjectsInstancesOperationsResourceApi {
+class ProjectsInstancesOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesOperationsResourceApi(commons.ApiRequester client)
+  ProjectsInstancesOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server

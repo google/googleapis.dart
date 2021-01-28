@@ -5940,7 +5940,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DocumentsResourceApi', () {
+  unittest.group('resource-DocumentsResource', () {
     unittest.test('method--batchUpdate', () {
       var mock = HttpServerMock();
       var res = api.DocsApi(mock).documents;

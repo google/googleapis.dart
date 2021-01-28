@@ -27,66 +27,66 @@
 ///
 /// Create an instance of [ApigeeApi] to access these resources:
 ///
-/// - [HybridResourceApi]
-///   - [HybridIssuersResourceApi]
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsAnalyticsResourceApi]
-///     - [OrganizationsAnalyticsDatastoresResourceApi]
-///   - [OrganizationsApiproductsResourceApi]
-///     - [OrganizationsApiproductsAttributesResourceApi]
-///   - [OrganizationsApisResourceApi]
-///     - [OrganizationsApisDeploymentsResourceApi]
-///     - [OrganizationsApisKeyvaluemapsResourceApi]
-///     - [OrganizationsApisRevisionsResourceApi]
-///       - [OrganizationsApisRevisionsDeploymentsResourceApi]
-///   - [OrganizationsAppsResourceApi]
-///   - [OrganizationsDeploymentsResourceApi]
-///   - [OrganizationsDevelopersResourceApi]
-///     - [OrganizationsDevelopersAppsResourceApi]
-///       - [OrganizationsDevelopersAppsAttributesResourceApi]
-///       - [OrganizationsDevelopersAppsKeysResourceApi]
-///         - [OrganizationsDevelopersAppsKeysApiproductsResourceApi]
-///         - [OrganizationsDevelopersAppsKeysCreateResourceApi]
-///     - [OrganizationsDevelopersAttributesResourceApi]
-///   - [OrganizationsEnvgroupsResourceApi]
-///     - [OrganizationsEnvgroupsAttachmentsResourceApi]
-///   - [OrganizationsEnvironmentsResourceApi]
-///     - [OrganizationsEnvironmentsAnalyticsResourceApi]
-///       - [OrganizationsEnvironmentsAnalyticsAdminResourceApi]
-///       - [OrganizationsEnvironmentsAnalyticsExportsResourceApi]
-///     - [OrganizationsEnvironmentsApisResourceApi]
-///       - [OrganizationsEnvironmentsApisDeploymentsResourceApi]
-///       - [OrganizationsEnvironmentsApisRevisionsResourceApi]
-///         - [OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi]
-/// - [OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi]
-///         - [OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi]
-///     - [OrganizationsEnvironmentsCachesResourceApi]
-///     - [OrganizationsEnvironmentsDeploymentsResourceApi]
-///     - [OrganizationsEnvironmentsFlowhooksResourceApi]
-///     - [OrganizationsEnvironmentsKeystoresResourceApi]
-///       - [OrganizationsEnvironmentsKeystoresAliasesResourceApi]
-///     - [OrganizationsEnvironmentsKeyvaluemapsResourceApi]
-///     - [OrganizationsEnvironmentsOptimizedStatsResourceApi]
-///     - [OrganizationsEnvironmentsQueriesResourceApi]
-///     - [OrganizationsEnvironmentsReferencesResourceApi]
-///     - [OrganizationsEnvironmentsResourcefilesResourceApi]
-///     - [OrganizationsEnvironmentsSharedflowsResourceApi]
-///       - [OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi]
-///       - [OrganizationsEnvironmentsSharedflowsRevisionsResourceApi]
-///     - [OrganizationsEnvironmentsStatsResourceApi]
-///     - [OrganizationsEnvironmentsTargetserversResourceApi]
-///   - [OrganizationsInstancesResourceApi]
-///     - [OrganizationsInstancesAttachmentsResourceApi]
-///   - [OrganizationsKeyvaluemapsResourceApi]
-///   - [OrganizationsOperationsResourceApi]
-///   - [OrganizationsReportsResourceApi]
-///   - [OrganizationsSharedflowsResourceApi]
-///     - [OrganizationsSharedflowsDeploymentsResourceApi]
-///     - [OrganizationsSharedflowsRevisionsResourceApi]
-///       - [OrganizationsSharedflowsRevisionsDeploymentsResourceApi]
-///   - [OrganizationsSitesResourceApi]
-///     - [OrganizationsSitesApicategoriesResourceApi]
-/// - [ProjectsResourceApi]
+/// - [HybridResource]
+///   - [HybridIssuersResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsAnalyticsResource]
+///     - [OrganizationsAnalyticsDatastoresResource]
+///   - [OrganizationsApiproductsResource]
+///     - [OrganizationsApiproductsAttributesResource]
+///   - [OrganizationsApisResource]
+///     - [OrganizationsApisDeploymentsResource]
+///     - [OrganizationsApisKeyvaluemapsResource]
+///     - [OrganizationsApisRevisionsResource]
+///       - [OrganizationsApisRevisionsDeploymentsResource]
+///   - [OrganizationsAppsResource]
+///   - [OrganizationsDeploymentsResource]
+///   - [OrganizationsDevelopersResource]
+///     - [OrganizationsDevelopersAppsResource]
+///       - [OrganizationsDevelopersAppsAttributesResource]
+///       - [OrganizationsDevelopersAppsKeysResource]
+///         - [OrganizationsDevelopersAppsKeysApiproductsResource]
+///         - [OrganizationsDevelopersAppsKeysCreateResource]
+///     - [OrganizationsDevelopersAttributesResource]
+///   - [OrganizationsEnvgroupsResource]
+///     - [OrganizationsEnvgroupsAttachmentsResource]
+///   - [OrganizationsEnvironmentsResource]
+///     - [OrganizationsEnvironmentsAnalyticsResource]
+///       - [OrganizationsEnvironmentsAnalyticsAdminResource]
+///       - [OrganizationsEnvironmentsAnalyticsExportsResource]
+///     - [OrganizationsEnvironmentsApisResource]
+///       - [OrganizationsEnvironmentsApisDeploymentsResource]
+///       - [OrganizationsEnvironmentsApisRevisionsResource]
+///         - [OrganizationsEnvironmentsApisRevisionsDebugsessionsResource]
+/// - [OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource]
+///         - [OrganizationsEnvironmentsApisRevisionsDeploymentsResource]
+///     - [OrganizationsEnvironmentsCachesResource]
+///     - [OrganizationsEnvironmentsDeploymentsResource]
+///     - [OrganizationsEnvironmentsFlowhooksResource]
+///     - [OrganizationsEnvironmentsKeystoresResource]
+///       - [OrganizationsEnvironmentsKeystoresAliasesResource]
+///     - [OrganizationsEnvironmentsKeyvaluemapsResource]
+///     - [OrganizationsEnvironmentsOptimizedStatsResource]
+///     - [OrganizationsEnvironmentsQueriesResource]
+///     - [OrganizationsEnvironmentsReferencesResource]
+///     - [OrganizationsEnvironmentsResourcefilesResource]
+///     - [OrganizationsEnvironmentsSharedflowsResource]
+///       - [OrganizationsEnvironmentsSharedflowsDeploymentsResource]
+///       - [OrganizationsEnvironmentsSharedflowsRevisionsResource]
+///     - [OrganizationsEnvironmentsStatsResource]
+///     - [OrganizationsEnvironmentsTargetserversResource]
+///   - [OrganizationsInstancesResource]
+///     - [OrganizationsInstancesAttachmentsResource]
+///   - [OrganizationsKeyvaluemapsResource]
+///   - [OrganizationsOperationsResource]
+///   - [OrganizationsReportsResource]
+///   - [OrganizationsSharedflowsResource]
+///     - [OrganizationsSharedflowsDeploymentsResource]
+///     - [OrganizationsSharedflowsRevisionsResource]
+///       - [OrganizationsSharedflowsRevisionsDeploymentsResource]
+///   - [OrganizationsSitesResource]
+///     - [OrganizationsSitesApicategoriesResource]
+/// - [ProjectsResource]
 library apigee.v1;
 
 import 'dart:async' as async;
@@ -113,10 +113,9 @@ class ApigeeApi {
 
   final commons.ApiRequester _requester;
 
-  HybridResourceApi get hybrid => HybridResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  HybridResource get hybrid => HybridResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ApigeeApi(http.Client client,
       {core.String rootUrl = 'https://apigee.googleapis.com/',
@@ -125,18 +124,18 @@ class ApigeeApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class HybridResourceApi {
+class HybridResource {
   final commons.ApiRequester _requester;
 
-  HybridIssuersResourceApi get issuers => HybridIssuersResourceApi(_requester);
+  HybridIssuersResource get issuers => HybridIssuersResource(_requester);
 
-  HybridResourceApi(commons.ApiRequester client) : _requester = client;
+  HybridResource(commons.ApiRequester client) : _requester = client;
 }
 
-class HybridIssuersResourceApi {
+class HybridIssuersResource {
   final commons.ApiRequester _requester;
 
-  HybridIssuersResourceApi(commons.ApiRequester client) : _requester = client;
+  HybridIssuersResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists hybrid services and its trusted issuers service account ids. This
   /// api is authenticated and unauthorized(allow all the users) and used by
@@ -194,39 +193,37 @@ class HybridIssuersResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsAnalyticsResourceApi get analytics =>
-      OrganizationsAnalyticsResourceApi(_requester);
-  OrganizationsApiproductsResourceApi get apiproducts =>
-      OrganizationsApiproductsResourceApi(_requester);
-  OrganizationsApisResourceApi get apis =>
-      OrganizationsApisResourceApi(_requester);
-  OrganizationsAppsResourceApi get apps =>
-      OrganizationsAppsResourceApi(_requester);
-  OrganizationsDeploymentsResourceApi get deployments =>
-      OrganizationsDeploymentsResourceApi(_requester);
-  OrganizationsDevelopersResourceApi get developers =>
-      OrganizationsDevelopersResourceApi(_requester);
-  OrganizationsEnvgroupsResourceApi get envgroups =>
-      OrganizationsEnvgroupsResourceApi(_requester);
-  OrganizationsEnvironmentsResourceApi get environments =>
-      OrganizationsEnvironmentsResourceApi(_requester);
-  OrganizationsInstancesResourceApi get instances =>
-      OrganizationsInstancesResourceApi(_requester);
-  OrganizationsKeyvaluemapsResourceApi get keyvaluemaps =>
-      OrganizationsKeyvaluemapsResourceApi(_requester);
-  OrganizationsOperationsResourceApi get operations =>
-      OrganizationsOperationsResourceApi(_requester);
-  OrganizationsReportsResourceApi get reports =>
-      OrganizationsReportsResourceApi(_requester);
-  OrganizationsSharedflowsResourceApi get sharedflows =>
-      OrganizationsSharedflowsResourceApi(_requester);
-  OrganizationsSitesResourceApi get sites =>
-      OrganizationsSitesResourceApi(_requester);
+  OrganizationsAnalyticsResource get analytics =>
+      OrganizationsAnalyticsResource(_requester);
+  OrganizationsApiproductsResource get apiproducts =>
+      OrganizationsApiproductsResource(_requester);
+  OrganizationsApisResource get apis => OrganizationsApisResource(_requester);
+  OrganizationsAppsResource get apps => OrganizationsAppsResource(_requester);
+  OrganizationsDeploymentsResource get deployments =>
+      OrganizationsDeploymentsResource(_requester);
+  OrganizationsDevelopersResource get developers =>
+      OrganizationsDevelopersResource(_requester);
+  OrganizationsEnvgroupsResource get envgroups =>
+      OrganizationsEnvgroupsResource(_requester);
+  OrganizationsEnvironmentsResource get environments =>
+      OrganizationsEnvironmentsResource(_requester);
+  OrganizationsInstancesResource get instances =>
+      OrganizationsInstancesResource(_requester);
+  OrganizationsKeyvaluemapsResource get keyvaluemaps =>
+      OrganizationsKeyvaluemapsResource(_requester);
+  OrganizationsOperationsResource get operations =>
+      OrganizationsOperationsResource(_requester);
+  OrganizationsReportsResource get reports =>
+      OrganizationsReportsResource(_requester);
+  OrganizationsSharedflowsResource get sharedflows =>
+      OrganizationsSharedflowsResource(_requester);
+  OrganizationsSitesResource get sites =>
+      OrganizationsSitesResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an Apigee organization. See [Create an Apigee
   /// organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
@@ -667,20 +664,20 @@ class OrganizationsResourceApi {
   }
 }
 
-class OrganizationsAnalyticsResourceApi {
+class OrganizationsAnalyticsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsAnalyticsDatastoresResourceApi get datastores =>
-      OrganizationsAnalyticsDatastoresResourceApi(_requester);
+  OrganizationsAnalyticsDatastoresResource get datastores =>
+      OrganizationsAnalyticsDatastoresResource(_requester);
 
-  OrganizationsAnalyticsResourceApi(commons.ApiRequester client)
+  OrganizationsAnalyticsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OrganizationsAnalyticsDatastoresResourceApi {
+class OrganizationsAnalyticsDatastoresResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsAnalyticsDatastoresResourceApi(commons.ApiRequester client)
+  OrganizationsAnalyticsDatastoresResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a Datastore for an org
@@ -1038,13 +1035,13 @@ class OrganizationsAnalyticsDatastoresResourceApi {
   }
 }
 
-class OrganizationsApiproductsResourceApi {
+class OrganizationsApiproductsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApiproductsAttributesResourceApi get attributes_1 =>
-      OrganizationsApiproductsAttributesResourceApi(_requester);
+  OrganizationsApiproductsAttributesResource get attributes_1 =>
+      OrganizationsApiproductsAttributesResource(_requester);
 
-  OrganizationsApiproductsResourceApi(commons.ApiRequester client)
+  OrganizationsApiproductsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Updates or creates API product attributes. This API **replaces** the
@@ -1469,10 +1466,10 @@ class OrganizationsApiproductsResourceApi {
   }
 }
 
-class OrganizationsApiproductsAttributesResourceApi {
+class OrganizationsApiproductsAttributesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApiproductsAttributesResourceApi(commons.ApiRequester client)
+  OrganizationsApiproductsAttributesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an API product attribute.
@@ -1705,18 +1702,17 @@ class OrganizationsApiproductsAttributesResourceApi {
   }
 }
 
-class OrganizationsApisResourceApi {
+class OrganizationsApisResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApisDeploymentsResourceApi get deployments =>
-      OrganizationsApisDeploymentsResourceApi(_requester);
-  OrganizationsApisKeyvaluemapsResourceApi get keyvaluemaps =>
-      OrganizationsApisKeyvaluemapsResourceApi(_requester);
-  OrganizationsApisRevisionsResourceApi get revisions =>
-      OrganizationsApisRevisionsResourceApi(_requester);
+  OrganizationsApisDeploymentsResource get deployments =>
+      OrganizationsApisDeploymentsResource(_requester);
+  OrganizationsApisKeyvaluemapsResource get keyvaluemaps =>
+      OrganizationsApisKeyvaluemapsResource(_requester);
+  OrganizationsApisRevisionsResource get revisions =>
+      OrganizationsApisRevisionsResource(_requester);
 
-  OrganizationsApisResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OrganizationsApisResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an API proxy. The API proxy created will not be accessible at
   /// runtime until it is deployed to an environment. Create a new API proxy by
@@ -1991,10 +1987,10 @@ class OrganizationsApisResourceApi {
   }
 }
 
-class OrganizationsApisDeploymentsResourceApi {
+class OrganizationsApisDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApisDeploymentsResourceApi(commons.ApiRequester client)
+  OrganizationsApisDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all deployments of an API proxy.
@@ -2053,10 +2049,10 @@ class OrganizationsApisDeploymentsResourceApi {
   }
 }
 
-class OrganizationsApisKeyvaluemapsResourceApi {
+class OrganizationsApisKeyvaluemapsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApisKeyvaluemapsResourceApi(commons.ApiRequester client)
+  OrganizationsApisKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a key value map in an api proxy.
@@ -2176,13 +2172,13 @@ class OrganizationsApisKeyvaluemapsResourceApi {
   }
 }
 
-class OrganizationsApisRevisionsResourceApi {
+class OrganizationsApisRevisionsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApisRevisionsDeploymentsResourceApi get deployments =>
-      OrganizationsApisRevisionsDeploymentsResourceApi(_requester);
+  OrganizationsApisRevisionsDeploymentsResource get deployments =>
+      OrganizationsApisRevisionsDeploymentsResource(_requester);
 
-  OrganizationsApisRevisionsResourceApi(commons.ApiRequester client)
+  OrganizationsApisRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an API proxy revision and all policies, resources, endpoints, and
@@ -2383,10 +2379,10 @@ class OrganizationsApisRevisionsResourceApi {
   }
 }
 
-class OrganizationsApisRevisionsDeploymentsResourceApi {
+class OrganizationsApisRevisionsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsApisRevisionsDeploymentsResourceApi(commons.ApiRequester client)
+  OrganizationsApisRevisionsDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all deployments of an API proxy revision.
@@ -2447,11 +2443,10 @@ class OrganizationsApisRevisionsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsAppsResourceApi {
+class OrganizationsAppsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsAppsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OrganizationsAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the app profile for the specified app ID.
   ///
@@ -2621,10 +2616,10 @@ class OrganizationsAppsResourceApi {
   }
 }
 
-class OrganizationsDeploymentsResourceApi {
+class OrganizationsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDeploymentsResourceApi(commons.ApiRequester client)
+  OrganizationsDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all deployments of API proxies or shared flows.
@@ -2692,15 +2687,15 @@ class OrganizationsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsDevelopersResourceApi {
+class OrganizationsDevelopersResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAppsResourceApi get apps =>
-      OrganizationsDevelopersAppsResourceApi(_requester);
-  OrganizationsDevelopersAttributesResourceApi get attributes_1 =>
-      OrganizationsDevelopersAttributesResourceApi(_requester);
+  OrganizationsDevelopersAppsResource get apps =>
+      OrganizationsDevelopersAppsResource(_requester);
+  OrganizationsDevelopersAttributesResource get attributes_1 =>
+      OrganizationsDevelopersAttributesResource(_requester);
 
-  OrganizationsDevelopersResourceApi(commons.ApiRequester client)
+  OrganizationsDevelopersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Updates developer attributes. This API replaces the existing attributes
@@ -3198,15 +3193,15 @@ class OrganizationsDevelopersResourceApi {
   }
 }
 
-class OrganizationsDevelopersAppsResourceApi {
+class OrganizationsDevelopersAppsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAppsAttributesResourceApi get attributes_1 =>
-      OrganizationsDevelopersAppsAttributesResourceApi(_requester);
-  OrganizationsDevelopersAppsKeysResourceApi get keys =>
-      OrganizationsDevelopersAppsKeysResourceApi(_requester);
+  OrganizationsDevelopersAppsAttributesResource get attributes_1 =>
+      OrganizationsDevelopersAppsAttributesResource(_requester);
+  OrganizationsDevelopersAppsKeysResource get keys =>
+      OrganizationsDevelopersAppsKeysResource(_requester);
 
-  OrganizationsDevelopersAppsResourceApi(commons.ApiRequester client)
+  OrganizationsDevelopersAppsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Updates attributes for a developer app. This API replaces the current
@@ -3720,10 +3715,10 @@ class OrganizationsDevelopersAppsResourceApi {
   }
 }
 
-class OrganizationsDevelopersAppsAttributesResourceApi {
+class OrganizationsDevelopersAppsAttributesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAppsAttributesResourceApi(commons.ApiRequester client)
+  OrganizationsDevelopersAppsAttributesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a developer app attribute.
@@ -3960,15 +3955,15 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
   }
 }
 
-class OrganizationsDevelopersAppsKeysResourceApi {
+class OrganizationsDevelopersAppsKeysResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAppsKeysApiproductsResourceApi get apiproducts =>
-      OrganizationsDevelopersAppsKeysApiproductsResourceApi(_requester);
-  OrganizationsDevelopersAppsKeysCreateResourceApi get create_1 =>
-      OrganizationsDevelopersAppsKeysCreateResourceApi(_requester);
+  OrganizationsDevelopersAppsKeysApiproductsResource get apiproducts =>
+      OrganizationsDevelopersAppsKeysApiproductsResource(_requester);
+  OrganizationsDevelopersAppsKeysCreateResource get create_1 =>
+      OrganizationsDevelopersAppsKeysCreateResource(_requester);
 
-  OrganizationsDevelopersAppsKeysResourceApi(commons.ApiRequester client)
+  OrganizationsDevelopersAppsKeysResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a custom consumer key and secret for a developer app. This is
@@ -4300,10 +4295,10 @@ class OrganizationsDevelopersAppsKeysResourceApi {
   }
 }
 
-class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
+class OrganizationsDevelopersAppsKeysApiproductsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAppsKeysApiproductsResourceApi(
+  OrganizationsDevelopersAppsKeysApiproductsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -4433,10 +4428,10 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
   }
 }
 
-class OrganizationsDevelopersAppsKeysCreateResourceApi {
+class OrganizationsDevelopersAppsKeysCreateResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAppsKeysCreateResourceApi(commons.ApiRequester client)
+  OrganizationsDevelopersAppsKeysCreateResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a custom consumer key and secret for a developer app. This is
@@ -4513,10 +4508,10 @@ class OrganizationsDevelopersAppsKeysCreateResourceApi {
   }
 }
 
-class OrganizationsDevelopersAttributesResourceApi {
+class OrganizationsDevelopersAttributesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsDevelopersAttributesResourceApi(commons.ApiRequester client)
+  OrganizationsDevelopersAttributesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a developer attribute.
@@ -4752,13 +4747,13 @@ class OrganizationsDevelopersAttributesResourceApi {
   }
 }
 
-class OrganizationsEnvgroupsResourceApi {
+class OrganizationsEnvgroupsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvgroupsAttachmentsResourceApi get attachments =>
-      OrganizationsEnvgroupsAttachmentsResourceApi(_requester);
+  OrganizationsEnvgroupsAttachmentsResource get attachments =>
+      OrganizationsEnvgroupsAttachmentsResource(_requester);
 
-  OrganizationsEnvgroupsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvgroupsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new environment group.
@@ -5068,10 +5063,10 @@ class OrganizationsEnvgroupsResourceApi {
   }
 }
 
-class OrganizationsEnvgroupsAttachmentsResourceApi {
+class OrganizationsEnvgroupsAttachmentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvgroupsAttachmentsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvgroupsAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new attachment of an environment to an environment group.
@@ -5318,39 +5313,39 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsResourceApi {
+class OrganizationsEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsAnalyticsResourceApi get analytics =>
-      OrganizationsEnvironmentsAnalyticsResourceApi(_requester);
-  OrganizationsEnvironmentsApisResourceApi get apis =>
-      OrganizationsEnvironmentsApisResourceApi(_requester);
-  OrganizationsEnvironmentsCachesResourceApi get caches =>
-      OrganizationsEnvironmentsCachesResourceApi(_requester);
-  OrganizationsEnvironmentsDeploymentsResourceApi get deployments =>
-      OrganizationsEnvironmentsDeploymentsResourceApi(_requester);
-  OrganizationsEnvironmentsFlowhooksResourceApi get flowhooks =>
-      OrganizationsEnvironmentsFlowhooksResourceApi(_requester);
-  OrganizationsEnvironmentsKeystoresResourceApi get keystores =>
-      OrganizationsEnvironmentsKeystoresResourceApi(_requester);
-  OrganizationsEnvironmentsKeyvaluemapsResourceApi get keyvaluemaps =>
-      OrganizationsEnvironmentsKeyvaluemapsResourceApi(_requester);
-  OrganizationsEnvironmentsOptimizedStatsResourceApi get optimizedStats =>
-      OrganizationsEnvironmentsOptimizedStatsResourceApi(_requester);
-  OrganizationsEnvironmentsQueriesResourceApi get queries =>
-      OrganizationsEnvironmentsQueriesResourceApi(_requester);
-  OrganizationsEnvironmentsReferencesResourceApi get references =>
-      OrganizationsEnvironmentsReferencesResourceApi(_requester);
-  OrganizationsEnvironmentsResourcefilesResourceApi get resourcefiles =>
-      OrganizationsEnvironmentsResourcefilesResourceApi(_requester);
-  OrganizationsEnvironmentsSharedflowsResourceApi get sharedflows =>
-      OrganizationsEnvironmentsSharedflowsResourceApi(_requester);
-  OrganizationsEnvironmentsStatsResourceApi get stats =>
-      OrganizationsEnvironmentsStatsResourceApi(_requester);
-  OrganizationsEnvironmentsTargetserversResourceApi get targetservers =>
-      OrganizationsEnvironmentsTargetserversResourceApi(_requester);
+  OrganizationsEnvironmentsAnalyticsResource get analytics =>
+      OrganizationsEnvironmentsAnalyticsResource(_requester);
+  OrganizationsEnvironmentsApisResource get apis =>
+      OrganizationsEnvironmentsApisResource(_requester);
+  OrganizationsEnvironmentsCachesResource get caches =>
+      OrganizationsEnvironmentsCachesResource(_requester);
+  OrganizationsEnvironmentsDeploymentsResource get deployments =>
+      OrganizationsEnvironmentsDeploymentsResource(_requester);
+  OrganizationsEnvironmentsFlowhooksResource get flowhooks =>
+      OrganizationsEnvironmentsFlowhooksResource(_requester);
+  OrganizationsEnvironmentsKeystoresResource get keystores =>
+      OrganizationsEnvironmentsKeystoresResource(_requester);
+  OrganizationsEnvironmentsKeyvaluemapsResource get keyvaluemaps =>
+      OrganizationsEnvironmentsKeyvaluemapsResource(_requester);
+  OrganizationsEnvironmentsOptimizedStatsResource get optimizedStats =>
+      OrganizationsEnvironmentsOptimizedStatsResource(_requester);
+  OrganizationsEnvironmentsQueriesResource get queries =>
+      OrganizationsEnvironmentsQueriesResource(_requester);
+  OrganizationsEnvironmentsReferencesResource get references =>
+      OrganizationsEnvironmentsReferencesResource(_requester);
+  OrganizationsEnvironmentsResourcefilesResource get resourcefiles =>
+      OrganizationsEnvironmentsResourcefilesResource(_requester);
+  OrganizationsEnvironmentsSharedflowsResource get sharedflows =>
+      OrganizationsEnvironmentsSharedflowsResource(_requester);
+  OrganizationsEnvironmentsStatsResource get stats =>
+      OrganizationsEnvironmentsStatsResource(_requester);
+  OrganizationsEnvironmentsTargetserversResource get targetservers =>
+      OrganizationsEnvironmentsTargetserversResource(_requester);
 
-  OrganizationsEnvironmentsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an environment in an organization.
@@ -6161,23 +6156,22 @@ class OrganizationsEnvironmentsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsAnalyticsResourceApi {
+class OrganizationsEnvironmentsAnalyticsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsAnalyticsAdminResourceApi get admin =>
-      OrganizationsEnvironmentsAnalyticsAdminResourceApi(_requester);
-  OrganizationsEnvironmentsAnalyticsExportsResourceApi get exports =>
-      OrganizationsEnvironmentsAnalyticsExportsResourceApi(_requester);
+  OrganizationsEnvironmentsAnalyticsAdminResource get admin =>
+      OrganizationsEnvironmentsAnalyticsAdminResource(_requester);
+  OrganizationsEnvironmentsAnalyticsExportsResource get exports =>
+      OrganizationsEnvironmentsAnalyticsExportsResource(_requester);
 
-  OrganizationsEnvironmentsAnalyticsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsAnalyticsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OrganizationsEnvironmentsAnalyticsAdminResourceApi {
+class OrganizationsEnvironmentsAnalyticsAdminResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsAnalyticsAdminResourceApi(
-      commons.ApiRequester client)
+  OrganizationsEnvironmentsAnalyticsAdminResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get a list of metrics and dimensions which can be used for creating
@@ -6246,11 +6240,10 @@ class OrganizationsEnvironmentsAnalyticsAdminResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
+class OrganizationsEnvironmentsAnalyticsExportsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsAnalyticsExportsResourceApi(
-      commons.ApiRequester client)
+  OrganizationsEnvironmentsAnalyticsExportsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Submit a data export job to be processed in the background. If the request
@@ -6430,23 +6423,22 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsApisResourceApi {
+class OrganizationsEnvironmentsApisResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsApisDeploymentsResourceApi get deployments =>
-      OrganizationsEnvironmentsApisDeploymentsResourceApi(_requester);
-  OrganizationsEnvironmentsApisRevisionsResourceApi get revisions =>
-      OrganizationsEnvironmentsApisRevisionsResourceApi(_requester);
+  OrganizationsEnvironmentsApisDeploymentsResource get deployments =>
+      OrganizationsEnvironmentsApisDeploymentsResource(_requester);
+  OrganizationsEnvironmentsApisRevisionsResource get revisions =>
+      OrganizationsEnvironmentsApisRevisionsResource(_requester);
 
-  OrganizationsEnvironmentsApisResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsApisResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OrganizationsEnvironmentsApisDeploymentsResourceApi {
+class OrganizationsEnvironmentsApisDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsApisDeploymentsResourceApi(
-      commons.ApiRequester client)
+  OrganizationsEnvironmentsApisDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all deployments of an API proxy in an environment.
@@ -6506,19 +6498,17 @@ class OrganizationsEnvironmentsApisDeploymentsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsApisRevisionsResourceApi {
+class OrganizationsEnvironmentsApisRevisionsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi
+  OrganizationsEnvironmentsApisRevisionsDebugsessionsResource
       get debugsessions =>
-          OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi(
+          OrganizationsEnvironmentsApisRevisionsDebugsessionsResource(
               _requester);
-  OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi
-      get deployments =>
-          OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi(
-              _requester);
+  OrganizationsEnvironmentsApisRevisionsDeploymentsResource get deployments =>
+      OrganizationsEnvironmentsApisRevisionsDeploymentsResource(_requester);
 
-  OrganizationsEnvironmentsApisRevisionsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsApisRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deploys a revision of an API proxy. If another revision of the same API
@@ -6746,14 +6736,14 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
+class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi get data =>
-      OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi(
+  OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource get data =>
+      OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource(
           _requester);
 
-  OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi(
+  OrganizationsEnvironmentsApisRevisionsDebugsessionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -7012,10 +7002,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi {
+class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi(
+  OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -7075,10 +7065,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
+class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi(
+  OrganizationsEnvironmentsApisRevisionsDeploymentsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -7229,10 +7219,10 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsCachesResourceApi {
+class OrganizationsEnvironmentsCachesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsCachesResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsCachesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a cache.
@@ -7290,10 +7280,10 @@ class OrganizationsEnvironmentsCachesResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsDeploymentsResourceApi {
+class OrganizationsEnvironmentsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsDeploymentsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all deployments of API proxies or shared flows in an environment.
@@ -7362,10 +7352,10 @@ class OrganizationsEnvironmentsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsFlowhooksResourceApi {
+class OrganizationsEnvironmentsFlowhooksResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsFlowhooksResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsFlowhooksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Attaches a shared flow to a flow hook.
@@ -7540,13 +7530,13 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsKeystoresResourceApi {
+class OrganizationsEnvironmentsKeystoresResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsKeystoresAliasesResourceApi get aliases =>
-      OrganizationsEnvironmentsKeystoresAliasesResourceApi(_requester);
+  OrganizationsEnvironmentsKeystoresAliasesResource get aliases =>
+      OrganizationsEnvironmentsKeystoresAliasesResource(_requester);
 
-  OrganizationsEnvironmentsKeystoresResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsKeystoresResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a keystore or truststore: * Keystore: Contains certificates and
@@ -7729,11 +7719,10 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
+class OrganizationsEnvironmentsKeystoresAliasesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsKeystoresAliasesResourceApi(
-      commons.ApiRequester client)
+  OrganizationsEnvironmentsKeystoresAliasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an alias from a key, certificate pair. The structure of the
@@ -8137,10 +8126,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
+class OrganizationsEnvironmentsKeyvaluemapsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsKeyvaluemapsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a key value map in an environment.
@@ -8260,11 +8249,10 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsOptimizedStatsResourceApi {
+class OrganizationsEnvironmentsOptimizedStatsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsOptimizedStatsResourceApi(
-      commons.ApiRequester client)
+  OrganizationsEnvironmentsOptimizedStatsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// This api is similar to GetStats except that the response is less verbose.
@@ -8434,10 +8422,10 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsQueriesResourceApi {
+class OrganizationsEnvironmentsQueriesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsQueriesResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsQueriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Submit a query to be processed in the background. If the submission of the
@@ -8714,10 +8702,10 @@ class OrganizationsEnvironmentsQueriesResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsReferencesResourceApi {
+class OrganizationsEnvironmentsReferencesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsReferencesResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsReferencesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Reference in the specified environment.
@@ -8954,10 +8942,10 @@ class OrganizationsEnvironmentsReferencesResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsResourcefilesResourceApi {
+class OrganizationsEnvironmentsResourcefilesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsResourcefilesResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsResourcefilesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a resource file. Specify the `Content-Type` as
@@ -9391,22 +9379,22 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsSharedflowsResourceApi {
+class OrganizationsEnvironmentsSharedflowsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi get deployments =>
-      OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi(_requester);
-  OrganizationsEnvironmentsSharedflowsRevisionsResourceApi get revisions =>
-      OrganizationsEnvironmentsSharedflowsRevisionsResourceApi(_requester);
+  OrganizationsEnvironmentsSharedflowsDeploymentsResource get deployments =>
+      OrganizationsEnvironmentsSharedflowsDeploymentsResource(_requester);
+  OrganizationsEnvironmentsSharedflowsRevisionsResource get revisions =>
+      OrganizationsEnvironmentsSharedflowsRevisionsResource(_requester);
 
-  OrganizationsEnvironmentsSharedflowsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsSharedflowsResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi {
+class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi(
+  OrganizationsEnvironmentsSharedflowsDeploymentsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -9468,10 +9456,10 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
+class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsSharedflowsRevisionsResourceApi(
+  OrganizationsEnvironmentsSharedflowsRevisionsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -9671,10 +9659,10 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsStatsResourceApi {
+class OrganizationsEnvironmentsStatsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsStatsResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsStatsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieve metrics grouped by dimensions. The types of metrics you can
@@ -9846,10 +9834,10 @@ class OrganizationsEnvironmentsStatsResourceApi {
   }
 }
 
-class OrganizationsEnvironmentsTargetserversResourceApi {
+class OrganizationsEnvironmentsTargetserversResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsEnvironmentsTargetserversResourceApi(commons.ApiRequester client)
+  OrganizationsEnvironmentsTargetserversResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a TargetServer in the specified environment.
@@ -10096,13 +10084,13 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
   }
 }
 
-class OrganizationsInstancesResourceApi {
+class OrganizationsInstancesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsInstancesAttachmentsResourceApi get attachments =>
-      OrganizationsInstancesAttachmentsResourceApi(_requester);
+  OrganizationsInstancesAttachmentsResource get attachments =>
+      OrganizationsInstancesAttachmentsResource(_requester);
 
-  OrganizationsInstancesResourceApi(commons.ApiRequester client)
+  OrganizationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an Apigee runtime instance. The instance is accessible from the
@@ -10407,10 +10395,10 @@ class OrganizationsInstancesResourceApi {
   }
 }
 
-class OrganizationsInstancesAttachmentsResourceApi {
+class OrganizationsInstancesAttachmentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsInstancesAttachmentsResourceApi(commons.ApiRequester client)
+  OrganizationsInstancesAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new attachment of an environment to an instance. **Note:** Not
@@ -10656,10 +10644,10 @@ class OrganizationsInstancesAttachmentsResourceApi {
   }
 }
 
-class OrganizationsKeyvaluemapsResourceApi {
+class OrganizationsKeyvaluemapsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsKeyvaluemapsResourceApi(commons.ApiRequester client)
+  OrganizationsKeyvaluemapsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a key value map in an organization.
@@ -10777,10 +10765,10 @@ class OrganizationsKeyvaluemapsResourceApi {
   }
 }
 
-class OrganizationsOperationsResourceApi {
+class OrganizationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsOperationsResourceApi(commons.ApiRequester client)
+  OrganizationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -10917,10 +10905,10 @@ class OrganizationsOperationsResourceApi {
   }
 }
 
-class OrganizationsReportsResourceApi {
+class OrganizationsReportsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsReportsResourceApi(commons.ApiRequester client)
+  OrganizationsReportsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Custom Report for an Organization. A Custom Report provides
@@ -11216,15 +11204,15 @@ class OrganizationsReportsResourceApi {
   }
 }
 
-class OrganizationsSharedflowsResourceApi {
+class OrganizationsSharedflowsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSharedflowsDeploymentsResourceApi get deployments =>
-      OrganizationsSharedflowsDeploymentsResourceApi(_requester);
-  OrganizationsSharedflowsRevisionsResourceApi get revisions =>
-      OrganizationsSharedflowsRevisionsResourceApi(_requester);
+  OrganizationsSharedflowsDeploymentsResource get deployments =>
+      OrganizationsSharedflowsDeploymentsResource(_requester);
+  OrganizationsSharedflowsRevisionsResource get revisions =>
+      OrganizationsSharedflowsRevisionsResource(_requester);
 
-  OrganizationsSharedflowsResourceApi(commons.ApiRequester client)
+  OrganizationsSharedflowsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Uploads a ZIP-formatted shared flow configuration bundle to an
@@ -11482,10 +11470,10 @@ class OrganizationsSharedflowsResourceApi {
   }
 }
 
-class OrganizationsSharedflowsDeploymentsResourceApi {
+class OrganizationsSharedflowsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSharedflowsDeploymentsResourceApi(commons.ApiRequester client)
+  OrganizationsSharedflowsDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all deployments of a shared flow.
@@ -11545,13 +11533,13 @@ class OrganizationsSharedflowsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsSharedflowsRevisionsResourceApi {
+class OrganizationsSharedflowsRevisionsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSharedflowsRevisionsDeploymentsResourceApi get deployments =>
-      OrganizationsSharedflowsRevisionsDeploymentsResourceApi(_requester);
+  OrganizationsSharedflowsRevisionsDeploymentsResource get deployments =>
+      OrganizationsSharedflowsRevisionsDeploymentsResource(_requester);
 
-  OrganizationsSharedflowsRevisionsResourceApi(commons.ApiRequester client)
+  OrganizationsSharedflowsRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a shared flow and all associated policies, resources, and
@@ -11748,10 +11736,10 @@ class OrganizationsSharedflowsRevisionsResourceApi {
   }
 }
 
-class OrganizationsSharedflowsRevisionsDeploymentsResourceApi {
+class OrganizationsSharedflowsRevisionsDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSharedflowsRevisionsDeploymentsResourceApi(
+  OrganizationsSharedflowsRevisionsDeploymentsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -11813,20 +11801,19 @@ class OrganizationsSharedflowsRevisionsDeploymentsResourceApi {
   }
 }
 
-class OrganizationsSitesResourceApi {
+class OrganizationsSitesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSitesApicategoriesResourceApi get apicategories =>
-      OrganizationsSitesApicategoriesResourceApi(_requester);
+  OrganizationsSitesApicategoriesResource get apicategories =>
+      OrganizationsSitesApicategoriesResource(_requester);
 
-  OrganizationsSitesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  OrganizationsSitesResource(commons.ApiRequester client) : _requester = client;
 }
 
-class OrganizationsSitesApicategoriesResourceApi {
+class OrganizationsSitesApicategoriesResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsSitesApicategoriesResourceApi(commons.ApiRequester client)
+  OrganizationsSitesApicategoriesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new category on the portal.
@@ -12117,10 +12104,10 @@ class OrganizationsSitesApicategoriesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Provisions a new Apigee organization with a functioning runtime. This is
   /// the standard way to create trial organizations for a free Apigee trial.

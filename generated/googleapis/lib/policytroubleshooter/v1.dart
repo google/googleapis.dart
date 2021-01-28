@@ -21,7 +21,7 @@
 ///
 /// Create an instance of [PolicyTroubleshooterApi] to access these resources:
 ///
-/// - [IamResourceApi]
+/// - [IamResource]
 library policytroubleshooter.v1;
 
 import 'dart:async' as async;
@@ -43,7 +43,7 @@ class PolicyTroubleshooterApi {
 
   final commons.ApiRequester _requester;
 
-  IamResourceApi get iam => IamResourceApi(_requester);
+  IamResource get iam => IamResource(_requester);
 
   PolicyTroubleshooterApi(http.Client client,
       {core.String rootUrl = 'https://policytroubleshooter.googleapis.com/',
@@ -52,10 +52,10 @@ class PolicyTroubleshooterApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class IamResourceApi {
+class IamResource {
   final commons.ApiRequester _requester;
 
-  IamResourceApi(commons.ApiRequester client) : _requester = client;
+  IamResource(commons.ApiRequester client) : _requester = client;
 
   /// Checks whether a member has a specific permission for a specific resource,
   /// and explains why the member does or does not have that permission.

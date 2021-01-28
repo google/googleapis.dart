@@ -5760,7 +5760,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DebugDatasourcesItemsResourceApi', () {
+  unittest.group('resource-DebugDatasourcesItemsResource', () {
     unittest.test('method--checkAccess', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.datasources.items;
@@ -5875,7 +5875,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DebugDatasourcesItemsUnmappedidsResourceApi', () {
+  unittest.group('resource-DebugDatasourcesItemsUnmappedidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.datasources.items.unmappedids;
@@ -5939,7 +5939,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DebugIdentitysourcesItemsResourceApi', () {
+  unittest.group('resource-DebugIdentitysourcesItemsResource', () {
     unittest.test('method--listForunmappedidentity', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.identitysources.items;
@@ -6012,7 +6012,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DebugIdentitysourcesUnmappedidsResourceApi', () {
+  unittest.group('resource-DebugIdentitysourcesUnmappedidsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.identitysources.unmappedids;
@@ -6080,7 +6080,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-IndexingDatasourcesResourceApi', () {
+  unittest.group('resource-IndexingDatasourcesResource', () {
     unittest.test('method--deleteSchema', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources;
@@ -6241,7 +6241,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-IndexingDatasourcesItemsResourceApi', () {
+  unittest.group('resource-IndexingDatasourcesItemsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
@@ -6750,7 +6750,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MediaResourceApi', () {
+  unittest.group('resource-MediaResource', () {
     unittest.test('method--upload', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -6808,7 +6808,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).operations;
@@ -6858,7 +6858,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsLroResourceApi', () {
+  unittest.group('resource-OperationsLroResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).operations.lro;
@@ -6920,7 +6920,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-QueryResourceApi', () {
+  unittest.group('resource-QueryResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).query;
@@ -7024,7 +7024,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-QuerySourcesResourceApi', () {
+  unittest.group('resource-QuerySourcesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).query.sources;
@@ -7097,7 +7097,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SettingsDatasourcesResourceApi', () {
+  unittest.group('resource-SettingsDatasourcesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.datasources;
@@ -7368,7 +7368,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SettingsSearchapplicationsResourceApi', () {
+  unittest.group('resource-SettingsSearchapplicationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
@@ -7694,7 +7694,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatsResourceApi', () {
+  unittest.group('resource-StatsResource', () {
     unittest.test('method--getIndex', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats;
@@ -7984,7 +7984,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatsIndexDatasourcesResourceApi', () {
+  unittest.group('resource-StatsIndexDatasourcesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.index.datasources;
@@ -8060,7 +8060,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatsQuerySearchapplicationsResourceApi', () {
+  unittest.group('resource-StatsQuerySearchapplicationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.query.searchapplications;
@@ -8137,7 +8137,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatsSessionSearchapplicationsResourceApi', () {
+  unittest.group('resource-StatsSessionSearchapplicationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.session.searchapplications;
@@ -8214,7 +8214,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-StatsUserSearchapplicationsResourceApi', () {
+  unittest.group('resource-StatsUserSearchapplicationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.user.searchapplications;

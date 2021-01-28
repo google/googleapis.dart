@@ -604,7 +604,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsConnectionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsConnectionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =

@@ -1030,7 +1030,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--test', () {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects;
@@ -1085,7 +1085,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsReleasesResourceApi', () {
+  unittest.group('resource-ProjectsReleasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
@@ -1402,7 +1402,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsRulesetsResourceApi', () {
+  unittest.group('resource-ProjectsRulesetsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.rulesets;

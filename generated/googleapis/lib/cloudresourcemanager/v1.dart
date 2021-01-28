@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [CloudResourceManagerApi] to access these resources:
 ///
-/// - [FoldersResourceApi]
-/// - [LiensResourceApi]
-/// - [OperationsResourceApi]
-/// - [OrganizationsResourceApi]
-/// - [ProjectsResourceApi]
+/// - [FoldersResource]
+/// - [LiensResource]
+/// - [OperationsResource]
+/// - [OrganizationsResource]
+/// - [ProjectsResource]
 library cloudresourcemanager.v1;
 
 import 'dart:async' as async;
@@ -56,12 +56,11 @@ class CloudResourceManagerApi {
 
   final commons.ApiRequester _requester;
 
-  FoldersResourceApi get folders => FoldersResourceApi(_requester);
-  LiensResourceApi get liens => LiensResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
+  LiensResource get liens => LiensResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudResourceManagerApi(http.Client client,
       {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
@@ -70,10 +69,10 @@ class CloudResourceManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class FoldersResourceApi {
+class FoldersResource {
   final commons.ApiRequester _requester;
 
-  FoldersResourceApi(commons.ApiRequester client) : _requester = client;
+  FoldersResource(commons.ApiRequester client) : _requester = client;
 
   /// Clears a `Policy` from a resource.
   ///
@@ -444,10 +443,10 @@ class FoldersResourceApi {
   }
 }
 
-class LiensResourceApi {
+class LiensResource {
   final commons.ApiRequester _requester;
 
-  LiensResourceApi(commons.ApiRequester client) : _requester = client;
+  LiensResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a Lien which applies to the resource denoted by the `parent` field.
   /// Callers of this method will require permission on the `parent` resource.
@@ -684,10 +683,10 @@ class LiensResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -743,10 +742,10 @@ class OperationsResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Clears a `Policy` from a resource.
   ///
@@ -1422,10 +1421,10 @@ class OrganizationsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Clears a `Policy` from a resource.
   ///

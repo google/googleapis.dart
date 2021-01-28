@@ -26,8 +26,8 @@
 ///
 /// Create an instance of [StreetViewPublishApi] to access these resources:
 ///
-/// - [PhotoResourceApi]
-/// - [PhotosResourceApi]
+/// - [PhotoResource]
+/// - [PhotosResource]
 library streetviewpublish.v1;
 
 import 'dart:async' as async;
@@ -52,8 +52,8 @@ class StreetViewPublishApi {
 
   final commons.ApiRequester _requester;
 
-  PhotoResourceApi get photo => PhotoResourceApi(_requester);
-  PhotosResourceApi get photos => PhotosResourceApi(_requester);
+  PhotoResource get photo => PhotoResource(_requester);
+  PhotosResource get photos => PhotosResource(_requester);
 
   StreetViewPublishApi(http.Client client,
       {core.String rootUrl = 'https://streetviewpublish.googleapis.com/',
@@ -62,10 +62,10 @@ class StreetViewPublishApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class PhotoResourceApi {
+class PhotoResource {
   final commons.ApiRequester _requester;
 
-  PhotoResourceApi(commons.ApiRequester client) : _requester = client;
+  PhotoResource(commons.ApiRequester client) : _requester = client;
 
   /// After the client finishes uploading the photo with the returned UploadRef,
   /// CreatePhoto publishes the uploaded Photo to Street View on Google Maps.
@@ -400,10 +400,10 @@ class PhotoResourceApi {
   }
 }
 
-class PhotosResourceApi {
+class PhotosResource {
   final commons.ApiRequester _requester;
 
-  PhotosResourceApi(commons.ApiRequester client) : _requester = client;
+  PhotosResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a list of Photos and their metadata. Note that if
   /// BatchDeletePhotos fails, either critical fields are missing or there is an

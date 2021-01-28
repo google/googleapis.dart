@@ -736,7 +736,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SpeechApi(mock).operations;
@@ -847,7 +847,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.SpeechApi(mock).projects.locations.operations;
@@ -957,7 +957,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SpeechResourceApi', () {
+  unittest.group('resource-SpeechResource', () {
     unittest.test('method--longrunningrecognize', () {
       var mock = HttpServerMock();
       var res = api.SpeechApi(mock).speech;

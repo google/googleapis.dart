@@ -1187,7 +1187,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LineitemsResourceApi', () {
+  unittest.group('resource-LineitemsResource', () {
     unittest.test('method--downloadlineitems', () {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).lineitems;
@@ -1298,7 +1298,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-QueriesResourceApi', () {
+  unittest.group('resource-QueriesResource', () {
     unittest.test('method--createquery', () {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).queries;
@@ -1580,7 +1580,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsResourceApi', () {
+  unittest.group('resource-ReportsResource', () {
     unittest.test('method--listreports', () {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).reports;
@@ -1650,7 +1650,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SdfResourceApi', () {
+  unittest.group('resource-SdfResource', () {
     unittest.test('method--download', () {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).sdf;

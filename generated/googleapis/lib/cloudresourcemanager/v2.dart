@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [CloudResourceManagerApi] to access these resources:
 ///
-/// - [FoldersResourceApi]
-/// - [OperationsResourceApi]
+/// - [FoldersResource]
+/// - [OperationsResource]
 library cloudresourcemanager.v2;
 
 import 'dart:async' as async;
@@ -53,8 +53,8 @@ class CloudResourceManagerApi {
 
   final commons.ApiRequester _requester;
 
-  FoldersResourceApi get folders => FoldersResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
 
   CloudResourceManagerApi(http.Client client,
       {core.String rootUrl = 'https://cloudresourcemanager.googleapis.com/',
@@ -63,10 +63,10 @@ class CloudResourceManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class FoldersResourceApi {
+class FoldersResource {
   final commons.ApiRequester _requester;
 
-  FoldersResourceApi(commons.ApiRequester client) : _requester = client;
+  FoldersResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Folder in the resource hierarchy. Returns an Operation which can
   /// be used to track the progress of the folder creation workflow. Upon
@@ -792,10 +792,10 @@ class FoldersResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API

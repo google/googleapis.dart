@@ -3949,7 +3949,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).operations;
@@ -4160,7 +4160,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--addSubnetwork', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services;
@@ -4433,7 +4433,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesConnectionsResourceApi', () {
+  unittest.group('resource-ServicesConnectionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.connections;
@@ -4600,7 +4600,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesDnsRecordSetsResourceApi', () {
+  unittest.group('resource-ServicesDnsRecordSetsResource', () {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
@@ -4761,7 +4761,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesDnsZonesResourceApi', () {
+  unittest.group('resource-ServicesDnsZonesResource', () {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsZones;
@@ -4870,7 +4870,7 @@ void main() {
   });
 
   unittest.group(
-      'resource-ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi', () {
+      'resource-ServicesProjectsGlobalNetworksPeeredDnsDomainsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock)
@@ -5037,7 +5037,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesRolesResourceApi', () {
+  unittest.group('resource-ServicesRolesResource', () {
     unittest.test('method--add', () {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.roles;

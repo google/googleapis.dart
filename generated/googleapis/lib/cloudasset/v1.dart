@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [CloudAssetApi] to access these resources:
 ///
-/// - [FeedsResourceApi]
-/// - [OperationsResourceApi]
-/// - [V1ResourceApi]
+/// - [FeedsResource]
+/// - [OperationsResource]
+/// - [V1Resource]
 library cloudasset.v1;
 
 import 'dart:async' as async;
@@ -49,9 +49,9 @@ class CloudAssetApi {
 
   final commons.ApiRequester _requester;
 
-  FeedsResourceApi get feeds => FeedsResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  V1ResourceApi get v1 => V1ResourceApi(_requester);
+  FeedsResource get feeds => FeedsResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  V1Resource get v1 => V1Resource(_requester);
 
   CloudAssetApi(http.Client client,
       {core.String rootUrl = 'https://cloudasset.googleapis.com/',
@@ -60,10 +60,10 @@ class CloudAssetApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class FeedsResourceApi {
+class FeedsResource {
   final commons.ApiRequester _requester;
 
-  FeedsResourceApi(commons.ApiRequester client) : _requester = client;
+  FeedsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a feed in a parent project/folder/organization to listen to its
   /// asset updates.
@@ -351,10 +351,10 @@ class FeedsResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
@@ -410,10 +410,10 @@ class OperationsResourceApi {
   }
 }
 
-class V1ResourceApi {
+class V1Resource {
   final commons.ApiRequester _requester;
 
-  V1ResourceApi(commons.ApiRequester client) : _requester = client;
+  V1Resource(commons.ApiRequester client) : _requester = client;
 
   /// Batch gets the update history of assets that overlap a time window. For
   /// IAM_POLICY content, this API outputs history when the asset and its

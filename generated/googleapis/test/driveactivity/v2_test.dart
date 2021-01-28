@@ -1729,7 +1729,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ActivityResourceApi', () {
+  unittest.group('resource-ActivityResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.DriveActivityApi(mock).activity;

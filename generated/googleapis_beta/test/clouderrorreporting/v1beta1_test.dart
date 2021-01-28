@@ -588,7 +588,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--deleteEvents', () {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects;
@@ -638,7 +638,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsEventsResourceApi', () {
+  unittest.group('resource-ProjectsEventsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.events;
@@ -770,7 +770,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsGroupStatsResourceApi', () {
+  unittest.group('resource-ProjectsGroupStatsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.groupStats;
@@ -863,7 +863,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsGroupsResourceApi', () {
+  unittest.group('resource-ProjectsGroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.groups;

@@ -23,13 +23,13 @@
 ///
 /// Create an instance of [GameServicesApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsGameServerDeploymentsResourceApi]
-///       - [ProjectsLocationsGameServerDeploymentsConfigsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsRealmsResourceApi]
-///       - [ProjectsLocationsRealmsGameServerClustersResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsGameServerDeploymentsResource]
+///       - [ProjectsLocationsGameServerDeploymentsConfigsResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRealmsResource]
+///       - [ProjectsLocationsRealmsGameServerClustersResource]
 library gameservices.v1beta;
 
 import 'dart:async' as async;
@@ -52,7 +52,7 @@ class GameServicesApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   GameServicesApi(http.Client client,
       {core.String rootUrl = 'https://gameservices.googleapis.com/',
@@ -61,27 +61,26 @@ class GameServicesApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGameServerDeploymentsResourceApi get gameServerDeployments =>
-      ProjectsLocationsGameServerDeploymentsResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsRealmsResourceApi get realms =>
-      ProjectsLocationsRealmsResourceApi(_requester);
+  ProjectsLocationsGameServerDeploymentsResource get gameServerDeployments =>
+      ProjectsLocationsGameServerDeploymentsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRealmsResource get realms =>
+      ProjectsLocationsRealmsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -216,13 +215,13 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsGameServerDeploymentsResourceApi {
+class ProjectsLocationsGameServerDeploymentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGameServerDeploymentsConfigsResourceApi get configs =>
-      ProjectsLocationsGameServerDeploymentsConfigsResourceApi(_requester);
+  ProjectsLocationsGameServerDeploymentsConfigsResource get configs =>
+      ProjectsLocationsGameServerDeploymentsConfigsResource(_requester);
 
-  ProjectsLocationsGameServerDeploymentsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsGameServerDeploymentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new game server deployment in a given project and location.
@@ -1038,10 +1037,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
   }
 }
 
-class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
+class ProjectsLocationsGameServerDeploymentsConfigsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGameServerDeploymentsConfigsResourceApi(
+  ProjectsLocationsGameServerDeploymentsConfigsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1314,10 +1313,10 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1577,13 +1576,13 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsRealmsResourceApi {
+class ProjectsLocationsRealmsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRealmsGameServerClustersResourceApi get gameServerClusters =>
-      ProjectsLocationsRealmsGameServerClustersResourceApi(_requester);
+  ProjectsLocationsRealmsGameServerClustersResource get gameServerClusters =>
+      ProjectsLocationsRealmsGameServerClustersResource(_requester);
 
-  ProjectsLocationsRealmsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRealmsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new realm in a given project and location.
@@ -1986,11 +1985,10 @@ class ProjectsLocationsRealmsResourceApi {
   }
 }
 
-class ProjectsLocationsRealmsGameServerClustersResourceApi {
+class ProjectsLocationsRealmsGameServerClustersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRealmsGameServerClustersResourceApi(
-      commons.ApiRequester client)
+  ProjectsLocationsRealmsGameServerClustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new game server cluster in a given project and location.

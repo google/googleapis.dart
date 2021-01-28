@@ -23,12 +23,12 @@
 ///
 /// Create an instance of [TPUApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsAcceleratorTypesResourceApi]
-///     - [ProjectsLocationsNodesResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///     - [ProjectsLocationsTensorflowVersionsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAcceleratorTypesResource]
+///     - [ProjectsLocationsNodesResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsTensorflowVersionsResource]
 library tpu.v1alpha1;
 
 import 'dart:async' as async;
@@ -51,7 +51,7 @@ class TPUApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   TPUApi(http.Client client,
       {core.String rootUrl = 'https://tpu.googleapis.com/',
@@ -60,29 +60,28 @@ class TPUApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAcceleratorTypesResourceApi get acceleratorTypes =>
-      ProjectsLocationsAcceleratorTypesResourceApi(_requester);
-  ProjectsLocationsNodesResourceApi get nodes =>
-      ProjectsLocationsNodesResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
-  ProjectsLocationsTensorflowVersionsResourceApi get tensorflowVersions =>
-      ProjectsLocationsTensorflowVersionsResourceApi(_requester);
+  ProjectsLocationsAcceleratorTypesResource get acceleratorTypes =>
+      ProjectsLocationsAcceleratorTypesResource(_requester);
+  ProjectsLocationsNodesResource get nodes =>
+      ProjectsLocationsNodesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsTensorflowVersionsResource get tensorflowVersions =>
+      ProjectsLocationsTensorflowVersionsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -208,10 +207,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsAcceleratorTypesResourceApi {
+class ProjectsLocationsAcceleratorTypesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAcceleratorTypesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAcceleratorTypesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets AcceleratorType.
@@ -347,10 +346,10 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   }
 }
 
-class ProjectsLocationsNodesResourceApi {
+class ProjectsLocationsNodesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsNodesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsNodesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a node.
@@ -763,10 +762,10 @@ class ProjectsLocationsNodesResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
@@ -1021,10 +1020,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsLocationsTensorflowVersionsResourceApi {
+class ProjectsLocationsTensorflowVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsTensorflowVersionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsTensorflowVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets TensorFlow Version.

@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [AdMobApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsMediationReportResourceApi]
-///   - [AccountsNetworkReportResourceApi]
+/// - [AccountsResource]
+///   - [AccountsMediationReportResource]
+///   - [AccountsNetworkReportResource]
 library admob.v1;
 
 import 'dart:async' as async;
@@ -50,7 +50,7 @@ class AdMobApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
 
   AdMobApi(http.Client client,
       {core.String rootUrl = 'https://admob.googleapis.com/',
@@ -59,15 +59,15 @@ class AdMobApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsMediationReportResourceApi get mediationReport =>
-      AccountsMediationReportResourceApi(_requester);
-  AccountsNetworkReportResourceApi get networkReport =>
-      AccountsNetworkReportResourceApi(_requester);
+  AccountsMediationReportResource get mediationReport =>
+      AccountsMediationReportResource(_requester);
+  AccountsNetworkReportResource get networkReport =>
+      AccountsNetworkReportResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about the specified AdMob publisher account.
   ///
@@ -184,10 +184,10 @@ class AccountsResourceApi {
   }
 }
 
-class AccountsMediationReportResourceApi {
+class AccountsMediationReportResource {
   final commons.ApiRequester _requester;
 
-  AccountsMediationReportResourceApi(commons.ApiRequester client)
+  AccountsMediationReportResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Generates an AdMob Mediation report based on the provided report
@@ -253,10 +253,10 @@ class AccountsMediationReportResourceApi {
   }
 }
 
-class AccountsNetworkReportResourceApi {
+class AccountsNetworkReportResource {
   final commons.ApiRequester _requester;
 
-  AccountsNetworkReportResourceApi(commons.ApiRequester client)
+  AccountsNetworkReportResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Generates an AdMob Network report based on the provided report

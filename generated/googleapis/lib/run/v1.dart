@@ -24,22 +24,22 @@
 ///
 /// Create an instance of [CloudRunApi] to access these resources:
 ///
-/// - [NamespacesResourceApi]
-///   - [NamespacesAuthorizeddomainsResourceApi]
-///   - [NamespacesConfigurationsResourceApi]
-///   - [NamespacesDomainmappingsResourceApi]
-///   - [NamespacesRevisionsResourceApi]
-///   - [NamespacesRoutesResourceApi]
-///   - [NamespacesServicesResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsAuthorizeddomainsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsAuthorizeddomainsResourceApi]
-///     - [ProjectsLocationsConfigurationsResourceApi]
-///     - [ProjectsLocationsDomainmappingsResourceApi]
-///     - [ProjectsLocationsRevisionsResourceApi]
-///     - [ProjectsLocationsRoutesResourceApi]
-///     - [ProjectsLocationsServicesResourceApi]
+/// - [NamespacesResource]
+///   - [NamespacesAuthorizeddomainsResource]
+///   - [NamespacesConfigurationsResource]
+///   - [NamespacesDomainmappingsResource]
+///   - [NamespacesRevisionsResource]
+///   - [NamespacesRoutesResource]
+///   - [NamespacesServicesResource]
+/// - [ProjectsResource]
+///   - [ProjectsAuthorizeddomainsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAuthorizeddomainsResource]
+///     - [ProjectsLocationsConfigurationsResource]
+///     - [ProjectsLocationsDomainmappingsResource]
+///     - [ProjectsLocationsRevisionsResource]
+///     - [ProjectsLocationsRoutesResource]
+///     - [ProjectsLocationsServicesResource]
 library run.v1;
 
 import 'dart:async' as async;
@@ -63,8 +63,8 @@ class CloudRunApi {
 
   final commons.ApiRequester _requester;
 
-  NamespacesResourceApi get namespaces => NamespacesResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  NamespacesResource get namespaces => NamespacesResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudRunApi(http.Client client,
       {core.String rootUrl = 'https://run.googleapis.com/',
@@ -73,29 +73,28 @@ class CloudRunApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class NamespacesResourceApi {
+class NamespacesResource {
   final commons.ApiRequester _requester;
 
-  NamespacesAuthorizeddomainsResourceApi get authorizeddomains =>
-      NamespacesAuthorizeddomainsResourceApi(_requester);
-  NamespacesConfigurationsResourceApi get configurations =>
-      NamespacesConfigurationsResourceApi(_requester);
-  NamespacesDomainmappingsResourceApi get domainmappings =>
-      NamespacesDomainmappingsResourceApi(_requester);
-  NamespacesRevisionsResourceApi get revisions =>
-      NamespacesRevisionsResourceApi(_requester);
-  NamespacesRoutesResourceApi get routes =>
-      NamespacesRoutesResourceApi(_requester);
-  NamespacesServicesResourceApi get services =>
-      NamespacesServicesResourceApi(_requester);
+  NamespacesAuthorizeddomainsResource get authorizeddomains =>
+      NamespacesAuthorizeddomainsResource(_requester);
+  NamespacesConfigurationsResource get configurations =>
+      NamespacesConfigurationsResource(_requester);
+  NamespacesDomainmappingsResource get domainmappings =>
+      NamespacesDomainmappingsResource(_requester);
+  NamespacesRevisionsResource get revisions =>
+      NamespacesRevisionsResource(_requester);
+  NamespacesRoutesResource get routes => NamespacesRoutesResource(_requester);
+  NamespacesServicesResource get services =>
+      NamespacesServicesResource(_requester);
 
-  NamespacesResourceApi(commons.ApiRequester client) : _requester = client;
+  NamespacesResource(commons.ApiRequester client) : _requester = client;
 }
 
-class NamespacesAuthorizeddomainsResourceApi {
+class NamespacesAuthorizeddomainsResource {
   final commons.ApiRequester _requester;
 
-  NamespacesAuthorizeddomainsResourceApi(commons.ApiRequester client)
+  NamespacesAuthorizeddomainsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List authorized domains.
@@ -166,10 +165,10 @@ class NamespacesAuthorizeddomainsResourceApi {
   }
 }
 
-class NamespacesConfigurationsResourceApi {
+class NamespacesConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  NamespacesConfigurationsResourceApi(commons.ApiRequester client)
+  NamespacesConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get information about a configuration.
@@ -330,10 +329,10 @@ class NamespacesConfigurationsResourceApi {
   }
 }
 
-class NamespacesDomainmappingsResourceApi {
+class NamespacesDomainmappingsResource {
   final commons.ApiRequester _requester;
 
-  NamespacesDomainmappingsResourceApi(commons.ApiRequester client)
+  NamespacesDomainmappingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a new domain mapping.
@@ -630,10 +629,10 @@ class NamespacesDomainmappingsResourceApi {
   }
 }
 
-class NamespacesRevisionsResourceApi {
+class NamespacesRevisionsResource {
   final commons.ApiRequester _requester;
 
-  NamespacesRevisionsResourceApi(commons.ApiRequester client)
+  NamespacesRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete a revision.
@@ -867,11 +866,10 @@ class NamespacesRevisionsResourceApi {
   }
 }
 
-class NamespacesRoutesResourceApi {
+class NamespacesRoutesResource {
   final commons.ApiRequester _requester;
 
-  NamespacesRoutesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  NamespacesRoutesResource(commons.ApiRequester client) : _requester = client;
 
   /// Get information about a route.
   ///
@@ -1029,11 +1027,10 @@ class NamespacesRoutesResourceApi {
   }
 }
 
-class NamespacesServicesResourceApi {
+class NamespacesServicesResource {
   final commons.ApiRequester _requester;
 
-  NamespacesServicesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  NamespacesServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a service.
   ///
@@ -1389,21 +1386,21 @@ class NamespacesServicesResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAuthorizeddomainsResourceApi get authorizeddomains =>
-      ProjectsAuthorizeddomainsResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
+  ProjectsAuthorizeddomainsResource get authorizeddomains =>
+      ProjectsAuthorizeddomainsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsAuthorizeddomainsResourceApi {
+class ProjectsAuthorizeddomainsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsAuthorizeddomainsResourceApi(commons.ApiRequester client)
+  ProjectsAuthorizeddomainsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List authorized domains.
@@ -1474,24 +1471,23 @@ class ProjectsAuthorizeddomainsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAuthorizeddomainsResourceApi get authorizeddomains =>
-      ProjectsLocationsAuthorizeddomainsResourceApi(_requester);
-  ProjectsLocationsConfigurationsResourceApi get configurations =>
-      ProjectsLocationsConfigurationsResourceApi(_requester);
-  ProjectsLocationsDomainmappingsResourceApi get domainmappings =>
-      ProjectsLocationsDomainmappingsResourceApi(_requester);
-  ProjectsLocationsRevisionsResourceApi get revisions =>
-      ProjectsLocationsRevisionsResourceApi(_requester);
-  ProjectsLocationsRoutesResourceApi get routes =>
-      ProjectsLocationsRoutesResourceApi(_requester);
-  ProjectsLocationsServicesResourceApi get services =>
-      ProjectsLocationsServicesResourceApi(_requester);
+  ProjectsLocationsAuthorizeddomainsResource get authorizeddomains =>
+      ProjectsLocationsAuthorizeddomainsResource(_requester);
+  ProjectsLocationsConfigurationsResource get configurations =>
+      ProjectsLocationsConfigurationsResource(_requester);
+  ProjectsLocationsDomainmappingsResource get domainmappings =>
+      ProjectsLocationsDomainmappingsResource(_requester);
+  ProjectsLocationsRevisionsResource get revisions =>
+      ProjectsLocationsRevisionsResource(_requester);
+  ProjectsLocationsRoutesResource get routes =>
+      ProjectsLocationsRoutesResource(_requester);
+  ProjectsLocationsServicesResource get services =>
+      ProjectsLocationsServicesResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists information about the supported locations for this service.
   ///
@@ -1565,10 +1561,10 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsLocationsAuthorizeddomainsResourceApi {
+class ProjectsLocationsAuthorizeddomainsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsAuthorizeddomainsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsAuthorizeddomainsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List authorized domains.
@@ -1639,10 +1635,10 @@ class ProjectsLocationsAuthorizeddomainsResourceApi {
   }
 }
 
-class ProjectsLocationsConfigurationsResourceApi {
+class ProjectsLocationsConfigurationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsConfigurationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsConfigurationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get information about a configuration.
@@ -1803,10 +1799,10 @@ class ProjectsLocationsConfigurationsResourceApi {
   }
 }
 
-class ProjectsLocationsDomainmappingsResourceApi {
+class ProjectsLocationsDomainmappingsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDomainmappingsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDomainmappingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a new domain mapping.
@@ -2103,10 +2099,10 @@ class ProjectsLocationsDomainmappingsResourceApi {
   }
 }
 
-class ProjectsLocationsRevisionsResourceApi {
+class ProjectsLocationsRevisionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRevisionsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete a revision.
@@ -2339,10 +2335,10 @@ class ProjectsLocationsRevisionsResourceApi {
   }
 }
 
-class ProjectsLocationsRoutesResourceApi {
+class ProjectsLocationsRoutesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRoutesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsRoutesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get information about a route.
@@ -2498,10 +2494,10 @@ class ProjectsLocationsRoutesResourceApi {
   }
 }
 
-class ProjectsLocationsServicesResourceApi {
+class ProjectsLocationsServicesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsServicesResourceApi(commons.ApiRequester client)
+  ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create a service.

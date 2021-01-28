@@ -25,16 +25,16 @@
 ///
 /// Create an instance of [ServiceNetworkingApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ServicesResourceApi]
-///   - [ServicesConnectionsResourceApi]
-///   - [ServicesDnsRecordSetsResourceApi]
-///   - [ServicesDnsZonesResourceApi]
-///   - [ServicesProjectsResourceApi]
-///     - [ServicesProjectsGlobalResourceApi]
-///       - [ServicesProjectsGlobalNetworksResourceApi]
-///         - [ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi]
-///   - [ServicesRolesResourceApi]
+/// - [OperationsResource]
+/// - [ServicesResource]
+///   - [ServicesConnectionsResource]
+///   - [ServicesDnsRecordSetsResource]
+///   - [ServicesDnsZonesResource]
+///   - [ServicesProjectsResource]
+///     - [ServicesProjectsGlobalResource]
+///       - [ServicesProjectsGlobalNetworksResource]
+///         - [ServicesProjectsGlobalNetworksPeeredDnsDomainsResource]
+///   - [ServicesRolesResource]
 library servicenetworking.v1;
 
 import 'dart:async' as async;
@@ -62,8 +62,8 @@ class ServiceNetworkingApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ServicesResource get services => ServicesResource(_requester);
 
   ServiceNetworkingApi(http_1.Client client,
       {core.String rootUrl = 'https://servicenetworking.googleapis.com/',
@@ -72,10 +72,10 @@ class ServiceNetworkingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -328,20 +328,18 @@ class OperationsResourceApi {
   }
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesConnectionsResourceApi get connections =>
-      ServicesConnectionsResourceApi(_requester);
-  ServicesDnsRecordSetsResourceApi get dnsRecordSets =>
-      ServicesDnsRecordSetsResourceApi(_requester);
-  ServicesDnsZonesResourceApi get dnsZones =>
-      ServicesDnsZonesResourceApi(_requester);
-  ServicesProjectsResourceApi get projects =>
-      ServicesProjectsResourceApi(_requester);
-  ServicesRolesResourceApi get roles => ServicesRolesResourceApi(_requester);
+  ServicesConnectionsResource get connections =>
+      ServicesConnectionsResource(_requester);
+  ServicesDnsRecordSetsResource get dnsRecordSets =>
+      ServicesDnsRecordSetsResource(_requester);
+  ServicesDnsZonesResource get dnsZones => ServicesDnsZonesResource(_requester);
+  ServicesProjectsResource get projects => ServicesProjectsResource(_requester);
+  ServicesRolesResource get roles => ServicesRolesResource(_requester);
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// For service producers, provisions a new subnet in a peered service's
   /// shared VPC network in the requested region and with the requested size
@@ -670,10 +668,10 @@ class ServicesResourceApi {
   }
 }
 
-class ServicesConnectionsResourceApi {
+class ServicesConnectionsResource {
   final commons.ApiRequester _requester;
 
-  ServicesConnectionsResourceApi(commons.ApiRequester client)
+  ServicesConnectionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a private connection that establishes a VPC Network Peering
@@ -890,10 +888,10 @@ class ServicesConnectionsResourceApi {
   }
 }
 
-class ServicesDnsRecordSetsResourceApi {
+class ServicesDnsRecordSetsResource {
   final commons.ApiRequester _requester;
 
-  ServicesDnsRecordSetsResourceApi(commons.ApiRequester client)
+  ServicesDnsRecordSetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Service producers can use this method to add DNS record sets to private
@@ -1083,11 +1081,10 @@ class ServicesDnsRecordSetsResourceApi {
   }
 }
 
-class ServicesDnsZonesResourceApi {
+class ServicesDnsZonesResource {
   final commons.ApiRequester _requester;
 
-  ServicesDnsZonesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ServicesDnsZonesResource(commons.ApiRequester client) : _requester = client;
 
   /// Service producers can use this method to add private DNS zones in the
   /// shared producer host project and matching peering zones in the consumer
@@ -1216,41 +1213,39 @@ class ServicesDnsZonesResourceApi {
   }
 }
 
-class ServicesProjectsResourceApi {
+class ServicesProjectsResource {
   final commons.ApiRequester _requester;
 
-  ServicesProjectsGlobalResourceApi get global =>
-      ServicesProjectsGlobalResourceApi(_requester);
+  ServicesProjectsGlobalResource get global =>
+      ServicesProjectsGlobalResource(_requester);
 
-  ServicesProjectsResourceApi(commons.ApiRequester client)
+  ServicesProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ServicesProjectsGlobalResource {
+  final commons.ApiRequester _requester;
+
+  ServicesProjectsGlobalNetworksResource get networks =>
+      ServicesProjectsGlobalNetworksResource(_requester);
+
+  ServicesProjectsGlobalResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ServicesProjectsGlobalResourceApi {
+class ServicesProjectsGlobalNetworksResource {
   final commons.ApiRequester _requester;
 
-  ServicesProjectsGlobalNetworksResourceApi get networks =>
-      ServicesProjectsGlobalNetworksResourceApi(_requester);
+  ServicesProjectsGlobalNetworksPeeredDnsDomainsResource get peeredDnsDomains =>
+      ServicesProjectsGlobalNetworksPeeredDnsDomainsResource(_requester);
 
-  ServicesProjectsGlobalResourceApi(commons.ApiRequester client)
+  ServicesProjectsGlobalNetworksResource(commons.ApiRequester client)
       : _requester = client;
 }
 
-class ServicesProjectsGlobalNetworksResourceApi {
+class ServicesProjectsGlobalNetworksPeeredDnsDomainsResource {
   final commons.ApiRequester _requester;
 
-  ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi
-      get peeredDnsDomains =>
-          ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi(_requester);
-
-  ServicesProjectsGlobalNetworksResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi(
+  ServicesProjectsGlobalNetworksPeeredDnsDomainsResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1447,10 +1442,10 @@ class ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi {
   }
 }
 
-class ServicesRolesResourceApi {
+class ServicesRolesResource {
   final commons.ApiRequester _requester;
 
-  ServicesRolesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesRolesResource(commons.ApiRequester client) : _requester = client;
 
   /// Service producers can use this method to add roles in the shared VPC host
   /// project. Each role is bound to the provided member. Each role must be

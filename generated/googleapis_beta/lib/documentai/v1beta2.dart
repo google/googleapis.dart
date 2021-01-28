@@ -25,12 +25,12 @@
 ///
 /// Create an instance of [DocumentApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsDocumentsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///     - [ProjectsLocationsDocumentsResourceApi]
-///     - [ProjectsLocationsOperationsResourceApi]
-///   - [ProjectsOperationsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsDocumentsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDocumentsResource]
+///     - [ProjectsLocationsOperationsResource]
+///   - [ProjectsOperationsResource]
 library documentai.v1beta2;
 
 import 'dart:async' as async;
@@ -55,7 +55,7 @@ class DocumentApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   DocumentApi(http.Client client,
       {core.String rootUrl = 'https://documentai.googleapis.com/',
@@ -64,24 +64,23 @@ class DocumentApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDocumentsResourceApi get documents =>
-      ProjectsDocumentsResourceApi(_requester);
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      ProjectsOperationsResourceApi(_requester);
+  ProjectsDocumentsResource get documents =>
+      ProjectsDocumentsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsOperationsResource get operations =>
+      ProjectsOperationsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsDocumentsResourceApi {
+class ProjectsDocumentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsDocumentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsDocumentsResource(commons.ApiRequester client) : _requester = client;
 
   /// LRO endpoint to batch process many documents. The output is written to
   /// Cloud Storage as JSON in the [Document] format.
@@ -210,22 +209,21 @@ class ProjectsDocumentsResourceApi {
   }
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDocumentsResourceApi get documents =>
-      ProjectsLocationsDocumentsResourceApi(_requester);
-  ProjectsLocationsOperationsResourceApi get operations =>
-      ProjectsLocationsOperationsResourceApi(_requester);
+  ProjectsLocationsDocumentsResource get documents =>
+      ProjectsLocationsDocumentsResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsDocumentsResourceApi {
+class ProjectsLocationsDocumentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsDocumentsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsDocumentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// LRO endpoint to batch process many documents. The output is written to
@@ -355,10 +353,10 @@ class ProjectsLocationsDocumentsResourceApi {
   }
 }
 
-class ProjectsLocationsOperationsResourceApi {
+class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -417,11 +415,10 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
+class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the latest state of a long-running operation. Clients can use this
   /// method to poll the operation result at intervals as recommended by the API

@@ -24,16 +24,16 @@
 ///
 /// Create an instance of [DriveApi] to access these resources:
 ///
-/// - [AboutResourceApi]
-/// - [ChangesResourceApi]
-/// - [ChannelsResourceApi]
-/// - [CommentsResourceApi]
-/// - [DrivesResourceApi]
-/// - [FilesResourceApi]
-/// - [PermissionsResourceApi]
-/// - [RepliesResourceApi]
-/// - [RevisionsResourceApi]
-/// - [TeamdrivesResourceApi]
+/// - [AboutResource]
+/// - [ChangesResource]
+/// - [ChannelsResource]
+/// - [CommentsResource]
+/// - [DrivesResource]
+/// - [FilesResource]
+/// - [PermissionsResource]
+/// - [RepliesResource]
+/// - [RevisionsResource]
+/// - [TeamdrivesResource]
 library drive.v3;
 
 import 'dart:async' as async;
@@ -92,16 +92,16 @@ class DriveApi {
 
   final commons.ApiRequester _requester;
 
-  AboutResourceApi get about => AboutResourceApi(_requester);
-  ChangesResourceApi get changes => ChangesResourceApi(_requester);
-  ChannelsResourceApi get channels => ChannelsResourceApi(_requester);
-  CommentsResourceApi get comments => CommentsResourceApi(_requester);
-  DrivesResourceApi get drives => DrivesResourceApi(_requester);
-  FilesResourceApi get files => FilesResourceApi(_requester);
-  PermissionsResourceApi get permissions => PermissionsResourceApi(_requester);
-  RepliesResourceApi get replies => RepliesResourceApi(_requester);
-  RevisionsResourceApi get revisions => RevisionsResourceApi(_requester);
-  TeamdrivesResourceApi get teamdrives => TeamdrivesResourceApi(_requester);
+  AboutResource get about => AboutResource(_requester);
+  ChangesResource get changes => ChangesResource(_requester);
+  ChannelsResource get channels => ChannelsResource(_requester);
+  CommentsResource get comments => CommentsResource(_requester);
+  DrivesResource get drives => DrivesResource(_requester);
+  FilesResource get files => FilesResource(_requester);
+  PermissionsResource get permissions => PermissionsResource(_requester);
+  RepliesResource get replies => RepliesResource(_requester);
+  RevisionsResource get revisions => RevisionsResource(_requester);
+  TeamdrivesResource get teamdrives => TeamdrivesResource(_requester);
 
   DriveApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -110,10 +110,10 @@ class DriveApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AboutResourceApi {
+class AboutResource {
   final commons.ApiRequester _requester;
 
-  AboutResourceApi(commons.ApiRequester client) : _requester = client;
+  AboutResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about the user, the user's Drive, and system
   /// capabilities.
@@ -161,10 +161,10 @@ class AboutResourceApi {
   }
 }
 
-class ChangesResourceApi {
+class ChangesResource {
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi(commons.ApiRequester client) : _requester = client;
+  ChangesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the starting pageToken for listing future changes.
   ///
@@ -531,10 +531,10 @@ class ChangesResourceApi {
   }
 }
 
-class ChannelsResourceApi {
+class ChannelsResource {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ChannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Stop watching resources through this channel
   ///
@@ -587,10 +587,10 @@ class ChannelsResourceApi {
   }
 }
 
-class CommentsResourceApi {
+class CommentsResource {
   final commons.ApiRequester _requester;
 
-  CommentsResourceApi(commons.ApiRequester client) : _requester = client;
+  CommentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new comment on a file.
   ///
@@ -919,10 +919,10 @@ class CommentsResourceApi {
   }
 }
 
-class DrivesResourceApi {
+class DrivesResource {
   final commons.ApiRequester _requester;
 
-  DrivesResourceApi(commons.ApiRequester client) : _requester = client;
+  DrivesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new shared drive.
   ///
@@ -1330,10 +1330,10 @@ class DrivesResourceApi {
   }
 }
 
-class FilesResourceApi {
+class FilesResource {
   final commons.ApiRequester _requester;
 
-  FilesResourceApi(commons.ApiRequester client) : _requester = client;
+  FilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a copy of a file and applies any requested updates with patch
   /// semantics. Folders cannot be copied.
@@ -2335,10 +2335,10 @@ class FilesResourceApi {
   }
 }
 
-class PermissionsResourceApi {
+class PermissionsResource {
   final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
+  PermissionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a permission for a file or shared drive.
   ///
@@ -2828,10 +2828,10 @@ class PermissionsResourceApi {
   }
 }
 
-class RepliesResourceApi {
+class RepliesResource {
   final commons.ApiRequester _requester;
 
-  RepliesResourceApi(commons.ApiRequester client) : _requester = client;
+  RepliesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new reply to a comment.
   ///
@@ -3196,10 +3196,10 @@ class RepliesResourceApi {
   }
 }
 
-class RevisionsResourceApi {
+class RevisionsResource {
   final commons.ApiRequester _requester;
 
-  RevisionsResourceApi(commons.ApiRequester client) : _requester = client;
+  RevisionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Permanently deletes a file version. You can only delete revisions for
   /// files with binary content in Google Drive, like images or videos.
@@ -3479,10 +3479,10 @@ class RevisionsResourceApi {
   }
 }
 
-class TeamdrivesResourceApi {
+class TeamdrivesResource {
   final commons.ApiRequester _requester;
 
-  TeamdrivesResourceApi(commons.ApiRequester client) : _requester = client;
+  TeamdrivesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deprecated use drives.create instead.
   ///

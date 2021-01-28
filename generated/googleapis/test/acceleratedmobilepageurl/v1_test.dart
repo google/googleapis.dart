@@ -187,7 +187,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AmpUrlsResourceApi', () {
+  unittest.group('resource-AmpUrlsResource', () {
     unittest.test('method--batchGet', () {
       var mock = HttpServerMock();
       var res = api.AcceleratedmobilepageurlApi(mock).ampUrls;

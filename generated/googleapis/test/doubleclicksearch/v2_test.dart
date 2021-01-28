@@ -869,7 +869,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ConversionResourceApi', () {
+  unittest.group('resource-ConversionResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).conversion;
@@ -1132,7 +1132,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsResourceApi', () {
+  unittest.group('resource-ReportsResource', () {
     unittest.test('method--generate', () {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).reports;
@@ -1347,7 +1347,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SavedColumnsResourceApi', () {
+  unittest.group('resource-SavedColumnsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).savedColumns;

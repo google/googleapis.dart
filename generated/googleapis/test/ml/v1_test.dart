@@ -3727,7 +3727,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--explain', () {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects;
@@ -3886,7 +3886,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsJobsResourceApi', () {
+  unittest.group('resource-ProjectsJobsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
@@ -4326,7 +4326,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.locations;
@@ -4435,7 +4435,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res =
@@ -4536,7 +4536,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsStudiesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsStudiesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -4745,7 +4745,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsStudiesTrialsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsStudiesTrialsResource', () {
     unittest.test('method--addMeasurement', () {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
@@ -5256,7 +5256,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsModelsResourceApi', () {
+  unittest.group('resource-ProjectsModelsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
@@ -5693,7 +5693,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsModelsVersionsResourceApi', () {
+  unittest.group('resource-ProjectsModelsVersionsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -6026,7 +6026,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.operations;

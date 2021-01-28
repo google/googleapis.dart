@@ -6142,7 +6142,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DatasetsResourceApi', () {
+  unittest.group('resource-DatasetsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).datasets;
@@ -6548,7 +6548,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-JobsResourceApi', () {
+  unittest.group('resource-JobsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).jobs;
@@ -6996,7 +6996,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ModelsResourceApi', () {
+  unittest.group('resource-ModelsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).models;
@@ -7223,7 +7223,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--getServiceAccount', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).projects;
@@ -7343,7 +7343,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RoutinesResourceApi', () {
+  unittest.group('resource-RoutinesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).routines;
@@ -7639,7 +7639,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TabledataResourceApi', () {
+  unittest.group('resource-TabledataResource', () {
     unittest.test('method--insertAll', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).tabledata;
@@ -7823,7 +7823,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-TablesResourceApi', () {
+  unittest.group('resource-TablesResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BigqueryApi(mock).tables;

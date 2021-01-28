@@ -869,7 +869,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsResourceApi', () {
+  unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
@@ -1195,7 +1195,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;

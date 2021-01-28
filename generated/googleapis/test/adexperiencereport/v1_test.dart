@@ -151,7 +151,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SitesResourceApi', () {
+  unittest.group('resource-SitesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExperienceReportApi(mock).sites;
@@ -201,7 +201,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ViolatingSitesResourceApi', () {
+  unittest.group('resource-ViolatingSitesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExperienceReportApi(mock).violatingSites;

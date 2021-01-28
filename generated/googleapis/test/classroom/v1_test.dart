@@ -2406,7 +2406,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesResourceApi', () {
+  unittest.group('resource-CoursesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
@@ -2740,7 +2740,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesAliasesResourceApi', () {
+  unittest.group('resource-CoursesAliasesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.aliases;
@@ -2929,7 +2929,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesAnnouncementsResourceApi', () {
+  unittest.group('resource-CoursesAnnouncementsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
@@ -3328,7 +3328,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesCourseWorkResourceApi', () {
+  unittest.group('resource-CoursesCourseWorkResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
@@ -3726,7 +3726,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesCourseWorkStudentSubmissionsResourceApi', () {
+  unittest.group('resource-CoursesCourseWorkStudentSubmissionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
@@ -4294,7 +4294,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesCourseWorkMaterialsResourceApi', () {
+  unittest.group('resource-CoursesCourseWorkMaterialsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
@@ -4628,7 +4628,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesStudentsResourceApi', () {
+  unittest.group('resource-CoursesStudentsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.students;
@@ -4880,7 +4880,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesTeachersResourceApi', () {
+  unittest.group('resource-CoursesTeachersResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.teachers;
@@ -5128,7 +5128,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CoursesTopicsResourceApi', () {
+  unittest.group('resource-CoursesTopicsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.topics;
@@ -5445,7 +5445,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-InvitationsResourceApi', () {
+  unittest.group('resource-InvitationsResource', () {
     unittest.test('method--accept', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).invitations;
@@ -5716,7 +5716,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-RegistrationsResourceApi', () {
+  unittest.group('resource-RegistrationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).registrations;
@@ -5819,7 +5819,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserProfilesResourceApi', () {
+  unittest.group('resource-UserProfilesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles;
@@ -5871,7 +5871,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserProfilesGuardianInvitationsResourceApi', () {
+  unittest.group('resource-UserProfilesGuardianInvitationsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
@@ -6136,7 +6136,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UserProfilesGuardiansResourceApi', () {
+  unittest.group('resource-UserProfilesGuardiansResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardians;

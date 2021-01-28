@@ -25,9 +25,9 @@
 /// Create an instance of [ServiceConsumerManagementApi] to access these
 /// resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ServicesResourceApi]
-///   - [ServicesTenancyUnitsResourceApi]
+/// - [OperationsResource]
+/// - [ServicesResource]
+///   - [ServicesTenancyUnitsResource]
 library serviceconsumermanagement.v1;
 
 import 'dart:async' as async;
@@ -50,8 +50,8 @@ class ServiceConsumerManagementApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ServicesResource get services => ServicesResource(_requester);
 
   ServiceConsumerManagementApi(http_1.Client client,
       {core.String rootUrl =
@@ -61,10 +61,10 @@ class ServiceConsumerManagementApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -317,13 +317,13 @@ class OperationsResourceApi {
   }
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesTenancyUnitsResourceApi get tenancyUnits =>
-      ServicesTenancyUnitsResourceApi(_requester);
+  ServicesTenancyUnitsResource get tenancyUnits =>
+      ServicesTenancyUnitsResource(_requester);
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Search tenancy units for a managed service.
   ///
@@ -414,10 +414,10 @@ class ServicesResourceApi {
   }
 }
 
-class ServicesTenancyUnitsResourceApi {
+class ServicesTenancyUnitsResource {
   final commons.ApiRequester _requester;
 
-  ServicesTenancyUnitsResourceApi(commons.ApiRequester client)
+  ServicesTenancyUnitsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Add a new tenant project to the tenancy unit. There can be a maximum of

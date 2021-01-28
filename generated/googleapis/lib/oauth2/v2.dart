@@ -24,9 +24,9 @@
 ///
 /// Create an instance of [Oauth2Api] to access these resources:
 ///
-/// - [UserinfoResourceApi]
-///   - [UserinfoV2ResourceApi]
-///     - [UserinfoV2MeResourceApi]
+/// - [UserinfoResource]
+///   - [UserinfoV2Resource]
+///     - [UserinfoV2MeResource]
 library oauth2.v2;
 
 import 'dart:async' as async;
@@ -56,7 +56,7 @@ class Oauth2Api {
 
   final commons.ApiRequester _requester;
 
-  UserinfoResourceApi get userinfo => UserinfoResourceApi(_requester);
+  UserinfoResource get userinfo => UserinfoResource(_requester);
 
   Oauth2Api(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -119,12 +119,12 @@ class Oauth2Api {
   }
 }
 
-class UserinfoResourceApi {
+class UserinfoResource {
   final commons.ApiRequester _requester;
 
-  UserinfoV2ResourceApi get v2 => UserinfoV2ResourceApi(_requester);
+  UserinfoV2Resource get v2 => UserinfoV2Resource(_requester);
 
-  UserinfoResourceApi(commons.ApiRequester client) : _requester = client;
+  UserinfoResource(commons.ApiRequester client) : _requester = client;
 
   /// Request parameters:
   ///
@@ -169,18 +169,18 @@ class UserinfoResourceApi {
   }
 }
 
-class UserinfoV2ResourceApi {
+class UserinfoV2Resource {
   final commons.ApiRequester _requester;
 
-  UserinfoV2MeResourceApi get me => UserinfoV2MeResourceApi(_requester);
+  UserinfoV2MeResource get me => UserinfoV2MeResource(_requester);
 
-  UserinfoV2ResourceApi(commons.ApiRequester client) : _requester = client;
+  UserinfoV2Resource(commons.ApiRequester client) : _requester = client;
 }
 
-class UserinfoV2MeResourceApi {
+class UserinfoV2MeResource {
   final commons.ApiRequester _requester;
 
-  UserinfoV2MeResourceApi(commons.ApiRequester client) : _requester = client;
+  UserinfoV2MeResource(commons.ApiRequester client) : _requester = client;
 
   /// Request parameters:
   ///

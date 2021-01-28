@@ -651,7 +651,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsMessagesResourceApi', () {
+  unittest.group('resource-ProjectsMessagesResource', () {
     unittest.test('method--send', () {
       var mock = HttpServerMock();
       var res = api.FirebaseCloudMessagingApi(mock).projects.messages;

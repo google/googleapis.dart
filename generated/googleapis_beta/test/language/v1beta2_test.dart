@@ -984,7 +984,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DocumentsResourceApi', () {
+  unittest.group('resource-DocumentsResource', () {
     unittest.test('method--analyzeEntities', () {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;

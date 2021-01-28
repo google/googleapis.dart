@@ -59,7 +59,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsCustomAppsResourceApi', () {
+  unittest.group('resource-AccountsCustomAppsResource', () {
     unittest.test('method--create', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;

@@ -23,13 +23,13 @@
 ///
 /// Create an instance of [BigqueryApi] to access these resources:
 ///
-/// - [DatasetsResourceApi]
-/// - [JobsResourceApi]
-/// - [ModelsResourceApi]
-/// - [ProjectsResourceApi]
-/// - [RoutinesResourceApi]
-/// - [TabledataResourceApi]
-/// - [TablesResourceApi]
+/// - [DatasetsResource]
+/// - [JobsResource]
+/// - [ModelsResource]
+/// - [ProjectsResource]
+/// - [RoutinesResource]
+/// - [TabledataResource]
+/// - [TablesResource]
 library bigquery.v2;
 
 import 'dart:async' as async;
@@ -88,13 +88,13 @@ class BigqueryApi {
 
   final commons.ApiRequester _requester;
 
-  DatasetsResourceApi get datasets => DatasetsResourceApi(_requester);
-  JobsResourceApi get jobs => JobsResourceApi(_requester);
-  ModelsResourceApi get models => ModelsResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  RoutinesResourceApi get routines => RoutinesResourceApi(_requester);
-  TabledataResourceApi get tabledata => TabledataResourceApi(_requester);
-  TablesResourceApi get tables => TablesResourceApi(_requester);
+  DatasetsResource get datasets => DatasetsResource(_requester);
+  JobsResource get jobs => JobsResource(_requester);
+  ModelsResource get models => ModelsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  RoutinesResource get routines => RoutinesResource(_requester);
+  TabledataResource get tabledata => TabledataResource(_requester);
+  TablesResource get tables => TablesResource(_requester);
 
   BigqueryApi(http.Client client,
       {core.String rootUrl = 'https://bigquery.googleapis.com/',
@@ -103,10 +103,10 @@ class BigqueryApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DatasetsResourceApi {
+class DatasetsResource {
   final commons.ApiRequester _requester;
 
-  DatasetsResourceApi(commons.ApiRequester client) : _requester = client;
+  DatasetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the dataset specified by the datasetId value. Before you can
   /// delete a dataset, you must delete all its tables, either manually or by
@@ -511,10 +511,10 @@ class DatasetsResourceApi {
   }
 }
 
-class JobsResourceApi {
+class JobsResource {
   final commons.ApiRequester _requester;
 
-  JobsResourceApi(commons.ApiRequester client) : _requester = client;
+  JobsResource(commons.ApiRequester client) : _requester = client;
 
   /// Requests that a job be cancelled. This call will return immediately, and
   /// the client will need to poll for the job status to see if the cancel
@@ -1001,10 +1001,10 @@ class JobsResourceApi {
   }
 }
 
-class ModelsResourceApi {
+class ModelsResource {
   final commons.ApiRequester _requester;
 
-  ModelsResourceApi(commons.ApiRequester client) : _requester = client;
+  ModelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the model specified by modelId from the dataset.
   ///
@@ -1302,10 +1302,10 @@ class ModelsResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns the email address of the service account for your project used for
   /// interactions with Google Cloud KMS.
@@ -1420,10 +1420,10 @@ class ProjectsResourceApi {
   }
 }
 
-class RoutinesResourceApi {
+class RoutinesResource {
   final commons.ApiRequester _requester;
 
-  RoutinesResourceApi(commons.ApiRequester client) : _requester = client;
+  RoutinesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the routine specified by routineId from the dataset.
   ///
@@ -1816,10 +1816,10 @@ class RoutinesResourceApi {
   }
 }
 
-class TabledataResourceApi {
+class TabledataResource {
   final commons.ApiRequester _requester;
 
-  TabledataResourceApi(commons.ApiRequester client) : _requester = client;
+  TabledataResource(commons.ApiRequester client) : _requester = client;
 
   /// Streams data into BigQuery one record at a time without needing to run a
   /// load job. Requires the WRITER dataset role.
@@ -1994,10 +1994,10 @@ class TabledataResourceApi {
   }
 }
 
-class TablesResourceApi {
+class TablesResource {
   final commons.ApiRequester _requester;
 
-  TablesResourceApi(commons.ApiRequester client) : _requester = client;
+  TablesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the table specified by tableId from the dataset. If the table
   /// contains data, all the data will be deleted.

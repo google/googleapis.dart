@@ -25,7 +25,7 @@
 ///
 /// Create an instance of [VerifiedaccessApi] to access these resources:
 ///
-/// - [ChallengeResourceApi]
+/// - [ChallengeResource]
 library verifiedaccess.v1;
 
 import 'dart:async' as async;
@@ -49,7 +49,7 @@ class VerifiedaccessApi {
 
   final commons.ApiRequester _requester;
 
-  ChallengeResourceApi get challenge => ChallengeResourceApi(_requester);
+  ChallengeResource get challenge => ChallengeResource(_requester);
 
   VerifiedaccessApi(http.Client client,
       {core.String rootUrl = 'https://verifiedaccess.googleapis.com/',
@@ -58,10 +58,10 @@ class VerifiedaccessApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ChallengeResourceApi {
+class ChallengeResource {
   final commons.ApiRequester _requester;
 
-  ChallengeResourceApi(commons.ApiRequester client) : _requester = client;
+  ChallengeResource(commons.ApiRequester client) : _requester = client;
 
   /// CreateChallenge API
   ///

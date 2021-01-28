@@ -24,12 +24,12 @@
 ///
 /// Create an instance of [FitnessApi] to access these resources:
 ///
-/// - [UsersResourceApi]
-///   - [UsersDataSourcesResourceApi]
-///     - [UsersDataSourcesDataPointChangesResourceApi]
-///     - [UsersDataSourcesDatasetsResourceApi]
-///   - [UsersDatasetResourceApi]
-///   - [UsersSessionsResourceApi]
+/// - [UsersResource]
+///   - [UsersDataSourcesResource]
+///     - [UsersDataSourcesDataPointChangesResource]
+///     - [UsersDataSourcesDatasetsResource]
+///   - [UsersDatasetResource]
+///   - [UsersSessionsResource]
 library fitness.v1;
 
 import 'dart:async' as async;
@@ -130,7 +130,7 @@ class FitnessApi {
 
   final commons.ApiRequester _requester;
 
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   FitnessApi(http.Client client,
       {core.String rootUrl = 'https://fitness.googleapis.com/',
@@ -139,27 +139,26 @@ class FitnessApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesResourceApi get dataSources =>
-      UsersDataSourcesResourceApi(_requester);
-  UsersDatasetResourceApi get dataset => UsersDatasetResourceApi(_requester);
-  UsersSessionsResourceApi get sessions => UsersSessionsResourceApi(_requester);
+  UsersDataSourcesResource get dataSources =>
+      UsersDataSourcesResource(_requester);
+  UsersDatasetResource get dataset => UsersDatasetResource(_requester);
+  UsersSessionsResource get sessions => UsersSessionsResource(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class UsersDataSourcesResourceApi {
+class UsersDataSourcesResource {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesDataPointChangesResourceApi get dataPointChanges =>
-      UsersDataSourcesDataPointChangesResourceApi(_requester);
-  UsersDataSourcesDatasetsResourceApi get datasets =>
-      UsersDataSourcesDatasetsResourceApi(_requester);
+  UsersDataSourcesDataPointChangesResource get dataPointChanges =>
+      UsersDataSourcesDataPointChangesResource(_requester);
+  UsersDataSourcesDatasetsResource get datasets =>
+      UsersDataSourcesDatasetsResource(_requester);
 
-  UsersDataSourcesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  UsersDataSourcesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new data source that is unique across all data sources belonging
   /// to this user. A data source is a unique source of sensor data. Data
@@ -496,10 +495,10 @@ class UsersDataSourcesResourceApi {
   }
 }
 
-class UsersDataSourcesDataPointChangesResourceApi {
+class UsersDataSourcesDataPointChangesResource {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesDataPointChangesResourceApi(commons.ApiRequester client)
+  UsersDataSourcesDataPointChangesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Queries for user's data point changes for a particular data source.
@@ -580,10 +579,10 @@ class UsersDataSourcesDataPointChangesResourceApi {
   }
 }
 
-class UsersDataSourcesDatasetsResourceApi {
+class UsersDataSourcesDatasetsResource {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesDatasetsResourceApi(commons.ApiRequester client)
+  UsersDataSourcesDatasetsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Performs an inclusive delete of all data points whose start and end times
@@ -858,10 +857,10 @@ class UsersDataSourcesDatasetsResourceApi {
   }
 }
 
-class UsersDatasetResourceApi {
+class UsersDatasetResource {
   final commons.ApiRequester _requester;
 
-  UsersDatasetResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersDatasetResource(commons.ApiRequester client) : _requester = client;
 
   /// Aggregates data of a certain type or stream into buckets divided by a
   /// given type of boundary. Multiple data sets of multiple types and from
@@ -925,10 +924,10 @@ class UsersDatasetResourceApi {
   }
 }
 
-class UsersSessionsResourceApi {
+class UsersSessionsResource {
   final commons.ApiRequester _requester;
 
-  UsersSessionsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersSessionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a session specified by the given session ID.
   ///

@@ -3800,7 +3800,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAggregatedUsableSubnetworksResourceApi', () {
+  unittest.group('resource-ProjectsAggregatedUsableSubnetworksResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.aggregated.usableSubnetworks;
@@ -3863,7 +3863,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--getServerConfig', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations;
@@ -3919,7 +3919,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsClustersResourceApi', () {
+  unittest.group('resource-ProjectsLocationsClustersResource', () {
     unittest.test('method--completeIpRotation', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
@@ -4887,7 +4887,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsClustersNodePoolsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsClustersNodePoolsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
@@ -5398,7 +5398,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsClustersWellKnownResourceApi', () {
+  unittest.group('resource-ProjectsLocationsClustersWellKnownResource', () {
     unittest.test('method--getOpenidConfiguration', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.wellKnown;
@@ -5448,7 +5448,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.operations;
@@ -5617,7 +5617,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsZonesResourceApi', () {
+  unittest.group('resource-ProjectsZonesResource', () {
     unittest.test('method--getServerconfig', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones;
@@ -5688,7 +5688,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsZonesClustersResourceApi', () {
+  unittest.group('resource-ProjectsZonesClustersResource', () {
     unittest.test('method--addons', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
@@ -7040,7 +7040,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsZonesClustersNodePoolsResourceApi', () {
+  unittest.group('resource-ProjectsZonesClustersNodePoolsResource', () {
     unittest.test('method--autoscaling', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
@@ -7837,7 +7837,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsZonesOperationsResourceApi', () {
+  unittest.group('resource-ProjectsZonesOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.operations;

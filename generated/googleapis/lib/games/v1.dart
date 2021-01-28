@@ -24,17 +24,17 @@
 ///
 /// Create an instance of [GamesApi] to access these resources:
 ///
-/// - [AchievementDefinitionsResourceApi]
-/// - [AchievementsResourceApi]
-/// - [ApplicationsResourceApi]
-/// - [EventsResourceApi]
-/// - [LeaderboardsResourceApi]
-/// - [MetagameResourceApi]
-/// - [PlayersResourceApi]
-/// - [RevisionsResourceApi]
-/// - [ScoresResourceApi]
-/// - [SnapshotsResourceApi]
-/// - [StatsResourceApi]
+/// - [AchievementDefinitionsResource]
+/// - [AchievementsResource]
+/// - [ApplicationsResource]
+/// - [EventsResource]
+/// - [LeaderboardsResource]
+/// - [MetagameResource]
+/// - [PlayersResource]
+/// - [RevisionsResource]
+/// - [ScoresResource]
+/// - [SnapshotsResource]
+/// - [StatsResource]
 library games.v1;
 
 import 'dart:async' as async;
@@ -61,21 +61,18 @@ class GamesApi {
 
   final commons.ApiRequester _requester;
 
-  AchievementDefinitionsResourceApi get achievementDefinitions =>
-      AchievementDefinitionsResourceApi(_requester);
-  AchievementsResourceApi get achievements =>
-      AchievementsResourceApi(_requester);
-  ApplicationsResourceApi get applications =>
-      ApplicationsResourceApi(_requester);
-  EventsResourceApi get events => EventsResourceApi(_requester);
-  LeaderboardsResourceApi get leaderboards =>
-      LeaderboardsResourceApi(_requester);
-  MetagameResourceApi get metagame => MetagameResourceApi(_requester);
-  PlayersResourceApi get players => PlayersResourceApi(_requester);
-  RevisionsResourceApi get revisions => RevisionsResourceApi(_requester);
-  ScoresResourceApi get scores => ScoresResourceApi(_requester);
-  SnapshotsResourceApi get snapshots => SnapshotsResourceApi(_requester);
-  StatsResourceApi get stats => StatsResourceApi(_requester);
+  AchievementDefinitionsResource get achievementDefinitions =>
+      AchievementDefinitionsResource(_requester);
+  AchievementsResource get achievements => AchievementsResource(_requester);
+  ApplicationsResource get applications => ApplicationsResource(_requester);
+  EventsResource get events => EventsResource(_requester);
+  LeaderboardsResource get leaderboards => LeaderboardsResource(_requester);
+  MetagameResource get metagame => MetagameResource(_requester);
+  PlayersResource get players => PlayersResource(_requester);
+  RevisionsResource get revisions => RevisionsResource(_requester);
+  ScoresResource get scores => ScoresResource(_requester);
+  SnapshotsResource get snapshots => SnapshotsResource(_requester);
+  StatsResource get stats => StatsResource(_requester);
 
   GamesApi(http.Client client,
       {core.String rootUrl = 'https://games.googleapis.com/',
@@ -84,10 +81,10 @@ class GamesApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AchievementDefinitionsResourceApi {
+class AchievementDefinitionsResource {
   final commons.ApiRequester _requester;
 
-  AchievementDefinitionsResourceApi(commons.ApiRequester client)
+  AchievementDefinitionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all the achievement definitions for your application.
@@ -158,10 +155,10 @@ class AchievementDefinitionsResourceApi {
   }
 }
 
-class AchievementsResourceApi {
+class AchievementsResource {
   final commons.ApiRequester _requester;
 
-  AchievementsResourceApi(commons.ApiRequester client) : _requester = client;
+  AchievementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Increments the steps of the achievement with the given ID for the
   /// currently authenticated player.
@@ -543,10 +540,10 @@ class AchievementsResourceApi {
   }
 }
 
-class ApplicationsResourceApi {
+class ApplicationsResource {
   final commons.ApiRequester _requester;
 
-  ApplicationsResourceApi(commons.ApiRequester client) : _requester = client;
+  ApplicationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the metadata of the application with the given ID. If the
   /// requested application is not available for the specified `platformType`,
@@ -724,10 +721,10 @@ class ApplicationsResourceApi {
   }
 }
 
-class EventsResourceApi {
+class EventsResource {
   final commons.ApiRequester _requester;
 
-  EventsResourceApi(commons.ApiRequester client) : _requester = client;
+  EventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns a list showing the current progress on events in this application
   /// for the currently authenticated user.
@@ -922,10 +919,10 @@ class EventsResourceApi {
   }
 }
 
-class LeaderboardsResourceApi {
+class LeaderboardsResource {
   final commons.ApiRequester _requester;
 
-  LeaderboardsResourceApi(commons.ApiRequester client) : _requester = client;
+  LeaderboardsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the metadata of the leaderboard with the given ID.
   ///
@@ -1053,10 +1050,10 @@ class LeaderboardsResourceApi {
   }
 }
 
-class MetagameResourceApi {
+class MetagameResource {
   final commons.ApiRequester _requester;
 
-  MetagameResourceApi(commons.ApiRequester client) : _requester = client;
+  MetagameResource(commons.ApiRequester client) : _requester = client;
 
   /// Return the metagame configuration data for the calling application.
   ///
@@ -1191,10 +1188,10 @@ class MetagameResourceApi {
   }
 }
 
-class PlayersResourceApi {
+class PlayersResource {
   final commons.ApiRequester _requester;
 
-  PlayersResourceApi(commons.ApiRequester client) : _requester = client;
+  PlayersResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the Player resource with the given ID. To retrieve the player
   /// for the currently authenticated user, set `playerId` to `me`.
@@ -1336,10 +1333,10 @@ class PlayersResourceApi {
   }
 }
 
-class RevisionsResourceApi {
+class RevisionsResource {
   final commons.ApiRequester _requester;
 
-  RevisionsResourceApi(commons.ApiRequester client) : _requester = client;
+  RevisionsResource(commons.ApiRequester client) : _requester = client;
 
   /// Checks whether the games client is out of date.
   ///
@@ -1398,10 +1395,10 @@ class RevisionsResourceApi {
   }
 }
 
-class ScoresResourceApi {
+class ScoresResource {
   final commons.ApiRequester _requester;
 
-  ScoresResourceApi(commons.ApiRequester client) : _requester = client;
+  ScoresResource(commons.ApiRequester client) : _requester = client;
 
   /// Get high scores, and optionally ranks, in leaderboards for the currently
   /// authenticated player. For a specific time span, `leaderboardId` can be set
@@ -1872,10 +1869,10 @@ class ScoresResourceApi {
   }
 }
 
-class SnapshotsResourceApi {
+class SnapshotsResource {
   final commons.ApiRequester _requester;
 
-  SnapshotsResourceApi(commons.ApiRequester client) : _requester = client;
+  SnapshotsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the metadata for a given snapshot ID.
   ///
@@ -2011,10 +2008,10 @@ class SnapshotsResourceApi {
   }
 }
 
-class StatsResourceApi {
+class StatsResource {
   final commons.ApiRequester _requester;
 
-  StatsResourceApi(commons.ApiRequester client) : _requester = client;
+  StatsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns engagement and spend statistics in this application for the
   /// currently authenticated user.

@@ -27,13 +27,13 @@
 ///
 /// Create an instance of [SafebrowsingApi] to access these resources:
 ///
-/// - [EncodedFullHashesResourceApi]
-/// - [EncodedUpdatesResourceApi]
-/// - [FullHashesResourceApi]
-/// - [ThreatHitsResourceApi]
-/// - [ThreatListUpdatesResourceApi]
-/// - [ThreatListsResourceApi]
-/// - [ThreatMatchesResourceApi]
+/// - [EncodedFullHashesResource]
+/// - [EncodedUpdatesResource]
+/// - [FullHashesResource]
+/// - [ThreatHitsResource]
+/// - [ThreatListUpdatesResource]
+/// - [ThreatListsResource]
+/// - [ThreatMatchesResource]
 library safebrowsing.v4;
 
 import 'dart:async' as async;
@@ -56,17 +56,16 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class SafebrowsingApi {
   final commons.ApiRequester _requester;
 
-  EncodedFullHashesResourceApi get encodedFullHashes =>
-      EncodedFullHashesResourceApi(_requester);
-  EncodedUpdatesResourceApi get encodedUpdates =>
-      EncodedUpdatesResourceApi(_requester);
-  FullHashesResourceApi get fullHashes => FullHashesResourceApi(_requester);
-  ThreatHitsResourceApi get threatHits => ThreatHitsResourceApi(_requester);
-  ThreatListUpdatesResourceApi get threatListUpdates =>
-      ThreatListUpdatesResourceApi(_requester);
-  ThreatListsResourceApi get threatLists => ThreatListsResourceApi(_requester);
-  ThreatMatchesResourceApi get threatMatches =>
-      ThreatMatchesResourceApi(_requester);
+  EncodedFullHashesResource get encodedFullHashes =>
+      EncodedFullHashesResource(_requester);
+  EncodedUpdatesResource get encodedUpdates =>
+      EncodedUpdatesResource(_requester);
+  FullHashesResource get fullHashes => FullHashesResource(_requester);
+  ThreatHitsResource get threatHits => ThreatHitsResource(_requester);
+  ThreatListUpdatesResource get threatListUpdates =>
+      ThreatListUpdatesResource(_requester);
+  ThreatListsResource get threatLists => ThreatListsResource(_requester);
+  ThreatMatchesResource get threatMatches => ThreatMatchesResource(_requester);
 
   SafebrowsingApi(http.Client client,
       {core.String rootUrl = 'https://safebrowsing.googleapis.com/',
@@ -75,11 +74,10 @@ class SafebrowsingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class EncodedFullHashesResourceApi {
+class EncodedFullHashesResource {
   final commons.ApiRequester _requester;
 
-  EncodedFullHashesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  EncodedFullHashesResource(commons.ApiRequester client) : _requester = client;
 
   /// Request parameters:
   ///
@@ -145,10 +143,10 @@ class EncodedFullHashesResourceApi {
   }
 }
 
-class EncodedUpdatesResourceApi {
+class EncodedUpdatesResource {
   final commons.ApiRequester _requester;
 
-  EncodedUpdatesResourceApi(commons.ApiRequester client) : _requester = client;
+  EncodedUpdatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Request parameters:
   ///
@@ -214,10 +212,10 @@ class EncodedUpdatesResourceApi {
   }
 }
 
-class FullHashesResourceApi {
+class FullHashesResource {
   final commons.ApiRequester _requester;
 
-  FullHashesResourceApi(commons.ApiRequester client) : _requester = client;
+  FullHashesResource(commons.ApiRequester client) : _requester = client;
 
   /// Finds the full hashes that match the requested hash prefixes.
   ///
@@ -271,10 +269,10 @@ class FullHashesResourceApi {
   }
 }
 
-class ThreatHitsResourceApi {
+class ThreatHitsResource {
   final commons.ApiRequester _requester;
 
-  ThreatHitsResourceApi(commons.ApiRequester client) : _requester = client;
+  ThreatHitsResource(commons.ApiRequester client) : _requester = client;
 
   /// Reports a Safe Browsing threat list hit to Google. Only projects with
   /// TRUSTED_REPORTER visibility can use this method.
@@ -328,11 +326,10 @@ class ThreatHitsResourceApi {
   }
 }
 
-class ThreatListUpdatesResourceApi {
+class ThreatListUpdatesResource {
   final commons.ApiRequester _requester;
 
-  ThreatListUpdatesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ThreatListUpdatesResource(commons.ApiRequester client) : _requester = client;
 
   /// Fetches the most recent threat list updates. A client can request updates
   /// for multiple lists at once.
@@ -387,10 +384,10 @@ class ThreatListUpdatesResourceApi {
   }
 }
 
-class ThreatListsResourceApi {
+class ThreatListsResource {
   final commons.ApiRequester _requester;
 
-  ThreatListsResourceApi(commons.ApiRequester client) : _requester = client;
+  ThreatListsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists the Safe Browsing threat lists available for download.
   ///
@@ -438,10 +435,10 @@ class ThreatListsResourceApi {
   }
 }
 
-class ThreatMatchesResourceApi {
+class ThreatMatchesResource {
   final commons.ApiRequester _requester;
 
-  ThreatMatchesResourceApi(commons.ApiRequester client) : _requester = client;
+  ThreatMatchesResource(commons.ApiRequester client) : _requester = client;
 
   /// Finds the threat entries that match the Safe Browsing lists.
   ///

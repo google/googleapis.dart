@@ -25,8 +25,8 @@
 ///
 /// Create an instance of [ServiceUsageApi] to access these resources:
 ///
-/// - [OperationsResourceApi]
-/// - [ServicesResourceApi]
+/// - [OperationsResource]
+/// - [ServicesResource]
 library serviceusage.v1;
 
 import 'dart:async' as async;
@@ -59,8 +59,8 @@ class ServiceUsageApi {
 
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ServicesResourceApi get services => ServicesResourceApi(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ServicesResource get services => ServicesResource(_requester);
 
   ServiceUsageApi(http_1.Client client,
       {core.String rootUrl = 'https://serviceusage.googleapis.com/',
@@ -69,10 +69,10 @@ class ServiceUsageApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -324,10 +324,10 @@ class OperationsResourceApi {
   }
 }
 
-class ServicesResourceApi {
+class ServicesResource {
   final commons.ApiRequester _requester;
 
-  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+  ServicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Enable multiple services on a project. The operation is atomic: if
   /// enabling any service fails, then the entire batch fails, and no state

@@ -870,7 +870,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsBrandsResourceApi', () {
+  unittest.group('resource-ProjectsBrandsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands;
@@ -1021,7 +1021,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsBrandsIdentityAwareProxyClientsResourceApi',
+  unittest.group('resource-ProjectsBrandsIdentityAwareProxyClientsResource',
       () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
@@ -1286,7 +1286,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V1ResourceApi', () {
+  unittest.group('resource-V1Resource', () {
     unittest.test('method--getIamPolicy', () {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).v1;

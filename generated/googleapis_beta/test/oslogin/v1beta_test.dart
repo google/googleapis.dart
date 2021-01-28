@@ -217,7 +217,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersResourceApi', () {
+  unittest.group('resource-UsersResource', () {
     unittest.test('method--getLoginProfile', () {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users;
@@ -334,7 +334,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersProjectsResourceApi', () {
+  unittest.group('resource-UsersProjectsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users.projects;
@@ -384,7 +384,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-UsersSshPublicKeysResourceApi', () {
+  unittest.group('resource-UsersSshPublicKeysResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;

@@ -143,7 +143,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-EntitiesResourceApi', () {
+  unittest.group('resource-EntitiesResource', () {
     unittest.test('method--search', () {
       var mock = HttpServerMock();
       var res = api.KgsearchApi(mock).entities;

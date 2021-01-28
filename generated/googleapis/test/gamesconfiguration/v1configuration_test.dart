@@ -462,7 +462,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AchievementConfigurationsResourceApi', () {
+  unittest.group('resource-AchievementConfigurationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).achievementConfigurations;
@@ -745,7 +745,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ImageConfigurationsResourceApi', () {
+  unittest.group('resource-ImageConfigurationsResource', () {
     unittest.test('method--upload', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
@@ -810,7 +810,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LeaderboardConfigurationsResourceApi', () {
+  unittest.group('resource-LeaderboardConfigurationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;

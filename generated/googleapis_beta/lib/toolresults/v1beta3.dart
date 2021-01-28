@@ -23,17 +23,17 @@
 ///
 /// Create an instance of [ToolResultsApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsHistoriesResourceApi]
-///     - [ProjectsHistoriesExecutionsResourceApi]
-///       - [ProjectsHistoriesExecutionsClustersResourceApi]
-///       - [ProjectsHistoriesExecutionsEnvironmentsResourceApi]
-///       - [ProjectsHistoriesExecutionsStepsResourceApi]
-///         - [ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi]
-///         - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi]
-/// - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi]
-///         - [ProjectsHistoriesExecutionsStepsTestCasesResourceApi]
-///         - [ProjectsHistoriesExecutionsStepsThumbnailsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsHistoriesResource]
+///     - [ProjectsHistoriesExecutionsResource]
+///       - [ProjectsHistoriesExecutionsClustersResource]
+///       - [ProjectsHistoriesExecutionsEnvironmentsResource]
+///       - [ProjectsHistoriesExecutionsStepsResource]
+///         - [ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource]
+///         - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource]
+/// - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource]
+///         - [ProjectsHistoriesExecutionsStepsTestCasesResource]
+///         - [ProjectsHistoriesExecutionsStepsThumbnailsResource]
 library toolresults.v1beta3;
 
 import 'dart:async' as async;
@@ -56,7 +56,7 @@ class ToolResultsApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   ToolResultsApi(http.Client client,
       {core.String rootUrl = 'https://toolresults.googleapis.com/',
@@ -65,13 +65,13 @@ class ToolResultsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesResourceApi get histories =>
-      ProjectsHistoriesResourceApi(_requester);
+  ProjectsHistoriesResource get histories =>
+      ProjectsHistoriesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the Tool Results settings for a project. May return any of the
   /// following canonical error codes: - PERMISSION_DENIED - if the user is not
@@ -200,14 +200,13 @@ class ProjectsResourceApi {
   }
 }
 
-class ProjectsHistoriesResourceApi {
+class ProjectsHistoriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsResourceApi get executions =>
-      ProjectsHistoriesExecutionsResourceApi(_requester);
+  ProjectsHistoriesExecutionsResource get executions =>
+      ProjectsHistoriesExecutionsResource(_requester);
 
-  ProjectsHistoriesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsHistoriesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a History. The returned History will have the id set. May return
   /// any of the following canonical error codes: - PERMISSION_DENIED - if the
@@ -421,17 +420,17 @@ class ProjectsHistoriesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsResourceApi {
+class ProjectsHistoriesExecutionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsClustersResourceApi get clusters =>
-      ProjectsHistoriesExecutionsClustersResourceApi(_requester);
-  ProjectsHistoriesExecutionsEnvironmentsResourceApi get environments =>
-      ProjectsHistoriesExecutionsEnvironmentsResourceApi(_requester);
-  ProjectsHistoriesExecutionsStepsResourceApi get steps =>
-      ProjectsHistoriesExecutionsStepsResourceApi(_requester);
+  ProjectsHistoriesExecutionsClustersResource get clusters =>
+      ProjectsHistoriesExecutionsClustersResource(_requester);
+  ProjectsHistoriesExecutionsEnvironmentsResource get environments =>
+      ProjectsHistoriesExecutionsEnvironmentsResource(_requester);
+  ProjectsHistoriesExecutionsStepsResource get steps =>
+      ProjectsHistoriesExecutionsStepsResource(_requester);
 
-  ProjectsHistoriesExecutionsResourceApi(commons.ApiRequester client)
+  ProjectsHistoriesExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates an Execution. The returned Execution will have the id set. May
@@ -748,10 +747,10 @@ class ProjectsHistoriesExecutionsResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsClustersResourceApi {
+class ProjectsHistoriesExecutionsClustersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsClustersResourceApi(commons.ApiRequester client)
+  ProjectsHistoriesExecutionsClustersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves a single screenshot cluster by its ID
@@ -906,11 +905,10 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsEnvironmentsResourceApi {
+class ProjectsHistoriesExecutionsEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsEnvironmentsResourceApi(
-      commons.ApiRequester client)
+  ProjectsHistoriesExecutionsEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets an Environment. May return any of the following canonical error
@@ -1080,23 +1078,22 @@ class ProjectsHistoriesExecutionsEnvironmentsResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsResourceApi {
+class ProjectsHistoriesExecutionsStepsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi
+  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource
       get perfMetricsSummary =>
-          ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi(
+          ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource(
               _requester);
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource
       get perfSampleSeries =>
-          ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(
-              _requester);
-  ProjectsHistoriesExecutionsStepsTestCasesResourceApi get testCases =>
-      ProjectsHistoriesExecutionsStepsTestCasesResourceApi(_requester);
-  ProjectsHistoriesExecutionsStepsThumbnailsResourceApi get thumbnails =>
-      ProjectsHistoriesExecutionsStepsThumbnailsResourceApi(_requester);
+          ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource(_requester);
+  ProjectsHistoriesExecutionsStepsTestCasesResource get testCases =>
+      ProjectsHistoriesExecutionsStepsTestCasesResource(_requester);
+  ProjectsHistoriesExecutionsStepsThumbnailsResource get thumbnails =>
+      ProjectsHistoriesExecutionsStepsThumbnailsResource(_requester);
 
-  ProjectsHistoriesExecutionsStepsResourceApi(commons.ApiRequester client)
+  ProjectsHistoriesExecutionsStepsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists accessibility clusters for a given Step May return any of the
@@ -1686,10 +1683,10 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
+class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi(
+  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1779,15 +1776,14 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
+class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi
-      get samples =>
-          ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi(
-              _requester);
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource get samples =>
+      ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource(
+          _requester);
 
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2050,10 +2046,10 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
+class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi(
+  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2264,11 +2260,10 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
+class ProjectsHistoriesExecutionsStepsTestCasesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsTestCasesResourceApi(
-      commons.ApiRequester client)
+  ProjectsHistoriesExecutionsStepsTestCasesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets details of a Test Case for a Step. Experimental test cases API. Still
@@ -2457,10 +2452,10 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
+class ProjectsHistoriesExecutionsStepsThumbnailsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsThumbnailsResourceApi(
+  ProjectsHistoriesExecutionsStepsThumbnailsResource(
       commons.ApiRequester client)
       : _requester = client;
 

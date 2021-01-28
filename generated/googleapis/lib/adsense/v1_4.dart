@@ -24,32 +24,32 @@
 ///
 /// Create an instance of [AdSenseApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsAdclientsResourceApi]
-///   - [AccountsAdunitsResourceApi]
-///     - [AccountsAdunitsCustomchannelsResourceApi]
-///   - [AccountsAlertsResourceApi]
-///   - [AccountsCustomchannelsResourceApi]
-///     - [AccountsCustomchannelsAdunitsResourceApi]
-///   - [AccountsPaymentsResourceApi]
-///   - [AccountsReportsResourceApi]
-///     - [AccountsReportsSavedResourceApi]
-///   - [AccountsSavedadstylesResourceApi]
-///   - [AccountsUrlchannelsResourceApi]
-/// - [AdclientsResourceApi]
-/// - [AdunitsResourceApi]
-///   - [AdunitsCustomchannelsResourceApi]
-/// - [AlertsResourceApi]
-/// - [CustomchannelsResourceApi]
-///   - [CustomchannelsAdunitsResourceApi]
-/// - [MetadataResourceApi]
-///   - [MetadataDimensionsResourceApi]
-///   - [MetadataMetricsResourceApi]
-/// - [PaymentsResourceApi]
-/// - [ReportsResourceApi]
-///   - [ReportsSavedResourceApi]
-/// - [SavedadstylesResourceApi]
-/// - [UrlchannelsResourceApi]
+/// - [AccountsResource]
+///   - [AccountsAdclientsResource]
+///   - [AccountsAdunitsResource]
+///     - [AccountsAdunitsCustomchannelsResource]
+///   - [AccountsAlertsResource]
+///   - [AccountsCustomchannelsResource]
+///     - [AccountsCustomchannelsAdunitsResource]
+///   - [AccountsPaymentsResource]
+///   - [AccountsReportsResource]
+///     - [AccountsReportsSavedResource]
+///   - [AccountsSavedadstylesResource]
+///   - [AccountsUrlchannelsResource]
+/// - [AdclientsResource]
+/// - [AdunitsResource]
+///   - [AdunitsCustomchannelsResource]
+/// - [AlertsResource]
+/// - [CustomchannelsResource]
+///   - [CustomchannelsAdunitsResource]
+/// - [MetadataResource]
+///   - [MetadataDimensionsResource]
+///   - [MetadataMetricsResource]
+/// - [PaymentsResource]
+/// - [ReportsResource]
+///   - [ReportsSavedResource]
+/// - [SavedadstylesResource]
+/// - [UrlchannelsResource]
 library adsense.v1_4;
 
 import 'dart:async' as async;
@@ -82,18 +82,17 @@ class AdSenseApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  AdclientsResourceApi get adclients => AdclientsResourceApi(_requester);
-  AdunitsResourceApi get adunits => AdunitsResourceApi(_requester);
-  AlertsResourceApi get alerts => AlertsResourceApi(_requester);
-  CustomchannelsResourceApi get customchannels =>
-      CustomchannelsResourceApi(_requester);
-  MetadataResourceApi get metadata => MetadataResourceApi(_requester);
-  PaymentsResourceApi get payments => PaymentsResourceApi(_requester);
-  ReportsResourceApi get reports => ReportsResourceApi(_requester);
-  SavedadstylesResourceApi get savedadstyles =>
-      SavedadstylesResourceApi(_requester);
-  UrlchannelsResourceApi get urlchannels => UrlchannelsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  AdclientsResource get adclients => AdclientsResource(_requester);
+  AdunitsResource get adunits => AdunitsResource(_requester);
+  AlertsResource get alerts => AlertsResource(_requester);
+  CustomchannelsResource get customchannels =>
+      CustomchannelsResource(_requester);
+  MetadataResource get metadata => MetadataResource(_requester);
+  PaymentsResource get payments => PaymentsResource(_requester);
+  ReportsResource get reports => ReportsResource(_requester);
+  SavedadstylesResource get savedadstyles => SavedadstylesResource(_requester);
+  UrlchannelsResource get urlchannels => UrlchannelsResource(_requester);
 
   AdSenseApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -102,26 +101,23 @@ class AdSenseApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdclientsResourceApi get adclients =>
-      AccountsAdclientsResourceApi(_requester);
-  AccountsAdunitsResourceApi get adunits =>
-      AccountsAdunitsResourceApi(_requester);
-  AccountsAlertsResourceApi get alerts => AccountsAlertsResourceApi(_requester);
-  AccountsCustomchannelsResourceApi get customchannels =>
-      AccountsCustomchannelsResourceApi(_requester);
-  AccountsPaymentsResourceApi get payments =>
-      AccountsPaymentsResourceApi(_requester);
-  AccountsReportsResourceApi get reports =>
-      AccountsReportsResourceApi(_requester);
-  AccountsSavedadstylesResourceApi get savedadstyles =>
-      AccountsSavedadstylesResourceApi(_requester);
-  AccountsUrlchannelsResourceApi get urlchannels =>
-      AccountsUrlchannelsResourceApi(_requester);
+  AccountsAdclientsResource get adclients =>
+      AccountsAdclientsResource(_requester);
+  AccountsAdunitsResource get adunits => AccountsAdunitsResource(_requester);
+  AccountsAlertsResource get alerts => AccountsAlertsResource(_requester);
+  AccountsCustomchannelsResource get customchannels =>
+      AccountsCustomchannelsResource(_requester);
+  AccountsPaymentsResource get payments => AccountsPaymentsResource(_requester);
+  AccountsReportsResource get reports => AccountsReportsResource(_requester);
+  AccountsSavedadstylesResource get savedadstyles =>
+      AccountsSavedadstylesResource(_requester);
+  AccountsUrlchannelsResource get urlchannels =>
+      AccountsUrlchannelsResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get information about the selected AdSense account.
   ///
@@ -240,11 +236,10 @@ class AccountsResourceApi {
   }
 }
 
-class AccountsAdclientsResourceApi {
+class AccountsAdclientsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdclientsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsAdclientsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get Auto ad code for a given ad client.
   ///
@@ -381,13 +376,13 @@ class AccountsAdclientsResourceApi {
   }
 }
 
-class AccountsAdunitsResourceApi {
+class AccountsAdunitsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdunitsCustomchannelsResourceApi get customchannels =>
-      AccountsAdunitsCustomchannelsResourceApi(_requester);
+  AccountsAdunitsCustomchannelsResource get customchannels =>
+      AccountsAdunitsCustomchannelsResource(_requester);
 
-  AccountsAdunitsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsAdunitsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the specified ad unit in the specified ad client for the specified
   /// account.
@@ -608,10 +603,10 @@ class AccountsAdunitsResourceApi {
   }
 }
 
-class AccountsAdunitsCustomchannelsResourceApi {
+class AccountsAdunitsCustomchannelsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAdunitsCustomchannelsResourceApi(commons.ApiRequester client)
+  AccountsAdunitsCustomchannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all custom channels which the specified ad unit belongs to.
@@ -700,10 +695,10 @@ class AccountsAdunitsCustomchannelsResourceApi {
   }
 }
 
-class AccountsAlertsResourceApi {
+class AccountsAlertsResource {
   final commons.ApiRequester _requester;
 
-  AccountsAlertsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsAlertsResource(commons.ApiRequester client) : _requester = client;
 
   /// Dismiss (delete) the specified alert from the specified publisher AdSense
   /// account.
@@ -825,13 +820,13 @@ class AccountsAlertsResourceApi {
   }
 }
 
-class AccountsCustomchannelsResourceApi {
+class AccountsCustomchannelsResource {
   final commons.ApiRequester _requester;
 
-  AccountsCustomchannelsAdunitsResourceApi get adunits =>
-      AccountsCustomchannelsAdunitsResourceApi(_requester);
+  AccountsCustomchannelsAdunitsResource get adunits =>
+      AccountsCustomchannelsAdunitsResource(_requester);
 
-  AccountsCustomchannelsResourceApi(commons.ApiRequester client)
+  AccountsCustomchannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get the specified custom channel from the specified ad client for the
@@ -982,10 +977,10 @@ class AccountsCustomchannelsResourceApi {
   }
 }
 
-class AccountsCustomchannelsAdunitsResourceApi {
+class AccountsCustomchannelsAdunitsResource {
   final commons.ApiRequester _requester;
 
-  AccountsCustomchannelsAdunitsResourceApi(commons.ApiRequester client)
+  AccountsCustomchannelsAdunitsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all ad units in the specified custom channel.
@@ -1079,11 +1074,10 @@ class AccountsCustomchannelsAdunitsResourceApi {
   }
 }
 
-class AccountsPaymentsResourceApi {
+class AccountsPaymentsResource {
   final commons.ApiRequester _requester;
 
-  AccountsPaymentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsPaymentsResource(commons.ApiRequester client) : _requester = client;
 
   /// List the payments for the specified AdSense account.
   ///
@@ -1137,13 +1131,13 @@ class AccountsPaymentsResourceApi {
   }
 }
 
-class AccountsReportsResourceApi {
+class AccountsReportsResource {
   final commons.ApiRequester _requester;
 
-  AccountsReportsSavedResourceApi get saved =>
-      AccountsReportsSavedResourceApi(_requester);
+  AccountsReportsSavedResource get saved =>
+      AccountsReportsSavedResource(_requester);
 
-  AccountsReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
   /// parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -1305,10 +1299,10 @@ class AccountsReportsResourceApi {
   }
 }
 
-class AccountsReportsSavedResourceApi {
+class AccountsReportsSavedResource {
   final commons.ApiRequester _requester;
 
-  AccountsReportsSavedResourceApi(commons.ApiRequester client)
+  AccountsReportsSavedResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Generate an AdSense report based on the saved report ID sent in the query
@@ -1464,10 +1458,10 @@ class AccountsReportsSavedResourceApi {
   }
 }
 
-class AccountsSavedadstylesResourceApi {
+class AccountsSavedadstylesResource {
   final commons.ApiRequester _requester;
 
-  AccountsSavedadstylesResourceApi(commons.ApiRequester client)
+  AccountsSavedadstylesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List a specific saved ad style for the specified account.
@@ -1600,10 +1594,10 @@ class AccountsSavedadstylesResourceApi {
   }
 }
 
-class AccountsUrlchannelsResourceApi {
+class AccountsUrlchannelsResource {
   final commons.ApiRequester _requester;
 
-  AccountsUrlchannelsResourceApi(commons.ApiRequester client)
+  AccountsUrlchannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all URL channels in the specified ad client for the specified
@@ -1685,10 +1679,10 @@ class AccountsUrlchannelsResourceApi {
   }
 }
 
-class AdclientsResourceApi {
+class AdclientsResource {
   final commons.ApiRequester _requester;
 
-  AdclientsResourceApi(commons.ApiRequester client) : _requester = client;
+  AdclientsResource(commons.ApiRequester client) : _requester = client;
 
   /// List all ad clients in this AdSense account.
   ///
@@ -1751,13 +1745,13 @@ class AdclientsResourceApi {
   }
 }
 
-class AdunitsResourceApi {
+class AdunitsResource {
   final commons.ApiRequester _requester;
 
-  AdunitsCustomchannelsResourceApi get customchannels =>
-      AdunitsCustomchannelsResourceApi(_requester);
+  AdunitsCustomchannelsResource get customchannels =>
+      AdunitsCustomchannelsResource(_requester);
 
-  AdunitsResourceApi(commons.ApiRequester client) : _requester = client;
+  AdunitsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the specified ad unit in the specified ad client.
   ///
@@ -1953,10 +1947,10 @@ class AdunitsResourceApi {
   }
 }
 
-class AdunitsCustomchannelsResourceApi {
+class AdunitsCustomchannelsResource {
   final commons.ApiRequester _requester;
 
-  AdunitsCustomchannelsResourceApi(commons.ApiRequester client)
+  AdunitsCustomchannelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all custom channels which the specified ad unit belongs to.
@@ -2037,10 +2031,10 @@ class AdunitsCustomchannelsResourceApi {
   }
 }
 
-class AlertsResourceApi {
+class AlertsResource {
   final commons.ApiRequester _requester;
 
-  AlertsResourceApi(commons.ApiRequester client) : _requester = client;
+  AlertsResource(commons.ApiRequester client) : _requester = client;
 
   /// Dismiss (delete) the specified alert from the publisher's AdSense account.
   ///
@@ -2145,13 +2139,13 @@ class AlertsResourceApi {
   }
 }
 
-class CustomchannelsResourceApi {
+class CustomchannelsResource {
   final commons.ApiRequester _requester;
 
-  CustomchannelsAdunitsResourceApi get adunits =>
-      CustomchannelsAdunitsResourceApi(_requester);
+  CustomchannelsAdunitsResource get adunits =>
+      CustomchannelsAdunitsResource(_requester);
 
-  CustomchannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  CustomchannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// Get the specified custom channel from the specified ad client.
   ///
@@ -2284,10 +2278,10 @@ class CustomchannelsResourceApi {
   }
 }
 
-class CustomchannelsAdunitsResourceApi {
+class CustomchannelsAdunitsResource {
   final commons.ApiRequester _requester;
 
-  CustomchannelsAdunitsResourceApi(commons.ApiRequester client)
+  CustomchannelsAdunitsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all ad units in the specified custom channel.
@@ -2373,22 +2367,20 @@ class CustomchannelsAdunitsResourceApi {
   }
 }
 
-class MetadataResourceApi {
+class MetadataResource {
   final commons.ApiRequester _requester;
 
-  MetadataDimensionsResourceApi get dimensions =>
-      MetadataDimensionsResourceApi(_requester);
-  MetadataMetricsResourceApi get metrics =>
-      MetadataMetricsResourceApi(_requester);
+  MetadataDimensionsResource get dimensions =>
+      MetadataDimensionsResource(_requester);
+  MetadataMetricsResource get metrics => MetadataMetricsResource(_requester);
 
-  MetadataResourceApi(commons.ApiRequester client) : _requester = client;
+  MetadataResource(commons.ApiRequester client) : _requester = client;
 }
 
-class MetadataDimensionsResourceApi {
+class MetadataDimensionsResource {
   final commons.ApiRequester _requester;
 
-  MetadataDimensionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  MetadataDimensionsResource(commons.ApiRequester client) : _requester = client;
 
   /// List the metadata for the dimensions available to this AdSense account.
   ///
@@ -2435,10 +2427,10 @@ class MetadataDimensionsResourceApi {
   }
 }
 
-class MetadataMetricsResourceApi {
+class MetadataMetricsResource {
   final commons.ApiRequester _requester;
 
-  MetadataMetricsResourceApi(commons.ApiRequester client) : _requester = client;
+  MetadataMetricsResource(commons.ApiRequester client) : _requester = client;
 
   /// List the metadata for the metrics available to this AdSense account.
   ///
@@ -2485,10 +2477,10 @@ class MetadataMetricsResourceApi {
   }
 }
 
-class PaymentsResourceApi {
+class PaymentsResource {
   final commons.ApiRequester _requester;
 
-  PaymentsResourceApi(commons.ApiRequester client) : _requester = client;
+  PaymentsResource(commons.ApiRequester client) : _requester = client;
 
   /// List the payments for this AdSense account.
   ///
@@ -2535,12 +2527,12 @@ class PaymentsResourceApi {
   }
 }
 
-class ReportsResourceApi {
+class ReportsResource {
   final commons.ApiRequester _requester;
 
-  ReportsSavedResourceApi get saved => ReportsSavedResourceApi(_requester);
+  ReportsSavedResource get saved => ReportsSavedResource(_requester);
 
-  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
   /// parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -2701,10 +2693,10 @@ class ReportsResourceApi {
   }
 }
 
-class ReportsSavedResourceApi {
+class ReportsSavedResource {
   final commons.ApiRequester _requester;
 
-  ReportsSavedResourceApi(commons.ApiRequester client) : _requester = client;
+  ReportsSavedResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the saved report ID sent in the query
   /// parameters.
@@ -2842,10 +2834,10 @@ class ReportsSavedResourceApi {
   }
 }
 
-class SavedadstylesResourceApi {
+class SavedadstylesResource {
   final commons.ApiRequester _requester;
 
-  SavedadstylesResourceApi(commons.ApiRequester client) : _requester = client;
+  SavedadstylesResource(commons.ApiRequester client) : _requester = client;
 
   /// Get a specific saved ad style from the user's account.
   ///
@@ -2960,10 +2952,10 @@ class SavedadstylesResourceApi {
   }
 }
 
-class UrlchannelsResourceApi {
+class UrlchannelsResource {
   final commons.ApiRequester _requester;
 
-  UrlchannelsResourceApi(commons.ApiRequester client) : _requester = client;
+  UrlchannelsResource(commons.ApiRequester client) : _requester = client;
 
   /// List all URL channels in the specified ad client for this AdSense account.
   ///

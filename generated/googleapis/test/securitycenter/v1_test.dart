@@ -2017,7 +2017,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsResourceApi', () {
+  unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--getOrganizationSettings', () {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations;
@@ -2124,7 +2124,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsAssetsResourceApi', () {
+  unittest.group('resource-OrganizationsAssetsResource', () {
     unittest.test('method--group', () {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.assets;
@@ -2370,7 +2370,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsNotificationConfigsResourceApi', () {
+  unittest.group('resource-OrganizationsNotificationConfigsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =
@@ -2645,7 +2645,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsOperationsResourceApi', () {
+  unittest.group('resource-OrganizationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.operations;
@@ -2851,7 +2851,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSourcesResourceApi', () {
+  unittest.group('resource-OrganizationsSourcesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
@@ -3228,7 +3228,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsSourcesFindingsResourceApi', () {
+  unittest.group('resource-OrganizationsSourcesFindingsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res =

@@ -25,12 +25,12 @@
 ///
 /// Create an instance of [AccessContextManagerApi] to access these resources:
 ///
-/// - [AccessPoliciesResourceApi]
-///   - [AccessPoliciesAccessLevelsResourceApi]
-///   - [AccessPoliciesServicePerimetersResourceApi]
-/// - [OperationsResourceApi]
-/// - [OrganizationsResourceApi]
-///   - [OrganizationsGcpUserAccessBindingsResourceApi]
+/// - [AccessPoliciesResource]
+///   - [AccessPoliciesAccessLevelsResource]
+///   - [AccessPoliciesServicePerimetersResource]
+/// - [OperationsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsGcpUserAccessBindingsResource]
 library accesscontextmanager.v1;
 
 import 'dart:async' as async;
@@ -54,11 +54,10 @@ class AccessContextManagerApi {
 
   final commons.ApiRequester _requester;
 
-  AccessPoliciesResourceApi get accessPolicies =>
-      AccessPoliciesResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  OrganizationsResourceApi get organizations =>
-      OrganizationsResourceApi(_requester);
+  AccessPoliciesResource get accessPolicies =>
+      AccessPoliciesResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
 
   AccessContextManagerApi(http.Client client,
       {core.String rootUrl = 'https://accesscontextmanager.googleapis.com/',
@@ -67,15 +66,15 @@ class AccessContextManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccessPoliciesResourceApi {
+class AccessPoliciesResource {
   final commons.ApiRequester _requester;
 
-  AccessPoliciesAccessLevelsResourceApi get accessLevels =>
-      AccessPoliciesAccessLevelsResourceApi(_requester);
-  AccessPoliciesServicePerimetersResourceApi get servicePerimeters =>
-      AccessPoliciesServicePerimetersResourceApi(_requester);
+  AccessPoliciesAccessLevelsResource get accessLevels =>
+      AccessPoliciesAccessLevelsResource(_requester);
+  AccessPoliciesServicePerimetersResource get servicePerimeters =>
+      AccessPoliciesServicePerimetersResource(_requester);
 
-  AccessPoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+  AccessPoliciesResource(commons.ApiRequester client) : _requester = client;
 
   /// Create an `AccessPolicy`. Fails if this organization already has a
   /// `AccessPolicy`. The longrunning Operation will have a successful status
@@ -373,10 +372,10 @@ class AccessPoliciesResourceApi {
   }
 }
 
-class AccessPoliciesAccessLevelsResourceApi {
+class AccessPoliciesAccessLevelsResource {
   final commons.ApiRequester _requester;
 
-  AccessPoliciesAccessLevelsResourceApi(commons.ApiRequester client)
+  AccessPoliciesAccessLevelsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Create an Access Level. The longrunning operation from this RPC will have
@@ -787,10 +786,10 @@ class AccessPoliciesAccessLevelsResourceApi {
   }
 }
 
-class AccessPoliciesServicePerimetersResourceApi {
+class AccessPoliciesServicePerimetersResource {
   final commons.ApiRequester _requester;
 
-  AccessPoliciesServicePerimetersResourceApi(commons.ApiRequester client)
+  AccessPoliciesServicePerimetersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Commit the dry-run spec for all the Service Perimeters in an Access
@@ -1241,10 +1240,10 @@ class AccessPoliciesServicePerimetersResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation. The server
   /// makes a best effort to cancel the operation, but success is not
@@ -1497,19 +1496,19 @@ class OperationsResourceApi {
   }
 }
 
-class OrganizationsResourceApi {
+class OrganizationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsGcpUserAccessBindingsResourceApi get gcpUserAccessBindings =>
-      OrganizationsGcpUserAccessBindingsResourceApi(_requester);
+  OrganizationsGcpUserAccessBindingsResource get gcpUserAccessBindings =>
+      OrganizationsGcpUserAccessBindingsResource(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class OrganizationsGcpUserAccessBindingsResourceApi {
+class OrganizationsGcpUserAccessBindingsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsGcpUserAccessBindingsResourceApi(commons.ApiRequester client)
+  OrganizationsGcpUserAccessBindingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a GcpUserAccessBinding. If the client specifies a name, the server

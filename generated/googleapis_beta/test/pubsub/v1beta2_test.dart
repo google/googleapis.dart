@@ -876,7 +876,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsSubscriptionsResourceApi', () {
+  unittest.group('resource-ProjectsSubscriptionsResource', () {
     unittest.test('method--acknowledge', () {
       var mock = HttpServerMock();
       var res = api.PubsubApi(mock).projects.subscriptions;
@@ -1460,7 +1460,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTopicsResourceApi', () {
+  unittest.group('resource-ProjectsTopicsResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.PubsubApi(mock).projects.topics;
@@ -1883,7 +1883,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsTopicsSubscriptionsResourceApi', () {
+  unittest.group('resource-ProjectsTopicsSubscriptionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.PubsubApi(mock).projects.topics.subscriptions;

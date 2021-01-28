@@ -1657,7 +1657,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FoldersResourceApi', () {
+  unittest.group('resource-FoldersResource', () {
     unittest.test('method--clearOrgPolicy', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
@@ -1983,7 +1983,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LiensResourceApi', () {
+  unittest.group('resource-LiensResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
@@ -2190,7 +2190,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsResourceApi', () {
+  unittest.group('resource-OperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).operations;
@@ -2240,7 +2240,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrganizationsResourceApi', () {
+  unittest.group('resource-OrganizationsResource', () {
     unittest.test('method--clearOrgPolicy', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
@@ -2826,7 +2826,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsResourceApi', () {
+  unittest.group('resource-ProjectsResource', () {
     unittest.test('method--clearOrgPolicy', () {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;

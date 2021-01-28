@@ -25,7 +25,7 @@
 /// Create an instance of [AcceleratedmobilepageurlApi] to access these
 /// resources:
 ///
-/// - [AmpUrlsResourceApi]
+/// - [AmpUrlsResource]
 library acceleratedmobilepageurl.v1;
 
 import 'dart:async' as async;
@@ -45,7 +45,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class AcceleratedmobilepageurlApi {
   final commons.ApiRequester _requester;
 
-  AmpUrlsResourceApi get ampUrls => AmpUrlsResourceApi(_requester);
+  AmpUrlsResource get ampUrls => AmpUrlsResource(_requester);
 
   AcceleratedmobilepageurlApi(http.Client client,
       {core.String rootUrl = 'https://acceleratedmobilepageurl.googleapis.com/',
@@ -54,10 +54,10 @@ class AcceleratedmobilepageurlApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AmpUrlsResourceApi {
+class AmpUrlsResource {
   final commons.ApiRequester _requester;
 
-  AmpUrlsResourceApi(commons.ApiRequester client) : _requester = client;
+  AmpUrlsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns AMP URL(s) and equivalent [AMP Cache
   /// URL(s)](/amp/cache/overview#amp-cache-url-format).

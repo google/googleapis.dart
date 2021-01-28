@@ -27,10 +27,10 @@
 ///
 /// Create an instance of [PolyServiceApi] to access these resources:
 ///
-/// - [AssetsResourceApi]
-/// - [UsersResourceApi]
-///   - [UsersAssetsResourceApi]
-///   - [UsersLikedassetsResourceApi]
+/// - [AssetsResource]
+/// - [UsersResource]
+///   - [UsersAssetsResource]
+///   - [UsersLikedassetsResource]
 library poly.v1;
 
 import 'dart:async' as async;
@@ -51,8 +51,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class PolyServiceApi {
   final commons.ApiRequester _requester;
 
-  AssetsResourceApi get assets => AssetsResourceApi(_requester);
-  UsersResourceApi get users => UsersResourceApi(_requester);
+  AssetsResource get assets => AssetsResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   PolyServiceApi(http.Client client,
       {core.String rootUrl = 'https://poly.googleapis.com/',
@@ -61,10 +61,10 @@ class PolyServiceApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AssetsResourceApi {
+class AssetsResource {
   final commons.ApiRequester _requester;
 
-  AssetsResourceApi(commons.ApiRequester client) : _requester = client;
+  AssetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns detailed information about an asset given its name.
   /// PRIVATE assets are returned only if
@@ -242,20 +242,20 @@ class AssetsResourceApi {
   }
 }
 
-class UsersResourceApi {
+class UsersResource {
   final commons.ApiRequester _requester;
 
-  UsersAssetsResourceApi get assets => UsersAssetsResourceApi(_requester);
-  UsersLikedassetsResourceApi get likedassets =>
-      UsersLikedassetsResourceApi(_requester);
+  UsersAssetsResource get assets => UsersAssetsResource(_requester);
+  UsersLikedassetsResource get likedassets =>
+      UsersLikedassetsResource(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersResource(commons.ApiRequester client) : _requester = client;
 }
 
-class UsersAssetsResourceApi {
+class UsersAssetsResource {
   final commons.ApiRequester _requester;
 
-  UsersAssetsResourceApi(commons.ApiRequester client) : _requester = client;
+  UsersAssetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists assets authored by the given user. Only the value 'me', representing
   /// the currently-authenticated user, is supported. May include assets with an
@@ -365,11 +365,10 @@ class UsersAssetsResourceApi {
   }
 }
 
-class UsersLikedassetsResourceApi {
+class UsersLikedassetsResource {
   final commons.ApiRequester _requester;
 
-  UsersLikedassetsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  UsersLikedassetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists assets that the user has liked. Only the value 'me', representing
   /// the currently-authenticated user, is supported. May include assets with an

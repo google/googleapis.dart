@@ -4586,7 +4586,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BookshelvesResourceApi', () {
+  unittest.group('resource-BookshelvesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).bookshelves;
@@ -4708,7 +4708,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BookshelvesVolumesResourceApi', () {
+  unittest.group('resource-BookshelvesVolumesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).bookshelves.volumes;
@@ -4792,7 +4792,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CloudloadingResourceApi', () {
+  unittest.group('resource-CloudloadingResource', () {
     unittest.test('method--addBook', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).cloudloading;
@@ -4958,7 +4958,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-DictionaryResourceApi', () {
+  unittest.group('resource-DictionaryResource', () {
     unittest.test('method--listOfflineMetadata', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).dictionary;
@@ -5009,7 +5009,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-FamilysharingResourceApi', () {
+  unittest.group('resource-FamilysharingResource', () {
     unittest.test('method--getFamilyInfo', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).familysharing;
@@ -5173,7 +5173,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LayersResourceApi', () {
+  unittest.group('resource-LayersResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers;
@@ -5315,7 +5315,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LayersAnnotationDataResourceApi', () {
+  unittest.group('resource-LayersAnnotationDataResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers.annotationData;
@@ -5523,7 +5523,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-LayersVolumeAnnotationsResourceApi', () {
+  unittest.group('resource-LayersVolumeAnnotationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers.volumeAnnotations;
@@ -5711,7 +5711,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MyconfigResourceApi', () {
+  unittest.group('resource-MyconfigResource', () {
     unittest.test('method--getUserSettings', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).myconfig;
@@ -6015,7 +6015,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MylibraryAnnotationsResourceApi', () {
+  unittest.group('resource-MylibraryAnnotationsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.annotations;
@@ -6333,7 +6333,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MylibraryBookshelvesResourceApi', () {
+  unittest.group('resource-MylibraryBookshelvesResource', () {
     unittest.test('method--addVolume', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
@@ -6695,7 +6695,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MylibraryBookshelvesVolumesResourceApi', () {
+  unittest.group('resource-MylibraryBookshelvesVolumesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves.volumes;
@@ -6780,7 +6780,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MylibraryReadingpositionsResourceApi', () {
+  unittest.group('resource-MylibraryReadingpositionsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.readingpositions;
@@ -6919,7 +6919,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-NotificationResourceApi', () {
+  unittest.group('resource-NotificationResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).notification;
@@ -6978,7 +6978,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OnboardingResourceApi', () {
+  unittest.group('resource-OnboardingResource', () {
     unittest.test('method--listCategories', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).onboarding;
@@ -7094,7 +7094,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PersonalizedstreamResourceApi', () {
+  unittest.group('resource-PersonalizedstreamResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).personalizedstream;
@@ -7153,7 +7153,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PromoofferResourceApi', () {
+  unittest.group('resource-PromoofferResource', () {
     unittest.test('method--accept', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).promooffer;
@@ -7371,7 +7371,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SeriesResourceApi', () {
+  unittest.group('resource-SeriesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).series;
@@ -7421,7 +7421,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-SeriesMembershipResourceApi', () {
+  unittest.group('resource-SeriesMembershipResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).series.membership;
@@ -7482,7 +7482,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VolumesResourceApi', () {
+  unittest.group('resource-VolumesResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes;
@@ -7658,7 +7658,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VolumesAssociatedResourceApi', () {
+  unittest.group('resource-VolumesAssociatedResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.associated;
@@ -7731,7 +7731,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VolumesMybooksResourceApi', () {
+  unittest.group('resource-VolumesMybooksResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.mybooks;
@@ -7806,7 +7806,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VolumesRecommendedResourceApi', () {
+  unittest.group('resource-VolumesRecommendedResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.recommended;
@@ -7927,7 +7927,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VolumesUseruploadedResourceApi', () {
+  unittest.group('resource-VolumesUseruploadedResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.useruploaded;

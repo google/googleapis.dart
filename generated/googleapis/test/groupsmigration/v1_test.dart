@@ -57,7 +57,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ArchiveResourceApi', () {
+  unittest.group('resource-ArchiveResource', () {
     unittest.test('method--insert', () {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;

@@ -215,13 +215,13 @@ void main() {
         expect(resources, hasLength(2));
         final abc = resources.first;
         expect(abc, isNotNull);
-        expect(abc.className.name, equals('${parent}ResA${i}ResourceApi'));
+        expect(abc.className.name, equals('${parent}ResA${i}Resource'));
         checkMethods('${i}M$level', abc.methods);
         checkResources('${i}L$level', '${parent}ResA$i', abc.subResources,
             level: level + 1);
 
         final def = resources.last;
-        expect(def.className.name, equals('${parent}ResB${i}ResourceApi'));
+        expect(def.className.name, equals('${parent}ResB${i}Resource'));
         expect(def, isNotNull);
         checkMethods('${i}M$level', def.methods);
         checkResources('${i}L$level', '${parent}ResB$i', def.subResources,

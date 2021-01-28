@@ -8968,8 +8968,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-OperationsProjectsLocationsOperationsResourceApi',
-      () {
+  unittest.group('resource-OperationsProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock)
@@ -9128,7 +9127,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsCorporaOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsCorporaOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock)
@@ -9183,7 +9182,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsCorpuraOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsCorpuraOperationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock)
@@ -9238,7 +9237,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res =
@@ -9457,7 +9456,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-VideosResourceApi', () {
+  unittest.group('resource-VideosResource', () {
     unittest.test('method--annotate', () {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock).videos;

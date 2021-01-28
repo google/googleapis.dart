@@ -24,27 +24,27 @@
 ///
 /// Create an instance of [ShoppingContentApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-/// - [AccountstatusesResourceApi]
-/// - [AccounttaxResourceApi]
-/// - [DatafeedsResourceApi]
-/// - [DatafeedstatusesResourceApi]
-/// - [LiasettingsResourceApi]
-/// - [LocalinventoryResourceApi]
-/// - [OrderinvoicesResourceApi]
-/// - [OrderreportsResourceApi]
-/// - [OrderreturnsResourceApi]
-/// - [OrdersResourceApi]
-/// - [PosResourceApi]
-/// - [ProductsResourceApi]
-/// - [ProductstatusesResourceApi]
-/// - [PubsubnotificationsettingsResourceApi]
-/// - [RegionalinventoryResourceApi]
-/// - [ReturnaddressResourceApi]
-/// - [ReturnpolicyResourceApi]
-/// - [SettlementreportsResourceApi]
-/// - [SettlementtransactionsResourceApi]
-/// - [ShippingsettingsResourceApi]
+/// - [AccountsResource]
+/// - [AccountstatusesResource]
+/// - [AccounttaxResource]
+/// - [DatafeedsResource]
+/// - [DatafeedstatusesResource]
+/// - [LiasettingsResource]
+/// - [LocalinventoryResource]
+/// - [OrderinvoicesResource]
+/// - [OrderreportsResource]
+/// - [OrderreturnsResource]
+/// - [OrdersResource]
+/// - [PosResource]
+/// - [ProductsResource]
+/// - [ProductstatusesResource]
+/// - [PubsubnotificationsettingsResource]
+/// - [RegionalinventoryResource]
+/// - [ReturnaddressResource]
+/// - [ReturnpolicyResource]
+/// - [SettlementreportsResource]
+/// - [SettlementtransactionsResource]
+/// - [ShippingsettingsResource]
 library content.v2_1;
 
 import 'dart:async' as async;
@@ -67,41 +67,36 @@ class ShoppingContentApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
-  AccountstatusesResourceApi get accountstatuses =>
-      AccountstatusesResourceApi(_requester);
-  AccounttaxResourceApi get accounttax => AccounttaxResourceApi(_requester);
-  DatafeedsResourceApi get datafeeds => DatafeedsResourceApi(_requester);
-  DatafeedstatusesResourceApi get datafeedstatuses =>
-      DatafeedstatusesResourceApi(_requester);
-  LiasettingsResourceApi get liasettings => LiasettingsResourceApi(_requester);
-  LocalinventoryResourceApi get localinventory =>
-      LocalinventoryResourceApi(_requester);
-  OrderinvoicesResourceApi get orderinvoices =>
-      OrderinvoicesResourceApi(_requester);
-  OrderreportsResourceApi get orderreports =>
-      OrderreportsResourceApi(_requester);
-  OrderreturnsResourceApi get orderreturns =>
-      OrderreturnsResourceApi(_requester);
-  OrdersResourceApi get orders => OrdersResourceApi(_requester);
-  PosResourceApi get pos => PosResourceApi(_requester);
-  ProductsResourceApi get products => ProductsResourceApi(_requester);
-  ProductstatusesResourceApi get productstatuses =>
-      ProductstatusesResourceApi(_requester);
-  PubsubnotificationsettingsResourceApi get pubsubnotificationsettings =>
-      PubsubnotificationsettingsResourceApi(_requester);
-  RegionalinventoryResourceApi get regionalinventory =>
-      RegionalinventoryResourceApi(_requester);
-  ReturnaddressResourceApi get returnaddress =>
-      ReturnaddressResourceApi(_requester);
-  ReturnpolicyResourceApi get returnpolicy =>
-      ReturnpolicyResourceApi(_requester);
-  SettlementreportsResourceApi get settlementreports =>
-      SettlementreportsResourceApi(_requester);
-  SettlementtransactionsResourceApi get settlementtransactions =>
-      SettlementtransactionsResourceApi(_requester);
-  ShippingsettingsResourceApi get shippingsettings =>
-      ShippingsettingsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
+  AccountstatusesResource get accountstatuses =>
+      AccountstatusesResource(_requester);
+  AccounttaxResource get accounttax => AccounttaxResource(_requester);
+  DatafeedsResource get datafeeds => DatafeedsResource(_requester);
+  DatafeedstatusesResource get datafeedstatuses =>
+      DatafeedstatusesResource(_requester);
+  LiasettingsResource get liasettings => LiasettingsResource(_requester);
+  LocalinventoryResource get localinventory =>
+      LocalinventoryResource(_requester);
+  OrderinvoicesResource get orderinvoices => OrderinvoicesResource(_requester);
+  OrderreportsResource get orderreports => OrderreportsResource(_requester);
+  OrderreturnsResource get orderreturns => OrderreturnsResource(_requester);
+  OrdersResource get orders => OrdersResource(_requester);
+  PosResource get pos => PosResource(_requester);
+  ProductsResource get products => ProductsResource(_requester);
+  ProductstatusesResource get productstatuses =>
+      ProductstatusesResource(_requester);
+  PubsubnotificationsettingsResource get pubsubnotificationsettings =>
+      PubsubnotificationsettingsResource(_requester);
+  RegionalinventoryResource get regionalinventory =>
+      RegionalinventoryResource(_requester);
+  ReturnaddressResource get returnaddress => ReturnaddressResource(_requester);
+  ReturnpolicyResource get returnpolicy => ReturnpolicyResource(_requester);
+  SettlementreportsResource get settlementreports =>
+      SettlementreportsResource(_requester);
+  SettlementtransactionsResource get settlementtransactions =>
+      SettlementtransactionsResource(_requester);
+  ShippingsettingsResource get shippingsettings =>
+      ShippingsettingsResource(_requester);
 
   ShoppingContentApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -110,10 +105,10 @@ class ShoppingContentApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns information about the authenticated user.
   ///
@@ -836,10 +831,10 @@ class AccountsResourceApi {
   }
 }
 
-class AccountstatusesResourceApi {
+class AccountstatusesResource {
   final commons.ApiRequester _requester;
 
-  AccountstatusesResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountstatusesResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves multiple Merchant Center account statuses in a single request.
   ///
@@ -1034,10 +1029,10 @@ class AccountstatusesResourceApi {
   }
 }
 
-class AccounttaxResourceApi {
+class AccounttaxResource {
   final commons.ApiRequester _requester;
 
-  AccounttaxResourceApi(commons.ApiRequester client) : _requester = client;
+  AccounttaxResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves and updates tax settings of multiple accounts in a single
   /// request.
@@ -1289,10 +1284,10 @@ class AccounttaxResourceApi {
   }
 }
 
-class DatafeedsResourceApi {
+class DatafeedsResource {
   final commons.ApiRequester _requester;
 
-  DatafeedsResourceApi(commons.ApiRequester client) : _requester = client;
+  DatafeedsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes, fetches, gets, inserts and updates multiple datafeeds in a single
   /// request.
@@ -1714,11 +1709,10 @@ class DatafeedsResourceApi {
   }
 }
 
-class DatafeedstatusesResourceApi {
+class DatafeedstatusesResource {
   final commons.ApiRequester _requester;
 
-  DatafeedstatusesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  DatafeedstatusesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets multiple Merchant Center datafeed statuses in a single request.
   ///
@@ -1915,10 +1909,10 @@ class DatafeedstatusesResourceApi {
   }
 }
 
-class LiasettingsResourceApi {
+class LiasettingsResource {
   final commons.ApiRequester _requester;
 
-  LiasettingsResourceApi(commons.ApiRequester client) : _requester = client;
+  LiasettingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves and/or updates the LIA settings of multiple accounts in a single
   /// request.
@@ -2595,10 +2589,10 @@ class LiasettingsResourceApi {
   }
 }
 
-class LocalinventoryResourceApi {
+class LocalinventoryResource {
   final commons.ApiRequester _requester;
 
-  LocalinventoryResourceApi(commons.ApiRequester client) : _requester = client;
+  LocalinventoryResource(commons.ApiRequester client) : _requester = client;
 
   /// Updates local inventory for multiple products or stores in a single
   /// request.
@@ -2721,10 +2715,10 @@ class LocalinventoryResourceApi {
   }
 }
 
-class OrderinvoicesResourceApi {
+class OrderinvoicesResource {
   final commons.ApiRequester _requester;
 
-  OrderinvoicesResourceApi(commons.ApiRequester client) : _requester = client;
+  OrderinvoicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a charge invoice for a shipment group, and triggers a charge
   /// capture for orderinvoice enabled orders.
@@ -2866,10 +2860,10 @@ class OrderinvoicesResourceApi {
   }
 }
 
-class OrderreportsResourceApi {
+class OrderreportsResource {
   final commons.ApiRequester _requester;
 
-  OrderreportsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrderreportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report for disbursements from your Merchant Center account.
   ///
@@ -3044,10 +3038,10 @@ class OrderreportsResourceApi {
   }
 }
 
-class OrderreturnsResourceApi {
+class OrderreturnsResource {
   final commons.ApiRequester _requester;
 
-  OrderreturnsResourceApi(commons.ApiRequester client) : _requester = client;
+  OrderreturnsResource(commons.ApiRequester client) : _requester = client;
 
   /// Acks an order return in your Merchant Center account.
   ///
@@ -3453,10 +3447,10 @@ class OrderreturnsResourceApi {
   }
 }
 
-class OrdersResourceApi {
+class OrdersResource {
   final commons.ApiRequester _requester;
 
-  OrdersResourceApi(commons.ApiRequester client) : _requester = client;
+  OrdersResource(commons.ApiRequester client) : _requester = client;
 
   /// Marks an order as acknowledged.
   ///
@@ -4908,10 +4902,10 @@ class OrdersResourceApi {
   }
 }
 
-class PosResourceApi {
+class PosResource {
   final commons.ApiRequester _requester;
 
-  PosResourceApi(commons.ApiRequester client) : _requester = client;
+  PosResource(commons.ApiRequester client) : _requester = client;
 
   /// Batches multiple POS-related calls in a single request.
   ///
@@ -5354,10 +5348,10 @@ class PosResourceApi {
   }
 }
 
-class ProductsResourceApi {
+class ProductsResource {
   final commons.ApiRequester _requester;
 
-  ProductsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves, inserts, and deletes multiple products in a single request.
   ///
@@ -5667,10 +5661,10 @@ class ProductsResourceApi {
   }
 }
 
-class ProductstatusesResourceApi {
+class ProductstatusesResource {
   final commons.ApiRequester _requester;
 
-  ProductstatusesResourceApi(commons.ApiRequester client) : _requester = client;
+  ProductstatusesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the statuses of multiple products in a single request.
   ///
@@ -5863,10 +5857,10 @@ class ProductstatusesResourceApi {
   }
 }
 
-class PubsubnotificationsettingsResourceApi {
+class PubsubnotificationsettingsResource {
   final commons.ApiRequester _requester;
 
-  PubsubnotificationsettingsResourceApi(commons.ApiRequester client)
+  PubsubnotificationsettingsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves a Merchant Center account's pubsub notification settings.
@@ -5982,11 +5976,10 @@ class PubsubnotificationsettingsResourceApi {
   }
 }
 
-class RegionalinventoryResourceApi {
+class RegionalinventoryResource {
   final commons.ApiRequester _requester;
 
-  RegionalinventoryResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  RegionalinventoryResource(commons.ApiRequester client) : _requester = client;
 
   /// Updates regional inventory for multiple products or regions in a single
   /// request.
@@ -6111,10 +6104,10 @@ class RegionalinventoryResourceApi {
   }
 }
 
-class ReturnaddressResourceApi {
+class ReturnaddressResource {
   final commons.ApiRequester _requester;
 
-  ReturnaddressResourceApi(commons.ApiRequester client) : _requester = client;
+  ReturnaddressResource(commons.ApiRequester client) : _requester = client;
 
   /// Batches multiple return address related calls in a single request.
   ///
@@ -6414,10 +6407,10 @@ class ReturnaddressResourceApi {
   }
 }
 
-class ReturnpolicyResourceApi {
+class ReturnpolicyResource {
   final commons.ApiRequester _requester;
 
-  ReturnpolicyResourceApi(commons.ApiRequester client) : _requester = client;
+  ReturnpolicyResource(commons.ApiRequester client) : _requester = client;
 
   /// Batches multiple return policy related calls in a single request.
   ///
@@ -6697,11 +6690,10 @@ class ReturnpolicyResourceApi {
   }
 }
 
-class SettlementreportsResourceApi {
+class SettlementreportsResource {
   final commons.ApiRequester _requester;
 
-  SettlementreportsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  SettlementreportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a settlement report from your Merchant Center account.
   ///
@@ -6842,10 +6834,10 @@ class SettlementreportsResourceApi {
   }
 }
 
-class SettlementtransactionsResourceApi {
+class SettlementtransactionsResource {
   final commons.ApiRequester _requester;
 
-  SettlementtransactionsResourceApi(commons.ApiRequester client)
+  SettlementtransactionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Retrieves a list of transactions for the settlement.
@@ -6930,11 +6922,10 @@ class SettlementtransactionsResourceApi {
   }
 }
 
-class ShippingsettingsResourceApi {
+class ShippingsettingsResource {
   final commons.ApiRequester _requester;
 
-  ShippingsettingsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ShippingsettingsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves and updates the shipping settings of multiple accounts in a
   /// single request.

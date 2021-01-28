@@ -24,8 +24,8 @@
 ///
 /// Create an instance of [PlaycustomappApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsCustomAppsResourceApi]
+/// - [AccountsResource]
+///   - [AccountsCustomAppsResource]
 library playcustomapp.v1;
 
 import 'dart:async' as async;
@@ -56,7 +56,7 @@ class PlaycustomappApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
 
   PlaycustomappApi(http.Client client,
       {core.String rootUrl = 'https://playcustomapp.googleapis.com/',
@@ -65,20 +65,19 @@ class PlaycustomappApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsCustomAppsResourceApi get customApps =>
-      AccountsCustomAppsResourceApi(_requester);
+  AccountsCustomAppsResource get customApps =>
+      AccountsCustomAppsResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class AccountsCustomAppsResourceApi {
+class AccountsCustomAppsResource {
   final commons.ApiRequester _requester;
 
-  AccountsCustomAppsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsCustomAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new custom app.
   ///

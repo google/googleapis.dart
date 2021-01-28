@@ -22,8 +22,8 @@
 ///
 /// Create an instance of [HomeGraphServiceApi] to access these resources:
 ///
-/// - [AgentUsersResourceApi]
-/// - [DevicesResourceApi]
+/// - [AgentUsersResource]
+/// - [DevicesResource]
 library homegraph.v1;
 
 import 'dart:async' as async_1;
@@ -44,8 +44,8 @@ class HomeGraphServiceApi {
 
   final commons.ApiRequester _requester;
 
-  AgentUsersResourceApi get agentUsers => AgentUsersResourceApi(_requester);
-  DevicesResourceApi get devices => DevicesResourceApi(_requester);
+  AgentUsersResource get agentUsers => AgentUsersResource(_requester);
+  DevicesResource get devices => DevicesResource(_requester);
 
   HomeGraphServiceApi(http.Client client,
       {core.String rootUrl = 'https://homegraph.googleapis.com/',
@@ -54,10 +54,10 @@ class HomeGraphServiceApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AgentUsersResourceApi {
+class AgentUsersResource {
   final commons.ApiRequester _requester;
 
-  AgentUsersResourceApi(commons.ApiRequester client) : _requester = client;
+  AgentUsersResource(commons.ApiRequester client) : _requester = client;
 
   /// Unlinks the given third-party user from your smart home Action. All data
   /// related to this user will be deleted. For more details on how users link
@@ -123,10 +123,10 @@ class AgentUsersResourceApi {
   }
 }
 
-class DevicesResourceApi {
+class DevicesResource {
   final commons.ApiRequester _requester;
 
-  DevicesResourceApi(commons.ApiRequester client) : _requester = client;
+  DevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the current states in Home Graph for the given set of the third-party
   /// user's devices. The third-party user's identity is passed in via the

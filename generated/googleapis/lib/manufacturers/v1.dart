@@ -23,8 +23,8 @@
 ///
 /// Create an instance of [ManufacturerCenterApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsProductsResourceApi]
+/// - [AccountsResource]
+///   - [AccountsProductsResource]
 library manufacturers.v1;
 
 import 'dart:async' as async;
@@ -47,7 +47,7 @@ class ManufacturerCenterApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
 
   ManufacturerCenterApi(http.Client client,
       {core.String rootUrl = 'https://manufacturers.googleapis.com/',
@@ -56,20 +56,18 @@ class ManufacturerCenterApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsProductsResourceApi get products =>
-      AccountsProductsResourceApi(_requester);
+  AccountsProductsResource get products => AccountsProductsResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class AccountsProductsResourceApi {
+class AccountsProductsResource {
   final commons.ApiRequester _requester;
 
-  AccountsProductsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsProductsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the product from a Manufacturer Center account.
   ///

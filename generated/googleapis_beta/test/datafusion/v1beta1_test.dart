@@ -1144,7 +1144,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.DataFusionApi(mock).projects.locations;
@@ -1258,7 +1258,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsInstancesResourceApi', () {
+  unittest.group('resource-ProjectsLocationsInstancesResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.DataFusionApi(mock).projects.locations.instances;
@@ -1802,7 +1802,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsOperationsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsOperationsResource', () {
     unittest.test('method--cancel', () {
       var mock = HttpServerMock();
       var res = api.DataFusionApi(mock).projects.locations.operations;
@@ -2013,7 +2013,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsVersionsResourceApi', () {
+  unittest.group('resource-ProjectsLocationsVersionsResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.DataFusionApi(mock).projects.locations.versions;

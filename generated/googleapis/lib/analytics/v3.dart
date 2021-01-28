@@ -23,36 +23,36 @@
 ///
 /// Create an instance of [AnalyticsApi] to access these resources:
 ///
-/// - [DataResourceApi]
-///   - [DataGaResourceApi]
-///   - [DataMcfResourceApi]
-///   - [DataRealtimeResourceApi]
-/// - [ManagementResourceApi]
-///   - [ManagementAccountSummariesResourceApi]
-///   - [ManagementAccountUserLinksResourceApi]
-///   - [ManagementAccountsResourceApi]
-///   - [ManagementClientIdResourceApi]
-///   - [ManagementCustomDataSourcesResourceApi]
-///   - [ManagementCustomDimensionsResourceApi]
-///   - [ManagementCustomMetricsResourceApi]
-///   - [ManagementExperimentsResourceApi]
-///   - [ManagementFiltersResourceApi]
-///   - [ManagementGoalsResourceApi]
-///   - [ManagementProfileFilterLinksResourceApi]
-///   - [ManagementProfileUserLinksResourceApi]
-///   - [ManagementProfilesResourceApi]
-///   - [ManagementRemarketingAudienceResourceApi]
-///   - [ManagementSegmentsResourceApi]
-///   - [ManagementUnsampledReportsResourceApi]
-///   - [ManagementUploadsResourceApi]
-///   - [ManagementWebPropertyAdWordsLinksResourceApi]
-///   - [ManagementWebpropertiesResourceApi]
-///   - [ManagementWebpropertyUserLinksResourceApi]
-/// - [MetadataResourceApi]
-///   - [MetadataColumnsResourceApi]
-/// - [ProvisioningResourceApi]
-/// - [UserDeletionResourceApi]
-///   - [UserDeletionUserDeletionRequestResourceApi]
+/// - [DataResource]
+///   - [DataGaResource]
+///   - [DataMcfResource]
+///   - [DataRealtimeResource]
+/// - [ManagementResource]
+///   - [ManagementAccountSummariesResource]
+///   - [ManagementAccountUserLinksResource]
+///   - [ManagementAccountsResource]
+///   - [ManagementClientIdResource]
+///   - [ManagementCustomDataSourcesResource]
+///   - [ManagementCustomDimensionsResource]
+///   - [ManagementCustomMetricsResource]
+///   - [ManagementExperimentsResource]
+///   - [ManagementFiltersResource]
+///   - [ManagementGoalsResource]
+///   - [ManagementProfileFilterLinksResource]
+///   - [ManagementProfileUserLinksResource]
+///   - [ManagementProfilesResource]
+///   - [ManagementRemarketingAudienceResource]
+///   - [ManagementSegmentsResource]
+///   - [ManagementUnsampledReportsResource]
+///   - [ManagementUploadsResource]
+///   - [ManagementWebPropertyAdWordsLinksResource]
+///   - [ManagementWebpropertiesResource]
+///   - [ManagementWebpropertyUserLinksResource]
+/// - [MetadataResource]
+///   - [MetadataColumnsResource]
+/// - [ProvisioningResource]
+/// - [UserDeletionResource]
+///   - [UserDeletionUserDeletionRequestResource]
 library analytics.v3;
 
 import 'dart:async' as async;
@@ -107,13 +107,11 @@ class AnalyticsApi {
 
   final commons.ApiRequester _requester;
 
-  DataResourceApi get data => DataResourceApi(_requester);
-  ManagementResourceApi get management => ManagementResourceApi(_requester);
-  MetadataResourceApi get metadata => MetadataResourceApi(_requester);
-  ProvisioningResourceApi get provisioning =>
-      ProvisioningResourceApi(_requester);
-  UserDeletionResourceApi get userDeletion =>
-      UserDeletionResourceApi(_requester);
+  DataResource get data => DataResource(_requester);
+  ManagementResource get management => ManagementResource(_requester);
+  MetadataResource get metadata => MetadataResource(_requester);
+  ProvisioningResource get provisioning => ProvisioningResource(_requester);
+  UserDeletionResource get userDeletion => UserDeletionResource(_requester);
 
   AnalyticsApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -122,20 +120,20 @@ class AnalyticsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DataResourceApi {
+class DataResource {
   final commons.ApiRequester _requester;
 
-  DataGaResourceApi get ga => DataGaResourceApi(_requester);
-  DataMcfResourceApi get mcf => DataMcfResourceApi(_requester);
-  DataRealtimeResourceApi get realtime => DataRealtimeResourceApi(_requester);
+  DataGaResource get ga => DataGaResource(_requester);
+  DataMcfResource get mcf => DataMcfResource(_requester);
+  DataRealtimeResource get realtime => DataRealtimeResource(_requester);
 
-  DataResourceApi(commons.ApiRequester client) : _requester = client;
+  DataResource(commons.ApiRequester client) : _requester = client;
 }
 
-class DataGaResourceApi {
+class DataGaResource {
   final commons.ApiRequester _requester;
 
-  DataGaResourceApi(commons.ApiRequester client) : _requester = client;
+  DataGaResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns Analytics data for a view (profile).
   ///
@@ -294,10 +292,10 @@ class DataGaResourceApi {
   }
 }
 
-class DataMcfResourceApi {
+class DataMcfResource {
   final commons.ApiRequester _requester;
 
-  DataMcfResourceApi(commons.ApiRequester client) : _requester = client;
+  DataMcfResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns Analytics Multi-Channel Funnels data for a view (profile).
   ///
@@ -434,10 +432,10 @@ class DataMcfResourceApi {
   }
 }
 
-class DataRealtimeResourceApi {
+class DataRealtimeResource {
   final commons.ApiRequester _requester;
 
-  DataRealtimeResourceApi(commons.ApiRequester client) : _requester = client;
+  DataRealtimeResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns real time data for a view (profile).
   ///
@@ -533,57 +531,56 @@ class DataRealtimeResourceApi {
   }
 }
 
-class ManagementResourceApi {
+class ManagementResource {
   final commons.ApiRequester _requester;
 
-  ManagementAccountSummariesResourceApi get accountSummaries =>
-      ManagementAccountSummariesResourceApi(_requester);
-  ManagementAccountUserLinksResourceApi get accountUserLinks =>
-      ManagementAccountUserLinksResourceApi(_requester);
-  ManagementAccountsResourceApi get accounts =>
-      ManagementAccountsResourceApi(_requester);
-  ManagementClientIdResourceApi get clientId =>
-      ManagementClientIdResourceApi(_requester);
-  ManagementCustomDataSourcesResourceApi get customDataSources =>
-      ManagementCustomDataSourcesResourceApi(_requester);
-  ManagementCustomDimensionsResourceApi get customDimensions =>
-      ManagementCustomDimensionsResourceApi(_requester);
-  ManagementCustomMetricsResourceApi get customMetrics =>
-      ManagementCustomMetricsResourceApi(_requester);
-  ManagementExperimentsResourceApi get experiments =>
-      ManagementExperimentsResourceApi(_requester);
-  ManagementFiltersResourceApi get filters =>
-      ManagementFiltersResourceApi(_requester);
-  ManagementGoalsResourceApi get goals =>
-      ManagementGoalsResourceApi(_requester);
-  ManagementProfileFilterLinksResourceApi get profileFilterLinks =>
-      ManagementProfileFilterLinksResourceApi(_requester);
-  ManagementProfileUserLinksResourceApi get profileUserLinks =>
-      ManagementProfileUserLinksResourceApi(_requester);
-  ManagementProfilesResourceApi get profiles =>
-      ManagementProfilesResourceApi(_requester);
-  ManagementRemarketingAudienceResourceApi get remarketingAudience =>
-      ManagementRemarketingAudienceResourceApi(_requester);
-  ManagementSegmentsResourceApi get segments =>
-      ManagementSegmentsResourceApi(_requester);
-  ManagementUnsampledReportsResourceApi get unsampledReports =>
-      ManagementUnsampledReportsResourceApi(_requester);
-  ManagementUploadsResourceApi get uploads =>
-      ManagementUploadsResourceApi(_requester);
-  ManagementWebPropertyAdWordsLinksResourceApi get webPropertyAdWordsLinks =>
-      ManagementWebPropertyAdWordsLinksResourceApi(_requester);
-  ManagementWebpropertiesResourceApi get webproperties =>
-      ManagementWebpropertiesResourceApi(_requester);
-  ManagementWebpropertyUserLinksResourceApi get webpropertyUserLinks =>
-      ManagementWebpropertyUserLinksResourceApi(_requester);
+  ManagementAccountSummariesResource get accountSummaries =>
+      ManagementAccountSummariesResource(_requester);
+  ManagementAccountUserLinksResource get accountUserLinks =>
+      ManagementAccountUserLinksResource(_requester);
+  ManagementAccountsResource get accounts =>
+      ManagementAccountsResource(_requester);
+  ManagementClientIdResource get clientId =>
+      ManagementClientIdResource(_requester);
+  ManagementCustomDataSourcesResource get customDataSources =>
+      ManagementCustomDataSourcesResource(_requester);
+  ManagementCustomDimensionsResource get customDimensions =>
+      ManagementCustomDimensionsResource(_requester);
+  ManagementCustomMetricsResource get customMetrics =>
+      ManagementCustomMetricsResource(_requester);
+  ManagementExperimentsResource get experiments =>
+      ManagementExperimentsResource(_requester);
+  ManagementFiltersResource get filters =>
+      ManagementFiltersResource(_requester);
+  ManagementGoalsResource get goals => ManagementGoalsResource(_requester);
+  ManagementProfileFilterLinksResource get profileFilterLinks =>
+      ManagementProfileFilterLinksResource(_requester);
+  ManagementProfileUserLinksResource get profileUserLinks =>
+      ManagementProfileUserLinksResource(_requester);
+  ManagementProfilesResource get profiles =>
+      ManagementProfilesResource(_requester);
+  ManagementRemarketingAudienceResource get remarketingAudience =>
+      ManagementRemarketingAudienceResource(_requester);
+  ManagementSegmentsResource get segments =>
+      ManagementSegmentsResource(_requester);
+  ManagementUnsampledReportsResource get unsampledReports =>
+      ManagementUnsampledReportsResource(_requester);
+  ManagementUploadsResource get uploads =>
+      ManagementUploadsResource(_requester);
+  ManagementWebPropertyAdWordsLinksResource get webPropertyAdWordsLinks =>
+      ManagementWebPropertyAdWordsLinksResource(_requester);
+  ManagementWebpropertiesResource get webproperties =>
+      ManagementWebpropertiesResource(_requester);
+  ManagementWebpropertyUserLinksResource get webpropertyUserLinks =>
+      ManagementWebpropertyUserLinksResource(_requester);
 
-  ManagementResourceApi(commons.ApiRequester client) : _requester = client;
+  ManagementResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ManagementAccountSummariesResourceApi {
+class ManagementAccountSummariesResource {
   final commons.ApiRequester _requester;
 
-  ManagementAccountSummariesResourceApi(commons.ApiRequester client)
+  ManagementAccountSummariesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists account summaries (lightweight tree comprised of
@@ -647,10 +644,10 @@ class ManagementAccountSummariesResourceApi {
   }
 }
 
-class ManagementAccountUserLinksResourceApi {
+class ManagementAccountUserLinksResource {
   final commons.ApiRequester _requester;
 
-  ManagementAccountUserLinksResourceApi(commons.ApiRequester client)
+  ManagementAccountUserLinksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Removes a user from the given account.
@@ -906,11 +903,10 @@ class ManagementAccountUserLinksResourceApi {
   }
 }
 
-class ManagementAccountsResourceApi {
+class ManagementAccountsResource {
   final commons.ApiRequester _requester;
 
-  ManagementAccountsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagementAccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all accounts to which the user has access.
   ///
@@ -970,11 +966,10 @@ class ManagementAccountsResourceApi {
   }
 }
 
-class ManagementClientIdResourceApi {
+class ManagementClientIdResource {
   final commons.ApiRequester _requester;
 
-  ManagementClientIdResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagementClientIdResource(commons.ApiRequester client) : _requester = client;
 
   /// Hashes the given Client ID.
   ///
@@ -1028,10 +1023,10 @@ class ManagementClientIdResourceApi {
   }
 }
 
-class ManagementCustomDataSourcesResourceApi {
+class ManagementCustomDataSourcesResource {
   final commons.ApiRequester _requester;
 
-  ManagementCustomDataSourcesResourceApi(commons.ApiRequester client)
+  ManagementCustomDataSourcesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List custom data sources to which the user has access.
@@ -1113,10 +1108,10 @@ class ManagementCustomDataSourcesResourceApi {
   }
 }
 
-class ManagementCustomDimensionsResourceApi {
+class ManagementCustomDimensionsResource {
   final commons.ApiRequester _requester;
 
-  ManagementCustomDimensionsResourceApi(commons.ApiRequester client)
+  ManagementCustomDimensionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get a custom dimension to which the user has access.
@@ -1501,10 +1496,10 @@ class ManagementCustomDimensionsResourceApi {
   }
 }
 
-class ManagementCustomMetricsResourceApi {
+class ManagementCustomMetricsResource {
   final commons.ApiRequester _requester;
 
-  ManagementCustomMetricsResourceApi(commons.ApiRequester client)
+  ManagementCustomMetricsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Get a custom metric to which the user has access.
@@ -1886,10 +1881,10 @@ class ManagementCustomMetricsResourceApi {
   }
 }
 
-class ManagementExperimentsResourceApi {
+class ManagementExperimentsResource {
   final commons.ApiRequester _requester;
 
-  ManagementExperimentsResourceApi(commons.ApiRequester client)
+  ManagementExperimentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete an experiment.
@@ -2369,11 +2364,10 @@ class ManagementExperimentsResourceApi {
   }
 }
 
-class ManagementFiltersResourceApi {
+class ManagementFiltersResource {
   final commons.ApiRequester _requester;
 
-  ManagementFiltersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagementFiltersResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete a filter.
   ///
@@ -2748,10 +2742,10 @@ class ManagementFiltersResourceApi {
   }
 }
 
-class ManagementGoalsResourceApi {
+class ManagementGoalsResource {
   final commons.ApiRequester _requester;
 
-  ManagementGoalsResourceApi(commons.ApiRequester client) : _requester = client;
+  ManagementGoalsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a goal to which the user has access.
   ///
@@ -3152,10 +3146,10 @@ class ManagementGoalsResourceApi {
   }
 }
 
-class ManagementProfileFilterLinksResourceApi {
+class ManagementProfileFilterLinksResource {
   final commons.ApiRequester _requester;
 
-  ManagementProfileFilterLinksResourceApi(commons.ApiRequester client)
+  ManagementProfileFilterLinksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete a profile filter link.
@@ -3658,10 +3652,10 @@ class ManagementProfileFilterLinksResourceApi {
   }
 }
 
-class ManagementProfileUserLinksResourceApi {
+class ManagementProfileUserLinksResource {
   final commons.ApiRequester _requester;
 
-  ManagementProfileUserLinksResourceApi(commons.ApiRequester client)
+  ManagementProfileUserLinksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Removes a user from the given view (profile).
@@ -3985,11 +3979,10 @@ class ManagementProfileUserLinksResourceApi {
   }
 }
 
-class ManagementProfilesResourceApi {
+class ManagementProfilesResource {
   final commons.ApiRequester _requester;
 
-  ManagementProfilesResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagementProfilesResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes a view (profile).
   ///
@@ -4419,10 +4412,10 @@ class ManagementProfilesResourceApi {
   }
 }
 
-class ManagementRemarketingAudienceResourceApi {
+class ManagementRemarketingAudienceResource {
   final commons.ApiRequester _requester;
 
-  ManagementRemarketingAudienceResourceApi(commons.ApiRequester client)
+  ManagementRemarketingAudienceResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Delete a remarketing audience.
@@ -4864,11 +4857,10 @@ class ManagementRemarketingAudienceResourceApi {
   }
 }
 
-class ManagementSegmentsResourceApi {
+class ManagementSegmentsResource {
   final commons.ApiRequester _requester;
 
-  ManagementSegmentsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagementSegmentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists segments to which the user has access.
   ///
@@ -4928,10 +4920,10 @@ class ManagementSegmentsResourceApi {
   }
 }
 
-class ManagementUnsampledReportsResourceApi {
+class ManagementUnsampledReportsResource {
   final commons.ApiRequester _requester;
 
-  ManagementUnsampledReportsResourceApi(commons.ApiRequester client)
+  ManagementUnsampledReportsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes an unsampled report.
@@ -5248,11 +5240,10 @@ class ManagementUnsampledReportsResourceApi {
   }
 }
 
-class ManagementUploadsResourceApi {
+class ManagementUploadsResource {
   final commons.ApiRequester _requester;
 
-  ManagementUploadsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ManagementUploadsResource(commons.ApiRequester client) : _requester = client;
 
   /// Delete data associated with a previous upload.
   ///
@@ -5596,10 +5587,10 @@ class ManagementUploadsResourceApi {
   }
 }
 
-class ManagementWebPropertyAdWordsLinksResourceApi {
+class ManagementWebPropertyAdWordsLinksResource {
   final commons.ApiRequester _requester;
 
-  ManagementWebPropertyAdWordsLinksResourceApi(commons.ApiRequester client)
+  ManagementWebPropertyAdWordsLinksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Deletes a web property-Google Ads link.
@@ -6035,10 +6026,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   }
 }
 
-class ManagementWebpropertiesResourceApi {
+class ManagementWebpropertiesResource {
   final commons.ApiRequester _requester;
 
-  ManagementWebpropertiesResourceApi(commons.ApiRequester client)
+  ManagementWebpropertiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets a web property to which the user has access.
@@ -6366,10 +6357,10 @@ class ManagementWebpropertiesResourceApi {
   }
 }
 
-class ManagementWebpropertyUserLinksResourceApi {
+class ManagementWebpropertyUserLinksResource {
   final commons.ApiRequester _requester;
 
-  ManagementWebpropertyUserLinksResourceApi(commons.ApiRequester client)
+  ManagementWebpropertyUserLinksResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Removes a user from the given web property.
@@ -6659,19 +6650,18 @@ class ManagementWebpropertyUserLinksResourceApi {
   }
 }
 
-class MetadataResourceApi {
+class MetadataResource {
   final commons.ApiRequester _requester;
 
-  MetadataColumnsResourceApi get columns =>
-      MetadataColumnsResourceApi(_requester);
+  MetadataColumnsResource get columns => MetadataColumnsResource(_requester);
 
-  MetadataResourceApi(commons.ApiRequester client) : _requester = client;
+  MetadataResource(commons.ApiRequester client) : _requester = client;
 }
 
-class MetadataColumnsResourceApi {
+class MetadataColumnsResource {
   final commons.ApiRequester _requester;
 
-  MetadataColumnsResourceApi(commons.ApiRequester client) : _requester = client;
+  MetadataColumnsResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all columns for a report type
   ///
@@ -6727,10 +6717,10 @@ class MetadataColumnsResourceApi {
   }
 }
 
-class ProvisioningResourceApi {
+class ProvisioningResource {
   final commons.ApiRequester _requester;
 
-  ProvisioningResourceApi(commons.ApiRequester client) : _requester = client;
+  ProvisioningResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates an account ticket.
   ///
@@ -6835,19 +6825,19 @@ class ProvisioningResourceApi {
   }
 }
 
-class UserDeletionResourceApi {
+class UserDeletionResource {
   final commons.ApiRequester _requester;
 
-  UserDeletionUserDeletionRequestResourceApi get userDeletionRequest =>
-      UserDeletionUserDeletionRequestResourceApi(_requester);
+  UserDeletionUserDeletionRequestResource get userDeletionRequest =>
+      UserDeletionUserDeletionRequestResource(_requester);
 
-  UserDeletionResourceApi(commons.ApiRequester client) : _requester = client;
+  UserDeletionResource(commons.ApiRequester client) : _requester = client;
 }
 
-class UserDeletionUserDeletionRequestResourceApi {
+class UserDeletionUserDeletionRequestResource {
   final commons.ApiRequester _requester;
 
-  UserDeletionUserDeletionRequestResourceApi(commons.ApiRequester client)
+  UserDeletionUserDeletionRequestResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Insert or update a user deletion requests.

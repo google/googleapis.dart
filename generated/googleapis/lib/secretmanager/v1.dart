@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [SecretManagerApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsLocationsResourceApi]
-///   - [ProjectsSecretsResourceApi]
-///     - [ProjectsSecretsVersionsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///   - [ProjectsSecretsResource]
+///     - [ProjectsSecretsVersionsResource]
 library secretmanager.v1;
 
 import 'dart:async' as async;
@@ -51,7 +51,7 @@ class SecretManagerApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   SecretManagerApi(http.Client client,
       {core.String rootUrl = 'https://secretmanager.googleapis.com/',
@@ -60,22 +60,20 @@ class SecretManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi get locations =>
-      ProjectsLocationsResourceApi(_requester);
-  ProjectsSecretsResourceApi get secrets =>
-      ProjectsSecretsResourceApi(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+  ProjectsSecretsResource get secrets => ProjectsSecretsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsLocationsResourceApi {
+class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a location.
   ///
@@ -200,13 +198,13 @@ class ProjectsLocationsResourceApi {
   }
 }
 
-class ProjectsSecretsResourceApi {
+class ProjectsSecretsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSecretsVersionsResourceApi get versions =>
-      ProjectsSecretsVersionsResourceApi(_requester);
+  ProjectsSecretsVersionsResource get versions =>
+      ProjectsSecretsVersionsResource(_requester);
 
-  ProjectsSecretsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsSecretsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new SecretVersion containing secret data and attaches it to an
   /// existing Secret.
@@ -775,10 +773,10 @@ class ProjectsSecretsResourceApi {
   }
 }
 
-class ProjectsSecretsVersionsResourceApi {
+class ProjectsSecretsVersionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSecretsVersionsResourceApi(commons.ApiRequester client)
+  ProjectsSecretsVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Accesses a SecretVersion. This call returns the secret data. `projects / *

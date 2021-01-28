@@ -180,7 +180,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupsResourceApi', () {
+  unittest.group('resource-GroupsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.GroupssettingsApi(mock).groups;

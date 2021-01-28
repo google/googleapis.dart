@@ -1842,7 +1842,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AlertsResourceApi', () {
+  unittest.group('resource-AlertsResource', () {
     unittest.test('method--batchDelete', () {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
@@ -2241,7 +2241,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AlertsFeedbackResourceApi', () {
+  unittest.group('resource-AlertsFeedbackResource', () {
     unittest.test('method--create', () {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts.feedback;
@@ -2373,7 +2373,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-V1beta1ResourceApi', () {
+  unittest.group('resource-V1beta1Resource', () {
     unittest.test('method--getSettings', () {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).v1beta1;

@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [PubsubApi] to access these resources:
 ///
-/// - [ProjectsResourceApi]
-///   - [ProjectsSubscriptionsResourceApi]
-///   - [ProjectsTopicsResourceApi]
-///     - [ProjectsTopicsSubscriptionsResourceApi]
+/// - [ProjectsResource]
+///   - [ProjectsSubscriptionsResource]
+///   - [ProjectsTopicsResource]
+///     - [ProjectsTopicsSubscriptionsResource]
 library pubsub.v1beta2;
 
 import 'dart:async' as async;
@@ -54,7 +54,7 @@ class PubsubApi {
 
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   PubsubApi(http.Client client,
       {core.String rootUrl = 'https://pubsub.googleapis.com/',
@@ -63,20 +63,20 @@ class PubsubApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSubscriptionsResourceApi get subscriptions =>
-      ProjectsSubscriptionsResourceApi(_requester);
-  ProjectsTopicsResourceApi get topics => ProjectsTopicsResourceApi(_requester);
+  ProjectsSubscriptionsResource get subscriptions =>
+      ProjectsSubscriptionsResource(_requester);
+  ProjectsTopicsResource get topics => ProjectsTopicsResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsSubscriptionsResourceApi {
+class ProjectsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsSubscriptionsResourceApi(commons.ApiRequester client)
+  ProjectsSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Acknowledges the messages associated with the `ack_ids` in the
@@ -774,13 +774,13 @@ class ProjectsSubscriptionsResourceApi {
   }
 }
 
-class ProjectsTopicsResourceApi {
+class ProjectsTopicsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTopicsSubscriptionsResourceApi get subscriptions =>
-      ProjectsTopicsSubscriptionsResourceApi(_requester);
+  ProjectsTopicsSubscriptionsResource get subscriptions =>
+      ProjectsTopicsSubscriptionsResource(_requester);
 
-  ProjectsTopicsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsTopicsResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates the given topic with the given name.
   ///
@@ -1280,10 +1280,10 @@ class ProjectsTopicsResourceApi {
   }
 }
 
-class ProjectsTopicsSubscriptionsResourceApi {
+class ProjectsTopicsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTopicsSubscriptionsResourceApi(commons.ApiRequester client)
+  ProjectsTopicsSubscriptionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the name of the subscriptions for this topic.

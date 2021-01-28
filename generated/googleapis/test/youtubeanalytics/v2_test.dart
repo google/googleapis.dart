@@ -525,7 +525,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupItemsResourceApi', () {
+  unittest.group('resource-GroupItemsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groupItems;
@@ -692,7 +692,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-GroupsResourceApi', () {
+  unittest.group('resource-GroupsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groups;
@@ -921,7 +921,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ReportsResourceApi', () {
+  unittest.group('resource-ReportsResource', () {
     unittest.test('method--query', () {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).reports;

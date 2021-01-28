@@ -27,7 +27,7 @@
 ///
 /// Create an instance of [PagespeedInsightsApi] to access these resources:
 ///
-/// - [PagespeedapiResourceApi]
+/// - [PagespeedapiResource]
 library pagespeedonline.v5;
 
 import 'dart:async' as async;
@@ -51,8 +51,7 @@ class PagespeedInsightsApi {
 
   final commons.ApiRequester _requester;
 
-  PagespeedapiResourceApi get pagespeedapi =>
-      PagespeedapiResourceApi(_requester);
+  PagespeedapiResource get pagespeedapi => PagespeedapiResource(_requester);
 
   PagespeedInsightsApi(http.Client client,
       {core.String rootUrl = 'https://pagespeedonline.googleapis.com/',
@@ -61,10 +60,10 @@ class PagespeedInsightsApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class PagespeedapiResourceApi {
+class PagespeedapiResource {
   final commons.ApiRequester _requester;
 
-  PagespeedapiResourceApi(commons.ApiRequester client) : _requester = client;
+  PagespeedapiResource(commons.ApiRequester client) : _requester = client;
 
   /// Runs PageSpeed analysis on the page at the specified URL, and returns
   /// PageSpeed scores, a list of suggestions to make that page faster, and

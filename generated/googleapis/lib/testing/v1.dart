@@ -24,10 +24,10 @@
 ///
 /// Create an instance of [TestingApi] to access these resources:
 ///
-/// - [ApplicationDetailServiceResourceApi]
-/// - [ProjectsResourceApi]
-///   - [ProjectsTestMatricesResourceApi]
-/// - [TestEnvironmentCatalogResourceApi]
+/// - [ApplicationDetailServiceResource]
+/// - [ProjectsResource]
+///   - [ProjectsTestMatricesResource]
+/// - [TestEnvironmentCatalogResource]
 library testing.v1;
 
 import 'dart:async' as async;
@@ -55,11 +55,11 @@ class TestingApi {
 
   final commons.ApiRequester _requester;
 
-  ApplicationDetailServiceResourceApi get applicationDetailService =>
-      ApplicationDetailServiceResourceApi(_requester);
-  ProjectsResourceApi get projects => ProjectsResourceApi(_requester);
-  TestEnvironmentCatalogResourceApi get testEnvironmentCatalog =>
-      TestEnvironmentCatalogResourceApi(_requester);
+  ApplicationDetailServiceResource get applicationDetailService =>
+      ApplicationDetailServiceResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
+  TestEnvironmentCatalogResource get testEnvironmentCatalog =>
+      TestEnvironmentCatalogResource(_requester);
 
   TestingApi(http.Client client,
       {core.String rootUrl = 'https://testing.googleapis.com/',
@@ -68,10 +68,10 @@ class TestingApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class ApplicationDetailServiceResourceApi {
+class ApplicationDetailServiceResource {
   final commons.ApiRequester _requester;
 
-  ApplicationDetailServiceResourceApi(commons.ApiRequester client)
+  ApplicationDetailServiceResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the details of an Android application APK.
@@ -126,19 +126,19 @@ class ApplicationDetailServiceResourceApi {
   }
 }
 
-class ProjectsResourceApi {
+class ProjectsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTestMatricesResourceApi get testMatrices =>
-      ProjectsTestMatricesResourceApi(_requester);
+  ProjectsTestMatricesResource get testMatrices =>
+      ProjectsTestMatricesResource(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
 
-class ProjectsTestMatricesResourceApi {
+class ProjectsTestMatricesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsTestMatricesResourceApi(commons.ApiRequester client)
+  ProjectsTestMatricesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Cancels unfinished test executions in a test matrix. This call returns
@@ -344,10 +344,10 @@ class ProjectsTestMatricesResourceApi {
   }
 }
 
-class TestEnvironmentCatalogResourceApi {
+class TestEnvironmentCatalogResource {
   final commons.ApiRequester _requester;
 
-  TestEnvironmentCatalogResourceApi(commons.ApiRequester client)
+  TestEnvironmentCatalogResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Gets the catalog of supported test environments. May return any of the

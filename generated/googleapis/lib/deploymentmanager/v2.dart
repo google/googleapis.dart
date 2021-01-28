@@ -24,11 +24,11 @@
 ///
 /// Create an instance of [DeploymentManagerApi] to access these resources:
 ///
-/// - [DeploymentsResourceApi]
-/// - [ManifestsResourceApi]
-/// - [OperationsResourceApi]
-/// - [ResourcesResourceApi]
-/// - [TypesResourceApi]
+/// - [DeploymentsResource]
+/// - [ManifestsResource]
+/// - [OperationsResource]
+/// - [ResourcesResource]
+/// - [TypesResource]
 library deploymentmanager.v2;
 
 import 'dart:async' as async;
@@ -66,11 +66,11 @@ class DeploymentManagerApi {
 
   final commons.ApiRequester _requester;
 
-  DeploymentsResourceApi get deployments => DeploymentsResourceApi(_requester);
-  ManifestsResourceApi get manifests => ManifestsResourceApi(_requester);
-  OperationsResourceApi get operations => OperationsResourceApi(_requester);
-  ResourcesResourceApi get resources => ResourcesResourceApi(_requester);
-  TypesResourceApi get types => TypesResourceApi(_requester);
+  DeploymentsResource get deployments => DeploymentsResource(_requester);
+  ManifestsResource get manifests => ManifestsResource(_requester);
+  OperationsResource get operations => OperationsResource(_requester);
+  ResourcesResource get resources => ResourcesResource(_requester);
+  TypesResource get types => TypesResource(_requester);
 
   DeploymentManagerApi(http.Client client,
       {core.String rootUrl = 'https://www.googleapis.com/',
@@ -79,10 +79,10 @@ class DeploymentManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class DeploymentsResourceApi {
+class DeploymentsResource {
   final commons.ApiRequester _requester;
 
-  DeploymentsResourceApi(commons.ApiRequester client) : _requester = client;
+  DeploymentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Cancels and removes the preview currently associated with the deployment.
   ///
@@ -954,10 +954,10 @@ class DeploymentsResourceApi {
   }
 }
 
-class ManifestsResourceApi {
+class ManifestsResource {
   final commons.ApiRequester _requester;
 
-  ManifestsResourceApi(commons.ApiRequester client) : _requester = client;
+  ManifestsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a specific manifest.
   ///
@@ -1154,10 +1154,10 @@ class ManifestsResourceApi {
   }
 }
 
-class OperationsResourceApi {
+class OperationsResource {
   final commons.ApiRequester _requester;
 
-  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+  OperationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a specific operation.
   ///
@@ -1334,10 +1334,10 @@ class OperationsResourceApi {
   }
 }
 
-class ResourcesResourceApi {
+class ResourcesResource {
   final commons.ApiRequester _requester;
 
-  ResourcesResourceApi(commons.ApiRequester client) : _requester = client;
+  ResourcesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets information about a single resource.
   ///
@@ -1533,10 +1533,10 @@ class ResourcesResourceApi {
   }
 }
 
-class TypesResourceApi {
+class TypesResource {
   final commons.ApiRequester _requester;
 
-  TypesResourceApi(commons.ApiRequester client) : _requester = client;
+  TypesResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all resource types for Deployment Manager.
   ///

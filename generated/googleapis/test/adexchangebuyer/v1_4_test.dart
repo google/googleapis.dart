@@ -4366,7 +4366,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-AccountsResourceApi', () {
+  unittest.group('resource-AccountsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).accounts;
@@ -4594,7 +4594,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BillingInfoResourceApi', () {
+  unittest.group('resource-BillingInfoResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).billingInfo;
@@ -4696,7 +4696,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-BudgetResourceApi', () {
+  unittest.group('resource-BudgetResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).budget;
@@ -4899,7 +4899,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-CreativesResourceApi', () {
+  unittest.group('resource-CreativesResource', () {
     unittest.test('method--addDeal', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
@@ -5305,7 +5305,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MarketplacedealsResourceApi', () {
+  unittest.group('resource-MarketplacedealsResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacedeals;
@@ -5562,7 +5562,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MarketplacenotesResourceApi', () {
+  unittest.group('resource-MarketplacenotesResource', () {
     unittest.test('method--insert', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacenotes;
@@ -5690,7 +5690,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-MarketplaceprivateauctionResourceApi', () {
+  unittest.group('resource-MarketplaceprivateauctionResource', () {
     unittest.test('method--updateproposal', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplaceprivateauction;
@@ -5756,7 +5756,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PerformanceReportResourceApi', () {
+  unittest.group('resource-PerformanceReportResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).performanceReport;
@@ -5825,7 +5825,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PretargetingConfigResourceApi', () {
+  unittest.group('resource-PretargetingConfigResource', () {
     unittest.test('method--delete', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
@@ -6199,7 +6199,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProductsResourceApi', () {
+  unittest.group('resource-ProductsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).products;
@@ -6306,7 +6306,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProposalsResourceApi', () {
+  unittest.group('resource-ProposalsResource', () {
     unittest.test('method--get', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
@@ -6684,7 +6684,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-PubprofilesResourceApi', () {
+  unittest.group('resource-PubprofilesResource', () {
     unittest.test('method--list', () {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pubprofiles;

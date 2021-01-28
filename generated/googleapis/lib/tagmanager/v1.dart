@@ -24,18 +24,18 @@
 ///
 /// Create an instance of [TagManagerApi] to access these resources:
 ///
-/// - [AccountsResourceApi]
-///   - [AccountsContainersResourceApi]
-///     - [AccountsContainersEnvironmentsResourceApi]
-///     - [AccountsContainersFoldersResourceApi]
-///       - [AccountsContainersFoldersEntitiesResourceApi]
-///     - [AccountsContainersMoveFoldersResourceApi]
-///     - [AccountsContainersReauthorizeEnvironmentsResourceApi]
-///     - [AccountsContainersTagsResourceApi]
-///     - [AccountsContainersTriggersResourceApi]
-///     - [AccountsContainersVariablesResourceApi]
-///     - [AccountsContainersVersionsResourceApi]
-///   - [AccountsPermissionsResourceApi]
+/// - [AccountsResource]
+///   - [AccountsContainersResource]
+///     - [AccountsContainersEnvironmentsResource]
+///     - [AccountsContainersFoldersResource]
+///       - [AccountsContainersFoldersEntitiesResource]
+///     - [AccountsContainersMoveFoldersResource]
+///     - [AccountsContainersReauthorizeEnvironmentsResource]
+///     - [AccountsContainersTagsResource]
+///     - [AccountsContainersTriggersResource]
+///     - [AccountsContainersVariablesResource]
+///     - [AccountsContainersVersionsResource]
+///   - [AccountsPermissionsResource]
 library tagmanager.v1;
 
 import 'dart:async' as async;
@@ -84,7 +84,7 @@ class TagManagerApi {
 
   final commons.ApiRequester _requester;
 
-  AccountsResourceApi get accounts => AccountsResourceApi(_requester);
+  AccountsResource get accounts => AccountsResource(_requester);
 
   TagManagerApi(http.Client client,
       {core.String rootUrl = 'https://tagmanager.googleapis.com/',
@@ -93,15 +93,15 @@ class TagManagerApi {
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
 
-class AccountsResourceApi {
+class AccountsResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersResourceApi get containers =>
-      AccountsContainersResourceApi(_requester);
-  AccountsPermissionsResourceApi get permissions =>
-      AccountsPermissionsResourceApi(_requester);
+  AccountsContainersResource get containers =>
+      AccountsContainersResource(_requester);
+  AccountsPermissionsResource get permissions =>
+      AccountsPermissionsResource(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
+  AccountsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a GTM Account.
   ///
@@ -264,29 +264,28 @@ class AccountsResourceApi {
   }
 }
 
-class AccountsContainersResourceApi {
+class AccountsContainersResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersEnvironmentsResourceApi get environments =>
-      AccountsContainersEnvironmentsResourceApi(_requester);
-  AccountsContainersFoldersResourceApi get folders =>
-      AccountsContainersFoldersResourceApi(_requester);
-  AccountsContainersMoveFoldersResourceApi get moveFolders =>
-      AccountsContainersMoveFoldersResourceApi(_requester);
-  AccountsContainersReauthorizeEnvironmentsResourceApi
+  AccountsContainersEnvironmentsResource get environments =>
+      AccountsContainersEnvironmentsResource(_requester);
+  AccountsContainersFoldersResource get folders =>
+      AccountsContainersFoldersResource(_requester);
+  AccountsContainersMoveFoldersResource get moveFolders =>
+      AccountsContainersMoveFoldersResource(_requester);
+  AccountsContainersReauthorizeEnvironmentsResource
       get reauthorizeEnvironments =>
-          AccountsContainersReauthorizeEnvironmentsResourceApi(_requester);
-  AccountsContainersTagsResourceApi get tags =>
-      AccountsContainersTagsResourceApi(_requester);
-  AccountsContainersTriggersResourceApi get triggers =>
-      AccountsContainersTriggersResourceApi(_requester);
-  AccountsContainersVariablesResourceApi get variables =>
-      AccountsContainersVariablesResourceApi(_requester);
-  AccountsContainersVersionsResourceApi get versions =>
-      AccountsContainersVersionsResourceApi(_requester);
+          AccountsContainersReauthorizeEnvironmentsResource(_requester);
+  AccountsContainersTagsResource get tags =>
+      AccountsContainersTagsResource(_requester);
+  AccountsContainersTriggersResource get triggers =>
+      AccountsContainersTriggersResource(_requester);
+  AccountsContainersVariablesResource get variables =>
+      AccountsContainersVariablesResource(_requester);
+  AccountsContainersVersionsResource get versions =>
+      AccountsContainersVersionsResource(_requester);
 
-  AccountsContainersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  AccountsContainersResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a Container.
   ///
@@ -590,10 +589,10 @@ class AccountsContainersResourceApi {
   }
 }
 
-class AccountsContainersEnvironmentsResourceApi {
+class AccountsContainersEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersEnvironmentsResourceApi(commons.ApiRequester client)
+  AccountsContainersEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a GTM Environment.
@@ -941,13 +940,13 @@ class AccountsContainersEnvironmentsResourceApi {
   }
 }
 
-class AccountsContainersFoldersResourceApi {
+class AccountsContainersFoldersResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersFoldersEntitiesResourceApi get entities =>
-      AccountsContainersFoldersEntitiesResourceApi(_requester);
+  AccountsContainersFoldersEntitiesResource get entities =>
+      AccountsContainersFoldersEntitiesResource(_requester);
 
-  AccountsContainersFoldersResourceApi(commons.ApiRequester client)
+  AccountsContainersFoldersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a GTM Folder.
@@ -1292,10 +1291,10 @@ class AccountsContainersFoldersResourceApi {
   }
 }
 
-class AccountsContainersFoldersEntitiesResourceApi {
+class AccountsContainersFoldersEntitiesResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersFoldersEntitiesResourceApi(commons.ApiRequester client)
+  AccountsContainersFoldersEntitiesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// List all entities in a GTM Folder.
@@ -1368,10 +1367,10 @@ class AccountsContainersFoldersEntitiesResourceApi {
   }
 }
 
-class AccountsContainersMoveFoldersResourceApi {
+class AccountsContainersMoveFoldersResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersMoveFoldersResourceApi(commons.ApiRequester client)
+  AccountsContainersMoveFoldersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Moves entities to a GTM Folder.
@@ -1466,11 +1465,10 @@ class AccountsContainersMoveFoldersResourceApi {
   }
 }
 
-class AccountsContainersReauthorizeEnvironmentsResourceApi {
+class AccountsContainersReauthorizeEnvironmentsResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersReauthorizeEnvironmentsResourceApi(
-      commons.ApiRequester client)
+  AccountsContainersReauthorizeEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Re-generates the authorization code for a GTM Environment.
@@ -1548,10 +1546,10 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
   }
 }
 
-class AccountsContainersTagsResourceApi {
+class AccountsContainersTagsResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersTagsResourceApi(commons.ApiRequester client)
+  AccountsContainersTagsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a GTM Tag.
@@ -1896,10 +1894,10 @@ class AccountsContainersTagsResourceApi {
   }
 }
 
-class AccountsContainersTriggersResourceApi {
+class AccountsContainersTriggersResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersTriggersResourceApi(commons.ApiRequester client)
+  AccountsContainersTriggersResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a GTM Trigger.
@@ -2244,10 +2242,10 @@ class AccountsContainersTriggersResourceApi {
   }
 }
 
-class AccountsContainersVariablesResourceApi {
+class AccountsContainersVariablesResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersVariablesResourceApi(commons.ApiRequester client)
+  AccountsContainersVariablesResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a GTM Variable.
@@ -2592,10 +2590,10 @@ class AccountsContainersVariablesResourceApi {
   }
 }
 
-class AccountsContainersVersionsResourceApi {
+class AccountsContainersVersionsResource {
   final commons.ApiRequester _requester;
 
-  AccountsContainersVersionsResourceApi(commons.ApiRequester client)
+  AccountsContainersVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a Container Version.
@@ -3173,10 +3171,10 @@ class AccountsContainersVersionsResourceApi {
   }
 }
 
-class AccountsPermissionsResourceApi {
+class AccountsPermissionsResource {
   final commons.ApiRequester _requester;
 
-  AccountsPermissionsResourceApi(commons.ApiRequester client)
+  AccountsPermissionsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a user's Account & Container Permissions.

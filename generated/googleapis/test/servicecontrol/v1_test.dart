@@ -2566,7 +2566,7 @@ void main() {
     });
   });
 
-  unittest.group('resource-ServicesResourceApi', () {
+  unittest.group('resource-ServicesResource', () {
     unittest.test('method--allocateQuota', () {
       var mock = HttpServerMock();
       var res = api.ServiceControlApi(mock).services;
