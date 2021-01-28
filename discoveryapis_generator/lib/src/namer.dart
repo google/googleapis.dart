@@ -240,6 +240,8 @@ class IdentifierNamer {
   }
 }
 
+const _resourceApiName = 'ResourceApi';
+
 /// Helper class for allocating unique names for generating an API library.
 class ApiLibraryNamer {
   final String apiClassSuffix;
@@ -279,17 +281,18 @@ class ApiLibraryNamer {
     name = Scope.capitalize(name);
 
     if (parent != null && parent.isNotEmpty) {
-      final parentIsApiClass = !parent.endsWith('ResourceApi');
+      final parentIsApiClass = !parent.endsWith(_resourceApiName);
       if (parentIsApiClass) {
         // We never prefix resource names with the api class name.
         parent = '';
       } else {
-        parent = parent.substring(0, parent.length - 'ResourceApi'.length);
+        parent = parent.substring(0, parent.length - _resourceApiName.length);
       }
       name = '$parent$name';
     }
 
-    return _libraryScope.newIdentifier('${Scope.capitalize(name)}ResourceApi');
+    return _libraryScope
+        .newIdentifier('${Scope.capitalize(name)}$_resourceApiName');
   }
 
   String schemaClassName(String name, {String parent}) {
