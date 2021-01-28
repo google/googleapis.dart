@@ -9,12 +9,11 @@ import 'dart:io';
 import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart';
 
-const List keywords = [
-  'assert', 'break', 'case', 'catch', 'class', 'const', 'continue',
-  'default', 'do', 'else', 'enum', 'extends', 'false', 'final', 'finally',
-  'for', 'if', 'in', 'is', 'new', 'null', 'rethrow', 'return', 'super',
-  'switch',
-  'this', 'throw', 'true', 'try', 'var', 'void', 'while', 'with',
+const keywords = {
+  'assert', 'break', 'case', 'catch', 'class', 'const', 'continue', 'default',
+  'do', 'else', 'enum', 'extends', 'false', 'final', 'finally', 'for', 'if',
+  'in', 'is', 'new', 'null', 'rethrow', 'return', 'super', 'switch', 'this',
+  'throw', 'true', 'try', 'var', 'void', 'while', 'with',
 
   // This is not in the dart language specification 1.2 but is reserved
   // in dart2js and the dart VM.
@@ -23,7 +22,7 @@ const List keywords = [
 
   // Can't override "runtimeType" from [Object.runtimeType]
   'runtimeType',
-];
+};
 
 final _cleanRegEx = RegExp(r'[^\w$]');
 
