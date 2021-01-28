@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Content API for Shopping - v2.1
+///
+/// Manages product items, inventory, and Merchant Center accounts for Google
+/// Shopping.
+///
+/// For more information, see <https://developers.google.com/shopping-content>
 library googleapis.content.v2_1;
 
 import 'dart:async' as async;

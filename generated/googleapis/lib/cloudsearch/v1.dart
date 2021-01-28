@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Search API - v1
+///
+/// Cloud Search provides cloud-based search capabilities over G Suite data. The
+/// Cloud Search API allows indexing of non-G Suite data into Cloud Search.
+///
+/// For more information, see
+/// <https://developers.google.com/cloud-search/docs/guides/>
 library googleapis.cloudsearch.v1;
 
 import 'dart:async' as async;

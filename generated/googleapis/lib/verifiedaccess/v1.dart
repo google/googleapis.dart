@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Chrome Verified Access API - v1
+///
+/// API for Verified Access chrome extension to provide credential verification
+/// for chrome devices connecting to an enterprise network
+///
+/// For more information, see
+/// <https://developers.google.com/chrome/verified-access>
 library googleapis.verifiedaccess.v1;
 
 import 'dart:async' as async;

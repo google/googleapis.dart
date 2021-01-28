@@ -15,6 +15,15 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Poly API - v1
+///
+/// The Poly API provides read access to assets hosted on <a
+/// href="https://poly.google.com">poly.google.com</a> to all, and upload access
+/// to <a href="https://poly.google.com">poly.google.com</a> for whitelisted
+/// accounts.
+///
+///
+/// For more information, see <https://developers.google.com/poly/>
 library googleapis.poly.v1;
 
 import 'dart:async' as async;

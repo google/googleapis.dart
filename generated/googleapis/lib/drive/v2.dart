@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Drive API - v2
+///
+/// Manages files in Drive including uploading, downloading, searching,
+/// detecting changes, and updating sharing permissions.
+///
+/// For more information, see <https://developers.google.com/drive/>
 library googleapis.drive.v2;
 
 import 'dart:async' as async;

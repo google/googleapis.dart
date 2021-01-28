@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Debugger API - v2
+///
+/// Examines the call stack and variables of a running application without
+/// stopping or slowing it down.
+///
+/// For more information, see <https://cloud.google.com/debugger>
 library googleapis.clouddebugger.v2;
 
 import 'dart:async' as async;

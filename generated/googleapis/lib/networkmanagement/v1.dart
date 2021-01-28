@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Network Management API - v1
+///
+/// The Network Management API provides a collection of network performance
+/// monitoring and diagnostic capabilities.
+///
+/// For more information, see <https://cloud.google.com/>
 library googleapis.networkmanagement.v1;
 
 import 'dart:async' as async;

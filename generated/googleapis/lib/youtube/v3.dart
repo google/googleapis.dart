@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// YouTube Data API v3 - v3
+///
+/// The YouTube Data API v3 is an API that provides access to YouTube data, such
+/// as videos, playlists, and channels.
+///
+/// For more information, see <https://developers.google.com/youtube/>
 library googleapis.youtube.v3;
 
 import 'dart:async' as async;

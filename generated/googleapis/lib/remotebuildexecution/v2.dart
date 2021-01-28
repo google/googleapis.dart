@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Remote Build Execution API - v2
+///
+/// Supplies a Remote Execution API service for tools such as bazel.
+///
+/// For more information, see
+/// <https://cloud.google.com/remote-build-execution/docs/>
 library googleapis.remotebuildexecution.v2;
 
 import 'dart:async' as async;

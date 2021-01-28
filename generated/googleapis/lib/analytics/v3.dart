@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Analytics API - v3
+///
+/// Views and manages your Google Analytics data.
+///
+/// For more information, see <https://developers.google.com/analytics/>
 library googleapis.analytics.v3;
 
 import 'dart:async' as async;

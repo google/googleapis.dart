@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Knowledge Graph Search API - v1
+///
+/// Searches the Google Knowledge Graph for entities.
+///
+/// For more information, see <https://developers.google.com/knowledge-graph/>
 library googleapis.kgsearch.v1;
 
 import 'dart:async' as async;

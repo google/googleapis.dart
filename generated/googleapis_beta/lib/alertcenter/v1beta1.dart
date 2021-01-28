@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// G Suite Alert Center API - v1beta1
+///
+/// Manages alerts on issues affecting your domain.
+///
+/// For more information, see
+/// <https://developers.google.com/admin-sdk/alertcenter/>
 library googleapis_beta.alertcenter.v1beta1;
 
 import 'dart:async' as async;

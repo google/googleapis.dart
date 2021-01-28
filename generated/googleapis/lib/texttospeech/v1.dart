@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Text-to-Speech API - v1
+///
+/// Synthesizes natural-sounding speech by applying powerful neural network
+/// models.
+///
+/// For more information, see <https://cloud.google.com/text-to-speech/>
 library googleapis.texttospeech.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Asset API - v1
+///
+/// The cloud asset API manages the history and inventory of cloud resources.
+///
+/// For more information, see
+/// <https://cloud.google.com/asset-inventory/docs/quickstart>
 library googleapis.cloudasset.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Talent Solution API - v2
+///
+/// Cloud Talent Solution provides the capability to create, read, update, and
+/// delete job postings, as well as search jobs based on keywords and filters.
+///
+/// For more information, see
+/// <https://cloud.google.com/talent-solution/job-search/docs/>
 library googleapis.jobs.v2;
 
 import 'dart:async' as async;

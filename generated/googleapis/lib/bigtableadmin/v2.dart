@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Bigtable Admin API - v2
+///
+/// Administer your Cloud Bigtable tables and instances.
+///
+/// For more information, see <https://cloud.google.com/bigtable/>
 library googleapis.bigtableadmin.v2;
 
 import 'dart:async' as async;

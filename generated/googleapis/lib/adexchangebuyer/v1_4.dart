@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Ad Exchange Buyer API - v1.4
+///
+/// Accesses your bidding-account information, submits creatives for validation,
+/// finds available direct deals, and retrieves performance reports.
+///
+/// For more information, see
+/// <https://developers.google.com/ad-exchange/buyer-rest>
 library googleapis.adexchangebuyer.v1_4;
 
 import 'dart:async' as async;

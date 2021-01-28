@@ -15,6 +15,15 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Apigee API - v1
+///
+/// Use the Apigee API to programmatically develop and manage APIs with a set of
+/// RESTful operations. Develop and secure API proxies, deploy and undeploy API
+/// proxy revisions, monitor APIs, configure environments, manage users, and
+/// more. Get started using the APIs. *Note:* This product is available as a
+/// free trial for a time period of 60 days.
+///
+/// For more information, see <https://cloud.google.com/apigee-api-management/>
 library googleapis.apigee.v1;
 
 import 'dart:async' as async;

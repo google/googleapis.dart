@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Accelerated Mobile Pages (AMP) URL API - v1
+///
+/// Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given
+/// list of public URL(s).
+///
+/// For more information, see <https://developers.google.com/amp/cache/>
 library googleapis.acceleratedmobilepageurl.v1;
 
 import 'dart:async' as async;

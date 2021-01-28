@@ -6,6 +6,7 @@ library discoveryapis_generator.dart_api_library;
 
 import 'package:meta/meta.dart';
 
+import 'dart_comments.dart';
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
 import 'generated_googleapis/discovery/v1.dart';
@@ -121,14 +122,12 @@ class DartApiLibrary extends BaseApiLibrary {
     }
 
     final result = [
-      '''
-// This is a generated file (see the discoveryapis_generator project).
-
-$ignoreForFileComments
-
-library $libraryName;
-
-''',
+      '// This is a generated file (see the discoveryapis_generator project).',
+      '',
+      ignoreForFileComments,
+      '',
+      _commentFromRestDescription(description).asDartDoc(0).trim(),
+      'library $libraryName;',
       if (imports.async.hasPrefix) "import 'dart:async' as ${imports.async};",
       if (!imports.async.hasPrefix) "import 'dart:async';",
       if (imports.collection.wasCalled)
@@ -151,3 +150,25 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
 }
 
 const userAgentDartFilePath = 'src/user_agent.dart';
+
+Comment _commentFromRestDescription(RestDescription description) => Comment(
+      [
+        _descriptionTitle(description),
+        description.description,
+        if (description.documentationLink != null)
+          'For more information, see <${description.documentationLink}>'
+      ].where((element) => element != null).join('\n\n'),
+    );
+
+String _descriptionTitle(RestDescription description) {
+  var title = description.title;
+  if (title == null) {
+    return null;
+  }
+
+  if (description.version != null) {
+    title = '$title - ${description.version}';
+  }
+
+  return title;
+}

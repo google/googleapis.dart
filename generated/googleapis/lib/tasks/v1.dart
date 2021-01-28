@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Tasks API - v1
+///
+/// The Google Tasks API lets you manage your tasks and task lists.
+///
+/// For more information, see <>
 library googleapis.tasks.v1;
 
 import 'dart:async' as async;

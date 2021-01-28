@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Shell API - v1
+///
+/// Allows users to start, configure, and connect to interactive shell sessions
+/// running in the cloud.
+///
+/// For more information, see <https://cloud.google.com/shell/docs/>
 library googleapis.cloudshell.v1;
 
 import 'dart:async' as async;

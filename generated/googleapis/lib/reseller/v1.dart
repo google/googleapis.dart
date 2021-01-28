@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Enterprise Apps Reseller API - v1
+///
+/// Creates and manages your customers and their subscriptions.
+///
+/// For more information, see
+/// <https://developers.google.com/google-apps/reseller/>
 library googleapis.reseller.v1;
 
 import 'dart:async' as async;

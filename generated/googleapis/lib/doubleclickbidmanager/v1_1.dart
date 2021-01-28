@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// DoubleClick Bid Manager API - v1.1
+///
+/// DoubleClick Bid Manager API allows users to manage and create campaigns and
+/// reports.
+///
+/// For more information, see <https://developers.google.com/bid-manager/>
 library googleapis.doubleclickbidmanager.v1_1;
 
 import 'dart:async' as async;

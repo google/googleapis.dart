@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Billing Budget API - v1beta1
+///
+/// The Cloud Billing Budget API stores Cloud Billing budgets, which define a
+/// budget plan and the rules to execute as spend is tracked against that plan.
+///
+/// For more information, see
+/// <https://cloud.google.com/billing/docs/how-to/budget-api-overview>
 library googleapis_beta.billingbudgets.v1beta1;
 
 import 'dart:async' as async;

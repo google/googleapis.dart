@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Key Management Service (KMS) API - v1
+///
+/// Manages keys and performs cryptographic operations in a central cloud
+/// service, for direct use by other cloud resources and applications.
+///
+/// For more information, see <https://cloud.google.com/kms/>
 library googleapis.cloudkms.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Container Analysis API - v1beta1
+///
+/// An implementation of the Grafeas API, which stores, and enables querying and
+/// retrieval of critical metadata about all of your software artifacts.
+///
+/// For more information, see
+/// <https://cloud.google.com/container-analysis/api/reference/rest/>
 library googleapis_beta.containeranalysis.v1beta1;
 
 import 'dart:async' as async;

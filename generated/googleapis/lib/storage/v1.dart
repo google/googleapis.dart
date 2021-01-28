@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Storage JSON API - v1
+///
+/// Stores and retrieves potentially large, immutable data objects.
+///
+/// For more information, see
+/// <https://developers.google.com/storage/docs/json_api/>
 library googleapis.storage.v1;
 
 import 'dart:async' as async;

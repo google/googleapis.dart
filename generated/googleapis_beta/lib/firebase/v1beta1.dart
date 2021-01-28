@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Firebase Management API - v1beta1
+///
+/// The Firebase Management API enables programmatic setup and management of
+/// Firebase projects, including a project's Firebase resources and Firebase
+/// apps.
+///
+/// For more information, see <https://firebase.google.com>
 library googleapis_beta.firebase.v1beta1;
 
 import 'dart:async' as async;

@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Search Console API - v3
+///
+/// View Google Search Console data for your verified sites.
+///
+/// For more information, see <https://developers.google.com/webmaster-tools/>
 library googleapis.webmasters.v3;
 
 import 'dart:async' as async;

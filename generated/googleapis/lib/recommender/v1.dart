@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Recommender API - v1
+///
+///
+///
+/// For more information, see <https://cloud.google.com/recommender/docs/>
 library googleapis.recommender.v1;
 
 import 'dart:async' as async;

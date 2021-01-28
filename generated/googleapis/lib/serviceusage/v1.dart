@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Service Usage API - v1
+///
+/// Enables services that service consumers want to use on Google Cloud
+/// Platform, lists the available or enabled services, or disables services that
+/// service consumers no longer use.
+///
+/// For more information, see <https://cloud.google.com/service-usage/>
 library googleapis.serviceusage.v1;
 
 import 'dart:async' as async;

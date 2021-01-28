@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Datastore API - v1
+///
+/// Accesses the schemaless NoSQL database to provide fully managed, robust,
+/// scalable storage for your application.
+///
+/// For more information, see <https://cloud.google.com/datastore/>
 library googleapis.datastore.v1;
 
 import 'dart:async' as async;

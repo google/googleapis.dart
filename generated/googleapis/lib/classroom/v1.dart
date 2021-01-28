@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Classroom API - v1
+///
+/// Manages classes, rosters, and invitations in Google Classroom.
+///
+/// For more information, see <https://developers.google.com/classroom/>
 library googleapis.classroom.v1;
 
 import 'dart:async' as async;

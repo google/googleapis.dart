@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// AdSense Management API - v1.4
+///
+/// Accesses AdSense publishers' inventory and generates performance reports.
+///
+/// For more information, see
+/// <https://developers.google.com/adsense/management/>
 library googleapis.adsense.v1_4;
 
 import 'dart:async' as async;

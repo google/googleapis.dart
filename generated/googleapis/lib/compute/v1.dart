@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Compute Engine API - v1
+///
+/// Creates and runs virtual machines on Google Cloud Platform.
+///
+/// For more information, see
+/// <https://developers.google.com/compute/docs/reference/latest/>
 library googleapis.compute.v1;
 
 import 'dart:async' as async;

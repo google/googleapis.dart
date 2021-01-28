@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud OS Login API - v1beta
+///
+/// You can use OS Login to manage access to your VM instances using IAM roles.
+///
+/// For more information, see <https://cloud.google.com/compute/docs/oslogin/>
 library googleapis_beta.oslogin.v1beta;
 
 import 'dart:async' as async;

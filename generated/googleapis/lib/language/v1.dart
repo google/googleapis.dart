@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Natural Language API - v1
+///
+/// Provides natural language understanding technologies, such as sentiment
+/// analysis, entity recognition, entity sentiment analysis, and other text
+/// annotations, to developers.
+///
+/// For more information, see <https://cloud.google.com/natural-language/>
 library googleapis.language.v1;
 
 import 'dart:async' as async;

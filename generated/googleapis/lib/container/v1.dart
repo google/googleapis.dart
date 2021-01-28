@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Kubernetes Engine API - v1
+///
+/// Builds and manages container-based applications, powered by the open source
+/// Kubernetes technology.
+///
+/// For more information, see <https://cloud.google.com/container-engine/>
 library googleapis.container.v1;
 
 import 'dart:async' as async;

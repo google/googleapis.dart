@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Document AI API - v1beta2
+///
+/// Service to parse structured information from unstructured or semi-structured
+/// documents using state-of-the-art Google AI such as natural language,
+/// computer vision, translation, and AutoML.
+///
+/// For more information, see <https://cloud.google.com/document-ai/docs/>
 library googleapis_beta.documentai.v1beta2;
 
 import 'dart:async' as async;

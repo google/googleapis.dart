@@ -15,6 +15,15 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Trace API - v2
+///
+/// Sends application trace data to Cloud Trace for viewing. Trace data is
+/// collected for all App Engine applications by default. Trace data from other
+/// applications can be provided using this API. This library is used to
+/// interact with the Cloud Trace API directly. If you are looking to instrument
+/// your application for Cloud Trace, we recommend using OpenCensus.
+///
+/// For more information, see <https://cloud.google.com/trace>
 library googleapis.cloudtrace.v2;
 
 import 'dart:async' as async;

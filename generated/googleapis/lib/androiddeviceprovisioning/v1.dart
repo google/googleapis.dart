@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Android Device Provisioning Partner API - v1
+///
+/// Automates Android zero-touch enrollment for device resellers, customers, and
+/// EMMs.
+///
+/// For more information, see <https://developers.google.com/zero-touch/>
 library googleapis.androiddeviceprovisioning.v1;
 
 import 'dart:async' as async;

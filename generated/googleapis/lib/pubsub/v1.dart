@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Pub/Sub API - v1
+///
+/// Provides reliable, many-to-many, asynchronous messaging between
+/// applications.
+///
+/// For more information, see <https://cloud.google.com/pubsub/docs>
 library googleapis.pubsub.v1;
 
 import 'dart:async' as async;

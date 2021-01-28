@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Resource Manager API - v2
+///
+/// Creates, reads, and updates metadata for Google Cloud Platform resource
+/// containers.
+///
+/// For more information, see <https://cloud.google.com/resource-manager>
 library googleapis.cloudresourcemanager.v2;
 
 import 'dart:async' as async;

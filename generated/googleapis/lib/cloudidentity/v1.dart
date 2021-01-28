@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Identity API - v1
+///
+/// API for provisioning and managing identity resources.
+///
+/// For more information, see <https://cloud.google.com/identity/>
 library googleapis.cloudidentity.v1;
 
 import 'dart:async' as async;

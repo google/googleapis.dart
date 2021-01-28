@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Firestore API - v1
+///
+/// Accesses the NoSQL document database built for automatic scaling, high
+/// performance, and ease of application development.
+///
+/// For more information, see <https://cloud.google.com/firestore>
 library googleapis.firestore.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Books API - v1
+///
+/// The Google Books API allows clients to access the Google Books repository.
+///
+/// For more information, see
+/// <https://code.google.com/apis/books/docs/v1/getting_started.html>
 library googleapis.books.v1;
 
 import 'dart:async' as async;

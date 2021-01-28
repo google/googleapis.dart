@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Fact Check Tools API - v1alpha1
+///
+///
+///
+/// For more information, see
+/// <https://developers.google.com/fact-check/tools/api/>
 library googleapis_beta.factchecktools.v1alpha1;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Filestore API - v1
+///
+/// The Cloud Filestore API is used for creating and managing cloud file
+/// servers.
+///
+/// For more information, see <https://cloud.google.com/filestore/>
 library googleapis.file.v1;
 
 import 'dart:async' as async;

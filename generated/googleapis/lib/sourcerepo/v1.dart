@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Source Repositories API - v1
+///
+/// Accesses source code repositories hosted by Google.
+///
+/// For more information, see
+/// <https://cloud.google.com/source-repositories/docs/apis>
 library googleapis.sourcerepo.v1;
 
 import 'dart:async' as async;

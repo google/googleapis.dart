@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// BigQuery Data Transfer API - v1
+///
+/// Schedule queries or transfer external data from SaaS applications to Google
+/// BigQuery on a regular basis.
+///
+/// For more information, see <https://cloud.google.com/bigquery/>
 library googleapis.bigquerydatatransfer.v1;
 
 import 'dart:async' as async;

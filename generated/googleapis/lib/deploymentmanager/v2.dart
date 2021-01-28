@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Cloud Deployment Manager API - v2
+///
+/// Declares, configures, and deploys complex solutions on Google Cloud
+/// Platform.
+///
+/// For more information, see <https://cloud.google.com/deployment-manager/>
 library googleapis.deploymentmanager.v2;
 
 import 'dart:async' as async;

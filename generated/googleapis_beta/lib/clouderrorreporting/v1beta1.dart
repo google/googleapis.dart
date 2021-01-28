@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Error Reporting API - v1beta1
+///
+/// Groups and counts similar errors from cloud services and applications,
+/// reports new errors, and provides access to error groups and their associated
+/// errors.
+///
+/// For more information, see <https://cloud.google.com/error-reporting/>
 library googleapis_beta.clouderrorreporting.v1beta1;
 
 import 'dart:async' as async;

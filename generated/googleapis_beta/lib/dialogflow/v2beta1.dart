@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Dialogflow API - v2beta1
+///
+/// Builds conversational interfaces (for example, chatbots, and voice-powered
+/// apps and devices).
+///
+/// For more information, see <https://cloud.google.com/dialogflow/>
 library googleapis_beta.dialogflow.v2beta1;
 
 import 'dart:async' as async;

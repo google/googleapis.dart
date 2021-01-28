@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// People API - v1
+///
+/// Provides access to information about profiles and contacts.
+///
+/// For more information, see <https://developers.google.com/people/>
 library googleapis.people.v1;
 
 import 'dart:async' as async;

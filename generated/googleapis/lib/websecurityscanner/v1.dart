@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Web Security Scanner API - v1
+///
+/// Scans your Compute and App Engine apps for common web vulnerabilities.
+///
+/// For more information, see
+/// <https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/>
 library googleapis.websecurityscanner.v1;
 
 import 'dart:async' as async;

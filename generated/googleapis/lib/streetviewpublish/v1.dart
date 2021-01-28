@@ -15,6 +15,14 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Street View Publish API - v1
+///
+/// Publishes 360 photos to Google Maps, along with position, orientation, and
+/// connectivity metadata. Apps can offer an interface for positioning,
+/// connecting, and uploading user-generated Street View images.
+///
+/// For more information, see
+/// <https://developers.google.com/streetview/publish/>
 library googleapis.streetviewpublish.v1;
 
 import 'dart:async' as async;

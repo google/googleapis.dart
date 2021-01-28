@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Domains RDAP API - v1
+///
+/// Read-only public API that lets users search for information about domain
+/// names.
+///
+/// For more information, see <https://developers.google.com/domains/rdap/>
 library googleapis.domainsrdap.v1;
 
 import 'dart:async' as async;

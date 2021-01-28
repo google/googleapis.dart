@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Tasks API - v2
+///
+/// Manages the execution of large numbers of distributed requests.
+///
+/// For more information, see <https://cloud.google.com/tasks/>
 library googleapis.cloudtasks.v2;
 
 import 'dart:async' as async;

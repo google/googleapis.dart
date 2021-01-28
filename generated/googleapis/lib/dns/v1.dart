@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud DNS API - v1
+///
+///
+///
+/// For more information, see <http://developers.google.com/cloud-dns>
 library googleapis.dns.v1;
 
 import 'dart:async' as async;

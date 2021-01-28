@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// SAS Portal API - v1alpha1
+///
+///
+///
+/// For more information, see
+/// <https://developers.google.com/spectrum-access-system/>
 library googleapis_beta.sasportal.v1alpha1;
 
 import 'dart:async' as async;

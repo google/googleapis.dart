@@ -15,6 +15,14 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// IAM Service Account Credentials API - v1
+///
+/// Creates short-lived credentials for impersonating IAM service accounts.
+/// *Note:* This API is tied to the IAM API (iam.googleapis.com). Enabling or
+/// disabling this API will also enable or disable the IAM API.
+///
+/// For more information, see
+/// <https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials>
 library googleapis.iamcredentials.v1;
 
 import 'dart:async' as async;

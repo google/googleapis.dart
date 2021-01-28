@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Memorystore for Memcached API - v1beta2
+///
+/// Google Cloud Memorystore for Memcached API is used for creating and managing
+/// Memcached instances in GCP.
+///
+/// For more information, see <https://cloud.google.com/memorystore/>
 library googleapis_beta.memcache.v1beta2;
 
 import 'dart:async' as async;

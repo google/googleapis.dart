@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Firebase Hosting API - v1beta1
+///
+/// The Firebase Hosting REST API enables programmatic and customizable
+/// deployments to your Firebase-hosted sites. Use this REST API to deploy new
+/// or updated hosting configurations and content files.
+///
+/// For more information, see <https://firebase.google.com/docs/hosting/>
 library googleapis_beta.firebasehosting.v1beta1;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Calendar API - v3
+///
+/// Manipulates events and other calendar data.
+///
+/// For more information, see
+/// <https://developers.google.com/google-apps/calendar/firstapp>
 library googleapis.calendar.v3;
 
 import 'dart:async' as async;

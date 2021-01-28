@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Play Game Management - v1management
+///
+/// The Google Play Game Management API allows developers to manage resources
+/// from the Google Play Game service.
+///
+/// For more information, see <https://developers.google.com/games/>
 library googleapis.gamesManagement.v1management;
 
 import 'dart:async' as async;

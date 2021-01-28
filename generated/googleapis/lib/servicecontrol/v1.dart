@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Service Control API - v1
+///
+/// Provides control plane functionality to managed services, such as logging,
+/// monitoring, and status checks.
+///
+/// For more information, see <https://cloud.google.com/service-control/>
 library googleapis.servicecontrol.v1;
 
 import 'dart:async' as async;

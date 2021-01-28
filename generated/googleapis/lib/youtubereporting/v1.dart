@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// YouTube Reporting API - v1
+///
+/// Schedules reporting jobs containing your YouTube Analytics data and
+/// downloads the resulting bulk data reports in the form of CSV files.
+///
+/// For more information, see
+/// <https://developers.google.com/youtube/reporting/v1/reports/>
 library googleapis.youtubereporting.v1;
 
 import 'dart:async' as async;

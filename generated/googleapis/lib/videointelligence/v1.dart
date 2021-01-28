@@ -15,6 +15,14 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Video Intelligence API - v1
+///
+/// Detects objects, explicit content, and scene changes in videos. It also
+/// specifies the region for annotation and transcribes speech to text. Supports
+/// both asynchronous API and streaming API.
+///
+/// For more information, see
+/// <https://cloud.google.com/video-intelligence/docs/>
 library googleapis.videointelligence.v1;
 
 import 'dart:async' as async;

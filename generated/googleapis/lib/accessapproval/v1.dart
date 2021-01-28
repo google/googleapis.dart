@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Access Approval API - v1
+///
+/// An API for controlling access to data by Google personnel.
+///
+/// For more information, see <https://cloud.google.com/access-approval/docs>
 library googleapis.accessapproval.v1;
 
 import 'dart:async' as async;

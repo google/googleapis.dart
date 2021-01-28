@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// DCM/DFA Reporting And Trafficking API - v3.4
+///
+/// Manage your DoubleClick Campaign Manager ad campaigns and reports.
+///
+/// For more information, see
+/// <https://developers.google.com/doubleclick-advertisers/>
 library googleapis.dfareporting.v3_4;
 
 import 'dart:async' as async;

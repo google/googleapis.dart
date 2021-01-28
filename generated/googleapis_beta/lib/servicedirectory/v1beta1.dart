@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Service Directory API - v1beta1
+///
+/// Service Directory is a platform for discovering, publishing, and connecting
+/// services.
+///
+/// For more information, see <https://cloud.google.com/service-directory>
 library googleapis_beta.servicedirectory.v1beta1;
 
 import 'dart:async' as async;

@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Build API - v1
+///
+/// Creates and manages builds on Google Cloud Platform.
+///
+/// For more information, see <https://cloud.google.com/cloud-build/docs/>
 library googleapis.cloudbuild.v1;
 
 import 'dart:async' as async;

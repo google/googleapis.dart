@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// HomeGraph API - v1
+///
+///
+///
+/// For more information, see
+/// <https://developers.google.com/actions/smarthome/create-app#request-sync>
 library googleapis.homegraph.v1;
 
 import 'dart:async' as async_1;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Play EMM API - v1
+///
+/// Manages the deployment of apps to Android Enterprise devices.
+///
+/// For more information, see
+/// <https://developers.google.com/android/work/play/emm-api>
 library googleapis.androidenterprise.v1;
 
 import 'dart:async' as async;

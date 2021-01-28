@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Testing API - v1
+///
+/// Allows developers to run automated tests for their mobile applications on
+/// Google infrastructure.
+///
+/// For more information, see <https://developers.google.com/cloud-test-lab/>
 library googleapis.testing.v1;
 
 import 'dart:async' as async;

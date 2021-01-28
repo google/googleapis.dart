@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Service Consumer Management API - v1
+///
+/// Manages the service consumers of a Service Infrastructure service.
+///
+/// For more information, see
+/// <https://cloud.google.com/service-consumer-management/docs/overview>
 library googleapis.serviceconsumermanagement.v1;
 
 import 'dart:async' as async;

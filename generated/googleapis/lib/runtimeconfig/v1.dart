@@ -15,6 +15,15 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Runtime Configuration API - v1
+///
+/// The Runtime Configurator allows you to dynamically configure and expose
+/// variables through Google Cloud Platform. In addition, you can also set
+/// Watchers and Waiters that will watch for changes to your data and return
+/// based on certain conditions.
+///
+/// For more information, see
+/// <https://cloud.google.com/deployment-manager/runtime-configurator/>
 library googleapis.runtimeconfig.v1;
 
 import 'dart:async' as async;

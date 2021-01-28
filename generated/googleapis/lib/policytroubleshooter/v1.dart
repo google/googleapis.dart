@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Policy Troubleshooter API - v1
+///
+///
+///
+/// For more information, see <https://cloud.google.com/iam/>
 library googleapis.policytroubleshooter.v1;
 
 import 'dart:async' as async;

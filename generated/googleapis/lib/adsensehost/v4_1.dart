@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// AdSense Host API - v4.1
+///
+/// Generates performance reports, generates ad codes, and provides publisher
+/// management capabilities for AdSense Hosts.
+///
+/// For more information, see <https://developers.google.com/adsense/host/>
 library googleapis.adsensehost.v4_1;
 
 import 'dart:async' as async;

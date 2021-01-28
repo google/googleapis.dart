@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud IoT API - v1
+///
+/// Registers and manages IoT (Internet of Things) devices that connect to the
+/// Google Cloud Platform.
+///
+/// For more information, see <https://cloud.google.com/iot>
 library googleapis.cloudiot.v1;
 
 import 'dart:async' as async;

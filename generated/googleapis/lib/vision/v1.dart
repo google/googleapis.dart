@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Vision API - v1
+///
+/// Integrates Google Vision features, including image labeling, face, logo, and
+/// landmark detection, optical character recognition (OCR), and detection of
+/// explicit content, into applications.
+///
+/// For more information, see <https://cloud.google.com/vision/>
 library googleapis.vision.v1;
 
 import 'dart:async' as async;

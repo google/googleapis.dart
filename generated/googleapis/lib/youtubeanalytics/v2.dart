@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// YouTube Analytics API - v2
+///
+/// Retrieves your YouTube Analytics data.
+///
+/// For more information, see <https://developers.google.com/youtube/analytics>
 library googleapis.youtubeAnalytics.v2;
 
 import 'dart:async' as async;

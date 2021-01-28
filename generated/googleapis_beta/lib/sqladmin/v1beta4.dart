@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud SQL Admin API - v1beta4
+///
+/// API for Cloud SQL database instance management
+///
+/// For more information, see <https://developers.google.com/cloud-sql/>
 library googleapis_beta.sqladmin.v1beta4;
 
 import 'dart:async' as async;

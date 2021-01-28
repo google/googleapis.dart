@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Custom Search API - v1
+///
+/// Searches over a website or collection of websites
+///
+/// For more information, see
+/// <https://developers.google.com/custom-search/v1/introduction>
 library googleapis.customsearch.v1;
 
 import 'dart:async' as async;

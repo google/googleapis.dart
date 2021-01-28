@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Storage Transfer API - v1
+///
+/// Transfers data from external data sources to a Google Cloud Storage bucket
+/// or between Google Cloud Storage buckets.
+///
+/// For more information, see <https://cloud.google.com/storage-transfer/docs>
 library googleapis.storagetransfer.v1;
 
 import 'dart:async' as async;

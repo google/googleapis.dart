@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Life Sciences API - v2beta
+///
+/// Cloud Life Sciences is a suite of services and tools for managing,
+/// processing, and transforming life sciences data.
+///
+/// For more information, see <https://cloud.google.com/life-sciences>
 library googleapis_beta.lifesciences.v2beta;
 
 import 'dart:async' as async;

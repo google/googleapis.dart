@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Fitness API - v1
+///
+/// The Fitness API for managing users' fitness tracking data.
+///
+/// For more information, see
+/// <https://developers.google.com/fit/rest/v1/get-started>
 library googleapis.fitness.v1;
 
 import 'dart:async' as async;

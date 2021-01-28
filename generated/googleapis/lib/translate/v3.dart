@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Translation API - v3
+///
+/// Integrates text translation into your website or application.
+///
+/// For more information, see
+/// <https://cloud.google.com/translate/docs/quickstarts>
 library googleapis.translate.v3;
 
 import 'dart:async' as async;

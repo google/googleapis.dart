@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Slides API - v1
+///
+/// Reads and writes Google Slides presentations.
+///
+/// For more information, see <https://developers.google.com/slides/>
 library googleapis.slides.v1;
 
 import 'dart:async' as async;

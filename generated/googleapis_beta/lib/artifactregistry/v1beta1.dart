@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Artifact Registry API - v1beta1
+///
+/// Store and manage build artifacts in a scalable and integrated service built
+/// on Google infrastructure.
+///
+/// For more information, see <https://cloud.google.com/artifacts/docs/>
 library googleapis_beta.artifactregistry.v1beta1;
 
 import 'dart:async' as async;

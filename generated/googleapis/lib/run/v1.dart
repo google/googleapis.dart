@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Run Admin API - v1
+///
+/// Deploy and manage user provided container images that scale automatically
+/// based on HTTP traffic.
+///
+/// For more information, see <https://cloud.google.com/run/>
 library googleapis.run.v1;
 
 import 'dart:async' as async;

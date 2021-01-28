@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Cloud Data Catalog API - v1beta1
+///
+/// A fully managed and highly scalable data discovery and metadata management
+/// service.
+///
+/// For more information, see <https://cloud.google.com/data-catalog/docs/>
 library googleapis_beta.datacatalog.v1beta1;
 
 import 'dart:async' as async;

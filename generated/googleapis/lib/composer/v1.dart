@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Composer API - v1
+///
+/// Manages Apache Airflow environments on Google Cloud Platform.
+///
+/// For more information, see <https://cloud.google.com/composer/>
 library googleapis.composer.v1;
 
 import 'dart:async' as async;

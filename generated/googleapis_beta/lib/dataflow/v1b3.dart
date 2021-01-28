@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Dataflow API - v1b3
+///
+/// Manages Google Cloud Dataflow projects on Google Cloud Platform.
+///
+/// For more information, see <https://cloud.google.com/dataflow>
 library googleapis_beta.dataflow.v1b3;
 
 import 'dart:async' as async;

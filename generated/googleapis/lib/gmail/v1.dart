@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Gmail API - v1
+///
+/// The Gmail API lets you view and manage Gmail mailbox data like threads,
+/// messages, and labels.
+///
+/// For more information, see <https://developers.google.com/gmail/api/>
 library googleapis.gmail.v1;
 
 import 'dart:async' as async;

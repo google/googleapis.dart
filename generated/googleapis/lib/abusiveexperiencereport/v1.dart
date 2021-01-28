@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Abusive Experience Report API - v1
+///
+/// Views Abusive Experience Report data, and gets a list of sites that have a
+/// significant number of abusive experiences.
+///
+/// For more information, see
+/// <https://developers.google.com/abusive-experience-report/>
 library googleapis.abusiveexperiencereport.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Security Command Center API - v1
+///
+/// Security Command Center API provides access to temporal views of assets and
+/// findings within an organization.
+///
+/// For more information, see
+/// <https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview>
 library googleapis.securitycenter.v1;
 
 import 'dart:async' as async;

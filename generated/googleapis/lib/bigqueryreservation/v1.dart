@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// BigQuery Reservation API - v1
+///
+/// A service to modify your BigQuery flat-rate reservations.
+///
+/// For more information, see <https://cloud.google.com/bigquery/>
 library googleapis.bigqueryreservation.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Play Custom App Publishing API - v1
+///
+/// API to create and publish custom Android apps
+///
+/// For more information, see
+/// <https://developers.google.com/android/work/play/custom-app-api/>
 library googleapis.playcustomapp.v1;
 
 import 'dart:async' as async;

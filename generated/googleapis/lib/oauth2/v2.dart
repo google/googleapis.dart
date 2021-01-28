@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google OAuth2 API - v2
+///
+/// Obtains end-user authorization grants for use with other Google APIs.
+///
+/// For more information, see
+/// <https://developers.google.com/identity/protocols/oauth2/>
 library googleapis.oauth2.v2;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Firebase Cloud Messaging API - v1
+///
+/// FCM send API that provides a cross-platform messaging solution to reliably
+/// deliver messages at no cost.
+///
+/// For more information, see <https://firebase.google.com/docs/cloud-messaging>
 library googleapis.fcm.v1;
 
 import 'dart:async' as async;

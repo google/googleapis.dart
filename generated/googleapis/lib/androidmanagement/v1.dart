@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Android Management API - v1
+///
+/// The Android Management API provides remote enterprise management of Android
+/// devices and apps.
+///
+/// For more information, see <https://developers.google.com/android/management>
 library googleapis.androidmanagement.v1;
 
 import 'dart:async' as async;

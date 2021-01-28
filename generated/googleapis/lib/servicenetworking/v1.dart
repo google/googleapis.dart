@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Service Networking API - v1
+///
+/// Provides automatic management of network configurations necessary for
+/// certain services.
+///
+/// For more information, see
+/// <https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started>
 library googleapis.servicenetworking.v1;
 
 import 'dart:async' as async;

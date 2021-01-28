@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// AdMob API - v1
+///
+/// The AdMob API allows publishers to programmatically get information about
+/// their AdMob account.
+///
+/// For more information, see <https://developers.google.com/admob/api/>
 library googleapis.admob.v1;
 
 import 'dart:async' as async;

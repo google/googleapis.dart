@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Functions API - v1
+///
+/// Manages lightweight user-provided functions executed in response to events.
+///
+/// For more information, see <https://cloud.google.com/functions>
 library googleapis.cloudfunctions.v1;
 
 import 'dart:async' as async;

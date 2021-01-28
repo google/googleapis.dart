@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Sheets API - v4
+///
+/// Reads and writes Google Sheets.
+///
+/// For more information, see <https://developers.google.com/sheets/>
 library googleapis.sheets.v4;
 
 import 'dart:async' as async;

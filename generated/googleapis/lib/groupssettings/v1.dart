@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Groups Settings API - v1
+///
+/// Manages permission levels and related settings of a group.
+///
+/// For more information, see
+/// <https://developers.google.com/google-apps/groups-settings/get_started>
 library googleapis.groupssettings.v1;
 
 import 'dart:async' as async;

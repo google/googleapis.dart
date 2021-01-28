@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Search Console API - v1
+///
+/// The Search Console API provides access to both Search Console data (verified
+/// users only) and to public information on an URL basis (anyone)
+///
+/// For more information, see
+/// <https://developers.google.com/webmaster-tools/search-console-api/>
 library googleapis.searchconsole.v1;
 
 import 'dart:async' as async;

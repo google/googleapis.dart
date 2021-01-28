@@ -433,8 +433,14 @@ class DartResourceClass {
   final List<Identifier> subResourceIdentifiers;
   final List<DartResourceClass> subResources;
 
-  DartResourceClass(this.imports, this.className, this.comment, this.methods,
-      this.subResourceIdentifiers, this.subResources);
+  DartResourceClass(
+    this.imports,
+    this.className,
+    this.comment,
+    this.methods,
+    this.subResourceIdentifiers,
+    this.subResources,
+  );
 
   String get preamble => '';
 
@@ -859,11 +865,26 @@ DartResourceClass _parseResource(
 
     final rootUrl = description.rootUrl;
     final restPath = description.servicePath;
-    return DartApiClass(imports, className, comment, dartMethods,
-        dartSubResourceIdentifiers, dartSubResource, rootUrl, restPath, scopes);
+    return DartApiClass(
+      imports,
+      className,
+      comment,
+      dartMethods,
+      dartSubResourceIdentifiers,
+      dartSubResource,
+      rootUrl,
+      restPath,
+      scopes,
+    );
   } else {
-    return DartResourceClass(imports, className, comment, dartMethods,
-        dartSubResourceIdentifiers, dartSubResource);
+    return DartResourceClass(
+      imports,
+      className,
+      comment,
+      dartMethods,
+      dartSubResourceIdentifiers,
+      dartSubResource,
+    );
   }
 }
 

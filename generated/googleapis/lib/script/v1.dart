@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Apps Script API - v1
+///
+/// Manages and executes Google Apps Script projects.
+///
+/// For more information, see <https://developers.google.com/apps-script/api/>
 library googleapis.script.v1;
 
 import 'dart:async' as async;

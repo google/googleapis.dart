@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Blogger API v3 - v3
+///
+/// The Blogger API provides access to posts, comments and pages of a Blogger
+/// blog.
+///
+/// For more information, see
+/// <https://developers.google.com/blogger/docs/3.0/getting_started>
 library googleapis.blogger.v3;
 
 import 'dart:async' as async;

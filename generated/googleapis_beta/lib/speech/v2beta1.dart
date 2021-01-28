@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Speech-to-Text API - v2beta1
+///
+/// Converts audio to text by applying powerful neural network models.
+///
+/// For more information, see
+/// <https://cloud.google.com/speech-to-text/docs/quickstart-protocol>
 library googleapis_beta.speech.v2beta1;
 
 import 'dart:async' as async;

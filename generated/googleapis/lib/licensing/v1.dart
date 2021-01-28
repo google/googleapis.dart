@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Enterprise License Manager API - v1
+///
+/// The Google Enterprise License Manager API's allows you to license apps for
+/// all the users of a domain managed by you.
+///
+/// For more information, see
+/// <https://developers.google.com/admin-sdk/licensing/>
 library googleapis.licensing.v1;
 
 import 'dart:async' as async;

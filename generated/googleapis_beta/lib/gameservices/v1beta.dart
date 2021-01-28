@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Game Services API - v1beta
+///
+/// Deploy and manage infrastructure for global multiplayer gaming experiences.
+///
+/// For more information, see <https://cloud.google.com/solutions/gaming/>
 library googleapis_beta.gameservices.v1beta;
 
 import 'dart:async' as async;

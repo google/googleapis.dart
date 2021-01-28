@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Indexing API - v3
+///
+/// Notifies Google when your web pages change.
+///
+/// For more information, see
+/// <https://developers.google.com/search/apis/indexing-api/>
 library googleapis.indexing.v3;
 
 import 'dart:async' as async;

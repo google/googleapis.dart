@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Web Fonts Developer API - v1
+///
+/// The Google Web Fonts Developer API lets you retrieve information about web
+/// fonts served by Google.
+///
+/// For more information, see
+/// <https://developers.google.com/fonts/docs/developer_api>
 library googleapis.webfonts.v1;
 
 import 'dart:async' as async;

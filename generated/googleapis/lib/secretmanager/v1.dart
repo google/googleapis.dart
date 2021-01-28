@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Secret Manager API - v1
+///
+/// Stores sensitive data such as API keys, passwords, and certificates.
+/// Provides convenience while improving security.
+///
+/// For more information, see <https://cloud.google.com/secret-manager/>
 library googleapis.secretmanager.v1;
 
 import 'dart:async' as async;

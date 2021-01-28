@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// API Discovery Service - v1
+///
+/// Provides information about other Google APIs, such as what APIs are
+/// available, the resource, and method details for each API.
+///
+/// For more information, see <https://developers.google.com/discovery/>
 library googleapis.discovery.v1;
 
 import 'dart:async' as async;

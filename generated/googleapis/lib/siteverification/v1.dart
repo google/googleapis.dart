@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Site Verification API - v1
+///
+/// Verifies ownership of websites or domains with Google.
+///
+/// For more information, see <https://developers.google.com/site-verification/>
 library googleapis.siteVerification.v1;
 
 import 'dart:async' as async;

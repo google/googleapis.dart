@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Access Context Manager API - v1
+///
+/// An API for setting attribute based access control to requests to GCP
+/// services.
+///
+/// For more information, see
+/// <https://cloud.google.com/access-context-manager/docs/reference/rest/>
 library googleapis.accesscontextmanager.v1;
 
 import 'dart:async' as async;

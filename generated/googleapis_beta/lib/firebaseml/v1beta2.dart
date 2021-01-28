@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Firebase ML API - v1beta2
+///
+/// Access custom machine learning models hosted via Firebase ML.
+///
+/// For more information, see <https://firebase.google.com>
 library googleapis_beta.firebaseml.v1beta2;
 
 import 'dart:async' as async;

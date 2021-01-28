@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Search Ads 360 API - v2
+///
+/// The Search Ads 360 API allows developers to automate uploading conversions
+/// and downloading reports from Search Ads 360.
+///
+/// For more information, see <https://developers.google.com/search-ads>
 library googleapis.doubleclicksearch.v2;
 
 import 'dart:async' as async;

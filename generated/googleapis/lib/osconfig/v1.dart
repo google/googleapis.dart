@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// OS Config API - v1
+///
+/// OS management tools that can be used for patch management, patch compliance,
+/// and configuration management on VM instances.
+///
+/// For more information, see <https://cloud.google.com/compute/docs/manage-os>
 library googleapis.osconfig.v1;
 
 import 'dart:async' as async;

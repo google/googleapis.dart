@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Civic Information API - v2
+///
+/// Provides polling places, early vote locations, contest data, election
+/// officials, and government representatives for U.S. residential addresses.
+///
+/// For more information, see <https://developers.google.com/civic-information/>
 library googleapis.civicinfo.v2;
 
 import 'dart:async' as async;

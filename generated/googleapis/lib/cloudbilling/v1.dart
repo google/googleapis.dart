@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Billing API - v1
+///
+/// Allows developers to manage billing for their Google Cloud Platform projects
+/// programmatically.
+///
+/// For more information, see <https://cloud.google.com/billing/>
 library googleapis.cloudbilling.v1;
 
 import 'dart:async' as async;

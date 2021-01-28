@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// AI Platform Training & Prediction API - v1
+///
+/// An API to enable creating and using machine learning models.
+///
+/// For more information, see <https://cloud.google.com/ml/>
 library googleapis.ml.v1;
 
 import 'dart:async' as async;

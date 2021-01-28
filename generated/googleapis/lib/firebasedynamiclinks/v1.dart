@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Firebase Dynamic Links API - v1
+///
+/// Programmatically creates and manages Firebase Dynamic Links.
+///
+/// For more information, see <https://firebase.google.com/docs/dynamic-links/>
 library googleapis.firebasedynamiclinks.v1;
 
 import 'dart:async' as async;

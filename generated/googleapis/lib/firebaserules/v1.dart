@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Firebase Rules API - v1
+///
+/// Creates and manages rules that determine when a Firebase Rules-enabled
+/// service should permit a request.
+///
+/// For more information, see
+/// <https://firebase.google.com/docs/storage/security>
 library googleapis.firebaserules.v1;
 
 import 'dart:async' as async;

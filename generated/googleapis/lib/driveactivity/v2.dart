@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Drive Activity API - v2
+///
+/// Provides a historical view of activity in Google Drive.
+///
+/// For more information, see <https://developers.google.com/drive/activity/>
 library googleapis.driveactivity.v2;
 
 import 'dart:async' as async;

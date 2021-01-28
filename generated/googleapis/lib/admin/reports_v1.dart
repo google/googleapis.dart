@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Admin SDK - reports_v1
+///
+/// Admin SDK lets administrators of enterprise domains to view and manage
+/// resources like user, groups etc. It also provides audit and usage reports of
+/// domain.
+///
+/// For more information, see <http://developers.google.com/admin-sdk/>
 library googleapis.admin.reports_v1;
 
 import 'dart:async' as async;

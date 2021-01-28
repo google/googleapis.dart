@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Play Game Services - v1
+///
+/// The Google Play games service allows developers to enhance games with social
+/// leaderboards, achievements, game state, sign-in with Google, and more.
+///
+/// For more information, see <https://developers.google.com/games/>
 library googleapis.games.v1;
 
 import 'dart:async' as async;

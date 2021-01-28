@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// G Suite Vault API - v1
+///
+/// Archiving and eDiscovery for G Suite.
+///
+/// For more information, see <https://developers.google.com/vault>
 library googleapis.vault.v1;
 
 import 'dart:async' as async;

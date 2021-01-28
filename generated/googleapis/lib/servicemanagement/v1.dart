@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Service Management API - v1
+///
+/// Google Service Management allows service producers to publish their services
+/// on Google Cloud Platform so that they can be discovered and used by service
+/// consumers.
+///
+/// For more information, see <https://cloud.google.com/service-management/>
 library googleapis.servicemanagement.v1;
 
 import 'dart:async' as async;

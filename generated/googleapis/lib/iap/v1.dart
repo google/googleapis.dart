@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Identity-Aware Proxy API - v1
+///
+/// Controls access to cloud applications running on Google Cloud Platform.
+///
+/// For more information, see <https://cloud.google.com/iap>
 library googleapis.iap.v1;
 
 import 'dart:async' as async;

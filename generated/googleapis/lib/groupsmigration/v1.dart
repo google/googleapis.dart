@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Groups Migration API - v1
+///
+/// The Groups Migration API allows domain administrators to archive emails into
+/// Google groups.
+///
+/// For more information, see
+/// <https://developers.google.com/google-apps/groups-migration/>
 library googleapis.groupsmigration.v1;
 
 import 'dart:async' as async;

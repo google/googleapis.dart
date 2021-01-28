@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Spanner API - v1
+///
+/// Cloud Spanner is a managed, mission-critical, globally consistent and
+/// scalable relational database service.
+///
+/// For more information, see <https://cloud.google.com/spanner/>
 library googleapis.spanner.v1;
 
 import 'dart:async' as async;

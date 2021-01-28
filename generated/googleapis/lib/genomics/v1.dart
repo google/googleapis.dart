@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Genomics API - v1
+///
+/// Uploads, processes, queries, and searches Genomics data in the cloud.
+///
+/// For more information, see <https://cloud.google.com/genomics>
 library googleapis.genomics.v1;
 
 import 'dart:async' as async;

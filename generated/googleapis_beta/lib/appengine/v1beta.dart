@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// App Engine Admin API - v1beta
+///
+/// Provisions and manages developers' App Engine applications.
+///
+/// For more information, see
+/// <https://cloud.google.com/appengine/docs/admin-api/>
 library googleapis_beta.appengine.v1beta;
 
 import 'dart:async' as async;

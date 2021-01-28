@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Dataproc API - v1
+///
+/// Manages Hadoop-based clusters and jobs on Google Cloud Platform.
+///
+/// For more information, see <https://cloud.google.com/dataproc/>
 library googleapis.dataproc.v1;
 
 import 'dart:async' as async;

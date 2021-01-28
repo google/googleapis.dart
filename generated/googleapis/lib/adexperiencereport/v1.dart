@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Ad Experience Report API - v1
+///
+/// Views Ad Experience Report data, and gets a list of sites that have a
+/// significant number of annoying ads.
+///
+/// For more information, see
+/// <https://developers.google.com/ad-experience-report/>
 library googleapis.adexperiencereport.v1;
 
 import 'dart:async' as async;

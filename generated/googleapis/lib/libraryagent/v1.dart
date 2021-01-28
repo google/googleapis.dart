@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Library Agent API - v1
+///
+/// A simple Google Example Library API.
+///
+/// For more information, see <https://cloud.google.com/docs/quota>
 library googleapis.libraryagent.v1;
 
 import 'dart:async' as async;

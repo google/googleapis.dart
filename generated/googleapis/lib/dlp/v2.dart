@@ -15,6 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Data Loss Prevention (DLP) API - v2
+///
+/// Provides methods for detection, risk analysis, and de-identification of
+/// privacy-sensitive fragments in text, images, and Google Cloud Platform
+/// storage repositories.
+///
+/// For more information, see <https://cloud.google.com/dlp/docs/>
 library googleapis.dlp.v2;
 
 import 'dart:async' as async;

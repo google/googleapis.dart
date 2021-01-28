@@ -15,6 +15,14 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Ad Exchange Buyer API II - v2beta1
+///
+/// Accesses the latest features for managing Authorized Buyers accounts,
+/// Real-Time Bidding configurations and auction metrics, and Marketplace
+/// programmatic deals.
+///
+/// For more information, see
+/// <https://developers.google.com/authorized-buyers/apis/reference/rest/>
 library googleapis_beta.adexchangebuyer2.v2beta1;
 
 import 'dart:async' as async;

@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Display & Video 360 API - v1
+///
+/// Display & Video 360 API allows users to manage and create campaigns and
+/// reports.
+///
+/// For more information, see <https://developers.google.com/display-video/>
 library googleapis.displayvideo.v1;
 
 import 'dart:async' as async;

@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud TPU API - v1
+///
+/// TPU API provides customers with access to Google TPU technology.
+///
+/// For more information, see <https://cloud.google.com/tpu/>
 library googleapis.tpu.v1;
 
 import 'dart:async' as async;

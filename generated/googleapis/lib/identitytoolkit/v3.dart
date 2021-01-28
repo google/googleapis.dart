@@ -15,6 +15,12 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Identity Toolkit API - v3
+///
+/// Help the third party sites to implement federated login.
+///
+/// For more information, see
+/// <https://developers.google.com/identity-toolkit/v3/>
 library googleapis.identitytoolkit.v3;
 
 import 'dart:async' as async;

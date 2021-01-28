@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Cloud Scheduler API - v1
+///
+/// Creates and manages jobs run on a regular recurring schedule.
+///
+/// For more information, see <https://cloud.google.com/scheduler/>
 library googleapis.cloudscheduler.v1;
 
 import 'dart:async' as async;

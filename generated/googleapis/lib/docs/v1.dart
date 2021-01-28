@@ -15,6 +15,11 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
+/// Google Docs API - v1
+///
+/// Reads and writes Google Docs documents.
+///
+/// For more information, see <https://developers.google.com/docs/>
 library googleapis.docs.v1;
 
 import 'dart:async' as async;
