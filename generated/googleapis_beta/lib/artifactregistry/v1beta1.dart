@@ -21,6 +21,17 @@
 /// on Google infrastructure.
 ///
 /// For more information, see <https://cloud.google.com/artifacts/docs/>
+///
+/// Create an instance of [ArtifactRegistryApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsRepositoriesResourceApi]
+///       - [ProjectsLocationsRepositoriesFilesResourceApi]
+///       - [ProjectsLocationsRepositoriesPackagesResourceApi]
+///         - [ProjectsLocationsRepositoriesPackagesTagsResourceApi]
+///         - [ProjectsLocationsRepositoriesPackagesVersionsResourceApi]
 library artifactregistry.v1beta1;
 
 import 'dart:async' as async;

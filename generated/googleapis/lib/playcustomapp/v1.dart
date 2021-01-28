@@ -21,6 +21,11 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/android/work/play/custom-app-api/>
+///
+/// Create an instance of [PlaycustomappApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsCustomAppsResourceApi]
 library playcustomapp.v1;
 
 import 'dart:async' as async;

@@ -21,6 +21,12 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/identity/protocols/oauth2/>
+///
+/// Create an instance of [Oauth2Api] to access these resources:
+///
+/// - [UserinfoResourceApi]
+///   - [UserinfoV2ResourceApi]
+///     - [UserinfoV2MeResourceApi]
 library oauth2.v2;
 
 import 'dart:async' as async;

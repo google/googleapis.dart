@@ -22,6 +22,15 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/access-context-manager/docs/reference/rest/>
+///
+/// Create an instance of [AccessContextManagerApi] to access these resources:
+///
+/// - [AccessPoliciesResourceApi]
+///   - [AccessPoliciesAccessLevelsResourceApi]
+///   - [AccessPoliciesServicePerimetersResourceApi]
+/// - [OperationsResourceApi]
+/// - [OrganizationsResourceApi]
+///   - [OrganizationsGcpUserAccessBindingsResourceApi]
 library accesscontextmanager.v1;
 
 import 'dart:async' as async;

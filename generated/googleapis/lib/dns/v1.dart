@@ -17,9 +17,17 @@
 
 /// Cloud DNS API - v1
 ///
-///
-///
 /// For more information, see <http://developers.google.com/cloud-dns>
+///
+/// Create an instance of [DnsApi] to access these resources:
+///
+/// - [ChangesResourceApi]
+/// - [DnsKeysResourceApi]
+/// - [ManagedZoneOperationsResourceApi]
+/// - [ManagedZonesResourceApi]
+/// - [PoliciesResourceApi]
+/// - [ProjectsResourceApi]
+/// - [ResourceRecordSetsResourceApi]
 library dns.v1;
 
 import 'dart:async' as async;

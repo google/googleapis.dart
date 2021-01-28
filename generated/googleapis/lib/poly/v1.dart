@@ -24,6 +24,13 @@
 ///
 ///
 /// For more information, see <https://developers.google.com/poly/>
+///
+/// Create an instance of [PolyServiceApi] to access these resources:
+///
+/// - [AssetsResourceApi]
+/// - [UsersResourceApi]
+///   - [UsersAssetsResourceApi]
+///   - [UsersLikedassetsResourceApi]
 library poly.v1;
 
 import 'dart:async' as async;

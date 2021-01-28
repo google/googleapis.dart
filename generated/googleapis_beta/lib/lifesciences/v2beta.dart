@@ -21,6 +21,13 @@
 /// processing, and transforming life sciences data.
 ///
 /// For more information, see <https://cloud.google.com/life-sciences>
+///
+/// Create an instance of [CloudLifeSciencesApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsPipelinesResourceApi]
 library lifesciences.v2beta;
 
 import 'dart:async' as async;

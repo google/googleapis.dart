@@ -21,6 +21,21 @@
 /// configuration.
 ///
 /// For more information, see <https://developers.google.com/tag-manager>
+///
+/// Create an instance of [TagManagerApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsContainersResourceApi]
+///     - [AccountsContainersEnvironmentsResourceApi]
+///     - [AccountsContainersFoldersResourceApi]
+///       - [AccountsContainersFoldersEntitiesResourceApi]
+///     - [AccountsContainersMoveFoldersResourceApi]
+///     - [AccountsContainersReauthorizeEnvironmentsResourceApi]
+///     - [AccountsContainersTagsResourceApi]
+///     - [AccountsContainersTriggersResourceApi]
+///     - [AccountsContainersVariablesResourceApi]
+///     - [AccountsContainersVersionsResourceApi]
+///   - [AccountsPermissionsResourceApi]
 library tagmanager.v1;
 
 import 'dart:async' as async;

@@ -20,6 +20,29 @@
 /// Lets Android application developers access their Google Play accounts.
 ///
 /// For more information, see <https://developers.google.com/android-publisher>
+///
+/// Create an instance of [AndroidPublisherApi] to access these resources:
+///
+/// - [EditsResourceApi]
+///   - [EditsApksResourceApi]
+///   - [EditsBundlesResourceApi]
+///   - [EditsDeobfuscationfilesResourceApi]
+///   - [EditsDetailsResourceApi]
+///   - [EditsExpansionfilesResourceApi]
+///   - [EditsImagesResourceApi]
+///   - [EditsListingsResourceApi]
+///   - [EditsTestersResourceApi]
+///   - [EditsTracksResourceApi]
+/// - [InappproductsResourceApi]
+/// - [InternalappsharingartifactsResourceApi]
+/// - [OrdersResourceApi]
+/// - [PurchasesResourceApi]
+///   - [PurchasesProductsResourceApi]
+///   - [PurchasesSubscriptionsResourceApi]
+///   - [PurchasesVoidedpurchasesResourceApi]
+/// - [ReviewsResourceApi]
+/// - [SystemapksResourceApi]
+///   - [SystemapksVariantsResourceApi]
 library androidpublisher.v3;
 
 import 'dart:async' as async;

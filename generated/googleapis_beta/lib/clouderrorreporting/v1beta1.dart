@@ -22,6 +22,13 @@
 /// errors.
 ///
 /// For more information, see <https://cloud.google.com/error-reporting/>
+///
+/// Create an instance of [ClouderrorreportingApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsEventsResourceApi]
+///   - [ProjectsGroupStatsResourceApi]
+///   - [ProjectsGroupsResourceApi]
 library clouderrorreporting.v1beta1;
 
 import 'dart:async' as async;

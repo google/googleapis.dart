@@ -20,6 +20,23 @@
 /// Manages classes, rosters, and invitations in Google Classroom.
 ///
 /// For more information, see <https://developers.google.com/classroom/>
+///
+/// Create an instance of [ClassroomApi] to access these resources:
+///
+/// - [CoursesResourceApi]
+///   - [CoursesAliasesResourceApi]
+///   - [CoursesAnnouncementsResourceApi]
+///   - [CoursesCourseWorkResourceApi]
+///     - [CoursesCourseWorkStudentSubmissionsResourceApi]
+///   - [CoursesCourseWorkMaterialsResourceApi]
+///   - [CoursesStudentsResourceApi]
+///   - [CoursesTeachersResourceApi]
+///   - [CoursesTopicsResourceApi]
+/// - [InvitationsResourceApi]
+/// - [RegistrationsResourceApi]
+/// - [UserProfilesResourceApi]
+///   - [UserProfilesGuardianInvitationsResourceApi]
+///   - [UserProfilesGuardiansResourceApi]
 library classroom.v1;
 
 import 'dart:async' as async;

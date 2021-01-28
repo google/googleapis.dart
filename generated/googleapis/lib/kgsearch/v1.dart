@@ -20,6 +20,10 @@
 /// Searches the Google Knowledge Graph for entities.
 ///
 /// For more information, see <https://developers.google.com/knowledge-graph/>
+///
+/// Create an instance of [KgsearchApi] to access these resources:
+///
+/// - [EntitiesResourceApi]
 library kgsearch.v1;
 
 import 'dart:async' as async;

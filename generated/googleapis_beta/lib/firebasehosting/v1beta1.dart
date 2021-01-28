@@ -22,6 +22,25 @@
 /// or updated hosting configurations and content files.
 ///
 /// For more information, see <https://firebase.google.com/docs/hosting/>
+///
+/// Create an instance of [FirebaseHostingApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsOperationsResourceApi]
+///   - [ProjectsSitesResourceApi]
+///     - [ProjectsSitesChannelsResourceApi]
+///       - [ProjectsSitesChannelsReleasesResourceApi]
+///     - [ProjectsSitesDomainsResourceApi]
+///     - [ProjectsSitesReleasesResourceApi]
+///     - [ProjectsSitesVersionsResourceApi]
+///       - [ProjectsSitesVersionsFilesResourceApi]
+/// - [SitesResourceApi]
+///   - [SitesChannelsResourceApi]
+///     - [SitesChannelsReleasesResourceApi]
+///   - [SitesDomainsResourceApi]
+///   - [SitesReleasesResourceApi]
+///   - [SitesVersionsResourceApi]
+///     - [SitesVersionsFilesResourceApi]
 library firebasehosting.v1beta1;
 
 import 'dart:async' as async;

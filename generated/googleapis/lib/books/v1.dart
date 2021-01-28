@@ -21,6 +21,34 @@
 ///
 /// For more information, see
 /// <https://code.google.com/apis/books/docs/v1/getting_started.html>
+///
+/// Create an instance of [BooksApi] to access these resources:
+///
+/// - [BookshelvesResourceApi]
+///   - [BookshelvesVolumesResourceApi]
+/// - [CloudloadingResourceApi]
+/// - [DictionaryResourceApi]
+/// - [FamilysharingResourceApi]
+/// - [LayersResourceApi]
+///   - [LayersAnnotationDataResourceApi]
+///   - [LayersVolumeAnnotationsResourceApi]
+/// - [MyconfigResourceApi]
+/// - [MylibraryResourceApi]
+///   - [MylibraryAnnotationsResourceApi]
+///   - [MylibraryBookshelvesResourceApi]
+///     - [MylibraryBookshelvesVolumesResourceApi]
+///   - [MylibraryReadingpositionsResourceApi]
+/// - [NotificationResourceApi]
+/// - [OnboardingResourceApi]
+/// - [PersonalizedstreamResourceApi]
+/// - [PromoofferResourceApi]
+/// - [SeriesResourceApi]
+///   - [SeriesMembershipResourceApi]
+/// - [VolumesResourceApi]
+///   - [VolumesAssociatedResourceApi]
+///   - [VolumesMybooksResourceApi]
+///   - [VolumesRecommendedResourceApi]
+///   - [VolumesUseruploadedResourceApi]
 library books.v1;
 
 import 'dart:async' as async;

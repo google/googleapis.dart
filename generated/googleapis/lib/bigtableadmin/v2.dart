@@ -20,6 +20,19 @@
 /// Administer your Cloud Bigtable tables and instances.
 ///
 /// For more information, see <https://cloud.google.com/bigtable/>
+///
+/// Create an instance of [BigtableAdminApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+///   - [OperationsProjectsResourceApi]
+///     - [OperationsProjectsOperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsInstancesResourceApi]
+///     - [ProjectsInstancesAppProfilesResourceApi]
+///     - [ProjectsInstancesClustersResourceApi]
+///       - [ProjectsInstancesClustersBackupsResourceApi]
+///     - [ProjectsInstancesTablesResourceApi]
+///   - [ProjectsLocationsResourceApi]
 library bigtableadmin.v2;
 
 import 'dart:async' as async;

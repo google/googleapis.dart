@@ -20,6 +20,13 @@
 /// Reads and writes Google Sheets.
 ///
 /// For more information, see <https://developers.google.com/sheets/>
+///
+/// Create an instance of [SheetsApi] to access these resources:
+///
+/// - [SpreadsheetsResourceApi]
+///   - [SpreadsheetsDeveloperMetadataResourceApi]
+///   - [SpreadsheetsSheetsResourceApi]
+///   - [SpreadsheetsValuesResourceApi]
 library sheets.v4;
 
 import 'dart:async' as async;

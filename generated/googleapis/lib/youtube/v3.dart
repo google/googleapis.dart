@@ -21,6 +21,39 @@
 /// as videos, playlists, and channels.
 ///
 /// For more information, see <https://developers.google.com/youtube/>
+///
+/// Create an instance of [YouTubeApi] to access these resources:
+///
+/// - [AbuseReportsResourceApi]
+/// - [ActivitiesResourceApi]
+/// - [CaptionsResourceApi]
+/// - [ChannelBannersResourceApi]
+/// - [ChannelSectionsResourceApi]
+/// - [ChannelsResourceApi]
+/// - [CommentThreadsResourceApi]
+/// - [CommentsResourceApi]
+/// - [I18nLanguagesResourceApi]
+/// - [I18nRegionsResourceApi]
+/// - [LiveBroadcastsResourceApi]
+/// - [LiveChatBansResourceApi]
+/// - [LiveChatMessagesResourceApi]
+/// - [LiveChatModeratorsResourceApi]
+/// - [LiveStreamsResourceApi]
+/// - [MembersResourceApi]
+/// - [MembershipsLevelsResourceApi]
+/// - [PlaylistItemsResourceApi]
+/// - [PlaylistsResourceApi]
+/// - [SearchResourceApi]
+/// - [SponsorsResourceApi]
+/// - [SubscriptionsResourceApi]
+/// - [SuperChatEventsResourceApi]
+/// - [TestsResourceApi]
+/// - [ThirdPartyLinksResourceApi]
+/// - [ThumbnailsResourceApi]
+/// - [VideoAbuseReportReasonsResourceApi]
+/// - [VideoCategoriesResourceApi]
+/// - [VideosResourceApi]
+/// - [WatermarksResourceApi]
 library youtube.v3;
 
 import 'dart:async' as async;

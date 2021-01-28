@@ -21,6 +21,12 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/source-repositories/docs/apis>
+///
+/// Create an instance of [CloudSourceRepositoriesApi] to access these
+/// resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsReposResourceApi]
 library sourcerepo.v1;
 
 import 'dart:async' as async;

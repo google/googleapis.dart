@@ -17,10 +17,13 @@
 
 /// HomeGraph API - v1
 ///
-///
-///
 /// For more information, see
 /// <https://developers.google.com/actions/smarthome/create-app#request-sync>
+///
+/// Create an instance of [HomeGraphServiceApi] to access these resources:
+///
+/// - [AgentUsersResourceApi]
+/// - [DevicesResourceApi]
 library homegraph.v1;
 
 import 'dart:async' as async_1;

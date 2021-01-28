@@ -21,6 +21,14 @@
 /// from the Google Play Game service.
 ///
 /// For more information, see <https://developers.google.com/games/>
+///
+/// Create an instance of [GamesManagementApi] to access these resources:
+///
+/// - [AchievementsResourceApi]
+/// - [ApplicationsResourceApi]
+/// - [EventsResourceApi]
+/// - [PlayersResourceApi]
+/// - [ScoresResourceApi]
 library gamesManagement.v1management;
 
 import 'dart:async' as async;

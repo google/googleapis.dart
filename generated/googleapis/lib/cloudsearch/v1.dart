@@ -22,6 +22,36 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/cloud-search/docs/guides/>
+///
+/// Create an instance of [CloudSearchApi] to access these resources:
+///
+/// - [DebugResourceApi]
+///   - [DebugDatasourcesResourceApi]
+///     - [DebugDatasourcesItemsResourceApi]
+///       - [DebugDatasourcesItemsUnmappedidsResourceApi]
+///   - [DebugIdentitysourcesResourceApi]
+///     - [DebugIdentitysourcesItemsResourceApi]
+///     - [DebugIdentitysourcesUnmappedidsResourceApi]
+/// - [IndexingResourceApi]
+///   - [IndexingDatasourcesResourceApi]
+///     - [IndexingDatasourcesItemsResourceApi]
+/// - [MediaResourceApi]
+/// - [OperationsResourceApi]
+///   - [OperationsLroResourceApi]
+/// - [QueryResourceApi]
+///   - [QuerySourcesResourceApi]
+/// - [SettingsResourceApi]
+///   - [SettingsDatasourcesResourceApi]
+///   - [SettingsSearchapplicationsResourceApi]
+/// - [StatsResourceApi]
+///   - [StatsIndexResourceApi]
+///     - [StatsIndexDatasourcesResourceApi]
+///   - [StatsQueryResourceApi]
+///     - [StatsQuerySearchapplicationsResourceApi]
+///   - [StatsSessionResourceApi]
+///     - [StatsSessionSearchapplicationsResourceApi]
+///   - [StatsUserResourceApi]
+///     - [StatsUserSearchapplicationsResourceApi]
 library cloudsearch.v1;
 
 import 'dart:async' as async;

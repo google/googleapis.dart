@@ -21,6 +21,22 @@
 /// messages, and labels.
 ///
 /// For more information, see <https://developers.google.com/gmail/api/>
+///
+/// Create an instance of [GmailApi] to access these resources:
+///
+/// - [UsersResourceApi]
+///   - [UsersDraftsResourceApi]
+///   - [UsersHistoryResourceApi]
+///   - [UsersLabelsResourceApi]
+///   - [UsersMessagesResourceApi]
+///     - [UsersMessagesAttachmentsResourceApi]
+///   - [UsersSettingsResourceApi]
+///     - [UsersSettingsDelegatesResourceApi]
+///     - [UsersSettingsFiltersResourceApi]
+///     - [UsersSettingsForwardingAddressesResourceApi]
+///     - [UsersSettingsSendAsResourceApi]
+///       - [UsersSettingsSendAsSmimeInfoResourceApi]
+///   - [UsersThreadsResourceApi]
 library gmail.v1;
 
 import 'dart:async' as async;

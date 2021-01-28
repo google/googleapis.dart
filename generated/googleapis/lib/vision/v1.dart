@@ -22,6 +22,26 @@
 /// explicit content, into applications.
 ///
 /// For more information, see <https://cloud.google.com/vision/>
+///
+/// Create an instance of [VisionApi] to access these resources:
+///
+/// - [FilesResourceApi]
+/// - [ImagesResourceApi]
+/// - [LocationsResourceApi]
+///   - [LocationsOperationsResourceApi]
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsFilesResourceApi]
+///   - [ProjectsImagesResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsFilesResourceApi]
+///     - [ProjectsLocationsImagesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsProductSetsResourceApi]
+///       - [ProjectsLocationsProductSetsProductsResourceApi]
+///     - [ProjectsLocationsProductsResourceApi]
+///       - [ProjectsLocationsProductsReferenceImagesResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library vision.v1;
 
 import 'dart:async' as async;

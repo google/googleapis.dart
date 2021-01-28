@@ -21,6 +21,14 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/remote-build-execution/docs/>
+///
+/// Create an instance of [RemoteBuildExecutionApi] to access these resources:
+///
+/// - [ActionResultsResourceApi]
+/// - [ActionsResourceApi]
+/// - [BlobsResourceApi]
+/// - [OperationsResourceApi]
+/// - [V2ResourceApi]
 library remotebuildexecution.v2;
 
 import 'dart:async' as async;

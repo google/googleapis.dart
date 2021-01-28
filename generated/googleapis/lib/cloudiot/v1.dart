@@ -21,6 +21,17 @@
 /// Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/iot>
+///
+/// Create an instance of [CloudIotApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsRegistriesResourceApi]
+///       - [ProjectsLocationsRegistriesDevicesResourceApi]
+///         - [ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi]
+///         - [ProjectsLocationsRegistriesDevicesStatesResourceApi]
+///       - [ProjectsLocationsRegistriesGroupsResourceApi]
+///         - [ProjectsLocationsRegistriesGroupsDevicesResourceApi]
 library cloudiot.v1;
 
 import 'dart:async' as async;

@@ -24,6 +24,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/speed/docs/insights/v5/about>
+///
+/// Create an instance of [PagespeedInsightsApi] to access these resources:
+///
+/// - [PagespeedapiResourceApi]
 library pagespeedonline.v5;
 
 import 'dart:async' as async;

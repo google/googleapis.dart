@@ -20,6 +20,13 @@
 /// Controls access to cloud applications running on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/iap>
+///
+/// Create an instance of [CloudIAPApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsBrandsResourceApi]
+///     - [ProjectsBrandsIdentityAwareProxyClientsResourceApi]
+/// - [V1ResourceApi]
 library iap.v1;
 
 import 'dart:async' as async;

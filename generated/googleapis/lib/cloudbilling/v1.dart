@@ -21,6 +21,14 @@
 /// programmatically.
 ///
 /// For more information, see <https://cloud.google.com/billing/>
+///
+/// Create an instance of [CloudbillingApi] to access these resources:
+///
+/// - [BillingAccountsResourceApi]
+///   - [BillingAccountsProjectsResourceApi]
+/// - [ProjectsResourceApi]
+/// - [ServicesResourceApi]
+///   - [ServicesSkusResourceApi]
 library cloudbilling.v1;
 
 import 'dart:async' as async;

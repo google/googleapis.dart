@@ -21,6 +21,30 @@
 /// Shopping.
 ///
 /// For more information, see <https://developers.google.com/shopping-content>
+///
+/// Create an instance of [ShoppingContentApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+/// - [AccountstatusesResourceApi]
+/// - [AccounttaxResourceApi]
+/// - [DatafeedsResourceApi]
+/// - [DatafeedstatusesResourceApi]
+/// - [LiasettingsResourceApi]
+/// - [LocalinventoryResourceApi]
+/// - [OrderinvoicesResourceApi]
+/// - [OrderreportsResourceApi]
+/// - [OrderreturnsResourceApi]
+/// - [OrdersResourceApi]
+/// - [PosResourceApi]
+/// - [ProductsResourceApi]
+/// - [ProductstatusesResourceApi]
+/// - [PubsubnotificationsettingsResourceApi]
+/// - [RegionalinventoryResourceApi]
+/// - [ReturnaddressResourceApi]
+/// - [ReturnpolicyResourceApi]
+/// - [SettlementreportsResourceApi]
+/// - [SettlementtransactionsResourceApi]
+/// - [ShippingsettingsResourceApi]
 library content.v2_1;
 
 import 'dart:async' as async;

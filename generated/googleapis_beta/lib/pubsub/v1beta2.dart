@@ -21,6 +21,13 @@
 /// applications.
 ///
 /// For more information, see <https://cloud.google.com/pubsub/docs>
+///
+/// Create an instance of [PubsubApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsSubscriptionsResourceApi]
+///   - [ProjectsTopicsResourceApi]
+///     - [ProjectsTopicsSubscriptionsResourceApi]
 library pubsub.v1beta2;
 
 import 'dart:async' as async;

@@ -21,6 +21,20 @@
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 ///
 /// For more information, see <https://developers.google.com/games/>
+///
+/// Create an instance of [GamesApi] to access these resources:
+///
+/// - [AchievementDefinitionsResourceApi]
+/// - [AchievementsResourceApi]
+/// - [ApplicationsResourceApi]
+/// - [EventsResourceApi]
+/// - [LeaderboardsResourceApi]
+/// - [MetagameResourceApi]
+/// - [PlayersResourceApi]
+/// - [RevisionsResourceApi]
+/// - [ScoresResourceApi]
+/// - [SnapshotsResourceApi]
+/// - [StatsResourceApi]
 library games.v1;
 
 import 'dart:async' as async;

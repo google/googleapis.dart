@@ -20,6 +20,14 @@
 /// Provides access to information about profiles and contacts.
 ///
 /// For more information, see <https://developers.google.com/people/>
+///
+/// Create an instance of [PeopleServiceApi] to access these resources:
+///
+/// - [ContactGroupsResourceApi]
+///   - [ContactGroupsMembersResourceApi]
+/// - [OtherContactsResourceApi]
+/// - [PeopleResourceApi]
+///   - [PeopleConnectionsResourceApi]
 library people.v1;
 
 import 'dart:async' as async;

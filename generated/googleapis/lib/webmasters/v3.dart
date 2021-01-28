@@ -20,6 +20,12 @@
 /// View Google Search Console data for your verified sites.
 ///
 /// For more information, see <https://developers.google.com/webmaster-tools/>
+///
+/// Create an instance of [WebmastersApi] to access these resources:
+///
+/// - [SearchanalyticsResourceApi]
+/// - [SitemapsResourceApi]
+/// - [SitesResourceApi]
 library webmasters.v3;
 
 import 'dart:async' as async;

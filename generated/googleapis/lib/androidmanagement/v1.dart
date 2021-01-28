@@ -21,6 +21,18 @@
 /// devices and apps.
 ///
 /// For more information, see <https://developers.google.com/android/management>
+///
+/// Create an instance of [AndroidManagementApi] to access these resources:
+///
+/// - [EnterprisesResourceApi]
+///   - [EnterprisesApplicationsResourceApi]
+///   - [EnterprisesDevicesResourceApi]
+///     - [EnterprisesDevicesOperationsResourceApi]
+///   - [EnterprisesEnrollmentTokensResourceApi]
+///   - [EnterprisesPoliciesResourceApi]
+///   - [EnterprisesWebAppsResourceApi]
+///   - [EnterprisesWebTokensResourceApi]
+/// - [SignupUrlsResourceApi]
 library androidmanagement.v1;
 
 import 'dart:async' as async;

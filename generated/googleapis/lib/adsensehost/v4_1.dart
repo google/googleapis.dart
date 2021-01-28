@@ -21,6 +21,18 @@
 /// management capabilities for AdSense Hosts.
 ///
 /// For more information, see <https://developers.google.com/adsense/host/>
+///
+/// Create an instance of [AdSenseHostApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsAdclientsResourceApi]
+///   - [AccountsAdunitsResourceApi]
+///   - [AccountsReportsResourceApi]
+/// - [AdclientsResourceApi]
+/// - [AssociationsessionsResourceApi]
+/// - [CustomchannelsResourceApi]
+/// - [ReportsResourceApi]
+/// - [UrlchannelsResourceApi]
 library adsensehost.v4_1;
 
 import 'dart:async' as async;

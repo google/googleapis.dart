@@ -21,6 +21,12 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/reseller/>
+///
+/// Create an instance of [ResellerApi] to access these resources:
+///
+/// - [CustomersResourceApi]
+/// - [ResellernotifyResourceApi]
+/// - [SubscriptionsResourceApi]
 library reseller.v1;
 
 import 'dart:async' as async;

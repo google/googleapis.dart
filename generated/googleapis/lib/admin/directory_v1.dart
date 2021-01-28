@@ -22,6 +22,34 @@
 /// domain.
 ///
 /// For more information, see <http://developers.google.com/admin-sdk/>
+///
+/// Create an instance of [DirectoryApi] to access these resources:
+///
+/// - [AspsResourceApi]
+/// - [ChannelsResourceApi]
+/// - [ChromeosdevicesResourceApi]
+/// - [CustomersResourceApi]
+/// - [DomainAliasesResourceApi]
+/// - [DomainsResourceApi]
+/// - [GroupsResourceApi]
+///   - [GroupsAliasesResourceApi]
+/// - [MembersResourceApi]
+/// - [MobiledevicesResourceApi]
+/// - [OrgunitsResourceApi]
+/// - [PrivilegesResourceApi]
+/// - [ResourcesResourceApi]
+///   - [ResourcesBuildingsResourceApi]
+///   - [ResourcesCalendarsResourceApi]
+///   - [ResourcesFeaturesResourceApi]
+/// - [RoleAssignmentsResourceApi]
+/// - [RolesResourceApi]
+/// - [SchemasResourceApi]
+/// - [TokensResourceApi]
+/// - [TwoStepVerificationResourceApi]
+/// - [UsersResourceApi]
+///   - [UsersAliasesResourceApi]
+///   - [UsersPhotosResourceApi]
+/// - [VerificationCodesResourceApi]
 library admin.directory_v1;
 
 import 'dart:async' as async;

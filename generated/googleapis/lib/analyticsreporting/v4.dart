@@ -21,6 +21,11 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/analytics/devguides/reporting/core/v4/>
+///
+/// Create an instance of [AnalyticsReportingApi] to access these resources:
+///
+/// - [ReportsResourceApi]
+/// - [UserActivityResourceApi]
 library analyticsreporting.v4;
 
 import 'dart:async' as async;

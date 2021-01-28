@@ -23,6 +23,43 @@
 /// documentation at https://cloud.google.com/logging/docs.
 ///
 /// For more information, see <https://cloud.google.com/logging/docs/>
+///
+/// Create an instance of [LoggingApi] to access these resources:
+///
+/// - [BillingAccountsResourceApi]
+///   - [BillingAccountsBucketsResourceApi]
+///   - [BillingAccountsExclusionsResourceApi]
+///   - [BillingAccountsLocationsResourceApi]
+///     - [BillingAccountsLocationsBucketsResourceApi]
+///   - [BillingAccountsLogsResourceApi]
+///   - [BillingAccountsSinksResourceApi]
+/// - [EntriesResourceApi]
+/// - [ExclusionsResourceApi]
+/// - [FoldersResourceApi]
+///   - [FoldersExclusionsResourceApi]
+///   - [FoldersLocationsResourceApi]
+///     - [FoldersLocationsBucketsResourceApi]
+///   - [FoldersLogsResourceApi]
+///   - [FoldersSinksResourceApi]
+/// - [LocationsResourceApi]
+///   - [LocationsBucketsResourceApi]
+/// - [LogsResourceApi]
+/// - [MonitoredResourceDescriptorsResourceApi]
+/// - [OrganizationsResourceApi]
+///   - [OrganizationsExclusionsResourceApi]
+///   - [OrganizationsLocationsResourceApi]
+///     - [OrganizationsLocationsBucketsResourceApi]
+///   - [OrganizationsLogsResourceApi]
+///   - [OrganizationsSinksResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsExclusionsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsBucketsResourceApi]
+///   - [ProjectsLogsResourceApi]
+///   - [ProjectsMetricsResourceApi]
+///   - [ProjectsSinksResourceApi]
+/// - [SinksResourceApi]
+/// - [V2ResourceApi]
 library logging.v2;
 
 import 'dart:async' as async;

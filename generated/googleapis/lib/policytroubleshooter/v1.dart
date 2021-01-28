@@ -17,9 +17,11 @@
 
 /// Policy Troubleshooter API - v1
 ///
-///
-///
 /// For more information, see <https://cloud.google.com/iam/>
+///
+/// Create an instance of [PolicyTroubleshooterApi] to access these resources:
+///
+/// - [IamResourceApi]
 library policytroubleshooter.v1;
 
 import 'dart:async' as async;

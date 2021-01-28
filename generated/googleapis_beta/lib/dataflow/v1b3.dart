@@ -20,6 +20,30 @@
 /// Manages Google Cloud Dataflow projects on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/dataflow>
+///
+/// Create an instance of [DataflowApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsCatalogTemplatesResourceApi]
+///     - [ProjectsCatalogTemplatesTemplateVersionsResourceApi]
+///   - [ProjectsJobsResourceApi]
+///     - [ProjectsJobsDebugResourceApi]
+///     - [ProjectsJobsMessagesResourceApi]
+///     - [ProjectsJobsWorkItemsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsFlexTemplatesResourceApi]
+///     - [ProjectsLocationsJobsResourceApi]
+///       - [ProjectsLocationsJobsDebugResourceApi]
+///       - [ProjectsLocationsJobsMessagesResourceApi]
+///       - [ProjectsLocationsJobsSnapshotsResourceApi]
+///       - [ProjectsLocationsJobsStagesResourceApi]
+///       - [ProjectsLocationsJobsWorkItemsResourceApi]
+///     - [ProjectsLocationsSnapshotsResourceApi]
+///     - [ProjectsLocationsSqlResourceApi]
+///     - [ProjectsLocationsTemplatesResourceApi]
+///   - [ProjectsSnapshotsResourceApi]
+///   - [ProjectsTemplateVersionsResourceApi]
+///   - [ProjectsTemplatesResourceApi]
 library dataflow.v1b3;
 
 import 'dart:async' as async;

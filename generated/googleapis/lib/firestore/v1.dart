@@ -21,6 +21,17 @@
 /// performance, and ease of application development.
 ///
 /// For more information, see <https://cloud.google.com/firestore>
+///
+/// Create an instance of [FirestoreApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsDatabasesResourceApi]
+///     - [ProjectsDatabasesCollectionGroupsResourceApi]
+///       - [ProjectsDatabasesCollectionGroupsFieldsResourceApi]
+///       - [ProjectsDatabasesCollectionGroupsIndexesResourceApi]
+///     - [ProjectsDatabasesDocumentsResourceApi]
+///     - [ProjectsDatabasesOperationsResourceApi]
+///   - [ProjectsLocationsResourceApi]
 library firestore.v1;
 
 import 'dart:async' as async;

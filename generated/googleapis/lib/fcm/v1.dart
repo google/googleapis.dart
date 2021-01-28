@@ -21,6 +21,11 @@
 /// deliver messages at no cost.
 ///
 /// For more information, see <https://firebase.google.com/docs/cloud-messaging>
+///
+/// Create an instance of [FirebaseCloudMessagingApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsMessagesResourceApi]
 library fcm.v1;
 
 import 'dart:async' as async;

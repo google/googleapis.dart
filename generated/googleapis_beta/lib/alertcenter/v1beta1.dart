@@ -21,6 +21,12 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/admin-sdk/alertcenter/>
+///
+/// Create an instance of [AlertCenterApi] to access these resources:
+///
+/// - [AlertsResourceApi]
+///   - [AlertsFeedbackResourceApi]
+/// - [V1beta1ResourceApi]
 library alertcenter.v1beta1;
 
 import 'dart:async' as async;

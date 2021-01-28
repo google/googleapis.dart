@@ -21,6 +21,12 @@
 /// their games in Game Services.
 ///
 /// For more information, see <https://developers.google.com/games/>
+///
+/// Create an instance of [GamesConfigurationApi] to access these resources:
+///
+/// - [AchievementConfigurationsResourceApi]
+/// - [ImageConfigurationsResourceApi]
+/// - [LeaderboardConfigurationsResourceApi]
 library gamesConfiguration.v1configuration;
 
 import 'dart:async' as async;

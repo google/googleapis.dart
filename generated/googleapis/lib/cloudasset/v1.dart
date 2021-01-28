@@ -21,6 +21,12 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/asset-inventory/docs/quickstart>
+///
+/// Create an instance of [CloudAssetApi] to access these resources:
+///
+/// - [FeedsResourceApi]
+/// - [OperationsResourceApi]
+/// - [V1ResourceApi]
 library cloudasset.v1;
 
 import 'dart:async' as async;

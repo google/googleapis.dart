@@ -21,6 +21,10 @@
 /// available, the resource, and method details for each API.
 ///
 /// For more information, see <https://developers.google.com/discovery/>
+///
+/// Create an instance of [DiscoveryApi] to access these resources:
+///
+/// - [ApisResourceApi]
 library discovery.v1;
 
 import 'dart:async' as async;

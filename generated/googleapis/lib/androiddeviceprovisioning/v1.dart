@@ -21,6 +21,20 @@
 /// EMMs.
 ///
 /// For more information, see <https://developers.google.com/zero-touch/>
+///
+/// Create an instance of [AndroidProvisioningPartnerApi] to access these
+/// resources:
+///
+/// - [CustomersResourceApi]
+///   - [CustomersConfigurationsResourceApi]
+///   - [CustomersDevicesResourceApi]
+///   - [CustomersDpcsResourceApi]
+/// - [OperationsResourceApi]
+/// - [PartnersResourceApi]
+///   - [PartnersCustomersResourceApi]
+///   - [PartnersDevicesResourceApi]
+///   - [PartnersVendorsResourceApi]
+///     - [PartnersVendorsCustomersResourceApi]
 library androiddeviceprovisioning.v1;
 
 import 'dart:async' as async;

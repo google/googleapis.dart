@@ -22,6 +22,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/admin-sdk/licensing/>
+///
+/// Create an instance of [LicensingApi] to access these resources:
+///
+/// - [LicenseAssignmentsResourceApi]
 library licensing.v1;
 
 import 'dart:async' as async;

@@ -21,6 +21,35 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/adsense/management/>
+///
+/// Create an instance of [AdSenseApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsAdclientsResourceApi]
+///   - [AccountsAdunitsResourceApi]
+///     - [AccountsAdunitsCustomchannelsResourceApi]
+///   - [AccountsAlertsResourceApi]
+///   - [AccountsCustomchannelsResourceApi]
+///     - [AccountsCustomchannelsAdunitsResourceApi]
+///   - [AccountsPaymentsResourceApi]
+///   - [AccountsReportsResourceApi]
+///     - [AccountsReportsSavedResourceApi]
+///   - [AccountsSavedadstylesResourceApi]
+///   - [AccountsUrlchannelsResourceApi]
+/// - [AdclientsResourceApi]
+/// - [AdunitsResourceApi]
+///   - [AdunitsCustomchannelsResourceApi]
+/// - [AlertsResourceApi]
+/// - [CustomchannelsResourceApi]
+///   - [CustomchannelsAdunitsResourceApi]
+/// - [MetadataResourceApi]
+///   - [MetadataDimensionsResourceApi]
+///   - [MetadataMetricsResourceApi]
+/// - [PaymentsResourceApi]
+/// - [ReportsResourceApi]
+///   - [ReportsSavedResourceApi]
+/// - [SavedadstylesResourceApi]
+/// - [UrlchannelsResourceApi]
 library adsense.v1_4;
 
 import 'dart:async' as async;

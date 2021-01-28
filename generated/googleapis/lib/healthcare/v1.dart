@@ -20,6 +20,23 @@
 /// Manage, store, and access healthcare data in Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/healthcare>
+///
+/// Create an instance of [CloudHealthcareApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsDatasetsResourceApi]
+///       - [ProjectsLocationsDatasetsDicomStoresResourceApi]
+///         - [ProjectsLocationsDatasetsDicomStoresStudiesResourceApi]
+///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi]
+/// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi]
+/// -
+/// [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceApi]
+///       - [ProjectsLocationsDatasetsFhirStoresResourceApi]
+///         - [ProjectsLocationsDatasetsFhirStoresFhirResourceApi]
+///       - [ProjectsLocationsDatasetsHl7V2StoresResourceApi]
+///         - [ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi]
+///       - [ProjectsLocationsDatasetsOperationsResourceApi]
 library healthcare.v1;
 
 import 'dart:async' as async;

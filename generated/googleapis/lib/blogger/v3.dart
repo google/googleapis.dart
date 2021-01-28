@@ -22,6 +22,17 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/blogger/docs/3.0/getting_started>
+///
+/// Create an instance of [BloggerApi] to access these resources:
+///
+/// - [BlogUserInfosResourceApi]
+/// - [BlogsResourceApi]
+/// - [CommentsResourceApi]
+/// - [PageViewsResourceApi]
+/// - [PagesResourceApi]
+/// - [PostUserInfosResourceApi]
+/// - [PostsResourceApi]
+/// - [UsersResourceApi]
 library blogger.v3;
 
 import 'dart:async' as async;

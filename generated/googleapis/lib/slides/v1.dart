@@ -20,6 +20,11 @@
 /// Reads and writes Google Slides presentations.
 ///
 /// For more information, see <https://developers.google.com/slides/>
+///
+/// Create an instance of [SlidesApi] to access these resources:
+///
+/// - [PresentationsResourceApi]
+///   - [PresentationsPagesResourceApi]
 library slides.v1;
 
 import 'dart:async' as async;

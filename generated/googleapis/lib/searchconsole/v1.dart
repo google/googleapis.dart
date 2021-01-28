@@ -22,6 +22,14 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/webmaster-tools/search-console-api/>
+///
+/// Create an instance of [SearchConsoleApi] to access these resources:
+///
+/// - [SearchanalyticsResourceApi]
+/// - [SitemapsResourceApi]
+/// - [SitesResourceApi]
+/// - [UrlTestingToolsResourceApi]
+///   - [UrlTestingToolsMobileFriendlyTestResourceApi]
 library searchconsole.v1;
 
 import 'dart:async' as async;

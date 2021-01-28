@@ -21,6 +21,15 @@
 /// service, for direct use by other cloud resources and applications.
 ///
 /// For more information, see <https://cloud.google.com/kms/>
+///
+/// Create an instance of [CloudKMSApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsKeyRingsResourceApi]
+///       - [ProjectsLocationsKeyRingsCryptoKeysResourceApi]
+///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi]
+///       - [ProjectsLocationsKeyRingsImportJobsResourceApi]
 library cloudkms.v1;
 
 import 'dart:async' as async;

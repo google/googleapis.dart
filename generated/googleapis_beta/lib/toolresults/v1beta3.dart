@@ -20,6 +20,20 @@
 /// API to publish and access results from developer tools.
 ///
 /// For more information, see <https://firebase.google.com/docs/test-lab/>
+///
+/// Create an instance of [ToolResultsApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsHistoriesResourceApi]
+///     - [ProjectsHistoriesExecutionsResourceApi]
+///       - [ProjectsHistoriesExecutionsClustersResourceApi]
+///       - [ProjectsHistoriesExecutionsEnvironmentsResourceApi]
+///       - [ProjectsHistoriesExecutionsStepsResourceApi]
+///         - [ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi]
+///         - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi]
+/// - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi]
+///         - [ProjectsHistoriesExecutionsStepsTestCasesResourceApi]
+///         - [ProjectsHistoriesExecutionsStepsThumbnailsResourceApi]
 library toolresults.v1beta3;
 
 import 'dart:async' as async;

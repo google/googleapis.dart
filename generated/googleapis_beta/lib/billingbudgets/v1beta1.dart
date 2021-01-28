@@ -22,6 +22,11 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/billing/docs/how-to/budget-api-overview>
+///
+/// Create an instance of [CloudBillingBudgetApi] to access these resources:
+///
+/// - [BillingAccountsResourceApi]
+///   - [BillingAccountsBudgetsResourceApi]
 library billingbudgets.v1beta1;
 
 import 'dart:async' as async;

@@ -21,6 +21,12 @@
 /// their AdMob account.
 ///
 /// For more information, see <https://developers.google.com/admob/api/>
+///
+/// Create an instance of [AdMobApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsMediationReportResourceApi]
+///   - [AccountsNetworkReportResourceApi]
 library admob.v1;
 
 import 'dart:async' as async;

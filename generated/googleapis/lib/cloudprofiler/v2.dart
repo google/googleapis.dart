@@ -20,6 +20,11 @@
 /// Manages continuous profiling information.
 ///
 /// For more information, see <https://cloud.google.com/profiler/>
+///
+/// Create an instance of [CloudProfilerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsProfilesResourceApi]
 library cloudprofiler.v2;
 
 import 'dart:async' as async;

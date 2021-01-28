@@ -21,6 +21,13 @@
 /// servers.
 ///
 /// For more information, see <https://cloud.google.com/filestore/>
+///
+/// Create an instance of [CloudFilestoreApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsInstancesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
 library file.v1;
 
 import 'dart:async' as async;

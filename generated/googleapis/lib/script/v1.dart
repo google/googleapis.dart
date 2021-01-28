@@ -20,6 +20,14 @@
 /// Manages and executes Google Apps Script projects.
 ///
 /// For more information, see <https://developers.google.com/apps-script/api/>
+///
+/// Create an instance of [ScriptApi] to access these resources:
+///
+/// - [ProcessesResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsDeploymentsResourceApi]
+///   - [ProjectsVersionsResourceApi]
+/// - [ScriptsResourceApi]
 library script.v1;
 
 import 'dart:async' as async;

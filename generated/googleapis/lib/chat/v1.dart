@@ -20,6 +20,14 @@
 /// Enables bots to fetch information and perform actions in Hangouts Chat.
 ///
 /// For more information, see <https://developers.google.com/hangouts/chat>
+///
+/// Create an instance of [HangoutsChatApi] to access these resources:
+///
+/// - [MediaResourceApi]
+/// - [SpacesResourceApi]
+///   - [SpacesMembersResourceApi]
+///   - [SpacesMessagesResourceApi]
+///     - [SpacesMessagesAttachmentsResourceApi]
 library chat.v1;
 
 import 'dart:async' as async;

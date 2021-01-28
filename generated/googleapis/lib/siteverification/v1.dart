@@ -20,6 +20,10 @@
 /// Verifies ownership of websites or domains with Google.
 ///
 /// For more information, see <https://developers.google.com/site-verification/>
+///
+/// Create an instance of [SiteVerificationApi] to access these resources:
+///
+/// - [WebResourceResourceApi]
 library siteVerification.v1;
 
 import 'dart:async' as async;

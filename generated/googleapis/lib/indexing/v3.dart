@@ -21,6 +21,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/search/apis/indexing-api/>
+///
+/// Create an instance of [IndexingApi] to access these resources:
+///
+/// - [UrlNotificationsResourceApi]
 library indexing.v3;
 
 import 'dart:async' as async;

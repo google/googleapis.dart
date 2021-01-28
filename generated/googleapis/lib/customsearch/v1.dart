@@ -21,6 +21,11 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/custom-search/v1/introduction>
+///
+/// Create an instance of [CustomSearchApi] to access these resources:
+///
+/// - [CseResourceApi]
+///   - [CseSiterestrictResourceApi]
 library customsearch.v1;
 
 import 'dart:async' as async;

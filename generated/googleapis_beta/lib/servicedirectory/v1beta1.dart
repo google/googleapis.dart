@@ -21,6 +21,14 @@
 /// services.
 ///
 /// For more information, see <https://cloud.google.com/service-directory>
+///
+/// Create an instance of [ServiceDirectoryApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsNamespacesResourceApi]
+///       - [ProjectsLocationsNamespacesServicesResourceApi]
+///         - [ProjectsLocationsNamespacesServicesEndpointsResourceApi]
 library servicedirectory.v1beta1;
 
 import 'dart:async' as async;

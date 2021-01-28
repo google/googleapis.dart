@@ -21,6 +21,25 @@
 /// apps and devices).
 ///
 /// For more information, see <https://cloud.google.com/dialogflow/>
+///
+/// Create an instance of [DialogflowApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsAgentResourceApi]
+///     - [ProjectsAgentEntityTypesResourceApi]
+///       - [ProjectsAgentEntityTypesEntitiesResourceApi]
+///     - [ProjectsAgentEnvironmentsResourceApi]
+///       - [ProjectsAgentEnvironmentsUsersResourceApi]
+///         - [ProjectsAgentEnvironmentsUsersSessionsResourceApi]
+///           - [ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi]
+///           - [ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi]
+///     - [ProjectsAgentIntentsResourceApi]
+///     - [ProjectsAgentSessionsResourceApi]
+///       - [ProjectsAgentSessionsContextsResourceApi]
+///       - [ProjectsAgentSessionsEntityTypesResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library dialogflow.v2;
 
 import 'dart:async' as async;

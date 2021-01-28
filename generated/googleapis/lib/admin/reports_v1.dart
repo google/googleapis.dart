@@ -22,6 +22,14 @@
 /// domain.
 ///
 /// For more information, see <http://developers.google.com/admin-sdk/>
+///
+/// Create an instance of [ReportsApi] to access these resources:
+///
+/// - [ActivitiesResourceApi]
+/// - [ChannelsResourceApi]
+/// - [CustomerUsageReportsResourceApi]
+/// - [EntityUsageReportsResourceApi]
+/// - [UserUsageReportResourceApi]
 library admin.reports_v1;
 
 import 'dart:async' as async;

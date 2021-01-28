@@ -20,6 +20,19 @@
 /// An API to enable creating and using machine learning models.
 ///
 /// For more information, see <https://cloud.google.com/ml/>
+///
+/// Create an instance of [CloudMachineLearningEngineApi] to access these
+/// resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsJobsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsStudiesResourceApi]
+///       - [ProjectsLocationsStudiesTrialsResourceApi]
+///   - [ProjectsModelsResourceApi]
+///     - [ProjectsModelsVersionsResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library ml.v1;
 
 import 'dart:async' as async;

@@ -21,6 +21,15 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/>
+///
+/// Create an instance of [WebSecurityScannerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsScanConfigsResourceApi]
+///     - [ProjectsScanConfigsScanRunsResourceApi]
+///       - [ProjectsScanConfigsScanRunsCrawledUrlsResourceApi]
+///       - [ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi]
+///       - [ProjectsScanConfigsScanRunsFindingsResourceApi]
 library websecurityscanner.v1;
 
 import 'dart:async' as async;

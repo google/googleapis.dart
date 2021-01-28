@@ -21,6 +21,13 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/translate/docs/quickstarts>
+///
+/// Create an instance of [TranslateApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsGlossariesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
 library translate.v3;
 
 import 'dart:async' as async;

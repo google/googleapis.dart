@@ -17,10 +17,13 @@
 
 /// Fact Check Tools API - v1alpha1
 ///
-///
-///
 /// For more information, see
 /// <https://developers.google.com/fact-check/tools/api/>
+///
+/// Create an instance of [FactCheckToolsApi] to access these resources:
+///
+/// - [ClaimsResourceApi]
+/// - [PagesResourceApi]
 library factchecktools.v1alpha1;
 
 import 'dart:async' as async;

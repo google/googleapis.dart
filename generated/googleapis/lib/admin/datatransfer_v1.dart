@@ -22,6 +22,11 @@
 /// domain.
 ///
 /// For more information, see <http://developers.google.com/admin-sdk/>
+///
+/// Create an instance of [DataTransferApi] to access these resources:
+///
+/// - [ApplicationsResourceApi]
+/// - [TransfersResourceApi]
 library admin.datatransfer_v1;
 
 import 'dart:async' as async;

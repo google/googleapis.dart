@@ -22,6 +22,36 @@
 /// storage repositories.
 ///
 /// For more information, see <https://cloud.google.com/dlp/docs/>
+///
+/// Create an instance of [DLPApi] to access these resources:
+///
+/// - [InfoTypesResourceApi]
+/// - [LocationsResourceApi]
+///   - [LocationsInfoTypesResourceApi]
+/// - [OrganizationsResourceApi]
+///   - [OrganizationsDeidentifyTemplatesResourceApi]
+///   - [OrganizationsInspectTemplatesResourceApi]
+///   - [OrganizationsLocationsResourceApi]
+///     - [OrganizationsLocationsDeidentifyTemplatesResourceApi]
+///     - [OrganizationsLocationsInspectTemplatesResourceApi]
+///     - [OrganizationsLocationsStoredInfoTypesResourceApi]
+///   - [OrganizationsStoredInfoTypesResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsContentResourceApi]
+///   - [ProjectsDeidentifyTemplatesResourceApi]
+///   - [ProjectsDlpJobsResourceApi]
+///   - [ProjectsImageResourceApi]
+///   - [ProjectsInspectTemplatesResourceApi]
+///   - [ProjectsJobTriggersResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsContentResourceApi]
+///     - [ProjectsLocationsDeidentifyTemplatesResourceApi]
+///     - [ProjectsLocationsDlpJobsResourceApi]
+///     - [ProjectsLocationsImageResourceApi]
+///     - [ProjectsLocationsInspectTemplatesResourceApi]
+///     - [ProjectsLocationsJobTriggersResourceApi]
+///     - [ProjectsLocationsStoredInfoTypesResourceApi]
+///   - [ProjectsStoredInfoTypesResourceApi]
 library dlp.v2;
 
 import 'dart:async' as async;

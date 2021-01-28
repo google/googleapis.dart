@@ -20,6 +20,15 @@
 /// An API for controlling access to data by Google personnel.
 ///
 /// For more information, see <https://cloud.google.com/access-approval/docs>
+///
+/// Create an instance of [AccessApprovalApi] to access these resources:
+///
+/// - [FoldersResourceApi]
+///   - [FoldersApprovalRequestsResourceApi]
+/// - [OrganizationsResourceApi]
+///   - [OrganizationsApprovalRequestsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsApprovalRequestsResourceApi]
 library accessapproval.v1;
 
 import 'dart:async' as async;

@@ -24,6 +24,14 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/deployment-manager/runtime-configurator/>
+///
+/// Create an instance of [CloudRuntimeConfigApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsConfigsResourceApi]
+///     - [ProjectsConfigsOperationsResourceApi]
+///     - [ProjectsConfigsVariablesResourceApi]
+///     - [ProjectsConfigsWaitersResourceApi]
 library runtimeconfig.v1beta1;
 
 import 'dart:async' as async;

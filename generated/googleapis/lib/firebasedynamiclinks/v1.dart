@@ -20,6 +20,12 @@
 /// Programmatically creates and manages Firebase Dynamic Links.
 ///
 /// For more information, see <https://firebase.google.com/docs/dynamic-links/>
+///
+/// Create an instance of [FirebaseDynamicLinksApi] to access these resources:
+///
+/// - [ManagedShortLinksResourceApi]
+/// - [ShortLinksResourceApi]
+/// - [V1ResourceApi]
 library firebasedynamiclinks.v1;
 
 import 'dart:async' as async;

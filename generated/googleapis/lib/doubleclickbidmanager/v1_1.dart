@@ -21,6 +21,13 @@
 /// reports.
 ///
 /// For more information, see <https://developers.google.com/bid-manager/>
+///
+/// Create an instance of [DoubleClickBidManagerApi] to access these resources:
+///
+/// - [LineitemsResourceApi]
+/// - [QueriesResourceApi]
+/// - [ReportsResourceApi]
+/// - [SdfResourceApi]
 library doubleclickbidmanager.v1_1;
 
 import 'dart:async' as async;

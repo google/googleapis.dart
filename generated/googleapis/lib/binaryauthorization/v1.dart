@@ -21,6 +21,12 @@
 /// control for images deployed to Kubernetes Engine clusters.
 ///
 /// For more information, see <https://cloud.google.com/binary-authorization/>
+///
+/// Create an instance of [BinaryAuthorizationApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsAttestorsResourceApi]
+///   - [ProjectsPolicyResourceApi]
 library binaryauthorization.v1;
 
 import 'dart:async' as async;

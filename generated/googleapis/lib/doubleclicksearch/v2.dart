@@ -21,6 +21,12 @@
 /// and downloading reports from Search Ads 360.
 ///
 /// For more information, see <https://developers.google.com/search-ads>
+///
+/// Create an instance of [DoubleclicksearchApi] to access these resources:
+///
+/// - [ConversionResourceApi]
+/// - [ReportsResourceApi]
+/// - [SavedColumnsResourceApi]
 library doubleclicksearch.v2;
 
 import 'dart:async' as async;

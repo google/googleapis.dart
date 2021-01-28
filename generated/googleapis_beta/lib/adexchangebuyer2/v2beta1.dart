@@ -23,6 +23,43 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/authorized-buyers/apis/reference/rest/>
+///
+/// Create an instance of [AdExchangeBuyerIIApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsClientsResourceApi]
+///     - [AccountsClientsInvitationsResourceApi]
+///     - [AccountsClientsUsersResourceApi]
+///   - [AccountsCreativesResourceApi]
+///     - [AccountsCreativesDealAssociationsResourceApi]
+///   - [AccountsFinalizedProposalsResourceApi]
+///   - [AccountsProductsResourceApi]
+///   - [AccountsProposalsResourceApi]
+///   - [AccountsPublisherProfilesResourceApi]
+/// - [BiddersResourceApi]
+///   - [BiddersAccountsResourceApi]
+///     - [BiddersAccountsFilterSetsResourceApi]
+///       - [BiddersAccountsFilterSetsBidMetricsResourceApi]
+///       - [BiddersAccountsFilterSetsBidResponseErrorsResourceApi]
+///       - [BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi]
+///       - [BiddersAccountsFilterSetsFilteredBidRequestsResourceApi]
+///       - [BiddersAccountsFilterSetsFilteredBidsResourceApi]
+///         - [BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi]
+///         - [BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi]
+///       - [BiddersAccountsFilterSetsImpressionMetricsResourceApi]
+///       - [BiddersAccountsFilterSetsLosingBidsResourceApi]
+///       - [BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi]
+///   - [BiddersFilterSetsResourceApi]
+///     - [BiddersFilterSetsBidMetricsResourceApi]
+///     - [BiddersFilterSetsBidResponseErrorsResourceApi]
+///     - [BiddersFilterSetsBidResponsesWithoutBidsResourceApi]
+///     - [BiddersFilterSetsFilteredBidRequestsResourceApi]
+///     - [BiddersFilterSetsFilteredBidsResourceApi]
+///       - [BiddersFilterSetsFilteredBidsCreativesResourceApi]
+///       - [BiddersFilterSetsFilteredBidsDetailsResourceApi]
+///     - [BiddersFilterSetsImpressionMetricsResourceApi]
+///     - [BiddersFilterSetsLosingBidsResourceApi]
+///     - [BiddersFilterSetsNonBillableWinningBidsResourceApi]
 library adexchangebuyer2.v2beta1;
 
 import 'dart:async' as async;

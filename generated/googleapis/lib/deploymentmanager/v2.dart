@@ -21,6 +21,14 @@
 /// Platform.
 ///
 /// For more information, see <https://cloud.google.com/deployment-manager/>
+///
+/// Create an instance of [DeploymentManagerApi] to access these resources:
+///
+/// - [DeploymentsResourceApi]
+/// - [ManifestsResourceApi]
+/// - [OperationsResourceApi]
+/// - [ResourcesResourceApi]
+/// - [TypesResourceApi]
 library deploymentmanager.v2;
 
 import 'dart:async' as async;

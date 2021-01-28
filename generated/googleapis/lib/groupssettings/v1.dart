@@ -21,6 +21,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/groups-settings/get_started>
+///
+/// Create an instance of [GroupssettingsApi] to access these resources:
+///
+/// - [GroupsResourceApi]
 library groupssettings.v1;
 
 import 'dart:async' as async;

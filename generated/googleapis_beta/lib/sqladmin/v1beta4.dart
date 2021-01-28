@@ -20,6 +20,19 @@
 /// API for Cloud SQL database instance management
 ///
 /// For more information, see <https://developers.google.com/cloud-sql/>
+///
+/// Create an instance of [SQLAdminApi] to access these resources:
+///
+/// - [BackupRunsResourceApi]
+/// - [DatabasesResourceApi]
+/// - [FlagsResourceApi]
+/// - [InstancesResourceApi]
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsInstancesResourceApi]
+/// - [SslCertsResourceApi]
+/// - [TiersResourceApi]
+/// - [UsersResourceApi]
 library sqladmin.v1beta4;
 
 import 'dart:async' as async;

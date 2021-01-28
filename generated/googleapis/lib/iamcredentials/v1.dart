@@ -23,6 +23,11 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials>
+///
+/// Create an instance of [IAMCredentialsApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsServiceAccountsResourceApi]
 library iamcredentials.v1;
 
 import 'dart:async' as async;

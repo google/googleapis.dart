@@ -20,6 +20,13 @@
 /// Creates and manages Redis instances on the Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/memorystore/docs/redis/>
+///
+/// Create an instance of [CloudRedisApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsInstancesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
 library redis.v1;
 
 import 'dart:async' as async;

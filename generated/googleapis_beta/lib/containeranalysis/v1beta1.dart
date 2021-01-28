@@ -22,6 +22,14 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/container-analysis/api/reference/rest/>
+///
+/// Create an instance of [ContainerAnalysisApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsNotesResourceApi]
+///     - [ProjectsNotesOccurrencesResourceApi]
+///   - [ProjectsOccurrencesResourceApi]
+///   - [ProjectsScanConfigsResourceApi]
 library containeranalysis.v1beta1;
 
 import 'dart:async' as async;

@@ -21,6 +21,12 @@
 /// scalable storage for your application.
 ///
 /// For more information, see <https://cloud.google.com/datastore/>
+///
+/// Create an instance of [DatastoreApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsIndexesResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library datastore.v1;
 
 import 'dart:async' as async;

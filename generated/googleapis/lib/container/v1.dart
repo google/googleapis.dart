@@ -21,6 +21,21 @@
 /// Kubernetes technology.
 ///
 /// For more information, see <https://cloud.google.com/container-engine/>
+///
+/// Create an instance of [ContainerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsAggregatedResourceApi]
+///     - [ProjectsAggregatedUsableSubnetworksResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsClustersResourceApi]
+///       - [ProjectsLocationsClustersNodePoolsResourceApi]
+///       - [ProjectsLocationsClustersWellKnownResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///   - [ProjectsZonesResourceApi]
+///     - [ProjectsZonesClustersResourceApi]
+///       - [ProjectsZonesClustersNodePoolsResourceApi]
+///     - [ProjectsZonesOperationsResourceApi]
 library container.v1;
 
 import 'dart:async' as async;

@@ -20,6 +20,13 @@
 /// Allows users to manage BigQuery connections to external data sources.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
+///
+/// Create an instance of [BigQueryConnectionServiceApi] to access these
+/// resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsConnectionsResourceApi]
 library bigqueryconnection.v1beta1;
 
 import 'dart:async' as async;

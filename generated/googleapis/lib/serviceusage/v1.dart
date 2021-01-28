@@ -22,6 +22,11 @@
 /// service consumers no longer use.
 ///
 /// For more information, see <https://cloud.google.com/service-usage/>
+///
+/// Create an instance of [ServiceUsageApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [ServicesResourceApi]
 library serviceusage.v1;
 
 import 'dart:async' as async;

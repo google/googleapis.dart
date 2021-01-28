@@ -24,6 +24,16 @@
 /// revenue-generating purposes” – please refer to the Web Risk API.
 ///
 /// For more information, see <https://developers.google.com/safe-browsing/>
+///
+/// Create an instance of [SafebrowsingApi] to access these resources:
+///
+/// - [EncodedFullHashesResourceApi]
+/// - [EncodedUpdatesResourceApi]
+/// - [FullHashesResourceApi]
+/// - [ThreatHitsResourceApi]
+/// - [ThreatListUpdatesResourceApi]
+/// - [ThreatListsResourceApi]
+/// - [ThreatMatchesResourceApi]
 library safebrowsing.v4;
 
 import 'dart:async' as async;

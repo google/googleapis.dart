@@ -21,6 +21,13 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/service-consumer-management/docs/overview>
+///
+/// Create an instance of [ServiceConsumerManagementApi] to access these
+/// resources:
+///
+/// - [OperationsResourceApi]
+/// - [ServicesResourceApi]
+///   - [ServicesTenancyUnitsResourceApi]
 library serviceconsumermanagement.v1;
 
 import 'dart:async' as async;

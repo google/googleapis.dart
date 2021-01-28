@@ -20,6 +20,14 @@
 /// Manages Apache Airflow environments on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/composer/>
+///
+/// Create an instance of [CloudComposerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsEnvironmentsResourceApi]
+///     - [ProjectsLocationsImageVersionsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
 library composer.v1;
 
 import 'dart:async' as async;

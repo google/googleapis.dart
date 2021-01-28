@@ -20,6 +20,16 @@
 /// Deploy and manage infrastructure for global multiplayer gaming experiences.
 ///
 /// For more information, see <https://cloud.google.com/solutions/gaming/>
+///
+/// Create an instance of [GameServicesApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsGameServerDeploymentsResourceApi]
+///       - [ProjectsLocationsGameServerDeploymentsConfigsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsRealmsResourceApi]
+///       - [ProjectsLocationsRealmsGameServerClustersResourceApi]
 library gameservices.v1beta;
 
 import 'dart:async' as async;

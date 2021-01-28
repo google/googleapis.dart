@@ -22,6 +22,12 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/abusive-experience-report/>
+///
+/// Create an instance of [AbusiveExperienceReportApi] to access these
+/// resources:
+///
+/// - [SitesResourceApi]
+/// - [ViolatingSitesResourceApi]
 library abusiveexperiencereport.v1;
 
 import 'dart:async' as async;

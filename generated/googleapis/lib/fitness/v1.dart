@@ -21,6 +21,15 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/fit/rest/v1/get-started>
+///
+/// Create an instance of [FitnessApi] to access these resources:
+///
+/// - [UsersResourceApi]
+///   - [UsersDataSourcesResourceApi]
+///     - [UsersDataSourcesDataPointChangesResourceApi]
+///     - [UsersDataSourcesDatasetsResourceApi]
+///   - [UsersDatasetResourceApi]
+///   - [UsersSessionsResourceApi]
 library fitness.v1;
 
 import 'dart:async' as async;

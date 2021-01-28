@@ -20,6 +20,10 @@
 /// Reads and writes Google Docs documents.
 ///
 /// For more information, see <https://developers.google.com/docs/>
+///
+/// Create an instance of [DocsApi] to access these resources:
+///
+/// - [DocumentsResourceApi]
 library docs.v1;
 
 import 'dart:async' as async;

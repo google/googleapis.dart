@@ -20,6 +20,12 @@
 /// Access custom machine learning models hosted via Firebase ML.
 ///
 /// For more information, see <https://firebase.google.com>
+///
+/// Create an instance of [FirebaseMLApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsModelsResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library firebaseml.v1beta2;
 
 import 'dart:async' as async;

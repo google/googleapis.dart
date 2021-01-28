@@ -21,6 +21,12 @@
 /// officials, and government representatives for U.S. residential addresses.
 ///
 /// For more information, see <https://developers.google.com/civic-information/>
+///
+/// Create an instance of [CivicInfoApi] to access these resources:
+///
+/// - [DivisionsResourceApi]
+/// - [ElectionsResourceApi]
+/// - [RepresentativesResourceApi]
 library civicinfo.v2;
 
 import 'dart:async' as async;

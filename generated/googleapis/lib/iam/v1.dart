@@ -25,6 +25,18 @@
 /// account credentials API.
 ///
 /// For more information, see <https://cloud.google.com/iam/>
+///
+/// Create an instance of [IamApi] to access these resources:
+///
+/// - [IamPoliciesResourceApi]
+/// - [OrganizationsResourceApi]
+///   - [OrganizationsRolesResourceApi]
+/// - [PermissionsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsRolesResourceApi]
+///   - [ProjectsServiceAccountsResourceApi]
+///     - [ProjectsServiceAccountsKeysResourceApi]
+/// - [RolesResourceApi]
 library iam.v1;
 
 import 'dart:async' as async;

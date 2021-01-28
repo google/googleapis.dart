@@ -24,6 +24,12 @@
 /// your application for Cloud Trace, we recommend using OpenCensus.
 ///
 /// For more information, see <https://cloud.google.com/trace>
+///
+/// Create an instance of [CloudTraceApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsTracesResourceApi]
+///     - [ProjectsTracesSpansResourceApi]
 library cloudtrace.v2;
 
 import 'dart:async' as async;

@@ -25,6 +25,11 @@
 /// non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ///
 /// For more information, see <https://developers.google.com/discovery/>
+///
+/// Create an instance of [ToyApi] to access these resources:
+///
+/// - [ComputeResourceApi]
+/// - [StorageResourceApi]
 library toyApi.D0_1;
 
 import 'dart:async' as async;

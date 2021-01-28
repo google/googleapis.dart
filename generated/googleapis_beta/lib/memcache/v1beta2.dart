@@ -21,6 +21,14 @@
 /// Memcached instances in GCP.
 ///
 /// For more information, see <https://cloud.google.com/memorystore/>
+///
+/// Create an instance of [CloudMemorystoreForMemcachedApi] to access these
+/// resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsInstancesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
 library memcache.v1beta2;
 
 import 'dart:async' as async;

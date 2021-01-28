@@ -22,6 +22,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/fonts/docs/developer_api>
+///
+/// Create an instance of [WebfontsApi] to access these resources:
+///
+/// - [WebfontsResourceApi]
 library webfonts.v1;
 
 import 'dart:async' as async;

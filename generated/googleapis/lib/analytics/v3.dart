@@ -20,6 +20,39 @@
 /// Views and manages your Google Analytics data.
 ///
 /// For more information, see <https://developers.google.com/analytics/>
+///
+/// Create an instance of [AnalyticsApi] to access these resources:
+///
+/// - [DataResourceApi]
+///   - [DataGaResourceApi]
+///   - [DataMcfResourceApi]
+///   - [DataRealtimeResourceApi]
+/// - [ManagementResourceApi]
+///   - [ManagementAccountSummariesResourceApi]
+///   - [ManagementAccountUserLinksResourceApi]
+///   - [ManagementAccountsResourceApi]
+///   - [ManagementClientIdResourceApi]
+///   - [ManagementCustomDataSourcesResourceApi]
+///   - [ManagementCustomDimensionsResourceApi]
+///   - [ManagementCustomMetricsResourceApi]
+///   - [ManagementExperimentsResourceApi]
+///   - [ManagementFiltersResourceApi]
+///   - [ManagementGoalsResourceApi]
+///   - [ManagementProfileFilterLinksResourceApi]
+///   - [ManagementProfileUserLinksResourceApi]
+///   - [ManagementProfilesResourceApi]
+///   - [ManagementRemarketingAudienceResourceApi]
+///   - [ManagementSegmentsResourceApi]
+///   - [ManagementUnsampledReportsResourceApi]
+///   - [ManagementUploadsResourceApi]
+///   - [ManagementWebPropertyAdWordsLinksResourceApi]
+///   - [ManagementWebpropertiesResourceApi]
+///   - [ManagementWebpropertyUserLinksResourceApi]
+/// - [MetadataResourceApi]
+///   - [MetadataColumnsResourceApi]
+/// - [ProvisioningResourceApi]
+/// - [UserDeletionResourceApi]
+///   - [UserDeletionUserDeletionRequestResourceApi]
 library analytics.v3;
 
 import 'dart:async' as async;

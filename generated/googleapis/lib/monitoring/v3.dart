@@ -25,6 +25,23 @@
 /// documentation.
 ///
 /// For more information, see <https://cloud.google.com/monitoring/api/>
+///
+/// Create an instance of [MonitoringApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsAlertPoliciesResourceApi]
+///   - [ProjectsCollectdTimeSeriesResourceApi]
+///   - [ProjectsGroupsResourceApi]
+///     - [ProjectsGroupsMembersResourceApi]
+///   - [ProjectsMetricDescriptorsResourceApi]
+///   - [ProjectsMonitoredResourceDescriptorsResourceApi]
+///   - [ProjectsNotificationChannelDescriptorsResourceApi]
+///   - [ProjectsNotificationChannelsResourceApi]
+///   - [ProjectsTimeSeriesResourceApi]
+///   - [ProjectsUptimeCheckConfigsResourceApi]
+/// - [ServicesResourceApi]
+///   - [ServicesServiceLevelObjectivesResourceApi]
+/// - [UptimeCheckIpsResourceApi]
 library monitoring.v3;
 
 import 'dart:async' as async;

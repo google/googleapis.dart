@@ -21,6 +21,12 @@
 /// running in the cloud.
 ///
 /// For more information, see <https://cloud.google.com/shell/docs/>
+///
+/// Create an instance of [CloudShellApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [UsersResourceApi]
+///   - [UsersEnvironmentsResourceApi]
 library cloudshell.v1;
 
 import 'dart:async' as async;

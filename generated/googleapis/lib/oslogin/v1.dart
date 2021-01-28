@@ -20,6 +20,12 @@
 /// You can use OS Login to manage access to your VM instances using IAM roles.
 ///
 /// For more information, see <https://cloud.google.com/compute/docs/oslogin/>
+///
+/// Create an instance of [CloudOSLoginApi] to access these resources:
+///
+/// - [UsersResourceApi]
+///   - [UsersProjectsResourceApi]
+///   - [UsersSshPublicKeysResourceApi]
 library oslogin.v1;
 
 import 'dart:async' as async;

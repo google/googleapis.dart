@@ -22,6 +22,13 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/talent-solution/job-search/docs/>
+///
+/// Create an instance of [CloudTalentSolutionApi] to access these resources:
+///
+/// - [CompaniesResourceApi]
+///   - [CompaniesJobsResourceApi]
+/// - [JobsResourceApi]
+/// - [V2ResourceApi]
 library jobs.v2;
 
 import 'dart:async' as async;

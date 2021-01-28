@@ -21,6 +21,19 @@
 /// detecting changes, and updating sharing permissions.
 ///
 /// For more information, see <https://developers.google.com/drive/>
+///
+/// Create an instance of [DriveApi] to access these resources:
+///
+/// - [AboutResourceApi]
+/// - [ChangesResourceApi]
+/// - [ChannelsResourceApi]
+/// - [CommentsResourceApi]
+/// - [DrivesResourceApi]
+/// - [FilesResourceApi]
+/// - [PermissionsResourceApi]
+/// - [RepliesResourceApi]
+/// - [RevisionsResourceApi]
+/// - [TeamdrivesResourceApi]
 library drive.v3;
 
 import 'dart:async' as async;

@@ -21,6 +21,13 @@
 /// Provides convenience while improving security.
 ///
 /// For more information, see <https://cloud.google.com/secret-manager/>
+///
+/// Create an instance of [SecretManagerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///   - [ProjectsSecretsResourceApi]
+///     - [ProjectsSecretsVersionsResourceApi]
 library secretmanager.v1;
 
 import 'dart:async' as async;

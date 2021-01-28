@@ -21,6 +21,14 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/speech-to-text/docs/quickstart-protocol>
+///
+/// Create an instance of [SpeechApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+/// - [SpeechResourceApi]
 library speech.v1;
 
 import 'dart:async' as async;

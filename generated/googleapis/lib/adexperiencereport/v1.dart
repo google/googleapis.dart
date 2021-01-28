@@ -22,6 +22,11 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/ad-experience-report/>
+///
+/// Create an instance of [AdExperienceReportApi] to access these resources:
+///
+/// - [SitesResourceApi]
+/// - [ViolatingSitesResourceApi]
 library adexperiencereport.v1;
 
 import 'dart:async' as async;

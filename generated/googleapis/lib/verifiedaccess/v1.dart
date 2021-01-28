@@ -22,6 +22,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/chrome/verified-access>
+///
+/// Create an instance of [VerifiedaccessApi] to access these resources:
+///
+/// - [ChallengeResourceApi]
 library verifiedaccess.v1;
 
 import 'dart:async' as async;

@@ -22,6 +22,10 @@
 /// annotations, to developers.
 ///
 /// For more information, see <https://cloud.google.com/natural-language/>
+///
+/// Create an instance of [CloudNaturalLanguageApi] to access these resources:
+///
+/// - [DocumentsResourceApi]
 library language.v1beta1;
 
 import 'dart:async' as async;

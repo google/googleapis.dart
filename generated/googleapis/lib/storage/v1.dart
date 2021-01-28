@@ -21,6 +21,19 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/storage/docs/json_api/>
+///
+/// Create an instance of [StorageApi] to access these resources:
+///
+/// - [BucketAccessControlsResourceApi]
+/// - [BucketsResourceApi]
+/// - [ChannelsResourceApi]
+/// - [DefaultObjectAccessControlsResourceApi]
+/// - [NotificationsResourceApi]
+/// - [ObjectAccessControlsResourceApi]
+/// - [ObjectsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsHmacKeysResourceApi]
+///   - [ProjectsServiceAccountResourceApi]
 library storage.v1;
 
 import 'dart:async' as async;

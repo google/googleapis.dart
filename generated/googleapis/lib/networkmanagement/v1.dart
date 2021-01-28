@@ -21,6 +21,14 @@
 /// monitoring and diagnostic capabilities.
 ///
 /// For more information, see <https://cloud.google.com/>
+///
+/// Create an instance of [NetworkManagementApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsGlobalResourceApi]
+///       - [ProjectsLocationsGlobalConnectivityTestsResourceApi]
+///       - [ProjectsLocationsGlobalOperationsResourceApi]
 library networkmanagement.v1;
 
 import 'dart:async' as async;

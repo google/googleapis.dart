@@ -21,6 +21,25 @@
 /// based on HTTP traffic.
 ///
 /// For more information, see <https://cloud.google.com/run/>
+///
+/// Create an instance of [CloudRunApi] to access these resources:
+///
+/// - [NamespacesResourceApi]
+///   - [NamespacesAuthorizeddomainsResourceApi]
+///   - [NamespacesConfigurationsResourceApi]
+///   - [NamespacesDomainmappingsResourceApi]
+///   - [NamespacesRevisionsResourceApi]
+///   - [NamespacesRoutesResourceApi]
+///   - [NamespacesServicesResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsAuthorizeddomainsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsAuthorizeddomainsResourceApi]
+///     - [ProjectsLocationsConfigurationsResourceApi]
+///     - [ProjectsLocationsDomainmappingsResourceApi]
+///     - [ProjectsLocationsRevisionsResourceApi]
+///     - [ProjectsLocationsRoutesResourceApi]
+///     - [ProjectsLocationsServicesResourceApi]
 library run.v1;
 
 import 'dart:async' as async;

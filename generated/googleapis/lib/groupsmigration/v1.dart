@@ -22,6 +22,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/groups-migration/>
+///
+/// Create an instance of [GroupsMigrationApi] to access these resources:
+///
+/// - [ArchiveResourceApi]
 library groupsmigration.v1;
 
 import 'dart:async' as async;

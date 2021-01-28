@@ -20,6 +20,15 @@
 /// TPU API provides customers with access to Google TPU technology.
 ///
 /// For more information, see <https://cloud.google.com/tpu/>
+///
+/// Create an instance of [TPUApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsAcceleratorTypesResourceApi]
+///     - [ProjectsLocationsNodesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsTensorflowVersionsResourceApi]
 library tpu.v1alpha1;
 
 import 'dart:async' as async;

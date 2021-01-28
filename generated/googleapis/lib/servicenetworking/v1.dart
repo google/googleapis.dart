@@ -22,6 +22,19 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started>
+///
+/// Create an instance of [ServiceNetworkingApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [ServicesResourceApi]
+///   - [ServicesConnectionsResourceApi]
+///   - [ServicesDnsRecordSetsResourceApi]
+///   - [ServicesDnsZonesResourceApi]
+///   - [ServicesProjectsResourceApi]
+///     - [ServicesProjectsGlobalResourceApi]
+///       - [ServicesProjectsGlobalNetworksResourceApi]
+///         - [ServicesProjectsGlobalNetworksPeeredDnsDomainsResourceApi]
+///   - [ServicesRolesResourceApi]
 library servicenetworking.v1;
 
 import 'dart:async' as async;

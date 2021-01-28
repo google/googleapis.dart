@@ -20,6 +20,13 @@
 /// Manages lightweight user-provided functions executed in response to events.
 ///
 /// For more information, see <https://cloud.google.com/functions>
+///
+/// Create an instance of [CloudFunctionsApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsFunctionsResourceApi]
 library cloudfunctions.v1;
 
 import 'dart:async' as async;

@@ -22,6 +22,18 @@
 /// apps.
 ///
 /// For more information, see <https://firebase.google.com>
+///
+/// Create an instance of [FirebaseManagementApi] to access these resources:
+///
+/// - [AvailableProjectsResourceApi]
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsAndroidAppsResourceApi]
+///     - [ProjectsAndroidAppsShaResourceApi]
+///   - [ProjectsAvailableLocationsResourceApi]
+///   - [ProjectsDefaultLocationResourceApi]
+///   - [ProjectsIosAppsResourceApi]
+///   - [ProjectsWebAppsResourceApi]
 library firebase.v1beta1;
 
 import 'dart:async' as async;

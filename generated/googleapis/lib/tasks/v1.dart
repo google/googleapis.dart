@@ -20,6 +20,11 @@
 /// The Google Tasks API lets you manage your tasks and task lists.
 ///
 /// For more information, see <>
+///
+/// Create an instance of [TasksApi] to access these resources:
+///
+/// - [TasklistsResourceApi]
+/// - [TasksResourceApi]
 library tasks.v1;
 
 import 'dart:async' as async;

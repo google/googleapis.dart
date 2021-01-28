@@ -21,6 +21,22 @@
 /// service.
 ///
 /// For more information, see <https://cloud.google.com/data-catalog/docs/>
+///
+/// Create an instance of [DataCatalogApi] to access these resources:
+///
+/// - [CatalogResourceApi]
+/// - [EntriesResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsEntryGroupsResourceApi]
+///       - [ProjectsLocationsEntryGroupsEntriesResourceApi]
+///         - [ProjectsLocationsEntryGroupsEntriesTagsResourceApi]
+///       - [ProjectsLocationsEntryGroupsTagsResourceApi]
+///     - [ProjectsLocationsTagTemplatesResourceApi]
+///       - [ProjectsLocationsTagTemplatesFieldsResourceApi]
+///         - [ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi]
+///     - [ProjectsLocationsTaxonomiesResourceApi]
+///       - [ProjectsLocationsTaxonomiesPolicyTagsResourceApi]
 library datacatalog.v1beta1;
 
 import 'dart:async' as async;

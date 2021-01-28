@@ -21,6 +21,20 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/appengine/docs/admin-api/>
+///
+/// Create an instance of [AppengineApi] to access these resources:
+///
+/// - [AppsResourceApi]
+///   - [AppsAuthorizedCertificatesResourceApi]
+///   - [AppsAuthorizedDomainsResourceApi]
+///   - [AppsDomainMappingsResourceApi]
+///   - [AppsFirewallResourceApi]
+///     - [AppsFirewallIngressRulesResourceApi]
+///   - [AppsLocationsResourceApi]
+///   - [AppsOperationsResourceApi]
+///   - [AppsServicesResourceApi]
+///     - [AppsServicesVersionsResourceApi]
+///       - [AppsServicesVersionsInstancesResourceApi]
 library appengine.v1;
 
 import 'dart:async' as async;

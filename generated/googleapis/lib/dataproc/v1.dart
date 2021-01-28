@@ -20,6 +20,19 @@
 /// Manages Hadoop-based clusters and jobs on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/dataproc/>
+///
+/// Create an instance of [DataprocApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsAutoscalingPoliciesResourceApi]
+///     - [ProjectsLocationsWorkflowTemplatesResourceApi]
+///   - [ProjectsRegionsResourceApi]
+///     - [ProjectsRegionsAutoscalingPoliciesResourceApi]
+///     - [ProjectsRegionsClustersResourceApi]
+///     - [ProjectsRegionsJobsResourceApi]
+///     - [ProjectsRegionsOperationsResourceApi]
+///     - [ProjectsRegionsWorkflowTemplatesResourceApi]
 library dataproc.v1;
 
 import 'dart:async' as async;

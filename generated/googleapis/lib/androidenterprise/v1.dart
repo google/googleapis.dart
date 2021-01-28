@@ -21,6 +21,25 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/android/work/play/emm-api>
+///
+/// Create an instance of [AndroidEnterpriseApi] to access these resources:
+///
+/// - [DevicesResourceApi]
+/// - [EnterprisesResourceApi]
+/// - [EntitlementsResourceApi]
+/// - [GrouplicensesResourceApi]
+/// - [GrouplicenseusersResourceApi]
+/// - [InstallsResourceApi]
+/// - [ManagedconfigurationsfordeviceResourceApi]
+/// - [ManagedconfigurationsforuserResourceApi]
+/// - [ManagedconfigurationssettingsResourceApi]
+/// - [PermissionsResourceApi]
+/// - [ProductsResourceApi]
+/// - [ServiceaccountkeysResourceApi]
+/// - [StorelayoutclustersResourceApi]
+/// - [StorelayoutpagesResourceApi]
+/// - [UsersResourceApi]
+/// - [WebappsResourceApi]
 library androidenterprise.v1;
 
 import 'dart:async' as async;

@@ -22,6 +22,12 @@
 ///
 /// For more information, see
 /// <https://firebase.google.com/docs/storage/security>
+///
+/// Create an instance of [FirebaseRulesApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsReleasesResourceApi]
+///   - [ProjectsRulesetsResourceApi]
 library firebaserules.v1;
 
 import 'dart:async' as async;

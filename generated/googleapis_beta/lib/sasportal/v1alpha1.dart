@@ -17,10 +17,28 @@
 
 /// SAS Portal API - v1alpha1
 ///
-///
-///
 /// For more information, see
 /// <https://developers.google.com/spectrum-access-system/>
+///
+/// Create an instance of [SasportalApi] to access these resources:
+///
+/// - [CustomersResourceApi]
+///   - [CustomersDeploymentsResourceApi]
+///     - [CustomersDeploymentsDevicesResourceApi]
+///   - [CustomersDevicesResourceApi]
+///   - [CustomersNodesResourceApi]
+///     - [CustomersNodesNodesResourceApi]
+/// - [DeploymentsResourceApi]
+///   - [DeploymentsDevicesResourceApi]
+/// - [InstallerResourceApi]
+/// - [NodesResourceApi]
+///   - [NodesDeploymentsResourceApi]
+///     - [NodesDeploymentsDevicesResourceApi]
+///   - [NodesDevicesResourceApi]
+///   - [NodesNodesResourceApi]
+///     - [NodesNodesDevicesResourceApi]
+///     - [NodesNodesNodesResourceApi]
+/// - [PoliciesResourceApi]
 library sasportal.v1alpha1;
 
 import 'dart:async' as async;

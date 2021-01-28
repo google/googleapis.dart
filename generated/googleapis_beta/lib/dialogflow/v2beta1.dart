@@ -21,6 +21,41 @@
 /// apps and devices).
 ///
 /// For more information, see <https://cloud.google.com/dialogflow/>
+///
+/// Create an instance of [DialogflowApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsAgentResourceApi]
+///     - [ProjectsAgentEntityTypesResourceApi]
+///       - [ProjectsAgentEntityTypesEntitiesResourceApi]
+///     - [ProjectsAgentEnvironmentsResourceApi]
+///       - [ProjectsAgentEnvironmentsUsersResourceApi]
+///         - [ProjectsAgentEnvironmentsUsersSessionsResourceApi]
+///           - [ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi]
+///           - [ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi]
+///     - [ProjectsAgentIntentsResourceApi]
+///     - [ProjectsAgentKnowledgeBasesResourceApi]
+///       - [ProjectsAgentKnowledgeBasesDocumentsResourceApi]
+///     - [ProjectsAgentSessionsResourceApi]
+///       - [ProjectsAgentSessionsContextsResourceApi]
+///       - [ProjectsAgentSessionsEntityTypesResourceApi]
+///   - [ProjectsKnowledgeBasesResourceApi]
+///     - [ProjectsKnowledgeBasesDocumentsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsAgentResourceApi]
+///       - [ProjectsLocationsAgentEntityTypesResourceApi]
+///         - [ProjectsLocationsAgentEntityTypesEntitiesResourceApi]
+///       - [ProjectsLocationsAgentEnvironmentsResourceApi]
+///         - [ProjectsLocationsAgentEnvironmentsUsersResourceApi]
+///           - [ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi]
+/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi]
+/// - [ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi]
+///       - [ProjectsLocationsAgentIntentsResourceApi]
+///       - [ProjectsLocationsAgentSessionsResourceApi]
+///         - [ProjectsLocationsAgentSessionsContextsResourceApi]
+///         - [ProjectsLocationsAgentSessionsEntityTypesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library dialogflow.v2beta1;
 
 import 'dart:async' as async;

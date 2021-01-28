@@ -20,6 +20,15 @@
 /// A service to modify your BigQuery flat-rate reservations.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
+///
+/// Create an instance of [BigQueryReservationApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsCapacityCommitmentsResourceApi]
+///     - [ProjectsLocationsReservationsResourceApi]
+///       - [ProjectsLocationsReservationsAssignmentsResourceApi]
 library bigqueryreservation.v1;
 
 import 'dart:async' as async;

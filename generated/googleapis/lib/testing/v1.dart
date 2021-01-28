@@ -21,6 +21,13 @@
 /// Google infrastructure.
 ///
 /// For more information, see <https://developers.google.com/cloud-test-lab/>
+///
+/// Create an instance of [TestingApi] to access these resources:
+///
+/// - [ApplicationDetailServiceResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsTestMatricesResourceApi]
+/// - [TestEnvironmentCatalogResourceApi]
 library testing.v1;
 
 import 'dart:async' as async;

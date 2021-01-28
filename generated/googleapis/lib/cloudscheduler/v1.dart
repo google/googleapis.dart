@@ -20,6 +20,12 @@
 /// Creates and manages jobs run on a regular recurring schedule.
 ///
 /// For more information, see <https://cloud.google.com/scheduler/>
+///
+/// Create an instance of [CloudSchedulerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsJobsResourceApi]
 library cloudscheduler.v1;
 
 import 'dart:async' as async;

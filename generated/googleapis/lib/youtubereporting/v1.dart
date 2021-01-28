@@ -22,6 +22,13 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/youtube/reporting/v1/reports/>
+///
+/// Create an instance of [YouTubeReportingApi] to access these resources:
+///
+/// - [JobsResourceApi]
+///   - [JobsReportsResourceApi]
+/// - [MediaResourceApi]
+/// - [ReportTypesResourceApi]
 library youtubereporting.v1;
 
 import 'dart:async' as async;

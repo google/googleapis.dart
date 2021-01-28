@@ -124,7 +124,7 @@ class DartApiLibrary extends BaseApiLibrary {
       '',
       ignoreForFileComments,
       '',
-      _commentFromRestDescription(description).asDartDoc(0).trim(),
+      _commentFromRestDescription(description, apiClass).asDartDoc(0).trim(),
       'library $libraryName;',
       if (imports.async.hasPrefix) "import 'dart:async' as ${imports.async};",
       if (!imports.async.hasPrefix) "import 'dart:async';",
@@ -149,14 +149,47 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
 
 const userAgentDartFilePath = 'src/user_agent.dart';
 
-Comment _commentFromRestDescription(RestDescription description) => Comment(
-      [
-        _descriptionTitle(description),
-        description.description,
-        if (description.documentationLink != null)
-          'For more information, see <${description.documentationLink}>'
-      ].where((element) => element != null).join('\n\n'),
-    );
+Comment _commentFromRestDescription(
+  RestDescription description,
+  DartApiClass apiClass,
+) {
+  final lines = [
+    _descriptionTitle(description),
+    if (description.description != null) description.description,
+    if (description.documentationLink != null)
+      'For more information, see <${description.documentationLink}>'
+  ];
+
+  final hierarchy = <String>[];
+  void addLines(DartResourceClass resourceClass, int depth) {
+    if (depth == 0) {
+      if (resourceClass.subResources.isEmpty) {
+        return;
+      }
+      hierarchy.addAll([
+        'Create an instance of [${resourceClass.className.name}] '
+            'to access these resources:',
+        '',
+      ]);
+    } else {
+      hierarchy.add(
+        '${'  ' * (depth - 1)}- [${resourceClass.className.name}]',
+      );
+    }
+    for (var child in resourceClass.subResources) {
+      addLines(child, depth + 1);
+    }
+  }
+
+  addLines(apiClass, 0);
+  if (hierarchy.isNotEmpty) {
+    lines.add(hierarchy.join('\n'));
+  }
+
+  return Comment(lines
+      .where((element) => element != null && element.isNotEmpty)
+      .join('\n\n'));
+}
 
 String _descriptionTitle(RestDescription description) {
   var title = description.title;

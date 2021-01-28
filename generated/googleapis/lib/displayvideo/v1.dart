@@ -21,6 +21,45 @@
 /// reports.
 ///
 /// For more information, see <https://developers.google.com/display-video/>
+///
+/// Create an instance of [DisplayVideoApi] to access these resources:
+///
+/// - [AdvertisersResourceApi]
+///   - [AdvertisersAssetsResourceApi]
+///   - [AdvertisersCampaignsResourceApi]
+///   - [AdvertisersChannelsResourceApi]
+///     - [AdvertisersChannelsSitesResourceApi]
+///   - [AdvertisersCreativesResourceApi]
+///   - [AdvertisersInsertionOrdersResourceApi]
+///   - [AdvertisersLineItemsResourceApi]
+///     - [AdvertisersLineItemsTargetingTypesResourceApi]
+/// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResourceApi]
+///   - [AdvertisersLocationListsResourceApi]
+///     - [AdvertisersLocationListsAssignedLocationsResourceApi]
+///   - [AdvertisersNegativeKeywordListsResourceApi]
+///     - [AdvertisersNegativeKeywordListsNegativeKeywordsResourceApi]
+///   - [AdvertisersTargetingTypesResourceApi]
+///     - [AdvertisersTargetingTypesAssignedTargetingOptionsResourceApi]
+/// - [CombinedAudiencesResourceApi]
+/// - [CustomBiddingAlgorithmsResourceApi]
+/// - [CustomListsResourceApi]
+/// - [FirstAndThirdPartyAudiencesResourceApi]
+/// - [FloodlightGroupsResourceApi]
+/// - [GoogleAudiencesResourceApi]
+/// - [InventorySourceGroupsResourceApi]
+///   - [InventorySourceGroupsAssignedInventorySourcesResourceApi]
+/// - [InventorySourcesResourceApi]
+/// - [MediaResourceApi]
+/// - [PartnersResourceApi]
+///   - [PartnersChannelsResourceApi]
+///     - [PartnersChannelsSitesResourceApi]
+///   - [PartnersTargetingTypesResourceApi]
+///     - [PartnersTargetingTypesAssignedTargetingOptionsResourceApi]
+/// - [SdfdownloadtasksResourceApi]
+///   - [SdfdownloadtasksOperationsResourceApi]
+/// - [TargetingTypesResourceApi]
+///   - [TargetingTypesTargetingOptionsResourceApi]
+/// - [UsersResourceApi]
 library displayvideo.v1;
 
 import 'dart:async' as async;

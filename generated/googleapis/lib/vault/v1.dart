@@ -20,6 +20,15 @@
 /// Archiving and eDiscovery for G Suite.
 ///
 /// For more information, see <https://developers.google.com/vault>
+///
+/// Create an instance of [VaultApi] to access these resources:
+///
+/// - [MattersResourceApi]
+///   - [MattersExportsResourceApi]
+///   - [MattersHoldsResourceApi]
+///     - [MattersHoldsAccountsResourceApi]
+///   - [MattersSavedQueriesResourceApi]
+/// - [OperationsResourceApi]
 library vault.v1;
 
 import 'dart:async' as async;

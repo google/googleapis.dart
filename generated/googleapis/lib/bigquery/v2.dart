@@ -20,6 +20,16 @@
 /// A data platform for customers to create, manage, share and query data.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
+///
+/// Create an instance of [BigqueryApi] to access these resources:
+///
+/// - [DatasetsResourceApi]
+/// - [JobsResourceApi]
+/// - [ModelsResourceApi]
+/// - [ProjectsResourceApi]
+/// - [RoutinesResourceApi]
+/// - [TabledataResourceApi]
+/// - [TablesResourceApi]
 library bigquery.v2;
 
 import 'dart:async' as async;

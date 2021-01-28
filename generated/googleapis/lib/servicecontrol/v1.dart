@@ -21,6 +21,10 @@
 /// monitoring, and status checks.
 ///
 /// For more information, see <https://cloud.google.com/service-control/>
+///
+/// Create an instance of [ServiceControlApi] to access these resources:
+///
+/// - [ServicesResourceApi]
 library servicecontrol.v1;
 
 import 'dart:async' as async;

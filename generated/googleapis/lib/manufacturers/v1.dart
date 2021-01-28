@@ -20,6 +20,11 @@
 /// Public API for managing Manufacturer Center related data.
 ///
 /// For more information, see <https://developers.google.com/manufacturers/>
+///
+/// Create an instance of [ManufacturerCenterApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+///   - [AccountsProductsResourceApi]
 library manufacturers.v1;
 
 import 'dart:async' as async;

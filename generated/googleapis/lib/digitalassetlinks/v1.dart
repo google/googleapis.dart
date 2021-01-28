@@ -22,6 +22,11 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/digital-asset-links/>
+///
+/// Create an instance of [DigitalassetlinksApi] to access these resources:
+///
+/// - [AssetlinksResourceApi]
+/// - [StatementsResourceApi]
 library digitalassetlinks.v1;
 
 import 'dart:async' as async;

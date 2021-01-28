@@ -23,6 +23,11 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/streetview/publish/>
+///
+/// Create an instance of [StreetViewPublishApi] to access these resources:
+///
+/// - [PhotoResourceApi]
+/// - [PhotosResourceApi]
 library streetviewpublish.v1;
 
 import 'dart:async' as async;

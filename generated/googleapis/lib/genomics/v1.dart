@@ -20,6 +20,10 @@
 /// Uploads, processes, queries, and searches Genomics data in the cloud.
 ///
 /// For more information, see <https://cloud.google.com/genomics>
+///
+/// Create an instance of [GenomicsApi] to access these resources:
+///
+/// - [OperationsResourceApi]
 library genomics.v1;
 
 import 'dart:async' as async;

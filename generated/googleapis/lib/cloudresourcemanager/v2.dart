@@ -21,6 +21,11 @@
 /// containers.
 ///
 /// For more information, see <https://cloud.google.com/resource-manager>
+///
+/// Create an instance of [CloudResourceManagerApi] to access these resources:
+///
+/// - [FoldersResourceApi]
+/// - [OperationsResourceApi]
 library cloudresourcemanager.v2;
 
 import 'dart:async' as async;

@@ -20,6 +20,12 @@
 /// Retrieves your YouTube Analytics data.
 ///
 /// For more information, see <https://developers.google.com/youtube/analytics>
+///
+/// Create an instance of [YouTubeAnalyticsApi] to access these resources:
+///
+/// - [GroupItemsResourceApi]
+/// - [GroupsResourceApi]
+/// - [ReportsResourceApi]
 library youtubeAnalytics.v2;
 
 import 'dart:async' as async;

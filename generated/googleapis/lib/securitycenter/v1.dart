@@ -22,6 +22,15 @@
 ///
 /// For more information, see
 /// <https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview>
+///
+/// Create an instance of [SecurityCommandCenterApi] to access these resources:
+///
+/// - [OrganizationsResourceApi]
+///   - [OrganizationsAssetsResourceApi]
+///   - [OrganizationsNotificationConfigsResourceApi]
+///   - [OrganizationsOperationsResourceApi]
+///   - [OrganizationsSourcesResourceApi]
+///     - [OrganizationsSourcesFindingsResourceApi]
 library securitycenter.v1;
 
 import 'dart:async' as async;

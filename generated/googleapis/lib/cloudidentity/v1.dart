@@ -20,6 +20,14 @@
 /// API for provisioning and managing identity resources.
 ///
 /// For more information, see <https://cloud.google.com/identity/>
+///
+/// Create an instance of [CloudIdentityApi] to access these resources:
+///
+/// - [DevicesResourceApi]
+///   - [DevicesDeviceUsersResourceApi]
+///     - [DevicesDeviceUsersClientStatesResourceApi]
+/// - [GroupsResourceApi]
+///   - [GroupsMembershipsResourceApi]
 library cloudidentity.v1;
 
 import 'dart:async' as async;

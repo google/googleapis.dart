@@ -21,6 +21,10 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/identity-toolkit/v3/>
+///
+/// Create an instance of [IdentityToolkitApi] to access these resources:
+///
+/// - [RelyingpartyResourceApi]
 library identitytoolkit.v3;
 
 import 'dart:async' as async;

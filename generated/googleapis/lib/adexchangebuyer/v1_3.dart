@@ -22,6 +22,16 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/ad-exchange/buyer-rest>
+///
+/// Create an instance of [AdExchangeBuyerApi] to access these resources:
+///
+/// - [AccountsResourceApi]
+/// - [BillingInfoResourceApi]
+/// - [BudgetResourceApi]
+/// - [CreativesResourceApi]
+/// - [DirectDealsResourceApi]
+/// - [PerformanceReportResourceApi]
+/// - [PretargetingConfigResourceApi]
 library adexchangebuyer.v1_3;
 
 import 'dart:async' as async;

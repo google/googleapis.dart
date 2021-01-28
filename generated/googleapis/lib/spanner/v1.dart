@@ -21,6 +21,20 @@
 /// scalable relational database service.
 ///
 /// For more information, see <https://cloud.google.com/spanner/>
+///
+/// Create an instance of [SpannerApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsInstanceConfigsResourceApi]
+///   - [ProjectsInstancesResourceApi]
+///     - [ProjectsInstancesBackupOperationsResourceApi]
+///     - [ProjectsInstancesBackupsResourceApi]
+///       - [ProjectsInstancesBackupsOperationsResourceApi]
+///     - [ProjectsInstancesDatabaseOperationsResourceApi]
+///     - [ProjectsInstancesDatabasesResourceApi]
+///       - [ProjectsInstancesDatabasesOperationsResourceApi]
+///       - [ProjectsInstancesDatabasesSessionsResourceApi]
+///     - [ProjectsInstancesOperationsResourceApi]
 library spanner.v1;
 
 import 'dart:async' as async;

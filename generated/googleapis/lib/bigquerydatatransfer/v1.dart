@@ -21,6 +21,19 @@
 /// BigQuery on a regular basis.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
+///
+/// Create an instance of [BigQueryDataTransferApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsDataSourcesResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsDataSourcesResourceApi]
+///     - [ProjectsLocationsTransferConfigsResourceApi]
+///       - [ProjectsLocationsTransferConfigsRunsResourceApi]
+///         - [ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi]
+///   - [ProjectsTransferConfigsResourceApi]
+///     - [ProjectsTransferConfigsRunsResourceApi]
+///       - [ProjectsTransferConfigsRunsTransferLogsResourceApi]
 library bigquerydatatransfer.v1;
 
 import 'dart:async' as async;

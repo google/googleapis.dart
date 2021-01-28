@@ -21,6 +21,11 @@
 /// models.
 ///
 /// For more information, see <https://cloud.google.com/text-to-speech/>
+///
+/// Create an instance of [TexttospeechApi] to access these resources:
+///
+/// - [TextResourceApi]
+/// - [VoicesResourceApi]
 library texttospeech.v1;
 
 import 'dart:async' as async;

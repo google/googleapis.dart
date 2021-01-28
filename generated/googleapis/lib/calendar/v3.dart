@@ -21,6 +21,17 @@
 ///
 /// For more information, see
 /// <https://developers.google.com/google-apps/calendar/firstapp>
+///
+/// Create an instance of [CalendarApi] to access these resources:
+///
+/// - [AclResourceApi]
+/// - [CalendarListResourceApi]
+/// - [CalendarsResourceApi]
+/// - [ChannelsResourceApi]
+/// - [ColorsResourceApi]
+/// - [EventsResourceApi]
+/// - [FreebusyResourceApi]
+/// - [SettingsResourceApi]
 library calendar.v3;
 
 import 'dart:async' as async;

@@ -17,9 +17,16 @@
 
 /// Recommender API - v1
 ///
-///
-///
 /// For more information, see <https://cloud.google.com/recommender/docs/>
+///
+/// Create an instance of [RecommenderApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsInsightTypesResourceApi]
+///       - [ProjectsLocationsInsightTypesInsightsResourceApi]
+///     - [ProjectsLocationsRecommendersResourceApi]
+///       - [ProjectsLocationsRecommendersRecommendationsResourceApi]
 library recommender.v1;
 
 import 'dart:async' as async;

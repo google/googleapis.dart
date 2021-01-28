@@ -26,6 +26,14 @@
 /// infrastructure.
 ///
 /// For more information, see <https://cloud.google.com/data-fusion/docs>
+///
+/// Create an instance of [DataFusionApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsInstancesResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///     - [ProjectsLocationsVersionsResourceApi]
 library datafusion.v1beta1;
 
 import 'dart:async' as async;

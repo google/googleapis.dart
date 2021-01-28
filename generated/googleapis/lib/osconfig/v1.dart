@@ -21,6 +21,13 @@
 /// and configuration management on VM instances.
 ///
 /// For more information, see <https://cloud.google.com/compute/docs/manage-os>
+///
+/// Create an instance of [OSConfigApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsPatchDeploymentsResourceApi]
+///   - [ProjectsPatchJobsResourceApi]
+///     - [ProjectsPatchJobsInstanceDetailsResourceApi]
 library osconfig.v1;
 
 import 'dart:async' as async;

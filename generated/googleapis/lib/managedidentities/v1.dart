@@ -22,6 +22,15 @@
 /// (AD).
 ///
 /// For more information, see <https://cloud.google.com/managed-microsoft-ad/>
+///
+/// Create an instance of [ManagedServiceForMicrosoftActiveDirectoryConsumerApi]
+/// to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsGlobalResourceApi]
+///       - [ProjectsLocationsGlobalDomainsResourceApi]
+///       - [ProjectsLocationsGlobalOperationsResourceApi]
 library managedidentities.v1;
 
 import 'dart:async' as async;

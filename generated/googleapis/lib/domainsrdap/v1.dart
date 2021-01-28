@@ -21,6 +21,15 @@
 /// names.
 ///
 /// For more information, see <https://developers.google.com/domains/rdap/>
+///
+/// Create an instance of [DomainsRDAPApi] to access these resources:
+///
+/// - [AutnumResourceApi]
+/// - [DomainResourceApi]
+/// - [EntityResourceApi]
+/// - [IpResourceApi]
+/// - [NameserverResourceApi]
+/// - [V1ResourceApi]
 library domainsrdap.v1;
 
 import 'dart:async' as async;

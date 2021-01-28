@@ -20,6 +20,11 @@
 /// A simple Google Example Library API.
 ///
 /// For more information, see <https://cloud.google.com/docs/quota>
+///
+/// Create an instance of [LibraryagentApi] to access these resources:
+///
+/// - [ShelvesResourceApi]
+///   - [ShelvesBooksResourceApi]
 library libraryagent.v1;
 
 import 'dart:async' as async;

@@ -20,6 +20,16 @@
 /// Creates and manages builds on Google Cloud Platform.
 ///
 /// For more information, see <https://cloud.google.com/cloud-build/docs/>
+///
+/// Create an instance of [CloudBuildApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsBuildsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsBuildsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///   - [ProjectsTriggersResourceApi]
 library cloudbuild.v1;
 
 import 'dart:async' as async;

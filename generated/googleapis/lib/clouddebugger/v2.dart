@@ -21,6 +21,15 @@
 /// stopping or slowing it down.
 ///
 /// For more information, see <https://cloud.google.com/debugger>
+///
+/// Create an instance of [CloudDebuggerApi] to access these resources:
+///
+/// - [ControllerResourceApi]
+///   - [ControllerDebuggeesResourceApi]
+///     - [ControllerDebuggeesBreakpointsResourceApi]
+/// - [DebuggerResourceApi]
+///   - [DebuggerDebuggeesResourceApi]
+///     - [DebuggerDebuggeesBreakpointsResourceApi]
 library clouddebugger.v2;
 
 import 'dart:async' as async;

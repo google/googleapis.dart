@@ -23,6 +23,21 @@
 ///
 /// For more information, see
 /// <https://cloud.google.com/video-intelligence/docs/>
+///
+/// Create an instance of [CloudVideoIntelligenceApi] to access these resources:
+///
+/// - [OperationsResourceApi]
+///   - [OperationsProjectsResourceApi]
+///     - [OperationsProjectsLocationsResourceApi]
+///       - [OperationsProjectsLocationsOperationsResourceApi]
+/// - [ProjectsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsCorporaResourceApi]
+///       - [ProjectsLocationsCorporaOperationsResourceApi]
+///     - [ProjectsLocationsCorpuraResourceApi]
+///       - [ProjectsLocationsCorpuraOperationsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+/// - [VideosResourceApi]
 library videointelligence.v1;
 
 import 'dart:async' as async;

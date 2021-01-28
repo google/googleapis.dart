@@ -21,6 +21,12 @@
 /// or between Google Cloud Storage buckets.
 ///
 /// For more information, see <https://cloud.google.com/storage-transfer/docs>
+///
+/// Create an instance of [StoragetransferApi] to access these resources:
+///
+/// - [GoogleServiceAccountsResourceApi]
+/// - [TransferJobsResourceApi]
+/// - [TransferOperationsResourceApi]
 library storagetransfer.v1;
 
 import 'dart:async' as async;

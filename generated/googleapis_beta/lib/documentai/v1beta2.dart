@@ -22,6 +22,15 @@
 /// computer vision, translation, and AutoML.
 ///
 /// For more information, see <https://cloud.google.com/document-ai/docs/>
+///
+/// Create an instance of [DocumentApi] to access these resources:
+///
+/// - [ProjectsResourceApi]
+///   - [ProjectsDocumentsResourceApi]
+///   - [ProjectsLocationsResourceApi]
+///     - [ProjectsLocationsDocumentsResourceApi]
+///     - [ProjectsLocationsOperationsResourceApi]
+///   - [ProjectsOperationsResourceApi]
 library documentai.v1beta2;
 
 import 'dart:async' as async;
