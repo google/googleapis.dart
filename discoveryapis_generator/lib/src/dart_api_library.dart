@@ -4,6 +4,8 @@
 
 library discoveryapis_generator.dart_api_library;
 
+import 'package:meta/meta.dart';
+
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
 import 'generated_googleapis/discovery/v1.dart';
@@ -13,7 +15,6 @@ import 'utils.dart';
 const _ignoreForFileSet = {
   'camel_case_types', // violated by `container` v1 API,
   'comment_references',
-  'directives_ordering',
   'file_names',
   'library_names',
   'lines_longer_than_80_chars',
@@ -72,6 +73,7 @@ abstract class BaseApiLibrary {
 
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
+  final bool isPackage;
   DartSchemaTypeDB schemaDB;
   DartApiClass apiClass;
   bool exposeMedia;
@@ -81,6 +83,7 @@ class DartApiLibrary extends BaseApiLibrary {
   DartApiLibrary.build(
     RestDescription description,
     String packageName, {
+    @required this.isPackage,
     bool useCorePrefixes = true,
   }) : super(description, 'Api', useCorePrefixes: useCorePrefixes) {
     libraryName =
@@ -96,7 +99,7 @@ class DartApiLibrary extends BaseApiLibrary {
     final sink = StringBuffer();
     final schemas = generateSchemas(schemaDB);
     final resources = generateResources(apiClass);
-    sink.write(libraryHeader());
+    sink.write(_libraryHeader());
     if (resources.isNotEmpty) {
       sink.write('$resources\n$schemas');
     } else {
@@ -108,7 +111,7 @@ class DartApiLibrary extends BaseApiLibrary {
   /// Create the library header. Note, this must be called after the library
   /// source string has been generated, since it relies on [Identifier] usage
   /// counts being calculated
-  String libraryHeader() {
+  String _libraryHeader() {
     var exportedMediaClasses = '';
     if (exposeMedia) {
       exportedMediaClasses = ', Media, UploadOptions,\n'
@@ -117,46 +120,34 @@ class DartApiLibrary extends BaseApiLibrary {
           '    ByteRange';
     }
 
-    var result = '''
+    final result = [
+      '''
 // This is a generated file (see the discoveryapis_generator project).
 
 $ignoreForFileComments
 
 library $libraryName;
 
-''';
+''',
+      if (imports.async.hasPrefix) "import 'dart:async' as ${imports.async};",
+      if (!imports.async.hasPrefix) "import 'dart:async';",
+      if (imports.collection.wasCalled)
+        "import 'dart:collection' as ${imports.collection};",
+      if (imports.convert.wasCalled)
+        "import 'dart:convert' as ${imports.convert};",
+      if (imports.core.hasPrefix) "import 'dart:core' as ${imports.core};",
+      """
 
-    if (imports.core.hasPrefix) {
-      result += "import 'dart:core' as ${imports.core};\n";
-    }
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};""",
+      "import 'package:http/http.dart' as ${imports.http};",
+      if (isPackage) "\nimport '../$userAgentDartFilePath';",
+      "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;",
+      if (!isPackage)
+        "const userAgent = 'dart-api-client ${description.name}/${description.version}';",
+    ];
 
-    if (imports.collection.wasCalled) {
-      result += "import 'dart:collection' as ${imports.collection};\n";
-    }
-
-    if (imports.async.hasPrefix) {
-      result += "import 'dart:async' as ${imports.async};\n";
-    } else {
-      result += "import 'dart:async';\n";
-    }
-
-    if (imports.convert.wasCalled) {
-      result += "import 'dart:convert' as ${imports.convert};\n";
-    }
-
-    result += """
-
-import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};
-""";
-
-    return """$result${"""
-import 'package:http/http.dart' as ${imports.http};
-
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError$exportedMediaClasses;
-
-const userAgent = 'dart-api-client ${description.name}/${description.version}';
-
-"""}""";
+    return result.join('\n');
   }
 }
+
+const userAgentDartFilePath = 'src/user_agent.dart';

@@ -74,8 +74,12 @@ class ApisFilesGenerator {
         if (diPair.importMap == null) {
           // Build a normal client stub file without using the same message
           // classes.
-          lib = DartApiLibrary.build(description, packageName,
-              useCorePrefixes: useCorePrefixes);
+          lib = DartApiLibrary.build(
+            description,
+            packageName,
+            useCorePrefixes: useCorePrefixes,
+            isPackage: false,
+          );
         } else {
           // Build a client stub api using common message classes.
           lib = ClientApiLibrary.build(

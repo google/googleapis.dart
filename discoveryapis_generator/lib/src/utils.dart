@@ -66,6 +66,9 @@ void writeDartSource(String path, String content) {
 
 void writeString(String path, String content) {
   final file = File(path);
+  if (!file.existsSync()) {
+    file.createSync(recursive: true);
+  }
   file.writeAsStringSync(content);
 }
 

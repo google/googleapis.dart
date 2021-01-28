@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
@@ -18,17 +17,17 @@
 
 library googleapis_beta.language.v1beta2;
 
-import 'dart:core' as core;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
+import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/user_agent.dart';
+
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
-
-const userAgent = 'dart-api-client language/v1beta2';
 
 /// Provides natural language understanding technologies, such as sentiment
 /// analysis, entity recognition, entity sentiment analysis, and other text

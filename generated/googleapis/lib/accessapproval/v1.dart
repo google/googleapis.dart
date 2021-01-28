@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
@@ -18,17 +17,17 @@
 
 library googleapis.accessapproval.v1;
 
-import 'dart:core' as core;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
+import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../src/user_agent.dart';
+
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
-
-const userAgent = 'dart-api-client accessapproval/v1';
 
 /// An API for controlling access to data by Google personnel.
 class AccessapprovalApi {

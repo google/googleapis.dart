@@ -2,7 +2,6 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: directives_ordering
 // ignore_for_file: file_names
 // ignore_for_file: library_names
 // ignore_for_file: lines_longer_than_80_chars
@@ -18,17 +17,17 @@
 
 library googleapis.serviceusage.v1;
 
-import 'dart:core' as core;
 import 'dart:async' as async;
 import 'dart:convert' as convert;
+import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http_1;
 
+import '../src/user_agent.dart';
+
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
-
-const userAgent = 'dart-api-client serviceusage/v1';
 
 /// Enables services that service consumers want to use on Google Cloud
 /// Platform, lists the available or enabled services, or disables services that

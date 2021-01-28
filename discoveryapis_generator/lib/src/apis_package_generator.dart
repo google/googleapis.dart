@@ -70,11 +70,18 @@ class ApisPackageGenerator {
       }
     }
 
-    Directory(libFolderPath).createSync(recursive: true);
-    Directory(testFolderPath).createSync(recursive: true);
-
     writeFile(pubspecYamlPath, _writePubspec);
     writeString(gitIgnorePath, gitIgnore);
+
+    writeDartSource(
+      '$libFolderPath/$userAgentDartFilePath',
+      """
+/// User-Agent request header used by all libraries in this package
+const userAgent = 'Dart package:${pubspec.name} / ${pubspec.version}';
+""",
+    );
+
+    // Test utility
     writeDartSource(
       '$testFolderPath/$testSharedDartFileName',
       testHelperLibraryContent,
@@ -123,8 +130,11 @@ class ApisPackageGenerator {
   }
 
   DartApiLibrary _generateApiLibrary(
-      String outputFile, RestDescription description) {
-    final lib = DartApiLibrary.build(description, pubspec.name);
+    String outputFile,
+    RestDescription description,
+  ) {
+    final lib =
+        DartApiLibrary.build(description, pubspec.name, isPackage: true);
     writeDartSource(outputFile, lib.librarySource);
     return lib;
   }
