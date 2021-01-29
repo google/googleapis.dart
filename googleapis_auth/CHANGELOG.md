@@ -1,4 +1,6 @@
-## 0.2.12+2-dev
+## 1.0.0-nullsafety.0
+
+- Add support for null-safety.
 
 ## 0.2.12+1
 

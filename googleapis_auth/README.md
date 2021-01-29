@@ -1,7 +1,4 @@
-## Googleapis Auth
-
-This package provides support for obtaining OAuth2 credentials to access
-Google APIs.
+Provides support for obtaining OAuth2 credentials to access Google APIs.
 
 This package also provides convenience functionality for:
 - obtaining authenticated HTTP clients
@@ -45,7 +42,7 @@ import "package:googleapis_auth/auth_browser.dart";
 
 ...
 
-var id = new ClientId("....apps.googleusercontent.com", null);
+var id = ClientId("....apps.googleusercontent.com", null);
 var scopes = [...];
 
 // Initialize the browser oauth2 flow functionality.
@@ -65,7 +62,7 @@ import "package:googleapis_auth/auth_browser.dart";
 
 ...
 
-var id = new ClientId("....apps.googleusercontent.com", null);
+var id = ClientId("....apps.googleusercontent.com", null);
 var scopes = [...];
 
 // Initialize the browser oauth2 flow functionality.
@@ -104,10 +101,10 @@ import "package:googleapis_auth/auth_io.dart";
 
 ...
 
-var id = new ClientId("....apps.googleusercontent.com", "...");
+var id = ClientId("....apps.googleusercontent.com", "...");
 var scopes = [...];
 
-var client = new http.Client();
+var client = http.Client();
 obtainAccessCredentialsViaUserConsent(id, scopes, client, prompt)
     .then((AccessCredentials credentials) {
   // Access credentials are available in [credentials].
@@ -129,7 +126,7 @@ import "package:googleapis_auth/auth_io.dart";
 
 ...
 
-var id = new ClientId("....apps.googleusercontent.com", "...");
+var id = ClientId("....apps.googleusercontent.com", "...");
 var scopes = [...];
 
 clientViaUserConsent(id, scopes, prompt).then((AuthClient client) {
@@ -164,7 +161,7 @@ Cloud Project, then a Service Account can be created. In this case no user
 authorization is involved.
 
 A service account can be created via the "Service account" application type
-when creating a new Client ID
+when creating a Client ID
 (under DevConsole -> Project -> APIs & auth -> Credentials). It will download
 a JSON document which contains a private RSA key. That private key is used for
 obtaining access credentials.
@@ -174,7 +171,7 @@ After the service account was created, you can obtain access credentials via
 import "package:http/http.dart" as http;
 import "package:googleapis_auth/auth_io.dart";
 
-var accountCredentials = new ServiceAccountCredentials.fromJson({
+var accountCredentials = ServiceAccountCredentials.fromJson({
   "private_key_id": "<please fill in>",
   "private_key": "<please fill in>",
   "client_email": "<please fill in>@developer.gserviceaccount.com",
@@ -185,7 +182,7 @@ var scopes = [...];
 
 ...
 
-var client = new http.Client();
+var client = http.Client();
 obtainAccessCredentialsViaServiceAccount(accountCredentials, scopes, client)
     .then((AccessCredentials credentials) {
   // Access credentials are available in [credentials].
@@ -199,7 +196,7 @@ or an authenticated HTTP client via
 ```dart
 import "package:googleapis_auth/auth_io.dart";
 
-final accountCredentials = new ServiceAccountCredentials.fromJson({
+final accountCredentials = ServiceAccountCredentials.fromJson({
   "private_key_id": "<please fill in>",
   "private_key": "<please fill in>",
   "client_email": "<please fill in>@developer.gserviceaccount.com",
@@ -247,7 +244,7 @@ credentials on a ComputeEngine VM.
 import "package:http/http.dart" as http;
 import "package:googleapis_auth/auth_io.dart";
 
-var client = new http.Client();
+var client = http.Client();
 obtainAccessCredentialsViaMetadataServer(client)
     .then((AccessCredentials credentials) {
   // Access credentials are available in [credentials].
