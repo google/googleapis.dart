@@ -1213,8 +1213,9 @@ class DownloadAccountResponse {
   /// The fixed string "identitytoolkit#DownloadAccountResponse".
   core.String kind;
 
-  /// The next page token. To be used in a subsequent request to return the next
-  /// page of results.
+  /// The next page token.
+  ///
+  /// To be used in a subsequent request to return the next page of results.
   core.String nextPageToken;
 
   /// The user accounts data.
@@ -1517,8 +1518,10 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   /// BUNDLE_ID for iOS.
   core.String appId;
 
-  /// Explicitly specify the auth flow type. Currently only support "CODE_FLOW"
-  /// type. The field is only used for Google provider.
+  /// Explicitly specify the auth flow type.
+  ///
+  /// Currently only support "CODE_FLOW" type. The field is only used for Google
+  /// provider.
   core.String authFlowType;
 
   /// The relying party OAuth client ID.
@@ -1533,6 +1536,7 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   core.String continueUri;
 
   /// The query parameter that client can customize by themselves in auth url.
+  ///
   /// The following parameters are reserved for server so that they cannot be
   /// customized by clients: client_id, response_type, scope, redirect_uri,
   /// state, oauth_token.
@@ -1552,16 +1556,19 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   /// would be prompted to grant
   core.String oauthScope;
 
-  /// Optional realm for OpenID protocol. The sub string "scheme://domain:port"
-  /// of the param "continueUri" is used if this is not set.
+  /// Optional realm for OpenID protocol.
+  ///
+  /// The sub string "scheme://domain:port" of the param "continueUri" is used
+  /// if this is not set.
   core.String openidRealm;
 
   /// The native app package for OTA installation.
   core.String otaApp;
 
-  /// The IdP ID. For white listed IdPs it's a short domain name e.g.
-  /// google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's
-  /// the OP identifier.
+  /// The IdP ID.
+  ///
+  /// For white listed IdPs it's a short domain name e.g. google.com, aol.com,
+  /// live.net and yahoo.com. For other OpenID IdPs it's the OP identifier.
   core.String providerId;
 
   /// The session_id passed by client.
@@ -1691,8 +1698,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
 
 /// Request to delete account.
 class IdentitytoolkitRelyingpartyDeleteAccountRequest {
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// The GITKit token or STS id token of the authenticated user.
@@ -1732,18 +1740,21 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
 
 /// Request to download user account in batch.
 class IdentitytoolkitRelyingpartyDownloadAccountRequest {
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// The max number of results to return in the response.
   core.int maxResults;
 
-  /// The token for the next page. This should be taken from the previous
-  /// response.
+  /// The token for the next page.
+  ///
+  /// This should be taken from the previous response.
   core.String nextPageToken;
 
   /// Specify which project (field value is actually project id) to operate.
+  ///
   /// Only used when provided credential.
   core.String targetProjectId;
 
@@ -1824,8 +1835,9 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
 
 /// Request to get the account information.
 class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// The list of emails of the users to inquiry.
@@ -2191,8 +2203,9 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /// The custom attributes to be set in the user's id token.
   core.String customAttributes;
 
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// The attributes users request to delete.
@@ -2418,8 +2431,9 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
   /// Change email template.
   EmailTemplate changeEmailTemplate;
 
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// Whether to enable anonymous user.
@@ -2612,7 +2626,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   /// Response to the captcha.
   core.String captchaResponse;
 
-  /// Whether to disable the user. Only can be used by service account.
+  /// Whether to disable the user.
+  ///
+  /// Only can be used by service account.
   core.bool disabled;
 
   /// The name of the user.
@@ -2621,7 +2637,9 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   /// The email of the user.
   core.String email;
 
-  /// Mark the email as verified or not. Only can be used by service account.
+  /// Mark the email as verified or not.
+  ///
+  /// Only can be used by service account.
   core.bool emailVerified;
 
   /// The GITKit token of the authenticated user.
@@ -2754,19 +2772,24 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   /// The following 4 fields are for standard scrypt algorithm.
   core.int cpuMemCost;
 
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
   core.int dkLen;
 
   /// The password hash algorithm.
   core.String hashAlgorithm;
 
-  /// Memory cost for hash calculation. Used by scrypt similar algorithms.
+  /// Memory cost for hash calculation.
+  ///
+  /// Used by scrypt similar algorithms.
   core.int memoryCost;
   core.int parallelization;
 
-  /// Rounds for hash calculation. Used by scrypt and similar algorithms.
+  /// Rounds for hash calculation.
+  ///
+  /// Used by scrypt and similar algorithms.
   core.int rounds;
 
   /// The salt separator.
@@ -2793,6 +2816,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   }
 
   /// Specify which project (field value is actually project id) to operate.
+  ///
   /// Only used when provided credential.
   core.String targetProjectId;
 
@@ -2900,12 +2924,15 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
 /// Request to verify the IDP assertion.
 class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /// When it's true, automatically creates a new account if the user doesn't
-  /// exist. When it's false, allows existing user to sign in normally and
-  /// throws exception if the user doesn't exist.
+  /// exist.
+  ///
+  /// When it's false, allows existing user to sign in normally and throws
+  /// exception if the user doesn't exist.
   core.bool autoCreate;
 
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// The GITKit token of the authenticated user.
@@ -2921,8 +2948,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /// The post body if the request is a HTTP POST.
   core.String postBody;
 
-  /// The URI to which the IDP redirects the user back. It may contain federated
-  /// login result params added by the IDP.
+  /// The URI to which the IDP redirects the user back.
+  ///
+  /// It may contain federated login result params added by the IDP.
   core.String requestUri;
 
   /// Whether return 200 and IDP credential rather than throw exception when
@@ -3037,8 +3065,9 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
 
 /// Request to verify a custom token
 class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// Instance id token of the app.
@@ -3093,8 +3122,9 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   /// Response to the captcha.
   core.String captchaResponse;
 
-  /// GCP project number of the requesting delegated app. Currently only
-  /// intended for Firebase V1 migration.
+  /// GCP project number of the requesting delegated app.
+  ///
+  /// Currently only intended for Firebase V1 migration.
   core.String delegatedProjectNumber;
 
   /// The email of the user.
@@ -3430,8 +3460,10 @@ class Relyingparty {
   /// opened
   core.bool androidInstallApp;
 
-  /// minimum version of the app. if the version on the device is lower than
-  /// this version then the user is taken to the play store to upgrade the app
+  /// minimum version of the app.
+  ///
+  /// if the version on the device is lower than this version then the user is
+  /// taken to the play store to upgrade the app
   core.String androidMinimumVersion;
 
   /// android package name of the android app to handle the action code
@@ -3576,8 +3608,9 @@ class Relyingparty {
 
 /// Response of resetting the password.
 class ResetPasswordResponse {
-  /// The user's email. If the out-of-band code is for email recovery, the
-  /// user's original email.
+  /// The user's email.
+  ///
+  /// If the out-of-band code is for email recovery, the user's original email.
   core.String email;
 
   /// The fixed string "identitytoolkit#ResetPasswordResponse".
@@ -3634,9 +3667,10 @@ class SetAccountInfoResponseProviderUserInfo {
   /// The user's photo url at the IDP.
   core.String photoUrl;
 
-  /// The IdP ID. For whitelisted IdPs it's a short domain name, e.g.,
-  /// google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's
-  /// the OP identifier.
+  /// The IdP ID.
+  ///
+  /// For whitelisted IdPs it's a short domain name, e.g., google.com, aol.com,
+  /// live.net and yahoo.com. For other OpenID IdPs it's the OP identifier.
   core.String providerId;
 
   SetAccountInfoResponseProviderUserInfo();
@@ -3967,9 +4001,10 @@ class UserInfoProviderUserInfo {
   /// The user's photo url at the IDP.
   core.String photoUrl;
 
-  /// The IdP ID. For white listed IdPs it's a short domain name, e.g.,
-  /// google.com, aol.com, live.net and yahoo.com. For other OpenID IdPs it's
-  /// the OP identifier.
+  /// The IdP ID.
+  ///
+  /// For white listed IdPs it's a short domain name, e.g., google.com, aol.com,
+  /// live.net and yahoo.com. For other OpenID IdPs it's the OP identifier.
   core.String providerId;
 
   /// User's raw identifier directly returned from IDP.
@@ -4260,15 +4295,17 @@ class VerifyAssertionResponse {
   /// The display name of the user.
   core.String displayName;
 
-  /// The email returned by the IdP. NOTE: The federated login user may not own
-  /// the email.
+  /// The email returned by the IdP.
+  ///
+  /// NOTE: The federated login user may not own the email.
   core.String email;
 
   /// It's true if the email is recycled.
   core.bool emailRecycled;
 
-  /// The value is true if the IDP is also the email provider. It means the user
-  /// owns the email.
+  /// The value is true if the IDP is also the email provider.
+  ///
+  /// It means the user owns the email.
   core.bool emailVerified;
 
   /// Client error code.
@@ -4291,8 +4328,10 @@ class VerifyAssertionResponse {
   core.String idToken;
 
   /// It's the identifier param in the createAuthUri request if the identifier
-  /// is an email. It can be used to check whether the user input email is
-  /// different from the asserted email.
+  /// is an email.
+  ///
+  /// It can be used to check whether the user input email is different from the
+  /// asserted email.
   core.String inputEmail;
 
   /// True if it's a new user sign-in, false if it's a returning user.
@@ -4342,18 +4381,21 @@ class VerifyAssertionResponse {
   /// The OAuth1 access token secret.
   core.String oauthTokenSecret;
 
-  /// The original email stored in the mapping storage. It's returned when the
-  /// federated ID is associated to a different email.
+  /// The original email stored in the mapping storage.
+  ///
+  /// It's returned when the federated ID is associated to a different email.
   core.String originalEmail;
 
   /// The URI of the public accessible profiel picture.
   core.String photoUrl;
 
-  /// The IdP ID. For white listed IdPs it's a short domain name e.g.
-  /// google.com, aol.com, live.net and yahoo.com. If the "providerId" param is
-  /// set to OpenID OP identifer other than the whilte listed IdPs the OP
-  /// identifier is returned. If the "identifier" param is federated ID in the
-  /// createAuthUri request. The domain part of the federated ID is returned.
+  /// The IdP ID.
+  ///
+  /// For white listed IdPs it's a short domain name e.g. google.com, aol.com,
+  /// live.net and yahoo.com. If the "providerId" param is set to OpenID OP
+  /// identifer other than the whilte listed IdPs the OP identifier is returned.
+  /// If the "identifier" param is federated ID in the createAuthUri request.
+  /// The domain part of the federated ID is returned.
   core.String providerId;
 
   /// Raw IDP-returned user info.
@@ -4683,8 +4725,9 @@ class VerifyPasswordResponse {
   /// The name of the user.
   core.String displayName;
 
-  /// The email returned by the IdP. NOTE: The federated login user may not own
-  /// the email.
+  /// The email returned by the IdP.
+  ///
+  /// NOTE: The federated login user may not own the email.
   core.String email;
 
   /// If idToken is STS id token, then this field will be expiration time of STS

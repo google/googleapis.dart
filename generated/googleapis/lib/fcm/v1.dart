@@ -140,16 +140,20 @@ class ProjectsMessagesResource {
 /// server](https://goo.gl/4GLdUl).
 class AndroidConfig {
   /// An identifier of a group of messages that can be collapsed, so that only
-  /// the last message gets sent when delivery can be resumed. A maximum of 4
-  /// different collapse keys is allowed at any given time.
+  /// the last message gets sent when delivery can be resumed.
+  ///
+  /// A maximum of 4 different collapse keys is allowed at any given time.
   core.String collapseKey;
 
-  /// Arbitrary key/value payload. If present, it will override
-  /// google.firebase.fcm.v1.Message.data.
+  /// Arbitrary key/value payload.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Message.data.
   core.Map<core.String, core.String> data;
 
   /// If set to true, messages will be allowed to be delivered to the app while
-  /// the device is in direct boot mode. See [Support Direct Boot
+  /// the device is in direct boot mode.
+  ///
+  /// See [Support Direct Boot
   /// mode](https://developer.android.com/training/articles/direct-boot).
   core.bool directBootOk;
 
@@ -159,9 +163,10 @@ class AndroidConfig {
   /// Notification to send to android devices.
   AndroidNotification notification;
 
-  /// Message priority. Can take "normal" and "high" values. For more
-  /// information, see [Setting the priority of a
-  /// message](https://goo.gl/GjONJv).
+  /// Message priority.
+  ///
+  /// Can take "normal" and "high" values. For more information, see [Setting
+  /// the priority of a message](https://goo.gl/GjONJv).
   /// Possible string values are:
   /// - "NORMAL" : Default priority for data messages. Normal priority messages
   /// won't open network connections on a sleeping device, and their delivery
@@ -184,15 +189,17 @@ class AndroidConfig {
   core.String restrictedPackageName;
 
   /// How long (in seconds) the message should be kept in FCM storage if the
-  /// device is offline. The maximum time to live supported is 4 weeks, and the
-  /// default value is 4 weeks if not set. Set it to 0 if want to send the
-  /// message immediately. In JSON format, the Duration type is encoded as a
-  /// string rather than an object, where the string ends in the suffix "s"
-  /// (indicating seconds) and is preceded by the number of seconds, with
-  /// nanoseconds expressed as fractional seconds. For example, 3 seconds with 0
-  /// nanoseconds should be encoded in JSON format as "3s", while 3 seconds and
-  /// 1 nanosecond should be expressed in JSON format as "3.000000001s". The ttl
-  /// will be rounded down to the nearest second.
+  /// device is offline.
+  ///
+  /// The maximum time to live supported is 4 weeks, and the default value is 4
+  /// weeks if not set. Set it to 0 if want to send the message immediately. In
+  /// JSON format, the Duration type is encoded as a string rather than an
+  /// object, where the string ends in the suffix "s" (indicating seconds) and
+  /// is preceded by the number of seconds, with nanoseconds expressed as
+  /// fractional seconds. For example, 3 seconds with 0 nanoseconds should be
+  /// encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should be
+  /// expressed in JSON format as "3.000000001s". The ttl will be rounded down
+  /// to the nearest second.
   core.String ttl;
 
   AndroidConfig();
@@ -285,40 +292,47 @@ class AndroidFcmOptions {
 
 /// Notification to send to android devices.
 class AndroidNotification {
-  /// The notification's body text. If present, it will override
-  /// google.firebase.fcm.v1.Notification.body.
+  /// The notification's body text.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Notification.body.
   core.String body;
 
   /// Variable string values to be used in place of the format specifiers in
   /// body_loc_key to use to localize the body text to the user's current
-  /// localization. See [Formatting and Styling](https://goo.gl/MalYE3) for more
-  /// information.
+  /// localization.
+  ///
+  /// See [Formatting and Styling](https://goo.gl/MalYE3) for more information.
   core.List<core.String> bodyLocArgs;
 
   /// The key to the body string in the app's string resources to use to
-  /// localize the body text to the user's current localization. See [String
-  /// Resources](https://goo.gl/NdFZGI) for more information.
+  /// localize the body text to the user's current localization.
+  ///
+  /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String bodyLocKey;
 
   /// The [notification's channel
   /// id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
-  /// (new in Android O). The app must create a channel with this channel ID
-  /// before any notification with this channel ID is received. If you don't
-  /// send this channel ID in the request, or if the channel ID provided has not
-  /// yet been created by the app, FCM uses the channel ID specified in the app
-  /// manifest.
+  /// (new in Android O).
+  ///
+  /// The app must create a channel with this channel ID before any notification
+  /// with this channel ID is received. If you don't send this channel ID in the
+  /// request, or if the channel ID provided has not yet been created by the
+  /// app, FCM uses the channel ID specified in the app manifest.
   core.String channelId;
 
-  /// The action associated with a user click on the notification. If specified,
-  /// an activity with a matching intent filter is launched when a user clicks
-  /// on the notification.
+  /// The action associated with a user click on the notification.
+  ///
+  /// If specified, an activity with a matching intent filter is launched when a
+  /// user clicks on the notification.
   core.String clickAction;
 
   /// The notification's icon color, expressed in #rrggbb format.
   core.String color;
 
   /// If set to true, use the Android framework's default LED light settings for
-  /// the notification. Default values are specified in
+  /// the notification.
+  ///
+  /// Default values are specified in
   /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
   /// If `default_light_settings` is set to true and `light_settings` is also
   /// set, the user-specified `light_settings` is used instead of the default
@@ -326,47 +340,61 @@ class AndroidNotification {
   core.bool defaultLightSettings;
 
   /// If set to true, use the Android framework's default sound for the
-  /// notification. Default values are specified in
+  /// notification.
+  ///
+  /// Default values are specified in
   /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
   core.bool defaultSound;
 
   /// If set to true, use the Android framework's default vibrate pattern for
-  /// the notification. Default values are specified in
+  /// the notification.
+  ///
+  /// Default values are specified in
   /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
   /// If `default_vibrate_timings` is set to true and `vibrate_timings` is also
   /// set, the default value is used instead of the user-specified
   /// `vibrate_timings`.
   core.bool defaultVibrateTimings;
 
-  /// Set the time that the event in the notification occurred. Notifications in
-  /// the panel are sorted by this time. A point in time is represented using
+  /// Set the time that the event in the notification occurred.
+  ///
+  /// Notifications in the panel are sorted by this time. A point in time is
+  /// represented using
   /// [protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp).
   core.String eventTime;
 
-  /// The notification's icon. Sets the notification icon to myicon for drawable
-  /// resource myicon. If you don't send this key in the request, FCM displays
-  /// the launcher icon specified in your app manifest.
+  /// The notification's icon.
+  ///
+  /// Sets the notification icon to myicon for drawable resource myicon. If you
+  /// don't send this key in the request, FCM displays the launcher icon
+  /// specified in your app manifest.
   core.String icon;
 
   /// Contains the URL of an image that is going to be displayed in a
-  /// notification. If present, it will override
-  /// google.firebase.fcm.v1.Notification.image.
+  /// notification.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Notification.image.
   core.String image;
 
   /// Settings to control the notification's LED blinking rate and color if LED
-  /// is available on the device. The total blinking time is controlled by the
-  /// OS.
+  /// is available on the device.
+  ///
+  /// The total blinking time is controlled by the OS.
   LightSettings lightSettings;
 
   /// Set whether or not this notification is relevant only to the current
-  /// device. Some notifications can be bridged to other devices for remote
-  /// display, such as a Wear OS watch. This hint can be set to recommend this
+  /// device.
+  ///
+  /// Some notifications can be bridged to other devices for remote display,
+  /// such as a Wear OS watch. This hint can be set to recommend this
   /// notification not be bridged. See [Wear OS
   /// guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
   core.bool localOnly;
 
-  /// Sets the number of items this notification represents. May be displayed as
-  /// a badge count for launchers that support badging.See [Notification
+  /// Sets the number of items this notification represents.
+  ///
+  /// May be displayed as a badge count for launchers that support badging.See
+  /// [Notification
   /// Badge](https://developer.android.com/training/notify-user/badges). For
   /// example, this might be useful if you're using just one notification to
   /// represent multiple new messages but you want the count here to represent
@@ -375,14 +403,15 @@ class AndroidNotification {
   /// on the long-press menu each time a new notification arrives.
   core.int notificationCount;
 
-  /// Set the relative priority for this notification. Priority is an indication
-  /// of how much of the user's attention should be consumed by this
-  /// notification. Low-priority notifications may be hidden from the user in
-  /// certain situations, while the user might be interrupted for a
-  /// higher-priority notification. The effect of setting the same priorities
-  /// may differ slightly on different platforms. Note this priority differs
-  /// from `AndroidMessagePriority`. This priority is processed by the client
-  /// after the message has been delivered, whereas
+  /// Set the relative priority for this notification.
+  ///
+  /// Priority is an indication of how much of the user's attention should be
+  /// consumed by this notification. Low-priority notifications may be hidden
+  /// from the user in certain situations, while the user might be interrupted
+  /// for a higher-priority notification. The effect of setting the same
+  /// priorities may differ slightly on different platforms. Note this priority
+  /// differs from `AndroidMessagePriority`. This priority is processed by the
+  /// client after the message has been delivered, whereas
   /// [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
   /// is an FCM concept that controls when the message is delivered.
   /// Possible string values are:
@@ -406,43 +435,53 @@ class AndroidNotification {
   /// attention or input.
   core.String notificationPriority;
 
-  /// The sound to play when the device receives the notification. Supports
-  /// "default" or the filename of a sound resource bundled in the app. Sound
-  /// files must reside in /res/raw/.
+  /// The sound to play when the device receives the notification.
+  ///
+  /// Supports "default" or the filename of a sound resource bundled in the app.
+  /// Sound files must reside in /res/raw/.
   core.String sound;
 
   /// When set to false or unset, the notification is automatically dismissed
-  /// when the user clicks it in the panel. When set to true, the notification
-  /// persists even when the user clicks it.
+  /// when the user clicks it in the panel.
+  ///
+  /// When set to true, the notification persists even when the user clicks it.
   core.bool sticky;
 
   /// Identifier used to replace existing notifications in the notification
-  /// drawer. If not specified, each request creates a new notification. If
-  /// specified and a notification with the same tag is already being shown, the
-  /// new notification replaces the existing one in the notification drawer.
+  /// drawer.
+  ///
+  /// If not specified, each request creates a new notification. If specified
+  /// and a notification with the same tag is already being shown, the new
+  /// notification replaces the existing one in the notification drawer.
   core.String tag;
 
-  /// Sets the "ticker" text, which is sent to accessibility services. Prior to
-  /// API level 21 (`Lollipop`), sets the text that is displayed in the status
-  /// bar when the notification first arrives.
+  /// Sets the "ticker" text, which is sent to accessibility services.
+  ///
+  /// Prior to API level 21 (`Lollipop`), sets the text that is displayed in the
+  /// status bar when the notification first arrives.
   core.String ticker;
 
-  /// The notification's title. If present, it will override
-  /// google.firebase.fcm.v1.Notification.title.
+  /// The notification's title.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Notification.title.
   core.String title;
 
   /// Variable string values to be used in place of the format specifiers in
   /// title_loc_key to use to localize the title text to the user's current
-  /// localization. See [Formatting and Styling](https://goo.gl/MalYE3) for more
-  /// information.
+  /// localization.
+  ///
+  /// See [Formatting and Styling](https://goo.gl/MalYE3) for more information.
   core.List<core.String> titleLocArgs;
 
   /// The key to the title string in the app's string resources to use to
-  /// localize the title text to the user's current localization. See [String
-  /// Resources](https://goo.gl/NdFZGI) for more information.
+  /// localize the title text to the user's current localization.
+  ///
+  /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String titleLocKey;
 
-  /// Set the vibration pattern to use. Pass in an array of
+  /// Set the vibration pattern to use.
+  ///
+  /// Pass in an array of
   /// [protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
   /// to turn on or off the vibrator. The first value indicates the `Duration`
   /// to wait before turning the vibrator on. The next value indicates the
@@ -638,14 +677,17 @@ class ApnsConfig {
   /// Options for features provided by the FCM SDK for iOS.
   ApnsFcmOptions fcmOptions;
 
-  /// HTTP request headers defined in Apple Push Notification Service. Refer to
-  /// [APNs request
+  /// HTTP request headers defined in Apple Push Notification Service.
+  ///
+  /// Refer to [APNs request
   /// headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
   /// for supported headers, e.g. "apns-priority": "10".
   core.Map<core.String, core.String> headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
-  /// payload. See [Payload Key
+  /// payload.
+  ///
+  /// See [Payload Key
   /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
   /// If present, it overrides google.firebase.fcm.v1.Notification.title and
   /// google.firebase.fcm.v1.Notification.body.
@@ -702,8 +744,9 @@ class ApnsFcmOptions {
   core.String analyticsLabel;
 
   /// Contains the URL of an image that is going to be displayed in a
-  /// notification. If present, it will override
-  /// google.firebase.fcm.v1.Notification.image.
+  /// notification.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Notification.image.
   core.String image;
 
   ApnsFcmOptions();
@@ -729,21 +772,22 @@ class ApnsFcmOptions {
   }
 }
 
-/// Represents a color in the RGBA color space. This representation is designed
-/// for simplicity of conversion to/from color representations in various
-/// languages over compactness; for example, the fields of this representation
-/// can be trivially provided to the constructor of "java.awt.Color" in Java; it
-/// can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-/// method in iOS; and, with just a little work, it can be easily formatted into
-/// a CSS "rgba()" string in JavaScript, as well. Note: this proto does not
-/// carry information about the absolute color space that should be used to
-/// interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By
-/// default, applications SHOULD assume the sRGB color space. Note: when color
-/// equality needs to be decided, implementations, unless documented otherwise,
-/// will treat two colors to be equal if all their red, green, blue and alpha
-/// values each differ by at most 1e-5. Example (Java): import
-/// com.google.type.Color; // ... public static java.awt.Color fromProto(Color
-/// protocolor) { float alpha = protocolor.hasAlpha() ?
+/// Represents a color in the RGBA color space.
+///
+/// This representation is designed for simplicity of conversion to/from color
+/// representations in various languages over compactness; for example, the
+/// fields of this representation can be trivially provided to the constructor
+/// of "java.awt.Color" in Java; it can also be trivially provided to UIColor's
+/// "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little
+/// work, it can be easily formatted into a CSS "rgba()" string in JavaScript,
+/// as well. Note: this proto does not carry information about the absolute
+/// color space that should be used to interpret the RGB value (e.g. sRGB, Adobe
+/// RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB
+/// color space. Note: when color equality needs to be decided, implementations,
+/// unless documented otherwise, will treat two colors to be equal if all their
+/// red, green, blue and alpha values each differ by at most 1e-5. Example
+/// (Java): import com.google.type.Color; // ... public static java.awt.Color
+/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
 /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
 /// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
 /// public static Color toProto(java.awt.Color color) { float red = (float)
@@ -778,15 +822,16 @@ class ApnsFcmOptions {
 /// resultBuilder.push('0'); } resultBuilder.push(hexString); return
 /// resultBuilder.join(''); }; // ...
 class Color {
-  /// The fraction of this color that should be applied to the pixel. That is,
-  /// the final pixel color is defined by the equation: pixel color = alpha *
-  /// (this color) + (1.0 - alpha) * (background color) This means that a value
-  /// of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to
-  /// a completely transparent color. This uses a wrapper message rather than a
-  /// simple float scalar so that it is possible to distinguish between a
-  /// default value and the value being unset. If omitted, this color object is
-  /// to be rendered as a solid color (as if the alpha value had been explicitly
-  /// given with a value of 1.0).
+  /// The fraction of this color that should be applied to the pixel.
+  ///
+  /// That is, the final pixel color is defined by the equation: pixel color =
+  /// alpha * (this color) + (1.0 - alpha) * (background color) This means that
+  /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
+  /// corresponds to a completely transparent color. This uses a wrapper message
+  /// rather than a simple float scalar so that it is possible to distinguish
+  /// between a default value and the value being unset. If omitted, this color
+  /// object is to be rendered as a solid color (as if the alpha value had been
+  /// explicitly given with a value of 1.0).
   core.double alpha;
 
   /// The amount of blue in the color as a value in the interval [0, 1].
@@ -857,18 +902,26 @@ class FcmOptions {
 
 /// Settings to control notification LED.
 class LightSettings {
-  /// Required. Set `color` of the LED with
+  /// Set `color` of the LED with
   /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).
+  ///
+  /// Required.
   Color color;
 
-  /// Required. Along with `light_on_duration `, define the blink rate of LED
-  /// flashes. Resolution defined by
+  /// Along with `light_on_duration `, define the blink rate of LED flashes.
+  ///
+  /// Resolution defined by
   /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  ///
+  /// Required.
   core.String lightOffDuration;
 
-  /// Required. Along with `light_off_duration`, define the blink rate of LED
-  /// flashes. Resolution defined by
+  /// Along with `light_off_duration`, define the blink rate of LED flashes.
+  ///
+  /// Resolution defined by
   /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  ///
+  /// Required.
   core.String lightOnDuration;
 
   LightSettings();
@@ -903,42 +956,53 @@ class LightSettings {
 
 /// Message to send by Firebase Cloud Messaging Service.
 class Message {
-  /// Input only. Android specific options for messages sent through [FCM
-  /// connection server](https://goo.gl/4GLdUl).
+  /// Input only.
+  ///
+  /// Android specific options for messages sent through [FCM connection
+  /// server](https://goo.gl/4GLdUl).
   AndroidConfig android;
 
-  /// Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)
-  /// specific options.
+  /// Input only.
+  ///
+  /// [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.
   ApnsConfig apns;
 
   /// Condition to send a message to, e.g. "'foo' in topics && 'bar' in topics".
   core.String condition;
 
-  /// Input only. Arbitrary key/value payload. The key should not be a reserved
-  /// word ("from", "message_type", or any word starting with "google" or
-  /// "gcm").
+  /// Input only.
+  ///
+  /// Arbitrary key/value payload. The key should not be a reserved word
+  /// ("from", "message_type", or any word starting with "google" or "gcm").
   core.Map<core.String, core.String> data;
 
-  /// Input only. Template for FCM SDK feature options to use across all
-  /// platforms.
+  /// Input only.
+  ///
+  /// Template for FCM SDK feature options to use across all platforms.
   FcmOptions fcmOptions;
 
-  /// Output Only. The identifier of the message sent, in the format of
-  /// `projects / * /messages/{message_id}`.
+  /// The identifier of the message sent, in the format of `projects / *
+  /// /messages/{message_id}`.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Input only. Basic notification template to use across all platforms.
+  /// Input only.
+  ///
+  /// Basic notification template to use across all platforms.
   Notification notification;
 
   /// Registration token to send a message to.
   core.String token;
 
-  /// Topic name to send a message to, e.g. "weather". Note: "/topics/" prefix
-  /// should not be provided.
+  /// Topic name to send a message to, e.g. "weather".
+  ///
+  /// Note: "/topics/" prefix should not be provided.
   core.String topic;
 
-  /// Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)
-  /// options.
+  /// Input only.
+  ///
+  /// [Webpush protocol](https://tools.ietf.org/html/rfc8030) options.
   WebpushConfig webpush;
 
   Message();
@@ -1028,11 +1092,13 @@ class Notification {
   core.String body;
 
   /// Contains the URL of an image that is going to be downloaded on the device
-  /// and displayed in a notification. JPEG, PNG, BMP have full support across
-  /// platforms. Animated GIF and video only work on iOS. WebP and HEIF have
-  /// varying levels of support across platforms and platform versions. Android
-  /// has 1MB image size limit. Quota usage and implications/costs for hosting
-  /// image on Firebase Storage: https://firebase.google.com/pricing
+  /// and displayed in a notification.
+  ///
+  /// JPEG, PNG, BMP have full support across platforms. Animated GIF and video
+  /// only work on iOS. WebP and HEIF have varying levels of support across
+  /// platforms and platform versions. Android has 1MB image size limit. Quota
+  /// usage and implications/costs for hosting image on Firebase Storage:
+  /// https://firebase.google.com/pricing
   core.String image;
 
   /// The notification's title.
@@ -1069,7 +1135,9 @@ class Notification {
 
 /// Request to send a message to specified target.
 class SendMessageRequest {
-  /// Required. Message to send.
+  /// Message to send.
+  ///
+  /// Required.
   Message message;
 
   /// Flag for testing the request without actually delivering the message.
@@ -1101,20 +1169,23 @@ class SendMessageRequest {
 
 /// [Webpush protocol](https://tools.ietf.org/html/rfc8030) options.
 class WebpushConfig {
-  /// Arbitrary key/value payload. If present, it will override
-  /// google.firebase.fcm.v1.Message.data.
+  /// Arbitrary key/value payload.
+  ///
+  /// If present, it will override google.firebase.fcm.v1.Message.data.
   core.Map<core.String, core.String> data;
 
   /// Options for features provided by the FCM SDK for Web.
   WebpushFcmOptions fcmOptions;
 
-  /// HTTP headers defined in webpush protocol. Refer to [Webpush
-  /// protocol](https://tools.ietf.org/html/rfc8030#section-5) for supported
-  /// headers, e.g. "TTL": "15".
+  /// HTTP headers defined in webpush protocol.
+  ///
+  /// Refer to [Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5)
+  /// for supported headers, e.g. "TTL": "15".
   core.Map<core.String, core.String> headers;
 
-  /// Web Notification options as a JSON object. Supports Notification instance
-  /// properties as defined in [Web Notification
+  /// Web Notification options as a JSON object.
+  ///
+  /// Supports Notification instance properties as defined in [Web Notification
   /// API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If
   /// present, "title" and "body" fields override
   /// [google.firebase.fcm.v1.Notification.title] and
@@ -1183,8 +1254,9 @@ class WebpushFcmOptions {
   /// Label associated with the message's analytics data.
   core.String analyticsLabel;
 
-  /// The link to open when the user clicks on the notification. For all URL
-  /// values, HTTPS is required.
+  /// The link to open when the user clicks on the notification.
+  ///
+  /// For all URL values, HTTPS is required.
   core.String link;
 
   WebpushFcmOptions();

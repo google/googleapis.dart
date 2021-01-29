@@ -283,8 +283,9 @@ class DeploymentsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. May be empty if no such
-  /// policy or resource exists.
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such policy or resource exists.
   ///
   /// Request parameters:
   ///
@@ -643,8 +644,9 @@ class DeploymentsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -713,8 +715,10 @@ class DeploymentsResource {
     );
   }
 
-  /// Stops an ongoing operation. This does not roll back any work that has
-  /// already been completed, but prevents any new work from being started.
+  /// Stops an ongoing operation.
+  ///
+  /// This does not roll back any work that has already been completed, but
+  /// prevents any new work from being started.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1653,10 +1657,11 @@ class TypesResource {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs.
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs.
 ///
 /// If there are AuditConfigs for both `allServices` and a specific service, the
 /// union of the two AuditConfigs is used for that service: the log_types
@@ -1680,9 +1685,10 @@ class AuditConfig {
   core.List<AuditLogConfig> auditLogConfigs;
   core.List<core.String> exemptedMembers;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1720,7 +1726,9 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example:
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example:
 ///
 /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
 /// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", } ] }
@@ -1729,7 +1737,9 @@ class AuditConfig {
 /// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of [Binding.members][].
+  /// permission.
+  ///
+  /// Follows the same format of [Binding.members][].
   core.List<core.String> exemptedMembers;
   core.bool ignoreChildExemptions;
 
@@ -1797,8 +1807,10 @@ class Binding {
   /// current request.
   ///
   /// If the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding.
+  /// the current request.
+  ///
+  /// However, a different role binding might grant the same role to one or more
+  /// of the members in this binding.
   ///
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM
@@ -1806,6 +1818,7 @@ class Binding {
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values:
   ///
   /// * `allUsers`: A special identifier that represents anyone who is on the
@@ -1851,8 +1864,9 @@ class Binding {
   /// users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1974,10 +1988,12 @@ class Deployment {
   core.String description;
 
   /// Provides a fingerprint to use in requests to modify a deployment, such as
-  /// `update()`, `stop()`, and `cancelPreview()` requests. A fingerprint is a
-  /// randomly generated value that must be provided with `update()`, `stop()`,
-  /// and `cancelPreview()` requests to perform optimistic locking. This ensures
-  /// optimistic concurrency so that only one request happens at a time.
+  /// `update()`, `stop()`, and `cancelPreview()` requests.
+  ///
+  /// A fingerprint is a randomly generated value that must be provided with
+  /// `update()`, `stop()`, and `cancelPreview()` requests to perform optimistic
+  /// locking. This ensures optimistic concurrency so that only one request
+  /// happens at a time.
   ///
   /// The fingerprint is initially generated by Deployment Manager and changes
   /// after every request to modify data. To get the latest fingerprint value,
@@ -1993,23 +2009,30 @@ class Deployment {
 
   core.String id;
 
-  /// Output only. Creation timestamp in RFC3339 text format.
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
   core.String insertTime;
 
   /// Map of labels; provided by the client when the resource is created or
-  /// updated. Specifically: Label keys must be between 1 and 63 characters long
-  /// and must conform to the following regular expression:
-  /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63
-  /// characters long and must conform to the regular expression
-  /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  /// updated.
+  ///
+  /// Specifically: Label keys must be between 1 and 63 characters long and must
+  /// conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
+  /// Label values must be between 0 and 63 characters long and must conform to
+  /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
   core.List<DeploymentLabelEntry> labels;
 
-  /// Output only. URL of the manifest representing the last manifest that was
-  /// successfully deployed. If no manifest has been successfully deployed, this
-  /// field will be absent.
+  /// URL of the manifest representing the last manifest that was successfully
+  /// deployed.
+  ///
+  /// If no manifest has been successfully deployed, this field will be absent.
+  ///
+  /// Output only.
   core.String manifest;
 
   /// Name of the resource; provided by the client when the resource is created.
+  ///
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
   /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
@@ -2018,22 +2041,30 @@ class Deployment {
   /// dash.
   core.String name;
 
-  /// Output only. The Operation that most recently ran, or is currently
-  /// running, on this deployment.
+  /// The Operation that most recently ran, or is currently running, on this
+  /// deployment.
+  ///
+  /// Output only.
   Operation operation;
 
-  /// Output only. Server defined URL for the resource.
+  /// Server defined URL for the resource.
+  ///
+  /// Output only.
   core.String selfLink;
 
   /// [Input Only] The parameters that define your deployment, including the
   /// deployment configuration and relevant templates.
   TargetConfiguration target;
 
-  /// Output only. If Deployment Manager is currently updating or previewing an
-  /// update to this deployment, the updated configuration appears here.
+  /// If Deployment Manager is currently updating or previewing an update to
+  /// this deployment, the updated configuration appears here.
+  ///
+  /// Output only.
   DeploymentUpdate update;
 
-  /// Output only. Update timestamp in RFC3339 text format.
+  /// Update timestamp in RFC3339 text format.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Deployment();
@@ -2153,20 +2184,27 @@ class DeploymentLabelEntry {
 }
 
 class DeploymentUpdate {
-  /// Output only. An optional user-provided description of the deployment after
-  /// the current update has been applied.
+  /// An optional user-provided description of the deployment after the current
+  /// update has been applied.
+  ///
+  /// Output only.
   core.String description;
 
-  /// Output only. Map of labels; provided by the client when the resource is
-  /// created or updated. Specifically: Label keys must be between 1 and 63
-  /// characters long and must conform to the following regular expression:
-  /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63
-  /// characters long and must conform to the regular expression
-  /// `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  /// Map of labels; provided by the client when the resource is created or
+  /// updated.
+  ///
+  /// Specifically: Label keys must be between 1 and 63 characters long and must
+  /// conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
+  /// Label values must be between 0 and 63 characters long and must conform to
+  /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  ///
+  /// Output only.
   core.List<DeploymentUpdateLabelEntry> labels;
 
-  /// Output only. URL of the manifest representing the update configuration of
-  /// this deployment.
+  /// URL of the manifest representing the update configuration of this
+  /// deployment.
+  ///
+  /// Output only.
   core.String manifest;
 
   DeploymentUpdate();
@@ -2230,12 +2268,14 @@ class DeploymentUpdateLabelEntry {
 }
 
 class DeploymentsCancelPreviewRequest {
-  /// Specifies a fingerprint for `cancelPreview()` requests. A fingerprint is a
-  /// randomly generated value that must be provided in `cancelPreview()`
-  /// requests to perform optimistic locking. This ensures optimistic
-  /// concurrency so that the deployment does not have conflicting requests
-  /// (e.g. if someone attempts to make a new update request while another user
-  /// attempts to cancel a preview, this would prevent one of the requests).
+  /// Specifies a fingerprint for `cancelPreview()` requests.
+  ///
+  /// A fingerprint is a randomly generated value that must be provided in
+  /// `cancelPreview()` requests to perform optimistic locking. This ensures
+  /// optimistic concurrency so that the deployment does not have conflicting
+  /// requests (e.g. if someone attempts to make a new update request while
+  /// another user attempts to cancel a preview, this would prevent one of the
+  /// requests).
   ///
   /// The fingerprint is initially generated by Deployment Manager and changes
   /// after every request to modify a deployment. To get the latest fingerprint
@@ -2269,10 +2309,14 @@ class DeploymentsCancelPreviewRequest {
 /// A response containing a partial list of deployments and a page token used to
 /// build the next request if the request has been truncated.
 class DeploymentsListResponse {
-  /// Output only. The deployments contained in this response.
+  /// The deployments contained in this response.
+  ///
+  /// Output only.
   core.List<Deployment> deployments;
 
-  /// Output only. A token used to continue a truncated list request.
+  /// A token used to continue a truncated list request.
+  ///
+  /// Output only.
   core.String nextPageToken;
 
   DeploymentsListResponse();
@@ -2303,12 +2347,14 @@ class DeploymentsListResponse {
 }
 
 class DeploymentsStopRequest {
-  /// Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly
-  /// generated value that must be provided in `stop()` requests to perform
-  /// optimistic locking. This ensures optimistic concurrency so that the
-  /// deployment does not have conflicting requests (e.g. if someone attempts to
-  /// make a new update request while another user attempts to stop an ongoing
-  /// update request, this would prevent a collision).
+  /// Specifies a fingerprint for `stop()` requests.
+  ///
+  /// A fingerprint is a randomly generated value that must be provided in
+  /// `stop()` requests to perform optimistic locking. This ensures optimistic
+  /// concurrency so that the deployment does not have conflicting requests
+  /// (e.g. if someone attempts to make a new update request while another user
+  /// attempts to stop an ongoing update request, this would prevent a
+  /// collision).
   ///
   /// The fingerprint is initially generated by Deployment Manager and changes
   /// after every request to modify a deployment. To get the latest fingerprint
@@ -2340,8 +2386,10 @@ class DeploymentsStopRequest {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec.
 ///
 /// Example (Comparison):
 ///
@@ -2369,20 +2417,29 @@ class DeploymentsStopRequest {
 /// expression are determined by the service that evaluates it. See the service
 /// documentation for additional information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -2421,12 +2478,14 @@ class Expr {
 }
 
 class GlobalSetPolicyRequest {
-  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
-  /// Use 'policy' to specify bindings.
+  /// Flatten Policy to create a backward compatible wire-format.
+  ///
+  /// Deprecated. Use 'policy' to specify bindings.
   core.List<Binding> bindings;
 
-  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
-  /// Use 'policy' to specify the etag.
+  /// Flatten Policy to create a backward compatible wire-format.
+  ///
+  /// Deprecated. Use 'policy' to specify the etag.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
@@ -2435,9 +2494,11 @@ class GlobalSetPolicyRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// REQUIRED: The complete policy to be applied to the 'resource'. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is in general a
-  /// valid policy but certain services (like Projects) might reject them.
+  /// REQUIRED: The complete policy to be applied to the 'resource'.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is
+  /// in general a valid policy but certain services (like Projects) might
+  /// reject them.
   Policy policy;
 
   GlobalSetPolicyRequest();
@@ -2583,8 +2644,10 @@ class LogConfigCloudAuditOptions {
 /// Increment a streamz counter with the specified metric and field names.
 ///
 /// Metric names should start with a '/', generally be lowercase-only, and end
-/// in "_count". Field names should not contain an initial slash. The actual
-/// exported metric names will have "/iam/policy" prepended.
+/// in "_count".
+///
+/// Field names should not contain an initial slash. The actual exported metric
+/// names will have "/iam/policy" prepended.
 ///
 /// Field names correspond to IAM request parameters and field values are their
 /// respective values.
@@ -2643,15 +2706,18 @@ class LogConfigCounterOptions {
   }
 }
 
-/// Custom fields. These can be used to create a counter with arbitrary
-/// field/value pairs. See: go/rpcsp-custom-fields.
+/// Custom fields.
+///
+/// These can be used to create a counter with arbitrary field/value pairs. See:
+/// go/rpcsp-custom-fields.
 class LogConfigCounterOptionsCustomField {
   /// Name is the field name.
   core.String name;
 
-  /// Value is the field value. It is important that in contrast to the
-  /// CounterOptions.field, the value here is a constant that is not derived
-  /// from the IAMContext.
+  /// Value is the field value.
+  ///
+  /// It is important that in contrast to the CounterOptions.field, the value
+  /// here is a constant that is not derived from the IAMContext.
   core.String value;
 
   LogConfigCounterOptionsCustomField();
@@ -2699,21 +2765,31 @@ class LogConfigDataAccessOptions {
 }
 
 class Manifest {
-  /// Output only. The YAML configuration for this manifest.
+  /// The YAML configuration for this manifest.
+  ///
+  /// Output only.
   ConfigFile config;
 
-  /// Output only. The fully-expanded configuration file, including any
-  /// templates and references.
+  /// The fully-expanded configuration file, including any templates and
+  /// references.
+  ///
+  /// Output only.
   core.String expandedConfig;
   core.String id;
 
-  /// Output only. The imported files for this manifest.
+  /// The imported files for this manifest.
+  ///
+  /// Output only.
   core.List<ImportFile> imports;
 
-  /// Output only. Creation timestamp in RFC3339 text format.
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
   core.String insertTime;
 
-  /// Output only. The YAML layout for this manifest.
+  /// The YAML layout for this manifest.
+  ///
+  /// Output only.
   core.String layout;
 
   /// Output only.
@@ -2721,7 +2797,9 @@ class Manifest {
   /// The name of the manifest.
   core.String name;
 
-  /// Output only. Self link for the manifest.
+  /// Self link for the manifest.
+  ///
+  /// Output only.
   core.String selfLink;
 
   Manifest();
@@ -2790,10 +2868,14 @@ class Manifest {
 /// A response containing a partial list of manifests and a page token used to
 /// build the next request if the request has been truncated.
 class ManifestsListResponse {
-  /// Output only. Manifests contained in this list response.
+  /// Manifests contained in this list response.
+  ///
+  /// Output only.
   core.List<Manifest> manifests;
 
-  /// Output only. A token used to continue a truncated list request.
+  /// A token used to continue a truncated list request.
+  ///
+  /// Output only.
   core.String nextPageToken;
 
   ManifestsListResponse();
@@ -2823,14 +2905,21 @@ class ManifestsListResponse {
 }
 
 class OperationErrorErrors {
-  /// [Output Only] The error type identifier for this error.
+  /// The error type identifier for this error.
+  ///
+  /// Output only.
   core.String code;
 
-  /// [Output Only] Indicates the field in the request that caused the error.
+  /// Indicates the field in the request that caused the error.
+  ///
   /// This property is optional.
+  ///
+  /// Output only.
   core.String location;
 
-  /// [Output Only] An optional, human-readable error message.
+  /// An optional, human-readable error message.
+  ///
+  /// Output only.
   core.String message;
 
   OperationErrorErrors();
@@ -2862,11 +2951,14 @@ class OperationErrorErrors {
   }
 }
 
-/// [Output Only] If errors are generated during processing of the operation,
-/// this field will be populated.
+/// If errors are generated during processing of the operation, this field will
+/// be populated.
+///
+/// Output only.
 class OperationError {
-  /// [Output Only] The array of errors encountered while processing this
-  /// operation.
+  /// The array of errors encountered while processing this operation.
+  ///
+  /// Output only.
   core.List<OperationErrorErrors> errors;
 
   OperationError();
@@ -2890,16 +2982,21 @@ class OperationError {
 }
 
 class OperationWarningsData {
-  /// [Output Only] A key that provides more detail on the warning being
-  /// returned. For example, for warnings where there are no results in a list
-  /// request for a particular zone, this key might be scope and the key value
-  /// might be the zone name. Other examples might be a key indicating a
-  /// deprecated resource and a suggested replacement, or a warning about
-  /// invalid network settings (for example, if an instance attempts to perform
-  /// IP forwarding but is not enabled for IP forwarding).
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
   core.String key;
 
-  /// [Output Only] A warning data value corresponding to the key.
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
   core.String value;
 
   OperationWarningsData();
@@ -2926,16 +3023,25 @@ class OperationWarningsData {
 }
 
 class OperationWarnings {
-  /// [Output Only] A warning code, if applicable. For example, Compute Engine
-  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
   core.String code;
 
-  /// [Output Only] Metadata about this warning in key: value format. For
-  /// example:
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
   /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
   core.List<OperationWarningsData> data;
 
-  /// [Output Only] A human-readable description of the warning code.
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
   core.String message;
 
   OperationWarnings();
@@ -2978,8 +3084,9 @@ class OperationWarnings {
 /// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
 /// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations)
 ///
-/// You can use an operation resource to manage asynchronous API requests. For
-/// more information, read Handling API responses.
+/// You can use an operation resource to manage asynchronous API requests.
+///
+/// For more information, read Handling API responses.
 ///
 /// Operations can be global, regional or zonal.
 /// - For global operations, use the `globalOperations` resource.
@@ -2991,98 +3098,152 @@ class OperationWarnings {
 /// {$api_version}.regionOperations ==) (== resource_for
 /// {$api_version}.zoneOperations ==)
 class Operation {
-  /// [Output Only] The value of `requestId` if you provided it in the request.
+  /// The value of `requestId` if you provided it in the request.
+  ///
   /// Not present otherwise.
+  ///
+  /// Output only.
   core.String clientOperationId;
 
-  /// [Deprecated] This field is deprecated.
+  /// This field is deprecated.
+  ///
+  /// Deprecated.
   core.String creationTimestamp;
 
-  /// [Output Only] A textual description of the operation, which is set when
-  /// the operation is created.
+  /// A textual description of the operation, which is set when the operation is
+  /// created.
+  ///
+  /// Output only.
   core.String description;
 
-  /// [Output Only] The time that this operation was completed. This value is in
-  /// RFC3339 text format.
+  /// The time that this operation was completed.
+  ///
+  /// This value is in RFC3339 text format.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// [Output Only] If errors are generated during processing of the operation,
-  /// this field will be populated.
+  /// If errors are generated during processing of the operation, this field
+  /// will be populated.
+  ///
+  /// Output only.
   OperationError error;
 
-  /// [Output Only] If the operation fails, this field contains the HTTP error
-  /// message that was returned, such as `NOT FOUND`.
+  /// If the operation fails, this field contains the HTTP error message that
+  /// was returned, such as `NOT FOUND`.
+  ///
+  /// Output only.
   core.String httpErrorMessage;
 
-  /// [Output Only] If the operation fails, this field contains the HTTP error
-  /// status code that was returned. For example, a `404` means the resource was
-  /// not found.
+  /// If the operation fails, this field contains the HTTP error status code
+  /// that was returned.
+  ///
+  /// For example, a `404` means the resource was not found.
+  ///
+  /// Output only.
   core.int httpErrorStatusCode;
 
-  /// [Output Only] The unique identifier for the operation. This identifier is
-  /// defined by the server.
+  /// The unique identifier for the operation.
+  ///
+  /// This identifier is defined by the server.
+  ///
+  /// Output only.
   core.String id;
 
-  /// [Output Only] The time that this operation was requested. This value is in
-  /// RFC3339 text format.
+  /// The time that this operation was requested.
+  ///
+  /// This value is in RFC3339 text format.
+  ///
+  /// Output only.
   core.String insertTime;
 
-  /// [Output Only] Type of the resource. Always `compute#operation` for
-  /// Operation resources.
+  /// Type of the resource.
+  ///
+  /// Always `compute#operation` for Operation resources.
+  ///
+  /// Output only.
   core.String kind;
 
-  /// [Output Only] Name of the operation.
+  /// Name of the operation.
+  ///
+  /// Output only.
   core.String name;
 
-  /// [Output Only] The type of operation, such as `insert`, `update`, or
-  /// `delete`, and so on.
+  /// The type of operation, such as `insert`, `update`, or `delete`, and so on.
+  ///
+  /// Output only.
   core.String operationType;
 
-  /// [Output Only] An optional progress indicator that ranges from 0 to 100.
+  /// An optional progress indicator that ranges from 0 to 100.
+  ///
   /// There is no requirement that this be linear or support any granularity of
   /// operations. This should not be used to guess when the operation will be
   /// complete. This number should monotonically increase as the operation
   /// progresses.
+  ///
+  /// Output only.
   core.int progress;
 
-  /// [Output Only] The URL of the region where the operation resides. Only
-  /// applicable when performing regional operations.
+  /// The URL of the region where the operation resides.
+  ///
+  /// Only applicable when performing regional operations.
+  ///
+  /// Output only.
   core.String region;
 
-  /// [Output Only] Server-defined URL for the resource.
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
   core.String selfLink;
 
-  /// [Output Only] The time that this operation was started by the server. This
-  /// value is in RFC3339 text format.
+  /// The time that this operation was started by the server.
+  ///
+  /// This value is in RFC3339 text format.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// [Output Only] The status of the operation, which can be one of the
-  /// following: `PENDING`, `RUNNING`, or `DONE`.
+  /// The status of the operation, which can be one of the following: `PENDING`,
+  /// `RUNNING`, or `DONE`.
+  ///
+  /// Output only.
   core.String status;
 
-  /// [Output Only] An optional textual description of the current status of the
-  /// operation.
+  /// An optional textual description of the current status of the operation.
+  ///
+  /// Output only.
   core.String statusMessage;
 
-  /// [Output Only] The unique target ID, which identifies a specific
-  /// incarnation of the target resource.
+  /// The unique target ID, which identifies a specific incarnation of the
+  /// target resource.
+  ///
+  /// Output only.
   core.String targetId;
 
-  /// [Output Only] The URL of the resource that the operation modifies. For
-  /// operations related to creating a snapshot, this points to the persistent
-  /// disk that the snapshot was created from.
+  /// The URL of the resource that the operation modifies.
+  ///
+  /// For operations related to creating a snapshot, this points to the
+  /// persistent disk that the snapshot was created from.
+  ///
+  /// Output only.
   core.String targetLink;
 
-  /// [Output Only] User who requested the operation, for example:
-  /// `user@example.com`.
+  /// User who requested the operation, for example: `user@example.com`.
+  ///
+  /// Output only.
   core.String user;
 
-  /// [Output Only] If warning messages are generated during processing of the
-  /// operation, this field will be populated.
+  /// If warning messages are generated during processing of the operation, this
+  /// field will be populated.
+  ///
+  /// Output only.
   core.List<OperationWarnings> warnings;
 
-  /// [Output Only] The URL of the zone where the operation resides. Only
-  /// applicable when performing per-zone operations.
+  /// The URL of the zone where the operation resides.
+  ///
+  /// Only applicable when performing per-zone operations.
+  ///
+  /// Output only.
   core.String zone;
 
   Operation();
@@ -3241,10 +3402,14 @@ class Operation {
 /// A response containing a partial list of operations and a page token used to
 /// build the next request if the request has been truncated.
 class OperationsListResponse {
-  /// Output only. A token used to continue a truncated list request.
+  /// A token used to continue a truncated list request.
+  ///
+  /// Output only.
   core.String nextPageToken;
 
-  /// Output only. Operations contained in this list response.
+  /// Operations contained in this list response.
+  ///
+  /// Output only.
   core.List<Operation> operations;
 
   OperationsListResponse();
@@ -3278,11 +3443,12 @@ class OperationsListResponse {
 ///
 ///
 ///
-/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
-/// `members` to a single `role`. Members can be user accounts, service
-/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
-/// list of permissions; each `role` can be an IAM predefined role or a
-/// user-created custom role.
+/// A `Policy` is a collection of `bindings`.
+///
+/// A `binding` binds one or more `members` to a single `role`. Members can be
+/// user accounts, service accounts, Google groups, and domains (such as G
+/// Suite). A `role` is a named list of permissions; each `role` can be an IAM
+/// predefined role or a user-created custom role.
 ///
 /// For some types of Google Cloud resources, a `binding` can also specify a
 /// `condition`, which is a logical expression that allows access to a resource
@@ -3319,14 +3485,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -3348,18 +3517,20 @@ class Policy {
   core.bool iamOwned;
 
   /// If more than one rule is specified, the rules are applied in the following
-  /// manner: - All matching LOG rules are always applied. - If any
-  /// DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be
-  /// applied if one or more matching rule requires logging. - Otherwise, if any
-  /// ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be
-  /// applied if one or more matching rule requires logging. - Otherwise, if no
-  /// rule applies, permission is denied.
+  /// manner: - All matching LOG rules are always applied.
+  ///
+  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging
+  /// will be applied if one or more matching rule requires logging. -
+  /// Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
+  /// granted. Logging will be applied if one or more matching rule requires
+  /// logging. - Otherwise, if no rule applies, permission is denied.
   core.List<Rule> rules;
 
   /// Specifies the format of the policy.
   ///
-  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-  /// are rejected.
+  /// Valid values are `0`, `1`, and `3`.
+  ///
+  /// Requests that specify an invalid value are rejected.
   ///
   /// Any operation that affects conditional role bindings must specify version
   /// `3`. This requirement applies to the following operations:
@@ -3440,16 +3611,21 @@ class Policy {
 }
 
 class ResourceWarningsData {
-  /// [Output Only] A key that provides more detail on the warning being
-  /// returned. For example, for warnings where there are no results in a list
-  /// request for a particular zone, this key might be scope and the key value
-  /// might be the zone name. Other examples might be a key indicating a
-  /// deprecated resource and a suggested replacement, or a warning about
-  /// invalid network settings (for example, if an instance attempts to perform
-  /// IP forwarding but is not enabled for IP forwarding).
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
   core.String key;
 
-  /// [Output Only] A warning data value corresponding to the key.
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
   core.String value;
 
   ResourceWarningsData();
@@ -3476,16 +3652,25 @@ class ResourceWarningsData {
 }
 
 class ResourceWarnings {
-  /// [Output Only] A warning code, if applicable. For example, Compute Engine
-  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
   core.String code;
 
-  /// [Output Only] Metadata about this warning in key: value format. For
-  /// example:
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
   /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
   core.List<ResourceWarningsData> data;
 
-  /// [Output Only] A human-readable description of the warning code.
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
   core.String message;
 
   ResourceWarnings();
@@ -3524,41 +3709,64 @@ class Resource {
   /// The Access Control Policy set on this resource.
   ResourceAccessControl accessControl;
 
-  /// Output only. The evaluated properties of the resource with references
-  /// expanded. Returned as serialized YAML.
+  /// The evaluated properties of the resource with references expanded.
+  ///
+  /// Returned as serialized YAML.
+  ///
+  /// Output only.
   core.String finalProperties;
   core.String id;
 
-  /// Output only. Creation timestamp in RFC3339 text format.
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
   core.String insertTime;
 
-  /// Output only. URL of the manifest representing the current configuration of
-  /// this resource.
+  /// URL of the manifest representing the current configuration of this
+  /// resource.
+  ///
+  /// Output only.
   core.String manifest;
 
-  /// Output only. The name of the resource as it appears in the YAML config.
+  /// The name of the resource as it appears in the YAML config.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The current properties of the resource before any references
-  /// have been filled in. Returned as serialized YAML.
+  /// The current properties of the resource before any references have been
+  /// filled in.
+  ///
+  /// Returned as serialized YAML.
+  ///
+  /// Output only.
   core.String properties;
 
-  /// Output only. The type of the resource, for example `compute.v1.instance`,
-  /// or `cloudfunctions.v1beta1.function`.
+  /// The type of the resource, for example `compute.v1.instance`, or
+  /// `cloudfunctions.v1beta1.function`.
+  ///
+  /// Output only.
   core.String type;
 
-  /// Output only. If Deployment Manager is currently updating or previewing an
-  /// update to this resource, the updated configuration appears here.
+  /// If Deployment Manager is currently updating or previewing an update to
+  /// this resource, the updated configuration appears here.
+  ///
+  /// Output only.
   ResourceUpdate update;
 
-  /// Output only. Update timestamp in RFC3339 text format.
+  /// Update timestamp in RFC3339 text format.
+  ///
+  /// Output only.
   core.String updateTime;
 
-  /// Output only. The URL of the actual resource.
+  /// The URL of the actual resource.
+  ///
+  /// Output only.
   core.String url;
 
-  /// Output only. If warning messages are generated during processing of this
-  /// resource, this field will be populated.
+  /// If warning messages are generated during processing of this resource, this
+  /// field will be populated.
+  ///
+  /// Output only.
   core.List<ResourceWarnings> warnings;
 
   Resource();
@@ -3672,14 +3880,21 @@ class ResourceAccessControl {
 }
 
 class ResourceUpdateErrorErrors {
-  /// [Output Only] The error type identifier for this error.
+  /// The error type identifier for this error.
+  ///
+  /// Output only.
   core.String code;
 
-  /// [Output Only] Indicates the field in the request that caused the error.
+  /// Indicates the field in the request that caused the error.
+  ///
   /// This property is optional.
+  ///
+  /// Output only.
   core.String location;
 
-  /// [Output Only] An optional, human-readable error message.
+  /// An optional, human-readable error message.
+  ///
+  /// Output only.
   core.String message;
 
   ResourceUpdateErrorErrors();
@@ -3711,11 +3926,14 @@ class ResourceUpdateErrorErrors {
   }
 }
 
-/// Output only. If errors are generated during update of the resource, this
-/// field will be populated.
+/// If errors are generated during update of the resource, this field will be
+/// populated.
+///
+/// Output only.
 class ResourceUpdateError {
-  /// [Output Only] The array of errors encountered while processing this
-  /// operation.
+  /// The array of errors encountered while processing this operation.
+  ///
+  /// Output only.
   core.List<ResourceUpdateErrorErrors> errors;
 
   ResourceUpdateError();
@@ -3740,16 +3958,21 @@ class ResourceUpdateError {
 }
 
 class ResourceUpdateWarningsData {
-  /// [Output Only] A key that provides more detail on the warning being
-  /// returned. For example, for warnings where there are no results in a list
-  /// request for a particular zone, this key might be scope and the key value
-  /// might be the zone name. Other examples might be a key indicating a
-  /// deprecated resource and a suggested replacement, or a warning about
-  /// invalid network settings (for example, if an instance attempts to perform
-  /// IP forwarding but is not enabled for IP forwarding).
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
   core.String key;
 
-  /// [Output Only] A warning data value corresponding to the key.
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
   core.String value;
 
   ResourceUpdateWarningsData();
@@ -3776,16 +3999,25 @@ class ResourceUpdateWarningsData {
 }
 
 class ResourceUpdateWarnings {
-  /// [Output Only] A warning code, if applicable. For example, Compute Engine
-  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
   core.String code;
 
-  /// [Output Only] Metadata about this warning in key: value format. For
-  /// example:
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
   /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
   core.List<ResourceUpdateWarningsData> data;
 
-  /// [Output Only] A human-readable description of the warning code.
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
   core.String message;
 
   ResourceUpdateWarnings();
@@ -3826,30 +4058,47 @@ class ResourceUpdate {
   /// resource itself.
   ResourceAccessControl accessControl;
 
-  /// Output only. If errors are generated during update of the resource, this
-  /// field will be populated.
+  /// If errors are generated during update of the resource, this field will be
+  /// populated.
+  ///
+  /// Output only.
   ResourceUpdateError error;
 
-  /// Output only. The expanded properties of the resource with reference values
-  /// expanded. Returned as serialized YAML.
+  /// The expanded properties of the resource with reference values expanded.
+  ///
+  /// Returned as serialized YAML.
+  ///
+  /// Output only.
   core.String finalProperties;
 
-  /// Output only. The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.
+  /// The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.
+  ///
+  /// Output only.
   core.String intent;
 
-  /// Output only. URL of the manifest representing the update configuration of
-  /// this resource.
+  /// URL of the manifest representing the update configuration of this
+  /// resource.
+  ///
+  /// Output only.
   core.String manifest;
 
-  /// Output only. The set of updated properties for this resource, before
-  /// references are expanded. Returned as serialized YAML.
+  /// The set of updated properties for this resource, before references are
+  /// expanded.
+  ///
+  /// Returned as serialized YAML.
+  ///
+  /// Output only.
   core.String properties;
 
-  /// Output only. The state of the resource.
+  /// The state of the resource.
+  ///
+  /// Output only.
   core.String state;
 
-  /// Output only. If warning messages are generated during processing of this
-  /// resource, this field will be populated.
+  /// If warning messages are generated during processing of this resource, this
+  /// field will be populated.
+  ///
+  /// Output only.
   core.List<ResourceUpdateWarnings> warnings;
 
   ResourceUpdate();
@@ -3957,8 +4206,9 @@ class Rule {
   /// Required
   core.String action;
 
-  /// Additional restrictions that must be met. All conditions must pass for the
-  /// rule to match.
+  /// Additional restrictions that must be met.
+  ///
+  /// All conditions must pass for the rule to match.
   core.List<Condition> conditions;
 
   /// Human-readable description of the rule.
@@ -3976,8 +4226,9 @@ class Rule {
   /// PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
   core.List<core.String> notIns;
 
-  /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
-  /// value of '*' matches all permissions, and a verb part of '*' (e.g.,
+  /// A permission is a string of form '..' (e.g., 'storage.buckets.list').
+  ///
+  /// A value of '*' matches all permissions, and a verb part of '*' (e.g.,
   /// 'storage.buckets.*') matches all verbs.
   core.List<core.String> permissions;
 
@@ -4050,9 +4301,10 @@ class TargetConfiguration {
   /// The configuration to use for this deployment.
   ConfigFile config;
 
-  /// Specifies any files to import for this configuration. This can be used to
-  /// import templates or other files. For example, you might import a text file
-  /// in order to use the file in a template.
+  /// Specifies any files to import for this configuration.
+  ///
+  /// This can be used to import templates or other files. For example, you
+  /// might import a text file in order to use the file in a template.
   core.List<ImportFile> imports;
 
   TargetConfiguration();
@@ -4083,8 +4335,9 @@ class TargetConfiguration {
 }
 
 class TestPermissionsRequest {
-  /// The set of permissions to check for the 'resource'. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed.
+  /// The set of permissions to check for the 'resource'.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   core.List<core.String> permissions;
 
   TestPermissionsRequest();
@@ -4134,17 +4387,23 @@ class TestPermissionsResponse {
 class Type {
   core.String id;
 
-  /// Output only. Creation timestamp in RFC3339 text format.
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
   core.String insertTime;
 
   /// Name of the type.
   core.String name;
 
-  /// Output only. The Operation that most recently ran, or is currently
-  /// running, on this type.
+  /// The Operation that most recently ran, or is currently running, on this
+  /// type.
+  ///
+  /// Output only.
   Operation operation;
 
-  /// Output only. Server defined URL for the resource.
+  /// Server defined URL for the resource.
+  ///
+  /// Output only.
   core.String selfLink;
 
   Type();
@@ -4194,7 +4453,9 @@ class TypesListResponse {
   /// A token used to continue a truncated list request.
   core.String nextPageToken;
 
-  /// Output only. A list of resource types supported by Deployment Manager.
+  /// A list of resource types supported by Deployment Manager.
+  ///
+  /// Output only.
   core.List<Type> types;
 
   TypesListResponse();

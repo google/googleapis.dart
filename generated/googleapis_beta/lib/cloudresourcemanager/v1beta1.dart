@@ -130,9 +130,10 @@ class OrganizationsResource {
     );
   }
 
-  /// Gets the access control policy for an Organization resource. May be empty
-  /// if no such policy or resource exists. The `resource` field should be the
-  /// organization's resource name, e.g. "organizations/123".
+  /// Gets the access control policy for an Organization resource.
+  ///
+  /// May be empty if no such policy or resource exists. The `resource` field
+  /// should be the organization's resource name, e.g. "organizations/123".
   ///
   /// [request] - The metadata request object.
   ///
@@ -194,8 +195,10 @@ class OrganizationsResource {
   }
 
   /// Lists Organization resources that are visible to the user and satisfy the
-  /// specified filter. This method returns Organizations in an unspecified
-  /// order. New Organizations do not necessarily appear at the end of the list.
+  /// specified filter.
+  ///
+  /// This method returns Organizations in an unspecified order. New
+  /// Organizations do not necessarily appear at the end of the list.
   ///
   /// Request parameters:
   ///
@@ -268,9 +271,10 @@ class OrganizationsResource {
     );
   }
 
-  /// Sets the access control policy on an Organization resource. Replaces any
-  /// existing policy. The `resource` field should be the organization's
-  /// resource name, e.g. "organizations/123".
+  /// Sets the access control policy on an Organization resource.
+  ///
+  /// Replaces any existing policy. The `resource` field should be the
+  /// organization's resource name, e.g. "organizations/123".
   ///
   /// [request] - The metadata request object.
   ///
@@ -331,8 +335,9 @@ class OrganizationsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified Organization. The
-  /// `resource` field should be the organization's resource name, e.g.
+  /// Returns permissions that a caller has on the specified Organization.
+  ///
+  /// The `resource` field should be the organization's resource name, e.g.
   /// "organizations/123".
   ///
   /// [request] - The metadata request object.
@@ -462,14 +467,16 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a Project resource. Initially, the Project resource is owned by
-  /// its creator exclusively. The creator can later grant permission to others
-  /// to read or update the Project. Several APIs are activated automatically
-  /// for the Project, including Google Cloud Storage. The parent is identified
-  /// by a specified ResourceId, which must include both an ID and a type, such
-  /// as project, folder, or organization. This method does not associate the
-  /// new project with a billing account. You can set or update the billing
-  /// account associated with a project using the [`projects.updateBillingInfo`]
+  /// Creates a Project resource.
+  ///
+  /// Initially, the Project resource is owned by its creator exclusively. The
+  /// creator can later grant permission to others to read or update the
+  /// Project. Several APIs are activated automatically for the Project,
+  /// including Google Cloud Storage. The parent is identified by a specified
+  /// ResourceId, which must include both an ID and a type, such as project,
+  /// folder, or organization. This method does not associate the new project
+  /// with a billing account. You can set or update the billing account
+  /// associated with a project using the [`projects.updateBillingInfo`]
   /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.
   ///
   /// [request] - The metadata request object.
@@ -527,16 +534,17 @@ class ProjectsResource {
   }
 
   /// Marks the Project identified by the specified `project_id` (for example,
-  /// `my-project-123`) for deletion. This method will only affect the Project
-  /// if it has a lifecycle state of ACTIVE. This method changes the Project's
-  /// lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
-  /// unspecified time, at which point the project is no longer accessible.
-  /// Until the deletion completes, you can check the lifecycle state checked by
-  /// retrieving the Project with GetProject, and the Project remains visible to
-  /// ListProjects. However, you cannot update the project. After the deletion
-  /// completes, the Project is not retrievable by the GetProject and
-  /// ListProjects methods. The caller must have delete permissions for this
-  /// Project.
+  /// `my-project-123`) for deletion.
+  ///
+  /// This method will only affect the Project if it has a lifecycle state of
+  /// ACTIVE. This method changes the Project's lifecycle state from ACTIVE to
+  /// DELETE_REQUESTED. The deletion starts at an unspecified time, at which
+  /// point the project is no longer accessible. Until the deletion completes,
+  /// you can check the lifecycle state checked by retrieving the Project with
+  /// GetProject, and the Project remains visible to ListProjects. However, you
+  /// cannot update the project. After the deletion completes, the Project is
+  /// not retrievable by the GetProject and ListProjects methods. The caller
+  /// must have delete permissions for this Project.
   ///
   /// Request parameters:
   ///
@@ -587,8 +595,9 @@ class ProjectsResource {
   }
 
   /// Retrieves the Project identified by the specified `project_id` (for
-  /// example, `my-project-123`). The caller must have read permissions for this
-  /// Project.
+  /// example, `my-project-123`).
+  ///
+  /// The caller must have read permissions for this Project.
   ///
   /// Request parameters:
   ///
@@ -640,6 +649,7 @@ class ProjectsResource {
 
   /// Gets a list of ancestors in the resource hierarchy for the Project
   /// identified by the specified `project_id` (for example, `my-project-123`).
+  ///
   /// The caller must have read permissions for this Project.
   ///
   /// [request] - The metadata request object.
@@ -700,6 +710,7 @@ class ProjectsResource {
   }
 
   /// Returns the IAM access control policy for the specified Project.
+  ///
   /// Permission is denied if the policy or the resource does not exist. For
   /// additional information about resource structure and identification, see
   /// [Resource Names](/apis/design/resource_names).
@@ -763,13 +774,14 @@ class ProjectsResource {
   }
 
   /// Lists Projects that the caller has the `resourcemanager.projects.get`
-  /// permission on and satisfy the specified filter. This method returns
-  /// Projects in an unspecified order. This method is eventually consistent
-  /// with project mutations; this means that a newly created project may not
-  /// appear in the results or recent updates to an existing project may not be
-  /// reflected in the results. To retrieve the latest state of a project, use
-  /// the GetProject method. NOTE: If the request filter contains a
-  /// `parent.type` and `parent.id` and the caller has the
+  /// permission on and satisfy the specified filter.
+  ///
+  /// This method returns Projects in an unspecified order. This method is
+  /// eventually consistent with project mutations; this means that a newly
+  /// created project may not appear in the results or recent updates to an
+  /// existing project may not be reflected in the results. To retrieve the
+  /// latest state of a project, use the GetProject method. NOTE: If the request
+  /// filter contains a `parent.type` and `parent.id` and the caller has the
   /// `resourcemanager.projects.list` permission on the parent, the results will
   /// be drawn from an alternate index which provides more consistent results.
   /// In future versions of this API, this List method will be split into List
@@ -858,34 +870,35 @@ class ProjectsResource {
     );
   }
 
-  /// Sets the IAM access control policy for the specified Project. CAUTION:
-  /// This method will replace the existing policy, and cannot be used to append
-  /// additional IAM settings. NOTE: Removing service accounts from policies or
-  /// changing their roles can render services completely inoperable. It is
-  /// important to understand how the service account is being used before
-  /// removing or updating its roles. The following constraints apply when using
-  /// `setIamPolicy()`: + Project does not support `allUsers` and
-  /// `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The
-  /// owner role can be granted to a `user`, `serviceAccount`, or a group that
-  /// is part of an organization. For example, group@myownpersonaldomain.com
-  /// could be added as an owner to a project in the myownpersonaldomain.com
-  /// organization, but not the examplepetstore.com organization. + Service
-  /// accounts can be made owners of a project directly without any
-  /// restrictions. However, to be added as an owner, a user must be invited via
-  /// Cloud Platform console and must accept the invitation. + A user cannot be
-  /// granted the owner role using `setIamPolicy()`. The user must be granted
-  /// the owner role using the Cloud Platform Console and must explicitly accept
-  /// the invitation. + Invitations to grant the owner role cannot be sent using
-  /// `setIamPolicy()`; they must be sent only using the Cloud Platform Console.
-  /// + Membership changes that leave the project without any owners that have
-  /// accepted the Terms of Service (ToS) will be rejected. + If the project is
-  /// not part of an organization, there must be at least one owner who has
-  /// accepted the Terms of Service (ToS) agreement in the policy. Calling
-  /// `setIamPolicy()` to remove the last ToS-accepted owner from the policy
-  /// will fail. This restriction also applies to legacy projects that no longer
-  /// have owners who have accepted the ToS. Edits to IAM policies will be
-  /// rejected until the lack of a ToS-accepting owner is rectified.
-  /// Authorization requires the Google IAM permission
+  /// Sets the IAM access control policy for the specified Project.
+  ///
+  /// CAUTION: This method will replace the existing policy, and cannot be used
+  /// to append additional IAM settings. NOTE: Removing service accounts from
+  /// policies or changing their roles can render services completely
+  /// inoperable. It is important to understand how the service account is being
+  /// used before removing or updating its roles. The following constraints
+  /// apply when using `setIamPolicy()`: + Project does not support `allUsers`
+  /// and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. +
+  /// The owner role can be granted to a `user`, `serviceAccount`, or a group
+  /// that is part of an organization. For example,
+  /// group@myownpersonaldomain.com could be added as an owner to a project in
+  /// the myownpersonaldomain.com organization, but not the examplepetstore.com
+  /// organization. + Service accounts can be made owners of a project directly
+  /// without any restrictions. However, to be added as an owner, a user must be
+  /// invited via Cloud Platform console and must accept the invitation. + A
+  /// user cannot be granted the owner role using `setIamPolicy()`. The user
+  /// must be granted the owner role using the Cloud Platform Console and must
+  /// explicitly accept the invitation. + Invitations to grant the owner role
+  /// cannot be sent using `setIamPolicy()`; they must be sent only using the
+  /// Cloud Platform Console. + Membership changes that leave the project
+  /// without any owners that have accepted the Terms of Service (ToS) will be
+  /// rejected. + If the project is not part of an organization, there must be
+  /// at least one owner who has accepted the Terms of Service (ToS) agreement
+  /// in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted
+  /// owner from the policy will fail. This restriction also applies to legacy
+  /// projects that no longer have owners who have accepted the ToS. Edits to
+  /// IAM policies will be rejected until the lack of a ToS-accepting owner is
+  /// rectified. Authorization requires the Google IAM permission
   /// `resourcemanager.projects.setIamPolicy` on the project
   ///
   /// [request] - The metadata request object.
@@ -1008,10 +1021,11 @@ class ProjectsResource {
   }
 
   /// Restores the Project identified by the specified `project_id` (for
-  /// example, `my-project-123`). You can only use this method for a Project
-  /// that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
-  /// Project cannot be restored. The caller must have undelete permissions for
-  /// this Project.
+  /// example, `my-project-123`).
+  ///
+  /// You can only use this method for a Project that has a lifecycle state of
+  /// DELETE_REQUESTED. After deletion starts, the Project cannot be restored.
+  /// The caller must have undelete permissions for this Project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1070,8 +1084,9 @@ class ProjectsResource {
   }
 
   /// Updates the attributes of the Project identified by the specified
-  /// `project_id` (for example, `my-project-123`). The caller must have modify
-  /// permissions for this Project.
+  /// `project_id` (for example, `my-project-123`).
+  ///
+  /// The caller must have modify permissions for this Project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1151,11 +1166,12 @@ class Ancestor {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -1171,9 +1187,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1203,14 +1220,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -1248,20 +1268,24 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -1292,8 +1316,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1335,10 +1360,12 @@ class Binding {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1353,8 +1380,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -1369,20 +1398,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1436,8 +1474,9 @@ class FolderOperation {
   /// - "MOVE" : A move folder operation.
   core.String operationType;
 
-  /// The resource name of the folder's parent. Only applicable when the
-  /// operation_type is MOVE.
+  /// The resource name of the folder's parent.
+  ///
+  /// Only applicable when the operation_type is MOVE.
   core.String sourceParent;
 
   FolderOperation();
@@ -1536,9 +1575,10 @@ class GetAncestryRequest {
 
 /// Response from the projects.getAncestry method.
 class GetAncestryResponse {
-  /// Ancestors are ordered from bottom to top of the resource hierarchy. The
-  /// first ancestor is the project itself, followed by the project's parent,
-  /// etc.
+  /// Ancestors are ordered from bottom to top of the resource hierarchy.
+  ///
+  /// The first ancestor is the project itself, followed by the project's
+  /// parent, etc.
   core.List<Ancestor> ancestor;
 
   GetAncestryResponse();
@@ -1587,13 +1627,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -1615,11 +1658,12 @@ class GetPolicyOptions {
 
 /// The response returned from the `ListOrganizations` method.
 class ListOrganizationsResponse {
-  /// A pagination token to be used to retrieve the next page of results. If the
-  /// result is too large to fit within the page size specified in the request,
-  /// this field will be set with a token that can be used to fetch the next
-  /// page of results. If this field is empty, it indicates that this response
-  /// contains the last page of results.
+  /// A pagination token to be used to retrieve the next page of results.
+  ///
+  /// If the result is too large to fit within the page size specified in the
+  /// request, this field will be set with a token that can be used to fetch the
+  /// next page of results. If this field is empty, it indicates that this
+  /// response contains the last page of results.
   core.String nextPageToken;
 
   /// The list of Organizations that matched the list query, possibly paginated.
@@ -1652,21 +1696,25 @@ class ListOrganizationsResponse {
   }
 }
 
-/// A page of the response received from the ListProjects method. A paginated
-/// response where more pages are available has `next_page_token` set. This
-/// token can be used in a subsequent request to retrieve the next request page.
+/// A page of the response received from the ListProjects method.
+///
+/// A paginated response where more pages are available has `next_page_token`
+/// set. This token can be used in a subsequent request to retrieve the next
+/// request page.
 class ListProjectsResponse {
-  /// Pagination token. If the result set is too large to fit in a single
-  /// response, this token is returned. It encodes the position of the current
-  /// result cursor. Feeding this value into a new list request with the
-  /// `page_token` parameter gives the next page of the results. When
-  /// `next_page_token` is not filled in, there is no next page and the list
-  /// returned is the last page in the result set. Pagination tokens have a
-  /// limited lifetime.
+  /// Pagination token.
+  ///
+  /// If the result set is too large to fit in a single response, this token is
+  /// returned. It encodes the position of the current result cursor. Feeding
+  /// this value into a new list request with the `page_token` parameter gives
+  /// the next page of the results. When `next_page_token` is not filled in,
+  /// there is no next page and the list returned is the last page in the result
+  /// set. Pagination tokens have a limited lifetime.
   core.String nextPageToken;
 
-  /// The list of Projects that matched the list filter. This list can be
-  /// paginated.
+  /// The list of Projects that matched the list filter.
+  ///
+  /// This list can be paginated.
   core.List<Project> projects;
 
   ListProjectsResponse();
@@ -1698,16 +1746,22 @@ class ListProjectsResponse {
 /// The root node in the resource hierarchy to which a particular entity's
 /// (e.g., company) resources belong.
 class Organization {
-  /// Timestamp when the Organization was created. Assigned by the server.
+  /// Timestamp when the Organization was created.
+  ///
+  /// Assigned by the server.
   core.String creationTime;
 
   /// A human-readable string that refers to the Organization in the GCP Console
-  /// UI. This string is set by the server and cannot be changed. The string
-  /// will be set to the primary domain (for example, "google.com") of the G
-  /// Suite customer that owns the organization.
+  /// UI.
+  ///
+  /// This string is set by the server and cannot be changed. The string will be
+  /// set to the primary domain (for example, "google.com") of the G Suite
+  /// customer that owns the organization.
   core.String displayName;
 
-  /// The organization's current lifecycle state. Assigned by the server.
+  /// The organization's current lifecycle state.
+  ///
+  /// Assigned by the server.
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only useful
   /// for distinguishing unset values.
@@ -1716,18 +1770,24 @@ class Organization {
   /// the user.
   core.String lifecycleState;
 
-  /// Output only. The resource name of the organization. This is the
-  /// organization's relative path in the API. Its format is
+  /// The resource name of the organization.
+  ///
+  /// This is the organization's relative path in the API. Its format is
   /// "organizations/[organization_id]". For example, "organizations/1234".
+  ///
+  /// Output only.
   core.String name;
 
-  /// An immutable id for the Organization that is assigned on creation. This
-  /// should be omitted when creating a new Organization. This field is
+  /// An immutable id for the Organization that is assigned on creation.
+  ///
+  /// This should be omitted when creating a new Organization. This field is
   /// read-only.
   core.String organizationId;
 
-  /// The owner of this Organization. The owner should be specified on creation.
-  /// Once set, it cannot be changed. This field is required.
+  /// The owner of this Organization.
+  ///
+  /// The owner should be specified on creation. Once set, it cannot be changed.
+  /// This field is required.
   OrganizationOwner owner;
 
   Organization();
@@ -1778,10 +1838,11 @@ class Organization {
   }
 }
 
-/// The entity that owns an Organization. The lifetime of the Organization and
-/// all of its descendants are bound to the `OrganizationOwner`. If the
-/// `OrganizationOwner` is deleted, the Organization and all its descendants
-/// will be deleted.
+/// The entity that owns an Organization.
+///
+/// The lifetime of the Organization and all of its descendants are bound to the
+/// `OrganizationOwner`. If the `OrganizationOwner` is deleted, the Organization
+/// and all its descendants will be deleted.
 class OrganizationOwner {
   /// The G Suite customer id used in the Directory API.
   core.String directoryCustomerId;
@@ -1804,16 +1865,18 @@ class OrganizationOwner {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -1836,14 +1899,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -1860,20 +1926,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -1919,24 +1987,30 @@ class Policy {
   }
 }
 
-/// A Project is a high-level Google Cloud Platform entity. It is a container
-/// for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform
-/// resources.
+/// A Project is a high-level Google Cloud Platform entity.
+///
+/// It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google
+/// Cloud Platform resources.
 class Project {
-  /// Creation time. Read-only.
+  /// Creation time.
+  ///
+  /// Read-only.
   core.String createTime;
 
-  /// The labels associated with this Project. Label keys must be between 1 and
-  /// 63 characters long and must conform to the following regular expression:
-  /// a-z{0,62}. Label values must be between 0 and 63 characters long and must
-  /// conform to the regular expression [a-z0-9_-]{0,63}. A label value can be
-  /// empty. No more than 256 labels can be associated with a given resource.
-  /// Clients should store labels in a representation such as JSON that does not
-  /// depend on specific characters being disallowed. Example: `"environment" :
-  /// "dev"` Read-write.
+  /// The labels associated with this Project.
+  ///
+  /// Label keys must be between 1 and 63 characters long and must conform to
+  /// the following regular expression: a-z{0,62}. Label values must be between
+  /// 0 and 63 characters long and must conform to the regular expression
+  /// [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can
+  /// be associated with a given resource. Clients should store labels in a
+  /// representation such as JSON that does not depend on specific characters
+  /// being disallowed. Example: `"environment" : "dev"` Read-write.
   core.Map<core.String, core.String> labels;
 
-  /// The Project lifecycle state. Read-only.
+  /// The Project lifecycle state.
+  ///
+  /// Read-only.
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only
   /// used/useful for distinguishing unset values.
@@ -1948,26 +2022,32 @@ class Project {
   /// returned by the API.
   core.String lifecycleState;
 
-  /// The optional user-assigned display name of the Project. When present it
-  /// must be between 4 to 30 characters. Allowed characters are: lowercase and
-  /// uppercase letters, numbers, hyphen, single-quote, double-quote, space, and
-  /// exclamation point. Example: `My Project` Read-write.
+  /// The optional user-assigned display name of the Project.
+  ///
+  /// When present it must be between 4 to 30 characters. Allowed characters
+  /// are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+  /// double-quote, space, and exclamation point. Example: `My Project`
+  /// Read-write.
   core.String name;
 
-  /// An optional reference to a parent Resource. Supported parent types include
-  /// "organization" and "folder". Once set, the parent cannot be cleared. The
-  /// `parent` can be set on creation or using the `UpdateProject` method; the
-  /// end user must have the `resourcemanager.projects.create` permission on the
-  /// parent. Read-write.
+  /// An optional reference to a parent Resource.
+  ///
+  /// Supported parent types include "organization" and "folder". Once set, the
+  /// parent cannot be cleared. The `parent` can be set on creation or using the
+  /// `UpdateProject` method; the end user must have the
+  /// `resourcemanager.projects.create` permission on the parent. Read-write.
   ResourceId parent;
 
-  /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase
-  /// letters, digits, or hyphens. It must start with a letter. Trailing hyphens
-  /// are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+  /// The unique, user-assigned ID of the Project.
+  ///
+  /// It must be 6 to 30 lowercase letters, digits, or hyphens. It must start
+  /// with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+  /// Read-only after creation.
   core.String projectId;
 
-  /// The number uniquely identifying the project. Example: `415104041262`
-  /// Read-only.
+  /// The number uniquely identifying the project.
+  ///
+  /// Example: `415104041262` Read-only.
   core.String projectNumber;
 
   Project();
@@ -2031,15 +2111,18 @@ class Project {
 }
 
 /// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject. It provides insight for when significant phases
-/// of Project creation have completed.
+/// returned by CreateProject.
+///
+/// It provides insight for when significant phases of Project creation have
+/// completed.
 class ProjectCreationStatus {
   /// Creation time of the project creation workflow.
   core.String createTime;
 
-  /// True if the project can be retrieved using GetProject. No other operations
-  /// on the project are guaranteed to work until the project creation is
-  /// complete.
+  /// True if the project can be retrieved using GetProject.
+  ///
+  /// No other operations on the project are guaranteed to work until the
+  /// project creation is complete.
   core.bool gettable;
 
   /// True if the project creation process is complete.
@@ -2074,17 +2157,21 @@ class ProjectCreationStatus {
   }
 }
 
-/// A container to reference an id for any resource type. A `resource` in Google
-/// Cloud Platform is a generic term for something you (a developer) may want to
-/// interact with through one of our API's. Some examples are an App Engine app,
-/// a Compute Engine instance, a Cloud SQL database, and so on.
+/// A container to reference an id for any resource type.
+///
+/// A `resource` in Google Cloud Platform is a generic term for something you (a
+/// developer) may want to interact with through one of our API's. Some examples
+/// are an App Engine app, a Compute Engine instance, a Cloud SQL database, and
+/// so on.
 class ResourceId {
-  /// Required field for the type-specific id. This should correspond to the id
-  /// used in the type-specific API's.
+  /// Required field for the type-specific id.
+  ///
+  /// This should correspond to the id used in the type-specific API's.
   core.String id;
 
-  /// Required field representing the resource type this id is for. At present,
-  /// the valid types are "project", "folder", and "organization".
+  /// Required field representing the resource type this id is for.
+  ///
+  /// At present, the valid types are "project", "folder", and "organization".
   core.String type;
 
   ResourceId();
@@ -2112,13 +2199,15 @@ class ResourceId {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -2149,9 +2238,10 @@ class SetIamPolicyRequest {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 

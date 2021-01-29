@@ -2726,19 +2726,25 @@ class Blog {
   /// The JSON custom meta-data for the Blog.
   core.String customMetaData;
 
-  /// The description of this blog. This is displayed underneath the title.
+  /// The description of this blog.
+  ///
+  /// This is displayed underneath the title.
   core.String description;
 
   /// The identifier for this resource.
   core.String id;
 
-  /// The kind of this entry. Always blogger#blog.
+  /// The kind of this entry.
+  ///
+  /// Always blogger#blog.
   core.String kind;
 
   /// The locale this Blog is set to.
   BlogLocale locale;
 
-  /// The name of this blog. This is displayed as the title.
+  /// The name of this blog.
+  ///
+  /// This is displayed as the title.
   core.String name;
 
   /// The container of pages in this blog.
@@ -2864,7 +2870,9 @@ class BlogList {
   /// The list of Blogs this user has Authorship or Admin rights over.
   core.List<Blog> items;
 
-  /// The kind of this entity. Always blogger#blogList.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#blogList.
   core.String kind;
 
   BlogList();
@@ -2910,7 +2918,9 @@ class BlogPerUserInfo {
   /// True if the user has Admin level access to the blog.
   core.bool hasAdminAccess;
 
-  /// The kind of this entity. Always blogger#blogPerUserInfo.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#blogPerUserInfo.
   core.String kind;
 
   /// The Photo Album Key for the user when adding photos to the blog.
@@ -2982,7 +2992,9 @@ class BlogUserInfo {
   /// Information about a User for the Blog.
   BlogPerUserInfo blogUserInfo;
 
-  /// The kind of this entity. Always blogger#blogUserInfo.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#blogUserInfo.
   core.String kind;
 
   BlogUserInfo();
@@ -3161,7 +3173,9 @@ class Comment {
   /// Data about the blog containing this comment.
   CommentBlog blog;
 
-  /// The actual content of the comment. May include HTML markup.
+  /// The actual content of the comment.
+  ///
+  /// May include HTML markup.
   core.String content;
 
   /// The identifier for this resource.
@@ -3170,7 +3184,9 @@ class Comment {
   /// Data about the comment this is in reply to.
   CommentInReplyTo inReplyTo;
 
-  /// The kind of this entry. Always blogger#comment.
+  /// The kind of this entry.
+  ///
+  /// Always blogger#comment.
   core.String kind;
 
   /// Data about the post containing this comment.
@@ -3281,7 +3297,9 @@ class CommentList {
   /// The List of Comments for a Post.
   core.List<Comment> items;
 
-  /// The kind of this entry. Always blogger#commentList.
+  /// The kind of this entry.
+  ///
+  /// Always blogger#commentList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -3444,7 +3462,9 @@ class Page {
   /// The identifier for this resource.
   core.String id;
 
-  /// The kind of this entity. Always blogger#page.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#page.
   core.String kind;
 
   /// RFC 3339 date-time when this Page was published.
@@ -3459,8 +3479,9 @@ class Page {
   /// - "DRAFT"
   core.String status;
 
-  /// The title of this entity. This is the name displayed in the Admin user
-  /// interface.
+  /// The title of this entity.
+  ///
+  /// This is the name displayed in the Admin user interface.
   core.String title;
 
   /// RFC 3339 date-time when this Page was last updated.
@@ -3561,7 +3582,9 @@ class PageList {
   /// The list of Pages for a Blog.
   core.List<Page> items;
 
-  /// The kind of this entity. Always blogger#pageList.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#pageList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -3646,7 +3669,9 @@ class Pageviews {
   /// The container of posts in this blog.
   core.List<PageviewsCounts> counts;
 
-  /// The kind of this entry. Always blogger#page_views.
+  /// The kind of this entry.
+  ///
+  /// Always blogger#page_views.
   core.String kind;
 
   Pageviews();
@@ -3806,7 +3831,9 @@ class PostLocation {
   /// Location name.
   core.String name;
 
-  /// Location's viewport span. Can be used when rendering a map preview.
+  /// Location's viewport span.
+  ///
+  /// Can be used when rendering a map preview.
   core.String span;
 
   PostLocation();
@@ -3894,7 +3921,9 @@ class Post {
   /// Data about the blog containing this Post.
   PostBlog blog;
 
-  /// The content of the Post. May contain HTML markup.
+  /// The content of the Post.
+  ///
+  /// May contain HTML markup.
   core.String content;
 
   /// The JSON meta-data for the Post.
@@ -3909,7 +3938,9 @@ class Post {
   /// Display image for the Post.
   core.List<PostImages> images;
 
-  /// The kind of this entity. Always blogger#post.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#post.
   core.String kind;
 
   /// The list of labels this Post was tagged with.
@@ -3934,7 +3965,9 @@ class Post {
   /// The API REST URL to fetch this resource from.
   core.String selfLink;
 
-  /// Status of the post. Only set for admin-level requests.
+  /// Status of the post.
+  ///
+  /// Only set for admin-level requests.
   /// Possible string values are:
   /// - "LIVE"
   /// - "DRAFT"
@@ -4094,7 +4127,9 @@ class PostList {
   /// The list of Posts for this Blog.
   core.List<Post> items;
 
-  /// The kind of this entity. Always blogger#postList.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#postList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -4154,7 +4189,9 @@ class PostPerUserInfo {
   /// True if the user has Author level access to the post.
   core.bool hasEditAccess;
 
-  /// The kind of this entity. Always blogger#postPerUserInfo.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#postPerUserInfo.
   core.String kind;
 
   /// ID of the Post resource.
@@ -4205,7 +4242,9 @@ class PostPerUserInfo {
 }
 
 class PostUserInfo {
-  /// The kind of this entity. Always blogger#postUserInfo.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#postUserInfo.
   core.String kind;
 
   /// The Post resource.
@@ -4249,7 +4288,9 @@ class PostUserInfosList {
   /// The list of Posts with User information for the post, for this Blog.
   core.List<PostUserInfo> items;
 
-  /// The kind of this entity. Always blogger#postList.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#postList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -4365,7 +4406,9 @@ class User {
   /// The identifier for this User.
   core.String id;
 
-  /// The kind of this entity. Always blogger#user.
+  /// The kind of this entity.
+  ///
+  /// Always blogger#user.
   core.String kind;
 
   /// This user's locale

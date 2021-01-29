@@ -319,8 +319,9 @@ class WebResourceResource {
     );
   }
 
-  /// Modify the list of owners for your website or domain. This method supports
-  /// patch semantics.
+  /// Modify the list of owners for your website or domain.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -437,12 +438,15 @@ class WebResourceResource {
 
 /// The site for which a verification token will be generated.
 class SiteVerificationWebResourceGettokenRequestSite {
-  /// The site identifier. If the type is set to SITE, the identifier is a URL.
-  /// If the type is set to INET_DOMAIN, the site identifier is a domain name.
+  /// The site identifier.
+  ///
+  /// If the type is set to SITE, the identifier is a URL. If the type is set to
+  /// INET_DOMAIN, the site identifier is a domain name.
   core.String identifier;
 
-  /// The type of resource to be verified. Can be SITE or INET_DOMAIN (domain
-  /// name).
+  /// The type of resource to be verified.
+  ///
+  /// Can be SITE or INET_DOMAIN (domain name).
   core.String type;
 
   SiteVerificationWebResourceGettokenRequestSite();
@@ -472,8 +476,10 @@ class SiteVerificationWebResourceGettokenRequest {
   /// The site for which a verification token will be generated.
   SiteVerificationWebResourceGettokenRequestSite site;
 
-  /// The verification method that will be used to verify this site. For sites,
-  /// 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used.
+  /// The verification method that will be used to verify this site.
+  ///
+  /// For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS'
+  /// may be used.
   core.String verificationMethod;
 
   SiteVerificationWebResourceGettokenRequest();
@@ -501,15 +507,18 @@ class SiteVerificationWebResourceGettokenRequest {
 }
 
 class SiteVerificationWebResourceGettokenResponse {
-  /// The verification method to use in conjunction with this token. For FILE,
-  /// the token should be placed in the top-level directory of the site, stored
-  /// inside a file of the same name. For META, the token should be placed in
-  /// the HEAD tag of the default page that is loaded for the site. For DNS, the
-  /// token should be placed in a TXT record of the domain.
+  /// The verification method to use in conjunction with this token.
+  ///
+  /// For FILE, the token should be placed in the top-level directory of the
+  /// site, stored inside a file of the same name. For META, the token should be
+  /// placed in the HEAD tag of the default page that is loaded for the site.
+  /// For DNS, the token should be placed in a TXT record of the domain.
   core.String method;
 
-  /// The verification token. The token must be placed appropriately in order
-  /// for verification to succeed.
+  /// The verification token.
+  ///
+  /// The token must be placed appropriately in order for verification to
+  /// succeed.
   core.String token;
 
   SiteVerificationWebResourceGettokenResponse();
@@ -562,11 +571,15 @@ class SiteVerificationWebResourceListResponse {
 
 /// The address and type of a site that is verified or will be verified.
 class SiteVerificationWebResourceResourceSite {
-  /// The site identifier. If the type is set to SITE, the identifier is a URL.
-  /// If the type is set to INET_DOMAIN, the site identifier is a domain name.
+  /// The site identifier.
+  ///
+  /// If the type is set to SITE, the identifier is a URL. If the type is set to
+  /// INET_DOMAIN, the site identifier is a domain name.
   core.String identifier;
 
-  /// The site type. Can be SITE or INET_DOMAIN (domain name).
+  /// The site type.
+  ///
+  /// Can be SITE or INET_DOMAIN (domain name).
   core.String type;
 
   SiteVerificationWebResourceResourceSite();
@@ -593,8 +606,10 @@ class SiteVerificationWebResourceResourceSite {
 }
 
 class SiteVerificationWebResourceResource {
-  /// The string used to identify this site. This value should be used in the
-  /// "id" portion of the REST URL for the Get, Update, and Delete operations.
+  /// The string used to identify this site.
+  ///
+  /// This value should be used in the "id" portion of the REST URL for the Get,
+  /// Update, and Delete operations.
   core.String id;
 
   /// The email addresses of all verified owners.

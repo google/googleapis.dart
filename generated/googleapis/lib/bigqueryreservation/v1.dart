@@ -69,10 +69,11 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -123,10 +124,11 @@ class OperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -274,18 +276,19 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Looks up assignments for a specified resource for a particular region. If
-  /// the request is about a project: 1. Assignments created on the project will
-  /// be returned if they exist. 2. Otherwise assignments created on the closest
-  /// ancestor will be returned. 3. Assignments for different JobTypes will all
-  /// be returned. The same logic applies if the request is about a folder. If
-  /// the request is about an organization, then assignments created on the
-  /// organization will be returned (organization doesn't have ancestors).
-  /// Comparing to ListAssignments, there are some behavior differences: 1.
-  /// permission on the assignee will be verified in this API. 2. Hierarchy
-  /// lookup (project->folder->organization) happens in this API. 3. Parent here
-  /// is `projects / * /locations / * `, instead of `projects / * /locations / *
-  /// reservations / * `.
+  /// Looks up assignments for a specified resource for a particular region.
+  ///
+  /// If the request is about a project: 1. Assignments created on the project
+  /// will be returned if they exist. 2. Otherwise assignments created on the
+  /// closest ancestor will be returned. 3. Assignments for different JobTypes
+  /// will all be returned. The same logic applies if the request is about a
+  /// folder. If the request is about an organization, then assignments created
+  /// on the organization will be returned (organization doesn't have
+  /// ancestors). Comparing to ListAssignments, there are some behavior
+  /// differences: 1. permission on the assignee will be verified in this API.
+  /// 2. Hierarchy lookup (project->folder->organization) happens in this API.
+  /// 3. Parent here is `projects / * /locations / * `, instead of `projects / *
+  /// /locations / * reservations / * `.
   ///
   /// Request parameters:
   ///
@@ -361,19 +364,20 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Looks up assignments for a specified resource for a particular region. If
-  /// the request is about a project: 1. Assignments created on the project will
-  /// be returned if they exist. 2. Otherwise assignments created on the closest
-  /// ancestor will be returned. 3. Assignments for different JobTypes will all
-  /// be returned. The same logic applies if the request is about a folder. If
-  /// the request is about an organization, then assignments created on the
-  /// organization will be returned (organization doesn't have ancestors).
-  /// Comparing to ListAssignments, there are some behavior differences: 1.
-  /// permission on the assignee will be verified in this API. 2. Hierarchy
-  /// lookup (project->folder->organization) happens in this API. 3. Parent here
-  /// is `projects / * /locations / * `, instead of `projects / * /locations / *
-  /// reservations / * `. **Note** "-" cannot be used for projects nor
-  /// locations.
+  /// Looks up assignments for a specified resource for a particular region.
+  ///
+  /// If the request is about a project: 1. Assignments created on the project
+  /// will be returned if they exist. 2. Otherwise assignments created on the
+  /// closest ancestor will be returned. 3. Assignments for different JobTypes
+  /// will all be returned. The same logic applies if the request is about a
+  /// folder. If the request is about an organization, then assignments created
+  /// on the organization will be returned (organization doesn't have
+  /// ancestors). Comparing to ListAssignments, there are some behavior
+  /// differences: 1. permission on the assignee will be verified in this API.
+  /// 2. Hierarchy lookup (project->folder->organization) happens in this API.
+  /// 3. Parent here is `projects / * /locations / * `, instead of `projects / *
+  /// /locations / * reservations / * `. **Note** "-" cannot be used for
+  /// projects nor locations.
   ///
   /// Request parameters:
   ///
@@ -449,10 +453,12 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Updates a BI reservation. Only fields specified in the `field_mask` are
-  /// updated. A singleton BI reservation always exists with default size 0. In
-  /// order to reserve BI capacity it needs to be updated to an amount greater
-  /// than 0. In order to release BI capacity reservation size must be set to 0.
+  /// Updates a BI reservation.
+  ///
+  /// Only fields specified in the `field_mask` are updated. A singleton BI
+  /// reservation always exists with default size 0. In order to reserve BI
+  /// capacity it needs to be updated to an amount greater than 0. In order to
+  /// release BI capacity reservation size must be set to 0.
   ///
   /// [request] - The metadata request object.
   ///
@@ -595,9 +601,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
     );
   }
 
-  /// Deletes a capacity commitment. Attempting to delete capacity commitment
-  /// before its commitment_end_time will fail with the error code
-  /// `google.rpc.Code.FAILED_PRECONDITION`.
+  /// Deletes a capacity commitment.
+  ///
+  /// Attempting to delete capacity commitment before its commitment_end_time
+  /// will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.
   ///
   /// Request parameters:
   ///
@@ -772,9 +779,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
     );
   }
 
-  /// Merges capacity commitments of the same plan into a single commitment. The
-  /// resulting capacity commitment has the greater commitment_end_time out of
-  /// the to-be-merged capacity commitments. Attempting to merge capacity
+  /// Merges capacity commitments of the same plan into a single commitment.
+  ///
+  /// The resulting capacity commitment has the greater commitment_end_time out
+  /// of the to-be-merged capacity commitments. Attempting to merge capacity
   /// commitments of different plan will fail with the error code
   /// `google.rpc.Code.FAILED_PRECONDITION`.
   ///
@@ -837,10 +845,11 @@ class ProjectsLocationsCapacityCommitmentsResource {
     );
   }
 
-  /// Updates an existing capacity commitment. Only `plan` and `renewal_plan`
-  /// fields can be updated. Plan can only be changed to a plan of a longer
-  /// commitment period. Attempting to change to a plan with shorter commitment
-  /// period will fail with the error code
+  /// Updates an existing capacity commitment.
+  ///
+  /// Only `plan` and `renewal_plan` fields can be updated. Plan can only be
+  /// changed to a plan of a longer commitment period. Attempting to change to a
+  /// plan with shorter commitment period will fail with the error code
   /// `google.rpc.Code.FAILED_PRECONDITION`.
   ///
   /// [request] - The metadata request object.
@@ -908,11 +917,12 @@ class ProjectsLocationsCapacityCommitmentsResource {
   }
 
   /// Splits capacity commitment to two commitments of the same plan and
-  /// `commitment_end_time`. A common use case is to enable downgrading
-  /// commitments. For example, in order to downgrade from 10000 slots to 8000,
-  /// you might split a 10000 capacity commitment into commitments of 2000 and
-  /// 8000. Then, you would change the plan of the first one to `FLEX` and then
-  /// delete it.
+  /// `commitment_end_time`.
+  ///
+  /// A common use case is to enable downgrading commitments. For example, in
+  /// order to downgrade from 10000 slots to 8000, you might split a 10000
+  /// capacity commitment into commitments of 2000 and 8000. Then, you would
+  /// change the plan of the first one to `FLEX` and then delete it.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1050,8 +1060,10 @@ class ProjectsLocationsReservationsResource {
     );
   }
 
-  /// Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when
-  /// reservation has assignments.
+  /// Deletes a reservation.
+  ///
+  /// Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
+  /// assignments.
   ///
   /// Request parameters:
   ///
@@ -1300,21 +1312,22 @@ class ProjectsLocationsReservationsAssignmentsResource {
       : _requester = client;
 
   /// Creates an assignment object which allows the given project to submit jobs
-  /// of a certain type using slots from the specified reservation. Currently a
-  /// resource (project, folder, organization) can only have one assignment per
-  /// each (job_type, location) combination, and that reservation will be used
-  /// for all jobs of the matching type. Different assignments can be created on
-  /// different levels of the projects, folders or organization hierarchy.
-  /// During query execution, the assignment is looked up at the project, folder
-  /// and organization levels in that order. The first assignment found is
-  /// applied to the query. When creating assignments, it does not matter if
-  /// other assignments exist at higher levels. Example: * The organization
-  /// `organizationA` contains two projects, `project1` and `project2`. *
-  /// Assignments for all three entities (`organizationA`, `project1`, and
-  /// `project2`) could all be created and mapped to the same or different
-  /// reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not
-  /// have 'bigquery.admin' permissions on the project using the reservation and
-  /// the project that owns this reservation. Returns
+  /// of a certain type using slots from the specified reservation.
+  ///
+  /// Currently a resource (project, folder, organization) can only have one
+  /// assignment per each (job_type, location) combination, and that reservation
+  /// will be used for all jobs of the matching type. Different assignments can
+  /// be created on different levels of the projects, folders or organization
+  /// hierarchy. During query execution, the assignment is looked up at the
+  /// project, folder and organization levels in that order. The first
+  /// assignment found is applied to the query. When creating assignments, it
+  /// does not matter if other assignments exist at higher levels. Example: *
+  /// The organization `organizationA` contains two projects, `project1` and
+  /// `project2`. * Assignments for all three entities (`organizationA`,
+  /// `project1`, and `project2`) could all be created and mapped to the same or
+  /// different reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if
+  /// user does not have 'bigquery.admin' permissions on the project using the
+  /// reservation and the project that owns this reservation. Returns
   /// `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does
   /// not match location of the reservation.
   ///
@@ -1378,14 +1391,15 @@ class ProjectsLocationsReservationsAssignmentsResource {
     );
   }
 
-  /// Deletes a assignment. No expansion will happen. Example: * Organization
-  /// `organizationA` contains two projects, `project1` and `project2`. *
-  /// Reservation `res1` exists and was created previously. * CreateAssignment
-  /// was used previously to define the following associations between entities
-  /// and reservations: `` and `` In this example, deletion of the `` assignment
-  /// won't affect the other assignment ``. After said deletion, queries from
-  /// `project1` will still use `res1` while queries from `project2` will switch
-  /// to use on-demand mode.
+  /// Deletes a assignment.
+  ///
+  /// No expansion will happen. Example: * Organization `organizationA` contains
+  /// two projects, `project1` and `project2`. * Reservation `res1` exists and
+  /// was created previously. * CreateAssignment was used previously to define
+  /// the following associations between entities and reservations: `` and `` In
+  /// this example, deletion of the `` assignment won't affect the other
+  /// assignment ``. After said deletion, queries from `project1` will still use
+  /// `res1` while queries from `project2` will switch to use on-demand mode.
   ///
   /// Request parameters:
   ///
@@ -1438,9 +1452,11 @@ class ProjectsLocationsReservationsAssignmentsResource {
     );
   }
 
-  /// Lists assignments. Only explicitly created assignments will be returned.
-  /// Example: * Organization `organizationA` contains two projects, `project1`
-  /// and `project2`. * Reservation `res1` exists and was created previously. *
+  /// Lists assignments.
+  ///
+  /// Only explicitly created assignments will be returned. Example: *
+  /// Organization `organizationA` contains two projects, `project1` and
+  /// `project2`. * Reservation `res1` exists and was created previously. *
   /// CreateAssignment was used previously to define the following associations
   /// between entities and reservations: `` and `` In this example,
   /// ListAssignments will just return the above two assignments for reservation
@@ -1517,9 +1533,11 @@ class ProjectsLocationsReservationsAssignmentsResource {
     );
   }
 
-  /// Moves an assignment under a new reservation. This differs from removing an
-  /// existing assignment and recreating a new one by providing a transactional
-  /// change that ensures an assignee always has an associated reservation.
+  /// Moves an assignment under a new reservation.
+  ///
+  /// This differs from removing an existing assignment and recreating a new one
+  /// by providing a transactional change that ensures an assignee always has an
+  /// associated reservation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1583,8 +1601,9 @@ class ProjectsLocationsReservationsAssignmentsResource {
 /// A Assignment allows a project to submit jobs of a certain type using slots
 /// from the specified reservation.
 class Assignment {
-  /// The resource which will use the reservation. E.g. `projects/myproject`,
-  /// `folders/123`, or `organizations/456`.
+  /// The resource which will use the reservation.
+  ///
+  /// E.g. `projects/myproject`, `folders/123`, or `organizations/456`.
   core.String assignee;
 
   /// Which type of jobs will use the reservation.
@@ -1599,11 +1618,17 @@ class Assignment {
   /// reservations.
   core.String jobType;
 
-  /// Output only. Name of the resource. E.g.:
+  /// Name of the resource.
+  ///
+  /// E.g.:
   /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. State of the assignment.
+  /// State of the assignment.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Invalid state value.
   /// - "PENDING" : Queries from assignee will be executed as on-demand, if
@@ -1648,14 +1673,18 @@ class Assignment {
 
 /// Represents a BI Reservation.
 class BiReservation {
-  /// The resource name of the singleton BI reservation. Reservation names have
-  /// the form `projects/{project_id}/locations/{location_id}/bireservation`.
+  /// The resource name of the singleton BI reservation.
+  ///
+  /// Reservation names have the form
+  /// `projects/{project_id}/locations/{location_id}/bireservation`.
   core.String name;
 
   /// Size of a reservation, in bytes.
   core.String size;
 
-  /// Output only. The last update timestamp of a reservation.
+  /// The last update timestamp of a reservation.
+  ///
+  /// Output only.
   core.String updateTime;
 
   BiReservation();
@@ -1688,25 +1717,36 @@ class BiReservation {
 }
 
 /// Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-/// (in the form of slots) with some committed period of usage. Annual
-/// commitments renew by default. Commitments can be removed after their
+/// (in the form of slots) with some committed period of usage.
+///
+/// Annual commitments renew by default. Commitments can be removed after their
 /// commitment end time passes. In order to remove annual commitment, its plan
 /// needs to be changed to monthly or flex first. A capacity commitment resource
 /// exists as a child resource of the admin project.
 class CapacityCommitment {
-  /// Output only. The end of the current commitment period. It is applicable
-  /// only for ACTIVE capacity commitments.
+  /// The end of the current commitment period.
+  ///
+  /// It is applicable only for ACTIVE capacity commitments.
+  ///
+  /// Output only.
   core.String commitmentEndTime;
 
-  /// Output only. The start of the current commitment period. It is applicable
-  /// only for ACTIVE capacity commitments.
+  /// The start of the current commitment period.
+  ///
+  /// It is applicable only for ACTIVE capacity commitments.
+  ///
+  /// Output only.
   core.String commitmentStartTime;
 
-  /// Output only. For FAILED commitment plan, provides the reason of failure.
+  /// For FAILED commitment plan, provides the reason of failure.
+  ///
+  /// Output only.
   Status failureStatus;
 
-  /// Output only. The resource name of the capacity commitment, e.g.,
+  /// The resource name of the capacity commitment, e.g.,
   /// `projects/myproject/locations/US/capacityCommitments/123`
+  ///
+  /// Output only.
   core.String name;
 
   /// Capacity commitment commitment plan.
@@ -1729,9 +1769,10 @@ class CapacityCommitment {
   core.String plan;
 
   /// The plan this capacity commitment is converted to after
-  /// commitment_end_time passes. Once the plan is changed, committed period is
-  /// extended according to commitment plan. Only applicable for ANNUAL and
-  /// TRIAL commitments.
+  /// commitment_end_time passes.
+  ///
+  /// Once the plan is changed, committed period is extended according to
+  /// commitment plan. Only applicable for ANNUAL and TRIAL commitments.
   /// Possible string values are:
   /// - "COMMITMENT_PLAN_UNSPECIFIED" : Invalid plan value. Requests with this
   /// value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
@@ -1753,7 +1794,9 @@ class CapacityCommitment {
   /// Number of slots in this commitment.
   core.String slotCount;
 
-  /// Output only. State of the commitment.
+  /// State of the commitment.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Invalid state value.
   /// - "PENDING" : Capacity commitment is pending provisioning. Pending
@@ -1825,7 +1868,9 @@ class CapacityCommitment {
 
 /// The metadata for operation returned from ReservationService.CreateSlotPool.
 class CreateSlotPoolMetadata {
-  /// Resource name of the slot pool that is being created. E.g.,
+  /// Resource name of the slot pool that is being created.
+  ///
+  /// E.g.,
   /// projects/myproject/locations/us-central1/reservations/foo/slotPools/123
   core.String slotPool;
 
@@ -1847,10 +1892,12 @@ class CreateSlotPoolMetadata {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2008,9 +2055,11 @@ class ListReservationsResponse {
 
 /// The request for ReservationService.MergeCapacityCommitments.
 class MergeCapacityCommitmentsRequest {
-  /// Ids of capacity commitments to merge. These capacity commitments must
-  /// exist under admin project and location specified in the parent. ID is the
-  /// last portion of capacity commitment name e.g., 'abc' for
+  /// Ids of capacity commitments to merge.
+  ///
+  /// These capacity commitments must exist under admin project and location
+  /// specified in the parent. ID is the last portion of capacity commitment
+  /// name e.g., 'abc' for
   /// projects/myproject/locations/US/capacityCommitments/abc
   core.List<core.String> capacityCommitmentIds;
 
@@ -2033,9 +2082,10 @@ class MergeCapacityCommitmentsRequest {
   }
 }
 
-/// The request for ReservationService.MoveAssignment. **Note**:
-/// "bigquery.reservationAssignments.create" permission is required on the
-/// destination_id. **Note**: "bigquery.reservationAssignments.create" and
+/// The request for ReservationService.MoveAssignment.
+///
+/// **Note**: "bigquery.reservationAssignments.create" permission is required on
+/// the destination_id. **Note**: "bigquery.reservationAssignments.create" and
 /// "bigquery.reservationAssignments.delete" permission are required on the
 /// related assignee.
 class MoveAssignmentRequest {
@@ -2063,31 +2113,37 @@ class MoveAssignmentRequest {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2153,28 +2209,36 @@ class Operation {
 
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
-  /// Output only. Creation time of the reservation.
+  /// Creation time of the reservation.
+  ///
+  /// Output only.
   core.String creationTime;
 
   /// If false, any query using this reservation will use idle slots from other
-  /// reservations within the same admin project. If true, a query using this
-  /// reservation will execute with the slot capacity specified above at most.
+  /// reservations within the same admin project.
+  ///
+  /// If true, a query using this reservation will execute with the slot
+  /// capacity specified above at most.
   core.bool ignoreIdleSlots;
 
   /// The resource name of the reservation, e.g., `projects / * /locations / *
   /// /reservations/team1-prod`.
   core.String name;
 
-  /// Minimum slots available to this reservation. A slot is a unit of
-  /// computational power in BigQuery, and serves as the unit of parallelism.
-  /// Queries using this reservation might use more slots during runtime if
-  /// ignore_idle_slots is set to false. If the new reservation's slot capacity
-  /// exceed the parent's slot capacity or if total slot capacity of the new
-  /// reservation and its siblings exceeds the parent's slot capacity, the
-  /// request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+  /// Minimum slots available to this reservation.
+  ///
+  /// A slot is a unit of computational power in BigQuery, and serves as the
+  /// unit of parallelism. Queries using this reservation might use more slots
+  /// during runtime if ignore_idle_slots is set to false. If the new
+  /// reservation's slot capacity exceed the parent's slot capacity or if total
+  /// slot capacity of the new reservation and its siblings exceeds the parent's
+  /// slot capacity, the request will fail with
+  /// `google.rpc.Code.RESOURCE_EXHAUSTED`.
   core.String slotCapacity;
 
-  /// Output only. Last update time of the reservation.
+  /// Last update time of the reservation.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Reservation();
@@ -2346,24 +2410,27 @@ class SplitCapacityCommitmentResponse {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

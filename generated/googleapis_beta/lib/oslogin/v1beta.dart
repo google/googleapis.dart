@@ -144,9 +144,10 @@ class UsersResource {
     );
   }
 
-  /// Adds an SSH public key and returns the profile information. Default POSIX
-  /// account information is set when no username and UID exist as part of the
-  /// login profile.
+  /// Adds an SSH public key and returns the profile information.
+  ///
+  /// Default POSIX account information is set when no username and UID exist as
+  /// part of the login profile.
   ///
   /// [request] - The metadata request object.
   ///
@@ -385,8 +386,9 @@ class UsersSshPublicKeysResource {
     );
   }
 
-  /// Updates an SSH public key and returns the profile information. This method
-  /// supports patch semantics.
+  /// Updates an SSH public key and returns the profile information.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -455,10 +457,12 @@ class UsersSshPublicKeysResource {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -507,7 +511,9 @@ class ImportSshPublicKeyResponse {
 /// The user profile information used for logging in to a virtual machine on
 /// Google Compute Engine.
 class LoginProfile {
-  /// Required. A unique user ID.
+  /// A unique user ID.
+  ///
+  /// Required.
   core.String name;
 
   /// The list of POSIX accounts associated with the user.
@@ -560,7 +566,9 @@ class LoginProfile {
 
 /// The POSIX account information associated with a Google account.
 class PosixAccount {
-  /// Output only. A POSIX account identifier.
+  /// A POSIX account identifier.
+  ///
+  /// Output only.
   core.String accountId;
 
   /// The GECOS (user information) entry for this account.
@@ -572,7 +580,9 @@ class PosixAccount {
   /// The path to the home directory for this account.
   core.String homeDirectory;
 
-  /// Output only. The canonical resource name.
+  /// The canonical resource name.
+  ///
+  /// Output only.
   core.String name;
 
   /// The operating system type where this account applies.
@@ -589,8 +599,9 @@ class PosixAccount {
   /// The path to the logic shell for this account.
   core.String shell;
 
-  /// System identifier for which account the username or uid applies to. By
-  /// default, the empty value is used.
+  /// System identifier for which account the username or uid applies to.
+  ///
+  /// By default, the empty value is used.
   core.String systemId;
 
   /// The user ID.
@@ -681,13 +692,17 @@ class SshPublicKey {
   /// An expiration time in microseconds since epoch.
   core.String expirationTimeUsec;
 
-  /// Output only. The SHA-256 fingerprint of the SSH public key.
+  /// The SHA-256 fingerprint of the SSH public key.
+  ///
+  /// Output only.
   core.String fingerprint;
 
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   core.String key;
 
-  /// Output only. The canonical resource name.
+  /// The canonical resource name.
+  ///
+  /// Output only.
   core.String name;
 
   SshPublicKey();

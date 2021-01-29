@@ -137,7 +137,7 @@ DartSchemaTypeDB parseSchemas(
     }
 
     if (schema.type == 'object') {
-      final comment = Comment(schema.description);
+      final comment = Comment.header(schema.description);
       if (schema.additionalProperties != null) {
         final anonValueClassName = namer.schemaClassName('${className}Value');
         final anonClassScope = namer.newClassScope();

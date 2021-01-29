@@ -770,14 +770,18 @@ class AchievementConfiguration {
   /// - "REVEALED" : Achievement is revealed.
   core.String initialState;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#achievementConfiguration`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#achievementConfiguration`.
   core.String kind;
 
   /// The read-only published data of the achievement.
   AchievementConfigurationDetail published;
 
-  /// Steps to unlock. Only applicable to incremental achievements.
+  /// Steps to unlock.
+  ///
+  /// Only applicable to incremental achievements.
   core.int stepsToUnlock;
 
   /// The token for this resource.
@@ -849,11 +853,15 @@ class AchievementConfigurationDetail {
   /// Localized strings for the achievement description.
   LocalizedStringBundle description;
 
-  /// The icon url of this achievement. Writes to this field are ignored.
+  /// The icon url of this achievement.
+  ///
+  /// Writes to this field are ignored.
   core.String iconUrl;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#achievementConfigurationDetail`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#achievementConfigurationDetail`.
   core.String kind;
 
   /// Localized strings for the achievement name.
@@ -862,7 +870,9 @@ class AchievementConfigurationDetail {
   /// Point value for the achievement.
   core.int pointValue;
 
-  /// The sort rank of this achievement. Writes to this field are ignored.
+  /// The sort rank of this achievement.
+  ///
+  /// Writes to this field are ignored.
   core.int sortRank;
 
   AchievementConfigurationDetail();
@@ -919,8 +929,10 @@ class AchievementConfigurationListResponse {
   /// The achievement configurations.
   core.List<AchievementConfiguration> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#achievementConfigurationListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#achievementConfigurationListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -1042,11 +1054,14 @@ class GamesNumberAffixConfiguration {
 
 /// A number format resource.
 class GamesNumberFormatConfiguration {
-  /// The curreny code string. Only used for CURRENCY format type.
+  /// The curreny code string.
+  ///
+  /// Only used for CURRENCY format type.
   core.String currencyCode;
 
-  /// The number of decimal places for number. Only used for NUMERIC format
-  /// type.
+  /// The number of decimal places for number.
+  ///
+  /// Only used for NUMERIC format type.
   core.int numDecimalPlaces;
 
   /// The formatting for the number.
@@ -1059,8 +1074,10 @@ class GamesNumberFormatConfiguration {
   /// - "CURRENCY" : Numbers are formatted to currency according to locale.
   core.String numberFormatType;
 
-  /// An optional suffix for the NUMERIC format type. These strings follow the
-  /// same plural rules as all Android string resources.
+  /// An optional suffix for the NUMERIC format type.
+  ///
+  /// These strings follow the same plural rules as all Android string
+  /// resources.
   GamesNumberAffixConfiguration suffix;
 
   GamesNumberFormatConfiguration();
@@ -1108,8 +1125,9 @@ class ImageConfiguration {
   /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
   core.String imageType;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#imageConfiguration`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `gamesConfiguration#imageConfiguration`.
   core.String kind;
 
   /// The resource ID of resource which the image belongs to.
@@ -1161,8 +1179,10 @@ class LeaderboardConfiguration {
   /// The ID of the leaderboard.
   core.String id;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#leaderboardConfiguration`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#leaderboardConfiguration`.
   core.String kind;
 
   /// The read-only published data of the leaderboard.
@@ -1247,11 +1267,15 @@ class LeaderboardConfiguration {
 
 /// A leaderboard configuration detail.
 class LeaderboardConfigurationDetail {
-  /// The icon url of this leaderboard. Writes to this field are ignored.
+  /// The icon url of this leaderboard.
+  ///
+  /// Writes to this field are ignored.
   core.String iconUrl;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#leaderboardConfigurationDetail`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#leaderboardConfigurationDetail`.
   core.String kind;
 
   /// Localized strings for the leaderboard name.
@@ -1260,7 +1284,9 @@ class LeaderboardConfigurationDetail {
   /// The score formatting for the leaderboard.
   GamesNumberFormatConfiguration scoreFormat;
 
-  /// The sort rank of this leaderboard. Writes to this field are ignored.
+  /// The sort rank of this leaderboard.
+  ///
+  /// Writes to this field are ignored.
   core.int sortRank;
 
   LeaderboardConfigurationDetail();
@@ -1311,8 +1337,10 @@ class LeaderboardConfigurationListResponse {
   /// The leaderboard configurations.
   core.List<LeaderboardConfiguration> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#leaderboardConfigurationListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#leaderboardConfigurationListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -1353,8 +1381,9 @@ class LeaderboardConfigurationListResponse {
 
 /// A localized string resource.
 class LocalizedString {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#localizedString`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `gamesConfiguration#localizedString`.
   core.String kind;
 
   /// The locale string.
@@ -1394,8 +1423,10 @@ class LocalizedString {
 
 /// A localized string bundle resource.
 class LocalizedStringBundle {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesConfiguration#localizedStringBundle`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesConfiguration#localizedStringBundle`.
   core.String kind;
 
   /// The locale strings.

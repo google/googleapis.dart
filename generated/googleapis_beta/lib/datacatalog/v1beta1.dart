@@ -77,7 +77,9 @@ class CatalogResource {
   CatalogResource(commons.ApiRequester client) : _requester = client;
 
   /// Searches Data Catalog for multiple resources like entries, tags that match
-  /// a query. This is a custom method
+  /// a query.
+  ///
+  /// This is a custom method
   /// (https://cloud.google.com/apis/design/custom_methods) and does not return
   /// the complete resource, only the resource identifier and high level fields.
   /// Clients can subsequentally call `Get` methods. Note that Data Catalog
@@ -143,9 +145,10 @@ class EntriesResource {
 
   EntriesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get an entry by target resource name. This method allows clients to use
-  /// the resource name from the source Google Cloud Platform service to get the
-  /// Data Catalog Entry.
+  /// Get an entry by target resource name.
+  ///
+  /// This method allows clients to use the resource name from the source Google
+  /// Cloud Platform service to get the Data Catalog Entry.
   ///
   /// Request parameters:
   ///
@@ -249,8 +252,10 @@ class ProjectsLocationsEntryGroupsResource {
       : _requester = client;
 
   /// A maximum of 10,000 entry groups may be created per organization across
-  /// all locations. Users should enable the Data Catalog API in the project
-  /// identified by the `parent` parameter (see [Data Catalog Resource Project]
+  /// all locations.
+  ///
+  /// Users should enable the Data Catalog API in the project identified by the
+  /// `parent` parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -323,9 +328,11 @@ class ProjectsLocationsEntryGroupsResource {
     );
   }
 
-  /// Deletes an EntryGroup. Only entry groups that do not contain entries can
-  /// be deleted. Users should enable the Data Catalog API in the project
-  /// identified by the `name` parameter (see [Data Catalog Resource Project]
+  /// Deletes an EntryGroup.
+  ///
+  /// Only entry groups that do not contain entries can be deleted. Users should
+  /// enable the Data Catalog API in the project identified by the `name`
+  /// parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -447,13 +454,14 @@ class ProjectsLocationsEntryGroupsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. A `NOT_FOUND` error is
-  /// returned if the resource does not exist. An empty policy is returned if
-  /// the resource exists but does not have a policy set on it. Supported
-  /// resources are: - Tag templates. - Entries. - Entry groups. Note, this
-  /// method cannot be used to manage policies for BigQuery, Pub/Sub and any
-  /// external Google Cloud Platform resources synced to Data Catalog. Callers
-  /// must have following Google IAM permission -
+  /// Gets the access control policy for a resource.
+  ///
+  /// A `NOT_FOUND` error is returned if the resource does not exist. An empty
+  /// policy is returned if the resource exists but does not have a policy set
+  /// on it. Supported resources are: - Tag templates. - Entries. - Entry
+  /// groups. Note, this method cannot be used to manage policies for BigQuery,
+  /// Pub/Sub and any external Google Cloud Platform resources synced to Data
+  /// Catalog. Callers must have following Google IAM permission -
   /// `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates.
   /// - `datacatalog.entries.getIamPolicy` to get policies on entries. -
   /// `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
@@ -588,9 +596,10 @@ class ProjectsLocationsEntryGroupsResource {
     );
   }
 
-  /// Updates an EntryGroup. The user should enable the Data Catalog API in the
-  /// project identified by the `entry_group.name` parameter (see [Data Catalog
-  /// Resource Project]
+  /// Updates an EntryGroup.
+  ///
+  /// The user should enable the Data Catalog API in the project identified by
+  /// the `entry_group.name` parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -661,14 +670,16 @@ class ProjectsLocationsEntryGroupsResource {
     );
   }
 
-  /// Sets the access control policy for a resource. Replaces any existing
-  /// policy. Supported resources are: - Tag templates. - Entries. - Entry
-  /// groups. Note, this method cannot be used to manage policies for BigQuery,
-  /// Pub/Sub and any external Google Cloud Platform resources synced to Data
-  /// Catalog. Callers must have following Google IAM permission -
-  /// `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates.
-  /// - `datacatalog.entries.setIamPolicy` to set policies on entries. -
-  /// `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
+  /// Sets the access control policy for a resource.
+  ///
+  /// Replaces any existing policy. Supported resources are: - Tag templates. -
+  /// Entries. - Entry groups. Note, this method cannot be used to manage
+  /// policies for BigQuery, Pub/Sub and any external Google Cloud Platform
+  /// resources synced to Data Catalog. Callers must have following Google IAM
+  /// permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on
+  /// tag templates. - `datacatalog.entries.setIamPolicy` to set policies on
+  /// entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry
+  /// groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -730,13 +741,14 @@ class ProjectsLocationsEntryGroupsResource {
     );
   }
 
-  /// Returns the caller's permissions on a resource. If the resource does not
-  /// exist, an empty set of permissions is returned (We don't return a
-  /// `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. -
-  /// Entry groups. Note, this method cannot be used to manage policies for
-  /// BigQuery, Pub/Sub and any external Google Cloud Platform resources synced
-  /// to Data Catalog. A caller is not required to have Google IAM permission to
-  /// make this request.
+  /// Returns the caller's permissions on a resource.
+  ///
+  /// If the resource does not exist, an empty set of permissions is returned
+  /// (We don't return a `NOT_FOUND` error). Supported resources are: - Tag
+  /// templates. - Entries. - Entry groups. Note, this method cannot be used to
+  /// manage policies for BigQuery, Pub/Sub and any external Google Cloud
+  /// Platform resources synced to Data Catalog. A caller is not required to
+  /// have Google IAM permission to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -809,9 +821,11 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ProjectsLocationsEntryGroupsEntriesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an entry. Only entries of 'FILESET' type or user-specified type
-  /// can be created. Users should enable the Data Catalog API in the project
-  /// identified by the `parent` parameter (see [Data Catalog Resource Project]
+  /// Creates an entry.
+  ///
+  /// Only entries of 'FILESET' type or user-specified type can be created.
+  /// Users should enable the Data Catalog API in the project identified by the
+  /// `parent` parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information). A maximum of 100,000 entries may be created per entry
   /// group.
@@ -885,9 +899,11 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     );
   }
 
-  /// Deletes an existing entry. Only entries created through CreateEntry method
-  /// can be deleted. Users should enable the Data Catalog API in the project
-  /// identified by the `name` parameter (see [Data Catalog Resource Project]
+  /// Deletes an existing entry.
+  ///
+  /// Only entries created through CreateEntry method can be deleted. Users
+  /// should enable the Data Catalog API in the project identified by the `name`
+  /// parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -996,13 +1012,14 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. A `NOT_FOUND` error is
-  /// returned if the resource does not exist. An empty policy is returned if
-  /// the resource exists but does not have a policy set on it. Supported
-  /// resources are: - Tag templates. - Entries. - Entry groups. Note, this
-  /// method cannot be used to manage policies for BigQuery, Pub/Sub and any
-  /// external Google Cloud Platform resources synced to Data Catalog. Callers
-  /// must have following Google IAM permission -
+  /// Gets the access control policy for a resource.
+  ///
+  /// A `NOT_FOUND` error is returned if the resource does not exist. An empty
+  /// policy is returned if the resource exists but does not have a policy set
+  /// on it. Supported resources are: - Tag templates. - Entries. - Entry
+  /// groups. Note, this method cannot be used to manage policies for BigQuery,
+  /// Pub/Sub and any external Google Cloud Platform resources synced to Data
+  /// Catalog. Callers must have following Google IAM permission -
   /// `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates.
   /// - `datacatalog.entries.getIamPolicy` to get policies on entries. -
   /// `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
@@ -1147,9 +1164,10 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     );
   }
 
-  /// Updates an existing entry. Users should enable the Data Catalog API in the
-  /// project identified by the `entry.name` parameter (see [Data Catalog
-  /// Resource Project]
+  /// Updates an existing entry.
+  ///
+  /// Users should enable the Data Catalog API in the project identified by the
+  /// `entry.name` parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -1227,13 +1245,14 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     );
   }
 
-  /// Returns the caller's permissions on a resource. If the resource does not
-  /// exist, an empty set of permissions is returned (We don't return a
-  /// `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. -
-  /// Entry groups. Note, this method cannot be used to manage policies for
-  /// BigQuery, Pub/Sub and any external Google Cloud Platform resources synced
-  /// to Data Catalog. A caller is not required to have Google IAM permission to
-  /// make this request.
+  /// Returns the caller's permissions on a resource.
+  ///
+  /// If the resource does not exist, an empty set of permissions is returned
+  /// (We don't return a `NOT_FOUND` error). Supported resources are: - Tag
+  /// templates. - Entries. - Entry groups. Note, this method cannot be used to
+  /// manage policies for BigQuery, Pub/Sub and any external Google Cloud
+  /// Platform resources synced to Data Catalog. A caller is not required to
+  /// have Google IAM permission to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1303,8 +1322,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ProjectsLocationsEntryGroupsEntriesTagsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a tag on an Entry. Note: The project identified by the `parent`
-  /// parameter for the
+  /// Creates a tag on an Entry.
+  ///
+  /// Note: The project identified by the `parent` parameter for the
   /// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)
   /// and the [tag
   /// template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
@@ -1573,8 +1593,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ProjectsLocationsEntryGroupsTagsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a tag on an Entry. Note: The project identified by the `parent`
-  /// parameter for the
+  /// Creates a tag on an Entry.
+  ///
+  /// Note: The project identified by the `parent` parameter for the
   /// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)
   /// and the [tag
   /// template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
@@ -1846,8 +1867,10 @@ class ProjectsLocationsTagTemplatesResource {
   ProjectsLocationsTagTemplatesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a tag template. The user should enable the Data Catalog API in the
-  /// project identified by the `parent` parameter (see [Data Catalog Resource
+  /// Creates a tag template.
+  ///
+  /// The user should enable the Data Catalog API in the project identified by
+  /// the `parent` parameter (see [Data Catalog Resource
   /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
@@ -1917,9 +1940,10 @@ class ProjectsLocationsTagTemplatesResource {
     );
   }
 
-  /// Deletes a tag template and all tags using the template. Users should
-  /// enable the Data Catalog API in the project identified by the `name`
-  /// parameter (see [Data Catalog Resource Project]
+  /// Deletes a tag template and all tags using the template.
+  ///
+  /// Users should enable the Data Catalog API in the project identified by the
+  /// `name` parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -2036,13 +2060,14 @@ class ProjectsLocationsTagTemplatesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. A `NOT_FOUND` error is
-  /// returned if the resource does not exist. An empty policy is returned if
-  /// the resource exists but does not have a policy set on it. Supported
-  /// resources are: - Tag templates. - Entries. - Entry groups. Note, this
-  /// method cannot be used to manage policies for BigQuery, Pub/Sub and any
-  /// external Google Cloud Platform resources synced to Data Catalog. Callers
-  /// must have following Google IAM permission -
+  /// Gets the access control policy for a resource.
+  ///
+  /// A `NOT_FOUND` error is returned if the resource does not exist. An empty
+  /// policy is returned if the resource exists but does not have a policy set
+  /// on it. Supported resources are: - Tag templates. - Entries. - Entry
+  /// groups. Note, this method cannot be used to manage policies for BigQuery,
+  /// Pub/Sub and any external Google Cloud Platform resources synced to Data
+  /// Catalog. Callers must have following Google IAM permission -
   /// `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates.
   /// - `datacatalog.entries.getIamPolicy` to get policies on entries. -
   /// `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
@@ -2107,11 +2132,13 @@ class ProjectsLocationsTagTemplatesResource {
     );
   }
 
-  /// Updates a tag template. This method cannot be used to update the fields of
-  /// a template. The tag template fields are represented as separate resources
-  /// and should be updated using their own create/update/delete methods. Users
-  /// should enable the Data Catalog API in the project identified by the
-  /// `tag_template.name` parameter (see [Data Catalog Resource Project]
+  /// Updates a tag template.
+  ///
+  /// This method cannot be used to update the fields of a template. The tag
+  /// template fields are represented as separate resources and should be
+  /// updated using their own create/update/delete methods. Users should enable
+  /// the Data Catalog API in the project identified by the `tag_template.name`
+  /// parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -2183,14 +2210,16 @@ class ProjectsLocationsTagTemplatesResource {
     );
   }
 
-  /// Sets the access control policy for a resource. Replaces any existing
-  /// policy. Supported resources are: - Tag templates. - Entries. - Entry
-  /// groups. Note, this method cannot be used to manage policies for BigQuery,
-  /// Pub/Sub and any external Google Cloud Platform resources synced to Data
-  /// Catalog. Callers must have following Google IAM permission -
-  /// `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates.
-  /// - `datacatalog.entries.setIamPolicy` to set policies on entries. -
-  /// `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
+  /// Sets the access control policy for a resource.
+  ///
+  /// Replaces any existing policy. Supported resources are: - Tag templates. -
+  /// Entries. - Entry groups. Note, this method cannot be used to manage
+  /// policies for BigQuery, Pub/Sub and any external Google Cloud Platform
+  /// resources synced to Data Catalog. Callers must have following Google IAM
+  /// permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on
+  /// tag templates. - `datacatalog.entries.setIamPolicy` to set policies on
+  /// entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry
+  /// groups.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2252,13 +2281,14 @@ class ProjectsLocationsTagTemplatesResource {
     );
   }
 
-  /// Returns the caller's permissions on a resource. If the resource does not
-  /// exist, an empty set of permissions is returned (We don't return a
-  /// `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. -
-  /// Entry groups. Note, this method cannot be used to manage policies for
-  /// BigQuery, Pub/Sub and any external Google Cloud Platform resources synced
-  /// to Data Catalog. A caller is not required to have Google IAM permission to
-  /// make this request.
+  /// Returns the caller's permissions on a resource.
+  ///
+  /// If the resource does not exist, an empty set of permissions is returned
+  /// (We don't return a `NOT_FOUND` error). Supported resources are: - Tag
+  /// templates. - Entries. - Entry groups. Note, this method cannot be used to
+  /// manage policies for BigQuery, Pub/Sub and any external Google Cloud
+  /// Platform resources synced to Data Catalog. A caller is not required to
+  /// have Google IAM permission to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2331,9 +2361,10 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ProjectsLocationsTagTemplatesFieldsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a field in a tag template. The user should enable the Data Catalog
-  /// API in the project identified by the `parent` parameter (see [Data Catalog
-  /// Resource
+  /// Creates a field in a tag template.
+  ///
+  /// The user should enable the Data Catalog API in the project identified by
+  /// the `parent` parameter (see [Data Catalog Resource
   /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
@@ -2409,9 +2440,10 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     );
   }
 
-  /// Deletes a field in a tag template and all uses of that field. Users should
-  /// enable the Data Catalog API in the project identified by the `name`
-  /// parameter (see [Data Catalog Resource Project]
+  /// Deletes a field in a tag template and all uses of that field.
+  ///
+  /// Users should enable the Data Catalog API in the project identified by the
+  /// `name` parameter (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -2475,9 +2507,11 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     );
   }
 
-  /// Updates a field in a tag template. This method cannot be used to update
-  /// the field type. Users should enable the Data Catalog API in the project
-  /// identified by the `name` parameter (see [Data Catalog Resource Project]
+  /// Updates a field in a tag template.
+  ///
+  /// This method cannot be used to update the field type. Users should enable
+  /// the Data Catalog API in the project identified by the `name` parameter
+  /// (see [Data Catalog Resource Project]
   /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
   /// more information).
   ///
@@ -2552,9 +2586,10 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     );
   }
 
-  /// Renames a field in a tag template. The user should enable the Data Catalog
-  /// API in the project identified by the `name` parameter (see [Data Catalog
-  /// Resource
+  /// Renames a field in a tag template.
+  ///
+  /// The user should enable the Data Catalog API in the project identified by
+  /// the `name` parameter (see [Data Catalog Resource
   /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
@@ -2625,9 +2660,11 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Renames an enum value in a tag template. The enum values have to be unique
-  /// within one enum field. Thus, an enum value cannot be renamed with a name
-  /// used in any other enum value within the same enum field.
+  /// Renames an enum value in a tag template.
+  ///
+  /// The enum values have to be unique within one enum field. Thus, an enum
+  /// value cannot be renamed with a name used in any other enum value within
+  /// the same enum field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2759,8 +2796,10 @@ class ProjectsLocationsTaxonomiesResource {
     );
   }
 
-  /// Deletes a taxonomy. This operation will also delete all policy tags in
-  /// this taxonomy along with their associated policies.
+  /// Deletes a taxonomy.
+  ///
+  /// This operation will also delete all policy tags in this taxonomy along
+  /// with their associated policies.
   ///
   /// Request parameters:
   ///
@@ -2813,9 +2852,10 @@ class ProjectsLocationsTaxonomiesResource {
     );
   }
 
-  /// Exports all taxonomies and their policy tags in a project. This method
-  /// generates SerializedTaxonomy protos with nested policy tags that can be
-  /// used as an input for future ImportTaxonomies calls.
+  /// Exports all taxonomies and their policy tags in a project.
+  ///
+  /// This method generates SerializedTaxonomy protos with nested policy tags
+  /// that can be used as an input for future ImportTaxonomies calls.
   ///
   /// Request parameters:
   ///
@@ -2998,8 +3038,10 @@ class ProjectsLocationsTaxonomiesResource {
   }
 
   /// Imports all taxonomies and their policy tags to a project as new
-  /// taxonomies. This method provides a bulk taxonomy / policy tag creation
-  /// using nested proto structure.
+  /// taxonomies.
+  ///
+  /// This method provides a bulk taxonomy / policy tag creation using nested
+  /// proto structure.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3394,7 +3436,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     );
   }
 
-  /// Deletes a policy tag. Also deletes all of its descendant policy tags.
+  /// Deletes a policy tag.
+  ///
+  /// Also deletes all of its descendant policy tags.
   ///
   /// Request parameters:
   ///
@@ -3833,20 +3877,24 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -3877,8 +3925,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -3920,10 +3969,12 @@ class Binding {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -3938,8 +3989,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -3954,20 +4007,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -4031,13 +4093,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -4058,20 +4123,28 @@ class GetPolicyOptions {
 }
 
 /// Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
+///
 /// Context:
 /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding
 class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
-  /// Output only. The Data Catalog resource name of the dataset entry the
-  /// current table belongs to, for example,
+  /// The Data Catalog resource name of the dataset entry the current table
+  /// belongs to, for example,
   /// `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
+  ///
+  /// Output only.
   core.String dataset;
 
-  /// Output only. Total number of shards.
+  /// Total number of shards.
+  ///
+  /// Output only.
   core.String shardCount;
 
-  /// Output only. The table name prefix of the shards. The name of any given
-  /// shard is `[table_prefix]YYYYMMDD`, for example, for shard
-  /// `MyTable20180101`, the `table_prefix` is `MyTable`.
+  /// The table name prefix of the shards.
+  ///
+  /// The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for
+  /// shard `MyTable20180101`, the `table_prefix` is `MyTable`.
+  ///
+  /// Output only.
   core.String tablePrefix;
 
   GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
@@ -4106,7 +4179,9 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
 
 /// Describes a BigQuery table.
 class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
-  /// Output only. The table source type.
+  /// The table source type.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TABLE_SOURCE_TYPE_UNSPECIFIED" : Default unknown type.
   /// - "BIGQUERY_VIEW" : Table view.
@@ -4114,12 +4189,16 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /// - "BIGQUERY_MATERIALIZED_VIEW" : BigQuery materialized view.
   core.String tableSourceType;
 
-  /// Spec of a BigQuery table. This field should only be populated if
-  /// `table_source_type` is `BIGQUERY_TABLE`.
+  /// Spec of a BigQuery table.
+  ///
+  /// This field should only be populated if `table_source_type` is
+  /// `BIGQUERY_TABLE`.
   GoogleCloudDatacatalogV1beta1TableSpec tableSpec;
 
-  /// Table view specification. This field should only be populated if
-  /// `table_source_type` is `BIGQUERY_VIEW`.
+  /// Table view specification.
+  ///
+  /// This field should only be populated if `table_source_type` is
+  /// `BIGQUERY_VIEW`.
   GoogleCloudDatacatalogV1beta1ViewSpec viewSpec;
 
   GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
@@ -4153,25 +4232,41 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   }
 }
 
-/// Representation of a column within a schema. Columns could be nested inside
-/// other columns.
+/// Representation of a column within a schema.
+///
+/// Columns could be nested inside other columns.
 class GoogleCloudDatacatalogV1beta1ColumnSchema {
-  /// Required. Name of the column.
+  /// Name of the column.
+  ///
+  /// Required.
   core.String column;
 
-  /// Optional. Description of the column. Default value is an empty string.
+  /// Description of the column.
+  ///
+  /// Default value is an empty string.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. A column's mode indicates whether the values in this column are
-  /// required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
-  /// supported. Default mode is `NULLABLE`.
+  /// A column's mode indicates whether the values in this column are required,
+  /// nullable, etc.
+  ///
+  /// Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is
+  /// `NULLABLE`.
+  ///
+  /// Optional.
   core.String mode;
 
-  /// Optional. Schema of sub-columns. A column can have zero or more
-  /// sub-columns.
+  /// Schema of sub-columns.
+  ///
+  /// A column can have zero or more sub-columns.
+  ///
+  /// Optional.
   core.List<GoogleCloudDatacatalogV1beta1ColumnSchema> subcolumns;
 
-  /// Required. Type of the column.
+  /// Type of the column.
+  ///
+  /// Required.
   core.String type;
 
   GoogleCloudDatacatalogV1beta1ColumnSchema();
@@ -4219,46 +4314,58 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   }
 }
 
-/// Entry Metadata. A Data Catalog Entry resource represents another resource in
-/// Google Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or
-/// outside of Google Cloud Platform. Clients can use the `linked_resource`
-/// field in the Entry resource to refer to the original resource ID of the
-/// source system. An Entry resource contains resource details, such as its
-/// schema. An Entry can also be used to attach flexible metadata, such as a
-/// Tag.
+/// Entry Metadata.
+///
+/// A Data Catalog Entry resource represents another resource in Google Cloud
+/// Platform (such as a BigQuery dataset or a Pub/Sub topic), or outside of
+/// Google Cloud Platform. Clients can use the `linked_resource` field in the
+/// Entry resource to refer to the original resource ID of the source system. An
+/// Entry resource contains resource details, such as its schema. An Entry can
+/// also be used to attach flexible metadata, such as a Tag.
 class GoogleCloudDatacatalogV1beta1Entry {
   /// Specification for a group of BigQuery tables with name pattern
-  /// `[prefix]YYYYMMDD`. Context:
+  /// `[prefix]YYYYMMDD`.
+  ///
+  /// Context:
   /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
   GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec bigqueryDateShardedSpec;
 
-  /// Specification that applies to a BigQuery table. This is only valid on
-  /// entries of type `TABLE`.
+  /// Specification that applies to a BigQuery table.
+  ///
+  /// This is only valid on entries of type `TABLE`.
   GoogleCloudDatacatalogV1beta1BigQueryTableSpec bigqueryTableSpec;
 
   /// Entry description, which can consist of several sentences or paragraphs
-  /// that describe entry contents. Default value is an empty string.
+  /// that describe entry contents.
+  ///
+  /// Default value is an empty string.
   core.String description;
 
-  /// Display information such as title and description. A short name to
-  /// identify the entry, for example, "Analytics Data - Jan 2011". Default
-  /// value is an empty string.
+  /// Display information such as title and description.
+  ///
+  /// A short name to identify the entry, for example, "Analytics Data - Jan
+  /// 2011". Default value is an empty string.
   core.String displayName;
 
-  /// Specification that applies to a Cloud Storage fileset. This is only valid
-  /// on entries of type FILESET.
+  /// Specification that applies to a Cloud Storage fileset.
+  ///
+  /// This is only valid on entries of type FILESET.
   GoogleCloudDatacatalogV1beta1GcsFilesetSpec gcsFilesetSpec;
 
-  /// Output only. This field indicates the entry's source system that Data
-  /// Catalog integrates with, such as BigQuery or Pub/Sub.
+  /// This field indicates the entry's source system that Data Catalog
+  /// integrates with, such as BigQuery or Pub/Sub.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "INTEGRATED_SYSTEM_UNSPECIFIED" : Default unknown system.
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   core.String integratedSystem;
 
-  /// The resource this metadata entry refers to. For Google Cloud Platform
-  /// resources, `linked_resource` is the [full name of the
+  /// The resource this metadata entry refers to.
+  ///
+  /// For Google Cloud Platform resources, `linked_resource` is the [full name
+  /// of the
   /// resource](https://cloud.google.com/apis/design/resource_names#full_resource_name).
   /// For example, the `linked_resource` for a table resource from BigQuery is:
   /// *
@@ -4268,23 +4375,32 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// string.
   core.String linkedResource;
 
-  /// The Data Catalog resource name of the entry in URL format. Example: *
+  /// The Data Catalog resource name of the entry in URL format.
+  ///
+  /// Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Note that this Entry and its child resources may not actually be stored in
   /// the location in this name.
   core.String name;
 
-  /// Schema of the entry. An entry might not have any schema attached to it.
+  /// Schema of the entry.
+  ///
+  /// An entry might not have any schema attached to it.
   GoogleCloudDatacatalogV1beta1Schema schema;
 
-  /// Output only. Timestamps about the underlying resource, not about this Data
-  /// Catalog entry. Output only when Entry is of type in the EntryType enum.
-  /// For entries with user_specified_type, this field is optional and defaults
-  /// to an empty timestamp.
+  /// Timestamps about the underlying resource, not about this Data Catalog
+  /// entry.
+  ///
+  /// Output only when Entry is of type in the EntryType enum. For entries with
+  /// user_specified_type, this field is optional and defaults to an empty
+  /// timestamp.
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1beta1SystemTimestamps sourceSystemTimestamps;
 
-  /// The type of the entry. Only used for Entries with types in the EntryType
-  /// enum.
+  /// The type of the entry.
+  ///
+  /// Only used for Entries with types in the EntryType enum.
   /// Possible string values are:
   /// - "ENTRY_TYPE_UNSPECIFIED" : Default unknown type.
   /// - "TABLE" : Output only. The type of entry that has a GoogleSQL schema,
@@ -4298,21 +4414,24 @@ class GoogleCloudDatacatalogV1beta1Entry {
   core.String type;
 
   /// This field indicates the entry's source system that Data Catalog does not
-  /// integrate with. `user_specified_system` strings must begin with a letter
-  /// or underscore and can only contain letters, numbers, and underscores; are
-  /// case insensitive; must be at least 1 character and at most 64 characters
-  /// long.
+  /// integrate with.
+  ///
+  /// `user_specified_system` strings must begin with a letter or underscore and
+  /// can only contain letters, numbers, and underscores; are case insensitive;
+  /// must be at least 1 character and at most 64 characters long.
   core.String userSpecifiedSystem;
 
   /// Entry type if it does not fit any of the input-allowed values listed in
-  /// `EntryType` enum above. When creating an entry, users should check the
-  /// enum values first, if nothing matches the entry to be created, then
-  /// provide a custom value, for example "my_special_type".
-  /// `user_specified_type` strings must begin with a letter or underscore and
-  /// can only contain letters, numbers, and underscores; are case insensitive;
-  /// must be at least 1 character and at most 64 characters long. Currently,
-  /// only FILESET enum value is allowed. All other entries created through Data
-  /// Catalog must use `user_specified_type`.
+  /// `EntryType` enum above.
+  ///
+  /// When creating an entry, users should check the enum values first, if
+  /// nothing matches the entry to be created, then provide a custom value, for
+  /// example "my_special_type". `user_specified_type` strings must begin with a
+  /// letter or underscore and can only contain letters, numbers, and
+  /// underscores; are case insensitive; must be at least 1 character and at
+  /// most 64 characters long. Currently, only FILESET enum value is allowed.
+  /// All other entries created through Data Catalog must use
+  /// `user_specified_type`.
   core.String userSpecifiedType;
 
   GoogleCloudDatacatalogV1beta1Entry();
@@ -4415,23 +4534,33 @@ class GoogleCloudDatacatalogV1beta1Entry {
   }
 }
 
-/// EntryGroup Metadata. An EntryGroup resource represents a logical grouping of
-/// zero or more Data Catalog Entry resources.
+/// EntryGroup Metadata.
+///
+/// An EntryGroup resource represents a logical grouping of zero or more Data
+/// Catalog Entry resources.
 class GoogleCloudDatacatalogV1beta1EntryGroup {
-  /// Output only. Timestamps about this EntryGroup. Default value is empty
-  /// timestamps.
+  /// Timestamps about this EntryGroup.
+  ///
+  /// Default value is empty timestamps.
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1beta1SystemTimestamps dataCatalogTimestamps;
 
   /// Entry group description, which can consist of several sentences or
-  /// paragraphs that describe entry group contents. Default value is an empty
-  /// string.
+  /// paragraphs that describe entry group contents.
+  ///
+  /// Default value is an empty string.
   core.String description;
 
   /// A short name to identify the entry group, for example, "analytics data -
-  /// jan 2011". Default value is an empty string.
+  /// jan 2011".
+  ///
+  /// Default value is an empty string.
   core.String displayName;
 
-  /// The resource name of the entry group in URL format. Example: *
+  /// The resource name of the entry group in URL format.
+  ///
+  /// Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
   /// Note that this EntryGroup and its child resources may not actually be
   /// stored in the location in this name.
@@ -4541,16 +4670,18 @@ class GoogleCloudDatacatalogV1beta1FieldType {
 }
 
 class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
-  /// The set of allowed values for this enum. This set must not be empty, the
-  /// display names of the values in this set must not be empty and the display
-  /// names of the values must be case-insensitively unique within this set. The
-  /// order of items in this list is preserved. This field can be used to
-  /// Required on create; optional on update. The set of allowed values for this
-  /// enum. This set must not be empty, the display names of the values in this
-  /// set must not be empty and the display names of the values must be
-  /// case-insensitively unique within this set. Currently, enum values can only
-  /// be added to the list of allowed values. Deletion and renaming of enum
-  /// values are not supported. Can have up to 500 allowed values.
+  /// The set of allowed values for this enum.
+  ///
+  /// This set must not be empty, the display names of the values in this set
+  /// must not be empty and the display names of the values must be
+  /// case-insensitively unique within this set. The order of items in this list
+  /// is preserved. This field can be used to Required on create; optional on
+  /// update. The set of allowed values for this enum. This set must not be
+  /// empty, the display names of the values in this set must not be empty and
+  /// the display names of the values must be case-insensitively unique within
+  /// this set. Currently, enum values can only be added to the list of allowed
+  /// values. Deletion and renaming of enum values are not supported. Can have
+  /// up to 500 allowed values.
   core.List<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>
       allowedValues;
 
@@ -4577,7 +4708,11 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
 }
 
 class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
-  /// Required. The display name of the enum value. Must not be an empty string.
+  /// The display name of the enum value.
+  ///
+  /// Must not be an empty string.
+  ///
+  /// Required.
   core.String displayName;
 
   GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
@@ -4600,13 +4735,21 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
 
 /// Specifications of a single file in Cloud Storage.
 class GoogleCloudDatacatalogV1beta1GcsFileSpec {
-  /// Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+  /// The full file path.
+  ///
+  /// Example: `gs://bucket_name/a/b.txt`.
+  ///
+  /// Required.
   core.String filePath;
 
-  /// Output only. Timestamps about the Cloud Storage file.
+  /// Timestamps about the Cloud Storage file.
+  ///
+  /// Output only.
   GoogleCloudDatacatalogV1beta1SystemTimestamps gcsTimestamps;
 
-  /// Output only. The size of the file, in bytes.
+  /// The size of the file, in bytes.
+  ///
+  /// Output only.
   core.String sizeBytes;
 
   GoogleCloudDatacatalogV1beta1GcsFileSpec();
@@ -4641,8 +4784,9 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
 
 /// Describes a Cloud Storage fileset entry.
 class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
-  /// Required. Patterns to identify a set of files in Google Cloud Storage. See
-  /// [Cloud Storage
+  /// Patterns to identify a set of files in Google Cloud Storage.
+  ///
+  /// See [Cloud Storage
   /// documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
   /// for more information. Note that bucket wildcards are currently not
   /// supported. Examples of valid file_patterns: * `gs://bucket_name/dir / * `:
@@ -4659,10 +4803,14 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /// `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches
   /// `gs://another_bucket/a.txt` You can combine wildcards to provide more
   /// powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+  ///
+  /// Required.
   core.List<core.String> filePatterns;
 
-  /// Output only. Sample files contained in this fileset, not all files
-  /// contained in this fileset are represented here.
+  /// Sample files contained in this fileset, not all files contained in this
+  /// fileset are represented here.
+  ///
+  /// Output only.
   core.List<GoogleCloudDatacatalogV1beta1GcsFileSpec> sampleGcsFileSpecs;
 
   GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
@@ -4748,7 +4896,9 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
 
 /// Inline source used for taxonomies import.
 class GoogleCloudDatacatalogV1beta1InlineSource {
-  /// Required. Taxonomies to be imported.
+  /// Taxonomies to be imported.
+  ///
+  /// Required.
   core.List<GoogleCloudDatacatalogV1beta1SerializedTaxonomy> taxonomies;
 
   GoogleCloudDatacatalogV1beta1InlineSource();
@@ -4777,8 +4927,9 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   /// Entry details.
   core.List<GoogleCloudDatacatalogV1beta1Entry> entries;
 
-  /// Token to retrieve the next page of results. It is set to empty if no items
-  /// remain in results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// It is set to empty if no items remain in results.
   core.String nextPageToken;
 
   GoogleCloudDatacatalogV1beta1ListEntriesResponse();
@@ -4813,8 +4964,9 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   /// EntryGroup details.
   core.List<GoogleCloudDatacatalogV1beta1EntryGroup> entryGroups;
 
-  /// Token to retrieve the next page of results. It is set to empty if no items
-  /// remain in results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// It is set to empty if no items remain in results.
   core.String nextPageToken;
 
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
@@ -4884,8 +5036,9 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
 
 /// Response message for ListTags.
 class GoogleCloudDatacatalogV1beta1ListTagsResponse {
-  /// Token to retrieve the next page of results. It is set to empty if no items
-  /// remain in results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// It is set to empty if no items remain in results.
   core.String nextPageToken;
 
   /// Tag details.
@@ -4954,36 +5107,48 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   }
 }
 
-/// Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined
-/// in a hierarchy. For example, consider the following hierarchy: Geolocation
-/// -> (LatLong, City, ZipCode). PolicyTag "Geolocation" contains three child
-/// policy tags: "LatLong", "City", and "ZipCode".
+/// Denotes one policy tag in a taxonomy (e.g. ssn).
+///
+/// Policy Tags can be defined in a hierarchy. For example, consider the
+/// following hierarchy: Geolocation -> (LatLong, City, ZipCode). PolicyTag
+/// "Geolocation" contains three child policy tags: "LatLong", "City", and
+/// "ZipCode".
 class GoogleCloudDatacatalogV1beta1PolicyTag {
-  /// Output only. Resource names of child policy tags of this policy tag.
+  /// Resource names of child policy tags of this policy tag.
+  ///
+  /// Output only.
   core.List<core.String> childPolicyTags;
 
-  /// Description of this policy tag. It must: contain only unicode characters,
-  /// tabs, newlines, carriage returns and page breaks; and be at most 2000
-  /// bytes long when encoded in UTF-8. If not set, defaults to an empty
-  /// description. If not set, defaults to an empty description.
+  /// Description of this policy tag.
+  ///
+  /// It must: contain only unicode characters, tabs, newlines, carriage returns
+  /// and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If
+  /// not set, defaults to an empty description. If not set, defaults to an
+  /// empty description.
   core.String description;
 
-  /// Required. User defined name of this policy tag. It must: be unique within
-  /// the parent taxonomy; contain only unicode letters, numbers, underscores,
-  /// dashes and spaces; not start or end with spaces; and be at most 200 bytes
-  /// long when encoded in UTF-8.
+  /// User defined name of this policy tag.
+  ///
+  /// It must: be unique within the parent taxonomy; contain only unicode
+  /// letters, numbers, underscores, dashes and spaces; not start or end with
+  /// spaces; and be at most 200 bytes long when encoded in UTF-8.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Output only. Resource name of this policy tag, whose format is:
+  /// Resource name of this policy tag, whose format is:
   /// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+  ///
+  /// Output only.
   core.String name;
 
   /// Resource name of this policy tag's parent policy tag (e.g. for the
   /// "LatLong" policy tag in the example above, this field contains the
-  /// resource name of the "Geolocation" policy tag). If empty, it means this
-  /// policy tag is a top level policy tag (e.g. this field is empty for the
-  /// "Geolocation" policy tag in the example above). If not set, defaults to an
-  /// empty string.
+  /// resource name of the "Geolocation" policy tag).
+  ///
+  /// If empty, it means this policy tag is a top level policy tag (e.g. this
+  /// field is empty for the "Geolocation" policy tag in the example above). If
+  /// not set, defaults to an empty string.
   core.String parentPolicyTag;
 
   GoogleCloudDatacatalogV1beta1PolicyTag();
@@ -5031,8 +5196,11 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
 
 /// Request message for RenameTagTemplateFieldEnumValue.
 class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
-  /// Required. The new display name of the enum value. For example,
-  /// `my_new_enum_value`.
+  /// The new display name of the enum value.
+  ///
+  /// For example, `my_new_enum_value`.
+  ///
+  /// Required.
   core.String newEnumValueDisplayName;
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
@@ -5055,8 +5223,11 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
 
 /// Request message for RenameTagTemplateField.
 class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
-  /// Required. The new ID of this tag template field. For example,
-  /// `my_new_field`.
+  /// The new ID of this tag template field.
+  ///
+  /// For example, `my_new_field`.
+  ///
+  /// Required.
   core.String newTagTemplateFieldId;
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
@@ -5079,8 +5250,11 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
 
 /// Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
 class GoogleCloudDatacatalogV1beta1Schema {
-  /// Required. Schema of columns. A maximum of 10,000 columns and sub-columns
-  /// can be specified.
+  /// Schema of columns.
+  ///
+  /// A maximum of 10,000 columns and sub-columns can be specified.
+  ///
+  /// Required.
   core.List<GoogleCloudDatacatalogV1beta1ColumnSchema> columns;
 
   GoogleCloudDatacatalogV1beta1Schema();
@@ -5112,31 +5286,42 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// specified If not specified, defaults to `relevance` descending.
   core.String orderBy;
 
-  /// Number of results in the search page. If <=0 then defaults to 10. Max
-  /// limit for page_size is 1000. Throws an invalid argument for page_size >
-  /// 1000.
+  /// Number of results in the search page.
+  ///
+  /// If <=0 then defaults to 10. Max limit for page_size is 1000. Throws an
+  /// invalid argument for page_size > 1000.
   core.int pageSize;
 
-  /// Optional. Pagination token returned in an earlier
+  /// Pagination token returned in an earlier
   /// SearchCatalogResponse.next_page_token, which indicates that this is a
   /// continuation of a prior SearchCatalogRequest call, and that the system
-  /// should return the next page of data. If empty, the first page is returned.
+  /// should return the next page of data.
+  ///
+  /// If empty, the first page is returned.
+  ///
+  /// Optional.
   core.String pageToken;
 
-  /// Optional. The query string in search query syntax. An empty query string
-  /// will result in all data assets (in the specified scope) that the user has
-  /// access to. Query strings can be simple as "x" or more qualified as: *
-  /// name:x * column:x * description:y Note: Query tokens need to have a
-  /// minimum of 3 characters for substring matching to work correctly. See
-  /// [Data Catalog Search
+  /// The query string in search query syntax.
+  ///
+  /// An empty query string will result in all data assets (in the specified
+  /// scope) that the user has access to. Query strings can be simple as "x" or
+  /// more qualified as: * name:x * column:x * description:y Note: Query tokens
+  /// need to have a minimum of 3 characters for substring matching to work
+  /// correctly. See [Data Catalog Search
   /// Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
   /// for more information.
+  ///
+  /// Optional.
   core.String query;
 
-  /// Required. The scope of this search request. A `scope` that has empty
-  /// `include_org_ids`, `include_project_ids` AND false
-  /// `include_gcp_public_datasets` is considered invalid. Data Catalog will
-  /// return an error in such a case.
+  /// The scope of this search request.
+  ///
+  /// A `scope` that has empty `include_org_ids`, `include_project_ids` AND
+  /// false `include_gcp_public_datasets` is considered invalid. Data Catalog
+  /// will return an error in such a case.
+  ///
+  /// Required.
   GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope scope;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
@@ -5184,34 +5369,41 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
 /// The criteria that select the subspace used for query matching.
 class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   /// If `true`, include Google Cloud Platform (GCP) public datasets in the
-  /// search results. Info on GCP public datasets is available at
+  /// search results.
+  ///
+  /// Info on GCP public datasets is available at
   /// https://cloud.google.com/public-datasets/. By default, GCP public datasets
   /// are excluded.
   core.bool includeGcpPublicDatasets;
 
-  /// The list of organization IDs to search within. To find your organization
-  /// ID, follow instructions in
+  /// The list of organization IDs to search within.
+  ///
+  /// To find your organization ID, follow instructions in
   /// https://cloud.google.com/resource-manager/docs/creating-managing-organization.
   core.List<core.String> includeOrgIds;
 
-  /// The list of project IDs to search within. To learn more about the
-  /// distinction between project names/IDs/numbers, go to
-  /// https://cloud.google.com/docs/overview/#projects.
+  /// The list of project IDs to search within.
+  ///
+  /// To learn more about the distinction between project names/IDs/numbers, go
+  /// to https://cloud.google.com/docs/overview/#projects.
   core.List<core.String> includeProjectIds;
 
-  /// Optional. The list of locations to search within. 1. If empty, search will
-  /// be performed in all locations; 2. If any of the locations are NOT in the
-  /// valid locations list, error will be returned; 3. Otherwise, search only
-  /// the given locations for matching results. Typical usage is to leave this
-  /// field empty. When a location is unreachable as returned in the
-  /// `SearchCatalogResponse.unreachable` field, users can repeat the search
-  /// request with this parameter set to get additional information on the
-  /// error. Valid locations: * asia-east1 * asia-east2 * asia-northeast1 *
-  /// asia-northeast2 * asia-northeast3 * asia-south1 * asia-southeast1 *
-  /// australia-southeast1 * eu * europe-north1 * europe-west1 * europe-west2 *
-  /// europe-west3 * europe-west4 * europe-west6 * global *
+  /// The list of locations to search within.
+  ///
+  /// 1. If empty, search will be performed in all locations; 2. If any of the
+  /// locations are NOT in the valid locations list, error will be returned; 3.
+  /// Otherwise, search only the given locations for matching results. Typical
+  /// usage is to leave this field empty. When a location is unreachable as
+  /// returned in the `SearchCatalogResponse.unreachable` field, users can
+  /// repeat the search request with this parameter set to get additional
+  /// information on the error. Valid locations: * asia-east1 * asia-east2 *
+  /// asia-northeast1 * asia-northeast2 * asia-northeast3 * asia-south1 *
+  /// asia-southeast1 * australia-southeast1 * eu * europe-north1 * europe-west1
+  /// * europe-west2 * europe-west3 * europe-west4 * europe-west6 * global *
   /// northamerica-northeast1 * southamerica-east1 * us * us-central1 * us-east1
   /// * us-east4 * us-west1 * us-west2
+  ///
+  /// Optional.
   core.List<core.String> restrictedLocations;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
@@ -5264,10 +5456,12 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /// Search results.
   core.List<GoogleCloudDatacatalogV1beta1SearchCatalogResult> results;
 
-  /// Unreachable locations. Search result does not include data from those
-  /// locations. Users can get additional information on the error by repeating
-  /// the search request with a more restrictive parameter -- setting the value
-  /// for `SearchDataCatalogRequest.scope.restricted_locations`.
+  /// Unreachable locations.
+  ///
+  /// Search result does not include data from those locations. Users can get
+  /// additional information on the error by repeating the search request with a
+  /// more restrictive parameter -- setting the value for
+  /// `SearchDataCatalogRequest.scope.restricted_locations`.
   core.List<core.String> unreachable;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
@@ -5305,28 +5499,36 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   }
 }
 
-/// A result that appears in the response of a search request. Each result
-/// captures details of one entry that matches the search.
+/// A result that appears in the response of a search request.
+///
+/// Each result captures details of one entry that matches the search.
 class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
-  /// The full name of the cloud resource the entry belongs to. See:
+  /// The full name of the cloud resource the entry belongs to.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name.
   /// Example: *
   /// `//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId`
   core.String linkedResource;
 
-  /// The relative resource name of the resource in URL format. Examples: *
+  /// The relative resource name of the resource in URL format.
+  ///
+  /// Examples: *
   /// `projects/{project_id}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}`
   /// * `projects/{project_id}/tagTemplates/{tag_template_id}`
   core.String relativeResourceName;
 
-  /// Sub-type of the search result. This is a dot-delimited description of the
-  /// resource's full type, and is the same as the value callers would provide
-  /// in the "type" search facet. Examples: `entry.table`, `entry.dataStream`,
-  /// `tagTemplate`.
+  /// Sub-type of the search result.
+  ///
+  /// This is a dot-delimited description of the resource's full type, and is
+  /// the same as the value callers would provide in the "type" search facet.
+  /// Examples: `entry.table`, `entry.dataStream`, `tagTemplate`.
   core.String searchResultSubtype;
 
-  /// Type of the search result. This field can be used to determine which Get
-  /// method to call to fetch the full resource.
+  /// Type of the search result.
+  ///
+  /// This field can be used to determine which Get method to call to fetch the
+  /// full resource.
   /// Possible string values are:
   /// - "SEARCH_RESULT_TYPE_UNSPECIFIED" : Default unknown type.
   /// - "ENTRY" : An Entry.
@@ -5374,17 +5576,22 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   /// Children of the policy tag if any.
   core.List<GoogleCloudDatacatalogV1beta1SerializedPolicyTag> childPolicyTags;
 
-  /// Description of the serialized policy tag. The length of the description is
-  /// limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an
-  /// empty description.
+  /// Description of the serialized policy tag.
+  ///
+  /// The length of the description is limited to 2000 bytes when encoded in
+  /// UTF-8. If not set, defaults to an empty description.
   core.String description;
 
-  /// Required. Display name of the policy tag. Max 200 bytes when encoded in
-  /// UTF-8.
+  /// Display name of the policy tag.
+  ///
+  /// Max 200 bytes when encoded in UTF-8.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Resource name of the policy tag. This field will be ignored when calling
-  /// ImportTaxonomies.
+  /// Resource name of the policy tag.
+  ///
+  /// This field will be ignored when calling ImportTaxonomies.
   core.String policyTag;
 
   GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
@@ -5428,15 +5635,20 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
 }
 
 /// Message capturing a taxonomy and its policy tag hierarchy as a nested proto.
+///
 /// Used for taxonomy import/export and mutation.
 class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
-  /// Description of the serialized taxonomy. The length of the description is
-  /// limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an
-  /// empty description.
+  /// Description of the serialized taxonomy.
+  ///
+  /// The length of the description is limited to 2000 bytes when encoded in
+  /// UTF-8. If not set, defaults to an empty description.
   core.String description;
 
-  /// Required. Display name of the taxonomy. Max 200 bytes when encoded in
-  /// UTF-8.
+  /// Display name of the taxonomy.
+  ///
+  /// Max 200 bytes when encoded in UTF-8.
+  ///
+  /// Required.
   core.String displayName;
 
   /// Top level policy tags associated with the taxonomy if any.
@@ -5480,8 +5692,11 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
   /// The creation time of the resource within the given system.
   core.String createTime;
 
-  /// Output only. The expiration time of the resource within the given system.
+  /// The expiration time of the resource within the given system.
+  ///
   /// Currently only apllicable to BigQuery resources.
+  ///
+  /// Output only.
   core.String expireTime;
 
   /// The last-modified time of the resource within the given system.
@@ -5518,11 +5733,14 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
 
 /// Normal BigQuery table spec.
 class GoogleCloudDatacatalogV1beta1TableSpec {
-  /// Output only. If the table is a dated shard, i.e., with name pattern
-  /// `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of
-  /// the date sharded grouped entry, for example,
+  /// If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`,
+  /// `grouped_entry` is the Data Catalog resource name of the date sharded
+  /// grouped entry, for example,
   /// `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
+  ///
   /// Otherwise, `grouped_entry` is empty.
+  ///
+  /// Output only.
   core.String groupedEntry;
 
   GoogleCloudDatacatalogV1beta1TableSpec();
@@ -5542,35 +5760,48 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
   }
 }
 
-/// Tags are used to attach custom metadata to Data Catalog resources. Tags
-/// conform to the specifications within their tag template. See [Data Catalog
-/// IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for
+/// Tags are used to attach custom metadata to Data Catalog resources.
+///
+/// Tags conform to the specifications within their tag template. See [Data
+/// Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for
 /// information on the permissions needed to create or view tags.
 class GoogleCloudDatacatalogV1beta1Tag {
-  /// Resources like Entry can have schemas associated with them. This scope
-  /// allows users to attach tags to an individual column based on that schema.
-  /// For attaching a tag to a nested column, use `.` to separate the column
-  /// names. Example: * `outer_column.inner_column`
+  /// Resources like Entry can have schemas associated with them.
+  ///
+  /// This scope allows users to attach tags to an individual column based on
+  /// that schema. For attaching a tag to a nested column, use `.` to separate
+  /// the column names. Example: * `outer_column.inner_column`
   core.String column;
 
-  /// Required. This maps the ID of a tag field to the value of and additional
-  /// information about that field. Valid field IDs are defined by the tag's
-  /// template. A tag must have at least 1 field and at most 500 fields.
+  /// This maps the ID of a tag field to the value of and additional information
+  /// about that field.
+  ///
+  /// Valid field IDs are defined by the tag's template. A tag must have at
+  /// least 1 field and at most 500 fields.
+  ///
+  /// Required.
   core.Map<core.String, GoogleCloudDatacatalogV1beta1TagField> fields;
 
-  /// The resource name of the tag in URL format. Example: *
+  /// The resource name of the tag in URL format.
+  ///
+  /// Example: *
   /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
   /// where `tag_id` is a system-generated identifier. Note that this Tag may
   /// not actually be stored in the location in this name.
   core.String name;
 
-  /// Required. The resource name of the tag template that this tag uses.
+  /// The resource name of the tag template that this tag uses.
+  ///
   /// Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
   /// This field cannot be modified after creation.
+  ///
+  /// Required.
   core.String template;
 
-  /// Output only. The display name of the tag template.
+  /// The display name of the tag template.
+  ///
+  /// Output only.
   core.String templateDisplayName;
 
   GoogleCloudDatacatalogV1beta1Tag();
@@ -5626,20 +5857,27 @@ class GoogleCloudDatacatalogV1beta1TagField {
   /// Holds the value for a tag field with boolean type.
   core.bool boolValue;
 
-  /// Output only. The display name of this field.
+  /// The display name of this field.
+  ///
+  /// Output only.
   core.String displayName;
 
   /// Holds the value for a tag field with double type.
   core.double doubleValue;
 
-  /// Holds the value for a tag field with enum type. This value must be one of
-  /// the allowed values in the definition of this enum.
+  /// Holds the value for a tag field with enum type.
+  ///
+  /// This value must be one of the allowed values in the definition of this
+  /// enum.
   GoogleCloudDatacatalogV1beta1TagFieldEnumValue enumValue;
 
-  /// Output only. The order of this field with respect to other fields in this
-  /// tag. It can be set in Tag. For example, a higher value can indicate a more
+  /// The order of this field with respect to other fields in this tag.
+  ///
+  /// It can be set in Tag. For example, a higher value can indicate a more
   /// important field. The value can be negative. Multiple fields can have the
   /// same order, and field orders within a tag do not have to be sequential.
+  ///
+  /// Output only.
   core.int order;
 
   /// Holds the value for a tag field with string type.
@@ -5724,8 +5962,9 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   }
 }
 
-/// A tag template defines a tag, which can have one or more typed fields. The
-/// template is used to create and attach the tag to GCP resources. [Tag
+/// A tag template defines a tag, which can have one or more typed fields.
+///
+/// The template is used to create and attach the tag to GCP resources. [Tag
 /// template
 /// roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles)
 /// provide permissions to create, edit, and use the template. See, for example,
@@ -5733,19 +5972,26 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
 /// User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role,
 /// which includes permission to use the tag template to tag resources.
 class GoogleCloudDatacatalogV1beta1TagTemplate {
-  /// The display name for this template. Defaults to an empty string.
+  /// The display name for this template.
+  ///
+  /// Defaults to an empty string.
   core.String displayName;
 
-  /// Required. Map of tag template field IDs to the settings for the field.
+  /// Map of tag template field IDs to the settings for the field.
+  ///
   /// This map is an exhaustive list of the allowed fields. This map must
   /// contain at least one field and at most 500 fields. The keys to this map
   /// are tag template field IDs. Field IDs can contain letters (both uppercase
   /// and lowercase), numbers (0-9) and underscores (_). Field IDs must be at
   /// least 1 character long and at most 64 characters long. Field IDs must
   /// start with a letter or underscore.
+  ///
+  /// Required.
   core.Map<core.String, GoogleCloudDatacatalogV1beta1TagTemplateField> fields;
 
-  /// The resource name of the tag template in URL format. Example: *
+  /// The resource name of the tag template in URL format.
+  ///
+  /// Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
   /// Note that this TagTemplate and its child resources may not actually be
   /// stored in the location in this name.
@@ -5789,26 +6035,36 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
 
 /// The template for an individual field within a tag template.
 class GoogleCloudDatacatalogV1beta1TagTemplateField {
-  /// The display name for this field. Defaults to an empty string.
+  /// The display name for this field.
+  ///
+  /// Defaults to an empty string.
   core.String displayName;
 
-  /// Whether this is a required field. Defaults to false.
+  /// Whether this is a required field.
+  ///
+  /// Defaults to false.
   core.bool isRequired;
 
-  /// Output only. The resource name of the tag template field in URL format.
+  /// The resource name of the tag template field in URL format.
+  ///
   /// Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field}
   /// Note that this TagTemplateField may not actually be stored in the location
   /// in this name.
+  ///
+  /// Output only.
   core.String name;
 
   /// The order of this field with respect to other fields in this tag template.
+  ///
   /// A higher value indicates a more important field. The value can be
   /// negative. Multiple fields can have the same order, and field orders within
   /// a tag do not have to be sequential.
   core.int order;
 
-  /// Required. The type of value this tag field can contain.
+  /// The type of value this tag field can contain.
+  ///
+  /// Required.
   GoogleCloudDatacatalogV1beta1FieldType type;
 
   GoogleCloudDatacatalogV1beta1TagTemplateField();
@@ -5854,28 +6110,42 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
 }
 
 /// A taxonomy is a collection of policy tags that classify data along a common
-/// axis. For instance a data *sensitivity* taxonomy could contain policy tags
+/// axis.
+///
+/// For instance a data *sensitivity* taxonomy could contain policy tags
 /// denoting PII such as age, zipcode, and SSN. A data *origin* taxonomy could
 /// contain policy tags to distinguish user data, employee data, partner data,
 /// public data.
 class GoogleCloudDatacatalogV1beta1Taxonomy {
-  /// Optional. A list of policy types that are activated for this taxonomy. If
-  /// not set, defaults to an empty list.
+  /// A list of policy types that are activated for this taxonomy.
+  ///
+  /// If not set, defaults to an empty list.
+  ///
+  /// Optional.
   core.List<core.String> activatedPolicyTypes;
 
-  /// Optional. Description of this taxonomy. It must: contain only unicode
-  /// characters, tabs, newlines, carriage returns and page breaks; and be at
-  /// most 2000 bytes long when encoded in UTF-8. If not set, defaults to an
-  /// empty description.
+  /// Description of this taxonomy.
+  ///
+  /// It must: contain only unicode characters, tabs, newlines, carriage returns
+  /// and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If
+  /// not set, defaults to an empty description.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. User defined name of this taxonomy. It must: contain only
-  /// unicode letters, numbers, underscores, dashes and spaces; not start or end
-  /// with spaces; and be at most 200 bytes long when encoded in UTF-8.
+  /// User defined name of this taxonomy.
+  ///
+  /// It must: contain only unicode letters, numbers, underscores, dashes and
+  /// spaces; not start or end with spaces; and be at most 200 bytes long when
+  /// encoded in UTF-8.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Output only. Resource name of this taxonomy, whose format is:
+  /// Resource name of this taxonomy, whose format is:
   /// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+  ///
+  /// Output only.
   core.String name;
 
   GoogleCloudDatacatalogV1beta1Taxonomy();
@@ -5917,7 +6187,9 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
 
 /// Table view specification.
 class GoogleCloudDatacatalogV1beta1ViewSpec {
-  /// Output only. The query that defines the table view.
+  /// The query that defines the table view.
+  ///
+  /// Output only.
   core.String viewQuery;
 
   GoogleCloudDatacatalogV1beta1ViewSpec();
@@ -5938,16 +6210,18 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -5967,14 +6241,17 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 /// version: 3 For a description of IAM and its features, see the [IAM
 /// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -5991,20 +6268,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -6042,10 +6321,11 @@ class Policy {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   SetIamPolicyRequest();
@@ -6068,9 +6348,10 @@ class SetIamPolicyRequest {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 

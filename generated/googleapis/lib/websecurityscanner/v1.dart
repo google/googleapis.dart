@@ -319,7 +319,9 @@ class ProjectsScanConfigsResource {
     );
   }
 
-  /// Updates a ScanConfig. This method support partial update of a ScanConfig.
+  /// Updates a ScanConfig.
+  ///
+  /// This method support partial update of a ScanConfig.
   ///
   /// [request] - The metadata request object.
   ///
@@ -586,7 +588,9 @@ class ProjectsScanConfigsScanRunsResource {
     );
   }
 
-  /// Stops a ScanRun. The stopped ScanRun is returned.
+  /// Stops a ScanRun.
+  ///
+  /// The stopped ScanRun is returned.
   ///
   /// [request] - The metadata request object.
   ///
@@ -976,17 +980,24 @@ class Authentication {
 }
 
 /// A CrawledUrl resource represents a URL that was crawled during a ScanRun.
+///
 /// Web Security Scanner Service crawls the web applications, following all
 /// links within the scope of sites, to find the URLs to test against.
 class CrawledUrl {
-  /// Output only. The body of the request that was used to visit the URL.
+  /// The body of the request that was used to visit the URL.
+  ///
+  /// Output only.
   core.String body;
 
-  /// Output only. The http method of the request that was used to visit the
-  /// URL, in uppercase.
+  /// The http method of the request that was used to visit the URL, in
+  /// uppercase.
+  ///
+  /// Output only.
   core.String httpMethod;
 
-  /// Output only. The URL that was crawled.
+  /// The URL that was crawled.
+  ///
+  /// Output only.
   core.String url;
 
   CrawledUrl();
@@ -1020,15 +1031,22 @@ class CrawledUrl {
 
 /// Describes authentication configuration that uses a custom account.
 class CustomAccount {
-  /// Required. The login form URL of the website.
+  /// The login form URL of the website.
+  ///
+  /// Required.
   core.String loginUrl;
 
-  /// Required. Input only. The password of the custom account. The credential
-  /// is stored encrypted and not returned in any response nor included in audit
-  /// logs.
+  /// Input only.
+  ///
+  /// The password of the custom account. The credential is stored encrypted and
+  /// not returned in any response nor included in audit logs.
+  ///
+  /// Required.
   core.String password;
 
-  /// Required. The user name of the custom account.
+  /// The user name of the custom account.
+  ///
+  /// Required.
   core.String username;
 
   CustomAccount();
@@ -1061,10 +1079,12 @@ class CustomAccount {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1081,51 +1101,76 @@ class Empty {
 /// A Finding resource represents a vulnerability instance identified during a
 /// ScanRun.
 class Finding {
-  /// Output only. The body of the request that triggered the vulnerability.
+  /// The body of the request that triggered the vulnerability.
+  ///
+  /// Output only.
   core.String body;
 
-  /// Output only. The description of the vulnerability.
+  /// The description of the vulnerability.
+  ///
+  /// Output only.
   core.String description;
 
-  /// Output only. The URL where the browser lands when the vulnerability is
-  /// detected.
+  /// The URL where the browser lands when the vulnerability is detected.
+  ///
+  /// Output only.
   core.String finalUrl;
 
-  /// Output only. The type of the Finding. Detailed and up-to-date information
-  /// on findings can be found here:
+  /// The type of the Finding.
+  ///
+  /// Detailed and up-to-date information on findings can be found here:
   /// https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner-findings
+  ///
+  /// Output only.
   core.String findingType;
 
-  /// Output only. An addon containing information reported for a vulnerability
-  /// with an HTML form, if any.
+  /// An addon containing information reported for a vulnerability with an HTML
+  /// form, if any.
+  ///
+  /// Output only.
   Form form;
 
-  /// Output only. If the vulnerability was originated from nested IFrame, the
-  /// immediate parent IFrame is reported.
+  /// If the vulnerability was originated from nested IFrame, the immediate
+  /// parent IFrame is reported.
+  ///
+  /// Output only.
   core.String frameUrl;
 
-  /// Output only. The URL produced by the server-side fuzzer and used in the
-  /// request that triggered the vulnerability.
+  /// The URL produced by the server-side fuzzer and used in the request that
+  /// triggered the vulnerability.
+  ///
+  /// Output only.
   core.String fuzzedUrl;
 
-  /// Output only. The http method of the request that triggered the
-  /// vulnerability, in uppercase.
+  /// The http method of the request that triggered the vulnerability, in
+  /// uppercase.
+  ///
+  /// Output only.
   core.String httpMethod;
 
-  /// Output only. The resource name of the Finding. The name follows the format
-  /// of
+  /// The resource name of the Finding.
+  ///
+  /// The name follows the format of
   /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'.
   /// The finding IDs are generated by the system.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. An addon containing information about outdated libraries.
+  /// An addon containing information about outdated libraries.
+  ///
+  /// Output only.
   OutdatedLibrary outdatedLibrary;
 
-  /// Output only. The URL containing human-readable payload that user can
-  /// leverage to reproduce the vulnerability.
+  /// The URL containing human-readable payload that user can leverage to
+  /// reproduce the vulnerability.
+  ///
+  /// Output only.
   core.String reproductionUrl;
 
-  /// Output only. The severity level of the reported vulnerability.
+  /// The severity level of the reported vulnerability.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : No severity specified. The default value.
   /// - "CRITICAL" : Critical severity.
@@ -1134,24 +1179,32 @@ class Finding {
   /// - "LOW" : Low severity.
   core.String severity;
 
-  /// Output only. The tracking ID uniquely identifies a vulnerability instance
-  /// across multiple ScanRuns.
+  /// The tracking ID uniquely identifies a vulnerability instance across
+  /// multiple ScanRuns.
+  ///
+  /// Output only.
   core.String trackingId;
 
-  /// Output only. An addon containing detailed information regarding any
-  /// resource causing the vulnerability such as JavaScript sources, image,
-  /// audio files, etc.
+  /// An addon containing detailed information regarding any resource causing
+  /// the vulnerability such as JavaScript sources, image, audio files, etc.
+  ///
+  /// Output only.
   ViolatingResource violatingResource;
 
-  /// Output only. An addon containing information about vulnerable or missing
-  /// HTTP headers.
+  /// An addon containing information about vulnerable or missing HTTP headers.
+  ///
+  /// Output only.
   VulnerableHeaders vulnerableHeaders;
 
-  /// Output only. An addon containing information about request parameters
-  /// which were found to be vulnerable.
+  /// An addon containing information about request parameters which were found
+  /// to be vulnerable.
+  ///
+  /// Output only.
   VulnerableParameters vulnerableParameters;
 
-  /// Output only. An addon containing information reported for an XSS, if any.
+  /// An addon containing information reported for an XSS, if any.
+  ///
+  /// Output only.
   Xss xss;
 
   Finding();
@@ -1275,10 +1328,14 @@ class Finding {
 /// A FindingTypeStats resource represents stats regarding a specific
 /// FindingType of Findings under a given ScanRun.
 class FindingTypeStats {
-  /// Output only. The count of findings belonging to this finding type.
+  /// The count of findings belonging to this finding type.
+  ///
+  /// Output only.
   core.int findingCount;
 
-  /// Output only. The finding type associated with the stats.
+  /// The finding type associated with the stats.
+  ///
+  /// Output only.
   core.String findingType;
 
   FindingTypeStats();
@@ -1339,12 +1396,17 @@ class Form {
 
 /// Describes authentication configuration that uses a Google account.
 class GoogleAccount {
-  /// Required. Input only. The password of the Google account. The credential
-  /// is stored encrypted and not returned in any response nor included in audit
-  /// logs.
+  /// Input only.
+  ///
+  /// The password of the Google account. The credential is stored encrypted and
+  /// not returned in any response nor included in audit logs.
+  ///
+  /// Required.
   core.String password;
 
-  /// Required. The user name of the Google account.
+  /// The user name of the Google account.
+  ///
+  /// Required.
   core.String username;
 
   GoogleAccount();
@@ -1429,8 +1491,10 @@ class IapCredential {
 /// Describes authentication configuration when Web-Security-Scanner service
 /// account is added in Identity-Aware-Proxy (IAP) access policies.
 class IapTestServiceAccountInfo {
-  /// Required. Describes OAuth2 client id of resources protected by
-  /// Identity-Aware-Proxy (IAP).
+  /// Describes OAuth2 client id of resources protected by Identity-Aware-Proxy
+  /// (IAP).
+  ///
+  /// Required.
   core.String targetAudienceClientId;
 
   IapTestServiceAccountInfo();
@@ -1662,15 +1726,19 @@ class OutdatedLibrary {
 
 /// A ScanConfig resource contains the configurations to launch a scan.
 class ScanConfig {
-  /// The authentication configuration. If specified, service will use the
-  /// authentication configuration during scanning.
+  /// The authentication configuration.
+  ///
+  /// If specified, service will use the authentication configuration during
+  /// scanning.
   Authentication authentication;
 
   /// The excluded URL patterns as described in
   /// https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
   core.List<core.String> blacklistPatterns;
 
-  /// Required. The user provided display name of the ScanConfig.
+  /// The user provided display name of the ScanConfig.
+  ///
+  /// Required.
   core.String displayName;
 
   /// Controls export of scan configurations and results to Security Command
@@ -1686,13 +1754,16 @@ class ScanConfig {
   /// Whether the scan config is managed by Web Security Scanner, output only.
   core.bool managedScan;
 
-  /// The maximum QPS during scanning. A valid value ranges from 5 to 20
-  /// inclusively. If the field is unspecified or its value is set 0, server
-  /// will default to 15. Other values outside of [5, 20] range will be rejected
-  /// with INVALID_ARGUMENT error.
+  /// The maximum QPS during scanning.
+  ///
+  /// A valid value ranges from 5 to 20 inclusively. If the field is unspecified
+  /// or its value is set 0, server will default to 15. Other values outside of
+  /// [5, 20] range will be rejected with INVALID_ARGUMENT error.
   core.int maxQps;
 
-  /// The resource name of the ScanConfig. The name follows the format of
+  /// The resource name of the ScanConfig.
+  ///
+  /// The name follows the format of
   /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are
   /// generated by the system.
   core.String name;
@@ -1707,10 +1778,13 @@ class ScanConfig {
   /// The schedule of the ScanConfig.
   Schedule schedule;
 
-  /// Required. The starting URLs from which the scanner finds site pages.
+  /// The starting URLs from which the scanner finds site pages.
+  ///
+  /// Required.
   core.List<core.String> startingUrls;
 
   /// Whether the scan configuration has enabled static IP address scan feature.
+  ///
   /// If enabled, the scanner will access applications from static IP addresses.
   core.bool staticIpScan;
 
@@ -1815,11 +1889,14 @@ class ScanConfig {
 }
 
 /// Defines a custom error message used by CreateScanConfig and UpdateScanConfig
-/// APIs when scan configuration validation fails. It is also reported as part
-/// of a ScanRunErrorTrace message if scan validation fails due to a scan
-/// configuration error.
+/// APIs when scan configuration validation fails.
+///
+/// It is also reported as part of a ScanRunErrorTrace message if scan
+/// validation fails due to a scan configuration error.
 class ScanConfigError {
-  /// Output only. Indicates the reason code for a configuration failure.
+  /// Indicates the reason code for a configuration failure.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : There is no error.
   /// - "OK" : There is no error.
@@ -1902,10 +1979,13 @@ class ScanConfigError {
   /// URLs is not supported.
   core.String code;
 
-  /// Output only. Indicates the full name of the ScanConfig field that triggers
-  /// this error, for example "scan_config.max_qps". This field is provided for
-  /// troubleshooting purposes only and its actual value can change in the
-  /// future.
+  /// Indicates the full name of the ScanConfig field that triggers this error,
+  /// for example "scan_config.max_qps".
+  ///
+  /// This field is provided for troubleshooting purposes only and its actual
+  /// value can change in the future.
+  ///
+  /// Output only.
   core.String fieldName;
 
   ScanConfigError();
@@ -1932,17 +2012,24 @@ class ScanConfigError {
 }
 
 /// A ScanRun is a output-only resource representing an actual run of the scan.
+///
 /// Next id: 12
 class ScanRun {
-  /// Output only. The time at which the ScanRun reached termination state -
-  /// that the ScanRun is either finished or stopped by user.
+  /// The time at which the ScanRun reached termination state - that the ScanRun
+  /// is either finished or stopped by user.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Output only. If result_state is an ERROR, this field provides the primary
-  /// reason for scan's termination and more details, if such are available.
+  /// If result_state is an ERROR, this field provides the primary reason for
+  /// scan's termination and more details, if such are available.
+  ///
+  /// Output only.
   ScanRunErrorTrace errorTrace;
 
-  /// Output only. The execution state of the ScanRun.
+  /// The execution state of the ScanRun.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "EXECUTION_STATE_UNSPECIFIED" : Represents an invalid state caused by
   /// internal server error. This value should never be returned.
@@ -1951,21 +2038,33 @@ class ScanRun {
   /// - "FINISHED" : The scan is either finished or stopped by user.
   core.String executionState;
 
-  /// Output only. Whether the scan run has found any vulnerabilities.
+  /// Whether the scan run has found any vulnerabilities.
+  ///
+  /// Output only.
   core.bool hasVulnerabilities;
 
-  /// Output only. The resource name of the ScanRun. The name follows the format
-  /// of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+  /// The resource name of the ScanRun.
+  ///
+  /// The name follows the format of
+  /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
   /// The ScanRun IDs are generated by the system.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The percentage of total completion ranging from 0 to 100. If
-  /// the scan is in queue, the value is 0. If the scan is running, the value
+  /// The percentage of total completion ranging from 0 to 100.
+  ///
+  /// If the scan is in queue, the value is 0. If the scan is running, the value
   /// ranges from 0 to 100. If the scan is finished, the value is 100.
+  ///
+  /// Output only.
   core.int progressPercent;
 
-  /// Output only. The result state of the ScanRun. This field is only available
-  /// after the execution state reaches "FINISHED".
+  /// The result state of the ScanRun.
+  ///
+  /// This field is only available after the execution state reaches "FINISHED".
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "RESULT_STATE_UNSPECIFIED" : Default value. This value is returned when
   /// the ScanRun is not yet finished.
@@ -1974,21 +2073,32 @@ class ScanRun {
   /// - "KILLED" : The scan was terminated by user.
   core.String resultState;
 
-  /// Output only. The time at which the ScanRun started.
+  /// The time at which the ScanRun started.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. The number of URLs crawled during this ScanRun. If the scan
-  /// is in progress, the value represents the number of URLs crawled up to now.
+  /// The number of URLs crawled during this ScanRun.
+  ///
+  /// If the scan is in progress, the value represents the number of URLs
+  /// crawled up to now.
+  ///
+  /// Output only.
   core.String urlsCrawledCount;
 
-  /// Output only. The number of URLs tested during this ScanRun. If the scan is
-  /// in progress, the value represents the number of URLs tested up to now. The
-  /// number of URLs tested is usually larger than the number URLS crawled
-  /// because typically a crawled URL is tested with multiple test payloads.
+  /// The number of URLs tested during this ScanRun.
+  ///
+  /// If the scan is in progress, the value represents the number of URLs tested
+  /// up to now. The number of URLs tested is usually larger than the number
+  /// URLS crawled because typically a crawled URL is tested with multiple test
+  /// payloads.
+  ///
+  /// Output only.
   core.String urlsTestedCount;
 
-  /// Output only. A list of warnings, if such are encountered during this scan
-  /// run.
+  /// A list of warnings, if such are encountered during this scan run.
+  ///
+  /// Output only.
   core.List<ScanRunWarningTrace> warningTraces;
 
   ScanRun();
@@ -2073,9 +2183,13 @@ class ScanRun {
   }
 }
 
-/// Output only. Defines an error trace message for a ScanRun.
+/// Defines an error trace message for a ScanRun.
+///
+/// Output only.
 class ScanRunErrorTrace {
-  /// Output only. Indicates the error reason code.
+  /// Indicates the error reason code.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : Default value is never used.
   /// - "INTERNAL_ERROR" : Indicates that the scan run failed due to an internal
@@ -2096,15 +2210,20 @@ class ScanRunErrorTrace {
   /// code encountered during the scan.
   core.String code;
 
-  /// Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field
-  /// indicates the most common HTTP error code, if such is available. For
-  /// example, if this code is 404, the scan has encountered too many NOT_FOUND
-  /// responses.
+  /// If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most
+  /// common HTTP error code, if such is available.
+  ///
+  /// For example, if this code is 404, the scan has encountered too many
+  /// NOT_FOUND responses.
+  ///
+  /// Output only.
   core.int mostCommonHttpErrorCode;
 
-  /// Output only. If the scan encounters SCAN_CONFIG_ISSUE error, this field
-  /// has the error message encountered during scan configuration validation
-  /// that is performed before each scan run.
+  /// If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error
+  /// message encountered during scan configuration validation that is performed
+  /// before each scan run.
+  ///
+  /// Output only.
   ScanConfigError scanConfigError;
 
   ScanRunErrorTrace();
@@ -2137,11 +2256,16 @@ class ScanRunErrorTrace {
   }
 }
 
-/// Output only. Defines a warning trace message for ScanRun. Warning traces
-/// provide customers with useful information that helps make the scanning
-/// process more effective.
+/// Defines a warning trace message for ScanRun.
+///
+/// Warning traces provide customers with useful information that helps make the
+/// scanning process more effective.
+///
+/// Output only.
 class ScanRunWarningTrace {
-  /// Output only. Indicates the warning code.
+  /// Indicates the warning code.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : Default value is never used.
   /// - "INSUFFICIENT_CRAWL_RESULTS" : Indicates that a scan discovered an
@@ -2177,13 +2301,16 @@ class ScanRunWarningTrace {
 
 /// Scan schedule configuration.
 class Schedule {
-  /// Required. The duration of time between executions in days.
+  /// The duration of time between executions in days.
+  ///
+  /// Required.
   core.int intervalDurationDays;
 
-  /// A timestamp indicates when the next run will be scheduled. The value is
-  /// refreshed by the server after each run. If unspecified, it will default to
-  /// current server time, which means the scan will be scheduled to start
-  /// immediately.
+  /// A timestamp indicates when the next run will be scheduled.
+  ///
+  /// The value is refreshed by the server after each run. If unspecified, it
+  /// will default to current server time, which means the scan will be
+  /// scheduled to start immediately.
   core.String scheduleTime;
 
   Schedule();

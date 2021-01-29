@@ -768,8 +768,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -830,10 +831,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -885,9 +887,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -939,10 +942,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1191,10 +1195,12 @@ class AcceleratorType {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1415,25 +1421,31 @@ class ListTensorFlowVersionsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -1523,10 +1535,13 @@ class NetworkEndpoint {
 
 /// A TPU instance.
 class Node {
-  /// The type of hardware accelerators associated with this node. Required.
+  /// The type of hardware accelerators associated with this node.
+  ///
+  /// Required.
   core.String acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address.
+  ///
   /// This CIDR block must be a /29 block; the Compute Engine networks API
   /// forbids a smaller block, and using a larger block would be wasteful (a
   /// node can only consume one IP address). Errors will occur if the CIDR block
@@ -1536,10 +1551,14 @@ class Node {
   /// block.
   core.String cidrBlock;
 
-  /// Output only. The time when the node was created.
+  /// The time when the node was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// The user-supplied description of the TPU. Maximum of 512 characters.
+  /// The user-supplied description of the TPU.
+  ///
+  /// Maximum of 512 characters.
   core.String description;
 
   /// The health status of the TPU node.
@@ -1554,42 +1573,63 @@ class Node {
   /// caused rescheduling and will resume running once rescheduled.
   core.String health;
 
-  /// Output only. If this field is populated, it contains a description of why
-  /// the TPU Node is unhealthy.
+  /// If this field is populated, it contains a description of why the TPU Node
+  /// is unhealthy.
+  ///
+  /// Output only.
   core.String healthDescription;
 
-  /// Output only. DEPRECATED! Use network_endpoints instead. The network
-  /// address for the TPU Node as visible to Compute Engine instances.
+  /// DEPRECATED! Use network_endpoints instead.
+  ///
+  /// The network address for the TPU Node as visible to Compute Engine
+  /// instances.
+  ///
+  /// Output only.
   core.String ipAddress;
 
   /// Resource labels to represent user-provided metadata.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The immutable name of the TPU
+  /// The immutable name of the TPU
+  ///
+  /// Output only.
   core.String name;
 
-  /// The name of a network they wish to peer the TPU node to. It must be a
-  /// preexisting Compute Engine network inside of the project on which this API
-  /// has been activated. If none is provided, "default" will be used.
+  /// The name of a network they wish to peer the TPU node to.
+  ///
+  /// It must be a preexisting Compute Engine network inside of the project on
+  /// which this API has been activated. If none is provided, "default" will be
+  /// used.
   core.String network;
 
-  /// Output only. The network endpoints where TPU workers can be accessed and
-  /// sent work. It is recommended that Tensorflow clients of the node reach out
-  /// to the 0th entry in this map first.
+  /// The network endpoints where TPU workers can be accessed and sent work.
+  ///
+  /// It is recommended that Tensorflow clients of the node reach out to the 0th
+  /// entry in this map first.
+  ///
+  /// Output only.
   core.List<NetworkEndpoint> networkEndpoints;
 
-  /// Output only. DEPRECATED! Use network_endpoints instead. The network port
-  /// for the TPU Node as visible to Compute Engine instances.
+  /// DEPRECATED! Use network_endpoints instead.
+  ///
+  /// The network port for the TPU Node as visible to Compute Engine instances.
+  ///
+  /// Output only.
   core.String port;
   SchedulingConfig schedulingConfig;
 
-  /// Output only. The service account used to run the tensor flow services
-  /// within the node. To share resources, including Google Cloud Storage data,
-  /// with the Tensorflow job running in the Node, this account must have
-  /// permissions to that data.
+  /// The service account used to run the tensor flow services within the node.
+  ///
+  /// To share resources, including Google Cloud Storage data, with the
+  /// Tensorflow job running in the Node, this account must have permissions to
+  /// that data.
+  ///
+  /// Output only.
   core.String serviceAccount;
 
-  /// Output only. The current state for the TPU Node.
+  /// The current state for the TPU Node.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : TPU node state is not known/set.
   /// - "CREATING" : TPU node is being created.
@@ -1611,17 +1651,23 @@ class Node {
   /// - "UNHIDING" : TPU node is currently unhiding.
   core.String state;
 
-  /// Output only. The Symptoms that have occurred to the TPU Node.
+  /// The Symptoms that have occurred to the TPU Node.
+  ///
+  /// Output only.
   core.List<Symptom> symptoms;
 
-  /// The version of Tensorflow running in the Node. Required.
+  /// The version of Tensorflow running in the Node.
+  ///
+  /// Required.
   core.String tensorflowVersion;
 
   /// Whether the VPC peering for the node is set up through Service Networking
-  /// API. The VPC Peering should be set up before provisioning the node. If
-  /// this field is set, cidr_block field should not be specified. If the
-  /// network, that you want to peer the TPU Node to, is Shared VPC networks,
-  /// the node must be created with this this field enabled.
+  /// API.
+  ///
+  /// The VPC Peering should be set up before provisioning the node. If this
+  /// field is set, cidr_block field should not be specified. If the network,
+  /// that you want to peer the TPU Node to, is Shared VPC networks, the node
+  /// must be created with this this field enabled.
   core.bool useServiceNetworking;
 
   Node();
@@ -1760,31 +1806,37 @@ class Node {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -1850,29 +1902,43 @@ class Operation {
 
 /// Represents the metadata of the long-running operation.
 class OperationMetadata {
-  /// [Output only] API version used to start the operation.
+  /// API version used to start the operation.
+  ///
+  /// Output only.
   core.String apiVersion;
 
-  /// [Output only] Identifies whether the user has requested cancellation of
-  /// the operation. Operations that have successfully been cancelled have
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// Identifies whether the user has requested cancellation of the operation.
+  ///
+  /// Operations that have successfully been cancelled have Operation.error
+  /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
+  ///
+  /// Output only.
   core.bool cancelRequested;
 
-  /// [Output only] The time the operation was created.
+  /// The time the operation was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// [Output only] The time the operation finished running.
+  /// The time the operation finished running.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// [Output only] Human-readable status of the operation, if any.
+  /// Human-readable status of the operation, if any.
+  ///
+  /// Output only.
   core.String statusDetail;
 
-  /// [Output only] Server-defined resource path for the target of the
-  /// operation.
+  /// Server-defined resource path for the target of the operation.
+  ///
+  /// Output only.
   core.String target;
 
-  /// [Output only] Name of the verb executed by the operation.
+  /// Name of the verb executed by the operation.
+  ///
+  /// Output only.
   core.String verb;
 
   OperationMetadata();
@@ -1996,24 +2062,27 @@ class StartNodeRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

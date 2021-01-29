@@ -80,8 +80,9 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Performs explanation on the data in the request. {% dynamic include
-  /// "/ai-platform/includes/___explain-request" %}
+  /// Performs explanation on the data in the request.
+  ///
+  /// {% dynamic include "/ai-platform/includes/___explain-request" %}
   ///
   /// [request] - The metadata request object.
   ///
@@ -141,10 +142,11 @@ class ProjectsResource {
     );
   }
 
-  /// Get the service account information associated with your project. You need
-  /// this information in order to grant the service account permissions for the
-  /// Google Cloud Storage location where you put your model training code for
-  /// training the model with Google Cloud Machine Learning.
+  /// Get the service account information associated with your project.
+  ///
+  /// You need this information in order to grant the service account
+  /// permissions for the Google Cloud Storage location where you put your model
+  /// training code for training the model with Google Cloud Machine Learning.
   ///
   /// Request parameters:
   ///
@@ -197,8 +199,9 @@ class ProjectsResource {
     );
   }
 
-  /// Performs online prediction on the data in the request. {% dynamic include
-  /// "/ai-platform/includes/___predict-request" %}
+  /// Performs online prediction on the data in the request.
+  ///
+  /// {% dynamic include "/ai-platform/includes/___predict-request" %}
   ///
   /// [request] - The metadata request object.
   ///
@@ -432,8 +435,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -503,8 +508,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Lists the jobs in the project. If there are no jobs that match the request
-  /// parameters, the list request returns an empty response body: {}.
+  /// Lists the jobs in the project.
+  ///
+  /// If there are no jobs that match the request parameters, the list request
+  /// returns an empty response body: {}.
   ///
   /// Request parameters:
   ///
@@ -585,8 +592,9 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Updates a specific job resource. Currently the only supported fields to
-  /// update are `labels`.
+  /// Updates a specific job resource.
+  ///
+  /// Currently the only supported fields to update are `labels`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -659,9 +667,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -723,10 +732,11 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -932,8 +942,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -993,9 +1004,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1290,8 +1302,10 @@ class ProjectsLocationsStudiesTrialsResource {
   ProjectsLocationsStudiesTrialsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Adds a measurement of the objective metrics to a trial. This measurement
-  /// is assumed to have been taken before the trial is complete.
+  /// Adds a measurement of the objective metrics to a trial.
+  ///
+  /// This measurement is assumed to have been taken before the trial is
+  /// complete.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1352,9 +1366,10 @@ class ProjectsLocationsStudiesTrialsResource {
     );
   }
 
-  /// Checks whether a trial should stop or not. Returns a long-running
-  /// operation. When the operation is successful, it will contain a
-  /// CheckTrialEarlyStoppingStateResponse.
+  /// Checks whether a trial should stop or not.
+  ///
+  /// Returns a long-running operation. When the operation is successful, it
+  /// will contain a CheckTrialEarlyStoppingStateResponse.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1750,9 +1765,11 @@ class ProjectsLocationsStudiesTrialsResource {
   }
 
   /// Adds one or more trials to a study, with parameter values suggested by AI
-  /// Platform Vizier. Returns a long-running operation associated with the
-  /// generation of trial suggestions. When this long-running operation
-  /// succeeds, it will contain a SuggestTrialsResponse.
+  /// Platform Vizier.
+  ///
+  /// Returns a long-running operation associated with the generation of trial
+  /// suggestions. When this long-running operation succeeds, it will contain a
+  /// SuggestTrialsResponse.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1821,9 +1838,10 @@ class ProjectsModelsResource {
 
   ProjectsModelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a model which will later contain one or more versions. You must
-  /// add at least one version before you can request predictions from the
-  /// model. Add versions by calling projects.models.versions.create.
+  /// Creates a model which will later contain one or more versions.
+  ///
+  /// You must add at least one version before you can request predictions from
+  /// the model. Add versions by calling projects.models.versions.create.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1881,8 +1899,10 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Deletes a model. You can only delete a model if there are no versions in
-  /// it. You can delete versions by calling projects.models.versions.delete.
+  /// Deletes a model.
+  ///
+  /// You can only delete a model if there are no versions in it. You can delete
+  /// versions by calling projects.models.versions.delete.
   ///
   /// Request parameters:
   ///
@@ -1988,8 +2008,10 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -2059,10 +2081,11 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Lists the models in a project. Each project can contain multiple models,
-  /// and each model can have multiple versions. If there are no models that
-  /// match the request parameters, the list request returns an empty response
-  /// body: {}.
+  /// Lists the models in a project.
+  ///
+  /// Each project can contain multiple models, and each model can have multiple
+  /// versions. If there are no models that match the request parameters, the
+  /// list request returns an empty response body: {}.
   ///
   /// Request parameters:
   ///
@@ -2138,8 +2161,10 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Updates a specific model resource. Currently the only supported fields to
-  /// update are `description` and `default_version.name`.
+  /// Updates a specific model resource.
+  ///
+  /// Currently the only supported fields to update are `description` and
+  /// `default_version.name`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2209,9 +2234,10 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2273,10 +2299,11 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -2346,12 +2373,13 @@ class ProjectsModelsVersionsResource {
   ProjectsModelsVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new version of a model from a trained TensorFlow model. If the
-  /// version created in the cloud by this call is the first deployed version of
-  /// the specified model, it will be made the default version of the model.
-  /// When you add a version to a model that already has one or more versions,
-  /// the default version does not automatically change. If you want a new
-  /// version to be the default, you must call
+  /// Creates a new version of a model from a trained TensorFlow model.
+  ///
+  /// If the version created in the cloud by this call is the first deployed
+  /// version of the specified model, it will be made the default version of the
+  /// model. When you add a version to a model that already has one or more
+  /// versions, the default version does not automatically change. If you want a
+  /// new version to be the default, you must call
   /// projects.models.versions.setDefault.
   ///
   /// [request] - The metadata request object.
@@ -2411,10 +2439,12 @@ class ProjectsModelsVersionsResource {
     );
   }
 
-  /// Deletes a model version. Each model can have multiple versions deployed
-  /// and in use at any given time. Use this method to remove a single version.
-  /// Note: You cannot delete the version that is set as the default version of
-  /// the model unless it is the only remaining version.
+  /// Deletes a model version.
+  ///
+  /// Each model can have multiple versions deployed and in use at any given
+  /// time. Use this method to remove a single version. Note: You cannot delete
+  /// the version that is set as the default version of the model unless it is
+  /// the only remaining version.
   ///
   /// Request parameters:
   ///
@@ -2467,9 +2497,11 @@ class ProjectsModelsVersionsResource {
     );
   }
 
-  /// Gets information about a model version. Models can have multiple versions.
-  /// You can call projects.models.versions.list to get the same information
-  /// that this method returns for all of the versions of a model.
+  /// Gets information about a model version.
+  ///
+  /// Models can have multiple versions. You can call
+  /// projects.models.versions.list to get the same information that this method
+  /// returns for all of the versions of a model.
   ///
   /// Request parameters:
   ///
@@ -2521,11 +2553,13 @@ class ProjectsModelsVersionsResource {
     );
   }
 
-  /// Gets basic information about all the versions of a model. If you expect
-  /// that a model has many versions, or if you need to handle only a limited
-  /// number of results at a time, you can request that the list be retrieved in
-  /// batches (called pages). If there are no versions that match the request
-  /// parameters, the list request returns an empty response body: {}.
+  /// Gets basic information about all the versions of a model.
+  ///
+  /// If you expect that a model has many versions, or if you need to handle
+  /// only a limited number of results at a time, you can request that the list
+  /// be retrieved in batches (called pages). If there are no versions that
+  /// match the request parameters, the list request returns an empty response
+  /// body: {}.
   ///
   /// Request parameters:
   ///
@@ -2601,9 +2635,10 @@ class ProjectsModelsVersionsResource {
     );
   }
 
-  /// Updates the specified Version resource. Currently the only update-able
-  /// fields are `description`, `requestLoggingConfig`, `autoScaling.minNodes`,
-  /// and `manualScaling.nodes`.
+  /// Updates the specified Version resource.
+  ///
+  /// Currently the only update-able fields are `description`,
+  /// `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2675,11 +2710,12 @@ class ProjectsModelsVersionsResource {
     );
   }
 
-  /// Designates a version to be the default for the model. The default version
-  /// is used for prediction requests made against the model that don't specify
-  /// a version. The first version to be created for a model is automatically
-  /// set as the default. You must make any subsequent changes to the default
-  /// version setting manually using this method.
+  /// Designates a version to be the default for the model.
+  ///
+  /// The default version is used for prediction requests made against the model
+  /// that don't specify a version. The first version to be created for a model
+  /// is automatically set as the default. You must make any subsequent changes
+  /// to the default version setting manually using this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2746,8 +2782,9 @@ class ProjectsOperationsResource {
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -2806,9 +2843,10 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -2860,10 +2898,11 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -2940,19 +2979,20 @@ class ProjectsOperationsResource {
   }
 }
 
-/// Message that represents an arbitrary HTTP body. It should only be used for
-/// payload formats that can't be represented as JSON, such as raw binary or an
-/// HTML page. This message can be used both in streaming and non-streaming API
-/// methods in the request as well as the response. It can be used as a
-/// top-level request field, which is convenient if one wants to extract
-/// parameters from either the URL or HTTP template into the request fields and
-/// also want access to the raw HTTP body. Example: message GetResourceRequest {
-/// // A unique request id. string request_id = 1; // The raw HTTP body is bound
-/// to this field. google.api.HttpBody http_body = 2; } service ResourceService
-/// { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
-/// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
-/// Example with streaming methods: service CaldavService { rpc
-/// GetCalendar(stream google.api.HttpBody) returns (stream
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
 /// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
@@ -2971,8 +3011,9 @@ class GoogleApiHttpBody {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Application specific response metadata. Must be set in the first response
-  /// for streaming APIs.
+  /// Application specific response metadata.
+  ///
+  /// Must be set in the first response for streaming APIs.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3017,7 +3058,9 @@ class GoogleApiHttpBody {
 
 class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   /// If true, measurement.elapsed_time is used as the x-axis of each Trials
-  /// Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
+  /// Decay Curve.
+  ///
+  /// Otherwise, Measurement.steps will be used as the x-axis.
   core.bool useElapsedTime;
 
   GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig();
@@ -3040,9 +3083,10 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
 
 /// The median automated stopping rule stops a pending trial if the trial's best
 /// objective_value is strictly below the median 'performance' of all completed
-/// trials reported up to the trial's last measurement. Currently, 'performance'
-/// refers to the running average of the objective values reported by the trial
-/// in each measurement.
+/// trials reported up to the trial's last measurement.
+///
+/// Currently, 'performance' refers to the running average of the objective
+/// values reported by the trial in each measurement.
 class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
   /// If true, the median automated stopping rule applies to
   /// measurement.use_elapsed_time, which means the elapsed_time field of the
@@ -3102,10 +3146,14 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 
 /// A message representing a metric in the measurement.
 class GoogleCloudMlV1MeasurementMetric {
-  /// Required. Metric name.
+  /// Metric name.
+  ///
+  /// Required.
   core.String metric;
 
-  /// Required. The value for this metric.
+  /// The value for this metric.
+  ///
+  /// Required.
   core.double value;
 
   GoogleCloudMlV1MeasurementMetric();
@@ -3132,8 +3180,9 @@ class GoogleCloudMlV1MeasurementMetric {
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
-  /// Must be specified if type is `CATEGORICAL`. The list of possible
-  /// categories.
+  /// Must be specified if type is `CATEGORICAL`.
+  ///
+  /// The list of possible categories.
   core.List<core.String> values;
 
   GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec();
@@ -3157,10 +3206,11 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
-  /// Must be specified if type is `DISCRETE`. A list of feasible points. The
-  /// list should be in strictly increasing order. For instance, this parameter
-  /// might have possible settings of 1.5, 2.5, and 4.0. This list should not
-  /// contain more than 1,000 values.
+  /// Must be specified if type is `DISCRETE`.
+  ///
+  /// A list of feasible points. The list should be in strictly increasing
+  /// order. For instance, this parameter might have possible settings of 1.5,
+  /// 2.5, and 4.0. This list should not contain more than 1,000 values.
   core.List<core.double> values;
 
   GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec();
@@ -3184,10 +3234,14 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
-  /// Must be specified if type is `DOUBLE`. Maximum value of the parameter.
+  /// Must be specified if type is `DOUBLE`.
+  ///
+  /// Maximum value of the parameter.
   core.double maxValue;
 
-  /// Must be specified if type is `DOUBLE`. Minimum value of the parameter.
+  /// Must be specified if type is `DOUBLE`.
+  ///
+  /// Minimum value of the parameter.
   core.double minValue;
 
   GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
@@ -3215,10 +3269,14 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
-  /// Must be specified if type is `INTEGER`. Maximum value of the parameter.
+  /// Must be specified if type is `INTEGER`.
+  ///
+  /// Maximum value of the parameter.
   core.String maxValue;
 
-  /// Must be specified if type is `INTEGER`. Minimum value of the parameter.
+  /// Must be specified if type is `INTEGER`.
+  ///
+  /// Minimum value of the parameter.
   core.String minValue;
 
   GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
@@ -3247,8 +3305,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
 
 /// Represents the spec to match categorical values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec {
-  /// Matches values of the parent parameter with type 'CATEGORICAL'. All values
-  /// must exist in `categorical_value_spec` of parent parameter.
+  /// Matches values of the parent parameter with type 'CATEGORICAL'.
+  ///
+  /// All values must exist in `categorical_value_spec` of parent parameter.
   core.List<core.String> values;
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
@@ -3273,8 +3332,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
 
 /// Represents the spec to match discrete values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
-  /// Matches values of the parent parameter with type 'DISCRETE'. All values
-  /// must exist in `discrete_value_spec` of parent parameter.
+  /// Matches values of the parent parameter with type 'DISCRETE'.
+  ///
+  /// All values must exist in `discrete_value_spec` of parent parameter.
   core.List<core.double> values;
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
@@ -3299,8 +3359,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
 
 /// Represents the spec to match integer values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
-  /// Matches values of the parent parameter with type 'INTEGER'. All values
-  /// must lie in `integer_value_spec` of parent parameter.
+  /// Matches values of the parent parameter with type 'INTEGER'.
+  ///
+  /// All values must lie in `integer_value_spec` of parent parameter.
   core.List<core.String> values;
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
@@ -3325,14 +3386,18 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
 
 /// Represents a metric to optimize.
 class GoogleCloudMlV1StudyConfigMetricSpec {
-  /// Required. The optimization goal of the metric.
+  /// The optimization goal of the metric.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "GOAL_TYPE_UNSPECIFIED" : Goal Type will default to maximize.
   /// - "MAXIMIZE" : Maximize the goal metric.
   /// - "MINIMIZE" : Minimize the goal metric.
   core.String goal;
 
-  /// Required. The name of the metric.
+  /// The name of the metric.
+  ///
+  /// Required.
   core.String metric;
 
   GoogleCloudMlV1StudyConfigMetricSpec();
@@ -3365,8 +3430,10 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
       categoricalValueSpec;
 
   /// A child node is active if the parameter's value matches the child node's
-  /// matching_parent_values. If two items in child_parameter_specs have the
-  /// same name, they must have disjoint matching_parent_values.
+  /// matching_parent_values.
+  ///
+  /// If two items in child_parameter_specs have the same name, they must have
+  /// disjoint matching_parent_values.
   core.List<GoogleCloudMlV1StudyConfigParameterSpec> childParameterSpecs;
 
   /// The value spec for a 'DISCRETE' parameter.
@@ -3378,7 +3445,9 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   /// The value spec for an 'INTEGER' parameter.
   GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec integerValueSpec;
 
-  /// Required. The parameter name must be unique amongst all ParameterSpecs.
+  /// The parameter name must be unique amongst all ParameterSpecs.
+  ///
+  /// Required.
   core.String parameter;
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
       parentCategoricalValues;
@@ -3387,8 +3456,9 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
       parentIntValues;
 
-  /// How the parameter should be scaled. Leave unset for categorical
-  /// parameters.
+  /// How the parameter should be scaled.
+  ///
+  /// Leave unset for categorical parameters.
   /// Possible string values are:
   /// - "SCALE_TYPE_UNSPECIFIED" : By default, no scaling is applied.
   /// - "UNIT_LINEAR_SCALE" : Scales the feasible space to (0, 1) linearly.
@@ -3400,7 +3470,9 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   /// entire feasible space must be strictly positive.
   core.String scaleType;
 
-  /// Required. The type of the parameter.
+  /// The type of the parameter.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "PARAMETER_TYPE_UNSPECIFIED" : You must specify a valid type. Using this
   /// unspecified type will result in an error.
@@ -3514,8 +3586,10 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   }
 }
 
-/// A message representing a parameter to be tuned. Contains the name of the
-/// parameter and the suggested value to use for this trial.
+/// A message representing a parameter to be tuned.
+///
+/// Contains the name of the parameter and the suggested value to use for this
+/// trial.
 class GoogleCloudMlV1TrialParameter {
   /// Must be set if ParameterType is DOUBLE or DISCRETE.
   core.double floatValue;
@@ -3564,10 +3638,11 @@ class GoogleCloudMlV1TrialParameter {
   }
 }
 
-/// Represents a hardware accelerator request config. Note that the
-/// AcceleratorConfig can be used in both Jobs and Versions. Learn more about
-/// [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators
-/// for online
+/// Represents a hardware accelerator request config.
+///
+/// Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn
+/// more about [accelerators for training](/ml-engine/docs/using-gpus) and
+/// [accelerators for online
 /// prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
@@ -3611,7 +3686,9 @@ class GoogleCloudMlV1AcceleratorConfig {
 
 /// The request message for the AddTrialMeasurement service method.
 class GoogleCloudMlV1AddTrialMeasurementRequest {
-  /// Required. The measurement to be added to a trial.
+  /// The measurement to be added to a trial.
+  ///
+  /// Required.
   GoogleCloudMlV1Measurement measurement;
 
   GoogleCloudMlV1AddTrialMeasurementRequest();
@@ -3634,8 +3711,9 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
 
 /// Options for automatically scaling a model.
 class GoogleCloudMlV1AutoScaling {
-  /// Optional. The minimum number of nodes to allocate for this model. These
-  /// nodes are always up, starting from the time the model is deployed.
+  /// The minimum number of nodes to allocate for this model.
+  ///
+  /// These nodes are always up, starting from the time the model is deployed.
   /// Therefore, the cost of operating this model will be at least `rate` *
   /// `min_nodes` * number of hours since last billing cycle, where `rate` is
   /// the cost per node-hour as documented in the [pricing
@@ -3660,6 +3738,8 @@ class GoogleCloudMlV1AutoScaling {
   /// update_body.json: { 'autoScaling': { 'minNodes': 5 } } HTTP request: PATCH
   /// https://ml.googleapis.com/v1/{name=projects / * /models / * /versions / *
   /// }?update_mask=autoScaling.minNodes -d @./update_body.json
+  ///
+  /// Optional.
   core.int minNodes;
 
   GoogleCloudMlV1AutoScaling();
@@ -3679,8 +3759,10 @@ class GoogleCloudMlV1AutoScaling {
   }
 }
 
-/// Configuration for Automated Early Stopping of Trials. If no
-/// implementation_config is set, automated early stopping will not be run.
+/// Configuration for Automated Early Stopping of Trials.
+///
+/// If no implementation_config is set, automated early stopping will not be
+/// run.
 class GoogleCloudMlV1AutomatedStoppingConfig {
   GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
       decayCurveStoppingConfig;
@@ -3723,8 +3805,9 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
   core.String framework;
 
   /// The Cloud Storage path to the `model/` directory where the training job
-  /// saves the trained model. Only set for successful jobs that don't use
-  /// hyperparameter tuning.
+  /// saves the trained model.
+  ///
+  /// Only set for successful jobs that don't use hyperparameter tuning.
   core.String modelPath;
 
   /// Python version on which the built-in algorithm was trained.
@@ -3920,17 +4003,24 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
 
 /// The request message for the CompleteTrial service method.
 class GoogleCloudMlV1CompleteTrialRequest {
-  /// Optional. If provided, it will be used as the completed trial's
-  /// final_measurement; Otherwise, the service will auto-select a previously
-  /// reported measurement as the final-measurement
+  /// If provided, it will be used as the completed trial's final_measurement;
+  /// Otherwise, the service will auto-select a previously reported measurement
+  /// as the final-measurement
+  ///
+  /// Optional.
   GoogleCloudMlV1Measurement finalMeasurement;
 
-  /// Optional. A human readable reason why the trial was infeasible. This
-  /// should only be provided if `trial_infeasible` is true.
+  /// A human readable reason why the trial was infeasible.
+  ///
+  /// This should only be provided if `trial_infeasible` is true.
+  ///
+  /// Optional.
   core.String infeasibleReason;
 
-  /// Optional. True if the trial cannot be run with the given Parameter, and
+  /// True if the trial cannot be run with the given Parameter, and
   /// final_measurement will be ignored.
+  ///
+  /// Optional.
   core.bool trialInfeasible;
 
   GoogleCloudMlV1CompleteTrialRequest();
@@ -3986,8 +4076,9 @@ class GoogleCloudMlV1Config {
 
 /// ContainerPort represents a network port in a single container.
 class GoogleCloudMlV1ContainerPort {
-  /// Number of port to expose on the pod's IP address. This must be a valid
-  /// port number, 0 < x < 65536.
+  /// Number of port to expose on the pod's IP address.
+  ///
+  /// This must be a valid port number, 0 < x < 65536.
   core.int containerPort;
 
   GoogleCloudMlV1ContainerPort();
@@ -4007,43 +4098,56 @@ class GoogleCloudMlV1ContainerPort {
   }
 }
 
-/// Specify a custom container to deploy. Our ContainerSpec is a subset of the
-/// Kubernetes Container specification.
+/// Specify a custom container to deploy.
+///
+/// Our ContainerSpec is a subset of the Kubernetes Container specification.
 /// https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#container-v1-core
 class GoogleCloudMlV1ContainerSpec {
-  /// Immutable. Arguments to the entrypoint. The docker image's CMD is used if
-  /// this is not provided. Variable references $(VAR_NAME) are expanded using
-  /// the container's environment. If a variable cannot be resolved, the
-  /// reference in the input string will be unchanged. The $(VAR_NAME) syntax
-  /// can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will
-  /// never be expanded, regardless of whether the variable exists or not. More
-  /// info:
+  /// Arguments to the entrypoint.
+  ///
+  /// The docker image's CMD is used if this is not provided. Variable
+  /// references $(VAR_NAME) are expanded using the container's environment. If
+  /// a variable cannot be resolved, the reference in the input string will be
+  /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
+  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
+  /// whether the variable exists or not. More info:
   /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  ///
+  /// Immutable.
   core.List<core.String> args;
 
-  /// Immutable. Entrypoint array. Not executed within a shell. The docker
-  /// image's ENTRYPOINT is used if this is not provided. Variable references
-  /// $(VAR_NAME) are expanded using the container's environment. If a variable
-  /// cannot be resolved, the reference in the input string will be unchanged.
-  /// The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME).
-  /// Escaped references will never be expanded, regardless of whether the
-  /// variable exists or not. More info:
+  /// Entrypoint array.
+  ///
+  /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
+  /// is not provided. Variable references $(VAR_NAME) are expanded using the
+  /// container's environment. If a variable cannot be resolved, the reference
+  /// in the input string will be unchanged. The $(VAR_NAME) syntax can be
+  /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never
+  /// be expanded, regardless of whether the variable exists or not. More info:
   /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  ///
+  /// Immutable.
   core.List<core.String> command;
 
-  /// Immutable. List of environment variables to set in the container.
+  /// List of environment variables to set in the container.
+  ///
+  /// Immutable.
   core.List<GoogleCloudMlV1EnvVar> env;
 
-  /// Docker image name. More info:
-  /// https://kubernetes.io/docs/concepts/containers/images
+  /// Docker image name.
+  ///
+  /// More info: https://kubernetes.io/docs/concepts/containers/images
   core.String image;
 
-  /// Immutable. List of ports to expose from the container. Exposing a port
-  /// here gives the system additional information about the network connections
-  /// a container uses, but is primarily informational. Not specifying a port
-  /// here DOES NOT prevent that port from being exposed. Any port which is
-  /// listening on the default "0.0.0.0" address inside a container will be
-  /// accessible from the network.
+  /// List of ports to expose from the container.
+  ///
+  /// Exposing a port here gives the system additional information about the
+  /// network connections a container uses, but is primarily informational. Not
+  /// specifying a port here DOES NOT prevent that port from being exposed. Any
+  /// port which is listening on the default "0.0.0.0" address inside a
+  /// container will be accessible from the network.
+  ///
+  /// Immutable.
   core.List<GoogleCloudMlV1ContainerPort> ports;
 
   GoogleCloudMlV1ContainerSpec();
@@ -4102,8 +4206,9 @@ class GoogleCloudMlV1ContainerSpec {
 /// resource.
 class GoogleCloudMlV1EncryptionConfig {
   /// The Cloud KMS resource identifier of the customer-managed encryption key
-  /// used to protect a resource, such as a training job. It has the following
-  /// format:
+  /// used to protect a resource, such as a training job.
+  ///
+  /// It has the following format:
   /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
   core.String kmsKeyName;
 
@@ -4126,15 +4231,19 @@ class GoogleCloudMlV1EncryptionConfig {
 
 /// EnvVar represents an environment variable present in a Container.
 class GoogleCloudMlV1EnvVar {
-  /// Name of the environment variable. Must be a C_IDENTIFIER.
+  /// Name of the environment variable.
+  ///
+  /// Must be a C_IDENTIFIER.
   core.String name;
 
   /// Variable references $(VAR_NAME) are expanded using the previous defined
   /// environment variables in the container and any service environment
-  /// variables. If a variable cannot be resolved, the reference in the input
-  /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-  /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-  /// regardless of whether the variable exists or not. Defaults to "".
+  /// variables.
+  ///
+  /// If a variable cannot be resolved, the reference in the input string will
+  /// be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
+  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
+  /// whether the variable exists or not. Defaults to "".
   core.String value;
 
   GoogleCloudMlV1EnvVar();
@@ -4162,7 +4271,9 @@ class GoogleCloudMlV1EnvVar {
 
 /// Request for explanations to be issued against a trained model.
 class GoogleCloudMlV1ExplainRequest {
-  /// Required. The explanation request body.
+  /// The explanation request body.
+  ///
+  /// Required.
   GoogleApiHttpBody httpBody;
 
   GoogleCloudMlV1ExplainRequest();
@@ -4184,24 +4295,29 @@ class GoogleCloudMlV1ExplainRequest {
 }
 
 /// Message holding configuration options for explaining model predictions.
+///
 /// There are three feature attribution methods supported for TensorFlow models:
 /// integrated gradients, sampled Shapley, and XRAI. [Learn more about feature
 /// attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
 class GoogleCloudMlV1ExplanationConfig {
   /// Attributes credit by computing the Aumann-Shapley value taking advantage
-  /// of the model's fully differentiable structure. Refer to this paper for
-  /// more details: https://arxiv.org/abs/1703.01365
+  /// of the model's fully differentiable structure.
+  ///
+  /// Refer to this paper for more details: https://arxiv.org/abs/1703.01365
   GoogleCloudMlV1IntegratedGradientsAttribution integratedGradientsAttribution;
 
   /// An attribution method that approximates Shapley values for features that
-  /// contribute to the label being predicted. A sampling strategy is used to
-  /// approximate the value rather than considering all subsets of features.
+  /// contribute to the label being predicted.
+  ///
+  /// A sampling strategy is used to approximate the value rather than
+  /// considering all subsets of features.
   GoogleCloudMlV1SampledShapleyAttribution sampledShapleyAttribution;
 
   /// Attributes credit by computing the XRAI taking advantage of the model's
-  /// fully differentiable structure. Refer to this paper for more details:
-  /// https://arxiv.org/abs/1906.02825 Currently only implemented for models
-  /// with natural image inputs.
+  /// fully differentiable structure.
+  ///
+  /// Refer to this paper for more details: https://arxiv.org/abs/1906.02825
+  /// Currently only implemented for models with natural image inputs.
   GoogleCloudMlV1XraiAttribution xraiAttribution;
 
   GoogleCloudMlV1ExplanationConfig();
@@ -4282,19 +4398,25 @@ class GoogleCloudMlV1GetConfigResponse {
 }
 
 /// Represents the result of a single hyperparameter tuning trial from a
-/// training job. The TrainingOutput object that is returned on successful
-/// completion of a training job with hyperparameter tuning includes a list of
+/// training job.
+///
+/// The TrainingOutput object that is returned on successful completion of a
+/// training job with hyperparameter tuning includes a list of
 /// HyperparameterOutput objects, one for each successful trial.
 class GoogleCloudMlV1HyperparameterOutput {
-  /// All recorded object metrics for this trial. This field is not currently
-  /// populated.
+  /// All recorded object metrics for this trial.
+  ///
+  /// This field is not currently populated.
   core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> allMetrics;
 
-  /// Details related to built-in algorithms jobs. Only set for trials of
-  /// built-in algorithms jobs that have succeeded.
+  /// Details related to built-in algorithms jobs.
+  ///
+  /// Only set for trials of built-in algorithms jobs that have succeeded.
   GoogleCloudMlV1BuiltInAlgorithmOutput builtInAlgorithmOutput;
 
-  /// Output only. End time for the trial.
+  /// End time for the trial.
+  ///
+  /// Output only.
   core.String endTime;
 
   /// The final objective metric seen for this trial.
@@ -4306,10 +4428,14 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// True if the trial is stopped early.
   core.bool isTrialStoppedEarly;
 
-  /// Output only. Start time for the trial.
+  /// Start time for the trial.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. The detailed state of the trial.
+  /// The detailed state of the trial.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The job state is unspecified.
   /// - "QUEUED" : The job has been just created and processing has not yet
@@ -4410,9 +4536,12 @@ class GoogleCloudMlV1HyperparameterOutput {
 
 /// Represents a set of hyperparameters to optimize.
 class GoogleCloudMlV1HyperparameterSpec {
-  /// Optional. The search algorithm specified for the hyperparameter tuning
-  /// job. Uses the default AI Platform hyperparameter tuning algorithm if
+  /// The search algorithm specified for the hyperparameter tuning job.
+  ///
+  /// Uses the default AI Platform hyperparameter tuning algorithm if
   /// unspecified.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ALGORITHM_UNSPECIFIED" : The default algorithm used by the
   /// hyperparameter tuning service. This is a Bayesian optimization algorithm.
@@ -4422,51 +4551,74 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// - "RANDOM_SEARCH" : Simple random search within the feasible space.
   core.String algorithm;
 
-  /// Optional. Indicates if the hyperparameter tuning job enables auto trial
-  /// early stopping.
+  /// Indicates if the hyperparameter tuning job enables auto trial early
+  /// stopping.
+  ///
+  /// Optional.
   core.bool enableTrialEarlyStopping;
 
-  /// Required. The type of goal to use for tuning. Available types are
-  /// `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+  /// The type of goal to use for tuning.
+  ///
+  /// Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "GOAL_TYPE_UNSPECIFIED" : Goal Type will default to maximize.
   /// - "MAXIMIZE" : Maximize the goal metric.
   /// - "MINIMIZE" : Minimize the goal metric.
   core.String goal;
 
-  /// Optional. The TensorFlow summary tag name to use for optimizing trials.
+  /// The TensorFlow summary tag name to use for optimizing trials.
+  ///
   /// For current versions of TensorFlow, this tag name should exactly match
   /// what is shown in TensorBoard, including all scopes. For versions of
   /// TensorFlow prior to 0.12, this should be only the tag passed to
   /// tf.Summary. By default, "training/hptuning/metric" will be used.
+  ///
+  /// Optional.
   core.String hyperparameterMetricTag;
 
-  /// Optional. The number of failed trials that need to be seen before failing
-  /// the hyperparameter tuning job. You can specify this field to override the
-  /// default failing criteria for AI Platform hyperparameter tuning jobs.
-  /// Defaults to zero, which means the service decides when a hyperparameter
-  /// job should fail.
+  /// The number of failed trials that need to be seen before failing the
+  /// hyperparameter tuning job.
+  ///
+  /// You can specify this field to override the default failing criteria for AI
+  /// Platform hyperparameter tuning jobs. Defaults to zero, which means the
+  /// service decides when a hyperparameter job should fail.
+  ///
+  /// Optional.
   core.int maxFailedTrials;
 
-  /// Optional. The number of training trials to run concurrently. You can
-  /// reduce the time it takes to perform hyperparameter tuning by adding trials
-  /// in parallel. However, each trail only benefits from the information gained
-  /// in completed trials. That means that a trial does not get access to the
-  /// results of trials running at the same time, which could reduce the quality
-  /// of the overall optimization. Each trial will use the same scale tier and
-  /// machine types. Defaults to one.
+  /// The number of training trials to run concurrently.
+  ///
+  /// You can reduce the time it takes to perform hyperparameter tuning by
+  /// adding trials in parallel. However, each trail only benefits from the
+  /// information gained in completed trials. That means that a trial does not
+  /// get access to the results of trials running at the same time, which could
+  /// reduce the quality of the overall optimization. Each trial will use the
+  /// same scale tier and machine types. Defaults to one.
+  ///
+  /// Optional.
   core.int maxParallelTrials;
 
-  /// Optional. How many training trials should be attempted to optimize the
-  /// specified hyperparameters. Defaults to one.
+  /// How many training trials should be attempted to optimize the specified
+  /// hyperparameters.
+  ///
+  /// Defaults to one.
+  ///
+  /// Optional.
   core.int maxTrials;
 
-  /// Required. The set of parameters to tune.
+  /// The set of parameters to tune.
+  ///
+  /// Required.
   core.List<GoogleCloudMlV1ParameterSpec> params;
 
-  /// Optional. The prior hyperparameter tuning job id that users hope to
-  /// continue with. The job id will be used to find the corresponding vizier
-  /// study guid and resume the study.
+  /// The prior hyperparameter tuning job id that users hope to continue with.
+  ///
+  /// The job id will be used to find the corresponding vizier study guid and
+  /// resume the study.
+  ///
+  /// Optional.
   core.String resumePreviousJobId;
 
   GoogleCloudMlV1HyperparameterSpec();
@@ -4539,12 +4691,14 @@ class GoogleCloudMlV1HyperparameterSpec {
 }
 
 /// Attributes credit by computing the Aumann-Shapley value taking advantage of
-/// the model's fully differentiable structure. Refer to this paper for more
-/// details: https://arxiv.org/abs/1703.01365
+/// the model's fully differentiable structure.
+///
+/// Refer to this paper for more details: https://arxiv.org/abs/1703.01365
 class GoogleCloudMlV1IntegratedGradientsAttribution {
-  /// Number of steps for approximating the path integral. A good value to start
-  /// is 50 and gradually increase until the sum to diff property is met within
-  /// the desired error range.
+  /// Number of steps for approximating the path integral.
+  ///
+  /// A good value to start is 50 and gradually increase until the sum to diff
+  /// property is met within the desired error range.
   core.int numIntegralSteps;
 
   GoogleCloudMlV1IntegratedGradientsAttribution();
@@ -4566,22 +4720,29 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
 
 /// Represents a training or prediction job.
 class GoogleCloudMlV1Job {
-  /// Output only. When the job was created.
+  /// When the job was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. When the job processing was completed.
+  /// When the job processing was completed.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Output only. The details of a failure or a cancellation.
+  /// The details of a failure or a cancellation.
+  ///
+  /// Output only.
   core.String errorMessage;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a job from overwriting each other. It is strongly
-  /// suggested that systems make use of the `etag` in the read-modify-write
-  /// cycle to perform job updates in order to avoid race conditions: An `etag`
-  /// is returned in the response to `GetJob`, and systems are expected to put
-  /// that etag in the request to `UpdateJob` to ensure that their change will
-  /// be applied to the same version of the job.
+  /// simultaneous updates of a job from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform job updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetJob`, and systems
+  /// are expected to put that etag in the request to `UpdateJob` to ensure that
+  /// their change will be applied to the same version of the job.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
@@ -4590,13 +4751,18 @@ class GoogleCloudMlV1Job {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Required. The user-specified id of the job.
+  /// The user-specified id of the job.
+  ///
+  /// Required.
   core.String jobId;
 
-  /// Optional. One or more labels that you can add, to organize your jobs. Each
-  /// label is a key-value pair, where both the key and the value are arbitrary
-  /// strings that you supply. For more information, see the documentation on
-  /// using labels.
+  /// One or more labels that you can add, to organize your jobs.
+  ///
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings that you supply. For more information, see the
+  /// documentation on using labels.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
   /// Input parameters to create a prediction job.
@@ -4605,10 +4771,14 @@ class GoogleCloudMlV1Job {
   /// The current prediction job result.
   GoogleCloudMlV1PredictionOutput predictionOutput;
 
-  /// Output only. When the job processing was started.
+  /// When the job processing was started.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. The detailed state of a job.
+  /// The detailed state of a job.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The job state is unspecified.
   /// - "QUEUED" : The job has been just created and processing has not yet
@@ -4728,8 +4898,10 @@ class GoogleCloudMlV1ListJobsResponse {
   /// The list of jobs.
   core.List<GoogleCloudMlV1Job> jobs;
 
-  /// Optional. Pass this token as the `page_token` field of the request for a
-  /// subsequent call.
+  /// Pass this token as the `page_token` field of the request for a subsequent
+  /// call.
+  ///
+  /// Optional.
   core.String nextPageToken;
 
   GoogleCloudMlV1ListJobsResponse();
@@ -4762,8 +4934,10 @@ class GoogleCloudMlV1ListLocationsResponse {
   /// Locations where at least one type of CMLE capability is available.
   core.List<GoogleCloudMlV1Location> locations;
 
-  /// Optional. Pass this token as the `page_token` field of the request for a
-  /// subsequent call.
+  /// Pass this token as the `page_token` field of the request for a subsequent
+  /// call.
+  ///
+  /// Optional.
   core.String nextPageToken;
 
   GoogleCloudMlV1ListLocationsResponse();
@@ -4798,8 +4972,10 @@ class GoogleCloudMlV1ListModelsResponse {
   /// The list of models.
   core.List<GoogleCloudMlV1Model> models;
 
-  /// Optional. Pass this token as the `page_token` field of the request for a
-  /// subsequent call.
+  /// Pass this token as the `page_token` field of the request for a subsequent
+  /// call.
+  ///
+  /// Optional.
   core.String nextPageToken;
 
   GoogleCloudMlV1ListModelsResponse();
@@ -4879,8 +5055,10 @@ class GoogleCloudMlV1ListTrialsResponse {
 
 /// Response message for the ListVersions method.
 class GoogleCloudMlV1ListVersionsResponse {
-  /// Optional. Pass this token as the `page_token` field of the request for a
-  /// subsequent call.
+  /// Pass this token as the `page_token` field of the request for a subsequent
+  /// call.
+  ///
+  /// Optional.
   core.String nextPageToken;
 
   /// The list of versions.
@@ -4948,10 +5126,12 @@ class GoogleCloudMlV1Location {
 
 /// Options for manually scaling a model.
 class GoogleCloudMlV1ManualScaling {
-  /// The number of nodes to allocate for this model. These nodes are always up,
-  /// starting from the time the model is deployed, so the cost of operating
-  /// this model will be proportional to `nodes` * number of hours since last
-  /// billing cycle plus the cost for each prediction performed.
+  /// The number of nodes to allocate for this model.
+  ///
+  /// These nodes are always up, starting from the time the model is deployed,
+  /// so the cost of operating this model will be proportional to `nodes` *
+  /// number of hours since last billing cycle plus the cost for each prediction
+  /// performed.
   core.int nodes;
 
   GoogleCloudMlV1ManualScaling();
@@ -4973,15 +5153,17 @@ class GoogleCloudMlV1ManualScaling {
 
 /// A message representing a measurement.
 class GoogleCloudMlV1Measurement {
-  /// Output only. Time that the trial has been running at the point of this
-  /// measurement.
+  /// Time that the trial has been running at the point of this measurement.
+  ///
+  /// Output only.
   core.String elapsedTime;
 
   /// Provides a list of metrics that act as inputs into the objective function.
   core.List<GoogleCloudMlV1MeasurementMetric> metrics;
 
-  /// The number of steps a machine learning model has been trained for. Must be
-  /// non-negative.
+  /// The number of steps a machine learning model has been trained for.
+  ///
+  /// Must be non-negative.
   core.String stepCount;
 
   GoogleCloudMlV1Measurement();
@@ -5017,21 +5199,30 @@ class GoogleCloudMlV1Measurement {
   }
 }
 
-/// Represents a machine learning solution. A model can have multiple versions,
-/// each of which is a deployed, trained model ready to receive prediction
-/// requests. The model itself is just a container.
+/// Represents a machine learning solution.
+///
+/// A model can have multiple versions, each of which is a deployed, trained
+/// model ready to receive prediction requests. The model itself is just a
+/// container.
 class GoogleCloudMlV1Model {
-  /// Output only. The default version of the model. This version will be used
-  /// to handle prediction requests that do not specify a version. You can
-  /// change the default version by calling projects.models.versions.setDefault.
+  /// The default version of the model.
+  ///
+  /// This version will be used to handle prediction requests that do not
+  /// specify a version. You can change the default version by calling
+  /// projects.models.versions.setDefault.
+  ///
+  /// Output only.
   GoogleCloudMlV1Version defaultVersion;
 
-  /// Optional. The description specified for the model when it was created.
+  /// The description specified for the model when it was created.
+  ///
+  /// Optional.
   core.String description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a model from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a model from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform model updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `GetModel`, and
   /// systems are expected to put that etag in the request to `UpdateModel` to
@@ -5044,41 +5235,56 @@ class GoogleCloudMlV1Model {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. One or more labels that you can add, to organize your models.
+  /// One or more labels that you can add, to organize your models.
+  ///
   /// Each label is a key-value pair, where both the key and the value are
   /// arbitrary strings that you supply. For more information, see the
   /// documentation on using labels.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Required. The name specified for the model when it was created. The model
-  /// name must be unique within the project it is created in.
+  /// The name specified for the model when it was created.
+  ///
+  /// The model name must be unique within the project it is created in.
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. If true, online prediction nodes send `stderr` and `stdout`
-  /// streams to Stackdriver Logging. These can be more verbose than the
-  /// standard access logs (see `onlinePredictionLogging`) and can incur higher
-  /// cost. However, they are helpful for debugging. Note that [Stackdriver logs
-  /// may incur a cost](/stackdriver/pricing), especially if your project
-  /// receives prediction requests at a high QPS. Estimate your costs before
-  /// enabling this option. Default is false.
+  /// If true, online prediction nodes send `stderr` and `stdout` streams to
+  /// Stackdriver Logging.
+  ///
+  /// These can be more verbose than the standard access logs (see
+  /// `onlinePredictionLogging`) and can incur higher cost. However, they are
+  /// helpful for debugging. Note that [Stackdriver logs may incur a
+  /// cost](/stackdriver/pricing), especially if your project receives
+  /// prediction requests at a high QPS. Estimate your costs before enabling
+  /// this option. Default is false.
+  ///
+  /// Optional.
   core.bool onlinePredictionConsoleLogging;
 
-  /// Optional. If true, online prediction access logs are sent to StackDriver
-  /// Logging. These logs are like standard server access logs, containing
-  /// information like timestamp and latency for each request. Note that
-  /// [Stackdriver logs may incur a cost](/stackdriver/pricing), especially if
-  /// your project receives prediction requests at a high queries per second
-  /// rate (QPS). Estimate your costs before enabling this option. Default is
-  /// false.
+  /// If true, online prediction access logs are sent to StackDriver Logging.
+  ///
+  /// These logs are like standard server access logs, containing information
+  /// like timestamp and latency for each request. Note that [Stackdriver logs
+  /// may incur a cost](/stackdriver/pricing), especially if your project
+  /// receives prediction requests at a high queries per second rate (QPS).
+  /// Estimate your costs before enabling this option. Default is false.
+  ///
+  /// Optional.
   core.bool onlinePredictionLogging;
 
-  /// Optional. The list of regions where the model is going to be deployed.
+  /// The list of regions where the model is going to be deployed.
+  ///
   /// Only one region per model is supported. Defaults to 'us-central1' if
   /// nothing is set. See the available regions for AI Platform services. Note:
   /// * No matter where a model is deployed, it can always be accessed by users
   /// from anywhere, both for online and batch prediction. * The region for a
   /// batch prediction job is set by the region field when submitting the batch
   /// prediction job and does not take its value from this field.
+  ///
+  /// Optional.
   core.List<core.String> regions;
 
   GoogleCloudMlV1Model();
@@ -5262,30 +5468,44 @@ class GoogleCloudMlV1OperationMetadata {
 
 /// Represents a single hyperparameter to optimize.
 class GoogleCloudMlV1ParameterSpec {
-  /// Required if type is `CATEGORICAL`. The list of possible categories.
+  /// Required if type is `CATEGORICAL`.
+  ///
+  /// The list of possible categories.
   core.List<core.String> categoricalValues;
 
-  /// Required if type is `DISCRETE`. A list of feasible points. The list should
-  /// be in strictly increasing order. For instance, this parameter might have
-  /// possible settings of 1.5, 2.5, and 4.0. This list should not contain more
-  /// than 1,000 values.
+  /// Required if type is `DISCRETE`.
+  ///
+  /// A list of feasible points. The list should be in strictly increasing
+  /// order. For instance, this parameter might have possible settings of 1.5,
+  /// 2.5, and 4.0. This list should not contain more than 1,000 values.
   core.List<core.double> discreteValues;
 
-  /// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if
-  /// type is `CATEGORICAL`. This value should be integers if type is `INTEGER`.
+  /// Required if type is `DOUBLE` or `INTEGER`.
+  ///
+  /// This field should be unset if type is `CATEGORICAL`. This value should be
+  /// integers if type is `INTEGER`.
   core.double maxValue;
 
-  /// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if
-  /// type is `CATEGORICAL`. This value should be integers if type is INTEGER.
+  /// Required if type is `DOUBLE` or `INTEGER`.
+  ///
+  /// This field should be unset if type is `CATEGORICAL`. This value should be
+  /// integers if type is INTEGER.
   core.double minValue;
 
-  /// Required. The parameter name must be unique amongst all ParameterConfigs
-  /// in a HyperparameterSpec message. E.g., "learning_rate".
+  /// The parameter name must be unique amongst all ParameterConfigs in a
+  /// HyperparameterSpec message.
+  ///
+  /// E.g., "learning_rate".
+  ///
+  /// Required.
   core.String parameterName;
 
-  /// Optional. How the parameter should be scaled to the hypercube. Leave unset
-  /// for categorical parameters. Some kind of scaling is strongly recommended
-  /// for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
+  /// How the parameter should be scaled to the hypercube.
+  ///
+  /// Leave unset for categorical parameters. Some kind of scaling is strongly
+  /// recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "NONE" : By default, no scaling is applied.
   /// - "UNIT_LINEAR_SCALE" : Scales the feasible space to (0, 1) linearly.
@@ -5297,7 +5517,9 @@ class GoogleCloudMlV1ParameterSpec {
   /// entire feasible space must be strictly positive.
   core.String scaleType;
 
-  /// Required. The type of the parameter.
+  /// The type of the parameter.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "PARAMETER_TYPE_UNSPECIFIED" : You must specify a valid type. Using this
   /// unspecified type will result in an error.
@@ -5369,7 +5591,9 @@ class GoogleCloudMlV1ParameterSpec {
 
 /// Request for predictions to be issued against a trained model.
 class GoogleCloudMlV1PredictRequest {
-  /// Required. The prediction request body. Refer to the [request body details
+  ///  Required.
+  ///
+  /// The prediction request body. Refer to the [request body details
   /// section](#request-body-details) for more information on how to structure
   /// your request.
   GoogleApiHttpBody httpBody;
@@ -5394,13 +5618,18 @@ class GoogleCloudMlV1PredictRequest {
 
 /// Represents input parameters for a prediction job.
 class GoogleCloudMlV1PredictionInput {
-  /// Optional. Number of records per batch, defaults to 64. The service will
-  /// buffer batch_size number of records in memory before invoking one
-  /// Tensorflow prediction call internally. So take the record size and memory
-  /// available into consideration when setting this parameter.
+  /// Number of records per batch, defaults to 64.
+  ///
+  /// The service will buffer batch_size number of records in memory before
+  /// invoking one Tensorflow prediction call internally. So take the record
+  /// size and memory available into consideration when setting this parameter.
+  ///
+  /// Optional.
   core.String batchSize;
 
-  /// Required. The format of the input data files.
+  /// The format of the input data files.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
   /// - "JSON" : Each line of the file is a JSON dictionary representing one
@@ -5414,20 +5643,30 @@ class GoogleCloudMlV1PredictionInput {
   /// Currently available only for output data.
   core.String dataFormat;
 
-  /// Required. The Cloud Storage location of the input data files. May contain
-  /// wildcards.
+  /// The Cloud Storage location of the input data files.
+  ///
+  /// May contain wildcards.
+  ///
+  /// Required.
   core.List<core.String> inputPaths;
 
-  /// Optional. The maximum number of workers to be used for parallel
-  /// processing. Defaults to 10 if not specified.
+  /// The maximum number of workers to be used for parallel processing.
+  ///
+  /// Defaults to 10 if not specified.
+  ///
+  /// Optional.
   core.String maxWorkerCount;
 
   /// Use this field if you want to use the default version for the specified
-  /// model. The string must use the following format:
+  /// model.
+  ///
+  /// The string must use the following format:
   /// `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
   core.String modelName;
 
-  /// Optional. Format of the output data files, defaults to JSON.
+  /// Format of the output data files, defaults to JSON.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
   /// - "JSON" : Each line of the file is a JSON dictionary representing one
@@ -5441,35 +5680,47 @@ class GoogleCloudMlV1PredictionInput {
   /// Currently available only for output data.
   core.String outputDataFormat;
 
-  /// Required. The output Google Cloud Storage location.
+  /// The output Google Cloud Storage location.
+  ///
+  /// Required.
   core.String outputPath;
 
-  /// Required. The Google Compute Engine region to run the prediction job in.
+  /// The Google Compute Engine region to run the prediction job in.
+  ///
   /// See the available regions for AI Platform services.
+  ///
+  /// Required.
   core.String region;
 
-  /// Optional. The AI Platform runtime version to use for this batch
-  /// prediction. If not set, AI Platform will pick the runtime version used
-  /// during the CreateVersion request for this model version, or choose the
-  /// latest stable version when model version information is not available such
-  /// as when the model is specified by uri.
+  /// The AI Platform runtime version to use for this batch prediction.
+  ///
+  /// If not set, AI Platform will pick the runtime version used during the
+  /// CreateVersion request for this model version, or choose the latest stable
+  /// version when model version information is not available such as when the
+  /// model is specified by uri.
+  ///
+  /// Optional.
   core.String runtimeVersion;
 
-  /// Optional. The name of the signature defined in the SavedModel to use for
-  /// this job. Please refer to
+  /// The name of the signature defined in the SavedModel to use for this job.
+  ///
+  /// Please refer to
   /// [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for
   /// information about how to use signatures. Defaults to
   /// [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants)
   /// , which is "serving_default".
+  ///
+  /// Optional.
   core.String signatureName;
 
   /// Use this field if you want to specify a Google Cloud Storage path for the
   /// model to use.
   core.String uri;
 
-  /// Use this field if you want to specify a version of the model to use. The
-  /// string is formatted the same way as `model_version`, with the addition of
-  /// the version information:
+  /// Use this field if you want to specify a version of the model to use.
+  ///
+  /// The string is formatted the same way as `model_version`, with the addition
+  /// of the version information:
   /// `"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION"`
   core.String versionName;
 
@@ -5610,43 +5861,49 @@ class GoogleCloudMlV1PredictionOutput {
 
 /// Represents the configuration for a replica in a cluster.
 class GoogleCloudMlV1ReplicaConfig {
-  /// Represents the type and number of accelerators used by the replica. [Learn
-  /// about restrictions on accelerator configurations for
+  /// Represents the type and number of accelerators used by the replica.
+  ///
+  /// [Learn about restrictions on accelerator configurations for
   /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
 
-  /// Arguments to the entrypoint command. The following rules apply for
-  /// container_command and container_args: - If you do not supply command or
-  /// args: The defaults defined in the Docker image are used. - If you supply a
-  /// command but no args: The default EntryPoint and the default Cmd defined in
-  /// the Docker image are ignored. Your command is run without any arguments. -
-  /// If you supply only args: The default Entrypoint defined in the Docker
-  /// image is run with the args that you supplied. - If you supply a command
-  /// and args: The default Entrypoint and the default Cmd defined in the Docker
-  /// image are ignored. Your command is run with your args. It cannot be set if
-  /// custom container image is not provided. Note that this field and
-  /// [TrainingInput.args] are mutually exclusive, i.e., both cannot be set at
-  /// the same time.
+  /// Arguments to the entrypoint command.
+  ///
+  /// The following rules apply for container_command and container_args: - If
+  /// you do not supply command or args: The defaults defined in the Docker
+  /// image are used. - If you supply a command but no args: The default
+  /// EntryPoint and the default Cmd defined in the Docker image are ignored.
+  /// Your command is run without any arguments. - If you supply only args: The
+  /// default Entrypoint defined in the Docker image is run with the args that
+  /// you supplied. - If you supply a command and args: The default Entrypoint
+  /// and the default Cmd defined in the Docker image are ignored. Your command
+  /// is run with your args. It cannot be set if custom container image is not
+  /// provided. Note that this field and [TrainingInput.args] are mutually
+  /// exclusive, i.e., both cannot be set at the same time.
   core.List<core.String> containerArgs;
 
-  /// The command with which the replica's custom container is run. If provided,
-  /// it will override default ENTRYPOINT of the docker image. If not provided,
-  /// the docker image's ENTRYPOINT is used. It cannot be set if custom
-  /// container image is not provided. Note that this field and
+  /// The command with which the replica's custom container is run.
+  ///
+  /// If provided, it will override default ENTRYPOINT of the docker image. If
+  /// not provided, the docker image's ENTRYPOINT is used. It cannot be set if
+  /// custom container image is not provided. Note that this field and
   /// [TrainingInput.args] are mutually exclusive, i.e., both cannot be set at
   /// the same time.
   core.List<core.String> containerCommand;
 
-  /// The Docker image to run on the replica. This image must be in Container
-  /// Registry. Learn more about [configuring custom
+  /// The Docker image to run on the replica.
+  ///
+  /// This image must be in Container Registry. Learn more about [configuring
+  /// custom
   /// containers](/ai-platform/training/docs/distributed-training-containers).
   core.String imageUri;
 
   /// The AI Platform runtime version that includes a TensorFlow version
-  /// matching the one used in the custom container. This field is required if
-  /// the replica is a TPU worker that uses a custom container. Otherwise, do
-  /// not specify this field. This must be a [runtime version that currently
-  /// supports training with
+  /// matching the one used in the custom container.
+  ///
+  /// This field is required if the replica is a TPU worker that uses a custom
+  /// container. Otherwise, do not specify this field. This must be a [runtime
+  /// version that currently supports training with
   /// TPUs](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support). Note
   /// that the version of TensorFlow included in a runtime version may differ
   /// from the numbering of the runtime version itself, because it may have a
@@ -5703,27 +5960,33 @@ class GoogleCloudMlV1ReplicaConfig {
   }
 }
 
-/// Configuration for logging request-response pairs to a BigQuery table. Online
-/// prediction requests to a model version and the responses to these requests
-/// are converted to raw strings and saved to the specified BigQuery table.
-/// Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If
-/// your project exceeds BigQuery quotas or limits, AI Platform Prediction does
-/// not log request-response pairs, but it continues to serve predictions. If
-/// you are using [continuous
+/// Configuration for logging request-response pairs to a BigQuery table.
+///
+/// Online prediction requests to a model version and the responses to these
+/// requests are converted to raw strings and saved to the specified BigQuery
+/// table. Logging is constrained by [BigQuery quotas and
+/// limits](/bigquery/quotas). If your project exceeds BigQuery quotas or
+/// limits, AI Platform Prediction does not log request-response pairs, but it
+/// continues to serve predictions. If you are using [continuous
 /// evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to
 /// specify this configuration manually. Setting up continuous evaluation
 /// automatically enables logging of request-response pairs.
 class GoogleCloudMlV1RequestLoggingConfig {
-  /// Required. Fully qualified BigQuery table name in the following format: "
+  /// Fully qualified BigQuery table name in the following format: "
   /// project_id.dataset_name.table_name" The specified table must already
   /// exist, and the "Cloud ML Service Agent" for your project must have
-  /// permission to write to it. The table must have the following
-  /// [schema](/bigquery/docs/schemas): Field nameType Mode model STRING
-  /// REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data
-  /// STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+  /// permission to write to it.
+  ///
+  /// The table must have the following [schema](/bigquery/docs/schemas): Field
+  /// nameType Mode model STRING REQUIRED model_version STRING REQUIRED time
+  /// TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE
+  /// groundtruth STRING NULLABLE
+  ///
+  /// Required.
   core.String bigqueryTableName;
 
   /// Percentage of requests to be logged, expressed as a fraction from 0 to 1.
+  ///
   /// For example, if you want to log 10% of requests, enter `0.1`. The sampling
   /// window is the lifetime of the model version. Defaults to 0.
   core.double samplingPercentage;
@@ -5751,9 +6014,10 @@ class GoogleCloudMlV1RequestLoggingConfig {
   }
 }
 
-/// RouteMap is used to override HTTP paths sent to a Custom Container. If
-/// specified, the HTTP server implemented in the ContainerSpec must support the
-/// route. If unspecified, standard HTTP paths will be used.
+/// RouteMap is used to override HTTP paths sent to a Custom Container.
+///
+/// If specified, the HTTP server implemented in the ContainerSpec must support
+/// the route. If unspecified, standard HTTP paths will be used.
 class GoogleCloudMlV1RouteMap {
   /// HTTP path to send health check requests.
   core.String health;
@@ -5785,8 +6049,10 @@ class GoogleCloudMlV1RouteMap {
 }
 
 /// An attribution method that approximates Shapley values for features that
-/// contribute to the label being predicted. A sampling strategy is used to
-/// approximate the value rather than considering all subsets of features.
+/// contribute to the label being predicted.
+///
+/// A sampling strategy is used to approximate the value rather than considering
+/// all subsets of features.
 class GoogleCloudMlV1SampledShapleyAttribution {
   /// The number of feature permutations to consider when approximating the
   /// Shapley values.
@@ -5811,29 +6077,33 @@ class GoogleCloudMlV1SampledShapleyAttribution {
 
 /// All parameters related to scheduling of training jobs.
 class GoogleCloudMlV1Scheduling {
-  /// Optional. The maximum job running time, expressed in seconds. The field
-  /// can contain up to nine fractional digits, terminated by `s`. If not
-  /// specified, this field defaults to `604800s` (seven days). If the training
-  /// job is still running after this duration, AI Platform Training cancels it.
-  /// The duration is measured from when the job enters the `RUNNING` state;
-  /// therefore it does not overlap with the duration limited by
-  /// Scheduling.max_wait_time. For example, if you want to ensure your job runs
-  /// for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes
-  /// / hour * 60 seconds / minute). If you submit your training job using the
-  /// `gcloud` tool, you can [specify this field in a `config.yaml`
+  /// The maximum job running time, expressed in seconds.
+  ///
+  /// The field can contain up to nine fractional digits, terminated by `s`. If
+  /// not specified, this field defaults to `604800s` (seven days). If the
+  /// training job is still running after this duration, AI Platform Training
+  /// cancels it. The duration is measured from when the job enters the
+  /// `RUNNING` state; therefore it does not overlap with the duration limited
+  /// by Scheduling.max_wait_time. For example, if you want to ensure your job
+  /// runs for no more than 2 hours, set this field to `7200s` (2 hours * 60
+  /// minutes / hour * 60 seconds / minute). If you submit your training job
+  /// using the `gcloud` tool, you can [specify this field in a `config.yaml`
   /// file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters).
   /// For example: ```yaml trainingInput: scheduling: maxRunningTime: 7200s ```
+  ///
+  /// Optional.
   core.String maxRunningTime;
 
-  /// Optional. The maximum job wait time, expressed in seconds. The field can
-  /// contain up to nine fractional digits, terminated by `s`. If not specified,
-  /// there is no limit to the wait time. The minimum for this field is `1800s`
-  /// (30 minutes). If the training job has not entered the `RUNNING` state
-  /// after this duration, AI Platform Training cancels it. After the job begins
-  /// running, it can no longer be cancelled due to the maximum wait time.
-  /// Therefore the duration limited by this field does not overlap with the
-  /// duration limited by Scheduling.max_running_time. For example, if the job
-  /// temporarily stops running and retries due to a [VM
+  /// The maximum job wait time, expressed in seconds.
+  ///
+  /// The field can contain up to nine fractional digits, terminated by `s`. If
+  /// not specified, there is no limit to the wait time. The minimum for this
+  /// field is `1800s` (30 minutes). If the training job has not entered the
+  /// `RUNNING` state after this duration, AI Platform Training cancels it.
+  /// After the job begins running, it can no longer be cancelled due to the
+  /// maximum wait time. Therefore the duration limited by this field does not
+  /// overlap with the duration limited by Scheduling.max_running_time. For
+  /// example, if the job temporarily stops running and retries due to a [VM
   /// restart](/ai-platform/training/docs/overview#restarts), this cannot lead
   /// to a maximum wait time cancellation. However, independently of this
   /// constraint, AI Platform Training might stop a job if there are too many
@@ -5846,6 +6116,8 @@ class GoogleCloudMlV1Scheduling {
   /// you can [specify this field in a `config.yaml`
   /// file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters).
   /// For example: ```yaml trainingInput: scheduling: maxWaitTime: 3600s ```
+  ///
+  /// Optional.
   core.String maxWaitTime;
 
   GoogleCloudMlV1Scheduling();
@@ -5900,17 +6172,26 @@ class GoogleCloudMlV1StopTrialRequest {
 
 /// A message representing a Study.
 class GoogleCloudMlV1Study {
-  /// Output only. Time at which the study was created.
+  /// Time at which the study was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. A human readable reason why the Study is inactive. This
-  /// should be empty if a study is ACTIVE or COMPLETED.
+  /// A human readable reason why the Study is inactive.
+  ///
+  /// This should be empty if a study is ACTIVE or COMPLETED.
+  ///
+  /// Output only.
   core.String inactiveReason;
 
-  /// Output only. The name of a study.
+  /// The name of a study.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The detailed state of a study.
+  /// The detailed state of a study.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The study state is unspecified.
   /// - "ACTIVE" : The study is active.
@@ -5919,7 +6200,9 @@ class GoogleCloudMlV1Study {
   /// search space or max_trial_count is reached.
   core.String state;
 
-  /// Required. Configuration of the study.
+  /// Configuration of the study.
+  ///
+  /// Required.
   GoogleCloudMlV1StudyConfig studyConfig;
 
   GoogleCloudMlV1Study();
@@ -5983,7 +6266,9 @@ class GoogleCloudMlV1StudyConfig {
   /// Metric specs for the study.
   core.List<GoogleCloudMlV1StudyConfigMetricSpec> metrics;
 
-  /// Required. The set of parameters to tune.
+  /// The set of parameters to tune.
+  ///
+  /// Required.
   core.List<GoogleCloudMlV1StudyConfigParameterSpec> parameters;
 
   GoogleCloudMlV1StudyConfig();
@@ -6083,13 +6368,18 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
 
 /// The request message for the SuggestTrial service method.
 class GoogleCloudMlV1SuggestTrialsRequest {
-  /// Required. The identifier of the client that is requesting the suggestion.
+  /// The identifier of the client that is requesting the suggestion.
+  ///
   /// If multiple SuggestTrialsRequests have the same `client_id`, the service
   /// will return the identical suggested trial if the trial is pending, and
   /// provide a new trial if the last suggested trial was completed.
+  ///
+  /// Required.
   core.String clientId;
 
-  /// Required. The number of suggestions requested.
+  /// The number of suggestions requested.
+  ///
+  /// Required.
   core.int suggestionCount;
 
   GoogleCloudMlV1SuggestTrialsRequest();
@@ -6174,83 +6464,112 @@ class GoogleCloudMlV1SuggestTrialsResponse {
   }
 }
 
-/// Represents input parameters for a training job. When using the gcloud
-/// command to submit your training job, you can specify the input parameters as
-/// command-line arguments and/or in a YAML configuration file referenced from
-/// the --config command-line argument. For details, see the guide to
-/// [submitting a training job](/ai-platform/training/docs/training-jobs).
+/// Represents input parameters for a training job.
+///
+/// When using the gcloud command to submit your training job, you can specify
+/// the input parameters as command-line arguments and/or in a YAML
+/// configuration file referenced from the --config command-line argument. For
+/// details, see the guide to [submitting a training
+/// job](/ai-platform/training/docs/training-jobs).
 class GoogleCloudMlV1TrainingInput {
-  /// Optional. Command-line arguments passed to the training application when
-  /// it starts. If your job uses a custom container, then the arguments are
-  /// passed to the container's `ENTRYPOINT` command.
+  /// Command-line arguments passed to the training application when it starts.
+  ///
+  /// If your job uses a custom container, then the arguments are passed to the
+  /// container's `ENTRYPOINT` command.
+  ///
+  /// Optional.
   core.List<core.String> args;
 
-  /// Optional. Options for using customer-managed encryption keys (CMEK) to
-  /// protect resources created by a training job, instead of using Google's
-  /// default encryption. If this is set, then all resources created by the
-  /// training job will be encrypted with the customer-managed encryption key
-  /// that you specify. [Learn how and when to use CMEK with AI Platform
+  /// Options for using customer-managed encryption keys (CMEK) to protect
+  /// resources created by a training job, instead of using Google's default
+  /// encryption.
+  ///
+  /// If this is set, then all resources created by the training job will be
+  /// encrypted with the customer-managed encryption key that you specify.
+  /// [Learn how and when to use CMEK with AI Platform
   /// Training](/ai-platform/training/docs/cmek).
+  ///
+  /// Optional.
   GoogleCloudMlV1EncryptionConfig encryptionConfig;
 
-  /// Optional. The configuration for evaluators. You should only set
-  /// `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute
-  /// Engine machine type. [Learn about restrictions on accelerator
-  /// configurations for
+  /// The configuration for evaluators.
+  ///
+  /// You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType`
+  /// is set to a Compute Engine machine type. [Learn about restrictions on
+  /// accelerator configurations for
   /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `evaluatorConfig.imageUri` only if you build a custom image for your
   /// evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform
   /// uses the value of `masterConfig.imageUri`. Learn more about [configuring
   /// custom
   /// containers](/ai-platform/training/docs/distributed-training-containers).
+  ///
+  /// Optional.
   GoogleCloudMlV1ReplicaConfig evaluatorConfig;
 
-  /// Optional. The number of evaluator replicas to use for the training job.
+  /// The number of evaluator replicas to use for the training job.
+  ///
   /// Each replica in the cluster will be of the type specified in
   /// `evaluator_type`. This value can only be used when `scale_tier` is set to
   /// `CUSTOM`. If you set this value, you must also set `evaluator_type`. The
   /// default value is zero.
+  ///
+  /// Optional.
   core.String evaluatorCount;
 
-  /// Optional. Specifies the type of virtual machine to use for your training
-  /// job's evaluator nodes. The supported values are the same as those
-  /// described in the entry for `masterType`. This value must be consistent
-  /// with the category of machine type that `masterType` uses. In other words,
-  /// both must be Compute Engine machine types or both must be legacy machine
-  /// types. This value must be present when `scaleTier` is set to `CUSTOM` and
-  /// `evaluatorCount` is greater than zero.
+  /// Specifies the type of virtual machine to use for your training job's
+  /// evaluator nodes.
+  ///
+  /// The supported values are the same as those described in the entry for
+  /// `masterType`. This value must be consistent with the category of machine
+  /// type that `masterType` uses. In other words, both must be Compute Engine
+  /// machine types or both must be legacy machine types. This value must be
+  /// present when `scaleTier` is set to `CUSTOM` and `evaluatorCount` is
+  /// greater than zero.
+  ///
+  /// Optional.
   core.String evaluatorType;
 
-  /// Optional. The set of Hyperparameters to tune.
+  /// The set of Hyperparameters to tune.
+  ///
+  /// Optional.
   GoogleCloudMlV1HyperparameterSpec hyperparameters;
 
-  /// Optional. A Google Cloud Storage path in which to store training outputs
-  /// and other data needed for training. This path is passed to your TensorFlow
-  /// program as the '--job-dir' command-line argument. The benefit of
-  /// specifying this field is that Cloud ML validates the path for use in
-  /// training.
+  /// A Google Cloud Storage path in which to store training outputs and other
+  /// data needed for training.
+  ///
+  /// This path is passed to your TensorFlow program as the '--job-dir'
+  /// command-line argument. The benefit of specifying this field is that Cloud
+  /// ML validates the path for use in training.
+  ///
+  /// Optional.
   core.String jobDir;
 
-  /// Optional. The configuration for your master worker. You should only set
-  /// `masterConfig.acceleratorConfig` if `masterType` is set to a Compute
-  /// Engine machine type. Learn about [restrictions on accelerator
-  /// configurations for
+  /// The configuration for your master worker.
+  ///
+  /// You should only set `masterConfig.acceleratorConfig` if `masterType` is
+  /// set to a Compute Engine machine type. Learn about [restrictions on
+  /// accelerator configurations for
   /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `masterConfig.imageUri` only if you build a custom image. Only one of
   /// `masterConfig.imageUri` and `runtimeVersion` should be set. Learn more
   /// about [configuring custom
   /// containers](/ai-platform/training/docs/distributed-training-containers).
+  ///
+  /// Optional.
   GoogleCloudMlV1ReplicaConfig masterConfig;
 
-  /// Optional. Specifies the type of virtual machine to use for your training
-  /// job's master worker. You must specify this field when `scaleTier` is set
-  /// to `CUSTOM`. You can use certain Compute Engine machine types directly in
-  /// this field. The following types are supported: - `n1-standard-4` -
-  /// `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` -
-  /// `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` -
-  /// `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` -
-  /// `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96`
-  /// Learn more about [using Compute Engine machine
+  /// Specifies the type of virtual machine to use for your training job's
+  /// master worker.
+  ///
+  /// You must specify this field when `scaleTier` is set to `CUSTOM`. You can
+  /// use certain Compute Engine machine types directly in this field. The
+  /// following types are supported: - `n1-standard-4` - `n1-standard-8` -
+  /// `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96`
+  /// - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` -
+  /// `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` -
+  /// `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Learn more about
+  /// [using Compute Engine machine
   /// types](/ml-engine/docs/machine-types#compute-engine-machine-types).
   /// Alternatively, you can use the following legacy machine types: -
   /// `standard` - `large_model` - `complex_model_s` - `complex_model_m` -
@@ -6262,77 +6581,109 @@ class GoogleCloudMlV1TrainingInput {
   /// you want to use a TPU for training, specify `cloud_tpu` in this field.
   /// Learn more about the [special configuration options for training with
   /// TPUs](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
+  ///
+  /// Optional.
   core.String masterType;
 
-  /// Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to
-  /// which the Job is peered. For example,
-  /// `projects/12345/global/networks/myVPC`. The format of this field is
-  /// `projects/{project}/global/networks/{network}`, where {project} is a
-  /// project number (like `12345`) and {network} is network name. Private
+  /// The full name of the [Compute Engine network](/vpc/docs/vpc) to which the
+  /// Job is peered.
+  ///
+  /// For example, `projects/12345/global/networks/myVPC`. The format of this
+  /// field is `projects/{project}/global/networks/{network}`, where {project}
+  /// is a project number (like `12345`) and {network} is network name. Private
   /// services access must already be configured for the network. If left
   /// unspecified, the Job is not peered with any network. [Learn about using
   /// VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
+  ///
+  /// Optional.
   core.String network;
 
-  /// Required. The Google Cloud Storage location of the packages with the
-  /// training program and any additional dependencies. The maximum number of
-  /// package URIs is 100.
+  /// The Google Cloud Storage location of the packages with the training
+  /// program and any additional dependencies.
+  ///
+  /// The maximum number of package URIs is 100.
+  ///
+  /// Required.
   core.List<core.String> packageUris;
 
-  /// Optional. The configuration for parameter servers. You should only set
-  /// `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set
-  /// to a Compute Engine machine type. [Learn about restrictions on accelerator
-  /// configurations for
+  /// The configuration for parameter servers.
+  ///
+  /// You should only set `parameterServerConfig.acceleratorConfig` if
+  /// `parameterServerType` is set to a Compute Engine machine type. [Learn
+  /// about restrictions on accelerator configurations for
   /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `parameterServerConfig.imageUri` only if you build a custom image for
   /// your parameter server. If `parameterServerConfig.imageUri` has not been
   /// set, AI Platform uses the value of `masterConfig.imageUri`. Learn more
   /// about [configuring custom
   /// containers](/ai-platform/training/docs/distributed-training-containers).
+  ///
+  /// Optional.
   GoogleCloudMlV1ReplicaConfig parameterServerConfig;
 
-  /// Optional. The number of parameter server replicas to use for the training
-  /// job. Each replica in the cluster will be of the type specified in
+  /// The number of parameter server replicas to use for the training job.
+  ///
+  /// Each replica in the cluster will be of the type specified in
   /// `parameter_server_type`. This value can only be used when `scale_tier` is
   /// set to `CUSTOM`. If you set this value, you must also set
   /// `parameter_server_type`. The default value is zero.
+  ///
+  /// Optional.
   core.String parameterServerCount;
 
-  /// Optional. Specifies the type of virtual machine to use for your training
-  /// job's parameter server. The supported values are the same as those
-  /// described in the entry for `master_type`. This value must be consistent
-  /// with the category of machine type that `masterType` uses. In other words,
-  /// both must be Compute Engine machine types or both must be legacy machine
-  /// types. This value must be present when `scaleTier` is set to `CUSTOM` and
-  /// `parameter_server_count` is greater than zero.
+  /// Specifies the type of virtual machine to use for your training job's
+  /// parameter server.
+  ///
+  /// The supported values are the same as those described in the entry for
+  /// `master_type`. This value must be consistent with the category of machine
+  /// type that `masterType` uses. In other words, both must be Compute Engine
+  /// machine types or both must be legacy machine types. This value must be
+  /// present when `scaleTier` is set to `CUSTOM` and `parameter_server_count`
+  /// is greater than zero.
+  ///
+  /// Optional.
   core.String parameterServerType;
 
-  /// Required. The Python module name to run after installing the packages.
+  /// The Python module name to run after installing the packages.
+  ///
+  /// Required.
   core.String pythonModule;
 
-  /// Optional. The version of Python used in training. You must either specify
-  /// this field or specify `masterConfig.imageUri`. The following Python
-  /// versions are available: * Python '3.7' is available when `runtime_version`
-  /// is set to '1.15' or later. * Python '3.5' is available when
-  /// `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7'
-  /// is available when `runtime_version` is set to '1.15' or earlier. Read more
-  /// about the Python versions available for [each runtime
+  /// The version of Python used in training.
+  ///
+  /// You must either specify this field or specify `masterConfig.imageUri`. The
+  /// following Python versions are available: * Python '3.7' is available when
+  /// `runtime_version` is set to '1.15' or later. * Python '3.5' is available
+  /// when `runtime_version` is set to a version from '1.4' to '1.14'. * Python
+  /// '2.7' is available when `runtime_version` is set to '1.15' or earlier.
+  /// Read more about the Python versions available for [each runtime
   /// version](/ml-engine/docs/runtime-version-list).
+  ///
+  /// Optional.
   core.String pythonVersion;
 
-  /// Required. The region to run the training job in. See the [available
-  /// regions](/ai-platform/training/docs/regions) for AI Platform Training.
+  /// The region to run the training job in.
+  ///
+  /// See the [available regions](/ai-platform/training/docs/regions) for AI
+  /// Platform Training.
+  ///
+  /// Required.
   core.String region;
 
-  /// Optional. The AI Platform runtime version to use for training. You must
-  /// either specify this field or specify `masterConfig.imageUri`. For more
-  /// information, see the [runtime version
+  /// The AI Platform runtime version to use for training.
+  ///
+  /// You must either specify this field or specify `masterConfig.imageUri`. For
+  /// more information, see the [runtime version
   /// list](/ai-platform/training/docs/runtime-version-list) and learn [how to
   /// manage runtime versions](/ai-platform/training/docs/versioning).
+  ///
+  /// Optional.
   core.String runtimeVersion;
 
-  /// Required. Specifies the machine types, the number of replicas for workers
-  /// and parameter servers.
+  /// Specifies the machine types, the number of replicas for workers and
+  /// parameter servers.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "BASIC" : A single worker instance. This tier is suitable for learning
   /// how to use Cloud ML, and for experimenting with new models using small
@@ -6361,56 +6712,73 @@ class GoogleCloudMlV1TrainingInput {
   /// from your worker type and master type.
   core.String scaleTier;
 
-  /// Optional. Scheduling options for a training job.
+  /// Scheduling options for a training job.
+  ///
+  /// Optional.
   GoogleCloudMlV1Scheduling scheduling;
 
-  /// Optional. The email address of a service account to use when running the
-  /// training appplication. You must have the `iam.serviceAccounts.actAs`
-  /// permission for the specified service account. In addition, the AI Platform
-  /// Training Google-managed service account must have the
-  /// `roles/iam.serviceAccountAdmin` role for the specified service account.
-  /// [Learn more about configuring a service
+  /// The email address of a service account to use when running the training
+  /// appplication.
+  ///
+  /// You must have the `iam.serviceAccounts.actAs` permission for the specified
+  /// service account. In addition, the AI Platform Training Google-managed
+  /// service account must have the `roles/iam.serviceAccountAdmin` role for the
+  /// specified service account. [Learn more about configuring a service
   /// account.](/ai-platform/training/docs/custom-service-account) If not
   /// specified, the AI Platform Training Google-managed service account is used
   /// by default.
+  ///
+  /// Optional.
   core.String serviceAccount;
 
-  /// Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment
-  /// variable when training with a custom container. Defaults to `false`.
-  /// [Learn more about this
+  /// Use `chief` instead of `master` in the `TF_CONFIG` environment variable
+  /// when training with a custom container.
+  ///
+  /// Defaults to `false`. [Learn more about this
   /// field.](/ai-platform/training/docs/distributed-training-details#chief-versus-master)
   /// This field has no effect for training jobs that don't use a custom
   /// container.
+  ///
+  /// Optional.
   core.bool useChiefInTfConfig;
 
-  /// Optional. The configuration for workers. You should only set
-  /// `workerConfig.acceleratorConfig` if `workerType` is set to a Compute
-  /// Engine machine type. [Learn about restrictions on accelerator
-  /// configurations for
+  /// The configuration for workers.
+  ///
+  /// You should only set `workerConfig.acceleratorConfig` if `workerType` is
+  /// set to a Compute Engine machine type. [Learn about restrictions on
+  /// accelerator configurations for
   /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `workerConfig.imageUri` only if you build a custom image for your
   /// worker. If `workerConfig.imageUri` has not been set, AI Platform uses the
   /// value of `masterConfig.imageUri`. Learn more about [configuring custom
   /// containers](/ai-platform/training/docs/distributed-training-containers).
+  ///
+  /// Optional.
   GoogleCloudMlV1ReplicaConfig workerConfig;
 
-  /// Optional. The number of worker replicas to use for the training job. Each
-  /// replica in the cluster will be of the type specified in `worker_type`.
-  /// This value can only be used when `scale_tier` is set to `CUSTOM`. If you
-  /// set this value, you must also set `worker_type`. The default value is
-  /// zero.
+  /// The number of worker replicas to use for the training job.
+  ///
+  /// Each replica in the cluster will be of the type specified in
+  /// `worker_type`. This value can only be used when `scale_tier` is set to
+  /// `CUSTOM`. If you set this value, you must also set `worker_type`. The
+  /// default value is zero.
+  ///
+  /// Optional.
   core.String workerCount;
 
-  /// Optional. Specifies the type of virtual machine to use for your training
-  /// job's worker nodes. The supported values are the same as those described
-  /// in the entry for `masterType`. This value must be consistent with the
-  /// category of machine type that `masterType` uses. In other words, both must
-  /// be Compute Engine machine types or both must be legacy machine types. If
-  /// you use `cloud_tpu` for this value, see special instructions for
-  /// [configuring a custom TPU
+  /// Specifies the type of virtual machine to use for your training job's
+  /// worker nodes.
+  ///
+  /// The supported values are the same as those described in the entry for
+  /// `masterType`. This value must be consistent with the category of machine
+  /// type that `masterType` uses. In other words, both must be Compute Engine
+  /// machine types or both must be legacy machine types. If you use `cloud_tpu`
+  /// for this value, see special instructions for [configuring a custom TPU
   /// machine](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
   /// This value must be present when `scaleTier` is set to `CUSTOM` and
   /// `workerCount` is greater than zero.
+  ///
+  /// Optional.
   core.String workerType;
 
   GoogleCloudMlV1TrainingInput();
@@ -6586,13 +6954,17 @@ class GoogleCloudMlV1TrainingInput {
   }
 }
 
-/// Represents results of a training job. Output only.
+/// Represents results of a training job.
+///
+/// Output only.
 class GoogleCloudMlV1TrainingOutput {
-  /// Details related to built-in algorithms jobs. Only set for built-in
-  /// algorithms jobs.
+  /// Details related to built-in algorithms jobs.
+  ///
+  /// Only set for built-in algorithms jobs.
   GoogleCloudMlV1BuiltInAlgorithmOutput builtInAlgorithmOutput;
 
   /// The number of hyperparameter tuning trials that completed successfully.
+  ///
   /// Only set for hyperparameter tuning jobs.
   core.String completedTrialCount;
 
@@ -6600,7 +6972,9 @@ class GoogleCloudMlV1TrainingOutput {
   core.double consumedMLUnits;
 
   /// The TensorFlow summary tag name used for optimizing hyperparameter tuning
-  /// trials. See
+  /// trials.
+  ///
+  /// See
   /// [`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag)
   /// for more information. Only set for hyperparameter tuning jobs.
   core.String hyperparameterMetricTag;
@@ -6611,8 +6985,9 @@ class GoogleCloudMlV1TrainingOutput {
   /// Whether this job is a hyperparameter tuning job.
   core.bool isHyperparameterTuningJob;
 
-  /// Results for individual Hyperparameter trials. Only set for hyperparameter
-  /// tuning jobs.
+  /// Results for individual Hyperparameter trials.
+  ///
+  /// Only set for hyperparameter tuning jobs.
   core.List<GoogleCloudMlV1HyperparameterOutput> trials;
 
   GoogleCloudMlV1TrainingOutput();
@@ -6677,32 +7052,43 @@ class GoogleCloudMlV1TrainingOutput {
 
 /// A message representing a trial.
 class GoogleCloudMlV1Trial {
-  /// Output only. The identifier of the client that originally requested this
-  /// trial.
+  /// The identifier of the client that originally requested this trial.
+  ///
+  /// Output only.
   core.String clientId;
 
-  /// Output only. Time at which the trial's status changed to COMPLETED.
+  /// Time at which the trial's status changed to COMPLETED.
+  ///
+  /// Output only.
   core.String endTime;
 
   /// The final measurement containing the objective value.
   GoogleCloudMlV1Measurement finalMeasurement;
 
-  /// Output only. A human readable string describing why the trial is
-  /// infeasible. This should only be set if trial_infeasible is true.
+  /// A human readable string describing why the trial is infeasible.
+  ///
+  /// This should only be set if trial_infeasible is true.
+  ///
+  /// Output only.
   core.String infeasibleReason;
 
   /// A list of measurements that are strictly lexicographically ordered by
-  /// their induced tuples (steps, elapsed_time). These are used for early
-  /// stopping computations.
+  /// their induced tuples (steps, elapsed_time).
+  ///
+  /// These are used for early stopping computations.
   core.List<GoogleCloudMlV1Measurement> measurements;
 
-  /// Output only. Name of the trial assigned by the service.
+  /// Name of the trial assigned by the service.
+  ///
+  /// Output only.
   core.String name;
 
   /// The parameters of the trial.
   core.List<GoogleCloudMlV1TrialParameter> parameters;
 
-  /// Output only. Time at which the trial was started.
+  /// Time at which the trial was started.
+  ///
+  /// Output only.
   core.String startTime;
 
   /// The detailed state of a trial.
@@ -6717,8 +7103,9 @@ class GoogleCloudMlV1Trial {
   /// service.
   core.String state;
 
-  /// Output only. If true, the parameters in this trial are not attempted
-  /// again.
+  /// If true, the parameters in this trial are not attempted again.
+  ///
+  /// Output only.
   core.bool trialInfeasible;
 
   GoogleCloudMlV1Trial();
@@ -6802,49 +7189,66 @@ class GoogleCloudMlV1Trial {
   }
 }
 
-/// Represents a version of the model. Each version is a trained model deployed
-/// in the cloud, ready to handle prediction requests. A model can have multiple
-/// versions. You can get information about all of the versions of a given model
-/// by calling projects.models.versions.list.
+/// Represents a version of the model.
+///
+/// Each version is a trained model deployed in the cloud, ready to handle
+/// prediction requests. A model can have multiple versions. You can get
+/// information about all of the versions of a given model by calling
+/// projects.models.versions.list.
 class GoogleCloudMlV1Version {
-  /// Optional. Accelerator config for using GPUs for online prediction (beta).
+  /// Accelerator config for using GPUs for online prediction (beta).
+  ///
   /// Only specify this field if you have specified a Compute Engine (N1)
   /// machine type in the `machineType` field. Learn more about [using GPUs for
   /// online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
+  ///
+  /// Optional.
   GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
 
   /// Automatically scale the number of nodes used to serve the model in
-  /// response to increases and decreases in traffic. Care should be taken to
-  /// ramp up traffic according to the model's ability to scale or you will
-  /// start seeing increases in latency and 429 response codes. Note that you
-  /// cannot use AutoScaling if your version uses
+  /// response to increases and decreases in traffic.
+  ///
+  /// Care should be taken to ramp up traffic according to the model's ability
+  /// to scale or you will start seeing increases in latency and 429 response
+  /// codes. Note that you cannot use AutoScaling if your version uses
   /// [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use specify
   /// `manual_scaling`.
   GoogleCloudMlV1AutoScaling autoScaling;
   GoogleCloudMlV1ContainerSpec container;
 
-  /// Output only. The time the version was created.
+  /// The time the version was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Required. The Cloud Storage location of the trained model used to create
-  /// the version. See the [guide to model
+  /// The Cloud Storage location of the trained model used to create the
+  /// version.
+  ///
+  /// See the [guide to model
   /// deployment](/ml-engine/docs/tensorflow/deploying-models) for more
   /// information. When passing Version to projects.models.versions.create the
   /// model service uses the specified location as the source of the model. Once
   /// deployed, the model version is hosted by the prediction service, so this
   /// location is useful only as a historical record. The total number of model
   /// files can't exceed 1000.
+  ///
+  /// Required.
   core.String deploymentUri;
 
-  /// Optional. The description specified for the version when it was created.
+  /// The description specified for the version when it was created.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Output only. The details of a failure or a cancellation.
+  /// The details of a failure or a cancellation.
+  ///
+  /// Output only.
   core.String errorMessage;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a model from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a model from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform model updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `GetVersion`, and
   /// systems are expected to put that etag in the request to `UpdateVersion` to
@@ -6857,22 +7261,28 @@ class GoogleCloudMlV1Version {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. Configures explainability features on the model's version. Some
-  /// explanation features require additional metadata to be loaded as part of
-  /// the model payload.
+  /// Configures explainability features on the model's version.
+  ///
+  /// Some explanation features require additional metadata to be loaded as part
+  /// of the model payload.
+  ///
+  /// Optional.
   GoogleCloudMlV1ExplanationConfig explanationConfig;
 
-  /// Optional. The machine learning framework AI Platform uses to train this
-  /// version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
-  /// `XGBOOST`. If you do not specify a framework, AI Platform will analyze
-  /// files in the deployment_uri to determine a framework. If you choose
-  /// `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the
-  /// model to 1.4 or greater. Do **not** specify a framework if you're
-  /// deploying a [custom prediction
+  /// The machine learning framework AI Platform uses to train this version of
+  /// the model.
+  ///
+  /// Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not
+  /// specify a framework, AI Platform will analyze files in the deployment_uri
+  /// to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you
+  /// must also set the runtime version of the model to 1.4 or greater. Do
+  /// **not** specify a framework if you're deploying a [custom prediction
   /// routine](/ml-engine/docs/tensorflow/custom-prediction-routines). If you
   /// specify a [Compute Engine (N1) machine
   /// type](/ml-engine/docs/machine-types-online-prediction) in the
   /// `machineType` field, you must specify `TENSORFLOW` for the framework.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "FRAMEWORK_UNSPECIFIED" : Unspecified framework. Assigns a value based
   /// on the file suffix.
@@ -6881,49 +7291,66 @@ class GoogleCloudMlV1Version {
   /// - "XGBOOST" : XGBoost framework.
   core.String framework;
 
-  /// Output only. If true, this version will be used to handle prediction
-  /// requests that do not specify a version. You can change the default version
-  /// by calling projects.methods.versions.setDefault.
+  /// If true, this version will be used to handle prediction requests that do
+  /// not specify a version.
+  ///
+  /// You can change the default version by calling
+  /// projects.methods.versions.setDefault.
+  ///
+  /// Output only.
   core.bool isDefault;
 
-  /// Optional. One or more labels that you can add, to organize your model
-  /// versions. Each label is a key-value pair, where both the key and the value
-  /// are arbitrary strings that you supply. For more information, see the
+  /// One or more labels that you can add, to organize your model versions.
+  ///
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings that you supply. For more information, see the
   /// documentation on using labels.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The time the version was last used for prediction.
+  /// The time the version was last used for prediction.
+  ///
+  /// Output only.
   core.String lastUseTime;
 
-  /// Optional. The type of machine on which to serve the model. Currently only
-  /// applies to online prediction service. If this field is not specified, it
-  /// defaults to `mls1-c1-m2`. Online prediction supports the following machine
-  /// types: * `mls1-c1-m2` * `mls1-c4-m2` * `n1-standard-2` * `n1-standard-4` *
-  /// `n1-standard-8` * `n1-standard-16` * `n1-standard-32` * `n1-highmem-2` *
-  /// `n1-highmem-4` * `n1-highmem-8` * `n1-highmem-16` * `n1-highmem-32` *
-  /// `n1-highcpu-2` * `n1-highcpu-4` * `n1-highcpu-8` * `n1-highcpu-16` *
-  /// `n1-highcpu-32` `mls1-c1-m2` is generally available. All other machine
-  /// types are available in beta. Learn more about the [differences between
-  /// machine types](/ml-engine/docs/machine-types-online-prediction).
+  /// The type of machine on which to serve the model.
+  ///
+  /// Currently only applies to online prediction service. If this field is not
+  /// specified, it defaults to `mls1-c1-m2`. Online prediction supports the
+  /// following machine types: * `mls1-c1-m2` * `mls1-c4-m2` * `n1-standard-2` *
+  /// `n1-standard-4` * `n1-standard-8` * `n1-standard-16` * `n1-standard-32` *
+  /// `n1-highmem-2` * `n1-highmem-4` * `n1-highmem-8` * `n1-highmem-16` *
+  /// `n1-highmem-32` * `n1-highcpu-2` * `n1-highcpu-4` * `n1-highcpu-8` *
+  /// `n1-highcpu-16` * `n1-highcpu-32` `mls1-c1-m2` is generally available. All
+  /// other machine types are available in beta. Learn more about the
+  /// [differences between machine
+  /// types](/ml-engine/docs/machine-types-online-prediction).
+  ///
+  /// Optional.
   core.String machineType;
 
-  /// Manually select the number of nodes to use for serving the model. You
-  /// should generally use `auto_scaling` with an appropriate `min_nodes`
+  /// Manually select the number of nodes to use for serving the model.
+  ///
+  /// You should generally use `auto_scaling` with an appropriate `min_nodes`
   /// instead, but this option is available if you want more predictable
   /// billing. Beware that latency and error rates will increase if the traffic
   /// exceeds that capability of the system to serve it based on the selected
   /// number of nodes.
   GoogleCloudMlV1ManualScaling manualScaling;
 
-  /// Required. The name specified for the version when it was created. The
-  /// version name must be unique within the model it is created in.
+  /// The name specified for the version when it was created.
+  ///
+  /// The version name must be unique within the model it is created in.
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. Cloud Storage paths (`gs://…`) of packages for [custom
-  /// prediction
+  /// Cloud Storage paths (`gs://…`) of packages for [custom prediction
   /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or
   /// [scikit-learn pipelines with custom
   /// code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).
+  ///
   /// For a custom prediction routine, one of these packages must contain your
   /// Predictor class (see
   /// [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally,
@@ -6932,10 +7359,13 @@ class GoogleCloudMlV1Version {
   /// version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify
   /// this field, you must also set
   /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+  ///
+  /// Optional.
   core.List<core.String> packageUris;
 
-  /// Optional. The fully qualified name (module_name.class_name) of a class
-  /// that implements the Predictor interface described in this reference field.
+  /// The fully qualified name (module_name.class_name) of a class that
+  /// implements the Predictor interface described in this reference field.
+  ///
   /// The module containing this class should be included in a package provided
   /// to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this
   /// field if and only if you are deploying a [custom prediction routine
@@ -6960,34 +7390,49 @@ class GoogleCloudMlV1Version {
   /// implementing this Predictor class. """ raise NotImplementedError() Learn
   /// more about [the Predictor interface and custom prediction
   /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
+  ///
+  /// Optional.
   core.String predictionClass;
 
-  /// Required. The version of Python used in prediction. The following Python
-  /// versions are available: * Python '3.7' is available when `runtime_version`
-  /// is set to '1.15' or later. * Python '3.5' is available when
-  /// `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7'
-  /// is available when `runtime_version` is set to '1.15' or earlier. Read more
-  /// about the Python versions available for [each runtime
+  /// The version of Python used in prediction.
+  ///
+  /// The following Python versions are available: * Python '3.7' is available
+  /// when `runtime_version` is set to '1.15' or later. * Python '3.5' is
+  /// available when `runtime_version` is set to a version from '1.4' to '1.14'.
+  /// * Python '2.7' is available when `runtime_version` is set to '1.15' or
+  /// earlier. Read more about the Python versions available for [each runtime
   /// version](/ml-engine/docs/runtime-version-list).
+  ///
+  /// Required.
   core.String pythonVersion;
 
-  /// Optional. *Only* specify this field in a projects.models.versions.patch
-  /// request. Specifying it in a projects.models.versions.create request has no
-  /// effect. Configures the request-response pair logging on predictions from
-  /// this Version.
+  /// *Only* specify this field in a projects.models.versions.patch request.
+  ///
+  /// Specifying it in a projects.models.versions.create request has no effect.
+  /// Configures the request-response pair logging on predictions from this
+  /// Version.
+  ///
+  /// Optional.
   GoogleCloudMlV1RequestLoggingConfig requestLoggingConfig;
   GoogleCloudMlV1RouteMap routes;
 
-  /// Required. The AI Platform runtime version to use for this deployment. For
-  /// more information, see the [runtime version
+  /// The AI Platform runtime version to use for this deployment.
+  ///
+  /// For more information, see the [runtime version
   /// list](/ml-engine/docs/runtime-version-list) and [how to manage runtime
   /// versions](/ml-engine/docs/versioning).
+  ///
+  /// Required.
   core.String runtimeVersion;
 
-  /// Optional. Specifies the service account for resource access control.
+  /// Specifies the service account for resource access control.
+  ///
+  /// Optional.
   core.String serviceAccount;
 
-  /// Output only. The state of a version.
+  /// The state of a version.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNKNOWN" : The version state is unspecified.
   /// - "READY" : The version is ready for prediction.
@@ -7172,13 +7617,15 @@ class GoogleCloudMlV1Version {
 }
 
 /// Attributes credit by computing the XRAI taking advantage of the model's
-/// fully differentiable structure. Refer to this paper for more details:
-/// https://arxiv.org/abs/1906.02825 Currently only implemented for models with
-/// natural image inputs.
+/// fully differentiable structure.
+///
+/// Refer to this paper for more details: https://arxiv.org/abs/1906.02825
+/// Currently only implemented for models with natural image inputs.
 class GoogleCloudMlV1XraiAttribution {
-  /// Number of steps for approximating the path integral. A good value to start
-  /// is 50 and gradually increase until the sum to diff property is met within
-  /// the desired error range.
+  /// Number of steps for approximating the path integral.
+  ///
+  /// A good value to start is 50 and gradually increase until the sum to diff
+  /// property is met within the desired error range.
   core.int numIntegralSteps;
 
   GoogleCloudMlV1XraiAttribution();
@@ -7198,11 +7645,12 @@ class GoogleCloudMlV1XraiAttribution {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -7218,9 +7666,10 @@ class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   GoogleIamV1AuditConfig();
@@ -7251,14 +7700,17 @@ class GoogleIamV1AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -7296,20 +7748,24 @@ class GoogleIamV1AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -7340,8 +7796,9 @@ class GoogleIamV1Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   GoogleIamV1Binding();
@@ -7383,16 +7840,18 @@ class GoogleIamV1Binding {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -7415,14 +7874,17 @@ class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<GoogleIamV1Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -7439,20 +7901,22 @@ class GoogleIamV1Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -7501,13 +7965,15 @@ class GoogleIamV1Policy {
 
 /// Request message for `SetIamPolicy` method.
 class GoogleIamV1SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   GoogleIamV1Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -7538,9 +8004,10 @@ class GoogleIamV1SetIamPolicyRequest {
 
 /// Request message for `TestIamPermissions` method.
 class GoogleIamV1TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -7626,31 +8093,37 @@ class GoogleLongrunningListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -7715,10 +8188,12 @@ class GoogleLongrunningOperation {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
@@ -7733,24 +8208,27 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -7792,8 +8270,10 @@ class GoogleRpcStatus {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -7808,20 +8288,29 @@ class GoogleRpcStatus {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class GoogleTypeExpr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleTypeExpr();

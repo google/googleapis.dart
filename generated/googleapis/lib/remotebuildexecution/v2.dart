@@ -69,12 +69,13 @@ class ActionResultsResource {
 
   ActionResultsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieve a cached execution result. Implementations SHOULD ensure that any
-  /// blobs referenced from the ContentAddressableStorage are available at the
-  /// time of returning the ActionResult and will be for some period of time
-  /// afterwards. The TTLs of the referenced blobs SHOULD be increased if
-  /// necessary and applicable. Errors: * `NOT_FOUND`: The requested
-  /// `ActionResult` is not in the cache.
+  /// Retrieve a cached execution result.
+  ///
+  /// Implementations SHOULD ensure that any blobs referenced from the
+  /// ContentAddressableStorage are available at the time of returning the
+  /// ActionResult and will be for some period of time afterwards. The TTLs of
+  /// the referenced blobs SHOULD be increased if necessary and applicable.
+  /// Errors: * `NOT_FOUND`: The requested `ActionResult` is not in the cache.
   ///
   /// Request parameters:
   ///
@@ -170,14 +171,16 @@ class ActionResultsResource {
     );
   }
 
-  /// Upload a new execution result. In order to allow the server to perform
-  /// access control based on the type of action, and to assist with client
-  /// debugging, the client MUST first upload the Action that produced the
-  /// result, along with its Command, into the `ContentAddressableStorage`.
-  /// Errors: * `INVALID_ARGUMENT`: One or more arguments are invalid. *
-  /// `FAILED_PRECONDITION`: One or more errors occurred in updating the action
-  /// result, such as a missing command or action. * `RESOURCE_EXHAUSTED`: There
-  /// is insufficient storage space to add the entry to the cache.
+  /// Upload a new execution result.
+  ///
+  /// In order to allow the server to perform access control based on the type
+  /// of action, and to assist with client debugging, the client MUST first
+  /// upload the Action that produced the result, along with its Command, into
+  /// the `ContentAddressableStorage`. Errors: * `INVALID_ARGUMENT`: One or more
+  /// arguments are invalid. * `FAILED_PRECONDITION`: One or more errors
+  /// occurred in updating the action result, such as a missing command or
+  /// action. * `RESOURCE_EXHAUSTED`: There is insufficient storage space to add
+  /// the entry to the cache.
   ///
   /// [request] - The metadata request object.
   ///
@@ -277,13 +280,15 @@ class ActionsResource {
 
   ActionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Execute an action remotely. In order to execute an action, the client must
-  /// first upload all of the inputs, the Command to run, and the Action into
-  /// the ContentAddressableStorage. It then calls `Execute` with an
-  /// `action_digest` referring to them. The server will run the action and
-  /// eventually return the result. The input `Action`'s fields MUST meet the
-  /// various canonicalization requirements specified in the documentation for
-  /// their types so that it has the same digest as other logically equivalent
+  /// Execute an action remotely.
+  ///
+  /// In order to execute an action, the client must first upload all of the
+  /// inputs, the Command to run, and the Action into the
+  /// ContentAddressableStorage. It then calls `Execute` with an `action_digest`
+  /// referring to them. The server will run the action and eventually return
+  /// the result. The input `Action`'s fields MUST meet the various
+  /// canonicalization requirements specified in the documentation for their
+  /// types so that it has the same digest as other logically equivalent
   /// `Action`s. The server MAY enforce the requirements and return errors if a
   /// non-canonical input is received. It MAY also proceed without verifying
   /// some or all of the requirements, such as for performance reasons. If the
@@ -387,16 +392,17 @@ class BlobsResource {
 
   BlobsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Download many blobs at once. The server may enforce a limit of the
-  /// combined total size of blobs to be downloaded using this API. This limit
-  /// may be obtained using the Capabilities API. Requests exceeding the limit
-  /// should either be split into smaller chunks or downloaded using the
-  /// ByteStream API, as appropriate. This request is equivalent to calling a
-  /// Bytestream `Read` request on each individual blob, in parallel. The
-  /// requests may succeed or fail independently. Errors: * `INVALID_ARGUMENT`:
-  /// The client attempted to read more than the server supported limit. Every
-  /// error on individual read will be returned in the corresponding digest
-  /// status.
+  /// Download many blobs at once.
+  ///
+  /// The server may enforce a limit of the combined total size of blobs to be
+  /// downloaded using this API. This limit may be obtained using the
+  /// Capabilities API. Requests exceeding the limit should either be split into
+  /// smaller chunks or downloaded using the ByteStream API, as appropriate.
+  /// This request is equivalent to calling a Bytestream `Read` request on each
+  /// individual blob, in parallel. The requests may succeed or fail
+  /// independently. Errors: * `INVALID_ARGUMENT`: The client attempted to read
+  /// more than the server supported limit. Every error on individual read will
+  /// be returned in the corresponding digest status.
   ///
   /// [request] - The metadata request object.
   ///
@@ -460,17 +466,19 @@ class BlobsResource {
     );
   }
 
-  /// Upload many blobs at once. The server may enforce a limit of the combined
-  /// total size of blobs to be uploaded using this API. This limit may be
-  /// obtained using the Capabilities API. Requests exceeding the limit should
-  /// either be split into smaller chunks or uploaded using the ByteStream API,
-  /// as appropriate. This request is equivalent to calling a Bytestream `Write`
-  /// request on each individual blob, in parallel. The requests may succeed or
-  /// fail independently. Errors: * `INVALID_ARGUMENT`: The client attempted to
-  /// upload more than the server supported limit. Individual requests may
-  /// return the following errors, additionally: * `RESOURCE_EXHAUSTED`: There
-  /// is insufficient disk quota to store the blob. * `INVALID_ARGUMENT`: The
-  /// Digest does not match the provided data.
+  /// Upload many blobs at once.
+  ///
+  /// The server may enforce a limit of the combined total size of blobs to be
+  /// uploaded using this API. This limit may be obtained using the Capabilities
+  /// API. Requests exceeding the limit should either be split into smaller
+  /// chunks or uploaded using the ByteStream API, as appropriate. This request
+  /// is equivalent to calling a Bytestream `Write` request on each individual
+  /// blob, in parallel. The requests may succeed or fail independently. Errors:
+  /// * `INVALID_ARGUMENT`: The client attempted to upload more than the server
+  /// supported limit. Individual requests may return the following errors,
+  /// additionally: * `RESOURCE_EXHAUSTED`: There is insufficient disk quota to
+  /// store the blob. * `INVALID_ARGUMENT`: The Digest does not match the
+  /// provided data.
   ///
   /// [request] - The metadata request object.
   ///
@@ -534,11 +542,12 @@ class BlobsResource {
     );
   }
 
-  /// Determine if blobs are present in the CAS. Clients can use this API before
-  /// uploading blobs to determine which ones are already present in the CAS and
-  /// do not need to be uploaded again. Servers SHOULD increase the TTLs of the
-  /// referenced blobs if necessary and applicable. There are no method-specific
-  /// errors.
+  /// Determine if blobs are present in the CAS.
+  ///
+  /// Clients can use this API before uploading blobs to determine which ones
+  /// are already present in the CAS and do not need to be uploaded again.
+  /// Servers SHOULD increase the TTLs of the referenced blobs if necessary and
+  /// applicable. There are no method-specific errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -602,19 +611,20 @@ class BlobsResource {
     );
   }
 
-  /// Fetch the entire directory tree rooted at a node. This request must be
-  /// targeted at a Directory stored in the ContentAddressableStorage (CAS). The
-  /// server will enumerate the `Directory` tree recursively and return every
-  /// node descended from the root. The GetTreeRequest.page_token parameter can
-  /// be used to skip ahead in the stream (e.g. when retrying a partially
-  /// completed and aborted request), by setting it to a value taken from
-  /// GetTreeResponse.next_page_token of the last successfully processed
-  /// GetTreeResponse). The exact traversal order is unspecified and, unless
-  /// retrieving subsequent pages from an earlier request, is not guaranteed to
-  /// be stable across multiple invocations of `GetTree`. If part of the tree is
-  /// missing from the CAS, the server will return the portion present and omit
-  /// the rest. Errors: * `NOT_FOUND`: The requested tree root is not present in
-  /// the CAS.
+  /// Fetch the entire directory tree rooted at a node.
+  ///
+  /// This request must be targeted at a Directory stored in the
+  /// ContentAddressableStorage (CAS). The server will enumerate the `Directory`
+  /// tree recursively and return every node descended from the root. The
+  /// GetTreeRequest.page_token parameter can be used to skip ahead in the
+  /// stream (e.g. when retrying a partially completed and aborted request), by
+  /// setting it to a value taken from GetTreeResponse.next_page_token of the
+  /// last successfully processed GetTreeResponse). The exact traversal order is
+  /// unspecified and, unless retrieving subsequent pages from an earlier
+  /// request, is not guaranteed to be stable across multiple invocations of
+  /// `GetTree`. If part of the tree is missing from the CAS, the server will
+  /// return the portion present and omit the rest. Errors: * `NOT_FOUND`: The
+  /// requested tree root is not present in the CAS.
   ///
   /// Request parameters:
   ///
@@ -713,12 +723,14 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Wait for an execution operation to complete. When the client initially
-  /// makes the request, the server immediately responds with the current status
-  /// of the execution. The server will leave the request stream open until the
-  /// operation completes, and then respond with the completed operation. The
-  /// server MAY choose to stream additional updates as execution progresses,
-  /// such as to provide an update as to the state of the execution.
+  /// Wait for an execution operation to complete.
+  ///
+  /// When the client initially makes the request, the server immediately
+  /// responds with the current status of the execution. The server will leave
+  /// the request stream open until the operation completes, and then respond
+  /// with the completed operation. The server MAY choose to stream additional
+  /// updates as execution progresses, such as to provide an update as to the
+  /// state of the execution.
   ///
   /// [request] - The metadata request object.
   ///
@@ -785,11 +797,13 @@ class V2Resource {
   V2Resource(commons.ApiRequester client) : _requester = client;
 
   /// GetCapabilities returns the server capabilities configuration of the
-  /// remote endpoint. Only the capabilities of the services supported by the
-  /// endpoint will be returned: * Execution + CAS + Action Cache endpoints
-  /// should return both CacheCapabilities and ExecutionCapabilities. *
-  /// Execution only endpoints should return ExecutionCapabilities. * CAS +
-  /// Action Cache only endpoints should return CacheCapabilities.
+  /// remote endpoint.
+  ///
+  /// Only the capabilities of the services supported by the endpoint will be
+  /// returned: * Execution + CAS + Action Cache endpoints should return both
+  /// CacheCapabilities and ExecutionCapabilities. * Execution only endpoints
+  /// should return ExecutionCapabilities. * CAS + Action Cache only endpoints
+  /// should return CacheCapabilities.
   ///
   /// Request parameters:
   ///
@@ -849,19 +863,20 @@ class V2Resource {
 }
 
 /// An `Action` captures all the information about an execution which is
-/// required to reproduce it. `Action`s are the core component of the
-/// [Execution] service. A single `Action` represents a repeatable action that
-/// can be performed by the execution service. `Action`s can be succinctly
-/// identified by the digest of their wire format encoding and, once an `Action`
-/// has been executed, will be cached in the action cache. Future requests can
-/// then use the cached result rather than needing to run afresh. When a server
-/// completes execution of an Action, it MAY choose to cache the result in the
-/// ActionCache unless `do_not_cache` is `true`. Clients SHOULD expect the
-/// server to do so. By default, future calls to Execute the same `Action` will
-/// also serve their results from the cache. Clients must take care to
-/// understand the caching behaviour. Ideally, all `Action`s will be
-/// reproducible so that serving a result from cache is always desirable and
-/// correct.
+/// required to reproduce it.
+///
+/// `Action`s are the core component of the [Execution] service. A single
+/// `Action` represents a repeatable action that can be performed by the
+/// execution service. `Action`s can be succinctly identified by the digest of
+/// their wire format encoding and, once an `Action` has been executed, will be
+/// cached in the action cache. Future requests can then use the cached result
+/// rather than needing to run afresh. When a server completes execution of an
+/// Action, it MAY choose to cache the result in the ActionCache unless
+/// `do_not_cache` is `true`. Clients SHOULD expect the server to do so. By
+/// default, future calls to Execute the same `Action` will also serve their
+/// results from the cache. Clients must take care to understand the caching
+/// behaviour. Ideally, all `Action`s will be reproducible so that serving a
+/// result from cache is always desirable and correct.
 class BuildBazelRemoteExecutionV2Action {
   /// The digest of the Command to run, which MUST be present in the
   /// ContentAddressableStorage.
@@ -871,34 +886,39 @@ class BuildBazelRemoteExecutionV2Action {
   /// requests for the same `Action` may not be merged.
   core.bool doNotCache;
 
-  /// The digest of the root Directory for the input files. The files in the
-  /// directory tree are available in the correct location on the build machine
-  /// before the command is executed. The root directory, as well as every
-  /// subdirectory and content blob referred to, MUST be in the
+  /// The digest of the root Directory for the input files.
+  ///
+  /// The files in the directory tree are available in the correct location on
+  /// the build machine before the command is executed. The root directory, as
+  /// well as every subdirectory and content blob referred to, MUST be in the
   /// ContentAddressableStorage.
   BuildBazelRemoteExecutionV2Digest inputRootDigest;
 
-  /// List of required supported NodeProperty keys. In order to ensure that
-  /// equivalent `Action`s always hash to the same value, the supported node
-  /// properties MUST be lexicographically sorted by name. Sorting of strings is
-  /// done by code point, equivalently, by the UTF-8 bytes. The interpretation
-  /// of these properties is server-dependent. If a property is not recognized
-  /// by the server, the server will return an `INVALID_ARGUMENT` error.
+  /// List of required supported NodeProperty keys.
+  ///
+  /// In order to ensure that equivalent `Action`s always hash to the same
+  /// value, the supported node properties MUST be lexicographically sorted by
+  /// name. Sorting of strings is done by code point, equivalently, by the UTF-8
+  /// bytes. The interpretation of these properties is server-dependent. If a
+  /// property is not recognized by the server, the server will return an
+  /// `INVALID_ARGUMENT` error.
   core.List<core.String> outputNodeProperties;
 
-  /// A timeout after which the execution should be killed. If the timeout is
-  /// absent, then the client is specifying that the execution should continue
-  /// as long as the server will let it. The server SHOULD impose a timeout if
-  /// the client does not specify one, however, if the client does specify a
-  /// timeout that is longer than the server's maximum timeout, the server MUST
-  /// reject the request. The timeout is a part of the Action message, and
-  /// therefore two `Actions` with different timeouts are different, even if
-  /// they are otherwise identical. This is because, if they were not, running
-  /// an `Action` with a lower timeout than is required might result in a cache
-  /// hit from an execution run with a longer timeout, hiding the fact that the
-  /// timeout is too short. By encoding it directly in the `Action`, a lower
-  /// timeout will result in a cache miss and the execution timeout will fail
-  /// immediately, rather than whenever the cache entry gets evicted.
+  /// A timeout after which the execution should be killed.
+  ///
+  /// If the timeout is absent, then the client is specifying that the execution
+  /// should continue as long as the server will let it. The server SHOULD
+  /// impose a timeout if the client does not specify one, however, if the
+  /// client does specify a timeout that is longer than the server's maximum
+  /// timeout, the server MUST reject the request. The timeout is a part of the
+  /// Action message, and therefore two `Actions` with different timeouts are
+  /// different, even if they are otherwise identical. This is because, if they
+  /// were not, running an `Action` with a lower timeout than is required might
+  /// result in a cache hit from an execution run with a longer timeout, hiding
+  /// the fact that the timeout is too short. By encoding it directly in the
+  /// `Action`, a lower timeout will result in a cache miss and the execution
+  /// timeout will fail immediately, rather than whenever the cache entry gets
+  /// evicted.
   core.String timeout;
 
   BuildBazelRemoteExecutionV2Action();
@@ -976,34 +996,37 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// The exit code of the command.
   core.int exitCode;
 
-  /// The output directories of the action. For each output directory requested
-  /// in the `output_directories` or `output_paths` field of the Action, if the
-  /// corresponding directory existed after the action completed, a single entry
-  /// will be present in the output list, which will contain the digest of a
-  /// Tree message containing the directory tree, and the path equal exactly to
-  /// the corresponding Action output_directories member. As an example, suppose
-  /// the Action had an output directory `a/b/dir` and the execution produced
-  /// the following contents in `a/b/dir`: a file named `bar` and a directory
-  /// named `foo` with an executable file named `baz`. Then, output_directory
-  /// will contain (hashes shortened for readability): ```json //
-  /// OutputDirectory proto: { path: "a/b/dir" tree_digest: { hash:
-  /// "4a73bc9d03...", size: 55 } } // Tree proto with hash "4a73bc9d03..." and
-  /// size 55: { root: { files: [ { name: "bar", digest: { hash:
-  /// "4a73bc9d03...", size: 65534 } } ], directories: [ { name: "foo", digest:
-  /// { hash: "4cf2eda940...", size: 43 } } ] } children : { // (Directory proto
-  /// with hash "4cf2eda940..." and size 43) files: [ { name: "baz", digest: {
-  /// hash: "b2c941073e...", size: 1294, }, is_executable: true } ] } } ``` If
-  /// an output of the same name as listed in `output_files` of the Command was
-  /// found in `output_directories`, but was not a directory, the server will
-  /// return a FAILED_PRECONDITION.
+  /// The output directories of the action.
+  ///
+  /// For each output directory requested in the `output_directories` or
+  /// `output_paths` field of the Action, if the corresponding directory existed
+  /// after the action completed, a single entry will be present in the output
+  /// list, which will contain the digest of a Tree message containing the
+  /// directory tree, and the path equal exactly to the corresponding Action
+  /// output_directories member. As an example, suppose the Action had an output
+  /// directory `a/b/dir` and the execution produced the following contents in
+  /// `a/b/dir`: a file named `bar` and a directory named `foo` with an
+  /// executable file named `baz`. Then, output_directory will contain (hashes
+  /// shortened for readability): ```json // OutputDirectory proto: { path:
+  /// "a/b/dir" tree_digest: { hash: "4a73bc9d03...", size: 55 } } // Tree proto
+  /// with hash "4a73bc9d03..." and size 55: { root: { files: [ { name: "bar",
+  /// digest: { hash: "4a73bc9d03...", size: 65534 } } ], directories: [ { name:
+  /// "foo", digest: { hash: "4cf2eda940...", size: 43 } } ] } children : { //
+  /// (Directory proto with hash "4cf2eda940..." and size 43) files: [ { name:
+  /// "baz", digest: { hash: "b2c941073e...", size: 1294, }, is_executable: true
+  /// } ] } } ``` If an output of the same name as listed in `output_files` of
+  /// the Command was found in `output_directories`, but was not a directory,
+  /// the server will return a FAILED_PRECONDITION.
   core.List<BuildBazelRemoteExecutionV2OutputDirectory> outputDirectories;
 
   /// The output directories of the action that are symbolic links to other
-  /// directories. Those may be links to other output directories, or input
-  /// directories, or even absolute paths outside of the working directory, if
-  /// the server supports SymlinkAbsolutePathStrategy.ALLOWED. For each output
-  /// directory requested in the `output_directories` field of the Action, if
-  /// the directory existed after the action completed, a single entry will be
+  /// directories.
+  ///
+  /// Those may be links to other output directories, or input directories, or
+  /// even absolute paths outside of the working directory, if the server
+  /// supports SymlinkAbsolutePathStrategy.ALLOWED. For each output directory
+  /// requested in the `output_directories` field of the Action, if the
+  /// directory existed after the action completed, a single entry will be
   /// present either in this field, or in the `output_directories` field, if the
   /// directory was not a symbolic link. If an output of the same name was
   /// found, but was a symbolic link to a file instead of a directory, the
@@ -1016,6 +1039,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
   core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputDirectorySymlinks;
 
   /// The output files of the action that are symbolic links to other files.
+  ///
   /// Those may be links to other output files, or input files, or even absolute
   /// paths outside of the working directory, if the server supports
   /// SymlinkAbsolutePathStrategy.ALLOWED. For each output file requested in the
@@ -1032,39 +1056,45 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// populate this field in addition to `output_symlinks`.
   core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputFileSymlinks;
 
-  /// The output files of the action. For each output file requested in the
-  /// `output_files` or `output_paths` field of the Action, if the corresponding
-  /// file existed after the action completed, a single entry will be present
-  /// either in this field, or the `output_file_symlinks` field if the file was
-  /// a symbolic link to another file (`output_symlinks` field after v2.1). If
-  /// an output listed in `output_files` was found, but was a directory rather
-  /// than a regular file, the server will return a FAILED_PRECONDITION. If the
-  /// action does not produce the requested output, then that output will be
-  /// omitted from the list. The server is free to arrange the output list as
-  /// desired; clients MUST NOT assume that the output list is sorted.
+  /// The output files of the action.
+  ///
+  /// For each output file requested in the `output_files` or `output_paths`
+  /// field of the Action, if the corresponding file existed after the action
+  /// completed, a single entry will be present either in this field, or the
+  /// `output_file_symlinks` field if the file was a symbolic link to another
+  /// file (`output_symlinks` field after v2.1). If an output listed in
+  /// `output_files` was found, but was a directory rather than a regular file,
+  /// the server will return a FAILED_PRECONDITION. If the action does not
+  /// produce the requested output, then that output will be omitted from the
+  /// list. The server is free to arrange the output list as desired; clients
+  /// MUST NOT assume that the output list is sorted.
   core.List<BuildBazelRemoteExecutionV2OutputFile> outputFiles;
 
   /// New in v2.1: this field will only be populated if the command
   /// `output_paths` field was used, and not the pre v2.1 `output_files` or
-  /// `output_directories` fields. The output paths of the action that are
-  /// symbolic links to other paths. Those may be links to other outputs, or
-  /// inputs, or even absolute paths outside of the working directory, if the
-  /// server supports SymlinkAbsolutePathStrategy.ALLOWED. A single entry for
-  /// each output requested in `output_paths` field of the Action, if the
-  /// corresponding path existed after the action completed and was a symbolic
-  /// link. If the action does not produce a requested output, then that output
-  /// will be omitted from the list. The server is free to arrange the output
-  /// list as desired; clients MUST NOT assume that the output list is sorted.
+  /// `output_directories` fields.
+  ///
+  /// The output paths of the action that are symbolic links to other paths.
+  /// Those may be links to other outputs, or inputs, or even absolute paths
+  /// outside of the working directory, if the server supports
+  /// SymlinkAbsolutePathStrategy.ALLOWED. A single entry for each output
+  /// requested in `output_paths` field of the Action, if the corresponding path
+  /// existed after the action completed and was a symbolic link. If the action
+  /// does not produce a requested output, then that output will be omitted from
+  /// the list. The server is free to arrange the output list as desired;
+  /// clients MUST NOT assume that the output list is sorted.
   core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputSymlinks;
 
   /// The digest for a blob containing the standard error of the action, which
   /// can be retrieved from the ContentAddressableStorage.
   BuildBazelRemoteExecutionV2Digest stderrDigest;
 
-  /// The standard error buffer of the action. The server SHOULD NOT inline
-  /// stderr unless requested by the client in the GetActionResultRequest
-  /// message. The server MAY omit inlining, even if requested, and MUST do so
-  /// if inlining would cause the response to exceed message size limits.
+  /// The standard error buffer of the action.
+  ///
+  /// The server SHOULD NOT inline stderr unless requested by the client in the
+  /// GetActionResultRequest message. The server MAY omit inlining, even if
+  /// requested, and MUST do so if inlining would cause the response to exceed
+  /// message size limits.
   core.String stderrRaw;
   core.List<core.int> get stderrRawAsBytes => convert.base64.decode(stderrRaw);
 
@@ -1077,10 +1107,12 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// can be retrieved from the ContentAddressableStorage.
   BuildBazelRemoteExecutionV2Digest stdoutDigest;
 
-  /// The standard output buffer of the action. The server SHOULD NOT inline
-  /// stdout unless requested by the client in the GetActionResultRequest
-  /// message. The server MAY omit inlining, even if requested, and MUST do so
-  /// if inlining would cause the response to exceed message size limits.
+  /// The standard output buffer of the action.
+  ///
+  /// The server SHOULD NOT inline stdout unless requested by the client in the
+  /// GetActionResultRequest message. The server MAY omit inlining, even if
+  /// requested, and MUST do so if inlining would cause the response to exceed
+  /// message size limits.
   core.String stdoutRaw;
   core.List<core.int> get stdoutRawAsBytes => convert.base64.decode(stdoutRaw);
 
@@ -1337,7 +1369,9 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The digest of the blob. This MUST be the digest of `data`.
+  /// The digest of the blob.
+  ///
+  /// This MUST be the digest of `data`.
   BuildBazelRemoteExecutionV2Digest digest;
 
   BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest();
@@ -1436,11 +1470,13 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
   /// Supported cache priority range for both CAS and ActionCache.
   BuildBazelRemoteExecutionV2PriorityCapabilities cachePriorityCapabilities;
 
-  /// All the digest functions supported by the remote cache. Remote cache may
-  /// support multiple digest functions simultaneously.
+  /// All the digest functions supported by the remote cache.
+  ///
+  /// Remote cache may support multiple digest functions simultaneously.
   core.List<core.String> digestFunction;
 
   /// Maximum total size of blobs to be uploaded/downloaded using batch methods.
+  ///
   /// A value of 0 means no limit is set, although in practice there will always
   /// be a message size limitation of the protocol in use, e.g. GRPC.
   core.String maxBatchTotalSizeBytes;
@@ -1507,50 +1543,59 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
 }
 
 /// A `Command` is the actual command executed by a worker running an Action and
-/// specifications of its environment. Except as otherwise required, the
-/// environment (such as which system libraries or binaries are available, and
-/// what filesystems are mounted where) is defined by and specific to the
-/// implementation of the remote execution API.
+/// specifications of its environment.
+///
+/// Except as otherwise required, the environment (such as which system
+/// libraries or binaries are available, and what filesystems are mounted where)
+/// is defined by and specific to the implementation of the remote execution
+/// API.
 class BuildBazelRemoteExecutionV2Command {
-  /// The arguments to the command. The first argument must be the path to the
-  /// executable, which must be either a relative path, in which case it is
-  /// evaluated with respect to the input root, or an absolute path.
+  /// The arguments to the command.
+  ///
+  /// The first argument must be the path to the executable, which must be
+  /// either a relative path, in which case it is evaluated with respect to the
+  /// input root, or an absolute path.
   core.List<core.String> arguments;
 
-  /// The environment variables to set when running the program. The worker may
-  /// provide its own default environment variables; these defaults can be
-  /// overridden using this field. Additional variables can also be specified.
-  /// In order to ensure that equivalent Commands always hash to the same value,
-  /// the environment variables MUST be lexicographically sorted by name.
-  /// Sorting of strings is done by code point, equivalently, by the UTF-8
-  /// bytes.
+  /// The environment variables to set when running the program.
+  ///
+  /// The worker may provide its own default environment variables; these
+  /// defaults can be overridden using this field. Additional variables can also
+  /// be specified. In order to ensure that equivalent Commands always hash to
+  /// the same value, the environment variables MUST be lexicographically sorted
+  /// by name. Sorting of strings is done by code point, equivalently, by the
+  /// UTF-8 bytes.
   core.List<BuildBazelRemoteExecutionV2CommandEnvironmentVariable>
       environmentVariables;
 
   /// A list of the output directories that the client expects to retrieve from
-  /// the action. Only the listed directories will be returned (an entire
-  /// directory structure will be returned as a Tree message digest, see
-  /// OutputDirectory), as well as files listed in `output_files`. Other files
-  /// or directories that may be created during command execution are discarded.
-  /// The paths are relative to the working directory of the action execution.
-  /// The paths are specified using a single forward slash (`/`) as a path
-  /// separator, even if the execution platform natively uses a different
-  /// separator. The path MUST NOT include a trailing slash, nor a leading
-  /// slash, being a relative path. The special value of empty string is
-  /// allowed, although not recommended, and can be used to capture the entire
-  /// working directory tree, including inputs. In order to ensure consistent
-  /// hashing of the same Action, the output paths MUST be sorted
-  /// lexicographically by code point (or, equivalently, by UTF-8 bytes). An
-  /// output directory cannot be duplicated or have the same path as any of the
-  /// listed output files. An output directory is allowed to be a parent of
-  /// another output directory. Directories leading up to the output directories
-  /// (but not the output directories themselves) are created by the worker
-  /// prior to execution, even if they are not explicitly part of the input
-  /// root. DEPRECATED since 2.1: Use `output_paths` instead.
+  /// the action.
+  ///
+  /// Only the listed directories will be returned (an entire directory
+  /// structure will be returned as a Tree message digest, see OutputDirectory),
+  /// as well as files listed in `output_files`. Other files or directories that
+  /// may be created during command execution are discarded. The paths are
+  /// relative to the working directory of the action execution. The paths are
+  /// specified using a single forward slash (`/`) as a path separator, even if
+  /// the execution platform natively uses a different separator. The path MUST
+  /// NOT include a trailing slash, nor a leading slash, being a relative path.
+  /// The special value of empty string is allowed, although not recommended,
+  /// and can be used to capture the entire working directory tree, including
+  /// inputs. In order to ensure consistent hashing of the same Action, the
+  /// output paths MUST be sorted lexicographically by code point (or,
+  /// equivalently, by UTF-8 bytes). An output directory cannot be duplicated or
+  /// have the same path as any of the listed output files. An output directory
+  /// is allowed to be a parent of another output directory. Directories leading
+  /// up to the output directories (but not the output directories themselves)
+  /// are created by the worker prior to execution, even if they are not
+  /// explicitly part of the input root. DEPRECATED since 2.1: Use
+  /// `output_paths` instead.
   core.List<core.String> outputDirectories;
 
   /// A list of the output files that the client expects to retrieve from the
-  /// action. Only the listed files, as well as directories listed in
+  /// action.
+  ///
+  /// Only the listed files, as well as directories listed in
   /// `output_directories`, will be returned to the client as output. Other
   /// files or directories that may be created during command execution are
   /// discarded. The paths are relative to the working directory of the action
@@ -1568,11 +1613,13 @@ class BuildBazelRemoteExecutionV2Command {
   core.List<core.String> outputFiles;
 
   /// A list of the output paths that the client expects to retrieve from the
-  /// action. Only the listed paths will be returned to the client as output.
-  /// The type of the output (file or directory) is not specified, and will be
-  /// determined by the server after action execution. If the resulting path is
-  /// a file, it will be returned in an OutputFile) typed field. If the path is
-  /// a directory, the entire directory structure will be returned as a Tree
+  /// action.
+  ///
+  /// Only the listed paths will be returned to the client as output. The type
+  /// of the output (file or directory) is not specified, and will be determined
+  /// by the server after action execution. If the resulting path is a file, it
+  /// will be returned in an OutputFile) typed field. If the path is a
+  /// directory, the entire directory structure will be returned as a Tree
   /// message digest, see OutputDirectory) Other files or directories that may
   /// be created during command execution are discarded. The paths are relative
   /// to the working directory of the action execution. The paths are specified
@@ -1589,15 +1636,18 @@ class BuildBazelRemoteExecutionV2Command {
   /// ignored!
   core.List<core.String> outputPaths;
 
-  /// The platform requirements for the execution environment. The server MAY
-  /// choose to execute the action on any worker satisfying the requirements, so
-  /// the client SHOULD ensure that running the action on any such worker will
-  /// have the same result. A detailed lexicon for this can be found in the
-  /// accompanying platform.md.
+  /// The platform requirements for the execution environment.
+  ///
+  /// The server MAY choose to execute the action on any worker satisfying the
+  /// requirements, so the client SHOULD ensure that running the action on any
+  /// such worker will have the same result. A detailed lexicon for this can be
+  /// found in the accompanying platform.md.
   BuildBazelRemoteExecutionV2Platform platform;
 
   /// The working directory, relative to the input root, for the command to run
-  /// in. It must be a directory which exists in the input tree. If it is left
+  /// in.
+  ///
+  /// It must be a directory which exists in the input tree. If it is left
   /// empty, then the action is run in the input root.
   core.String workingDirectory;
 
@@ -1701,33 +1751,37 @@ class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
   }
 }
 
-/// A content digest. A digest for a given blob consists of the size of the blob
-/// and its hash. The hash algorithm to use is defined by the server. The size
-/// is considered to be an integral part of the digest and cannot be separated.
-/// That is, even if the `hash` field is correctly specified but `size_bytes` is
-/// not, the server MUST reject the request. The reason for including the size
-/// in the digest is as follows: in a great many cases, the server needs to know
-/// the size of the blob it is about to work with prior to starting an operation
-/// with it, such as flattening Merkle tree structures or streaming it to a
-/// worker. Technically, the server could implement a separate metadata store,
-/// but this results in a significantly more complicated implementation as
-/// opposed to having the client specify the size up-front (or storing the size
-/// along with the digest in every message where digests are embedded). This
-/// does mean that the API leaks some implementation details of (what we
-/// consider to be) a reasonable server implementation, but we consider this to
-/// be a worthwhile tradeoff. When a `Digest` is used to refer to a proto
-/// message, it always refers to the message in binary encoded form. To ensure
-/// consistent hashing, clients and servers MUST ensure that they serialize
-/// messages according to the following rules, even if there are alternate valid
-/// encodings for the same message: * Fields are serialized in tag order. *
-/// There are no unknown fields. * There are no duplicate fields. * Fields are
-/// serialized according to the default semantics for their type. Most protocol
-/// buffer implementations will always follow these rules when serializing, but
-/// care should be taken to avoid shortcuts. For instance, concatenating two
-/// messages to merge them may produce duplicate fields.
+/// A content digest.
+///
+/// A digest for a given blob consists of the size of the blob and its hash. The
+/// hash algorithm to use is defined by the server. The size is considered to be
+/// an integral part of the digest and cannot be separated. That is, even if the
+/// `hash` field is correctly specified but `size_bytes` is not, the server MUST
+/// reject the request. The reason for including the size in the digest is as
+/// follows: in a great many cases, the server needs to know the size of the
+/// blob it is about to work with prior to starting an operation with it, such
+/// as flattening Merkle tree structures or streaming it to a worker.
+/// Technically, the server could implement a separate metadata store, but this
+/// results in a significantly more complicated implementation as opposed to
+/// having the client specify the size up-front (or storing the size along with
+/// the digest in every message where digests are embedded). This does mean that
+/// the API leaks some implementation details of (what we consider to be) a
+/// reasonable server implementation, but we consider this to be a worthwhile
+/// tradeoff. When a `Digest` is used to refer to a proto message, it always
+/// refers to the message in binary encoded form. To ensure consistent hashing,
+/// clients and servers MUST ensure that they serialize messages according to
+/// the following rules, even if there are alternate valid encodings for the
+/// same message: * Fields are serialized in tag order. * There are no unknown
+/// fields. * There are no duplicate fields. * Fields are serialized according
+/// to the default semantics for their type. Most protocol buffer
+/// implementations will always follow these rules when serializing, but care
+/// should be taken to avoid shortcuts. For instance, concatenating two messages
+/// to merge them may produce duplicate fields.
 class BuildBazelRemoteExecutionV2Digest {
-  /// The hash. In the case of SHA-256, it will always be a lowercase hex string
-  /// exactly 64 characters long.
+  /// The hash.
+  ///
+  /// In the case of SHA-256, it will always be a lowercase hex string exactly
+  /// 64 characters long.
   core.String hash;
 
   /// The size of the blob, in bytes.
@@ -1757,32 +1811,34 @@ class BuildBazelRemoteExecutionV2Digest {
 }
 
 /// A `Directory` represents a directory node in a file tree, containing zero or
-/// more children FileNodes, DirectoryNodes and SymlinkNodes. Each `Node`
-/// contains its name in the directory, either the digest of its content (either
-/// a file blob or a `Directory` proto) or a symlink target, as well as possibly
-/// some metadata about the file or directory. In order to ensure that two
-/// equivalent directory trees hash to the same value, the following
-/// restrictions MUST be obeyed when constructing a a `Directory`: * Every child
-/// in the directory must have a path of exactly one segment. Multiple levels of
-/// directory hierarchy may not be collapsed. * Each child in the directory must
-/// have a unique path segment (file name). Note that while the API itself is
-/// case-sensitive, the environment where the Action is executed may or may not
-/// be case-sensitive. That is, it is legal to call the API with a Directory
-/// that has both "Foo" and "foo" as children, but the Action may be rejected by
-/// the remote system upon execution. * The files, directories and symlinks in
-/// the directory must each be sorted in lexicographical order by path. The path
-/// strings must be sorted by code point, equivalently, by UTF-8 bytes. * The
-/// NodeProperties of files, directories, and symlinks must be sorted in
-/// lexicographical order by property name. A `Directory` that obeys the
-/// restrictions is said to be in canonical form. As an example, the following
-/// could be used for a file named `bar` and a directory named `foo` with an
-/// executable file named `baz` (hashes shortened for readability): ```json //
-/// (Directory proto) { files: [ { name: "bar", digest: { hash: "4a73bc9d03...",
-/// size: 65534 }, node_properties: [ { "name": "MTime", "value":
-/// "2017-01-15T01:30:15.01Z" } ] } ], directories: [ { name: "foo", digest: {
-/// hash: "4cf2eda940...", size: 43 } } ] } // (Directory proto with hash
-/// "4cf2eda940..." and size 43) { files: [ { name: "baz", digest: { hash:
-/// "b2c941073e...", size: 1294, }, is_executable: true } ] } ```
+/// more children FileNodes, DirectoryNodes and SymlinkNodes.
+///
+/// Each `Node` contains its name in the directory, either the digest of its
+/// content (either a file blob or a `Directory` proto) or a symlink target, as
+/// well as possibly some metadata about the file or directory. In order to
+/// ensure that two equivalent directory trees hash to the same value, the
+/// following restrictions MUST be obeyed when constructing a a `Directory`: *
+/// Every child in the directory must have a path of exactly one segment.
+/// Multiple levels of directory hierarchy may not be collapsed. * Each child in
+/// the directory must have a unique path segment (file name). Note that while
+/// the API itself is case-sensitive, the environment where the Action is
+/// executed may or may not be case-sensitive. That is, it is legal to call the
+/// API with a Directory that has both "Foo" and "foo" as children, but the
+/// Action may be rejected by the remote system upon execution. * The files,
+/// directories and symlinks in the directory must each be sorted in
+/// lexicographical order by path. The path strings must be sorted by code
+/// point, equivalently, by UTF-8 bytes. * The NodeProperties of files,
+/// directories, and symlinks must be sorted in lexicographical order by
+/// property name. A `Directory` that obeys the restrictions is said to be in
+/// canonical form. As an example, the following could be used for a file named
+/// `bar` and a directory named `foo` with an executable file named `baz`
+/// (hashes shortened for readability): ```json // (Directory proto) { files: [
+/// { name: "bar", digest: { hash: "4a73bc9d03...", size: 65534 },
+/// node_properties: [ { "name": "MTime", "value": "2017-01-15T01:30:15.01Z" } ]
+/// } ], directories: [ { name: "foo", digest: { hash: "4cf2eda940...", size: 43
+/// } } ] } // (Directory proto with hash "4cf2eda940..." and size 43) { files:
+/// [ { name: "baz", digest: { hash: "b2c941073e...", size: 1294, },
+/// is_executable: true } ] } ```
 class BuildBazelRemoteExecutionV2Directory {
   /// The subdirectories in the directory.
   core.List<BuildBazelRemoteExecutionV2DirectoryNode> directories;
@@ -1852,8 +1908,10 @@ class BuildBazelRemoteExecutionV2Directory {
 /// A `DirectoryNode` represents a child of a Directory which is itself a
 /// `Directory` and its associated metadata.
 class BuildBazelRemoteExecutionV2DirectoryNode {
-  /// The digest of the Directory object represented. See Digest for information
-  /// about how to take the digest of a proto message.
+  /// The digest of the Directory object represented.
+  ///
+  /// See Digest for information about how to take the digest of a proto
+  /// message.
   BuildBazelRemoteExecutionV2Digest digest;
 
   /// The name of the directory.
@@ -1947,23 +2005,27 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
   /// The digest of the Action to execute.
   BuildBazelRemoteExecutionV2Digest actionDigest;
 
-  /// An optional policy for execution of the action. The server will have a
-  /// default policy if this is not provided.
+  /// An optional policy for execution of the action.
+  ///
+  /// The server will have a default policy if this is not provided.
   BuildBazelRemoteExecutionV2ExecutionPolicy executionPolicy;
 
   /// An optional policy for the results of this execution in the remote cache.
+  ///
   /// The server will have a default policy if this is not provided. This may be
   /// applied to both the ActionResult and the associated blobs.
   BuildBazelRemoteExecutionV2ResultsCachePolicy resultsCachePolicy;
 
   /// If true, the action will be executed even if its result is already present
-  /// in the ActionCache. The execution is still allowed to be merged with other
-  /// in-flight executions of the same action, however - semantically, the
-  /// service MUST only guarantee that the results of an execution with this
-  /// field set were not visible before the corresponding execution request was
-  /// sent. Note that actions from execution requests setting this field set are
-  /// still eligible to be entered into the action cache upon completion, and
-  /// services SHOULD overwrite any existing entries that may exist. This allows
+  /// in the ActionCache.
+  ///
+  /// The execution is still allowed to be merged with other in-flight
+  /// executions of the same action, however - semantically, the service MUST
+  /// only guarantee that the results of an execution with this field set were
+  /// not visible before the corresponding execution request was sent. Note that
+  /// actions from execution requests setting this field set are still eligible
+  /// to be entered into the action cache upon completion, and services SHOULD
+  /// overwrite any existing entries that may exist. This allows
   /// skip_cache_lookup requests to be used as a mechanism for replacing action
   /// cache entries that reference outputs no longer available or that are
   /// poisoned in any way. If false, the result may be served from the action
@@ -2024,8 +2086,9 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
   /// The result of the action.
   BuildBazelRemoteExecutionV2ActionResult result;
 
-  /// An optional list of additional log outputs the server wishes to provide. A
-  /// server can use this to return execution-specific logs however it wishes.
+  /// An optional list of additional log outputs the server wishes to provide.
+  ///
+  /// A server can use this to return execution-specific logs however it wishes.
   /// This is intended primarily to make it easier for users to debug issues
   /// that may be outside of the actual job execution, such as by identifying
   /// the worker executing the action or by providing logs from the worker's
@@ -2034,14 +2097,15 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
   core.Map<core.String, BuildBazelRemoteExecutionV2LogFile> serverLogs;
 
   /// If the status has a code other than `OK`, it indicates that the action did
-  /// not finish execution. For example, if the operation times out during
-  /// execution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST
-  /// use this field for errors in execution, rather than the error field on the
-  /// `Operation` object. If the status code is other than `OK`, then the result
-  /// MUST NOT be cached. For an error status, the `result` field is optional;
-  /// the server may populate the output-, stdout-, and stderr-related fields if
-  /// it has any information available, such as the stdout and stderr of a
-  /// timed-out action.
+  /// not finish execution.
+  ///
+  /// For example, if the operation times out during execution, the status will
+  /// have a `DEADLINE_EXCEEDED` code. Servers MUST use this field for errors in
+  /// execution, rather than the error field on the `Operation` object. If the
+  /// status code is other than `OK`, then the result MUST NOT be cached. For an
+  /// error status, the `result` field is optional; the server may populate the
+  /// output-, stdout-, and stderr-related fields if it has any information
+  /// available, such as the stdout and stderr of a timed-out action.
   GoogleRpcStatus status;
 
   BuildBazelRemoteExecutionV2ExecuteResponse();
@@ -2271,15 +2335,16 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
 
 /// An `ExecutionPolicy` can be used to control the scheduling of the action.
 class BuildBazelRemoteExecutionV2ExecutionPolicy {
-  /// The priority (relative importance) of this action. Generally, a lower
-  /// value means that the action should be run sooner than actions having a
-  /// greater priority value, but the interpretation of a given value is server-
-  /// dependent. A priority of 0 means the *default* priority. Priorities may be
-  /// positive or negative, and such actions should run later or sooner than
-  /// actions having the default priority, respectively. The particular
-  /// semantics of this field is up to the server. In particular, every server
-  /// will have their own supported range of priorities, and will decide how
-  /// these map into scheduling policy.
+  /// The priority (relative importance) of this action.
+  ///
+  /// Generally, a lower value means that the action should be run sooner than
+  /// actions having a greater priority value, but the interpretation of a given
+  /// value is server- dependent. A priority of 0 means the *default* priority.
+  /// Priorities may be positive or negative, and such actions should run later
+  /// or sooner than actions having the default priority, respectively. The
+  /// particular semantics of this field is up to the server. In particular,
+  /// every server will have their own supported range of priorities, and will
+  /// decide how these map into scheduling policy.
   core.int priority;
 
   BuildBazelRemoteExecutionV2ExecutionPolicy();
@@ -2414,8 +2479,9 @@ class BuildBazelRemoteExecutionV2GetTreeResponse {
   core.List<BuildBazelRemoteExecutionV2Directory> directories;
 
   /// If present, signifies that there are more results which the client can
-  /// retrieve by passing this as the page_token in a subsequent request. If
-  /// empty, signifies that this is the last page of results.
+  /// retrieve by passing this as the page_token in a subsequent request.
+  ///
+  /// If empty, signifies that this is the last page of results.
   core.String nextPageToken;
 
   BuildBazelRemoteExecutionV2GetTreeResponse();
@@ -2453,9 +2519,11 @@ class BuildBazelRemoteExecutionV2LogFile {
 
   /// This is a hint as to the purpose of the log, and is set to true if the log
   /// is human-readable text that can be usefully displayed to a user, and false
-  /// otherwise. For instance, if a command-line client wishes to print the
-  /// server logs to the terminal for a failed action, this allows it to avoid
-  /// displaying a binary file.
+  /// otherwise.
+  ///
+  /// For instance, if a command-line client wishes to print the server logs to
+  /// the terminal for a failed action, this allows it to avoid displaying a
+  /// binary file.
   core.bool humanReadable;
 
   BuildBazelRemoteExecutionV2LogFile();
@@ -2482,9 +2550,11 @@ class BuildBazelRemoteExecutionV2LogFile {
   }
 }
 
-/// A single property for FileNodes, DirectoryNodes, and SymlinkNodes. The
-/// server is responsible for specifying the property `name`s that it accepts.
-/// If permitted by the server, the same `name` may occur multiple times.
+/// A single property for FileNodes, DirectoryNodes, and SymlinkNodes.
+///
+/// The server is responsible for specifying the property `name`s that it
+/// accepts. If permitted by the server, the same `name` may occur multiple
+/// times.
 class BuildBazelRemoteExecutionV2NodeProperty {
   /// The property name.
   core.String name;
@@ -2518,10 +2588,11 @@ class BuildBazelRemoteExecutionV2NodeProperty {
 /// An `OutputDirectory` is the output in an `ActionResult` corresponding to a
 /// directory's full contents rather than a single file.
 class BuildBazelRemoteExecutionV2OutputDirectory {
-  /// The full path of the directory relative to the working directory. The path
-  /// separator is a forward slash `/`. Since this is a relative path, it MUST
-  /// NOT begin with a leading forward slash. The empty string value is allowed,
-  /// and it denotes the entire working directory.
+  /// The full path of the directory relative to the working directory.
+  ///
+  /// The path separator is a forward slash `/`. Since this is a relative path,
+  /// it MUST NOT begin with a leading forward slash. The empty string value is
+  /// allowed, and it denotes the entire working directory.
   core.String path;
 
   /// The digest of the encoded Tree proto containing the directory's contents.
@@ -2552,13 +2623,16 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
 }
 
 /// An `OutputFile` is similar to a FileNode, but it is used as an output in an
-/// `ActionResult`. It allows a full file path rather than only a name.
+/// `ActionResult`.
+///
+/// It allows a full file path rather than only a name.
 class BuildBazelRemoteExecutionV2OutputFile {
-  /// The contents of the file if inlining was requested. The server SHOULD NOT
-  /// inline file contents unless requested by the client in the
-  /// GetActionResultRequest message. The server MAY omit inlining, even if
-  /// requested, and MUST do so if inlining would cause the response to exceed
-  /// message size limits.
+  /// The contents of the file if inlining was requested.
+  ///
+  /// The server SHOULD NOT inline file contents unless requested by the client
+  /// in the GetActionResultRequest message. The server MAY omit inlining, even
+  /// if requested, and MUST do so if inlining would cause the response to
+  /// exceed message size limits.
   core.String contents;
   core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
 
@@ -2578,8 +2652,10 @@ class BuildBazelRemoteExecutionV2OutputFile {
   core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
 
   /// The full path of the file relative to the working directory, including the
-  /// filename. The path separator is a forward slash `/`. Since this is a
-  /// relative path, it MUST NOT begin with a leading forward slash.
+  /// filename.
+  ///
+  /// The path separator is a forward slash `/`. Since this is a relative path,
+  /// it MUST NOT begin with a leading forward slash.
   core.String path;
 
   BuildBazelRemoteExecutionV2OutputFile();
@@ -2630,23 +2706,29 @@ class BuildBazelRemoteExecutionV2OutputFile {
 }
 
 /// An `OutputSymlink` is similar to a Symlink, but it is used as an output in
-/// an `ActionResult`. `OutputSymlink` is binary-compatible with `SymlinkNode`.
+/// an `ActionResult`.
+///
+/// `OutputSymlink` is binary-compatible with `SymlinkNode`.
 class BuildBazelRemoteExecutionV2OutputSymlink {
   /// The supported node properties of the OutputSymlink, if requested by the
   /// Action.
   core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
 
   /// The full path of the symlink relative to the working directory, including
-  /// the filename. The path separator is a forward slash `/`. Since this is a
-  /// relative path, it MUST NOT begin with a leading forward slash.
+  /// the filename.
+  ///
+  /// The path separator is a forward slash `/`. Since this is a relative path,
+  /// it MUST NOT begin with a leading forward slash.
   core.String path;
 
-  /// The target path of the symlink. The path separator is a forward slash `/`.
-  /// The target path can be relative to the parent directory of the symlink or
-  /// it can be an absolute path starting with `/`. Support for absolute paths
-  /// can be checked using the Capabilities API. The canonical form forbids the
-  /// substrings `/./` and `//` in the target path. `..` components are allowed
-  /// anywhere in the target path.
+  /// The target path of the symlink.
+  ///
+  /// The path separator is a forward slash `/`. The target path can be relative
+  /// to the parent directory of the symlink or it can be an absolute path
+  /// starting with `/`. Support for absolute paths can be checked using the
+  /// Capabilities API. The canonical form forbids the substrings `/./` and `//`
+  /// in the target path. `..` components are allowed anywhere in the target
+  /// path.
   core.String target;
 
   BuildBazelRemoteExecutionV2OutputSymlink();
@@ -2684,14 +2766,17 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
 }
 
 /// A `Platform` is a set of requirements, such as hardware, operating system,
-/// or compiler toolchain, for an Action's execution environment. A `Platform`
-/// is represented as a series of key-value pairs representing the properties
-/// that are required of the platform.
+/// or compiler toolchain, for an Action's execution environment.
+///
+/// A `Platform` is represented as a series of key-value pairs representing the
+/// properties that are required of the platform.
 class BuildBazelRemoteExecutionV2Platform {
-  /// The properties that make up this platform. In order to ensure that
-  /// equivalent `Platform`s always hash to the same value, the properties MUST
-  /// be lexicographically sorted by name, and then by value. Sorting of strings
-  /// is done by code point, equivalently, by the UTF-8 bytes.
+  /// The properties that make up this platform.
+  ///
+  /// In order to ensure that equivalent `Platform`s always hash to the same
+  /// value, the properties MUST be lexicographically sorted by name, and then
+  /// by value. Sorting of strings is done by code point, equivalently, by the
+  /// UTF-8 bytes.
   core.List<BuildBazelRemoteExecutionV2PlatformProperty> properties;
 
   BuildBazelRemoteExecutionV2Platform();
@@ -2715,18 +2800,19 @@ class BuildBazelRemoteExecutionV2Platform {
   }
 }
 
-/// A single property for the environment. The server is responsible for
-/// specifying the property `name`s that it accepts. If an unknown `name` is
-/// provided in the requirements for an Action, the server SHOULD reject the
-/// execution request. If permitted by the server, the same `name` may occur
-/// multiple times. The server is also responsible for specifying the
-/// interpretation of property `value`s. For instance, a property describing how
-/// much RAM must be available may be interpreted as allowing a worker with 16GB
-/// to fulfill a request for 8GB, while a property describing the OS environment
-/// on which the action must be performed may require an exact match with the
-/// worker's OS. The server MAY use the `value` of one or more properties to
-/// determine how it sets up the execution environment, such as by making
-/// specific system files available to the worker.
+/// A single property for the environment.
+///
+/// The server is responsible for specifying the property `name`s that it
+/// accepts. If an unknown `name` is provided in the requirements for an Action,
+/// the server SHOULD reject the execution request. If permitted by the server,
+/// the same `name` may occur multiple times. The server is also responsible for
+/// specifying the interpretation of property `value`s. For instance, a property
+/// describing how much RAM must be available may be interpreted as allowing a
+/// worker with 16GB to fulfill a request for 8GB, while a property describing
+/// the OS environment on which the action must be performed may require an
+/// exact match with the worker's OS. The server MAY use the `value` of one or
+/// more properties to determine how it sets up the execution environment, such
+/// as by making specific system files available to the worker.
 class BuildBazelRemoteExecutionV2PlatformProperty {
   /// The property name.
   core.String name;
@@ -2815,31 +2901,36 @@ class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
 }
 
 /// An optional Metadata to attach to any RPC request to tell the server about
-/// an external context of the request. The server may use this for logging or
-/// other purposes. To use it, the client attaches the header to the call using
-/// the canonical proto serialization: * name:
-/// `build.bazel.remote.execution.v2.requestmetadata-bin` * contents: the base64
-/// encoded binary `RequestMetadata` message. Note: the gRPC library serializes
-/// binary headers encoded in base 64 by default
+/// an external context of the request.
+///
+/// The server may use this for logging or other purposes. To use it, the client
+/// attaches the header to the call using the canonical proto serialization: *
+/// name: `build.bazel.remote.execution.v2.requestmetadata-bin` * contents: the
+/// base64 encoded binary `RequestMetadata` message. Note: the gRPC library
+/// serializes binary headers encoded in base 64 by default
 /// (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests).
 /// Therefore, if the gRPC library is used to pass/retrieve this metadata, the
 /// user may ignore the base64 encoding and assume it is simply serialized as a
 /// binary message.
 class BuildBazelRemoteExecutionV2RequestMetadata {
-  /// An identifier that ties multiple requests to the same action. For example,
-  /// multiple requests to the CAS, Action Cache, and Execution API are used in
-  /// order to compile foo.cc.
+  /// An identifier that ties multiple requests to the same action.
+  ///
+  /// For example, multiple requests to the CAS, Action Cache, and Execution API
+  /// are used in order to compile foo.cc.
   core.String actionId;
 
-  /// An identifier to tie multiple tool invocations together. For example, runs
-  /// of foo_test, bar_test and baz_test on a post-submit of a given patch.
+  /// An identifier to tie multiple tool invocations together.
+  ///
+  /// For example, runs of foo_test, bar_test and baz_test on a post-submit of a
+  /// given patch.
   core.String correlatedInvocationsId;
 
   /// The details for the tool invoking the requests.
   BuildBazelRemoteExecutionV2ToolDetails toolDetails;
 
-  /// An identifier that ties multiple actions together to a final result. For
-  /// example, multiple actions are required to build and run foo_test.
+  /// An identifier that ties multiple actions together to a final result.
+  ///
+  /// For example, multiple actions are required to build and run foo_test.
   core.String toolInvocationId;
 
   BuildBazelRemoteExecutionV2RequestMetadata();
@@ -2882,6 +2973,7 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
 /// outputs are stored in the CAS and Action Cache.
 class BuildBazelRemoteExecutionV2ResultsCachePolicy {
   /// The priority (relative importance) of this content in the overall cache.
+  ///
   /// Generally, a lower value means a longer retention time or other advantage,
   /// but the interpretation of a given value is server-dependent. A priority of
   /// 0 means a *default* value, decided by the server. The particular semantics
@@ -2980,12 +3072,14 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
   /// The node properties of the SymlinkNode.
   core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
 
-  /// The target path of the symlink. The path separator is a forward slash `/`.
-  /// The target path can be relative to the parent directory of the symlink or
-  /// it can be an absolute path starting with `/`. Support for absolute paths
-  /// can be checked using the Capabilities API. The canonical form forbids the
-  /// substrings `/./` and `//` in the target path. `..` components are allowed
-  /// anywhere in the target path.
+  /// The target path of the symlink.
+  ///
+  /// The path separator is a forward slash `/`. The target path can be relative
+  /// to the parent directory of the symlink or it can be an absolute path
+  /// starting with `/`. Support for absolute paths can be checked using the
+  /// Capabilities API. The canonical form forbids the substrings `/./` and `//`
+  /// in the target path. `..` components are allowed anywhere in the target
+  /// path.
   core.String target;
 
   BuildBazelRemoteExecutionV2SymlinkNode();
@@ -3057,9 +3151,11 @@ class BuildBazelRemoteExecutionV2ToolDetails {
 /// tree, compressed into one message.
 class BuildBazelRemoteExecutionV2Tree {
   /// All the child directories: the directories referred to by the root and,
-  /// recursively, all its children. In order to reconstruct the directory tree,
-  /// the client must take the digests of each of the child directories and then
-  /// build up a tree starting from the `root`.
+  /// recursively, all its children.
+  ///
+  /// In order to reconstruct the directory tree, the client must take the
+  /// digests of each of the child directories and then build up a tree starting
+  /// from the `root`.
   core.List<BuildBazelRemoteExecutionV2Directory> children;
 
   /// The root directory in the tree.
@@ -3118,9 +3214,11 @@ class BuildBazelSemverSemVer {
   /// The patch version, e.g 3 for 10.2.3.
   core.int patch;
 
-  /// The pre-release version. Either this field or major/minor/patch fields
-  /// must be filled. They are mutually exclusive. Pre-release versions are
-  /// assumed to be earlier than any released versions.
+  /// The pre-release version.
+  ///
+  /// Either this field or major/minor/patch fields must be filled. They are
+  /// mutually exclusive. Pre-release versions are assumed to be earlier than
+  /// any released versions.
   core.String prerelease;
 
   BuildBazelSemverSemVer();
@@ -3523,10 +3621,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
 
 /// Autoscale defines the autoscaling policy of a worker pool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
-  /// The maximal number of workers. Must be equal to or greater than min_size.
+  /// The maximal number of workers.
+  ///
+  /// Must be equal to or greater than min_size.
   core.String maxSize;
 
-  /// The minimal number of workers. Must be greater than 0.
+  /// The minimal number of workers.
+  ///
+  /// Must be greater than 0.
   core.String minSize;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale();
@@ -3555,17 +3657,21 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
 
 /// The request used for `CreateInstance`.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
-  /// Specifies the instance to create. The name in the instance, if specified
-  /// in the instance, is ignored.
+  /// Specifies the instance to create.
+  ///
+  /// The name in the instance, if specified in the instance, is ignored.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance instance;
 
-  /// ID of the created instance. A valid `instance_id` must: be 6-50 characters
-  /// long, contain only lowercase letters, digits, hyphens and underscores,
-  /// start with a lowercase letter, and end with a lowercase letter or a digit.
+  /// ID of the created instance.
+  ///
+  /// A valid `instance_id` must: be 6-50 characters long, contain only
+  /// lowercase letters, digits, hyphens and underscores, start with a lowercase
+  /// letter, and end with a lowercase letter or a digit.
   core.String instanceId;
 
-  /// Resource name of the project containing the instance. Format:
-  /// `projects/[PROJECT_ID]`.
+  /// Resource name of the project containing the instance.
+  ///
+  /// Format: `projects/[PROJECT_ID]`.
   core.String parent;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest();
@@ -3603,16 +3709,20 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
 /// The request used for `CreateWorkerPool`.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
   /// Resource name of the instance in which to create the new worker pool.
+  ///
   /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
   core.String parent;
 
-  /// ID of the created worker pool. A valid pool ID must: be 6-50 characters
-  /// long, contain only lowercase letters, digits, hyphens and underscores,
-  /// start with a lowercase letter, and end with a lowercase letter or a digit.
+  /// ID of the created worker pool.
+  ///
+  /// A valid pool ID must: be 6-50 characters long, contain only lowercase
+  /// letters, digits, hyphens and underscores, start with a lowercase letter,
+  /// and end with a lowercase letter or a digit.
   core.String poolId;
 
-  /// Specifies the worker pool to create. The name in the worker pool, if
-  /// specified, is ignored.
+  /// Specifies the worker pool to create.
+  ///
+  /// The name in the worker pool, if specified, is ignored.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool workerPool;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest();
@@ -3649,8 +3759,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
 
 /// The request used for `DeleteInstance`.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
-  /// Name of the instance to delete. Format:
-  /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+  /// Name of the instance to delete.
+  ///
+  /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
   core.String name;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest();
@@ -3673,7 +3784,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
 
 /// The request used for DeleteWorkerPool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
-  /// Name of the worker pool to delete. Format:
+  /// Name of the worker pool to delete.
+  ///
+  /// Format:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
   core.String name;
 
@@ -3699,13 +3812,15 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
 /// as instance-wide behavior changes that take effect without opt-in or opt-out
 /// at usage time.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
-  /// Which container image sources are allowed. Currently only RBE-supported
-  /// registry (gcr.io) is allowed. One can allow all repositories under a
-  /// project or one specific repository only. E.g. container_image_sources {
-  /// policy: RESTRICTED allowed_values: [ "gcr.io/project-foo",
-  /// "gcr.io/project-bar/repo-baz", ] } will allow any repositories under
-  /// "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz".
-  /// Default (UNSPECIFIED) is equivalent to any source is allowed.
+  /// Which container image sources are allowed.
+  ///
+  /// Currently only RBE-supported registry (gcr.io) is allowed. One can allow
+  /// all repositories under a project or one specific repository only. E.g.
+  /// container_image_sources { policy: RESTRICTED allowed_values: [
+  /// "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any
+  /// repositories under "gcr.io/project-foo" plus the repository
+  /// "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any
+  /// source is allowed.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
       containerImageSources;
 
@@ -3718,8 +3833,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
       dockerChrootPath;
 
-  /// Whether dockerNetwork can be used or what network modes are allowed. E.g.
-  /// one may allow `off` value only via `allowed_values`.
+  /// Whether dockerNetwork can be used or what network modes are allowed.
+  ///
+  /// E.g. one may allow `off` value only via `allowed_values`.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
       dockerNetwork;
 
@@ -3732,6 +3848,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
       dockerRunAsRoot;
 
   /// Whether dockerRuntime is allowed to be set or what runtimes are allowed.
+  ///
   /// Note linux_isolation takes precedence, and if set, docker_runtime values
   /// may be rejected if they are incompatible with the selected isolation.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
@@ -3843,8 +3960,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
 
 /// Defines whether a feature can be used or what values are accepted.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
-  /// A list of acceptable values. Only effective when the policy is
-  /// `RESTRICTED`.
+  /// A list of acceptable values.
+  ///
+  /// Only effective when the policy is `RESTRICTED`.
   core.List<core.String> allowedValues;
 
   /// The policy of the feature.
@@ -3887,8 +4005,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
 
 /// The request used for `GetInstance`.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
-  /// Name of the instance to retrieve. Format:
-  /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+  /// Name of the instance to retrieve.
+  ///
+  /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
   core.String name;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest();
@@ -3911,7 +4030,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
 
 /// The request used for GetWorkerPool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
-  /// Name of the worker pool to retrieve. Format:
+  /// Name of the worker pool to retrieve.
+  ///
+  /// Format:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
   core.String name;
 
@@ -3934,28 +4055,39 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
 }
 
 /// Instance conceptually encapsulates all Remote Build Execution resources for
-/// remote builds. An instance consists of storage and compute resources (for
-/// example, `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
-/// running remote builds. All Remote Build Execution API calls are scoped to an
+/// remote builds.
+///
+/// An instance consists of storage and compute resources (for example,
+/// `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for running
+/// remote builds. All Remote Build Execution API calls are scoped to an
 /// instance.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
   /// The policy to define whether or not RBE features can be used or how they
   /// can be used.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy featurePolicy;
 
-  /// The location is a GCP region. Currently only `us-central1` is supported.
+  /// The location is a GCP region.
+  ///
+  /// Currently only `us-central1` is supported.
   core.String location;
 
-  /// Output only. Whether stack driver logging is enabled for the instance.
+  /// Whether stack driver logging is enabled for the instance.
+  ///
+  /// Output only.
   core.bool loggingEnabled;
 
-  /// Output only. Instance resource name formatted as:
-  /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be
-  /// populated when creating an instance since it is provided in the
-  /// `instance_id` field.
+  /// Instance resource name formatted as:
+  /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+  ///
+  /// Name should not be populated when creating an instance since it is
+  /// provided in the `instance_id` field.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. State of the instance.
+  /// State of the instance.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not a valid state, but the default value of the
   /// enum.
@@ -4013,7 +4145,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
-  /// Resource name of the project. Format: `projects/[PROJECT_ID]`.
+  /// Resource name of the project.
+  ///
+  /// Format: `projects/[PROJECT_ID]`.
   core.String parent;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest();
@@ -4061,13 +4195,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
-  /// Optional. A filter expression that filters resources listed in the
-  /// response. The expression must specify the field name, a comparison
-  /// operator, and the value that you want to use for filtering. The value must
-  /// be a string, a number, or a boolean. String values are case-insensitive.
-  /// The comparison operator must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or
-  /// `<`. The `:` operator can be used with string fields to match substrings.
-  /// For non-string fields it is equivalent to the `=` operator. The `:*`
+  /// A filter expression that filters resources listed in the response.
+  ///
+  /// The expression must specify the field name, a comparison operator, and the
+  /// value that you want to use for filtering. The value must be a string, a
+  /// number, or a boolean. String values are case-insensitive. The comparison
+  /// operator must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The `:`
+  /// operator can be used with string fields to match substrings. For
+  /// non-string fields it is equivalent to the `=` operator. The `:*`
   /// comparison can be used to test whether a key has been defined. You can
   /// also filter on nested fields. To filter on multiple expressions, you can
   /// separate expression using `AND` and `OR` operators, using parentheses to
@@ -4076,10 +4211,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
   /// `(worker_count > 100) (worker_config.reserved = true)` Include only pools
   /// with a certain label or machines of the n1-standard family:
   /// `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`
+  ///
+  /// Optional.
   core.String filter;
 
-  /// Resource name of the instance. Format:
-  /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+  /// Resource name of the instance.
+  ///
+  /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
   core.String parent;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest();
@@ -4172,15 +4310,20 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
   /// Specifies the instance to update.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance instance;
 
-  /// Deprecated, use instance.logging_enabled instead. Whether to enable
-  /// Stackdriver logging for this instance.
+  /// Deprecated, use instance.logging_enabled instead.
+  ///
+  /// Whether to enable Stackdriver logging for this instance.
   core.bool loggingEnabled;
 
-  /// Deprecated, use instance.Name instead. Name of the instance to update.
-  /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+  /// Deprecated, use instance.Name instead.
+  ///
+  /// Name of the instance to update. Format:
+  /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
   core.String name;
 
-  /// The update mask applies to instance. For the `FieldMask` definition, see
+  /// The update mask applies to instance.
+  ///
+  /// For the `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   /// If an empty update_mask is provided, only the non-default valued field in
   /// the worker pool field will be updated. Note that in order to update a
@@ -4228,8 +4371,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
 
 /// The request used for UpdateWorkerPool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
-  /// The update mask applies to worker_pool. For the `FieldMask` definition,
-  /// see
+  /// The update mask applies to worker_pool.
+  ///
+  /// For the `FieldMask` definition, see
   /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   /// If an empty update_mask is provided, only the non-default valued field in
   /// the worker pool field will be updated. Note that in order to update a
@@ -4272,45 +4416,61 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// The accelerator card attached to each VM.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig accelerator;
 
-  /// Required. Size of the disk attached to the worker, in GB. See
-  /// https://cloud.google.com/compute/docs/disks/
+  /// Size of the disk attached to the worker, in GB.
+  ///
+  /// See https://cloud.google.com/compute/docs/disks/
+  ///
+  /// Required.
   core.String diskSizeGb;
 
-  /// Required. Disk Type to use for the worker. See [Storage
+  /// Disk Type to use for the worker.
+  ///
+  /// See [Storage
   /// options](https://cloud.google.com/compute/docs/disks/#introduction).
   /// Currently only `pd-standard` and `pd-ssd` are supported.
+  ///
+  /// Required.
   core.String diskType;
 
-  /// Labels associated with the workers. Label keys and values can be no longer
-  /// than 63 characters, can only contain lowercase letters, numeric
-  /// characters, underscores and dashes. International letters are permitted.
-  /// Label keys must start with a letter. Label values are optional. There can
-  /// not be more than 64 labels per resource.
+  /// Labels associated with the workers.
+  ///
+  /// Label keys and values can be no longer than 63 characters, can only
+  /// contain lowercase letters, numeric characters, underscores and dashes.
+  /// International letters are permitted. Label keys must start with a letter.
+  /// Label values are optional. There can not be more than 64 labels per
+  /// resource.
   core.Map<core.String, core.String> labels;
 
-  /// Required. Machine type of the worker, such as `n1-standard-2`. See
-  /// https://cloud.google.com/compute/docs/machine-types for a list of
+  /// Machine type of the worker, such as `n1-standard-2`.
+  ///
+  /// See https://cloud.google.com/compute/docs/machine-types for a list of
   /// supported machine types. Note that `f1-micro` and `g1-small` are not yet
   /// supported.
+  ///
+  /// Required.
   core.String machineType;
 
   /// The maximum number of actions a worker can execute concurrently.
   core.String maxConcurrentActions;
 
-  /// Minimum CPU platform to use when creating the worker. See [CPU
-  /// Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
+  /// Minimum CPU platform to use when creating the worker.
+  ///
+  /// See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
   core.String minCpuPlatform;
 
-  /// Determines the type of network access granted to workers. Possible values:
-  /// - "public": Workers can connect to the public internet. - "private":
-  /// Workers can only connect to Google APIs and services. -
+  /// Determines the type of network access granted to workers.
+  ///
+  /// Possible values: - "public": Workers can connect to the public internet. -
+  /// "private": Workers can only connect to Google APIs and services. -
   /// "restricted-private": Workers can only connect to Google APIs that are
   /// reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
   core.String networkAccess;
 
   /// Determines whether the worker is reserved (equivalent to a Compute Engine
-  /// on-demand VM and therefore won't be preempted). See [Preemptible
-  /// VMs](https://cloud.google.com/preemptible-vms/) for more details.
+  /// on-demand VM and therefore won't be preempted).
+  ///
+  /// See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
+  /// details.
   core.bool reserved;
 
   /// Sole-tenant node information for pools hosted on STNs.
@@ -4419,11 +4579,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
 
   /// WorkerPool resource name formatted as:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
+  ///
   /// name should not be populated when creating a worker pool since it is
   /// provided in the `poolId` field.
   core.String name;
 
-  /// Output only. State of the worker pool.
+  /// State of the worker pool.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not a valid state, but the default value of the
   /// enum.
@@ -4445,8 +4608,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
   /// creating workers in a worker pool.
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig workerConfig;
 
-  /// The desired number of workers in the worker pool. Must be a value between
-  /// 0 and 15000.
+  /// The desired number of workers in the worker pool.
+  ///
+  /// Must be a value between 0 and 15000.
   core.String workerCount;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool();
@@ -4501,15 +4665,16 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
   }
 }
 
-/// AdminTemp is a prelimiary set of administration tasks. It's called "Temp"
-/// because we do not yet know the best way to represent admin tasks; it's
-/// possible that this will be entirely replaced in later versions of this API.
-/// If this message proves to be sufficient, it will be renamed in the alpha or
-/// beta release of this API. This message (suitably marshalled into a
-/// protobuf.Any) can be used as the inline_assignment field in a lease; the
-/// lease assignment field should simply be `"admin"` in these cases. This
-/// message is heavily based on Swarming administration tasks from the LUCI
-/// project (http://github.com/luci/luci-py/appengine/swarming).
+/// AdminTemp is a prelimiary set of administration tasks.
+///
+/// It's called "Temp" because we do not yet know the best way to represent
+/// admin tasks; it's possible that this will be entirely replaced in later
+/// versions of this API. If this message proves to be sufficient, it will be
+/// renamed in the alpha or beta release of this API. This message (suitably
+/// marshalled into a protobuf.Any) can be used as the inline_assignment field
+/// in a lease; the lease assignment field should simply be `"admin"` in these
+/// cases. This message is heavily based on Swarming administration tasks from
+/// the LUCI project (http://github.com/luci/luci-py/appengine/swarming).
 class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
   /// The argument to the admin action; see `Command` for semantics.
   core.String arg;
@@ -4562,7 +4727,9 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The digest of the blob. This should be verified by the receiver.
+  /// The digest of the blob.
+  ///
+  /// This should be verified by the receiver.
   GoogleDevtoolsRemoteworkersV1test2Digest digest;
 
   GoogleDevtoolsRemoteworkersV1test2Blob();
@@ -4589,18 +4756,22 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
   }
 }
 
-/// DEPRECATED - use CommandResult instead. Describes the actual outputs from
-/// the task.
+/// DEPRECATED - use CommandResult instead.
+///
+/// Describes the actual outputs from the task.
 class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
-  /// exit_code is only fully reliable if the status' code is OK. If the task
-  /// exceeded its deadline or was cancelled, the process may still produce an
-  /// exit code as it is cancelled, and this will be populated, but a successful
-  /// (zero) is unlikely to be correct unless the status code is OK.
+  /// exit_code is only fully reliable if the status' code is OK.
+  ///
+  /// If the task exceeded its deadline or was cancelled, the process may still
+  /// produce an exit code as it is cancelled, and this will be populated, but a
+  /// successful (zero) is unlikely to be correct unless the status code is OK.
   core.int exitCode;
 
-  /// The output files. The blob referenced by the digest should contain one of
-  /// the following (implementation-dependent): * A marshalled DirectoryMetadata
-  /// of the returned filesystem * A LUCI-style .isolated file
+  /// The output files.
+  ///
+  /// The blob referenced by the digest should contain one of the following
+  /// (implementation-dependent): * A marshalled DirectoryMetadata of the
+  /// returned filesystem * A LUCI-style .isolated file
   GoogleDevtoolsRemoteworkersV1test2Digest outputs;
 
   GoogleDevtoolsRemoteworkersV1test2CommandOutputs();
@@ -4627,12 +4798,15 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
   }
 }
 
-/// DEPRECATED - use CommandResult instead. Can be used as part of
-/// CompleteRequest.metadata, or are part of a more sophisticated message.
+/// DEPRECATED - use CommandResult instead.
+///
+/// Can be used as part of CompleteRequest.metadata, or are part of a more
+/// sophisticated message.
 class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
-  /// The elapsed time between calling Accept and Complete. The server will also
-  /// have its own idea of what this should be, but this excludes the overhead
-  /// of the RPCs and the bot response time.
+  /// The elapsed time between calling Accept and Complete.
+  ///
+  /// The server will also have its own idea of what this should be, but this
+  /// excludes the overhead of the RPCs and the bot response time.
   core.String duration;
 
   /// The amount of time *not* spent executing the command (ie
@@ -4665,38 +4839,46 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
 /// All information about the execution of a command, suitable for providing as
 /// the Bots interface's `Lease.result` field.
 class GoogleDevtoolsRemoteworkersV1test2CommandResult {
-  /// The elapsed time between calling Accept and Complete. The server will also
-  /// have its own idea of what this should be, but this excludes the overhead
-  /// of the RPCs and the bot response time.
+  /// The elapsed time between calling Accept and Complete.
+  ///
+  /// The server will also have its own idea of what this should be, but this
+  /// excludes the overhead of the RPCs and the bot response time.
   core.String duration;
 
-  /// The exit code of the process. An exit code of "0" should only be trusted
-  /// if `status` has a code of OK (otherwise it may simply be unset).
+  /// The exit code of the process.
+  ///
+  /// An exit code of "0" should only be trusted if `status` has a code of OK
+  /// (otherwise it may simply be unset).
   core.int exitCode;
 
-  /// Implementation-dependent metadata about the task. Both servers and bots
-  /// may define messages which can be encoded here; bots are free to provide
-  /// metadata in multiple formats, and servers are free to choose one or more
-  /// of the values to process and ignore others. In particular, it is *not*
-  /// considered an error for the bot to provide the server with a field that it
-  /// doesn't know about.
+  /// Implementation-dependent metadata about the task.
+  ///
+  /// Both servers and bots may define messages which can be encoded here; bots
+  /// are free to provide metadata in multiple formats, and servers are free to
+  /// choose one or more of the values to process and ignore others. In
+  /// particular, it is *not* considered an error for the bot to provide the
+  /// server with a field that it doesn't know about.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> metadata;
 
-  /// The output files. The blob referenced by the digest should contain one of
-  /// the following (implementation-dependent): * A marshalled DirectoryMetadata
-  /// of the returned filesystem * A LUCI-style .isolated file
+  /// The output files.
+  ///
+  /// The blob referenced by the digest should contain one of the following
+  /// (implementation-dependent): * A marshalled DirectoryMetadata of the
+  /// returned filesystem * A LUCI-style .isolated file
   GoogleDevtoolsRemoteworkersV1test2Digest outputs;
 
   /// The amount of time *not* spent executing the command (ie
   /// uploading/downloading files).
   core.String overhead;
 
-  /// An overall status for the command. For example, if the command timed out,
-  /// this might have a code of DEADLINE_EXCEEDED; if it was killed by the OS
-  /// for memory exhaustion, it might have a code of RESOURCE_EXHAUSTED.
+  /// An overall status for the command.
+  ///
+  /// For example, if the command timed out, this might have a code of
+  /// DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it
+  /// might have a code of RESOURCE_EXHAUSTED.
   GoogleRpcStatus status;
 
   GoogleDevtoolsRemoteworkersV1test2CommandResult();
@@ -4803,14 +4985,15 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTask {
 
 /// Describes the inputs to a shell-style task.
 class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
-  /// The command itself to run (e.g., argv). This field should be passed
-  /// directly to the underlying operating system, and so it must be sensible to
-  /// that operating system. For example, on Windows, the first argument might
-  /// be "C:\Windows\System32\ping.exe" - that is, using drive letters and
-  /// backslashes. A command for a *nix system, on the other hand, would use
-  /// forward slashes. All other fields in the RWAPI must consistently use
-  /// forward slashes, since those fields may be interpretted by both the
-  /// service and the bot.
+  /// The command itself to run (e.g., argv).
+  ///
+  /// This field should be passed directly to the underlying operating system,
+  /// and so it must be sensible to that operating system. For example, on
+  /// Windows, the first argument might be "C:\Windows\System32\ping.exe" - that
+  /// is, using drive letters and backslashes. A command for a *nix system, on
+  /// the other hand, would use forward slashes. All other fields in the RWAPI
+  /// must consistently use forward slashes, since those fields may be
+  /// interpretted by both the service and the bot.
   core.List<core.String> arguments;
 
   /// All environment variables required by the task.
@@ -4818,25 +5001,30 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
           GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>
       environmentVariables;
 
-  /// The input filesystem to be set up prior to the task beginning. The
-  /// contents should be a repeated set of FileMetadata messages though other
-  /// formats are allowed if better for the implementation (eg, a LUCI-style
-  /// .isolated file). This field is repeated since implementations might want
-  /// to cache the metadata, in which case it may be useful to break up portions
-  /// of the filesystem that change frequently (eg, specific input files) from
-  /// those that don't (eg, standard header files).
+  /// The input filesystem to be set up prior to the task beginning.
+  ///
+  /// The contents should be a repeated set of FileMetadata messages though
+  /// other formats are allowed if better for the implementation (eg, a
+  /// LUCI-style .isolated file). This field is repeated since implementations
+  /// might want to cache the metadata, in which case it may be useful to break
+  /// up portions of the filesystem that change frequently (eg, specific input
+  /// files) from those that don't (eg, standard header files).
   core.List<GoogleDevtoolsRemoteworkersV1test2Digest> files;
 
   /// Inline contents for blobs expected to be needed by the bot to execute the
-  /// task. For example, contents of entries in `files` or blobs that are
-  /// indirectly referenced by an entry there. The bot should check against this
-  /// list before downloading required task inputs to reduce the number of
+  /// task.
+  ///
+  /// For example, contents of entries in `files` or blobs that are indirectly
+  /// referenced by an entry there. The bot should check against this list
+  /// before downloading required task inputs to reduce the number of
   /// communications between itself and the remote CAS server.
   core.List<GoogleDevtoolsRemoteworkersV1test2Blob> inlineBlobs;
 
-  /// Directory from which a command is executed. It is a relative directory
-  /// with respect to the bot's working directory (i.e., "./"). If it is
-  /// non-empty, then it must exist under "./". Otherwise, "./" will be used.
+  /// Directory from which a command is executed.
+  ///
+  /// It is a relative directory with respect to the bot's working directory
+  /// (i.e., "./"). If it is non-empty, then it must exist under "./".
+  /// Otherwise, "./" will be used.
   core.String workingDirectory;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs();
@@ -4931,26 +5119,30 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable {
 
 /// Describes the expected outputs of the command.
 class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
-  /// A list of expected directories, relative to the execution root. All paths
-  /// MUST be delimited by forward slashes.
+  /// A list of expected directories, relative to the execution root.
+  ///
+  /// All paths MUST be delimited by forward slashes.
   core.List<core.String> directories;
 
-  /// A list of expected files, relative to the execution root. All paths MUST
-  /// be delimited by forward slashes.
+  /// A list of expected files, relative to the execution root.
+  ///
+  /// All paths MUST be delimited by forward slashes.
   core.List<core.String> files;
 
-  /// The destination to which any stderr should be sent. The method by which
-  /// the bot should send the stream contents to that destination is not defined
-  /// in this API. As examples, the destination could be a file referenced in
-  /// the `files` field in this message, or it could be a URI that must be
-  /// written via the ByteStream API.
+  /// The destination to which any stderr should be sent.
+  ///
+  /// The method by which the bot should send the stream contents to that
+  /// destination is not defined in this API. As examples, the destination could
+  /// be a file referenced in the `files` field in this message, or it could be
+  /// a URI that must be written via the ByteStream API.
   core.String stderrDestination;
 
-  /// The destination to which any stdout should be sent. The method by which
-  /// the bot should send the stream contents to that destination is not defined
-  /// in this API. As examples, the destination could be a file referenced in
-  /// the `files` field in this message, or it could be a URI that must be
-  /// written via the ByteStream API.
+  /// The destination to which any stdout should be sent.
+  ///
+  /// The method by which the bot should send the stream contents to that
+  /// destination is not defined in this API. As examples, the destination could
+  /// be a file referenced in the `files` field in this message, or it could be
+  /// a URI that must be written via the ByteStream API.
   core.String stdoutDestination;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs();
@@ -4996,22 +5188,25 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
 /// Describes the timeouts associated with this task.
 class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
   /// This specifies the maximum time that the task can run, excluding the time
-  /// required to download inputs or upload outputs. That is, the worker will
-  /// terminate the task if it runs longer than this.
+  /// required to download inputs or upload outputs.
+  ///
+  /// That is, the worker will terminate the task if it runs longer than this.
   core.String execution;
 
   /// This specifies the maximum amount of time the task can be idle - that is,
-  /// go without generating some output in either stdout or stderr. If the
-  /// process is silent for more than the specified time, the worker will
+  /// go without generating some output in either stdout or stderr.
+  ///
+  /// If the process is silent for more than the specified time, the worker will
   /// terminate the task.
   core.String idle;
 
   /// If the execution or IO timeouts are exceeded, the worker will try to
-  /// gracefully terminate the task and return any existing logs. However, tasks
-  /// may be hard-frozen in which case this process will fail. This timeout
-  /// specifies how long to wait for a terminated task to shut down gracefully
-  /// (e.g. via SIGTERM) before we bring down the hammer (e.g. SIGKILL on *nix,
-  /// CTRL_BREAK_EVENT on Windows).
+  /// gracefully terminate the task and return any existing logs.
+  ///
+  /// However, tasks may be hard-frozen in which case this process will fail.
+  /// This timeout specifies how long to wait for a terminated task to shut down
+  /// gracefully (e.g. via SIGTERM) before we bring down the hammer (e.g.
+  /// SIGKILL on *nix, CTRL_BREAK_EVENT on Windows).
   core.String shutdown;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts();
@@ -5048,18 +5243,22 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
 /// that can serve blobs of content, identified by a hash and size known as a
 /// "digest." The method by which these blobs may be retrieved is not specified
 /// here, but a model implementation is in the Remote Execution API's
-/// "ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
-/// will virtually always refer to the contents of a file or a directory. The
-/// latter is represented by the byte-encoded Directory message.
+/// "ContentAddressibleStorage" interface.
+///
+/// In the context of the RWAPI, a Digest will virtually always refer to the
+/// contents of a file or a directory. The latter is represented by the
+/// byte-encoded Directory message.
 class GoogleDevtoolsRemoteworkersV1test2Digest {
   /// A string-encoded hash (eg "1a2b3c", not the byte array [0x1a, 0x2b, 0x3c])
   /// using an implementation-defined hash algorithm (eg SHA-256).
   core.String hash;
 
-  /// The size of the contents. While this is not strictly required as part of
-  /// an identifier (after all, any given hash will have exactly one canonical
-  /// size), it's useful in almost all cases when one might want to send or
-  /// retrieve blobs of content and is included here for this reason.
+  /// The size of the contents.
+  ///
+  /// While this is not strictly required as part of an identifier (after all,
+  /// any given hash will have exactly one canonical size), it's useful in
+  /// almost all cases when one might want to send or retrieve blobs of content
+  /// and is included here for this reason.
   core.String sizeBytes;
 
   GoogleDevtoolsRemoteworkersV1test2Digest();
@@ -5085,8 +5284,9 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
   }
 }
 
-/// The contents of a directory. Similar to the equivalent message in the Remote
-/// Execution API.
+/// The contents of a directory.
+///
+/// Similar to the equivalent message in the Remote Execution API.
 class GoogleDevtoolsRemoteworkersV1test2Directory {
   /// Any subdirectories
   core.List<GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata> directories;
@@ -5126,8 +5326,9 @@ class GoogleDevtoolsRemoteworkersV1test2Directory {
   }
 }
 
-/// The metadata for a directory. Similar to the equivalent message in the
-/// Remote Execution API.
+/// The metadata for a directory.
+///
+/// Similar to the equivalent message in the Remote Execution API.
 class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
   /// A pointer to the contents of the directory, in the form of a marshalled
   /// Directory message.
@@ -5160,8 +5361,9 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
   }
 }
 
-/// The metadata for a file. Similar to the equivalent message in the Remote
-/// Execution API.
+/// The metadata for a file.
+///
+/// Similar to the equivalent message in the Remote Execution API.
 class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
   /// If the file is small enough, its contents may also or alternatively be
   /// listed here.
@@ -5173,18 +5375,22 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// A pointer to the contents of the file. The method by which a client
-  /// retrieves the contents from a CAS system is not defined here.
+  /// A pointer to the contents of the file.
+  ///
+  /// The method by which a client retrieves the contents from a CAS system is
+  /// not defined here.
   GoogleDevtoolsRemoteworkersV1test2Digest digest;
 
   /// Properties of the file
   core.bool isExecutable;
 
-  /// The path of this file. If this message is part of the
-  /// CommandOutputs.outputs fields, the path is relative to the execution root
-  /// and must correspond to an entry in CommandTask.outputs.files. If this
-  /// message is part of a Directory message, then the path is relative to the
-  /// root of that directory. All paths MUST be delimited by forward slashes.
+  /// The path of this file.
+  ///
+  /// If this message is part of the CommandOutputs.outputs fields, the path is
+  /// relative to the execution root and must correspond to an entry in
+  /// CommandTask.outputs.files. If this message is part of a Directory message,
+  /// then the path is relative to the root of that directory. All paths MUST be
+  /// delimited by forward slashes.
   core.String path;
 
   GoogleDevtoolsRemoteworkersV1test2FileMetadata();
@@ -5226,31 +5432,37 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -5315,24 +5527,27 @@ class GoogleLongrunningOperation {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

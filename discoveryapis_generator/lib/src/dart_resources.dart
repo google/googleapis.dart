@@ -695,7 +695,7 @@ DartResourceMethod _parseMethod(
     dartResponseType = getValidReference(method.response.P_ref);
   }
 
-  final comment = Comment(method.description);
+  final comment = Comment.header(method.description);
 
   bool makeBoolean(bool x) => x ?? false;
 
@@ -808,7 +808,7 @@ DartResourceClass _parseResource(
     });
   }
 
-  final comment = Comment(resourceDescription);
+  final comment = Comment.header(resourceDescription);
   if (topLevel) {
     final scopes = <OAuth2Scope>[];
 

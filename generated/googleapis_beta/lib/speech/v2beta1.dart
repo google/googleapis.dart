@@ -81,9 +81,10 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -135,10 +136,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -250,23 +252,32 @@ class ListOperationsResponse {
   }
 }
 
-/// Describes the progress of a long-running `LongRunningRecognize` call. It is
-/// included in the `metadata` field of the `Operation` returned by the
+/// Describes the progress of a long-running `LongRunningRecognize` call.
+///
+/// It is included in the `metadata` field of the `Operation` returned by the
 /// `GetOperation` call of the `google::longrunning::Operations` service.
 class LongRunningRecognizeMetadata {
-  /// Output only. Time of the most recent processing update.
+  /// Time of the most recent processing update.
+  ///
+  /// Output only.
   core.String lastUpdateTime;
 
-  /// Output only. Approximate percentage of audio processed thus far.
+  /// Approximate percentage of audio processed thus far.
+  ///
   /// Guaranteed to be 100 when the audio is fully processed and the results are
   /// available.
+  ///
+  /// Output only.
   core.int progressPercent;
 
-  /// Output only. Time when the request was received.
+  /// Time when the request was received.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// The URI of the audio file being transcribed. Empty if the audio was sent
-  /// as byte content.
+  /// The URI of the audio file being transcribed.
+  ///
+  /// Empty if the audio was sent as byte content.
   core.String uri;
 
   LongRunningRecognizeMetadata();
@@ -305,13 +316,17 @@ class LongRunningRecognizeMetadata {
 }
 
 /// The only message returned to the client by the `LongRunningRecognize`
-/// method. It contains the result as zero or more sequential
-/// SpeechRecognitionResult messages. It is included in the `result.response`
-/// field of the `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// method.
+///
+/// It contains the result as zero or more sequential SpeechRecognitionResult
+/// messages. It is included in the `result.response` field of the `Operation`
+/// returned by the `GetOperation` call of the `google::longrunning::Operations`
+/// service.
 class LongRunningRecognizeResponse {
-  /// Output only. Sequential list of transcription results corresponding to
-  /// sequential portions of audio.
+  /// Sequential list of transcription results corresponding to sequential
+  /// portions of audio.
+  ///
+  /// Output only.
   core.List<SpeechRecognitionResult> results;
 
   LongRunningRecognizeResponse();
@@ -338,31 +353,37 @@ class LongRunningRecognizeResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -428,21 +449,29 @@ class Operation {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative of a non-streaming
-  /// result or, of a streaming result where `is_final=true`. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative of a non-streaming result or, of a streaming result where
+  /// `is_final=true`. This field is not guaranteed to be accurate and users
+  /// should not rely on it to be always provided. The default of 0.0 is a
+  /// sentinel value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
-  /// Output only. Transcript text representing the words that the user spoke.
+  /// Transcript text representing the words that the user spoke.
+  ///
+  /// Output only.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
+  ///
   /// Note: When `enable_speaker_diarization` is true, you will see all the
   /// words from the beginning of the audio.
+  ///
+  /// Output only.
   core.List<WordInfo> words;
 
   SpeechRecognitionAlternative();
@@ -479,21 +508,31 @@ class SpeechRecognitionAlternative {
 
 /// A speech recognition result corresponding to a portion of the audio.
 class SpeechRecognitionResult {
-  /// Output only. May contain one or more recognition hypotheses (up to the
-  /// maximum specified in `max_alternatives`). These alternatives are ordered
-  /// in terms of accuracy, with the top (first) alternative being the most
-  /// probable, as ranked by the recognizer.
+  /// May contain one or more recognition hypotheses (up to the maximum
+  /// specified in `max_alternatives`).
+  ///
+  /// These alternatives are ordered in terms of accuracy, with the top (first)
+  /// alternative being the most probable, as ranked by the recognizer.
+  ///
+  /// Output only.
   core.List<SpeechRecognitionAlternative> alternatives;
 
-  /// Output only. For multi-channel audio, this is the channel number
-  /// corresponding to the recognized result for the audio from that channel.
+  /// For multi-channel audio, this is the channel number corresponding to the
+  /// recognized result for the audio from that channel.
+  ///
   /// For `audio_channel_count` = N, its output values can range from `1` to
   /// `N`.
+  ///
+  /// Output only.
   core.int channelTag;
 
-  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag of the language in this result. This language code was
-  /// detected to have the most likelihood of being spoken in the audio.
+  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
+  /// the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
   core.String languageCode;
 
   SpeechRecognitionResult();
@@ -531,24 +570,27 @@ class SpeechRecognitionResult {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -591,36 +633,52 @@ class Status {
 
 /// Word-specific information for recognized words.
 class WordInfo {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative of a non-streaming
-  /// result or, of a streaming result where `is_final=true`. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative of a non-streaming result or, of a streaming result where
+  /// `is_final=true`. This field is not guaranteed to be accurate and users
+  /// should not rely on it to be always provided. The default of 0.0 is a
+  /// sentinel value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
-  /// Output only. Time offset relative to the beginning of the audio, and
-  /// corresponding to the end of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// Time offset relative to the beginning of the audio, and corresponding to
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
+  ///
+  /// Output only.
   core.String endOffset;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to have spoken this word. Value ranges from `1` to
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from `1` to
   /// `diarization_config.max_speaker_count` . `speaker_tag` is set if
   /// `diarization_config.enable_speaker_diarization` = `true` and only in the
   /// top alternative.
+  ///
+  /// Output only.
   core.int speakerTag;
 
-  /// Output only. Time offset relative to the beginning of the audio, and
-  /// corresponding to the start of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// Time offset relative to the beginning of the audio, and corresponding to
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
+  ///
+  /// Output only.
   core.String startOffset;
 
-  /// Output only. The word corresponding to this set of information.
+  /// The word corresponding to this set of information.
+  ///
+  /// Output only.
   core.String word;
 
   WordInfo();

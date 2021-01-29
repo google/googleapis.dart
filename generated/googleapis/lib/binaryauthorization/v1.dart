@@ -69,10 +69,11 @@ class ProjectsResource {
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// A policy specifies the attestors that must attest to a container image,
-  /// before the project is allowed to deploy that image. There is at most one
-  /// policy per project. All image admission requests are permitted if a
-  /// project has no policy. Gets the policy for this project. Returns a default
-  /// policy if the project does not have one.
+  /// before the project is allowed to deploy that image.
+  ///
+  /// There is at most one policy per project. All image admission requests are
+  /// permitted if a project has no policy. Gets the policy for this project.
+  /// Returns a default policy if the project does not have one.
   ///
   /// Request parameters:
   ///
@@ -125,10 +126,12 @@ class ProjectsResource {
   }
 
   /// Creates or updates a project's policy, and returns a copy of the new
-  /// policy. A policy is always updated as a whole, to avoid race conditions
-  /// with concurrent policy enforcement (or management!) requests. Returns
-  /// NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request
-  /// is malformed.
+  /// policy.
+  ///
+  /// A policy is always updated as a whole, to avoid race conditions with
+  /// concurrent policy enforcement (or management!) requests. Returns NOT_FOUND
+  /// if the project does not exist, INVALID_ARGUMENT if the request is
+  /// malformed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -192,9 +195,10 @@ class ProjectsAttestorsResource {
 
   ProjectsAttestorsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates an attestor, and returns a copy of the new attestor. Returns
-  /// NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request
-  /// is malformed, ALREADY_EXISTS if the attestor already exists.
+  /// Creates an attestor, and returns a copy of the new attestor.
+  ///
+  /// Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the
+  /// request is malformed, ALREADY_EXISTS if the attestor already exists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -258,7 +262,9 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.
+  /// Deletes an attestor.
+  ///
+  /// Returns NOT_FOUND if the attestor does not exist.
   ///
   /// Request parameters:
   ///
@@ -310,7 +316,9 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+  /// Gets an attestor.
+  ///
+  /// Returns NOT_FOUND if the attestor does not exist.
   ///
   /// Request parameters:
   ///
@@ -362,8 +370,10 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -432,7 +442,9 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.
+  /// Lists attestors.
+  ///
+  /// Returns INVALID_ARGUMENT if the project does not exist.
   ///
   /// Request parameters:
   ///
@@ -502,9 +514,10 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -565,10 +578,11 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -631,7 +645,9 @@ class ProjectsAttestorsResource {
     );
   }
 
-  /// Updates an attestor. Returns NOT_FOUND if the attestor does not exist.
+  /// Updates an attestor.
+  ///
+  /// Returns NOT_FOUND if the attestor does not exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -758,8 +774,10 @@ class ProjectsPolicyResource {
 
   ProjectsPolicyResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -828,9 +846,10 @@ class ProjectsPolicyResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -891,10 +910,11 @@ class ProjectsPolicyResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -960,11 +980,14 @@ class ProjectsPolicyResource {
 
 /// An admission rule specifies either that all container images used in a pod
 /// creation request must be attested to by one or more attestors, that all pod
-/// creations will be allowed, or that all pod creations will be denied. Images
-/// matching an admission whitelist pattern are exempted from admission rules
-/// and will never block a pod creation.
+/// creations will be allowed, or that all pod creations will be denied.
+///
+/// Images matching an admission whitelist pattern are exempted from admission
+/// rules and will never block a pod creation.
 class AdmissionRule {
-  /// Required. The action when a pod creation is denied by the admission rule.
+  /// The action when a pod creation is denied by the admission rule.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ENFORCEMENT_MODE_UNSPECIFIED" : Do not use.
   /// - "ENFORCED_BLOCK_AND_AUDIT_LOG" : Enforce the admission rule by blocking
@@ -974,7 +997,9 @@ class AdmissionRule {
   /// break-glass.
   core.String enforcementMode;
 
-  /// Required. How this admission rule will be evaluated.
+  /// How this admission rule will be evaluated.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "EVALUATION_MODE_UNSPECIFIED" : Do not use.
   /// - "ALWAYS_ALLOW" : This rule allows all all pod creations.
@@ -984,13 +1009,16 @@ class AdmissionRule {
   /// - "ALWAYS_DENY" : This rule denies all pod creations.
   core.String evaluationMode;
 
-  /// Optional. The resource names of the attestors that must attest to a
-  /// container image, in the format `projects / * /attestors / * `. Each
-  /// attestor must exist before a policy can reference it. To add an attestor
-  /// to a policy the principal issuing the policy change request must be able
-  /// to read the attestor resource. Note: this field must be non-empty when the
-  /// evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it must be
-  /// empty.
+  /// The resource names of the attestors that must attest to a container image,
+  /// in the format `projects / * /attestors / * `.
+  ///
+  /// Each attestor must exist before a policy can reference it. To add an
+  /// attestor to a policy the principal issuing the policy change request must
+  /// be able to read the attestor resource. Note: this field must be non-empty
+  /// when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it
+  /// must be empty.
+  ///
+  /// Optional.
   core.List<core.String> requireAttestationsBy;
 
   AdmissionRule();
@@ -1028,6 +1056,7 @@ class AdmissionRule {
 /// rules.
 class AdmissionWhitelistPattern {
   /// An image name pattern to whitelist, in the form `registry/path/to/image`.
+  ///
   /// This supports a trailing `*` as a wildcard, but this is allowed only in
   /// text after the `registry/` part.
   core.String namePattern;
@@ -1049,27 +1078,30 @@ class AdmissionWhitelistPattern {
   }
 }
 
-/// Occurrence that represents a single "attestation". The authenticity of an
-/// attestation can be verified using the attached signature. If the verifier
-/// trusts the public key of the signer, then verifying the signature is
-/// sufficient to establish trust. In this circumstance, the authority to which
-/// this attestation is attached is primarily useful for lookup (how to find
-/// this attestation if you already know the authority and artifact to be
-/// verified) and intent (for which authority this attestation was intended to
-/// sign.
+/// Occurrence that represents a single "attestation".
+///
+/// The authenticity of an attestation can be verified using the attached
+/// signature. If the verifier trusts the public key of the signer, then
+/// verifying the signature is sufficient to establish trust. In this
+/// circumstance, the authority to which this attestation is attached is
+/// primarily useful for lookup (how to find this attestation if you already
+/// know the authority and artifact to be verified) and intent (for which
+/// authority this attestation was intended to sign.
 class AttestationOccurrence {
-  /// One or more JWTs encoding a self-contained attestation. Each JWT encodes
-  /// the payload that it verifies within the JWT itself. Verifier
-  /// implementation SHOULD ignore the `serialized_payload` field when verifying
-  /// these JWTs. If only JWTs are present on this AttestationOccurrence, then
-  /// the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a
-  /// claim specific to the `resource_uri` of this Occurrence, but this is not
-  /// validated by Grafeas metadata API implementations. The JWT itself is
-  /// opaque to Grafeas.
+  /// One or more JWTs encoding a self-contained attestation.
+  ///
+  /// Each JWT encodes the payload that it verifies within the JWT itself.
+  /// Verifier implementation SHOULD ignore the `serialized_payload` field when
+  /// verifying these JWTs. If only JWTs are present on this
+  /// AttestationOccurrence, then the `serialized_payload` SHOULD be left empty.
+  /// Each JWT SHOULD encode a claim specific to the `resource_uri` of this
+  /// Occurrence, but this is not validated by Grafeas metadata API
+  /// implementations. The JWT itself is opaque to Grafeas.
   core.List<Jwt> jwts;
 
-  /// Required. The serialized payload that is verified by one or more
-  /// `signatures`.
+  /// The serialized payload that is verified by one or more `signatures`.
+  ///
+  /// Required.
   core.String serializedPayload;
   core.List<core.int> get serializedPayloadAsBytes =>
       convert.base64.decode(serializedPayload);
@@ -1079,10 +1111,11 @@ class AttestationOccurrence {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// One or more signatures over `serialized_payload`. Verifier implementations
-  /// should consider this attestation message verified if at least one
-  /// `signature` verifies `serialized_payload`. See `Signature` in common.proto
-  /// for more details on signature structure and verification.
+  /// One or more signatures over `serialized_payload`.
+  ///
+  /// Verifier implementations should consider this attestation message verified
+  /// if at least one `signature` verifies `serialized_payload`. See `Signature`
+  /// in common.proto for more details on signature structure and verification.
   core.List<Signature> signatures;
 
   AttestationOccurrence();
@@ -1120,18 +1153,27 @@ class AttestationOccurrence {
   }
 }
 
-/// An attestor that attests to container image artifacts. An existing attestor
-/// cannot be modified except where indicated.
+/// An attestor that attests to container image artifacts.
+///
+/// An existing attestor cannot be modified except where indicated.
 class Attestor {
-  /// Optional. A descriptive comment. This field may be updated. The field may
-  /// be displayed in chooser dialogs.
+  /// A descriptive comment.
+  ///
+  /// This field may be updated. The field may be displayed in chooser dialogs.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. The resource name, in the format: `projects / * /attestors / *
-  /// `. This field may not be updated.
+  /// The resource name, in the format: `projects / * /attestors / * `.
+  ///
+  /// This field may not be updated.
+  ///
+  /// Required.
   core.String name;
 
-  /// Output only. Time when the attestor was last updated.
+  /// Time when the attestor was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
   /// This specifies how an attestation will be read, and how it will be used
@@ -1179,27 +1221,37 @@ class Attestor {
 class AttestorPublicKey {
   /// ASCII-armored representation of a PGP public key, as the entire output by
   /// the command `gpg --export --armor foo@example.com` (either LF or CRLF line
-  /// endings). When using this field, `id` should be left blank. The BinAuthz
-  /// API handlers will calculate the ID and fill it in automatically. BinAuthz
+  /// endings).
+  ///
+  /// When using this field, `id` should be left blank. The BinAuthz API
+  /// handlers will calculate the ID and fill it in automatically. BinAuthz
   /// computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as
   /// upper-case hex. If `id` is provided by the caller, it will be overwritten
   /// by the API-calculated ID.
   core.String asciiArmoredPgpPublicKey;
 
-  /// Optional. A descriptive comment. This field may be updated.
+  /// A descriptive comment.
+  ///
+  /// This field may be updated.
+  ///
+  /// Optional.
   core.String comment;
 
-  /// The ID of this public key. Signatures verified by BinAuthz must include
-  /// the ID of the public key that can be used to verify them, and that ID must
-  /// match the contents of this field exactly. Additional restrictions on this
-  /// field can be imposed based on which public key type is encapsulated. See
-  /// the documentation on `public_key` cases below for details.
+  /// The ID of this public key.
+  ///
+  /// Signatures verified by BinAuthz must include the ID of the public key that
+  /// can be used to verify them, and that ID must match the contents of this
+  /// field exactly. Additional restrictions on this field can be imposed based
+  /// on which public key type is encapsulated. See the documentation on
+  /// `public_key` cases below for details.
   core.String id;
 
-  /// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be
-  /// explicitly provided by the caller when using this type of public key, but
-  /// it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will
-  /// be computed based on the digest of the DER encoding of the public key.
+  /// A raw PKIX SubjectPublicKeyInfo format public key.
+  ///
+  /// NOTE: `id` may be explicitly provided by the caller when using this type
+  /// of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank,
+  /// a default one will be computed based on the digest of the DER encoding of
+  /// the public key.
   PkixPublicKey pkixPublicKey;
 
   AttestorPublicKey();
@@ -1241,20 +1293,24 @@ class AttestorPublicKey {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -1285,8 +1341,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1328,10 +1385,12 @@ class Binding {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1346,8 +1405,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -1362,20 +1423,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1414,16 +1484,18 @@ class Expr {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -1443,14 +1515,17 @@ class Expr {
 /// version: 3 For a description of IAM and its features, see the [IAM
 /// documentation](https://cloud.google.com/iam/docs/).
 class IamPolicy {
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -1467,20 +1542,22 @@ class IamPolicy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -1518,8 +1595,9 @@ class IamPolicy {
 
 class Jwt {
   /// The compact encoding of a JWS, which is always three base64 encoded
-  /// strings joined by periods. For details, see:
-  /// https://tools.ietf.org/html/rfc7515.html#section-3.1
+  /// strings joined by periods.
+  ///
+  /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
   core.String compactJwt;
 
   Jwt();
@@ -1544,9 +1622,11 @@ class ListAttestorsResponse {
   /// The list of attestors.
   core.List<Attestor> attestors;
 
-  /// A token to retrieve the next page of results. Pass this value in the
-  /// ListAttestorsRequest.page_token field in the subsequent call to the
-  /// `ListAttestors` method to retrieve the next page of results.
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the ListAttestorsRequest.page_token field in the
+  /// subsequent call to the `ListAttestors` method to retrieve the next page of
+  /// results.
   core.String nextPageToken;
 
   ListAttestorsResponse();
@@ -1576,17 +1656,21 @@ class ListAttestorsResponse {
 }
 
 /// A public key in the PkixPublicKey format (see
-/// https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public
-/// keys of this type are typically textually encoded using the PEM format.
+/// https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details).
+///
+/// Public keys of this type are typically textually encoded using the PEM
+/// format.
 class PkixPublicKey {
   /// A PEM-encoded public key, as described in
   /// https://tools.ietf.org/html/rfc7468#section-13
   core.String publicKeyPem;
 
   /// The signature algorithm used to verify a message against a signature using
-  /// this key. These signature algorithm must match the structure and any
-  /// object identifiers encoded in `public_key_pem` (i.e. this algorithm must
-  /// match that of the public key).
+  /// this key.
+  ///
+  /// These signature algorithm must match the structure and any object
+  /// identifiers encoded in `public_key_pem` (i.e. this algorithm must match
+  /// that of the public key).
   /// Possible string values are:
   /// - "SIGNATURE_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "RSA_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256 digest.
@@ -1640,29 +1724,45 @@ class PkixPublicKey {
 
 /// A policy for container image binary authorization.
 class Policy {
-  /// Optional. Admission policy whitelisting. A matching admission request will
-  /// always be permitted. This feature is typically used to exclude Google or
-  /// third-party infrastructure images from Binary Authorization policies.
+  /// Admission policy whitelisting.
+  ///
+  /// A matching admission request will always be permitted. This feature is
+  /// typically used to exclude Google or third-party infrastructure images from
+  /// Binary Authorization policies.
+  ///
+  /// Optional.
   core.List<AdmissionWhitelistPattern> admissionWhitelistPatterns;
 
-  /// Optional. Per-cluster admission rules. Cluster spec format:
-  /// `location.clusterId`. There can be at most one admission rule per cluster
-  /// spec. A `location` is either a compute zone (e.g. us-central1-a) or a
-  /// region (e.g. us-central1). For `clusterId` syntax restrictions see
+  /// Per-cluster admission rules.
+  ///
+  /// Cluster spec format: `location.clusterId`. There can be at most one
+  /// admission rule per cluster spec. A `location` is either a compute zone
+  /// (e.g. us-central1-a) or a region (e.g. us-central1). For `clusterId`
+  /// syntax restrictions see
   /// https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.
+  ///
+  /// Optional.
   core.Map<core.String, AdmissionRule> clusterAdmissionRules;
 
-  /// Required. Default admission rule for a cluster without a per-cluster, per-
+  /// Default admission rule for a cluster without a per-cluster, per-
   /// kubernetes-service-account, or per-istio-service-identity admission rule.
+  ///
+  /// Required.
   AdmissionRule defaultAdmissionRule;
 
-  /// Optional. A descriptive comment.
+  /// A descriptive comment.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Controls the evaluation of a Google-maintained global admission
-  /// policy for common system-level images. Images not covered by the global
-  /// policy will be subject to the project admission policy. This setting has
-  /// no effect when specified inside a global admission policy.
+  /// Controls the evaluation of a Google-maintained global admission policy for
+  /// common system-level images.
+  ///
+  /// Images not covered by the global policy will be subject to the project
+  /// admission policy. This setting has no effect when specified inside a
+  /// global admission policy.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED" : Not specified: DISABLE is
   /// assumed.
@@ -1670,11 +1770,16 @@ class Policy {
   /// - "DISABLE" : Disables global policy evaluation.
   core.String globalPolicyEvaluationMode;
 
-  /// Output only. The resource name, in the format `projects / * /policy`.
+  /// The resource name, in the format `projects / * /policy`.
+  ///
   /// There is at most one policy per project.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. Time when the policy was last updated.
+  /// Time when the policy was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Policy();
@@ -1749,10 +1854,11 @@ class Policy {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   IamPolicy policy;
 
   SetIamPolicyRequest();
@@ -1774,8 +1880,9 @@ class SetIamPolicyRequest {
 }
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
-/// to the trust anchors defined in policy (e.g. a Kritis policy). Typically
-/// this means that the verifier has been configured with a map from
+/// to the trust anchors defined in policy (e.g. a Kritis policy).
+///
+/// Typically this means that the verifier has been configured with a map from
 /// `public_key_id` to public key material (and any required parameters, e.g.
 /// signing algorithm). In particular, verification implementations MUST NOT
 /// treat the signature `public_key_id` as anything more than a key lookup hint.
@@ -1792,9 +1899,10 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 class Signature {
-  /// The identifier for the public key that verifies this signature. * The
-  /// `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986
-  /// conformant URI. * When possible, the `public_key_id` SHOULD be an
+  /// The identifier for the public key that verifies this signature.
+  ///
+  /// * The `public_key_id` is required. * The `public_key_id` SHOULD be an
+  /// RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
   /// immutable reference, such as a cryptographic digest. Examples of valid
   /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
   /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
@@ -1805,11 +1913,13 @@ class Signature {
   /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
   core.String publicKeyId;
 
-  /// The content of the signature, an opaque bytestring. The payload that this
-  /// signature verifies MUST be unambiguously provided with the Signature
-  /// during verification. A wrapper message might provide the payload
-  /// explicitly. Alternatively, a message might have a canonical serialization
-  /// that can always be unambiguously computed to derive the payload.
+  /// The content of the signature, an opaque bytestring.
+  ///
+  /// The payload that this signature verifies MUST be unambiguously provided
+  /// with the Signature during verification. A wrapper message might provide
+  /// the payload explicitly. Alternatively, a message might have a canonical
+  /// serialization that can always be unambiguously computed to derive the
+  /// payload.
   core.String signature;
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
 
@@ -1843,9 +1953,10 @@ class Signature {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -1896,28 +2007,37 @@ class TestIamPermissionsResponse {
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note
 /// created by the user.
 class UserOwnedGrafeasNote {
-  /// Output only. This field will contain the service account email address
-  /// that this Attestor will use as the principal when querying Container
-  /// Analysis. Attestor administrators must grant this service account the IAM
-  /// role needed to read attestations from the note_reference in Container
-  /// Analysis (`containeranalysis.notes.occurrences.viewer`). This email
-  /// address is fixed for the lifetime of the Attestor, but callers should not
-  /// make any other assumptions about the service account email; future
-  /// versions may use an email based on a different naming pattern.
+  /// This field will contain the service account email address that this
+  /// Attestor will use as the principal when querying Container Analysis.
+  ///
+  /// Attestor administrators must grant this service account the IAM role
+  /// needed to read attestations from the note_reference in Container Analysis
+  /// (`containeranalysis.notes.occurrences.viewer`). This email address is
+  /// fixed for the lifetime of the Attestor, but callers should not make any
+  /// other assumptions about the service account email; future versions may use
+  /// an email based on a different naming pattern.
+  ///
+  /// Output only.
   core.String delegationServiceAccountEmail;
 
-  /// Required. The Grafeas resource name of a Attestation.Authority Note,
-  /// created by the user, in the format: `projects / * /notes / * `. This field
-  /// may not be updated. An attestation by this attestor is stored as a Grafeas
-  /// Attestation.Authority Occurrence that names a container image and that
-  /// links to this Note. Grafeas is an external dependency.
+  /// The Grafeas resource name of a Attestation.Authority Note, created by the
+  /// user, in the format: `projects / * /notes / * `.
+  ///
+  /// This field may not be updated. An attestation by this attestor is stored
+  /// as a Grafeas Attestation.Authority Occurrence that names a container image
+  /// and that links to this Note. Grafeas is an external dependency.
+  ///
+  /// Required.
   core.String noteReference;
 
-  /// Optional. Public keys that verify attestations signed by this attestor.
+  /// Public keys that verify attestations signed by this attestor.
+  ///
   /// This field may be updated. If this field is non-empty, one of the
   /// specified public keys must verify that an attestation was signed by this
   /// attestor for the image specified in the admission request. If this field
   /// is empty, this attestor always returns that no valid attestations exist.
+  ///
+  /// Optional.
   core.List<AttestorPublicKey> publicKeys;
 
   UserOwnedGrafeasNote();
@@ -1955,17 +2075,25 @@ class UserOwnedGrafeasNote {
 
 /// Request message for ValidationHelperV1.ValidateAttestationOccurrence.
 class ValidateAttestationOccurrenceRequest {
-  /// Required. An AttestationOccurrence to be checked that it can be verified
-  /// by the Attestor. It does not have to be an existing entity in Container
-  /// Analysis. It must otherwise be a valid AttestationOccurrence.
+  /// An AttestationOccurrence to be checked that it can be verified by the
+  /// Attestor.
+  ///
+  /// It does not have to be an existing entity in Container Analysis. It must
+  /// otherwise be a valid AttestationOccurrence.
+  ///
+  /// Required.
   AttestationOccurrence attestation;
 
-  /// Required. The resource name of the Note to which the containing Occurrence
-  /// is associated.
+  /// The resource name of the Note to which the containing Occurrence is
+  /// associated.
+  ///
+  /// Required.
   core.String occurrenceNote;
 
-  /// Required. The URI of the artifact (e.g. container image) that is the
-  /// subject of the containing Occurrence.
+  /// The URI of the artifact (e.g. container image) that is the subject of the
+  /// containing Occurrence.
+  ///
+  /// Required.
   core.String occurrenceResourceUri;
 
   ValidateAttestationOccurrenceRequest();

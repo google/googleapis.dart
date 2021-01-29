@@ -56,8 +56,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The Firebase Hosting REST API enables programmatic and customizable
-/// deployments to your Firebase-hosted sites. Use this REST API to deploy new
-/// or updated hosting configurations and content files.
+/// deployments to your Firebase-hosted sites.
+///
+/// Use this REST API to deploy new or updated hosting configurations and
+/// content files.
 class FirebaseHostingApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -101,9 +103,10 @@ class ProjectsOperationsResource {
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -367,7 +370,9 @@ class ProjectsSitesChannelsResource {
     );
   }
 
-  /// Deletes a channel of a site. The `live` channel cannot be deleted.
+  /// Deletes a channel of a site.
+  ///
+  /// The `live` channel cannot be deleted.
   ///
   /// Request parameters:
   ///
@@ -469,8 +474,9 @@ class ProjectsSitesChannelsResource {
     );
   }
 
-  /// Lists the channels for the specified site. All sites have a default "live"
-  /// channel.
+  /// Lists the channels for the specified site.
+  ///
+  /// All sites have a default "live" channel.
   ///
   /// Request parameters:
   ///
@@ -539,8 +545,9 @@ class ProjectsSitesChannelsResource {
     );
   }
 
-  /// Updates information for the specified channel of a site. This method will
-  /// implicitly create a channel if it doesn't exist.
+  /// Updates information for the specified channel of a site.
+  ///
+  /// This method will implicitly create a channel if it doesn't exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1386,8 +1393,9 @@ class ProjectsSitesVersionsResource {
     );
   }
 
-  /// Lists the versions that have been created on the specified site. Will
-  /// include filtering in the future.
+  /// Lists the versions that have been created on the specified site.
+  ///
+  /// Will include filtering in the future.
   ///
   /// Request parameters:
   ///
@@ -1466,10 +1474,11 @@ class ProjectsSitesVersionsResource {
     );
   }
 
-  /// Updates the specified metadata for a version. Note that this method will
-  /// fail with `FAILED_PRECONDITION` in the event of an invalid state
-  /// transition. The only valid transition for a version is currently from a
-  /// `CREATED` status to a `FINALIZED` status. Use
+  /// Updates the specified metadata for a version.
+  ///
+  /// Note that this method will fail with `FAILED_PRECONDITION` in the event of
+  /// an invalid state transition. The only valid transition for a version is
+  /// currently from a `CREATED` status to a `FINALIZED` status. Use
   /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
   /// to `DELETED`.
   ///
@@ -1540,7 +1549,9 @@ class ProjectsSitesVersionsResource {
     );
   }
 
-  /// Adds content files to a version. Each file must be under 2 GB.
+  /// Adds content files to a version.
+  ///
+  /// Each file must be under 2 GB.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1897,7 +1908,9 @@ class SitesChannelsResource {
     );
   }
 
-  /// Deletes a channel of a site. The `live` channel cannot be deleted.
+  /// Deletes a channel of a site.
+  ///
+  /// The `live` channel cannot be deleted.
   ///
   /// Request parameters:
   ///
@@ -1999,8 +2012,9 @@ class SitesChannelsResource {
     );
   }
 
-  /// Lists the channels for the specified site. All sites have a default "live"
-  /// channel.
+  /// Lists the channels for the specified site.
+  ///
+  /// All sites have a default "live" channel.
   ///
   /// Request parameters:
   ///
@@ -2069,8 +2083,9 @@ class SitesChannelsResource {
     );
   }
 
-  /// Updates information for the specified channel of a site. This method will
-  /// implicitly create a channel if it doesn't exist.
+  /// Updates information for the specified channel of a site.
+  ///
+  /// This method will implicitly create a channel if it doesn't exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2913,8 +2928,9 @@ class SitesVersionsResource {
     );
   }
 
-  /// Lists the versions that have been created on the specified site. Will
-  /// include filtering in the future.
+  /// Lists the versions that have been created on the specified site.
+  ///
+  /// Will include filtering in the future.
   ///
   /// Request parameters:
   ///
@@ -2993,10 +3009,11 @@ class SitesVersionsResource {
     );
   }
 
-  /// Updates the specified metadata for a version. Note that this method will
-  /// fail with `FAILED_PRECONDITION` in the event of an invalid state
-  /// transition. The only valid transition for a version is currently from a
-  /// `CREATED` status to a `FINALIZED` status. Use
+  /// Updates the specified metadata for a version.
+  ///
+  /// Note that this method will fail with `FAILED_PRECONDITION` in the event of
+  /// an invalid state transition. The only valid transition for a version is
+  /// currently from a `CREATED` status to a `FINALIZED` status. Use
   /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
   /// to `DELETED`.
   ///
@@ -3067,7 +3084,9 @@ class SitesVersionsResource {
     );
   }
 
-  /// Adds content files to a version. Each file must be under 2 GB.
+  /// Adds content files to a version.
+  ///
+  /// Each file must be under 2 GB.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3222,8 +3241,10 @@ class ActingUser {
   /// The email address of the user when the user performed the action.
   core.String email;
 
-  /// A profile image URL for the user. May not be present if the user has
-  /// changed their email address or deleted their account.
+  /// A profile image URL for the user.
+  ///
+  /// May not be present if the user has changed their email address or deleted
+  /// their account.
   core.String imageUrl;
 
   ActingUser();
@@ -3314,16 +3335,20 @@ class CertHttpChallenge {
   }
 }
 
-/// A `Channel` represents a stream of releases for a site. All sites have a
-/// default `live` channel that serves content to the live Firebase-provided
-/// domains and any connected custom domains.
+/// A `Channel` represents a stream of releases for a site.
+///
+/// All sites have a default `live` channel that serves content to the live
+/// Firebase-provided domains and any connected custom domains.
 class Channel {
-  /// Output only. The time at which the channel was created.
+  /// The time at which the channel was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// The time at which the channel will be automatically deleted. If null, the
-  /// channel will not be automatically deleted. This field is present in output
-  /// whether set directly or via the `ttl` field.
+  /// The time at which the channel will be automatically deleted.
+  ///
+  /// If null, the channel will not be automatically deleted. This field is
+  /// present in output whether set directly or via the `ttl` field.
   core.String expireTime;
 
   /// Text labels used for extra metadata and/or filtering.
@@ -3332,24 +3357,34 @@ class Channel {
   /// The fully-qualified identifier of the Channel.
   core.String name;
 
-  /// Output only. The current release for the channel, if any.
+  /// The current release for the channel, if any.
+  ///
+  /// Output only.
   Release release;
 
   /// The number of previous releases to retain on the channel for rollback or
-  /// other purposes. Must be a number between 1-100. Defaults to 10 for new
-  /// channels.
+  /// other purposes.
+  ///
+  /// Must be a number between 1-100. Defaults to 10 for new channels.
   core.int retainedReleaseCount;
 
-  /// Input only. A time-to-live for this channel. Sets `expire_time` to the
-  /// provided duration past the time of the request.
+  /// Input only.
+  ///
+  /// A time-to-live for this channel. Sets `expire_time` to the provided
+  /// duration past the time of the request.
   core.String ttl;
 
-  /// Output only. The time at which the channel was last updated.
+  /// The time at which the channel was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
-  /// Output only. The URL at which the channel can be viewed. For the `live`
-  /// channel, the content of the current release may also be visible at other
-  /// URLs.
+  /// The URL at which the channel can be viewed.
+  ///
+  /// For the `live` channel, the content of the current release may also be
+  /// visible at other URLs.
+  ///
+  /// Output only.
   core.String url;
 
   Channel();
@@ -3437,8 +3472,10 @@ class CloneVersionRequest {
   /// be included in the new version.
   PathFilter include;
 
-  /// Required. The name of the version to be cloned, in the format:
+  /// The name of the version to be cloned, in the format:
   /// `sites/{site}/versions/{version}`
+  ///
+  /// Required.
   core.String sourceVersion;
 
   CloneVersionRequest();
@@ -3478,17 +3515,23 @@ class CloneVersionRequest {
   }
 }
 
-/// A configured rewrite that directs requests to a Cloud Run service. If the
-/// Cloud Run service does not exist when setting or updating your Firebase
-/// Hosting configuration, then the request fails. Any errors from the Cloud Run
-/// service are passed to the end user (for example, if you delete a service,
-/// any requests directed to that service receive a `404` error).
+/// A configured rewrite that directs requests to a Cloud Run service.
+///
+/// If the Cloud Run service does not exist when setting or updating your
+/// Firebase Hosting configuration, then the request fails. Any errors from the
+/// Cloud Run service are passed to the end user (for example, if you delete a
+/// service, any requests directed to that service receive a `404` error).
 class CloudRunRewrite {
-  /// Optional. User-provided region where the Cloud Run service is hosted.
+  /// User-provided region where the Cloud Run service is hosted.
+  ///
   /// Defaults to `us-central1` if not supplied.
+  ///
+  /// Optional.
   core.String region;
 
-  /// Required. User-defined ID of the Cloud Run service.
+  /// User-defined ID of the Cloud Run service.
+  ///
+  /// Required.
   core.String serviceId;
 
   CloudRunRewrite();
@@ -3516,20 +3559,28 @@ class CloudRunRewrite {
 
 /// The intended behavior and status information of a domain.
 class Domain {
-  /// Required. The domain name of the association.
+  /// The domain name of the association.
+  ///
+  /// Required.
   core.String domainName;
 
   /// If set, the domain should redirect with the provided parameters.
   DomainRedirect domainRedirect;
 
-  /// Output only. Information about the provisioning of certificates and the
-  /// health of the DNS resolution for the domain.
+  /// Information about the provisioning of certificates and the health of the
+  /// DNS resolution for the domain.
+  ///
+  /// Output only.
   DomainProvisioning provisioning;
 
-  /// Required. The site name of the association.
+  /// The site name of the association.
+  ///
+  /// Required.
   core.String site;
 
-  /// Output only. Additional status of the domain association.
+  /// Additional status of the domain association.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "DOMAIN_STATUS_UNSPECIFIED" : Unspecified domain association status.
   /// - "DOMAIN_CHANGE_PENDING" : An external operation is in progress on the
@@ -3545,7 +3596,9 @@ class Domain {
   /// Hosting site.
   core.String status;
 
-  /// Output only. The time at which the domain was last updated.
+  /// The time at which the domain was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Domain();
@@ -3714,14 +3767,19 @@ class DomainProvisioning {
   }
 }
 
-/// Defines the behavior of a domain-level redirect. Domain redirects preserve
-/// the path of the redirect but replace the requested domain with the one
-/// specified in the redirect configuration.
+/// Defines the behavior of a domain-level redirect.
+///
+/// Domain redirects preserve the path of the redirect but replace the requested
+/// domain with the one specified in the redirect configuration.
 class DomainRedirect {
-  /// Required. The domain name to redirect to.
+  /// The domain name to redirect to.
+  ///
+  /// Required.
   core.String domainName;
 
-  /// Required. The redirect status code.
+  /// The redirect status code.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "REDIRECT_TYPE_UNSPECIFIED" : The default redirect type; should not be
   /// intentionlly used.
@@ -3753,10 +3811,12 @@ class DomainRedirect {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -3778,7 +3838,9 @@ class Header {
   /// to match against the request URL path.
   core.String glob;
 
-  /// Required. The additional headers to add to the response.
+  /// The additional headers to add to the response.
+  ///
+  /// Required.
   core.Map<core.String, core.String> headers;
 
   /// The user-supplied RE2 regular expression to match against the request URL
@@ -3822,8 +3884,10 @@ class Header {
 
 /// If provided, i18n rewrites are enabled.
 class I18nConfig {
-  /// Required. The user-supplied path where country and language specific
-  /// content will be looked for within the public directory.
+  /// The user-supplied path where country and language specific content will be
+  /// looked for within the public directory.
+  ///
+  /// Required.
   core.String root;
 
   I18nConfig();
@@ -4019,31 +4083,37 @@ class ListVersionsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -4134,9 +4204,11 @@ class PathFilter {
 /// The request to populate a Version's Files.
 class PopulateVersionFilesRequest {
   /// A set of file paths to the hashes corresponding to assets that should be
-  /// added to the version. Note that a file path to an empty hash will remove
-  /// the path from the version. Calculate a hash by Gzipping the file then
-  /// taking the SHA256 hash of the newly compressed file.
+  /// added to the version.
+  ///
+  /// Note that a file path to an empty hash will remove the path from the
+  /// version. Calculate a hash by Gzipping the file then taking the SHA256 hash
+  /// of the newly compressed file.
   core.Map<core.String, core.String> files;
 
   PopulateVersionFilesRequest();
@@ -4168,9 +4240,10 @@ class PopulateVersionFilesResponse {
 
   /// The URL to which the files should be uploaded, in the format:
   /// "https://upload-firebasehosting.googleapis.com/upload/sites/site-name
-  /// /versions/versionID/files". Perform a multipart `POST` of the Gzipped file
-  /// contents to the URL using a forward slash and the hash of the file
-  /// appended to the end.
+  /// /versions/versionID/files".
+  ///
+  /// Perform a multipart `POST` of the Gzipped file contents to the URL using a
+  /// forward slash and the hash of the file appended to the end.
   core.String uploadUrl;
 
   PopulateVersionFilesResponse();
@@ -4198,9 +4271,10 @@ class PopulateVersionFilesResponse {
   }
 }
 
-/// Version preview configuration. If active and unexpired, this version will be
-/// accessible via a custom URL even if it is not the currently released
-/// version.
+/// Version preview configuration.
+///
+/// If active and unexpired, this version will be accessible via a custom URL
+/// even if it is not the currently released version.
 class PreviewConfig {
   /// If true, preview URLs are enabled for this version.
   core.bool active;
@@ -4240,19 +4314,25 @@ class Redirect {
   /// to match against the request URL path.
   core.String glob;
 
-  /// Required. The value to put in the HTTP location header of the response.
+  /// The value to put in the HTTP location header of the response.
+  ///
   /// The location can contain capture group values from the pattern using a `:`
   /// prefix to identify the segment and an optional `*` to capture the rest of
   /// the URL. For example: "glob": "/:capture*", "statusCode": 301, "location":
   /// "https://example.com/foo/:capture"
+  ///
+  /// Required.
   core.String location;
 
   /// The user-supplied RE2 regular expression to match against the request URL
   /// path.
   core.String regex;
 
-  /// Required. The status HTTP code to return in the response. It must be a
-  /// valid 3xx status code.
+  /// The status HTTP code to return in the response.
+  ///
+  /// It must be a valid 3xx status code.
+  ///
+  /// Required.
   core.int statusCode;
 
   Redirect();
@@ -4293,23 +4373,32 @@ class Redirect {
 /// A `Release` is a particular [collection of configurations and
 /// files](sites.versions) that is set to be public at a particular time.
 class Release {
-  /// The deploy description when the release was created. The value can be up
-  /// to 512 characters.
+  /// The deploy description when the release was created.
+  ///
+  /// The value can be up to 512 characters.
   core.String message;
 
-  /// Output only. The unique identifier for the release, in the format: sites/
+  /// The unique identifier for the release, in the format: sites/
   /// site-name/releases/releaseID This name is provided in the response body
   /// when you call the [`CreateRelease`](sites.releases/create) endpoint.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The time at which the version is set to be public.
+  /// The time at which the version is set to be public.
+  ///
+  /// Output only.
   core.String releaseTime;
 
-  /// Output only. Identifies the user who created the release.
+  /// Identifies the user who created the release.
+  ///
+  /// Output only.
   ActingUser releaseUser;
 
-  /// Explains the reason for the release. Specify a value for this field only
-  /// when creating a `SITE_DISABLE` type release.
+  /// Explains the reason for the release.
+  ///
+  /// Specify a value for this field only when creating a `SITE_DISABLE` type
+  /// release.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : An unspecified type. Indicates that a version was
   /// released. This is the default value when no other `type` is explicitly
@@ -4320,7 +4409,9 @@ class Release {
   /// Firebase Hosting acts as if the site never existed.
   core.String type;
 
-  /// Output only. The configuration and content that was released.
+  /// The configuration and content that was released.
+  ///
+  /// Output only.
   Version version;
 
   Release();
@@ -4379,8 +4470,9 @@ class Rewrite {
   /// The request will be forwarded to Firebase Dynamic Links.
   core.bool dynamicLinks;
 
-  /// The function to proxy requests to. Must match the exported function name
-  /// exactly.
+  /// The function to proxy requests to.
+  ///
+  /// Must match the exported function name exactly.
   core.String function;
 
   /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
@@ -4446,9 +4538,11 @@ class Rewrite {
 }
 
 /// The configuration for how incoming requests to a site should be routed and
-/// processed before serving content. The URL request paths are matched against
-/// the specified URL patterns in the configuration, then Hosting applies the
-/// applicable configuration according to a specific [priority
+/// processed before serving content.
+///
+/// The URL request paths are matched against the specified URL patterns in the
+/// configuration, then Hosting applies the applicable configuration according
+/// to a specific [priority
 /// order](/docs/hosting/full-config#hosting_priority_order).
 class ServingConfig {
   /// How to handle well known App Association files.
@@ -4467,7 +4561,9 @@ class ServingConfig {
   /// custom response headers.
   core.List<Header> headers;
 
-  /// Optional. Defines i18n rewrite behavior.
+  /// Defines i18n rewrite behavior.
+  ///
+  /// Optional.
   I18nConfig i18n;
 
   /// An array of objects (called redirect rules), where each rule specifies a
@@ -4562,10 +4658,12 @@ class SiteConfig {
   core.bool cloudLoggingEnabled;
 
   /// The number of FINALIZED versions that will be held for a site before
-  /// automatic deletion. When a new version is deployed, content for versions
-  /// in storage in excess of this number will be deleted, and will no longer be
-  /// billed for storage usage. Oldest versions will be deleted first; sites are
-  /// created with an unlimited number of max_versions by default.
+  /// automatic deletion.
+  ///
+  /// When a new version is deployed, content for versions in storage in excess
+  /// of this number will be deleted, and will no longer be billed for storage
+  /// usage. Oldest versions will be deleted first; sites are created with an
+  /// unlimited number of max_versions by default.
   core.String maxVersions;
 
   SiteConfig();
@@ -4592,24 +4690,27 @@ class SiteConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -4653,30 +4754,47 @@ class Status {
 /// A `Version` is the collection of configuration and [static
 /// files](sites.versions.files) that determine how a site is displayed.
 class Version {
-  /// The configuration for the behavior of the site. This configuration exists
-  /// in the [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
+  /// The configuration for the behavior of the site.
+  ///
+  /// This configuration exists in the
+  /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
   ServingConfig config;
 
-  /// Output only. The time at which the version was created.
+  /// The time at which the version was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. Identifies the user who created the version.
+  /// Identifies the user who created the version.
+  ///
+  /// Output only.
   ActingUser createUser;
 
-  /// Output only. The time at which the version was `DELETED`.
+  /// The time at which the version was `DELETED`.
+  ///
+  /// Output only.
   core.String deleteTime;
 
-  /// Output only. Identifies the user who `DELETED` the version.
+  /// Identifies the user who `DELETED` the version.
+  ///
+  /// Output only.
   ActingUser deleteUser;
 
-  /// Output only. The total number of files associated with the version. This
-  /// value is calculated after a version is `FINALIZED`.
+  /// The total number of files associated with the version.
+  ///
+  /// This value is calculated after a version is `FINALIZED`.
+  ///
+  /// Output only.
   core.String fileCount;
 
-  /// Output only. The time at which the version was `FINALIZED`.
+  /// The time at which the version was `FINALIZED`.
+  ///
+  /// Output only.
   core.String finalizeTime;
 
-  /// Output only. Identifies the user who `FINALIZED` the version.
+  /// Identifies the user who `FINALIZED` the version.
+  ///
+  /// Output only.
   ActingUser finalizeUser;
 
   /// The labels used for extra metadata and/or filtering.
@@ -4687,15 +4805,17 @@ class Version {
   /// call the [`CreateVersion`](../sites.versions/create) endpoint.
   core.String name;
 
-  /// Version preview configuration for the site version. This configuration
-  /// specfies whether previewing is enabled for this site version. Version
-  /// previews allow you to preview your site at a custom URL before releasing
-  /// it as the live version.
+  /// Version preview configuration for the site version.
+  ///
+  /// This configuration specfies whether previewing is enabled for this site
+  /// version. Version previews allow you to preview your site at a custom URL
+  /// before releasing it as the live version.
   PreviewConfig preview;
 
-  /// The deploy status of a version. For a successful deploy, call the
-  /// [`CreateVersion`](sites.versions/create) endpoint to make a new version
-  /// (`CREATED` status), [upload all desired
+  /// The deploy status of a version.
+  ///
+  /// For a successful deploy, call the [`CreateVersion`](sites.versions/create)
+  /// endpoint to make a new version (`CREATED` status), [upload all desired
   /// files](sites.versions/populateFiles) to the version, then
   /// [update](sites.versions/patch) the version to the `FINALIZED` status. Note
   /// that if you leave the version in the `CREATED` state for more than 12
@@ -4719,8 +4839,11 @@ class Version {
   /// content is still being copied over.
   core.String status;
 
-  /// Output only. The total stored bytesize of the version. This value is
-  /// calculated after a version is `FINALIZED`.
+  /// The total stored bytesize of the version.
+  ///
+  /// This value is calculated after a version is `FINALIZED`.
+  ///
+  /// Output only.
   core.String versionBytes;
 
   Version();
@@ -4831,8 +4954,11 @@ class VersionFile {
   /// The URI at which the file's content should display.
   core.String path;
 
-  /// Output only. The current status of a particular file in the specified
-  /// version. The value will be either `pending upload` or `uploaded`.
+  /// The current status of a particular file in the specified version.
+  ///
+  /// The value will be either `pending upload` or `uploaded`.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : The default status; should not be intentionally
   /// used.

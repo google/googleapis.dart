@@ -45,8 +45,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Admin SDK lets administrators of enterprise domains to view and manage
-/// resources like user, groups etc. It also provides audit and usage reports of
-/// domain.
+/// resources like user, groups etc.
+///
+/// It also provides audit and usage reports of domain.
 class ReportsApi {
   /// View audit reports for your G Suite domain
   static const adminReportsAuditReadonlyScope =
@@ -81,9 +82,11 @@ class ActivitiesResource {
 
   /// Retrieves a list of activities for a specific customer's account and
   /// application such as the Admin console application or the Google Drive
-  /// application. For more information, see the guides for administrator and
-  /// Google Drive activity reports. For more information about the activity
-  /// report's parameters, see the activity parameters reference guides.
+  /// application.
+  ///
+  /// For more information, see the guides for administrator and Google Drive
+  /// activity reports. For more information about the activity report's
+  /// parameters, see the activity parameters reference guides.
   ///
   /// Request parameters:
   ///
@@ -326,8 +329,9 @@ class ActivitiesResource {
     );
   }
 
-  /// Start receiving notifications for account activities. For more
-  /// information, see Receiving Push Notifications.
+  /// Start receiving notifications for account activities.
+  ///
+  /// For more information, see Receiving Push Notifications.
   ///
   /// [request] - The metadata request object.
   ///
@@ -640,9 +644,11 @@ class CustomerUsageReportsResource {
       : _requester = client;
 
   /// Retrieves a report which is a collection of properties and statistics for
-  /// a specific customer's account. For more information, see the Customers
-  /// Usage Report guide. For more information about the customer report's
-  /// parameters, see the Customers Usage parameters reference guides.
+  /// a specific customer's account.
+  ///
+  /// For more information, see the Customers Usage Report guide. For more
+  /// information about the customer report's parameters, see the Customers
+  /// Usage parameters reference guides.
   ///
   /// Request parameters:
   ///
@@ -742,9 +748,11 @@ class EntityUsageReportsResource {
   EntityUsageReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report which is a collection of properties and statistics for
-  /// entities used by users within the account. For more information, see the
-  /// Entities Usage Report guide. For more information about the entities
-  /// report's parameters, see the Entities Usage parameters reference guides.
+  /// entities used by users within the account.
+  ///
+  /// For more information, see the Entities Usage Report guide. For more
+  /// information about the entities report's parameters, see the Entities Usage
+  /// parameters reference guides.
   ///
   /// Request parameters:
   ///
@@ -900,9 +908,11 @@ class UserUsageReportResource {
   UserUsageReportResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a report which is a collection of properties and statistics for
-  /// a set of users with the account. For more information, see the User Usage
-  /// Report guide. For more information about the user report's parameters, see
-  /// the Users Usage parameters reference guides.
+  /// a set of users with the account.
+  ///
+  /// For more information, see the User Usage Report guide. For more
+  /// information about the user report's parameters, see the Users Usage
+  /// parameters reference guides.
   ///
   /// Request parameters:
   ///
@@ -1057,12 +1067,14 @@ class Activities {
   /// Each activity record in the response.
   core.List<Activity> items;
 
-  /// The type of API resource. For an activity report, the value is
-  /// reports#activities.
+  /// The type of API resource.
+  ///
+  /// For an activity report, the value is reports#activities.
   core.String kind;
 
-  /// Token for retrieving the follow-on next page of the report. The
-  /// nextPageToken value is used in the request's pageToken query string.
+  /// Token for retrieving the follow-on next page of the report.
+  ///
+  /// The nextPageToken value is used in the request's pageToken query string.
   core.String nextPageToken;
 
   Activities();
@@ -1108,16 +1120,20 @@ class ActivityActor {
   /// The type of actor.
   core.String callerType;
 
-  /// The primary email address of the actor. May be absent if there is no email
-  /// address associated with the actor.
+  /// The primary email address of the actor.
+  ///
+  /// May be absent if there is no email address associated with the actor.
   core.String email;
 
-  /// Only present when callerType is KEY. Can be the consumer_key of the
-  /// requestor for OAuth 2LO API requests or an identifier for robot accounts.
+  /// Only present when callerType is KEY.
+  ///
+  /// Can be the consumer_key of the requestor for OAuth 2LO API requests or an
+  /// identifier for robot accounts.
   core.String key;
 
-  /// The unique G Suite profile ID of the actor. May be absent if the actor is
-  /// not a G Suite user.
+  /// The unique G Suite profile ID of the actor.
+  ///
+  /// May be absent if the actor is not a G Suite user.
   core.String profileId;
 
   ActivityActor();
@@ -1155,10 +1171,11 @@ class ActivityActor {
   }
 }
 
-/// Nested parameter value pairs associated with this parameter. Complex value
-/// type for a parameter are returned as a list of parameter values. For
-/// example, the address parameter may have a value as [{parameter: [{name:
-/// city, value: abc}]}]
+/// Nested parameter value pairs associated with this parameter.
+///
+/// Complex value type for a parameter are returned as a list of parameter
+/// values. For example, the address parameter may have a value as [{parameter:
+/// [{name: city, value: abc}]}]
 class ActivityEventsParametersMessageValue {
   /// Parameter values
   core.List<NestedParameter> parameter;
@@ -1214,10 +1231,11 @@ class ActivityEventsParameters {
   /// Integer value of the parameter.
   core.String intValue;
 
-  /// Nested parameter value pairs associated with this parameter. Complex value
-  /// type for a parameter are returned as a list of parameter values. For
-  /// example, the address parameter may have a value as [{parameter: [{name:
-  /// city, value: abc}]}]
+  /// Nested parameter value pairs associated with this parameter.
+  ///
+  /// Complex value type for a parameter are returned as a list of parameter
+  /// values. For example, the address parameter may have a value as
+  /// [{parameter: [{name: city, value: abc}]}]
   ActivityEventsParametersMessageValue messageValue;
 
   /// Integer values of the parameter.
@@ -1305,27 +1323,32 @@ class ActivityEventsParameters {
 }
 
 class ActivityEvents {
-  /// Name of the event. This is the specific name of the activity reported by
-  /// the API. And each eventName is related to a specific G Suite service or
-  /// feature which the API organizes into types of events. For eventName
-  /// request parameters in general: - If no eventName is given, the report
-  /// returns all possible instances of an eventName. - When you request an
-  /// eventName, the API's response returns all activities which contain that
-  /// eventName. It is possible that the returned activities will have other
-  /// eventName properties in addition to the one requested. For more
-  /// information about eventName properties, see the list of event names for
-  /// various applications above in applicationName.
+  /// Name of the event.
+  ///
+  /// This is the specific name of the activity reported by the API. And each
+  /// eventName is related to a specific G Suite service or feature which the
+  /// API organizes into types of events. For eventName request parameters in
+  /// general: - If no eventName is given, the report returns all possible
+  /// instances of an eventName. - When you request an eventName, the API's
+  /// response returns all activities which contain that eventName. It is
+  /// possible that the returned activities will have other eventName properties
+  /// in addition to the one requested. For more information about eventName
+  /// properties, see the list of event names for various applications above in
+  /// applicationName.
   core.String name;
 
-  /// Parameter value pairs for various applications. For more information about
-  /// eventName parameters, see the list of event names for various applications
-  /// above in applicationName.
+  /// Parameter value pairs for various applications.
+  ///
+  /// For more information about eventName parameters, see the list of event
+  /// names for various applications above in applicationName.
   core.List<ActivityEventsParameters> parameters;
 
-  /// Type of event. The G Suite service or feature that an administrator
-  /// changes is identified in the type property which identifies an event using
-  /// the eventName property. For a full list of the API's type categories, see
-  /// the list of event names for various applications above in applicationName.
+  /// Type of event.
+  ///
+  /// The G Suite service or feature that an administrator changes is identified
+  /// in the type property which identifies an event using the eventName
+  /// property. For a full list of the API's type categories, see the list of
+  /// event names for various applications above in applicationName.
   core.String type;
 
   ActivityEvents();
@@ -1363,14 +1386,17 @@ class ActivityEvents {
 
 /// Unique identifier for each activity record.
 class ActivityId {
-  /// Application name to which the event belongs. For possible values see the
-  /// list of applications above in applicationName.
+  /// Application name to which the event belongs.
+  ///
+  /// For possible values see the list of applications above in applicationName.
   core.String applicationName;
 
   /// The unique identifier for a G suite account.
   core.String customerId;
 
-  /// Time of occurrence of the activity. This is in UNIX epoch time in seconds.
+  /// Time of occurrence of the activity.
+  ///
+  /// This is in UNIX epoch time in seconds.
   core.DateTime time;
 
   /// Unique qualifier if multiple events have the same time.
@@ -1425,19 +1451,23 @@ class Activity {
   /// Unique identifier for each activity record.
   ActivityId id;
 
-  /// IP address of the user doing the action. This is the Internet Protocol
-  /// (IP) address of the user when logging into G Suite which may or may not
-  /// reflect the user's physical location. For example, the IP address can be
-  /// the user's proxy server's address or a virtual private network (VPN)
-  /// address. The API supports IPv4 and IPv6.
+  /// IP address of the user doing the action.
+  ///
+  /// This is the Internet Protocol (IP) address of the user when logging into G
+  /// Suite which may or may not reflect the user's physical location. For
+  /// example, the IP address can be the user's proxy server's address or a
+  /// virtual private network (VPN) address. The API supports IPv4 and IPv6.
   core.String ipAddress;
 
-  /// The type of API resource. For an activity report, the value is
-  /// audit#activity.
+  /// The type of API resource.
+  ///
+  /// For an activity report, the value is audit#activity.
   core.String kind;
 
-  /// This is the domain that is affected by the report's event. For example
-  /// domain of Admin console or the Drive application's document owner.
+  /// This is the domain that is affected by the report's event.
+  ///
+  /// For example domain of Admin console or the Drive application's document
+  /// owner.
   core.String ownerDomain;
 
   Activity();
@@ -1504,7 +1534,9 @@ class Channel {
   core.String address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds. Optional.
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
   core.String expiration;
 
   /// A UUID or similar unique string that identifies this channel.
@@ -1514,13 +1546,18 @@ class Channel {
   /// resource, which is "api#channel".
   core.String kind;
 
-  /// Additional parameters controlling delivery channel behavior. Optional.
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> params;
 
-  /// A Boolean value to indicate whether payload is wanted. Optional.
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
   core.bool payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
+  ///
   /// Stable across different API versions.
   core.String resourceId;
 
@@ -1528,7 +1565,9 @@ class Channel {
   core.String resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel. Optional.
+  /// delivered over this channel.
+  ///
+  /// Optional.
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
@@ -1693,23 +1732,40 @@ class NestedParameter {
   }
 }
 
-/// Output only. Information about the type of the item.
+/// Information about the type of the item.
+///
+/// Output only.
 class UsageReportEntity {
-  /// Output only. The unique identifier of the customer's account.
+  /// The unique identifier of the customer's account.
+  ///
+  /// Output only.
   core.String customerId;
 
-  /// Output only. Object key. Only relevant if entity.type = "OBJECT" Note:
-  /// external-facing name of report is "Entities" rather than "Objects".
+  /// Object key.
+  ///
+  /// Only relevant if entity.type = "OBJECT" Note: external-facing name of
+  /// report is "Entities" rather than "Objects".
+  ///
+  /// Output only.
   core.String entityId;
 
-  /// Output only. The user's immutable G Suite profile identifier.
+  /// The user's immutable G Suite profile identifier.
+  ///
+  /// Output only.
   core.String profileId;
 
-  /// Output only. The type of item. The value is customer.
+  /// The type of item.
+  ///
+  /// The value is customer.
+  ///
+  /// Output only.
   core.String type;
 
-  /// Output only. The user's email address. Only relevant if entity.type =
-  /// "USER"
+  /// The user's email address.
+  ///
+  /// Only relevant if entity.type = "USER"
+  ///
+  /// Output only.
   core.String userEmail;
 
   UsageReportEntity();
@@ -1754,17 +1810,23 @@ class UsageReportEntity {
 }
 
 class UsageReportParameters {
-  /// Output only. Boolean value of the parameter.
+  /// Boolean value of the parameter.
+  ///
+  /// Output only.
   core.bool boolValue;
 
   /// The RFC 3339 formatted value of the parameter, for example
   /// 2010-10-28T10:26:35.000Z.
   core.DateTime datetimeValue;
 
-  /// Output only. Integer value of the parameter.
+  /// Integer value of the parameter.
+  ///
+  /// Output only.
   core.String intValue;
 
-  /// Output only. Nested message value of the parameter.
+  /// Nested message value of the parameter.
+  ///
+  /// Output only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1773,7 +1835,9 @@ class UsageReportParameters {
   /// Name of the parameter.
   core.String name;
 
-  /// Output only. String value of the parameter.
+  /// String value of the parameter.
+  ///
+  /// Output only.
   core.String stringValue;
 
   UsageReportParameters();
@@ -1834,22 +1898,30 @@ class UsageReportParameters {
 
 /// JSON template for a usage report.
 class UsageReport {
-  /// Output only. The date of the report request.
+  /// The date of the report request.
+  ///
+  /// Output only.
   core.String date;
 
-  /// Output only. Information about the type of the item.
+  /// Information about the type of the item.
+  ///
+  /// Output only.
   UsageReportEntity entity;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// The type of API resource. For a usage report, the value is
-  /// admin#reports#usageReport.
+  /// The type of API resource.
+  ///
+  /// For a usage report, the value is admin#reports#usageReport.
   core.String kind;
 
-  /// Output only. Parameter value pairs for various applications. For the
-  /// Customers usage report parameters and values, see the customer usage
-  /// parameters reference.
+  /// Parameter value pairs for various applications.
+  ///
+  /// For the Customers usage report parameters and values, see the customer
+  /// usage parameters reference.
+  ///
+  /// Output only.
   core.List<UsageReportParameters> parameters;
 
   UsageReport();
@@ -1930,7 +2002,9 @@ class UsageReportsWarningsData {
 }
 
 class UsageReportsWarnings {
-  /// Machine readable code or warning type. The warning code value is 200.
+  /// Machine readable code or warning type.
+  ///
+  /// The warning code value is 200.
   core.String code;
 
   /// Key-value pairs to give detailed information on the warning.
@@ -1938,9 +2012,11 @@ class UsageReportsWarnings {
 
   /// The human readable messages for a warning are: - Data is not available
   /// warning - Sorry, data for date yyyy-mm-dd for application "application
-  /// name" is not available. - Partial data is available warning - Data for
-  /// date yyyy-mm-dd for application "application name" is not available right
-  /// now, please try again after a few hours.
+  /// name" is not available.
+  ///
+  /// - Partial data is available warning - Data for date yyyy-mm-dd for
+  /// application "application name" is not available right now, please try
+  /// again after a few hours.
   core.String message;
 
   UsageReportsWarnings();
@@ -1980,14 +2056,16 @@ class UsageReports {
   /// ETag of the resource.
   core.String etag;
 
-  /// The type of API resource. For a usage report, the value is
-  /// admin#reports#usageReports.
+  /// The type of API resource.
+  ///
+  /// For a usage report, the value is admin#reports#usageReports.
   core.String kind;
 
-  /// Token to specify next page. A report with multiple pages has a
-  /// nextPageToken property in the response. For your follow-on requests
-  /// getting all of the report's pages, enter the nextPageToken value in the
-  /// pageToken query string.
+  /// Token to specify next page.
+  ///
+  /// A report with multiple pages has a nextPageToken property in the response.
+  /// For your follow-on requests getting all of the report's pages, enter the
+  /// nextPageToken value in the pageToken query string.
   core.String nextPageToken;
 
   /// Various application parameter records.

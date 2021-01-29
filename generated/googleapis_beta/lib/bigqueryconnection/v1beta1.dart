@@ -260,8 +260,10 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -390,8 +392,10 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
-  /// Updates the specified connection. For security reasons, also resets
-  /// credential if connection properties are in the update field mask.
+  /// Updates the specified connection.
+  ///
+  /// For security reasons, also resets credential if connection properties are
+  /// in the update field mask.
   ///
   /// [request] - The metadata request object.
   ///
@@ -458,9 +462,10 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -522,10 +527,11 @@ class ProjectsLocationsConnectionsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -649,11 +655,12 @@ class ProjectsLocationsConnectionsResource {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -669,9 +676,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -701,14 +709,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -746,16 +757,19 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -786,8 +800,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -855,7 +870,9 @@ class CloudSqlCredential {
 
 /// Connection properties specific to the Cloud SQL.
 class CloudSqlProperties {
-  /// Input only. Cloud SQL credential.
+  /// Input only.
+  ///
+  /// Cloud SQL credential.
   CloudSqlCredential credential;
 
   /// Database name.
@@ -913,7 +930,9 @@ class Connection {
   /// Cloud SQL properties.
   CloudSqlProperties cloudSql;
 
-  /// Output only. The creation timestamp of the connection.
+  /// The creation timestamp of the connection.
+  ///
+  /// Output only.
   core.String creationTime;
 
   /// User provided description.
@@ -922,10 +941,14 @@ class Connection {
   /// User provided display name for the connection.
   core.String friendlyName;
 
-  /// Output only. True, if credential is configured for this connection.
+  /// True, if credential is configured for this connection.
+  ///
+  /// Output only.
   core.bool hasCredential;
 
-  /// Output only. The last update timestamp of the connection.
+  /// The last update timestamp of the connection.
+  ///
+  /// Output only.
   core.String lastModifiedTime;
 
   /// The resource name of the connection in the form of:
@@ -1010,10 +1033,12 @@ class ConnectionCredential {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1028,8 +1053,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -1044,20 +1071,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1121,13 +1157,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -1183,16 +1222,18 @@ class ListConnectionsResponse {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -1215,14 +1256,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -1239,20 +1283,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -1300,13 +1346,15 @@ class Policy {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -1337,9 +1385,10 @@ class SetIamPolicyRequest {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 

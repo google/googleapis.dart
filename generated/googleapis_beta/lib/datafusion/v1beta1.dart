@@ -49,8 +49,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Cloud Data Fusion is a fully-managed, cloud native, enterprise data
-/// integration service for quickly building and managing data pipelines. It
-/// provides a graphical interface to increase time efficiency and reduce
+/// integration service for quickly building and managing data pipelines.
+///
+/// It provides a graphical interface to increase time efficiency and reduce
 /// complexity, and allows business users, developers, and data scientists to
 /// easily and reliably build scalable data integration solutions to cleanse,
 /// prepare, blend, transfer and transform data without having to wrestle with
@@ -403,8 +404,10 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -627,8 +630,9 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Restart a single Data Fusion instance. At the end of an operation instance
-  /// is fully restarted.
+  /// Restart a single Data Fusion instance.
+  ///
+  /// At the end of an operation instance is fully restarted.
   ///
   /// [request] - The metadata request object.
   ///
@@ -689,9 +693,10 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -753,10 +758,11 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -820,8 +826,9 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
-  /// Upgrade a single Data Fusion instance. At the end of an operation instance
-  /// is fully upgraded.
+  /// Upgrade a single Data Fusion instance.
+  ///
+  /// At the end of an operation instance is fully upgraded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -891,8 +898,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -958,10 +966,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -1013,9 +1022,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1067,10 +1077,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1262,11 +1273,12 @@ class Accelerator {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -1282,9 +1294,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1314,14 +1327,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -1359,20 +1375,24 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -1403,8 +1423,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1460,10 +1481,12 @@ class CancelOperationRequest {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1478,8 +1501,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -1494,20 +1519,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1550,20 +1584,25 @@ class Instance {
   /// List of accelerators enabled for this CDF instance.
   core.List<Accelerator> accelerators;
 
-  /// Output only. Endpoint on which the REST APIs is accessible.
+  /// Endpoint on which the REST APIs is accessible.
+  ///
+  /// Output only.
   core.String apiEndpoint;
 
   /// Available versions that the instance can be upgraded to using
   /// UpdateInstanceRequest.
   core.List<Version> availableVersion;
 
-  /// Output only. The time the instance was created.
+  /// The time the instance was created.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// User-managed service account to set on Dataproc when Cloud Data Fusion
-  /// creates Dataproc to run data processing pipelines. This allows users to
-  /// have fine-grained access control on Dataproc's accesses to cloud
-  /// resources.
+  /// creates Dataproc to run data processing pipelines.
+  ///
+  /// This allows users to have fine-grained access control on Dataproc's
+  /// accesses to cloud resources.
   core.String dataprocServiceAccount;
 
   /// A description of this instance.
@@ -1578,43 +1617,56 @@ class Instance {
   /// Option to enable Stackdriver Monitoring.
   core.bool enableStackdriverMonitoring;
 
-  /// Output only. Cloud Storage bucket generated by Data Fusion in the customer
-  /// project.
+  /// Cloud Storage bucket generated by Data Fusion in the customer project.
+  ///
+  /// Output only.
   core.String gcsBucket;
 
   /// The resource labels for instance to use to annotate any related underlying
-  /// resources such as Compute Engine VMs. The character '=' is not allowed to
-  /// be used within the labels.
+  /// resources such as Compute Engine VMs.
+  ///
+  /// The character '=' is not allowed to be used within the labels.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The name of this instance is in the form of
+  /// The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Network configuration options. These are required when a private Data
-  /// Fusion instance is to be created.
+  /// Network configuration options.
+  ///
+  /// These are required when a private Data Fusion instance is to be created.
   NetworkConfig networkConfig;
 
   /// Map of additional options used to configure the behavior of Data Fusion
   /// instance.
   core.Map<core.String, core.String> options;
 
-  /// Output only. P4 service account for the customer project.
+  /// P4 service account for the customer project.
+  ///
+  /// Output only.
   core.String p4ServiceAccount;
 
-  /// Specifies whether the Data Fusion instance should be private. If set to
-  /// true, all Data Fusion nodes will have private IP addresses and will not be
-  /// able to access the public internet.
+  /// Specifies whether the Data Fusion instance should be private.
+  ///
+  /// If set to true, all Data Fusion nodes will have private IP addresses and
+  /// will not be able to access the public internet.
   core.bool privateInstance;
 
-  /// Output only. Deprecated. Use tenant_project_id instead to extract the
-  /// tenant project ID.
+  /// Use tenant_project_id instead to extract the tenant project ID.
+  ///
+  /// Output only. Deprecated.
   core.String serviceAccount;
 
-  /// Output only. Endpoint on which the Data Fusion UI is accessible.
+  /// Endpoint on which the Data Fusion UI is accessible.
+  ///
+  /// Output only.
   core.String serviceEndpoint;
 
-  /// Output only. The current state of this Data Fusion instance.
+  /// The current state of this Data Fusion instance.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Instance does not have a state yet
   /// - "CREATING" : Instance is being created
@@ -1628,14 +1680,20 @@ class Instance {
   /// - "AUTO_UPGRADING" : Instance is being auto-upgraded
   core.String state;
 
-  /// Output only. Additional information about the current state of this Data
-  /// Fusion instance if available.
+  /// Additional information about the current state of this Data Fusion
+  /// instance if available.
+  ///
+  /// Output only.
   core.String stateMessage;
 
-  /// Output only. The name of the tenant project.
+  /// The name of the tenant project.
+  ///
+  /// Output only.
   core.String tenantProjectId;
 
-  /// Required. Instance type.
+  /// Instance type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : No type specified. The instance creation will fail.
   /// - "BASIC" : Basic Data Fusion instance. In Basic type, the user will be
@@ -1651,7 +1709,9 @@ class Instance {
   /// integration pipelines at low cost.
   core.String type;
 
-  /// Output only. The time the instance was last updated.
+  /// The time the instance was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
   /// Current version of Data Fusion.
@@ -1995,25 +2055,31 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -2070,22 +2136,28 @@ class Location {
   }
 }
 
-/// Network configuration for a Data Fusion instance. These configurations are
-/// used for peering with the customer network. Configurations are optional when
-/// a public Data Fusion instance is to be created. However, providing these
-/// configurations allows several benefits, such as reduced network latency
-/// while accessing the customer resources from managed Data Fusion instance
-/// nodes, as well as access to the customer on-prem resources.
+/// Network configuration for a Data Fusion instance.
+///
+/// These configurations are used for peering with the customer network.
+/// Configurations are optional when a public Data Fusion instance is to be
+/// created. However, providing these configurations allows several benefits,
+/// such as reduced network latency while accessing the customer resources from
+/// managed Data Fusion instance nodes, as well as access to the customer
+/// on-prem resources.
 class NetworkConfig {
   /// The IP range in CIDR notation to use for the managed Data Fusion instance
-  /// nodes. This range must not overlap with any other ranges used in the Data
-  /// Fusion instance network.
+  /// nodes.
+  ///
+  /// This range must not overlap with any other ranges used in the Data Fusion
+  /// instance network.
   core.String ipAllocation;
 
   /// Name of the network in the customer project with which the Tenant Project
-  /// will be peered for executing pipelines. In case of shared VPC where the
-  /// network resides in another host project the network should specified in
-  /// the form of projects/{host-project-id}/global/networks/{network}
+  /// will be peered for executing pipelines.
+  ///
+  /// In case of shared VPC where the network resides in another host project
+  /// the network should specified in the form of
+  /// projects/{host-project-id}/global/networks/{network}
   core.String network;
 
   NetworkConfig();
@@ -2114,31 +2186,37 @@ class NetworkConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2214,6 +2292,7 @@ class OperationMetadata {
   core.String endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
+  ///
   /// Operations that have successfully been cancelled have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
@@ -2282,16 +2361,18 @@ class OperationMetadata {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -2314,14 +2395,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -2338,20 +2422,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -2413,13 +2499,15 @@ class RestartInstanceRequest {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -2449,24 +2537,27 @@ class SetIamPolicyRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -2509,9 +2600,10 @@ class Status {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -2559,8 +2651,9 @@ class TestIamPermissionsResponse {
   }
 }
 
-/// Request message for upgrading a Data Fusion instance. To change the instance
-/// properties, instance update should be used.
+/// Request message for upgrading a Data Fusion instance.
+///
+/// To change the instance properties, instance update should be used.
 class UpgradeInstanceRequest {
   UpgradeInstanceRequest();
 

@@ -52,9 +52,10 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Detects objects, explicit content, and scene changes in videos. It also
-/// specifies the region for annotation and transcribes speech to text. Supports
-/// both asynchronous API and streaming API.
+/// Detects objects, explicit content, and scene changes in videos.
+///
+/// It also specifies the region for annotation and transcribes speech to text.
+/// Supports both asynchronous API and streaming API.
 class CloudVideoIntelligenceApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -107,8 +108,9 @@ class OperationsProjectsLocationsOperationsResource {
   OperationsProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -170,10 +172,11 @@ class OperationsProjectsLocationsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -226,9 +229,10 @@ class OperationsProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -320,9 +324,10 @@ class ProjectsLocationsCorporaOperationsResource {
   ProjectsLocationsCorporaOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -392,9 +397,10 @@ class ProjectsLocationsCorpuraOperationsResource {
   ProjectsLocationsCorpuraOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -454,8 +460,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -521,10 +528,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -577,9 +585,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -632,10 +641,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -717,10 +727,12 @@ class VideosResource {
 
   VideosResource(commons.ApiRequester client) : _requester = client;
 
-  /// Performs asynchronous video annotation. Progress and results can be
-  /// retrieved through the `google.longrunning.Operations` interface.
-  /// `Operation.metadata` contains `AnnotateVideoProgress` (progress).
-  /// `Operation.response` contains `AnnotateVideoResponse` (results).
+  /// Performs asynchronous video annotation.
+  ///
+  /// Progress and results can be retrieved through the
+  /// `google.longrunning.Operations` interface. `Operation.metadata` contains
+  /// `AnnotateVideoProgress` (progress). `Operation.response` contains
+  /// `AnnotateVideoResponse` (results).
   ///
   /// [request] - The metadata request object.
   ///
@@ -772,9 +784,10 @@ class VideosResource {
   }
 }
 
-/// Video annotation progress. Included in the `metadata` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation progress.
+///
+/// Included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
   /// Progress metadata for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1VideoAnnotationProgress>
@@ -804,11 +817,15 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
 
 /// Video annotation request.
 class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
-  /// Required. Requested video annotation features.
+  /// Requested video annotation features.
+  ///
+  /// Required.
   core.List<core.String> features;
 
-  /// The video data bytes. If unset, the input video(s) should be specified via
-  /// the `input_uri`. If set, `input_uri` must be unset.
+  /// The video data bytes.
+  ///
+  /// If unset, the input video(s) should be specified via the `input_uri`. If
+  /// set, `input_uri` must be unset.
   core.String inputContent;
   core.List<core.int> get inputContentAsBytes =>
       convert.base64.decode(inputContent);
@@ -818,11 +835,12 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Input video location. Currently, only [Cloud
-  /// Storage](https://cloud.google.com/storage/) URIs are supported. URIs must
-  /// be specified in the following format: `gs://bucket-id/object-id` (other
-  /// URI formats return google.rpc.Code.INVALID_ARGUMENT). For more
-  /// information, see [Request
+  /// Input video location.
+  ///
+  /// Currently, only [Cloud Storage](https://cloud.google.com/storage/) URIs
+  /// are supported. URIs must be specified in the following format:
+  /// `gs://bucket-id/object-id` (other URI formats return
+  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
   /// URIs](https://cloud.google.com/storage/docs/request-endpoints). To
   /// identify multiple videos, a video URI may include wildcards in the
   /// `object-id`. Supported wildcards: '*' to match 0 or more characters; '?'
@@ -830,18 +848,24 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   /// request as `input_content`. If set, `input_content` must be unset.
   core.String inputUri;
 
-  /// Optional. Cloud region where annotation should take place. Supported cloud
-  /// regions are: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no
-  /// region is specified, the region will be determined based on video file
-  /// location.
+  /// Cloud region where annotation should take place.
+  ///
+  /// Supported cloud regions are: `us-east1`, `us-west1`, `europe-west1`,
+  /// `asia-east1`. If no region is specified, the region will be determined
+  /// based on video file location.
+  ///
+  /// Optional.
   core.String locationId;
 
-  /// Optional. Location where the output (in JSON format) should be stored.
+  /// Location where the output (in JSON format) should be stored.
+  ///
   /// Currently, only [Cloud Storage](https://cloud.google.com/storage/) URIs
   /// are supported. These must be specified in the following format:
   /// `gs://bucket-id/object-id` (other URI formats return
   /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
   /// URIs](https://cloud.google.com/storage/docs/request-endpoints).
+  ///
+  /// Optional.
   core.String outputUri;
 
   /// Additional video context and/or feature-specific parameters.
@@ -897,9 +921,10 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   }
 }
 
-/// Video annotation response. Included in the `response` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation response.
+///
+/// Included in the `response` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
   /// Annotation results for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1VideoAnnotationResults>
@@ -929,15 +954,19 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
 
 /// A generic detected attribute represented by name in string format.
 class GoogleCloudVideointelligenceV1DetectedAttribute {
-  /// Detected attribute confidence. Range [0, 1].
+  /// Detected attribute confidence.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
+  ///
   /// A full list of supported type names will be provided in the document.
   core.String name;
 
-  /// Text value of the detection result. For example, the value for "HairColor"
-  /// can be "black", "blonde", etc.
+  /// Text value of the detection result.
+  ///
+  /// For example, the value for "HairColor" can be "black", "blonde", etc.
   core.String value;
 
   GoogleCloudVideointelligenceV1DetectedAttribute();
@@ -972,14 +1001,18 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
 class GoogleCloudVideointelligenceV1DetectedLandmark {
-  /// The confidence score of the detected landmark. Range [0, 1].
+  /// The confidence score of the detected landmark.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
   core.String name;
 
   /// The 2D point of the detected landmark using the normalized image
-  /// coordindate system. The normalized coordinates have the range from 0 to 1.
+  /// coordindate system.
+  ///
+  /// The normalized coordinates have the range from 0 to 1.
   GoogleCloudVideointelligenceV1NormalizedVertex point;
 
   GoogleCloudVideointelligenceV1DetectedLandmark();
@@ -1017,8 +1050,10 @@ class GoogleCloudVideointelligenceV1Entity {
   /// Textual description, e.g., `Fixed-gear bicycle`.
   core.String description;
 
-  /// Opaque entity ID. Some IDs may be available in [Google Knowledge Graph
-  /// Search API](https://developers.google.com/knowledge-graph/).
+  /// Opaque entity ID.
+  ///
+  /// Some IDs may be available in [Google Knowledge Graph Search
+  /// API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -1053,9 +1088,10 @@ class GoogleCloudVideointelligenceV1Entity {
   }
 }
 
-/// Explicit content annotation (based on per-frame visual signals only). If no
-/// explicit content has been detected in a frame, no annotations are present
-/// for that frame.
+/// Explicit content annotation (based on per-frame visual signals only).
+///
+/// If no explicit content has been detected in a frame, no annotations are
+/// present for that frame.
 class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
   /// All video frames where explicit content was detected.
   core.List<GoogleCloudVideointelligenceV1ExplicitContentFrame> frames;
@@ -1093,8 +1129,10 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
 
 /// Config for EXPLICIT_CONTENT_DETECTION.
 class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
-  /// Model to use for explicit content detection. Supported values:
-  /// "builtin/stable" (the default if unset) and "builtin/latest".
+  /// Model to use for explicit content detection.
+  ///
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
   core.String model;
 
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig();
@@ -1156,9 +1194,11 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
 
 /// Label annotation.
 class GoogleCloudVideointelligenceV1LabelAnnotation {
-  /// Common categories for the detected entity. For example, when the label is
-  /// `Terrier`, the category is likely `dog`. And in some cases there might be
-  /// more than one categories e.g., `Terrier` could also be a `pet`.
+  /// Common categories for the detected entity.
+  ///
+  /// For example, when the label is `Terrier`, the category is likely `dog`.
+  /// And in some cases there might be more than one categories e.g., `Terrier`
+  /// could also be a `pet`.
   core.List<GoogleCloudVideointelligenceV1Entity> categoryEntities;
 
   /// Detected entity.
@@ -1231,16 +1271,18 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
 /// Config for LABEL_DETECTION.
 class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   /// The confidence threshold we perform filtering on the labels from
-  /// frame-level detection. If not set, it is set to 0.4 by default. The valid
-  /// range for this threshold is [0.1, 0.9]. Any value set outside of this
-  /// range will be clipped. Note: For best results, follow the default
-  /// threshold. We will update the default threshold everytime when we release
-  /// a new model.
+  /// frame-level detection.
+  ///
+  /// If not set, it is set to 0.4 by default. The valid range for this
+  /// threshold is [0.1, 0.9]. Any value set outside of this range will be
+  /// clipped. Note: For best results, follow the default threshold. We will
+  /// update the default threshold everytime when we release a new model.
   core.double frameConfidenceThreshold;
 
   /// What labels should be detected with LABEL_DETECTION, in addition to
-  /// video-level labels or segment-level labels. If unspecified, defaults to
-  /// `SHOT_MODE`.
+  /// video-level labels or segment-level labels.
+  ///
+  /// If unspecified, defaults to `SHOT_MODE`.
   /// Possible string values are:
   /// - "LABEL_DETECTION_MODE_UNSPECIFIED" : Unspecified.
   /// - "SHOT_MODE" : Detect shot-level labels.
@@ -1248,21 +1290,26 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   /// - "SHOT_AND_FRAME_MODE" : Detect both shot-level and frame-level labels.
   core.String labelDetectionMode;
 
-  /// Model to use for label detection. Supported values: "builtin/stable" (the
-  /// default if unset) and "builtin/latest".
+  /// Model to use for label detection.
+  ///
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
   core.String model;
 
   /// Whether the video has been shot from a stationary (i.e., non-moving)
-  /// camera. When set to true, might improve detection accuracy for moving
-  /// objects. Should be used with `SHOT_AND_FRAME_MODE` enabled.
+  /// camera.
+  ///
+  /// When set to true, might improve detection accuracy for moving objects.
+  /// Should be used with `SHOT_AND_FRAME_MODE` enabled.
   core.bool stationaryCamera;
 
   /// The confidence threshold we perform filtering on the labels from
-  /// video-level and shot-level detections. If not set, it's set to 0.3 by
-  /// default. The valid range for this threshold is [0.1, 0.9]. Any value set
-  /// outside of this range will be clipped. Note: For best results, follow the
-  /// default threshold. We will update the default threshold everytime when we
-  /// release a new model.
+  /// video-level and shot-level detections.
+  ///
+  /// If not set, it's set to 0.3 by default. The valid range for this threshold
+  /// is [0.1, 0.9]. Any value set outside of this range will be clipped. Note:
+  /// For best results, follow the default threshold. We will update the default
+  /// threshold everytime when we release a new model.
   core.double videoConfidenceThreshold;
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig();
@@ -1310,7 +1357,9 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
 
 /// Video frame level annotation results for label detection.
 class GoogleCloudVideointelligenceV1LabelFrame {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -1342,7 +1391,9 @@ class GoogleCloudVideointelligenceV1LabelFrame {
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1LabelSegment {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -1378,12 +1429,16 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
   /// tracks within this LogoRecognitionAnnotation are recognized as.
   GoogleCloudVideointelligenceV1Entity entity;
 
-  /// All video segments where the recognized logo appears. There might be
-  /// multiple instances of the same logo class appearing in one VideoSegment.
+  /// All video segments where the recognized logo appears.
+  ///
+  /// There might be multiple instances of the same logo class appearing in one
+  /// VideoSegment.
   core.List<GoogleCloudVideointelligenceV1VideoSegment> segments;
 
-  /// All logo tracks where the recognized logo appears. Each track corresponds
-  /// to one logo instance appearing in consecutive frames.
+  /// All logo tracks where the recognized logo appears.
+  ///
+  /// Each track corresponds to one logo instance appearing in consecutive
+  /// frames.
   core.List<GoogleCloudVideointelligenceV1Track> tracks;
 
   GoogleCloudVideointelligenceV1LogoRecognitionAnnotation();
@@ -1425,8 +1480,10 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
   }
 }
 
-/// Normalized bounding box. The normalized vertex coordinates are relative to
-/// the original image. Range: [0, 1].
+/// Normalized bounding box.
+///
+/// The normalized vertex coordinates are relative to the original image. Range:
+/// [0, 1].
 class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -1476,6 +1533,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
+///
 /// Contains list of the corner points in clockwise order starting from top-left
 /// corner. For example, for a rectangular bounding box: When the text is
 /// horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
@@ -1509,8 +1567,10 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudVideointelligenceV1NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -1550,20 +1610,24 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1Entity entity;
 
   /// Information corresponding to all frames where this object track appears.
+  ///
   /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
   /// messages in frames. Streaming mode: it can only be one ObjectTrackingFrame
   /// message in frames.
   core.List<GoogleCloudVideointelligenceV1ObjectTrackingFrame> frames;
 
-  /// Non-streaming batch mode ONLY. Each object track corresponds to one video
-  /// segment where it appears.
+  /// Non-streaming batch mode ONLY.
+  ///
+  /// Each object track corresponds to one video segment where it appears.
   GoogleCloudVideointelligenceV1VideoSegment segment;
 
-  /// Streaming mode ONLY. In streaming mode, we do not know the end time of a
-  /// tracked object before it is completed. Hence, there is no VideoSegment
-  /// info returned. Instead, we provide a unique identifiable integer track_id
-  /// so that the customers can correlate the results of the ongoing
-  /// ObjectTrackAnnotation of the same track_id over time.
+  /// Streaming mode ONLY.
+  ///
+  /// In streaming mode, we do not know the end time of a tracked object before
+  /// it is completed. Hence, there is no VideoSegment info returned. Instead,
+  /// we provide a unique identifiable integer track_id so that the customers
+  /// can correlate the results of the ongoing ObjectTrackAnnotation of the same
+  /// track_id over time.
   core.String trackId;
 
   /// Feature version.
@@ -1625,8 +1689,10 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
 
 /// Config for OBJECT_TRACKING.
 class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
-  /// Model to use for object tracking. Supported values: "builtin/stable" (the
-  /// default if unset) and "builtin/latest".
+  /// Model to use for object tracking.
+  ///
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
   core.String model;
 
   GoogleCloudVideointelligenceV1ObjectTrackingConfig();
@@ -1646,8 +1712,9 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
   }
 }
 
-/// Video frame level annotations for object detection and tracking. This field
-/// stores per frame location, time offset, and confidence.
+/// Video frame level annotations for object detection and tracking.
+///
+/// This field stores per frame location, time offset, and confidence.
 class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
   /// The normalized bounding box location of this object track for the frame.
   GoogleCloudVideointelligenceV1NormalizedBoundingBox normalizedBoundingBox;
@@ -1683,8 +1750,10 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
 
 /// Config for SHOT_CHANGE_DETECTION.
 class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
-  /// Model to use for shot change detection. Supported values: "builtin/stable"
-  /// (the default if unset) and "builtin/latest".
+  /// Model to use for shot change detection.
+  ///
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
   core.String model;
 
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig();
@@ -1708,12 +1777,16 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
 class GoogleCloudVideointelligenceV1SpeechContext {
-  /// Optional. A list of strings containing words and phrases "hints" so that
-  /// the speech recognition is more likely to recognize them. This can be used
-  /// to improve the accuracy for specific words and phrases, for example, if
-  /// specific commands are typically spoken by the user. This can also be used
-  /// to add additional words to the vocabulary of the recognizer. See [usage
+  /// A list of strings containing words and phrases "hints" so that the speech
+  /// recognition is more likely to recognize them.
+  ///
+  /// This can be used to improve the accuracy for specific words and phrases,
+  /// for example, if specific commands are typically spoken by the user. This
+  /// can also be used to add additional words to the vocabulary of the
+  /// recognizer. See [usage
   /// limits](https://cloud.google.com/speech/limits#content).
+  ///
+  /// Optional.
   core.List<core.String> phrases;
 
   GoogleCloudVideointelligenceV1SpeechContext();
@@ -1737,20 +1810,26 @@ class GoogleCloudVideointelligenceV1SpeechContext {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
+  ///
   /// Note: When `enable_speaker_diarization` is set to true, you will see all
   /// the words from the beginning of the audio.
+  ///
+  /// Output only.
   core.List<GoogleCloudVideointelligenceV1WordInfo> words;
 
   GoogleCloudVideointelligenceV1SpeechRecognitionAlternative();
@@ -1790,15 +1869,20 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
 /// A speech recognition result corresponding to a portion of the audio.
 class GoogleCloudVideointelligenceV1SpeechTranscription {
   /// May contain one or more recognition hypotheses (up to the maximum
-  /// specified in `max_alternatives`). These alternatives are ordered in terms
-  /// of accuracy, with the top (first) alternative being the most probable, as
-  /// ranked by the recognizer.
+  /// specified in `max_alternatives`).
+  ///
+  /// These alternatives are ordered in terms of accuracy, with the top (first)
+  /// alternative being the most probable, as ranked by the recognizer.
   core.List<GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag of the language in this result. This language code was
-  /// detected to have the most likelihood of being spoken in the audio.
+  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
+  /// the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1SpeechTranscription();
@@ -1832,57 +1916,86 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
 
 /// Config for SPEECH_TRANSCRIPTION.
 class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
-  /// Optional. For file formats, such as MXF or MKV, supporting multiple audio
-  /// tracks, specify up to two tracks. Default: track 0.
+  /// For file formats, such as MXF or MKV, supporting multiple audio tracks,
+  /// specify up to two tracks.
+  ///
+  /// Default: track 0.
+  ///
+  /// Optional.
   core.List<core.int> audioTracks;
 
-  /// Optional. If set, specifies the estimated number of speakers in the
-  /// conversation. If not set, defaults to '2'. Ignored unless
-  /// enable_speaker_diarization is set to true.
+  /// If set, specifies the estimated number of speakers in the conversation.
+  ///
+  /// If not set, defaults to '2'. Ignored unless enable_speaker_diarization is
+  /// set to true.
+  ///
+  /// Optional.
   core.int diarizationSpeakerCount;
 
-  /// Optional. If 'true', adds punctuation to recognition result hypotheses.
+  /// If 'true', adds punctuation to recognition result hypotheses.
+  ///
   /// This feature is only available in select languages. Setting this for
   /// requests in other languages has no effect at all. The default 'false'
   /// value does not add punctuation to result hypotheses. NOTE: "This is
   /// currently offered as an experimental service, complimentary to all users.
   /// In the future this may be exclusively available as a premium feature."
+  ///
+  /// Optional.
   core.bool enableAutomaticPunctuation;
 
-  /// Optional. If 'true', enables speaker detection for each recognized word in
-  /// the top alternative of the recognition result using a speaker_tag provided
-  /// in the WordInfo. Note: When this is true, we send all the words from the
-  /// beginning of the audio for the top alternative in every consecutive
-  /// response. This is done in order to improve our speaker tags as our models
-  /// learn to identify the speakers in the conversation over time.
+  /// If 'true', enables speaker detection for each recognized word in the top
+  /// alternative of the recognition result using a speaker_tag provided in the
+  /// WordInfo.
+  ///
+  /// Note: When this is true, we send all the words from the beginning of the
+  /// audio for the top alternative in every consecutive response. This is done
+  /// in order to improve our speaker tags as our models learn to identify the
+  /// speakers in the conversation over time.
+  ///
+  /// Optional.
   core.bool enableSpeakerDiarization;
 
-  /// Optional. If `true`, the top result includes a list of words and the
-  /// confidence for those words. If `false`, no word-level confidence
-  /// information is returned. The default is `false`.
+  /// If `true`, the top result includes a list of words and the confidence for
+  /// those words.
+  ///
+  /// If `false`, no word-level confidence information is returned. The default
+  /// is `false`.
+  ///
+  /// Optional.
   core.bool enableWordConfidence;
 
-  /// Optional. If set to `true`, the server will attempt to filter out
-  /// profanities, replacing all but the initial character in each filtered word
-  /// with asterisks, e.g. "f***". If set to `false` or omitted, profanities
-  /// won't be filtered out.
+  /// If set to `true`, the server will attempt to filter out profanities,
+  /// replacing all but the initial character in each filtered word with
+  /// asterisks, e.g. "f***".
+  ///
+  /// If set to `false` or omitted, profanities won't be filtered out.
+  ///
+  /// Optional.
   core.bool filterProfanity;
 
-  /// Required. *Required* The language of the supplied audio as a
+  /// *Required* The language of the supplied audio as a
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+  ///
   /// Example: "en-US". See [Language
   /// Support](https://cloud.google.com/speech/docs/languages) for a list of the
   /// currently supported language codes.
+  ///
+  /// Required.
   core.String languageCode;
 
-  /// Optional. Maximum number of recognition hypotheses to be returned.
+  /// Maximum number of recognition hypotheses to be returned.
+  ///
   /// Specifically, the maximum number of `SpeechRecognitionAlternative`
   /// messages within each `SpeechTranscription`. The server may return fewer
   /// than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1`
   /// will return a maximum of one. If omitted, will return a maximum of one.
+  ///
+  /// Optional.
   core.int maxAlternatives;
 
-  /// Optional. A means to provide context to assist the speech recognition.
+  /// A means to provide context to assist the speech recognition.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1SpeechContext> speechContexts;
 
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig();
@@ -1959,9 +2072,10 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   }
 }
 
-/// Annotations related to one detected OCR text snippet. This will contain the
-/// corresponding text, confidence value, and frame level information for each
-/// detection.
+/// Annotations related to one detected OCR text snippet.
+///
+/// This will contain the corresponding text, confidence value, and frame level
+/// information for each detection.
 class GoogleCloudVideointelligenceV1TextAnnotation {
   /// All video segments where OCR detected text appears.
   core.List<GoogleCloudVideointelligenceV1TextSegment> segments;
@@ -2008,13 +2122,17 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
 /// Config for TEXT_DETECTION.
 class GoogleCloudVideointelligenceV1TextDetectionConfig {
   /// Language hint can be specified if the language to be detected is known a
-  /// priori. It can increase the accuracy of the detection. Language hint must
-  /// be language code in BCP-47 format. Automatic language detection is
-  /// performed if no hint is provided.
+  /// priori.
+  ///
+  /// It can increase the accuracy of the detection. Language hint must be
+  /// language code in BCP-47 format. Automatic language detection is performed
+  /// if no hint is provided.
   core.List<core.String> languageHints;
 
-  /// Model to use for text detection. Supported values: "builtin/stable" (the
-  /// default if unset) and "builtin/latest".
+  /// Model to use for text detection.
+  ///
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
   core.String model;
 
   GoogleCloudVideointelligenceV1TextDetectionConfig();
@@ -2042,9 +2160,10 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
   }
 }
 
-/// Video frame level annotation results for text annotation (OCR). Contains
-/// information regarding timestamp and bounding box locations for the frames
-/// containing detected OCR text snippets.
+/// Video frame level annotation results for text annotation (OCR).
+///
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
 class GoogleCloudVideointelligenceV1TextFrame {
   /// Bounding polygon of the detected text for this frame.
   GoogleCloudVideointelligenceV1NormalizedBoundingPoly rotatedBoundingBox;
@@ -2080,8 +2199,10 @@ class GoogleCloudVideointelligenceV1TextFrame {
 
 /// Video segment level annotation results for text detection.
 class GoogleCloudVideointelligenceV1TextSegment {
-  /// Confidence for the track of detected text. It is calculated as the highest
-  /// over all frames where OCR detected text appears.
+  /// Confidence for the track of detected text.
+  ///
+  /// It is calculated as the highest over all frames where OCR detected text
+  /// appears.
   core.double confidence;
 
   /// Information related to the frames where OCR detected text appears.
@@ -2124,13 +2245,19 @@ class GoogleCloudVideointelligenceV1TextSegment {
   }
 }
 
-/// For tracking related features. An object at time_offset with attributes, and
-/// located with normalized_bounding_box.
+/// For tracking related features.
+///
+/// An object at time_offset with attributes, and located with
+/// normalized_bounding_box.
 class GoogleCloudVideointelligenceV1TimestampedObject {
-  /// Optional. The attributes of the object in the bounding box.
+  /// The attributes of the object in the bounding box.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1DetectedAttribute> attributes;
 
-  /// Optional. The detected landmarks.
+  /// The detected landmarks.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1DetectedLandmark> landmarks;
 
   /// Normalized Bounding box in a frame, where the object is located.
@@ -2188,10 +2315,14 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
 
 /// A track of an object instance.
 class GoogleCloudVideointelligenceV1Track {
-  /// Optional. Attributes in the track level.
+  /// Attributes in the track level.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1DetectedAttribute> attributes;
 
-  /// Optional. The confidence score of the tracked object.
+  /// The confidence score of the tracked object.
+  ///
+  /// Optional.
   core.double confidence;
 
   /// Video segment of a track.
@@ -2264,8 +2395,9 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Approximate percentage processed thus far. Guaranteed to be 100 when fully
-  /// processed.
+  /// Approximate percentage processed thus far.
+  ///
+  /// Guaranteed to be 100 when fully processed.
   core.int progressPercent;
 
   /// Specifies which segment is being tracked if the request contains more than
@@ -2329,15 +2461,18 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
 
 /// Annotation results for a single video.
 class GoogleCloudVideointelligenceV1VideoAnnotationResults {
-  /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
-  /// some videos may succeed and some may fail.
+  /// If set, indicates an error.
+  ///
+  /// Note that for a single `AnnotateVideoRequest` some videos may succeed and
+  /// some may fail.
   GoogleRpcStatus error;
 
   /// Explicit content annotation.
   GoogleCloudVideointelligenceV1ExplicitContentAnnotation explicitAnnotation;
 
-  /// Label annotations on frame level. There is exactly one element for each
-  /// unique label.
+  /// Label annotations on frame level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
       frameLabelAnnotations;
 
@@ -2356,11 +2491,13 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1VideoSegment segment;
 
   /// Topical label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
       segmentLabelAnnotations;
 
   /// Presence label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label. Compared to the
   /// existing topical `segment_label_annotations`, this field presents more
   /// fine-grained, segment-level labels detected in video content and is made
@@ -2369,19 +2506,23 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
       segmentPresenceLabelAnnotations;
 
-  /// Shot annotations. Each shot is represented as a video segment.
+  /// Shot annotations.
+  ///
+  /// Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1VideoSegment> shotAnnotations;
 
-  /// Topical label annotations on shot level. There is exactly one element for
-  /// each unique label.
+  /// Topical label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation> shotLabelAnnotations;
 
-  /// Presence label annotations on shot level. There is exactly one element for
-  /// each unique label. Compared to the existing topical
-  /// `shot_label_annotations`, this field presents more fine-grained,
-  /// shot-level labels detected in video content and is made available only
-  /// when the client sets `LabelDetectionConfig.model` to "builtin/latest" in
-  /// the request.
+  /// Presence label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `shot_label_annotations`, this field presents more
+  /// fine-grained, shot-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
       shotPresenceLabelAnnotations;
 
@@ -2389,8 +2530,10 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1SpeechTranscription>
       speechTranscriptions;
 
-  /// OCR text detection and tracking. Annotations for list of detected text
-  /// snippets. Each will have list of frame information associated with it.
+  /// OCR text detection and tracking.
+  ///
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
   core.List<GoogleCloudVideointelligenceV1TextAnnotation> textAnnotations;
 
   GoogleCloudVideointelligenceV1VideoAnnotationResults();
@@ -2560,9 +2703,10 @@ class GoogleCloudVideointelligenceV1VideoContext {
   /// Config for OBJECT_TRACKING.
   GoogleCloudVideointelligenceV1ObjectTrackingConfig objectTrackingConfig;
 
-  /// Video segments to annotate. The segments may overlap and are not required
-  /// to be contiguous or span the whole video. If unspecified, each video is
-  /// treated as a single segment.
+  /// Video segments to annotate.
+  ///
+  /// The segments may overlap and are not required to be contiguous or span the
+  /// whole video. If unspecified, each video is treated as a single segment.
   core.List<GoogleCloudVideointelligenceV1VideoSegment> segments;
 
   /// Config for SHOT_CHANGE_DETECTION.
@@ -2685,35 +2829,45 @@ class GoogleCloudVideointelligenceV1VideoSegment {
   }
 }
 
-/// Word-specific information for recognized words. Word information is only
-/// included in the response when certain request parameters are set, such as
-/// `enable_word_time_offsets`.
+/// Word-specific information for recognized words.
+///
+/// Word information is only included in the response when certain request
+/// parameters are set, such as `enable_word_time_offsets`.
 class GoogleCloudVideointelligenceV1WordInfo {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String endTime;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to have spoken this word. Value ranges from 1 up to
-  /// diarization_speaker_count, and is only set if speaker diarization is
-  /// enabled.
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
+  /// is only set if speaker diarization is enabled.
+  ///
+  /// Output only.
   core.int speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String startTime;
 
   /// The word corresponding to this set of information.
@@ -2760,9 +2914,10 @@ class GoogleCloudVideointelligenceV1WordInfo {
   }
 }
 
-/// Video annotation progress. Included in the `metadata` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation progress.
+///
+/// Included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
   /// Progress metadata for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress>
@@ -2792,9 +2947,10 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
   }
 }
 
-/// Video annotation response. Included in the `response` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation response.
+///
+/// Included in the `response` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
   /// Annotation results for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1beta2VideoAnnotationResults>
@@ -2826,15 +2982,19 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
 
 /// A generic detected attribute represented by name in string format.
 class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
-  /// Detected attribute confidence. Range [0, 1].
+  /// Detected attribute confidence.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
+  ///
   /// A full list of supported type names will be provided in the document.
   core.String name;
 
-  /// Text value of the detection result. For example, the value for "HairColor"
-  /// can be "black", "blonde", etc.
+  /// Text value of the detection result.
+  ///
+  /// For example, the value for "HairColor" can be "black", "blonde", etc.
   core.String value;
 
   GoogleCloudVideointelligenceV1beta2DetectedAttribute();
@@ -2870,14 +3030,18 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
 class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
-  /// The confidence score of the detected landmark. Range [0, 1].
+  /// The confidence score of the detected landmark.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
   core.String name;
 
   /// The 2D point of the detected landmark using the normalized image
-  /// coordindate system. The normalized coordinates have the range from 0 to 1.
+  /// coordindate system.
+  ///
+  /// The normalized coordinates have the range from 0 to 1.
   GoogleCloudVideointelligenceV1beta2NormalizedVertex point;
 
   GoogleCloudVideointelligenceV1beta2DetectedLandmark();
@@ -2915,8 +3079,10 @@ class GoogleCloudVideointelligenceV1beta2Entity {
   /// Textual description, e.g., `Fixed-gear bicycle`.
   core.String description;
 
-  /// Opaque entity ID. Some IDs may be available in [Google Knowledge Graph
-  /// Search API](https://developers.google.com/knowledge-graph/).
+  /// Opaque entity ID.
+  ///
+  /// Some IDs may be available in [Google Knowledge Graph Search
+  /// API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -2951,9 +3117,10 @@ class GoogleCloudVideointelligenceV1beta2Entity {
   }
 }
 
-/// Explicit content annotation (based on per-frame visual signals only). If no
-/// explicit content has been detected in a frame, no annotations are present
-/// for that frame.
+/// Explicit content annotation (based on per-frame visual signals only).
+///
+/// If no explicit content has been detected in a frame, no annotations are
+/// present for that frame.
 class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
   /// All video frames where explicit content was detected.
   core.List<GoogleCloudVideointelligenceV1beta2ExplicitContentFrame> frames;
@@ -3031,9 +3198,11 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
 
 /// Label annotation.
 class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
-  /// Common categories for the detected entity. For example, when the label is
-  /// `Terrier`, the category is likely `dog`. And in some cases there might be
-  /// more than one categories e.g., `Terrier` could also be a `pet`.
+  /// Common categories for the detected entity.
+  ///
+  /// For example, when the label is `Terrier`, the category is likely `dog`.
+  /// And in some cases there might be more than one categories e.g., `Terrier`
+  /// could also be a `pet`.
   core.List<GoogleCloudVideointelligenceV1beta2Entity> categoryEntities;
 
   /// Detected entity.
@@ -3105,7 +3274,9 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
 
 /// Video frame level annotation results for label detection.
 class GoogleCloudVideointelligenceV1beta2LabelFrame {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -3137,7 +3308,9 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1beta2LabelSegment {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -3173,12 +3346,16 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
   /// tracks within this LogoRecognitionAnnotation are recognized as.
   GoogleCloudVideointelligenceV1beta2Entity entity;
 
-  /// All video segments where the recognized logo appears. There might be
-  /// multiple instances of the same logo class appearing in one VideoSegment.
+  /// All video segments where the recognized logo appears.
+  ///
+  /// There might be multiple instances of the same logo class appearing in one
+  /// VideoSegment.
   core.List<GoogleCloudVideointelligenceV1beta2VideoSegment> segments;
 
-  /// All logo tracks where the recognized logo appears. Each track corresponds
-  /// to one logo instance appearing in consecutive frames.
+  /// All logo tracks where the recognized logo appears.
+  ///
+  /// Each track corresponds to one logo instance appearing in consecutive
+  /// frames.
   core.List<GoogleCloudVideointelligenceV1beta2Track> tracks;
 
   GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation();
@@ -3220,8 +3397,10 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
   }
 }
 
-/// Normalized bounding box. The normalized vertex coordinates are relative to
-/// the original image. Range: [0, 1].
+/// Normalized bounding box.
+///
+/// The normalized vertex coordinates are relative to the original image. Range:
+/// [0, 1].
 class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -3272,6 +3451,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
+///
 /// Contains list of the corner points in clockwise order starting from top-left
 /// corner. For example, for a rectangular bounding box: When the text is
 /// horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
@@ -3305,8 +3485,10 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -3346,20 +3528,24 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1beta2Entity entity;
 
   /// Information corresponding to all frames where this object track appears.
+  ///
   /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
   /// messages in frames. Streaming mode: it can only be one ObjectTrackingFrame
   /// message in frames.
   core.List<GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame> frames;
 
-  /// Non-streaming batch mode ONLY. Each object track corresponds to one video
-  /// segment where it appears.
+  /// Non-streaming batch mode ONLY.
+  ///
+  /// Each object track corresponds to one video segment where it appears.
   GoogleCloudVideointelligenceV1beta2VideoSegment segment;
 
-  /// Streaming mode ONLY. In streaming mode, we do not know the end time of a
-  /// tracked object before it is completed. Hence, there is no VideoSegment
-  /// info returned. Instead, we provide a unique identifiable integer track_id
-  /// so that the customers can correlate the results of the ongoing
-  /// ObjectTrackAnnotation of the same track_id over time.
+  /// Streaming mode ONLY.
+  ///
+  /// In streaming mode, we do not know the end time of a tracked object before
+  /// it is completed. Hence, there is no VideoSegment info returned. Instead,
+  /// we provide a unique identifiable integer track_id so that the customers
+  /// can correlate the results of the ongoing ObjectTrackAnnotation of the same
+  /// track_id over time.
   core.String trackId;
 
   /// Feature version.
@@ -3419,8 +3605,9 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
   }
 }
 
-/// Video frame level annotations for object detection and tracking. This field
-/// stores per frame location, time offset, and confidence.
+/// Video frame level annotations for object detection and tracking.
+///
+/// This field stores per frame location, time offset, and confidence.
 class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
   /// The normalized bounding box location of this object track for the frame.
   GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox
@@ -3458,20 +3645,26 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
+  ///
   /// Note: When `enable_speaker_diarization` is set to true, you will see all
   /// the words from the beginning of the audio.
+  ///
+  /// Output only.
   core.List<GoogleCloudVideointelligenceV1beta2WordInfo> words;
 
   GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative();
@@ -3511,15 +3704,20 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
 /// A speech recognition result corresponding to a portion of the audio.
 class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
   /// May contain one or more recognition hypotheses (up to the maximum
-  /// specified in `max_alternatives`). These alternatives are ordered in terms
-  /// of accuracy, with the top (first) alternative being the most probable, as
-  /// ranked by the recognizer.
+  /// specified in `max_alternatives`).
+  ///
+  /// These alternatives are ordered in terms of accuracy, with the top (first)
+  /// alternative being the most probable, as ranked by the recognizer.
   core.List<GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag of the language in this result. This language code was
-  /// detected to have the most likelihood of being spoken in the audio.
+  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
+  /// the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1beta2SpeechTranscription();
@@ -3552,9 +3750,10 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
   }
 }
 
-/// Annotations related to one detected OCR text snippet. This will contain the
-/// corresponding text, confidence value, and frame level information for each
-/// detection.
+/// Annotations related to one detected OCR text snippet.
+///
+/// This will contain the corresponding text, confidence value, and frame level
+/// information for each detection.
 class GoogleCloudVideointelligenceV1beta2TextAnnotation {
   /// All video segments where OCR detected text appears.
   core.List<GoogleCloudVideointelligenceV1beta2TextSegment> segments;
@@ -3598,9 +3797,10 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
   }
 }
 
-/// Video frame level annotation results for text annotation (OCR). Contains
-/// information regarding timestamp and bounding box locations for the frames
-/// containing detected OCR text snippets.
+/// Video frame level annotation results for text annotation (OCR).
+///
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
 class GoogleCloudVideointelligenceV1beta2TextFrame {
   /// Bounding polygon of the detected text for this frame.
   GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly rotatedBoundingBox;
@@ -3636,8 +3836,10 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
 
 /// Video segment level annotation results for text detection.
 class GoogleCloudVideointelligenceV1beta2TextSegment {
-  /// Confidence for the track of detected text. It is calculated as the highest
-  /// over all frames where OCR detected text appears.
+  /// Confidence for the track of detected text.
+  ///
+  /// It is calculated as the highest over all frames where OCR detected text
+  /// appears.
   core.double confidence;
 
   /// Information related to the frames where OCR detected text appears.
@@ -3680,13 +3882,19 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
   }
 }
 
-/// For tracking related features. An object at time_offset with attributes, and
-/// located with normalized_bounding_box.
+/// For tracking related features.
+///
+/// An object at time_offset with attributes, and located with
+/// normalized_bounding_box.
 class GoogleCloudVideointelligenceV1beta2TimestampedObject {
-  /// Optional. The attributes of the object in the bounding box.
+  /// The attributes of the object in the bounding box.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1beta2DetectedAttribute> attributes;
 
-  /// Optional. The detected landmarks.
+  /// The detected landmarks.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1beta2DetectedLandmark> landmarks;
 
   /// Normalized Bounding box in a frame, where the object is located.
@@ -3746,10 +3954,14 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
 
 /// A track of an object instance.
 class GoogleCloudVideointelligenceV1beta2Track {
-  /// Optional. Attributes in the track level.
+  /// Attributes in the track level.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1beta2DetectedAttribute> attributes;
 
-  /// Optional. The confidence score of the tracked object.
+  /// The confidence score of the tracked object.
+  ///
+  /// Optional.
   core.double confidence;
 
   /// Video segment of a track.
@@ -3823,8 +4035,9 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Approximate percentage processed thus far. Guaranteed to be 100 when fully
-  /// processed.
+  /// Approximate percentage processed thus far.
+  ///
+  /// Guaranteed to be 100 when fully processed.
   core.int progressPercent;
 
   /// Specifies which segment is being tracked if the request contains more than
@@ -3888,16 +4101,19 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
 
 /// Annotation results for a single video.
 class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
-  /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
-  /// some videos may succeed and some may fail.
+  /// If set, indicates an error.
+  ///
+  /// Note that for a single `AnnotateVideoRequest` some videos may succeed and
+  /// some may fail.
   GoogleRpcStatus error;
 
   /// Explicit content annotation.
   GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
       explicitAnnotation;
 
-  /// Label annotations on frame level. There is exactly one element for each
-  /// unique label.
+  /// Label annotations on frame level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       frameLabelAnnotations;
 
@@ -3916,11 +4132,13 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   GoogleCloudVideointelligenceV1beta2VideoSegment segment;
 
   /// Topical label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       segmentLabelAnnotations;
 
   /// Presence label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label. Compared to the
   /// existing topical `segment_label_annotations`, this field presents more
   /// fine-grained, segment-level labels detected in video content and is made
@@ -3929,20 +4147,24 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       segmentPresenceLabelAnnotations;
 
-  /// Shot annotations. Each shot is represented as a video segment.
+  /// Shot annotations.
+  ///
+  /// Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1beta2VideoSegment> shotAnnotations;
 
-  /// Topical label annotations on shot level. There is exactly one element for
-  /// each unique label.
+  /// Topical label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       shotLabelAnnotations;
 
-  /// Presence label annotations on shot level. There is exactly one element for
-  /// each unique label. Compared to the existing topical
-  /// `shot_label_annotations`, this field presents more fine-grained,
-  /// shot-level labels detected in video content and is made available only
-  /// when the client sets `LabelDetectionConfig.model` to "builtin/latest" in
-  /// the request.
+  /// Presence label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `shot_label_annotations`, this field presents more
+  /// fine-grained, shot-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       shotPresenceLabelAnnotations;
 
@@ -3950,8 +4172,10 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1beta2SpeechTranscription>
       speechTranscriptions;
 
-  /// OCR text detection and tracking. Annotations for list of detected text
-  /// snippets. Each will have list of frame information associated with it.
+  /// OCR text detection and tracking.
+  ///
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
   core.List<GoogleCloudVideointelligenceV1beta2TextAnnotation> textAnnotations;
 
   GoogleCloudVideointelligenceV1beta2VideoAnnotationResults();
@@ -4144,35 +4368,45 @@ class GoogleCloudVideointelligenceV1beta2VideoSegment {
   }
 }
 
-/// Word-specific information for recognized words. Word information is only
-/// included in the response when certain request parameters are set, such as
-/// `enable_word_time_offsets`.
+/// Word-specific information for recognized words.
+///
+/// Word information is only included in the response when certain request
+/// parameters are set, such as `enable_word_time_offsets`.
 class GoogleCloudVideointelligenceV1beta2WordInfo {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String endTime;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to have spoken this word. Value ranges from 1 up to
-  /// diarization_speaker_count, and is only set if speaker diarization is
-  /// enabled.
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
+  /// is only set if speaker diarization is enabled.
+  ///
+  /// Output only.
   core.int speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String startTime;
 
   /// The word corresponding to this set of information.
@@ -4219,9 +4453,10 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
   }
 }
 
-/// Video annotation progress. Included in the `metadata` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation progress.
+///
+/// Included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
   /// Progress metadata for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress>
@@ -4251,9 +4486,10 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
   }
 }
 
-/// Video annotation response. Included in the `response` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation response.
+///
+/// Included in the `response` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
   /// Annotation results for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults>
@@ -4285,15 +4521,19 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
 
 /// A generic detected attribute represented by name in string format.
 class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
-  /// Detected attribute confidence. Range [0, 1].
+  /// Detected attribute confidence.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
+  ///
   /// A full list of supported type names will be provided in the document.
   core.String name;
 
-  /// Text value of the detection result. For example, the value for "HairColor"
-  /// can be "black", "blonde", etc.
+  /// Text value of the detection result.
+  ///
+  /// For example, the value for "HairColor" can be "black", "blonde", etc.
   core.String value;
 
   GoogleCloudVideointelligenceV1p1beta1DetectedAttribute();
@@ -4329,14 +4569,18 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
 class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
-  /// The confidence score of the detected landmark. Range [0, 1].
+  /// The confidence score of the detected landmark.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
   core.String name;
 
   /// The 2D point of the detected landmark using the normalized image
-  /// coordindate system. The normalized coordinates have the range from 0 to 1.
+  /// coordindate system.
+  ///
+  /// The normalized coordinates have the range from 0 to 1.
   GoogleCloudVideointelligenceV1p1beta1NormalizedVertex point;
 
   GoogleCloudVideointelligenceV1p1beta1DetectedLandmark();
@@ -4375,8 +4619,10 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
   /// Textual description, e.g., `Fixed-gear bicycle`.
   core.String description;
 
-  /// Opaque entity ID. Some IDs may be available in [Google Knowledge Graph
-  /// Search API](https://developers.google.com/knowledge-graph/).
+  /// Opaque entity ID.
+  ///
+  /// Some IDs may be available in [Google Knowledge Graph Search
+  /// API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -4411,9 +4657,10 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
   }
 }
 
-/// Explicit content annotation (based on per-frame visual signals only). If no
-/// explicit content has been detected in a frame, no annotations are present
-/// for that frame.
+/// Explicit content annotation (based on per-frame visual signals only).
+///
+/// If no explicit content has been detected in a frame, no annotations are
+/// present for that frame.
 class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
   /// All video frames where explicit content was detected.
   core.List<GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame> frames;
@@ -4492,9 +4739,11 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
 
 /// Label annotation.
 class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
-  /// Common categories for the detected entity. For example, when the label is
-  /// `Terrier`, the category is likely `dog`. And in some cases there might be
-  /// more than one categories e.g., `Terrier` could also be a `pet`.
+  /// Common categories for the detected entity.
+  ///
+  /// For example, when the label is `Terrier`, the category is likely `dog`.
+  /// And in some cases there might be more than one categories e.g., `Terrier`
+  /// could also be a `pet`.
   core.List<GoogleCloudVideointelligenceV1p1beta1Entity> categoryEntities;
 
   /// Detected entity.
@@ -4567,7 +4816,9 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
 
 /// Video frame level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -4599,7 +4850,9 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -4635,12 +4888,16 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
   /// tracks within this LogoRecognitionAnnotation are recognized as.
   GoogleCloudVideointelligenceV1p1beta1Entity entity;
 
-  /// All video segments where the recognized logo appears. There might be
-  /// multiple instances of the same logo class appearing in one VideoSegment.
+  /// All video segments where the recognized logo appears.
+  ///
+  /// There might be multiple instances of the same logo class appearing in one
+  /// VideoSegment.
   core.List<GoogleCloudVideointelligenceV1p1beta1VideoSegment> segments;
 
-  /// All logo tracks where the recognized logo appears. Each track corresponds
-  /// to one logo instance appearing in consecutive frames.
+  /// All logo tracks where the recognized logo appears.
+  ///
+  /// Each track corresponds to one logo instance appearing in consecutive
+  /// frames.
   core.List<GoogleCloudVideointelligenceV1p1beta1Track> tracks;
 
   GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation();
@@ -4682,8 +4939,10 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
   }
 }
 
-/// Normalized bounding box. The normalized vertex coordinates are relative to
-/// the original image. Range: [0, 1].
+/// Normalized bounding box.
+///
+/// The normalized vertex coordinates are relative to the original image. Range:
+/// [0, 1].
 class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -4734,6 +4993,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
+///
 /// Contains list of the corner points in clockwise order starting from top-left
 /// corner. For example, for a rectangular bounding box: When the text is
 /// horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
@@ -4767,8 +5027,10 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -4809,20 +5071,24 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1p1beta1Entity entity;
 
   /// Information corresponding to all frames where this object track appears.
+  ///
   /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
   /// messages in frames. Streaming mode: it can only be one ObjectTrackingFrame
   /// message in frames.
   core.List<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame> frames;
 
-  /// Non-streaming batch mode ONLY. Each object track corresponds to one video
-  /// segment where it appears.
+  /// Non-streaming batch mode ONLY.
+  ///
+  /// Each object track corresponds to one video segment where it appears.
   GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
 
-  /// Streaming mode ONLY. In streaming mode, we do not know the end time of a
-  /// tracked object before it is completed. Hence, there is no VideoSegment
-  /// info returned. Instead, we provide a unique identifiable integer track_id
-  /// so that the customers can correlate the results of the ongoing
-  /// ObjectTrackAnnotation of the same track_id over time.
+  /// Streaming mode ONLY.
+  ///
+  /// In streaming mode, we do not know the end time of a tracked object before
+  /// it is completed. Hence, there is no VideoSegment info returned. Instead,
+  /// we provide a unique identifiable integer track_id so that the customers
+  /// can correlate the results of the ongoing ObjectTrackAnnotation of the same
+  /// track_id over time.
   core.String trackId;
 
   /// Feature version.
@@ -4883,8 +5149,9 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
   }
 }
 
-/// Video frame level annotations for object detection and tracking. This field
-/// stores per frame location, time offset, and confidence.
+/// Video frame level annotations for object detection and tracking.
+///
+/// This field stores per frame location, time offset, and confidence.
 class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
   /// The normalized bounding box location of this object track for the frame.
   GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox
@@ -4922,20 +5189,26 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
+  ///
   /// Note: When `enable_speaker_diarization` is set to true, you will see all
   /// the words from the beginning of the audio.
+  ///
+  /// Output only.
   core.List<GoogleCloudVideointelligenceV1p1beta1WordInfo> words;
 
   GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative();
@@ -4975,15 +5248,20 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
 /// A speech recognition result corresponding to a portion of the audio.
 class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
   /// May contain one or more recognition hypotheses (up to the maximum
-  /// specified in `max_alternatives`). These alternatives are ordered in terms
-  /// of accuracy, with the top (first) alternative being the most probable, as
-  /// ranked by the recognizer.
+  /// specified in `max_alternatives`).
+  ///
+  /// These alternatives are ordered in terms of accuracy, with the top (first)
+  /// alternative being the most probable, as ranked by the recognizer.
   core.List<GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag of the language in this result. This language code was
-  /// detected to have the most likelihood of being spoken in the audio.
+  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
+  /// the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1p1beta1SpeechTranscription();
@@ -5016,9 +5294,10 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
   }
 }
 
-/// Annotations related to one detected OCR text snippet. This will contain the
-/// corresponding text, confidence value, and frame level information for each
-/// detection.
+/// Annotations related to one detected OCR text snippet.
+///
+/// This will contain the corresponding text, confidence value, and frame level
+/// information for each detection.
 class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
   /// All video segments where OCR detected text appears.
   core.List<GoogleCloudVideointelligenceV1p1beta1TextSegment> segments;
@@ -5062,9 +5341,10 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
   }
 }
 
-/// Video frame level annotation results for text annotation (OCR). Contains
-/// information regarding timestamp and bounding box locations for the frames
-/// containing detected OCR text snippets.
+/// Video frame level annotation results for text annotation (OCR).
+///
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
 class GoogleCloudVideointelligenceV1p1beta1TextFrame {
   /// Bounding polygon of the detected text for this frame.
   GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
@@ -5101,8 +5381,10 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
 
 /// Video segment level annotation results for text detection.
 class GoogleCloudVideointelligenceV1p1beta1TextSegment {
-  /// Confidence for the track of detected text. It is calculated as the highest
-  /// over all frames where OCR detected text appears.
+  /// Confidence for the track of detected text.
+  ///
+  /// It is calculated as the highest over all frames where OCR detected text
+  /// appears.
   core.double confidence;
 
   /// Information related to the frames where OCR detected text appears.
@@ -5145,13 +5427,19 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
   }
 }
 
-/// For tracking related features. An object at time_offset with attributes, and
-/// located with normalized_bounding_box.
+/// For tracking related features.
+///
+/// An object at time_offset with attributes, and located with
+/// normalized_bounding_box.
 class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
-  /// Optional. The attributes of the object in the bounding box.
+  /// The attributes of the object in the bounding box.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p1beta1DetectedAttribute> attributes;
 
-  /// Optional. The detected landmarks.
+  /// The detected landmarks.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p1beta1DetectedLandmark> landmarks;
 
   /// Normalized Bounding box in a frame, where the object is located.
@@ -5211,10 +5499,14 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
 
 /// A track of an object instance.
 class GoogleCloudVideointelligenceV1p1beta1Track {
-  /// Optional. Attributes in the track level.
+  /// Attributes in the track level.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p1beta1DetectedAttribute> attributes;
 
-  /// Optional. The confidence score of the tracked object.
+  /// The confidence score of the tracked object.
+  ///
+  /// Optional.
   core.double confidence;
 
   /// Video segment of a track.
@@ -5288,8 +5580,9 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Approximate percentage processed thus far. Guaranteed to be 100 when fully
-  /// processed.
+  /// Approximate percentage processed thus far.
+  ///
+  /// Guaranteed to be 100 when fully processed.
   core.int progressPercent;
 
   /// Specifies which segment is being tracked if the request contains more than
@@ -5353,16 +5646,19 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
 
 /// Annotation results for a single video.
 class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
-  /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
-  /// some videos may succeed and some may fail.
+  /// If set, indicates an error.
+  ///
+  /// Note that for a single `AnnotateVideoRequest` some videos may succeed and
+  /// some may fail.
   GoogleRpcStatus error;
 
   /// Explicit content annotation.
   GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation
       explicitAnnotation;
 
-  /// Label annotations on frame level. There is exactly one element for each
-  /// unique label.
+  /// Label annotations on frame level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       frameLabelAnnotations;
 
@@ -5381,11 +5677,13 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
 
   /// Topical label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       segmentLabelAnnotations;
 
   /// Presence label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label. Compared to the
   /// existing topical `segment_label_annotations`, this field presents more
   /// fine-grained, segment-level labels detected in video content and is made
@@ -5394,20 +5692,24 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       segmentPresenceLabelAnnotations;
 
-  /// Shot annotations. Each shot is represented as a video segment.
+  /// Shot annotations.
+  ///
+  /// Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p1beta1VideoSegment> shotAnnotations;
 
-  /// Topical label annotations on shot level. There is exactly one element for
-  /// each unique label.
+  /// Topical label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       shotLabelAnnotations;
 
-  /// Presence label annotations on shot level. There is exactly one element for
-  /// each unique label. Compared to the existing topical
-  /// `shot_label_annotations`, this field presents more fine-grained,
-  /// shot-level labels detected in video content and is made available only
-  /// when the client sets `LabelDetectionConfig.model` to "builtin/latest" in
-  /// the request.
+  /// Presence label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `shot_label_annotations`, this field presents more
+  /// fine-grained, shot-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       shotPresenceLabelAnnotations;
 
@@ -5415,8 +5717,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>
       speechTranscriptions;
 
-  /// OCR text detection and tracking. Annotations for list of detected text
-  /// snippets. Each will have list of frame information associated with it.
+  /// OCR text detection and tracking.
+  ///
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
   core.List<GoogleCloudVideointelligenceV1p1beta1TextAnnotation>
       textAnnotations;
 
@@ -5611,35 +5915,45 @@ class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
   }
 }
 
-/// Word-specific information for recognized words. Word information is only
-/// included in the response when certain request parameters are set, such as
-/// `enable_word_time_offsets`.
+/// Word-specific information for recognized words.
+///
+/// Word information is only included in the response when certain request
+/// parameters are set, such as `enable_word_time_offsets`.
 class GoogleCloudVideointelligenceV1p1beta1WordInfo {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String endTime;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to have spoken this word. Value ranges from 1 up to
-  /// diarization_speaker_count, and is only set if speaker diarization is
-  /// enabled.
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
+  /// is only set if speaker diarization is enabled.
+  ///
+  /// Output only.
   core.int speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String startTime;
 
   /// The word corresponding to this set of information.
@@ -5686,9 +6000,10 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
   }
 }
 
-/// Video annotation progress. Included in the `metadata` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation progress.
+///
+/// Included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
   /// Progress metadata for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress>
@@ -5718,9 +6033,10 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
   }
 }
 
-/// Video annotation response. Included in the `response` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation response.
+///
+/// Included in the `response` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
   /// Annotation results for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults>
@@ -5752,15 +6068,19 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
 
 /// A generic detected attribute represented by name in string format.
 class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
-  /// Detected attribute confidence. Range [0, 1].
+  /// Detected attribute confidence.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
+  ///
   /// A full list of supported type names will be provided in the document.
   core.String name;
 
-  /// Text value of the detection result. For example, the value for "HairColor"
-  /// can be "black", "blonde", etc.
+  /// Text value of the detection result.
+  ///
+  /// For example, the value for "HairColor" can be "black", "blonde", etc.
   core.String value;
 
   GoogleCloudVideointelligenceV1p2beta1DetectedAttribute();
@@ -5796,14 +6116,18 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
 class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
-  /// The confidence score of the detected landmark. Range [0, 1].
+  /// The confidence score of the detected landmark.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
   core.String name;
 
   /// The 2D point of the detected landmark using the normalized image
-  /// coordindate system. The normalized coordinates have the range from 0 to 1.
+  /// coordindate system.
+  ///
+  /// The normalized coordinates have the range from 0 to 1.
   GoogleCloudVideointelligenceV1p2beta1NormalizedVertex point;
 
   GoogleCloudVideointelligenceV1p2beta1DetectedLandmark();
@@ -5842,8 +6166,10 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
   /// Textual description, e.g., `Fixed-gear bicycle`.
   core.String description;
 
-  /// Opaque entity ID. Some IDs may be available in [Google Knowledge Graph
-  /// Search API](https://developers.google.com/knowledge-graph/).
+  /// Opaque entity ID.
+  ///
+  /// Some IDs may be available in [Google Knowledge Graph Search
+  /// API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -5878,9 +6204,10 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
   }
 }
 
-/// Explicit content annotation (based on per-frame visual signals only). If no
-/// explicit content has been detected in a frame, no annotations are present
-/// for that frame.
+/// Explicit content annotation (based on per-frame visual signals only).
+///
+/// If no explicit content has been detected in a frame, no annotations are
+/// present for that frame.
 class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
   /// All video frames where explicit content was detected.
   core.List<GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame> frames;
@@ -5959,9 +6286,11 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
 
 /// Label annotation.
 class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
-  /// Common categories for the detected entity. For example, when the label is
-  /// `Terrier`, the category is likely `dog`. And in some cases there might be
-  /// more than one categories e.g., `Terrier` could also be a `pet`.
+  /// Common categories for the detected entity.
+  ///
+  /// For example, when the label is `Terrier`, the category is likely `dog`.
+  /// And in some cases there might be more than one categories e.g., `Terrier`
+  /// could also be a `pet`.
   core.List<GoogleCloudVideointelligenceV1p2beta1Entity> categoryEntities;
 
   /// Detected entity.
@@ -6034,7 +6363,9 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
 
 /// Video frame level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -6066,7 +6397,9 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -6102,12 +6435,16 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
   /// tracks within this LogoRecognitionAnnotation are recognized as.
   GoogleCloudVideointelligenceV1p2beta1Entity entity;
 
-  /// All video segments where the recognized logo appears. There might be
-  /// multiple instances of the same logo class appearing in one VideoSegment.
+  /// All video segments where the recognized logo appears.
+  ///
+  /// There might be multiple instances of the same logo class appearing in one
+  /// VideoSegment.
   core.List<GoogleCloudVideointelligenceV1p2beta1VideoSegment> segments;
 
-  /// All logo tracks where the recognized logo appears. Each track corresponds
-  /// to one logo instance appearing in consecutive frames.
+  /// All logo tracks where the recognized logo appears.
+  ///
+  /// Each track corresponds to one logo instance appearing in consecutive
+  /// frames.
   core.List<GoogleCloudVideointelligenceV1p2beta1Track> tracks;
 
   GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation();
@@ -6149,8 +6486,10 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
   }
 }
 
-/// Normalized bounding box. The normalized vertex coordinates are relative to
-/// the original image. Range: [0, 1].
+/// Normalized bounding box.
+///
+/// The normalized vertex coordinates are relative to the original image. Range:
+/// [0, 1].
 class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -6201,6 +6540,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
+///
 /// Contains list of the corner points in clockwise order starting from top-left
 /// corner. For example, for a rectangular bounding box: When the text is
 /// horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
@@ -6234,8 +6574,10 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -6276,20 +6618,24 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1p2beta1Entity entity;
 
   /// Information corresponding to all frames where this object track appears.
+  ///
   /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
   /// messages in frames. Streaming mode: it can only be one ObjectTrackingFrame
   /// message in frames.
   core.List<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame> frames;
 
-  /// Non-streaming batch mode ONLY. Each object track corresponds to one video
-  /// segment where it appears.
+  /// Non-streaming batch mode ONLY.
+  ///
+  /// Each object track corresponds to one video segment where it appears.
   GoogleCloudVideointelligenceV1p2beta1VideoSegment segment;
 
-  /// Streaming mode ONLY. In streaming mode, we do not know the end time of a
-  /// tracked object before it is completed. Hence, there is no VideoSegment
-  /// info returned. Instead, we provide a unique identifiable integer track_id
-  /// so that the customers can correlate the results of the ongoing
-  /// ObjectTrackAnnotation of the same track_id over time.
+  /// Streaming mode ONLY.
+  ///
+  /// In streaming mode, we do not know the end time of a tracked object before
+  /// it is completed. Hence, there is no VideoSegment info returned. Instead,
+  /// we provide a unique identifiable integer track_id so that the customers
+  /// can correlate the results of the ongoing ObjectTrackAnnotation of the same
+  /// track_id over time.
   core.String trackId;
 
   /// Feature version.
@@ -6350,8 +6696,9 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
   }
 }
 
-/// Video frame level annotations for object detection and tracking. This field
-/// stores per frame location, time offset, and confidence.
+/// Video frame level annotations for object detection and tracking.
+///
+/// This field stores per frame location, time offset, and confidence.
 class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
   /// The normalized bounding box location of this object track for the frame.
   GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox
@@ -6389,20 +6736,26 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
+  ///
   /// Note: When `enable_speaker_diarization` is set to true, you will see all
   /// the words from the beginning of the audio.
+  ///
+  /// Output only.
   core.List<GoogleCloudVideointelligenceV1p2beta1WordInfo> words;
 
   GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative();
@@ -6442,15 +6795,20 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
 /// A speech recognition result corresponding to a portion of the audio.
 class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
   /// May contain one or more recognition hypotheses (up to the maximum
-  /// specified in `max_alternatives`). These alternatives are ordered in terms
-  /// of accuracy, with the top (first) alternative being the most probable, as
-  /// ranked by the recognizer.
+  /// specified in `max_alternatives`).
+  ///
+  /// These alternatives are ordered in terms of accuracy, with the top (first)
+  /// alternative being the most probable, as ranked by the recognizer.
   core.List<GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag of the language in this result. This language code was
-  /// detected to have the most likelihood of being spoken in the audio.
+  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
+  /// the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1p2beta1SpeechTranscription();
@@ -6483,9 +6841,10 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
   }
 }
 
-/// Annotations related to one detected OCR text snippet. This will contain the
-/// corresponding text, confidence value, and frame level information for each
-/// detection.
+/// Annotations related to one detected OCR text snippet.
+///
+/// This will contain the corresponding text, confidence value, and frame level
+/// information for each detection.
 class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
   /// All video segments where OCR detected text appears.
   core.List<GoogleCloudVideointelligenceV1p2beta1TextSegment> segments;
@@ -6529,9 +6888,10 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
   }
 }
 
-/// Video frame level annotation results for text annotation (OCR). Contains
-/// information regarding timestamp and bounding box locations for the frames
-/// containing detected OCR text snippets.
+/// Video frame level annotation results for text annotation (OCR).
+///
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
 class GoogleCloudVideointelligenceV1p2beta1TextFrame {
   /// Bounding polygon of the detected text for this frame.
   GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly
@@ -6568,8 +6928,10 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
 
 /// Video segment level annotation results for text detection.
 class GoogleCloudVideointelligenceV1p2beta1TextSegment {
-  /// Confidence for the track of detected text. It is calculated as the highest
-  /// over all frames where OCR detected text appears.
+  /// Confidence for the track of detected text.
+  ///
+  /// It is calculated as the highest over all frames where OCR detected text
+  /// appears.
   core.double confidence;
 
   /// Information related to the frames where OCR detected text appears.
@@ -6612,13 +6974,19 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
   }
 }
 
-/// For tracking related features. An object at time_offset with attributes, and
-/// located with normalized_bounding_box.
+/// For tracking related features.
+///
+/// An object at time_offset with attributes, and located with
+/// normalized_bounding_box.
 class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
-  /// Optional. The attributes of the object in the bounding box.
+  /// The attributes of the object in the bounding box.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p2beta1DetectedAttribute> attributes;
 
-  /// Optional. The detected landmarks.
+  /// The detected landmarks.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p2beta1DetectedLandmark> landmarks;
 
   /// Normalized Bounding box in a frame, where the object is located.
@@ -6678,10 +7046,14 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
 
 /// A track of an object instance.
 class GoogleCloudVideointelligenceV1p2beta1Track {
-  /// Optional. Attributes in the track level.
+  /// Attributes in the track level.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p2beta1DetectedAttribute> attributes;
 
-  /// Optional. The confidence score of the tracked object.
+  /// The confidence score of the tracked object.
+  ///
+  /// Optional.
   core.double confidence;
 
   /// Video segment of a track.
@@ -6755,8 +7127,9 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Approximate percentage processed thus far. Guaranteed to be 100 when fully
-  /// processed.
+  /// Approximate percentage processed thus far.
+  ///
+  /// Guaranteed to be 100 when fully processed.
   core.int progressPercent;
 
   /// Specifies which segment is being tracked if the request contains more than
@@ -6820,16 +7193,19 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
 
 /// Annotation results for a single video.
 class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
-  /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
-  /// some videos may succeed and some may fail.
+  /// If set, indicates an error.
+  ///
+  /// Note that for a single `AnnotateVideoRequest` some videos may succeed and
+  /// some may fail.
   GoogleRpcStatus error;
 
   /// Explicit content annotation.
   GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation
       explicitAnnotation;
 
-  /// Label annotations on frame level. There is exactly one element for each
-  /// unique label.
+  /// Label annotations on frame level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       frameLabelAnnotations;
 
@@ -6848,11 +7224,13 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p2beta1VideoSegment segment;
 
   /// Topical label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       segmentLabelAnnotations;
 
   /// Presence label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label. Compared to the
   /// existing topical `segment_label_annotations`, this field presents more
   /// fine-grained, segment-level labels detected in video content and is made
@@ -6861,20 +7239,24 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       segmentPresenceLabelAnnotations;
 
-  /// Shot annotations. Each shot is represented as a video segment.
+  /// Shot annotations.
+  ///
+  /// Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p2beta1VideoSegment> shotAnnotations;
 
-  /// Topical label annotations on shot level. There is exactly one element for
-  /// each unique label.
+  /// Topical label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       shotLabelAnnotations;
 
-  /// Presence label annotations on shot level. There is exactly one element for
-  /// each unique label. Compared to the existing topical
-  /// `shot_label_annotations`, this field presents more fine-grained,
-  /// shot-level labels detected in video content and is made available only
-  /// when the client sets `LabelDetectionConfig.model` to "builtin/latest" in
-  /// the request.
+  /// Presence label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `shot_label_annotations`, this field presents more
+  /// fine-grained, shot-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       shotPresenceLabelAnnotations;
 
@@ -6882,8 +7264,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>
       speechTranscriptions;
 
-  /// OCR text detection and tracking. Annotations for list of detected text
-  /// snippets. Each will have list of frame information associated with it.
+  /// OCR text detection and tracking.
+  ///
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
   core.List<GoogleCloudVideointelligenceV1p2beta1TextAnnotation>
       textAnnotations;
 
@@ -7078,35 +7462,45 @@ class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
   }
 }
 
-/// Word-specific information for recognized words. Word information is only
-/// included in the response when certain request parameters are set, such as
-/// `enable_word_time_offsets`.
+/// Word-specific information for recognized words.
+///
+/// Word information is only included in the response when certain request
+/// parameters are set, such as `enable_word_time_offsets`.
 class GoogleCloudVideointelligenceV1p2beta1WordInfo {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String endTime;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to have spoken this word. Value ranges from 1 up to
-  /// diarization_speaker_count, and is only set if speaker diarization is
-  /// enabled.
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
+  /// is only set if speaker diarization is enabled.
+  ///
+  /// Output only.
   core.int speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String startTime;
 
   /// The word corresponding to this set of information.
@@ -7153,9 +7547,10 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
   }
 }
 
-/// Video annotation progress. Included in the `metadata` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation progress.
+///
+/// Included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
   /// Progress metadata for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>
@@ -7185,9 +7580,10 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
   }
 }
 
-/// Video annotation response. Included in the `response` field of the
-/// `Operation` returned by the `GetOperation` call of the
-/// `google::longrunning::Operations` service.
+/// Video annotation response.
+///
+/// Included in the `response` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
 class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
   /// Annotation results for all videos specified in `AnnotateVideoRequest`.
   core.List<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>
@@ -7226,10 +7622,11 @@ class GoogleCloudVideointelligenceV1p3beta1Celebrity {
   /// The celebrity name.
   core.String displayName;
 
-  /// The resource name of the celebrity. Have the format
-  /// `video-intelligence/kg-mid` indicates a celebrity from preloaded gallery.
-  /// kg-mid is the id in Google knowledge graph, which is unique for the
-  /// celebrity.
+  /// The resource name of the celebrity.
+  ///
+  /// Have the format `video-intelligence/kg-mid` indicates a celebrity from
+  /// preloaded gallery. kg-mid is the id in Google knowledge graph, which is
+  /// unique for the celebrity.
   core.String name;
 
   GoogleCloudVideointelligenceV1p3beta1Celebrity();
@@ -7300,8 +7697,10 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
   }
 }
 
-/// The annotation result of a celebrity face track. RecognizedCelebrity field
-/// could be empty if the face track does not have any matched celebrities.
+/// The annotation result of a celebrity face track.
+///
+/// RecognizedCelebrity field could be empty if the face track does not have any
+/// matched celebrities.
 class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
   /// Top N match of the celebrities for the face in this track.
   core.List<GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>
@@ -7342,15 +7741,19 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
 
 /// A generic detected attribute represented by name in string format.
 class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
-  /// Detected attribute confidence. Range [0, 1].
+  /// Detected attribute confidence.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
+  ///
   /// A full list of supported type names will be provided in the document.
   core.String name;
 
-  /// Text value of the detection result. For example, the value for "HairColor"
-  /// can be "black", "blonde", etc.
+  /// Text value of the detection result.
+  ///
+  /// For example, the value for "HairColor" can be "black", "blonde", etc.
   core.String value;
 
   GoogleCloudVideointelligenceV1p3beta1DetectedAttribute();
@@ -7386,14 +7789,18 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
 /// A generic detected landmark represented by name in string format and a 2D
 /// location.
 class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
-  /// The confidence score of the detected landmark. Range [0, 1].
+  /// The confidence score of the detected landmark.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
   core.String name;
 
   /// The 2D point of the detected landmark using the normalized image
-  /// coordindate system. The normalized coordinates have the range from 0 to 1.
+  /// coordindate system.
+  ///
+  /// The normalized coordinates have the range from 0 to 1.
   GoogleCloudVideointelligenceV1p3beta1NormalizedVertex point;
 
   GoogleCloudVideointelligenceV1p3beta1DetectedLandmark();
@@ -7432,8 +7839,10 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
   /// Textual description, e.g., `Fixed-gear bicycle`.
   core.String description;
 
-  /// Opaque entity ID. Some IDs may be available in [Google Knowledge Graph
-  /// Search API](https://developers.google.com/knowledge-graph/).
+  /// Opaque entity ID.
+  ///
+  /// Some IDs may be available in [Google Knowledge Graph Search
+  /// API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -7468,9 +7877,10 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
   }
 }
 
-/// Explicit content annotation (based on per-frame visual signals only). If no
-/// explicit content has been detected in a frame, no annotations are present
-/// for that frame.
+/// Explicit content annotation (based on per-frame visual signals only).
+///
+/// If no explicit content has been detected in a frame, no annotations are
+/// present for that frame.
 class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
   /// All video frames where explicit content was detected.
   core.List<GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame> frames;
@@ -7600,9 +8010,11 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
 
 /// Label annotation.
 class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
-  /// Common categories for the detected entity. For example, when the label is
-  /// `Terrier`, the category is likely `dog`. And in some cases there might be
-  /// more than one categories e.g., `Terrier` could also be a `pet`.
+  /// Common categories for the detected entity.
+  ///
+  /// For example, when the label is `Terrier`, the category is likely `dog`.
+  /// And in some cases there might be more than one categories e.g., `Terrier`
+  /// could also be a `pet`.
   core.List<GoogleCloudVideointelligenceV1p3beta1Entity> categoryEntities;
 
   /// Detected entity.
@@ -7675,7 +8087,9 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
 
 /// Video frame level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -7707,7 +8121,9 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
 
 /// Video segment level annotation results for label detection.
 class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
-  /// Confidence that the label is accurate. Range: [0, 1].
+  /// Confidence that the label is accurate.
+  ///
+  /// Range: [0, 1].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -7743,12 +8159,16 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
   /// tracks within this LogoRecognitionAnnotation are recognized as.
   GoogleCloudVideointelligenceV1p3beta1Entity entity;
 
-  /// All video segments where the recognized logo appears. There might be
-  /// multiple instances of the same logo class appearing in one VideoSegment.
+  /// All video segments where the recognized logo appears.
+  ///
+  /// There might be multiple instances of the same logo class appearing in one
+  /// VideoSegment.
   core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> segments;
 
-  /// All logo tracks where the recognized logo appears. Each track corresponds
-  /// to one logo instance appearing in consecutive frames.
+  /// All logo tracks where the recognized logo appears.
+  ///
+  /// Each track corresponds to one logo instance appearing in consecutive
+  /// frames.
   core.List<GoogleCloudVideointelligenceV1p3beta1Track> tracks;
 
   GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation();
@@ -7790,8 +8210,10 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
   }
 }
 
-/// Normalized bounding box. The normalized vertex coordinates are relative to
-/// the original image. Range: [0, 1].
+/// Normalized bounding box.
+///
+/// The normalized vertex coordinates are relative to the original image. Range:
+/// [0, 1].
 class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -7842,6 +8264,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
 }
 
 /// Normalized bounding polygon for text (that might not be aligned with axis).
+///
 /// Contains list of the corner points in clockwise order starting from top-left
 /// corner. For example, for a rectangular bounding box: When the text is
 /// horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
@@ -7875,8 +8298,10 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -7917,20 +8342,24 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1p3beta1Entity entity;
 
   /// Information corresponding to all frames where this object track appears.
+  ///
   /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
   /// messages in frames. Streaming mode: it can only be one ObjectTrackingFrame
   /// message in frames.
   core.List<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame> frames;
 
-  /// Non-streaming batch mode ONLY. Each object track corresponds to one video
-  /// segment where it appears.
+  /// Non-streaming batch mode ONLY.
+  ///
+  /// Each object track corresponds to one video segment where it appears.
   GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
 
-  /// Streaming mode ONLY. In streaming mode, we do not know the end time of a
-  /// tracked object before it is completed. Hence, there is no VideoSegment
-  /// info returned. Instead, we provide a unique identifiable integer track_id
-  /// so that the customers can correlate the results of the ongoing
-  /// ObjectTrackAnnotation of the same track_id over time.
+  /// Streaming mode ONLY.
+  ///
+  /// In streaming mode, we do not know the end time of a tracked object before
+  /// it is completed. Hence, there is no VideoSegment info returned. Instead,
+  /// we provide a unique identifiable integer track_id so that the customers
+  /// can correlate the results of the ongoing ObjectTrackAnnotation of the same
+  /// track_id over time.
   core.String trackId;
 
   /// Feature version.
@@ -7991,8 +8420,9 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
   }
 }
 
-/// Video frame level annotations for object detection and tracking. This field
-/// stores per frame location, time offset, and confidence.
+/// Video frame level annotations for object detection and tracking.
+///
+/// This field stores per frame location, time offset, and confidence.
 class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
   /// The normalized bounding box location of this object track for the frame.
   GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
@@ -8069,7 +8499,9 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
   /// The recognized celebrity.
   GoogleCloudVideointelligenceV1p3beta1Celebrity celebrity;
 
-  /// Recognition confidence. Range [0, 1].
+  /// Recognition confidence.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
   GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity();
@@ -8099,20 +8531,26 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
+  ///
   /// Note: When `enable_speaker_diarization` is set to true, you will see all
   /// the words from the beginning of the audio.
+  ///
+  /// Output only.
   core.List<GoogleCloudVideointelligenceV1p3beta1WordInfo> words;
 
   GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative();
@@ -8152,15 +8590,20 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
 /// A speech recognition result corresponding to a portion of the audio.
 class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
   /// May contain one or more recognition hypotheses (up to the maximum
-  /// specified in `max_alternatives`). These alternatives are ordered in terms
-  /// of accuracy, with the top (first) alternative being the most probable, as
-  /// ranked by the recognizer.
+  /// specified in `max_alternatives`).
+  ///
+  /// These alternatives are ordered in terms of accuracy, with the top (first)
+  /// alternative being the most probable, as ranked by the recognizer.
   core.List<GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag of the language in this result. This language code was
-  /// detected to have the most likelihood of being spoken in the audio.
+  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
+  /// the language in this result.
+  ///
+  /// This language code was detected to have the most likelihood of being
+  /// spoken in the audio.
+  ///
+  /// Output only.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1p3beta1SpeechTranscription();
@@ -8194,16 +8637,20 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
 }
 
 /// `StreamingAnnotateVideoResponse` is the only message returned to the client
-/// by `StreamingAnnotateVideo`. A series of zero or more
-/// `StreamingAnnotateVideoResponse` messages are streamed back to the client.
+/// by `StreamingAnnotateVideo`.
+///
+/// A series of zero or more `StreamingAnnotateVideoResponse` messages are
+/// streamed back to the client.
 class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
   /// Streaming annotation results.
   GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
       annotationResults;
 
   /// Google Cloud Storage URI that stores annotation results of one streaming
-  /// session in JSON format. It is the annotation_result_storage_directory from
-  /// the request followed by '/cloud_project_number-session_id'.
+  /// session in JSON format.
+  ///
+  /// It is the annotation_result_storage_directory from the request followed by
+  /// '/cloud_project_number-session_id'.
   core.String annotationResultsUri;
 
   /// If set, returns a google.rpc.Status message that specifies the error for
@@ -8259,7 +8706,9 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
       objectAnnotations;
 
-  /// Shot annotation results. Each shot is represented as a video segment.
+  /// Shot annotation results.
+  ///
+  /// Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> shotAnnotations;
 
   GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults();
@@ -8317,9 +8766,10 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
   }
 }
 
-/// Annotations related to one detected OCR text snippet. This will contain the
-/// corresponding text, confidence value, and frame level information for each
-/// detection.
+/// Annotations related to one detected OCR text snippet.
+///
+/// This will contain the corresponding text, confidence value, and frame level
+/// information for each detection.
 class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
   /// All video segments where OCR detected text appears.
   core.List<GoogleCloudVideointelligenceV1p3beta1TextSegment> segments;
@@ -8363,9 +8813,10 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
   }
 }
 
-/// Video frame level annotation results for text annotation (OCR). Contains
-/// information regarding timestamp and bounding box locations for the frames
-/// containing detected OCR text snippets.
+/// Video frame level annotation results for text annotation (OCR).
+///
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
 class GoogleCloudVideointelligenceV1p3beta1TextFrame {
   /// Bounding polygon of the detected text for this frame.
   GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
@@ -8402,8 +8853,10 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
 
 /// Video segment level annotation results for text detection.
 class GoogleCloudVideointelligenceV1p3beta1TextSegment {
-  /// Confidence for the track of detected text. It is calculated as the highest
-  /// over all frames where OCR detected text appears.
+  /// Confidence for the track of detected text.
+  ///
+  /// It is calculated as the highest over all frames where OCR detected text
+  /// appears.
   core.double confidence;
 
   /// Information related to the frames where OCR detected text appears.
@@ -8446,13 +8899,19 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
   }
 }
 
-/// For tracking related features. An object at time_offset with attributes, and
-/// located with normalized_bounding_box.
+/// For tracking related features.
+///
+/// An object at time_offset with attributes, and located with
+/// normalized_bounding_box.
 class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
-  /// Optional. The attributes of the object in the bounding box.
+  /// The attributes of the object in the bounding box.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> attributes;
 
-  /// Optional. The detected landmarks.
+  /// The detected landmarks.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p3beta1DetectedLandmark> landmarks;
 
   /// Normalized Bounding box in a frame, where the object is located.
@@ -8512,10 +8971,14 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
 
 /// A track of an object instance.
 class GoogleCloudVideointelligenceV1p3beta1Track {
-  /// Optional. Attributes in the track level.
+  /// Attributes in the track level.
+  ///
+  /// Optional.
   core.List<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> attributes;
 
-  /// Optional. The confidence score of the tracked object.
+  /// The confidence score of the tracked object.
+  ///
+  /// Optional.
   core.double confidence;
 
   /// Video segment of a track.
@@ -8592,8 +9055,9 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
   /// Video file location in [Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Approximate percentage processed thus far. Guaranteed to be 100 when fully
-  /// processed.
+  /// Approximate percentage processed thus far.
+  ///
+  /// Guaranteed to be 100 when fully processed.
   core.int progressPercent;
 
   /// Specifies which segment is being tracked if the request contains more than
@@ -8661,8 +9125,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
       celebrityRecognitionAnnotations;
 
-  /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
-  /// some videos may succeed and some may fail.
+  /// If set, indicates an error.
+  ///
+  /// Note that for a single `AnnotateVideoRequest` some videos may succeed and
+  /// some may fail.
   GoogleRpcStatus error;
 
   /// Explicit content annotation.
@@ -8673,8 +9139,9 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>
       faceDetectionAnnotations;
 
-  /// Label annotations on frame level. There is exactly one element for each
-  /// unique label.
+  /// Label annotations on frame level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       frameLabelAnnotations;
 
@@ -8697,11 +9164,13 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
 
   /// Topical label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       segmentLabelAnnotations;
 
   /// Presence label annotations on video level or user-specified segment level.
+  ///
   /// There is exactly one element for each unique label. Compared to the
   /// existing topical `segment_label_annotations`, this field presents more
   /// fine-grained, segment-level labels detected in video content and is made
@@ -8710,20 +9179,24 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       segmentPresenceLabelAnnotations;
 
-  /// Shot annotations. Each shot is represented as a video segment.
+  /// Shot annotations.
+  ///
+  /// Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> shotAnnotations;
 
-  /// Topical label annotations on shot level. There is exactly one element for
-  /// each unique label.
+  /// Topical label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       shotLabelAnnotations;
 
-  /// Presence label annotations on shot level. There is exactly one element for
-  /// each unique label. Compared to the existing topical
-  /// `shot_label_annotations`, this field presents more fine-grained,
-  /// shot-level labels detected in video content and is made available only
-  /// when the client sets `LabelDetectionConfig.model` to "builtin/latest" in
-  /// the request.
+  /// Presence label annotations on shot level.
+  ///
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `shot_label_annotations`, this field presents more
+  /// fine-grained, shot-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       shotPresenceLabelAnnotations;
 
@@ -8731,8 +9204,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>
       speechTranscriptions;
 
-  /// OCR text detection and tracking. Annotations for list of detected text
-  /// snippets. Each will have list of frame information associated with it.
+  /// OCR text detection and tracking.
+  ///
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
   core.List<GoogleCloudVideointelligenceV1p3beta1TextAnnotation>
       textAnnotations;
 
@@ -8963,35 +9438,45 @@ class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
   }
 }
 
-/// Word-specific information for recognized words. Word information is only
-/// included in the response when certain request parameters are set, such as
-/// `enable_word_time_offsets`.
+/// Word-specific information for recognized words.
+///
+/// Word information is only included in the response when certain request
+/// parameters are set, such as `enable_word_time_offsets`.
 class GoogleCloudVideointelligenceV1p3beta1WordInfo {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is set only for the top alternative. This field is not
-  /// guaranteed to be accurate and users should not rely on it to be always
-  /// provided. The default of 0.0 is a sentinel value indicating `confidence`
-  /// was not set.
+  /// The confidence estimate between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. This field is set only for the top
+  /// alternative. This field is not guaranteed to be accurate and users should
+  /// not rely on it to be always provided. The default of 0.0 is a sentinel
+  /// value indicating `confidence` was not set.
+  ///
+  /// Output only.
   core.double confidence;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the end of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String endTime;
 
-  /// Output only. A distinct integer value is assigned for every speaker within
-  /// the audio. This field specifies which one of those speakers was detected
-  /// to have spoken this word. Value ranges from 1 up to
-  /// diarization_speaker_count, and is only set if speaker diarization is
-  /// enabled.
+  /// A distinct integer value is assigned for every speaker within the audio.
+  ///
+  /// This field specifies which one of those speakers was detected to have
+  /// spoken this word. Value ranges from 1 up to diarization_speaker_count, and
+  /// is only set if speaker diarization is enabled.
+  ///
+  /// Output only.
   core.int speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word. This field is only set if
-  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
-  /// experimental feature and the accuracy of the time offset can vary.
+  /// the start of the spoken word.
+  ///
+  /// This field is only set if `enable_word_time_offsets=true` and only in the
+  /// top hypothesis. This is an experimental feature and the accuracy of the
+  /// time offset can vary.
   core.String startTime;
 
   /// The word corresponding to this set of information.
@@ -9090,31 +9575,37 @@ class GoogleLongrunningListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -9179,10 +9670,12 @@ class GoogleLongrunningOperation {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
@@ -9197,24 +9690,27 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

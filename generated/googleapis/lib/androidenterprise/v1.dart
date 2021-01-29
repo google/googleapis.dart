@@ -99,9 +99,11 @@ class DevicesResource {
   DevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Uploads a report containing any changes in app states on the device since
-  /// the last report was generated. You can call this method up to 3 times
-  /// every 24 hours for a given device. If you exceed the quota, then the
-  /// Google Play EMM API returns HTTP 429 Too Many Requests.
+  /// the last report was generated.
+  ///
+  /// You can call this method up to 3 times every 24 hours for a given device.
+  /// If you exceed the quota, then the Google Play EMM API returns HTTP 429 Too
+  /// Many Requests.
   ///
   /// Request parameters:
   ///
@@ -237,10 +239,12 @@ class DevicesResource {
   }
 
   /// Retrieves whether a device's access to Google services is enabled or
-  /// disabled. The device state takes effect only if enforcing EMM policies on
-  /// Android devices is enabled in the Google Admin Console. Otherwise, the
-  /// device state is ignored and all devices are allowed access to Google
-  /// services. This is only supported for Google-managed users.
+  /// disabled.
+  ///
+  /// The device state takes effect only if enforcing EMM policies on Android
+  /// devices is enabled in the Google Admin Console. Otherwise, the device
+  /// state is ignored and all devices are allowed access to Google services.
+  /// This is only supported for Google-managed users.
   ///
   /// Request parameters:
   ///
@@ -371,6 +375,7 @@ class DevicesResource {
   }
 
   /// Sets whether a device's access to Google services is enabled or disabled.
+  ///
   /// The device state takes effect only if enforcing EMM policies on Android
   /// devices is enabled in the Google Admin Console. Otherwise, the device
   /// state is ignored and all devices are allowed access to Google services.
@@ -590,8 +595,10 @@ class EnterprisesResource {
   }
 
   /// Completes the signup flow, by specifying the Completion token and
-  /// Enterprise token. This request must not be called multiple times for a
-  /// given Enterprise Token.
+  /// Enterprise token.
+  ///
+  /// This request must not be called multiple times for a given Enterprise
+  /// Token.
   ///
   /// Request parameters:
   ///
@@ -649,10 +656,11 @@ class EnterprisesResource {
     );
   }
 
-  /// Returns a unique token to access an embeddable UI. To generate a web UI,
-  /// pass the generated token into the managed Google Play javascript API. Each
-  /// token may only be used to start one UI session. See the javascript API
-  /// documentation for further information.
+  /// Returns a unique token to access an embeddable UI.
+  ///
+  /// To generate a web UI, pass the generated token into the managed Google
+  /// Play javascript API. Each token may only be used to start one UI session.
+  /// See the javascript API documentation for further information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -880,12 +888,13 @@ class EnterprisesResource {
     );
   }
 
-  /// Returns a service account and credentials. The service account can be
-  /// bound to the enterprise by calling setAccount. The service account is
-  /// unique to this enterprise and EMM, and will be deleted if the enterprise
-  /// is unbound. The credentials contain private key data and are not stored
-  /// server-side. This method can only be called after calling
-  /// Enterprises.Enroll or Enterprises.CompleteSignup, and before
+  /// Returns a service account and credentials.
+  ///
+  /// The service account can be bound to the enterprise by calling setAccount.
+  /// The service account is unique to this enterprise and EMM, and will be
+  /// deleted if the enterprise is unbound. The credentials contain private key
+  /// data and are not stored server-side. This method can only be called after
+  /// calling Enterprises.Enroll or Enterprises.CompleteSignup, and before
   /// Enterprises.SetAccount; at other times it will return an error. Subsequent
   /// calls after the first will generate a new, unique set of credentials, and
   /// invalidate the previously generated credentials. Once the service account
@@ -957,8 +966,10 @@ class EnterprisesResource {
     );
   }
 
-  /// Returns the store layout for the enterprise. If the store layout has not
-  /// been set, returns "basic" as the store layout type and no homepage.
+  /// Returns the store layout for the enterprise.
+  ///
+  /// If the store layout has not been set, returns "basic" as the store layout
+  /// type and no homepage.
   ///
   /// Request parameters:
   ///
@@ -1011,11 +1022,12 @@ class EnterprisesResource {
     );
   }
 
-  /// Looks up an enterprise by domain name. This is only supported for
-  /// enterprises created via the Google-initiated creation flow. Lookup of the
-  /// id is not needed for enterprises created via the EMM-initiated flow since
-  /// the EMM learns the enterprise ID in the callback specified in the
-  /// Enterprises.generateSignupUrl call.
+  /// Looks up an enterprise by domain name.
+  ///
+  /// This is only supported for enterprises created via the Google-initiated
+  /// creation flow. Lookup of the id is not needed for enterprises created via
+  /// the EMM-initiated flow since the EMM learns the enterprise ID in the
+  /// callback specified in the Enterprises.generateSignupUrl call.
   ///
   /// Request parameters:
   ///
@@ -1069,12 +1081,13 @@ class EnterprisesResource {
   }
 
   /// Pulls and returns a notification set for the enterprises associated with
-  /// the service account authenticated for the request. The notification set
-  /// may be empty if no notification are pending. A notification set returned
-  /// needs to be acknowledged within 20 seconds by calling
-  /// Enterprises.AcknowledgeNotificationSet, unless the notification set is
-  /// empty. Notifications that are not acknowledged within the 20 seconds will
-  /// eventually be included again in the response to another
+  /// the service account authenticated for the request.
+  ///
+  /// The notification set may be empty if no notification are pending. A
+  /// notification set returned needs to be acknowledged within 20 seconds by
+  /// calling Enterprises.AcknowledgeNotificationSet, unless the notification
+  /// set is empty. Notifications that are not acknowledged within the 20
+  /// seconds will eventually be included again in the response to another
   /// PullNotificationSet request, and those that are never acknowledged will
   /// ultimately be deleted according to the Google Cloud Platform Pub/Sub
   /// system policy. Multiple requests might be performed concurrently to
@@ -1258,13 +1271,15 @@ class EnterprisesResource {
     );
   }
 
-  /// Sets the store layout for the enterprise. By default, storeLayoutType is
-  /// set to "basic" and the basic store layout is enabled. The basic layout
-  /// only contains apps approved by the admin, and that have been added to the
-  /// available product set for a user (using the setAvailableProductSet call).
-  /// Apps on the page are sorted in order of their product ID value. If you
-  /// create a custom store layout (by setting storeLayoutType = "custom" and
-  /// setting a homepage), the basic store layout is disabled.
+  /// Sets the store layout for the enterprise.
+  ///
+  /// By default, storeLayoutType is set to "basic" and the basic store layout
+  /// is enabled. The basic layout only contains apps approved by the admin, and
+  /// that have been added to the available product set for a user (using the
+  /// setAvailableProductSet call). Apps on the page are sorted in order of
+  /// their product ID value. If you create a custom store layout (by setting
+  /// storeLayoutType = "custom" and setting a homepage), the basic store layout
+  /// is disabled.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1518,7 +1533,9 @@ class EntitlementsResource {
     );
   }
 
-  /// Lists all entitlements for the specified user. Only the ID is set.
+  /// Lists all entitlements for the specified user.
+  ///
+  /// Only the ID is set.
   ///
   /// Request parameters:
   ///
@@ -1859,8 +1876,10 @@ class InstallsResource {
 
   InstallsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Requests to remove an app from a device. A call to get or list will still
-  /// show the app as installed on the device until it is actually removed.
+  /// Requests to remove an app from a device.
+  ///
+  /// A call to get or list will still show the app as installed on the device
+  /// until it is actually removed.
   ///
   /// Request parameters:
   ///
@@ -2081,9 +2100,10 @@ class InstallsResource {
     );
   }
 
-  /// Requests to install the latest version of an app to a device. If the app
-  /// is already installed, then it is updated to the latest version if
-  /// necessary.
+  /// Requests to install the latest version of an app to a device.
+  ///
+  /// If the app is already installed, then it is updated to the latest version
+  /// if necessary.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2329,6 +2349,7 @@ class ManagedconfigurationsfordeviceResource {
   }
 
   /// Lists all the per-device managed configurations for the specified device.
+  ///
   /// Only the ID is set.
   ///
   /// Request parameters:
@@ -2631,8 +2652,9 @@ class ManagedconfigurationsforuserResource {
     );
   }
 
-  /// Lists all the per-user managed configurations for the specified user. Only
-  /// the ID is set.
+  /// Lists all the per-user managed configurations for the specified user.
+  ///
+  /// Only the ID is set.
   ///
   /// Request parameters:
   ///
@@ -2694,11 +2716,12 @@ class ManagedconfigurationsforuserResource {
   }
 
   /// Adds or updates the managed configuration settings for an app for the
-  /// specified user. If you support the Managed configurations iframe, you can
-  /// apply managed configurations to a user by specifying an mcmId and its
-  /// associated configuration variables (if any) in the request. Alternatively,
-  /// all EMMs can apply managed configurations by passing a list of managed
-  /// properties.
+  /// specified user.
+  ///
+  /// If you support the Managed configurations iframe, you can apply managed
+  /// configurations to a user by specifying an mcmId and its associated
+  /// configuration variables (if any) in the request. Alternatively, all EMMs
+  /// can apply managed configurations by passing a list of managed properties.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2915,7 +2938,8 @@ class ProductsResource {
 
   ProductsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Approves the specified product and the relevant app permissions, if any.
+  ///  Approves the specified product and the relevant app permissions, if any.
+  ///
   /// The maximum number of products that you can approve per enterprise
   /// customer is 1,000. To learn how to use managed Google Play to design and
   /// create a store layout to display approved products to your users, see
@@ -2986,13 +3010,15 @@ class ProductsResource {
   }
 
   /// Generates a URL that can be rendered in an iframe to display the
-  /// permissions (if any) of a product. An enterprise admin must view these
-  /// permissions and accept them on behalf of their organization in order to
-  /// approve that product. Admins should accept the displayed permissions by
-  /// interacting with a separate UI element in the EMM console, which in turn
-  /// should trigger the use of this URL as the approvalUrlInfo.approvalUrl
-  /// property in a Products.approve call to approve the product. This URL can
-  /// only be used to display permissions for up to 1 day.
+  /// permissions (if any) of a product.
+  ///
+  /// An enterprise admin must view these permissions and accept them on behalf
+  /// of their organization in order to approve that product. Admins should
+  /// accept the displayed permissions by interacting with a separate UI element
+  /// in the EMM console, which in turn should trigger the use of this URL as
+  /// the approvalUrlInfo.approvalUrl property in a Products.approve call to
+  /// approve the product. This URL can only be used to display permissions for
+  /// up to 1 day.
   ///
   /// Request parameters:
   ///
@@ -3127,11 +3153,13 @@ class ProductsResource {
   }
 
   /// Retrieves the schema that defines the configurable properties for this
-  /// product. All products have a schema, but this schema may be empty if no
-  /// managed configurations have been defined. This schema can be used to
-  /// populate a UI that allows an admin to configure the product. To apply a
-  /// managed configuration based on the schema obtained using this API, see
-  /// Managed Configurations through Play.
+  /// product.
+  ///
+  /// All products have a schema, but this schema may be empty if no managed
+  /// configurations have been defined. This schema can be used to populate a UI
+  /// that allows an admin to configure the product. To apply a managed
+  /// configuration based on the schema obtained using this API, see Managed
+  /// Configurations through Play.
   ///
   /// Request parameters:
   ///
@@ -3421,9 +3449,11 @@ class ServiceaccountkeysResource {
   ServiceaccountkeysResource(commons.ApiRequester client) : _requester = client;
 
   /// Removes and invalidates the specified credentials for the service account
-  /// associated with this enterprise. The calling service account must have
-  /// been retrieved by calling Enterprises.GetServiceAccount and must have been
-  /// set as the enterprise service account by calling Enterprises.SetAccount.
+  /// associated with this enterprise.
+  ///
+  /// The calling service account must have been retrieved by calling
+  /// Enterprises.GetServiceAccount and must have been set as the enterprise
+  /// service account by calling Enterprises.SetAccount.
   ///
   /// Request parameters:
   ///
@@ -3483,10 +3513,12 @@ class ServiceaccountkeysResource {
   }
 
   /// Generates new credentials for the service account associated with this
-  /// enterprise. The calling service account must have been retrieved by
-  /// calling Enterprises.GetServiceAccount and must have been set as the
-  /// enterprise service account by calling Enterprises.SetAccount. Only the
-  /// type of the key should be populated in the resource to be inserted.
+  /// enterprise.
+  ///
+  /// The calling service account must have been retrieved by calling
+  /// Enterprises.GetServiceAccount and must have been set as the enterprise
+  /// service account by calling Enterprises.SetAccount. Only the type of the
+  /// key should be populated in the resource to be inserted.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3546,9 +3578,11 @@ class ServiceaccountkeysResource {
   }
 
   /// Lists all active credentials for the service account associated with this
-  /// enterprise. Only the ID and key type are returned. The calling service
-  /// account must have been retrieved by calling Enterprises.GetServiceAccount
-  /// and must have been set as the enterprise service account by calling
+  /// enterprise.
+  ///
+  /// Only the ID and key type are returned. The calling service account must
+  /// have been retrieved by calling Enterprises.GetServiceAccount and must have
+  /// been set as the enterprise service account by calling
   /// Enterprises.SetAccount.
   ///
   /// Request parameters:
@@ -4312,10 +4346,11 @@ class UsersResource {
   }
 
   /// Generates an authentication token which the device policy client can use
-  /// to provision the given EMM-managed user account on a device. The generated
-  /// token is single-use and expires after a few minutes. You can provision a
-  /// maximum of 10 devices per user. This call only works with EMM-managed
-  /// accounts.
+  /// to provision the given EMM-managed user account on a device.
+  ///
+  /// The generated token is single-use and expires after a few minutes. You can
+  /// provision a maximum of 10 devices per user. This call only works with
+  /// EMM-managed accounts.
   ///
   /// Request parameters:
   ///
@@ -4496,11 +4531,12 @@ class UsersResource {
     );
   }
 
-  /// Creates a new EMM-managed user. The Users resource passed in the body of
-  /// the request should include an accountIdentifier and an accountType. If a
-  /// corresponding user already exists with the same account identifier, the
-  /// user will be updated with the resource. In this case only the displayName
-  /// field can be changed.
+  /// Creates a new EMM-managed user.
+  ///
+  /// The Users resource passed in the body of the request should include an
+  /// accountIdentifier and an accountType. If a corresponding user already
+  /// exists with the same account identifier, the user will be updated with the
+  /// resource. In this case only the displayName field can be changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4558,9 +4594,11 @@ class UsersResource {
     );
   }
 
-  /// Looks up a user by primary email address. This is only supported for
-  /// Google-managed users. Lookup of the id is not needed for EMM-managed users
-  /// because the id is already returned in the result of the Users.insert call.
+  /// Looks up a user by primary email address.
+  ///
+  /// This is only supported for Google-managed users. Lookup of the id is not
+  /// needed for EMM-managed users because the id is already returned in the
+  /// result of the Users.insert call.
   ///
   /// Request parameters:
   ///
@@ -4621,9 +4659,10 @@ class UsersResource {
     );
   }
 
-  /// Revokes access to all devices currently provisioned to the user. The user
-  /// will no longer be able to use the managed Play store on any of their
-  /// managed devices. This call only works with EMM-managed accounts.
+  /// Revokes access to all devices currently provisioned to the user.
+  ///
+  /// The user will no longer be able to use the managed Play store on any of
+  /// their managed devices. This call only works with EMM-managed accounts.
   ///
   /// Request parameters:
   ///
@@ -4684,9 +4723,10 @@ class UsersResource {
   }
 
   /// Modifies the set of products that a user is entitled to access (referred
-  /// to as *whitelisted* products). Only products that are approved or products
-  /// that were previously approved (products with revoked approval) can be
-  /// whitelisted.
+  /// to as *whitelisted* products).
+  ///
+  /// Only products that are approved or products that were previously approved
+  /// (products with revoked approval) can be whitelisted.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4753,10 +4793,12 @@ class UsersResource {
     );
   }
 
-  /// Updates the details of an EMM-managed user. Can be used with EMM-managed
-  /// users only (not Google managed users). Pass the new details in the Users
-  /// resource in the request body. Only the displayName field can be changed.
-  /// Other fields must either be unset or have the currently active value.
+  /// Updates the details of an EMM-managed user.
+  ///
+  /// Can be used with EMM-managed users only (not Google managed users). Pass
+  /// the new details in the Users resource in the request body. Only the
+  /// displayName field can be changed. Other fields must either be unset or
+  /// have the currently active value.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5167,19 +5209,23 @@ class AdministratorWebToken {
   }
 }
 
-/// Specification for a token used to generate iframes. The token specifies what
-/// data the admin is allowed to modify and the URI the iframe is allowed to
-/// communiate with.
+/// Specification for a token used to generate iframes.
+///
+/// The token specifies what data the admin is allowed to modify and the URI the
+/// iframe is allowed to communiate with.
 class AdministratorWebTokenSpec {
   /// Options for displaying the Managed Configuration page.
   AdministratorWebTokenSpecManagedConfigurations managedConfigurations;
 
-  /// The URI of the parent frame hosting the iframe. To prevent XSS, the iframe
-  /// may not be hosted at other URIs. This URI must be https. Use whitespaces
-  /// to separate multiple parent URIs.
+  /// The URI of the parent frame hosting the iframe.
+  ///
+  /// To prevent XSS, the iframe may not be hosted at other URIs. This URI must
+  /// be https. Use whitespaces to separate multiple parent URIs.
   core.String parent;
 
-  /// Deprecated. Use PlaySearch.approveApps.
+  /// Use PlaySearch.approveApps.
+  ///
+  /// Deprecated.
   core.List<core.String> permission;
 
   /// Options for displaying the managed Play Search apps page.
@@ -5257,7 +5303,9 @@ class AdministratorWebTokenSpec {
 }
 
 class AdministratorWebTokenSpecManagedConfigurations {
-  /// Whether the Managed Configuration page is displayed. Default is true.
+  /// Whether the Managed Configuration page is displayed.
+  ///
+  /// Default is true.
   core.bool enabled;
 
   AdministratorWebTokenSpecManagedConfigurations();
@@ -5278,10 +5326,14 @@ class AdministratorWebTokenSpecManagedConfigurations {
 }
 
 class AdministratorWebTokenSpecPlaySearch {
-  /// Allow access to the iframe in approve mode. Default is false.
+  /// Allow access to the iframe in approve mode.
+  ///
+  /// Default is false.
   core.bool approveApps;
 
-  /// Whether the managed Play Search apps page is displayed. Default is true.
+  /// Whether the managed Play Search apps page is displayed.
+  ///
+  /// Default is true.
   core.bool enabled;
 
   AdministratorWebTokenSpecPlaySearch();
@@ -5308,7 +5360,9 @@ class AdministratorWebTokenSpecPlaySearch {
 }
 
 class AdministratorWebTokenSpecPrivateApps {
-  /// Whether the Private Apps page is displayed. Default is true.
+  /// Whether the Private Apps page is displayed.
+  ///
+  /// Default is true.
   core.bool enabled;
 
   AdministratorWebTokenSpecPrivateApps();
@@ -5329,7 +5383,9 @@ class AdministratorWebTokenSpecPrivateApps {
 }
 
 class AdministratorWebTokenSpecStoreBuilder {
-  /// Whether the Organize apps page is displayed. Default is true.
+  /// Whether the Organize apps page is displayed.
+  ///
+  /// Default is true.
   core.bool enabled;
 
   AdministratorWebTokenSpecStoreBuilder();
@@ -5350,7 +5406,9 @@ class AdministratorWebTokenSpecStoreBuilder {
 }
 
 class AdministratorWebTokenSpecWebApps {
-  /// Whether the Web Apps page is displayed. Default is true.
+  /// Whether the Web Apps page is displayed.
+  ///
+  /// Default is true.
   core.bool enabled;
 
   AdministratorWebTokenSpecWebApps();
@@ -5408,11 +5466,15 @@ class AppRestrictionsSchema {
 }
 
 /// An event generated when a new app version is uploaded to Google Play and its
-/// app restrictions schema changed. To fetch the app restrictions schema for an
-/// app, use Products.getAppRestrictionsSchema on the EMM API.
+/// app restrictions schema changed.
+///
+/// To fetch the app restrictions schema for an app, use
+/// Products.getAppRestrictionsSchema on the EMM API.
 class AppRestrictionsSchemaChangeEvent {
   /// The id of the product (e.g. "app:com.google.android.gm") for which the app
-  /// restriction schema changed. This field will always be present.
+  /// restriction schema changed.
+  ///
+  /// This field will always be present.
   core.String productId;
 
   AppRestrictionsSchemaChangeEvent();
@@ -5435,8 +5497,9 @@ class AppRestrictionsSchemaChangeEvent {
 /// A restriction in the App Restriction Schema represents a piece of
 /// configuration that may be pre-applied.
 class AppRestrictionsSchemaRestriction {
-  /// The default value of the restriction. bundle and bundleArray restrictions
-  /// never have a default value.
+  /// The default value of the restriction.
+  ///
+  /// bundle and bundleArray restrictions never have a default value.
   AppRestrictionsSchemaRestrictionRestrictionValue defaultValue;
 
   /// A longer description of the restriction, giving more detail of what it
@@ -5448,18 +5511,21 @@ class AppRestrictionsSchemaRestriction {
   core.List<core.String> entry;
 
   /// For choice or multiselect restrictions, the list of possible entries'
-  /// machine-readable values. These values should be used in the configuration,
-  /// either as a single string value for a choice restriction or in a
-  /// stringArray for a multiselect restriction.
+  /// machine-readable values.
+  ///
+  /// These values should be used in the configuration, either as a single
+  /// string value for a choice restriction or in a stringArray for a
+  /// multiselect restriction.
   core.List<core.String> entryValue;
 
   /// The unique key that the product uses to identify the restriction, e.g.
   /// "com.google.android.gm.fieldname".
   core.String key;
 
-  /// For bundle or bundleArray restrictions, the list of nested restrictions. A
-  /// bundle restriction is always nested within a bundleArray restriction, and
-  /// a bundleArray restriction is at most two levels deep.
+  /// For bundle or bundleArray restrictions, the list of nested restrictions.
+  ///
+  /// A bundle restriction is always nested within a bundleArray restriction,
+  /// and a bundleArray restriction is at most two levels deep.
   core.List<AppRestrictionsSchemaRestriction> nestedRestriction;
 
   /// The type of the restriction.
@@ -5623,10 +5689,14 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
 
 /// List of states set by the app.
 class AppState {
-  /// List of keyed app states. This field will always be present.
+  /// List of keyed app states.
+  ///
+  /// This field will always be present.
   core.List<KeyedAppState> keyedAppState;
 
-  /// The package name of the app. This field will always be present.
+  /// The package name of the app.
+  ///
+  /// This field will always be present.
   core.String packageName;
 
   AppState();
@@ -5657,11 +5727,13 @@ class AppState {
 }
 
 /// An event generated when a new version of an app is uploaded to Google Play.
+///
 /// Notifications are sent for new public versions only: alpha, beta, or canary
 /// versions do not generate this event. To fetch up-to-date version history for
 /// an app, use Products.Get on the EMM API.
 class AppUpdateEvent {
   /// The id of the product (e.g. "app:com.google.android.gm") that was updated.
+  ///
   /// This field will always be present.
   core.String productId;
 
@@ -5695,17 +5767,20 @@ class AppVersion {
   /// - "alpha"
   core.String track;
 
-  /// Track ids that the app version is published in. Replaces the track field
-  /// (deprecated), but doesn't include the production track (see isProduction
-  /// instead).
+  /// Track ids that the app version is published in.
+  ///
+  /// Replaces the track field (deprecated), but doesn't include the production
+  /// track (see isProduction instead).
   core.List<core.String> trackId;
 
   /// Unique increasing identifier for the app version.
   core.int versionCode;
 
   /// The string used in the Play store by the app developer to identify the
-  /// version. The string is not necessarily unique or localized (for example,
-  /// the string could be "1.4").
+  /// version.
+  ///
+  /// The string is not necessarily unique or localized (for example, the string
+  /// could be "1.4").
   core.String versionString;
 
   AppVersion();
@@ -5799,8 +5874,10 @@ class AuthenticationToken {
   }
 }
 
-/// The auto-install constraint. Defines a set of restrictions for installation.
-/// At least one of the fields must be set.
+/// The auto-install constraint.
+///
+/// Defines a set of restrictions for installation. At least one of the fields
+/// must be set.
 class AutoInstallConstraint {
   /// Charging state constraint.
   /// Possible string values are:
@@ -5855,11 +5932,14 @@ class AutoInstallConstraint {
 }
 
 class AutoInstallPolicy {
-  /// The constraints for auto-installing the app. You can specify a maximum of
-  /// one constraint.
+  /// The constraints for auto-installing the app.
+  ///
+  /// You can specify a maximum of one constraint.
   core.List<AutoInstallConstraint> autoInstallConstraint;
 
-  /// The auto-install mode. If unset defaults to "doNotAutoInstall".
+  /// The auto-install mode.
+  ///
+  /// If unset defaults to "doNotAutoInstall".
   /// Possible string values are:
   /// - "autoInstallModeUnspecified"
   /// - "doNotAutoInstall" : The product is not installed automatically, the
@@ -5871,14 +5951,17 @@ class AutoInstallPolicy {
   /// DPC should block uninstall.
   core.String autoInstallMode;
 
-  /// The priority of the install, as an unsigned integer. A lower number means
-  /// higher priority.
+  /// The priority of the install, as an unsigned integer.
+  ///
+  /// A lower number means higher priority.
   core.int autoInstallPriority;
 
-  /// The minimum version of the app. If a lower version of the app is
-  /// installed, then the app will be auto-updated according to the auto-install
-  /// constraints, instead of waiting for the regular auto-update. You can set a
-  /// minimum version code for at most 20 apps per device.
+  /// The minimum version of the app.
+  ///
+  /// If a lower version of the app is installed, then the app will be
+  /// auto-updated according to the auto-install constraints, instead of waiting
+  /// for the regular auto-update. You can set a minimum version code for at
+  /// most 20 apps per device.
   core.int minimumVersionCode;
 
   AutoInstallPolicy();
@@ -5922,8 +6005,10 @@ class AutoInstallPolicy {
 
 /// A configuration variables resource contains the managed configuration
 /// settings ID to be applied to a single user, as well as the variable set that
-/// is attributed to the user. The variable set will be used to replace
-/// placeholders in the managed configuration settings.
+/// is attributed to the user.
+///
+/// The variable set will be used to replace placeholders in the managed
+/// configuration settings.
 class ConfigurationVariables {
   /// The ID of the managed configurations settings.
   core.String mcmId;
@@ -5962,15 +6047,18 @@ class ConfigurationVariables {
 /// belonging to a specific enterprise user.
 class Device {
   /// The Google Play Services Android ID for the device encoded as a lowercase
-  /// hex string. For example, "123456789abcdef0".
+  /// hex string.
+  ///
+  /// For example, "123456789abcdef0".
   core.String androidId;
 
   /// Identifies the extent to which the device is controlled by a managed
-  /// Google Play EMM in various deployment configurations. Possible values
-  /// include: - "managedDevice", a device that has the EMM's device policy
-  /// controller (DPC) as the device owner. - "managedProfile", a device that
-  /// has a profile managed by the DPC (DPC is profile owner) in addition to a
-  /// separate, personal profile that is unavailable to the DPC. -
+  /// Google Play EMM in various deployment configurations.
+  ///
+  /// Possible values include: - "managedDevice", a device that has the EMM's
+  /// device policy controller (DPC) as the device owner. - "managedProfile", a
+  /// device that has a profile managed by the DPC (DPC is profile owner) in
+  /// addition to a separate, personal profile that is unavailable to the DPC. -
   /// "containerApp", no longer used (deprecated). - "unmanagedProfile", a
   /// device that has been allowed (by the domain's admin, using the Admin
   /// Console to enable the privilege) to use managed Google Play, but the
@@ -6028,12 +6116,15 @@ class Device {
 /// Device report updated with the latest app states for managed apps on the
 /// device.
 class DeviceReport {
-  /// List of app states set by managed apps on the device. App states are
-  /// defined by the app's developers. This field will always be present.
+  /// List of app states set by managed apps on the device.
+  ///
+  /// App states are defined by the app's developers. This field will always be
+  /// present.
   core.List<AppState> appState;
 
-  /// The timestamp of the last report update in milliseconds since epoch. This
-  /// field will always be present.
+  /// The timestamp of the last report update in milliseconds since epoch.
+  ///
+  /// This field will always be present.
   core.String lastUpdatedTimestampMillis;
 
   DeviceReport();
@@ -6065,14 +6156,19 @@ class DeviceReport {
 
 /// An event generated when an updated device report is available.
 class DeviceReportUpdateEvent {
-  /// The Android ID of the device. This field will always be present.
+  /// The Android ID of the device.
+  ///
+  /// This field will always be present.
   core.String deviceId;
 
-  /// The device report updated with the latest app states. This field will
-  /// always be present.
+  /// The device report updated with the latest app states.
+  ///
+  /// This field will always be present.
   DeviceReport report;
 
-  /// The ID of the user. This field will always be present.
+  /// The ID of the user.
+  ///
+  /// This field will always be present.
   core.String userId;
 
   DeviceReportUpdateEvent();
@@ -6108,10 +6204,11 @@ class DeviceReportUpdateEvent {
 /// The state of a user's device, as accessed by the getState and setState
 /// methods on device resources.
 class DeviceState {
-  /// The state of the Google account on the device. "enabled" indicates that
-  /// the Google account on the device can be used to access Google services
-  /// (including Google Play), while "disabled" means that it cannot. A new
-  /// device is initially in the "disabled" state.
+  /// The state of the Google account on the device.
+  ///
+  /// "enabled" indicates that the Google account on the device can be used to
+  /// access Google services (including Google Play), while "disabled" means
+  /// that it cannot. A new device is initially in the "disabled" state.
   /// Possible string values are:
   /// - "enabled"
   /// - "disabled"
@@ -6159,20 +6256,23 @@ class DevicesListResponse {
 }
 
 /// An Enterprises resource represents the binding between an EMM and a specific
-/// organization. That binding can be instantiated in one of two different ways
-/// using this API as follows: - For Google managed domain customers, the
-/// process involves using Enterprises.enroll and Enterprises.setAccount (in
-/// conjunction with artifacts obtained from the Admin console and the Google
-/// API Console) and submitted to the EMM through a more-or-less manual process.
-/// - For managed Google Play Accounts customers, the process involves using
+/// organization.
+///
+/// That binding can be instantiated in one of two different ways using this API
+/// as follows: - For Google managed domain customers, the process involves
+/// using Enterprises.enroll and Enterprises.setAccount (in conjunction with
+/// artifacts obtained from the Admin console and the Google API Console) and
+/// submitted to the EMM through a more-or-less manual process. - For managed
+/// Google Play Accounts customers, the process involves using
 /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction
 /// with the managed Google Play sign-up UI (Google-provided mechanism) to
 /// create the binding without manual steps. As an EMM, you can support either
 /// or both approaches in your EMM console. See Create an Enterprise for
 /// details.
 class Enterprise {
-  /// Admins of the enterprise. This is only supported for enterprises created
-  /// via the EMM-initiated flow.
+  /// Admins of the enterprise.
+  ///
+  /// This is only supported for enterprises created via the EMM-initiated flow.
   core.List<Administrator> administrator;
 
   /// The unique ID for the enterprise.
@@ -6302,32 +6402,35 @@ class EnterprisesSendTestPushNotificationResponse {
 }
 
 /// The presence of an Entitlements resource indicates that a user has the right
-/// to use a particular app. Entitlements are user specific, not device
-/// specific. This allows a user with an entitlement to an app to install the
-/// app on all their devices. It's also possible for a user to hold an
-/// entitlement to an app without installing the app on any device. The API can
-/// be used to create an entitlement. As an option, you can also use the API to
-/// trigger the installation of an app on all a user's managed devices at the
-/// same time the entitlement is created. If the app is free, creating the
-/// entitlement also creates a group license for that app. For paid apps,
-/// creating the entitlement consumes one license, and that license remains
-/// consumed until the entitlement is removed. If the enterprise hasn't
-/// purchased enough licenses, then no entitlement is created and the
-/// installation fails. An entitlement is also not created for an app if the app
-/// requires permissions that the enterprise hasn't accepted. If an entitlement
-/// is deleted, the app may be uninstalled from a user's device. As a best
-/// practice, uninstall the app by calling Installs.delete() before deleting the
-/// entitlement. Entitlements for apps that a user pays for on an unmanaged
-/// profile have "userPurchase" as the entitlement reason. These entitlements
-/// cannot be removed via the API.
+/// to use a particular app.
+///
+/// Entitlements are user specific, not device specific. This allows a user with
+/// an entitlement to an app to install the app on all their devices. It's also
+/// possible for a user to hold an entitlement to an app without installing the
+/// app on any device. The API can be used to create an entitlement. As an
+/// option, you can also use the API to trigger the installation of an app on
+/// all a user's managed devices at the same time the entitlement is created. If
+/// the app is free, creating the entitlement also creates a group license for
+/// that app. For paid apps, creating the entitlement consumes one license, and
+/// that license remains consumed until the entitlement is removed. If the
+/// enterprise hasn't purchased enough licenses, then no entitlement is created
+/// and the installation fails. An entitlement is also not created for an app if
+/// the app requires permissions that the enterprise hasn't accepted. If an
+/// entitlement is deleted, the app may be uninstalled from a user's device. As
+/// a best practice, uninstall the app by calling Installs.delete() before
+/// deleting the entitlement. Entitlements for apps that a user pays for on an
+/// unmanaged profile have "userPurchase" as the entitlement reason. These
+/// entitlements cannot be removed via the API.
 class Entitlement {
-  /// The ID of the product that the entitlement is for. For example,
-  /// "app:com.google.android.gm".
+  /// The ID of the product that the entitlement is for.
+  ///
+  /// For example, "app:com.google.android.gm".
   core.String productId;
 
-  /// The reason for the entitlement. For example, "free" for free apps. This
-  /// property is temporary: it will be replaced by the acquisition kind field
-  /// of group licenses.
+  /// The reason for the entitlement.
+  ///
+  /// For example, "free" for free apps. This property is temporary: it will be
+  /// replaced by the acquisition kind field of group licenses.
   /// Possible string values are:
   /// - "free"
   /// - "groupLicense"
@@ -6358,9 +6461,10 @@ class Entitlement {
 }
 
 class EntitlementsListResponse {
-  /// An entitlement of a user to a product (e.g. an app). For example, a free
-  /// app that they have installed, or a paid app that they have been allocated
-  /// a license to.
+  /// An entitlement of a user to a product (e.g. an app).
+  ///
+  /// For example, a free app that they have installed, or a paid app that they
+  /// have been allocated a license to.
   core.List<Entitlement> entitlement;
 
   EntitlementsListResponse();
@@ -6385,65 +6489,75 @@ class EntitlementsListResponse {
 }
 
 /// Group license objects allow you to keep track of licenses (called
-/// entitlements) for both free and paid apps. For a free app, a group license
-/// is created when an enterprise admin first approves the product in Google
-/// Play or when the first entitlement for the product is created for a user via
-/// the API. For a paid app, a group license object is only created when an
-/// enterprise admin purchases the product in Google Play for the first time.
-/// Use the API to query group licenses. A Grouplicenses resource includes the
-/// total number of licenses purchased (paid apps only) and the total number of
-/// licenses currently in use. In other words, the total number of Entitlements
-/// that exist for the product. Only one group license object is created per
-/// product and group license objects are never deleted. If a product is
-/// unapproved, its group license remains. This allows enterprise admins to keep
-/// track of any remaining entitlements for the product.
+/// entitlements) for both free and paid apps.
+///
+/// For a free app, a group license is created when an enterprise admin first
+/// approves the product in Google Play or when the first entitlement for the
+/// product is created for a user via the API. For a paid app, a group license
+/// object is only created when an enterprise admin purchases the product in
+/// Google Play for the first time. Use the API to query group licenses. A
+/// Grouplicenses resource includes the total number of licenses purchased (paid
+/// apps only) and the total number of licenses currently in use. In other
+/// words, the total number of Entitlements that exist for the product. Only one
+/// group license object is created per product and group license objects are
+/// never deleted. If a product is unapproved, its group license remains. This
+/// allows enterprise admins to keep track of any remaining entitlements for the
+/// product.
 class GroupLicense {
-  /// How this group license was acquired. "bulkPurchase" means that this
-  /// Grouplicenses resource was created because the enterprise purchased
-  /// licenses for this product; otherwise, the value is "free" (for free
-  /// products).
+  /// How this group license was acquired.
+  ///
+  /// "bulkPurchase" means that this Grouplicenses resource was created because
+  /// the enterprise purchased licenses for this product; otherwise, the value
+  /// is "free" (for free products).
   /// Possible string values are:
   /// - "free"
   /// - "bulkPurchase"
   core.String acquisitionKind;
 
   /// Whether the product to which this group license relates is currently
-  /// approved by the enterprise. Products are approved when a group license is
-  /// first created, but this approval may be revoked by an enterprise admin via
-  /// Google Play. Unapproved products will not be visible to end users in
-  /// collections, and new entitlements to them should not normally be created.
+  /// approved by the enterprise.
+  ///
+  /// Products are approved when a group license is first created, but this
+  /// approval may be revoked by an enterprise admin via Google Play. Unapproved
+  /// products will not be visible to end users in collections, and new
+  /// entitlements to them should not normally be created.
   /// Possible string values are:
   /// - "approved"
   /// - "unapproved"
   core.String approval;
 
-  /// The total number of provisioned licenses for this product. Returned by
-  /// read operations, but ignored in write operations.
+  /// The total number of provisioned licenses for this product.
+  ///
+  /// Returned by read operations, but ignored in write operations.
   core.int numProvisioned;
 
-  /// The number of purchased licenses (possibly in multiple purchases). If this
-  /// field is omitted, then there is no limit on the number of licenses that
-  /// can be provisioned (for example, if the acquisition kind is "free").
+  /// The number of purchased licenses (possibly in multiple purchases).
+  ///
+  /// If this field is omitted, then there is no limit on the number of licenses
+  /// that can be provisioned (for example, if the acquisition kind is "free").
   core.int numPurchased;
 
-  /// The permission approval status of the product. This field is only set if
-  /// the product is approved. Possible states are: - "currentApproved", the
-  /// current set of permissions is approved, but additional permissions will
-  /// require the administrator to reapprove the product (If the product was
-  /// approved without specifying the approved permissions setting, then this is
-  /// the default behavior.), - "needsReapproval", the product has unapproved
-  /// permissions. No additional product licenses can be assigned until the
-  /// product is reapproved, - "allCurrentAndFutureApproved", the current
-  /// permissions are approved and any future permission updates will be
-  /// automatically approved without administrator review.
+  /// The permission approval status of the product.
+  ///
+  /// This field is only set if the product is approved. Possible states are: -
+  /// "currentApproved", the current set of permissions is approved, but
+  /// additional permissions will require the administrator to reapprove the
+  /// product (If the product was approved without specifying the approved
+  /// permissions setting, then this is the default behavior.), -
+  /// "needsReapproval", the product has unapproved permissions. No additional
+  /// product licenses can be assigned until the product is reapproved, -
+  /// "allCurrentAndFutureApproved", the current permissions are approved and
+  /// any future permission updates will be automatically approved without
+  /// administrator review.
   /// Possible string values are:
   /// - "currentApproved"
   /// - "needsReapproval"
   /// - "allCurrentAndFutureApproved"
   core.String permissions;
 
-  /// The ID of the product that the license is for. For example,
-  /// "app:com.google.android.gm".
+  /// The ID of the product that the license is for.
+  ///
+  /// For example, "app:com.google.android.gm".
   core.String productId;
 
   GroupLicense();
@@ -6543,39 +6657,43 @@ class GroupLicensesListResponse {
 }
 
 /// The existence of an Installs resource indicates that an app is installed on
-/// a particular device (or that an install is pending). The API can be used to
-/// create an install resource using the update method. This triggers the actual
-/// install of the app on the device. If the user does not already have an
-/// entitlement for the app, then an attempt is made to create one. If this
-/// fails (for example, because the app is not free and there is no available
-/// license), then the creation of the install fails. The API can also be used
-/// to update an installed app. If the update method is used on an existing
-/// install, then the app will be updated to the latest available version. Note
-/// that it is not possible to force the installation of a specific version of
-/// an app: the version code is read-only. If a user installs an app themselves
-/// (as permitted by the enterprise), then again an install resource and
-/// possibly an entitlement resource are automatically created. The API can also
-/// be used to delete an install resource, which triggers the removal of the app
-/// from the device. Note that deleting an install does not automatically remove
-/// the corresponding entitlement, even if there are no remaining installs. The
-/// install resource will also be deleted if the user uninstalls the app
-/// themselves.
+/// a particular device (or that an install is pending).
+///
+/// The API can be used to create an install resource using the update method.
+/// This triggers the actual install of the app on the device. If the user does
+/// not already have an entitlement for the app, then an attempt is made to
+/// create one. If this fails (for example, because the app is not free and
+/// there is no available license), then the creation of the install fails. The
+/// API can also be used to update an installed app. If the update method is
+/// used on an existing install, then the app will be updated to the latest
+/// available version. Note that it is not possible to force the installation of
+/// a specific version of an app: the version code is read-only. If a user
+/// installs an app themselves (as permitted by the enterprise), then again an
+/// install resource and possibly an entitlement resource are automatically
+/// created. The API can also be used to delete an install resource, which
+/// triggers the removal of the app from the device. Note that deleting an
+/// install does not automatically remove the corresponding entitlement, even if
+/// there are no remaining installs. The install resource will also be deleted
+/// if the user uninstalls the app themselves.
 class Install {
-  /// Install state. The state "installPending" means that an install request
-  /// has recently been made and download to the device is in progress. The
-  /// state "installed" means that the app has been installed. This field is
-  /// read-only.
+  /// Install state.
+  ///
+  /// The state "installPending" means that an install request has recently been
+  /// made and download to the device is in progress. The state "installed"
+  /// means that the app has been installed. This field is read-only.
   /// Possible string values are:
   /// - "installed"
   /// - "installPending"
   core.String installState;
 
-  /// The ID of the product that the install is for. For example,
-  /// "app:com.google.android.gm".
+  /// The ID of the product that the install is for.
+  ///
+  /// For example, "app:com.google.android.gm".
   core.String productId;
 
-  /// The version of the installed product. Guaranteed to be set only if the
-  /// install state is "installed".
+  /// The version of the installed product.
+  ///
+  /// Guaranteed to be set only if the install state is "installed".
   core.int versionCode;
 
   Install();
@@ -6609,14 +6727,17 @@ class Install {
 
 /// An event generated when an app installation failed on a device
 class InstallFailureEvent {
-  /// The Android ID of the device. This field will always be present.
+  /// The Android ID of the device.
+  ///
+  /// This field will always be present.
   core.String deviceId;
 
   /// Additional details on the failure if applicable.
   core.String failureDetails;
 
-  /// The reason for the installation failure. This field will always be
-  /// present.
+  /// The reason for the installation failure.
+  ///
+  /// This field will always be present.
   /// Possible string values are:
   /// - "unknown" : Used whenever no better reason for failure can be provided.
   /// - "timeout" : Used when the installation timed out. This can cover a
@@ -6626,10 +6747,14 @@ class InstallFailureEvent {
   core.String failureReason;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
-  /// install failure event occured. This field will always be present.
+  /// install failure event occured.
+  ///
+  /// This field will always be present.
   core.String productId;
 
-  /// The ID of the user. This field will always be present.
+  /// The ID of the user.
+  ///
+  /// This field will always be present.
   core.String userId;
 
   InstallFailureEvent();
@@ -6674,8 +6799,10 @@ class InstallFailureEvent {
 }
 
 class InstallsListResponse {
-  /// An installation of an app for a user on a specific device. The existence
-  /// of an install implies that the user must have an entitlement to the app.
+  /// An installation of an app for a user on a specific device.
+  ///
+  /// The existence of an install implies that the user must have an entitlement
+  /// to the app.
   core.List<Install> install;
 
   InstallsListResponse();
@@ -6701,31 +6828,37 @@ class InstallsListResponse {
 /// Represents a keyed app state containing a key, timestamp, severity level,
 /// optional description, and optional data.
 class KeyedAppState {
-  /// Additional field intended for machine-readable data. For example, a number
-  /// or JSON object. To prevent XSS, we recommend removing any HTML from the
-  /// data before displaying it.
+  /// Additional field intended for machine-readable data.
+  ///
+  /// For example, a number or JSON object. To prevent XSS, we recommend
+  /// removing any HTML from the data before displaying it.
   core.String data;
 
-  /// Key indicating what the app is providing a state for. The content of the
-  /// key is set by the app's developer. To prevent XSS, we recommend removing
-  /// any HTML from the key before displaying it. This field will always be
-  /// present.
+  /// Key indicating what the app is providing a state for.
+  ///
+  /// The content of the key is set by the app's developer. To prevent XSS, we
+  /// recommend removing any HTML from the key before displaying it. This field
+  /// will always be present.
   core.String key;
 
-  /// Free-form, human-readable message describing the app state. For example,
-  /// an error message. To prevent XSS, we recommend removing any HTML from the
-  /// message before displaying it.
+  /// Free-form, human-readable message describing the app state.
+  ///
+  /// For example, an error message. To prevent XSS, we recommend removing any
+  /// HTML from the message before displaying it.
   core.String message;
 
-  /// Severity of the app state. This field will always be present.
+  /// Severity of the app state.
+  ///
+  /// This field will always be present.
   /// Possible string values are:
   /// - "severityUnknown"
   /// - "severityInfo"
   /// - "severityError"
   core.String severity;
 
-  /// Timestamp of when the app set the state in milliseconds since epoch. This
-  /// field will always be present.
+  /// Timestamp of when the app set the state in milliseconds since epoch.
+  ///
+  /// This field will always be present.
   core.String stateTimestampMillis;
 
   KeyedAppState();
@@ -6771,7 +6904,9 @@ class KeyedAppState {
 
 /// A localized string with its locale.
 class LocalizedText {
-  /// The BCP47 tag for a locale. (e.g. "en-US", "de").
+  /// The BCP47 tag for a locale.
+  ///
+  /// (e.g. "en-US", "de").
   core.String locale;
 
   /// The text localized in the associated locale.
@@ -6800,15 +6935,20 @@ class LocalizedText {
   }
 }
 
-/// Maintenance window for managed Google Play Accounts. This allows Play store
-/// to update the apps on the foreground in the designated window.
+/// Maintenance window for managed Google Play Accounts.
+///
+/// This allows Play store to update the apps on the foreground in the
+/// designated window.
 class MaintenanceWindow {
-  /// Duration of the maintenance window, in milliseconds. The duration must be
-  /// between 30 minutes and 24 hours (inclusive).
+  /// Duration of the maintenance window, in milliseconds.
+  ///
+  /// The duration must be between 30 minutes and 24 hours (inclusive).
   core.String durationMs;
 
   /// Start time of the maintenance window, in milliseconds after midnight on
-  /// the device. Windows can span midnight.
+  /// the device.
+  ///
+  /// Windows can span midnight.
   core.String startTimeAfterMidnightMs;
 
   MaintenanceWindow();
@@ -6948,8 +7088,10 @@ class ManagedConfigurationsForUserListResponse {
 
 /// A managed configurations settings resource contains the set of managed
 /// properties that have been configured for an Android app to be applied to a
-/// set of users. The app's developer would have defined configurable properties
-/// in the managed configurations schema.
+/// set of users.
+///
+/// The app's developer would have defined configurable properties in the
+/// managed configurations schema.
 class ManagedConfigurationsSettings {
   /// The last updated time of the managed configuration settings in
   /// milliseconds since 1970-01-01T00:00:00Z.
@@ -7019,10 +7161,11 @@ class ManagedConfigurationsSettingsListResponse {
   }
 }
 
-/// A managed property of a managed configuration. The property must match one
-/// of the properties in the app restrictions schema of the product. Exactly one
-/// of the value fields must be populated, and it must match the property's type
-/// in the app restrictions schema.
+/// A managed property of a managed configuration.
+///
+/// The property must match one of the properties in the app restrictions schema
+/// of the product. Exactly one of the value fields must be populated, and it
+/// must match the property's type in the app restrictions schema.
 class ManagedProperty {
   /// The unique key that identifies the property.
   core.String key;
@@ -7139,22 +7282,28 @@ class ManagedPropertyBundle {
 
 /// An event generated when a new device is ready to be managed.
 class NewDeviceEvent {
-  /// The Android ID of the device. This field will always be present.
+  /// The Android ID of the device.
+  ///
+  /// This field will always be present.
   core.String deviceId;
 
   /// Policy app on the device.
   core.String dpcPackageName;
 
   /// Identifies the extent to which the device is controlled by an Android EMM
-  /// in various deployment configurations. Possible values include: -
-  /// "managedDevice", a device where the DPC is set as device owner, -
-  /// "managedProfile", a device where the DPC is set as profile owner.
+  /// in various deployment configurations.
+  ///
+  /// Possible values include: - "managedDevice", a device where the DPC is set
+  /// as device owner, - "managedProfile", a device where the DPC is set as
+  /// profile owner.
   /// Possible string values are:
   /// - "managedDevice"
   /// - "managedProfile"
   core.String managementType;
 
-  /// The ID of the user. This field will always be present.
+  /// The ID of the user.
+  ///
+  /// This field will always be present.
   core.String userId;
 
   NewDeviceEvent();
@@ -7195,16 +7344,21 @@ class NewDeviceEvent {
 /// An event generated when new permissions are added to an app.
 class NewPermissionsEvent {
   /// The set of permissions that the enterprise admin has already approved for
-  /// this application. Use Permissions.Get on the EMM API to retrieve details
-  /// about these permissions.
+  /// this application.
+  ///
+  /// Use Permissions.Get on the EMM API to retrieve details about these
+  /// permissions.
   core.List<core.String> approvedPermissions;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which new
-  /// permissions were added. This field will always be present.
+  /// permissions were added.
+  ///
+  /// This field will always be present.
   core.String productId;
 
-  /// The set of permissions that the app is currently requesting. Use
-  /// Permissions.Get on the EMM API to retrieve details about these
+  /// The set of permissions that the app is currently requesting.
+  ///
+  /// Use Permissions.Get on the EMM API to retrieve details about these
   /// permissions.
   core.List<core.String> requestedPermissions;
 
@@ -7252,8 +7406,9 @@ class Notification {
   /// Notifications about device report updates.
   DeviceReportUpdateEvent deviceReportUpdateEvent;
 
-  /// The ID of the enterprise for which the notification is sent. This will
-  /// always be present.
+  /// The ID of the enterprise for which the notification is sent.
+  ///
+  /// This will always be present.
   core.String enterpriseId;
 
   /// Notifications about an app installation failure.
@@ -7289,7 +7444,9 @@ class Notification {
   ProductAvailabilityChangeEvent productAvailabilityChangeEvent;
 
   /// The time when the notification was published in milliseconds since
-  /// 1970-01-01T00:00:00Z. This will always be present.
+  /// 1970-01-01T00:00:00Z.
+  ///
+  /// This will always be present.
   core.String timestampMillis;
 
   Notification();
@@ -7391,8 +7548,9 @@ class NotificationSet {
   core.List<Notification> notification;
 
   /// The notification set ID, required to mark the notification as received
-  /// with the Enterprises.AcknowledgeNotification API. This will be omitted if
-  /// no notifications are present.
+  /// with the Enterprises.AcknowledgeNotification API.
+  ///
+  /// This will be omitted if no notifications are present.
   core.String notificationSetId;
 
   NotificationSet();
@@ -7422,12 +7580,14 @@ class NotificationSet {
   }
 }
 
-/// Information about the current page. List operations that supports paging
-/// return only one "page" of results. This protocol buffer message describes
-/// the page that has been returned.
+/// Information about the current page.
+///
+/// List operations that supports paging return only one "page" of results. This
+/// protocol buffer message describes the page that has been returned.
 class PageInfo {
-  /// Maximum number of results returned in one page. ! The number of results
-  /// included in the API response.
+  /// Maximum number of results returned in one page.
+  ///
+  /// ! The number of results included in the API response.
   core.int resultPerPage;
 
   /// Index of the first result returned in the current page.
@@ -7467,12 +7627,13 @@ class PageInfo {
 }
 
 /// A Permissions resource represents some extra capability, to be granted to an
-/// Android app, which requires explicit consent. An enterprise admin must
-/// consent to these permissions on behalf of their users before an entitlement
-/// for the app can be created. The permissions collection is read-only. The
-/// information provided for each permission (localized name and description) is
-/// intended to be used in the MDM user interface when obtaining consent from
-/// the enterprise.
+/// Android app, which requires explicit consent.
+///
+/// An enterprise admin must consent to these permissions on behalf of their
+/// users before an entitlement for the app can be created. The permissions
+/// collection is read-only. The information provided for each permission
+/// (localized name and description) is intended to be used in the MDM user
+/// interface when obtaining consent from the enterprise.
 class Permission {
   /// A longer description of the Permissions resource, giving more details of
   /// what it affects.
@@ -7515,10 +7676,11 @@ class Permission {
 
 /// The device policy for a given managed device.
 class Policy {
-  /// The auto-update policy for apps installed on the device. "choiceToTheUser"
-  /// allows the device's user to configure the app update policy. "always"
-  /// enables auto updates. "never" disables auto updates. "wifiOnly" enables
-  /// auto updates only when the device is connected to wifi.
+  /// The auto-update policy for apps installed on the device.
+  ///
+  /// "choiceToTheUser" allows the device's user to configure the app update
+  /// policy. "always" enables auto updates. "never" disables auto updates.
+  /// "wifiOnly" enables auto updates only when the device is connected to wifi.
   /// Possible string values are:
   /// - "autoUpdatePolicyUnspecified" : The auto update policy is not set.
   /// - "choiceToTheUser" : The user can control auto-updates.
@@ -7527,8 +7689,9 @@ class Policy {
   /// - "always" : Apps are auto-updated at any time. Data charges may apply.
   core.String autoUpdatePolicy;
 
-  /// Whether the device reports app states to the EMM. The default value is
-  /// "deviceReportDisabled".
+  /// Whether the device reports app states to the EMM.
+  ///
+  /// The default value is "deviceReportDisabled".
   /// Possible string values are:
   /// - "deviceReportPolicyUnspecified" : The device report policy is not set.
   /// - "deviceReportDisabled" : Device reports are disabled.
@@ -7539,10 +7702,11 @@ class Policy {
   /// be updated.
   MaintenanceWindow maintenanceWindow;
 
-  /// The availability granted to the device for the specified products. "all"
-  /// gives the device access to all products, regardless of approval status.
-  /// "all" does not enable automatic visibility of "alpha" or "beta" tracks.
-  /// "whitelist" grants the device access the products specified in
+  /// The availability granted to the device for the specified products.
+  ///
+  /// "all" gives the device access to all products, regardless of approval
+  /// status. "all" does not enable automatic visibility of "alpha" or "beta"
+  /// tracks. "whitelist" grants the device access the products specified in
   /// productPolicy[]. Only products that are approved or products that were
   /// previously approved (products with revoked approval) by the enterprise can
   /// be whitelisted. If no value is provided, the availability set at the user
@@ -7556,8 +7720,10 @@ class Policy {
   /// unavailable in the product availability policy.
   core.String productAvailabilityPolicy;
 
-  /// The list of product policies. The productAvailabilityPolicy needs to be
-  /// set to WHITELIST or ALL for the product policies to be applied.
+  /// The list of product policies.
+  ///
+  /// The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the
+  /// product policies to be applied.
   core.List<ProductPolicy> productPolicy;
 
   Policy();
@@ -7608,12 +7774,13 @@ class Policy {
 }
 
 /// A Products resource represents an app in the Google Play store that is
-/// available to at least some users in the enterprise. (Some apps are
-/// restricted to a single enterprise, and no information about them is made
-/// available outside that enterprise.) The information provided for each
-/// product (localized name, icon, link to the full Google Play details page) is
-/// intended to allow a basic representation of the product within an EMM user
-/// interface.
+/// available to at least some users in the enterprise.
+///
+/// (Some apps are restricted to a single enterprise, and no information about
+/// them is made available outside that enterprise.) The information provided
+/// for each product (localized name, icon, link to the full Google Play details
+/// page) is intended to allow a basic representation of the product within an
+/// EMM user interface.
 class Product {
   /// The tracks visible to the enterprise.
   core.List<TrackInfo> appTracks;
@@ -7648,9 +7815,10 @@ class Product {
   /// A link to the (consumer) Google Play details page for the product.
   core.String detailsUrl;
 
-  /// How and to whom the package is made available. The value
-  /// publicGoogleHosted means that the package is available through the Play
-  /// store and not restricted to a specific enterprise. The value
+  /// How and to whom the package is made available.
+  ///
+  /// The value publicGoogleHosted means that the package is available through
+  /// the Play store and not restricted to a specific enterprise. The value
   /// privateGoogleHosted means that the package is a private app (restricted to
   /// an enterprise) but hosted by Google. The value privateSelfHosted means
   /// that the package is a private app (restricted to an enterprise) and is
@@ -7664,8 +7832,9 @@ class Product {
   /// Noteworthy features (if any) of this product.
   core.List<core.String> features;
 
-  /// A link to an image that can be used as an icon for the product. This image
-  /// is suitable for use at up to 512px x 512px.
+  /// A link to an image that can be used as an icon for the product.
+  ///
+  /// This image is suitable for use at up to 512px x 512px.
   core.String iconUrl;
 
   /// The approximate time (within 7 days) the app was last published, expressed
@@ -7678,13 +7847,16 @@ class Product {
   /// A list of permissions required by the app.
   core.List<ProductPermission> permissions;
 
-  /// A string of the form *app:<package name>*. For example,
-  /// app:com.google.android.gm represents the Gmail app.
+  /// A string of the form *app:<package name>*.
+  ///
+  /// For example, app:com.google.android.gm represents the Gmail app.
   core.String productId;
 
-  /// Whether this product is free, free with in-app purchases, or paid. If the
-  /// pricing is unknown, this means the product is not generally available
-  /// anymore (even though it might still be available to people who own it).
+  /// Whether this product is free, free with in-app purchases, or paid.
+  ///
+  /// If the pricing is unknown, this means the product is not generally
+  /// available anymore (even though it might still be available to people who
+  /// own it).
   /// Possible string values are:
   /// - "unknown" : Unknown pricing, used to denote an approved product that is
   /// not generally available.
@@ -7707,6 +7879,7 @@ class Product {
   ProductSigningCertificate signingCertificate;
 
   /// A link to a smaller image that can be used as an icon for the product.
+  ///
   /// This image is suitable for use at up to 128px x 128px.
   core.String smallIconUrl;
 
@@ -7894,8 +8067,9 @@ class Product {
 
 /// An event generated when a product's approval status is changed.
 class ProductApprovalEvent {
-  /// Whether the product was approved or unapproved. This field will always be
-  /// present.
+  /// Whether the product was approved or unapproved.
+  ///
+  /// This field will always be present.
   /// Possible string values are:
   /// - "unknown" : Conveys no information.
   /// - "approved" : The product was approved.
@@ -7903,7 +8077,9 @@ class ProductApprovalEvent {
   core.String approved;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
-  /// approval status has changed. This field will always be present.
+  /// approval status has changed.
+  ///
+  /// This field will always be present.
   core.String productId;
 
   ProductApprovalEvent();
@@ -7931,7 +8107,9 @@ class ProductApprovalEvent {
 
 /// An event generated whenever a product's availability changes.
 class ProductAvailabilityChangeEvent {
-  /// The new state of the product. This field will always be present.
+  /// The new state of the product.
+  ///
+  /// This field will always be present.
   /// Possible string values are:
   /// - "unknown" : Conveys no information.
   /// - "available" : The previously unavailable product is again available on
@@ -7941,7 +8119,9 @@ class ProductAvailabilityChangeEvent {
   core.String availabilityStatus;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
-  /// product availability changed. This field will always be present.
+  /// product availability changed.
+  ///
+  /// This field will always be present.
   core.String productId;
 
   ProductAvailabilityChangeEvent();
@@ -7969,8 +8149,10 @@ class ProductAvailabilityChangeEvent {
 
 /// A product permissions resource represents the set of permissions required by
 /// a specific app and whether or not they have been accepted by an enterprise
-/// admin. The API can be used to read the set of permissions, and also to
-/// update the set to indicate that permissions have been accepted.
+/// admin.
+///
+/// The API can be used to read the set of permissions, and also to update the
+/// set to indicate that permissions have been accepted.
 class ProductPermission {
   /// An opaque string uniquely identifying the permission.
   core.String permissionId;
@@ -8049,15 +8231,21 @@ class ProductPolicy {
   /// The managed configuration for the product.
   ManagedConfiguration managedConfiguration;
 
-  /// The ID of the product. For example, "app:com.google.android.gm".
+  /// The ID of the product.
+  ///
+  /// For example, "app:com.google.android.gm".
   core.String productId;
 
   /// Grants the device visibility to the specified product release track(s),
-  /// identified by trackIds. The list of release tracks of a product can be
-  /// obtained by calling Products.Get.
+  /// identified by trackIds.
+  ///
+  /// The list of release tracks of a product can be obtained by calling
+  /// Products.Get.
   core.List<core.String> trackIds;
 
-  /// Deprecated. Use trackIds instead.
+  /// Use trackIds instead.
+  ///
+  /// Deprecated.
   core.List<core.String> tracks;
 
   ProductPolicy();
@@ -8112,18 +8300,19 @@ class ProductSet {
   /// The list of product IDs making up the set of products.
   core.List<core.String> productId;
 
-  /// The interpretation of this product set. "unknown" should never be sent and
-  /// is ignored if received. "whitelist" means that the user is entitled to
-  /// access the product set. "includeAll" means that all products are
-  /// accessible, including products that are approved, products with revoked
-  /// approval, and products that have never been approved. "allApproved" means
-  /// that the user is entitled to access all products that are approved for the
-  /// enterprise. If the value is "allApproved" or "includeAll", the productId
-  /// field is ignored. If no value is provided, it is interpreted as
-  /// "whitelist" for backwards compatibility. Further "allApproved" or
-  /// "includeAll" does not enable automatic visibility of "alpha" or "beta"
-  /// tracks for Android app. Use ProductVisibility to enable "alpha" or "beta"
-  /// tracks per user.
+  /// The interpretation of this product set.
+  ///
+  /// "unknown" should never be sent and is ignored if received. "whitelist"
+  /// means that the user is entitled to access the product set. "includeAll"
+  /// means that all products are accessible, including products that are
+  /// approved, products with revoked approval, and products that have never
+  /// been approved. "allApproved" means that the user is entitled to access all
+  /// products that are approved for the enterprise. If the value is
+  /// "allApproved" or "includeAll", the productId field is ignored. If no value
+  /// is provided, it is interpreted as "whitelist" for backwards compatibility.
+  /// Further "allApproved" or "includeAll" does not enable automatic visibility
+  /// of "alpha" or "beta" tracks for Android app. Use ProductVisibility to
+  /// enable "alpha" or "beta" tracks per user.
   /// Possible string values are:
   /// - "unknown" : This value should never be sent and ignored if received.
   /// - "whitelist" : This product set constitutes a whitelist.
@@ -8135,9 +8324,10 @@ class ProductSet {
   /// product_id field is therefore ignored).
   core.String productSetBehavior;
 
-  /// Additional list of product IDs making up the product set. Unlike the
-  /// productID array, in this list It's possible to specify which tracks
-  /// (alpha, beta, production) of a product are visible to the user. See
+  /// Additional list of product IDs making up the product set.
+  ///
+  /// Unlike the productID array, in this list It's possible to specify which
+  /// tracks (alpha, beta, production) of a product are visible to the user. See
   /// ProductVisibility and its fields for more information. Specifying the same
   /// product ID both here and in the productId array is not allowed and it will
   /// result in an error.
@@ -8179,9 +8369,10 @@ class ProductSet {
 }
 
 class ProductSigningCertificate {
-  /// The base64 urlsafe encoded SHA1 hash of the certificate. (This field is
-  /// deprecated in favor of SHA2-256. It should not be used and may be removed
-  /// at any time.)
+  /// The base64 urlsafe encoded SHA1 hash of the certificate.
+  ///
+  /// (This field is deprecated in favor of SHA2-256. It should not be used and
+  /// may be removed at any time.)
   core.String certificateHashSha1;
 
   /// The base64 urlsafe encoded SHA2-256 hash of the certificate.
@@ -8212,15 +8403,18 @@ class ProductSigningCertificate {
 
 /// A product to be made visible to a user.
 class ProductVisibility {
-  /// The product ID to make visible to the user. Required for each item in the
-  /// productVisibility list.
+  /// The product ID to make visible to the user.
+  ///
+  /// Required for each item in the productVisibility list.
   core.String productId;
 
   /// Grants the user visibility to the specified product track(s), identified
   /// by trackIds.
   core.List<core.String> trackIds;
 
-  /// Deprecated. Use trackIds instead.
+  /// Use trackIds instead.
+  ///
+  /// Deprecated.
   core.List<core.String> tracks;
 
   ProductVisibility();
@@ -8257,14 +8451,17 @@ class ProductVisibility {
 }
 
 class ProductsApproveRequest {
-  /// The approval URL that was shown to the user. Only the permissions shown to
-  /// the user with that URL will be accepted, which may not be the product's
-  /// entire set of permissions. For example, the URL may only display new
-  /// permissions from an update after the product was approved, or not include
-  /// new permissions if the product was updated since the URL was generated.
+  /// The approval URL that was shown to the user.
+  ///
+  /// Only the permissions shown to the user with that URL will be accepted,
+  /// which may not be the product's entire set of permissions. For example, the
+  /// URL may only display new permissions from an update after the product was
+  /// approved, or not include new permissions if the product was updated since
+  /// the URL was generated.
   ApprovalUrlInfo approvalUrlInfo;
 
   /// Sets how new permission requests for the product are handled.
+  ///
   /// "allPermissions" automatically approves all current and future permissions
   /// for the product. "currentPermissionsOnly" approves the current set of
   /// permissions for the product, but any future permissions added through
@@ -8305,13 +8502,15 @@ class ProductsApproveRequest {
 
 class ProductsGenerateApprovalUrlResponse {
   /// A URL that can be rendered in an iframe to display the permissions (if
-  /// any) of a product. This URL can be used to approve the product only once
-  /// and only within 24 hours of being generated, using the Products.approve
-  /// call. If the product is currently unapproved and has no permissions, this
-  /// URL will point to an empty page. If the product is currently approved, a
-  /// URL will only be generated if that product has added permissions since it
-  /// was last approved, and the URL will only display those new permissions
-  /// that have not yet been accepted.
+  /// any) of a product.
+  ///
+  /// This URL can be used to approve the product only once and only within 24
+  /// hours of being generated, using the Products.approve call. If the product
+  /// is currently unapproved and has no permissions, this URL will point to an
+  /// empty page. If the product is currently approved, a URL will only be
+  /// generated if that product has added permissions since it was last
+  /// approved, and the URL will only display those new permissions that have
+  /// not yet been accepted.
   core.String url;
 
   ProductsGenerateApprovalUrlResponse();
@@ -8383,6 +8582,7 @@ class ServiceAccount {
   ServiceAccountKey key;
 
   /// The account name of the service account, in the form of an email address.
+  ///
   /// Assigned by the server.
   core.String name;
 
@@ -8412,19 +8612,22 @@ class ServiceAccount {
 
 /// Credentials that can be used to authenticate as a service account.
 class ServiceAccountKey {
-  /// The body of the private key credentials file, in string format. This is
-  /// only populated when the ServiceAccountKey is created, and is not stored by
-  /// Google.
+  /// The body of the private key credentials file, in string format.
+  ///
+  /// This is only populated when the ServiceAccountKey is created, and is not
+  /// stored by Google.
   core.String data;
 
-  /// An opaque, unique identifier for this ServiceAccountKey. Assigned by the
-  /// server.
+  /// An opaque, unique identifier for this ServiceAccountKey.
+  ///
+  /// Assigned by the server.
   core.String id;
 
-  /// Public key data for the credentials file. This is an X.509 cert. If you
-  /// are using the googleCredentials key type, this is identical to the cert
-  /// that can be retrieved by using the X.509 cert url inside of the
-  /// credentials file.
+  /// Public key data for the credentials file.
+  ///
+  /// This is an X.509 cert. If you are using the googleCredentials key type,
+  /// this is identical to the cert that can be retrieved by using the X.509
+  /// cert url inside of the credentials file.
   core.String publicData;
 
   /// The file format of the generated key data.
@@ -8507,8 +8710,9 @@ class SignupInfo {
   /// Deprecated.
   core.String kind;
 
-  /// A URL under which the Admin can sign up for an enterprise. The page
-  /// pointed to cannot be rendered in an iframe.
+  /// A URL under which the Admin can sign up for an enterprise.
+  ///
+  /// The page pointed to cannot be rendered in an iframe.
   core.String url;
 
   SignupInfo();
@@ -8543,25 +8747,31 @@ class SignupInfo {
 /// Definition of a managed Google Play store cluster, a list of products
 /// displayed as part of a store page.
 class StoreCluster {
-  /// Unique ID of this cluster. Assigned by the server. Immutable once
-  /// assigned.
+  /// Unique ID of this cluster.
+  ///
+  /// Assigned by the server. Immutable once assigned.
   core.String id;
 
-  /// Ordered list of localized strings giving the name of this page. The text
-  /// displayed is the one that best matches the user locale, or the first entry
-  /// if there is no good match. There needs to be at least one entry.
+  /// Ordered list of localized strings giving the name of this page.
+  ///
+  /// The text displayed is the one that best matches the user locale, or the
+  /// first entry if there is no good match. There needs to be at least one
+  /// entry.
   core.List<LocalizedText> name;
 
   /// String (US-ASCII only) used to determine order of this cluster within the
-  /// parent page's elements. Page elements are sorted in lexicographic order of
-  /// this field. Duplicated values are allowed, but ordering between elements
-  /// with duplicate order is undefined. The value of this field is never
-  /// visible to a user, it is used solely for the purpose of defining an
-  /// ordering. Maximum length is 256 characters.
+  /// parent page's elements.
+  ///
+  /// Page elements are sorted in lexicographic order of this field. Duplicated
+  /// values are allowed, but ordering between elements with duplicate order is
+  /// undefined. The value of this field is never visible to a user, it is used
+  /// solely for the purpose of defining an ordering. Maximum length is 256
+  /// characters.
   core.String orderInPage;
 
-  /// List of products in the order they are displayed in the cluster. There
-  /// should not be duplicates within a cluster.
+  /// List of products in the order they are displayed in the cluster.
+  ///
+  /// There should not be duplicates within a cluster.
   core.List<core.String> productId;
 
   StoreCluster();
@@ -8607,15 +8817,18 @@ class StoreCluster {
 /// General setting for the managed Google Play store layout, currently only
 /// specifying the page to display the first time the store is opened.
 class StoreLayout {
-  /// The ID of the store page to be used as the homepage. The homepage is the
-  /// first page shown in the managed Google Play Store. Not specifying a
-  /// homepage is equivalent to setting the store layout type to "basic".
+  /// The ID of the store page to be used as the homepage.
+  ///
+  /// The homepage is the first page shown in the managed Google Play Store. Not
+  /// specifying a homepage is equivalent to setting the store layout type to
+  /// "basic".
   core.String homepageId;
 
-  /// The store layout type. By default, this value is set to "basic" if the
-  /// homepageId field is not set, and to "custom" otherwise. If set to "basic",
-  /// the layout will consist of all approved apps that have been whitelisted
-  /// for the user.
+  /// The store layout type.
+  ///
+  /// By default, this value is set to "basic" if the homepageId field is not
+  /// set, and to "custom" otherwise. If set to "basic", the layout will consist
+  /// of all approved apps that have been whitelisted for the user.
   /// Possible string values are:
   /// - "unknown"
   /// - "basic"
@@ -8694,21 +8907,27 @@ class StoreLayoutPagesListResponse {
 }
 
 /// Definition of a managed Google Play store page, made of a localized name and
-/// links to other pages. A page also contains clusters defined as a
-/// subcollection.
+/// links to other pages.
+///
+/// A page also contains clusters defined as a subcollection.
 class StorePage {
-  /// Unique ID of this page. Assigned by the server. Immutable once assigned.
+  /// Unique ID of this page.
+  ///
+  /// Assigned by the server. Immutable once assigned.
   core.String id;
 
-  /// Ordered list of pages a user should be able to reach from this page. The
-  /// list can't include this page. It is recommended that the basic pages are
-  /// created first, before adding the links between pages. The API doesn't
+  /// Ordered list of pages a user should be able to reach from this page.
+  ///
+  /// The list can't include this page. It is recommended that the basic pages
+  /// are created first, before adding the links between pages. The API doesn't
   /// verify that the pages exist or the pages are reachable.
   core.List<core.String> link;
 
-  /// Ordered list of localized strings giving the name of this page. The text
-  /// displayed is the one that best matches the user locale, or the first entry
-  /// if there is no good match. There needs to be at least one entry.
+  /// Ordered list of localized strings giving the name of this page.
+  ///
+  /// The text displayed is the one that best matches the user locale, or the
+  /// first entry if there is no good match. There needs to be at least one
+  /// entry.
   core.List<LocalizedText> name;
 
   StorePage();
@@ -8746,16 +8965,19 @@ class StorePage {
 }
 
 /// Pagination information returned by a List operation when token pagination is
-/// enabled. List operations that supports paging return only one "page" of
-/// results. This protocol buffer message describes the page that has been
-/// returned. When using token pagination, clients should use the next/previous
-/// token to get another page of the result. The presence or absence of
-/// next/previous token indicates whether a next/previous page is available and
-/// provides a mean of accessing this page. ListRequest.page_token should be set
-/// to either next_page_token or previous_page_token to access another page.
+/// enabled.
+///
+/// List operations that supports paging return only one "page" of results. This
+/// protocol buffer message describes the page that has been returned. When
+/// using token pagination, clients should use the next/previous token to get
+/// another page of the result. The presence or absence of next/previous token
+/// indicates whether a next/previous page is available and provides a mean of
+/// accessing this page. ListRequest.page_token should be set to either
+/// next_page_token or previous_page_token to access another page.
 class TokenPagination {
-  /// Tokens to pass to the standard list field 'page_token'. Whenever
-  /// available, tokens are preferred over manipulating start_index.
+  /// Tokens to pass to the standard list field 'page_token'.
+  ///
+  /// Whenever available, tokens are preferred over manipulating start_index.
   core.String nextPageToken;
   core.String previousPageToken;
 
@@ -8784,13 +9006,15 @@ class TokenPagination {
 
 /// Id to name association of a track.
 class TrackInfo {
-  /// A modifiable name for a track. This is the visible name in the play
-  /// developer console.
+  /// A modifiable name for a track.
+  ///
+  /// This is the visible name in the play developer console.
   core.String trackAlias;
 
-  /// Unmodifiable, unique track identifier. This identifier is the
-  /// releaseTrackId in the url of the play developer console page that displays
-  /// the track information.
+  /// Unmodifiable, unique track identifier.
+  ///
+  /// This identifier is the releaseTrackId in the url of the play developer
+  /// console page that displays the track information.
   core.String trackId;
 
   TrackInfo();
@@ -8816,52 +9040,61 @@ class TrackInfo {
   }
 }
 
-/// A Users resource represents an account associated with an enterprise. The
-/// account may be specific to a device or to an individual user (who can then
-/// use the account across multiple devices). The account may provide access to
-/// managed Google Play only, or to other Google services, depending on the
-/// identity model: - The Google managed domain identity model requires
+/// A Users resource represents an account associated with an enterprise.
+///
+/// The account may be specific to a device or to an individual user (who can
+/// then use the account across multiple devices). The account may provide
+/// access to managed Google Play only, or to other Google services, depending
+/// on the identity model: - The Google managed domain identity model requires
 /// synchronization to Google account sources (via primaryEmail). - The managed
 /// Google Play Accounts identity model provides a dynamic means for enterprises
 /// to create user or device accounts as needed. These accounts provide access
 /// to managed Google Play.
 class User {
   /// A unique identifier you create for this user, such as "user342" or
-  /// "asset#44418". Do not use personally identifiable information (PII) for
-  /// this property. Must always be set for EMM-managed users. Not set for
-  /// Google-managed users.
+  /// "asset#44418".
+  ///
+  /// Do not use personally identifiable information (PII) for this property.
+  /// Must always be set for EMM-managed users. Not set for Google-managed
+  /// users.
   core.String accountIdentifier;
 
-  /// The type of account that this user represents. A userAccount can be
-  /// installed on multiple devices, but a deviceAccount is specific to a single
-  /// device. An EMM-managed user (emmManaged) can be either type (userAccount,
-  /// deviceAccount), but a Google-managed user (googleManaged) is always a
-  /// userAccount.
+  /// The type of account that this user represents.
+  ///
+  /// A userAccount can be installed on multiple devices, but a deviceAccount is
+  /// specific to a single device. An EMM-managed user (emmManaged) can be
+  /// either type (userAccount, deviceAccount), but a Google-managed user
+  /// (googleManaged) is always a userAccount.
   /// Possible string values are:
   /// - "deviceAccount"
   /// - "userAccount"
   core.String accountType;
 
-  /// The name that will appear in user interfaces. Setting this property is
-  /// optional when creating EMM-managed users. If you do set this property, use
-  /// something generic about the organization (such as "Example, Inc.") or your
-  /// name (as EMM). Not used for Google-managed user accounts. @mutable
-  /// androidenterprise.users.update
+  /// The name that will appear in user interfaces.
+  ///
+  /// Setting this property is optional when creating EMM-managed users. If you
+  /// do set this property, use something generic about the organization (such
+  /// as "Example, Inc.") or your name (as EMM). Not used for Google-managed
+  /// user accounts. @mutable androidenterprise.users.update
   core.String displayName;
 
   /// The unique ID for the user.
   core.String id;
 
-  /// The entity that manages the user. With googleManaged users, the source of
-  /// truth is Google so EMMs have to make sure a Google Account exists for the
-  /// user. With emmManaged users, the EMM is in charge.
+  /// The entity that manages the user.
+  ///
+  /// With googleManaged users, the source of truth is Google so EMMs have to
+  /// make sure a Google Account exists for the user. With emmManaged users, the
+  /// EMM is in charge.
   /// Possible string values are:
   /// - "googleManaged"
   /// - "emmManaged"
   core.String managementType;
 
-  /// The user's primary email address, for example, "jsmith@example.com". Will
-  /// always be set for Google managed users and not set for EMM managed users.
+  /// The user's primary email address, for example, "jsmith@example.com".
+  ///
+  /// Will always be set for Google managed users and not set for EMM managed
+  /// users.
   core.String primaryEmail;
 
   User();
@@ -8936,9 +9169,11 @@ class UsersListResponse {
 }
 
 /// A variable set is a key-value pair of EMM-provided placeholders and its
-/// corresponding value, which is attributed to a user. For example, $FIRSTNAME
-/// could be a placeholder, and its value could be Alice. Placeholders should
-/// start with a '$' sign and should be alphanumeric only.
+/// corresponding value, which is attributed to a user.
+///
+/// For example, $FIRSTNAME could be a placeholder, and its value could be
+/// Alice. Placeholders should start with a '$' sign and should be alphanumeric
+/// only.
 class VariableSet {
   /// The placeholder string; defined by EMM.
   core.String placeholder;
@@ -8969,19 +9204,21 @@ class VariableSet {
   }
 }
 
-/// A WebApps resource represents a web app created for an enterprise. Web apps
-/// are published to managed Google Play and can be distributed like other
-/// Android apps. On a user's device, a web app opens its specified URL.
+/// A WebApps resource represents a web app created for an enterprise.
+///
+/// Web apps are published to managed Google Play and can be distributed like
+/// other Android apps. On a user's device, a web app opens its specified URL.
 class WebApp {
-  /// The display mode of the web app. Possible values include: - "minimalUi",
-  /// the device's status bar, navigation bar, the app's URL, and a refresh
-  /// button are visible when the app is open. For HTTP URLs, you can only
-  /// select this option. - "standalone", the device's status bar and navigation
-  /// bar are visible when the app is open. - "fullScreen", the app opens in
-  /// full screen mode, hiding the device's status and navigation bars. All
-  /// browser UI elements, page URL, system status bar and back button are not
-  /// visible, and the web app takes up the entirety of the available display
-  /// area.
+  /// The display mode of the web app.
+  ///
+  /// Possible values include: - "minimalUi", the device's status bar,
+  /// navigation bar, the app's URL, and a refresh button are visible when the
+  /// app is open. For HTTP URLs, you can only select this option. -
+  /// "standalone", the device's status bar and navigation bar are visible when
+  /// the app is open. - "fullScreen", the app opens in full screen mode, hiding
+  /// the device's status and navigation bars. All browser UI elements, page
+  /// URL, system status bar and back button are not visible, and the web app
+  /// takes up the entirety of the available display area.
   /// Possible string values are:
   /// - "displayModeUnspecified"
   /// - "minimalUi" : Opens the web app with a minimal set of browser UI
@@ -8995,8 +9232,10 @@ class WebApp {
   /// available display area.
   core.String displayMode;
 
-  /// A list of icons representing this website. If absent, a default icon (for
-  /// create) or the current icon (for update) will be used.
+  /// A list of icons representing this website.
+  ///
+  /// If absent, a default icon (for create) or the current icon (for update)
+  /// will be used.
   core.List<WebAppIcon> icons;
 
   /// A flag whether the app has been published to the Play store yet.
@@ -9010,14 +9249,18 @@ class WebApp {
   /// other applications, or as a label for an icon).
   core.String title;
 
-  /// The current version of the app. Note that the version can automatically
-  /// increase during the lifetime of the web app, while Google does internal
-  /// housekeeping to keep the web app up-to-date.
+  /// The current version of the app.
+  ///
+  /// Note that the version can automatically increase during the lifetime of
+  /// the web app, while Google does internal housekeeping to keep the web app
+  /// up-to-date.
   core.String versionCode;
 
-  /// The ID of the application. A string of the form "app:<package name>" where
-  /// the package name always starts with the prefix
-  /// "com.google.enterprise.webapp." followed by a random id.
+  /// The ID of the application.
+  ///
+  /// A string of the form "app:<package name>" where the package name always
+  /// starts with the prefix "com.google.enterprise.webapp." followed by a
+  /// random id.
   core.String webAppId;
 
   WebApp();
@@ -9079,9 +9322,10 @@ class WebApp {
 /// Icon for a web app.
 class WebAppIcon {
   /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The
-  /// image type can be png or jpg. - The image should ideally be square. - The
-  /// image should ideally have a size of 512x512.
+  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
+  ///
+  /// - The image type can be png or jpg. - The image should ideally be square.
+  /// - The image should ideally have a size of 512x512.
   core.String imageData;
 
   WebAppIcon();

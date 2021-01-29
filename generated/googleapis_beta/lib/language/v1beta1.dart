@@ -329,6 +329,7 @@ class AnalyzeEntitiesResponse {
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -410,6 +411,7 @@ class AnalyzeSentimentResponse {
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -497,6 +499,7 @@ class AnalyzeSyntaxRequest {
 class AnalyzeSyntaxResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -598,25 +601,31 @@ class AnnotateTextRequest {
 
 /// The text annotations response message.
 class AnnotateTextResponse {
-  /// The overall sentiment for the document. Populated if the user enables
+  /// The overall sentiment for the document.
+  ///
+  /// Populated if the user enables
   /// AnnotateTextRequest.Features.extract_document_sentiment.
   Sentiment documentSentiment;
 
   /// Entities, along with their semantic information, in the input document.
+  ///
   /// Populated if the user enables
   /// AnnotateTextRequest.Features.extract_entities.
   core.List<Entity> entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
-  /// Sentences in the input document. Populated if the user enables
-  /// AnnotateTextRequest.Features.extract_syntax.
+  /// Sentences in the input document.
+  ///
+  /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
   core.List<Sentence> sentences;
 
   /// Tokens, along with their syntactic information, in the input document.
+  ///
   /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
   core.List<Token> tokens;
 
@@ -673,11 +682,12 @@ class AnnotateTextResponse {
 
 /// Represents dependency parse tree information for a token.
 class DependencyEdge {
-  /// Represents the head of this token in the dependency tree. This is the
-  /// index of the token which has an arc going to this token. The index is the
-  /// position of the token in the array of tokens returned by the API method.
-  /// If this token is a root token, then the `head_token_index` is its own
-  /// index.
+  /// Represents the head of this token in the dependency tree.
+  ///
+  /// This is the index of the token which has an arc going to this token. The
+  /// index is the position of the token in the array of tokens returned by the
+  /// API method. If this token is a root token, then the `head_token_index` is
+  /// its own index.
   core.int headTokenIndex;
 
   /// The parse label for the token.
@@ -794,27 +804,32 @@ class DependencyEdge {
 /// ################################################################ #
 /// Represents the input to API methods.
 class Document {
-  /// The content of the input in string format. Cloud audit logging exempt
-  /// since it is based on user data.
+  /// The content of the input in string format.
+  ///
+  /// Cloud audit logging exempt since it is based on user data.
   core.String content;
 
-  /// The Google Cloud Storage URI where the file content is located. This URI
-  /// must be of the form: gs://bucket_name/object_name. For more details, see
-  /// https://cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage
-  /// object versioning is not supported.
+  /// The Google Cloud Storage URI where the file content is located.
+  ///
+  /// This URI must be of the form: gs://bucket_name/object_name. For more
+  /// details, see https://cloud.google.com/storage/docs/reference-uris. NOTE:
+  /// Cloud Storage object versioning is not supported.
   core.String gcsContentUri;
 
   /// The language of the document (if not specified, the language is
-  /// automatically detected). Both ISO and BCP-47 language codes are accepted.
-  /// [Language
+  /// automatically detected).
+  ///
+  /// Both ISO and BCP-47 language codes are accepted. [Language
   /// Support](https://cloud.google.com/natural-language/docs/languages) lists
   /// currently supported languages for each API method. If the language (either
   /// specified by the caller or automatically detected) is not supported by the
   /// called API method, an `INVALID_ARGUMENT` error is returned.
   core.String language;
 
-  /// Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an
+  /// If the type is not set or is `TYPE_UNSPECIFIED`, returns an
   /// `INVALID_ARGUMENT` error.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The content type is not specified.
   /// - "PLAIN_TEXT" : Plain text
@@ -857,25 +872,31 @@ class Document {
 }
 
 /// Represents a phrase in the text that is a known entity, such as a person, an
-/// organization, or location. The API associates information, such as salience
-/// and mentions, with entities.
+/// organization, or location.
+///
+/// The API associates information, such as salience and mentions, with
+/// entities.
 class Entity {
-  /// The mentions of this entity in the input document. The API currently
-  /// supports proper noun mentions.
+  /// The mentions of this entity in the input document.
+  ///
+  /// The API currently supports proper noun mentions.
   core.List<EntityMention> mentions;
 
-  /// Metadata associated with the entity. Currently, Wikipedia URLs and
-  /// Knowledge Graph MIDs are provided, if available. The associated keys are
-  /// "wikipedia_url" and "mid", respectively.
+  /// Metadata associated with the entity.
+  ///
+  /// Currently, Wikipedia URLs and Knowledge Graph MIDs are provided, if
+  /// available. The associated keys are "wikipedia_url" and "mid",
+  /// respectively.
   core.Map<core.String, core.String> metadata;
 
   /// The representative name for the entity.
   core.String name;
 
-  /// The salience score associated with the entity in the [0, 1.0] range. The
-  /// salience score for an entity provides information about the importance or
-  /// centrality of that entity to the entire document text. Scores closer to 0
-  /// are less salient, while scores closer to 1.0 are highly salient.
+  /// The salience score associated with the entity in the [0, 1.0] range.
+  ///
+  /// The salience score for an entity provides information about the importance
+  /// or centrality of that entity to the entire document text. Scores closer to
+  /// 0 are less salient, while scores closer to 1.0 are highly salient.
   core.double salience;
 
   /// The entity type.
@@ -940,8 +961,9 @@ class Entity {
   }
 }
 
-/// Represents a mention for an entity in the text. Currently, proper noun
-/// mentions are supported.
+/// Represents a mention for an entity in the text.
+///
+/// Currently, proper noun mentions are supported.
 class EntityMention {
   /// The mention text.
   TextSpan text;
@@ -977,8 +999,9 @@ class EntityMention {
   }
 }
 
-/// All available features for sentiment, syntax, and semantic analysis. Setting
-/// each one to true will enable that specific analysis for the input.
+/// All available features for sentiment, syntax, and semantic analysis.
+///
+/// Setting each one to true will enable that specific analysis for the input.
 class Features {
   /// Extract document-level sentiment.
   core.bool extractDocumentSentiment;
@@ -1288,6 +1311,7 @@ class Sentiment {
   core.double magnitude;
 
   /// DEPRECATED FIELD - This field is being deprecated in favor of score.
+  ///
   /// Please refer to our documentation at
   /// https://cloud.google.com/natural-language/docs for more information.
   core.double polarity;
@@ -1326,24 +1350,27 @@ class Sentiment {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

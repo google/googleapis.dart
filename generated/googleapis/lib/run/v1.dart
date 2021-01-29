@@ -1092,8 +1092,10 @@ class NamespacesServicesResource {
     );
   }
 
-  /// Delete a service. This will cause the Service to stop serving traffic and
-  /// will delete the child entities like Routes, Configurations and Revisions.
+  /// Delete a service.
+  ///
+  /// This will cause the Service to stop serving traffic and will delete the
+  /// child entities like Routes, Configurations and Revisions.
   ///
   /// Request parameters:
   ///
@@ -1323,10 +1325,12 @@ class NamespacesServicesResource {
     );
   }
 
-  /// Replace a service. Only the spec and metadata labels and annotations are
-  /// modifiable. After the Update request, Cloud Run will work to make the
-  /// 'status' match the requested 'spec'. May provide metadata.resourceVersion
-  /// to enforce update from last read for optimistic concurrency control.
+  /// Replace a service.
+  ///
+  /// Only the spec and metadata labels and annotations are modifiable. After
+  /// the Update request, Cloud Run will work to make the 'status' match the
+  /// requested 'spec'. May provide metadata.resourceVersion to enforce update
+  /// from last read for optimistic concurrency control.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2559,8 +2563,10 @@ class ProjectsLocationsServicesResource {
     );
   }
 
-  /// Delete a service. This will cause the Service to stop serving traffic and
-  /// will delete the child entities like Routes, Configurations and Revisions.
+  /// Delete a service.
+  ///
+  /// This will cause the Service to stop serving traffic and will delete the
+  /// child entities like Routes, Configurations and Revisions.
   ///
   /// Request parameters:
   ///
@@ -2686,7 +2692,9 @@ class ProjectsLocationsServicesResource {
   }
 
   /// Get the IAM Access Control policy currently in effect for the given Cloud
-  /// Run service. This result does not include any inherited policies.
+  /// Run service.
+  ///
+  /// This result does not include any inherited policies.
   ///
   /// Request parameters:
   ///
@@ -2857,10 +2865,12 @@ class ProjectsLocationsServicesResource {
     );
   }
 
-  /// Replace a service. Only the spec and metadata labels and annotations are
-  /// modifiable. After the Update request, Cloud Run will work to make the
-  /// 'status' match the requested 'spec'. May provide metadata.resourceVersion
-  /// to enforce update from last read for optimistic concurrency control.
+  /// Replace a service.
+  ///
+  /// Only the spec and metadata labels and annotations are modifiable. After
+  /// the Update request, Cloud Run will work to make the 'status' match the
+  /// requested 'spec'. May provide metadata.resourceVersion to enforce update
+  /// from last read for optimistic concurrency control.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2918,8 +2928,9 @@ class ProjectsLocationsServicesResource {
     );
   }
 
-  /// Sets the IAM Access control policy for the specified Service. Overwrites
-  /// any existing policy.
+  /// Sets the IAM Access control policy for the specified Service.
+  ///
+  /// Overwrites any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2980,8 +2991,9 @@ class ProjectsLocationsServicesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified Project. There are
-  /// no permissions required for making this API call.
+  /// Returns permissions that a caller has on the specified Project.
+  ///
+  /// There are no permissions required for making this API call.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3065,11 +3077,12 @@ class Addressable {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -3085,9 +3098,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -3117,14 +3131,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -3160,15 +3177,20 @@ class AuditLogConfig {
   }
 }
 
-/// A domain that a user has been authorized to administer. To authorize use of
-/// a domain, verify ownership via [Webmaster
+/// A domain that a user has been authorized to administer.
+///
+/// To authorize use of a domain, verify ownership via [Webmaster
 /// Central](https://www.google.com/webmasters/verification/home).
 class AuthorizedDomain {
-  /// Relative name of the domain authorized for use. Example: `example.com`.
+  /// Relative name of the domain authorized for use.
+  ///
+  /// Example: `example.com`.
   core.String id;
 
-  /// Deprecated Read only. Full path to the `AuthorizedDomain` resource in the
-  /// API. Example: `projects/myproject/authorizedDomains/example.com`.
+  /// Deprecated Read only.
+  ///
+  /// Full path to the `AuthorizedDomain` resource in the API. Example:
+  /// `projects/myproject/authorizedDomains/example.com`.
   core.String name;
 
   AuthorizedDomain();
@@ -3196,16 +3218,19 @@ class AuthorizedDomain {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -3236,8 +3261,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -3274,11 +3300,15 @@ class Binding {
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 /// ConfigMapEnvSource selects a ConfigMap to populate the environment variables
-/// with. The contents of the target ConfigMap's Data field will represent the
+/// with.
+///
+/// The contents of the target ConfigMap's Data field will represent the
 /// key-value pairs as environment variables.
 class ConfigMapEnvSource {
   /// This field should not be used directly as it is meant to be inlined
-  /// directly into the message. Use the "name" field instead.
+  /// directly into the message.
+  ///
+  /// Use the "name" field instead.
   LocalObjectReference localObjectReference;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
@@ -3327,7 +3357,9 @@ class ConfigMapKeySelector {
   core.String key;
 
   /// This field should not be used directly as it is meant to be inlined
-  /// directly into the message. Use the "name" field instead.
+  /// directly into the message.
+  ///
+  /// Use the "name" field instead.
   LocalObjectReference localObjectReference;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
@@ -3375,26 +3407,30 @@ class ConfigMapKeySelector {
 }
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-/// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's
-/// Data field will be presented in a volume as files using the keys in the Data
-/// field as the file names, unless the items element is populated with specific
-/// mappings of keys to paths.
+/// Adapts a ConfigMap into a volume.
+///
+/// The contents of the target ConfigMap's Data field will be presented in a
+/// volume as files using the keys in the Data field as the file names, unless
+/// the items element is populated with specific mappings of keys to paths.
 class ConfigMapVolumeSource {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Mode bits to use on created files by default. Must be a value
-  /// between 0 and 0777. Defaults to 0644. Directories within the path are not
-  /// affected by this setting. This might be in conflict with other options
-  /// that affect the file mode, like fsGroup, and the result can be other mode
-  /// bits set.
+  /// supported Mode bits to use on created files by default.
+  ///
+  /// Must be a value between 0 and 0777. Defaults to 0644. Directories within
+  /// the path are not affected by this setting. This might be in conflict with
+  /// other options that affect the file mode, like fsGroup, and the result can
+  /// be other mode bits set.
   core.int defaultMode;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported If unspecified, each key-value pair in the Data field of the
   /// referenced Secret will be projected into the volume as a file whose name
-  /// is the key and content is the value. If specified, the listed keys will be
-  /// projected into the specified paths, and unlisted keys will not be present.
-  /// If a key is specified which is not present in the Secret, the volume setup
-  /// will error unless it is marked optional.
+  /// is the key and content is the value.
+  ///
+  /// If specified, the listed keys will be projected into the specified paths,
+  /// and unlisted keys will not be present. If a key is specified which is not
+  /// present in the Secret, the volume setup will error unless it is marked
+  /// optional.
   core.List<KeyToPath> items;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -3445,9 +3481,11 @@ class ConfigMapVolumeSource {
 
 /// Configuration represents the "floating HEAD" of a linear history of
 /// Revisions, and optionally how the containers those revisions reference are
-/// built. Users create new Revisions by updating the Configuration's spec. The
-/// "latest created" revision's name is available under status, as is the
-/// "latest ready" revision's name. See also:
+/// built.
+///
+/// Users create new Revisions by updating the Configuration's spec. The "latest
+/// created" revision's name is available under status, as is the "latest ready"
+/// revision's name. See also:
 /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#configuration
 class Configuration {
   /// The API version for this call such as "serving.knative.dev/v1".
@@ -3515,6 +3553,7 @@ class Configuration {
 /// client).
 class ConfigurationSpec {
   /// Optional metadata for this Revision, including labels and annotations.
+  ///
   /// Name will be generated by the Configuration. To set minimum instances for
   /// this revision, use the "autoscaling.knative.dev/minScale" annotation key.
   /// To set maximum instances for this revision, use the
@@ -3553,8 +3592,9 @@ class ConfigurationStatus {
   core.List<GoogleCloudRunV1Condition> conditions;
 
   /// LatestCreatedRevisionName is the last revision that was created from this
-  /// Configuration. It might not be ready yet, for that use
-  /// LatestReadyRevisionName.
+  /// Configuration.
+  ///
+  /// It might not be ready yet, for that use LatestReadyRevisionName.
   core.String latestCreatedRevisionName;
 
   /// LatestReadyRevisionName holds the name of the latest Revision stamped out
@@ -3562,10 +3602,12 @@ class ConfigurationStatus {
   core.String latestReadyRevisionName;
 
   /// ObservedGeneration is the 'Generation' of the Configuration that was last
-  /// processed by the controller. The observed generation is updated even if
-  /// the controller failed to process the spec and create the Revision. Clients
-  /// polling for completed reconciliation should poll until observedGeneration
-  /// = metadata.generation, and the Ready condition's status is True or False.
+  /// processed by the controller.
+  ///
+  /// The observed generation is updated even if the controller failed to
+  /// process the spec and create the Revision. Clients polling for completed
+  /// reconciliation should poll until observedGeneration = metadata.generation,
+  /// and the Ready condition's status is True or False.
   core.int observedGeneration;
 
   ConfigurationStatus();
@@ -3608,19 +3650,21 @@ class ConfigurationStatus {
   }
 }
 
-/// A single application container. This specifies both the container to run,
-/// the command to run in the container and the arguments to supply to it. Note
-/// that additional arguments may be supplied by the system to the container at
-/// runtime.
+/// A single application container.
+///
+/// This specifies both the container to run, the command to run in the
+/// container and the arguments to supply to it. Note that additional arguments
+/// may be supplied by the system to the container at runtime.
 class Container {
   /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos:
-  /// supported Arguments to the entrypoint. The docker image's CMD is used if
-  /// this is not provided. Variable references $(VAR_NAME) are expanded using
-  /// the container's environment. If a variable cannot be resolved, the
-  /// reference in the input string will be unchanged. The $(VAR_NAME) syntax
-  /// can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will
-  /// never be expanded, regardless of whether the variable exists or not. More
-  /// info:
+  /// supported Arguments to the entrypoint.
+  ///
+  /// The docker image's CMD is used if this is not provided. Variable
+  /// references $(VAR_NAME) are expanded using the container's environment. If
+  /// a variable cannot be resolved, the reference in the input string will be
+  /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
+  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
+  /// whether the variable exists or not. More info:
   /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
   core.List<core.String> args;
   core.List<core.String> command;
@@ -3631,61 +3675,74 @@ class Container {
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported List of sources to populate environment variables in the
-  /// container. The keys defined within a source must be a C_IDENTIFIER. All
-  /// invalid keys will be reported as an event when the container is starting.
-  /// When a key exists in multiple sources, the value associated with the last
-  /// source will take precedence. Values defined by an Env with a duplicate key
-  /// will take precedence. Cannot be updated.
+  /// container.
+  ///
+  /// The keys defined within a source must be a C_IDENTIFIER. All invalid keys
+  /// will be reported as an event when the container is starting. When a key
+  /// exists in multiple sources, the value associated with the last source will
+  /// take precedence. Values defined by an Env with a duplicate key will take
+  /// precedence. Cannot be updated.
   core.List<EnvFromSource> envFrom;
 
   /// Cloud Run fully managed: only supports containers from Google Container
-  /// Registry Cloud Run for Anthos: supported URL of the Container image. More
-  /// info: https://kubernetes.io/docs/concepts/containers/images
+  /// Registry Cloud Run for Anthos: supported URL of the Container image.
+  ///
+  /// More info: https://kubernetes.io/docs/concepts/containers/images
   core.String image;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Image pull policy. One of Always, Never, IfNotPresent. Defaults
-  /// to Always if :latest tag is specified, or IfNotPresent otherwise. More
-  /// info:
+  /// supported Image pull policy.
+  ///
+  /// One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is
+  /// specified, or IfNotPresent otherwise. More info:
   /// https://kubernetes.io/docs/concepts/containers/images#updating-images
   core.String imagePullPolicy;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Periodic probe of container liveness. Container will be
-  /// restarted if the probe fails. More info:
+  /// supported Periodic probe of container liveness.
+  ///
+  /// Container will be restarted if the probe fails. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe livenessProbe;
 
   /// (Optional) Name of the container specified as a DNS_LABEL.
   core.String name;
 
-  /// (Optional) List of ports to expose from the container. Only a single port
-  /// can be specified. The specified ports must be listening on all interfaces
-  /// (0.0.0.0) within the container to be accessible. If omitted, a port number
-  /// will be chosen and passed to the container through the PORT environment
-  /// variable for the container to listen on.
+  /// (Optional) List of ports to expose from the container.
+  ///
+  /// Only a single port can be specified. The specified ports must be listening
+  /// on all interfaces (0.0.0.0) within the container to be accessible. If
+  /// omitted, a port number will be chosen and passed to the container through
+  /// the PORT environment variable for the container to listen on.
   core.List<ContainerPort> ports;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Periodic probe of container service readiness. Container will be
-  /// removed from service endpoints if the probe fails. More info:
+  /// supported Periodic probe of container service readiness.
+  ///
+  /// Container will be removed from service endpoints if the probe fails. More
+  /// info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   Probe readinessProbe;
 
   /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos:
-  /// supported Compute Resources required by this container. More info:
+  /// supported Compute Resources required by this container.
+  ///
+  /// More info:
   /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   ResourceRequirements resources;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Security options the pod should run with. More info:
-  /// https://kubernetes.io/docs/concepts/policy/security-context/ More info:
+  /// supported Security options the pod should run with.
+  ///
+  /// More info: https://kubernetes.io/docs/concepts/policy/security-context/
+  /// More info:
   /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
   SecurityContext securityContext;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Path at which the file to which the container's termination
   /// message will be written is mounted into the container's filesystem.
+  ///
   /// Message written is intended to be brief final status, such as an assertion
   /// failure message. Will be truncated by the node if greater than 4096 bytes.
   /// The total message length across all containers will be limited to 12kb.
@@ -3693,13 +3750,14 @@ class Container {
   core.String terminationMessagePath;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Indicate how the termination message should be populated. File
-  /// will use the contents of terminationMessagePath to populate the container
-  /// status message on both success and failure. FallbackToLogsOnError will use
-  /// the last chunk of container log output if the termination message file is
-  /// empty and the container exited with an error. The log output is limited to
-  /// 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be
-  /// updated.
+  /// supported Indicate how the termination message should be populated.
+  ///
+  /// File will use the contents of terminationMessagePath to populate the
+  /// container status message on both success and failure.
+  /// FallbackToLogsOnError will use the last chunk of container log output if
+  /// the termination message file is empty and the container exited with an
+  /// error. The log output is limited to 2048 bytes or 80 lines, whichever is
+  /// smaller. Defaults to File. Cannot be updated.
   core.String terminationMessagePolicy;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
@@ -3707,9 +3765,10 @@ class Container {
   core.List<VolumeMount> volumeMounts;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Container's working directory. If not specified, the container
-  /// runtime's default will be used, which might be configured in the container
-  /// image.
+  /// supported Container's working directory.
+  ///
+  /// If not specified, the container runtime's default will be used, which
+  /// might be configured in the container image.
   core.String workingDir;
 
   Container();
@@ -3843,17 +3902,21 @@ class Container {
 
 /// ContainerPort represents a network port in a single container.
 class ContainerPort {
-  /// (Optional) Port number the container listens on. This must be a valid port
-  /// number, 0 < x < 65536.
+  /// (Optional) Port number the container listens on.
+  ///
+  /// This must be a valid port number, 0 < x < 65536.
   core.int containerPort;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported If specified, used to specify which protocol to use. Allowed
-  /// values are "http1" and "h2c".
+  /// supported If specified, used to specify which protocol to use.
+  ///
+  /// Allowed values are "http1" and "h2c".
   core.String name;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Protocol for port. Must be "TCP". Defaults to "TCP".
+  /// supported Protocol for port.
+  ///
+  /// Must be "TCP". Defaults to "TCP".
   core.String protocol;
 
   ContainerPort();
@@ -3957,13 +4020,16 @@ class DomainMappingSpec {
   core.String certificateMode;
 
   /// If set, the mapping will override any mapping set before this spec was
-  /// set. It is recommended that the user leaves this empty to receive an error
+  /// set.
+  ///
+  /// It is recommended that the user leaves this empty to receive an error
   /// warning about a potential conflict and only set it once the respective UI
   /// has given such a warning.
   core.bool forceOverride;
 
-  /// The name of the Knative Route that this DomainMapping applies to. The
-  /// route must exist.
+  /// The name of the Knative Route that this DomainMapping applies to.
+  ///
+  /// The route must exist.
   core.String routeName;
 
   DomainMappingSpec();
@@ -4005,18 +4071,23 @@ class DomainMappingStatus {
   core.String mappedRouteName;
 
   /// ObservedGeneration is the 'Generation' of the DomainMapping that was last
-  /// processed by the controller. Clients polling for completed reconciliation
-  /// should poll until observedGeneration = metadata.generation and the Ready
-  /// condition's status is True or False.
+  /// processed by the controller.
+  ///
+  /// Clients polling for completed reconciliation should poll until
+  /// observedGeneration = metadata.generation and the Ready condition's status
+  /// is True or False.
   core.int observedGeneration;
 
-  /// The resource records required to configure this domain mapping. These
-  /// records must be added to the domain's DNS configuration in order to serve
-  /// the application via this domain mapping.
+  /// The resource records required to configure this domain mapping.
+  ///
+  /// These records must be added to the domain's DNS configuration in order to
+  /// serve the application via this domain mapping.
   core.List<ResourceRecord> resourceRecords;
 
   /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds
-  /// the URL that will serve the traffic of the DomainMapping. +optional
+  /// the URL that will serve the traffic of the DomainMapping.
+  ///
+  /// +optional
   core.String url;
 
   DomainMappingStatus();
@@ -4077,6 +4148,7 @@ class EnvFromSource {
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported An optional identifier to prepend to each key in the ConfigMap.
+  ///
   /// Must be a C_IDENTIFIER.
   core.String prefix;
 
@@ -4117,20 +4189,25 @@ class EnvFromSource {
 
 /// EnvVar represents an environment variable present in a Container.
 class EnvVar {
-  /// Name of the environment variable. Must be a C_IDENTIFIER.
+  /// Name of the environment variable.
+  ///
+  /// Must be a C_IDENTIFIER.
   core.String name;
 
   /// (Optional) Variable references $(VAR_NAME) are expanded using the previous
   /// defined environment variables in the container and any route environment
-  /// variables. If a variable cannot be resolved, the reference in the input
-  /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-  /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-  /// regardless of whether the variable exists or not. Defaults to "".
+  /// variables.
+  ///
+  /// If a variable cannot be resolved, the reference in the input string will
+  /// be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
+  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
+  /// whether the variable exists or not. Defaults to "".
   core.String value;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Source for the environment variable's value. Cannot be used if
-  /// value is not empty.
+  /// supported Source for the environment variable's value.
+  ///
+  /// Cannot be used if value is not empty.
   EnvVarSource valueFrom;
 
   EnvVar();
@@ -4205,9 +4282,11 @@ class ExecAction {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Command is the command line to execute inside the container, the
   /// working directory for the command is root ('/') in the container's
-  /// filesystem. The command is simply exec'd, it is not run inside a shell, so
-  /// traditional shell instructions ('|', etc) won't work. To use a shell, you
-  /// need to explicitly call out to that shell. Exit status of 0 is treated as
+  /// filesystem.
+  ///
+  /// The command is simply exec'd, it is not run inside a shell, so traditional
+  /// shell instructions ('|', etc) won't work. To use a shell, you need to
+  /// explicitly call out to that shell. Exit status of 0 is treated as
   /// live/healthy and non-zero is unhealthy.
   core.List<core.String> command;
 
@@ -4231,8 +4310,10 @@ class ExecAction {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -4247,20 +4328,29 @@ class ExecAction {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -4300,25 +4390,32 @@ class Expr {
 
 /// Condition defines a generic condition for a Resource
 class GoogleCloudRunV1Condition {
-  /// Optional. Last time the condition transitioned from one status to another.
+  /// Last time the condition transitioned from one status to another.
+  ///
+  /// Optional.
   core.String lastTransitionTime;
 
-  /// Optional. Human readable message indicating details about the current
-  /// status.
+  /// Human readable message indicating details about the current status.
+  ///
+  /// Optional.
   core.String message;
 
-  /// Optional. One-word CamelCase reason for the condition's last transition.
+  /// One-word CamelCase reason for the condition's last transition.
+  ///
+  /// Optional.
   core.String reason;
 
-  /// Optional. How to interpret failures of this condition, one of Error,
-  /// Warning, Info
+  /// How to interpret failures of this condition, one of Error, Warning, Info
+  ///
+  /// Optional.
   core.String severity;
 
   /// Status of the condition, one of True, False, Unknown.
   core.String status;
 
-  /// type is used to communicate the status of the reconciliation process. See
-  /// also:
+  /// type is used to communicate the status of the reconciliation process.
+  ///
+  /// See also:
   /// https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting
   /// Types common to all resources include: * "Ready": True when the Resource
   /// is ready.
@@ -4375,13 +4472,15 @@ class GoogleCloudRunV1Condition {
 /// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetAction {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Host name to connect to, defaults to the pod IP. You probably
-  /// want to set "Host" in httpHeaders instead.
+  /// supported Host name to connect to, defaults to the pod IP.
+  ///
+  /// You probably want to set "Host" in httpHeaders instead.
   core.String host;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Custom headers to set in the request. HTTP allows repeated
-  /// headers.
+  /// supported Custom headers to set in the request.
+  ///
+  /// HTTP allows repeated headers.
   core.List<HTTPHeader> httpHeaders;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
@@ -4389,7 +4488,9 @@ class HTTPGetAction {
   core.String path;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Scheme to use for connecting to the host. Defaults to HTTP.
+  /// supported Scheme to use for connecting to the host.
+  ///
+  /// Defaults to HTTP.
   core.String scheme;
 
   HTTPGetAction();
@@ -4474,14 +4575,18 @@ class KeyToPath {
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Mode bits to use on this file, must be a value between 0000 and
-  /// 0777. If not specified, the volume defaultMode will be used. This might be
-  /// in conflict with other options that affect the file mode, like fsGroup,
-  /// and the result can be other mode bits set.
+  /// 0777.
+  ///
+  /// If not specified, the volume defaultMode will be used. This might be in
+  /// conflict with other options that affect the file mode, like fsGroup, and
+  /// the result can be other mode bits set.
   core.int mode;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// relative path of the file to map the key to. May not be an absolute path.
-  /// May not contain the path element '..'. May not start with the string '..'.
+  /// relative path of the file to map the key to.
+  ///
+  /// May not be an absolute path. May not contain the path element '..'. May
+  /// not start with the string '..'.
   core.String path;
 
   KeyToPath();
@@ -4710,29 +4815,33 @@ class ListLocationsResponse {
 }
 
 /// ListMeta describes metadata that synthetic resources must have, including
-/// lists and various status objects. A resource may have only one of
-/// {ObjectMeta, ListMeta}.
+/// lists and various status objects.
+///
+/// A resource may have only one of {ObjectMeta, ListMeta}.
 class ListMeta {
   /// continue may be set if the user set a limit on the number of items
-  /// returned, and indicates that the server has more data available. The value
-  /// is opaque and may be used to issue another request to the endpoint that
-  /// served this list to retrieve the next set of available objects. Continuing
-  /// a list may not be possible if the server configuration has changed or more
-  /// than a few minutes have passed. The resourceVersion field returned when
-  /// using this continue value will be identical to the value in the first
-  /// response.
+  /// returned, and indicates that the server has more data available.
+  ///
+  /// The value is opaque and may be used to issue another request to the
+  /// endpoint that served this list to retrieve the next set of available
+  /// objects. Continuing a list may not be possible if the server configuration
+  /// has changed or more than a few minutes have passed. The resourceVersion
+  /// field returned when using this continue value will be identical to the
+  /// value in the first response.
   core.String continue_;
 
   /// String that identifies the server's internal version of this object that
-  /// can be used by clients to determine when objects have changed. Value must
-  /// be treated as opaque by clients and passed unmodified back to the server.
-  /// Populated by the system. Read-only. More info:
+  /// can be used by clients to determine when objects have changed.
+  ///
+  /// Value must be treated as opaque by clients and passed unmodified back to
+  /// the server. Populated by the system. Read-only. More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
   /// +optional
   core.String resourceVersion;
 
-  /// SelfLink is a URL representing this object. Populated by the system.
-  /// Read-only. +optional
+  /// SelfLink is a URL representing this object.
+  ///
+  /// Populated by the system. Read-only. +optional
   core.String selfLink;
 
   ListMeta();
@@ -4961,7 +5070,9 @@ class ListServicesResponse {
 /// referenced object inside the same namespace.
 class LocalObjectReference {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Name of the referent. More info:
+  /// supported Name of the referent.
+  ///
+  /// More info:
   /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   core.String name;
 
@@ -4984,25 +5095,31 @@ class LocalObjectReference {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -5064,55 +5181,65 @@ class Location {
 class ObjectMeta {
   /// (Optional) Annotations is an unstructured key value map stored with a
   /// resource that may be set by external tools to store and retrieve arbitrary
-  /// metadata. They are not queryable and should be preserved when modifying
-  /// objects. More info: http://kubernetes.io/docs/user-guide/annotations
+  /// metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// More info: http://kubernetes.io/docs/user-guide/annotations
   core.Map<core.String, core.String> annotations;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported The name of the cluster which the object belongs to. This is
-  /// used to distinguish resources with same name and namespace in different
-  /// clusters. This field is not set anywhere right now and apiserver is going
-  /// to ignore it if set in create or update request.
+  /// supported The name of the cluster which the object belongs to.
+  ///
+  /// This is used to distinguish resources with same name and namespace in
+  /// different clusters. This field is not set anywhere right now and apiserver
+  /// is going to ignore it if set in create or update request.
   core.String clusterName;
 
   /// (Optional) CreationTimestamp is a timestamp representing the server time
-  /// when this object was created. It is not guaranteed to be set in
-  /// happens-before order across separate operations. Clients may not set this
-  /// value. It is represented in RFC3339 form and is in UTC. Populated by the
-  /// system. Read-only. Null for lists. More info:
+  /// when this object was created.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations. Clients may not set this value. It is represented in RFC3339
+  /// form and is in UTC. Populated by the system. Read-only. Null for lists.
+  /// More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
   core.String creationTimestamp;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Number of seconds allowed for this object to gracefully
-  /// terminate before it will be removed from the system. Only set when
-  /// deletionTimestamp is also set. May only be shortened. Read-only.
+  /// terminate before it will be removed from the system.
+  ///
+  /// Only set when deletionTimestamp is also set. May only be shortened.
+  /// Read-only.
   core.int deletionGracePeriodSeconds;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported DeletionTimestamp is RFC 3339 date and time at which this
-  /// resource will be deleted. This field is set by the server when a graceful
-  /// deletion is requested by the user, and is not directly settable by a
-  /// client. The resource is expected to be deleted (no longer visible from
-  /// resource lists, and not reachable by name) after the time in this field,
-  /// once the finalizers list is empty. As long as the finalizers list contains
-  /// items, deletion is blocked. Once the deletionTimestamp is set, this value
-  /// may not be unset or be set further into the future, although it may be
-  /// shortened or the resource may be deleted prior to this time. For example,
-  /// a user may request that a pod is deleted in 30 seconds. The Kubelet will
-  /// react by sending a graceful termination signal to the containers in the
-  /// pod. After that 30 seconds, the Kubelet will send a hard termination
-  /// signal (SIGKILL) to the container and after cleanup, remove the pod from
-  /// the API. In the presence of network partitions, this object may still
-  /// exist after this timestamp, until an administrator or automated process
-  /// can determine the resource is fully terminated. If not set, graceful
-  /// deletion of the object has not been requested. Populated by the system
-  /// when a graceful deletion is requested. Read-only. More info:
+  /// resource will be deleted.
+  ///
+  /// This field is set by the server when a graceful deletion is requested by
+  /// the user, and is not directly settable by a client. The resource is
+  /// expected to be deleted (no longer visible from resource lists, and not
+  /// reachable by name) after the time in this field, once the finalizers list
+  /// is empty. As long as the finalizers list contains items, deletion is
+  /// blocked. Once the deletionTimestamp is set, this value may not be unset or
+  /// be set further into the future, although it may be shortened or the
+  /// resource may be deleted prior to this time. For example, a user may
+  /// request that a pod is deleted in 30 seconds. The Kubelet will react by
+  /// sending a graceful termination signal to the containers in the pod. After
+  /// that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL)
+  /// to the container and after cleanup, remove the pod from the API. In the
+  /// presence of network partitions, this object may still exist after this
+  /// timestamp, until an administrator or automated process can determine the
+  /// resource is fully terminated. If not set, graceful deletion of the object
+  /// has not been requested. Populated by the system when a graceful deletion
+  /// is requested. Read-only. More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
   core.String deletionTimestamp;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Must be empty before the object is deleted from the registry.
+  ///
   /// Each entry is an identifier for the responsible component that will remove
   /// the entry from the list. If the deletionTimestamp of the object is
   /// non-nil, entries in this list can only be removed. +patchStrategy=merge
@@ -5120,33 +5247,38 @@ class ObjectMeta {
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported GenerateName is an optional prefix, used by the server, to
-  /// generate a unique name ONLY IF the Name field has not been provided. If
-  /// this field is used, the name returned to the client will be different than
-  /// the name passed. This value will also be combined with a unique suffix.
-  /// The provided value has the same validation rules as the Name field, and
-  /// may be truncated by the length of the suffix required to make the value
-  /// unique on the server. If this field is specified and the generated name
-  /// exists, the server will NOT return a 409 - instead, it will either return
-  /// 201 Created or 500 with Reason ServerTimeout indicating a unique name
-  /// could not be found in the time allotted, and the client should retry
-  /// (optionally after the time indicated in the Retry-After header). Applied
-  /// only if Name is not specified. More info:
+  /// generate a unique name ONLY IF the Name field has not been provided.
+  ///
+  /// If this field is used, the name returned to the client will be different
+  /// than the name passed. This value will also be combined with a unique
+  /// suffix. The provided value has the same validation rules as the Name
+  /// field, and may be truncated by the length of the suffix required to make
+  /// the value unique on the server. If this field is specified and the
+  /// generated name exists, the server will NOT return a 409 - instead, it will
+  /// either return 201 Created or 500 with Reason ServerTimeout indicating a
+  /// unique name could not be found in the time allotted, and the client should
+  /// retry (optionally after the time indicated in the Retry-After header).
+  /// Applied only if Name is not specified. More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency
   /// string generateName = 2;
   core.String generateName;
 
   /// (Optional) A sequence number representing a specific generation of the
-  /// desired state. Populated by the system. Read-only.
+  /// desired state.
+  ///
+  /// Populated by the system. Read-only.
   core.int generation;
 
   /// (Optional) Map of string keys and values that can be used to organize and
-  /// categorize (scope and select) objects. May match selectors of replication
-  /// controllers and routes. More info:
+  /// categorize (scope and select) objects.
+  ///
+  /// May match selectors of replication controllers and routes. More info:
   /// http://kubernetes.io/docs/user-guide/labels
   core.Map<core.String, core.String> labels;
 
-  /// Name must be unique within a namespace, within a Cloud Run region. Is
-  /// required when creating resources, although some resources may allow a
+  /// Name must be unique within a namespace, within a Cloud Run region.
+  ///
+  /// Is required when creating resources, although some resources may allow a
   /// client to request the generation of an appropriate name automatically.
   /// Name is primarily intended for creation idempotence and configuration
   /// definition. Cannot be updated. More info:
@@ -5154,17 +5286,22 @@ class ObjectMeta {
   core.String name;
 
   /// Namespace defines the space within each name must be unique, within a
-  /// Cloud Run region. In Cloud Run the namespace must be equal to either the
-  /// project ID or project number.
+  /// Cloud Run region.
+  ///
+  /// In Cloud Run the namespace must be equal to either the project ID or
+  /// project number.
   core.String namespace;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported List of objects that own this object. If ALL objects in the list
-  /// have been deleted, this object will be garbage collected.
+  /// supported List of objects that own this object.
+  ///
+  /// If ALL objects in the list have been deleted, this object will be garbage
+  /// collected.
   core.List<OwnerReference> ownerReferences;
 
   /// (Optional) An opaque value that represents the internal version of this
   /// object that can be used by clients to determine when objects have changed.
+  ///
   /// May be used for optimistic concurrency, change detection, and the watch
   /// operation on a resource or set of resources. Clients must treat these
   /// values as opaque and passed unmodified back to the server. They may only
@@ -5173,14 +5310,16 @@ class ObjectMeta {
   /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
   core.String resourceVersion;
 
-  /// (Optional) SelfLink is a URL representing this object. Populated by the
-  /// system. Read-only. string selfLink = 4;
+  /// (Optional) SelfLink is a URL representing this object.
+  ///
+  /// Populated by the system. Read-only. string selfLink = 4;
   core.String selfLink;
 
-  /// (Optional) UID is the unique in time and space value for this object. It
-  /// is typically generated by the server on successful creation of a resource
-  /// and is not allowed to change on PUT operations. Populated by the system.
-  /// Read-only. More info:
+  /// (Optional) UID is the unique in time and space value for this object.
+  ///
+  /// It is typically generated by the server on successful creation of a
+  /// resource and is not allowed to change on PUT operations. Populated by the
+  /// system. Read-only. More info:
   /// http://kubernetes.io/docs/user-guide/identifiers#uids
   core.String uid;
 
@@ -5306,32 +5445,42 @@ class ObjectMeta {
 }
 
 /// OwnerReference contains enough information to let you identify an owning
-/// object. Currently, an owning object must be in the same namespace, so there
-/// is no namespace field.
+/// object.
+///
+/// Currently, an owning object must be in the same namespace, so there is no
+/// namespace field.
 class OwnerReference {
   /// API version of the referent.
   core.String apiVersion;
 
   /// If true, AND if the owner has the "foregroundDeletion" finalizer, then the
   /// owner cannot be deleted from the key-value store until this reference is
-  /// removed. Defaults to false. To set this field, a user needs "delete"
-  /// permission of the owner, otherwise 422 (Unprocessable Entity) will be
-  /// returned. +optional
+  /// removed.
+  ///
+  /// Defaults to false. To set this field, a user needs "delete" permission of
+  /// the owner, otherwise 422 (Unprocessable Entity) will be returned.
+  /// +optional
   core.bool blockOwnerDeletion;
 
-  /// If true, this reference points to the managing controller. +optional
+  /// If true, this reference points to the managing controller.
+  ///
+  /// +optional
   core.bool controller;
 
-  /// Kind of the referent. More info:
+  /// Kind of the referent.
+  ///
+  /// More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
   core.String kind;
 
-  /// Name of the referent. More info:
-  /// http://kubernetes.io/docs/user-guide/identifiers#names
+  /// Name of the referent.
+  ///
+  /// More info: http://kubernetes.io/docs/user-guide/identifiers#names
   core.String name;
 
-  /// UID of the referent. More info:
-  /// http://kubernetes.io/docs/user-guide/identifiers#uids
+  /// UID of the referent.
+  ///
+  /// More info: http://kubernetes.io/docs/user-guide/identifiers#uids
   core.String uid;
 
   OwnerReference();
@@ -5382,16 +5531,18 @@ class OwnerReference {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -5414,14 +5565,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -5438,20 +5592,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -5502,45 +5658,56 @@ class Policy {
 /// whether it is alive or ready to receive traffic.
 class Probe {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported One and only one of the following should be specified. Exec
-  /// specifies the action to take. A field inlined from the Handler message.
+  /// supported One and only one of the following should be specified.
+  ///
+  /// Exec specifies the action to take. A field inlined from the Handler
+  /// message.
   ExecAction exec;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Minimum consecutive failures for the probe to be considered
-  /// failed after having succeeded. Defaults to 3. Minimum value is 1.
+  /// failed after having succeeded.
+  ///
+  /// Defaults to 3. Minimum value is 1.
   core.int failureThreshold;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported HTTPGet specifies the http request to perform. A field inlined
-  /// from the Handler message.
+  /// supported HTTPGet specifies the http request to perform.
+  ///
+  /// A field inlined from the Handler message.
   HTTPGetAction httpGet;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Number of seconds after the container has started before
-  /// liveness probes are initiated. More info:
+  /// liveness probes are initiated.
+  ///
+  /// More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   core.int initialDelaySeconds;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported How often (in seconds) to perform the probe. Default to 10
-  /// seconds. Minimum value is 1.
+  /// supported How often (in seconds) to perform the probe.
+  ///
+  /// Default to 10 seconds. Minimum value is 1.
   core.int periodSeconds;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Minimum consecutive successes for the probe to be considered
-  /// successful after having failed. Defaults to 1. Must be 1 for liveness.
-  /// Minimum value is 1.
+  /// successful after having failed.
+  ///
+  /// Defaults to 1. Must be 1 for liveness. Minimum value is 1.
   core.int successThreshold;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported TCPSocket specifies an action involving a TCP port. TCP hooks
-  /// not yet supported A field inlined from the Handler message.
+  /// supported TCPSocket specifies an action involving a TCP port.
+  ///
+  /// TCP hooks not yet supported A field inlined from the Handler message.
   TCPSocketAction tcpSocket;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Number of seconds after which the probe times out. Defaults to 1
-  /// second. Minimum value is 1. More info:
+  /// supported Number of seconds after which the probe times out.
+  ///
+  /// Defaults to 1 second. Minimum value is 1. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   core.int timeoutSeconds;
 
@@ -5608,15 +5775,20 @@ class Probe {
 
 /// A DNS resource record.
 class ResourceRecord {
-  /// Relative name of the object affected by this record. Only applicable for
-  /// `CNAME` records. Example: 'www'.
+  /// Relative name of the object affected by this record.
+  ///
+  /// Only applicable for `CNAME` records. Example: 'www'.
   core.String name;
 
-  /// Data for this record. Values vary by record type, as defined in RFC 1035
-  /// (section 5) and RFC 1034 (section 3.6.1).
+  /// Data for this record.
+  ///
+  /// Values vary by record type, as defined in RFC 1035 (section 5) and RFC
+  /// 1034 (section 3.6.1).
   core.String rrdata;
 
-  /// Resource record type. Example: `AAAA`.
+  /// Resource record type.
+  ///
+  /// Example: `AAAA`.
   /// Possible string values are:
   /// - "RECORD_TYPE_UNSPECIFIED" : An unknown resource record.
   /// - "A" : An A resource record. Data is an IPv4 address.
@@ -5656,6 +5828,7 @@ class ResourceRecord {
 /// ResourceRequirements describes the compute resource requirements.
 class ResourceRequirements {
   /// (Optional) Cloud Run fully managed: Only memory and CPU are supported.
+  ///
   /// Note: The only supported values for CPU are '1' and '2'. Cloud Run for
   /// Anthos: supported Limits describes the maximum amount of compute resources
   /// allowed. The values of the map is string form of the 'quantity' k8s type:
@@ -5663,6 +5836,7 @@ class ResourceRequirements {
   core.Map<core.String, core.String> limits;
 
   /// (Optional) Cloud Run fully managed: Only memory and CPU are supported.
+  ///
   /// Note: The only supported values for CPU are '1' and '2'. Cloud Run for
   /// Anthos: supported Requests describes the minimum amount of compute
   /// resources required. If Requests is omitted for a container, it defaults to
@@ -5707,9 +5881,10 @@ class ResourceRequirements {
   }
 }
 
-/// Revision is an immutable snapshot of code and configuration. A revision
-/// references a container image. Revisions are created by updates to a
-/// Configuration. See also:
+/// Revision is an immutable snapshot of code and configuration.
+///
+/// A revision references a container image. Revisions are created by updates to
+/// a Configuration. See also:
 /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#revision
 class Revision {
   /// The API version for this call such as "serving.knative.dev/v1".
@@ -5776,31 +5951,38 @@ class Revision {
 /// RevisionSpec holds the desired state of the Revision (from the client).
 class RevisionSpec {
   /// (Optional) ContainerConcurrency specifies the maximum allowed in-flight
-  /// (concurrent) requests per container instance of the Revision. Cloud Run
-  /// fully managed: supported, defaults to 80 Cloud Run for Anthos: supported,
-  /// defaults to 0, which means concurrency to the application is not limited,
-  /// and the system decides the target concurrency for the autoscaler.
+  /// (concurrent) requests per container instance of the Revision.
+  ///
+  /// Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos:
+  /// supported, defaults to 0, which means concurrency to the application is
+  /// not limited, and the system decides the target concurrency for the
+  /// autoscaler.
   core.int containerConcurrency;
 
   /// Containers holds the single container that defines the unit of execution
-  /// for this Revision. In the context of a Revision, we disallow a number of
-  /// fields on this Container, including: name and lifecycle. In Cloud Run,
-  /// only a single container may be provided. The runtime contract is
-  /// documented here:
+  /// for this Revision.
+  ///
+  /// In the context of a Revision, we disallow a number of fields on this
+  /// Container, including: name and lifecycle. In Cloud Run, only a single
+  /// container may be provided. The runtime contract is documented here:
   /// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
   core.List<Container> containers;
 
   /// Email address of the IAM service account associated with the revision of
-  /// the service. The service account represents the identity of the running
-  /// revision, and determines what permissions the revision has. If not
-  /// provided, the revision will use the project's default service account.
+  /// the service.
+  ///
+  /// The service account represents the identity of the running revision, and
+  /// determines what permissions the revision has. If not provided, the
+  /// revision will use the project's default service account.
   core.String serviceAccountName;
 
   /// TimeoutSeconds holds the max duration the instance is allowed for
-  /// responding to a request. Cloud Run fully managed: defaults to 300 seconds
-  /// (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run
-  /// for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is
-  /// configurable by the cluster operator.
+  /// responding to a request.
+  ///
+  /// Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum
+  /// allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults
+  /// to 300 seconds (5 minutes). Maximum allowed value is configurable by the
+  /// cluster operator.
   core.int timeoutSeconds;
   core.List<Volume> volumes;
 
@@ -5856,27 +6038,35 @@ class RevisionSpec {
 class RevisionStatus {
   /// Conditions communicates information about ongoing/complete reconciliation
   /// processes that bring the "spec" inline with the observed state of the
-  /// world. As a Revision is being prepared, it will incrementally update
-  /// conditions. Revision-specific conditions include: * "ResourcesAvailable":
-  /// True when underlying resources have been provisioned. *
-  /// "ContainerHealthy": True when the Revision readiness check completes. *
-  /// "Active": True when the Revision may receive traffic.
+  /// world.
+  ///
+  /// As a Revision is being prepared, it will incrementally update conditions.
+  /// Revision-specific conditions include: * "ResourcesAvailable": True when
+  /// underlying resources have been provisioned. * "ContainerHealthy": True
+  /// when the Revision readiness check completes. * "Active": True when the
+  /// Revision may receive traffic.
   core.List<GoogleCloudRunV1Condition> conditions;
 
   /// ImageDigest holds the resolved digest for the image specified within
-  /// .Spec.Container.Image. The digest is resolved during the creation of
-  /// Revision. This field holds the digest value regardless of whether a tag or
-  /// digest was originally specified in the Container object.
+  /// .Spec.Container.Image.
+  ///
+  /// The digest is resolved during the creation of Revision. This field holds
+  /// the digest value regardless of whether a tag or digest was originally
+  /// specified in the Container object.
   core.String imageDigest;
 
   /// Specifies the generated logging url for this particular revision based on
-  /// the revision url template specified in the controller's config. +optional
+  /// the revision url template specified in the controller's config.
+  ///
+  /// +optional
   core.String logUrl;
 
   /// ObservedGeneration is the 'Generation' of the Revision that was last
-  /// processed by the controller. Clients polling for completed reconciliation
-  /// should poll until observedGeneration = metadata.generation, and the Ready
-  /// condition's status is True or False.
+  /// processed by the controller.
+  ///
+  /// Clients polling for completed reconciliation should poll until
+  /// observedGeneration = metadata.generation, and the Ready condition's status
+  /// is True or False.
   core.int observedGeneration;
 
   /// Not currently used by Cloud Run.
@@ -5928,10 +6118,13 @@ class RevisionStatus {
 }
 
 /// RevisionTemplateSpec describes the data a revision should have when created
-/// from a template. Based on:
+/// from a template.
+///
+/// Based on:
 /// https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
 class RevisionTemplate {
   /// Optional metadata for this Revision, including labels and annotations.
+  ///
   /// Name will be generated by the Configuration. To set minimum instances for
   /// this revision, use the "autoscaling.knative.dev/minScale" annotation key.
   /// To set maximum instances for this revision, use the
@@ -5969,6 +6162,7 @@ class RevisionTemplate {
 }
 
 /// Route is responsible for configuring ingress over a collection of Revisions.
+///
 /// Some of the Revisions a Route distributes traffic over may be specified by
 /// referencing the Configuration responsible for creating them; in these cases
 /// the Route is additionally responsible for monitoring the Configuration for
@@ -6041,8 +6235,9 @@ class Route {
 /// RouteSpec holds the desired state of the Route (from the client).
 class RouteSpec {
   /// Traffic specifies how to distribute traffic over a collection of Knative
-  /// Revisions and Configurations. Cloud Run currently supports a single
-  /// configurationName.
+  /// Revisions and Configurations.
+  ///
+  /// Cloud Run currently supports a single configurationName.
   core.List<TrafficTarget> traffic;
 
   RouteSpec();
@@ -6077,23 +6272,28 @@ class RouteStatus {
   core.List<GoogleCloudRunV1Condition> conditions;
 
   /// ObservedGeneration is the 'Generation' of the Route that was last
-  /// processed by the controller. Clients polling for completed reconciliation
-  /// should poll until observedGeneration = metadata.generation and the Ready
-  /// condition's status is True or False. Note that providing a trafficTarget
-  /// that only has a configurationName will result in a Route that does not
-  /// increment either its metadata.generation or its observedGeneration, as new
-  /// "latest ready" revisions from the Configuration are processed without an
-  /// update to the Route's spec.
+  /// processed by the controller.
+  ///
+  /// Clients polling for completed reconciliation should poll until
+  /// observedGeneration = metadata.generation and the Ready condition's status
+  /// is True or False. Note that providing a trafficTarget that only has a
+  /// configurationName will result in a Route that does not increment either
+  /// its metadata.generation or its observedGeneration, as new "latest ready"
+  /// revisions from the Configuration are processed without an update to the
+  /// Route's spec.
   core.int observedGeneration;
 
-  /// Traffic holds the configured traffic distribution. These entries will
-  /// always contain RevisionName references. When ConfigurationName appears in
-  /// the spec, this will hold the LatestReadyRevisionName that we last
-  /// observed.
+  /// Traffic holds the configured traffic distribution.
+  ///
+  /// These entries will always contain RevisionName references. When
+  /// ConfigurationName appears in the spec, this will hold the
+  /// LatestReadyRevisionName that we last observed.
   core.List<TrafficTarget> traffic;
 
   /// URL holds the url that will distribute traffic over the provided traffic
-  /// targets. It generally has the form:
+  /// targets.
+  ///
+  /// It generally has the form:
   /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
   core.String url;
 
@@ -6148,11 +6348,14 @@ class RouteStatus {
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 /// SecretEnvSource selects a Secret to populate the environment variables with.
+///
 /// The contents of the target Secret's Data field will represent the key-value
 /// pairs as environment variables.
 class SecretEnvSource {
   /// This field should not be used directly as it is meant to be inlined
-  /// directly into the message. Use the "name" field instead.
+  /// directly into the message.
+  ///
+  /// Use the "name" field instead.
   LocalObjectReference localObjectReference;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
@@ -6197,11 +6400,15 @@ class SecretEnvSource {
 /// SecretKeySelector selects a key of a Secret.
 class SecretKeySelector {
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
-  /// key of the secret to select from. Must be a valid secret key.
+  /// key of the secret to select from.
+  ///
+  /// Must be a valid secret key.
   core.String key;
 
   /// This field should not be used directly as it is meant to be inlined
-  /// directly into the message. Use the "name" field instead.
+  /// directly into the message.
+  ///
+  /// Use the "name" field instead.
   LocalObjectReference localObjectReference;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The
@@ -6253,22 +6460,26 @@ class SecretKeySelector {
 /// files using the keys in the Data field as the file names.
 class SecretVolumeSource {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Mode bits to use on created files by default. Must be a value
-  /// between 0000 and 0777. Defaults to 0644. Directories within the path are
-  /// not affected by this setting. This might be in conflict with other options
-  /// that affect the file mode, like fsGroup, and the result can be other mode
-  /// bits set. NOTE: This is an integer representation of the mode bits. So,
-  /// the integer value should look exactly as the chmod numeric notation, i.e.
-  /// Unix chmod "777" (a=rwx) should have the integer value 777.
+  /// supported Mode bits to use on created files by default.
+  ///
+  /// Must be a value between 0000 and 0777. Defaults to 0644. Directories
+  /// within the path are not affected by this setting. This might be in
+  /// conflict with other options that affect the file mode, like fsGroup, and
+  /// the result can be other mode bits set. NOTE: This is an integer
+  /// representation of the mode bits. So, the integer value should look exactly
+  /// as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have
+  /// the integer value 777.
   core.int defaultMode;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported If unspecified, each key-value pair in the Data field of the
   /// referenced Secret will be projected into the volume as a file whose name
-  /// is the key and content is the value. If specified, the listed keys will be
-  /// projected into the specified paths, and unlisted keys will not be present.
-  /// If a key is specified which is not present in the Secret, the volume setup
-  /// will error unless it is marked optional.
+  /// is the key and content is the value.
+  ///
+  /// If specified, the listed keys will be projected into the specified paths,
+  /// and unlisted keys will not be present. If a key is specified which is not
+  /// present in the Secret, the volume setup will error unless it is marked
+  /// optional.
   core.List<KeyToPath> items;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
@@ -6319,15 +6530,18 @@ class SecretVolumeSource {
 
 /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
 /// SecurityContext holds security configuration that will be applied to a
-/// container. Some fields are present in both SecurityContext and
-/// PodSecurityContext. When both are set, the values in SecurityContext take
-/// precedence.
+/// container.
+///
+/// Some fields are present in both SecurityContext and PodSecurityContext. When
+/// both are set, the values in SecurityContext take precedence.
 class SecurityContext {
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported The UID to run the entrypoint of the container process. Defaults
-  /// to user specified in image metadata if unspecified. May also be set in
-  /// PodSecurityContext. If set in both SecurityContext and PodSecurityContext,
-  /// the value specified in SecurityContext takes precedence.
+  /// supported The UID to run the entrypoint of the container process.
+  ///
+  /// Defaults to user specified in image metadata if unspecified. May also be
+  /// set in PodSecurityContext. If set in both SecurityContext and
+  /// PodSecurityContext, the value specified in SecurityContext takes
+  /// precedence.
   core.int runAsUser;
 
   SecurityContext();
@@ -6348,14 +6562,15 @@ class SecurityContext {
 }
 
 /// Service acts as a top-level container that manages a set of Routes and
-/// Configurations which implement a network service. Service exists to provide
-/// a singular abstraction which can be access controlled, reasoned about, and
-/// which encapsulates software lifecycle decisions such as rollout policy and
-/// team resource ownership. Service acts only as an orchestrator of the
-/// underlying Routes and Configurations (much as a kubernetes Deployment
-/// orchestrates ReplicaSets). The Service's controller will track the statuses
-/// of its owned Configuration and Route, reflecting their statuses and
-/// conditions as its own. See also:
+/// Configurations which implement a network service.
+///
+/// Service exists to provide a singular abstraction which can be access
+/// controlled, reasoned about, and which encapsulates software lifecycle
+/// decisions such as rollout policy and team resource ownership. Service acts
+/// only as an orchestrator of the underlying Routes and Configurations (much as
+/// a kubernetes Deployment orchestrates ReplicaSets). The Service's controller
+/// will track the statuses of its owned Configuration and Route, reflecting
+/// their statuses and conditions as its own. See also:
 /// https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
 class Service {
   /// The API version for this call such as "serving.knative.dev/v1".
@@ -6457,44 +6672,59 @@ class ServiceSpec {
   }
 }
 
-/// The current state of the Service. Output only.
+/// The current state of the Service.
+///
+/// Output only.
 class ServiceStatus {
-  /// From RouteStatus. Similar to url, information on where the service is
-  /// available on HTTP.
+  /// From RouteStatus.
+  ///
+  /// Similar to url, information on where the service is available on HTTP.
   Addressable address;
 
   /// Conditions communicates information about ongoing/complete reconciliation
   /// processes that bring the "spec" inline with the observed state of the
-  /// world. Service-specific conditions include: * "ConfigurationsReady": true
-  /// when the underlying Configuration is ready. * "RoutesReady": true when the
+  /// world.
+  ///
+  /// Service-specific conditions include: * "ConfigurationsReady": true when
+  /// the underlying Configuration is ready. * "RoutesReady": true when the
   /// underlying Route is ready. * "Ready": true when both the underlying Route
   /// and Configuration are ready.
   core.List<GoogleCloudRunV1Condition> conditions;
 
-  /// From ConfigurationStatus. LatestCreatedRevisionName is the last revision
-  /// that was created from this Service's Configuration. It might not be ready
-  /// yet, for that use LatestReadyRevisionName.
+  /// From ConfigurationStatus.
+  ///
+  /// LatestCreatedRevisionName is the last revision that was created from this
+  /// Service's Configuration. It might not be ready yet, for that use
+  /// LatestReadyRevisionName.
   core.String latestCreatedRevisionName;
 
-  /// From ConfigurationStatus. LatestReadyRevisionName holds the name of the
-  /// latest Revision stamped out from this Service's Configuration that has had
-  /// its "Ready" condition become "True".
+  /// From ConfigurationStatus.
+  ///
+  /// LatestReadyRevisionName holds the name of the latest Revision stamped out
+  /// from this Service's Configuration that has had its "Ready" condition
+  /// become "True".
   core.String latestReadyRevisionName;
 
   /// ObservedGeneration is the 'Generation' of the Route that was last
-  /// processed by the controller. Clients polling for completed reconciliation
-  /// should poll until observedGeneration = metadata.generation and the Ready
-  /// condition's status is True or False.
+  /// processed by the controller.
+  ///
+  /// Clients polling for completed reconciliation should poll until
+  /// observedGeneration = metadata.generation and the Ready condition's status
+  /// is True or False.
   core.int observedGeneration;
 
-  /// From RouteStatus. Traffic holds the configured traffic distribution. These
-  /// entries will always contain RevisionName references. When
-  /// ConfigurationName appears in the spec, this will hold the
-  /// LatestReadyRevisionName that we last observed.
+  /// From RouteStatus.
+  ///
+  /// Traffic holds the configured traffic distribution. These entries will
+  /// always contain RevisionName references. When ConfigurationName appears in
+  /// the spec, this will hold the LatestReadyRevisionName that we last
+  /// observed.
   core.List<TrafficTarget> traffic;
 
-  /// From RouteStatus. URL holds the url that will distribute traffic over the
-  /// provided traffic targets. It generally has the form
+  /// From RouteStatus.
+  ///
+  /// URL holds the url that will distribute traffic over the provided traffic
+  /// targets. It generally has the form
   /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
   core.String url;
 
@@ -6562,13 +6792,15 @@ class ServiceStatus {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -6599,29 +6831,40 @@ class SetIamPolicyRequest {
 
 /// Status is a return value for calls that don't return other objects
 class Status {
-  /// Suggested HTTP return code for this status, 0 if not set. +optional
+  /// Suggested HTTP return code for this status, 0 if not set.
+  ///
+  /// +optional
   core.int code;
 
-  /// Extended data associated with the reason. Each reason may define its own
-  /// extended details. This field is optional and the data returned is not
-  /// guaranteed to conform to any schema except that defined by the reason
-  /// type. +optional
+  /// Extended data associated with the reason.
+  ///
+  /// Each reason may define its own extended details. This field is optional
+  /// and the data returned is not guaranteed to conform to any schema except
+  /// that defined by the reason type. +optional
   StatusDetails details;
 
-  /// A human-readable description of the status of this operation. +optional
+  /// A human-readable description of the status of this operation.
+  ///
+  /// +optional
   core.String message;
 
-  /// Standard list metadata. More info:
+  /// Standard list metadata.
+  ///
+  /// More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
   /// +optional
   ListMeta metadata;
 
   /// A machine-readable description of why this operation is in the "Failure"
-  /// status. If this value is empty there is no information available. A Reason
+  /// status.
+  ///
+  /// If this value is empty there is no information available. A Reason
   /// clarifies an HTTP status code but does not override it. +optional
   core.String reason;
 
-  /// Status of the operation. One of: "Success" or "Failure". More info:
+  /// Status of the operation.
+  ///
+  /// One of: "Success" or "Failure". More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
   /// +optional
   core.String status;
@@ -6679,19 +6922,23 @@ class Status {
 /// cases when multiple errors are encountered.
 class StatusCause {
   /// The field of the resource that has caused this error, as named by its JSON
-  /// serialization. May include dot and postfix notation for nested attributes.
-  /// Arrays are zero-indexed. Fields may appear more than once in an array of
-  /// causes due to fields having multiple errors. Optional. Examples: "name" -
-  /// the field "name" on the current resource "items[0].name" - the field
-  /// "name" on the first array entry in "items" +optional
+  /// serialization.
+  ///
+  /// May include dot and postfix notation for nested attributes. Arrays are
+  /// zero-indexed. Fields may appear more than once in an array of causes due
+  /// to fields having multiple errors. Optional. Examples: "name" - the field
+  /// "name" on the current resource "items[0].name" - the field "name" on the
+  /// first array entry in "items" +optional
   core.String field;
 
-  /// A human-readable description of the cause of the error. This field may be
-  /// presented as-is to a reader. +optional
+  /// A human-readable description of the cause of the error.
+  ///
+  /// This field may be presented as-is to a reader. +optional
   core.String message;
 
-  /// A machine-readable description of the cause of the error. If this value is
-  /// empty there is no information available. +optional
+  /// A machine-readable description of the cause of the error.
+  ///
+  /// If this value is empty there is no information available. +optional
   core.String reason;
 
   StatusCause();
@@ -6724,38 +6971,49 @@ class StatusCause {
 }
 
 /// StatusDetails is a set of additional properties that MAY be set by the
-/// server to provide additional information about a response. The Reason field
-/// of a Status object defines what attributes will be set. Clients must ignore
-/// fields that do not match the defined type of each attribute, and should
-/// assume that any attribute may be empty, invalid, or under defined.
+/// server to provide additional information about a response.
+///
+/// The Reason field of a Status object defines what attributes will be set.
+/// Clients must ignore fields that do not match the defined type of each
+/// attribute, and should assume that any attribute may be empty, invalid, or
+/// under defined.
 class StatusDetails {
   /// The Causes array includes more details associated with the StatusReason
-  /// failure. Not all StatusReasons may provide detailed causes. +optional
+  /// failure.
+  ///
+  /// Not all StatusReasons may provide detailed causes. +optional
   core.List<StatusCause> causes;
 
   /// The group attribute of the resource associated with the status
-  /// StatusReason. +optional
+  /// StatusReason.
+  ///
+  /// +optional
   core.String group;
 
   /// The kind attribute of the resource associated with the status
-  /// StatusReason. On some operations may differ from the requested resource
-  /// Kind. More info:
+  /// StatusReason.
+  ///
+  /// On some operations may differ from the requested resource Kind. More info:
   /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
   /// +optional
   core.String kind;
 
   /// The name attribute of the resource associated with the status StatusReason
-  /// (when there is a single name which can be described). +optional
+  /// (when there is a single name which can be described).
+  ///
+  /// +optional
   core.String name;
 
   /// If specified, the time in seconds before the operation should be retried.
+  ///
   /// Some errors may indicate the client must take an alternate action - for
   /// those errors this field may indicate how long to wait before taking the
   /// alternate action. +optional
   core.int retryAfterSeconds;
 
-  /// UID of the resource. (when there is a single resource which can be
-  /// described). More info:
+  /// UID of the resource.
+  ///
+  /// (when there is a single resource which can be described). More info:
   /// http://kubernetes.io/docs/user-guide/identifiers#uids +optional
   core.String uid;
 
@@ -6817,10 +7075,11 @@ class TCPSocketAction {
   core.String host;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-  /// Number or name of the port to access on the container. Number must be in
-  /// the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is
-  /// currently limited to integer types only because of proto's inability to
-  /// properly support the IntOrString golang type.
+  /// Number or name of the port to access on the container.
+  ///
+  /// Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+  /// This field is currently limited to integer types only because of proto's
+  /// inability to properly support the IntOrString golang type.
   core.int port;
 
   TCPSocketAction();
@@ -6848,9 +7107,10 @@ class TCPSocketAction {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -6901,37 +7161,50 @@ class TestIamPermissionsResponse {
 /// TrafficTarget holds a single entry of the routing table for a Route.
 class TrafficTarget {
   /// ConfigurationName of a configuration to whose latest revision we will send
-  /// this portion of traffic. When the "status.latestReadyRevisionName" of the
-  /// referenced configuration changes, we will automatically migrate traffic
-  /// from the prior "latest ready" revision to the new one. This field is never
-  /// set in Route's status, only its spec. This is mutually exclusive with
-  /// RevisionName. Cloud Run currently supports a single ConfigurationName.
+  /// this portion of traffic.
+  ///
+  /// When the "status.latestReadyRevisionName" of the referenced configuration
+  /// changes, we will automatically migrate traffic from the prior "latest
+  /// ready" revision to the new one. This field is never set in Route's status,
+  /// only its spec. This is mutually exclusive with RevisionName. Cloud Run
+  /// currently supports a single ConfigurationName.
   core.String configurationName;
 
   /// LatestRevision may be optionally provided to indicate that the latest
   /// ready Revision of the Configuration should be used for this traffic
-  /// target. When provided LatestRevision must be true if RevisionName is
-  /// empty; it must be false when RevisionName is non-empty. +optional
+  /// target.
+  ///
+  /// When provided LatestRevision must be true if RevisionName is empty; it
+  /// must be false when RevisionName is non-empty. +optional
   core.bool latestRevision;
 
   /// Percent specifies percent of the traffic to this Revision or
-  /// Configuration. This defaults to zero if unspecified. Cloud Run currently
-  /// requires 100 percent for a single ConfigurationName TrafficTarget entry.
+  /// Configuration.
+  ///
+  /// This defaults to zero if unspecified. Cloud Run currently requires 100
+  /// percent for a single ConfigurationName TrafficTarget entry.
   core.int percent;
 
   /// RevisionName of a specific revision to which to send this portion of
-  /// traffic. This is mutually exclusive with ConfigurationName. Providing
-  /// RevisionName in spec is not currently supported by Cloud Run.
+  /// traffic.
+  ///
+  /// This is mutually exclusive with ConfigurationName. Providing RevisionName
+  /// in spec is not currently supported by Cloud Run.
   core.String revisionName;
 
   /// Tag is optionally used to expose a dedicated url for referencing this
-  /// target exclusively. Not currently supported in Cloud Run. +optional
+  /// target exclusively.
+  ///
+  /// Not currently supported in Cloud Run. +optional
   core.String tag;
 
-  /// Output only. URL displays the URL for accessing tagged traffic targets.
+  /// URL displays the URL for accessing tagged traffic targets.
+  ///
   /// URL is displayed in status, and is disallowed on spec. URL must contain a
   /// scheme (e.g. http://) and a hostname, but may not contain anything else
   /// (e.g. basic auth, url path, etc. Not currently supported in Cloud Run.
+  ///
+  /// Output only.
   core.String url;
 
   TrafficTarget();
@@ -7029,8 +7302,9 @@ class Volume {
 /// VolumeMount describes a mounting of a Volume within a container.
 class VolumeMount {
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-  /// Path within the container at which the volume should be mounted. Must not
-  /// contain ':'.
+  /// Path within the container at which the volume should be mounted.
+  ///
+  /// Must not contain ':'.
   core.String mountPath;
 
   /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
@@ -7038,12 +7312,16 @@ class VolumeMount {
   core.String name;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
-  /// supported Only true is accepted. Defaults to true.
+  /// supported Only true is accepted.
+  ///
+  /// Defaults to true.
   core.bool readOnly;
 
   /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
   /// supported Path within the volume from which the container's volume should
-  /// be mounted. Defaults to "" (volume's root).
+  /// be mounted.
+  ///
+  /// Defaults to "" (volume's root).
   core.String subPath;
 
   VolumeMount();

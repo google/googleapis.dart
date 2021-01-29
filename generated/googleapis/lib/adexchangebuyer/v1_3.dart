@@ -172,7 +172,9 @@ class AccountsResource {
     );
   }
 
-  /// Updates an existing account. This method supports patch semantics.
+  /// Updates an existing account.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -454,8 +456,9 @@ class BudgetResource {
   }
 
   /// Updates the budget amount for the budget of the adgroup specified by the
-  /// accountId and billingId, with the budget amount in the request. This
-  /// method supports patch semantics.
+  /// accountId and billingId, with the budget amount in the request.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -592,8 +595,9 @@ class CreativesResource {
 
   CreativesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the status for a single creative. A creative will be available 30-40
-  /// minutes after submission.
+  /// Gets the status for a single creative.
+  ///
+  /// A creative will be available 30-40 minutes after submission.
   ///
   /// Request parameters:
   ///
@@ -702,8 +706,9 @@ class CreativesResource {
     );
   }
 
-  /// Retrieves a list of the authenticated user's active creatives. A creative
-  /// will be available 30-40 minutes after submission.
+  /// Retrieves a list of the authenticated user's active creatives.
+  ///
+  /// A creative will be available 30-40 minutes after submission.
   ///
   /// Request parameters:
   ///
@@ -1214,8 +1219,9 @@ class PretargetingConfigResource {
     );
   }
 
-  /// Updates an existing pretargeting config. This method supports patch
-  /// semantics.
+  /// Updates an existing pretargeting config.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1352,9 +1358,10 @@ class AccountBidderLocation {
   /// The maximum queries per second the Ad Exchange will send.
   core.int maximumQps;
 
-  /// The geographical region the Ad Exchange should send requests from. Only
-  /// used by some quota systems, but always setting the value is recommended.
-  /// Allowed values:
+  /// The geographical region the Ad Exchange should send requests from.
+  ///
+  /// Only used by some quota systems, but always setting the value is
+  /// recommended. Allowed values:
   /// - ASIA
   /// - EUROPE
   /// - US_EAST
@@ -1398,8 +1405,9 @@ class Account {
   /// Your bidder locations that have distinct URLs.
   core.List<AccountBidderLocation> bidderLocation;
 
-  /// The nid parameter value used in cookie match requests. Please contact your
-  /// technical account manager if you need to change this.
+  /// The nid parameter value used in cookie match requests.
+  ///
+  /// Please contact your technical account manager if you need to change this.
   core.String cookieMatchingNid;
 
   /// The base URL used in cookie match requests.
@@ -1413,11 +1421,13 @@ class Account {
 
   /// The maximum number of active creatives that an account can have, where a
   /// creative is active if it was inserted or bid with in the last 30 days.
+  ///
   /// Please contact your technical account manager if you need to change this.
   core.int maximumActiveCreatives;
 
-  /// The sum of all bidderLocation.maximumQps values cannot exceed this. Please
-  /// contact your technical account manager if you need to change this.
+  /// The sum of all bidderLocation.maximumQps values cannot exceed this.
+  ///
+  /// Please contact your technical account manager if you need to change this.
   core.int maximumTotalQps;
 
   /// The number of creatives that this account inserted or bid with in the last
@@ -1488,7 +1498,9 @@ class Account {
 }
 
 /// An account feed lists Ad Exchange buyer accounts that the user has access
-/// to. Each entry in the feed corresponds to a single buyer account.
+/// to.
+///
+/// Each entry in the feed corresponds to a single buyer account.
 class AccountsList {
   /// A list of accounts.
   core.List<Account> items;
@@ -1530,9 +1542,10 @@ class BillingInfo {
   /// Account name.
   core.String accountName;
 
-  /// A list of adgroup IDs associated with this particular account. These IDs
-  /// may show up as part of a realtime bidding BidRequest, which indicates a
-  /// bid request for this account.
+  /// A list of adgroup IDs associated with this particular account.
+  ///
+  /// These IDs may show up as part of a realtime bidding BidRequest, which
+  /// indicates a bid request for this account.
   core.List<core.String> billingId;
 
   /// Resource type.
@@ -1576,7 +1589,9 @@ class BillingInfo {
 }
 
 /// A billing info feed lists Billing Info the Ad Exchange buyer account has
-/// access to. Each entry in the feed corresponds to a single billing info.
+/// access to.
+///
+/// Each entry in the feed corresponds to a single billing info.
 class BillingInfoList {
   /// A list of billing info relevant for your account.
   core.List<BillingInfo> items;
@@ -1612,18 +1627,26 @@ class BillingInfoList {
 
 /// The configuration data for Ad Exchange RTB - Budget API.
 class Budget {
-  /// The id of the account. This is required for get and update requests.
+  /// The id of the account.
+  ///
+  /// This is required for get and update requests.
   core.String accountId;
 
   /// The billing id to determine which adgroup to provide budget information
-  /// for. This is required for get and update requests.
+  /// for.
+  ///
+  /// This is required for get and update requests.
   core.String billingId;
 
   /// The daily budget amount in unit amount of the account currency to apply
-  /// for the billingId provided. This is required for update requests.
+  /// for the billingId provided.
+  ///
+  /// This is required for update requests.
   core.String budgetAmount;
 
-  /// The currency code for the buyer. This cannot be altered here.
+  /// The currency code for the buyer.
+  ///
+  /// This cannot be altered here.
   core.String currencyCode;
 
   /// The unique id that describes this item.
@@ -1680,8 +1703,9 @@ class Budget {
 }
 
 class CreativeAdTechnologyProviders {
-  /// The detected ad technology provider IDs for this creative. See
-  /// https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
+  /// The detected ad technology provider IDs for this creative.
+  ///
+  /// See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
   /// mapping of provider ID to provided name, a privacy policy URL, and a list
   /// of domains which can be attributed to the provider. If this creative
   /// contains provider IDs that are outside of those listed in the
@@ -1694,8 +1718,9 @@ class CreativeAdTechnologyProviders {
   /// Authorized Buyers Program Guidelines.
   core.List<core.String> detectedProviderIds;
 
-  /// Whether the creative contains an unidentified ad technology provider. If
-  /// true, a bid submitted for a European Economic Area (EEA) user with this
+  /// Whether the creative contains an unidentified ad technology provider.
+  ///
+  /// If true, a bid submitted for a European Economic Area (EEA) user with this
   /// creative is not compliant with the GDPR policies as mentioned in the
   /// "Third-party Ad Technology Vendors" section of Authorized Buyers Program
   /// Guidelines.
@@ -1791,12 +1816,14 @@ class CreativeDisapprovalReasons {
 }
 
 class CreativeFilteringReasonsReasons {
-  /// The number of times the creative was filtered for the status. The count is
-  /// aggregated across all publishers on the exchange.
+  /// The number of times the creative was filtered for the status.
+  ///
+  /// The count is aggregated across all publishers on the exchange.
   core.String filteringCount;
 
-  /// The filtering status code. Please refer to the creative-status-codes.txt
-  /// file for different statuses.
+  /// The filtering status code.
+  ///
+  /// Please refer to the creative-status-codes.txt file for different statuses.
   core.int filteringStatus;
 
   CreativeFilteringReasonsReasons();
@@ -1822,11 +1849,13 @@ class CreativeFilteringReasonsReasons {
   }
 }
 
-/// The filtering reasons for the creative. Read-only. This field should not be
-/// set in requests.
+/// The filtering reasons for the creative.
+///
+/// Read-only. This field should not be set in requests.
 class CreativeFilteringReasons {
-  /// The date in ISO 8601 format for the data. The data is collected from
-  /// 00:00:00 to 23:59:59 in PST.
+  /// The date in ISO 8601 format for the data.
+  ///
+  /// The data is collected from 00:00:00 to 23:59:59 in PST.
   core.String date;
 
   /// The filtering reasons.
@@ -1995,7 +2024,9 @@ class CreativeNativeAd {
   /// The price of the promoted app including the currency info.
   core.String price;
 
-  /// The app rating in the app store. Must be in the range [0-5].
+  /// The app rating in the app store.
+  ///
+  /// Must be in the range [0-5].
   core.double starRating;
 
   CreativeNativeAd();
@@ -2082,16 +2113,18 @@ class CreativeNativeAd {
 
 /// A creative and its classification data.
 class Creative {
-  /// The HTML snippet that displays the ad when inserted in the web page. If
-  /// set, videoURL should not be set.
+  /// The HTML snippet that displays the ad when inserted in the web page.
+  ///
+  /// If set, videoURL should not be set.
   core.String HTMLSnippet;
 
   /// Account id.
   core.int accountId;
   CreativeAdTechnologyProviders adTechnologyProviders;
 
-  /// Detected advertiser id, if any. Read-only. This field should not be set in
-  /// requests.
+  /// Detected advertiser id, if any.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<core.String> advertiserId;
 
   /// The name of the company being advertised in the creative.
@@ -2101,6 +2134,7 @@ class Creative {
   core.String agencyId;
 
   /// The last upload timestamp of this creative if it was uploaded via API.
+  ///
   /// Read-only. The value of this field is generated, and will be ignored for
   /// uploads. (formatted RFC 3339 timestamp).
   core.DateTime apiUploadTimestamp;
@@ -2114,19 +2148,23 @@ class Creative {
   /// The set of destination urls for the snippet.
   core.List<core.String> clickThroughUrl;
 
-  /// Shows any corrections that were applied to this creative. Read-only. This
-  /// field should not be set in requests.
+  /// Shows any corrections that were applied to this creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<CreativeCorrections> corrections;
 
-  /// The reasons for disapproval, if any. Note that not all disapproval reasons
-  /// may be categorized, so it is possible for the creative to have a status of
-  /// DISAPPROVED with an empty list for disapproval_reasons. In this case,
-  /// please reach out to your TAM to help debug the issue. Read-only. This
-  /// field should not be set in requests.
+  /// The reasons for disapproval, if any.
+  ///
+  /// Note that not all disapproval reasons may be categorized, so it is
+  /// possible for the creative to have a status of DISAPPROVED with an empty
+  /// list for disapproval_reasons. In this case, please reach out to your TAM
+  /// to help debug the issue. Read-only. This field should not be set in
+  /// requests.
   core.List<CreativeDisapprovalReasons> disapprovalReasons;
 
-  /// The filtering reasons for the creative. Read-only. This field should not
-  /// be set in requests.
+  /// The filtering reasons for the creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   CreativeFilteringReasons filteringReasons;
 
   /// Ad height.
@@ -2141,30 +2179,35 @@ class Creative {
   /// If nativeAd is set, HTMLSnippet and videoURL should not be set.
   CreativeNativeAd nativeAd;
 
-  /// Detected product categories, if any. Read-only. This field should not be
-  /// set in requests.
+  /// Detected product categories, if any.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<core.int> productCategories;
 
   /// All restricted categories for the ads that may be shown from this snippet.
   core.List<core.int> restrictedCategories;
 
-  /// Detected sensitive categories, if any. Read-only. This field should not be
-  /// set in requests.
+  /// Detected sensitive categories, if any.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<core.int> sensitiveCategories;
 
-  /// Creative serving status. Read-only. This field should not be set in
-  /// requests.
+  /// Creative serving status.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.String status;
 
   /// All vendor types for the ads that may be shown from this snippet.
   core.List<core.int> vendorType;
 
-  /// The version for this creative. Read-only. This field should not be set in
-  /// requests.
+  /// The version for this creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.int version;
 
-  /// The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should
-  /// not be set.
+  /// The URL to fetch a video ad.
+  ///
+  /// If set, HTMLSnippet and the nativeAd should not be set.
   core.String videoURL;
 
   /// Ad width.
@@ -2362,8 +2405,9 @@ class Creative {
 }
 
 /// The creatives feed lists the active creatives for the Ad Exchange buyer
-/// accounts that the user has access to. Each entry in the feed corresponds to
-/// a single creative.
+/// accounts that the user has access to.
+///
+/// Each entry in the feed corresponds to a single creative.
 class CreativesList {
   /// A list of creatives.
   core.List<Creative> items;
@@ -2371,8 +2415,10 @@ class CreativesList {
   /// Resource type.
   core.String kind;
 
-  /// Continuation token used to page through creatives. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through creatives.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   CreativesList();
@@ -2418,25 +2464,31 @@ class DirectDeal {
   /// Whether the publisher for this deal is eligible for alcohol ads.
   core.bool allowsAlcohol;
 
-  /// The account id that this deal was negotiated for. It is either the buyer
-  /// or the client that this deal was negotiated on behalf of.
+  /// The account id that this deal was negotiated for.
+  ///
+  /// It is either the buyer or the client that this deal was negotiated on
+  /// behalf of.
   core.String buyerAccountId;
 
-  /// The currency code that applies to the fixed_cpm value. If not set then
-  /// assumed to be USD.
+  /// The currency code that applies to the fixed_cpm value.
+  ///
+  /// If not set then assumed to be USD.
   core.String currencyCode;
 
   /// The deal type such as programmatic reservation or fixed price and so on.
   core.String dealTier;
 
-  /// End time for when this deal stops being active. If not set then this deal
-  /// is valid until manually disabled by the publisher. In seconds since the
-  /// epoch.
+  /// End time for when this deal stops being active.
+  ///
+  /// If not set then this deal is valid until manually disabled by the
+  /// publisher. In seconds since the epoch.
   core.String endTime;
 
-  /// The fixed price for this direct deal. In cpm micros of currency according
-  /// to currency_code. If set, then this deal is eligible for the fixed price
-  /// tier of buying (highest priority, pay exactly the configured fixed price).
+  /// The fixed price for this direct deal.
+  ///
+  /// In cpm micros of currency according to currency_code. If set, then this
+  /// deal is eligible for the fixed price tier of buying (highest priority, pay
+  /// exactly the configured fixed price).
   core.String fixedCpm;
 
   /// Deal id.
@@ -2448,10 +2500,11 @@ class DirectDeal {
   /// Deal name.
   core.String name;
 
-  /// The minimum price for this direct deal. In cpm micros of currency
-  /// according to currency_code. If set, then this deal is eligible for the
-  /// private exchange tier of buying (below fixed price priority, run as a
-  /// second price auction).
+  /// The minimum price for this direct deal.
+  ///
+  /// In cpm micros of currency according to currency_code. If set, then this
+  /// deal is eligible for the private exchange tier of buying (below fixed
+  /// price priority, run as a second price auction).
   core.String privateExchangeMinCpm;
 
   /// If true, the publisher has opted to have their blocks ignored when a
@@ -2461,8 +2514,10 @@ class DirectDeal {
   /// The name of the publisher offering this direct deal.
   core.String sellerNetwork;
 
-  /// Start time for when this deal becomes active. If not set then this deal is
-  /// active immediately upon creation. In seconds since the epoch.
+  /// Start time for when this deal becomes active.
+  ///
+  /// If not set then this deal is active immediately upon creation. In seconds
+  /// since the epoch.
   core.String startTime;
 
   DirectDeal();
@@ -2567,8 +2622,10 @@ class DirectDeal {
 }
 
 /// A direct deals feed lists Direct Deals the Ad Exchange buyer account has
-/// access to. This includes direct deals set up for the buyer account as well
-/// as its merged stream seats.
+/// access to.
+///
+/// This includes direct deals set up for the buyer account as well as its
+/// merged stream seats.
 class DirectDealsList {
   /// A list of direct deals relevant for your account.
   core.List<DirectDeal> directDeals;
@@ -2611,8 +2668,9 @@ class PerformanceReport {
   /// The number of bid requests sent to your bidder.
   core.double bidRequestRate;
 
-  /// Rate of various prefiltering statuses per match. Please refer to the
-  /// callout-status-codes.txt file for different statuses.
+  /// Rate of various prefiltering statuses per match.
+  ///
+  /// Please refer to the callout-status-codes.txt file for different statuses.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2624,8 +2682,9 @@ class PerformanceReport {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> cookieMatcherStatusRate;
 
-  /// Rate of ads with a given status. Please refer to the
-  /// creative-status-codes.txt file for different statuses.
+  /// Rate of ads with a given status.
+  ///
+  /// Please refer to the creative-status-codes.txt file for different statuses.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2916,9 +2975,11 @@ class PretargetingConfigDimensions {
 }
 
 class PretargetingConfigExcludedPlacements {
-  /// The value of the placement. Interpretation depends on the placement type,
-  /// e.g. URL for a site placement, channel name for a channel placement, app
-  /// id for a mobile app placement.
+  /// The value of the placement.
+  ///
+  /// Interpretation depends on the placement type, e.g. URL for a site
+  /// placement, channel name for a channel placement, app id for a mobile app
+  /// placement.
   core.String token;
 
   /// The type of the placement.
@@ -2948,9 +3009,11 @@ class PretargetingConfigExcludedPlacements {
 }
 
 class PretargetingConfigPlacements {
-  /// The value of the placement. Interpretation depends on the placement type,
-  /// e.g. URL for a site placement, channel name for a channel placement, app
-  /// id for a mobile app placement.
+  /// The value of the placement.
+  ///
+  /// Interpretation depends on the placement type, e.g. URL for a site
+  /// placement, channel name for a channel placement, app id for a mobile app
+  /// placement.
   core.String token;
 
   /// The type of the placement.
@@ -2980,27 +3043,34 @@ class PretargetingConfigPlacements {
 }
 
 class PretargetingConfig {
-  /// The id for billing purposes, provided for reference. Leave this field
-  /// blank for insert requests; the id will be generated automatically.
+  /// The id for billing purposes, provided for reference.
+  ///
+  /// Leave this field blank for insert requests; the id will be generated
+  /// automatically.
   core.String billingId;
 
-  /// The config id; generated automatically. Leave this field blank for insert
-  /// requests.
+  /// The config id; generated automatically.
+  ///
+  /// Leave this field blank for insert requests.
   core.String configId;
 
-  /// The name of the config. Must be unique. Required for all requests.
+  /// The name of the config.
+  ///
+  /// Must be unique. Required for all requests.
   core.String configName;
 
   /// List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or
   /// PRETARGETING_CREATIVE_TYPE_VIDEO.
   core.List<core.String> creativeType;
 
-  /// Requests which allow one of these (width, height) pairs will match. All
-  /// pairs must be supported ad dimensions.
+  /// Requests which allow one of these (width, height) pairs will match.
+  ///
+  /// All pairs must be supported ad dimensions.
   core.List<PretargetingConfigDimensions> dimensions;
 
-  /// Requests with any of these content labels will not match. Values are from
-  /// content-labels.txt in the downloadable files section.
+  /// Requests with any of these content labels will not match.
+  ///
+  /// Values are from content-labels.txt in the downloadable files section.
   core.List<core.String> excludedContentLabels;
 
   /// Requests containing any of these geo criteria ids will not match.
@@ -3012,14 +3082,18 @@ class PretargetingConfig {
   /// Requests containing any of these users list ids will not match.
   core.List<core.String> excludedUserLists;
 
-  /// Requests containing any of these vertical ids will not match. Values are
-  /// from the publisher-verticals.txt file in the downloadable files section.
+  /// Requests containing any of these vertical ids will not match.
+  ///
+  /// Values are from the publisher-verticals.txt file in the downloadable files
+  /// section.
   core.List<core.String> excludedVerticals;
 
   /// Requests containing any of these geo criteria ids will match.
   core.List<core.String> geoCriteriaIds;
 
-  /// Whether this config is active. Required for all requests.
+  /// Whether this config is active.
+  ///
+  /// Required for all requests.
   core.bool isActive;
 
   /// The kind of the resource, i.e. "adexchangebuyer#pretargetingConfig".
@@ -3029,42 +3103,51 @@ class PretargetingConfig {
   core.List<core.String> languages;
 
   /// The maximum QPS allocated to this pretargeting configuration, used for
-  /// pretargeting-level QPS limits. By default, this is not set, which
-  /// indicates that there is no QPS limit at the configuration level (a global
-  /// or account-level limit may still be imposed).
+  /// pretargeting-level QPS limits.
+  ///
+  /// By default, this is not set, which indicates that there is no QPS limit at
+  /// the configuration level (a global or account-level limit may still be
+  /// imposed).
   core.String maximumQps;
 
-  /// Requests containing any of these mobile carrier ids will match. Values are
-  /// from mobile-carriers.csv in the downloadable files section.
+  /// Requests containing any of these mobile carrier ids will match.
+  ///
+  /// Values are from mobile-carriers.csv in the downloadable files section.
   core.List<core.String> mobileCarriers;
 
-  /// Requests containing any of these mobile device ids will match. Values are
-  /// from mobile-devices.csv in the downloadable files section.
+  /// Requests containing any of these mobile device ids will match.
+  ///
+  /// Values are from mobile-devices.csv in the downloadable files section.
   core.List<core.String> mobileDevices;
 
   /// Requests containing any of these mobile operating system version ids will
-  /// match. Values are from mobile-os.csv in the downloadable files section.
+  /// match.
+  ///
+  /// Values are from mobile-os.csv in the downloadable files section.
   core.List<core.String> mobileOperatingSystemVersions;
 
   /// Requests containing any of these placements will match.
   core.List<PretargetingConfigPlacements> placements;
 
-  /// Requests matching any of these platforms will match. Possible values are
-  /// PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and
-  /// PRETARGETING_PLATFORM_TABLET.
+  /// Requests matching any of these platforms will match.
+  ///
+  /// Possible values are PRETARGETING_PLATFORM_MOBILE,
+  /// PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET.
   core.List<core.String> platforms;
 
   /// Creative attributes should be declared here if all creatives corresponding
-  /// to this pretargeting configuration have that creative attribute. Values
-  /// are from pretargetable-creative-attributes.txt in the downloadable files
-  /// section.
+  /// to this pretargeting configuration have that creative attribute.
+  ///
+  /// Values are from pretargetable-creative-attributes.txt in the downloadable
+  /// files section.
   core.List<core.String> supportedCreativeAttributes;
 
   /// Requests containing any of these user list ids will match.
   core.List<core.String> userLists;
 
-  /// Requests that allow any of these vendor ids will match. Values are from
-  /// vendors.txt in the downloadable files section.
+  /// Requests that allow any of these vendor ids will match.
+  ///
+  /// Values are from vendors.txt in the downloadable files section.
   core.List<core.String> vendorTypes;
 
   /// Requests containing any of these vertical ids will match.

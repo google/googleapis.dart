@@ -658,8 +658,9 @@ class AccountUserProfilesResource {
     );
   }
 
-  /// Retrieves a list of account user profiles, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of account user profiles, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -780,8 +781,9 @@ class AccountUserProfilesResource {
     );
   }
 
-  /// Updates an existing account user profile. This method supports patch
-  /// semantics.
+  /// Updates an existing account user profile.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -971,8 +973,9 @@ class AccountsResource {
     );
   }
 
-  /// Retrieves the list of accounts, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves the list of accounts, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -1080,7 +1083,9 @@ class AccountsResource {
     );
   }
 
-  /// Updates an existing account. This method supports patch semantics.
+  /// Updates an existing account.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1325,7 +1330,9 @@ class AdsResource {
     );
   }
 
-  /// Retrieves a list of ads, possibly filtered. This method supports paging.
+  /// Retrieves a list of ads, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -1545,7 +1552,9 @@ class AdsResource {
     );
   }
 
-  /// Updates an existing ad. This method supports patch semantics.
+  /// Updates an existing ad.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1850,8 +1859,9 @@ class AdvertiserGroupsResource {
     );
   }
 
-  /// Retrieves a list of advertiser groups, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of advertiser groups, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -1953,8 +1963,9 @@ class AdvertiserGroupsResource {
     );
   }
 
-  /// Updates an existing advertiser group. This method supports patch
-  /// semantics.
+  /// Updates an existing advertiser group.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2334,8 +2345,9 @@ class AdvertiserLandingPagesResource {
     );
   }
 
-  /// Updates an existing advertiser landing page. This method supports patch
-  /// semantics.
+  /// Updates an existing advertiser landing page.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2585,8 +2597,9 @@ class AdvertisersResource {
     );
   }
 
-  /// Retrieves a list of advertisers, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves a list of advertisers, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -2733,7 +2746,9 @@ class AdvertisersResource {
     );
   }
 
-  /// Updates an existing advertiser. This method supports patch semantics.
+  /// Updates an existing advertiser.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2924,9 +2939,10 @@ class CampaignCreativeAssociationsResource {
   CampaignCreativeAssociationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Associates a creative with the specified campaign. This method creates a
-  /// default ad with dimensions matching the creative in the campaign if such a
-  /// default ad does not exist already.
+  /// Associates a creative with the specified campaign.
+  ///
+  /// This method creates a default ad with dimensions matching the creative in
+  /// the campaign if such a default ad does not exist already.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2994,6 +3010,7 @@ class CampaignCreativeAssociationsResource {
   }
 
   /// Retrieves the list of creative IDs associated with the specified campaign.
+  ///
   /// This method supports paging.
   ///
   /// Request parameters:
@@ -3200,8 +3217,9 @@ class CampaignsResource {
     );
   }
 
-  /// Retrieves a list of campaigns, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves a list of campaigns, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -3351,7 +3369,9 @@ class CampaignsResource {
     );
   }
 
-  /// Updates an existing campaign. This method supports patch semantics.
+  /// Updates an existing campaign.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3539,7 +3559,9 @@ class ChangeLogsResource {
     );
   }
 
-  /// Retrieves a list of change logs. This method supports paging.
+  /// Retrieves a list of change logs.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -4109,8 +4131,9 @@ class ContentCategoriesResource {
     );
   }
 
-  /// Retrieves a list of content categories, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of content categories, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -4212,8 +4235,9 @@ class ContentCategoriesResource {
     );
   }
 
-  /// Updates an existing content category. This method supports patch
-  /// semantics.
+  /// Updates an existing content category.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4876,8 +4900,9 @@ class CreativeFieldValuesResource {
     );
   }
 
-  /// Retrieves a list of creative field values, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of creative field values, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -4982,8 +5007,9 @@ class CreativeFieldValuesResource {
     );
   }
 
-  /// Updates an existing creative field value. This method supports patch
-  /// semantics.
+  /// Updates an existing creative field value.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5308,8 +5334,9 @@ class CreativeFieldsResource {
     );
   }
 
-  /// Retrieves a list of creative fields, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of creative fields, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -5419,7 +5446,9 @@ class CreativeFieldsResource {
     );
   }
 
-  /// Updates an existing creative field. This method supports patch semantics.
+  /// Updates an existing creative field.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5669,8 +5698,9 @@ class CreativeGroupsResource {
     );
   }
 
-  /// Retrieves a list of creative groups, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of creative groups, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -5787,7 +5817,9 @@ class CreativeGroupsResource {
     );
   }
 
-  /// Updates an existing creative group. This method supports patch semantics.
+  /// Updates an existing creative group.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6035,8 +6067,9 @@ class CreativesResource {
     );
   }
 
-  /// Retrieves a list of creatives, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves a list of creatives, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -6202,7 +6235,9 @@ class CreativesResource {
     );
   }
 
-  /// Updates an existing creative. This method supports patch semantics.
+  /// Updates an existing creative.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6593,8 +6628,9 @@ class DirectorySitesResource {
     );
   }
 
-  /// Retrieves a list of directory sites, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of directory sites, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -6826,10 +6862,12 @@ class DynamicTargetingKeysResource {
     );
   }
 
-  /// Inserts a new dynamic targeting key. Keys must be created at the
-  /// advertiser level before being assigned to the advertiser's ads, creatives,
-  /// or placements. There is a maximum of 1000 keys per advertiser, out of
-  /// which a maximum of 20 keys can be assigned per ad, creative, or placement.
+  /// Inserts a new dynamic targeting key.
+  ///
+  /// Keys must be created at the advertiser level before being assigned to the
+  /// advertiser's ads, creatives, or placements. There is a maximum of 1000
+  /// keys per advertiser, out of which a maximum of 20 keys can be assigned per
+  /// ad, creative, or placement.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7292,7 +7330,9 @@ class EventTagsResource {
     );
   }
 
-  /// Updates an existing event tag. This method supports patch semantics.
+  /// Updates an existing event tag.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7421,8 +7461,9 @@ class FilesResource {
 
   FilesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves a report file by its report ID and file ID. This method supports
-  /// media download.
+  /// Retrieves a report file by its report ID and file ID.
+  ///
+  /// This method supports media download.
   ///
   /// Request parameters:
   ///
@@ -7835,8 +7876,9 @@ class FloodlightActivitiesResource {
     );
   }
 
-  /// Retrieves a list of floodlight activities, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of floodlight activities, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -8001,8 +8043,9 @@ class FloodlightActivitiesResource {
     );
   }
 
-  /// Updates an existing floodlight activity. This method supports patch
-  /// semantics.
+  /// Updates an existing floodlight activity.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8253,8 +8296,9 @@ class FloodlightActivityGroupsResource {
     );
   }
 
-  /// Retrieves a list of floodlight activity groups, possibly filtered. This
-  /// method supports paging.
+  /// Retrieves a list of floodlight activity groups, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -8386,8 +8430,9 @@ class FloodlightActivityGroupsResource {
     );
   }
 
-  /// Updates an existing floodlight activity group. This method supports patch
-  /// semantics.
+  /// Updates an existing floodlight activity group.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8639,8 +8684,9 @@ class FloodlightConfigurationsResource {
     );
   }
 
-  /// Updates an existing floodlight configuration. This method supports patch
-  /// semantics.
+  /// Updates an existing floodlight configuration.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8839,8 +8885,9 @@ class InventoryItemsResource {
     );
   }
 
-  /// Retrieves a list of inventory items, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of inventory items, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -9670,8 +9717,9 @@ class OrderDocumentsResource {
     );
   }
 
-  /// Retrieves a list of order documents, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of order documents, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -9875,8 +9923,9 @@ class OrdersResource {
     );
   }
 
-  /// Retrieves a list of orders, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves a list of orders, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -10116,8 +10165,9 @@ class PlacementGroupsResource {
     );
   }
 
-  /// Retrieves a list of placement groups, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of placement groups, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -10322,7 +10372,9 @@ class PlacementGroupsResource {
     );
   }
 
-  /// Updates an existing placement group. This method supports patch semantics.
+  /// Updates an existing placement group.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10632,8 +10684,9 @@ class PlacementStrategiesResource {
     );
   }
 
-  /// Retrieves a list of placement strategies, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of placement strategies, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -10736,8 +10789,9 @@ class PlacementStrategiesResource {
     );
   }
 
-  /// Updates an existing placement strategy. This method supports patch
-  /// semantics.
+  /// Updates an existing placement strategy.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11058,8 +11112,9 @@ class PlacementsResource {
     );
   }
 
-  /// Retrieves a list of placements, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves a list of placements, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -11277,7 +11332,9 @@ class PlacementsResource {
     );
   }
 
-  /// Updates an existing placement. This method supports patch semantics.
+  /// Updates an existing placement.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11703,8 +11760,9 @@ class ProjectsResource {
     );
   }
 
-  /// Retrieves a list of projects, possibly filtered. This method supports
-  /// paging .
+  /// Retrieves a list of projects, possibly filtered.
+  ///
+  /// This method supports paging .
   ///
   /// Request parameters:
   ///
@@ -11938,8 +11996,9 @@ class RemarketingListSharesResource {
     );
   }
 
-  /// Updates an existing remarketing list share. This method supports patch
-  /// semantics.
+  /// Updates an existing remarketing list share.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12189,8 +12248,9 @@ class RemarketingListsResource {
     );
   }
 
-  /// Retrieves a list of remarketing lists, possibly filtered. This method
-  /// supports paging.
+  /// Retrieves a list of remarketing lists, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -12306,8 +12366,9 @@ class RemarketingListsResource {
     );
   }
 
-  /// Updates an existing remarketing list. This method supports patch
-  /// semantics.
+  /// Updates an existing remarketing list.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12712,7 +12773,9 @@ class ReportsResource {
     );
   }
 
-  /// Updates an existing report. This method supports patch semantics.
+  /// Updates an existing report.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12982,8 +13045,9 @@ class ReportsFilesResource {
 
   ReportsFilesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves a report file by its report ID and file ID. This method supports
-  /// media download.
+  /// Retrieves a report file by its report ID and file ID.
+  ///
+  /// This method supports media download.
   ///
   /// Request parameters:
   ///
@@ -13280,7 +13344,9 @@ class SitesResource {
     );
   }
 
-  /// Retrieves a list of sites, possibly filtered. This method supports paging.
+  /// Retrieves a list of sites, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -13445,7 +13511,9 @@ class SitesResource {
     );
   }
 
-  /// Updates an existing site. This method supports patch semantics.
+  /// Updates an existing site.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13691,10 +13759,11 @@ class SizesResource {
     );
   }
 
-  /// Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally
-  /// unique and may include values not currently in use by your account. Due to
-  /// this, the list of sizes returned by this method may differ from the list
-  /// seen in the Trafficking UI.
+  /// Retrieves a list of sizes, possibly filtered.
+  ///
+  /// Retrieved sizes are globally unique and may include values not currently
+  /// in use by your account. Due to this, the list of sizes returned by this
+  /// method may differ from the list seen in the Trafficking UI.
   ///
   /// Request parameters:
   ///
@@ -13898,8 +13967,9 @@ class SubaccountsResource {
     );
   }
 
-  /// Gets a list of subaccounts, possibly filtered. This method supports
-  /// paging.
+  /// Gets a list of subaccounts, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -14001,7 +14071,9 @@ class SubaccountsResource {
     );
   }
 
-  /// Updates an existing subaccount. This method supports patch semantics.
+  /// Updates an existing subaccount.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -14193,8 +14265,9 @@ class TargetableRemarketingListsResource {
     );
   }
 
-  /// Retrieves a list of targetable remarketing lists, possibly filtered. This
-  /// method supports paging.
+  /// Retrieves a list of targetable remarketing lists, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -14430,8 +14503,9 @@ class TargetingTemplatesResource {
     );
   }
 
-  /// Retrieves a list of targeting templates, optionally filtered. This method
-  /// supports paging.
+  /// Retrieves a list of targeting templates, optionally filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -14539,8 +14613,9 @@ class TargetingTemplatesResource {
     );
   }
 
-  /// Updates an existing targeting template. This method supports patch
-  /// semantics.
+  /// Updates an existing targeting template.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -15195,8 +15270,9 @@ class UserRolesResource {
     );
   }
 
-  /// Retrieves a list of user roles, possibly filtered. This method supports
-  /// paging.
+  /// Retrieves a list of user roles, possibly filtered.
+  ///
+  /// This method supports paging.
   ///
   /// Request parameters:
   ///
@@ -15311,7 +15387,9 @@ class UserRolesResource {
     );
   }
 
-  /// Updates an existing user role. This method supports patch semantics.
+  /// Updates an existing user role.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -15559,8 +15637,9 @@ class Account {
   /// Account permissions assigned to this account.
   core.List<core.String> accountPermissionIds;
 
-  /// Profile for this account. This is a read-only field that can be left
-  /// blank.
+  /// Profile for this account.
+  ///
+  /// This is a read-only field that can be left blank.
   /// Possible string values are:
   /// - "ACCOUNT_PROFILE_BASIC"
   /// - "ACCOUNT_PROFILE_STANDARD"
@@ -15581,8 +15660,9 @@ class Account {
   /// - "ACTIVE_ADS_TIER_1M"
   core.String activeAdsLimitTier;
 
-  /// Whether to serve creatives with Active View tags. If disabled, viewability
-  /// data will not be available for any impressions.
+  /// Whether to serve creatives with Active View tags.
+  ///
+  /// If disabled, viewability data will not be available for any impressions.
   core.bool activeViewOptOut;
 
   /// User role permissions available to the user roles of this account.
@@ -15591,17 +15671,19 @@ class Account {
   /// ID of the country associated with this account.
   core.String countryId;
 
-  /// ID of currency associated with this account. This is a required field.
-  /// Acceptable values are: - "1" for USD - "2" for GBP - "3" for ESP - "4" for
-  /// SEK - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD - "9" for FRF
-  /// - "10" for ITL - "11" for DKK - "12" for NOK - "13" for FIM - "14" for ZAR
-  /// - "15" for IEP - "16" for NLG - "17" for EUR - "18" for KRW - "19" for TWD
-  /// - "20" for SGD - "21" for CNY - "22" for HKD - "23" for NZD - "24" for MYR
-  /// - "25" for BRL - "26" for PTE - "28" for CLP - "29" for TRY - "30" for ARS
-  /// - "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP
-  /// - "36" for GTQ - "37" for PLN - "39" for INR - "40" for THB - "41" for IDR
-  /// - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB - "46" for AED
-  /// - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP
+  /// ID of currency associated with this account.
+  ///
+  /// This is a required field. Acceptable values are: - "1" for USD - "2" for
+  /// GBP - "3" for ESP - "4" for SEK - "5" for CAD - "6" for JPY - "7" for DEM
+  /// - "8" for AUD - "9" for FRF - "10" for ITL - "11" for DKK - "12" for NOK -
+  /// "13" for FIM - "14" for ZAR - "15" for IEP - "16" for NLG - "17" for EUR -
+  /// "18" for KRW - "19" for TWD - "20" for SGD - "21" for CNY - "22" for HKD -
+  /// "23" for NZD - "24" for MYR - "25" for BRL - "26" for PTE - "28" for CLP -
+  /// "29" for TRY - "30" for ARS - "31" for PEN - "32" for ILS - "33" for CHF -
+  /// "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN - "39" for INR -
+  /// "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF -
+  /// "45" for RUB - "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN -
+  /// "50" for NGN - "51" for EGP
   core.String currencyId;
 
   /// Default placement dimensions for this account.
@@ -15610,27 +15692,34 @@ class Account {
   /// Description of this account.
   core.String description;
 
-  /// ID of this account. This is a read-only, auto-generated field.
+  /// ID of this account.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#account".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#account".
   core.String kind;
 
-  /// Locale of this account. Acceptable values are: - "cs" (Czech) - "de"
-  /// (German) - "en" (English) - "en-GB" (English United Kingdom) - "es"
-  /// (Spanish) - "fr" (French) - "it" (Italian) - "ja" (Japanese) - "ko"
-  /// (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) -
-  /// "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW"
-  /// (Chinese Traditional)
+  /// Locale of this account.
+  ///
+  /// Acceptable values are: - "cs" (Czech) - "de" (German) - "en" (English) -
+  /// "en-GB" (English United Kingdom) - "es" (Spanish) - "fr" (French) - "it"
+  /// (Italian) - "ja" (Japanese) - "ko" (Korean) - "pl" (Polish) - "pt-BR"
+  /// (Portuguese Brazil) - "ru" (Russian) - "sv" (Swedish) - "tr" (Turkish) -
+  /// "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional)
   core.String locale;
 
-  /// Maximum image size allowed for this account, in kilobytes. Value must be
-  /// greater than or equal to 1.
+  /// Maximum image size allowed for this account, in kilobytes.
+  ///
+  /// Value must be greater than or equal to 1.
   core.String maximumImageSize;
 
-  /// Name of this account. This is a required field, and must be less than 128
-  /// characters long and be globally unique.
+  /// Name of this account.
+  ///
+  /// This is a required field, and must be less than 128 characters long and be
+  /// globally unique.
   core.String name;
 
   /// Whether campaigns created in this account will be enabled for Nielsen OCR
@@ -15643,8 +15732,9 @@ class Account {
   /// Share Path to Conversion reports with Twitter.
   core.bool shareReportsWithTwitter;
 
-  /// File size limit in kilobytes of Rich Media teaser creatives. Acceptable
-  /// values are 1 to 10240, inclusive.
+  /// File size limit in kilobytes of Rich Media teaser creatives.
+  ///
+  /// Acceptable values are 1 to 10240, inclusive.
   core.String teaserSizeLimit;
 
   Account();
@@ -15800,8 +15890,9 @@ class AccountActiveAdSummary {
   /// Ads that can be activated for the account.
   core.String availableAds;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountActiveAdSummary".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountActiveAdSummary".
   core.String kind;
 
   AccountActiveAdSummary();
@@ -15846,18 +15937,23 @@ class AccountActiveAdSummary {
 }
 
 /// AccountPermissions contains information about a particular account
-/// permission. Some features of Campaign Manager require an account permission
-/// to be present in the account.
+/// permission.
+///
+/// Some features of Campaign Manager require an account permission to be
+/// present in the account.
 class AccountPermission {
-  /// Account profiles associated with this account permission. Possible values
-  /// are: - "ACCOUNT_PROFILE_BASIC" - "ACCOUNT_PROFILE_STANDARD"
+  /// Account profiles associated with this account permission.
+  ///
+  /// Possible values are: - "ACCOUNT_PROFILE_BASIC" -
+  /// "ACCOUNT_PROFILE_STANDARD"
   core.List<core.String> accountProfiles;
 
   /// ID of this account permission.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountPermission".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermission".
   core.String kind;
 
   /// Administrative level required to enable this account permission.
@@ -15922,13 +16018,15 @@ class AccountPermission {
 }
 
 /// AccountPermissionGroups contains a mapping of permission group IDs to names.
+///
 /// A permission group is a grouping of account permissions.
 class AccountPermissionGroup {
   /// ID of this account permission group.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountPermissionGroup".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermissionGroup".
   core.String kind;
 
   /// Name of this account permission group.
@@ -15968,7 +16066,9 @@ class AccountPermissionGroupsListResponse {
   /// Account permission group collection.
   core.List<AccountPermissionGroup> accountPermissionGroups;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#accountPermissionGroupsListResponse".
   core.String kind;
 
@@ -16005,8 +16105,9 @@ class AccountPermissionsListResponse {
   /// Account permission collection.
   core.List<AccountPermission> accountPermissions;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountPermissionsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermissionsListResponse".
   core.String kind;
 
   AccountPermissionsListResponse();
@@ -16037,15 +16138,19 @@ class AccountPermissionsListResponse {
 }
 
 /// AccountUserProfiles contains properties of a Campaign Manager user profile.
+///
 /// This resource is specifically for managing user profiles, whereas
 /// UserProfiles is for accessing the API.
 class AccountUserProfile {
-  /// Account ID of the user profile. This is a read-only field that can be left
-  /// blank.
+  /// Account ID of the user profile.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Whether this user profile is active. This defaults to false, and must be
-  /// set true on insert for the user profile to be usable.
+  /// Whether this user profile is active.
+  ///
+  /// This defaults to false, and must be set true on insert for the user
+  /// profile to be usable.
   core.bool active;
 
   /// Filter that describes which advertisers are visible to the user profile.
@@ -16057,47 +16162,59 @@ class AccountUserProfile {
   /// Comments for this user profile.
   core.String comments;
 
-  /// Email of the user profile. The email addresss must be linked to a Google
-  /// Account. This field is required on insertion and is read-only after
-  /// insertion.
+  /// Email of the user profile.
+  ///
+  /// The email addresss must be linked to a Google Account. This field is
+  /// required on insertion and is read-only after insertion.
   core.String email;
 
-  /// ID of the user profile. This is a read-only, auto-generated field.
+  /// ID of the user profile.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountUserProfile".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountUserProfile".
   core.String kind;
 
-  /// Locale of the user profile. This is a required field. Acceptable values
-  /// are: - "cs" (Czech) - "de" (German) - "en" (English) - "en-GB" (English
-  /// United Kingdom) - "es" (Spanish) - "fr" (French) - "it" (Italian) - "ja"
-  /// (Japanese) - "ko" (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) -
-  /// "ru" (Russian) - "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese
-  /// Simplified) - "zh-TW" (Chinese Traditional)
+  /// Locale of the user profile.
+  ///
+  /// This is a required field. Acceptable values are: - "cs" (Czech) - "de"
+  /// (German) - "en" (English) - "en-GB" (English United Kingdom) - "es"
+  /// (Spanish) - "fr" (French) - "it" (Italian) - "ja" (Japanese) - "ko"
+  /// (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) -
+  /// "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW"
+  /// (Chinese Traditional)
   core.String locale;
 
-  /// Name of the user profile. This is a required field. Must be less than 64
-  /// characters long, must be globally unique, and cannot contain whitespace or
-  /// any of the following characters: "&;<>"#%,".
+  /// Name of the user profile.
+  ///
+  /// This is a required field. Must be less than 64 characters long, must be
+  /// globally unique, and cannot contain whitespace or any of the following
+  /// characters: "&;<>"#%,".
   core.String name;
 
   /// Filter that describes which sites are visible to the user profile.
   ObjectFilter siteFilter;
 
-  /// Subaccount ID of the user profile. This is a read-only field that can be
-  /// left blank.
+  /// Subaccount ID of the user profile.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
-  /// Trafficker type of this user profile. This is a read-only field.
+  /// Trafficker type of this user profile.
+  ///
+  /// This is a read-only field.
   /// Possible string values are:
   /// - "INTERNAL_NON_TRAFFICKER"
   /// - "INTERNAL_TRAFFICKER"
   /// - "EXTERNAL_TRAFFICKER"
   core.String traffickerType;
 
-  /// User type of the user profile. This is a read-only field that can be left
-  /// blank.
+  /// User type of the user profile.
+  ///
+  /// This is a read-only field that can be left blank.
   /// Possible string values are:
   /// - "NORMAL_USER"
   /// - "SUPER_USER"
@@ -16108,7 +16225,9 @@ class AccountUserProfile {
   /// Filter that describes which user roles are visible to the user profile.
   ObjectFilter userRoleFilter;
 
-  /// User role ID of the user profile. This is a required field.
+  /// User role ID of the user profile.
+  ///
+  /// This is a required field.
   core.String userRoleId;
 
   AccountUserProfile();
@@ -16227,8 +16346,9 @@ class AccountUserProfilesListResponse {
   /// Account user profile collection.
   core.List<AccountUserProfile> accountUserProfiles;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountUserProfilesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountUserProfilesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -16272,8 +16392,9 @@ class AccountsListResponse {
   /// Account collection.
   core.List<Account> accounts;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#accountsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -16313,8 +16434,10 @@ class AccountsListResponse {
 
 /// Represents an activity group.
 class Activities {
-  /// List of activity filters. The dimension values need to be all either of
-  /// type "dfa:activity" or "dfa:activityGroup".
+  /// List of activity filters.
+  ///
+  /// The dimension values need to be all either of type "dfa:activity" or
+  /// "dfa:activityGroup".
   core.List<DimensionValue> filters;
 
   /// The kind of resource this is, in this case dfareporting#activities.
@@ -16359,52 +16482,71 @@ class Activities {
 
 /// Contains properties of a Campaign Manager ad.
 class Ad {
-  /// Account ID of this ad. This is a read-only field that can be left blank.
+  /// Account ID of this ad.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Whether this ad is active. When true, archived must be false.
+  /// Whether this ad is active.
+  ///
+  /// When true, archived must be false.
   core.bool active;
 
-  /// Advertiser ID of this ad. This is a required field on insertion.
+  /// Advertiser ID of this ad.
+  ///
+  /// This is a required field on insertion.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
-  /// Whether this ad is archived. When true, active must be false.
+  /// Whether this ad is archived.
+  ///
+  /// When true, active must be false.
   core.bool archived;
 
-  /// Audience segment ID that is being targeted for this ad. Applicable when
-  /// type is AD_SERVING_STANDARD_AD.
+  /// Audience segment ID that is being targeted for this ad.
+  ///
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   core.String audienceSegmentId;
 
-  /// Campaign ID of this ad. This is a required field on insertion.
+  /// Campaign ID of this ad.
+  ///
+  /// This is a required field on insertion.
   core.String campaignId;
 
-  /// Dimension value for the ID of the campaign. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the campaign.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue campaignIdDimensionValue;
 
-  /// Click-through URL for this ad. This is a required field on insertion.
-  /// Applicable when type is AD_SERVING_CLICK_TRACKER.
+  /// Click-through URL for this ad.
+  ///
+  /// This is a required field on insertion. Applicable when type is
+  /// AD_SERVING_CLICK_TRACKER.
   ClickThroughUrl clickThroughUrl;
 
-  /// Click-through URL suffix properties for this ad. Applies to the URL in the
-  /// ad or (if overriding ad properties) the URL in the creative.
+  /// Click-through URL suffix properties for this ad.
+  ///
+  /// Applies to the URL in the ad or (if overriding ad properties) the URL in
+  /// the creative.
   ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
 
   /// Comments for this ad.
   core.String comments;
 
-  /// Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD.
-  /// DISPLAY and DISPLAY_INTERSTITIAL refer to either rendering on desktop or
-  /// on mobile devices or in mobile apps for regular or interstitial ads,
-  /// respectively. APP and APP_INTERSTITIAL are only used for existing default
-  /// ads. New mobile placements must be assigned DISPLAY or
-  /// DISPLAY_INTERSTITIAL and default ads created for those placements will be
-  /// limited to those compatibility types. IN_STREAM_VIDEO refers to rendering
-  /// in-stream video ads developed with the VAST standard.
+  /// Compatibility of this ad.
+  ///
+  /// Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and
+  /// DISPLAY_INTERSTITIAL refer to either rendering on desktop or on mobile
+  /// devices or in mobile apps for regular or interstitial ads, respectively.
+  /// APP and APP_INTERSTITIAL are only used for existing default ads. New
+  /// mobile placements must be assigned DISPLAY or DISPLAY_INTERSTITIAL and
+  /// default ads created for those placements will be limited to those
+  /// compatibility types. IN_STREAM_VIDEO refers to rendering in-stream video
+  /// ads developed with the VAST standard.
   /// Possible string values are:
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
@@ -16414,114 +16556,143 @@ class Ad {
   /// - "IN_STREAM_AUDIO"
   core.String compatibility;
 
-  /// Information about the creation of this ad. This is a read-only field.
+  /// Information about the creation of this ad.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo createInfo;
 
-  /// Creative group assignments for this ad. Applicable when type is
-  /// AD_SERVING_CLICK_TRACKER. Only one assignment per creative group number is
-  /// allowed for a maximum of two assignments.
+  /// Creative group assignments for this ad.
+  ///
+  /// Applicable when type is AD_SERVING_CLICK_TRACKER. Only one assignment per
+  /// creative group number is allowed for a maximum of two assignments.
   core.List<CreativeGroupAssignment> creativeGroupAssignments;
 
-  /// Creative rotation for this ad. Applicable when type is
-  /// AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING.
-  /// When type is AD_SERVING_DEFAULT_AD, this field should have exactly one
-  /// creativeAssignment .
+  /// Creative rotation for this ad.
+  ///
+  /// Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or
+  /// AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should
+  /// have exactly one creativeAssignment .
   CreativeRotation creativeRotation;
 
-  /// Time and day targeting information for this ad. This field must be left
-  /// blank if the ad is using a targeting template. Applicable when type is
-  /// AD_SERVING_STANDARD_AD.
+  /// Time and day targeting information for this ad.
+  ///
+  /// This field must be left blank if the ad is using a targeting template.
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   DayPartTargeting dayPartTargeting;
 
   /// Default click-through event tag properties for this ad.
   DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
 
-  /// Delivery schedule information for this ad. Applicable when type is
-  /// AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING. This field along with
-  /// subfields priority and impressionRatio are required on insertion when type
-  /// is AD_SERVING_STANDARD_AD.
+  /// Delivery schedule information for this ad.
+  ///
+  /// Applicable when type is AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING.
+  /// This field along with subfields priority and impressionRatio are required
+  /// on insertion when type is AD_SERVING_STANDARD_AD.
   DeliverySchedule deliverySchedule;
 
-  /// Whether this ad is a dynamic click tracker. Applicable when type is
-  /// AD_SERVING_CLICK_TRACKER. This is a required field on insert, and is
-  /// read-only after insert.
+  /// Whether this ad is a dynamic click tracker.
+  ///
+  /// Applicable when type is AD_SERVING_CLICK_TRACKER. This is a required field
+  /// on insert, and is read-only after insert.
   core.bool dynamicClickTracker;
   core.DateTime endTime;
 
   /// Event tag overrides for this ad.
   core.List<EventTagOverride> eventTagOverrides;
 
-  /// Geographical targeting information for this ad. This field must be left
-  /// blank if the ad is using a targeting template. Applicable when type is
-  /// AD_SERVING_STANDARD_AD.
+  /// Geographical targeting information for this ad.
+  ///
+  /// This field must be left blank if the ad is using a targeting template.
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   GeoTargeting geoTargeting;
 
-  /// ID of this ad. This is a read-only, auto-generated field.
+  /// ID of this ad.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this ad. This is a read-only, auto-generated
-  /// field.
+  /// Dimension value for the ID of this ad.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Key-value targeting information for this ad. This field must be left blank
-  /// if the ad is using a targeting template. Applicable when type is
-  /// AD_SERVING_STANDARD_AD.
+  /// Key-value targeting information for this ad.
+  ///
+  /// This field must be left blank if the ad is using a targeting template.
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   KeyValueTargetingExpression keyValueTargetingExpression;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#ad".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#ad".
   core.String kind;
 
-  /// Language targeting information for this ad. This field must be left blank
-  /// if the ad is using a targeting template. Applicable when type is
-  /// AD_SERVING_STANDARD_AD.
+  /// Language targeting information for this ad.
+  ///
+  /// This field must be left blank if the ad is using a targeting template.
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   LanguageTargeting languageTargeting;
 
-  /// Information about the most recent modification of this ad. This is a
-  /// read-only field.
+  /// Information about the most recent modification of this ad.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo lastModifiedInfo;
 
-  /// Name of this ad. This is a required field and must be less than 256
-  /// characters long.
+  /// Name of this ad.
+  ///
+  /// This is a required field and must be less than 256 characters long.
   core.String name;
 
   /// Placement assignments for this ad.
   core.List<PlacementAssignment> placementAssignments;
 
-  /// Remarketing list targeting expression for this ad. This field must be left
-  /// blank if the ad is using a targeting template. Applicable when type is
-  /// AD_SERVING_STANDARD_AD.
+  /// Remarketing list targeting expression for this ad.
+  ///
+  /// This field must be left blank if the ad is using a targeting template.
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   ListTargetingExpression remarketingListExpression;
 
-  /// Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD.
+  /// Size of this ad.
+  ///
+  /// Applicable when type is AD_SERVING_DEFAULT_AD.
   Size size;
 
-  /// Whether this ad is ssl compliant. This is a read-only field that is
-  /// auto-generated when the ad is inserted or updated.
+  /// Whether this ad is ssl compliant.
+  ///
+  /// This is a read-only field that is auto-generated when the ad is inserted
+  /// or updated.
   core.bool sslCompliant;
 
-  /// Whether this ad requires ssl. This is a read-only field that is
-  /// auto-generated when the ad is inserted or updated.
+  /// Whether this ad requires ssl.
+  ///
+  /// This is a read-only field that is auto-generated when the ad is inserted
+  /// or updated.
   core.bool sslRequired;
   core.DateTime startTime;
 
-  /// Subaccount ID of this ad. This is a read-only field that can be left
-  /// blank.
+  /// Subaccount ID of this ad.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   /// Targeting template ID, used to apply preconfigured targeting information
-  /// to this ad. This cannot be set while any of dayPartTargeting,
-  /// geoTargeting, keyValueTargetingExpression, languageTargeting,
-  /// remarketingListExpression, or technologyTargeting are set. Applicable when
-  /// type is AD_SERVING_STANDARD_AD.
+  /// to this ad.
+  ///
+  /// This cannot be set while any of dayPartTargeting, geoTargeting,
+  /// keyValueTargetingExpression, languageTargeting, remarketingListExpression,
+  /// or technologyTargeting are set. Applicable when type is
+  /// AD_SERVING_STANDARD_AD.
   core.String targetingTemplateId;
 
-  /// Technology platform targeting information for this ad. This field must be
-  /// left blank if the ad is using a targeting template. Applicable when type
-  /// is AD_SERVING_STANDARD_AD.
+  /// Technology platform targeting information for this ad.
+  ///
+  /// This field must be left blank if the ad is using a targeting template.
+  /// Applicable when type is AD_SERVING_STANDARD_AD.
   TechnologyTargeting technologyTargeting;
 
-  /// Type of ad. This is a required field on insertion. Note that default ads (
+  /// Type of ad.
+  ///
+  /// This is a required field on insertion. Note that default ads (
   /// AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource).
   /// Possible string values are:
   /// - "AD_SERVING_STANDARD_AD"
@@ -16820,24 +16991,30 @@ class Ad {
 
 /// Campaign ad blocking settings.
 class AdBlockingConfiguration {
-  /// Click-through URL used by brand-neutral ads. This is a required field when
-  /// overrideClickThroughUrl is set to true.
+  /// Click-through URL used by brand-neutral ads.
+  ///
+  /// This is a required field when overrideClickThroughUrl is set to true.
   core.String clickThroughUrl;
 
-  /// ID of a creative bundle to use for this campaign. If set, brand-neutral
-  /// ads will select creatives from this bundle. Otherwise, a default
-  /// transparent pixel will be used.
+  /// ID of a creative bundle to use for this campaign.
+  ///
+  /// If set, brand-neutral ads will select creatives from this bundle.
+  /// Otherwise, a default transparent pixel will be used.
   core.String creativeBundleId;
 
-  /// Whether this campaign has enabled ad blocking. When true, ad blocking is
-  /// enabled for placements in the campaign, but this may be overridden by site
-  /// and placement settings. When false, ad blocking is disabled for all
-  /// placements under the campaign, regardless of site and placement settings.
+  /// Whether this campaign has enabled ad blocking.
+  ///
+  /// When true, ad blocking is enabled for placements in the campaign, but this
+  /// may be overridden by site and placement settings. When false, ad blocking
+  /// is disabled for all placements under the campaign, regardless of site and
+  /// placement settings.
   core.bool enabled;
 
   /// Whether the brand-neutral ad's click-through URL comes from the campaign's
-  /// creative bundle or the override URL. Must be set to true if ad blocking is
-  /// enabled and no creative bundle is configured.
+  /// creative bundle or the override URL.
+  ///
+  /// Must be set to true if ad blocking is enabled and no creative bundle is
+  /// configured.
   core.bool overrideClickThroughUrl;
 
   AdBlockingConfiguration();
@@ -16880,11 +17057,13 @@ class AdSlot {
   /// Comment for this ad slot.
   core.String comment;
 
-  /// Ad slot compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering
-  /// either on desktop, mobile devices or in mobile apps for regular or
-  /// interstitial ads respectively. APP and APP_INTERSTITIAL are for rendering
-  /// in mobile apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads
-  /// developed with the VAST standard.
+  /// Ad slot compatibility.
+  ///
+  /// DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop,
+  /// mobile devices or in mobile apps for regular or interstitial ads
+  /// respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
+  /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
+  /// the VAST standard.
   /// Possible string values are:
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
@@ -16980,8 +17159,9 @@ class AdsListResponse {
   /// Ad collection.
   core.List<Ad> ads;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#adsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#adsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -17025,13 +17205,16 @@ class Advertiser {
   /// blank.
   core.String accountId;
 
-  /// ID of the advertiser group this advertiser belongs to. You can group
-  /// advertisers for reporting purposes, allowing you to see aggregated
-  /// information for all advertisers in each group.
+  /// ID of the advertiser group this advertiser belongs to.
+  ///
+  /// You can group advertisers for reporting purposes, allowing you to see
+  /// aggregated information for all advertisers in each group.
   core.String advertiserGroupId;
 
   /// Suffix added to click-through URL of ad creative associations under this
-  /// advertiser. Must be less than 129 characters long.
+  /// advertiser.
+  ///
+  /// Must be less than 129 characters long.
   core.String clickThroughUrlSuffix;
 
   /// ID of the click-through event tag to apply by default to the landing pages
@@ -17041,38 +17224,47 @@ class Advertiser {
   /// Default email address used in sender field for tag emails.
   core.String defaultEmail;
 
-  /// Floodlight configuration ID of this advertiser. The floodlight
-  /// configuration ID will be created automatically, so on insert this field
-  /// should be left blank. This field can be set to another advertiser's
-  /// floodlight configuration ID in order to share that advertiser's floodlight
-  /// configuration with this advertiser, so long as: - This advertiser's
-  /// original floodlight configuration is not already associated with
-  /// floodlight activities or floodlight activity groups. - This advertiser's
-  /// original floodlight configuration is not already shared with another
-  /// advertiser.
+  /// Floodlight configuration ID of this advertiser.
+  ///
+  /// The floodlight configuration ID will be created automatically, so on
+  /// insert this field should be left blank. This field can be set to another
+  /// advertiser's floodlight configuration ID in order to share that
+  /// advertiser's floodlight configuration with this advertiser, so long as: -
+  /// This advertiser's original floodlight configuration is not already
+  /// associated with floodlight activities or floodlight activity groups. -
+  /// This advertiser's original floodlight configuration is not already shared
+  /// with another advertiser.
   core.String floodlightConfigurationId;
 
-  /// Dimension value for the ID of the floodlight configuration. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of the floodlight configuration.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue floodlightConfigurationIdDimensionValue;
 
-  /// ID of this advertiser. This is a read-only, auto-generated field.
+  /// ID of this advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of this advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#advertiser".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertiser".
   core.String kind;
 
-  /// Name of this advertiser. This is a required field and must be less than
-  /// 256 characters long and unique among advertisers of the same account.
+  /// Name of this advertiser.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among advertisers of the same account.
   core.String name;
 
-  /// Original floodlight configuration before any sharing occurred. Set the
-  /// floodlightConfigurationId of this advertiser to
+  /// Original floodlight configuration before any sharing occurred.
+  ///
+  /// Set the floodlightConfigurationId of this advertiser to
   /// originalFloodlightConfigurationId to unshare the advertiser's current
   /// floodlight configuration. You cannot unshare an advertiser's floodlight
   /// configuration if the shared configuration has activities associated with
@@ -17204,20 +17396,25 @@ class Advertiser {
 /// Groups advertisers together so that reports can be generated for the entire
 /// group at once.
 class AdvertiserGroup {
-  /// Account ID of this advertiser group. This is a read-only field that can be
-  /// left blank.
+  /// Account ID of this advertiser group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// ID of this advertiser group. This is a read-only, auto-generated field.
+  /// ID of this advertiser group.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#advertiserGroup".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertiserGroup".
   core.String kind;
 
-  /// Name of this advertiser group. This is a required field and must be less
-  /// than 256 characters long and unique among advertiser groups of the same
-  /// account.
+  /// Name of this advertiser group.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among advertiser groups of the same account.
   core.String name;
 
   AdvertiserGroup();
@@ -17260,8 +17457,9 @@ class AdvertiserGroupsListResponse {
   /// Advertiser group collection.
   core.List<AdvertiserGroup> advertiserGroups;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#advertiserGroupsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertiserGroupsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -17302,8 +17500,9 @@ class AdvertiserGroupsListResponse {
 
 /// Landing Page List Response
 class AdvertiserLandingPagesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#advertiserLandingPagesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertiserLandingPagesListResponse".
   core.String kind;
 
   /// Landing page collection
@@ -17350,8 +17549,9 @@ class AdvertisersListResponse {
   /// Advertiser collection.
   core.List<Advertiser> advertisers;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#advertisersListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertisersListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -17392,16 +17592,21 @@ class AdvertisersListResponse {
 
 /// Audience Segment.
 class AudienceSegment {
-  /// Weight allocated to this segment. The weight assigned will be understood
-  /// in proportion to the weights assigned to other segments in the same
-  /// segment group. Acceptable values are 1 to 1000, inclusive.
+  /// Weight allocated to this segment.
+  ///
+  /// The weight assigned will be understood in proportion to the weights
+  /// assigned to other segments in the same segment group. Acceptable values
+  /// are 1 to 1000, inclusive.
   core.int allocation;
 
-  /// ID of this audience segment. This is a read-only, auto-generated field.
+  /// ID of this audience segment.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Name of this audience segment. This is a required field and must be less
-  /// than 65 characters long.
+  /// Name of this audience segment.
+  ///
+  /// This is a required field and must be less than 65 characters long.
   core.String name;
 
   AudienceSegment();
@@ -17435,16 +17640,19 @@ class AudienceSegment {
 
 /// Audience Segment Group.
 class AudienceSegmentGroup {
-  /// Audience segments assigned to this group. The number of segments must be
-  /// between 2 and 100.
+  /// Audience segments assigned to this group.
+  ///
+  /// The number of segments must be between 2 and 100.
   core.List<AudienceSegment> audienceSegments;
 
-  /// ID of this audience segment group. This is a read-only, auto-generated
-  /// field.
+  /// ID of this audience segment group.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Name of this audience segment group. This is a required field and must be
-  /// less than 65 characters long.
+  /// Name of this audience segment group.
+  ///
+  /// This is a required field and must be less than 65 characters long.
   core.String name;
 
   AudienceSegmentGroup();
@@ -17482,29 +17690,35 @@ class AudienceSegmentGroup {
 
 /// Contains information about a browser that can be targeted by ads.
 class Browser {
-  /// ID referring to this grouping of browser and version numbers. This is the
-  /// ID used for targeting.
+  /// ID referring to this grouping of browser and version numbers.
+  ///
+  /// This is the ID used for targeting.
   core.String browserVersionId;
 
-  /// DART ID of this browser. This is the ID used when generating reports.
+  /// DART ID of this browser.
+  ///
+  /// This is the ID used when generating reports.
   core.String dartId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#browser".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#browser".
   core.String kind;
 
-  /// Major version number (leftmost number) of this browser. For example, for
-  /// Chrome 5.0.376.86 beta, this field should be set to 5. An asterisk (*) may
-  /// be used to target any version number, and a question mark (?) may be used
-  /// to target cases where the version number cannot be identified. For
-  /// example, Chrome *.* targets any version of Chrome: 1.2, 2.5, 3.5, and so
-  /// on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0. Firefox ?.? targets
-  /// cases where the ad server knows the browser is Firefox but can't tell
-  /// which version it is.
+  /// Major version number (leftmost number) of this browser.
+  ///
+  /// For example, for Chrome 5.0.376.86 beta, this field should be set to 5. An
+  /// asterisk (*) may be used to target any version number, and a question mark
+  /// (?) may be used to target cases where the version number cannot be
+  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
+  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
+  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
+  /// but can't tell which version it is.
   core.String majorVersion;
 
-  /// Minor version number (number after first dot on left) of this browser. For
-  /// example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
+  /// Minor version number (number after first dot on left) of this browser.
+  ///
+  /// For example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
   /// asterisk (*) may be used to target any version number, and a question mark
   /// (?) may be used to target cases where the version number cannot be
   /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
@@ -17568,8 +17782,9 @@ class BrowsersListResponse {
   /// Browser collection.
   core.List<Browser> browsers;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#browsersListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#browsersListResponse".
   core.String kind;
 
   BrowsersListResponse();
@@ -17600,8 +17815,9 @@ class BrowsersListResponse {
 
 /// Contains properties of a Campaign Manager campaign.
 class Campaign {
-  /// Account ID of this campaign. This is a read-only field that can be left
-  /// blank.
+  /// Account ID of this campaign.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
   /// Ad blocking settings for this campaign.
@@ -17614,18 +17830,22 @@ class Campaign {
   /// Advertiser group ID of the associated advertiser.
   core.String advertiserGroupId;
 
-  /// Advertiser ID of this campaign. This is a required field.
+  /// Advertiser ID of this campaign.
+  ///
+  /// This is a required field.
   core.String advertiserId;
 
-  /// Dimension value for the advertiser ID of this campaign. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the advertiser ID of this campaign.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Whether this campaign has been archived.
   core.bool archived;
 
-  /// Audience segment groups assigned to this campaign. Cannot have more than
-  /// 300 segment groups.
+  /// Audience segment groups assigned to this campaign.
+  ///
+  /// Cannot have more than 300 segment groups.
   core.List<AudienceSegmentGroup> audienceSegmentGroups;
 
   /// Billing invoice code included in the Campaign Manager client billing
@@ -17635,12 +17855,14 @@ class Campaign {
   /// Click-through URL suffix override properties for this campaign.
   ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
 
-  /// Arbitrary comments about this campaign. Must be less than 256 characters
-  /// long.
+  /// Arbitrary comments about this campaign.
+  ///
+  /// Must be less than 256 characters long.
   core.String comment;
 
-  /// Information about the creation of this campaign. This is a read-only
-  /// field.
+  /// Information about the creation of this campaign.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo createInfo;
 
   /// List of creative group IDs that are assigned to the campaign.
@@ -17663,31 +17885,39 @@ class Campaign {
   /// External ID for this campaign.
   core.String externalId;
 
-  /// ID of this campaign. This is a read-only auto-generated field.
+  /// ID of this campaign.
+  ///
+  /// This is a read-only auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this campaign. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of this campaign.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#campaign".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#campaign".
   core.String kind;
 
-  /// Information about the most recent modification of this campaign. This is a
-  /// read-only field.
+  /// Information about the most recent modification of this campaign.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo lastModifiedInfo;
 
-  /// Name of this campaign. This is a required field and must be less than 256
-  /// characters long and unique among campaigns of the same advertiser.
+  /// Name of this campaign.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among campaigns of the same advertiser.
   core.String name;
 
   /// Whether Nielsen reports are enabled for this campaign.
   core.bool nielsenOcrEnabled;
   core.DateTime startDate;
 
-  /// Subaccount ID of this campaign. This is a read-only field that can be left
-  /// blank.
+  /// Subaccount ID of this campaign.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   /// Campaign trafficker contact emails.
@@ -17915,11 +18145,14 @@ class Campaign {
 
 /// Identifies a creative which has been associated with a given campaign.
 class CampaignCreativeAssociation {
-  /// ID of the creative associated with the campaign. This is a required field.
+  /// ID of the creative associated with the campaign.
+  ///
+  /// This is a required field.
   core.String creativeId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#campaignCreativeAssociation".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#campaignCreativeAssociation".
   core.String kind;
 
   CampaignCreativeAssociation();
@@ -17950,7 +18183,9 @@ class CampaignCreativeAssociationsListResponse {
   /// Campaign creative association collection
   core.List<CampaignCreativeAssociation> campaignCreativeAssociations;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#campaignCreativeAssociationsListResponse".
   core.String kind;
 
@@ -18003,8 +18238,9 @@ class CampaignManagerIds {
   /// Creative ID for Campaign Manager.
   core.String creativeId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#campaignManagerIds".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#campaignManagerIds".
   core.String kind;
 
   /// Placement ID for Campaign Manager.
@@ -18065,8 +18301,9 @@ class CampaignsListResponse {
   /// Campaign collection.
   core.List<Campaign> campaigns;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#campaignsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#campaignsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -18119,15 +18356,17 @@ class ChangeLog {
   /// ID of this change log.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#changeLog".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#changeLog".
   core.String kind;
 
   /// New value of the object field.
   core.String newValue;
 
-  /// ID of the object of this change log. The object could be a campaign,
-  /// placement, ad, or other type.
+  /// ID of the object of this change log.
+  ///
+  /// The object could be a campaign, placement, ad, or other type.
   core.String objectId;
 
   /// Object type of the change log.
@@ -18139,9 +18378,10 @@ class ChangeLog {
   /// Subaccount ID of the modified object.
   core.String subaccountId;
 
-  /// Transaction ID of this change log. When a single API call results in many
-  /// changes, each change will have a separate ID in the change log but will
-  /// share the same transactionId.
+  /// Transaction ID of this change log.
+  ///
+  /// When a single API call results in many changes, each change will have a
+  /// separate ID in the change log but will share the same transactionId.
   core.String transactionId;
 
   /// ID of the user who modified the object.
@@ -18250,8 +18490,9 @@ class ChangeLogsListResponse {
   /// Change log collection.
   core.List<ChangeLog> changeLogs;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#changeLogsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#changeLogsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -18393,8 +18634,9 @@ class CitiesListResponse {
   /// City collection.
   core.List<City> cities;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#citiesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#citiesListResponse".
   core.String kind;
 
   CitiesListResponse();
@@ -18431,12 +18673,14 @@ class City {
   /// DART ID of the country to which this city belongs.
   core.String countryDartId;
 
-  /// DART ID of this city. This is the ID used for targeting and generating
-  /// reports.
+  /// DART ID of this city.
+  ///
+  /// This is the ID used for targeting and generating reports.
   core.String dartId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#city".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#city".
   core.String kind;
 
   /// Metro region code of the metro region (DMA) to which this city belongs.
@@ -18521,18 +18765,21 @@ class City {
 
 /// Creative Click Tag.
 class ClickTag {
-  /// Parameter value for the specified click tag. This field contains a
-  /// click-through url.
+  /// Parameter value for the specified click tag.
+  ///
+  /// This field contains a click-through url.
   CreativeClickThroughUrl clickThroughUrl;
 
-  /// Advertiser event name associated with the click tag. This field is used by
-  /// DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY
-  /// when the primary asset type is not HTML_IMAGE.
+  /// Advertiser event name associated with the click tag.
+  ///
+  /// This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives.
+  /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
   core.String eventName;
 
-  /// Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY
-  /// creative assets, this field must match the value of the creative asset's
-  /// creativeAssetId.name field.
+  /// Parameter name for the specified click tag.
+  ///
+  /// For DISPLAY_IMAGE_GALLERY creative assets, this field must match the value
+  /// of the creative asset's creativeAssetId.name field.
   core.String name;
 
   ClickTag();
@@ -18568,23 +18815,28 @@ class ClickTag {
 /// Click-through URL
 class ClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
-  /// for this click-through. The URL is computed as follows: - If
-  /// defaultLandingPage is enabled then the campaign's default landing page URL
-  /// is assigned to this field. - If defaultLandingPage is not enabled and a
-  /// landingPageId is specified then that landing page's URL is assigned to
-  /// this field. - If neither of the above cases apply, then the
-  /// customClickThroughUrl is assigned to this field.
+  /// for this click-through.
+  ///
+  /// The URL is computed as follows: - If defaultLandingPage is enabled then
+  /// the campaign's default landing page URL is assigned to this field. - If
+  /// defaultLandingPage is not enabled and a landingPageId is specified then
+  /// that landing page's URL is assigned to this field. - If neither of the
+  /// above cases apply, then the customClickThroughUrl is assigned to this
+  /// field.
   core.String computedClickThroughUrl;
 
-  /// Custom click-through URL. Applicable if the defaultLandingPage field is
-  /// set to false and the landingPageId field is left unset.
+  /// Custom click-through URL.
+  ///
+  /// Applicable if the defaultLandingPage field is set to false and the
+  /// landingPageId field is left unset.
   core.String customClickThroughUrl;
 
   /// Whether the campaign default landing page is used.
   core.bool defaultLandingPage;
 
-  /// ID of the landing page for the click-through URL. Applicable if the
-  /// defaultLandingPage field is set to false.
+  /// ID of the landing page for the click-through URL.
+  ///
+  /// Applicable if the defaultLandingPage field is set to false.
   core.String landingPageId;
 
   ClickThroughUrl();
@@ -18624,8 +18876,9 @@ class ClickThroughUrl {
 
 /// Click Through URL Suffix settings.
 class ClickThroughUrlSuffixProperties {
-  /// Click-through URL suffix to apply to all ads in this entity's scope. Must
-  /// be less than 128 characters long.
+  /// Click-through URL suffix to apply to all ads in this entity's scope.
+  ///
+  /// Must be less than 128 characters long.
   core.String clickThroughUrlSuffix;
 
   /// Whether this entity should override the inherited click-through URL suffix
@@ -18692,15 +18945,17 @@ class CompanionSetting {
   /// Whether companions are disabled for this placement.
   core.bool companionsDisabled;
 
-  /// Whitelist of companion sizes to be served to this placement. Set this list
-  /// to null or empty to serve all companion sizes.
+  /// Whitelist of companion sizes to be served to this placement.
+  ///
+  /// Set this list to null or empty to serve all companion sizes.
   core.List<Size> enabledSizes;
 
   /// Whether to serve only static images as companions.
   core.bool imageOnly;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#companionSetting".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#companionSetting".
   core.String kind;
 
   CompanionSetting();
@@ -18859,14 +19114,16 @@ class CompatibleFields {
 }
 
 /// Contains information about an internet connection type that can be targeted
-/// by ads. Clients can use the connection type to target mobile vs. broadband
-/// users.
+/// by ads.
+///
+/// Clients can use the connection type to target mobile vs. broadband users.
 class ConnectionType {
   /// ID of this connection type.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#connectionType".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#connectionType".
   core.String kind;
 
   /// Name of this connection type.
@@ -18906,8 +19163,9 @@ class ConnectionTypesListResponse {
   /// Collection of connection types such as broadband and mobile.
   core.List<ConnectionType> connectionTypes;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#connectionTypesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#connectionTypesListResponse".
   core.String kind;
 
   ConnectionTypesListResponse();
@@ -18942,8 +19200,9 @@ class ContentCategoriesListResponse {
   /// Content category collection.
   core.List<ContentCategory> contentCategories;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#contentCategoriesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#contentCategoriesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -18984,20 +19243,25 @@ class ContentCategoriesListResponse {
 
 /// Organizes placements according to the contents of their associated webpages.
 class ContentCategory {
-  /// Account ID of this content category. This is a read-only field that can be
-  /// left blank.
+  /// Account ID of this content category.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// ID of this content category. This is a read-only, auto-generated field.
+  /// ID of this content category.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#contentCategory".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#contentCategory".
   core.String kind;
 
-  /// Name of this content category. This is a required field and must be less
-  /// than 256 characters long and unique among content categories of the same
-  /// account.
+  /// Name of this content category.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among content categories of the same account.
   core.String name;
 
   ContentCategory();
@@ -19045,76 +19309,96 @@ class Conversion {
   /// Custom floodlight variables.
   core.List<CustomFloodlightVariable> customVariables;
 
-  /// The display click ID. This field is mutually exclusive with
-  /// encryptedUserId, encryptedUserIdCandidates[], matchId, mobileDeviceId and
-  /// gclid. This or encryptedUserId or encryptedUserIdCandidates[] or matchId
-  /// or mobileDeviceId or gclid is a required field.
+  /// The display click ID.
+  ///
+  /// This field is mutually exclusive with encryptedUserId,
+  /// encryptedUserIdCandidates[], matchId, mobileDeviceId and gclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates[] or matchId or
+  /// mobileDeviceId or gclid is a required field.
   core.String dclid;
 
-  /// The alphanumeric encrypted user ID. When set, encryptionInfo should also
-  /// be specified. This field is mutually exclusive with
-  /// encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid and dclid.
-  /// This or encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid
-  /// or dclid is a required field.
+  /// The alphanumeric encrypted user ID.
+  ///
+  /// When set, encryptionInfo should also be specified. This field is mutually
+  /// exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid
+  /// and dclid. This or encryptedUserIdCandidates[] or matchId or
+  /// mobileDeviceId or gclid or dclid is a required field.
   core.String encryptedUserId;
 
-  /// A list of the alphanumeric encrypted user IDs. Any user ID with exposure
-  /// prior to the conversion timestamp will be used in the inserted conversion.
-  /// If no such user ID is found then the conversion will be rejected with
-  /// INVALID_ARGUMENT error. When set, encryptionInfo should also be specified.
-  /// This field may only be used when calling batchinsert; it is not supported
-  /// by batchupdate. This field is mutually exclusive with encryptedUserId,
-  /// matchId, mobileDeviceId, gclid and dclid. This or encryptedUserId or
-  /// matchId or mobileDeviceId or gclid or dclid is a required field.
+  /// A list of the alphanumeric encrypted user IDs.
+  ///
+  /// Any user ID with exposure prior to the conversion timestamp will be used
+  /// in the inserted conversion. If no such user ID is found then the
+  /// conversion will be rejected with INVALID_ARGUMENT error. When set,
+  /// encryptionInfo should also be specified. This field may only be used when
+  /// calling batchinsert; it is not supported by batchupdate. This field is
+  /// mutually exclusive with encryptedUserId, matchId, mobileDeviceId, gclid
+  /// and dclid. This or encryptedUserId or matchId or mobileDeviceId or gclid
+  /// or dclid is a required field.
   core.List<core.String> encryptedUserIdCandidates;
 
-  /// Floodlight Activity ID of this conversion. This is a required field.
+  /// Floodlight Activity ID of this conversion.
+  ///
+  /// This is a required field.
   core.String floodlightActivityId;
 
-  /// Floodlight Configuration ID of this conversion. This is a required field.
+  /// Floodlight Configuration ID of this conversion.
+  ///
+  /// This is a required field.
   core.String floodlightConfigurationId;
 
-  /// The Google click ID. This field is mutually exclusive with
-  /// encryptedUserId, encryptedUserIdCandidates[], matchId, mobileDeviceId and
-  /// dclid. This or encryptedUserId or encryptedUserIdCandidates[] or matchId
-  /// or mobileDeviceId or dclid is a required field.
+  /// The Google click ID.
+  ///
+  /// This field is mutually exclusive with encryptedUserId,
+  /// encryptedUserIdCandidates[], matchId, mobileDeviceId and dclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates[] or matchId or
+  /// mobileDeviceId or dclid is a required field.
   core.String gclid;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversion".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversion".
   core.String kind;
 
-  /// Whether Limit Ad Tracking is enabled. When set to true, the conversion
-  /// will be used for reporting but not targeting. This will prevent
-  /// remarketing.
+  /// Whether Limit Ad Tracking is enabled.
+  ///
+  /// When set to true, the conversion will be used for reporting but not
+  /// targeting. This will prevent remarketing.
   core.bool limitAdTracking;
 
-  /// The match ID field. A match ID is your own first-party identifier that has
-  /// been synced with Google using the match ID feature in Floodlight. This
-  /// field is mutually exclusive with encryptedUserId,
+  /// The match ID field.
+  ///
+  /// A match ID is your own first-party identifier that has been synced with
+  /// Google using the match ID feature in Floodlight. This field is mutually
+  /// exclusive with encryptedUserId,
   /// encryptedUserIdCandidates[],mobileDeviceId, gclid and dclid. This or
   /// encryptedUserId or encryptedUserIdCandidates[] or mobileDeviceId or gclid
   /// or dclid is a required field.
   core.String matchId;
 
-  /// The mobile device ID. This field is mutually exclusive with
-  /// encryptedUserId, encryptedUserIdCandidates[], matchId, gclid and dclid.
-  /// This or encryptedUserId or encryptedUserIdCandidates[] or matchId or gclid
-  /// or dclid is a required field.
+  /// The mobile device ID.
+  ///
+  /// This field is mutually exclusive with encryptedUserId,
+  /// encryptedUserIdCandidates[], matchId, gclid and dclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates[] or matchId or gclid or
+  /// dclid is a required field.
   core.String mobileDeviceId;
 
   /// Whether the conversion was for a non personalized ad.
   core.bool nonPersonalizedAd;
 
-  /// The ordinal of the conversion. Use this field to control how conversions
-  /// of the same user and day are de-duplicated. This is a required field.
+  /// The ordinal of the conversion.
+  ///
+  /// Use this field to control how conversions of the same user and day are
+  /// de-duplicated. This is a required field.
   core.String ordinal;
 
   /// The quantity of the conversion.
   core.String quantity;
 
-  /// The timestamp of conversion, in Unix epoch micros. This is a required
-  /// field.
+  /// The timestamp of conversion, in Unix epoch micros.
+  ///
+  /// This is a required field.
   core.String timestampMicros;
 
   /// Whether this particular request may come from a user under the age of 16
@@ -19264,8 +19548,9 @@ class ConversionError {
   /// - "NOT_FOUND"
   core.String code;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversionError".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionError".
   core.String kind;
 
   /// A description of the error.
@@ -19309,8 +19594,9 @@ class ConversionStatus {
   /// A list of errors related to this conversion.
   core.List<ConversionError> errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversionStatus".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionStatus".
   core.String kind;
 
   ConversionStatus();
@@ -19352,12 +19638,14 @@ class ConversionsBatchInsertRequest {
   core.List<Conversion> conversions;
 
   /// Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted.
+  ///
   /// This is a required field if encryptedUserId or encryptedUserIdCandidates[]
   /// is used.
   EncryptionInfo encryptionInfo;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversionsBatchInsertRequest".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionsBatchInsertRequest".
   core.String kind;
 
   ConversionsBatchInsertRequest();
@@ -19399,12 +19687,14 @@ class ConversionsBatchInsertResponse {
   /// Indicates that some or all conversions failed to insert.
   core.bool hasFailures;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversionsBatchInsertResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionsBatchInsertResponse".
   core.String kind;
 
-  /// The insert status of each conversion. Statuses are returned in the same
-  /// order that conversions are inserted.
+  /// The insert status of each conversion.
+  ///
+  /// Statuses are returned in the same order that conversions are inserted.
   core.List<ConversionStatus> status;
 
   ConversionsBatchInsertResponse();
@@ -19444,12 +19734,14 @@ class ConversionsBatchUpdateRequest {
   /// The set of conversions to update.
   core.List<Conversion> conversions;
 
-  /// Describes how encryptedUserId is encrypted. This is a required field if
-  /// encryptedUserId is used.
+  /// Describes how encryptedUserId is encrypted.
+  ///
+  /// This is a required field if encryptedUserId is used.
   EncryptionInfo encryptionInfo;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversionsBatchUpdateRequest".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionsBatchUpdateRequest".
   core.String kind;
 
   ConversionsBatchUpdateRequest();
@@ -19491,12 +19783,14 @@ class ConversionsBatchUpdateResponse {
   /// Indicates that some or all conversions failed to update.
   core.bool hasFailures;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#conversionsBatchUpdateResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionsBatchUpdateResponse".
   core.String kind;
 
-  /// The update status of each conversion. Statuses are returned in the same
-  /// order that conversions are updated.
+  /// The update status of each conversion.
+  ///
+  /// Statuses are returned in the same order that conversions are updated.
   core.List<ConversionStatus> status;
 
   ConversionsBatchUpdateResponse();
@@ -19536,8 +19830,9 @@ class CountriesListResponse {
   /// Country collection.
   core.List<Country> countries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#countriesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#countriesListResponse".
   core.String kind;
 
   CountriesListResponse();
@@ -19571,12 +19866,14 @@ class Country {
   /// Country code.
   core.String countryCode;
 
-  /// DART ID of this country. This is the ID used for targeting and generating
-  /// reports.
+  /// DART ID of this country.
+  ///
+  /// This is the ID used for targeting and generating reports.
   core.String dartId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#country".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#country".
   core.String kind;
 
   /// Name of this country.
@@ -19628,45 +19925,59 @@ class Country {
 
 /// Contains properties of a Creative.
 class Creative {
-  /// Account ID of this creative. This field, if left unset, will be
-  /// auto-generated for both insert and update operations. Applicable to all
-  /// creative types.
+  /// Account ID of this creative.
+  ///
+  /// This field, if left unset, will be auto-generated for both insert and
+  /// update operations. Applicable to all creative types.
   core.String accountId;
 
-  /// Whether the creative is active. Applicable to all creative types.
+  /// Whether the creative is active.
+  ///
+  /// Applicable to all creative types.
   core.bool active;
 
-  /// Ad parameters user for VPAID creative. This is a read-only field.
-  /// Applicable to the following creative types: all VPAID.
+  /// Ad parameters user for VPAID creative.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// VPAID.
   core.String adParameters;
 
-  /// Keywords for a Rich Media creative. Keywords let you customize the
-  /// creative settings of a Rich Media ad running on your site without having
-  /// to contact the advertiser. You can use keywords to dynamically change the
-  /// look or functionality of a creative. Applicable to the following creative
-  /// types: all RICH_MEDIA, and all VPAID.
+  /// Keywords for a Rich Media creative.
+  ///
+  /// Keywords let you customize the creative settings of a Rich Media ad
+  /// running on your site without having to contact the advertiser. You can use
+  /// keywords to dynamically change the look or functionality of a creative.
+  /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
   core.List<core.String> adTagKeys;
 
-  /// Additional sizes associated with a responsive creative. When inserting or
-  /// updating a creative either the size ID field or size width and height
-  /// fields can be used. Applicable to DISPLAY creatives when the primary asset
-  /// type is HTML_IMAGE.
+  /// Additional sizes associated with a responsive creative.
+  ///
+  /// When inserting or updating a creative either the size ID field or size
+  /// width and height fields can be used. Applicable to DISPLAY creatives when
+  /// the primary asset type is HTML_IMAGE.
   core.List<Size> additionalSizes;
 
-  /// Advertiser ID of this creative. This is a required field. Applicable to
-  /// all creative types.
+  /// Advertiser ID of this creative.
+  ///
+  /// This is a required field. Applicable to all creative types.
   core.String advertiserId;
 
-  /// Whether script access is allowed for this creative. This is a read-only
-  /// and deprecated field which will automatically be set to true on update.
-  /// Applicable to the following creative types: FLASH_INPAGE.
+  /// Whether script access is allowed for this creative.
+  ///
+  /// This is a read-only and deprecated field which will automatically be set
+  /// to true on update. Applicable to the following creative types:
+  /// FLASH_INPAGE.
   core.bool allowScriptAccess;
 
-  /// Whether the creative is archived. Applicable to all creative types.
+  /// Whether the creative is archived.
+  ///
+  /// Applicable to all creative types.
   core.bool archived;
 
-  /// Type of artwork used for the creative. This is a read-only field.
-  /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
+  /// Type of artwork used for the creative.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA, and all VPAID.
   /// Possible string values are:
   /// - "ARTWORK_TYPE_FLASH"
   /// - "ARTWORK_TYPE_HTML5"
@@ -19674,206 +19985,251 @@ class Creative {
   /// - "ARTWORK_TYPE_IMAGE"
   core.String artworkType;
 
-  /// Source application where creative was authored. Presently, only DBM
-  /// authored creatives will have this field set. Applicable to all creative
-  /// types.
+  /// Source application where creative was authored.
+  ///
+  /// Presently, only DBM authored creatives will have this field set.
+  /// Applicable to all creative types.
   /// Possible string values are:
   /// - "CREATIVE_AUTHORING_SOURCE_DCM"
   /// - "CREATIVE_AUTHORING_SOURCE_DBM"
   /// - "CREATIVE_AUTHORING_SOURCE_STUDIO"
   core.String authoringSource;
 
-  /// Authoring tool for HTML5 banner creatives. This is a read-only field.
-  /// Applicable to the following creative types: HTML5_BANNER.
+  /// Authoring tool for HTML5 banner creatives.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// HTML5_BANNER.
   /// Possible string values are:
   /// - "NINJA"
   /// - "SWIFFY"
   core.String authoringTool;
 
   /// Whether images are automatically advanced for image gallery creatives.
+  ///
   /// Applicable to the following creative types: DISPLAY_IMAGE_GALLERY.
   core.bool autoAdvanceImages;
 
   /// The 6-character HTML color code, beginning with #, for the background of
-  /// the window area where the Flash file is displayed. Default is white.
-  /// Applicable to the following creative types: FLASH_INPAGE.
+  /// the window area where the Flash file is displayed.
+  ///
+  /// Default is white. Applicable to the following creative types:
+  /// FLASH_INPAGE.
   core.String backgroundColor;
 
-  /// Click-through URL for backup image. Applicable to ENHANCED_BANNER when the
-  /// primary asset type is not HTML_IMAGE.
+  /// Click-through URL for backup image.
+  ///
+  /// Applicable to ENHANCED_BANNER when the primary asset type is not
+  /// HTML_IMAGE.
   CreativeClickThroughUrl backupImageClickThroughUrl;
 
   /// List of feature dependencies that will cause a backup image to be served
-  /// if the browser that serves the ad does not support them. Feature
-  /// dependencies are features that a browser must be able to support in order
-  /// to render your HTML5 creative asset correctly. This field is initially
-  /// auto-generated to contain all features detected by Campaign Manager for
-  /// all the assets of this creative and can then be modified by the client. To
-  /// reset this field, copy over all the creativeAssets' detected features.
-  /// Applicable to the following creative types: HTML5_BANNER. Applicable to
-  /// DISPLAY when the primary asset type is not HTML_IMAGE.
+  /// if the browser that serves the ad does not support them.
+  ///
+  /// Feature dependencies are features that a browser must be able to support
+  /// in order to render your HTML5 creative asset correctly. This field is
+  /// initially auto-generated to contain all features detected by Campaign
+  /// Manager for all the assets of this creative and can then be modified by
+  /// the client. To reset this field, copy over all the creativeAssets'
+  /// detected features. Applicable to the following creative types:
+  /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not
+  /// HTML_IMAGE.
   core.List<core.String> backupImageFeatures;
 
-  /// Reporting label used for HTML5 banner backup image. Applicable to the
-  /// following creative types: DISPLAY when the primary asset type is not
-  /// HTML_IMAGE.
+  /// Reporting label used for HTML5 banner backup image.
+  ///
+  /// Applicable to the following creative types: DISPLAY when the primary asset
+  /// type is not HTML_IMAGE.
   core.String backupImageReportingLabel;
 
-  /// Target window for backup image. Applicable to the following creative
-  /// types: FLASH_INPAGE and HTML5_BANNER. Applicable to DISPLAY when the
-  /// primary asset type is not HTML_IMAGE.
+  /// Target window for backup image.
+  ///
+  /// Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER.
+  /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
   TargetWindow backupImageTargetWindow;
 
-  /// Click tags of the creative. For DISPLAY, FLASH_INPAGE, and HTML5_BANNER
-  /// creatives, this is a subset of detected click tags for the assets
-  /// associated with this creative. After creating a flash asset, detected
-  /// click tags will be returned in the creativeAssetMetadata. When inserting
-  /// the creative, populate the creative clickTags field using the
-  /// creativeAssetMetadata.clickTags field. For DISPLAY_IMAGE_GALLERY
-  /// creatives, there should be exactly one entry in this list for each image
-  /// creative asset. A click tag is matched with a corresponding creative asset
-  /// by matching the clickTag.name field with the
+  /// Click tags of the creative.
+  ///
+  /// For DISPLAY, FLASH_INPAGE, and HTML5_BANNER creatives, this is a subset of
+  /// detected click tags for the assets associated with this creative. After
+  /// creating a flash asset, detected click tags will be returned in the
+  /// creativeAssetMetadata. When inserting the creative, populate the creative
+  /// clickTags field using the creativeAssetMetadata.clickTags field. For
+  /// DISPLAY_IMAGE_GALLERY creatives, there should be exactly one entry in this
+  /// list for each image creative asset. A click tag is matched with a
+  /// corresponding creative asset by matching the clickTag.name field with the
   /// creativeAsset.assetIdentifier.name field. Applicable to the following
   /// creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER.
   /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
   core.List<ClickTag> clickTags;
 
   /// Industry standard ID assigned to creative for reach and frequency.
+  ///
   /// Applicable to INSTREAM_VIDEO_REDIRECT creatives.
   core.String commercialId;
 
   /// List of companion creatives assigned to an in-Stream video creative.
+  ///
   /// Acceptable values include IDs of existing flash and image creatives.
   /// Applicable to the following creative types: all VPAID, all INSTREAM_AUDIO
   /// and all INSTREAM_VIDEO with dynamicAssetSelection set to false.
   core.List<core.String> companionCreatives;
 
-  /// Compatibilities associated with this creative. This is a read-only field.
-  /// DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or
-  /// on mobile devices or in mobile apps for regular or interstitial ads,
-  /// respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
-  /// Only pre-existing creatives may have these compatibilities since new
-  /// creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead.
-  /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
-  /// the VAST standard. IN_STREAM_AUDIO refers to rendering in in-stream audio
-  /// ads developed with the VAST standard. Applicable to all creative types.
-  /// Acceptable values are: - "APP" - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" -
-  /// "IN_STREAM_AUDIO" - "DISPLAY" - "DISPLAY_INTERSTITIAL"
+  /// Compatibilities associated with this creative.
+  ///
+  /// This is a read-only field. DISPLAY and DISPLAY_INTERSTITIAL refer to
+  /// rendering either on desktop or on mobile devices or in mobile apps for
+  /// regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are
+  /// for rendering in mobile apps. Only pre-existing creatives may have these
+  /// compatibilities since new creatives will either be assigned DISPLAY or
+  /// DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in
+  /// in-stream video ads developed with the VAST standard. IN_STREAM_AUDIO
+  /// refers to rendering in in-stream audio ads developed with the VAST
+  /// standard. Applicable to all creative types. Acceptable values are: - "APP"
+  /// - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" - "IN_STREAM_AUDIO" - "DISPLAY" -
+  /// "DISPLAY_INTERSTITIAL"
   core.List<core.String> compatibility;
 
   /// Whether Flash assets associated with the creative need to be automatically
-  /// converted to HTML5. This flag is enabled by default and users can choose
-  /// to disable it if they don't want the system to generate and use HTML5
-  /// asset for this creative. Applicable to the following creative type:
-  /// FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not
-  /// HTML_IMAGE.
+  /// converted to HTML5.
+  ///
+  /// This flag is enabled by default and users can choose to disable it if they
+  /// don't want the system to generate and use HTML5 asset for this creative.
+  /// Applicable to the following creative type: FLASH_INPAGE. Applicable to
+  /// DISPLAY when the primary asset type is not HTML_IMAGE.
   core.bool convertFlashToHtml5;
 
-  /// List of counter events configured for the creative. For
-  /// DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated
-  /// from clickTags. Applicable to the following creative types:
+  /// List of counter events configured for the creative.
+  ///
+  /// For DISPLAY_IMAGE_GALLERY creatives, these are read-only and
+  /// auto-generated from clickTags. Applicable to the following creative types:
   /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID.
   core.List<CreativeCustomEvent> counterCustomEvents;
 
   /// Required if dynamicAssetSelection is true.
   CreativeAssetSelection creativeAssetSelection;
 
-  /// Assets associated with a creative. Applicable to all but the following
-  /// creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and
-  /// REDIRECT
+  /// Assets associated with a creative.
+  ///
+  /// Applicable to all but the following creative types: INTERNAL_REDIRECT,
+  /// INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
   core.List<CreativeAsset> creativeAssets;
 
-  /// Creative field assignments for this creative. Applicable to all creative
-  /// types.
+  /// Creative field assignments for this creative.
+  ///
+  /// Applicable to all creative types.
   core.List<CreativeFieldAssignment> creativeFieldAssignments;
 
-  /// Custom key-values for a Rich Media creative. Key-values let you customize
-  /// the creative settings of a Rich Media ad running on your site without
-  /// having to contact the advertiser. You can use key-values to dynamically
-  /// change the look or functionality of a creative. Applicable to the
-  /// following creative types: all RICH_MEDIA, and all VPAID.
+  /// Custom key-values for a Rich Media creative.
+  ///
+  /// Key-values let you customize the creative settings of a Rich Media ad
+  /// running on your site without having to contact the advertiser. You can use
+  /// key-values to dynamically change the look or functionality of a creative.
+  /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
   core.List<core.String> customKeyValues;
 
   /// Set this to true to enable the use of rules to target individual assets in
-  /// this creative. When set to true creativeAssetSelection must be set. This
-  /// also controls asset-level companions. When this is true, companion
-  /// creatives should be assigned to creative assets. Learn more. Applicable to
-  /// INSTREAM_VIDEO creatives.
+  /// this creative.
+  ///
+  /// When set to true creativeAssetSelection must be set. This also controls
+  /// asset-level companions. When this is true, companion creatives should be
+  /// assigned to creative assets. Learn more. Applicable to INSTREAM_VIDEO
+  /// creatives.
   core.bool dynamicAssetSelection;
 
-  /// List of exit events configured for the creative. For DISPLAY and
-  /// DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated
-  /// from clickTags, For DISPLAY, an event is also created from the
-  /// backupImageReportingLabel. Applicable to the following creative types:
+  /// List of exit events configured for the creative.
+  ///
+  /// For DISPLAY and DISPLAY_IMAGE_GALLERY creatives, these are read-only and
+  /// auto-generated from clickTags, For DISPLAY, an event is also created from
+  /// the backupImageReportingLabel. Applicable to the following creative types:
   /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to
   /// DISPLAY when the primary asset type is not HTML_IMAGE.
   core.List<CreativeCustomEvent> exitCustomEvents;
 
-  /// OpenWindow FSCommand of this creative. This lets the SWF file communicate
-  /// with either Flash Player or the program hosting Flash Player, such as a
-  /// web browser. This is only triggered if allowScriptAccess field is true.
-  /// Applicable to the following creative types: FLASH_INPAGE.
+  /// OpenWindow FSCommand of this creative.
+  ///
+  /// This lets the SWF file communicate with either Flash Player or the program
+  /// hosting Flash Player, such as a web browser. This is only triggered if
+  /// allowScriptAccess field is true. Applicable to the following creative
+  /// types: FLASH_INPAGE.
   FsCommand fsCommand;
 
-  /// HTML code for the creative. This is a required field when applicable. This
-  /// field is ignored if htmlCodeLocked is true. Applicable to the following
-  /// creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all
-  /// RICH_MEDIA.
+  /// HTML code for the creative.
+  ///
+  /// This is a required field when applicable. This field is ignored if
+  /// htmlCodeLocked is true. Applicable to the following creative types: all
+  /// CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA.
   core.String htmlCode;
 
   /// Whether HTML code is generated by Campaign Manager or manually entered.
+  ///
   /// Set to true to ignore changes to htmlCode. Applicable to the following
   /// creative types: FLASH_INPAGE and HTML5_BANNER.
   core.bool htmlCodeLocked;
 
-  /// ID of this creative. This is a read-only, auto-generated field. Applicable
-  /// to all creative types.
+  /// ID of this creative.
+  ///
+  /// This is a read-only, auto-generated field. Applicable to all creative
+  /// types.
   core.String id;
 
-  /// Dimension value for the ID of this creative. This is a read-only field.
-  /// Applicable to all creative types.
+  /// Dimension value for the ID of this creative.
+  ///
+  /// This is a read-only field. Applicable to all creative types.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creative".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creative".
   core.String kind;
 
-  /// Creative last modification information. This is a read-only field.
-  /// Applicable to all creative types.
+  /// Creative last modification information.
+  ///
+  /// This is a read-only field. Applicable to all creative types.
   LastModifiedInfo lastModifiedInfo;
 
   /// Latest Studio trafficked creative ID associated with rich media and VPAID
-  /// creatives. This is a read-only field. Applicable to the following creative
-  /// types: all RICH_MEDIA, and all VPAID.
+  /// creatives.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA, and all VPAID.
   core.String latestTraffickedCreativeId;
 
-  /// Description of the audio or video ad. Applicable to the following creative
-  /// types: all INSTREAM_VIDEO, INSTREAM_AUDIO, and all VPAID.
+  /// Description of the audio or video ad.
+  ///
+  /// Applicable to the following creative types: all INSTREAM_VIDEO,
+  /// INSTREAM_AUDIO, and all VPAID.
   core.String mediaDescription;
 
-  /// Creative audio or video duration in seconds. This is a read-only field.
-  /// Applicable to the following creative types: INSTREAM_VIDEO,
-  /// INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID.
+  /// Creative audio or video duration in seconds.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID.
   core.double mediaDuration;
 
-  /// Name of the creative. This is a required field and must be less than 256
-  /// characters long. Applicable to all creative types.
+  /// Name of the creative.
+  ///
+  /// This is a required field and must be less than 256 characters long.
+  /// Applicable to all creative types.
   core.String name;
 
-  /// Online behavioral advertising icon to be added to the creative. Applicable
-  /// to the following creative types: all INSTREAM_VIDEO.
+  /// Online behavioral advertising icon to be added to the creative.
+  ///
+  /// Applicable to the following creative types: all INSTREAM_VIDEO.
   ObaIcon obaIcon;
 
-  /// Override CSS value for rich media creatives. Applicable to the following
-  /// creative types: all RICH_MEDIA.
+  /// Override CSS value for rich media creatives.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   core.String overrideCss;
 
-  /// Amount of time to play the video before counting a view. Applicable to the
-  /// following creative types: all INSTREAM_VIDEO.
+  /// Amount of time to play the video before counting a view.
+  ///
+  /// Applicable to the following creative types: all INSTREAM_VIDEO.
   VideoOffset progressOffset;
 
-  /// URL of hosted image or hosted video or another ad tag. For
-  /// INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect
+  /// URL of hosted image or hosted video or another ad tag.
+  ///
+  /// For INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect
   /// URL. The standard for a VAST (Video Ad Serving Template) ad response
   /// allows for a redirect link to another VAST 2.0 or 3.0 call. This is a
   /// required field when applicable. Applicable to the following creative
@@ -19881,99 +20237,124 @@ class Creative {
   /// INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO_REDIRECT
   core.String redirectUrl;
 
-  /// ID of current rendering version. This is a read-only field. Applicable to
-  /// all creative types.
+  /// ID of current rendering version.
+  ///
+  /// This is a read-only field. Applicable to all creative types.
   core.String renderingId;
 
-  /// Dimension value for the rendering ID of this creative. This is a read-only
-  /// field. Applicable to all creative types.
+  /// Dimension value for the rendering ID of this creative.
+  ///
+  /// This is a read-only field. Applicable to all creative types.
   DimensionValue renderingIdDimensionValue;
 
-  /// The minimum required Flash plugin version for this creative. For example,
-  /// 11.2.202.235. This is a read-only field. Applicable to the following
-  /// creative types: all RICH_MEDIA, and all VPAID.
+  /// The minimum required Flash plugin version for this creative.
+  ///
+  /// For example, 11.2.202.235. This is a read-only field. Applicable to the
+  /// following creative types: all RICH_MEDIA, and all VPAID.
   core.String requiredFlashPluginVersion;
 
-  /// The internal Flash version for this creative as calculated by Studio. This
-  /// is a read-only field. Applicable to the following creative types:
+  /// The internal Flash version for this creative as calculated by Studio.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
   /// FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the
   /// primary asset type is not HTML_IMAGE.
   core.int requiredFlashVersion;
 
-  /// Size associated with this creative. When inserting or updating a creative
-  /// either the size ID field or size width and height fields can be used. This
-  /// is a required field when applicable; however for IMAGE, FLASH_INPAGE
-  /// creatives, and for DISPLAY creatives with a primary asset of type
-  /// HTML_IMAGE, if left blank, this field will be automatically set using the
-  /// actual size of the associated image assets. Applicable to the following
-  /// creative types: DISPLAY, DISPLAY_IMAGE_GALLERY, FLASH_INPAGE,
-  /// HTML5_BANNER, IMAGE, and all RICH_MEDIA.
+  /// Size associated with this creative.
+  ///
+  /// When inserting or updating a creative either the size ID field or size
+  /// width and height fields can be used. This is a required field when
+  /// applicable; however for IMAGE, FLASH_INPAGE creatives, and for DISPLAY
+  /// creatives with a primary asset of type HTML_IMAGE, if left blank, this
+  /// field will be automatically set using the actual size of the associated
+  /// image assets. Applicable to the following creative types: DISPLAY,
+  /// DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all
+  /// RICH_MEDIA.
   Size size;
 
   /// Amount of time to play the video before the skip button appears.
+  ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO.
   VideoOffset skipOffset;
 
-  /// Whether the user can choose to skip the creative. Applicable to the
-  /// following creative types: all INSTREAM_VIDEO and all VPAID.
+  /// Whether the user can choose to skip the creative.
+  ///
+  /// Applicable to the following creative types: all INSTREAM_VIDEO and all
+  /// VPAID.
   core.bool skippable;
 
-  /// Whether the creative is SSL-compliant. This is a read-only field.
-  /// Applicable to all creative types.
+  /// Whether the creative is SSL-compliant.
+  ///
+  /// This is a read-only field. Applicable to all creative types.
   core.bool sslCompliant;
 
   /// Whether creative should be treated as SSL compliant even if the system
-  /// scan shows it's not. Applicable to all creative types.
+  /// scan shows it's not.
+  ///
+  /// Applicable to all creative types.
   core.bool sslOverride;
 
-  /// Studio advertiser ID associated with rich media and VPAID creatives. This
-  /// is a read-only field. Applicable to the following creative types: all
+  /// Studio advertiser ID associated with rich media and VPAID creatives.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
   core.String studioAdvertiserId;
 
-  /// Studio creative ID associated with rich media and VPAID creatives. This is
-  /// a read-only field. Applicable to the following creative types: all
+  /// Studio creative ID associated with rich media and VPAID creatives.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
   core.String studioCreativeId;
 
   /// Studio trafficked creative ID associated with rich media and VPAID
-  /// creatives. This is a read-only field. Applicable to the following creative
-  /// types: all RICH_MEDIA, and all VPAID.
+  /// creatives.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA, and all VPAID.
   core.String studioTraffickedCreativeId;
 
-  /// Subaccount ID of this creative. This field, if left unset, will be
-  /// auto-generated for both insert and update operations. Applicable to all
-  /// creative types.
+  /// Subaccount ID of this creative.
+  ///
+  /// This field, if left unset, will be auto-generated for both insert and
+  /// update operations. Applicable to all creative types.
   core.String subaccountId;
 
-  /// Third-party URL used to record backup image impressions. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Third-party URL used to record backup image impressions.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   core.String thirdPartyBackupImageImpressionsUrl;
 
-  /// Third-party URL used to record rich media impressions. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Third-party URL used to record rich media impressions.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   core.String thirdPartyRichMediaImpressionsUrl;
 
-  /// Third-party URLs for tracking in-stream creative events. Applicable to the
-  /// following creative types: all INSTREAM_VIDEO, all INSTREAM_AUDIO, and all
-  /// VPAID.
+  /// Third-party URLs for tracking in-stream creative events.
+  ///
+  /// Applicable to the following creative types: all INSTREAM_VIDEO, all
+  /// INSTREAM_AUDIO, and all VPAID.
   core.List<ThirdPartyTrackingUrl> thirdPartyUrls;
 
-  /// List of timer events configured for the creative. For
-  /// DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated
-  /// from clickTags. Applicable to the following creative types:
+  /// List of timer events configured for the creative.
+  ///
+  /// For DISPLAY_IMAGE_GALLERY creatives, these are read-only and
+  /// auto-generated from clickTags. Applicable to the following creative types:
   /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to
   /// DISPLAY when the primary asset is not HTML_IMAGE.
   core.List<CreativeCustomEvent> timerCustomEvents;
 
-  /// Combined size of all creative assets. This is a read-only field.
-  /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
+  /// Combined size of all creative assets.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA, and all VPAID.
   core.String totalFileSize;
 
-  /// Type of this creative. This is a required field. Applicable to all
-  /// creative types. *Note:* FLASH_INPAGE, HTML5_BANNER, and IMAGE are only
-  /// used for existing creatives. New creatives should use DISPLAY as a
-  /// replacement for these types.
+  /// Type of this creative.
+  ///
+  /// This is a required field. Applicable to all creative types. *Note:*
+  /// FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing
+  /// creatives. New creatives should use DISPLAY as a replacement for these
+  /// types.
   /// Possible string values are:
   /// - "IMAGE"
   /// - "DISPLAY_REDIRECT"
@@ -20002,17 +20383,21 @@ class Creative {
   /// - "INSTREAM_AUDIO"
   core.String type;
 
-  /// A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following
-  /// creative types: INSTREAM_AUDIO and INSTREAM_VIDEO and VPAID.
+  /// A Universal Ad ID as per the VAST 4.0 spec.
+  ///
+  /// Applicable to the following creative types: INSTREAM_AUDIO and
+  /// INSTREAM_VIDEO and VPAID.
   UniversalAdId universalAdId;
 
   /// The version number helps you keep track of multiple versions of your
-  /// creative in your reports. The version number will always be auto-generated
-  /// during insert operations to start at 1. For tracking creatives the version
-  /// cannot be incremented and will always remain at 1. For all other creative
-  /// types the version can be incremented only by 1 during update operations.
-  /// In addition, the version will be automatically incremented by 1 when
-  /// undergoing Rich Media creative merging. Applicable to all creative types.
+  /// creative in your reports.
+  ///
+  /// The version number will always be auto-generated during insert operations
+  /// to start at 1. For tracking creatives the version cannot be incremented
+  /// and will always remain at 1. For all other creative types the version can
+  /// be incremented only by 1 during update operations. In addition, the
+  /// version will be automatically incremented by 1 when undergoing Rich Media
+  /// creative merging. Applicable to all creative types.
   core.int version;
 
   Creative();
@@ -20485,23 +20870,29 @@ class Creative {
 
 /// Creative Asset.
 class CreativeAsset {
-  /// Whether ActionScript3 is enabled for the flash asset. This is a read-only
-  /// field. Applicable to the following creative type: FLASH_INPAGE. Applicable
-  /// to DISPLAY when the primary asset type is not HTML_IMAGE.
+  /// Whether ActionScript3 is enabled for the flash asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative type:
+  /// FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not
+  /// HTML_IMAGE.
   core.bool actionScript3;
 
-  /// Whether the video or audio asset is active. This is a read-only field for
-  /// VPAID_NON_LINEAR_VIDEO assets. Applicable to the following creative types:
-  /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
+  /// Whether the video or audio asset is active.
+  ///
+  /// This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to
+  /// the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all
+  /// VPAID.
   core.bool active;
 
-  /// Additional sizes associated with this creative asset. HTML5 asset
-  /// generated by compatible software such as GWD will be able to support more
-  /// sizes this creative asset can render.
+  /// Additional sizes associated with this creative asset.
+  ///
+  /// HTML5 asset generated by compatible software such as GWD will be able to
+  /// support more sizes this creative asset can render.
   core.List<Size> additionalSizes;
 
-  /// Possible alignments for an asset. This is a read-only field. Applicable to
-  /// the following creative types:
+  /// Possible alignments for an asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
   /// RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL .
   /// Possible string values are:
   /// - "ALIGNMENT_TOP"
@@ -20510,8 +20901,10 @@ class CreativeAsset {
   /// - "ALIGNMENT_LEFT"
   core.String alignment;
 
-  /// Artwork type of rich media creative. This is a read-only field. Applicable
-  /// to the following creative types: all RICH_MEDIA.
+  /// Artwork type of rich media creative.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA.
   /// Possible string values are:
   /// - "ARTWORK_TYPE_FLASH"
   /// - "ARTWORK_TYPE_HTML5"
@@ -20519,32 +20912,40 @@ class CreativeAsset {
   /// - "ARTWORK_TYPE_IMAGE"
   core.String artworkType;
 
-  /// Identifier of this asset. This is the same identifier returned during
-  /// creative asset insert operation. This is a required field. Applicable to
-  /// all but the following creative types: all REDIRECT and TRACKING_TEXT.
+  /// Identifier of this asset.
+  ///
+  /// This is the same identifier returned during creative asset insert
+  /// operation. This is a required field. Applicable to all but the following
+  /// creative types: all REDIRECT and TRACKING_TEXT.
   CreativeAssetId assetIdentifier;
 
-  /// Audio stream bit rate in kbps. This is a read-only field. Applicable to
-  /// the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all
-  /// VPAID.
+  /// Audio stream bit rate in kbps.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
   core.int audioBitRate;
 
-  /// Audio sample bit rate in hertz. This is a read-only field. Applicable to
-  /// the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all
-  /// VPAID.
+  /// Audio sample bit rate in hertz.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
   core.int audioSampleRate;
 
-  /// Exit event configured for the backup image. Applicable to the following
-  /// creative types: all RICH_MEDIA.
+  /// Exit event configured for the backup image.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   CreativeCustomEvent backupImageExit;
 
-  /// Detected bit-rate for audio or video asset. This is a read-only field.
-  /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
-  /// and all VPAID.
+  /// Detected bit-rate for audio or video asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
   core.int bitRate;
 
-  /// Rich media child asset type. This is a read-only field. Applicable to the
-  /// following creative types: all VPAID.
+  /// Rich media child asset type.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// VPAID.
   /// Possible string values are:
   /// - "CHILD_ASSET_TYPE_FLASH"
   /// - "CHILD_ASSET_TYPE_VIDEO"
@@ -20552,33 +20953,41 @@ class CreativeAsset {
   /// - "CHILD_ASSET_TYPE_DATA"
   core.String childAssetType;
 
-  /// Size of an asset when collapsed. This is a read-only field. Applicable to
-  /// the following creative types: all RICH_MEDIA and all VPAID. Additionally,
-  /// applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or
+  /// Size of an asset when collapsed.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA and all VPAID. Additionally, applicable to assets whose
+  /// displayType is ASSET_DISPLAY_TYPE_EXPANDING or
   /// ASSET_DISPLAY_TYPE_PEEL_DOWN.
   Size collapsedSize;
 
   /// List of companion creatives assigned to an in-stream video creative asset.
+  ///
   /// Acceptable values include IDs of existing flash and image creatives.
   /// Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set
   /// to true.
   core.List<core.String> companionCreativeIds;
 
-  /// Custom start time in seconds for making the asset visible. Applicable to
-  /// the following creative types: all RICH_MEDIA. Value must be greater than
-  /// or equal to 0.
+  /// Custom start time in seconds for making the asset visible.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA. Value must be
+  /// greater than or equal to 0.
   core.int customStartTimeValue;
 
   /// List of feature dependencies for the creative asset that are detected by
-  /// Campaign Manager. Feature dependencies are features that a browser must be
-  /// able to support in order to render your HTML5 creative correctly. This is
-  /// a read-only, auto-generated field. Applicable to the following creative
-  /// types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is
-  /// not HTML_IMAGE.
+  /// Campaign Manager.
+  ///
+  /// Feature dependencies are features that a browser must be able to support
+  /// in order to render your HTML5 creative correctly. This is a read-only,
+  /// auto-generated field. Applicable to the following creative types:
+  /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not
+  /// HTML_IMAGE.
   core.List<core.String> detectedFeatures;
 
-  /// Type of rich media asset. This is a read-only field. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Type of rich media asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA.
   /// Possible string values are:
   /// - "ASSET_DISPLAY_TYPE_INPAGE"
   /// - "ASSET_DISPLAY_TYPE_FLOATING"
@@ -20592,76 +21001,96 @@ class CreativeAsset {
   /// - "ASSET_DISPLAY_TYPE_BACKDROP"
   core.String displayType;
 
-  /// Duration in seconds for which an asset will be displayed. Applicable to
-  /// the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and
-  /// VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1.
+  /// Duration in seconds for which an asset will be displayed.
+  ///
+  /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
+  /// and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1.
   core.int duration;
 
-  /// Duration type for which an asset will be displayed. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Duration type for which an asset will be displayed.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   /// Possible string values are:
   /// - "ASSET_DURATION_TYPE_AUTO"
   /// - "ASSET_DURATION_TYPE_NONE"
   /// - "ASSET_DURATION_TYPE_CUSTOM"
   core.String durationType;
 
-  /// Detected expanded dimension for video asset. This is a read-only field.
-  /// Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+  /// Detected expanded dimension for video asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_VIDEO and all VPAID.
   Size expandedDimension;
 
-  /// File size associated with this creative asset. This is a read-only field.
-  /// Applicable to all but the following creative types: all REDIRECT and
-  /// TRACKING_TEXT.
+  /// File size associated with this creative asset.
+  ///
+  /// This is a read-only field. Applicable to all but the following creative
+  /// types: all REDIRECT and TRACKING_TEXT.
   core.String fileSize;
 
-  /// Flash version of the asset. This is a read-only field. Applicable to the
-  /// following creative types: FLASH_INPAGE, all RICH_MEDIA, and all VPAID.
-  /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
+  /// Flash version of the asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when
+  /// the primary asset type is not HTML_IMAGE.
   core.int flashVersion;
 
-  /// Video frame rate for video asset in frames per second. This is a read-only
-  /// field. Applicable to the following creative types: INSTREAM_VIDEO and all
-  /// VPAID.
+  /// Video frame rate for video asset in frames per second.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_VIDEO and all VPAID.
   core.double frameRate;
 
-  /// Whether to hide Flash objects flag for an asset. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Whether to hide Flash objects flag for an asset.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   core.bool hideFlashObjects;
 
-  /// Whether to hide selection boxes flag for an asset. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Whether to hide selection boxes flag for an asset.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   core.bool hideSelectionBoxes;
 
-  /// Whether the asset is horizontally locked. This is a read-only field.
-  /// Applicable to the following creative types: all RICH_MEDIA.
+  /// Whether the asset is horizontally locked.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA.
   core.bool horizontallyLocked;
 
-  /// Numeric ID of this creative asset. This is a required field and should not
-  /// be modified. Applicable to all but the following creative types: all
-  /// REDIRECT and TRACKING_TEXT.
+  /// Numeric ID of this creative asset.
+  ///
+  /// This is a required field and should not be modified. Applicable to all but
+  /// the following creative types: all REDIRECT and TRACKING_TEXT.
   core.String id;
 
-  /// Dimension value for the ID of the asset. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the asset.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Detected duration for audio or video asset. This is a read-only field.
-  /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
-  /// and all VPAID.
+  /// Detected duration for audio or video asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
   core.double mediaDuration;
 
-  /// Detected MIME type for audio or video asset. This is a read-only field.
-  /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
-  /// and all VPAID.
+  /// Detected MIME type for audio or video asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
   core.String mimeType;
 
-  /// Offset position for an asset in collapsed mode. This is a read-only field.
-  /// Applicable to the following creative types: all RICH_MEDIA and all VPAID.
-  /// Additionally, only applicable to assets whose displayType is
-  /// ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.
+  /// Offset position for an asset in collapsed mode.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA and all VPAID. Additionally, only applicable to assets whose
+  /// displayType is ASSET_DISPLAY_TYPE_EXPANDING or
+  /// ASSET_DISPLAY_TYPE_PEEL_DOWN.
   OffsetPosition offset;
 
-  /// Orientation of video asset. This is a read-only, auto-generated field.
+  /// Orientation of video asset.
+  ///
+  /// This is a read-only, auto-generated field.
   /// Possible string values are:
   /// - "LANDSCAPE"
   /// - "PORTRAIT"
@@ -20669,67 +21098,79 @@ class CreativeAsset {
   core.String orientation;
 
   /// Whether the backup asset is original or changed by the user in Campaign
-  /// Manager. Applicable to the following creative types: all RICH_MEDIA.
+  /// Manager.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   core.bool originalBackup;
 
   /// Whether this asset is used as a polite load asset.
   core.bool politeLoad;
 
-  /// Offset position for an asset. Applicable to the following creative types:
-  /// all RICH_MEDIA.
+  /// Offset position for an asset.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   OffsetPosition position;
 
-  /// Offset left unit for an asset. This is a read-only field. Applicable to
-  /// the following creative types: all RICH_MEDIA.
+  /// Offset left unit for an asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA.
   /// Possible string values are:
   /// - "OFFSET_UNIT_PIXEL"
   /// - "OFFSET_UNIT_PERCENT"
   /// - "OFFSET_UNIT_PIXEL_FROM_CENTER"
   core.String positionLeftUnit;
 
-  /// Offset top unit for an asset. This is a read-only field if the asset
-  /// displayType is ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following
-  /// creative types: all RICH_MEDIA.
+  /// Offset top unit for an asset.
+  ///
+  /// This is a read-only field if the asset displayType is
+  /// ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types:
+  /// all RICH_MEDIA.
   /// Possible string values are:
   /// - "OFFSET_UNIT_PIXEL"
   /// - "OFFSET_UNIT_PERCENT"
   /// - "OFFSET_UNIT_PIXEL_FROM_CENTER"
   core.String positionTopUnit;
 
-  /// Progressive URL for video asset. This is a read-only field. Applicable to
-  /// the following creative types: INSTREAM_VIDEO and all VPAID.
+  /// Progressive URL for video asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_VIDEO and all VPAID.
   core.String progressiveServingUrl;
 
-  /// Whether the asset pushes down other content. Applicable to the following
-  /// creative types: all RICH_MEDIA. Additionally, only applicable when the
-  /// asset offsets are 0, the collapsedSize.width matches size.width, and the
-  /// collapsedSize.height is less than size.height.
+  /// Whether the asset pushes down other content.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA. Additionally,
+  /// only applicable when the asset offsets are 0, the collapsedSize.width
+  /// matches size.width, and the collapsedSize.height is less than size.height.
   core.bool pushdown;
 
-  /// Pushdown duration in seconds for an asset. Applicable to the following
-  /// creative types: all RICH_MEDIA.Additionally, only applicable when the
-  /// asset pushdown field is true, the offsets are 0, the collapsedSize.width
-  /// matches size.width, and the collapsedSize.height is less than size.height.
-  /// Acceptable values are 0 to 9.99, inclusive.
+  /// Pushdown duration in seconds for an asset.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.Additionally,
+  /// only applicable when the asset pushdown field is true, the offsets are 0,
+  /// the collapsedSize.width matches size.width, and the collapsedSize.height
+  /// is less than size.height. Acceptable values are 0 to 9.99, inclusive.
   core.double pushdownDuration;
 
-  /// Role of the asset in relation to creative. Applicable to all but the
-  /// following creative types: all REDIRECT and TRACKING_TEXT. This is a
-  /// required field. PRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER,
-  /// IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple
-  /// primary assets), and all VPAID creatives. BACKUP_IMAGE applies to
-  /// FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives.
-  /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
-  /// ADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.
-  /// OTHER refers to assets from sources other than Campaign Manager, such as
-  /// Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID
-  /// creatives. PARENT_VIDEO refers to videos uploaded by the user in Campaign
-  /// Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO
-  /// creatives. TRANSCODED_VIDEO refers to videos transcoded by Campaign
-  /// Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and
-  /// VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO refers to the Campaign
-  /// Manager representation of child asset videos from Studio, and is
-  /// applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or
+  /// Role of the asset in relation to creative.
+  ///
+  /// Applicable to all but the following creative types: all REDIRECT and
+  /// TRACKING_TEXT. This is a required field. PRIMARY applies to DISPLAY,
+  /// FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA
+  /// (which may contain multiple primary assets), and all VPAID creatives.
+  /// BACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and
+  /// all VPAID creatives. Applicable to DISPLAY when the primary asset type is
+  /// not HTML_IMAGE. ADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to
+  /// FLASH_INPAGE creatives. OTHER refers to assets from sources other than
+  /// Campaign Manager, such as Studio uploaded assets, applicable to all
+  /// RICH_MEDIA and all VPAID creatives. PARENT_VIDEO refers to videos uploaded
+  /// by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and
+  /// VPAID_LINEAR_VIDEO creatives. TRANSCODED_VIDEO refers to videos transcoded
+  /// by Campaign Manager from PARENT_VIDEO assets and is applicable to
+  /// INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO refers to
+  /// the Campaign Manager representation of child asset videos from Studio, and
+  /// is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or
   /// removed within Campaign Manager. For VPAID_LINEAR_VIDEO creatives,
   /// PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked
   /// active serve as backup in case the VPAID creative cannot be served. Only
@@ -20751,40 +21192,52 @@ class CreativeAsset {
   /// - "TRANSCODED_AUDIO"
   core.String role;
 
-  /// Size associated with this creative asset. This is a required field when
-  /// applicable; however for IMAGE and FLASH_INPAGE, creatives if left blank,
-  /// this field will be automatically set using the actual size of the
-  /// associated image asset. Applicable to the following creative types:
-  /// DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all
-  /// RICH_MEDIA. Applicable to DISPLAY when the primary asset type is not
-  /// HTML_IMAGE.
+  /// Size associated with this creative asset.
+  ///
+  /// This is a required field when applicable; however for IMAGE and
+  /// FLASH_INPAGE, creatives if left blank, this field will be automatically
+  /// set using the actual size of the associated image asset. Applicable to the
+  /// following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE,
+  /// HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the
+  /// primary asset type is not HTML_IMAGE.
   Size size;
 
-  /// Whether the asset is SSL-compliant. This is a read-only field. Applicable
-  /// to all but the following creative types: all REDIRECT and TRACKING_TEXT.
+  /// Whether the asset is SSL-compliant.
+  ///
+  /// This is a read-only field. Applicable to all but the following creative
+  /// types: all REDIRECT and TRACKING_TEXT.
   core.bool sslCompliant;
 
-  /// Initial wait time type before making the asset visible. Applicable to the
-  /// following creative types: all RICH_MEDIA.
+  /// Initial wait time type before making the asset visible.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.
   /// Possible string values are:
   /// - "ASSET_START_TIME_TYPE_NONE"
   /// - "ASSET_START_TIME_TYPE_CUSTOM"
   core.String startTimeType;
 
-  /// Streaming URL for video asset. This is a read-only field. Applicable to
-  /// the following creative types: INSTREAM_VIDEO and all VPAID.
+  /// Streaming URL for video asset.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// INSTREAM_VIDEO and all VPAID.
   core.String streamingServingUrl;
 
-  /// Whether the asset is transparent. Applicable to the following creative
-  /// types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets.
+  /// Whether the asset is transparent.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA. Additionally,
+  /// only applicable to HTML5 assets.
   core.bool transparency;
 
-  /// Whether the asset is vertically locked. This is a read-only field.
-  /// Applicable to the following creative types: all RICH_MEDIA.
+  /// Whether the asset is vertically locked.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA.
   core.bool verticallyLocked;
 
-  /// Window mode options for flash assets. Applicable to the following creative
-  /// types: FLASH_INPAGE, RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND,
+  /// Window mode options for flash assets.
+  ///
+  /// Applicable to the following creative types: FLASH_INPAGE,
+  /// RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND,
   /// RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING.
   /// Possible string values are:
   /// - "OPAQUE"
@@ -20792,19 +21245,24 @@ class CreativeAsset {
   /// - "TRANSPARENT"
   core.String windowMode;
 
-  /// zIndex value of an asset. Applicable to the following creative types: all
-  /// RICH_MEDIA.Additionally, only applicable to assets whose displayType is
-  /// NOT one of the following types: ASSET_DISPLAY_TYPE_INPAGE or
-  /// ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999,
-  /// inclusive.
+  /// zIndex value of an asset.
+  ///
+  /// Applicable to the following creative types: all RICH_MEDIA.Additionally,
+  /// only applicable to assets whose displayType is NOT one of the following
+  /// types: ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY. Acceptable
+  /// values are -999999999 to 999999999, inclusive.
   core.int zIndex;
 
-  /// File name of zip file. This is a read-only field. Applicable to the
-  /// following creative types: HTML5_BANNER.
+  /// File name of zip file.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// HTML5_BANNER.
   core.String zipFilename;
 
-  /// Size of zip file. This is a read-only field. Applicable to the following
-  /// creative types: HTML5_BANNER.
+  /// Size of zip file.
+  ///
+  /// This is a read-only field. Applicable to the following creative types:
+  /// HTML5_BANNER.
   core.String zipFilesize;
 
   CreativeAsset();
@@ -21136,14 +21594,18 @@ class CreativeAsset {
 
 /// Creative Asset ID.
 class CreativeAssetId {
-  /// Name of the creative asset. This is a required field while inserting an
-  /// asset. After insertion, this assetIdentifier is used to identify the
-  /// uploaded asset. Characters in the name must be alphanumeric or one of the
-  /// following: ".-_ ". Spaces are allowed.
+  /// Name of the creative asset.
+  ///
+  /// This is a required field while inserting an asset. After insertion, this
+  /// assetIdentifier is used to identify the uploaded asset. Characters in the
+  /// name must be alphanumeric or one of the following: ".-_ ". Spaces are
+  /// allowed.
   core.String name;
 
-  /// Type of asset to upload. This is a required field. FLASH and IMAGE are no
-  /// longer supported for new uploads. All image assets should use HTML_IMAGE.
+  /// Type of asset to upload.
+  ///
+  /// This is a required field. FLASH and IMAGE are no longer supported for new
+  /// uploads. All image assets should use HTML_IMAGE.
   /// Possible string values are:
   /// - "IMAGE"
   /// - "FLASH"
@@ -21177,52 +21639,72 @@ class CreativeAssetId {
 }
 
 /// CreativeAssets contains properties of a creative asset file which will be
-/// uploaded or has already been uploaded. Refer to the creative sample code for
-/// how to upload assets and insert a creative.
+/// uploaded or has already been uploaded.
+///
+/// Refer to the creative sample code for how to upload assets and insert a
+/// creative.
 class CreativeAssetMetadata {
-  /// ID of the creative asset. This is a required field.
+  /// ID of the creative asset.
+  ///
+  /// This is a required field.
   CreativeAssetId assetIdentifier;
 
-  /// List of detected click tags for assets. This is a read-only,
-  /// auto-generated field. This field is empty for a rich media asset.
+  /// List of detected click tags for assets.
+  ///
+  /// This is a read-only, auto-generated field. This field is empty for a rich
+  /// media asset.
   core.List<ClickTag> clickTags;
 
-  /// List of counter events configured for the asset. This is a read-only,
-  /// auto-generated field and only applicable to a rich media asset.
+  /// List of counter events configured for the asset.
+  ///
+  /// This is a read-only, auto-generated field and only applicable to a rich
+  /// media asset.
   core.List<CreativeCustomEvent> counterCustomEvents;
 
   /// List of feature dependencies for the creative asset that are detected by
-  /// Campaign Manager. Feature dependencies are features that a browser must be
-  /// able to support in order to render your HTML5 creative correctly. This is
-  /// a read-only, auto-generated field.
+  /// Campaign Manager.
+  ///
+  /// Feature dependencies are features that a browser must be able to support
+  /// in order to render your HTML5 creative correctly. This is a read-only,
+  /// auto-generated field.
   core.List<core.String> detectedFeatures;
 
-  /// List of exit events configured for the asset. This is a read-only,
-  /// auto-generated field and only applicable to a rich media asset.
+  /// List of exit events configured for the asset.
+  ///
+  /// This is a read-only, auto-generated field and only applicable to a rich
+  /// media asset.
   core.List<CreativeCustomEvent> exitCustomEvents;
 
-  /// Numeric ID of the asset. This is a read-only, auto-generated field.
+  /// Numeric ID of the asset.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the numeric ID of the asset. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the numeric ID of the asset.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeAssetMetadata".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeAssetMetadata".
   core.String kind;
 
-  /// True if the uploaded asset is a rich media asset. This is a read-only,
-  /// auto-generated field.
+  /// True if the uploaded asset is a rich media asset.
+  ///
+  /// This is a read-only, auto-generated field.
   core.bool richMedia;
 
-  /// List of timer events configured for the asset. This is a read-only,
-  /// auto-generated field and only applicable to a rich media asset.
+  /// List of timer events configured for the asset.
+  ///
+  /// This is a read-only, auto-generated field and only applicable to a rich
+  /// media asset.
   core.List<CreativeCustomEvent> timerCustomEvents;
 
-  /// Rules validated during code generation that generated a warning. This is a
-  /// read-only, auto-generated field. Possible values are: - "ADMOB_REFERENCED"
-  /// - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" -
+  /// Rules validated during code generation that generated a warning.
+  ///
+  /// This is a read-only, auto-generated field. Possible values are: -
+  /// "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" -
   /// "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" -
   /// "CLICK_TAG_MISSING" - "CLICK_TAG_MORE_THAN_ONE" -
   /// "CLICK_TAG_NON_TOP_LEVEL" - "COMPONENT_UNSUPPORTED_DCM" -
@@ -21332,16 +21814,21 @@ class CreativeAssetMetadata {
 }
 
 /// Encapsulates the list of rules for asset selection and a default asset in
-/// case none of the rules match. Applicable to INSTREAM_VIDEO creatives.
+/// case none of the rules match.
+///
+/// Applicable to INSTREAM_VIDEO creatives.
 class CreativeAssetSelection {
-  /// A creativeAssets[].id. This should refer to one of the parent assets in
-  /// this creative, and will be served if none of the rules match. This is a
-  /// required field.
+  /// A creativeAssets[].id.
+  ///
+  /// This should refer to one of the parent assets in this creative, and will
+  /// be served if none of the rules match. This is a required field.
   core.String defaultAssetId;
 
-  /// Rules determine which asset will be served to a viewer. Rules will be
-  /// evaluated in the order in which they are stored in this list. This list
-  /// must contain at least one rule. Applicable to INSTREAM_VIDEO creatives.
+  /// Rules determine which asset will be served to a viewer.
+  ///
+  /// Rules will be evaluated in the order in which they are stored in this
+  /// list. This list must contain at least one rule. Applicable to
+  /// INSTREAM_VIDEO creatives.
   core.List<Rule> rules;
 
   CreativeAssetSelection();
@@ -21372,56 +21859,70 @@ class CreativeAssetSelection {
 
 /// Creative Assignment.
 class CreativeAssignment {
-  /// Whether this creative assignment is active. When true, the creative will
-  /// be included in the ad's rotation.
+  /// Whether this creative assignment is active.
+  ///
+  /// When true, the creative will be included in the ad's rotation.
   core.bool active;
 
   /// Whether applicable event tags should fire when this creative assignment is
-  /// rendered. If this value is unset when the ad is inserted or updated, it
-  /// will default to true for all creative types EXCEPT for INTERNAL_REDIRECT,
+  /// rendered.
+  ///
+  /// If this value is unset when the ad is inserted or updated, it will default
+  /// to true for all creative types EXCEPT for INTERNAL_REDIRECT,
   /// INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO.
   core.bool applyEventTags;
 
   /// Click-through URL of the creative assignment.
   ClickThroughUrl clickThroughUrl;
 
-  /// Companion creative overrides for this creative assignment. Applicable to
-  /// video ads.
+  /// Companion creative overrides for this creative assignment.
+  ///
+  /// Applicable to video ads.
   core.List<CompanionClickThroughOverride> companionCreativeOverrides;
 
-  /// Creative group assignments for this creative assignment. Only one
-  /// assignment per creative group number is allowed for a maximum of two
-  /// assignments.
+  /// Creative group assignments for this creative assignment.
+  ///
+  /// Only one assignment per creative group number is allowed for a maximum of
+  /// two assignments.
   core.List<CreativeGroupAssignment> creativeGroupAssignments;
 
-  /// ID of the creative to be assigned. This is a required field.
+  /// ID of the creative to be assigned.
+  ///
+  /// This is a required field.
   core.String creativeId;
 
-  /// Dimension value for the ID of the creative. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the creative.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue creativeIdDimensionValue;
   core.DateTime endTime;
 
-  /// Rich media exit overrides for this creative assignment. Applicable when
-  /// the creative type is any of the following: - DISPLAY - RICH_MEDIA_INPAGE -
-  /// RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND - RICH_MEDIA_EXPANDING -
-  /// RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP -
-  /// RICH_MEDIA_MULTI_FLOATING - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR -
-  /// VPAID_NON_LINEAR
+  /// Rich media exit overrides for this creative assignment.
+  ///
+  /// Applicable when the creative type is any of the following: - DISPLAY -
+  /// RICH_MEDIA_INPAGE - RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND -
+  /// RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT -
+  /// RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING -
+  /// RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR
   core.List<RichMediaExitOverride> richMediaExitOverrides;
 
   /// Sequence number of the creative assignment, applicable when the rotation
-  /// type is CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to
-  /// 65535, inclusive.
+  /// type is CREATIVE_ROTATION_TYPE_SEQUENTIAL.
+  ///
+  /// Acceptable values are 1 to 65535, inclusive.
   core.int sequence;
 
-  /// Whether the creative to be assigned is SSL-compliant. This is a read-only
-  /// field that is auto-generated when the ad is inserted or updated.
+  /// Whether the creative to be assigned is SSL-compliant.
+  ///
+  /// This is a read-only field that is auto-generated when the ad is inserted
+  /// or updated.
   core.bool sslCompliant;
   core.DateTime startTime;
 
   /// Weight of the creative assignment, applicable when the rotation type is
-  /// CREATIVE_ROTATION_TYPE_RANDOM. Value must be greater than or equal to 1.
+  /// CREATIVE_ROTATION_TYPE_RANDOM.
+  ///
+  /// Value must be greater than or equal to 1.
   core.int weight;
 
   CreativeAssignment();
@@ -21535,13 +22036,16 @@ class CreativeAssignment {
 /// Click-through URL
 class CreativeClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
-  /// for this click-through. The URL is computed as follows: - If landingPageId
-  /// is specified then that landing page's URL is assigned to this field. -
-  /// Otherwise, the customClickThroughUrl is assigned to this field.
+  /// for this click-through.
+  ///
+  /// The URL is computed as follows: - If landingPageId is specified then that
+  /// landing page's URL is assigned to this field. - Otherwise, the
+  /// customClickThroughUrl is assigned to this field.
   core.String computedClickThroughUrl;
 
-  /// Custom click-through URL. Applicable if the landingPageId field is left
-  /// unset.
+  /// Custom click-through URL.
+  ///
+  /// Applicable if the landingPageId field is left unset.
   core.String customClickThroughUrl;
 
   /// ID of the landing page for the click-through URL.
@@ -21578,14 +22082,17 @@ class CreativeClickThroughUrl {
 
 /// Creative Custom Event.
 class CreativeCustomEvent {
-  /// Unique ID of this event used by Reporting and Data Transfer. This is a
-  /// read-only field.
+  /// Unique ID of this event used by Reporting and Data Transfer.
+  ///
+  /// This is a read-only field.
   core.String advertiserCustomEventId;
 
   /// User-entered name for the event.
   core.String advertiserCustomEventName;
 
-  /// Type of the event. This is a read-only field.
+  /// Type of the event.
+  ///
+  /// This is a read-only field.
   /// Possible string values are:
   /// - "ADVERTISER_EVENT_TIMER"
   /// - "ADVERTISER_EVENT_EXIT"
@@ -21593,8 +22100,9 @@ class CreativeCustomEvent {
   core.String advertiserCustomEventType;
 
   /// Artwork label column, used to link events in Campaign Manager back to
-  /// events in Studio. This is a required field and should not be modified
-  /// after insertion.
+  /// events in Studio.
+  ///
+  /// This is a required field and should not be modified after insertion.
   core.String artworkLabel;
 
   /// Artwork type used by the creative.This is a read-only field.
@@ -21605,16 +22113,19 @@ class CreativeCustomEvent {
   /// - "ARTWORK_TYPE_IMAGE"
   core.String artworkType;
 
-  /// Exit click-through URL for the event. This field is used only for exit
-  /// events.
+  /// Exit click-through URL for the event.
+  ///
+  /// This field is used only for exit events.
   CreativeClickThroughUrl exitClickThroughUrl;
 
-  /// ID of this event. This is a required field and should not be modified
-  /// after insertion.
+  /// ID of this event.
+  ///
+  /// This is a required field and should not be modified after insertion.
   core.String id;
 
-  /// Properties for rich media popup windows. This field is used only for exit
-  /// events.
+  /// Properties for rich media popup windows.
+  ///
+  /// This field is used only for exit events.
   PopupWindowProperties popupWindowProperties;
 
   /// Target type used by the event.
@@ -21627,7 +22138,9 @@ class CreativeCustomEvent {
   core.String targetType;
 
   /// Video reporting ID, used to differentiate multiple videos in a single
-  /// creative. This is a read-only field.
+  /// creative.
+  ///
+  /// This is a read-only field.
   core.String videoReportingId;
 
   CreativeCustomEvent();
@@ -21708,32 +22221,40 @@ class CreativeCustomEvent {
 
 /// Contains properties of a creative field.
 class CreativeField {
-  /// Account ID of this creative field. This is a read-only field that can be
-  /// left blank.
+  /// Account ID of this creative field.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Advertiser ID of this creative field. This is a required field on
-  /// insertion.
+  /// Advertiser ID of this creative field.
+  ///
+  /// This is a required field on insertion.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
-  /// ID of this creative field. This is a read-only, auto-generated field.
+  /// ID of this creative field.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeField".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeField".
   core.String kind;
 
-  /// Name of this creative field. This is a required field and must be less
-  /// than 256 characters long and unique among creative fields of the same
-  /// advertiser.
+  /// Name of this creative field.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among creative fields of the same advertiser.
   core.String name;
 
-  /// Subaccount ID of this creative field. This is a read-only field that can
-  /// be left blank.
+  /// Subaccount ID of this creative field.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   CreativeField();
@@ -21824,16 +22345,20 @@ class CreativeFieldAssignment {
 
 /// Contains properties of a creative field value.
 class CreativeFieldValue {
-  /// ID of this creative field value. This is a read-only, auto-generated
-  /// field.
+  /// ID of this creative field value.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeFieldValue".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeFieldValue".
   core.String kind;
 
-  /// Value of this creative field value. It needs to be less than 256
-  /// characters in length and unique per creative field.
+  /// Value of this creative field value.
+  ///
+  /// It needs to be less than 256 characters in length and unique per creative
+  /// field.
   core.String value;
 
   CreativeFieldValue();
@@ -21870,8 +22395,9 @@ class CreativeFieldValuesListResponse {
   /// Creative field value collection.
   core.List<CreativeFieldValue> creativeFieldValues;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeFieldValuesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeFieldValuesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -21915,8 +22441,9 @@ class CreativeFieldsListResponse {
   /// Creative field collection.
   core.List<CreativeField> creativeFields;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeFieldsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeFieldsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -21957,38 +22484,47 @@ class CreativeFieldsListResponse {
 
 /// Contains properties of a creative group.
 class CreativeGroup {
-  /// Account ID of this creative group. This is a read-only field that can be
-  /// left blank.
+  /// Account ID of this creative group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Advertiser ID of this creative group. This is a required field on
-  /// insertion.
+  /// Advertiser ID of this creative group.
+  ///
+  /// This is a required field on insertion.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
-  /// Subgroup of the creative group. Assign your creative groups to a subgroup
-  /// in order to filter or manage them more easily. This field is required on
-  /// insertion and is read-only after insertion. Acceptable values are 1 to 2,
-  /// inclusive.
+  /// Subgroup of the creative group.
+  ///
+  /// Assign your creative groups to a subgroup in order to filter or manage
+  /// them more easily. This field is required on insertion and is read-only
+  /// after insertion. Acceptable values are 1 to 2, inclusive.
   core.int groupNumber;
 
-  /// ID of this creative group. This is a read-only, auto-generated field.
+  /// ID of this creative group.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeGroup".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeGroup".
   core.String kind;
 
-  /// Name of this creative group. This is a required field and must be less
-  /// than 256 characters long and unique among creative groups of the same
-  /// advertiser.
+  /// Name of this creative group.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among creative groups of the same advertiser.
   core.String name;
 
-  /// Subaccount ID of this creative group. This is a read-only field that can
-  /// be left blank.
+  /// Subaccount ID of this creative group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   CreativeGroup();
@@ -22091,8 +22627,9 @@ class CreativeGroupsListResponse {
   /// Creative group collection.
   core.List<CreativeGroup> creativeGroups;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativeGroupsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeGroupsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -22133,13 +22670,15 @@ class CreativeGroupsListResponse {
 
 /// Creative optimization settings.
 class CreativeOptimizationConfiguration {
-  /// ID of this creative optimization config. This field is auto-generated when
-  /// the campaign is inserted or updated. It can be null for existing
-  /// campaigns.
+  /// ID of this creative optimization config.
+  ///
+  /// This field is auto-generated when the campaign is inserted or updated. It
+  /// can be null for existing campaigns.
   core.String id;
 
-  /// Name of this creative optimization config. This is a required field and
-  /// must be less than 129 characters long.
+  /// Name of this creative optimization config.
+  ///
+  /// This is a required field and must be less than 129 characters long.
   core.String name;
 
   /// List of optimization activities associated with this configuration.
@@ -22198,20 +22737,24 @@ class CreativeRotation {
   /// Creative assignments in this creative rotation.
   core.List<CreativeAssignment> creativeAssignments;
 
-  /// Creative optimization configuration that is used by this ad. It should
-  /// refer to one of the existing optimization configurations in the ad's
-  /// campaign. If it is unset or set to 0, then the campaign's default
+  /// Creative optimization configuration that is used by this ad.
+  ///
+  /// It should refer to one of the existing optimization configurations in the
+  /// ad's campaign. If it is unset or set to 0, then the campaign's default
   /// optimization configuration will be used for this ad.
   core.String creativeOptimizationConfigurationId;
 
-  /// Type of creative rotation. Can be used to specify whether to use
-  /// sequential or random rotation.
+  /// Type of creative rotation.
+  ///
+  /// Can be used to specify whether to use sequential or random rotation.
   /// Possible string values are:
   /// - "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
   /// - "CREATIVE_ROTATION_TYPE_RANDOM"
   core.String type;
 
-  /// Strategy for calculating weights. Used with CREATIVE_ROTATION_TYPE_RANDOM.
+  /// Strategy for calculating weights.
+  ///
+  /// Used with CREATIVE_ROTATION_TYPE_RANDOM.
   /// Possible string values are:
   /// - "WEIGHT_STRATEGY_EQUAL"
   /// - "WEIGHT_STRATEGY_CUSTOM"
@@ -22266,8 +22809,9 @@ class CreativesListResponse {
   /// Creative collection.
   core.List<Creative> creatives;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#creativesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -22387,46 +22931,58 @@ class CrossDimensionReachReportCompatibleFields {
 /// party impression, a third party click, an annotation on a first party
 /// impression, or an annotation on a first party click.
 class CustomEvent {
-  /// Annotate a click event. This field is mutually exclusive with insertEvent
-  /// and annotateImpressionEvent. This or insertEvent and
-  /// annotateImpressionEvent is a required field.
+  /// Annotate a click event.
+  ///
+  /// This field is mutually exclusive with insertEvent and
+  /// annotateImpressionEvent. This or insertEvent and annotateImpressionEvent
+  /// is a required field.
   CustomEventClickAnnotation annotateClickEvent;
 
-  /// Annotate an impression. This field is mutually exclusive with insertEvent
-  /// and annotateClickEvent. This or insertEvent and annotateClickEvent is a
-  /// required field.
+  /// Annotate an impression.
+  ///
+  /// This field is mutually exclusive with insertEvent and annotateClickEvent.
+  /// This or insertEvent and annotateClickEvent is a required field.
   CustomEventImpressionAnnotation annotateImpressionEvent;
 
   /// Custom variables associated with the event.
   core.List<CustomVariable> customVariables;
 
-  /// The type of event. If INSERT, the fields in insertEvent need to be
-  /// populated. If ANNOTATE, the fields in either annotateClickEvent or
-  /// annotateImpressionEvent need to be populated.
+  /// The type of event.
+  ///
+  /// If INSERT, the fields in insertEvent need to be populated. If ANNOTATE,
+  /// the fields in either annotateClickEvent or annotateImpressionEvent need to
+  /// be populated.
   /// Possible string values are:
   /// - "UNKNOWN"
   /// - "INSERT"
   /// - "ANNOTATE"
   core.String eventType;
 
-  /// Floodlight configuration ID of the advertiser the event is linked to. This
-  /// is a required field.
+  /// Floodlight configuration ID of the advertiser the event is linked to.
+  ///
+  /// This is a required field.
   core.String floodlightConfigurationId;
 
-  /// Insert custom event. This field is mutually exclusive with
-  /// annotateClickEvent and annotateImpressionEvent. This or annotateClickEvent
-  /// and annotateImpressionEvent is a required field.
+  /// Insert custom event.
+  ///
+  /// This field is mutually exclusive with annotateClickEvent and
+  /// annotateImpressionEvent. This or annotateClickEvent and
+  /// annotateImpressionEvent is a required field.
   CustomEventInsert insertEvent;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEvent".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEvent".
   core.String kind;
 
-  /// The ordinal of this custom event. This is a required field.
+  /// The ordinal of this custom event.
+  ///
+  /// This is a required field.
   core.String ordinal;
 
-  /// The timestamp of this custom event, in Unix epoch micros. This is a
-  /// required field.
+  /// The timestamp of this custom event, in Unix epoch micros.
+  ///
+  /// This is a required field.
   core.String timestampMicros;
 
   CustomEvent();
@@ -22505,12 +23061,14 @@ class CustomEvent {
 
 /// Annotate a click event.
 class CustomEventClickAnnotation {
-  /// The Google click ID. Use this field to annotate the click associated with
-  /// the gclid.
+  /// The Google click ID.
+  ///
+  /// Use this field to annotate the click associated with the gclid.
   core.String gclid;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventClickAnnotation".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventClickAnnotation".
   core.String kind;
 
   CustomEventClickAnnotation();
@@ -22547,8 +23105,9 @@ class CustomEventError {
   /// - "NOT_FOUND"
   core.String code;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventError".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventError".
   core.String kind;
 
   /// A description of the error.
@@ -22585,12 +23144,15 @@ class CustomEventError {
 
 /// Annotate an impression.
 class CustomEventImpressionAnnotation {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventImpressionAnnotation".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventImpressionAnnotation".
   core.String kind;
 
-  /// The path impression ID. Use this field to annotate the impression
-  /// associated with the pathImpressionId.
+  /// The path impression ID.
+  ///
+  /// Use this field to annotate the impression associated with the
+  /// pathImpressionId.
   core.String pathImpressionId;
 
   CustomEventImpressionAnnotation();
@@ -22631,18 +23193,23 @@ class CustomEventInsert {
   /// - "CLICK"
   core.String insertEventType;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventInsert".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventInsert".
   core.String kind;
 
-  /// The match ID field. A match ID is your own first-party identifier that has
-  /// been synced with Google using the match ID feature in Floodlight. This
-  /// field is mutually exclusive with mobileDeviceId, and at least one of the
-  /// two fields is required.
+  /// The match ID field.
+  ///
+  /// A match ID is your own first-party identifier that has been synced with
+  /// Google using the match ID feature in Floodlight. This field is mutually
+  /// exclusive with mobileDeviceId, and at least one of the two fields is
+  /// required.
   core.String matchId;
 
-  /// The mobile device ID. This field is mutually exclusive with matchId, and
-  /// at least one of the two fields is required.
+  /// The mobile device ID.
+  ///
+  /// This field is mutually exclusive with matchId, and at least one of the two
+  /// fields is required.
   core.String mobileDeviceId;
 
   CustomEventInsert();
@@ -22703,8 +23270,9 @@ class CustomEventStatus {
   /// A list of errors related to this custom event.
   core.List<CustomEventError> errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventStatus".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventStatus".
   core.String kind;
 
   CustomEventStatus();
@@ -22745,8 +23313,9 @@ class CustomEventsBatchInsertRequest {
   /// The set of custom events to insert.
   core.List<CustomEvent> customEvents;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventsBatchInsertRequest".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventsBatchInsertRequest".
   core.String kind;
 
   CustomEventsBatchInsertRequest();
@@ -22781,12 +23350,14 @@ class CustomEventsBatchInsertResponse {
   /// Indicates that some or all custom events failed to insert.
   core.bool hasFailures;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customEventsBatchInsertResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customEventsBatchInsertResponse".
   core.String kind;
 
-  /// The insert status of each custom event. Statuses are returned in the same
-  /// order that conversions are inserted.
+  /// The insert status of each custom event.
+  ///
+  /// Statuses are returned in the same order that conversions are inserted.
   core.List<CustomEventStatus> status;
 
   CustomEventsBatchInsertResponse();
@@ -22823,12 +23394,14 @@ class CustomEventsBatchInsertResponse {
 
 /// A custom floodlight variable.
 class CustomFloodlightVariable {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customFloodlightVariable".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customFloodlightVariable".
   core.String kind;
 
-  /// The type of custom floodlight variable to supply a value for. These map to
-  /// the "u[1-20]=" in the tags.
+  /// The type of custom floodlight variable to supply a value for.
+  ///
+  /// These map to the "u[1-20]=" in the tags.
   /// Possible string values are:
   /// - "U1"
   /// - "U2"
@@ -22932,8 +23505,9 @@ class CustomFloodlightVariable {
   /// - "U100"
   core.String type;
 
-  /// The value of the custom floodlight variable. The length of string must not
-  /// exceed 50 characters.
+  /// The value of the custom floodlight variable.
+  ///
+  /// The length of string must not exceed 50 characters.
   core.String value;
 
   CustomFloodlightVariable();
@@ -22967,8 +23541,9 @@ class CustomFloodlightVariable {
 
 /// Represents a Custom Rich Media Events group.
 class CustomRichMediaEvents {
-  /// List of custom rich media event IDs. Dimension values must be all of type
-  /// dfa:richMediaEventTypeIdAndName.
+  /// List of custom rich media event IDs.
+  ///
+  /// Dimension values must be all of type dfa:richMediaEventTypeIdAndName.
   core.List<DimensionValue> filteredEventIds;
 
   /// The kind of resource this is, in this case
@@ -23007,12 +23582,14 @@ class CustomVariable {
   /// The index of the custom variable.
   core.String index;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#customVariable".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customVariable".
   core.String kind;
 
-  /// The value of the custom variable. The length of string must not exceed 50
-  /// characters.
+  /// The value of the custom variable.
+  ///
+  /// The length of string must not exceed 50 characters.
   core.String value;
 
   CustomVariable();
@@ -23092,13 +23669,17 @@ class CustomViewabilityMetricConfiguration {
   core.bool audible;
 
   /// The time in milliseconds the video must play for the Custom Viewability
-  /// Metric to count an impression. If both this and timePercent are specified,
-  /// the earlier of the two will be used.
+  /// Metric to count an impression.
+  ///
+  /// If both this and timePercent are specified, the earlier of the two will be
+  /// used.
   core.int timeMillis;
 
   /// The percentage of video that must play for the Custom Viewability Metric
-  /// to count an impression. If both this and timeMillis are specified, the
-  /// earlier of the two will be used.
+  /// to count an impression.
+  ///
+  /// If both this and timeMillis are specified, the earlier of the two will be
+  /// used.
   core.int timePercent;
 
   /// The percentage of video that must be on screen for the Custom Viewability
@@ -23157,8 +23738,9 @@ class DV3Ids {
   /// Site ID for DV360.
   core.String dvSiteId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#dV3Ids".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#dV3Ids".
   core.String kind;
 
   DV3Ids();
@@ -23276,21 +23858,25 @@ class DateRange {
 
 /// Day Part Targeting.
 class DayPartTargeting {
-  /// Days of the week when the ad will serve. Acceptable values are: - "SUNDAY"
-  /// - "MONDAY" - "TUESDAY" - "WEDNESDAY" - "THURSDAY" - "FRIDAY" - "SATURDAY"
+  /// Days of the week when the ad will serve.
+  ///
+  /// Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" -
+  /// "THURSDAY" - "FRIDAY" - "SATURDAY"
   core.List<core.String> daysOfWeek;
 
   /// Hours of the day when the ad will serve, where 0 is midnight to 1 AM and
-  /// 23 is 11 PM to midnight. Can be specified with days of week, in which case
-  /// the ad would serve during these hours on the specified days. For example
-  /// if Monday, Wednesday, Friday are the days of week specified and 9-10am,
-  /// 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday,
-  /// Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to
-  /// 23, inclusive.
+  /// 23 is 11 PM to midnight.
+  ///
+  /// Can be specified with days of week, in which case the ad would serve
+  /// during these hours on the specified days. For example if Monday,
+  /// Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours
+  /// 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and
+  /// Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
   core.List<core.int> hoursOfDay;
 
-  /// Whether or not to use the user's local time. If false, the America/New
-  /// York time zone applies.
+  /// Whether or not to use the user's local time.
+  ///
+  /// If false, the America/New York time zone applies.
   core.bool userLocalTime;
 
   DayPartTargeting();
@@ -23331,18 +23917,21 @@ class DeepLink {
   /// The URL of the mobile app being linked to.
   core.String appUrl;
 
-  /// The fallback URL. This URL will be served to users who do not have the
-  /// mobile app installed.
+  /// The fallback URL.
+  ///
+  /// This URL will be served to users who do not have the mobile app installed.
   core.String fallbackUrl;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#deepLink".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#deepLink".
   core.String kind;
 
   /// The mobile app targeted by this deep link.
   MobileApp mobileApp;
 
   /// Ads served to users on these remarketing lists will use this deep link.
+  ///
   /// Applicable when mobileApp.directory is APPLE_APP_STORE.
   core.List<core.String> remarketingListIds;
 
@@ -23391,6 +23980,7 @@ class DeepLink {
 }
 
 /// Properties of inheriting and overriding the default click-through event tag.
+///
 /// A campaign may override the event tag defined at the advertiser level, and
 /// an ad may also override the campaign's setting further.
 class DefaultClickThroughEventTagProperties {
@@ -23433,20 +24023,24 @@ class DeliverySchedule {
   /// within a specified period of time.
   FrequencyCap frequencyCap;
 
-  /// Whether or not hard cutoff is enabled. If true, the ad will not serve
-  /// after the end date and time. Otherwise the ad will continue to be served
-  /// until it has reached its delivery goals.
+  /// Whether or not hard cutoff is enabled.
+  ///
+  /// If true, the ad will not serve after the end date and time. Otherwise the
+  /// ad will continue to be served until it has reached its delivery goals.
   core.bool hardCutoff;
 
-  /// Impression ratio for this ad. This ratio determines how often each ad is
-  /// served relative to the others. For example, if ad A has an impression
-  /// ratio of 1 and ad B has an impression ratio of 3, then Campaign Manager
-  /// will serve ad B three times as often as ad A. Acceptable values are 1 to
-  /// 10, inclusive.
+  /// Impression ratio for this ad.
+  ///
+  /// This ratio determines how often each ad is served relative to the others.
+  /// For example, if ad A has an impression ratio of 1 and ad B has an
+  /// impression ratio of 3, then Campaign Manager will serve ad B three times
+  /// as often as ad A. Acceptable values are 1 to 10, inclusive.
   core.String impressionRatio;
 
-  /// Serving priority of an ad, with respect to other ads. The lower the
-  /// priority number, the greater the priority with which it is served.
+  /// Serving priority of an ad, with respect to other ads.
+  ///
+  /// The lower the priority number, the greater the priority with which it is
+  /// served.
   /// Possible string values are:
   /// - "AD_PRIORITY_01"
   /// - "AD_PRIORITY_02"
@@ -23646,8 +24240,9 @@ class DimensionValue {
   /// The kind of resource this is, in this case dfareporting#dimensionValue.
   core.String kind;
 
-  /// Determines how the 'value' field is matched when filtering. If not
-  /// specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
+  /// Determines how the 'value' field is matched when filtering.
+  ///
+  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
   /// allowed as a placeholder for variable length character sequences, and it
   /// can be escaped with a backslash. Note, only paid search dimensions
   /// ('dfa:paidSearch*') allow a matchType other than EXACT.
@@ -23719,10 +24314,11 @@ class DimensionValueList {
   /// The kind of list this is, in this case dfareporting#dimensionValueList.
   core.String kind;
 
-  /// Continuation token used to page through dimension values. To retrieve the
-  /// next page of results, set the next request's "pageToken" to the value of
-  /// this field. The page token is only valid for a limited amount of time and
-  /// should not be persisted.
+  /// Continuation token used to page through dimension values.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// to the value of this field. The page token is only valid for a limited
+  /// amount of time and should not be persisted.
   core.String nextPageToken;
 
   DimensionValueList();
@@ -23769,7 +24365,9 @@ class DimensionValueRequest {
   core.String dimensionName;
   core.DateTime endDate;
 
-  /// The list of filters by which to filter values. The filters are ANDed.
+  /// The list of filters by which to filter values.
+  ///
+  /// The filters are ANDed.
   core.List<DimensionFilter> filters;
 
   /// The kind of request this is, in this case
@@ -23824,28 +24422,35 @@ class DimensionValueRequest {
 }
 
 /// DirectorySites contains properties of a website from the Site Directory.
+///
 /// Sites need to be added to an account via the Sites resource before they can
 /// be assigned to a placement.
 class DirectorySite {
-  /// ID of this directory site. This is a read-only, auto-generated field.
+  /// ID of this directory site.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this directory site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of this directory site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Tag types for regular placements. Acceptable values are: - "STANDARD" -
-  /// "IFRAME_JAVASCRIPT_INPAGE" - "INTERNAL_REDIRECT_INPAGE" -
-  /// "JAVASCRIPT_INPAGE"
+  /// Tag types for regular placements.
+  ///
+  /// Acceptable values are: - "STANDARD" - "IFRAME_JAVASCRIPT_INPAGE" -
+  /// "INTERNAL_REDIRECT_INPAGE" - "JAVASCRIPT_INPAGE"
   core.List<core.String> inpageTagFormats;
 
-  /// Tag types for interstitial placements. Acceptable values are: -
-  /// "IFRAME_JAVASCRIPT_INTERSTITIAL" - "INTERNAL_REDIRECT_INTERSTITIAL" -
-  /// "JAVASCRIPT_INTERSTITIAL"
+  /// Tag types for interstitial placements.
+  ///
+  /// Acceptable values are: - "IFRAME_JAVASCRIPT_INTERSTITIAL" -
+  /// "INTERNAL_REDIRECT_INTERSTITIAL" - "JAVASCRIPT_INTERSTITIAL"
   core.List<core.String> interstitialTagFormats;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#directorySite".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#directorySite".
   core.String kind;
 
   /// Name of this directory site.
@@ -23979,8 +24584,9 @@ class DirectorySitesListResponse {
   /// Directory site collection.
   core.List<DirectorySite> directorySites;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#directorySitesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#directorySitesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -24056,27 +24662,33 @@ class DisjunctiveMatchStatement {
   }
 }
 
-/// Contains properties of a dynamic targeting key. Dynamic targeting keys are
-/// unique, user-friendly labels, created at the advertiser level in DCM, that
-/// can be assigned to ads, creatives, and placements and used for targeting
-/// with Studio dynamic creatives. Use these labels instead of numeric Campaign
-/// Manager IDs (such as placement IDs) to save time and avoid errors in your
-/// dynamic feeds.
+/// Contains properties of a dynamic targeting key.
+///
+/// Dynamic targeting keys are unique, user-friendly labels, created at the
+/// advertiser level in DCM, that can be assigned to ads, creatives, and
+/// placements and used for targeting with Studio dynamic creatives. Use these
+/// labels instead of numeric Campaign Manager IDs (such as placement IDs) to
+/// save time and avoid errors in your dynamic feeds.
 class DynamicTargetingKey {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#dynamicTargetingKey".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#dynamicTargetingKey".
   core.String kind;
 
-  /// Name of this dynamic targeting key. This is a required field. Must be less
-  /// than 256 characters long and cannot contain commas. All characters are
-  /// converted to lowercase.
+  /// Name of this dynamic targeting key.
+  ///
+  /// This is a required field. Must be less than 256 characters long and cannot
+  /// contain commas. All characters are converted to lowercase.
   core.String name;
 
-  /// ID of the object of this dynamic targeting key. This is a required field.
+  /// ID of the object of this dynamic targeting key.
+  ///
+  /// This is a required field.
   core.String objectId;
 
-  /// Type of the object of this dynamic targeting key. This is a required
-  /// field.
+  /// Type of the object of this dynamic targeting key.
+  ///
+  /// This is a required field.
   /// Possible string values are:
   /// - "OBJECT_ADVERTISER"
   /// - "OBJECT_AD"
@@ -24124,8 +24736,9 @@ class DynamicTargetingKeysListResponse {
   /// Dynamic targeting key collection.
   core.List<DynamicTargetingKey> dynamicTargetingKeys;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#dynamicTargetingKeysListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#dynamicTargetingKeysListResponse".
   core.String kind;
 
   DynamicTargetingKeysListResponse();
@@ -24157,12 +24770,16 @@ class DynamicTargetingKeysListResponse {
 
 /// A description of how user IDs are encrypted.
 class EncryptionInfo {
-  /// The encryption entity ID. This should match the encryption configuration
-  /// for ad serving or Data Transfer.
+  /// The encryption entity ID.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
   core.String encryptionEntityId;
 
-  /// The encryption entity type. This should match the encryption configuration
-  /// for ad serving or Data Transfer.
+  /// The encryption entity type.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
   /// Possible string values are:
   /// - "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
   /// - "DCM_ACCOUNT"
@@ -24181,8 +24798,9 @@ class EncryptionInfo {
   /// - "DATA_TRANSFER"
   core.String encryptionSource;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#encryptionInfo".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#encryptionInfo".
   core.String kind;
 
   EncryptionInfo();
@@ -24254,24 +24872,29 @@ class EventFilter {
 
 /// Contains properties of an event tag.
 class EventTag {
-  /// Account ID of this event tag. This is a read-only field that can be left
-  /// blank.
+  /// Account ID of this event tag.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Advertiser ID of this event tag. This field or the campaignId field is
-  /// required on insertion.
+  /// Advertiser ID of this event tag.
+  ///
+  /// This field or the campaignId field is required on insertion.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
-  /// Campaign ID of this event tag. This field or the advertiserId field is
-  /// required on insertion.
+  /// Campaign ID of this event tag.
+  ///
+  /// This field or the advertiserId field is required on insertion.
   core.String campaignId;
 
-  /// Dimension value for the ID of the campaign. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the campaign.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue campaignIdDimensionValue;
 
   /// Whether this event tag should be automatically enabled for all of the
@@ -24279,64 +24902,81 @@ class EventTag {
   core.bool enabledByDefault;
 
   /// Whether to remove this event tag from ads that are trafficked through
-  /// Display & Video 360 to Ad Exchange. This may be useful if the event tag
-  /// uses a pixel that is unapproved for Ad Exchange bids on one or more
-  /// networks, such as the Google Display Network.
+  /// Display & Video 360 to Ad Exchange.
+  ///
+  /// This may be useful if the event tag uses a pixel that is unapproved for Ad
+  /// Exchange bids on one or more networks, such as the Google Display Network.
   core.bool excludeFromAdxRequests;
 
-  /// ID of this event tag. This is a read-only, auto-generated field.
+  /// ID of this event tag.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#eventTag".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#eventTag".
   core.String kind;
 
-  /// Name of this event tag. This is a required field and must be less than 256
-  /// characters long.
+  /// Name of this event tag.
+  ///
+  /// This is a required field and must be less than 256 characters long.
   core.String name;
 
-  /// Site filter type for this event tag. If no type is specified then the
-  /// event tag will be applied to all sites.
+  /// Site filter type for this event tag.
+  ///
+  /// If no type is specified then the event tag will be applied to all sites.
   /// Possible string values are:
   /// - "WHITELIST"
   /// - "BLACKLIST"
   core.String siteFilterType;
 
-  /// Filter list of site IDs associated with this event tag. The siteFilterType
-  /// determines whether this is a allowlist or blocklist filter.
+  /// Filter list of site IDs associated with this event tag.
+  ///
+  /// The siteFilterType determines whether this is a allowlist or blocklist
+  /// filter.
   core.List<core.String> siteIds;
 
-  /// Whether this tag is SSL-compliant or not. This is a read-only field.
+  /// Whether this tag is SSL-compliant or not.
+  ///
+  /// This is a read-only field.
   core.bool sslCompliant;
 
-  /// Status of this event tag. Must be ENABLED for this event tag to fire. This
-  /// is a required field.
+  /// Status of this event tag.
+  ///
+  /// Must be ENABLED for this event tag to fire. This is a required field.
   /// Possible string values are:
   /// - "ENABLED"
   /// - "DISABLED"
   core.String status;
 
-  /// Subaccount ID of this event tag. This is a read-only field that can be
-  /// left blank.
+  /// Subaccount ID of this event tag.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
-  /// Event tag type. Can be used to specify whether to use a third-party pixel,
-  /// a third-party JavaScript URL, or a third-party click-through URL for
-  /// either impression or click tracking. This is a required field.
+  /// Event tag type.
+  ///
+  /// Can be used to specify whether to use a third-party pixel, a third-party
+  /// JavaScript URL, or a third-party click-through URL for either impression
+  /// or click tracking. This is a required field.
   /// Possible string values are:
   /// - "IMPRESSION_IMAGE_EVENT_TAG"
   /// - "IMPRESSION_JAVASCRIPT_EVENT_TAG"
   /// - "CLICK_THROUGH_EVENT_TAG"
   core.String type;
 
-  /// Payload URL for this event tag. The URL on a click-through event tag
-  /// should have a landing page URL appended to the end of it. This field is
-  /// required on insertion.
+  /// Payload URL for this event tag.
+  ///
+  /// The URL on a click-through event tag should have a landing page URL
+  /// appended to the end of it. This field is required on insertion.
   core.String url;
 
   /// Number of times the landing page URL should be URL-escaped before being
-  /// appended to the click-through event tag URL. Only applies to click-through
-  /// event tags as specified by the event tag type.
+  /// appended to the click-through event tag URL.
+  ///
+  /// Only applies to click-through event tags as specified by the event tag
+  /// type.
   core.int urlEscapeLevels;
 
   EventTag();
@@ -24469,7 +25109,9 @@ class EventTagOverride {
   /// Whether this override is enabled.
   core.bool enabled;
 
-  /// ID of this event tag override. This is a read-only, auto-generated field.
+  /// ID of this event tag override.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
   EventTagOverride();
@@ -24500,8 +25142,9 @@ class EventTagsListResponse {
   /// Event tag collection.
   core.List<EventTag> eventTags;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#eventTagsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#eventTagsListResponse".
   core.String kind;
 
   EventTagsListResponse();
@@ -24561,12 +25204,16 @@ class FileUrls {
   }
 }
 
-/// Represents a File resource. A file contains the metadata for a report run.
-/// It shows the status of the run and holds the URLs to the generated report
-/// data if the run is finished and the status is "REPORT_AVAILABLE".
+/// Represents a File resource.
+///
+/// A file contains the metadata for a report run. It shows the status of the
+/// run and holds the URLs to the generated report data if the run is finished
+/// and the status is "REPORT_AVAILABLE".
 class File {
-  /// The date range for which the file has report data. The date range will
-  /// always be the absolute date range for which the report is run.
+  /// The date range for which the file has report data.
+  ///
+  /// The date range will always be the absolute date range for which the report
+  /// is run.
   DateRange dateRange;
 
   /// Etag of this resource.
@@ -24575,8 +25222,9 @@ class File {
   /// The filename of the file.
   core.String fileName;
 
-  /// The output format of the report. Only available once the file is
-  /// available.
+  /// The output format of the report.
+  ///
+  /// Only available once the file is available.
   /// Possible string values are:
   /// - "CSV"
   /// - "EXCEL"
@@ -24585,8 +25233,9 @@ class File {
   /// The unique ID of this report file.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#file".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#file".
   core.String kind;
 
   /// The timestamp in milliseconds since epoch when this file was last
@@ -24688,14 +25337,16 @@ class FileList {
   /// The files returned in this response.
   core.List<File> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#fileList".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#fileList".
   core.String kind;
 
-  /// Continuation token used to page through files. To retrieve the next page
-  /// of results, set the next request's "pageToken" to the value of this field.
-  /// The page token is only valid for a limited amount of time and should not
-  /// be persisted.
+  /// Continuation token used to page through files.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// to the value of this field. The page token is only valid for a limited
+  /// amount of time and should not be persisted.
   core.String nextPageToken;
 
   FileList();
@@ -24786,16 +25437,21 @@ class Flight {
 
 /// Floodlight Activity GenerateTag Response
 class FloodlightActivitiesGenerateTagResponse {
-  /// Generated tag for this Floodlight activity. For global site tags, this is
-  /// the event snippet.
+  /// Generated tag for this Floodlight activity.
+  ///
+  /// For global site tags, this is the event snippet.
   core.String floodlightActivityTag;
 
-  /// The global snippet section of a global site tag. The global site tag sets
-  /// new cookies on your domain, which will store a unique identifier for a
-  /// user or the ad click that brought the user to your site. Learn more.
+  /// The global snippet section of a global site tag.
+  ///
+  /// The global site tag sets new cookies on your domain, which will store a
+  /// unique identifier for a user or the ad click that brought the user to your
+  /// site. Learn more.
   core.String globalSiteTagGlobalSnippet;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#floodlightActivitiesGenerateTagResponse".
   core.String kind;
 
@@ -24834,8 +25490,9 @@ class FloodlightActivitiesListResponse {
   /// Floodlight activity collection.
   core.List<FloodlightActivity> floodlightActivities;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#floodlightActivitiesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#floodlightActivitiesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -24876,25 +25533,29 @@ class FloodlightActivitiesListResponse {
 
 /// Contains properties of a Floodlight activity.
 class FloodlightActivity {
-  /// Account ID of this floodlight activity. This is a read-only field that can
-  /// be left blank.
+  /// Account ID of this floodlight activity.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Advertiser ID of this floodlight activity. If this field is left blank,
-  /// the value will be copied over either from the activity group's advertiser
-  /// or the existing activity's advertiser.
+  /// Advertiser ID of this floodlight activity.
+  ///
+  /// If this field is left blank, the value will be copied over either from the
+  /// activity group's advertiser or the existing activity's advertiser.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Whether the activity is enabled for attribution.
   core.bool attributionEnabled;
 
-  /// Code type used for cache busting in the generated tag. Applicable only
-  /// when floodlightActivityGroupType is COUNTER and countingMethod is
-  /// STANDARD_COUNTING or UNIQUE_COUNTING.
+  /// Code type used for cache busting in the generated tag.
+  ///
+  /// Applicable only when floodlightActivityGroupType is COUNTER and
+  /// countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING.
   /// Possible string values are:
   /// - "JAVASCRIPT"
   /// - "ACTIVE_SERVER_PAGE"
@@ -24903,8 +25564,9 @@ class FloodlightActivity {
   /// - "COLD_FUSION"
   core.String cacheBustingType;
 
-  /// Counting method for conversions for this floodlight activity. This is a
-  /// required field.
+  /// Counting method for conversions for this floodlight activity.
+  ///
+  /// This is a required field.
   /// Possible string values are:
   /// - "STANDARD_COUNTING"
   /// - "UNIQUE_COUNTING"
@@ -24916,60 +25578,74 @@ class FloodlightActivity {
   /// Dynamic floodlight tags.
   core.List<FloodlightActivityDynamicTag> defaultTags;
 
-  /// URL where this tag will be deployed. If specified, must be less than 256
-  /// characters long.
+  /// URL where this tag will be deployed.
+  ///
+  /// If specified, must be less than 256 characters long.
   core.String expectedUrl;
 
-  /// Floodlight activity group ID of this floodlight activity. This is a
-  /// required field.
+  /// Floodlight activity group ID of this floodlight activity.
+  ///
+  /// This is a required field.
   core.String floodlightActivityGroupId;
 
-  /// Name of the associated floodlight activity group. This is a read-only
-  /// field.
+  /// Name of the associated floodlight activity group.
+  ///
+  /// This is a read-only field.
   core.String floodlightActivityGroupName;
 
-  /// Tag string of the associated floodlight activity group. This is a
-  /// read-only field.
+  /// Tag string of the associated floodlight activity group.
+  ///
+  /// This is a read-only field.
   core.String floodlightActivityGroupTagString;
 
-  /// Type of the associated floodlight activity group. This is a read-only
-  /// field.
+  /// Type of the associated floodlight activity group.
+  ///
+  /// This is a read-only field.
   /// Possible string values are:
   /// - "COUNTER"
   /// - "SALE"
   core.String floodlightActivityGroupType;
 
-  /// Floodlight configuration ID of this floodlight activity. If this field is
-  /// left blank, the value will be copied over either from the activity group's
-  /// floodlight configuration or from the existing activity's floodlight
-  /// configuration.
+  /// Floodlight configuration ID of this floodlight activity.
+  ///
+  /// If this field is left blank, the value will be copied over either from the
+  /// activity group's floodlight configuration or from the existing activity's
+  /// floodlight configuration.
   core.String floodlightConfigurationId;
 
-  /// Dimension value for the ID of the floodlight configuration. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of the floodlight configuration.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue floodlightConfigurationIdDimensionValue;
 
-  /// The type of Floodlight tag this activity will generate. This is a required
-  /// field.
+  /// The type of Floodlight tag this activity will generate.
+  ///
+  /// This is a required field.
   /// Possible string values are:
   /// - "IFRAME"
   /// - "IMAGE"
   /// - "GLOBAL_SITE_TAG"
   core.String floodlightTagType;
 
-  /// ID of this floodlight activity. This is a read-only, auto-generated field.
+  /// ID of this floodlight activity.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this floodlight activity. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of this floodlight activity.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#floodlightActivity".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#floodlightActivity".
   core.String kind;
 
-  /// Name of this floodlight activity. This is a required field. Must be less
-  /// than 129 characters long and cannot contain quotes.
+  /// Name of this floodlight activity.
+  ///
+  /// This is a required field. Must be less than 129 characters long and cannot
+  /// contain quotes.
   core.String name;
 
   /// General notes or implementation instructions for the tag.
@@ -24981,18 +25657,22 @@ class FloodlightActivity {
   /// Whether this tag should use SSL.
   core.bool secure;
 
-  /// Whether the floodlight activity is SSL-compliant. This is a read-only
-  /// field, its value detected by the system from the floodlight tags.
+  /// Whether the floodlight activity is SSL-compliant.
+  ///
+  /// This is a read-only field, its value detected by the system from the
+  /// floodlight tags.
   core.bool sslCompliant;
 
   /// Whether this floodlight activity must be SSL-compliant.
   core.bool sslRequired;
 
-  /// The status of the activity. This can only be set to ACTIVE or
-  /// ARCHIVED_AND_DISABLED. The ARCHIVED status is no longer supported and
-  /// cannot be set for Floodlight activities. The DISABLED_POLICY status
-  /// indicates that a Floodlight activity is violating Google policy. Contact
-  /// your account manager for more information.
+  /// The status of the activity.
+  ///
+  /// This can only be set to ACTIVE or ARCHIVED_AND_DISABLED. The ARCHIVED
+  /// status is no longer supported and cannot be set for Floodlight activities.
+  /// The DISABLED_POLICY status indicates that a Floodlight activity is
+  /// violating Google policy. Contact your account manager for more
+  /// information.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "ARCHIVED_AND_DISABLED"
@@ -25000,28 +25680,32 @@ class FloodlightActivity {
   /// - "DISABLED_POLICY"
   core.String status;
 
-  /// Subaccount ID of this floodlight activity. This is a read-only field that
-  /// can be left blank.
+  /// Subaccount ID of this floodlight activity.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
-  /// Tag format type for the floodlight activity. If left blank, the tag format
-  /// will default to HTML.
+  /// Tag format type for the floodlight activity.
+  ///
+  /// If left blank, the tag format will default to HTML.
   /// Possible string values are:
   /// - "HTML"
   /// - "XHTML"
   core.String tagFormat;
 
   /// Value of the cat= parameter in the floodlight tag, which the ad servers
-  /// use to identify the activity. This is optional: if empty, a new tag string
-  /// will be generated for you. This string must be 1 to 8 characters long,
-  /// with valid characters being a-z0-9[ _ ]. This tag string must also be
-  /// unique among activities of the same activity group. This field is
-  /// read-only after insertion.
+  /// use to identify the activity.
+  ///
+  /// This is optional: if empty, a new tag string will be generated for you.
+  /// This string must be 1 to 8 characters long, with valid characters being
+  /// a-z0-9[ _ ]. This tag string must also be unique among activities of the
+  /// same activity group. This field is read-only after insertion.
   core.String tagString;
 
-  /// List of the user-defined variables used by this conversion tag. These map
-  /// to the "u[1-100]=" in the tags. Each of these can have a user defined
-  /// type. Acceptable values are U1 to U100, inclusive.
+  /// List of the user-defined variables used by this conversion tag.
+  ///
+  /// These map to the "u[1-100]=" in the tags. Each of these can have a user
+  /// defined type. Acceptable values are U1 to U100, inclusive.
   core.List<core.String> userDefinedVariableTypes;
 
   FloodlightActivity();
@@ -25236,7 +25920,9 @@ class FloodlightActivity {
 
 /// Dynamic Tag
 class FloodlightActivityDynamicTag {
-  /// ID of this dynamic tag. This is a read-only, auto-generated field.
+  /// ID of this dynamic tag.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
   /// Name of this tag.
@@ -25276,58 +25962,72 @@ class FloodlightActivityDynamicTag {
 
 /// Contains properties of a Floodlight activity group.
 class FloodlightActivityGroup {
-  /// Account ID of this floodlight activity group. This is a read-only field
-  /// that can be left blank.
+  /// Account ID of this floodlight activity group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Advertiser ID of this floodlight activity group. If this field is left
-  /// blank, the value will be copied over either from the floodlight
-  /// configuration's advertiser or from the existing activity group's
-  /// advertiser.
+  /// Advertiser ID of this floodlight activity group.
+  ///
+  /// If this field is left blank, the value will be copied over either from the
+  /// floodlight configuration's advertiser or from the existing activity
+  /// group's advertiser.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
-  /// Floodlight configuration ID of this floodlight activity group. This is a
-  /// required field.
+  /// Floodlight configuration ID of this floodlight activity group.
+  ///
+  /// This is a required field.
   core.String floodlightConfigurationId;
 
-  /// Dimension value for the ID of the floodlight configuration. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of the floodlight configuration.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue floodlightConfigurationIdDimensionValue;
 
-  /// ID of this floodlight activity group. This is a read-only, auto-generated
-  /// field.
+  /// ID of this floodlight activity group.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this floodlight activity group. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of this floodlight activity group.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#floodlightActivityGroup".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#floodlightActivityGroup".
   core.String kind;
 
-  /// Name of this floodlight activity group. This is a required field. Must be
-  /// less than 65 characters long and cannot contain quotes.
+  /// Name of this floodlight activity group.
+  ///
+  /// This is a required field. Must be less than 65 characters long and cannot
+  /// contain quotes.
   core.String name;
 
-  /// Subaccount ID of this floodlight activity group. This is a read-only field
-  /// that can be left blank.
+  /// Subaccount ID of this floodlight activity group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   /// Value of the type= parameter in the floodlight tag, which the ad servers
-  /// use to identify the activity group that the activity belongs to. This is
-  /// optional: if empty, a new tag string will be generated for you. This
-  /// string must be 1 to 8 characters long, with valid characters being a-z0-9[
-  /// _ ]. This tag string must also be unique among activity groups of the same
-  /// floodlight configuration. This field is read-only after insertion.
+  /// use to identify the activity group that the activity belongs to.
+  ///
+  /// This is optional: if empty, a new tag string will be generated for you.
+  /// This string must be 1 to 8 characters long, with valid characters being
+  /// a-z0-9[ _ ]. This tag string must also be unique among activity groups of
+  /// the same floodlight configuration. This field is read-only after
+  /// insertion.
   core.String tagString;
 
-  /// Type of the floodlight activity group. This is a required field that is
-  /// read-only after insertion.
+  /// Type of the floodlight activity group.
+  ///
+  /// This is a required field that is read-only after insertion.
   /// Possible string values are:
   /// - "COUNTER"
   /// - "SALE"
@@ -25428,7 +26128,9 @@ class FloodlightActivityGroupsListResponse {
   /// Floodlight activity group collection.
   core.List<FloodlightActivityGroup> floodlightActivityGroups;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#floodlightActivityGroupsListResponse".
   core.String kind;
 
@@ -25475,9 +26177,11 @@ class FloodlightActivityPublisherDynamicTag {
   /// Whether this tag is applicable only for click-throughs.
   core.bool clickThrough;
 
-  /// Directory site ID of this dynamic tag. This is a write-only field that can
-  /// be used as an alternative to the siteId field. When this resource is
-  /// retrieved, only the siteId field will be populated.
+  /// Directory site ID of this dynamic tag.
+  ///
+  /// This is a write-only field that can be used as an alternative to the
+  /// siteId field. When this resource is retrieved, only the siteId field will
+  /// be populated.
   core.String directorySiteId;
 
   /// Dynamic floodlight tag.
@@ -25486,8 +26190,9 @@ class FloodlightActivityPublisherDynamicTag {
   /// Site ID of this dynamic tag.
   core.String siteId;
 
-  /// Dimension value for the ID of the site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue siteIdDimensionValue;
 
   /// Whether this tag is applicable only for view-throughs.
@@ -25544,15 +26249,17 @@ class FloodlightActivityPublisherDynamicTag {
 
 /// Contains properties of a Floodlight configuration.
 class FloodlightConfiguration {
-  /// Account ID of this floodlight configuration. This is a read-only field
-  /// that can be left blank.
+  /// Account ID of this floodlight configuration.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
   /// Advertiser ID of the parent advertiser of this floodlight configuration.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Whether advertiser data is shared with Google Analytics.
@@ -25561,31 +26268,36 @@ class FloodlightConfiguration {
   /// Custom Viewability metric for the floodlight configuration.
   CustomViewabilityMetric customViewabilityMetric;
 
-  /// Whether the exposure-to-conversion report is enabled. This report shows
-  /// detailed pathway information on up to 10 of the most recent ad exposures
-  /// seen by a user before converting.
+  /// Whether the exposure-to-conversion report is enabled.
+  ///
+  /// This report shows detailed pathway information on up to 10 of the most
+  /// recent ad exposures seen by a user before converting.
   core.bool exposureToConversionEnabled;
 
-  /// Day that will be counted as the first day of the week in reports. This is
-  /// a required field.
+  /// Day that will be counted as the first day of the week in reports.
+  ///
+  /// This is a required field.
   /// Possible string values are:
   /// - "MONDAY"
   /// - "SUNDAY"
   core.String firstDayOfWeek;
 
-  /// ID of this floodlight configuration. This is a read-only, auto-generated
-  /// field.
+  /// ID of this floodlight configuration.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this floodlight configuration. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of this floodlight configuration.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
   /// Whether in-app attribution tracking is enabled.
   core.bool inAppAttributionTrackingEnabled;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#floodlightConfiguration".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#floodlightConfiguration".
   core.String kind;
 
   /// Lookback window settings for this floodlight configuration.
@@ -25601,8 +26313,9 @@ class FloodlightConfiguration {
   /// Settings for Campaign Manager Omniture integration.
   OmnitureSettings omnitureSettings;
 
-  /// Subaccount ID of this floodlight configuration. This is a read-only field
-  /// that can be left blank.
+  /// Subaccount ID of this floodlight configuration.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   /// Configuration settings for dynamic and image floodlight tags.
@@ -25768,7 +26481,9 @@ class FloodlightConfigurationsListResponse {
   /// Floodlight configuration collection.
   core.List<FloodlightConfiguration> floodlightConfigurations;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#floodlightConfigurationsListResponse".
   core.String kind;
 
@@ -25867,12 +26582,16 @@ class FloodlightReportCompatibleFields {
 
 /// Frequency Cap.
 class FrequencyCap {
-  /// Duration of time, in seconds, for this frequency cap. The maximum duration
-  /// is 90 days. Acceptable values are 1 to 7776000, inclusive.
+  /// Duration of time, in seconds, for this frequency cap.
+  ///
+  /// The maximum duration is 90 days. Acceptable values are 1 to 7776000,
+  /// inclusive.
   core.String duration;
 
   /// Number of times an individual user can be served the ad within the
-  /// specified duration. Acceptable values are 1 to 15, inclusive.
+  /// specified duration.
+  ///
+  /// Acceptable values are 1 to 15, inclusive.
   core.String impressions;
 
   FrequencyCap();
@@ -25910,8 +26629,9 @@ class FsCommand {
   /// - "DISTANCE_FROM_TOP_LEFT_CORNER"
   core.String positionOption;
 
-  /// Distance from the top of the browser. Applicable when positionOption is
-  /// DISTANCE_FROM_TOP_LEFT_CORNER.
+  /// Distance from the top of the browser.
+  ///
+  /// Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER.
   core.int top;
 
   /// Height of the window.
@@ -25963,38 +26683,49 @@ class FsCommand {
 
 /// Geographical Targeting.
 class GeoTargeting {
-  /// Cities to be targeted. For each city only dartId is required. The other
-  /// fields are populated automatically when the ad is inserted or updated. If
-  /// targeting a city, do not target or exclude the country of the city, and do
-  /// not target the metro or region of the city.
+  /// Cities to be targeted.
+  ///
+  /// For each city only dartId is required. The other fields are populated
+  /// automatically when the ad is inserted or updated. If targeting a city, do
+  /// not target or exclude the country of the city, and do not target the metro
+  /// or region of the city.
   core.List<City> cities;
 
   /// Countries to be targeted or excluded from targeting, depending on the
-  /// setting of the excludeCountries field. For each country only dartId is
-  /// required. The other fields are populated automatically when the ad is
-  /// inserted or updated. If targeting or excluding a country, do not target
-  /// regions, cities, metros, or postal codes in the same country.
+  /// setting of the excludeCountries field.
+  ///
+  /// For each country only dartId is required. The other fields are populated
+  /// automatically when the ad is inserted or updated. If targeting or
+  /// excluding a country, do not target regions, cities, metros, or postal
+  /// codes in the same country.
   core.List<Country> countries;
 
   /// Whether or not to exclude the countries in the countries field from
-  /// targeting. If false, the countries field refers to countries which will be
-  /// targeted by the ad.
+  /// targeting.
+  ///
+  /// If false, the countries field refers to countries which will be targeted
+  /// by the ad.
   core.bool excludeCountries;
 
-  /// Metros to be targeted. For each metro only dmaId is required. The other
-  /// fields are populated automatically when the ad is inserted or updated. If
-  /// targeting a metro, do not target or exclude the country of the metro.
+  /// Metros to be targeted.
+  ///
+  /// For each metro only dmaId is required. The other fields are populated
+  /// automatically when the ad is inserted or updated. If targeting a metro, do
+  /// not target or exclude the country of the metro.
   core.List<Metro> metros;
 
-  /// Postal codes to be targeted. For each postal code only id is required. The
-  /// other fields are populated automatically when the ad is inserted or
-  /// updated. If targeting a postal code, do not target or exclude the country
-  /// of the postal code.
+  /// Postal codes to be targeted.
+  ///
+  /// For each postal code only id is required. The other fields are populated
+  /// automatically when the ad is inserted or updated. If targeting a postal
+  /// code, do not target or exclude the country of the postal code.
   core.List<PostalCode> postalCodes;
 
-  /// Regions to be targeted. For each region only dartId is required. The other
-  /// fields are populated automatically when the ad is inserted or updated. If
-  /// targeting a region, do not target or exclude the country of the region.
+  /// Regions to be targeted.
+  ///
+  /// For each region only dartId is required. The other fields are populated
+  /// automatically when the ad is inserted or updated. If targeting a region,
+  /// do not target or exclude the country of the region.
   core.List<Region> regions;
 
   GeoTargeting();
@@ -26065,10 +26796,12 @@ class InventoryItem {
   /// Account ID of this inventory item.
   core.String accountId;
 
-  /// Ad slots of this inventory item. If this inventory item represents a
-  /// standalone placement, there will be exactly one ad slot. If this inventory
-  /// item represents a placement group, there will be more than one ad slot,
-  /// each representing one child placement in that placement group.
+  /// Ad slots of this inventory item.
+  ///
+  /// If this inventory item represents a standalone placement, there will be
+  /// exactly one ad slot. If this inventory item represents a placement group,
+  /// there will be more than one ad slot, each representing one child placement
+  /// in that placement group.
   core.List<AdSlot> adSlots;
 
   /// Advertiser ID of this inventory item.
@@ -26089,16 +26822,19 @@ class InventoryItem {
   /// Whether this inventory item is in plan.
   core.bool inPlan;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#inventoryItem".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#inventoryItem".
   core.String kind;
 
   /// Information about the most recent modification of this inventory item.
   LastModifiedInfo lastModifiedInfo;
 
-  /// Name of this inventory item. For standalone inventory items, this is the
-  /// same name as that of its only ad slot. For group inventory items, this can
-  /// differ from the name of any of its ad slots.
+  /// Name of this inventory item.
+  ///
+  /// For standalone inventory items, this is the same name as that of its only
+  /// ad slot. For group inventory items, this can differ from the name of any
+  /// of its ad slots.
   core.String name;
 
   /// Negotiation channel ID of this inventory item.
@@ -26273,8 +27009,9 @@ class InventoryItemsListResponse {
   /// Inventory item collection
   core.List<InventoryItem> inventoryItems;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#inventoryItemsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#inventoryItemsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -26338,7 +27075,9 @@ class KeyValueTargetingExpression {
 /// Contains information about where a user's browser is taken after the user
 /// clicks an ad.
 class LandingPage {
-  /// Advertiser ID of this landing page. This is a required field.
+  /// Advertiser ID of this landing page.
+  ///
+  /// This is a required field.
   core.String advertiserId;
 
   /// Whether this landing page has been archived.
@@ -26347,18 +27086,24 @@ class LandingPage {
   /// Links that will direct the user to a mobile app, if installed.
   core.List<DeepLink> deepLinks;
 
-  /// ID of this landing page. This is a read-only, auto-generated field.
+  /// ID of this landing page.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#landingPage".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#landingPage".
   core.String kind;
 
-  /// Name of this landing page. This is a required field. It must be less than
-  /// 256 characters long.
+  /// Name of this landing page.
+  ///
+  /// This is a required field. It must be less than 256 characters long.
   core.String name;
 
-  /// URL of this landing page. This is a required field.
+  /// URL of this landing page.
+  ///
+  /// This is a required field.
   core.String url;
 
   LandingPage();
@@ -26419,17 +27164,20 @@ class LandingPage {
 
 /// Contains information about a language that can be targeted by ads.
 class Language {
-  /// Language ID of this language. This is the ID used for targeting and
-  /// generating reports.
+  /// Language ID of this language.
+  ///
+  /// This is the ID used for targeting and generating reports.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#language".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#language".
   core.String kind;
 
   /// Format of language code is an ISO 639 two-letter language code optionally
-  /// followed by an underscore followed by an ISO 3166 code. Examples are "en"
-  /// for English or "zh_CN" for Simplified Chinese.
+  /// followed by an underscore followed by an ISO 3166 code.
+  ///
+  /// Examples are "en" for English or "zh_CN" for Simplified Chinese.
   core.String languageCode;
 
   /// Name of this language.
@@ -26472,9 +27220,10 @@ class Language {
 
 /// Language Targeting.
 class LanguageTargeting {
-  /// Languages that this ad targets. For each language only languageId is
-  /// required. The other fields are populated automatically when the ad is
-  /// inserted or updated.
+  /// Languages that this ad targets.
+  ///
+  /// For each language only languageId is required. The other fields are
+  /// populated automatically when the ad is inserted or updated.
   core.List<Language> languages;
 
   LanguageTargeting();
@@ -26499,8 +27248,9 @@ class LanguageTargeting {
 
 /// Language List Response
 class LanguagesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#languagesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#languagesListResponse".
   core.String kind;
 
   /// Language collection.
@@ -26557,8 +27307,10 @@ class LastModifiedInfo {
 /// A group clause made up of list population terms representing constraints
 /// joined by ORs.
 class ListPopulationClause {
-  /// Terms of this list population clause. Each clause is made up of list
-  /// population terms representing constraints and are joined by ORs.
+  /// Terms of this list population clause.
+  ///
+  /// Each clause is made up of list population terms representing constraints
+  /// and are joined by ORs.
   core.List<ListPopulationTerm> terms;
 
   ListPopulationClause();
@@ -26583,17 +27335,20 @@ class ListPopulationClause {
 
 /// Remarketing List Population Rule.
 class ListPopulationRule {
-  /// Floodlight activity ID associated with this rule. This field can be left
-  /// blank.
+  /// Floodlight activity ID associated with this rule.
+  ///
+  /// This field can be left blank.
   core.String floodlightActivityId;
 
-  /// Name of floodlight activity associated with this rule. This is a
-  /// read-only, auto-generated field.
+  /// Name of floodlight activity associated with this rule.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String floodlightActivityName;
 
-  /// Clauses that make up this list population rule. Clauses are joined by
-  /// ANDs, and the clauses themselves are made up of list population terms
-  /// which are joined by ORs.
+  /// Clauses that make up this list population rule.
+  ///
+  /// Clauses are joined by ANDs, and the clauses themselves are made up of list
+  /// population terms which are joined by ORs.
   core.List<ListPopulationClause> listPopulationClauses;
 
   ListPopulationRule();
@@ -26632,17 +27387,23 @@ class ListPopulationRule {
 /// Remarketing List Population Rule Term.
 class ListPopulationTerm {
   /// Will be true if the term should check if the user is in the list and false
-  /// if the term should check if the user is not in the list. This field is
-  /// only relevant when type is set to LIST_MEMBERSHIP_TERM. False by default.
+  /// if the term should check if the user is not in the list.
+  ///
+  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
+  /// False by default.
   core.bool contains;
 
   /// Whether to negate the comparison result of this term during rule
-  /// evaluation. This field is only relevant when type is left unset or set to
+  /// evaluation.
+  ///
+  /// This field is only relevant when type is left unset or set to
   /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
   core.bool negation;
 
-  /// Comparison operator of this term. This field is only relevant when type is
-  /// left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  /// Comparison operator of this term.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
   /// Possible string values are:
   /// - "NUM_EQUALS"
   /// - "NUM_LESS_THAN"
@@ -26653,11 +27414,13 @@ class ListPopulationTerm {
   /// - "STRING_CONTAINS"
   core.String operator;
 
-  /// ID of the list in question. This field is only relevant when type is set
-  /// to LIST_MEMBERSHIP_TERM.
+  /// ID of the list in question.
+  ///
+  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
   core.String remarketingListId;
 
   /// List population term type determines the applicable fields in this object.
+  ///
   /// If left unset or set to CUSTOM_VARIABLE_TERM, then variableName,
   /// variableFriendlyName, operator, value, and negation are applicable. If set
   /// to LIST_MEMBERSHIP_TERM then remarketingListId and contains are
@@ -26669,18 +27432,22 @@ class ListPopulationTerm {
   /// - "REFERRER_TERM"
   core.String type;
 
-  /// Literal to compare the variable to. This field is only relevant when type
-  /// is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  /// Literal to compare the variable to.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
   core.String value;
 
-  /// Friendly name of this term's variable. This is a read-only, auto-generated
-  /// field. This field is only relevant when type is left unset or set to
-  /// CUSTOM_VARIABLE_TERM.
+  /// Friendly name of this term's variable.
+  ///
+  /// This is a read-only, auto-generated field. This field is only relevant
+  /// when type is left unset or set to CUSTOM_VARIABLE_TERM.
   core.String variableFriendlyName;
 
-  /// Name of the variable (U1, U2, etc.) being compared in this term. This
-  /// field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM or
-  /// REFERRER_TERM.
+  /// Name of the variable (U1, U2, etc.) being compared in this term.
+  ///
+  /// This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM
+  /// or REFERRER_TERM.
   core.String variableName;
 
   ListPopulationTerm();
@@ -26767,17 +27534,19 @@ class ListTargetingExpression {
 /// Lookback configuration settings.
 class LookbackConfiguration {
   /// Lookback window, in days, from the last time a given user clicked on one
-  /// of your ads. If you enter 0, clicks will not be considered as triggering
-  /// events for floodlight tracking. If you leave this field blank, the default
-  /// value for your account will be used. Acceptable values are 0 to 90,
-  /// inclusive.
+  /// of your ads.
+  ///
+  /// If you enter 0, clicks will not be considered as triggering events for
+  /// floodlight tracking. If you leave this field blank, the default value for
+  /// your account will be used. Acceptable values are 0 to 90, inclusive.
   core.int clickDuration;
 
   /// Lookback window, in days, from the last time a given user viewed one of
-  /// your ads. If you enter 0, impressions will not be considered as triggering
-  /// events for floodlight tracking. If you leave this field blank, the default
-  /// value for your account will be used. Acceptable values are 0 to 90,
-  /// inclusive.
+  /// your ads.
+  ///
+  /// If you enter 0, impressions will not be considered as triggering events
+  /// for floodlight tracking. If you leave this field blank, the default value
+  /// for your account will be used. Acceptable values are 0 to 90, inclusive.
   core.int postImpressionActivitiesDuration;
 
   LookbackConfiguration();
@@ -26847,15 +27616,20 @@ class Metro {
   /// DART ID of this metro region.
   core.String dartId;
 
-  /// DMA ID of this metro region. This is the ID used for targeting and
-  /// generating reports, and is equivalent to metro_code.
+  /// DMA ID of this metro region.
+  ///
+  /// This is the ID used for targeting and generating reports, and is
+  /// equivalent to metro_code.
   core.String dmaId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#metro".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#metro".
   core.String kind;
 
-  /// Metro code of this metro region. This is equivalent to dma_id.
+  /// Metro code of this metro region.
+  ///
+  /// This is equivalent to dma_id.
   core.String metroCode;
 
   /// Name of this metro region.
@@ -26916,8 +27690,9 @@ class Metro {
 
 /// Metro List Response
 class MetrosListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#metrosListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#metrosListResponse".
   core.String kind;
 
   /// Metro collection.
@@ -26949,7 +27724,9 @@ class MetrosListResponse {
   }
 }
 
-/// Contains information about a mobile app. Used as a landing page deep link.
+/// Contains information about a mobile app.
+///
+/// Used as a landing page deep link.
 class MobileApp {
   /// Mobile app directory.
   /// Possible string values are:
@@ -26961,8 +27738,9 @@ class MobileApp {
   /// ID of this mobile app.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#mobileApp".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileApp".
   core.String kind;
 
   /// Publisher name.
@@ -27014,8 +27792,9 @@ class MobileApp {
 
 /// Mobile app List Response
 class MobileAppsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#mobileAppsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileAppsListResponse".
   core.String kind;
 
   /// Mobile apps collection.
@@ -27067,8 +27846,9 @@ class MobileCarrier {
   /// ID of this mobile carrier.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#mobileCarrier".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileCarrier".
   core.String kind;
 
   /// Name of this mobile carrier.
@@ -27117,8 +27897,9 @@ class MobileCarrier {
 
 /// Mobile Carrier List Response
 class MobileCarriersListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#mobileCarriersListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileCarriersListResponse".
   core.String kind;
 
   /// Mobile carrier collection.
@@ -27162,21 +27943,27 @@ class ObaIcon {
   /// URL to track view when an OBA icon is clicked.
   core.String iconViewTrackingUrl;
 
-  /// Identifies the industry initiative that the icon supports. For example,
-  /// AdChoices.
+  /// Identifies the industry initiative that the icon supports.
+  ///
+  /// For example, AdChoices.
   core.String program;
 
-  /// OBA icon resource URL. Campaign Manager only supports image and JavaScript
-  /// icons. Learn more
+  /// OBA icon resource URL.
+  ///
+  /// Campaign Manager only supports image and JavaScript icons. Learn more
   core.String resourceUrl;
 
   /// OBA icon size.
   Size size;
 
-  /// OBA icon x coordinate position. Accepted values are left or right.
+  /// OBA icon x coordinate position.
+  ///
+  /// Accepted values are left or right.
   core.String xPosition;
 
-  /// OBA icon y coordinate position. Accepted values are top or bottom.
+  /// OBA icon y coordinate position.
+  ///
+  /// Accepted values are top or bottom.
   core.String yPosition;
 
   ObaIcon();
@@ -27241,17 +28028,21 @@ class ObaIcon {
 
 /// Object Filter.
 class ObjectFilter {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#objectFilter".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#objectFilter".
   core.String kind;
 
-  /// Applicable when status is ASSIGNED. The user has access to objects with
-  /// these object IDs.
+  /// Applicable when status is ASSIGNED.
+  ///
+  /// The user has access to objects with these object IDs.
   core.List<core.String> objectIds;
 
-  /// Status of the filter. NONE means the user has access to none of the
-  /// objects. ALL means the user has access to all objects. ASSIGNED means the
-  /// user has access to the objects with IDs in the objectIds list.
+  /// Status of the filter.
+  ///
+  /// NONE means the user has access to none of the objects. ALL means the user
+  /// has access to all objects. ASSIGNED means the user has access to the
+  /// objects with IDs in the objectIds list.
   /// Possible string values are:
   /// - "NONE"
   /// - "ASSIGNED"
@@ -27322,12 +28113,15 @@ class OffsetPosition {
 
 /// Omniture Integration Settings.
 class OmnitureSettings {
-  /// Whether placement cost data will be sent to Omniture. This property can be
-  /// enabled only if omnitureIntegrationEnabled is true.
+  /// Whether placement cost data will be sent to Omniture.
+  ///
+  /// This property can be enabled only if omnitureIntegrationEnabled is true.
   core.bool omnitureCostDataEnabled;
 
-  /// Whether Omniture integration is enabled. This property can be enabled only
-  /// when the "Advanced Ad Serving" account setting is enabled.
+  /// Whether Omniture integration is enabled.
+  ///
+  /// This property can be enabled only when the "Advanced Ad Serving" account
+  /// setting is enabled.
   core.bool omnitureIntegrationEnabled;
 
   OmnitureSettings();
@@ -27356,14 +28150,17 @@ class OmnitureSettings {
 
 /// Contains information about an operating system that can be targeted by ads.
 class OperatingSystem {
-  /// DART ID of this operating system. This is the ID used for targeting.
+  /// DART ID of this operating system.
+  ///
+  /// This is the ID used for targeting.
   core.String dartId;
 
   /// Whether this operating system is for desktop.
   core.bool desktop;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#operatingSystem".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#operatingSystem".
   core.String kind;
 
   /// Whether this operating system is for mobile.
@@ -27419,8 +28216,9 @@ class OperatingSystemVersion {
   /// ID of this operating system version.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#operatingSystemVersion".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#operatingSystemVersion".
   core.String kind;
 
   /// Major version (leftmost number) of this operating system version.
@@ -27486,7 +28284,9 @@ class OperatingSystemVersion {
 
 /// Operating System Version List Response
 class OperatingSystemVersionsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#operatingSystemVersionsListResponse".
   core.String kind;
 
@@ -27523,8 +28323,9 @@ class OperatingSystemVersionsListResponse {
 
 /// Operating System List Response
 class OperatingSystemsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#operatingSystemsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#operatingSystemsListResponse".
   core.String kind;
 
   /// Operating system collection.
@@ -27559,17 +28360,21 @@ class OperatingSystemsListResponse {
 
 /// Creative optimization activity.
 class OptimizationActivity {
-  /// Floodlight activity ID of this optimization activity. This is a required
-  /// field.
+  /// Floodlight activity ID of this optimization activity.
+  ///
+  /// This is a required field.
   core.String floodlightActivityId;
 
-  /// Dimension value for the ID of the floodlight activity. This is a
-  /// read-only, auto-generated field.
+  /// Dimension value for the ID of the floodlight activity.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue floodlightActivityIdDimensionValue;
 
-  /// Weight associated with this optimization. The weight assigned will be
-  /// understood in proportion to the weights assigned to the other optimization
-  /// activities. Value must be greater than or equal to 1.
+  /// Weight associated with this optimization.
+  ///
+  /// The weight assigned will be understood in proportion to the weights
+  /// assigned to the other optimization activities. Value must be greater than
+  /// or equal to 1.
   core.int weight;
 
   OptimizationActivity();
@@ -27627,11 +28432,14 @@ class Order {
   /// Contacts for this order.
   core.List<OrderContact> contacts;
 
-  /// ID of this order. This is a read-only, auto-generated field.
+  /// ID of this order.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#order".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#order".
   core.String kind;
 
   /// Information about the most recent modification of this order.
@@ -27810,9 +28618,10 @@ class Order {
 
 /// Contact of an order.
 class OrderContact {
-  /// Free-form information about this contact. It could be any information
-  /// related to this contact in addition to type, title, name, and signature
-  /// user profile ID.
+  /// Free-form information about this contact.
+  ///
+  /// It could be any information related to this contact in addition to type,
+  /// title, name, and signature user profile ID.
   core.String contactInfo;
 
   /// Name of this contact.
@@ -27881,9 +28690,10 @@ class OrderDocument {
   /// Advertiser ID of this order document.
   core.String advertiserId;
 
-  /// The amended order document ID of this order document. An order document
-  /// can be created by optionally amending another order document so that the
-  /// change history can be preserved.
+  /// The amended order document ID of this order document.
+  ///
+  /// An order document can be created by optionally amending another order
+  /// document so that the change history can be preserved.
   core.String amendedOrderDocumentId;
 
   /// IDs of users who have approved this order document.
@@ -27899,8 +28709,9 @@ class OrderDocument {
   /// ID of this order document.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#orderDocument".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#orderDocument".
   core.String kind;
 
   /// List of email addresses that received the last sent document.
@@ -28051,8 +28862,9 @@ class OrderDocument {
 
 /// Order document List Response
 class OrderDocumentsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#orderDocumentsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#orderDocumentsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -28096,8 +28908,9 @@ class OrderDocumentsListResponse {
 
 /// Order List Response
 class OrdersListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#ordersListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#ordersListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -28146,8 +28959,9 @@ class PathFilter {
   /// The kind of resource this is, in this case dfareporting#pathFilter.
   core.String kind;
 
-  /// Determines how the 'value' field is matched when filtering. If not
-  /// specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
+  /// Determines how the 'value' field is matched when filtering.
+  ///
+  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
   /// allowed as a placeholder for variable length character sequences, and it
   /// can be escaped with a backslash. Note, only paid search dimensions
   /// ('dfa:paidSearch*') allow a matchType other than EXACT.
@@ -28281,8 +29095,9 @@ class PathReportDimensionValue {
   /// dfareporting#pathReportDimensionValue.
   core.String kind;
 
-  /// Determines how the 'value' field is matched when filtering. If not
-  /// specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
+  /// Determines how the 'value' field is matched when filtering.
+  ///
+  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
   /// allowed as a placeholder for variable length character sequences, and it
   /// can be escaped with a backslash. Note, only paid search dimensions
   /// ('dfa:paidSearch*') allow a matchType other than EXACT.
@@ -28424,46 +29239,56 @@ class PathToConversionReportCompatibleFields {
 
 /// Contains properties of a placement.
 class Placement {
-  /// Account ID of this placement. This field can be left blank.
+  /// Account ID of this placement.
+  ///
+  /// This field can be left blank.
   core.String accountId;
 
-  /// Whether this placement opts out of ad blocking. When true, ad blocking is
-  /// disabled for this placement. When false, the campaign and site settings
-  /// take effect.
+  /// Whether this placement opts out of ad blocking.
+  ///
+  /// When true, ad blocking is disabled for this placement. When false, the
+  /// campaign and site settings take effect.
   core.bool adBlockingOptOut;
 
-  /// Additional sizes associated with this placement. When inserting or
-  /// updating a placement, only the size ID field is used.
+  /// Additional sizes associated with this placement.
+  ///
+  /// When inserting or updating a placement, only the size ID field is used.
   core.List<Size> additionalSizes;
 
-  /// Advertiser ID of this placement. This field can be left blank.
+  /// Advertiser ID of this placement.
+  ///
+  /// This field can be left blank.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Whether this placement is archived.
   core.bool archived;
 
-  /// Campaign ID of this placement. This field is a required field on
-  /// insertion.
+  /// Campaign ID of this placement.
+  ///
+  /// This field is a required field on insertion.
   core.String campaignId;
 
-  /// Dimension value for the ID of the campaign. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the campaign.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue campaignIdDimensionValue;
 
   /// Comments for this placement.
   core.String comment;
 
-  /// Placement compatibility. DISPLAY and DISPLAY_INTERSTITIAL refer to
-  /// rendering on desktop, on mobile devices or in mobile apps for regular or
-  /// interstitial ads respectively. APP and APP_INTERSTITIAL are no longer
-  /// allowed for new placement insertions. Instead, use DISPLAY or
-  /// DISPLAY_INTERSTITIAL. IN_STREAM_VIDEO refers to rendering in in-stream
-  /// video ads developed with the VAST standard. This field is required on
-  /// insertion.
+  /// Placement compatibility.
+  ///
+  /// DISPLAY and DISPLAY_INTERSTITIAL refer to rendering on desktop, on mobile
+  /// devices or in mobile apps for regular or interstitial ads respectively.
+  /// APP and APP_INTERSTITIAL are no longer allowed for new placement
+  /// insertions. Instead, use DISPLAY or DISPLAY_INTERSTITIAL. IN_STREAM_VIDEO
+  /// refers to rendering in in-stream video ads developed with the VAST
+  /// standard. This field is required on insertion.
   /// Possible string values are:
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
@@ -28476,38 +29301,49 @@ class Placement {
   /// ID of the content category assigned to this placement.
   core.String contentCategoryId;
 
-  /// Information about the creation of this placement. This is a read-only
-  /// field.
+  /// Information about the creation of this placement.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo createInfo;
 
-  /// Directory site ID of this placement. On insert, you must set either this
-  /// field or the siteId field to specify the site associated with this
-  /// placement. This is a required field that is read-only after insertion.
+  /// Directory site ID of this placement.
+  ///
+  /// On insert, you must set either this field or the siteId field to specify
+  /// the site associated with this placement. This is a required field that is
+  /// read-only after insertion.
   core.String directorySiteId;
 
-  /// Dimension value for the ID of the directory site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the directory site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue directorySiteIdDimensionValue;
 
   /// External ID for this placement.
   core.String externalId;
 
-  /// ID of this placement. This is a read-only, auto-generated field.
+  /// ID of this placement.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this placement. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of this placement.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Key name of this placement. This is a read-only, auto-generated field.
+  /// Key name of this placement.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String keyName;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placement".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placement".
   core.String kind;
 
-  /// Information about the most recent modification of this placement. This is
-  /// a read-only field.
+  /// Information about the most recent modification of this placement.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo lastModifiedInfo;
 
   /// Lookback window settings for this placement.
@@ -28517,12 +29353,14 @@ class Placement {
   /// characters long.
   core.String name;
 
-  /// Whether payment was approved for this placement. This is a read-only field
-  /// relevant only to publisher-paid placements.
+  /// Whether payment was approved for this placement.
+  ///
+  /// This is a read-only field relevant only to publisher-paid placements.
   core.bool paymentApproved;
 
-  /// Payment source for this placement. This is a required field that is
-  /// read-only after insertion.
+  /// Payment source for this placement.
+  ///
+  /// This is a required field that is read-only after insertion.
   /// Possible string values are:
   /// - "PLACEMENT_AGENCY_PAID"
   /// - "PLACEMENT_PUBLISHER_PAID"
@@ -28531,40 +29369,50 @@ class Placement {
   /// ID of this placement's group, if applicable.
   core.String placementGroupId;
 
-  /// Dimension value for the ID of the placement group. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the placement group.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue placementGroupIdDimensionValue;
 
   /// ID of the placement strategy assigned to this placement.
   core.String placementStrategyId;
 
-  /// Pricing schedule of this placement. This field is required on insertion,
-  /// specifically subfields startDate, endDate and pricingType.
+  /// Pricing schedule of this placement.
+  ///
+  /// This field is required on insertion, specifically subfields startDate,
+  /// endDate and pricingType.
   PricingSchedule pricingSchedule;
 
   /// Whether this placement is the primary placement of a roadblock (placement
-  /// group). You cannot change this field from true to false. Setting this
-  /// field to true will automatically set the primary field on the original
-  /// primary placement of the roadblock to false, and it will automatically set
-  /// the roadblock's primaryPlacementId field to the ID of this placement.
+  /// group).
+  ///
+  /// You cannot change this field from true to false. Setting this field to
+  /// true will automatically set the primary field on the original primary
+  /// placement of the roadblock to false, and it will automatically set the
+  /// roadblock's primaryPlacementId field to the ID of this placement.
   core.bool primary;
 
-  /// Information about the last publisher update. This is a read-only field.
+  /// Information about the last publisher update.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo publisherUpdateInfo;
 
-  /// Site ID associated with this placement. On insert, you must set either
-  /// this field or the directorySiteId field to specify the site associated
-  /// with this placement. This is a required field that is read-only after
-  /// insertion.
+  /// Site ID associated with this placement.
+  ///
+  /// On insert, you must set either this field or the directorySiteId field to
+  /// specify the site associated with this placement. This is a required field
+  /// that is read-only after insertion.
   core.String siteId;
 
-  /// Dimension value for the ID of the site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue siteIdDimensionValue;
 
-  /// Size associated with this placement. When inserting or updating a
-  /// placement, only the size ID field is used. This field is required on
-  /// insertion.
+  /// Size associated with this placement.
+  ///
+  /// When inserting or updating a placement, only the size ID field is used.
+  /// This field is required on insertion.
   Size size;
 
   /// Whether creatives assigned to this placement must be SSL-compliant.
@@ -28580,13 +29428,17 @@ class Placement {
   /// - "DRAFT"
   core.String status;
 
-  /// Subaccount ID of this placement. This field can be left blank.
+  /// Subaccount ID of this placement.
+  ///
+  /// This field can be left blank.
   core.String subaccountId;
 
-  /// Tag formats to generate for this placement. This field is required on
-  /// insertion. Acceptable values are: - "PLACEMENT_TAG_STANDARD" -
-  /// "PLACEMENT_TAG_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_IFRAME_ILAYER" -
-  /// "PLACEMENT_TAG_INTERNAL_REDIRECT" - "PLACEMENT_TAG_JAVASCRIPT" -
+  /// Tag formats to generate for this placement.
+  ///
+  /// This field is required on insertion. Acceptable values are: -
+  /// "PLACEMENT_TAG_STANDARD" - "PLACEMENT_TAG_IFRAME_JAVASCRIPT" -
+  /// "PLACEMENT_TAG_IFRAME_ILAYER" - "PLACEMENT_TAG_INTERNAL_REDIRECT" -
+  /// "PLACEMENT_TAG_JAVASCRIPT" -
   /// "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" -
   /// "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" -
   /// "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" - "PLACEMENT_TAG_CLICK_COMMANDS" -
@@ -28600,23 +29452,28 @@ class Placement {
   TagSetting tagSetting;
 
   /// Whether Verification and ActiveView are disabled for in-stream video
-  /// creatives for this placement. The same setting videoActiveViewOptOut
-  /// exists on the site level -- the opt out occurs if either of these settings
-  /// are true. These settings are distinct from
-  /// DirectorySites.settings.activeViewOptOut or
+  /// creatives for this placement.
+  ///
+  /// The same setting videoActiveViewOptOut exists on the site level -- the opt
+  /// out occurs if either of these settings are true. These settings are
+  /// distinct from DirectorySites.settings.activeViewOptOut or
   /// Sites.siteSettings.activeViewOptOut which only apply to display ads.
   /// However, Accounts.activeViewOptOut opts out both video traffic, as well as
   /// display ads, from Verification and ActiveView.
   core.bool videoActiveViewOptOut;
 
   /// A collection of settings which affect video creatives served through this
-  /// placement. Applicable to placements with IN_STREAM_VIDEO compatibility.
+  /// placement.
+  ///
+  /// Applicable to placements with IN_STREAM_VIDEO compatibility.
   VideoSettings videoSettings;
 
-  /// VPAID adapter setting for this placement. Controls which VPAID format the
-  /// measurement adapter will use for in-stream video creatives assigned to
-  /// this placement. *Note:* Flash is no longer supported. This field now
-  /// defaults to HTML5 when the following values are provided: FLASH, BOTH.
+  /// VPAID adapter setting for this placement.
+  ///
+  /// Controls which VPAID format the measurement adapter will use for in-stream
+  /// video creatives assigned to this placement. *Note:* Flash is no longer
+  /// supported. This field now defaults to HTML5 when the following values are
+  /// provided: FLASH, BOTH.
   /// Possible string values are:
   /// - "DEFAULT"
   /// - "FLASH"
@@ -28910,19 +29767,25 @@ class Placement {
 
 /// Placement Assignment.
 class PlacementAssignment {
-  /// Whether this placement assignment is active. When true, the placement will
-  /// be included in the ad's rotation.
+  /// Whether this placement assignment is active.
+  ///
+  /// When true, the placement will be included in the ad's rotation.
   core.bool active;
 
-  /// ID of the placement to be assigned. This is a required field.
+  /// ID of the placement to be assigned.
+  ///
+  /// This is a required field.
   core.String placementId;
 
-  /// Dimension value for the ID of the placement. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the placement.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue placementIdDimensionValue;
 
-  /// Whether the placement to be assigned requires SSL. This is a read-only
-  /// field that is auto-generated when the ad is inserted or updated.
+  /// Whether the placement to be assigned requires SSL.
+  ///
+  /// This is a read-only field that is auto-generated when the ad is inserted
+  /// or updated.
   core.bool sslRequired;
 
   PlacementAssignment();
@@ -28964,30 +29827,37 @@ class PlacementAssignment {
 
 /// Contains properties of a package or roadblock.
 class PlacementGroup {
-  /// Account ID of this placement group. This is a read-only field that can be
-  /// left blank.
+  /// Account ID of this placement group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Advertiser ID of this placement group. This is a required field on
-  /// insertion.
+  /// Advertiser ID of this placement group.
+  ///
+  /// This is a required field on insertion.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Whether this placement group is archived.
   core.bool archived;
 
-  /// Campaign ID of this placement group. This field is required on insertion.
+  /// Campaign ID of this placement group.
+  ///
+  /// This field is required on insertion.
   core.String campaignId;
 
-  /// Dimension value for the ID of the campaign. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the campaign.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue campaignIdDimensionValue;
 
-  /// IDs of placements which are assigned to this placement group. This is a
-  /// read-only, auto-generated field.
+  /// IDs of placements which are assigned to this placement group.
+  ///
+  /// This is a read-only, auto-generated field.
   core.List<core.String> childPlacementIds;
 
   /// Comments for this placement group.
@@ -28996,48 +29866,59 @@ class PlacementGroup {
   /// ID of the content category assigned to this placement group.
   core.String contentCategoryId;
 
-  /// Information about the creation of this placement group. This is a
-  /// read-only field.
+  /// Information about the creation of this placement group.
+  ///
+  /// This is a read-only field.
   LastModifiedInfo createInfo;
 
-  /// Directory site ID associated with this placement group. On insert, you
-  /// must set either this field or the site_id field to specify the site
-  /// associated with this placement group. This is a required field that is
-  /// read-only after insertion.
+  /// Directory site ID associated with this placement group.
+  ///
+  /// On insert, you must set either this field or the site_id field to specify
+  /// the site associated with this placement group. This is a required field
+  /// that is read-only after insertion.
   core.String directorySiteId;
 
-  /// Dimension value for the ID of the directory site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the directory site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue directorySiteIdDimensionValue;
 
   /// External ID for this placement.
   core.String externalId;
 
-  /// ID of this placement group. This is a read-only, auto-generated field.
+  /// ID of this placement group.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this placement group. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of this placement group.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placementGroup".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementGroup".
   core.String kind;
 
   /// Information about the most recent modification of this placement group.
+  ///
   /// This is a read-only field.
   LastModifiedInfo lastModifiedInfo;
 
-  /// Name of this placement group. This is a required field and must be less
-  /// than 256 characters long.
+  /// Name of this placement group.
+  ///
+  /// This is a required field and must be less than 256 characters long.
   core.String name;
 
-  /// Type of this placement group. A package is a simple group of placements
-  /// that acts as a single pricing point for a group of tags. A roadblock is a
-  /// group of placements that not only acts as a single pricing point, but also
-  /// assumes that all the tags in it will be served at the same time. A
-  /// roadblock requires one of its assigned placements to be marked as primary
-  /// for reporting. This field is required on insertion.
+  /// Type of this placement group.
+  ///
+  /// A package is a simple group of placements that acts as a single pricing
+  /// point for a group of tags. A roadblock is a group of placements that not
+  /// only acts as a single pricing point, but also assumes that all the tags in
+  /// it will be served at the same time. A roadblock requires one of its
+  /// assigned placements to be marked as primary for reporting. This field is
+  /// required on insertion.
   /// Possible string values are:
   /// - "PLACEMENT_PACKAGE"
   /// - "PLACEMENT_ROADBLOCK"
@@ -29046,31 +29927,38 @@ class PlacementGroup {
   /// ID of the placement strategy assigned to this placement group.
   core.String placementStrategyId;
 
-  /// Pricing schedule of this placement group. This field is required on
-  /// insertion.
+  /// Pricing schedule of this placement group.
+  ///
+  /// This field is required on insertion.
   PricingSchedule pricingSchedule;
 
   /// ID of the primary placement, used to calculate the media cost of a
-  /// roadblock (placement group). Modifying this field will automatically
-  /// modify the primary field on all affected roadblock child placements.
+  /// roadblock (placement group).
+  ///
+  /// Modifying this field will automatically modify the primary field on all
+  /// affected roadblock child placements.
   core.String primaryPlacementId;
 
-  /// Dimension value for the ID of the primary placement. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the primary placement.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue primaryPlacementIdDimensionValue;
 
-  /// Site ID associated with this placement group. On insert, you must set
-  /// either this field or the directorySiteId field to specify the site
-  /// associated with this placement group. This is a required field that is
-  /// read-only after insertion.
+  /// Site ID associated with this placement group.
+  ///
+  /// On insert, you must set either this field or the directorySiteId field to
+  /// specify the site associated with this placement group. This is a required
+  /// field that is read-only after insertion.
   core.String siteId;
 
-  /// Dimension value for the ID of the site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue siteIdDimensionValue;
 
-  /// Subaccount ID of this placement group. This is a read-only field that can
-  /// be left blank.
+  /// Subaccount ID of this placement group.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   PlacementGroup();
@@ -29259,8 +30147,9 @@ class PlacementGroup {
 
 /// Placement Group List Response
 class PlacementGroupsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placementGroupsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementGroupsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -29304,8 +30193,9 @@ class PlacementGroupsListResponse {
 
 /// Placement Strategy List Response
 class PlacementStrategiesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placementStrategiesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementStrategiesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -29353,16 +30243,20 @@ class PlacementStrategy {
   /// be left blank.
   core.String accountId;
 
-  /// ID of this placement strategy. This is a read-only, auto-generated field.
+  /// ID of this placement strategy.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placementStrategy".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementStrategy".
   core.String kind;
 
-  /// Name of this placement strategy. This is a required field. It must be less
-  /// than 256 characters long and unique among placement strategies of the same
-  /// account.
+  /// Name of this placement strategy.
+  ///
+  /// This is a required field. It must be less than 256 characters long and
+  /// unique among placement strategies of the same account.
   core.String name;
 
   PlacementStrategy();
@@ -29436,8 +30330,9 @@ class PlacementTag {
 
 /// Placement GenerateTags Response
 class PlacementsGenerateTagsResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placementsGenerateTagsResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementsGenerateTagsResponse".
   core.String kind;
 
   /// Set of generated tags for the specified placements.
@@ -29472,8 +30367,9 @@ class PlacementsGenerateTagsResponse {
 
 /// Placement List Response
 class PlacementsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#placementsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -29519,8 +30415,9 @@ class PlatformType {
   /// ID of this platform type.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#platformType".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#platformType".
   core.String kind;
 
   /// Name of this platform type.
@@ -29557,8 +30454,9 @@ class PlatformType {
 
 /// Platform Type List Response
 class PlatformTypesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#platformTypesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#platformTypesListResponse".
   core.String kind;
 
   /// Platform type collection.
@@ -29593,12 +30491,15 @@ class PlatformTypesListResponse {
 
 /// Popup Window Properties.
 class PopupWindowProperties {
-  /// Popup dimension for a creative. This is a read-only field. Applicable to
-  /// the following creative types: all RICH_MEDIA and all VPAID
+  /// Popup dimension for a creative.
+  ///
+  /// This is a read-only field. Applicable to the following creative types: all
+  /// RICH_MEDIA and all VPAID
   Size dimension;
 
-  /// Upper-left corner coordinates of the popup window. Applicable if
-  /// positionType is COORDINATES.
+  /// Upper-left corner coordinates of the popup window.
+  ///
+  /// Applicable if positionType is COORDINATES.
   OffsetPosition offset;
 
   /// Popup window position either centered or at specific coordinate.
@@ -29694,7 +30595,9 @@ class PopupWindowProperties {
 
 /// Contains information about a postal code that can be targeted by ads.
 class PostalCode {
-  /// Postal code. This is equivalent to the id field.
+  /// Postal code.
+  ///
+  /// This is equivalent to the id field.
   core.String code;
 
   /// Country code of the country to which this postal code belongs.
@@ -29706,8 +30609,9 @@ class PostalCode {
   /// ID of this postal code.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#postalCode".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#postalCode".
   core.String kind;
 
   PostalCode();
@@ -29753,8 +30657,9 @@ class PostalCode {
 
 /// Postal Code List Response
 class PostalCodesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#postalCodesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#postalCodesListResponse".
   core.String kind;
 
   /// Postal code collection.
@@ -29797,13 +30702,15 @@ class Pricing {
   core.String capCostType;
   core.DateTime endDate;
 
-  /// Flights of this inventory item. A flight (a.k.a. pricing period)
-  /// represents the inventory item pricing information for a specific period of
-  /// time.
+  /// Flights of this inventory item.
+  ///
+  /// A flight (a.k.a. pricing period) represents the inventory item pricing
+  /// information for a specific period of time.
   core.List<Flight> flights;
 
-  /// Group type of this inventory item if it represents a placement group. Is
-  /// null otherwise. There are two type of placement groups:
+  /// Group type of this inventory item if it represents a placement group.
+  ///
+  /// Is null otherwise. There are two type of placement groups:
   /// PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE is a simple group of inventory items
   /// that acts as a single pricing point for a group of tags.
   /// PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK is a group of inventory items that
@@ -29890,18 +30797,23 @@ class PricingSchedule {
   core.String capCostOption;
   core.DateTime endDate;
 
-  /// Whether this placement is flighted. If true, pricing periods will be
-  /// computed automatically.
+  /// Whether this placement is flighted.
+  ///
+  /// If true, pricing periods will be computed automatically.
   core.bool flighted;
 
-  /// Floodlight activity ID associated with this placement. This field should
-  /// be set when placement pricing type is set to PRICING_TYPE_CPA.
+  /// Floodlight activity ID associated with this placement.
+  ///
+  /// This field should be set when placement pricing type is set to
+  /// PRICING_TYPE_CPA.
   core.String floodlightActivityId;
 
   /// Pricing periods for this placement.
   core.List<PricingSchedulePricingPeriod> pricingPeriods;
 
-  /// Placement pricing type. This field is required on insertion.
+  /// Placement pricing type.
+  ///
+  /// This field is required on insertion.
   /// Possible string values are:
   /// - "PRICING_TYPE_CPM"
   /// - "PRICING_TYPE_CPC"
@@ -29989,12 +30901,15 @@ class PricingSchedulePricingPeriod {
   core.String pricingComment;
 
   /// Rate or cost of this pricing period in nanos (i.e., multipled by
-  /// 1000000000). Acceptable values are 0 to 1000000000000000000, inclusive.
+  /// 1000000000).
+  ///
+  /// Acceptable values are 0 to 1000000000000000000, inclusive.
   core.String rateOrCostNanos;
   core.DateTime startDate;
 
-  /// Units of this pricing period. Acceptable values are 0 to 10000000000,
-  /// inclusive.
+  /// Units of this pricing period.
+  ///
+  /// Acceptable values are 0 to 10000000000, inclusive.
   core.String units;
 
   PricingSchedulePricingPeriod();
@@ -30066,6 +30981,7 @@ class Project {
   core.String audienceGender;
 
   /// Budget of this project in the currency specified by the current account.
+  ///
   /// The value stored in this field represents only the non-fractional amount.
   /// For example, for USD, the smallest value that can be represented by this
   /// field is 1 US dollar.
@@ -30078,11 +30994,14 @@ class Project {
   core.String clientName;
   core.DateTime endDate;
 
-  /// ID of this project. This is a read-only, auto-generated field.
+  /// ID of this project.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#project".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#project".
   core.String kind;
 
   /// Information about the most recent modification of this project.
@@ -30268,8 +31187,9 @@ class Project {
 
 /// Project List Response
 class ProjectsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#projectsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#projectsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -30456,8 +31376,9 @@ class Region {
   /// DART ID of this region.
   core.String dartId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#region".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#region".
   core.String kind;
 
   /// Name of this region.
@@ -30515,8 +31436,9 @@ class Region {
 
 /// Region List Response
 class RegionsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#regionsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#regionsListResponse".
   core.String kind;
 
   /// Region collection.
@@ -30548,46 +31470,59 @@ class RegionsListResponse {
   }
 }
 
-/// Contains properties of a remarketing list. Remarketing enables you to create
-/// lists of users who have performed specific actions on a site, then target
-/// ads to members of those lists. This resource can be used to manage
-/// remarketing lists that are owned by your advertisers. To see all remarketing
-/// lists that are visible to your advertisers, including those that are shared
-/// to your advertiser or account, use the TargetableRemarketingLists resource.
+/// Contains properties of a remarketing list.
+///
+/// Remarketing enables you to create lists of users who have performed specific
+/// actions on a site, then target ads to members of those lists. This resource
+/// can be used to manage remarketing lists that are owned by your advertisers.
+/// To see all remarketing lists that are visible to your advertisers, including
+/// those that are shared to your advertiser or account, use the
+/// TargetableRemarketingLists resource.
 class RemarketingList {
-  /// Account ID of this remarketing list. This is a read-only, auto-generated
-  /// field that is only returned in GET requests.
+  /// Account ID of this remarketing list.
+  ///
+  /// This is a read-only, auto-generated field that is only returned in GET
+  /// requests.
   core.String accountId;
 
   /// Whether this remarketing list is active.
   core.bool active;
 
   /// Dimension value for the advertiser ID that owns this remarketing list.
+  ///
   /// This is a required field.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Remarketing list description.
   core.String description;
 
-  /// Remarketing list ID. This is a read-only, auto-generated field.
+  /// Remarketing list ID.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#remarketingList".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#remarketingList".
   core.String kind;
 
   /// Number of days that a user should remain in the remarketing list without
-  /// an impression. Acceptable values are 1 to 540, inclusive.
+  /// an impression.
+  ///
+  /// Acceptable values are 1 to 540, inclusive.
   core.String lifeSpan;
 
   /// Rule used to populate the remarketing list with users.
   ListPopulationRule listPopulationRule;
 
-  /// Number of users currently in the list. This is a read-only field.
+  /// Number of users currently in the list.
+  ///
+  /// This is a read-only field.
   core.String listSize;
 
   /// Product from which this remarketing list was originated.
@@ -30605,12 +31540,15 @@ class RemarketingList {
   /// - "REMARKETING_LIST_SOURCE_PLAY_STORE"
   core.String listSource;
 
-  /// Name of the remarketing list. This is a required field. Must be no greater
-  /// than 128 characters long.
+  /// Name of the remarketing list.
+  ///
+  /// This is a required field. Must be no greater than 128 characters long.
   core.String name;
 
-  /// Subaccount ID of this remarketing list. This is a read-only,
-  /// auto-generated field that is only returned in GET requests.
+  /// Subaccount ID of this remarketing list.
+  ///
+  /// This is a read-only, auto-generated field that is only returned in GET
+  /// requests.
   core.String subaccountId;
 
   RemarketingList();
@@ -30705,16 +31643,20 @@ class RemarketingList {
   }
 }
 
-/// Contains properties of a remarketing list's sharing information. Sharing
-/// allows other accounts or advertisers to target to your remarketing lists.
-/// This resource can be used to manage remarketing list sharing to other
+/// Contains properties of a remarketing list's sharing information.
+///
+/// Sharing allows other accounts or advertisers to target to your remarketing
+/// lists. This resource can be used to manage remarketing list sharing to other
 /// accounts and advertisers.
 class RemarketingListShare {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#remarketingListShare".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#remarketingListShare".
   core.String kind;
 
-  /// Remarketing list ID. This is a read-only, auto-generated field.
+  /// Remarketing list ID.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String remarketingListId;
 
   /// Accounts that the remarketing list is shared with.
@@ -30764,8 +31706,9 @@ class RemarketingListShare {
 
 /// Remarketing list response
 class RemarketingListsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#remarketingListsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#remarketingListsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -30818,9 +31761,10 @@ class ReportCriteria {
   /// The date range for which this report should be run.
   DateRange dateRange;
 
-  /// The list of filters on which dimensions are filtered. Filters for
-  /// different dimensions are ANDed, filters for the same dimension are grouped
-  /// together and ORed.
+  /// The list of filters on which dimensions are filtered.
+  ///
+  /// Filters for different dimensions are ANDed, filters for the same dimension
+  /// are grouped together and ORed.
   core.List<DimensionValue> dimensionFilters;
 
   /// The list of standard dimensions the report should include.
@@ -30914,7 +31858,9 @@ class ReportCrossDimensionReachCriteria {
   /// The list of names of overlap metrics the report should include.
   core.List<core.String> overlapMetricNames;
 
-  /// Whether the report is pivoted or not. Defaults to true.
+  /// Whether the report is pivoted or not.
+  ///
+  /// Defaults to true.
   core.bool pivoted;
 
   ReportCrossDimensionReachCriteria();
@@ -31043,14 +31989,17 @@ class ReportFloodlightCriteriaReportProperties {
   core.bool includeAttributedIPConversions;
 
   /// Include conversions of users with a DoubleClick cookie but without an
-  /// exposure. That means the user did not click or see an ad from the
-  /// advertiser within the Floodlight group, or that the interaction happened
-  /// outside the lookback window.
+  /// exposure.
+  ///
+  /// That means the user did not click or see an ad from the advertiser within
+  /// the Floodlight group, or that the interaction happened outside the
+  /// lookback window.
   core.bool includeUnattributedCookieConversions;
 
-  /// Include conversions that have no associated cookies and no exposures. It’s
-  /// therefore impossible to know how the user was exposed to your ads during
-  /// the lookback window prior to a conversion.
+  /// Include conversions that have no associated cookies and no exposures.
+  ///
+  /// It’s therefore impossible to know how the user was exposed to your ads
+  /// during the lookback window prior to a conversion.
   core.bool includeUnattributedIPConversions;
 
   ReportFloodlightCriteriaReportProperties();
@@ -31095,17 +32044,19 @@ class ReportFloodlightCriteria {
   /// The date range this report should be run for.
   DateRange dateRange;
 
-  /// The list of filters on which dimensions are filtered. Filters for
-  /// different dimensions are ANDed, filters for the same dimension are grouped
-  /// together and ORed.
+  /// The list of filters on which dimensions are filtered.
+  ///
+  /// Filters for different dimensions are ANDed, filters for the same dimension
+  /// are grouped together and ORed.
   core.List<DimensionValue> dimensionFilters;
 
   /// The list of dimensions the report should include.
   core.List<SortedDimension> dimensions;
 
-  /// The floodlight ID for which to show data in this report. All advertisers
-  /// associated with that ID will automatically be added. The dimension of the
-  /// value needs to be 'dfa:floodlightConfigId'.
+  /// The floodlight ID for which to show data in this report.
+  ///
+  /// All advertisers associated with that ID will automatically be added. The
+  /// dimension of the value needs to be 'dfa:floodlightConfigId'.
   DimensionValue floodlightConfigId;
 
   /// The list of names of metrics the report should include.
@@ -31197,9 +32148,10 @@ class ReportPathAttributionCriteria {
   /// The list of dimensions the report should include.
   core.List<SortedDimension> dimensions;
 
-  /// The floodlight ID for which to show data in this report. All advertisers
-  /// associated with that ID will automatically be added. The dimension of the
-  /// value needs to be 'dfa:floodlightConfigId'.
+  /// The floodlight ID for which to show data in this report.
+  ///
+  /// All advertisers associated with that ID will automatically be added. The
+  /// dimension of the value needs to be 'dfa:floodlightConfigId'.
   DimensionValue floodlightConfigId;
 
   /// The list of names of metrics the report should include.
@@ -31292,9 +32244,10 @@ class ReportPathCriteria {
   /// The list of dimensions the report should include.
   core.List<SortedDimension> dimensions;
 
-  /// The floodlight ID for which to show data in this report. All advertisers
-  /// associated with that ID will automatically be added. The dimension of the
-  /// value needs to be 'dfa:floodlightConfigId'.
+  /// The floodlight ID for which to show data in this report.
+  ///
+  /// All advertisers associated with that ID will automatically be added. The
+  /// dimension of the value needs to be 'dfa:floodlightConfigId'.
   DimensionValue floodlightConfigId;
 
   /// The list of names of metrics the report should include.
@@ -31376,44 +32329,54 @@ class ReportPathCriteria {
 /// The properties of the report.
 class ReportPathToConversionCriteriaReportProperties {
   /// DFA checks to see if a click interaction occurred within the specified
-  /// period of time before a conversion. By default the value is pulled from
-  /// Floodlight or you can manually enter a custom value. Valid values: 1-90.
+  /// period of time before a conversion.
+  ///
+  /// By default the value is pulled from Floodlight or you can manually enter a
+  /// custom value. Valid values: 1-90.
   core.int clicksLookbackWindow;
 
   /// DFA checks to see if an impression interaction occurred within the
-  /// specified period of time before a conversion. By default the value is
-  /// pulled from Floodlight or you can manually enter a custom value. Valid
-  /// values: 1-90.
+  /// specified period of time before a conversion.
+  ///
+  /// By default the value is pulled from Floodlight or you can manually enter a
+  /// custom value. Valid values: 1-90.
   core.int impressionsLookbackWindow;
 
   /// Deprecated: has no effect.
   core.bool includeAttributedIPConversions;
 
   /// Include conversions of users with a DoubleClick cookie but without an
-  /// exposure. That means the user did not click or see an ad from the
-  /// advertiser within the Floodlight group, or that the interaction happened
-  /// outside the lookback window.
+  /// exposure.
+  ///
+  /// That means the user did not click or see an ad from the advertiser within
+  /// the Floodlight group, or that the interaction happened outside the
+  /// lookback window.
   core.bool includeUnattributedCookieConversions;
 
-  /// Include conversions that have no associated cookies and no exposures. It’s
-  /// therefore impossible to know how the user was exposed to your ads during
-  /// the lookback window prior to a conversion.
+  /// Include conversions that have no associated cookies and no exposures.
+  ///
+  /// It’s therefore impossible to know how the user was exposed to your ads
+  /// during the lookback window prior to a conversion.
   core.bool includeUnattributedIPConversions;
 
   /// The maximum number of click interactions to include in the report.
+  ///
   /// Advertisers currently paying for E2C reports get up to 200 (100 clicks,
   /// 100 impressions). If another advertiser in your network is paying for E2C,
   /// you can have up to 5 total exposures per report.
   core.int maximumClickInteractions;
 
   /// The maximum number of click interactions to include in the report.
+  ///
   /// Advertisers currently paying for E2C reports get up to 200 (100 clicks,
   /// 100 impressions). If another advertiser in your network is paying for E2C,
   /// you can have up to 5 total exposures per report.
   core.int maximumImpressionInteractions;
 
   /// The maximum amount of time that can take place between interactions
-  /// (clicks or impressions) by the same user. Valid values: 1-90.
+  /// (clicks or impressions) by the same user.
+  ///
+  /// Valid values: 1-90.
   core.int maximumInteractionGap;
 
   /// Enable pivoting on interaction path.
@@ -31508,9 +32471,10 @@ class ReportPathToConversionCriteria {
   /// The date range this report should be run for.
   DateRange dateRange;
 
-  /// The floodlight ID for which to show data in this report. All advertisers
-  /// associated with that ID will automatically be added. The dimension of the
-  /// value needs to be 'dfa:floodlightConfigId'.
+  /// The floodlight ID for which to show data in this report.
+  ///
+  /// All advertisers associated with that ID will automatically be added. The
+  /// dimension of the value needs to be 'dfa:floodlightConfigId'.
   DimensionValue floodlightConfigId;
 
   /// The list of names of metrics the report should include.
@@ -31626,17 +32590,19 @@ class ReportReachCriteria {
   /// The date range this report should be run for.
   DateRange dateRange;
 
-  /// The list of filters on which dimensions are filtered. Filters for
-  /// different dimensions are ANDed, filters for the same dimension are grouped
-  /// together and ORed.
+  /// The list of filters on which dimensions are filtered.
+  ///
+  /// Filters for different dimensions are ANDed, filters for the same dimension
+  /// are grouped together and ORed.
   core.List<DimensionValue> dimensionFilters;
 
   /// The list of dimensions the report should include.
   core.List<SortedDimension> dimensions;
 
-  /// Whether to enable all reach dimension combinations in the report. Defaults
-  /// to false. If enabled, the date range of the report should be within the
-  /// last 42 days.
+  /// Whether to enable all reach dimension combinations in the report.
+  ///
+  /// Defaults to false. If enabled, the date range of the report should be
+  /// within the last 42 days.
   core.bool enableAllDimensionCombinations;
 
   /// The list of names of metrics the report should include.
@@ -31721,22 +32687,27 @@ class ReportReachCriteria {
   }
 }
 
-/// The report's schedule. Can only be set if the report's 'dateRange' is a
-/// relative date range and the relative date range is not "TODAY".
+/// The report's schedule.
+///
+/// Can only be set if the report's 'dateRange' is a relative date range and the
+/// relative date range is not "TODAY".
 class ReportSchedule {
-  /// Whether the schedule is active or not. Must be set to either true or
-  /// false.
+  /// Whether the schedule is active or not.
+  ///
+  /// Must be set to either true or false.
   core.bool active;
 
   /// Defines every how many days, weeks or months the report should be run.
+  ///
   /// Needs to be set when "repeats" is either "DAILY", "WEEKLY" or "MONTHLY".
   core.int every;
   core.DateTime expirationDate;
 
-  /// The interval for which the report is repeated. Note: - "DAILY" also
-  /// requires field "every" to be set. - "WEEKLY" also requires fields "every"
-  /// and "repeatsOnWeekDays" to be set. - "MONTHLY" also requires fields
-  /// "every" and "runsOnDayOfMonth" to be set.
+  /// The interval for which the report is repeated.
+  ///
+  /// Note: - "DAILY" also requires field "every" to be set. - "WEEKLY" also
+  /// requires fields "every" and "repeatsOnWeekDays" to be set. - "MONTHLY"
+  /// also requires fields "every" and "runsOnDayOfMonth" to be set.
   core.String repeats;
 
   /// List of week days "WEEKLY" on which scheduled reports should run.
@@ -31744,10 +32715,12 @@ class ReportSchedule {
 
   /// Enum to define for "MONTHLY" scheduled reports whether reports should be
   /// repeated on the same day of the month as "startDate" or the same day of
-  /// the week of the month. Example: If 'startDate' is Monday, April 2nd 2012
-  /// (2012-04-02), "DAY_OF_MONTH" would run subsequent reports on the 2nd of
-  /// every Month, and "WEEK_OF_MONTH" would run subsequent reports on the first
-  /// Monday of the month.
+  /// the week of the month.
+  ///
+  /// Example: If 'startDate' is Monday, April 2nd 2012 (2012-04-02),
+  /// "DAY_OF_MONTH" would run subsequent reports on the 2nd of every Month, and
+  /// "WEEK_OF_MONTH" would run subsequent reports on the first Monday of the
+  /// month.
   /// Possible string values are:
   /// - "DAY_OF_MONTH"
   /// - "WEEK_OF_MONTH"
@@ -31835,10 +32808,11 @@ class Report {
   /// The report criteria for a report of type "FLOODLIGHT".
   ReportFloodlightCriteria floodlightCriteria;
 
-  /// The output format of the report. If not specified, default format is
-  /// "CSV". Note that the actual format in the completed report file might
-  /// differ if for instance the report's size exceeds the format's
-  /// capabilities. "CSV" will then be the fallback format.
+  /// The output format of the report.
+  ///
+  /// If not specified, default format is "CSV". Note that the actual format in
+  /// the completed report file might differ if for instance the report's size
+  /// exceeds the format's capabilities. "CSV" will then be the fallback format.
   /// Possible string values are:
   /// - "CSV"
   /// - "EXCEL"
@@ -31872,8 +32846,10 @@ class Report {
   /// The report criteria for a report of type "REACH".
   ReportReachCriteria reachCriteria;
 
-  /// The report's schedule. Can only be set if the report's 'dateRange' is a
-  /// relative date range and the relative date range is not "TODAY".
+  /// The report's schedule.
+  ///
+  /// Can only be set if the report's 'dateRange' is a relative date range and
+  /// the relative date range is not "TODAY".
   ReportSchedule schedule;
 
   /// The subaccount ID to which this report belongs if applicable.
@@ -32123,10 +33099,11 @@ class ReportList {
   /// The kind of list this is, in this case dfareporting#reportList.
   core.String kind;
 
-  /// Continuation token used to page through reports. To retrieve the next page
-  /// of results, set the next request's "pageToken" to the value of this field.
-  /// The page token is only valid for a limited amount of time and should not
-  /// be persisted.
+  /// Continuation token used to page through reports.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// to the value of this field. The page token is only valid for a limited
+  /// amount of time and should not be persisted.
   core.String nextPageToken;
 
   ReportList();
@@ -32169,30 +33146,33 @@ class ReportList {
 
 /// Reporting Configuration
 class ReportsConfiguration {
-  /// Whether the exposure to conversion report is enabled. This report shows
-  /// detailed pathway information on up to 10 of the most recent ad exposures
-  /// seen by a user before converting.
+  /// Whether the exposure to conversion report is enabled.
+  ///
+  /// This report shows detailed pathway information on up to 10 of the most
+  /// recent ad exposures seen by a user before converting.
   core.bool exposureToConversionEnabled;
 
   /// Default lookback windows for new advertisers in this account.
   LookbackConfiguration lookbackConfiguration;
 
-  /// Report generation time zone ID of this account. This is a required field
-  /// that can only be changed by a superuser. Acceptable values are: - "1" for
-  /// "America/New_York" - "2" for "Europe/London" - "3" for "Europe/Paris" -
-  /// "4" for "Africa/Johannesburg" - "5" for "Asia/Jerusalem" - "6" for
-  /// "Asia/Shanghai" - "7" for "Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9"
-  /// for "Australia/Sydney" - "10" for "Asia/Dubai" - "11" for
-  /// "America/Los_Angeles" - "12" for "Pacific/Auckland" - "13" for
-  /// "America/Sao_Paulo" - "16" for "America/Asuncion" - "17" for
-  /// "America/Chicago" - "18" for "America/Denver" - "19" for
-  /// "America/St_Johns" - "20" for "Asia/Dhaka" - "21" for "Asia/Jakarta" -
-  /// "22" for "Asia/Kabul" - "23" for "Asia/Karachi" - "24" for "Asia/Calcutta"
-  /// - "25" for "Asia/Pyongyang" - "26" for "Asia/Rangoon" - "27" for
-  /// "Atlantic/Cape_Verde" - "28" for "Atlantic/South_Georgia" - "29" for
-  /// "Australia/Adelaide" - "30" for "Australia/Lord_Howe" - "31" for
-  /// "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for
-  /// "Pacific/Norfolk" - "36" for "Pacific/Tongatapu"
+  /// Report generation time zone ID of this account.
+  ///
+  /// This is a required field that can only be changed by a superuser.
+  /// Acceptable values are: - "1" for "America/New_York" - "2" for
+  /// "Europe/London" - "3" for "Europe/Paris" - "4" for "Africa/Johannesburg" -
+  /// "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for
+  /// "Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" -
+  /// "10" for "Asia/Dubai" - "11" for "America/Los_Angeles" - "12" for
+  /// "Pacific/Auckland" - "13" for "America/Sao_Paulo" - "16" for
+  /// "America/Asuncion" - "17" for "America/Chicago" - "18" for
+  /// "America/Denver" - "19" for "America/St_Johns" - "20" for "Asia/Dhaka" -
+  /// "21" for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/Karachi"
+  /// - "24" for "Asia/Calcutta" - "25" for "Asia/Pyongyang" - "26" for
+  /// "Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" - "28" for
+  /// "Atlantic/South_Georgia" - "29" for "Australia/Adelaide" - "30" for
+  /// "Australia/Lord_Howe" - "31" for "Europe/Moscow" - "32" for
+  /// "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
+  /// "Pacific/Tongatapu"
   core.String reportGenerationTimeZoneId;
 
   ReportsConfiguration();
@@ -32230,12 +33210,14 @@ class ReportsConfiguration {
 
 /// Rich Media Exit Override.
 class RichMediaExitOverride {
-  /// Click-through URL of this rich media exit override. Applicable if the
-  /// enabled field is set to true.
+  /// Click-through URL of this rich media exit override.
+  ///
+  /// Applicable if the enabled field is set to true.
   ClickThroughUrl clickThroughUrl;
 
-  /// Whether to use the clickThroughUrl. If false, the creative-level exit will
-  /// be used.
+  /// Whether to use the clickThroughUrl.
+  ///
+  /// If false, the creative-level exit will be used.
   core.bool enabled;
 
   /// ID for the override to refer to a specific exit in the creative.
@@ -32272,18 +33254,25 @@ class RichMediaExitOverride {
 }
 
 /// A rule associates an asset with a targeting template for asset-level
-/// targeting. Applicable to INSTREAM_VIDEO creatives.
+/// targeting.
+///
+/// Applicable to INSTREAM_VIDEO creatives.
 class Rule {
-  /// A creativeAssets[].id. This should refer to one of the parent assets in
-  /// this creative. This is a required field.
+  /// A creativeAssets[].id.
+  ///
+  /// This should refer to one of the parent assets in this creative. This is a
+  /// required field.
   core.String assetId;
 
-  /// A user-friendly name for this rule. This is a required field.
+  /// A user-friendly name for this rule.
+  ///
+  /// This is a required field.
   core.String name;
 
-  /// A targeting template ID. The targeting from the targeting template will be
-  /// used to determine whether this asset should be served. This is a required
-  /// field.
+  /// A targeting template ID.
+  ///
+  /// The targeting from the targeting template will be used to determine
+  /// whether this asset should be served. This is a required field.
   core.String targetingTemplateId;
 
   Rule();
@@ -32317,39 +33306,50 @@ class Rule {
 
 /// Contains properties of a site.
 class Site {
-  /// Account ID of this site. This is a read-only field that can be left blank.
+  /// Account ID of this site.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
   /// Whether this site is approved.
   core.bool approved;
 
-  /// Directory site associated with this site. This is a required field that is
-  /// read-only after insertion.
+  /// Directory site associated with this site.
+  ///
+  /// This is a required field that is read-only after insertion.
   core.String directorySiteId;
 
-  /// Dimension value for the ID of the directory site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the directory site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue directorySiteIdDimensionValue;
 
-  /// ID of this site. This is a read-only, auto-generated field.
+  /// ID of this site.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Dimension value for the ID of this site. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of this site.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue idDimensionValue;
 
-  /// Key name of this site. This is a read-only, auto-generated field.
+  /// Key name of this site.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String keyName;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#site".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#site".
   core.String kind;
 
-  /// Name of this site.This is a required field. Must be less than 128
-  /// characters long. If this site is under a subaccount, the name must be
-  /// unique among sites of the same subaccount. Otherwise, this site is a
-  /// top-level site, and the name must be unique among top-level sites of the
-  /// same account.
+  /// Name of this site.This is a required field.
+  ///
+  /// Must be less than 128 characters long. If this site is under a subaccount,
+  /// the name must be unique among sites of the same subaccount. Otherwise,
+  /// this site is a top-level site, and the name must be unique among top-level
+  /// sites of the same account.
   core.String name;
 
   /// Site contacts.
@@ -32358,13 +33358,15 @@ class Site {
   /// Site-wide settings.
   SiteSettings siteSettings;
 
-  /// Subaccount ID of this site. This is a read-only field that can be left
-  /// blank.
+  /// Subaccount ID of this site.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
-  /// Default video settings for new placements created under this site. This
-  /// value will be used to populate the placements.videoSettings field, when no
-  /// value is specified for the new placement.
+  /// Default video settings for new placements created under this site.
+  ///
+  /// This value will be used to populate the placements.videoSettings field,
+  /// when no value is specified for the new placement.
   SiteVideoSettings videoSettings;
 
   Site();
@@ -32471,15 +33473,17 @@ class SiteCompanionSetting {
   /// Whether companions are disabled for this site template.
   core.bool companionsDisabled;
 
-  /// Whitelist of companion sizes to be served via this site template. Set this
-  /// list to null or empty to serve all companion sizes.
+  /// Whitelist of companion sizes to be served via this site template.
+  ///
+  /// Set this list to null or empty to serve all companion sizes.
   core.List<Size> enabledSizes;
 
   /// Whether to serve only static images as companions.
   core.bool imageOnly;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#siteCompanionSetting".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#siteCompanionSetting".
   core.String kind;
 
   SiteCompanionSetting();
@@ -32532,13 +33536,17 @@ class SiteContact {
   /// - "TRAFFICKER"
   core.String contactType;
 
-  /// Email address of this site contact. This is a required field.
+  /// Email address of this site contact.
+  ///
+  /// This is a required field.
   core.String email;
 
   /// First name of this site contact.
   core.String firstName;
 
-  /// ID of this site contact. This is a read-only, auto-generated field.
+  /// ID of this site contact.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
   /// Last name of this site contact.
@@ -32614,10 +33622,11 @@ class SiteSettings {
   /// Whether active view creatives are disabled for this site.
   core.bool activeViewOptOut;
 
-  /// Whether this site opts out of ad blocking. When true, ad blocking is
-  /// disabled for all placements under the site, regardless of the individual
-  /// placement settings. When false, the campaign and placement settings take
-  /// effect.
+  /// Whether this site opts out of ad blocking.
+  ///
+  /// When true, ad blocking is disabled for all placements under the site,
+  /// regardless of the individual placement settings. When false, the campaign
+  /// and placement settings take effect.
   core.bool adBlockingOptOut;
 
   /// Whether new cookies are disabled for this site.
@@ -32627,12 +33636,14 @@ class SiteSettings {
   TagSetting tagSetting;
 
   /// Whether Verification and ActiveView for in-stream video creatives are
-  /// disabled by default for new placements created under this site. This value
-  /// will be used to populate the placement.videoActiveViewOptOut field, when
-  /// no value is specified for the new placement.
+  /// disabled by default for new placements created under this site.
+  ///
+  /// This value will be used to populate the placement.videoActiveViewOptOut
+  /// field, when no value is specified for the new placement.
   core.bool videoActiveViewOptOutTemplate;
 
   /// Default VPAID adapter setting for new placements created under this site.
+  ///
   /// This value will be used to populate the placements.vpaidAdapterChoice
   /// field, when no value is specified for the new placement. Controls which
   /// VPAID format the measurement adapter will use for in-stream video
@@ -32700,20 +33711,26 @@ class SiteSettings {
 
 /// Skippable Settings
 class SiteSkippableSetting {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#siteSkippableSetting".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#siteSkippableSetting".
   core.String kind;
 
   /// Amount of time to play videos served to this site template before counting
-  /// a view. Applicable when skippable is true.
+  /// a view.
+  ///
+  /// Applicable when skippable is true.
   VideoOffset progressOffset;
 
   /// Amount of time to play videos served to this site before the skip button
-  /// should appear. Applicable when skippable is true.
+  /// should appear.
+  ///
+  /// Applicable when skippable is true.
   VideoOffset skipOffset;
 
-  /// Whether the user can skip creatives served to this site. This will act as
-  /// default for new placements created under this site.
+  /// Whether the user can skip creatives served to this site.
+  ///
+  /// This will act as default for new placements created under this site.
   core.bool skippable;
 
   SiteSkippableSetting();
@@ -32755,12 +33772,14 @@ class SiteSkippableSetting {
 
 /// Transcode Settings
 class SiteTranscodeSetting {
-  /// Whitelist of video formats to be served to this site template. Set this
-  /// list to null or empty to serve all video formats.
+  /// Whitelist of video formats to be served to this site template.
+  ///
+  /// Set this list to null or empty to serve all video formats.
   core.List<core.int> enabledVideoFormats;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#siteTranscodeSetting".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#siteTranscodeSetting".
   core.String kind;
 
   SiteTranscodeSetting();
@@ -32794,31 +33813,36 @@ class SiteVideoSettings {
   /// site.
   SiteCompanionSetting companionSettings;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#siteVideoSettings".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#siteVideoSettings".
   core.String kind;
 
   /// Whether OBA icons are enabled for this placement.
   core.bool obaEnabled;
 
-  /// Settings for the OBA icon of video creatives served to this site. This
-  /// will act as default for new placements created under this site.
+  /// Settings for the OBA icon of video creatives served to this site.
+  ///
+  /// This will act as default for new placements created under this site.
   ObaIcon obaSettings;
 
-  /// Orientation of a site template used for video. This will act as default
-  /// for new placements created under this site.
+  /// Orientation of a site template used for video.
+  ///
+  /// This will act as default for new placements created under this site.
   /// Possible string values are:
   /// - "ANY"
   /// - "LANDSCAPE"
   /// - "PORTRAIT"
   core.String orientation;
 
-  /// Settings for the skippability of video creatives served to this site. This
-  /// will act as default for new placements created under this site.
+  /// Settings for the skippability of video creatives served to this site.
+  ///
+  /// This will act as default for new placements created under this site.
   SiteSkippableSetting skippableSettings;
 
-  /// Settings for the transcodes of video creatives served to this site. This
-  /// will act as default for new placements created under this site.
+  /// Settings for the transcodes of video creatives served to this site.
+  ///
+  /// This will act as default for new placements created under this site.
   SiteTranscodeSetting transcodeSettings;
 
   SiteVideoSettings();
@@ -32880,8 +33904,9 @@ class SiteVideoSettings {
 
 /// Site List Response
 class SitesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#sitesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#sitesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -32924,20 +33949,29 @@ class SitesListResponse {
 
 /// Represents the dimensions of ads, placements, creatives, or creative assets.
 class Size {
-  /// Height of this size. Acceptable values are 0 to 32767, inclusive.
+  /// Height of this size.
+  ///
+  /// Acceptable values are 0 to 32767, inclusive.
   core.int height;
 
-  /// IAB standard size. This is a read-only, auto-generated field.
+  /// IAB standard size.
+  ///
+  /// This is a read-only, auto-generated field.
   core.bool iab;
 
-  /// ID of this size. This is a read-only, auto-generated field.
+  /// ID of this size.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#size".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#size".
   core.String kind;
 
-  /// Width of this size. Acceptable values are 0 to 32767, inclusive.
+  /// Width of this size.
+  ///
+  /// Acceptable values are 0 to 32767, inclusive.
   core.int width;
 
   Size();
@@ -32983,8 +34017,9 @@ class Size {
 
 /// Size List Response
 class SizesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#sizesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#sizesListResponse".
   core.String kind;
 
   /// Size collection.
@@ -33018,16 +34053,21 @@ class SizesListResponse {
 
 /// Skippable Settings
 class SkippableSetting {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#skippableSetting".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#skippableSetting".
   core.String kind;
 
   /// Amount of time to play videos served to this placement before counting a
-  /// view. Applicable when skippable is true.
+  /// view.
+  ///
+  /// Applicable when skippable is true.
   VideoOffset progressOffset;
 
   /// Amount of time to play videos served to this placement before the skip
-  /// button should appear. Applicable when skippable is true.
+  /// button should appear.
+  ///
+  /// Applicable when skippable is true.
   VideoOffset skipOffset;
 
   /// Whether the user can skip creatives served to this placement.
@@ -33115,22 +34155,28 @@ class SortedDimension {
 
 /// Contains properties of a Campaign Manager subaccount.
 class Subaccount {
-  /// ID of the account that contains this subaccount. This is a read-only field
-  /// that can be left blank.
+  /// ID of the account that contains this subaccount.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
   /// IDs of the available user role permissions for this subaccount.
   core.List<core.String> availablePermissionIds;
 
-  /// ID of this subaccount. This is a read-only, auto-generated field.
+  /// ID of this subaccount.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#subaccount".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#subaccount".
   core.String kind;
 
-  /// Name of this subaccount. This is a required field. Must be less than 128
-  /// characters long and be unique among subaccounts of the same account.
+  /// Name of this subaccount.
+  ///
+  /// This is a required field. Must be less than 128 characters long and be
+  /// unique among subaccounts of the same account.
   core.String name;
 
   Subaccount();
@@ -33178,8 +34224,9 @@ class Subaccount {
 
 /// Subaccount List Response
 class SubaccountsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#subaccountsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#subaccountsListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -33223,15 +34270,17 @@ class SubaccountsListResponse {
 
 /// Placement Tag Data
 class TagData {
-  /// Ad associated with this placement tag. Applicable only when format is
-  /// PLACEMENT_TAG_TRACKING.
+  /// Ad associated with this placement tag.
+  ///
+  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
   core.String adId;
 
   /// Tag string to record a click.
   core.String clickTag;
 
-  /// Creative associated with this placement tag. Applicable only when format
-  /// is PLACEMENT_TAG_TRACKING.
+  /// Creative associated with this placement tag.
+  ///
+  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
   core.String creativeId;
 
   /// TagData tag format of this tag.
@@ -33303,23 +34352,26 @@ class TagData {
 
 /// Tag Settings
 class TagSetting {
-  /// Additional key-values to be included in tags. Each key-value pair must be
-  /// of the form key=value, and pairs must be separated by a semicolon (;).
-  /// Keys and values must not contain commas. For example, id=2;color=red is a
-  /// valid value for this field.
+  /// Additional key-values to be included in tags.
+  ///
+  /// Each key-value pair must be of the form key=value, and pairs must be
+  /// separated by a semicolon (;). Keys and values must not contain commas. For
+  /// example, id=2;color=red is a valid value for this field.
   core.String additionalKeyValues;
 
-  /// Whether static landing page URLs should be included in the tags. This
-  /// setting applies only to placements.
+  /// Whether static landing page URLs should be included in the tags.
+  ///
+  /// This setting applies only to placements.
   core.bool includeClickThroughUrls;
 
   /// Whether click-tracking string should be included in the tags.
   core.bool includeClickTracking;
 
-  /// Option specifying how keywords are embedded in ad tags. This setting can
-  /// be used to specify whether keyword placeholders are inserted in placement
-  /// tags for this site. Publishers can then add keywords to those
-  /// placeholders.
+  /// Option specifying how keywords are embedded in ad tags.
+  ///
+  /// This setting can be used to specify whether keyword placeholders are
+  /// inserted in placement tags for this site. Publishers can then add keywords
+  /// to those placeholders.
   /// Possible string values are:
   /// - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
   /// - "IGNORE"
@@ -33428,17 +34480,20 @@ class TargetWindow {
   }
 }
 
-/// Contains properties of a targetable remarketing list. Remarketing enables
-/// you to create lists of users who have performed specific actions on a site,
-/// then target ads to members of those lists. This resource is a read-only view
-/// of a remarketing list to be used to faciliate targeting ads to specific
-/// lists. Remarketing lists that are owned by your advertisers and those that
-/// are shared to your advertisers or account are accessible via this resource.
-/// To manage remarketing lists that are owned by your advertisers, use the
-/// RemarketingLists resource.
+/// Contains properties of a targetable remarketing list.
+///
+/// Remarketing enables you to create lists of users who have performed specific
+/// actions on a site, then target ads to members of those lists. This resource
+/// is a read-only view of a remarketing list to be used to faciliate targeting
+/// ads to specific lists. Remarketing lists that are owned by your advertisers
+/// and those that are shared to your advertisers or account are accessible via
+/// this resource. To manage remarketing lists that are owned by your
+/// advertisers, use the RemarketingLists resource.
 class TargetableRemarketingList {
-  /// Account ID of this remarketing list. This is a read-only, auto-generated
-  /// field that is only returned in GET requests.
+  /// Account ID of this remarketing list.
+  ///
+  /// This is a read-only, auto-generated field that is only returned in GET
+  /// requests.
   core.String accountId;
 
   /// Whether this targetable remarketing list is active.
@@ -33457,15 +34512,18 @@ class TargetableRemarketingList {
   /// Targetable remarketing list ID.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#targetableRemarketingList".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#targetableRemarketingList".
   core.String kind;
 
   /// Number of days that a user should remain in the targetable remarketing
   /// list without an impression.
   core.String lifeSpan;
 
-  /// Number of users currently in the list. This is a read-only field.
+  /// Number of users currently in the list.
+  ///
+  /// This is a read-only field.
   core.String listSize;
 
   /// Product from which this targetable remarketing list was originated.
@@ -33483,12 +34541,15 @@ class TargetableRemarketingList {
   /// - "REMARKETING_LIST_SOURCE_PLAY_STORE"
   core.String listSource;
 
-  /// Name of the targetable remarketing list. Is no greater than 128 characters
-  /// long.
+  /// Name of the targetable remarketing list.
+  ///
+  /// Is no greater than 128 characters long.
   core.String name;
 
-  /// Subaccount ID of this remarketing list. This is a read-only,
-  /// auto-generated field that is only returned in GET requests.
+  /// Subaccount ID of this remarketing list.
+  ///
+  /// This is a read-only, auto-generated field that is only returned in GET
+  /// requests.
   core.String subaccountId;
 
   TargetableRemarketingList();
@@ -33578,7 +34639,9 @@ class TargetableRemarketingList {
 
 /// Targetable remarketing list response
 class TargetableRemarketingListsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#targetableRemarketingListsListResponse".
   core.String kind;
 
@@ -33623,19 +34686,25 @@ class TargetableRemarketingListsListResponse {
   }
 }
 
-/// Contains properties of a targeting template. A targeting template
-/// encapsulates targeting information which can be reused across multiple ads.
+/// Contains properties of a targeting template.
+///
+/// A targeting template encapsulates targeting information which can be reused
+/// across multiple ads.
 class TargetingTemplate {
-  /// Account ID of this targeting template. This field, if left unset, will be
-  /// auto-generated on insert and is read-only after insert.
+  /// Account ID of this targeting template.
+  ///
+  /// This field, if left unset, will be auto-generated on insert and is
+  /// read-only after insert.
   core.String accountId;
 
-  /// Advertiser ID of this targeting template. This is a required field on
-  /// insert and is read-only after insert.
+  /// Advertiser ID of this targeting template.
+  ///
+  /// This is a required field on insert and is read-only after insert.
   core.String advertiserId;
 
-  /// Dimension value for the ID of the advertiser. This is a read-only,
-  /// auto-generated field.
+  /// Dimension value for the ID of the advertiser.
+  ///
+  /// This is a read-only, auto-generated field.
   DimensionValue advertiserIdDimensionValue;
 
   /// Time and day targeting criteria.
@@ -33644,14 +34713,17 @@ class TargetingTemplate {
   /// Geographical targeting criteria.
   GeoTargeting geoTargeting;
 
-  /// ID of this targeting template. This is a read-only, auto-generated field.
+  /// ID of this targeting template.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
   /// Key-value targeting criteria.
   KeyValueTargetingExpression keyValueTargetingExpression;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#targetingTemplate".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#targetingTemplate".
   core.String kind;
 
   /// Language targeting criteria.
@@ -33660,12 +34732,16 @@ class TargetingTemplate {
   /// Remarketing list targeting criteria.
   ListTargetingExpression listTargetingExpression;
 
-  /// Name of this targeting template. This field is required. It must be less
-  /// than 256 characters long and unique within an advertiser.
+  /// Name of this targeting template.
+  ///
+  /// This field is required. It must be less than 256 characters long and
+  /// unique within an advertiser.
   core.String name;
 
-  /// Subaccount ID of this targeting template. This field, if left unset, will
-  /// be auto-generated on insert and is read-only after insert.
+  /// Subaccount ID of this targeting template.
+  ///
+  /// This field, if left unset, will be auto-generated on insert and is
+  /// read-only after insert.
   core.String subaccountId;
 
   /// Technology platform targeting criteria.
@@ -33773,8 +34849,9 @@ class TargetingTemplate {
 
 /// Targeting Template List Response
 class TargetingTemplatesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#targetingTemplatesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#targetingTemplatesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -33818,40 +34895,50 @@ class TargetingTemplatesListResponse {
 
 /// Technology Targeting.
 class TechnologyTargeting {
-  /// Browsers that this ad targets. For each browser either set
-  /// browserVersionId or dartId along with the version numbers. If both are
-  /// specified, only browserVersionId will be used. The other fields are
-  /// populated automatically when the ad is inserted or updated.
+  /// Browsers that this ad targets.
+  ///
+  /// For each browser either set browserVersionId or dartId along with the
+  /// version numbers. If both are specified, only browserVersionId will be
+  /// used. The other fields are populated automatically when the ad is inserted
+  /// or updated.
   core.List<Browser> browsers;
 
-  /// Connection types that this ad targets. For each connection type only id is
-  /// required. The other fields are populated automatically when the ad is
-  /// inserted or updated.
+  /// Connection types that this ad targets.
+  ///
+  /// For each connection type only id is required. The other fields are
+  /// populated automatically when the ad is inserted or updated.
   core.List<ConnectionType> connectionTypes;
 
-  /// Mobile carriers that this ad targets. For each mobile carrier only id is
-  /// required, and the other fields are populated automatically when the ad is
-  /// inserted or updated. If targeting a mobile carrier, do not set targeting
-  /// for any zip codes.
+  /// Mobile carriers that this ad targets.
+  ///
+  /// For each mobile carrier only id is required, and the other fields are
+  /// populated automatically when the ad is inserted or updated. If targeting a
+  /// mobile carrier, do not set targeting for any zip codes.
   core.List<MobileCarrier> mobileCarriers;
 
-  /// Operating system versions that this ad targets. To target all versions,
-  /// use operatingSystems. For each operating system version, only id is
-  /// required. The other fields are populated automatically when the ad is
-  /// inserted or updated. If targeting an operating system version, do not set
-  /// targeting for the corresponding operating system in operatingSystems.
+  /// Operating system versions that this ad targets.
+  ///
+  /// To target all versions, use operatingSystems. For each operating system
+  /// version, only id is required. The other fields are populated automatically
+  /// when the ad is inserted or updated. If targeting an operating system
+  /// version, do not set targeting for the corresponding operating system in
+  /// operatingSystems.
   core.List<OperatingSystemVersion> operatingSystemVersions;
 
-  /// Operating systems that this ad targets. To target specific versions, use
-  /// operatingSystemVersions. For each operating system only dartId is
-  /// required. The other fields are populated automatically when the ad is
-  /// inserted or updated. If targeting an operating system, do not set
-  /// targeting for operating system versions for the same operating system.
+  /// Operating systems that this ad targets.
+  ///
+  /// To target specific versions, use operatingSystemVersions. For each
+  /// operating system only dartId is required. The other fields are populated
+  /// automatically when the ad is inserted or updated. If targeting an
+  /// operating system, do not set targeting for operating system versions for
+  /// the same operating system.
   core.List<OperatingSystem> operatingSystems;
 
-  /// Platform types that this ad targets. For example, desktop, mobile, or
-  /// tablet. For each platform type, only id is required, and the other fields
-  /// are populated automatically when the ad is inserted or updated.
+  /// Platform types that this ad targets.
+  ///
+  /// For example, desktop, mobile, or tablet. For each platform type, only id
+  /// is required, and the other fields are populated automatically when the ad
+  /// is inserted or updated.
   core.List<PlatformType> platformTypes;
 
   TechnologyTargeting();
@@ -33930,8 +35017,9 @@ class ThirdPartyAuthenticationToken {
   /// Name of the third-party authentication token.
   core.String name;
 
-  /// Value of the third-party authentication token. This is a read-only,
-  /// auto-generated field.
+  /// Value of the third-party authentication token.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String value;
 
   ThirdPartyAuthenticationToken();
@@ -34010,12 +35098,14 @@ class ThirdPartyTrackingUrl {
 
 /// Transcode Settings
 class TranscodeSetting {
-  /// Whitelist of video formats to be served to this placement. Set this list
-  /// to null or empty to serve all video formats.
+  /// Whitelist of video formats to be served to this placement.
+  ///
+  /// Set this list to null or empty to serve all video formats.
   core.List<core.int> enabledVideoFormats;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#transcodeSetting".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#transcodeSetting".
   core.String kind;
 
   TranscodeSetting();
@@ -34043,8 +35133,10 @@ class TranscodeSetting {
   }
 }
 
-/// A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following
-/// creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID.
+/// A Universal Ad ID as per the VAST 4.0 spec.
+///
+/// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
+/// and VPAID.
 class UniversalAdId {
   /// Registry used for the Ad ID value.
   /// Possible string values are:
@@ -34054,9 +35146,10 @@ class UniversalAdId {
   /// - "DCM"
   core.String registry;
 
-  /// ID value for this creative. Only alphanumeric characters and the following
-  /// symbols are valid: "_/\-". Maximum length is 64 characters. Read only when
-  /// registry is DCM.
+  /// ID value for this creative.
+  ///
+  /// Only alphanumeric characters and the following symbols are valid: "_/\-".
+  /// Maximum length is 64 characters. Read only when registry is DCM.
   core.String value;
 
   UniversalAdId();
@@ -34084,18 +35177,23 @@ class UniversalAdId {
 
 /// User Defined Variable configuration.
 class UserDefinedVariableConfiguration {
-  /// Data type for the variable. This is a required field.
+  /// Data type for the variable.
+  ///
+  /// This is a required field.
   /// Possible string values are:
   /// - "STRING"
   /// - "NUMBER"
   core.String dataType;
 
-  /// User-friendly name for the variable which will appear in reports. This is
-  /// a required field, must be less than 64 characters long, and cannot contain
-  /// the following characters: ""<>".
+  /// User-friendly name for the variable which will appear in reports.
+  ///
+  /// This is a required field, must be less than 64 characters long, and cannot
+  /// contain the following characters: ""<>".
   core.String reportName;
 
-  /// Variable name in the tag. This is a required field.
+  /// Variable name in the tag.
+  ///
+  /// This is a required field.
   /// Possible string values are:
   /// - "U1"
   /// - "U2"
@@ -34229,8 +35327,9 @@ class UserDefinedVariableConfiguration {
 }
 
 /// A UserProfile resource lets you list all DFA user profiles that are
-/// associated with a Google user account. The profile_id needs to be specified
-/// in other API requests.
+/// associated with a Google user account.
+///
+/// The profile_id needs to be specified in other API requests.
 class UserProfile {
   /// The account ID to which this profile belongs.
   core.String accountId;
@@ -34241,8 +35340,9 @@ class UserProfile {
   /// Etag of this resource.
   core.String etag;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userProfile".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userProfile".
   core.String kind;
 
   /// The unique ID of the user profile.
@@ -34324,8 +35424,9 @@ class UserProfileList {
   /// The user profiles returned in this response.
   core.List<UserProfile> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userProfileList".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userProfileList".
   core.String kind;
 
   UserProfileList();
@@ -34362,38 +35463,48 @@ class UserProfileList {
 
 /// Contains properties of auser role, which is used to manage user access.
 class UserRole {
-  /// Account ID of this user role. This is a read-only field that can be left
-  /// blank.
+  /// Account ID of this user role.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String accountId;
 
-  /// Whether this is a default user role. Default user roles are created by the
-  /// system for the account/subaccount and cannot be modified or deleted. Each
-  /// default user role comes with a basic set of preassigned permissions.
+  /// Whether this is a default user role.
+  ///
+  /// Default user roles are created by the system for the account/subaccount
+  /// and cannot be modified or deleted. Each default user role comes with a
+  /// basic set of preassigned permissions.
   core.bool defaultUserRole;
 
-  /// ID of this user role. This is a read-only, auto-generated field.
+  /// ID of this user role.
+  ///
+  /// This is a read-only, auto-generated field.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userRole".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRole".
   core.String kind;
 
-  /// Name of this user role. This is a required field. Must be less than 256
-  /// characters long. If this user role is under a subaccount, the name must be
-  /// unique among sites of the same subaccount. Otherwise, this user role is a
-  /// top-level user role, and the name must be unique among top-level user
-  /// roles of the same account.
+  /// Name of this user role.
+  ///
+  /// This is a required field. Must be less than 256 characters long. If this
+  /// user role is under a subaccount, the name must be unique among sites of
+  /// the same subaccount. Otherwise, this user role is a top-level user role,
+  /// and the name must be unique among top-level user roles of the same
+  /// account.
   core.String name;
 
-  /// ID of the user role that this user role is based on or copied from. This
-  /// is a required field.
+  /// ID of the user role that this user role is based on or copied from.
+  ///
+  /// This is a required field.
   core.String parentUserRoleId;
 
   /// List of permissions associated with this user role.
   core.List<UserRolePermission> permissions;
 
-  /// Subaccount ID of this user role. This is a read-only field that can be
-  /// left blank.
+  /// Subaccount ID of this user role.
+  ///
+  /// This is a read-only field that can be left blank.
   core.String subaccountId;
 
   UserRole();
@@ -34473,8 +35584,9 @@ class UserRolePermission {
   /// ID of this user role permission.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userRolePermission".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermission".
   core.String kind;
 
   /// Name of this user role permission.
@@ -34529,8 +35641,9 @@ class UserRolePermissionGroup {
   /// ID of this user role permission.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userRolePermissionGroup".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermissionGroup".
   core.String kind;
 
   /// Name of this user role permission group.
@@ -34567,7 +35680,9 @@ class UserRolePermissionGroup {
 
 /// User Role Permission Group List Response
 class UserRolePermissionGroupsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "dfareporting#userRolePermissionGroupsListResponse".
   core.String kind;
 
@@ -34605,8 +35720,9 @@ class UserRolePermissionGroupsListResponse {
 
 /// User Role Permission List Response
 class UserRolePermissionsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userRolePermissionsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermissionsListResponse".
   core.String kind;
 
   /// User role permission collection.
@@ -34641,8 +35757,9 @@ class UserRolePermissionsListResponse {
 
 /// User Role List Response
 class UserRolesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#userRolesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolesListResponse".
   core.String kind;
 
   /// Pagination token to be used for the next list operation.
@@ -34697,8 +35814,9 @@ class VideoFormat {
   /// ID of the video format.
   core.int id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#videoFormat".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#videoFormat".
   core.String kind;
 
   /// The resolution of this video format.
@@ -34751,8 +35869,9 @@ class VideoFormat {
 
 /// Video Format List Response
 class VideoFormatsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#videoFormatsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#videoFormatsListResponse".
   core.String kind;
 
   /// Video format collection.
@@ -34787,12 +35906,16 @@ class VideoFormatsListResponse {
 
 /// Video Offset
 class VideoOffset {
-  /// Duration, as a percentage of video duration. Do not set when offsetSeconds
-  /// is set. Acceptable values are 0 to 100, inclusive.
+  /// Duration, as a percentage of video duration.
+  ///
+  /// Do not set when offsetSeconds is set. Acceptable values are 0 to 100,
+  /// inclusive.
   core.int offsetPercentage;
 
-  /// Duration, in seconds. Do not set when offsetPercentage is set. Acceptable
-  /// values are 0 to 86399, inclusive.
+  /// Duration, in seconds.
+  ///
+  /// Do not set when offsetPercentage is set. Acceptable values are 0 to 86399,
+  /// inclusive.
   core.int offsetSeconds;
 
   VideoOffset();
@@ -34824,20 +35947,24 @@ class VideoSettings {
   /// placement.
   CompanionSetting companionSettings;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#videoSettings".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#videoSettings".
   core.String kind;
 
   /// Whether OBA icons are enabled for this placement.
   core.bool obaEnabled;
 
-  /// Settings for the OBA icon of video creatives served to this placement. If
-  /// this object is provided, the creative-level OBA settings will be
+  /// Settings for the OBA icon of video creatives served to this placement.
+  ///
+  /// If this object is provided, the creative-level OBA settings will be
   /// overridden.
   ObaIcon obaSettings;
 
-  /// Orientation of a video placement. If this value is set, placement will
-  /// return assets matching the specified orientation.
+  /// Orientation of a video placement.
+  ///
+  /// If this value is set, placement will return assets matching the specified
+  /// orientation.
   /// Possible string values are:
   /// - "ANY"
   /// - "LANDSCAPE"
@@ -34845,11 +35972,13 @@ class VideoSettings {
   core.String orientation;
 
   /// Settings for the skippability of video creatives served to this placement.
+  ///
   /// If this object is provided, the creative-level skippable settings will be
   /// overridden.
   SkippableSetting skippableSettings;
 
   /// Settings for the transcodes of video creatives served to this placement.
+  ///
   /// If this object is provided, the creative-level transcode settings will be
   /// overridden.
   TranscodeSetting transcodeSettings;

@@ -183,8 +183,9 @@ class CustomersResource {
     );
   }
 
-  /// Update a customer account's settings. This method supports patch
-  /// semantics.
+  /// Update a customer account's settings.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -531,9 +532,10 @@ class SubscriptionsResource {
     );
   }
 
-  /// Update a subscription plan. Use this method to update a plan for a 30-day
-  /// trial or a flexible plan subscription to an annual commitment plan with
-  /// monthly or yearly payments.
+  /// Update a subscription plan.
+  ///
+  /// Use this method to update a plan for a 30-day trial or a flexible plan
+  /// subscription to an annual commitment plan with monthly or yearly payments.
   ///
   /// [request] - The metadata request object.
   ///
@@ -607,8 +609,9 @@ class SubscriptionsResource {
     );
   }
 
-  /// Update a user license's renewal settings. This is applicable for accounts
-  /// with annual commitment plans only.
+  /// Update a user license's renewal settings.
+  ///
+  /// This is applicable for accounts with annual commitment plans only.
   ///
   /// [request] - The metadata request object.
   ///
@@ -978,9 +981,10 @@ class SubscriptionsResource {
     );
   }
 
-  /// List of subscriptions managed by the reseller. The list can be all
-  /// subscriptions, all of a customer's subscriptions, or all of a customer's
-  /// transferable subscriptions.
+  /// List of subscriptions managed by the reseller.
+  ///
+  /// The list can be all subscriptions, all of a customer's subscriptions, or
+  /// all of a customer's transferable subscriptions.
   ///
   /// Request parameters:
   ///
@@ -1213,8 +1217,10 @@ class SubscriptionsResource {
 
 /// JSON template for address of a customer.
 class Address {
-  /// A customer's physical address. An address can be composed of one to three
-  /// lines. The addressline2 and addressLine3 are optional.
+  /// A customer's physical address.
+  ///
+  /// An address can be composed of one to three lines. The addressline2 and
+  /// addressLine3 are optional.
   core.String addressLine1;
 
   /// Line 2 of the address.
@@ -1223,25 +1229,33 @@ class Address {
   /// Line 3 of the address.
   core.String addressLine3;
 
-  /// The customer contact's name. This is required.
+  /// The customer contact's name.
+  ///
+  /// This is required.
   core.String contactName;
 
   /// For countryCode information, see the ISO 3166 country code elements.
+  ///
   /// Verify that country is approved for resale of Google products. This
   /// property is required when creating a new customer.
   core.String countryCode;
 
-  /// Identifies the resource as a customer address. Value: customers#address
+  /// Identifies the resource as a customer address.
+  ///
+  /// Value: customers#address
   core.String kind;
 
   /// An example of a locality value is the city of San Francisco.
   core.String locality;
 
-  /// The company or company division name. This is required.
+  /// The company or company division name.
+  ///
+  /// This is required.
   core.String organizationName;
 
-  /// A postalCode example is a postal zip code such as 94043. This property is
-  /// required when creating a new customer.
+  /// A postalCode example is a postal zip code such as 94043.
+  ///
+  /// This property is required when creating a new customer.
   core.String postalCode;
 
   /// An example of a region value is CA for the state of California.
@@ -1321,22 +1335,26 @@ class Address {
 /// JSON template for the ChangePlan rpc request.
 class ChangePlanRequest {
   /// Google-issued code (100 char max) for discounted pricing on subscription
-  /// plans. Deal code must be included in changePlan request in order to
-  /// receive discounted rate. This property is optional. If a deal code has
-  /// already been added to a subscription, this property may be left empty and
-  /// the existing discounted rate will still apply (if not empty, only provide
-  /// the deal code that is already present on the subscription). If a deal code
-  /// has never been added to a subscription and this property is left blank,
+  /// plans.
+  ///
+  /// Deal code must be included in changePlan request in order to receive
+  /// discounted rate. This property is optional. If a deal code has already
+  /// been added to a subscription, this property may be left empty and the
+  /// existing discounted rate will still apply (if not empty, only provide the
+  /// deal code that is already present on the subscription). If a deal code has
+  /// never been added to a subscription and this property is left blank,
   /// regular pricing will apply.
   core.String dealCode;
 
-  /// Identifies the resource as a subscription change plan request. Value:
-  /// subscriptions#changePlanRequest
+  /// Identifies the resource as a subscription change plan request.
+  ///
+  /// Value: subscriptions#changePlanRequest
   core.String kind;
 
-  /// The planName property is required. This is the name of the subscription's
-  /// payment plan. For more information about the Google payment plans, see API
-  /// concepts.
+  /// The planName property is required.
+  ///
+  /// This is the name of the subscription's payment plan. For more information
+  /// about the Google payment plans, see API concepts.
   ///
   /// Possible values are:
   /// - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments
@@ -1346,14 +1364,17 @@ class ChangePlanRequest {
   /// - TRIAL - The 30-day free trial plan
   core.String planName;
 
-  /// This is an optional property. This purchase order (PO) information is for
-  /// resellers to use for their company tracking usage. If a purchaseOrderId
-  /// value is given it appears in the API responses and shows up in the
-  /// invoice. The property accepts up to 80 plain text characters.
+  /// This is an optional property.
+  ///
+  /// This purchase order (PO) information is for resellers to use for their
+  /// company tracking usage. If a purchaseOrderId value is given it appears in
+  /// the API responses and shows up in the invoice. The property accepts up to
+  /// 80 plain text characters.
   core.String purchaseOrderId;
 
-  /// This is a required property. The seats property is the number of user seat
-  /// licenses.
+  /// This is a required property.
+  ///
+  /// The seats property is the number of user seat licenses.
   Seats seats;
 
   ChangePlanRequest();
@@ -1402,39 +1423,51 @@ class ChangePlanRequest {
 class Customer {
   /// Like the "Customer email" in the reseller tools, this email is the
   /// secondary contact used if something happens to the customer's service such
-  /// as service outage or a security issue. This property is required when
-  /// creating a new customer and should not use the same domain as
-  /// customerDomain.
+  /// as service outage or a security issue.
+  ///
+  /// This property is required when creating a new customer and should not use
+  /// the same domain as customerDomain.
   core.String alternateEmail;
 
-  /// The customer's primary domain name string. customerDomain is required when
-  /// creating a new customer. Do not include the www prefix in the domain when
-  /// adding a customer.
+  /// The customer's primary domain name string.
+  ///
+  /// customerDomain is required when creating a new customer. Do not include
+  /// the www prefix in the domain when adding a customer.
   core.String customerDomain;
 
   /// Whether the customer's primary domain has been verified.
   core.bool customerDomainVerified;
 
   /// This property will always be returned in a response as the unique
-  /// identifier generated by Google. In a request, this property can be either
-  /// the primary domain or the unique identifier generated by Google.
+  /// identifier generated by Google.
+  ///
+  /// In a request, this property can be either the primary domain or the unique
+  /// identifier generated by Google.
   core.String customerId;
 
-  /// Identifies the resource as a customer. Value: reseller#customer
+  /// Identifies the resource as a customer.
+  ///
+  /// Value: reseller#customer
   core.String kind;
 
-  /// Customer contact phone number. Must start with "+" followed by the country
-  /// code. The rest of the number can be contiguous numbers or respect the
-  /// phone local format conventions, but it must be a real phone number and
-  /// not, for example, "123". This field is silently ignored if invalid.
+  /// Customer contact phone number.
+  ///
+  /// Must start with "+" followed by the country code. The rest of the number
+  /// can be contiguous numbers or respect the phone local format conventions,
+  /// but it must be a real phone number and not, for example, "123". This field
+  /// is silently ignored if invalid.
   core.String phoneNumber;
 
-  /// A customer's address information. Each field has a limit of 255 charcters.
+  /// A customer's address information.
+  ///
+  /// Each field has a limit of 255 charcters.
   Address postalAddress;
 
-  /// URL to customer's Admin console dashboard. The read-only URL is generated
-  /// by the API service. This is used if your client application requires the
-  /// customer to complete a task in the Admin console.
+  /// URL to customer's Admin console dashboard.
+  ///
+  /// The read-only URL is generated by the API service. This is used if your
+  /// client application requires the customer to complete a task in the Admin
+  /// console.
   core.String resourceUiUrl;
 
   Customer();
@@ -1499,13 +1532,16 @@ class Customer {
 
 /// JSON template for a subscription renewal settings.
 class RenewalSettings {
-  /// Identifies the resource as a subscription renewal setting. Value:
-  /// subscriptions#renewalSettings
+  /// Identifies the resource as a subscription renewal setting.
+  ///
+  /// Value: subscriptions#renewalSettings
   core.String kind;
 
-  /// Renewal settings for the annual commitment plan. For more detailed
-  /// information, see renewal options in the administrator help center. When
-  /// renewing a subscription, the renewalType is a required property.
+  /// Renewal settings for the annual commitment plan.
+  ///
+  /// For more detailed information, see renewal options in the administrator
+  /// help center. When renewing a subscription, the renewalType is a required
+  /// property.
   core.String renewalType;
 
   RenewalSettings();
@@ -1589,31 +1625,37 @@ class ResellernotifyResource {
 
 /// JSON template for subscription seats.
 class Seats {
-  /// Identifies the resource as a subscription seat setting. Value:
-  /// subscriptions#seats
+  /// Identifies the resource as a subscription seat setting.
+  ///
+  /// Value: subscriptions#seats
   core.String kind;
 
   /// Read-only field containing the current number of users that are assigned a
-  /// license for the product defined in skuId. This field's value is equivalent
-  /// to the numerical count of users returned by the Enterprise License Manager
-  /// API method: listForProductAndSku
+  /// license for the product defined in skuId.
+  ///
+  /// This field's value is equivalent to the numerical count of users returned
+  /// by the Enterprise License Manager API method: listForProductAndSku
   core.int licensedNumberOfSeats;
 
   /// This is a required property and is exclusive to subscriptions with
-  /// FLEXIBLE or TRIAL plans. This property sets the maximum number of licensed
-  /// users allowed on a subscription. This quantity can be increased up to the
-  /// maximum limit defined in the reseller's contract. The minimum quantity is
-  /// the current number of users in the customer account. Note: G Suite
-  /// subscriptions automatically assign a license to every user.
+  /// FLEXIBLE or TRIAL plans.
+  ///
+  /// This property sets the maximum number of licensed users allowed on a
+  /// subscription. This quantity can be increased up to the maximum limit
+  /// defined in the reseller's contract. The minimum quantity is the current
+  /// number of users in the customer account. Note: G Suite subscriptions
+  /// automatically assign a license to every user.
   core.int maximumNumberOfSeats;
 
   /// This is a required property and is exclusive to subscriptions with
-  /// ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans. This property sets the
-  /// maximum number of licenses assignable to users on a subscription. The
-  /// reseller can add more licenses, but once set, the numberOfSeats cannot be
-  /// reduced until renewal. The reseller is invoiced based on the numberOfSeats
-  /// value regardless of how many of these user licenses are assigned. Note: G
-  /// Suite subscriptions automatically assign a license to every user.
+  /// ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans.
+  ///
+  /// This property sets the maximum number of licenses assignable to users on a
+  /// subscription. The reseller can add more licenses, but once set, the
+  /// numberOfSeats cannot be reduced until renewal. The reseller is invoiced
+  /// based on the numberOfSeats value regardless of how many of these user
+  /// licenses are assigned. Note: G Suite subscriptions automatically assign a
+  /// license to every user.
   core.int numberOfSeats;
 
   Seats();
@@ -1652,15 +1694,20 @@ class Seats {
 }
 
 /// In this version of the API, annual commitment plan's interval is one year.
+///
 /// Note: When billingMethod value is OFFLINE, the subscription property object
 /// plan.commitmentInterval is omitted in all API responses.
 class SubscriptionPlanCommitmentInterval {
   /// An annual commitment plan's interval's endTime in milliseconds using the
-  /// UNIX Epoch format. See an example Epoch converter.
+  /// UNIX Epoch format.
+  ///
+  /// See an example Epoch converter.
   core.String endTime;
 
   /// An annual commitment plan's interval's startTime in milliseconds using
-  /// UNIX Epoch format. See an example Epoch converter.
+  /// UNIX Epoch format.
+  ///
+  /// See an example Epoch converter.
   core.String startTime;
 
   SubscriptionPlanCommitmentInterval();
@@ -1686,12 +1733,14 @@ class SubscriptionPlanCommitmentInterval {
   }
 }
 
-/// The plan property is required. In this version of the API, the G Suite plans
-/// are the flexible plan, annual commitment plan, and the 30-day free trial
-/// plan. For more information about the API"s payment plans, see the API
-/// concepts.
+/// The plan property is required.
+///
+/// In this version of the API, the G Suite plans are the flexible plan, annual
+/// commitment plan, and the 30-day free trial plan. For more information about
+/// the API"s payment plans, see the API concepts.
 class SubscriptionPlan {
   /// In this version of the API, annual commitment plan's interval is one year.
+  ///
   /// Note: When billingMethod value is OFFLINE, the subscription property
   /// object plan.commitmentInterval is omitted in all API responses.
   SubscriptionPlanCommitmentInterval commitmentInterval;
@@ -1702,9 +1751,10 @@ class SubscriptionPlan {
   /// - false — The plan is not an annual commitment plan.
   core.bool isCommitmentPlan;
 
-  /// The planName property is required. This is the name of the subscription's
-  /// plan. For more information about the Google payment plans, see the API
-  /// concepts.
+  /// The planName property is required.
+  ///
+  /// This is the name of the subscription's plan. For more information about
+  /// the Google payment plans, see the API concepts.
   ///
   /// Possible values are:
   /// - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments.
@@ -1750,17 +1800,21 @@ class SubscriptionPlan {
   }
 }
 
-/// Read-only transfer related information for the subscription. For more
-/// information, see retrieve transferable subscriptions for a customer.
+/// Read-only transfer related information for the subscription.
+///
+/// For more information, see retrieve transferable subscriptions for a
+/// customer.
 class SubscriptionTransferInfo {
   /// When inserting a subscription, this is the minimum number of seats listed
-  /// in the transfer order for this product. For example, if the customer has
-  /// 20 users, the reseller cannot place a transfer order of 15 seats. The
-  /// minimum is 20 seats.
+  /// in the transfer order for this product.
+  ///
+  /// For example, if the customer has 20 users, the reseller cannot place a
+  /// transfer order of 15 seats. The minimum is 20 seats.
   core.int minimumTransferableSeats;
 
-  /// The time when transfer token or intent to transfer will expire. The time
-  /// is in milliseconds using UNIX Epoch format.
+  /// The time when transfer token or intent to transfer will expire.
+  ///
+  /// The time is in milliseconds using UNIX Epoch format.
   core.String transferabilityExpirationTime;
 
   SubscriptionTransferInfo();
@@ -1788,15 +1842,19 @@ class SubscriptionTransferInfo {
 }
 
 /// The G Suite annual commitment and flexible payment plans can be in a 30-day
-/// free trial. For more information, see the API concepts.
+/// free trial.
+///
+/// For more information, see the API concepts.
 class SubscriptionTrialSettings {
   /// Determines if a subscription's plan is in a 30-day free trial or not:
   /// - true — The plan is in trial.
   /// - false — The plan is not in trial.
   core.bool isInTrial;
 
-  /// Date when the trial ends. The value is in milliseconds using the UNIX
-  /// Epoch format. See an example Epoch converter.
+  /// Date when the trial ends.
+  ///
+  /// The value is in milliseconds using the UNIX Epoch format. See an example
+  /// Epoch converter.
   core.String trialEndTime;
 
   SubscriptionTrialSettings();
@@ -1828,78 +1886,100 @@ class Subscription {
   /// subscription.
   core.String billingMethod;
 
-  /// The creationTime property is the date when subscription was created. It is
-  /// in milliseconds using the Epoch format. See an example Epoch converter.
+  /// The creationTime property is the date when subscription was created.
+  ///
+  /// It is in milliseconds using the Epoch format. See an example Epoch
+  /// converter.
   core.String creationTime;
 
   /// Primary domain name of the customer
   core.String customerDomain;
 
   /// This property will always be returned in a response as the unique
-  /// identifier generated by Google. In a request, this property can be either
-  /// the primary domain or the unique identifier generated by Google.
+  /// identifier generated by Google.
+  ///
+  /// In a request, this property can be either the primary domain or the unique
+  /// identifier generated by Google.
   core.String customerId;
 
   /// Google-issued code (100 char max) for discounted pricing on subscription
-  /// plans. Deal code must be included in insert requests in order to receive
+  /// plans.
+  ///
+  /// Deal code must be included in insert requests in order to receive
   /// discounted rate. This property is optional, regular pricing applies if
   /// left empty.
   core.String dealCode;
 
-  /// Identifies the resource as a Subscription. Value: reseller#subscription
+  /// Identifies the resource as a Subscription.
+  ///
+  /// Value: reseller#subscription
   core.String kind;
 
-  /// The plan property is required. In this version of the API, the G Suite
-  /// plans are the flexible plan, annual commitment plan, and the 30-day free
-  /// trial plan. For more information about the API"s payment plans, see the
-  /// API concepts.
+  /// The plan property is required.
+  ///
+  /// In this version of the API, the G Suite plans are the flexible plan,
+  /// annual commitment plan, and the 30-day free trial plan. For more
+  /// information about the API"s payment plans, see the API concepts.
   SubscriptionPlan plan;
 
-  /// This is an optional property. This purchase order (PO) information is for
-  /// resellers to use for their company tracking usage. If a purchaseOrderId
-  /// value is given it appears in the API responses and shows up in the
-  /// invoice. The property accepts up to 80 plain text characters.
+  /// This is an optional property.
+  ///
+  /// This purchase order (PO) information is for resellers to use for their
+  /// company tracking usage. If a purchaseOrderId value is given it appears in
+  /// the API responses and shows up in the invoice. The property accepts up to
+  /// 80 plain text characters.
   core.String purchaseOrderId;
 
-  /// Renewal settings for the annual commitment plan. For more detailed
-  /// information, see renewal options in the administrator help center.
+  /// Renewal settings for the annual commitment plan.
+  ///
+  /// For more detailed information, see renewal options in the administrator
+  /// help center.
   RenewalSettings renewalSettings;
 
-  /// URL to customer's Subscriptions page in the Admin console. The read-only
-  /// URL is generated by the API service. This is used if your client
-  /// application requires the customer to complete a task using the
+  /// URL to customer's Subscriptions page in the Admin console.
+  ///
+  /// The read-only URL is generated by the API service. This is used if your
+  /// client application requires the customer to complete a task using the
   /// Subscriptions page in the Admin console.
   core.String resourceUiUrl;
 
-  /// This is a required property. The number and limit of user seat licenses in
-  /// the plan.
+  /// This is a required property.
+  ///
+  /// The number and limit of user seat licenses in the plan.
   Seats seats;
 
-  /// A required property. The skuId is a unique system identifier for a
-  /// product's SKU assigned to a customer in the subscription. For products and
-  /// SKUs available in this version of the API, see  Product and SKU IDs.
+  /// A required property.
+  ///
+  /// The skuId is a unique system identifier for a product's SKU assigned to a
+  /// customer in the subscription. For products and SKUs available in this
+  /// version of the API, see  Product and SKU IDs.
   core.String skuId;
 
   /// Read-only external display name for a product's SKU assigned to a customer
-  /// in the subscription. SKU names are subject to change at Google's
-  /// discretion. For products and SKUs available in this version of the API,
-  /// see  Product and SKU IDs.
+  /// in the subscription.
+  ///
+  /// SKU names are subject to change at Google's discretion. For products and
+  /// SKUs available in this version of the API, see  Product and SKU IDs.
   core.String skuName;
 
   /// This is an optional property.
   core.String status;
 
   /// The subscriptionId is the subscription identifier and is unique for each
-  /// customer. This is a required property. Since a subscriptionId changes when
-  /// a subscription is updated, we recommend not using this ID as a key for
+  /// customer.
+  ///
+  /// This is a required property. Since a subscriptionId changes when a
+  /// subscription is updated, we recommend not using this ID as a key for
   /// persistent data. Use the subscriptionId as described in retrieve all
   /// reseller subscriptions.
   core.String subscriptionId;
 
   /// Read-only field containing an enumerable of all the current suspension
-  /// reasons for a subscription. It is possible for a subscription to have many
-  /// concurrent, overlapping suspension reasons. A subscription's STATUS is
-  /// SUSPENDED until all pending suspensions are removed.
+  /// reasons for a subscription.
+  ///
+  /// It is possible for a subscription to have many concurrent, overlapping
+  /// suspension reasons. A subscription's STATUS is SUSPENDED until all pending
+  /// suspensions are removed.
   ///
   /// Possible options include:
   /// - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the
@@ -1912,12 +1992,16 @@ class Subscription {
   /// abuse or otherwise).
   core.List<core.String> suspensionReasons;
 
-  /// Read-only transfer related information for the subscription. For more
-  /// information, see retrieve transferable subscriptions for a customer.
+  /// Read-only transfer related information for the subscription.
+  ///
+  /// For more information, see retrieve transferable subscriptions for a
+  /// customer.
   SubscriptionTransferInfo transferInfo;
 
   /// The G Suite annual commitment and flexible payment plans can be in a
-  /// 30-day free trial. For more information, see the API concepts.
+  /// 30-day free trial.
+  ///
+  /// For more information, see the API concepts.
   SubscriptionTrialSettings trialSettings;
 
   Subscription();
@@ -2048,12 +2132,15 @@ class Subscription {
 
 /// JSON template for a subscription list.
 class Subscriptions {
-  /// Identifies the resource as a collection of subscriptions. Value:
-  /// reseller#subscriptions
+  /// Identifies the resource as a collection of subscriptions.
+  ///
+  /// Value: reseller#subscriptions
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   /// The subscriptions in this page of results.

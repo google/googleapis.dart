@@ -157,8 +157,10 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     );
   }
 
-  /// Deletes an autoscaling policy. It is an error to delete an autoscaling
-  /// policy that is in use by one or more clusters.
+  /// Deletes an autoscaling policy.
+  ///
+  /// It is an error to delete an autoscaling policy that is in use by one or
+  /// more clusters.
   ///
   /// Request parameters:
   ///
@@ -277,8 +279,10 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -414,8 +418,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -478,11 +483,12 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -685,7 +691,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     );
   }
 
-  /// Deletes a workflow template. It does not cancel in-progress workflows.
+  /// Deletes a workflow template.
+  ///
+  /// It does not cancel in-progress workflows.
   ///
   /// Request parameters:
   ///
@@ -821,8 +829,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -885,8 +895,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   }
 
   /// Instantiates a template and begins execution.The returned Operation can be
-  /// used to track execution of workflow by polling operations.get. The
-  /// Operation will complete when entire workflow is finished.The running
+  /// used to track execution of workflow by polling operations.get.
+  ///
+  /// The Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
   /// deleted.The Operation.metadata will be WorkflowMetadata
@@ -962,8 +973,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// Instantiates a template and begins execution.This method is equivalent to
   /// executing the sequence CreateWorkflowTemplate,
   /// InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation
-  /// can be used to track execution of workflow by polling operations.get. The
-  /// Operation will complete when entire workflow is finished.The running
+  /// can be used to track execution of workflow by polling operations.get.
+  ///
+  /// The Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
   /// deleted.The Operation.metadata will be WorkflowMetadata
@@ -1122,8 +1134,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -1186,11 +1199,12 @@ class ProjectsLocationsWorkflowTemplatesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1253,8 +1267,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
     );
   }
 
-  /// Updates (replaces) workflow template. The updated template must contain
-  /// version that matches the current server version.
+  /// Updates (replaces) workflow template.
+  ///
+  /// The updated template must contain version that matches the current server
+  /// version.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1410,8 +1426,10 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     );
   }
 
-  /// Deletes an autoscaling policy. It is an error to delete an autoscaling
-  /// policy that is in use by one or more clusters.
+  /// Deletes an autoscaling policy.
+  ///
+  /// It is an error to delete an autoscaling policy that is in use by one or
+  /// more clusters.
   ///
   /// Request parameters:
   ///
@@ -1530,8 +1548,10 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1667,8 +1687,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -1731,11 +1752,12 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1872,8 +1894,9 @@ class ProjectsRegionsClustersResource {
   ProjectsRegionsClustersResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a cluster in a project. The returned Operation.metadata will be
-  /// ClusterOperationMetadata
+  /// Creates a cluster in a project.
+  ///
+  /// The returned Operation.metadata will be ClusterOperationMetadata
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   ///
   /// [request] - The metadata request object.
@@ -1954,8 +1977,9 @@ class ProjectsRegionsClustersResource {
     );
   }
 
-  /// Deletes a cluster in a project. The returned Operation.metadata will be
-  /// ClusterOperationMetadata
+  /// Deletes a cluster in a project.
+  ///
+  /// The returned Operation.metadata will be ClusterOperationMetadata
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   ///
   /// Request parameters:
@@ -2044,8 +2068,9 @@ class ProjectsRegionsClustersResource {
     );
   }
 
-  /// Gets cluster diagnostic information. The returned Operation.metadata will
-  /// be ClusterOperationMetadata
+  /// Gets cluster diagnostic information.
+  ///
+  /// The returned Operation.metadata will be ClusterOperationMetadata
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   /// After the operation completes, Operation.response contains
   /// DiagnoseClusterResults
@@ -2192,8 +2217,10 @@ class ProjectsRegionsClustersResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2344,8 +2371,9 @@ class ProjectsRegionsClustersResource {
     );
   }
 
-  /// Updates a cluster in a project. The returned Operation.metadata will be
-  /// ClusterOperationMetadata
+  /// Updates a cluster in a project.
+  ///
+  /// The returned Operation.metadata will be ClusterOperationMetadata
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   ///
   /// [request] - The metadata request object.
@@ -2469,8 +2497,9 @@ class ProjectsRegionsClustersResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -2532,11 +2561,12 @@ class ProjectsRegionsClustersResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2605,8 +2635,10 @@ class ProjectsRegionsJobsResource {
   ProjectsRegionsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts a job cancellation request. To access the job resource after
-  /// cancellation, call regions/{region}/jobs.list
+  /// Starts a job cancellation request.
+  ///
+  /// To access the job resource after cancellation, call
+  /// regions/{region}/jobs.list
   /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
   /// or regions/{region}/jobs.get
   /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
@@ -2684,8 +2716,10 @@ class ProjectsRegionsJobsResource {
     );
   }
 
-  /// Deletes the job from the project. If the job is active, the delete fails,
-  /// and the response returns FAILED_PRECONDITION.
+  /// Deletes the job from the project.
+  ///
+  /// If the job is active, the delete fails, and the response returns
+  /// FAILED_PRECONDITION.
   ///
   /// Request parameters:
   ///
@@ -2821,8 +2855,10 @@ class ProjectsRegionsJobsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3076,8 +3112,9 @@ class ProjectsRegionsJobsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -3273,11 +3310,12 @@ class ProjectsRegionsJobsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3346,8 +3384,9 @@ class ProjectsRegionsOperationsResource {
   ProjectsRegionsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or
   /// other methods to check whether the cancellation succeeded or whether the
@@ -3405,10 +3444,11 @@ class ProjectsRegionsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// google.rpc.Code.UNIMPLEMENTED.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns google.rpc.Code.UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -3459,9 +3499,10 @@ class ProjectsRegionsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -3512,8 +3553,10 @@ class ProjectsRegionsOperationsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3574,15 +3617,16 @@ class ProjectsRegionsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the
-  /// name binding allows API services to override the binding to use different
-  /// resource name schemes, such as users / * /operations. To override the
-  /// binding, API services can add a binding such as "/v1/{name=users / *
-  /// }/operations" to their service configuration. For backwards compatibility,
-  /// the default name includes the operations collection id, however overriding
-  /// users must ensure the name binding is the parent resource, without the
-  /// operations collection id.
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
+  /// the name binding allows API services to override the binding to use
+  /// different resource name schemes, such as users / * /operations. To
+  /// override the binding, API services can add a binding such as
+  /// "/v1/{name=users / * }/operations" to their service configuration. For
+  /// backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding is
+  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3652,8 +3696,9 @@ class ProjectsRegionsOperationsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -3715,11 +3760,12 @@ class ProjectsRegionsOperationsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3854,7 +3900,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     );
   }
 
-  /// Deletes a workflow template. It does not cancel in-progress workflows.
+  /// Deletes a workflow template.
+  ///
+  /// It does not cancel in-progress workflows.
   ///
   /// Request parameters:
   ///
@@ -3990,8 +4038,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4054,8 +4104,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   }
 
   /// Instantiates a template and begins execution.The returned Operation can be
-  /// used to track execution of workflow by polling operations.get. The
-  /// Operation will complete when entire workflow is finished.The running
+  /// used to track execution of workflow by polling operations.get.
+  ///
+  /// The Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
   /// deleted.The Operation.metadata will be WorkflowMetadata
@@ -4131,8 +4182,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// Instantiates a template and begins execution.This method is equivalent to
   /// executing the sequence CreateWorkflowTemplate,
   /// InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation
-  /// can be used to track execution of workflow by polling operations.get. The
-  /// Operation will complete when entire workflow is finished.The running
+  /// can be used to track execution of workflow by polling operations.get.
+  ///
+  /// The Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
   /// deleted.The Operation.metadata will be WorkflowMetadata
@@ -4291,8 +4343,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
   /// PERMISSION_DENIED errors.
   ///
   /// [request] - The metadata request object.
@@ -4355,11 +4408,12 @@ class ProjectsRegionsWorkflowTemplatesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.Note: This operation is designed to be used for building
-  /// permission-aware UIs and command-line tools, not for authorization
-  /// checking. This operation may "fail open" without warning.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4422,8 +4476,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
     );
   }
 
-  /// Updates (replaces) workflow template. The updated template must contain
-  /// version that matches the current server version.
+  /// Updates (replaces) workflow template.
+  ///
+  /// The updated template must contain version that matches the current server
+  /// version.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4491,14 +4547,17 @@ class ProjectsRegionsWorkflowTemplatesResource {
 }
 
 /// Specifies the type and number of accelerator cards attached to the instances
-/// of an instance. See GPUs on Compute Engine
-/// (https://cloud.google.com/compute/docs/gpus/).
+/// of an instance.
+///
+/// See GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/).
 class AcceleratorConfig {
   /// The number of the accelerator cards of this type exposed to this instance.
   core.int acceleratorCount;
 
   /// Full URL, partial URI, or short name of the accelerator type resource to
-  /// expose to this instance. See Compute Engine AcceleratorTypes
+  /// expose to this instance.
+  ///
+  /// See Compute Engine AcceleratorTypes
   /// (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
   /// projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
@@ -4534,11 +4593,15 @@ class AcceleratorConfig {
 
 /// Autoscaling Policy config associated with the cluster.
 class AutoscalingConfig {
-  /// Optional. The autoscaling policy used by the cluster.Only resource names
-  /// including projectid and location (region) are valid. Examples:
+  /// The autoscaling policy used by the cluster.Only resource names including
+  /// projectid and location (region) are valid.
+  ///
+  /// Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]
   /// projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note
   /// that the policy must be in the same project and Dataproc region.
+  ///
+  /// Optional.
   core.String policyUri;
 
   AutoscalingConfig();
@@ -4562,25 +4625,36 @@ class AutoscalingConfig {
 class AutoscalingPolicy {
   BasicAutoscalingAlgorithm basicAlgorithm;
 
-  /// Required. The policy id.The id must contain only letters (a-z, A-Z),
-  /// numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with
-  /// underscore or hyphen. Must consist of between 3 and 50 characters.
+  /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9),
+  /// underscores (_), and hyphens (-).
+  ///
+  /// Cannot begin or end with underscore or hyphen. Must consist of between 3
+  /// and 50 characters.
+  ///
+  /// Required.
   core.String id;
 
-  /// Output only. The "resource name" of the autoscaling policy, as described
-  /// in https://cloud.google.com/apis/design/resource_names. For
-  /// projects.regions.autoscalingPolicies, the resource name of the policy has
-  /// the following format:
+  /// The "resource name" of the autoscaling policy, as described in
+  /// https://cloud.google.com/apis/design/resource_names.
+  ///
+  /// For projects.regions.autoscalingPolicies, the resource name of the policy
+  /// has the following format:
   /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
   /// projects.locations.autoscalingPolicies, the resource name of the policy
   /// has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  ///
+  /// Output only.
   core.String name;
 
-  /// Optional. Describes how the autoscaler will operate for secondary workers.
+  /// Describes how the autoscaler will operate for secondary workers.
+  ///
+  /// Optional.
   InstanceGroupAutoscalingPolicyConfig secondaryWorkerConfig;
 
-  /// Required. Describes how the autoscaler will operate for primary workers.
+  /// Describes how the autoscaler will operate for primary workers.
+  ///
+  /// Required.
   InstanceGroupAutoscalingPolicyConfig workerConfig;
 
   AutoscalingPolicy();
@@ -4630,12 +4704,17 @@ class AutoscalingPolicy {
 
 /// Basic algorithm for autoscaling.
 class BasicAutoscalingAlgorithm {
-  /// Optional. Duration between scaling events. A scaling period starts after
-  /// the update operation from the previous event has completed.Bounds: 2m, 1d.
-  /// Default: 2m.
+  /// Duration between scaling events.
+  ///
+  /// A scaling period starts after the update operation from the previous event
+  /// has completed.Bounds: 2m, 1d. Default: 2m.
+  ///
+  /// Optional.
   core.String cooldownPeriod;
 
-  /// Required. YARN autoscaling configuration.
+  /// YARN autoscaling configuration.
+  ///
+  /// Required.
   BasicYarnAutoscalingConfig yarnConfig;
 
   BasicAutoscalingAlgorithm();
@@ -4664,44 +4743,61 @@ class BasicAutoscalingAlgorithm {
 
 /// Basic autoscaling configurations for YARN.
 class BasicYarnAutoscalingConfig {
-  /// Required. Timeout for YARN graceful decommissioning of Node Managers.
+  /// Timeout for YARN graceful decommissioning of Node Managers.
+  ///
   /// Specifies the duration to wait for jobs to complete before forcefully
   /// removing workers (and potentially interrupting jobs). Only applicable to
   /// downscaling operations.Bounds: 0s, 1d.
+  ///
+  /// Required.
   core.String gracefulDecommissionTimeout;
 
-  /// Required. Fraction of average YARN pending memory in the last cooldown
-  /// period for which to remove workers. A scale-down factor of 1 will result
-  /// in scaling down so that there is no available memory remaining after the
-  /// update (more aggressive scaling). A scale-down factor of 0 disables
-  /// removing workers, which can be beneficial for autoscaling a single job.
-  /// See How autoscaling works
+  /// Fraction of average YARN pending memory in the last cooldown period for
+  /// which to remove workers.
+  ///
+  /// A scale-down factor of 1 will result in scaling down so that there is no
+  /// available memory remaining after the update (more aggressive scaling). A
+  /// scale-down factor of 0 disables removing workers, which can be beneficial
+  /// for autoscaling a single job. See How autoscaling works
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
   /// for more information.Bounds: 0.0, 1.0.
+  ///
+  /// Required.
   core.double scaleDownFactor;
 
-  /// Optional. Minimum scale-down threshold as a fraction of total cluster size
-  /// before scaling occurs. For example, in a 20-worker cluster, a threshold of
-  /// 0.1 means the autoscaler must recommend at least a 2 worker scale-down for
-  /// the cluster to scale. A threshold of 0 means the autoscaler will scale
-  /// down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  /// Minimum scale-down threshold as a fraction of total cluster size before
+  /// scaling occurs.
+  ///
+  /// For example, in a 20-worker cluster, a threshold of 0.1 means the
+  /// autoscaler must recommend at least a 2 worker scale-down for the cluster
+  /// to scale. A threshold of 0 means the autoscaler will scale down on any
+  /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  ///
+  /// Optional.
   core.double scaleDownMinWorkerFraction;
 
-  /// Required. Fraction of average YARN pending memory in the last cooldown
-  /// period for which to add workers. A scale-up factor of 1.0 will result in
-  /// scaling up so that there is no pending memory remaining after the update
-  /// (more aggressive scaling). A scale-up factor closer to 0 will result in a
-  /// smaller magnitude of scaling up (less aggressive scaling). See How
-  /// autoscaling works
+  /// Fraction of average YARN pending memory in the last cooldown period for
+  /// which to add workers.
+  ///
+  /// A scale-up factor of 1.0 will result in scaling up so that there is no
+  /// pending memory remaining after the update (more aggressive scaling). A
+  /// scale-up factor closer to 0 will result in a smaller magnitude of scaling
+  /// up (less aggressive scaling). See How autoscaling works
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
   /// for more information.Bounds: 0.0, 1.0.
+  ///
+  /// Required.
   core.double scaleUpFactor;
 
-  /// Optional. Minimum scale-up threshold as a fraction of total cluster size
-  /// before scaling occurs. For example, in a 20-worker cluster, a threshold of
-  /// 0.1 means the autoscaler must recommend at least a 2-worker scale-up for
-  /// the cluster to scale. A threshold of 0 means the autoscaler will scale up
-  /// on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  /// Minimum scale-up threshold as a fraction of total cluster size before
+  /// scaling occurs.
+  ///
+  /// For example, in a 20-worker cluster, a threshold of 0.1 means the
+  /// autoscaler must recommend at least a 2-worker scale-up for the cluster to
+  /// scale. A threshold of 0 means the autoscaler will scale up on any
+  /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  ///
+  /// Optional.
   core.double scaleUpMinWorkerFraction;
 
   BasicYarnAutoscalingConfig();
@@ -4750,21 +4846,24 @@ class BasicYarnAutoscalingConfig {
 
 /// Associates members with a role.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
   /// The condition that is associated with this binding.If the condition
   /// evaluates to true, then this binding applies to the current request.If the
   /// condition evaluates to false, then this binding does not apply to the
-  /// current request. However, a different role binding might grant the same
-  /// role to one or more of the members in this binding.To learn which
-  /// resources support conditions in their IAM policies, see the IAM
-  /// documentation
+  /// current request.
+  ///
+  /// However, a different role binding might grant the same role to one or more
+  /// of the members in this binding.To learn which resources support conditions
+  /// in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// members can have the following values: allUsers: A special identifier that
   /// represents anyone who is on the internet; with or without a Google
   /// account. allAuthenticatedUsers: A special identifier that represents
@@ -4795,8 +4894,9 @@ class Binding {
   /// example.com.
   core.List<core.String> members;
 
-  /// Role that is assigned to members. For example, roles/viewer, roles/editor,
-  /// or roles/owner.
+  /// Role that is assigned to members.
+  ///
+  /// For example, roles/viewer, roles/editor, or roles/owner.
   core.String role;
 
   Binding();
@@ -4854,39 +4954,61 @@ class CancelJobRequest {
 /// Describes the identifying information, config, and status of a cluster of
 /// Compute Engine instances.
 class Cluster {
-  /// Required. The cluster name. Cluster names within a project must be unique.
-  /// Names of deleted clusters can be reused.
+  /// The cluster name.
+  ///
+  /// Cluster names within a project must be unique. Names of deleted clusters
+  /// can be reused.
+  ///
+  /// Required.
   core.String clusterName;
 
-  /// Output only. A cluster UUID (Unique Universal Identifier). Dataproc
-  /// generates this value when it creates the cluster.
+  /// A cluster UUID (Unique Universal Identifier).
+  ///
+  /// Dataproc generates this value when it creates the cluster.
+  ///
+  /// Output only.
   core.String clusterUuid;
 
-  /// Required. The cluster config. Note that Dataproc may set default values,
-  /// and values may change when clusters are updated.
+  /// The cluster config.
+  ///
+  /// Note that Dataproc may set default values, and values may change when
+  /// clusters are updated.
+  ///
+  /// Required.
   ClusterConfig config;
 
-  /// Optional. The labels to associate with this cluster. Label keys must
-  /// contain 1 to 63 characters, and must conform to RFC 1035
+  /// The labels to associate with this cluster.
+  ///
+  /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
   /// (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
   /// present, must contain 1 to 63 characters, and must conform to RFC 1035
   /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
   /// associated with a cluster.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. Contains cluster daemon metrics such as HDFS and YARN
-  /// stats.Beta Feature: This report is available for testing purposes only. It
-  /// may be changed before final release.
+  /// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature:
+  /// This report is available for testing purposes only.
+  ///
+  /// It may be changed before final release.
+  ///
+  /// Output only.
   ClusterMetrics metrics;
 
-  /// Required. The Google Cloud Platform project ID that the cluster belongs
-  /// to.
+  /// The Google Cloud Platform project ID that the cluster belongs to.
+  ///
+  /// Required.
   core.String projectId;
 
-  /// Output only. Cluster status.
+  /// Cluster status.
+  ///
+  /// Output only.
   ClusterStatus status;
 
-  /// Output only. The previous cluster status.
+  /// The previous cluster status.
+  ///
+  /// Output only.
   core.List<ClusterStatus> statusHistory;
 
   Cluster();
@@ -4963,67 +5085,96 @@ class Cluster {
 
 /// The cluster config.
 class ClusterConfig {
-  /// Optional. Autoscaling config for the policy associated with the cluster.
+  /// Autoscaling config for the policy associated with the cluster.
+  ///
   /// Cluster does not autoscale if this field is unset.
+  ///
+  /// Optional.
   AutoscalingConfig autoscalingConfig;
 
-  /// Optional. A Cloud Storage bucket used to stage job dependencies, config
-  /// files, and job driver console output. If you do not specify a staging
-  /// bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA,
-  /// or EU) for your cluster's staging bucket according to the Compute Engine
-  /// zone where your cluster is deployed, and then create and manage this
-  /// project-level, per-location bucket (see Dataproc staging bucket
+  /// A Cloud Storage bucket used to stage job dependencies, config files, and
+  /// job driver console output.
+  ///
+  /// If you do not specify a staging bucket, Cloud Dataproc will determine a
+  /// Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket
+  /// according to the Compute Engine zone where your cluster is deployed, and
+  /// then create and manage this project-level, per-location bucket (see
+  /// Dataproc staging bucket
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+  ///
+  /// Optional.
   core.String configBucket;
 
-  /// Optional. Encryption settings for the cluster.
+  /// Encryption settings for the cluster.
+  ///
+  /// Optional.
   EncryptionConfig encryptionConfig;
 
-  /// Optional. Port/endpoint configuration for this cluster
+  /// Port/endpoint configuration for this cluster
+  ///
+  /// Optional.
   EndpointConfig endpointConfig;
 
-  /// Optional. The shared Compute Engine config settings for all instances in a
-  /// cluster.
+  /// The shared Compute Engine config settings for all instances in a cluster.
+  ///
+  /// Optional.
   GceClusterConfig gceClusterConfig;
 
-  /// Optional. Commands to execute on each node after config is completed. By
-  /// default, executables are run on master and all worker nodes. You can test
-  /// a node's role metadata to run an executable on a master or worker node, as
-  /// shown below using curl (you can also use wget): ROLE=$(curl -H
+  /// Commands to execute on each node after config is completed.
+  ///
+  /// By default, executables are run on master and all worker nodes. You can
+  /// test a node's role metadata to run an executable on a master or worker
+  /// node, as shown below using curl (you can also use wget): ROLE=$(curl -H
   /// Metadata-Flavor:Google
   /// http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if
   /// [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ...
   /// worker specific actions ... fi
+  ///
+  /// Optional.
   core.List<NodeInitializationAction> initializationActions;
 
-  /// Optional. Lifecycle setting for the cluster.
+  /// Lifecycle setting for the cluster.
+  ///
+  /// Optional.
   LifecycleConfig lifecycleConfig;
 
-  /// Optional. The Compute Engine config settings for the master instance in a
-  /// cluster.
+  /// The Compute Engine config settings for the master instance in a cluster.
+  ///
+  /// Optional.
   InstanceGroupConfig masterConfig;
 
-  /// Optional. The Compute Engine config settings for additional worker
-  /// instances in a cluster.
+  /// The Compute Engine config settings for additional worker instances in a
+  /// cluster.
+  ///
+  /// Optional.
   InstanceGroupConfig secondaryWorkerConfig;
 
-  /// Optional. Security settings for the cluster.
+  /// Security settings for the cluster.
+  ///
+  /// Optional.
   SecurityConfig securityConfig;
 
-  /// Optional. The config settings for software inside the cluster.
+  /// The config settings for software inside the cluster.
+  ///
+  /// Optional.
   SoftwareConfig softwareConfig;
 
-  /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs
-  /// data, such as Spark and MapReduce history files. If you do not specify a
-  /// temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA,
-  /// or EU) for your cluster's temp bucket according to the Compute Engine zone
-  /// where your cluster is deployed, and then create and manage this
-  /// project-level, per-location bucket. The default bucket has a TTL of 90
-  /// days, but you can use any TTL (or none) if you specify a bucket.
+  /// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such
+  /// as Spark and MapReduce history files.
+  ///
+  /// If you do not specify a temp bucket, Dataproc will determine a Cloud
+  /// Storage location (US, ASIA, or EU) for your cluster's temp bucket
+  /// according to the Compute Engine zone where your cluster is deployed, and
+  /// then create and manage this project-level, per-location bucket. The
+  /// default bucket has a TTL of 90 days, but you can use any TTL (or none) if
+  /// you specify a bucket.
+  ///
+  /// Optional.
   core.String tempBucket;
 
-  /// Optional. The Compute Engine config settings for worker instances in a
-  /// cluster.
+  /// The Compute Engine config settings for worker instances in a cluster.
+  ///
+  /// Optional.
   InstanceGroupConfig workerConfig;
 
   ClusterConfig();
@@ -5132,8 +5283,9 @@ class ClusterConfig {
 }
 
 /// Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature:
-/// This report is available for testing purposes only. It may be changed before
-/// final release.
+/// This report is available for testing purposes only.
+///
+/// It may be changed before final release.
 class ClusterMetrics {
   /// The HDFS metrics.
   core.Map<core.String, core.String> hdfsMetrics;
@@ -5180,13 +5332,19 @@ class ClusterMetrics {
 
 /// The cluster operation triggered by a workflow.
 class ClusterOperation {
-  /// Output only. Indicates the operation is done.
+  /// Indicates the operation is done.
+  ///
+  /// Output only.
   core.bool done;
 
-  /// Output only. Error, if operation failed.
+  /// Error, if operation failed.
+  ///
+  /// Output only.
   core.String error;
 
-  /// Output only. The id of the cluster operation.
+  /// The id of the cluster operation.
+  ///
+  /// Output only.
   core.String operationId;
 
   ClusterOperation();
@@ -5220,28 +5378,44 @@ class ClusterOperation {
 
 /// Metadata describing the operation.
 class ClusterOperationMetadata {
-  /// Output only. Name of the cluster for the operation.
+  /// Name of the cluster for the operation.
+  ///
+  /// Output only.
   core.String clusterName;
 
-  /// Output only. Cluster UUID for the operation.
+  /// Cluster UUID for the operation.
+  ///
+  /// Output only.
   core.String clusterUuid;
 
-  /// Output only. Short description of operation.
+  /// Short description of operation.
+  ///
+  /// Output only.
   core.String description;
 
-  /// Output only. Labels associated with the operation
+  /// Labels associated with the operation
+  ///
+  /// Output only.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The operation type.
+  /// The operation type.
+  ///
+  /// Output only.
   core.String operationType;
 
-  /// Output only. Current operation status.
+  /// Current operation status.
+  ///
+  /// Output only.
   ClusterOperationStatus status;
 
-  /// Output only. The previous operation status.
+  /// The previous operation status.
+  ///
+  /// Output only.
   core.List<ClusterOperationStatus> statusHistory;
 
-  /// Output only. Errors encountered during operation execution.
+  /// Errors encountered during operation execution.
+  ///
+  /// Output only.
   core.List<core.String> warnings;
 
   ClusterOperationMetadata();
@@ -5319,13 +5493,19 @@ class ClusterOperationMetadata {
 
 /// The status of the operation.
 class ClusterOperationStatus {
-  /// Output only. A message containing any operation metadata details.
+  /// A message containing any operation metadata details.
+  ///
+  /// Output only.
   core.String details;
 
-  /// Output only. A message containing the detailed operation state.
+  /// A message containing the detailed operation state.
+  ///
+  /// Output only.
   core.String innerState;
 
-  /// Output only. A message containing the operation state.
+  /// A message containing the operation state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNKNOWN" : Unused.
   /// - "PENDING" : The operation has been created.
@@ -5333,7 +5513,9 @@ class ClusterOperationStatus {
   /// - "DONE" : The operation is done; either cancelled or completed.
   core.String state;
 
-  /// Output only. The time this state was entered.
+  /// The time this state was entered.
+  ///
+  /// Output only.
   core.String stateStartTime;
 
   ClusterOperationStatus();
@@ -5373,12 +5555,19 @@ class ClusterOperationStatus {
 
 /// A selector that chooses target cluster for jobs based on metadata.
 class ClusterSelector {
-  /// Required. The cluster labels. Cluster must have all labels to match.
+  /// The cluster labels.
+  ///
+  /// Cluster must have all labels to match.
+  ///
+  /// Required.
   core.Map<core.String, core.String> clusterLabels;
 
-  /// Optional. The zone where workflow process executes. This parameter does
-  /// not affect the selection of the cluster.If unspecified, the zone of the
-  /// first cluster matching the selector is used.
+  /// The zone where workflow process executes.
+  ///
+  /// This parameter does not affect the selection of the cluster.If
+  /// unspecified, the zone of the first cluster matching the selector is used.
+  ///
+  /// Optional.
   core.String zone;
 
   ClusterSelector();
@@ -5413,10 +5602,14 @@ class ClusterSelector {
 
 /// The status of a cluster and its instances.
 class ClusterStatus {
-  /// Optional. Output only. Details of cluster's state.
+  /// Details of cluster's state.
+  ///
+  /// Optional. Output only.
   core.String detail;
 
-  /// Output only. The cluster's state.
+  /// The cluster's state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNKNOWN" : The cluster state is unknown.
   /// - "CREATING" : The cluster is being created and set up. It is not ready
@@ -5429,13 +5622,15 @@ class ClusterStatus {
   /// process jobs.
   core.String state;
 
-  /// Output only. Time when this state was entered (see JSON representation of
-  /// Timestamp
+  /// Time when this state was entered (see JSON representation of Timestamp
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Output only.
   core.String stateStartTime;
 
-  /// Output only. Additional state information that includes status reported by
-  /// the agent.
+  /// Additional state information that includes status reported by the agent.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNSPECIFIED" : The cluster substate is unknown.
   /// - "UNHEALTHY" : The cluster is known to be in an unhealthy state (for
@@ -5496,8 +5691,12 @@ class DiagnoseClusterRequest {
 
 /// The location of diagnostic output.
 class DiagnoseClusterResults {
-  /// Output only. The Cloud Storage URI of the diagnostic output. The output
-  /// report is a plain text file with a summary of collected diagnostics.
+  /// The Cloud Storage URI of the diagnostic output.
+  ///
+  /// The output report is a plain text file with a summary of collected
+  /// diagnostics.
+  ///
+  /// Output only.
   core.String outputUri;
 
   DiagnoseClusterResults();
@@ -5519,19 +5718,27 @@ class DiagnoseClusterResults {
 
 /// Specifies the config of disk options for a group of VM instances.
 class DiskConfig {
-  /// Optional. Size in GB of the boot disk (default is 500GB).
+  /// Size in GB of the boot disk (default is 500GB).
+  ///
+  /// Optional.
   core.int bootDiskSizeGb;
 
-  /// Optional. Type of the boot disk (default is "pd-standard"). Valid values:
-  /// "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent
-  /// Disk Hard Disk Drive).
+  /// Type of the boot disk (default is "pd-standard").
+  ///
+  /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
+  /// "pd-standard" (Persistent Disk Hard Disk Drive).
+  ///
+  /// Optional.
   core.String bootDiskType;
 
-  /// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
-  /// not attached, the boot disk is used to store runtime logs and HDFS
-  /// (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one
-  /// or more SSDs are attached, this runtime bulk data is spread across them,
-  /// and the boot disk contains only basic config and installed binaries.
+  /// Number of attached SSDs, from 0 to 4 (default is 0).
+  ///
+  /// If SSDs are not attached, the boot disk is used to store runtime logs and
+  /// HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
+  /// one or more SSDs are attached, this runtime bulk data is spread across
+  /// them, and the boot disk contains only basic config and installed binaries.
+  ///
+  /// Optional.
   core.int numLocalSsds;
 
   DiskConfig();
@@ -5564,10 +5771,12 @@ class DiskConfig {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for Empty is empty JSON object {}.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
+/// object {}.
 class Empty {
   Empty();
 
@@ -5583,8 +5792,10 @@ class Empty {
 
 /// Encryption settings for the cluster.
 class EncryptionConfig {
-  /// Optional. The Cloud KMS key name to use for PD disk encryption for all
-  /// instances in the cluster.
+  /// The Cloud KMS key name to use for PD disk encryption for all instances in
+  /// the cluster.
+  ///
+  /// Optional.
   core.String gcePdKmsKeyName;
 
   EncryptionConfig();
@@ -5606,12 +5817,19 @@ class EncryptionConfig {
 
 /// Endpoint config for this cluster
 class EndpointConfig {
-  /// Optional. If true, enable http access to specific ports on the cluster
-  /// from external sources. Defaults to false.
+  /// If true, enable http access to specific ports on the cluster from external
+  /// sources.
+  ///
+  /// Defaults to false.
+  ///
+  /// Optional.
   core.bool enableHttpPortAccess;
 
-  /// Output only. The map of port descriptions to URLs. Will only be populated
-  /// if enable_http_port_access is true.
+  /// The map of port descriptions to URLs.
+  ///
+  /// Will only be populated if enable_http_port_access is true.
+  ///
+  /// Output only.
   core.Map<core.String, core.String> httpPorts;
 
   EndpointConfig();
@@ -5644,8 +5862,10 @@ class EndpointConfig {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec.Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec.Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -5660,20 +5880,29 @@ class EndpointConfig {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -5714,12 +5943,16 @@ class Expr {
 /// Common config settings for resources of Compute Engine cluster instances,
 /// applicable to all instances in the cluster.
 class GceClusterConfig {
-  /// Optional. If true, all instances in the cluster will only have internal IP
-  /// addresses. By default, clusters are not restricted to internal IP
-  /// addresses, and will have ephemeral external IP addresses assigned to each
-  /// instance. This internal_ip_only restriction can only be enabled for
-  /// subnetwork enabled networks, and all off-cluster dependencies must be
-  /// configured to be accessible without external IP addresses.
+  /// If true, all instances in the cluster will only have internal IP
+  /// addresses.
+  ///
+  /// By default, clusters are not restricted to internal IP addresses, and will
+  /// have ephemeral external IP addresses assigned to each instance. This
+  /// internal_ip_only restriction can only be enabled for subnetwork enabled
+  /// networks, and all off-cluster dependencies must be configured to be
+  /// accessible without external IP addresses.
+  ///
+  /// Optional.
   core.bool internalIpOnly;
 
   /// The Compute Engine metadata entries to add to all instances (see Project
@@ -5727,21 +5960,27 @@ class GceClusterConfig {
   /// (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
   core.Map<core.String, core.String> metadata;
 
-  /// Optional. The Compute Engine network to be used for machine
-  /// communications. Cannot be specified with subnetwork_uri. If neither
-  /// network_uri nor subnetwork_uri is specified, the "default" network of the
-  /// project is used, if it exists. Cannot be a "Custom Subnet Network" (see
-  /// Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for
-  /// more information).A full URL, partial URI, or short name are valid.
-  /// Examples:
+  /// The Compute Engine network to be used for machine communications.
+  ///
+  /// Cannot be specified with subnetwork_uri. If neither network_uri nor
+  /// subnetwork_uri is specified, the "default" network of the project is used,
+  /// if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
+  /// (https://cloud.google.com/compute/docs/subnetworks) for more
+  /// information).A full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
   /// projects/[project_id]/regions/global/default default
+  ///
+  /// Optional.
   core.String networkUri;
 
-  /// Optional. Node Group Affinity for sole-tenant clusters.
+  /// Node Group Affinity for sole-tenant clusters.
+  ///
+  /// Optional.
   NodeGroupAffinity nodeGroupAffinity;
 
-  /// Optional. The type of IPv6 access for a cluster.
+  /// The type of IPv6 access for a cluster.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" : If unspecified, Compute
   /// Engine default behavior will apply, which is the same as
@@ -5755,10 +5994,12 @@ class GceClusterConfig {
   /// Google Services and the Dataproc cluster.
   core.String privateIpv6GoogleAccess;
 
-  /// Optional. Reservation Affinity for consuming Zonal reservation.
+  /// Reservation Affinity for consuming Zonal reservation.
+  ///
+  /// Optional.
   ReservationAffinity reservationAffinity;
 
-  /// Optional. The Dataproc service account
+  /// The Dataproc service account
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
   /// (also see VM Data Plane identity
   /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
@@ -5766,10 +6007,14 @@ class GceClusterConfig {
   /// services.If not specified, the Compute Engine default service account
   /// (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
   /// is used.
+  ///
+  /// Optional.
   core.String serviceAccount;
 
-  /// Optional. The URIs of service account scopes to be included in Compute
-  /// Engine instances. The following base set of scopes is always included:
+  /// The URIs of service account scopes to be included in Compute Engine
+  /// instances.
+  ///
+  /// The following base set of scopes is always included:
   /// https://www.googleapis.com/auth/cloud.useraccounts.readonly
   /// https://www.googleapis.com/auth/devstorage.read_write
   /// https://www.googleapis.com/auth/logging.writeIf no scopes are specified,
@@ -5778,26 +6023,34 @@ class GceClusterConfig {
   /// https://www.googleapis.com/auth/bigtable.admin.table
   /// https://www.googleapis.com/auth/bigtable.data
   /// https://www.googleapis.com/auth/devstorage.full_control
+  ///
+  /// Optional.
   core.List<core.String> serviceAccountScopes;
 
-  /// Optional. The Compute Engine subnetwork to be used for machine
-  /// communications. Cannot be specified with network_uri.A full URL, partial
-  /// URI, or short name are valid. Examples:
+  /// The Compute Engine subnetwork to be used for machine communications.
+  ///
+  /// Cannot be specified with network_uri.A full URL, partial URI, or short
+  /// name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
   /// projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+  ///
+  /// Optional.
   core.String subnetworkUri;
 
   /// The Compute Engine tags to add to all instances (see Tagging instances
   /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   core.List<core.String> tags;
 
-  /// Optional. The zone where the Compute Engine cluster will be located. On a
-  /// create request, it is required in the "global" region. If omitted in a
-  /// non-global Dataproc region, the service will pick a zone in the
+  /// The zone where the Compute Engine cluster will be located.
+  ///
+  /// On a create request, it is required in the "global" region. If omitted in
+  /// a non-global Dataproc region, the service will pick a zone in the
   /// corresponding Compute Engine region. On a get request, zone will always be
   /// present.A full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
   /// projects/[project_id]/zones/[zone] us-central1-f
+  ///
+  /// Optional.
   core.String zoneUri;
 
   GceClusterConfig();
@@ -5915,13 +6168,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned.Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected.Requests for
+  /// The policy format version to be returned.Valid values are 0, 1, and 3.
+  ///
+  /// Requests specifying an invalid value will be rejected.Requests for
   /// policies with any conditional bindings must specify version 3. Policies
   /// without any conditional bindings may specify any valid value or leave the
   /// field unset.To learn which resources support conditions in their IAM
   /// policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -5946,42 +6202,62 @@ class GetPolicyOptions {
 /// jobs on Apache Hadoop YARN
 /// (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 class HadoopJob {
-  /// Optional. HCFS URIs of archives to be extracted in the working directory
-  /// of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz,
-  /// .tgz, or .zip.
+  /// HCFS URIs of archives to be extracted in the working directory of Hadoop
+  /// drivers and tasks.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+  ///
+  /// Optional.
   core.List<core.String> archiveUris;
 
-  /// Optional. The arguments to pass to the driver. Do not include arguments,
-  /// such as -libjars or -Dfoo=bar, that can be set as job properties, since a
-  /// collision may occur that causes an incorrect job submission.
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments, such as -libjars or -Dfoo=bar, that can be set
+  /// as job properties, since a collision may occur that causes an incorrect
+  /// job submission.
+  ///
+  /// Optional.
   core.List<core.String> args;
 
-  /// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied
-  /// to the working directory of Hadoop drivers and distributed tasks. Useful
-  /// for naively parallel tasks.
+  /// HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the
+  /// working directory of Hadoop drivers and distributed tasks.
+  ///
+  /// Useful for naively parallel tasks.
+  ///
+  /// Optional.
   core.List<core.String> fileUris;
 
-  /// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and
-  /// tasks.
+  /// Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+  ///
+  /// Optional.
   core.List<core.String> jarFileUris;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// The name of the driver's main class. The jar file containing the class
-  /// must be in the default CLASSPATH or specified in jar_file_uris.
+  /// The name of the driver's main class.
+  ///
+  /// The jar file containing the class must be in the default CLASSPATH or
+  /// specified in jar_file_uris.
   core.String mainClass;
 
-  /// The HCFS URI of the jar file containing the main class. Examples:
+  /// The HCFS URI of the jar file containing the main class.
+  ///
+  /// Examples:
   /// 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar'
   /// 'hdfs:/tmp/test-samples/custom-wordcount.jar'
   /// 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
   core.String mainJarFileUri;
 
-  /// Optional. A mapping of property names to values, used to configure Hadoop.
+  /// A mapping of property names to values, used to configure Hadoop.
+  ///
   /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site and
   /// classes in user code.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   HadoopJob();
@@ -6062,19 +6338,29 @@ class HadoopJob {
 /// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on
 /// YARN.
 class HiveJob {
-  /// Optional. Whether to continue executing queries if a query fails. The
-  /// default value is false. Setting to true can be useful when executing
+  /// Whether to continue executing queries if a query fails.
+  ///
+  /// The default value is false. Setting to true can be useful when executing
   /// independent parallel queries.
+  ///
+  /// Optional.
   core.bool continueOnFailure;
 
-  /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive
-  /// server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+  /// HCFS URIs of jar files to add to the CLASSPATH of the Hive server and
+  /// Hadoop MapReduce (MR) tasks.
+  ///
+  /// Can contain Hive SerDes and UDFs.
+  ///
+  /// Optional.
   core.List<core.String> jarFileUris;
 
-  /// Optional. A mapping of property names and values, used to configure Hive.
+  /// A mapping of property names and values, used to configure Hive.
+  ///
   /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
   /// /etc/hive/conf/hive-site.xml, and classes in user code.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   /// The HCFS URI of the script that contains Hive queries.
@@ -6083,8 +6369,10 @@ class HiveJob {
   /// A list of queries.
   QueryList queryList;
 
-  /// Optional. Mapping of query variable names to values (equivalent to the
-  /// Hive command: SET name="value";).
+  /// Mapping of query variable names to values (equivalent to the Hive command:
+  /// SET name="value";).
+  ///
+  /// Optional.
   core.Map<core.String, core.String> scriptVariables;
 
   HiveJob();
@@ -6154,21 +6442,28 @@ class HiveJob {
 /// Configuration for the size bounds of an instance group, including its
 /// proportional size to other groups.
 class InstanceGroupAutoscalingPolicyConfig {
-  /// Required. Maximum number of instances for this group. Required for primary
-  /// workers. Note that by default, clusters will not use secondary workers.
-  /// Required for secondary workers if the minimum secondary instances is
-  /// set.Primary workers - Bounds: [min_instances, ). Secondary workers -
-  /// Bounds: [min_instances, ). Default: 0.
+  /// Maximum number of instances for this group.
+  ///
+  /// Required for primary workers. Note that by default, clusters will not use
+  /// secondary workers. Required for secondary workers if the minimum secondary
+  /// instances is set.Primary workers - Bounds: [min_instances, ). Secondary
+  /// workers - Bounds: [min_instances, ). Default: 0.
+  ///
+  /// Required.
   core.int maxInstances;
 
-  /// Optional. Minimum number of instances for this group.Primary workers -
-  /// Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0,
-  /// max_instances. Default: 0.
+  /// Minimum number of instances for this group.Primary workers - Bounds: 2,
+  /// max_instances.
+  ///
+  /// Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
+  ///
+  /// Optional.
   core.int minInstances;
 
-  /// Optional. Weight for the instance group, which is used to determine the
-  /// fraction of total workers in the cluster from this instance group. For
-  /// example, if primary workers have weight 2, and secondary workers have
+  /// Weight for the instance group, which is used to determine the fraction of
+  /// total workers in the cluster from this instance group.
+  ///
+  /// For example, if primary workers have weight 2, and secondary workers have
   /// weight 1, the cluster will have approximately 2 primary workers for each
   /// secondary worker.The cluster may not reach the specified balance if
   /// constrained by min/max bounds or other autoscaling settings. For example,
@@ -6181,6 +6476,8 @@ class InstanceGroupAutoscalingPolicyConfig {
   /// zero weight on the unset group. For example if weight is set only on
   /// primary workers, the cluster will use primary workers only and no
   /// secondary workers.
+  ///
+  /// Optional.
   core.int weight;
 
   InstanceGroupAutoscalingPolicyConfig();
@@ -6215,37 +6512,53 @@ class InstanceGroupAutoscalingPolicyConfig {
 /// The config settings for Compute Engine resources in an instance group, such
 /// as a master or worker group.
 class InstanceGroupConfig {
-  /// Optional. The Compute Engine accelerator configuration for these
-  /// instances.
+  /// The Compute Engine accelerator configuration for these instances.
+  ///
+  /// Optional.
   core.List<AcceleratorConfig> accelerators;
 
-  /// Optional. Disk option config settings.
+  /// Disk option config settings.
+  ///
+  /// Optional.
   DiskConfig diskConfig;
 
-  /// Optional. The Compute Engine image resource used for cluster instances.The
-  /// URI can represent an image or image family.Image examples:
+  /// The Compute Engine image resource used for cluster instances.The URI can
+  /// represent an image or image family.Image examples:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
   /// projects/[project_id]/global/images/[image-id] image-idImage family
-  /// examples. Dataproc will use the most recent image from the family:
+  /// examples.
+  ///
+  /// Dataproc will use the most recent image from the family:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]
   /// projects/[project_id]/global/images/family/[custom-image-family-name]If
   /// the URI is unspecified, it will be inferred from
   /// SoftwareConfig.image_version or the system default.
+  ///
+  /// Optional.
   core.String imageUri;
 
-  /// Output only. The list of instance names. Dataproc derives the names from
-  /// cluster_name, num_instances, and the instance group.
+  /// The list of instance names.
+  ///
+  /// Dataproc derives the names from cluster_name, num_instances, and the
+  /// instance group.
+  ///
+  /// Output only.
   core.List<core.String> instanceNames;
 
-  /// Output only. List of references to Compute Engine instances.
+  /// List of references to Compute Engine instances.
+  ///
+  /// Output only.
   core.List<InstanceReference> instanceReferences;
 
-  /// Output only. Specifies that this instance group contains preemptible
-  /// instances.
+  /// Specifies that this instance group contains preemptible instances.
+  ///
+  /// Output only.
   core.bool isPreemptible;
 
-  /// Optional. The Compute Engine machine type used for cluster instances.A
-  /// full URL, partial URI, or short name are valid. Examples:
+  /// The Compute Engine machine type used for cluster instances.A full URL,
+  /// partial URI, or short name are valid.
+  ///
+  /// Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
   /// projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
   /// n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
@@ -6253,24 +6566,40 @@ class InstanceGroupConfig {
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
   /// feature, you must use the short name of the machine type resource, for
   /// example, n1-standard-2.
+  ///
+  /// Optional.
   core.String machineTypeUri;
 
-  /// Output only. The config for Compute Engine Instance Group Manager that
-  /// manages this group. This is only used for preemptible instance groups.
+  /// The config for Compute Engine Instance Group Manager that manages this
+  /// group.
+  ///
+  /// This is only used for preemptible instance groups.
+  ///
+  /// Output only.
   ManagedGroupConfig managedGroupConfig;
 
-  /// Optional. Specifies the minimum cpu platform for the Instance Group. See
-  /// Dataproc -> Minimum CPU Platform
+  /// Specifies the minimum cpu platform for the Instance Group.
+  ///
+  /// See Dataproc -> Minimum CPU Platform
   /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  ///
+  /// Optional.
   core.String minCpuPlatform;
 
-  /// Optional. The number of VM instances in the instance group. For master
-  /// instance groups, must be set to 1.
+  /// The number of VM instances in the instance group.
+  ///
+  /// For master instance groups, must be set to 1.
+  ///
+  /// Optional.
   core.int numInstances;
 
-  /// Optional. Specifies the preemptibility of the instance group.The default
-  /// value for master and worker groups is NON_PREEMPTIBLE. This default cannot
-  /// be changed.The default value for secondary instances is PREEMPTIBLE.
+  /// Specifies the preemptibility of the instance group.The default value for
+  /// master and worker groups is NON_PREEMPTIBLE.
+  ///
+  /// This default cannot be changed.The default value for secondary instances
+  /// is PREEMPTIBLE.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PREEMPTIBILITY_UNSPECIFIED" : Preemptibility is unspecified, the system
   /// will choose the appropriate setting for each instance group.
@@ -6403,22 +6732,33 @@ class InstanceReference {
 
 /// A request to instantiate a workflow template.
 class InstantiateWorkflowTemplateRequest {
-  /// Optional. Map from parameter names to values that should be used for those
-  /// parameters. Values may not exceed 1000 characters.
+  /// Map from parameter names to values that should be used for those
+  /// parameters.
+  ///
+  /// Values may not exceed 1000 characters.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> parameters;
 
-  /// Optional. A tag that prevents multiple concurrent workflow instances with
-  /// the same tag from running. This mitigates risk of concurrent instances
-  /// started due to retries.It is recommended to always set this value to a
-  /// UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag
-  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// A tag that prevents multiple concurrent workflow instances with the same
+  /// tag from running.
+  ///
+  /// This mitigates risk of concurrent instances started due to retries.It is
+  /// recommended to always set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
   core.String requestId;
 
-  /// Optional. The version of workflow template to instantiate. If specified,
-  /// the workflow will be instantiated only if the current version of the
-  /// workflow template has the supplied version.This option cannot be used to
-  /// instantiate a previous version of workflow template.
+  /// The version of workflow template to instantiate.
+  ///
+  /// If specified, the workflow will be instantiated only if the current
+  /// version of the workflow template has the supplied version.This option
+  /// cannot be used to instantiate a previous version of workflow template.
+  ///
+  /// Optional.
   core.int version;
 
   InstantiateWorkflowTemplateRequest();
@@ -6459,79 +6799,126 @@ class InstantiateWorkflowTemplateRequest {
 
 /// A Dataproc job resource.
 class Job {
-  /// Output only. Indicates whether the job is completed. If the value is
-  /// false, the job is still in progress. If true, the job is completed, and
-  /// status.state field will indicate if it was successful, failed, or
-  /// cancelled.
+  /// Indicates whether the job is completed.
+  ///
+  /// If the value is false, the job is still in progress. If true, the job is
+  /// completed, and status.state field will indicate if it was successful,
+  /// failed, or cancelled.
+  ///
+  /// Output only.
   core.bool done;
 
-  /// Output only. If present, the location of miscellaneous control files which
-  /// may be used as part of job setup and handling. If not present, control
-  /// files may be placed in the same location as driver_output_uri.
+  /// If present, the location of miscellaneous control files which may be used
+  /// as part of job setup and handling.
+  ///
+  /// If not present, control files may be placed in the same location as
+  /// driver_output_uri.
+  ///
+  /// Output only.
   core.String driverControlFilesUri;
 
-  /// Output only. A URI pointing to the location of the stdout of the job's
-  /// driver program.
+  /// A URI pointing to the location of the stdout of the job's driver program.
+  ///
+  /// Output only.
   core.String driverOutputResourceUri;
 
-  /// Optional. Job is a Hadoop job.
+  /// Job is a Hadoop job.
+  ///
+  /// Optional.
   HadoopJob hadoopJob;
 
-  /// Optional. Job is a Hive job.
+  /// Job is a Hive job.
+  ///
+  /// Optional.
   HiveJob hiveJob;
 
-  /// Output only. A UUID that uniquely identifies a job within the project over
-  /// time. This is in contrast to a user-settable reference.job_id that may be
-  /// reused over time.
+  /// A UUID that uniquely identifies a job within the project over time.
+  ///
+  /// This is in contrast to a user-settable reference.job_id that may be reused
+  /// over time.
+  ///
+  /// Output only.
   core.String jobUuid;
 
-  /// Optional. The labels to associate with this job. Label keys must contain 1
-  /// to 63 characters, and must conform to RFC 1035
+  /// The labels to associate with this job.
+  ///
+  /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
   /// (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
   /// present, must contain 1 to 63 characters, and must conform to RFC 1035
   /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
   /// associated with a job.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Optional. Job is a Pig job.
+  /// Job is a Pig job.
+  ///
+  /// Optional.
   PigJob pigJob;
 
-  /// Required. Job information, including how, when, and where to run the job.
+  /// Job information, including how, when, and where to run the job.
+  ///
+  /// Required.
   JobPlacement placement;
 
-  /// Optional. Job is a Presto job.
+  /// Job is a Presto job.
+  ///
+  /// Optional.
   PrestoJob prestoJob;
 
-  /// Optional. Job is a PySpark job.
+  /// Job is a PySpark job.
+  ///
+  /// Optional.
   PySparkJob pysparkJob;
 
-  /// Optional. The fully qualified reference to the job, which can be used to
-  /// obtain the equivalent REST path of the job resource. If this property is
-  /// not specified when a job is created, the server generates a job_id.
+  /// The fully qualified reference to the job, which can be used to obtain the
+  /// equivalent REST path of the job resource.
+  ///
+  /// If this property is not specified when a job is created, the server
+  /// generates a job_id.
+  ///
+  /// Optional.
   JobReference reference;
 
-  /// Optional. Job scheduling configuration.
+  /// Job scheduling configuration.
+  ///
+  /// Optional.
   JobScheduling scheduling;
 
-  /// Optional. Job is a Spark job.
+  /// Job is a Spark job.
+  ///
+  /// Optional.
   SparkJob sparkJob;
 
-  /// Optional. Job is a SparkR job.
+  /// Job is a SparkR job.
+  ///
+  /// Optional.
   SparkRJob sparkRJob;
 
-  /// Optional. Job is a SparkSql job.
+  /// Job is a SparkSql job.
+  ///
+  /// Optional.
   SparkSqlJob sparkSqlJob;
 
-  /// Output only. The job status. Additional application-specific status
-  /// information may be contained in the type_job and yarn_applications fields.
+  /// The job status.
+  ///
+  /// Additional application-specific status information may be contained in the
+  /// type_job and yarn_applications fields.
+  ///
+  /// Output only.
   JobStatus status;
 
-  /// Output only. The previous job status.
+  /// The previous job status.
+  ///
+  /// Output only.
   core.List<JobStatus> statusHistory;
 
-  /// Output only. The collection of YARN applications spun up by this job.Beta
-  /// Feature: This report is available for testing purposes only. It may be
-  /// changed before final release.
+  /// The collection of YARN applications spun up by this job.Beta Feature: This
+  /// report is available for testing purposes only.
+  ///
+  /// It may be changed before final release.
+  ///
+  /// Output only.
   core.List<YarnApplication> yarnApplications;
 
   Job();
@@ -6687,16 +7074,24 @@ class Job {
 
 /// Job Operation metadata.
 class JobMetadata {
-  /// Output only. The job id.
+  /// The job id.
+  ///
+  /// Output only.
   core.String jobId;
 
-  /// Output only. Operation type.
+  /// Operation type.
+  ///
+  /// Output only.
   core.String operationType;
 
-  /// Output only. Job submission time.
+  /// Job submission time.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. Most recent job status.
+  /// Most recent job status.
+  ///
+  /// Output only.
   JobStatus status;
 
   JobMetadata();
@@ -6737,11 +7132,15 @@ class JobMetadata {
 
 /// Dataproc job config.
 class JobPlacement {
-  /// Required. The name of the cluster where the job will be submitted.
+  /// The name of the cluster where the job will be submitted.
+  ///
+  /// Required.
   core.String clusterName;
 
-  /// Output only. A cluster UUID generated by the Dataproc service when the job
-  /// is submitted.
+  /// A cluster UUID generated by the Dataproc service when the job is
+  /// submitted.
+  ///
+  /// Output only.
   core.String clusterUuid;
 
   JobPlacement();
@@ -6769,14 +7168,20 @@ class JobPlacement {
 
 /// Encapsulates the full scoping used to reference a job.
 class JobReference {
-  /// Optional. The job ID, which must be unique within the project.The ID must
-  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or
-  /// hyphens (-). The maximum length is 100 characters.If not specified by the
-  /// caller, the job ID will be provided by the server.
+  /// The job ID, which must be unique within the project.The ID must contain
+  /// only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-).
+  ///
+  /// The maximum length is 100 characters.If not specified by the caller, the
+  /// job ID will be provided by the server.
+  ///
+  /// Optional.
   core.String jobId;
 
-  /// Optional. The ID of the Google Cloud Platform project that the job belongs
-  /// to. If specified, must match the request project ID.
+  /// The ID of the Google Cloud Platform project that the job belongs to.
+  ///
+  /// If specified, must match the request project ID.
+  ///
+  /// Optional.
   core.String projectId;
 
   JobReference();
@@ -6804,10 +7209,12 @@ class JobReference {
 
 /// Job scheduling options.
 class JobScheduling {
-  /// Optional. Maximum number of times per hour a driver may be restarted as a
-  /// result of driver exiting with non-zero code before job is reported
-  /// failed.A job may be reported as thrashing if driver exits with non-zero
-  /// code 4 times within 10 minute window.Maximum value is 10.
+  /// Maximum number of times per hour a driver may be restarted as a result of
+  /// driver exiting with non-zero code before job is reported failed.A job may
+  /// be reported as thrashing if driver exits with non-zero code 4 times within
+  /// 10 minute window.Maximum value is 10.
+  ///
+  /// Optional.
   core.int maxFailuresPerHour;
 
   JobScheduling();
@@ -6829,11 +7236,14 @@ class JobScheduling {
 
 /// Dataproc job status.
 class JobStatus {
-  /// Optional. Output only. Job state details, such as an error description if
-  /// the state is ERROR.
+  /// Job state details, such as an error description if the state is ERROR.
+  ///
+  /// Optional. Output only.
   core.String details;
 
-  /// Output only. A state message specifying the overall job state.
+  /// A state message specifying the overall job state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The job state is unknown.
   /// - "PENDING" : The job is pending; it has been submitted, but is not yet
@@ -6852,11 +7262,14 @@ class JobStatus {
   /// failure details for this attempt.Applies to restartable jobs only.
   core.String state;
 
-  /// Output only. The time when this state was entered.
+  /// The time when this state was entered.
+  ///
+  /// Output only.
   core.String stateStartTime;
 
-  /// Output only. Additional state information, which includes status reported
-  /// by the agent.
+  /// Additional state information, which includes status reported by the agent.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNSPECIFIED" : The job substate is unknown.
   /// - "SUBMITTED" : The Job is submitted to the agent.Applies to RUNNING
@@ -6907,69 +7320,105 @@ class JobStatus {
 
 /// Specifies Kerberos related configuration.
 class KerberosConfig {
-  /// Optional. The admin server (IP or hostname) for the remote trusted realm
-  /// in a cross realm trust relationship.
+  /// The admin server (IP or hostname) for the remote trusted realm in a cross
+  /// realm trust relationship.
+  ///
+  /// Optional.
   core.String crossRealmTrustAdminServer;
 
-  /// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross
-  /// realm trust relationship.
+  /// The KDC (IP or hostname) for the remote trusted realm in a cross realm
+  /// trust relationship.
+  ///
+  /// Optional.
   core.String crossRealmTrustKdc;
 
-  /// Optional. The remote realm the Dataproc on-cluster KDC will trust, should
-  /// the user enable cross realm trust.
+  /// The remote realm the Dataproc on-cluster KDC will trust, should the user
+  /// enable cross realm trust.
+  ///
+  /// Optional.
   core.String crossRealmTrustRealm;
 
-  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
-  /// shared password between the on-cluster Kerberos realm and the remote
-  /// trusted realm, in a cross realm trust relationship.
+  /// The Cloud Storage URI of a KMS encrypted file containing the shared
+  /// password between the on-cluster Kerberos realm and the remote trusted
+  /// realm, in a cross realm trust relationship.
+  ///
+  /// Optional.
   core.String crossRealmTrustSharedPasswordUri;
 
-  /// Optional. Flag to indicate whether to Kerberize the cluster (default:
-  /// false). Set this field to true to enable Kerberos on a cluster.
+  /// Flag to indicate whether to Kerberize the cluster (default: false).
+  ///
+  /// Set this field to true to enable Kerberos on a cluster.
+  ///
+  /// Optional.
   core.bool enableKerberos;
 
-  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
-  /// master key of the KDC database.
+  /// The Cloud Storage URI of a KMS encrypted file containing the master key of
+  /// the KDC database.
+  ///
+  /// Optional.
   core.String kdcDbKeyUri;
 
-  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
-  /// password to the user provided key. For the self-signed certificate, this
-  /// password is generated by Dataproc.
+  /// The Cloud Storage URI of a KMS encrypted file containing the password to
+  /// the user provided key.
+  ///
+  /// For the self-signed certificate, this password is generated by Dataproc.
+  ///
+  /// Optional.
   core.String keyPasswordUri;
 
-  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
-  /// password to the user provided keystore. For the self-signed certificate,
-  /// this password is generated by Dataproc.
+  /// The Cloud Storage URI of a KMS encrypted file containing the password to
+  /// the user provided keystore.
+  ///
+  /// For the self-signed certificate, this password is generated by Dataproc.
+  ///
+  /// Optional.
   core.String keystorePasswordUri;
 
-  /// Optional. The Cloud Storage URI of the keystore file used for SSL
-  /// encryption. If not provided, Dataproc will provide a self-signed
-  /// certificate.
+  /// The Cloud Storage URI of the keystore file used for SSL encryption.
+  ///
+  /// If not provided, Dataproc will provide a self-signed certificate.
+  ///
+  /// Optional.
   core.String keystoreUri;
 
-  /// Required. The uri of the KMS key used to encrypt various sensitive files.
+  /// The uri of the KMS key used to encrypt various sensitive files.
+  ///
+  /// Required.
   core.String kmsKeyUri;
 
-  /// Optional. The name of the on-cluster Kerberos realm. If not specified, the
-  /// uppercased domain of hostnames will be the realm.
+  /// The name of the on-cluster Kerberos realm.
+  ///
+  /// If not specified, the uppercased domain of hostnames will be the realm.
+  ///
+  /// Optional.
   core.String realm;
 
-  /// Required. The Cloud Storage URI of a KMS encrypted file containing the
-  /// root principal password.
+  /// The Cloud Storage URI of a KMS encrypted file containing the root
+  /// principal password.
+  ///
+  /// Required.
   core.String rootPrincipalPasswordUri;
 
-  /// Optional. The lifetime of the ticket granting ticket, in hours. If not
-  /// specified, or user specifies 0, then default value 10 will be used.
+  /// The lifetime of the ticket granting ticket, in hours.
+  ///
+  /// If not specified, or user specifies 0, then default value 10 will be used.
+  ///
+  /// Optional.
   core.int tgtLifetimeHours;
 
-  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
-  /// password to the user provided truststore. For the self-signed certificate,
-  /// this password is generated by Dataproc.
+  /// The Cloud Storage URI of a KMS encrypted file containing the password to
+  /// the user provided truststore.
+  ///
+  /// For the self-signed certificate, this password is generated by Dataproc.
+  ///
+  /// Optional.
   core.String truststorePasswordUri;
 
-  /// Optional. The Cloud Storage URI of the truststore file used for SSL
-  /// encryption. If not provided, Dataproc will provide a self-signed
-  /// certificate.
+  /// The Cloud Storage URI of the truststore file used for SSL encryption.
+  ///
+  /// If not provided, Dataproc will provide a self-signed certificate.
+  ///
+  /// Optional.
   core.String truststoreUri;
 
   KerberosConfig();
@@ -7079,28 +7528,40 @@ class KerberosConfig {
 
 /// Specifies the cluster auto-delete schedule configuration.
 class LifecycleConfig {
-  /// Optional. The time when cluster will be auto-deleted (see JSON
-  /// representation of Timestamp
+  /// The time when cluster will be auto-deleted (see JSON representation of
+  /// Timestamp
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Optional.
   core.String autoDeleteTime;
 
-  /// Optional. The lifetime duration of cluster. The cluster will be
-  /// auto-deleted at the end of this period. Minimum value is 10 minutes;
-  /// maximum value is 14 days (see JSON representation of Duration
+  /// The lifetime duration of cluster.
+  ///
+  /// The cluster will be auto-deleted at the end of this period. Minimum value
+  /// is 10 minutes; maximum value is 14 days (see JSON representation of
+  /// Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Optional.
   core.String autoDeleteTtl;
 
-  /// Optional. The duration to keep the cluster alive while idling (when no
-  /// jobs are running). Passing this threshold will cause the cluster to be
-  /// deleted. Minimum value is 10 minutes; maximum value is 14 days (see JSON
-  /// representation of Duration
+  /// The duration to keep the cluster alive while idling (when no jobs are
+  /// running).
+  ///
+  /// Passing this threshold will cause the cluster to be deleted. Minimum value
+  /// is 10 minutes; maximum value is 14 days (see JSON representation of
+  /// Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json).
+  ///
+  /// Optional.
   core.String idleDeleteTtl;
 
-  /// Output only. The time when cluster became idle (most recent job finished)
-  /// and became eligible for deletion due to idleness (see JSON representation
-  /// of Timestamp
+  /// The time when cluster became idle (most recent job finished) and became
+  /// eligible for deletion due to idleness (see JSON representation of
+  /// Timestamp
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Output only.
   core.String idleStartTime;
 
   LifecycleConfig();
@@ -7140,11 +7601,14 @@ class LifecycleConfig {
 
 /// A response to a request to list autoscaling policies in a project.
 class ListAutoscalingPoliciesResponse {
-  /// Output only. This token is included in the response if there are more
-  /// results to fetch.
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// Output only.
   core.String nextPageToken;
 
-  /// Output only. Autoscaling policies list.
+  /// Autoscaling policies list.
+  ///
+  /// Output only.
   core.List<AutoscalingPolicy> policies;
 
   ListAutoscalingPoliciesResponse();
@@ -7175,12 +7639,17 @@ class ListAutoscalingPoliciesResponse {
 
 /// The list of all clusters in a project.
 class ListClustersResponse {
-  /// Output only. The clusters in the project.
+  /// The clusters in the project.
+  ///
+  /// Output only.
   core.List<Cluster> clusters;
 
-  /// Output only. This token is included in the response if there are more
-  /// results to fetch. To fetch additional results, provide this value as the
-  /// page_token in a subsequent ListClustersRequest.
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent ListClustersRequest.
+  ///
+  /// Output only.
   core.String nextPageToken;
 
   ListClustersResponse();
@@ -7211,12 +7680,17 @@ class ListClustersResponse {
 
 /// A list of jobs in a project.
 class ListJobsResponse {
-  /// Output only. Jobs list.
+  /// Jobs list.
+  ///
+  /// Output only.
   core.List<Job> jobs;
 
-  /// Optional. This token is included in the response if there are more results
-  /// to fetch. To fetch additional results, provide this value as the
-  /// page_token in a subsequent ListJobsRequest.
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent ListJobsRequest.
+  ///
+  /// Optional.
   core.String nextPageToken;
 
   ListJobsResponse();
@@ -7281,12 +7755,17 @@ class ListOperationsResponse {
 
 /// A response to a request to list workflow templates in a project.
 class ListWorkflowTemplatesResponse {
-  /// Output only. This token is included in the response if there are more
-  /// results to fetch. To fetch additional results, provide this value as the
-  /// page_token in a subsequent ListWorkflowTemplatesRequest.
+  /// This token is included in the response if there are more results to fetch.
+  ///
+  /// To fetch additional results, provide this value as the page_token in a
+  /// subsequent ListWorkflowTemplatesRequest.
+  ///
+  /// Output only.
   core.String nextPageToken;
 
-  /// Output only. WorkflowTemplates list.
+  /// WorkflowTemplates list.
+  ///
+  /// Output only.
   core.List<WorkflowTemplate> templates;
 
   ListWorkflowTemplatesResponse();
@@ -7317,9 +7796,10 @@ class ListWorkflowTemplatesResponse {
 
 /// The runtime logging config of the job.
 class LoggingConfig {
-  /// The per-package log levels for the driver. This may include "root" package
-  /// name to configure rootLogger. Examples: 'com.google = FATAL', 'root =
-  /// INFO', 'org.apache = DEBUG'
+  /// The per-package log levels for the driver.
+  ///
+  /// This may include "root" package name to configure rootLogger. Examples:
+  /// 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
   core.Map<core.String, core.String> driverLogLevels;
 
   LoggingConfig();
@@ -7348,21 +7828,29 @@ class LoggingConfig {
 
 /// Cluster that is managed by the workflow.
 class ManagedCluster {
-  /// Required. The cluster name prefix. A unique cluster name will be formed by
-  /// appending a random suffix.The name must contain only lower-case letters
-  /// (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot
-  /// begin or end with hyphen. Must consist of between 2 and 35 characters.
+  /// The cluster name prefix.
+  ///
+  /// A unique cluster name will be formed by appending a random suffix.The name
+  /// must contain only lower-case letters (a-z), numbers (0-9), and hyphens
+  /// (-). Must begin with a letter. Cannot begin or end with hyphen. Must
+  /// consist of between 2 and 35 characters.
+  ///
+  /// Required.
   core.String clusterName;
 
-  /// Required. The cluster configuration.
+  /// The cluster configuration.
+  ///
+  /// Required.
   ClusterConfig config;
 
-  /// Optional. The labels to associate with this cluster.Label keys must be
-  /// between 1 and 63 characters long, and must conform to the following PCRE
-  /// regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and
+  /// The labels to associate with this cluster.Label keys must be between 1 and
   /// 63 characters long, and must conform to the following PCRE regular
+  /// expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63
+  /// characters long, and must conform to the following PCRE regular
   /// expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be
   /// associated with a given cluster.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
   ManagedCluster();
@@ -7403,11 +7891,14 @@ class ManagedCluster {
 
 /// Specifies the resources used to actively manage an instance group.
 class ManagedGroupConfig {
-  /// Output only. The name of the Instance Group Manager for this group.
+  /// The name of the Instance Group Manager for this group.
+  ///
+  /// Output only.
   core.String instanceGroupManagerName;
 
-  /// Output only. The name of the Instance Template used for the Managed
-  /// Instance Group.
+  /// The name of the Instance Template used for the Managed Instance Group.
+  ///
+  /// Output only.
   core.String instanceTemplateName;
 
   ManagedGroupConfig();
@@ -7436,9 +7927,11 @@ class ManagedGroupConfig {
 
 /// Node Group Affinity for clusters using sole-tenant node groups.
 class NodeGroupAffinity {
-  /// Required. The name of a single node group
+  /// The name of a single node group
   /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a
   /// cluster will be created on.
+  ///
+  /// Required.
   core.String nodeGroupUri;
 
   NodeGroupAffinity();
@@ -7461,15 +7954,20 @@ class NodeGroupAffinity {
 /// Specifies an executable to run on a fully configured node and a timeout
 /// period for executable completion.
 class NodeInitializationAction {
-  /// Required. Cloud Storage URI of executable file.
+  /// Cloud Storage URI of executable file.
+  ///
+  /// Required.
   core.String executableFile;
 
-  /// Optional. Amount of time executable has to complete. Default is 10 minutes
-  /// (see JSON representation of Duration
+  /// Amount of time executable has to complete.
+  ///
+  /// Default is 10 minutes (see JSON representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster
   /// creation fails with an explanatory error message (the name of the
   /// executable that caused the error and the exceeded timeout period) if the
   /// executable is not completed at end of the timeout period.
+  ///
+  /// Optional.
   core.String executionTimeout;
 
   NodeInitializationAction();
@@ -7498,31 +7996,37 @@ class NodeInitializationAction {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is false, it means the operation is still in progress. If
-  /// true, the operation is completed, and either error or response is
+  /// If the value is false, it means the operation is still in progress.
+  ///
+  /// If true, the operation is completed, and either error or response is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the name
-  /// should be a resource name ending with operations/{unique_id}.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the name should be a resource name
+  /// ending with operations/{unique_id}.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as Delete, the response is
-  /// google.protobuf.Empty. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as Delete, the
+  /// response is google.protobuf.Empty. If the original method is standard
   /// Get/Create/Update, the response should be the resource. For other methods,
   /// the response should have the type XxxResponse, where Xxx is the original
   /// method name. For example, if the original method name is TakeSnapshot(),
@@ -7588,51 +8092,78 @@ class Operation {
 
 /// A job executed by the workflow.
 class OrderedJob {
-  /// Optional. Job is a Hadoop job.
+  /// Job is a Hadoop job.
+  ///
+  /// Optional.
   HadoopJob hadoopJob;
 
-  /// Optional. Job is a Hive job.
+  /// Job is a Hive job.
+  ///
+  /// Optional.
   HiveJob hiveJob;
 
-  /// Optional. The labels to associate with this job.Label keys must be between
-  /// 1 and 63 characters long, and must conform to the following regular
-  /// expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63
+  /// The labels to associate with this job.Label keys must be between 1 and 63
   /// characters long, and must conform to the following regular expression:
+  /// \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long,
+  /// and must conform to the following regular expression:
   /// \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a
   /// given job.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Optional. Job is a Pig job.
+  /// Job is a Pig job.
+  ///
+  /// Optional.
   PigJob pigJob;
 
-  /// Optional. The optional list of prerequisite job step_ids. If not
-  /// specified, the job will start at the beginning of workflow.
+  /// The optional list of prerequisite job step_ids.
+  ///
+  /// If not specified, the job will start at the beginning of workflow.
+  ///
+  /// Optional.
   core.List<core.String> prerequisiteStepIds;
 
-  /// Optional. Job is a Presto job.
+  /// Job is a Presto job.
+  ///
+  /// Optional.
   PrestoJob prestoJob;
 
-  /// Optional. Job is a PySpark job.
+  /// Job is a PySpark job.
+  ///
+  /// Optional.
   PySparkJob pysparkJob;
 
-  /// Optional. Job scheduling configuration.
+  /// Job scheduling configuration.
+  ///
+  /// Optional.
   JobScheduling scheduling;
 
-  /// Optional. Job is a Spark job.
+  /// Job is a Spark job.
+  ///
+  /// Optional.
   SparkJob sparkJob;
 
-  /// Optional. Job is a SparkR job.
+  /// Job is a SparkR job.
+  ///
+  /// Optional.
   SparkRJob sparkRJob;
 
-  /// Optional. Job is a SparkSql job.
+  /// Job is a SparkSql job.
+  ///
+  /// Optional.
   SparkSqlJob sparkSqlJob;
 
-  /// Required. The step id. The id must be unique among all jobs within the
-  /// template.The step id is used as prefix for job id, as job
-  /// goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field
-  /// from other steps.The id must contain only letters (a-z, A-Z), numbers
-  /// (0-9), underscores (_), and hyphens (-). Cannot begin or end with
-  /// underscore or hyphen. Must consist of between 3 and 50 characters.
+  /// The step id.
+  ///
+  /// The id must be unique among all jobs within the template.The step id is
+  /// used as prefix for job id, as job goog-dataproc-workflow-step-id label,
+  /// and in prerequisiteStepIds field from other steps.The id must contain only
+  /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
+  /// Cannot begin or end with underscore or hyphen. Must consist of between 3
+  /// and 50 characters.
+  ///
+  /// Required.
   core.String stepId;
 
   OrderedJob();
@@ -7771,22 +8302,34 @@ class ParameterValidation {
 /// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
 /// YARN.
 class PigJob {
-  /// Optional. Whether to continue executing queries if a query fails. The
-  /// default value is false. Setting to true can be useful when executing
+  /// Whether to continue executing queries if a query fails.
+  ///
+  /// The default value is false. Setting to true can be useful when executing
   /// independent parallel queries.
+  ///
+  /// Optional.
   core.bool continueOnFailure;
 
-  /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client
-  /// and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+  /// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and
+  /// Hadoop MapReduce (MR) tasks.
+  ///
+  /// Can contain Pig UDFs.
+  ///
+  /// Optional.
   core.List<core.String> jarFileUris;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// Optional. A mapping of property names to values, used to configure Pig.
+  /// A mapping of property names to values, used to configure Pig.
+  ///
   /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
   /// /etc/pig/conf/pig.properties, and classes in user code.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   /// The HCFS URI of the script that contains the Pig queries.
@@ -7795,8 +8338,10 @@ class PigJob {
   /// A list of queries.
   QueryList queryList;
 
-  /// Optional. Mapping of query variable names to values (equivalent to the Pig
-  /// command: name=[value]).
+  /// Mapping of query variable names to values (equivalent to the Pig command:
+  /// name=[value]).
+  ///
+  /// Optional.
   core.Map<core.String, core.String> scriptVariables;
 
   PigJob();
@@ -7871,8 +8416,9 @@ class PigJob {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources.A Policy is a collection of bindings. A
-/// binding binds one or more members to a single role. Members can be user
+/// controls for Google Cloud resources.A Policy is a collection of bindings.
+///
+/// A binding binds one or more members to a single role. Members can be user
 /// accounts, service accounts, Google groups, and domains (such as G Suite). A
 /// role is a named list of permissions; each role can be an IAM predefined role
 /// or a user-created custom role.For some types of Google Cloud resources, a
@@ -7900,14 +8446,17 @@ class PigJob {
 /// version: 3 For a description of IAM and its features, see the IAM
 /// documentation (https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of members to a role. Optionally, may specify a
-  /// condition that determines how and when the bindings are applied. Each of
-  /// the bindings must contain at least one member.
+  /// Associates a list of members to a role.
+  ///
+  /// Optionally, may specify a condition that determines how and when the
+  /// bindings are applied. Each of the bindings must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// etag is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the etag in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the etag in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An etag is returned in the response to getIamPolicy, and
   /// systems are expected to put that etag in the request to setIamPolicy to
@@ -7924,20 +8473,21 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy.Valid values are 0, 1, and 3. Requests
-  /// that specify an invalid value are rejected.Any operation that affects
-  /// conditional role bindings must specify version 3. This requirement applies
-  /// to the following operations: Getting a policy that includes a conditional
-  /// role binding Adding a conditional role binding to a policy Changing a
-  /// conditional role binding in a policy Removing any role binding, with or
-  /// without a condition, from a policy that includes conditionsImportant: If
-  /// you use IAM Conditions, you must include the etag field whenever you call
-  /// setIamPolicy. If you omit this field, then IAM allows you to overwrite a
-  /// version 3 policy with a version 1 policy, and all of the conditions in the
-  /// version 3 policy are lost.If a policy does not include any conditions,
-  /// operations on that policy may specify any valid version or leave the field
-  /// unset.To learn which resources support conditions in their IAM policies,
-  /// see the IAM documentation
+  /// Specifies the format of the policy.Valid values are 0, 1, and 3.
+  ///
+  /// Requests that specify an invalid value are rejected.Any operation that
+  /// affects conditional role bindings must specify version 3. This requirement
+  /// applies to the following operations: Getting a policy that includes a
+  /// conditional role binding Adding a conditional role binding to a policy
+  /// Changing a conditional role binding in a policy Removing any role binding,
+  /// with or without a condition, from a policy that includes
+  /// conditionsImportant: If you use IAM Conditions, you must include the etag
+  /// field whenever you call setIamPolicy. If you omit this field, then IAM
+  /// allows you to overwrite a version 3 policy with a version 1 policy, and
+  /// all of the conditions in the version 3 policy are lost.If a policy does
+  /// not include any conditions, operations on that policy may specify any
+  /// valid version or leave the field unset.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -7974,28 +8524,43 @@ class Policy {
 }
 
 /// A Dataproc job for running Presto (https://prestosql.io/) queries.
+///
 /// IMPORTANT: The Dataproc Presto Optional Component
 /// (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be
 /// enabled when the cluster is created to submit a Presto job to the cluster.
 class PrestoJob {
-  /// Optional. Presto client tags to attach to this query
+  /// Presto client tags to attach to this query
+  ///
+  /// Optional.
   core.List<core.String> clientTags;
 
-  /// Optional. Whether to continue executing queries if a query fails. The
-  /// default value is false. Setting to true can be useful when executing
+  /// Whether to continue executing queries if a query fails.
+  ///
+  /// The default value is false. Setting to true can be useful when executing
   /// independent parallel queries.
+  ///
+  /// Optional.
   core.bool continueOnFailure;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// Optional. The format in which query output will be displayed. See the
-  /// Presto documentation for supported output formats
+  /// The format in which query output will be displayed.
+  ///
+  /// See the Presto documentation for supported output formats
+  ///
+  /// Optional.
   core.String outputFormat;
 
-  /// Optional. A mapping of property names to values. Used to set Presto
-  /// session properties (https://prestodb.io/docs/current/sql/set-session.html)
-  /// Equivalent to using the --session flag in the Presto CLI
+  /// A mapping of property names to values.
+  ///
+  /// Used to set Presto session properties
+  /// (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to
+  /// using the --session flag in the Presto CLI
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   /// The HCFS URI of the script that contains SQL queries.
@@ -8072,39 +8637,62 @@ class PrestoJob {
 /// (https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
 /// applications on YARN.
 class PySparkJob {
-  /// Optional. HCFS URIs of archives to be extracted into the working directory
-  /// of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and
-  /// .zip.
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
   core.List<core.String> archiveUris;
 
-  /// Optional. The arguments to pass to the driver. Do not include arguments,
-  /// such as --conf, that can be set as job properties, since a collision may
-  /// occur that causes an incorrect job submission.
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments, such as --conf, that can be set as job
+  /// properties, since a collision may occur that causes an incorrect job
+  /// submission.
+  ///
+  /// Optional.
   core.List<core.String> args;
 
-  /// Optional. HCFS URIs of files to be placed in the working directory of each
-  /// executor. Useful for naively parallel tasks.
+  /// HCFS URIs of files to be placed in the working directory of each executor.
+  ///
+  /// Useful for naively parallel tasks.
+  ///
+  /// Optional.
   core.List<core.String> fileUris;
 
-  /// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python
-  /// driver and tasks.
+  /// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and
+  /// tasks.
+  ///
+  /// Optional.
   core.List<core.String> jarFileUris;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// Required. The HCFS URI of the main Python file to use as the driver. Must
-  /// be a .py file.
+  /// The HCFS URI of the main Python file to use as the driver.
+  ///
+  /// Must be a .py file.
+  ///
+  /// Required.
   core.String mainPythonFileUri;
 
-  /// Optional. A mapping of property names to values, used to configure
-  /// PySpark. Properties that conflict with values set by the Dataproc API may
-  /// be overwritten. Can include properties set in
+  /// A mapping of property names to values, used to configure PySpark.
+  ///
+  /// Properties that conflict with values set by the Dataproc API may be
+  /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
-  /// Optional. HCFS file URIs of Python files to pass to the PySpark framework.
+  /// HCFS file URIs of Python files to pass to the PySpark framework.
+  ///
   /// Supported file types: .py, .egg, and .zip.
+  ///
+  /// Optional.
   core.List<core.String> pythonFileUris;
 
   PySparkJob();
@@ -8186,12 +8774,15 @@ class PySparkJob {
 
 /// A list of queries to run on a cluster.
 class QueryList {
-  /// Required. The queries to execute. You do not need to end a query
-  /// expression with a semicolon. Multiple queries can be specified in one
-  /// string by separating each with a semicolon. Here is an example of a
-  /// Dataproc API snippet that uses a QueryList to specify a HiveJob:
-  /// "hiveJob": { "queryList": { "queries": [ "query1", "query2",
-  /// "query3;query4", ] } }
+  /// The queries to execute.
+  ///
+  /// You do not need to end a query expression with a semicolon. Multiple
+  /// queries can be specified in one string by separating each with a
+  /// semicolon. Here is an example of a Dataproc API snippet that uses a
+  /// QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
+  /// "query1", "query2", "query3;query4", ] } }
+  ///
+  /// Required.
   core.List<core.String> queries;
 
   QueryList();
@@ -8215,9 +8806,12 @@ class QueryList {
 
 /// Validation based on regular expressions.
 class RegexValidation {
-  /// Required. RE2 regular expressions used to validate the parameter's value.
+  /// RE2 regular expressions used to validate the parameter's value.
+  ///
   /// The value must match the regex in its entirety (substring matches are not
   /// sufficient).
+  ///
+  /// Required.
   core.List<core.String> regexes;
 
   RegexValidation();
@@ -8241,7 +8835,9 @@ class RegexValidation {
 
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinity {
-  /// Optional. Type of reservation to consume
+  /// Type of reservation to consume
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
   /// - "NO_RESERVATION" : Do not consume from any allocated capacity.
@@ -8250,10 +8846,14 @@ class ReservationAffinity {
   /// specify key value fields for specifying the reservations.
   core.String consumeReservationType;
 
-  /// Optional. Corresponds to the label key of reservation resource.
+  /// Corresponds to the label key of reservation resource.
+  ///
+  /// Optional.
   core.String key;
 
-  /// Optional. Corresponds to the label values of reservation resource.
+  /// Corresponds to the label values of reservation resource.
+  ///
+  /// Optional.
   core.List<core.String> values;
 
   ReservationAffinity();
@@ -8312,10 +8912,11 @@ class SecurityConfig {
 
 /// Request message for SetIamPolicy method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the resource. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the resource.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   SetIamPolicyRequest();
@@ -8338,26 +8939,34 @@ class SetIamPolicyRequest {
 
 /// Specifies the selection and config of software inside the cluster.
 class SoftwareConfig {
-  /// Optional. The version of software inside the cluster. It must be one of
-  /// the supported Dataproc Versions
+  /// The version of software inside the cluster.
+  ///
+  /// It must be one of the supported Dataproc Versions
   /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions),
   /// such as "1.2" (including a subminor version, such as "1.2.29"), or the
   /// "preview" version
   /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
   /// If unspecified, it defaults to the latest Debian version.
+  ///
+  /// Optional.
   core.String imageVersion;
 
-  /// Optional. The set of components to activate on the cluster.
+  /// The set of components to activate on the cluster.
+  ///
+  /// Optional.
   core.List<core.String> optionalComponents;
 
-  /// Optional. The properties to set on daemon config files.Property keys are
-  /// specified in prefix:property format, for example core:hadoop.tmp.dir. The
-  /// following are supported prefixes and their mappings: capacity-scheduler:
-  /// capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml
-  /// hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig:
-  /// pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more
-  /// information, see Cluster properties
+  /// The properties to set on daemon config files.Property keys are specified
+  /// in prefix:property format, for example core:hadoop.tmp.dir.
+  ///
+  /// The following are supported prefixes and their mappings:
+  /// capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp:
+  /// distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred:
+  /// mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn:
+  /// yarn-site.xmlFor more information, see Cluster properties
   /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   SoftwareConfig();
@@ -8401,38 +9010,57 @@ class SoftwareConfig {
 /// A Dataproc job for running Apache Spark (http://spark.apache.org/)
 /// applications on YARN.
 class SparkJob {
-  /// Optional. HCFS URIs of archives to be extracted into the working directory
-  /// of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and
-  /// .zip.
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
   core.List<core.String> archiveUris;
 
-  /// Optional. The arguments to pass to the driver. Do not include arguments,
-  /// such as --conf, that can be set as job properties, since a collision may
-  /// occur that causes an incorrect job submission.
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments, such as --conf, that can be set as job
+  /// properties, since a collision may occur that causes an incorrect job
+  /// submission.
+  ///
+  /// Optional.
   core.List<core.String> args;
 
-  /// Optional. HCFS URIs of files to be placed in the working directory of each
-  /// executor. Useful for naively parallel tasks.
+  /// HCFS URIs of files to be placed in the working directory of each executor.
+  ///
+  /// Useful for naively parallel tasks.
+  ///
+  /// Optional.
   core.List<core.String> fileUris;
 
-  /// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark
-  /// driver and tasks.
+  /// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and
+  /// tasks.
+  ///
+  /// Optional.
   core.List<core.String> jarFileUris;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// The name of the driver's main class. The jar file that contains the class
-  /// must be in the default CLASSPATH or specified in jar_file_uris.
+  /// The name of the driver's main class.
+  ///
+  /// The jar file that contains the class must be in the default CLASSPATH or
+  /// specified in jar_file_uris.
   core.String mainClass;
 
   /// The HCFS URI of the jar file that contains the main class.
   core.String mainJarFileUri;
 
-  /// Optional. A mapping of property names to values, used to configure Spark.
+  /// A mapping of property names to values, used to configure Spark.
+  ///
   /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   SparkJob();
@@ -8513,31 +9141,49 @@ class SparkJob {
 /// A Dataproc job for running Apache SparkR
 /// (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 class SparkRJob {
-  /// Optional. HCFS URIs of archives to be extracted into the working directory
-  /// of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and
-  /// .zip.
+  /// HCFS URIs of archives to be extracted into the working directory of each
+  /// executor.
+  ///
+  /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  ///
+  /// Optional.
   core.List<core.String> archiveUris;
 
-  /// Optional. The arguments to pass to the driver. Do not include arguments,
-  /// such as --conf, that can be set as job properties, since a collision may
-  /// occur that causes an incorrect job submission.
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments, such as --conf, that can be set as job
+  /// properties, since a collision may occur that causes an incorrect job
+  /// submission.
+  ///
+  /// Optional.
   core.List<core.String> args;
 
-  /// Optional. HCFS URIs of files to be placed in the working directory of each
-  /// executor. Useful for naively parallel tasks.
+  /// HCFS URIs of files to be placed in the working directory of each executor.
+  ///
+  /// Useful for naively parallel tasks.
+  ///
+  /// Optional.
   core.List<core.String> fileUris;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// Required. The HCFS URI of the main R file to use as the driver. Must be a
-  /// .R file.
+  /// The HCFS URI of the main R file to use as the driver.
+  ///
+  /// Must be a .R file.
+  ///
+  /// Required.
   core.String mainRFileUri;
 
-  /// Optional. A mapping of property names to values, used to configure SparkR.
+  /// A mapping of property names to values, used to configure SparkR.
+  ///
   /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   SparkRJob();
@@ -8604,15 +9250,23 @@ class SparkRJob {
 /// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
 /// queries.
 class SparkSqlJob {
-  /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+  /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+  ///
+  /// Optional.
   core.List<core.String> jarFileUris;
 
-  /// Optional. The runtime log config for job execution.
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
   LoggingConfig loggingConfig;
 
-  /// Optional. A mapping of property names to values, used to configure Spark
-  /// SQL's SparkConf. Properties that conflict with values set by the Dataproc
-  /// API may be overwritten.
+  /// A mapping of property names to values, used to configure Spark SQL's
+  /// SparkConf.
+  ///
+  /// Properties that conflict with values set by the Dataproc API may be
+  /// overwritten.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> properties;
 
   /// The HCFS URI of the script that contains SQL queries.
@@ -8621,8 +9275,10 @@ class SparkSqlJob {
   /// A list of queries.
   QueryList queryList;
 
-  /// Optional. Mapping of query variable names to values (equivalent to the
-  /// Spark SQL command: SET name="value";).
+  /// Mapping of query variable names to values (equivalent to the Spark SQL
+  /// command: SET name="value";).
+  ///
+  /// Optional.
   core.Map<core.String, core.String> scriptVariables;
 
   SparkSqlJob();
@@ -8691,24 +9347,27 @@ class SparkSqlJob {
 }
 
 /// The Status type defines a logical error model that is suitable for different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// gRPC (https://github.com/grpc). Each Status message contains three pieces of
-/// data: error code, error message, and error details.You can find out more
-/// about this error model and how to work with it in the API Design Guide
-/// (https://cloud.google.com/apis/design/errors).
+/// programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by gRPC (https://github.com/grpc). Each Status message contains
+/// three pieces of data: error code, error message, and error details.You can
+/// find out more about this error model and how to work with it in the API
+/// Design Guide (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -8751,16 +9410,22 @@ class Status {
 
 /// A request to submit a job.
 class SubmitJobRequest {
-  /// Required. The job resource.
+  /// The job resource.
+  ///
+  /// Required.
   Job job;
 
-  /// Optional. A unique id used to identify the request. If the server receives
-  /// two SubmitJobRequest requests with the same id, then the second request
-  /// will be ignored and the first Job created and stored in the backend is
-  /// returned.It is recommended to always set this value to a UUID
+  /// A unique id used to identify the request.
+  ///
+  /// If the server receives two SubmitJobRequest requests with the same id,
+  /// then the second request will be ignored and the first Job created and
+  /// stored in the backend is returned.It is recommended to always set this
+  /// value to a UUID
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
   core.String requestId;
 
   SubmitJobRequest();
@@ -8787,22 +9452,27 @@ class SubmitJobRequest {
 }
 
 /// A configurable parameter that replaces one or more fields in the template.
+///
 /// Parameterizable fields: - Labels - File uris - Job properties - Job
 /// arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone
 /// (in ClusterSelector)
 class TemplateParameter {
-  /// Optional. Brief description of the parameter. Must not exceed 1024
-  /// characters.
+  /// Brief description of the parameter.
+  ///
+  /// Must not exceed 1024 characters.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. Paths to all fields that the parameter replaces. A field is
-  /// allowed to appear in at most one parameter's list of field paths.A field
-  /// path is similar in syntax to a google.protobuf.FieldMask. For example, a
-  /// field path that references the zone field of a workflow template's cluster
-  /// selector would be specified as placement.clusterSelector.zone.Also, field
-  /// paths can reference fields using the following syntax: Values in maps can
-  /// be referenced by key: labels'key'
-  /// placement.clusterSelector.clusterLabels'key'
+  /// Paths to all fields that the parameter replaces.
+  ///
+  /// A field is allowed to appear in at most one parameter's list of field
+  /// paths.A field path is similar in syntax to a google.protobuf.FieldMask.
+  /// For example, a field path that references the zone field of a workflow
+  /// template's cluster selector would be specified as
+  /// placement.clusterSelector.zone.Also, field paths can reference fields
+  /// using the following syntax: Values in maps can be referenced by key:
+  /// labels'key' placement.clusterSelector.clusterLabels'key'
   /// placement.managedCluster.labels'key'
   /// placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key'
   /// Jobs in the jobs list can be referenced by step-id:
@@ -8820,16 +9490,24 @@ class TemplateParameter {
   /// fields can be referenced. For example, the following field paths are
   /// invalid: placement.clusterSelector.clusterLabels
   /// jobs'step-id'.sparkJob.args
+  ///
+  /// Required.
   core.List<core.String> fields;
 
-  /// Required. Parameter name. The parameter name is used as the key, and
-  /// paired with the parameter value, which are passed to the template when the
-  /// template is instantiated. The name must contain only capital letters
-  /// (A-Z), numbers (0-9), and underscores (_), and must not start with a
-  /// number. The maximum length is 40 characters.
+  /// Parameter name.
+  ///
+  /// The parameter name is used as the key, and paired with the parameter
+  /// value, which are passed to the template when the template is instantiated.
+  /// The name must contain only capital letters (A-Z), numbers (0-9), and
+  /// underscores (_), and must not start with a number. The maximum length is
+  /// 40 characters.
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. Validation rules to be applied to this parameter's value.
+  /// Validation rules to be applied to this parameter's value.
+  ///
+  /// Optional.
   ParameterValidation validation;
 
   TemplateParameter();
@@ -8872,9 +9550,10 @@ class TemplateParameter {
 
 /// Request message for TestIamPermissions method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the resource. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see IAM Overview
+  /// The set of permissions to check for the resource.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see IAM Overview
   /// (https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -8923,7 +9602,9 @@ class TestIamPermissionsResponse {
 
 /// Validation based on a list of allowed values.
 class ValueValidation {
-  /// Required. List of allowed values for the parameter.
+  /// List of allowed values for the parameter.
+  ///
+  /// Required.
   core.List<core.String> values;
 
   ValueValidation();
@@ -8947,7 +9628,9 @@ class ValueValidation {
 
 /// The workflow graph.
 class WorkflowGraph {
-  /// Output only. The workflow nodes.
+  /// The workflow nodes.
+  ///
+  /// Output only.
   core.List<WorkflowNode> nodes;
 
   WorkflowGraph();
@@ -8972,31 +9655,47 @@ class WorkflowGraph {
 
 /// A Dataproc workflow template resource.
 class WorkflowMetadata {
-  /// Output only. The name of the target cluster.
+  /// The name of the target cluster.
+  ///
+  /// Output only.
   core.String clusterName;
 
-  /// Output only. The UUID of target cluster.
+  /// The UUID of target cluster.
+  ///
+  /// Output only.
   core.String clusterUuid;
 
-  /// Output only. The create cluster operation metadata.
+  /// The create cluster operation metadata.
+  ///
+  /// Output only.
   ClusterOperation createCluster;
 
-  /// Output only. The delete cluster operation metadata.
+  /// The delete cluster operation metadata.
+  ///
+  /// Output only.
   ClusterOperation deleteCluster;
 
-  /// Output only. Workflow end time.
+  /// Workflow end time.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Output only. The workflow graph.
+  /// The workflow graph.
+  ///
+  /// Output only.
   WorkflowGraph graph;
 
   /// Map from parameter names to values that were used for those parameters.
   core.Map<core.String, core.String> parameters;
 
-  /// Output only. Workflow start time.
+  /// Workflow start time.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. The workflow state.
+  /// The workflow state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNKNOWN" : Unused.
   /// - "PENDING" : The operation has been created.
@@ -9004,18 +9703,22 @@ class WorkflowMetadata {
   /// - "DONE" : The operation is done; either cancelled or completed.
   core.String state;
 
-  /// Output only. The resource name of the workflow template as described in
-  /// https://cloud.google.com/apis/design/resource_names. For
-  /// projects.regions.workflowTemplates, the resource name of the template has
-  /// the following format:
+  /// The resource name of the workflow template as described in
+  /// https://cloud.google.com/apis/design/resource_names.
+  ///
+  /// For projects.regions.workflowTemplates, the resource name of the template
+  /// has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
   /// projects.locations.workflowTemplates, the resource name of the template
   /// has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
+  ///
+  /// Output only.
   core.String template;
 
-  /// Output only. The version of template at the time of workflow
-  /// instantiation.
+  /// The version of template at the time of workflow instantiation.
+  ///
+  /// Output only.
   core.int version;
 
   WorkflowMetadata();
@@ -9107,16 +9810,24 @@ class WorkflowMetadata {
 
 /// The workflow node.
 class WorkflowNode {
-  /// Output only. The error detail.
+  /// The error detail.
+  ///
+  /// Output only.
   core.String error;
 
-  /// Output only. The job id; populated after the node enters RUNNING state.
+  /// The job id; populated after the node enters RUNNING state.
+  ///
+  /// Output only.
   core.String jobId;
 
-  /// Output only. Node's prerequisite nodes.
+  /// Node's prerequisite nodes.
+  ///
+  /// Output only.
   core.List<core.String> prerequisiteStepIds;
 
-  /// Output only. The node state.
+  /// The node state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "NODE_STATE_UNSPECIFIED" : State is unspecified.
   /// - "BLOCKED" : The node is awaiting prerequisite node to finish.
@@ -9127,7 +9838,9 @@ class WorkflowNode {
   /// ancestor or peer failed.
   core.String state;
 
-  /// Output only. The name of the node.
+  /// The name of the node.
+  ///
+  /// Output only.
   core.String stepId;
 
   WorkflowNode();
@@ -9175,51 +9888,70 @@ class WorkflowNode {
 
 /// A Dataproc workflow template resource.
 class WorkflowTemplate {
-  /// Output only. The time template was created.
+  /// The time template was created.
+  ///
+  /// Output only.
   core.String createTime;
   core.String id;
 
-  /// Required. The Directed Acyclic Graph of Jobs to submit.
+  /// The Directed Acyclic Graph of Jobs to submit.
+  ///
+  /// Required.
   core.List<OrderedJob> jobs;
 
-  /// Optional. The labels to associate with this template. These labels will be
-  /// propagated to all jobs and clusters created by the workflow instance.Label
-  /// keys must contain 1 to 63 characters, and must conform to RFC 1035
-  /// (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if
-  /// present, must contain 1 to 63 characters, and must conform to RFC 1035
-  /// (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be
-  /// associated with a template.
+  /// The labels to associate with this template.
+  ///
+  /// These labels will be propagated to all jobs and clusters created by the
+  /// workflow instance.Label keys must contain 1 to 63 characters, and must
+  /// conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values
+  /// may be empty, but, if present, must contain 1 to 63 characters, and must
+  /// conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32
+  /// labels can be associated with a template.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The resource name of the workflow template, as described in
-  /// https://cloud.google.com/apis/design/resource_names. For
-  /// projects.regions.workflowTemplates, the resource name of the template has
-  /// the following format:
+  /// The resource name of the workflow template, as described in
+  /// https://cloud.google.com/apis/design/resource_names.
+  ///
+  /// For projects.regions.workflowTemplates, the resource name of the template
+  /// has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
   /// projects.locations.workflowTemplates, the resource name of the template
   /// has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
+  ///
+  /// Output only.
   core.String name;
 
-  /// Optional. Template parameters whose values are substituted into the
-  /// template. Values for parameters must be provided when the template is
-  /// instantiated.
+  /// Template parameters whose values are substituted into the template.
+  ///
+  /// Values for parameters must be provided when the template is instantiated.
+  ///
+  /// Optional.
   core.List<TemplateParameter> parameters;
 
-  /// Required. WorkflowTemplate scheduling information.
+  /// WorkflowTemplate scheduling information.
+  ///
+  /// Required.
   WorkflowTemplatePlacement placement;
 
-  /// Output only. The time template was last updated.
+  /// The time template was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
-  /// Optional. Used to perform a consistent read-modify-write.This field should
-  /// be left blank for a CreateWorkflowTemplate request. It is required for an
-  /// UpdateWorkflowTemplate request, and must match the current server version.
-  /// A typical update template flow would fetch the current template with a
-  /// GetWorkflowTemplate request, which will return the current template with
-  /// the version field filled in with the current server version. The user
-  /// updates other fields in the template, then returns it as part of the
-  /// UpdateWorkflowTemplate request.
+  /// Used to perform a consistent read-modify-write.This field should be left
+  /// blank for a CreateWorkflowTemplate request.
+  ///
+  /// It is required for an UpdateWorkflowTemplate request, and must match the
+  /// current server version. A typical update template flow would fetch the
+  /// current template with a GetWorkflowTemplate request, which will return the
+  /// current template with the version field filled in with the current server
+  /// version. The user updates other fields in the template, then returns it as
+  /// part of the UpdateWorkflowTemplate request.
+  ///
+  /// Optional.
   core.int version;
 
   WorkflowTemplate();
@@ -9303,8 +10035,10 @@ class WorkflowTemplate {
 /// Specifies workflow execution target.Either managed_cluster or
 /// cluster_selector is required.
 class WorkflowTemplatePlacement {
-  /// Optional. A selector that chooses target cluster for jobs based on
-  /// metadata.The selector is evaluated at the time each job is submitted.
+  /// A selector that chooses target cluster for jobs based on metadata.The
+  /// selector is evaluated at the time each job is submitted.
+  ///
+  /// Optional.
   ClusterSelector clusterSelector;
 
   /// A cluster that is managed by the workflow.
@@ -9335,18 +10069,26 @@ class WorkflowTemplatePlacement {
   }
 }
 
-/// A YARN application created by a job. Application information is a subset of
+/// A YARN application created by a job.
+///
+/// Application information is a subset of
 /// org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature:
 /// This report is available for testing purposes only. It may be changed before
 /// final release.
 class YarnApplication {
-  /// Required. The application name.
+  /// The application name.
+  ///
+  /// Required.
   core.String name;
 
-  /// Required. The numerical progress of the application, from 1 to 100.
+  /// The numerical progress of the application, from 1 to 100.
+  ///
+  /// Required.
   core.double progress;
 
-  /// Required. The application state.
+  /// The application state.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Status is unspecified.
   /// - "NEW" : Status is NEW.
@@ -9359,10 +10101,13 @@ class YarnApplication {
   /// - "KILLED" : Status is KILLED.
   core.String state;
 
-  /// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or
-  /// TimelineServer that provides application-specific information. The URL
-  /// uses the internal hostname, and requires a proxy server for resolution
-  /// and, possibly, access.
+  /// The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer
+  /// that provides application-specific information.
+  ///
+  /// The URL uses the internal hostname, and requires a proxy server for
+  /// resolution and, possibly, access.
+  ///
+  /// Optional.
   core.String trackingUrl;
 
   YarnApplication();

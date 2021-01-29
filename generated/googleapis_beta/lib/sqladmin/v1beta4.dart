@@ -216,8 +216,9 @@ class BackupRunsResource {
     );
   }
 
-  /// Creates a new backup run on demand. This method is applicable only to
-  /// Second Generation instances.
+  /// Creates a new backup run on demand.
+  ///
+  /// This method is applicable only to Second Generation instances.
   ///
   /// [request] - The metadata request object.
   ///
@@ -628,7 +629,9 @@ class DatabasesResource {
   }
 
   /// Partially updates a resource containing information about a database
-  /// inside a Cloud SQL instance. This method supports patch semantics.
+  /// inside a Cloud SQL instance.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -841,10 +844,12 @@ class InstancesResource {
   InstancesResource(commons.ApiRequester client) : _requester = client;
 
   /// Add a new trusted Certificate Authority (CA) version for the specified
-  /// instance. Required to prepare for a certificate rotation. If a CA version
-  /// was previously added but never used in a certificate rotation, this
-  /// operation replaces that version. There cannot be more than one CA version
-  /// waiting to be rotated in.
+  /// instance.
+  ///
+  /// Required to prepare for a certificate rotation. If a CA version was
+  /// previously added but never used in a certificate rotation, this operation
+  /// replaces that version. There cannot be more than one CA version waiting to
+  /// be rotated in.
   ///
   /// Request parameters:
   ///
@@ -904,8 +909,9 @@ class InstancesResource {
     );
   }
 
-  /// Creates a Cloud SQL instance as a clone of the source instance. Using this
-  /// operation might cause your instance to restart.
+  /// Creates a Cloud SQL instance as a clone of the source instance.
+  ///
+  /// Using this operation might cause your instance to restart.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1168,8 +1174,9 @@ class InstancesResource {
     );
   }
 
-  /// Failover the instance to its failover replica instance. Using this
-  /// operation might cause your instance to restart.
+  /// Failover the instance to its failover replica instance.
+  ///
+  /// Using this operation might cause your instance to restart.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1501,10 +1508,12 @@ class InstancesResource {
   }
 
   /// Lists all of the trusted Certificate Authorities (CAs) for the specified
-  /// instance. There can be up to three CAs listed: the CA that was used to
-  /// sign the certificate that is currently in use, a CA that has been added
-  /// but not yet used to sign a certificate, and a CA used to sign a
-  /// certificate that has previously rotated out.
+  /// instance.
+  ///
+  /// There can be up to three CAs listed: the CA that was used to sign the
+  /// certificate that is currently in use, a CA that has been added but not yet
+  /// used to sign a certificate, and a CA used to sign a certificate that has
+  /// previously rotated out.
   ///
   /// Request parameters:
   ///
@@ -1565,8 +1574,9 @@ class InstancesResource {
     );
   }
 
-  /// Updates settings of a Cloud SQL instance. This method supports patch
-  /// semantics.
+  /// Updates settings of a Cloud SQL instance.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1632,6 +1642,7 @@ class InstancesResource {
   }
 
   /// Promotes the read replica instance to be a stand-alone Cloud SQL instance.
+  ///
   /// Using this operation might cause your instance to restart.
   ///
   /// Request parameters:
@@ -1814,8 +1825,9 @@ class InstancesResource {
     );
   }
 
-  /// Restores a backup of a Cloud SQL instance. Using this operation might
-  /// cause your instance to restart.
+  /// Restores a backup of a Cloud SQL instance.
+  ///
+  /// Using this operation might cause your instance to restart.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2134,8 +2146,9 @@ class InstancesResource {
     );
   }
 
-  /// Updates settings of a Cloud SQL instance. Using this operation might cause
-  /// your instance to restart.
+  /// Updates settings of a Cloud SQL instance.
+  ///
+  /// Using this operation might cause your instance to restart.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2580,9 +2593,10 @@ class SslCertsResource {
   SslCertsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generates a short-lived X509 certificate containing the provided public
-  /// key and signed by a private key specific to the target instance. Users may
-  /// use the certificate to authenticate as themselves when connecting to the
-  /// database.
+  /// key and signed by a private key specific to the target instance.
+  ///
+  /// Users may use the certificate to authenticate as themselves when
+  /// connecting to the database.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2648,8 +2662,10 @@ class SslCertsResource {
     );
   }
 
-  /// Deletes the SSL certificate. For First Generation instances, the
-  /// certificate remains valid until the instance is restarted.
+  /// Deletes the SSL certificate.
+  ///
+  /// For First Generation instances, the certificate remains valid until the
+  /// instance is restarted.
   ///
   /// Request parameters:
   ///
@@ -2716,9 +2732,10 @@ class SslCertsResource {
     );
   }
 
-  /// Retrieves a particular SSL certificate. Does not include the private key
-  /// (required for usage). The private key must be saved from the response to
-  /// initial creation.
+  /// Retrieves a particular SSL certificate.
+  ///
+  /// Does not include the private key (required for usage). The private key
+  /// must be saved from the response to initial creation.
   ///
   /// Request parameters:
   ///
@@ -2786,8 +2803,9 @@ class SslCertsResource {
   }
 
   /// Creates an SSL certificate and returns it along with the private key and
-  /// server certificate authority. The new certificate will not be usable until
-  /// the instance is restarted.
+  /// server certificate authority.
+  ///
+  /// The new certificate will not be usable until the instance is restarted.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2922,7 +2940,9 @@ class TiersResource {
   TiersResource(commons.ApiRequester client) : _requester = client;
 
   /// Lists all available machine types (tiers) for Cloud SQL, for example,
-  /// db-n1-standard-1. For related information, see Pricing.
+  /// db-n1-standard-1.
+  ///
+  /// For related information, see Pricing.
   ///
   /// Request parameters:
   ///
@@ -3268,7 +3288,9 @@ class AclEntry {
   /// This is always *sql#aclEntry*.
   core.String kind;
 
-  /// Optional. A label to identify this entry.
+  /// A label to identify this entry.
+  ///
+  /// Optional.
   core.String name;
 
   /// The allowlisted value for the access control list.
@@ -3350,8 +3372,9 @@ class BackupConfiguration {
   /// Backup retention settings.
   BackupRetentionSettings backupRetentionSettings;
 
-  /// (MySQL only) Whether binary log is enabled. If backup configuration is
-  /// disabled, binarylog must be disabled as well.
+  /// (MySQL only) Whether binary log is enabled.
+  ///
+  /// If backup configuration is disabled, binarylog must be disabled as well.
   core.bool binaryLogEnabled;
 
   /// Whether this configuration is enabled.
@@ -3451,8 +3474,9 @@ class BackupConfiguration {
 /// backups we will retain.
 class BackupRetentionSettings {
   /// Depending on the value of retention_unit, this is used to determine if a
-  /// backup needs to be deleted. If retention_unit is 'COUNT', we will retain
-  /// this many backups.
+  /// backup needs to be deleted.
+  ///
+  /// If retention_unit is 'COUNT', we will retain this many backups.
   core.int retainedBackups;
 
   /// The unit that 'retained_backups' represents.
@@ -3498,12 +3522,14 @@ class BackupRun {
   /// The description of this run, only applicable to on-demand backups.
   core.String description;
 
-  /// Encryption configuration specific to a backup. Applies only to Second
-  /// Generation instances.
+  /// Encryption configuration specific to a backup.
+  ///
+  /// Applies only to Second Generation instances.
   DiskEncryptionConfiguration diskEncryptionConfiguration;
 
-  /// Encryption status specific to a backup. Applies only to Second Generation
-  /// instances.
+  /// Encryption status specific to a backup.
+  ///
+  /// Applies only to Second Generation instances.
   DiskEncryptionStatus diskEncryptionStatus;
 
   /// The time the backup operation completed in UTC timezone in RFC 3339
@@ -3514,12 +3540,14 @@ class BackupRun {
   /// example *2012-11-15T16:19:00.094Z*.
   core.String enqueuedTime;
 
-  /// Information about why the backup operation failed. This is only present if
-  /// the run has the FAILED status.
+  /// Information about why the backup operation failed.
+  ///
+  /// This is only present if the run has the FAILED status.
   OperationError error;
 
-  /// The identifier for this backup run. Unique only for a specific Cloud SQL
-  /// instance.
+  /// The identifier for this backup run.
+  ///
+  /// Unique only for a specific Cloud SQL instance.
   core.String id;
 
   /// Name of the database instance.
@@ -3686,8 +3714,10 @@ class BackupRunsListResponse {
   /// This is always *sql#backupRunsList*.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   BackupRunsListResponse();
@@ -3765,8 +3795,10 @@ class BinLogCoordinates {
 /// Database instance clone context.
 class CloneContext {
   /// Binary log coordinates, if specified, identify the position up to which
-  /// the source instance is cloned. If not specified, the source instance is
-  /// cloned up to the most recent binary log coordinates.
+  /// the source instance is cloned.
+  ///
+  /// If not specified, the source instance is cloned up to the most recent
+  /// binary log coordinates.
   BinLogCoordinates binLogCoordinates;
 
   /// Name of the Cloud SQL instance to be created as a clone.
@@ -3835,18 +3867,22 @@ class Database {
   /// API.
   core.String etag;
 
-  /// The name of the Cloud SQL instance. This does not include the project ID.
+  /// The name of the Cloud SQL instance.
+  ///
+  /// This does not include the project ID.
   core.String instance;
 
   /// This is always *sql#database*.
   core.String kind;
 
-  /// The name of the database in the Cloud SQL instance. This does not include
-  /// the project ID or instance name.
+  /// The name of the database in the Cloud SQL instance.
+  ///
+  /// This does not include the project ID or instance name.
   core.String name;
 
-  /// The project ID of the project containing the Cloud SQL database. The
-  /// Google apps domain is prefixed if applicable.
+  /// The project ID of the project containing the Cloud SQL database.
+  ///
+  /// The Google apps domain is prefixed if applicable.
   core.String project;
 
   /// The URI of this resource.
@@ -3922,14 +3958,18 @@ class Database {
 
 /// Database flags for Cloud SQL instances.
 class DatabaseFlags {
-  /// The name of the flag. These flags are passed at instance startup, so
-  /// include both server options and system variables for MySQL. Flags are
-  /// specified with underscores, not hyphens. For more information, see
-  /// Configuring Database Flags in the Cloud SQL documentation.
+  /// The name of the flag.
+  ///
+  /// These flags are passed at instance startup, so include both server options
+  /// and system variables for MySQL. Flags are specified with underscores, not
+  /// hyphens. For more information, see Configuring Database Flags in the Cloud
+  /// SQL documentation.
   core.String name;
 
-  /// The value of the flag. Booleans are set to *on* for true and *off* for
-  /// false. This field must be omitted if the flag doesn't take a value.
+  /// The value of the flag.
+  ///
+  /// Booleans are set to *on* for true and *off* for false. This field must be
+  /// omitted if the flag doesn't take a value.
   core.String value;
 
   DatabaseFlags();
@@ -3955,18 +3995,22 @@ class DatabaseFlags {
   }
 }
 
-/// The name and status of the failover replica. This property is applicable
-/// only to Second Generation instances.
+/// The name and status of the failover replica.
+///
+/// This property is applicable only to Second Generation instances.
 class DatabaseInstanceFailoverReplica {
-  /// The availability status of the failover replica. A false status indicates
-  /// that the failover replica is out of sync. The primary instance can only
-  /// failover to the failover replica when the status is true.
+  /// The availability status of the failover replica.
+  ///
+  /// A false status indicates that the failover replica is out of sync. The
+  /// primary instance can only failover to the failover replica when the status
+  /// is true.
   core.bool available;
 
-  /// The name of the failover replica. If specified at instance creation, a
-  /// failover replica is created for the instance. The name doesn't include the
-  /// project ID. This property is applicable only to Second Generation
-  /// instances.
+  /// The name of the failover replica.
+  ///
+  /// If specified at instance creation, a failover replica is created for the
+  /// instance. The name doesn't include the project ID. This property is
+  /// applicable only to Second Generation instances.
   core.String name;
 
   DatabaseInstanceFailoverReplica();
@@ -3992,11 +4036,15 @@ class DatabaseInstanceFailoverReplica {
   }
 }
 
-/// A Cloud SQL instance resource. Next field: 36
+/// A Cloud SQL instance resource.
+///
+/// Next field: 36
 class DatabaseInstance {
-  /// *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server
-  /// that is not managed by Google. This property is read-only; use the *tier*
-  /// property in the *settings* object to determine the database type.
+  ///  *SECOND_GEN*: Cloud SQL database instance.
+  ///
+  /// *EXTERNAL*: A database server that is not managed by Google. This property
+  /// is read-only; use the *tier* property in the *settings* object to
+  /// determine the database type.
   /// Possible string values are:
   /// - "SQL_BACKEND_TYPE_UNSPECIFIED" : This is an unknown backend type for
   /// instance.
@@ -4008,18 +4056,20 @@ class DatabaseInstance {
   /// Connection name of the Cloud SQL instance used in connection strings.
   core.String connectionName;
 
-  /// The current disk usage of the instance in bytes. This property has been
-  /// deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used"
-  /// metric in Cloud Monitoring API instead. Please see this announcement for
-  /// details.
+  /// The current disk usage of the instance in bytes.
+  ///
+  /// This property has been deprecated. Use the
+  /// "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud
+  /// Monitoring API instead. Please see this announcement for details.
   core.String currentDiskSize;
 
-  /// The database engine type and version. The *databaseVersion* field cannot
-  /// be changed after instance creation. MySQL instances: *MYSQL_8_0*,
-  /// *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances:
-  /// *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11* or *POSTGRES_12* (default).
-  /// SQL Server instances: *SQLSERVER_2017_STANDARD* (default),
-  /// *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or
+  /// The database engine type and version.
+  ///
+  /// The *databaseVersion* field cannot be changed after instance creation.
+  /// MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*.
+  /// PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11* or
+  /// *POSTGRES_12* (default). SQL Server instances: *SQLSERVER_2017_STANDARD*
+  /// (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or
   /// *SQLSERVER_2017_WEB*.
   /// Possible string values are:
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : This is an unknown database
@@ -4043,30 +4093,38 @@ class DatabaseInstance {
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
   core.String databaseVersion;
 
-  /// Disk encryption configuration specific to an instance. Applies only to
-  /// Second Generation instances.
+  /// Disk encryption configuration specific to an instance.
+  ///
+  /// Applies only to Second Generation instances.
   DiskEncryptionConfiguration diskEncryptionConfiguration;
 
-  /// Disk encryption status specific to an instance. Applies only to Second
-  /// Generation instances.
+  /// Disk encryption status specific to an instance.
+  ///
+  /// Applies only to Second Generation instances.
   DiskEncryptionStatus diskEncryptionStatus;
 
   /// This field is deprecated and will be removed from a future version of the
-  /// API. Use the *settings.settingsVersion* field instead.
+  /// API.
+  ///
+  /// Use the *settings.settingsVersion* field instead.
   core.String etag;
 
-  /// The name and status of the failover replica. This property is applicable
-  /// only to Second Generation instances.
+  /// The name and status of the failover replica.
+  ///
+  /// This property is applicable only to Second Generation instances.
   DatabaseInstanceFailoverReplica failoverReplica;
 
-  /// The Compute Engine zone that the instance is currently serving from. This
-  /// value could be different from the zone that was specified when the
+  /// The Compute Engine zone that the instance is currently serving from.
+  ///
+  /// This value could be different from the zone that was specified when the
   /// instance was created if the instance has failed over to its secondary
   /// zone.
   core.String gceZone;
 
-  /// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*:
-  /// A Cloud SQL instance that is not replicating from a primary instance.
+  /// The instance type.
+  ///
+  /// This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL
+  /// instance that is not replicating from a primary instance.
   /// *ON_PREMISES_INSTANCE*: An instance running on the customer's premises.
   /// *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a
   /// read-replica.
@@ -4082,8 +4140,10 @@ class DatabaseInstance {
   /// The assigned IP addresses for the instance.
   core.List<IpMapping> ipAddresses;
 
-  /// The IPv6 address assigned to the instance. (Deprecated) This property was
-  /// applicable only to First Generation instances.
+  /// The IPv6 address assigned to the instance.
+  ///
+  /// (Deprecated) This property was applicable only to First Generation
+  /// instances.
   core.String ipv6Address;
 
   /// This is always *sql#instance*.
@@ -4096,20 +4156,25 @@ class DatabaseInstance {
   /// The maximum disk size of the instance in bytes.
   core.String maxDiskSize;
 
-  /// Name of the Cloud SQL instance. This does not include the project ID.
+  /// Name of the Cloud SQL instance.
+  ///
+  /// This does not include the project ID.
   core.String name;
 
   /// Configuration specific to on-premises instances.
   OnPremisesConfiguration onPremisesConfiguration;
 
-  /// The project ID of the project containing the Cloud SQL instance. The
-  /// Google apps domain is prefixed if applicable.
+  /// The project ID of the project containing the Cloud SQL instance.
+  ///
+  /// The Google apps domain is prefixed if applicable.
   core.String project;
 
-  /// The geographical region. Can be *us-central* (*FIRST_GEN* instances only)
-  /// *us-central1* (*SECOND_GEN* instances only) *asia-east1* or
-  /// *europe-west1*. Defaults to *us-central* or *us-central1* depending on the
-  /// instance type. The region cannot be changed after instance creation.
+  /// The geographical region.
+  ///
+  /// Can be *us-central* (*FIRST_GEN* instances only) *us-central1*
+  /// (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*. Defaults to
+  /// *us-central* or *us-central1* depending on the instance type. The region
+  /// cannot be changed after instance creation.
   core.String region;
 
   /// Configuration specific to failover replicas and read replicas.
@@ -4118,7 +4183,9 @@ class DatabaseInstance {
   /// The replicas of the instance.
   core.List<core.String> replicaNames;
 
-  /// Initial root password. Use only on creation.
+  /// Initial root password.
+  ///
+  /// Use only on creation.
   core.String rootPassword;
 
   /// The start time of any upcoming scheduled maintenance for this instance.
@@ -4130,22 +4197,24 @@ class DatabaseInstance {
   /// SSL configuration.
   SslCert serverCaCert;
 
-  /// The service account email address assigned to the instance. This property
-  /// is applicable only to Second Generation instances.
+  /// The service account email address assigned to the instance.
+  ///
+  /// This property is applicable only to Second Generation instances.
   core.String serviceAccountEmailAddress;
 
   /// The user settings.
   Settings settings;
 
-  /// The current serving state of the Cloud SQL instance. This can be one of
-  /// the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance
-  /// is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not
-  /// currently running, but it's ready to be restarted. *SUSPENDED*: The
-  /// instance is not available, for example due to problems with billing. for
-  /// example due to problems with billing. *PENDING_DELETE*: The instance is
-  /// being deleted. *PENDING_CREATE*: The instance is being created.
-  /// *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The
-  /// instance creation failed.
+  /// The current serving state of the Cloud SQL instance.
+  ///
+  /// This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The
+  /// state of the instance is unknown. *RUNNABLE*: The instance has been
+  /// stopped by owner. It is not currently running, but it's ready to be
+  /// restarted. *SUSPENDED*: The instance is not available, for example due to
+  /// problems with billing. for example due to problems with billing.
+  /// *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The
+  /// instance is being created. *MAINTENANCE*: The instance is down for
+  /// maintenance. *FAILED*: The instance creation failed.
   /// Possible string values are:
   /// - "SQL_INSTANCE_STATE_UNSPECIFIED" : The state of the instance is unknown.
   /// - "RUNNABLE" : The instance has been stopped by owner. It is not currently
@@ -4408,11 +4477,13 @@ class DemoteMasterConfiguration {
   core.String kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
-  /// primary instance. Replication configuration information such as the
-  /// username, password, certificates, and keys are not stored in the instance
-  /// metadata. The configuration information is used only to set up the
-  /// replication connection and is stored by MySQL in a file named
-  /// *master.info* in the data directory.
+  /// primary instance.
+  ///
+  /// Replication configuration information such as the username, password,
+  /// certificates, and keys are not stored in the instance metadata. The
+  /// configuration information is used only to set up the replication
+  /// connection and is stored by MySQL in a file named *master.info* in the
+  /// data directory.
   DemoteMasterMySqlReplicaConfiguration mysqlReplicaConfiguration;
 
   DemoteMasterConfiguration();
@@ -4454,13 +4525,14 @@ class DemoteMasterContext {
   /// primary instance.
   DemoteMasterConfiguration replicaConfiguration;
 
-  /// Verify GTID consistency for demote operation. Default value: *True*.
-  /// Second Generation instances only. Setting this flag to false enables you
-  /// to bypass GTID consistency check between on-premises primary instance and
-  /// Cloud SQL instance during the demotion operation but also exposes you to
-  /// the risk of future replication failures. Change the value only if you know
-  /// the reason for the GTID divergence and are confident that doing so will
-  /// not cause any replication issues.
+  /// Verify GTID consistency for demote operation.
+  ///
+  /// Default value: *True*. Second Generation instances only. Setting this flag
+  /// to false enables you to bypass GTID consistency check between on-premises
+  /// primary instance and Cloud SQL instance during the demotion operation but
+  /// also exposes you to the risk of future replication failures. Change the
+  /// value only if you know the reason for the GTID divergence and are
+  /// confident that doing so will not cause any replication issues.
   core.bool verifyGtidConsistency;
 
   DemoteMasterContext();
@@ -4507,9 +4579,10 @@ class DemoteMasterMySqlReplicaConfiguration {
   /// PEM representation of the replica's x509 certificate.
   core.String clientCertificate;
 
-  /// PEM representation of the replica's private key. The corresponsing public
-  /// key is encoded in the client's certificate. The format of the replica's
-  /// private key can be either PKCS #1 or PKCS #8.
+  /// PEM representation of the replica's private key.
+  ///
+  /// The corresponsing public key is encoded in the client's certificate. The
+  /// format of the replica's private key can be either PKCS #1 or PKCS #8.
   core.String clientKey;
 
   /// This is always *sql#demoteMasterMysqlReplicaConfiguration*.
@@ -4568,23 +4641,30 @@ class DemoteMasterMySqlReplicaConfiguration {
   }
 }
 
-/// Deny Maintenance Periods. This specifies a date range during when all CSA
-/// rollout will be denied.
+/// Deny Maintenance Periods.
+///
+/// This specifies a date range during when all CSA rollout will be denied.
 class DenyMaintenancePeriod {
-  /// "deny maintenance period" end date. If the year of the end date is empty,
-  /// the year of the start date also must be empty. In this case, it means the
-  /// deny maintenance period recurs every year. The date is in format
-  /// yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+  /// "deny maintenance period" end date.
+  ///
+  /// If the year of the end date is empty, the year of the start date also must
+  /// be empty. In this case, it means the deny maintenance period recurs every
+  /// year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e.,
+  /// 11-01
   core.String endDate;
 
-  /// "deny maintenance period" start date. If the year of the start date is
-  /// empty, the year of the end date also must be empty. In this case, it means
-  /// the deny maintenance period recurs every year. The date is in format
-  /// yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+  /// "deny maintenance period" start date.
+  ///
+  /// If the year of the start date is empty, the year of the end date also must
+  /// be empty. In this case, it means the deny maintenance period recurs every
+  /// year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e.,
+  /// 11-01
   core.String startDate;
 
   /// Time in UTC when the "deny maintenance period" starts on start_date and
-  /// ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+  /// ends on end_date.
+  ///
+  /// The time is in format: HH:mm:SS, i.e., 00:00:00
   core.String time;
 
   DenyMaintenancePeriod();
@@ -4702,10 +4782,12 @@ class ExportContextCsvExportOptions {
 
 /// Options for exporting from MySQL.
 class ExportContextSqlExportOptionsMysqlExportOptions {
-  /// Option to include SQL statement required to set up replication. If set to
-  /// *1*, the dump file includes a CHANGE MASTER TO statement with the binary
-  /// log coordinates. If set to *2*, the CHANGE MASTER TO statement is written
-  /// as a SQL comment, and has no effect. All other values are ignored.
+  /// Option to include SQL statement required to set up replication.
+  ///
+  /// If set to *1*, the dump file includes a CHANGE MASTER TO statement with
+  /// the binary log coordinates. If set to *2*, the CHANGE MASTER TO statement
+  /// is written as a SQL comment, and has no effect. All other values are
+  /// ignored.
   core.int masterData;
 
   ExportContextSqlExportOptionsMysqlExportOptions();
@@ -4733,8 +4815,9 @@ class ExportContextSqlExportOptions {
   /// Export only schemas.
   core.bool schemaOnly;
 
-  /// Tables to export, or that were exported, from the specified database. If
-  /// you specify tables, specify one and only one database. For PostgreSQL
+  /// Tables to export, or that were exported, from the specified database.
+  ///
+  /// If you specify tables, specify one and only one database. For PostgreSQL
   /// instances, you can specify only one table.
   core.List<core.String> tables;
 
@@ -4777,18 +4860,22 @@ class ExportContext {
   /// Options for exporting data as CSV.
   ExportContextCsvExportOptions csvExportOptions;
 
-  /// Databases to be exported. *MySQL instances:* If *fileType* is *SQL* and no
-  /// database is specified, all databases are exported, except for the *mysql*
-  /// system database. If *fileType* is *CSV*, you can specify one database,
-  /// either by using this property or by using the
-  /// *csvExportOptions.selectQuery* property, which takes precedence over this
-  /// property. *PostgreSQL instances:* You must specify one database to be
-  /// exported. If *fileType* is *CSV*, this database must match the one
-  /// specified in the *csvExportOptions.selectQuery* property.
+  /// Databases to be exported.
+  ///
+  /// *MySQL instances:* If *fileType* is *SQL* and no database is specified,
+  /// all databases are exported, except for the *mysql* system database. If
+  /// *fileType* is *CSV*, you can specify one database, either by using this
+  /// property or by using the *csvExportOptions.selectQuery* property, which
+  /// takes precedence over this property. *PostgreSQL instances:* You must
+  /// specify one database to be exported. If *fileType* is *CSV*, this database
+  /// must match the one specified in the *csvExportOptions.selectQuery*
+  /// property.
   core.List<core.String> databases;
 
-  /// The file type for the specified uri. *SQL*: The file contains SQL
-  /// statements. *CSV*: The file contains CSV data.
+  /// The file type for the specified uri.
+  ///
+  /// *SQL*: The file contains SQL statements. *CSV*: The file contains CSV
+  /// data.
   /// Possible string values are:
   /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
   /// - "SQL" : File containing SQL statements.
@@ -4806,9 +4893,11 @@ class ExportContext {
   ExportContextSqlExportOptions sqlExportOptions;
 
   /// The path to the file in Google Cloud Storage where the export will be
-  /// stored. The URI is in the form *gs: //bucketName/fileName*. If the file
-  /// already exists, the requests // succeeds, but the operation fails. If
-  /// *fileType* is // *SQL* and the filename ends with .gz, the contents are //
+  /// stored.
+  ///
+  /// The URI is in the form *gs: //bucketName/fileName*. If the file already
+  /// exists, the requests // succeeds, but the operation fails. If *fileType*
+  /// is // *SQL* and the filename ends with .gz, the contents are //
   /// compressed.
   core.String uri;
 
@@ -4874,8 +4963,10 @@ class FailoverContext {
   /// This is always *sql#failoverContext*.
   core.String kind;
 
-  /// The current settings version of this instance. Request will be rejected if
-  /// this version doesn't match the current settings version.
+  /// The current settings version of this instance.
+  ///
+  /// Request will be rejected if this version doesn't match the current
+  /// settings version.
   core.String settingsVersion;
 
   FailoverContext();
@@ -4903,15 +4994,17 @@ class FailoverContext {
 
 /// A flag resource.
 class Flag {
-  /// Use this field if only certain integers are accepted. Can be combined with
-  /// min_value and max_value to add additional values.
+  /// Use this field if only certain integers are accepted.
+  ///
+  /// Can be combined with min_value and max_value to add additional values.
   core.List<core.String> allowedIntValues;
 
   /// For *STRING* flags, a list of strings that the value can be set to.
   core.List<core.String> allowedStringValues;
 
-  /// The database version this flag applies to. Can be *MYSQL_8_0*,
-  /// *MYSQL_5_6*, or *MYSQL_5_7*.
+  /// The database version this flag applies to.
+  ///
+  /// Can be *MYSQL_8_0*, *MYSQL_5_6*, or *MYSQL_5_7*.
   core.List<core.String> appliesTo;
 
   /// Whether or not the flag is considered in beta.
@@ -4926,17 +5019,21 @@ class Flag {
   /// For *INTEGER* flags, the minimum allowed value.
   core.String minValue;
 
-  /// This is the name of the flag. Flag names always use underscores, not
-  /// hyphens, for example: *max_allowed_packet*
+  /// This is the name of the flag.
+  ///
+  /// Flag names always use underscores, not hyphens, for example:
+  /// *max_allowed_packet*
   core.String name;
 
-  /// Indicates whether changing this flag will trigger a database restart. Only
-  /// applicable to Second Generation instances.
+  /// Indicates whether changing this flag will trigger a database restart.
+  ///
+  /// Only applicable to Second Generation instances.
   core.bool requiresRestart;
 
-  /// The type of the flag. Flags are typed to being *BOOLEAN*, *STRING*,
-  /// *INTEGER* or *NONE*. *NONE* is used for flags which do not take a value,
-  /// such as *skip_grant_tables*.
+  /// The type of the flag.
+  ///
+  /// Flags are typed to being *BOOLEAN*, *STRING*, *INTEGER* or *NONE*. *NONE*
+  /// is used for flags which do not take a value, such as *skip_grant_tables*.
   /// Possible string values are:
   /// - "SQL_FLAG_TYPE_UNSPECIFIED" : This is an unknown flag type.
   /// - "BOOLEAN" : Boolean type flag.
@@ -5063,16 +5160,20 @@ class FlagsListResponse {
 
 class ImportContextBakImportOptionsEncryptionOptions {
   /// Path to the Certificate (.cer) in Cloud Storage, in the form
-  /// *gs://bucketName/fileName*. The instance must have write permissions to
-  /// the bucket and read access to the file.
+  /// *gs://bucketName/fileName*.
+  ///
+  /// The instance must have write permissions to the bucket and read access to
+  /// the file.
   core.String certPath;
 
   /// Password that encrypts the private key
   core.String pvkPassword;
 
   /// Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
-  /// *gs://bucketName/fileName*. The instance must have write permissions to
-  /// the bucket and read access to the file.
+  /// *gs://bucketName/fileName*.
+  ///
+  /// The instance must have write permissions to the bucket and read access to
+  /// the file.
   core.String pvkPath;
 
   ImportContextBakImportOptionsEncryptionOptions();
@@ -5130,8 +5231,10 @@ class ImportContextBakImportOptions {
 
 /// Options for importing data as CSV.
 class ImportContextCsvImportOptions {
-  /// The columns to which CSV data is imported. If not specified, all columns
-  /// of the database table are loaded with CSV data.
+  /// The columns to which CSV data is imported.
+  ///
+  /// If not specified, all columns of the database table are loaded with CSV
+  /// data.
   core.List<core.String> columns;
 
   /// The table to which CSV data is imported.
@@ -5170,14 +5273,18 @@ class ImportContext {
   /// Options for importing data as CSV.
   ImportContextCsvImportOptions csvImportOptions;
 
-  /// The target database for the import. If *fileType* is *SQL*, this field is
-  /// required only if the import file does not specify a database, and is
-  /// overridden by any database specification in the import file. If *fileType*
-  /// is *CSV*, one database must be specified.
+  /// The target database for the import.
+  ///
+  /// If *fileType* is *SQL*, this field is required only if the import file
+  /// does not specify a database, and is overridden by any database
+  /// specification in the import file. If *fileType* is *CSV*, one database
+  /// must be specified.
   core.String database;
 
-  /// The file type for the specified uri. *SQL*: The file contains SQL
-  /// statements. *CSV*: The file contains CSV data.
+  /// The file type for the specified uri.
+  ///
+  /// *SQL*: The file contains SQL statements. *CSV*: The file contains CSV
+  /// data.
   /// Possible string values are:
   /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
   /// - "SQL" : File containing SQL statements.
@@ -5185,16 +5292,20 @@ class ImportContext {
   /// - "BAK"
   core.String fileType;
 
-  /// The PostgreSQL user for this import operation. PostgreSQL instances only.
+  /// The PostgreSQL user for this import operation.
+  ///
+  /// PostgreSQL instances only.
   core.String importUser;
 
   /// This is always *sql#importContext*.
   core.String kind;
 
   /// Path to the import file in Cloud Storage, in the form *gs:
-  /// //bucketName/fileName*. Compressed gzip files (.gz) are supported // when
-  /// *fileType* is *SQL*. The instance must have // write permissions to the
-  /// bucket and read access to the file.
+  /// //bucketName/fileName*.
+  ///
+  /// Compressed gzip files (.gz) are supported // when *fileType* is *SQL*. The
+  /// instance must have // write permissions to the bucket and read access to
+  /// the file.
   core.String uri;
 
   ImportContext();
@@ -5375,8 +5486,10 @@ class InstancesListResponse {
   /// This is always *sql#instancesList*.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   /// List of warnings that occurred while handling the request.
@@ -5538,17 +5651,20 @@ class InstancesTruncateLogRequest {
 /// IP Management configuration.
 class IpConfiguration {
   /// The list of external networks that are allowed to connect to the instance
-  /// using the IP. In 'CIDR' notation, also known as 'slash' notation (for
-  /// example: *192.168.100.0/24*).
+  /// using the IP.
+  ///
+  /// In 'CIDR' notation, also known as 'slash' notation (for example:
+  /// *192.168.100.0/24*).
   core.List<AclEntry> authorizedNetworks;
 
   /// Whether the instance is assigned a public IP address or not.
   core.bool ipv4Enabled;
 
   /// The resource link for the VPC network from which the Cloud SQL instance is
-  /// accessible for private IP. For example,  * /
-  /// projects/myProject/global/networks/default*. This setting can be updated,
-  /// but it cannot be removed after it is set.
+  /// accessible for private IP.
+  ///
+  /// For example,  * / projects/myProject/global/networks/default*. This
+  /// setting can be updated, but it cannot be removed after it is set.
   core.String privateNetwork;
 
   /// Whether SSL connections over IP are enforced or not.
@@ -5599,14 +5715,17 @@ class IpMapping {
   core.String ipAddress;
 
   /// The due time for this IP to be retired in RFC 3339 format, for example
-  /// *2012-11-15T16:19:00.094Z*. This field is only available when the IP is
-  /// scheduled to be retired.
+  /// *2012-11-15T16:19:00.094Z*.
+  ///
+  /// This field is only available when the IP is scheduled to be retired.
   core.String timeToRetire;
 
-  /// The type of this IP address. A *PRIMARY* address is a public address that
-  /// can accept incoming connections. A *PRIVATE* address is a private address
-  /// that can accept incoming connections. An *OUTGOING* address is the source
-  /// address of connections originating from the instance, if supported.
+  /// The type of this IP address.
+  ///
+  /// A *PRIMARY* address is a public address that can accept incoming
+  /// connections. A *PRIVATE* address is a private address that can accept
+  /// incoming connections. An *OUTGOING* address is the source address of
+  /// connections originating from the instance, if supported.
   /// Possible string values are:
   /// - "SQL_IP_ADDRESS_TYPE_UNSPECIFIED" : This is an unknown IP address type.
   /// - "PRIMARY" : IP address the customer is supposed to connect to. Usually
@@ -5650,11 +5769,12 @@ class IpMapping {
   }
 }
 
-/// Preferred location. This specifies where a Cloud SQL instance is located,
-/// either in a specific Compute Engine zone, or co-located with an App Engine
-/// application. Note that if the preferred location is not available, the
-/// instance will be located as close as possible within the region. Only one
-/// location may be specified.
+/// Preferred location.
+///
+/// This specifies where a Cloud SQL instance is located, either in a specific
+/// Compute Engine zone, or co-located with an App Engine application. Note that
+/// if the preferred location is not available, the instance will be located as
+/// close as possible within the region. Only one location may be specified.
 class LocationPreference {
   /// The App Engine application to follow, it must be in the same region as the
   /// Cloud SQL instance.
@@ -5696,8 +5816,10 @@ class LocationPreference {
   }
 }
 
-/// Maintenance window. This specifies when a Cloud SQL instance is restarted
-/// for system maintenance purposes.
+/// Maintenance window.
+///
+/// This specifies when a Cloud SQL instance is restarted for system maintenance
+/// purposes.
 class MaintenanceWindow {
   /// day of week (1-7), starting on Monday.
   core.int day;
@@ -5708,8 +5830,9 @@ class MaintenanceWindow {
   /// This is always *sql#maintenanceWindow*.
   core.String kind;
 
-  /// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn
-  /// more.
+  /// Maintenance timing setting: *canary* (Earlier) or *stable* (Later).
+  ///
+  /// Learn more.
   /// Possible string values are:
   /// - "SQL_UPDATE_TRACK_UNSPECIFIED" : This is an unknown maintenance timing
   /// preference.
@@ -5764,18 +5887,23 @@ class MySqlReplicaConfiguration {
   /// PEM representation of the replica's x509 certificate.
   core.String clientCertificate;
 
-  /// PEM representation of the replica's private key. The corresponsing public
-  /// key is encoded in the client's certificate.
+  /// PEM representation of the replica's private key.
+  ///
+  /// The corresponsing public key is encoded in the client's certificate.
   core.String clientKey;
 
-  /// Seconds to wait between connect retries. MySQL's default is 60 seconds.
+  /// Seconds to wait between connect retries.
+  ///
+  /// MySQL's default is 60 seconds.
   core.int connectRetryInterval;
 
   /// Path to a SQL dump file in Google Cloud Storage from which the replica
-  /// instance is to be created. The URI is in the form
-  /// gs://bucketName/fileName. Compressed gzip files (.gz) are also supported.
-  /// Dumps have the binlog co-ordinates from which replication begins. This can
-  /// be accomplished by setting --master-data to 1 when using mysqldump.
+  /// instance is to be created.
+  ///
+  /// The URI is in the form gs://bucketName/fileName. Compressed gzip files
+  /// (.gz) are also supported. Dumps have the binlog co-ordinates from which
+  /// replication begins. This can be accomplished by setting --master-data to 1
+  /// when using mysqldump.
   core.String dumpFilePath;
 
   /// This is always *sql#mysqlReplicaConfiguration*.
@@ -5882,8 +6010,9 @@ class OnPremisesConfiguration {
   /// PEM representation of the replica's x509 certificate.
   core.String clientCertificate;
 
-  /// PEM representation of the replica's private key. The corresponsing public
-  /// key is encoded in the client's certificate.
+  /// PEM representation of the replica's private key.
+  ///
+  /// The corresponsing public key is encoded in the client's certificate.
   core.String clientKey;
 
   /// The dump file to create the Cloud SQL replica.
@@ -5960,9 +6089,10 @@ class OnPremisesConfiguration {
   }
 }
 
-/// An Operation resource. For successful operations that return an Operation
-/// resource, only the fields relevant to the operation are populated in the
-/// resource.
+/// An Operation resource.
+///
+/// For successful operations that return an Operation resource, only the fields
+/// relevant to the operation are populated in the resource.
 class Operation {
   /// The time this operation finished in UTC timezone in RFC 3339 format, for
   /// example *2012-11-15T16:19:00.094Z*.
@@ -5985,14 +6115,17 @@ class Operation {
   /// This is always *sql#operation*.
   core.String kind;
 
-  /// An identifier that uniquely identifies the operation. You can use this
-  /// identifier to retrieve the Operations resource that has information about
-  /// the operation.
+  /// An identifier that uniquely identifies the operation.
+  ///
+  /// You can use this identifier to retrieve the Operations resource that has
+  /// information about the operation.
   core.String name;
 
-  /// The type of the operation. Valid values are: *CREATE* *DELETE* *UPDATE*
-  /// *RESTART* *IMPORT* *EXPORT* *BACKUP_VOLUME* *RESTORE_VOLUME* *CREATE_USER*
-  /// *DELETE_USER* *CREATE_DATABASE* *DELETE_DATABASE*
+  /// The type of the operation.
+  ///
+  /// Valid values are: *CREATE* *DELETE* *UPDATE* *RESTART* *IMPORT* *EXPORT*
+  /// *BACKUP_VOLUME* *RESTORE_VOLUME* *CREATE_USER* *DELETE_USER*
+  /// *CREATE_DATABASE* *DELETE_DATABASE*
   /// Possible string values are:
   /// - "SQL_OPERATION_TYPE_UNSPECIFIED" : Unknown operation type.
   /// - "IMPORT" : Imports data into a Cloud SQL instance.
@@ -6046,7 +6179,9 @@ class Operation {
   /// format, for example *2012-11-15T16:19:00.094Z*.
   core.String startTime;
 
-  /// The status of an operation. Valid values are: *PENDING* *RUNNING* *DONE*
+  /// The status of an operation.
+  ///
+  /// Valid values are: *PENDING* *RUNNING* *DONE*
   /// *SQL_OPERATION_STATUS_UNSPECIFIED*
   /// Possible string values are:
   /// - "SQL_OPERATION_STATUS_UNSPECIFIED" : The state of the operation is
@@ -6252,8 +6387,10 @@ class OperationsListResponse {
   /// This is always *sql#operationsList*.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   OperationsListResponse();
@@ -6290,22 +6427,26 @@ class OperationsListResponse {
 
 /// Read-replica configuration for connecting to the primary instance.
 class ReplicaConfiguration {
-  /// Specifies if the replica is the failover target. If the field is set to
-  /// *true* the replica will be designated as a failover replica. In case the
-  /// primary instance fails, the replica instance will be promoted as the new
-  /// primary instance. Only one replica can be specified as failover target,
-  /// and the replica has to be in different zone with the primary instance.
+  /// Specifies if the replica is the failover target.
+  ///
+  /// If the field is set to *true* the replica will be designated as a failover
+  /// replica. In case the primary instance fails, the replica instance will be
+  /// promoted as the new primary instance. Only one replica can be specified as
+  /// failover target, and the replica has to be in different zone with the
+  /// primary instance.
   core.bool failoverTarget;
 
   /// This is always *sql#replicaConfiguration*.
   core.String kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
-  /// primary instance. Replication configuration information such as the
-  /// username, password, certificates, and keys are not stored in the instance
-  /// metadata. The configuration information is used only to set up the
-  /// replication connection and is stored by MySQL in a file named
-  /// *master.info* in the data directory.
+  /// primary instance.
+  ///
+  /// Replication configuration information such as the username, password,
+  /// certificates, and keys are not stored in the instance metadata. The
+  /// configuration information is used only to set up the replication
+  /// connection and is stored by MySQL in a file named *master.info* in the
+  /// data directory.
   MySqlReplicaConfiguration mysqlReplicaConfiguration;
 
   ReplicaConfiguration();
@@ -6340,7 +6481,9 @@ class ReplicaConfiguration {
 }
 
 class Reschedule {
-  /// Required. The type of the reschedule.
+  /// The type of the reschedule.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "RESCHEDULE_TYPE_UNSPECIFIED"
   /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
@@ -6351,9 +6494,11 @@ class Reschedule {
   /// specific time.
   core.String rescheduleType;
 
-  /// Optional. Timestamp when the maintenance shall be rescheduled to if
+  /// Timestamp when the maintenance shall be rescheduled to if
   /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
   /// *2012-11-15T16:19:00.094Z*.
+  ///
+  /// Optional.
   core.String scheduleTime;
 
   Reschedule();
@@ -6379,8 +6524,9 @@ class Reschedule {
   }
 }
 
-/// Database instance restore from backup context. Backup context contains
-/// source instance id and project id.
+/// Database instance restore from backup context.
+///
+/// Backup context contains source instance id and project id.
 class RestoreBackupContext {
   /// The ID of the backup run to restore from.
   core.String backupRunId;
@@ -6434,8 +6580,10 @@ class RotateServerCaContext {
   /// This is always *sql#rotateServerCaContext*.
   core.String kind;
 
-  /// The fingerprint of the next version to be rotated to. If left unspecified,
-  /// will be rotated to the most recently added server CA version.
+  /// The fingerprint of the next version to be rotated to.
+  ///
+  /// If left unspecified, will be rotated to the most recently added server CA
+  /// version.
   core.String nextVersion;
 
   RotateServerCaContext();
@@ -6464,10 +6612,11 @@ class RotateServerCaContext {
 /// Database instance settings.
 class Settings {
   /// The activation policy specifies when the instance is activated; it is
-  /// applicable only when the instance state is RUNNABLE. Valid values:
-  /// *ALWAYS*: The instance is on, and remains so even in the absence of
-  /// connection requests. *NEVER*: The instance is off; it is not activated,
-  /// even if a connection request arrives.
+  /// applicable only when the instance state is RUNNABLE.
+  ///
+  /// Valid values: *ALWAYS*: The instance is on, and remains so even in the
+  /// absence of connection requests. *NEVER*: The instance is off; it is not
+  /// activated, even if a connection request arrives.
   /// Possible string values are:
   /// - "SQL_ACTIVATION_POLICY_UNSPECIFIED" : Unknown activation plan.
   /// - "ALWAYS" : The instance is always up and running.
@@ -6478,15 +6627,18 @@ class Settings {
   /// Active Directory configuration, for now relevant only for SQL Server
   SqlActiveDirectoryConfig activeDirectoryConfig;
 
-  /// The App Engine app IDs that can access this instance. (Deprecated) Applied
-  /// to First Generation instances only.
+  /// The App Engine app IDs that can access this instance.
+  ///
+  /// (Deprecated) Applied to First Generation instances only.
   core.List<core.String> authorizedGaeApplications;
 
-  /// Availability type. Potential values: *ZONAL*: The instance serves data
-  /// from only one zone. Outages in that zone affect data accessibility.
-  /// *REGIONAL*: The instance can serve data from more than one zone in a
-  /// region (it is highly available). For more information, see Overview of the
-  /// High Availability Configuration.
+  /// Availability type.
+  ///
+  /// Potential values: *ZONAL*: The instance serves data from only one zone.
+  /// Outages in that zone affect data accessibility. *REGIONAL*: The instance
+  /// can serve data from more than one zone in a region (it is highly
+  /// available). For more information, see Overview of the High Availability
+  /// Configuration.
   /// Possible string values are:
   /// - "SQL_AVAILABILITY_TYPE_UNSPECIFIED" : This is an unknown Availability
   /// type.
@@ -6500,16 +6652,20 @@ class Settings {
   /// The name of server Instance collation.
   core.String collation;
 
-  /// Configuration specific to read replica instances. Indicates whether
-  /// database flags for crash-safe replication are enabled. This property was
-  /// only applicable to First Generation instances.
+  /// Configuration specific to read replica instances.
+  ///
+  /// Indicates whether database flags for crash-safe replication are enabled.
+  /// This property was only applicable to First Generation instances.
   core.bool crashSafeReplicationEnabled;
 
-  /// The size of data disk, in GB. The data disk size minimum is 10GB.
+  /// The size of data disk, in GB.
+  ///
+  /// The data disk size minimum is 10GB.
   core.String dataDiskSizeGb;
 
-  /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First
-  /// Generation instances.
+  /// The type of data disk: PD_SSD (default) or PD_HDD.
+  ///
+  /// Not used for First Generation instances.
   /// Possible string values are:
   /// - "SQL_DATA_DISK_TYPE_UNSPECIFIED" : This is an unknown data disk type.
   /// - "PD_SSD" : An SSD data disk.
@@ -6521,34 +6677,41 @@ class Settings {
   /// The database flags passed to the instance at startup.
   core.List<DatabaseFlags> databaseFlags;
 
-  /// Configuration specific to read replica instances. Indicates whether
-  /// replication is enabled or not.
+  /// Configuration specific to read replica instances.
+  ///
+  /// Indicates whether replication is enabled or not.
   core.bool databaseReplicationEnabled;
 
   /// Deny maintenance periods
   core.List<DenyMaintenancePeriod> denyMaintenancePeriods;
 
-  /// The settings for IP Management. This allows to enable or disable the
-  /// instance IP and manage which external networks can connect to the
-  /// instance. The IPv4 address cannot be disabled for Second Generation
-  /// instances.
+  /// The settings for IP Management.
+  ///
+  /// This allows to enable or disable the instance IP and manage which external
+  /// networks can connect to the instance. The IPv4 address cannot be disabled
+  /// for Second Generation instances.
   IpConfiguration ipConfiguration;
 
   /// This is always *sql#settings*.
   core.String kind;
 
-  /// The location preference settings. This allows the instance to be located
-  /// as near as possible to either an App Engine app or Compute Engine zone for
-  /// better performance. App Engine co-location was only applicable to First
-  /// Generation instances.
+  /// The location preference settings.
+  ///
+  /// This allows the instance to be located as near as possible to either an
+  /// App Engine app or Compute Engine zone for better performance. App Engine
+  /// co-location was only applicable to First Generation instances.
   LocationPreference locationPreference;
 
-  /// The maintenance window for this instance. This specifies when the instance
-  /// can be restarted for maintenance purposes.
+  /// The maintenance window for this instance.
+  ///
+  /// This specifies when the instance can be restarted for maintenance
+  /// purposes.
   MaintenanceWindow maintenanceWindow;
 
-  /// The pricing plan for this instance. This can be either *PER_USE* or
-  /// *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+  /// The pricing plan for this instance.
+  ///
+  /// This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for
+  /// Second Generation instances.
   /// Possible string values are:
   /// - "SQL_PRICING_PLAN_UNSPECIFIED" : This is an unknown pricing plan for
   /// this instance.
@@ -6556,9 +6719,10 @@ class Settings {
   /// - "PER_USE" : The instance is billed per usage.
   core.String pricingPlan;
 
-  /// The type of replication this instance uses. This can be either
-  /// *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only
-  /// applicable to First Generation instances.
+  /// The type of replication this instance uses.
+  ///
+  /// This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This
+  /// property was only applicable to First Generation instances.
   /// Possible string values are:
   /// - "SQL_REPLICATION_TYPE_UNSPECIFIED" : This is an unknown replication type
   /// for a Cloud SQL instance.
@@ -6570,17 +6734,20 @@ class Settings {
   /// of updates to your data.
   core.String replicationType;
 
-  /// The version of instance settings. This is a required field for update
-  /// method to make sure concurrent updates are handled properly. During
-  /// update, use the most recent settingsVersion value for this instance and do
-  /// not try to update this value.
+  /// The version of instance settings.
+  ///
+  /// This is a required field for update method to make sure concurrent updates
+  /// are handled properly. During update, use the most recent settingsVersion
+  /// value for this instance and do not try to update this value.
   core.String settingsVersion;
 
-  /// Configuration to increase storage size automatically. The default value is
-  /// true.
+  /// Configuration to increase storage size automatically.
+  ///
+  /// The default value is true.
   core.bool storageAutoResize;
 
   /// The maximum size to which storage capacity can be automatically increased.
+  ///
   /// The default value is 0, which specifies that there is no limit.
   core.String storageAutoResizeLimit;
 
@@ -6874,7 +7041,9 @@ class SqlExternalSyncSettingError {
 
 /// Reschedule options for maintenance windows.
 class SqlInstancesRescheduleMaintenanceRequestBody {
-  /// Required. The type of the reschedule the user wants.
+  /// The type of the reschedule the user wants.
+  ///
+  /// Required.
   Reschedule reschedule;
 
   SqlInstancesRescheduleMaintenanceRequestBody();
@@ -7041,7 +7210,9 @@ class SslCert {
   /// Serial number, as extracted from the certificate.
   core.String certSerialNumber;
 
-  /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+  /// User supplied name.
+  ///
+  /// Constrained to [a-zA-Z.-_ ]+.
   core.String commonName;
 
   /// The time when the certificate was created in RFC 3339 format, for example
@@ -7134,8 +7305,9 @@ class SslCertDetail {
   /// The public information about the cert.
   SslCert certInfo;
 
-  /// The private key for the client cert, in pem format. Keep private in order
-  /// to protect your security.
+  /// The private key for the client cert, in pem format.
+  ///
+  /// Keep private in order to protect your security.
   core.String certPrivateKey;
 
   SslCertDetail();
@@ -7186,8 +7358,9 @@ class SslCertsCreateEphemeralRequest {
 
 /// SslCerts insert request.
 class SslCertsInsertRequest {
-  /// User supplied name. Must be a distinct name from the other certificates
-  /// for this instance.
+  /// User supplied name.
+  ///
+  /// Must be a distinct name from the other certificates for this instance.
   core.String commonName;
 
   SslCertsInsertRequest();
@@ -7218,9 +7391,10 @@ class SslCertsInsertResponse {
   /// The operation to track the ssl certs insert request.
   Operation operation;
 
-  /// The server Certificate Authority's certificate. If this is missing you can
-  /// force a new one to be generated by calling resetSslConfig method on
-  /// instances resource.
+  /// The server Certificate Authority's certificate.
+  ///
+  /// If this is missing you can force a new one to be generated by calling
+  /// resetSslConfig method on instances resource.
   SslCert serverCaCert;
 
   SslCertsInsertResponse();
@@ -7309,8 +7483,9 @@ class Tier {
   /// The applicable regions for this tier.
   core.List<core.String> region;
 
-  /// An identifier for the machine type, for example, db-n1-standard-1. For
-  /// related information, see Pricing.
+  /// An identifier for the machine type, for example, db-n1-standard-1.
+  ///
+  /// For related information, see Pricing.
   core.String tier;
 
   Tier();
@@ -7395,8 +7570,9 @@ class TruncateLogContext {
   /// This is always *sql#truncateLogContext*.
   core.String kind;
 
-  /// The type of log to truncate. Valid values are *MYSQL_GENERAL_TABLE* and
-  /// *MYSQL_SLOW_TABLE*.
+  /// The type of log to truncate.
+  ///
+  /// Valid values are *MYSQL_GENERAL_TABLE* and *MYSQL_SLOW_TABLE*.
   core.String logType;
 
   TruncateLogContext();
@@ -7428,34 +7604,41 @@ class User {
   /// API.
   core.String etag;
 
-  /// The host name from which the user can connect. For *insert* operations,
-  /// host defaults to an empty string. For *update* operations, host is
-  /// specified as part of the request URL. The host name cannot be updated
-  /// after insertion.
+  /// The host name from which the user can connect.
+  ///
+  /// For *insert* operations, host defaults to an empty string. For *update*
+  /// operations, host is specified as part of the request URL. The host name
+  /// cannot be updated after insertion.
   core.String host;
 
-  /// The name of the Cloud SQL instance. This does not include the project ID.
-  /// Can be omitted for *update* since it is already specified on the URL.
+  /// The name of the Cloud SQL instance.
+  ///
+  /// This does not include the project ID. Can be omitted for *update* since it
+  /// is already specified on the URL.
   core.String instance;
 
   /// This is always *sql#user*.
   core.String kind;
 
-  /// The name of the user in the Cloud SQL instance. Can be omitted for
-  /// *update* since it is already specified in the URL.
+  /// The name of the user in the Cloud SQL instance.
+  ///
+  /// Can be omitted for *update* since it is already specified in the URL.
   core.String name;
 
   /// The password for the user.
   core.String password;
 
-  /// The project ID of the project containing the Cloud SQL database. The
-  /// Google apps domain is prefixed if applicable. Can be omitted for *update*
-  /// since it is already specified on the URL.
+  /// The project ID of the project containing the Cloud SQL database.
+  ///
+  /// The Google apps domain is prefixed if applicable. Can be omitted for
+  /// *update* since it is already specified on the URL.
   core.String project;
   SqlServerUserDetails sqlserverUserDetails;
 
-  /// The user type. It determines the method to authenticate the user during
-  /// login. The default is the database's built-in user type.
+  /// The user type.
+  ///
+  /// It determines the method to authenticate the user during login. The
+  /// default is the database's built-in user type.
   /// Possible string values are:
   /// - "BUILT_IN" : The database's built-in user type.
   /// - "CLOUD_IAM_USER" : Cloud IAM user.
@@ -7536,9 +7719,10 @@ class UsersListResponse {
   /// This is always *sql#usersList*.
   core.String kind;
 
-  /// An identifier that uniquely identifies the operation. You can use this
-  /// identifier to retrieve the Operations resource that has information about
-  /// the operation.
+  /// An identifier that uniquely identifies the operation.
+  ///
+  /// You can use this identifier to retrieve the Operations resource that has
+  /// information about the operation.
   core.String nextPageToken;
 
   UsersListResponse();

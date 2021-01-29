@@ -76,11 +76,12 @@ class AccessPoliciesResource {
 
   AccessPoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Create an `AccessPolicy`. Fails if this organization already has a
-  /// `AccessPolicy`. The longrunning Operation will have a successful status
-  /// once the `AccessPolicy` has propagated to long-lasting storage. Syntactic
-  /// and basic semantic errors will be returned in `metadata` as a BadRequest
-  /// proto.
+  /// Create an `AccessPolicy`.
+  ///
+  /// Fails if this organization already has a `AccessPolicy`. The longrunning
+  /// Operation will have a successful status once the `AccessPolicy` has
+  /// propagated to long-lasting storage. Syntactic and basic semantic errors
+  /// will be returned in `metadata` as a BadRequest proto.
   ///
   /// [request] - The metadata request object.
   ///
@@ -130,9 +131,10 @@ class AccessPoliciesResource {
     );
   }
 
-  /// Delete an AccessPolicy by resource name. The longrunning Operation will
-  /// have a successful status once the AccessPolicy has been removed from
-  /// long-lasting storage.
+  /// Delete an AccessPolicy by resource name.
+  ///
+  /// The longrunning Operation will have a successful status once the
+  /// AccessPolicy has been removed from long-lasting storage.
   ///
   /// Request parameters:
   ///
@@ -303,10 +305,12 @@ class AccessPoliciesResource {
     );
   }
 
-  /// Update an AccessPolicy. The longrunning Operation from this RPC will have
-  /// a successful status once the changes to the AccessPolicy have propagated
-  /// to long-lasting storage. Syntactic and basic semantic errors will be
-  /// returned in `metadata` as a BadRequest proto.
+  /// Update an AccessPolicy.
+  ///
+  /// The longrunning Operation from this RPC will have a successful status once
+  /// the changes to the AccessPolicy have propagated to long-lasting storage.
+  /// Syntactic and basic semantic errors will be returned in `metadata` as a
+  /// BadRequest proto.
   ///
   /// [request] - The metadata request object.
   ///
@@ -378,10 +382,12 @@ class AccessPoliciesAccessLevelsResource {
   AccessPoliciesAccessLevelsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create an Access Level. The longrunning operation from this RPC will have
-  /// a successful status once the Access Level has propagated to long-lasting
-  /// storage. Access Levels containing errors will result in an error response
-  /// for the first error encountered.
+  /// Create an Access Level.
+  ///
+  /// The longrunning operation from this RPC will have a successful status once
+  /// the Access Level has propagated to long-lasting storage. Access Levels
+  /// containing errors will result in an error response for the first error
+  /// encountered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -441,9 +447,10 @@ class AccessPoliciesAccessLevelsResource {
     );
   }
 
-  /// Delete an Access Level by resource name. The longrunning operation from
-  /// this RPC will have a successful status once the Access Level has been
-  /// removed from long-lasting storage.
+  /// Delete an Access Level by resource name.
+  ///
+  /// The longrunning operation from this RPC will have a successful status once
+  /// the Access Level has been removed from long-lasting storage.
   ///
   /// Request parameters:
   ///
@@ -647,10 +654,12 @@ class AccessPoliciesAccessLevelsResource {
     );
   }
 
-  /// Update an Access Level. The longrunning operation from this RPC will have
-  /// a successful status once the changes to the Access Level have propagated
-  /// to long-lasting storage. Access Levels containing errors will result in an
-  /// error response for the first error encountered.
+  /// Update an Access Level.
+  ///
+  /// The longrunning operation from this RPC will have a successful status once
+  /// the changes to the Access Level have propagated to long-lasting storage.
+  /// Access Levels containing errors will result in an error response for the
+  /// first error encountered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -718,14 +727,15 @@ class AccessPoliciesAccessLevelsResource {
   }
 
   /// Replace all existing Access Levels in an Access Policy with the Access
-  /// Levels provided. This is done atomically. The longrunning operation from
-  /// this RPC will have a successful status once all replacements have
-  /// propagated to long-lasting storage. Replacements containing errors will
-  /// result in an error response for the first error encountered. Replacement
-  /// will be cancelled on error, existing Access Levels will not be affected.
-  /// Operation.response field will contain ReplaceAccessLevelsResponse.
-  /// Removing Access Levels contained in existing Service Perimeters will
-  /// result in error.
+  /// Levels provided.
+  ///
+  /// This is done atomically. The longrunning operation from this RPC will have
+  /// a successful status once all replacements have propagated to long-lasting
+  /// storage. Replacements containing errors will result in an error response
+  /// for the first error encountered. Replacement will be cancelled on error,
+  /// existing Access Levels will not be affected. Operation.response field will
+  /// contain ReplaceAccessLevelsResponse. Removing Access Levels contained in
+  /// existing Service Perimeters will result in error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -793,10 +803,12 @@ class AccessPoliciesServicePerimetersResource {
       : _requester = client;
 
   /// Commit the dry-run spec for all the Service Perimeters in an Access
-  /// Policy. A commit operation on a Service Perimeter involves copying its
-  /// `spec` field to that Service Perimeter's `status` field. Only Service
-  /// Perimeters with `use_explicit_dry_run_spec` field set to true are affected
-  /// by a commit operation. The longrunning operation from this RPC will have a
+  /// Policy.
+  ///
+  /// A commit operation on a Service Perimeter involves copying its `spec`
+  /// field to that Service Perimeter's `status` field. Only Service Perimeters
+  /// with `use_explicit_dry_run_spec` field set to true are affected by a
+  /// commit operation. The longrunning operation from this RPC will have a
   /// successful status once the dry-run specs for all the Service Perimeters
   /// have been committed. If a commit fails, it will cause the longrunning
   /// operation to return an error response and the entire commit operation will
@@ -863,10 +875,12 @@ class AccessPoliciesServicePerimetersResource {
     );
   }
 
-  /// Create a Service Perimeter. The longrunning operation from this RPC will
-  /// have a successful status once the Service Perimeter has propagated to
-  /// long-lasting storage. Service Perimeters containing errors will result in
-  /// an error response for the first error encountered.
+  /// Create a Service Perimeter.
+  ///
+  /// The longrunning operation from this RPC will have a successful status once
+  /// the Service Perimeter has propagated to long-lasting storage. Service
+  /// Perimeters containing errors will result in an error response for the
+  /// first error encountered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -926,9 +940,10 @@ class AccessPoliciesServicePerimetersResource {
     );
   }
 
-  /// Delete a Service Perimeter by resource name. The longrunning operation
-  /// from this RPC will have a successful status once the Service Perimeter has
-  /// been removed from long-lasting storage.
+  /// Delete a Service Perimeter by resource name.
+  ///
+  /// The longrunning operation from this RPC will have a successful status once
+  /// the Service Perimeter has been removed from long-lasting storage.
   ///
   /// Request parameters:
   ///
@@ -1102,10 +1117,12 @@ class AccessPoliciesServicePerimetersResource {
     );
   }
 
-  /// Update a Service Perimeter. The longrunning operation from this RPC will
-  /// have a successful status once the changes to the Service Perimeter have
-  /// propagated to long-lasting storage. Service Perimeter containing errors
-  /// will result in an error response for the first error encountered.
+  /// Update a Service Perimeter.
+  ///
+  /// The longrunning operation from this RPC will have a successful status once
+  /// the changes to the Service Perimeter have propagated to long-lasting
+  /// storage. Service Perimeter containing errors will result in an error
+  /// response for the first error encountered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1173,13 +1190,14 @@ class AccessPoliciesServicePerimetersResource {
   }
 
   /// Replace all existing Service Perimeters in an Access Policy with the
-  /// Service Perimeters provided. This is done atomically. The longrunning
-  /// operation from this RPC will have a successful status once all
-  /// replacements have propagated to long-lasting storage. Replacements
-  /// containing errors will result in an error response for the first error
-  /// encountered. Replacement will be cancelled on error, existing Service
-  /// Perimeters will not be affected. Operation.response field will contain
-  /// ReplaceServicePerimetersResponse.
+  /// Service Perimeters provided.
+  ///
+  /// This is done atomically. The longrunning operation from this RPC will have
+  /// a successful status once all replacements have propagated to long-lasting
+  /// storage. Replacements containing errors will result in an error response
+  /// for the first error encountered. Replacement will be cancelled on error,
+  /// existing Service Perimeters will not be affected. Operation.response field
+  /// will contain ReplaceServicePerimetersResponse.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1245,8 +1263,9 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -1310,10 +1329,11 @@ class OperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -1364,9 +1384,10 @@ class OperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1417,10 +1438,11 @@ class OperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1511,11 +1533,12 @@ class OrganizationsGcpUserAccessBindingsResource {
   OrganizationsGcpUserAccessBindingsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a GcpUserAccessBinding. If the client specifies a name, the server
-  /// will ignore it. Fails if a resource already exists with the same
-  /// group_key. Completion of this long-running operation does not necessarily
-  /// signify that the new binding is deployed onto all affected users, which
-  /// may take more time.
+  /// Creates a GcpUserAccessBinding.
+  ///
+  /// If the client specifies a name, the server will ignore it. Fails if a
+  /// resource already exists with the same group_key. Completion of this
+  /// long-running operation does not necessarily signify that the new binding
+  /// is deployed onto all affected users, which may take more time.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1574,9 +1597,11 @@ class OrganizationsGcpUserAccessBindingsResource {
     );
   }
 
-  /// Deletes a GcpUserAccessBinding. Completion of this long-running operation
-  /// does not necessarily signify that the binding deletion is deployed onto
-  /// all affected users, which may take more time.
+  /// Deletes a GcpUserAccessBinding.
+  ///
+  /// Completion of this long-running operation does not necessarily signify
+  /// that the binding deletion is deployed onto all affected users, which may
+  /// take more time.
   ///
   /// Request parameters:
   ///
@@ -1753,9 +1778,11 @@ class OrganizationsGcpUserAccessBindingsResource {
     );
   }
 
-  /// Updates a GcpUserAccessBinding. Completion of this long-running operation
-  /// does not necessarily signify that the changed binding is deployed onto all
-  /// affected users, which may take more time.
+  /// Updates a GcpUserAccessBinding.
+  ///
+  /// Completion of this long-running operation does not necessarily signify
+  /// that the changed binding is deployed onto all affected users, which may
+  /// take more time.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1837,16 +1864,24 @@ class AccessLevel {
   /// A `CustomLevel` written in the Common Expression Language.
   CustomLevel custom;
 
-  /// Description of the `AccessLevel` and its use. Does not affect behavior.
+  /// Description of the `AccessLevel` and its use.
+  ///
+  /// Does not affect behavior.
   core.String description;
 
-  /// Required. Resource name for the Access Level. The `short_name` component
-  /// must begin with a letter and only include alphanumeric and '_'. Format:
+  /// Resource name for the Access Level.
+  ///
+  /// The `short_name` component must begin with a letter and only include
+  /// alphanumeric and '_'. Format:
   /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length
   /// of the `short_name` component is 50 characters.
+  ///
+  /// Required.
   core.String name;
 
-  /// Human readable title. Must be unique within the Policy.
+  /// Human readable title.
+  ///
+  /// Must be unique within the Policy.
   core.String title;
 
   AccessLevel();
@@ -1894,26 +1929,40 @@ class AccessLevel {
 
 /// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
 /// attributes to use Google Cloud services) and `ServicePerimeters` (which
-/// define regions of services able to freely pass data within a perimeter). An
-/// access policy is globally visible within an organization, and the
+/// define regions of services able to freely pass data within a perimeter).
+///
+/// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
 class AccessPolicy {
-  /// Output only. An opaque identifier for the current version of the
-  /// `AccessPolicy`. This will always be a strongly validated etag, meaning
-  /// that two Access Polices will be identical if and only if their etags are
-  /// identical. Clients should not expect this to be in any specific format.
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Polices will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
   core.String etag;
 
-  /// Output only. Resource name of the `AccessPolicy`. Format:
-  /// `accessPolicies/{policy_id}`
+  /// Resource name of the `AccessPolicy`.
+  ///
+  /// Format: `accessPolicies/{policy_id}`
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. The parent of this `AccessPolicy` in the Cloud Resource
-  /// Hierarchy. Currently immutable once created. Format:
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
   /// `organizations/{organization_id}`
+  ///
+  /// Required.
   core.String parent;
 
-  /// Required. Human readable title. Does not affect behavior.
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
   core.String title;
 
   AccessPolicy();
@@ -1954,17 +2003,21 @@ class AccessPolicy {
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
-  /// granted this `AccessLevel`. If AND is used, each `Condition` in
-  /// `conditions` must be satisfied for the `AccessLevel` to be applied. If OR
-  /// is used, at least one `Condition` in `conditions` must be satisfied for
-  /// the `AccessLevel` to be applied. Default behavior is AND.
+  /// granted this `AccessLevel`.
+  ///
+  /// If AND is used, each `Condition` in `conditions` must be satisfied for the
+  /// `AccessLevel` to be applied. If OR is used, at least one `Condition` in
+  /// `conditions` must be satisfied for the `AccessLevel` to be applied.
+  /// Default behavior is AND.
   /// Possible string values are:
   /// - "AND" : All `Conditions` must be true for the `BasicLevel` to be true.
   /// - "OR" : If at least one `Condition` is true, then the `BasicLevel` is
   /// true.
   core.String combiningFunction;
 
-  /// Required. A list of requirements for the `AccessLevel` to be granted.
+  /// A list of requirements for the `AccessLevel` to be granted.
+  ///
+  /// Required.
   core.List<Condition> conditions;
 
   BasicLevel();
@@ -2010,12 +2063,16 @@ class CancelOperationRequest {
 /// A request to commit dry-run specs in all Service Perimeters belonging to an
 /// Access Policy.
 class CommitServicePerimetersRequest {
-  /// Optional. The etag for the version of the Access Policy that this commit
-  /// operation is to be performed on. If, at the time of commit, the etag for
-  /// the Access Policy stored in Access Context Manager is different from the
-  /// specified etag, then the commit operation will not be performed and the
-  /// call will fail. This field is not required. If etag is not provided, the
-  /// operation will be performed as if a valid etag is provided.
+  /// The etag for the version of the Access Policy that this commit operation
+  /// is to be performed on.
+  ///
+  /// If, at the time of commit, the etag for the Access Policy stored in Access
+  /// Context Manager is different from the specified etag, then the commit
+  /// operation will not be performed and the call will fail. This field is not
+  /// required. If etag is not provided, the operation will be performed as if a
+  /// valid etag is provided.
+  ///
+  /// Optional.
   core.String etag;
 
   CommitServicePerimetersRequest();
@@ -2035,8 +2092,9 @@ class CommitServicePerimetersRequest {
   }
 }
 
-/// A response to CommitServicePerimetersRequest. This will be put inside of
-/// Operation.response field.
+/// A response to CommitServicePerimetersRequest.
+///
+/// This will be put inside of Operation.response field.
 class CommitServicePerimetersResponse {
   /// List of all the Service Perimeter instances in the Access Policy.
   core.List<ServicePerimeter> servicePerimeters;
@@ -2062,45 +2120,56 @@ class CommitServicePerimetersResponse {
   }
 }
 
-/// A condition necessary for an `AccessLevel` to be granted. The Condition is
-/// an AND over its fields. So a Condition is true if: 1) the request IP is from
-/// one of the listed subnetworks AND 2) the originating device complies with
-/// the listed device policy AND 3) all listed access levels are granted AND 4)
-/// the request was sent at a time allowed by the DateTimeRestriction.
+/// A condition necessary for an `AccessLevel` to be granted.
+///
+/// The Condition is an AND over its fields. So a Condition is true if: 1) the
+/// request IP is from one of the listed subnetworks AND 2) the originating
+/// device complies with the listed device policy AND 3) all listed access
+/// levels are granted AND 4) the request was sent at a time allowed by the
+/// DateTimeRestriction.
 class Condition {
   /// Device specific restrictions, all restrictions must hold for the Condition
-  /// to be true. If not specified, all devices are allowed.
+  /// to be true.
+  ///
+  /// If not specified, all devices are allowed.
   DevicePolicy devicePolicy;
 
-  /// CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for
-  /// a CIDR IP address block, the specified IP address portion must be properly
-  /// truncated (i.e. all the host bits must be zero) or the input is considered
-  /// malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is
-  /// not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas
-  /// "2001:db8::1/32" is not. The originating IP of a request must be in one of
-  /// the listed subnets in order for this Condition to be true. If empty, all
-  /// IP addresses are allowed.
+  /// CIDR block IP subnetwork specification.
+  ///
+  /// May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified
+  /// IP address portion must be properly truncated (i.e. all the host bits must
+  /// be zero) or the input is considered malformed. For example, "192.0.2.0/24"
+  /// is accepted but "192.0.2.1/24" is not. Similarly, for IPv6,
+  /// "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The
+  /// originating IP of a request must be in one of the listed subnets in order
+  /// for this Condition to be true. If empty, all IP addresses are allowed.
   core.List<core.String> ipSubnetworks;
 
   /// The request must be made by one of the provided user or service accounts.
+  ///
   /// Groups are not supported. Syntax: `user:{emailid}`
   /// `serviceAccount:{emailid}` If not specified, a request may come from any
   /// user.
   core.List<core.String> members;
 
-  /// Whether to negate the Condition. If true, the Condition becomes a NAND
-  /// over its non-empty fields, each field must be false for the Condition
-  /// overall to be satisfied. Defaults to false.
+  /// Whether to negate the Condition.
+  ///
+  /// If true, the Condition becomes a NAND over its non-empty fields, each
+  /// field must be false for the Condition overall to be satisfied. Defaults to
+  /// false.
   core.bool negate;
 
   /// The request must originate from one of the provided countries/regions.
+  ///
   /// Must be valid ISO 3166-1 alpha-2 codes.
   core.List<core.String> regions;
 
   /// A list of other access levels defined in the same `Policy`, referenced by
-  /// resource name. Referencing an `AccessLevel` which does not exist is an
-  /// error. All access levels listed must be granted for the Condition to be
-  /// true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+  /// resource name.
+  ///
+  /// Referencing an `AccessLevel` which does not exist is an error. All access
+  /// levels listed must be granted for the Condition to be true. Example:
+  /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   core.List<core.String> requiredAccessLevels;
 
   Condition();
@@ -2161,9 +2230,12 @@ class Condition {
 
 /// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
 /// to represent the necessary conditions for the level to apply to a request.
+///
 /// See CEL spec at: https://github.com/google/cel-spec
 class CustomLevel {
-  /// Required. A Cloud CEL expression evaluating to a boolean.
+  /// A Cloud CEL expression evaluating to a boolean.
+  ///
+  /// Required.
   Expr expr;
 
   CustomLevel();
@@ -2185,14 +2257,16 @@ class CustomLevel {
 }
 
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a
-/// given access level. A `DevicePolicy` specifies requirements for requests
-/// from devices to be granted access levels, it does not do any enforcement on
-/// the device. `DevicePolicy` acts as an AND over all specified fields, and
-/// each repeated field is an OR over its elements. Any unset fields are
-/// ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type :
-/// DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be
-/// true for requests originating from encrypted Linux desktops and encrypted
-/// Windows desktops.
+/// given access level.
+///
+/// A `DevicePolicy` specifies requirements for requests from devices to be
+/// granted access levels, it does not do any enforcement on the device.
+/// `DevicePolicy` acts as an AND over all specified fields, and each repeated
+/// field is an OR over its elements. Any unset fields are ignored. For example,
+/// if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+/// encryption_status: ENCRYPTED}, then the DevicePolicy will be true for
+/// requests originating from encrypted Linux desktops and encrypted Windows
+/// desktops.
 class DevicePolicy {
   /// Allowed device management levels, an empty list allows all management
   /// levels.
@@ -2211,6 +2285,7 @@ class DevicePolicy {
   core.bool requireCorpOwned;
 
   /// Whether or not screenlock is required for the DevicePolicy to be true.
+  ///
   /// Defaults to `false`.
   core.bool requireScreenlock;
 
@@ -2272,10 +2347,12 @@ class DevicePolicy {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2290,8 +2367,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -2306,20 +2385,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -2360,26 +2448,35 @@ class Expr {
 /// Restricts access to Cloud Console and Google Cloud APIs for a set of users
 /// using Context-Aware Access.
 class GcpUserAccessBinding {
-  /// Required. Access level that a user must have to be granted access. Only
-  /// one access level is supported, not multiple. This repeated field must have
-  /// exactly one element. Example:
+  /// Access level that a user must have to be granted access.
+  ///
+  /// Only one access level is supported, not multiple. This repeated field must
+  /// have exactly one element. Example:
   /// "accessPolicies/9522/accessLevels/device_trusted"
+  ///
+  /// Required.
   core.List<core.String> accessLevels;
 
-  /// Required. Immutable. Google Group id whose members are subject to this
-  /// binding's restrictions. See "id" in the [G Suite Directory API's Groups
-  /// resource]
+  /// Google Group id whose members are subject to this binding's restrictions.
+  ///
+  /// See "id" in the [G Suite Directory API's Groups resource]
   /// (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
   /// If a group's email address/alias is changed, this resource will continue
   /// to point at the changed group. This field does not accept group email
   /// addresses or aliases. Example: "01d520gv4vjcrht"
+  ///
+  /// Required. Immutable.
   core.String groupKey;
 
-  /// Immutable. Assigned by the server during creation. The last segment has an
-  /// arbitrary length and has only URI unreserved characters (as defined by
-  /// [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)).
-  /// Should not be specified by the client during creation. Example:
+  /// Assigned by the server during creation.
+  ///
+  /// The last segment has an arbitrary length and has only URI unreserved
+  /// characters (as defined by [RFC 3986 Section
+  /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be
+  /// specified by the client during creation. Example:
   /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+  ///
+  /// Immutable.
   core.String name;
 
   GcpUserAccessBinding();
@@ -2418,8 +2515,9 @@ class ListAccessLevelsResponse {
   /// List of the Access Level instances.
   core.List<AccessLevel> accessLevels;
 
-  /// The pagination token to retrieve the next page of results. If the value is
-  /// empty, no further results remain.
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If the value is empty, no further results remain.
   core.String nextPageToken;
 
   ListAccessLevelsResponse();
@@ -2454,8 +2552,9 @@ class ListAccessPoliciesResponse {
   /// List of the AccessPolicy instances.
   core.List<AccessPolicy> accessPolicies;
 
-  /// The pagination token to retrieve the next page of results. If the value is
-  /// empty, no further results remain.
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If the value is empty, no further results remain.
   core.String nextPageToken;
 
   ListAccessPoliciesResponse();
@@ -2490,7 +2589,9 @@ class ListGcpUserAccessBindingsResponse {
   /// GcpUserAccessBinding
   core.List<GcpUserAccessBinding> gcpUserAccessBindings;
 
-  /// Token to get the next page of items. If blank, there are no more items.
+  /// Token to get the next page of items.
+  ///
+  /// If blank, there are no more items.
   core.String nextPageToken;
 
   ListGcpUserAccessBindingsResponse();
@@ -2556,8 +2657,9 @@ class ListOperationsResponse {
 
 /// A response to `ListServicePerimetersRequest`.
 class ListServicePerimetersResponse {
-  /// The pagination token to retrieve the next page of results. If the value is
-  /// empty, no further results remain.
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If the value is empty, no further results remain.
   core.String nextPageToken;
 
   /// List of the Service Perimeter instances.
@@ -2593,31 +2695,37 @@ class ListServicePerimetersResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2683,12 +2791,15 @@ class Operation {
 
 /// A restriction on the OS type and version of devices making requests.
 class OsConstraint {
-  /// The minimum allowed OS version. If not set, any version of this OS
-  /// satisfies the constraint. Format: `"major.minor.patch"`. Examples:
-  /// `"10.5.301"`, `"9.2.1"`.
+  /// The minimum allowed OS version.
+  ///
+  /// If not set, any version of this OS satisfies the constraint. Format:
+  /// `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
   core.String minimumVersion;
 
-  /// Required. The allowed OS type.
+  /// The allowed OS type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "OS_UNSPECIFIED" : The operating system of the device is not specified
   /// or not known.
@@ -2700,10 +2811,11 @@ class OsConstraint {
   /// - "IOS" : An iOS operating system.
   core.String osType;
 
-  /// Only allows requests from devices with a verified Chrome OS. Verifications
-  /// includes requirements that the device is enterprise-managed, conformant to
-  /// domain policies, and the caller has permission to call the API targeted by
-  /// the request.
+  /// Only allows requests from devices with a verified Chrome OS.
+  ///
+  /// Verifications includes requirements that the device is enterprise-managed,
+  /// conformant to domain policies, and the caller has permission to call the
+  /// API targeted by the request.
   core.bool requireVerifiedChromeOs;
 
   OsConstraint();
@@ -2736,18 +2848,26 @@ class OsConstraint {
 }
 
 /// A request to replace all existing Access Levels in an Access Policy with the
-/// Access Levels provided. This is done atomically.
+/// Access Levels provided.
+///
+/// This is done atomically.
 class ReplaceAccessLevelsRequest {
-  /// Required. The desired Access Levels that should replace all existing
-  /// Access Levels in the Access Policy.
+  /// The desired Access Levels that should replace all existing Access Levels
+  /// in the Access Policy.
+  ///
+  /// Required.
   core.List<AccessLevel> accessLevels;
 
-  /// Optional. The etag for the version of the Access Policy that this replace
-  /// operation is to be performed on. If, at the time of replace, the etag for
-  /// the Access Policy stored in Access Context Manager is different from the
-  /// specified etag, then the replace operation will not be performed and the
-  /// call will fail. This field is not required. If etag is not provided, the
-  /// operation will be performed as if a valid etag is provided.
+  /// The etag for the version of the Access Policy that this replace operation
+  /// is to be performed on.
+  ///
+  /// If, at the time of replace, the etag for the Access Policy stored in
+  /// Access Context Manager is different from the specified etag, then the
+  /// replace operation will not be performed and the call will fail. This field
+  /// is not required. If etag is not provided, the operation will be performed
+  /// as if a valid etag is provided.
+  ///
+  /// Optional.
   core.String etag;
 
   ReplaceAccessLevelsRequest();
@@ -2777,8 +2897,9 @@ class ReplaceAccessLevelsRequest {
   }
 }
 
-/// A response to ReplaceAccessLevelsRequest. This will be put inside of
-/// Operation.response field.
+/// A response to ReplaceAccessLevelsRequest.
+///
+/// This will be put inside of Operation.response field.
 class ReplaceAccessLevelsResponse {
   /// List of the Access Level instances.
   core.List<AccessLevel> accessLevels;
@@ -2805,18 +2926,26 @@ class ReplaceAccessLevelsResponse {
 }
 
 /// A request to replace all existing Service Perimeters in an Access Policy
-/// with the Service Perimeters provided. This is done atomically.
+/// with the Service Perimeters provided.
+///
+/// This is done atomically.
 class ReplaceServicePerimetersRequest {
-  /// Optional. The etag for the version of the Access Policy that this replace
-  /// operation is to be performed on. If, at the time of replace, the etag for
-  /// the Access Policy stored in Access Context Manager is different from the
-  /// specified etag, then the replace operation will not be performed and the
-  /// call will fail. This field is not required. If etag is not provided, the
-  /// operation will be performed as if a valid etag is provided.
+  /// The etag for the version of the Access Policy that this replace operation
+  /// is to be performed on.
+  ///
+  /// If, at the time of replace, the etag for the Access Policy stored in
+  /// Access Context Manager is different from the specified etag, then the
+  /// replace operation will not be performed and the call will fail. This field
+  /// is not required. If etag is not provided, the operation will be performed
+  /// as if a valid etag is provided.
+  ///
+  /// Optional.
   core.String etag;
 
-  /// Required. The desired Service Perimeters that should replace all existing
-  /// Service Perimeters in the Access Policy.
+  /// The desired Service Perimeters that should replace all existing Service
+  /// Perimeters in the Access Policy.
+  ///
+  /// Required.
   core.List<ServicePerimeter> servicePerimeters;
 
   ReplaceServicePerimetersRequest();
@@ -2846,8 +2975,9 @@ class ReplaceServicePerimetersRequest {
   }
 }
 
-/// A response to ReplaceServicePerimetersRequest. This will be put inside of
-/// Operation.response field.
+/// A response to ReplaceServicePerimetersRequest.
+///
+/// This will be put inside of Operation.response field.
 class ReplaceServicePerimetersResponse {
   /// List of the Service Perimeter instances.
   core.List<ServicePerimeter> servicePerimeters;
@@ -2875,58 +3005,73 @@ class ReplaceServicePerimetersResponse {
 
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
 /// freely import and export data amongst themselves, but not export outside of
-/// the `ServicePerimeter`. If a request with a source within this
-/// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the
-/// request will be blocked. Otherwise the request is allowed. There are two
-/// types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
-/// cannot overlap, a single Google Cloud project can only belong to a single
-/// regular Service Perimeter. Service Perimeter Bridges can contain only Google
-/// Cloud projects as members, a single Google Cloud project may belong to
-/// multiple Service Perimeter Bridges.
+/// the `ServicePerimeter`.
+///
+/// If a request with a source within this `ServicePerimeter` has a target
+/// outside of the `ServicePerimeter`, the request will be blocked. Otherwise
+/// the request is allowed. There are two types of Service Perimeter - Regular
+/// and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud
+/// project can only belong to a single regular Service Perimeter. Service
+/// Perimeter Bridges can contain only Google Cloud projects as members, a
+/// single Google Cloud project may belong to multiple Service Perimeter
+/// Bridges.
 class ServicePerimeter {
-  /// Description of the `ServicePerimeter` and its use. Does not affect
-  /// behavior.
+  /// Description of the `ServicePerimeter` and its use.
+  ///
+  /// Does not affect behavior.
   core.String description;
 
-  /// Required. Resource name for the ServicePerimeter. The `short_name`
-  /// component must begin with a letter and only include alphanumeric and '_'.
-  /// Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  /// Resource name for the ServicePerimeter.
+  ///
+  /// The `short_name` component must begin with a letter and only include
+  /// alphanumeric and '_'. Format:
+  /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  ///
+  /// Required.
   core.String name;
 
-  /// Perimeter type indicator. A single project is allowed to be a member of
-  /// single regular perimeter, but multiple service perimeter bridges. A
-  /// project cannot be a included in a perimeter bridge without being included
-  /// in regular perimeter. For perimeter bridges, the restricted service list
-  /// as well as access level lists must be empty.
+  /// Perimeter type indicator.
+  ///
+  /// A single project is allowed to be a member of single regular perimeter,
+  /// but multiple service perimeter bridges. A project cannot be a included in
+  /// a perimeter bridge without being included in regular perimeter. For
+  /// perimeter bridges, the restricted service list as well as access level
+  /// lists must be empty.
   /// Possible string values are:
   /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
   core.String perimeterType;
 
-  /// Proposed (or dry run) ServicePerimeter configuration. This configuration
-  /// allows to specify and test ServicePerimeter configuration without
-  /// enforcing actual access restrictions. Only allowed to be set when the
-  /// "use_explicit_dry_run_spec" flag is set.
+  /// Proposed (or dry run) ServicePerimeter configuration.
+  ///
+  /// This configuration allows to specify and test ServicePerimeter
+  /// configuration without enforcing actual access restrictions. Only allowed
+  /// to be set when the "use_explicit_dry_run_spec" flag is set.
   ServicePerimeterConfig spec;
 
-  /// Current ServicePerimeter configuration. Specifies sets of resources,
-  /// restricted services and access levels that determine perimeter content and
-  /// boundaries.
+  /// Current ServicePerimeter configuration.
+  ///
+  /// Specifies sets of resources, restricted services and access levels that
+  /// determine perimeter content and boundaries.
   ServicePerimeterConfig status;
 
-  /// Human readable title. Must be unique within the Policy.
+  /// Human readable title.
+  ///
+  /// Must be unique within the Policy.
   core.String title;
 
-  /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly
-  /// exists for all Service Perimeters, and that spec is identical to the
-  /// status for those Service Perimeters. When this flag is set, it inhibits
-  /// the generation of the implicit spec, thereby allowing the user to
-  /// explicitly provide a configuration ("spec") to use in a dry-run version of
-  /// the Service Perimeter. This allows the user to test changes to the
-  /// enforced config ("status") without actually enforcing them. This testing
-  /// is done through analyzing the differences between currently enforced and
-  /// suggested restrictions. use_explicit_dry_run_spec must bet set to True if
-  /// any of the fields in the spec are set to non-default values.
+  /// Use explicit dry run spec flag.
+  ///
+  /// Ordinarily, a dry-run spec implicitly exists for all Service Perimeters,
+  /// and that spec is identical to the status for those Service Perimeters.
+  /// When this flag is set, it inhibits the generation of the implicit spec,
+  /// thereby allowing the user to explicitly provide a configuration ("spec")
+  /// to use in a dry-run version of the Service Perimeter. This allows the user
+  /// to test changes to the enforced config ("status") without actually
+  /// enforcing them. This testing is done through analyzing the differences
+  /// between currently enforced and suggested restrictions.
+  /// use_explicit_dry_run_spec must bet set to True if any of the fields in the
+  /// spec are set to non-default values.
   core.bool useExplicitDryRunSpec;
 
   ServicePerimeter();
@@ -2988,23 +3133,28 @@ class ServicePerimeter {
 /// describe specific Service Perimeter configuration.
 class ServicePerimeterConfig {
   /// A list of `AccessLevel` resource names that allow resources within the
-  /// `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed
-  /// must be in the same policy as this `ServicePerimeter`. Referencing a
-  /// nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are
-  /// listed, resources within the perimeter can only be accessed via Google
-  /// Cloud calls with request origins within the perimeter. Example:
+  /// `ServicePerimeter` to be accessed from the internet.
+  ///
+  /// `AccessLevels` listed must be in the same policy as this
+  /// `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax
+  /// error. If no `AccessLevel` names are listed, resources within the
+  /// perimeter can only be accessed via Google Cloud calls with request origins
+  /// within the perimeter. Example:
   /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter
   /// Bridge, must be empty.
   core.List<core.String> accessLevels;
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
+  ///
   /// Currently only projects are allowed. Format: `projects/{project_number}`
   core.List<core.String> resources;
 
   /// Google Cloud services that are subject to the Service Perimeter
-  /// restrictions. For example, if `storage.googleapis.com` is specified,
-  /// access to the storage buckets inside the perimeter must meet the
-  /// perimeter's access restrictions.
+  /// restrictions.
+  ///
+  /// For example, if `storage.googleapis.com` is specified, access to the
+  /// storage buckets inside the perimeter must meet the perimeter's access
+  /// restrictions.
   core.List<core.String> restrictedServices;
 
   /// Configuration for APIs allowed within Perimeter.
@@ -3054,24 +3204,27 @@ class ServicePerimeterConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3114,10 +3267,12 @@ class Status {
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
 class VpcAccessibleServices {
-  /// The list of APIs usable within the Service Perimeter. Must be empty unless
-  /// 'enable_restriction' is True. You can specify a list of individual
-  /// services, as well as include the 'RESTRICTED-SERVICES' value, which
-  /// automatically includes all of the services protected by the perimeter.
+  /// The list of APIs usable within the Service Perimeter.
+  ///
+  /// Must be empty unless 'enable_restriction' is True. You can specify a list
+  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
+  /// value, which automatically includes all of the services protected by the
+  /// perimeter.
   core.List<core.String> allowedServices;
 
   /// Whether to restrict API calls within the Service Perimeter to the list of

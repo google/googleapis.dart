@@ -607,8 +607,9 @@ class FamilysharingResource {
     );
   }
 
-  /// Initiates sharing of the content with the user's family. Empty response
-  /// indicates success.
+  /// Initiates sharing of the content with the user's family.
+  ///
+  /// Empty response indicates success.
   ///
   /// Request parameters:
   ///
@@ -671,7 +672,9 @@ class FamilysharingResource {
   }
 
   /// Initiates revoking content that has already been shared with the user's
-  /// family. Empty response indicates success.
+  /// family.
+  ///
+  /// Empty response indicates success.
   ///
   /// Request parameters:
   ///
@@ -1691,9 +1694,11 @@ class MyconfigResource {
     );
   }
 
-  /// Sets the settings for the user. If a sub-object is specified, it will
-  /// overwrite the existing sub-object stored in the server. Unspecified
-  /// sub-objects will retain the existing value.
+  /// Sets the settings for the user.
+  ///
+  /// If a sub-object is specified, it will overwrite the existing sub-object
+  /// stored in the server. Unspecified sub-objects will retain the existing
+  /// value.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4304,8 +4309,9 @@ class AnnotationLayerSummary {
   /// Maximum allowed characters on this layer, especially for the "copy" layer.
   core.int allowedCharacterCount;
 
-  /// Type of limitation on this layer. "limited" or "unlimited" for the "copy"
-  /// layer.
+  /// Type of limitation on this layer.
+  ///
+  /// "limited" or "unlimited" for the "copy" layer.
   core.String limitType;
 
   /// Remaining allowed characters on this layer, especially for the "copy"
@@ -4342,12 +4348,16 @@ class AnnotationLayerSummary {
 }
 
 class Annotation {
-  /// Anchor text after excerpt. For requests, if the user bookmarked a screen
-  /// that has no flowing text on it, then this field should be empty.
+  /// Anchor text after excerpt.
+  ///
+  /// For requests, if the user bookmarked a screen that has no flowing text on
+  /// it, then this field should be empty.
   core.String afterSelectedText;
 
-  /// Anchor text before excerpt. For requests, if the user bookmarked a screen
-  /// that has no flowing text on it, then this field should be empty.
+  /// Anchor text before excerpt.
+  ///
+  /// For requests, if the user bookmarked a screen that has no flowing text on
+  /// it, then this field should be empty.
   core.String beforeSelectedText;
 
   /// Selection ranges sent from the client.
@@ -4518,12 +4528,15 @@ class Annotations {
   /// Resource type.
   core.String kind;
 
-  /// Token to pass in for pagination for the next page. This will not be
-  /// present if this request does not have more results.
+  /// Token to pass in for pagination for the next page.
+  ///
+  /// This will not be present if this request does not have more results.
   core.String nextPageToken;
 
-  /// Total number of annotations found. This may be greater than the number of
-  /// notes returned in this response if results have been paginated.
+  /// Total number of annotations found.
+  ///
+  /// This may be greater than the number of notes returned in this response if
+  /// results have been paginated.
   core.int totalItems;
 
   Annotations();
@@ -4650,8 +4663,9 @@ class Annotationsdata {
   /// Resource type
   core.String kind;
 
-  /// Token to pass in for pagination for the next page. This will not be
-  /// present if this request does not have more results.
+  /// Token to pass in for pagination for the next page.
+  ///
+  /// This will not be present if this request does not have more results.
   core.String nextPageToken;
 
   /// The total number of volume annotations found.
@@ -5022,7 +5036,9 @@ class ConcurrentAccessRestriction {
   /// Error/warning message.
   core.String message;
 
-  /// Client nonce for verification. Download access and client-validation only.
+  /// Client nonce for verification.
+  ///
+  /// Download access and client-validation only.
   core.String nonce;
 
   /// Error/warning reason code.
@@ -5034,8 +5050,9 @@ class ConcurrentAccessRestriction {
   /// Response signature.
   core.String signature;
 
-  /// Client app identifier for verification. Download access and
-  /// client-validation only.
+  /// Client app identifier for verification.
+  ///
+  /// Download access and client-validation only.
   core.String source;
 
   /// Time in seconds for license auto-expiration.
@@ -5125,8 +5142,10 @@ class DictionaryAnnotationdata {
   /// The type of annotation this data is for.
   core.String annotationType;
 
-  /// JSON encoded data for this dictionary annotation data. Emitted with name
-  /// 'data' in JSON output. Either this or geo_data will be populated.
+  /// JSON encoded data for this dictionary annotation data.
+  ///
+  /// Emitted with name 'data' in JSON output. Either this or geo_data will be
+  /// populated.
   Dictlayerdata data;
 
   /// Base64 encoded data for this annotation data.
@@ -5145,17 +5164,24 @@ class DictionaryAnnotationdata {
   /// Resource Type
   core.String kind;
 
-  /// The Layer id for this data. *
+  /// The Layer id for this data.
+  ///
+  /// *
   core.String layerId;
 
-  /// URL for this resource. *
+  /// URL for this resource.
+  ///
+  /// *
   core.String selfLink;
 
-  /// Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
-  /// format).
+  /// Timestamp for the last time this data was updated.
+  ///
+  /// (RFC 3339 UTC date-time format).
   core.String updated;
 
-  /// The volume id for this data. *
+  /// The volume id for this data.
+  ///
+  /// *
   core.String volumeId;
 
   DictionaryAnnotationdata();
@@ -5999,11 +6025,15 @@ class DownloadAccessRestriction {
   /// Error/warning message.
   core.String message;
 
-  /// Client nonce for verification. Download access and client-validation only.
+  /// Client nonce for verification.
+  ///
+  /// Download access and client-validation only.
   core.String nonce;
 
-  /// Error/warning reason code. Additional codes may be added in the future. 0
-  /// OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
+  /// Error/warning reason code.
+  ///
+  /// Additional codes may be added in the future. 0 OK 100
+  /// ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
   /// WARNING_USED_LAST_ACCESS
   core.String reasonCode;
 
@@ -6013,8 +6043,9 @@ class DownloadAccessRestriction {
   /// Response signature.
   core.String signature;
 
-  /// Client app identifier for verification. Download access and
-  /// client-validation only.
+  /// Client app identifier for verification.
+  ///
+  /// Download access and client-validation only.
   core.String source;
 
   /// Identifies the volume for which this entry applies.
@@ -6139,10 +6170,12 @@ class DownloadAccesses {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -6247,8 +6280,10 @@ class GeoAnnotationdata {
   /// The type of annotation this data is for.
   core.String annotationType;
 
-  /// JSON encoded data for this geo annotation data. Emitted with name 'data'
-  /// in JSON output. Either this or dict_data will be populated.
+  /// JSON encoded data for this geo annotation data.
+  ///
+  /// Emitted with name 'data' in JSON output. Either this or dict_data will be
+  /// populated.
   Geolayerdata data;
 
   /// Base64 encoded data for this annotation data.
@@ -6267,17 +6302,24 @@ class GeoAnnotationdata {
   /// Resource Type
   core.String kind;
 
-  /// The Layer id for this data. *
+  /// The Layer id for this data.
+  ///
+  /// *
   core.String layerId;
 
-  /// URL for this resource. *
+  /// URL for this resource.
+  ///
+  /// *
   core.String selfLink;
 
-  /// Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
-  /// format).
+  /// Timestamp for the last time this data was updated.
+  ///
+  /// (RFC 3339 UTC date-time format).
   core.String updated;
 
-  /// The volume id for this data. *
+  /// The volume id for this data.
+  ///
+  /// *
   core.String volumeId;
 
   GeoAnnotationdata();
@@ -6356,7 +6398,9 @@ class GeolayerdataCommon {
   /// The description for this location.
   core.String snippet;
 
-  /// The URL for information for this location. Ex: wikipedia link.
+  /// The URL for information for this location.
+  ///
+  /// Ex: wikipedia link.
   core.String snippetUrl;
 
   /// The display title and localized canonical name to use when searching for
@@ -6458,8 +6502,9 @@ class GeolayerdataGeoViewportLo {
   }
 }
 
-/// The viewport for showing this location. This is a latitude, longitude
-/// rectangle.
+/// The viewport for showing this location.
+///
+/// This is a latitude, longitude rectangle.
 class GeolayerdataGeoViewport {
   GeolayerdataGeoViewportHi hi;
   GeolayerdataGeoViewportLo lo;
@@ -6494,7 +6539,9 @@ class GeolayerdataGeo {
   /// latitude, longitude coordinates.
   core.List<core.String> boundary;
 
-  /// The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
+  /// The cache policy active for this data.
+  ///
+  /// EX: UNRESTRICTED, RESTRICTED, NEVER
   core.String cachePolicy;
 
   /// The country code of the location.
@@ -6506,17 +6553,20 @@ class GeolayerdataGeo {
   /// The longitude of the location.
   core.double longitude;
 
-  /// The type of map that should be used for this location. EX: HYBRID,
-  /// ROADMAP, SATELLITE, TERRAIN
+  /// The type of map that should be used for this location.
+  ///
+  /// EX: HYBRID, ROADMAP, SATELLITE, TERRAIN
   core.String mapType;
 
-  /// The viewport for showing this location. This is a latitude, longitude
-  /// rectangle.
+  /// The viewport for showing this location.
+  ///
+  /// This is a latitude, longitude rectangle.
   GeolayerdataGeoViewport viewport;
 
-  /// The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
-  /// level, in which the entire world can be seen on one map) to 21+ (down to
-  /// individual buildings). See: https:
+  /// The Zoom level to use for the map.
+  ///
+  /// Zoom levels between 0 (the lowest zoom level, in which the entire world
+  /// can be seen on one map) to 21+ (down to individual buildings). See: https:
   /// //developers.google.com/maps/documentation/staticmaps/#Zoomlevels
   core.int zoom;
 
@@ -6691,13 +6741,16 @@ class Layersummary {
   /// URL to this resource.
   core.String selfLink;
 
-  /// Timestamp for the last time an item in this layer was updated. (RFC 3339
-  /// UTC date-time format).
+  /// Timestamp for the last time an item in this layer was updated.
+  ///
+  /// (RFC 3339 UTC date-time format).
   core.String updated;
 
-  /// The current version of this layer's volume annotations. Note that this
-  /// version applies only to the data in the books.layers.volumeAnnotations.*
-  /// responses. The actual annotation data is versioned separately.
+  /// The current version of this layer's volume annotations.
+  ///
+  /// Note that this version applies only to the data in the
+  /// books.layers.volumeAnnotations.* responses. The actual annotation data is
+  /// versioned separately.
   core.String volumeAnnotationsVersion;
 
   /// The volume id this resource is for.
@@ -7337,8 +7390,9 @@ class Review {
   /// Resource type for a review.
   core.String kind;
 
-  /// Star rating for this review. Possible values are ONE, TWO, THREE, FOUR,
-  /// FIVE or NOT_RATED.
+  /// Star rating for this review.
+  ///
+  /// Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED.
   core.String rating;
 
   /// Information regarding the source of this review, when the review is not
@@ -7348,8 +7402,9 @@ class Review {
   /// Title for this review.
   core.String title;
 
-  /// Source type for this review. Possible values are EDITORIAL, WEB_USER or
-  /// GOOGLE_USER.
+  /// Source type for this review.
+  ///
+  /// Possible values are EDITORIAL, WEB_USER or GOOGLE_USER.
   core.String type;
 
   /// Volume that this review is for.
@@ -7935,15 +7990,22 @@ class Usersettings {
   }
 }
 
-/// Information about epub content. (In LITE projection.)
+/// Information about epub content.
+///
+/// (In LITE projection.)
 class VolumeAccessInfoEpub {
-  /// URL to retrieve ACS token for epub download. (In LITE projection.)
+  /// URL to retrieve ACS token for epub download.
+  ///
+  /// (In LITE projection.)
   core.String acsTokenLink;
 
-  /// URL to download epub. (In LITE projection.)
+  /// URL to download epub.
+  ///
+  /// (In LITE projection.)
   core.String downloadLink;
 
   /// Is a flowing text epub available either as public domain or for purchase.
+  ///
   /// (In LITE projection.)
   core.bool isAvailable;
 
@@ -7976,15 +8038,22 @@ class VolumeAccessInfoEpub {
   }
 }
 
-/// Information about pdf content. (In LITE projection.)
+/// Information about pdf content.
+///
+/// (In LITE projection.)
 class VolumeAccessInfoPdf {
-  /// URL to retrieve ACS token for pdf download. (In LITE projection.)
+  /// URL to retrieve ACS token for pdf download.
+  ///
+  /// (In LITE projection.)
   core.String acsTokenLink;
 
-  /// URL to download pdf. (In LITE projection.)
+  /// URL to download pdf.
+  ///
+  /// (In LITE projection.)
   core.String downloadLink;
 
   /// Is a scanned image pdf available either as public domain or for purchase.
+  ///
   /// (In LITE projection.)
   core.bool isAvailable;
 
@@ -8018,16 +8087,22 @@ class VolumeAccessInfoPdf {
 }
 
 /// Any information about a volume related to reading or obtaining that volume
-/// text. This information can depend on country (books may be public domain in
-/// one country but not in another, e.g.).
+/// text.
+///
+/// This information can depend on country (books may be public domain in one
+/// country but not in another, e.g.).
 class VolumeAccessInfo {
   /// Combines the access and viewability of this volume into a single status
-  /// field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN,
-  /// SAMPLE or NONE. (In LITE projection.)
+  /// field for this user.
+  ///
+  /// Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE
+  /// projection.)
   core.String accessViewStatus;
 
   /// The two-letter ISO_3166-1 country code for which this access information
-  /// is valid. (In LITE projection.)
+  /// is valid.
+  ///
+  /// (In LITE projection.)
   core.String country;
 
   /// Information about a volume's download license access restrictions.
@@ -8041,7 +8116,9 @@ class VolumeAccessInfo {
   /// Viewer API.
   core.bool embeddable;
 
-  /// Information about epub content. (In LITE projection.)
+  /// Information about epub content.
+  ///
+  /// (In LITE projection.)
   VolumeAccessInfoEpub epub;
 
   /// Whether this volume requires that the client explicitly request offline
@@ -8049,7 +8126,9 @@ class VolumeAccessInfo {
   /// content, if the client supports it.
   core.bool explicitOfflineLicenseManagement;
 
-  /// Information about pdf content. (In LITE projection.)
+  /// Information about pdf content.
+  ///
+  /// (In LITE projection.)
   VolumeAccessInfoPdf pdf;
 
   /// Whether or not this book is public domain in the country listed above.
@@ -8058,24 +8137,27 @@ class VolumeAccessInfo {
   /// Whether quote sharing is allowed for this volume.
   core.bool quoteSharingAllowed;
 
-  /// Whether text-to-speech is permitted for this volume. Values can be
-  /// ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
+  /// Whether text-to-speech is permitted for this volume.
+  ///
+  /// Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
   core.String textToSpeechPermission;
 
   /// For ordered but not yet processed orders, we give a URL that can be used
   /// to go to the appropriate Google Wallet page.
   core.String viewOrderUrl;
 
-  /// The read access of a volume. Possible values are PARTIAL, ALL_PAGES,
-  /// NO_PAGES or UNKNOWN. This value depends on the country listed above. A
-  /// value of PARTIAL means that the publisher has allowed some portion of the
-  /// volume to be viewed publicly, without purchase. This can apply to eBooks
-  /// as well as non-eBooks. Public domain books will always have a value of
-  /// ALL_PAGES.
+  /// The read access of a volume.
+  ///
+  /// Possible values are PARTIAL, ALL_PAGES, NO_PAGES or UNKNOWN. This value
+  /// depends on the country listed above. A value of PARTIAL means that the
+  /// publisher has allowed some portion of the volume to be viewed publicly,
+  /// without purchase. This can apply to eBooks as well as non-eBooks. Public
+  /// domain books will always have a value of ALL_PAGES.
   core.String viewability;
 
-  /// URL to read this volume on the Google Books site. Link will not allow
-  /// users to read non-viewable volumes.
+  /// URL to read this volume on the Google Books site.
+  ///
+  /// Link will not allow users to read non-viewable volumes.
   core.String webReaderLink;
 
   VolumeAccessInfo();
@@ -8183,9 +8265,11 @@ class VolumeLayerInfoLayers {
   /// The layer id of this layer (e.g. "geo").
   core.String layerId;
 
-  /// The current version of this layer's volume annotations. Note that this
-  /// version applies only to the data in the books.layers.volumeAnnotations.*
-  /// responses. The actual annotation data is versioned separately.
+  /// The current version of this layer's volume annotations.
+  ///
+  /// Note that this version applies only to the data in the
+  /// books.layers.volumeAnnotations.* responses. The actual annotation data is
+  /// versioned separately.
   core.String volumeAnnotationsVersion;
 
   VolumeLayerInfoLayers();
@@ -8259,12 +8343,18 @@ class VolumeRecommendedInfo {
   }
 }
 
-/// Suggested retail price. (In LITE projection.)
+/// Suggested retail price.
+///
+/// (In LITE projection.)
 class VolumeSaleInfoListPrice {
-  /// Amount in the currency listed below. (In LITE projection.)
+  /// Amount in the currency listed below.
+  ///
+  /// (In LITE projection.)
   core.double amount;
 
-  /// An ISO 4217, three-letter currency code. (In LITE projection.)
+  /// An ISO 4217, three-letter currency code.
+  ///
+  /// (In LITE projection.)
   core.String currencyCode;
 
   VolumeSaleInfoListPrice();
@@ -8434,14 +8524,19 @@ class VolumeSaleInfoOffers {
   }
 }
 
-/// The actual selling price of the book. This is the same as the suggested
-/// retail or list price unless there are offers or discounts on this volume.
-/// (In LITE projection.)
+/// The actual selling price of the book.
+///
+/// This is the same as the suggested retail or list price unless there are
+/// offers or discounts on this volume. (In LITE projection.)
 class VolumeSaleInfoRetailPrice {
-  /// Amount in the currency listed below. (In LITE projection.)
+  /// Amount in the currency listed below.
+  ///
+  /// (In LITE projection.)
   core.double amount;
 
-  /// An ISO 4217, three-letter currency code. (In LITE projection.)
+  /// An ISO 4217, three-letter currency code.
+  ///
+  /// (In LITE projection.)
   core.String currencyCode;
 
   VolumeSaleInfoRetailPrice();
@@ -8468,22 +8563,29 @@ class VolumeSaleInfoRetailPrice {
 }
 
 /// Any information about a volume related to the eBookstore and/or
-/// purchaseability. This information can depend on the country where the
-/// request originates from (i.e. books may not be for sale in certain
-/// countries).
+/// purchaseability.
+///
+/// This information can depend on the country where the request originates from
+/// (i.e. books may not be for sale in certain countries).
 class VolumeSaleInfo {
-  /// URL to purchase this volume on the Google Books site. (In LITE projection)
+  /// URL to purchase this volume on the Google Books site.
+  ///
+  /// (In LITE projection)
   core.String buyLink;
 
   /// The two-letter ISO_3166-1 country code for which this sale information is
-  /// valid. (In LITE projection.)
+  /// valid.
+  ///
+  /// (In LITE projection.)
   core.String country;
 
   /// Whether or not this volume is an eBook (can be added to the My eBooks
   /// shelf).
   core.bool isEbook;
 
-  /// Suggested retail price. (In LITE projection.)
+  /// Suggested retail price.
+  ///
+  /// (In LITE projection.)
   VolumeSaleInfoListPrice listPrice;
 
   /// Offers available for this volume (sales and rentals).
@@ -8492,15 +8594,17 @@ class VolumeSaleInfo {
   /// The date on which this book is available for sale.
   core.String onSaleDate;
 
-  /// The actual selling price of the book. This is the same as the suggested
-  /// retail or list price unless there are offers or discounts on this volume.
-  /// (In LITE projection.)
+  /// The actual selling price of the book.
+  ///
+  /// This is the same as the suggested retail or list price unless there are
+  /// offers or discounts on this volume. (In LITE projection.)
   VolumeSaleInfoRetailPrice retailPrice;
 
   /// Whether or not this book is available for sale or offered for free in the
-  /// Google eBookstore for the country listed above. Possible values are
-  /// FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or
-  /// FOR_PREORDER.
+  /// Google eBookstore for the country listed above.
+  ///
+  /// Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE,
+  /// NOT_FOR_SALE, or FOR_PREORDER.
   core.String saleability;
 
   VolumeSaleInfo();
@@ -8636,9 +8740,10 @@ class VolumeUserInfoFamilySharing {
   /// The role of the user in the family.
   core.String familyRole;
 
-  /// Whether or not this volume can be shared with the family by the user. This
-  /// includes sharing eligibility of both the volume and the user. If the value
-  /// is true, the user can initiate a family sharing action.
+  /// Whether or not this volume can be shared with the family by the user.
+  ///
+  /// This includes sharing eligibility of both the volume and the user. If the
+  /// value is true, the user can initiate a family sharing action.
   core.bool isSharingAllowed;
 
   /// Whether or not sharing this volume is temporarily disabled due to issues
@@ -8722,12 +8827,14 @@ class VolumeUserInfoUserUploadedVolumeInfo {
   }
 }
 
-/// User specific information related to this volume. (e.g. page this user last
-/// read or whether they purchased this book)
+/// User specific information related to this volume.
+///
+/// (e.g. page this user last read or whether they purchased this book)
 class VolumeUserInfo {
-  /// Timestamp when this volume was acquired by the user. (RFC 3339 UTC
-  /// date-time format) Acquiring includes purchase, user upload, receiving
-  /// family sharing, etc.
+  /// Timestamp when this volume was acquired by the user.
+  ///
+  /// (RFC 3339 UTC date-time format) Acquiring includes purchase, user upload,
+  /// receiving family sharing, etc.
   core.String acquiredTime;
 
   /// How this volume was acquired.
@@ -8758,17 +8865,22 @@ class VolumeUserInfo {
   core.bool isInMyBooks;
 
   /// Whether or not this volume was pre-ordered by the authenticated user
-  /// making the request. (In LITE projection.)
+  /// making the request.
+  ///
+  /// (In LITE projection.)
   core.bool isPreordered;
 
   /// Whether or not this volume was purchased by the authenticated user making
-  /// the request. (In LITE projection.)
+  /// the request.
+  ///
+  /// (In LITE projection.)
   core.bool isPurchased;
 
   /// Whether or not this volume was user uploaded.
   core.bool isUploaded;
 
   /// The user's current reading position in the volume, if one is available.
+  ///
   /// (In LITE projection.)
   ReadingPosition readingPosition;
 
@@ -8782,8 +8894,9 @@ class VolumeUserInfo {
   Review review;
 
   /// Timestamp when this volume was last modified by a user action, such as a
-  /// reading position update, volume purchase or writing a review. (RFC 3339
-  /// UTC date-time format).
+  /// reading position update, volume purchase or writing a review.
+  ///
+  /// (RFC 3339 UTC date-time format).
   core.String updated;
   VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
 
@@ -8960,27 +9073,38 @@ class VolumeVolumeInfoDimensions {
   }
 }
 
-/// A list of image links for all the sizes that are available. (In LITE
-/// projection.)
+/// A list of image links for all the sizes that are available.
+///
+/// (In LITE projection.)
 class VolumeVolumeInfoImageLinks {
-  /// Image link for extra large size (width of ~1280 pixels). (In LITE
-  /// projection)
+  /// Image link for extra large size (width of ~1280 pixels).
+  ///
+  /// (In LITE projection)
   core.String extraLarge;
 
-  /// Image link for large size (width of ~800 pixels). (In LITE projection)
+  /// Image link for large size (width of ~800 pixels).
+  ///
+  /// (In LITE projection)
   core.String large;
 
-  /// Image link for medium size (width of ~575 pixels). (In LITE projection)
+  /// Image link for medium size (width of ~575 pixels).
+  ///
+  /// (In LITE projection)
   core.String medium;
 
-  /// Image link for small size (width of ~300 pixels). (In LITE projection)
+  /// Image link for small size (width of ~300 pixels).
+  ///
+  /// (In LITE projection)
   core.String small;
 
-  /// Image link for small thumbnail size (width of ~80 pixels). (In LITE
-  /// projection)
+  /// Image link for small thumbnail size (width of ~80 pixels).
+  ///
+  /// (In LITE projection)
   core.String smallThumbnail;
 
-  /// Image link for thumbnail size (width of ~128 pixels). (In LITE projection)
+  /// Image link for thumbnail size (width of ~128 pixels).
+  ///
+  /// (In LITE projection)
   core.String thumbnail;
 
   VolumeVolumeInfoImageLinks();
@@ -9034,7 +9158,9 @@ class VolumeVolumeInfoIndustryIdentifiers {
   /// Industry specific volume identifier.
   core.String identifier;
 
-  /// Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
+  /// Identifier type.
+  ///
+  /// Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
   core.String type;
 
   VolumeVolumeInfoIndustryIdentifiers();
@@ -9135,14 +9261,19 @@ class VolumeVolumeInfo {
   /// Whether anonymous logging should be allowed.
   core.bool allowAnonLogging;
 
-  /// The names of the authors and/or editors for this volume. (In LITE
-  /// projection)
+  /// The names of the authors and/or editors for this volume.
+  ///
+  /// (In LITE projection)
   core.List<core.String> authors;
 
-  /// The mean review rating for this volume. (min = 1.0, max = 5.0)
+  /// The mean review rating for this volume.
+  ///
+  /// (min = 1.0, max = 5.0)
   core.double averageRating;
 
-  /// Canonical URL for a volume. (In LITE projection.)
+  /// Canonical URL for a volume.
+  ///
+  /// (In LITE projection.)
   core.String canonicalVolumeLink;
 
   /// A list of subject categories, such as "Fiction", "Suspense", etc.
@@ -9151,35 +9282,42 @@ class VolumeVolumeInfo {
   /// Whether the volume has comics content.
   core.bool comicsContent;
 
-  /// An identifier for the version of the volume content (text & images). (In
-  /// LITE projection)
+  /// An identifier for the version of the volume content (text & images).
+  ///
+  /// (In LITE projection)
   core.String contentVersion;
 
-  /// A synopsis of the volume. The text of the description is formatted in HTML
-  /// and includes simple formatting elements, such as b, i, and br tags. (In
-  /// LITE projection.)
+  /// A synopsis of the volume.
+  ///
+  /// The text of the description is formatted in HTML and includes simple
+  /// formatting elements, such as b, i, and br tags. (In LITE projection.)
   core.String description;
 
   /// Physical dimensions of this volume.
   VolumeVolumeInfoDimensions dimensions;
 
-  /// A list of image links for all the sizes that are available. (In LITE
-  /// projection.)
+  /// A list of image links for all the sizes that are available.
+  ///
+  /// (In LITE projection.)
   VolumeVolumeInfoImageLinks imageLinks;
 
   /// Industry standard identifiers for this volume.
   core.List<VolumeVolumeInfoIndustryIdentifiers> industryIdentifiers;
 
-  /// URL to view information about this volume on the Google Books site. (In
-  /// LITE projection)
+  /// URL to view information about this volume on the Google Books site.
+  ///
+  /// (In LITE projection)
   core.String infoLink;
 
-  /// Best language for this volume (based on content). It is the two-letter ISO
-  /// 639-1 code such as 'fr', 'en', etc.
+  /// Best language for this volume (based on content).
+  ///
+  /// It is the two-letter ISO 639-1 code such as 'fr', 'en', etc.
   core.String language;
 
-  /// The main category to which this volume belongs. It will be the category
-  /// from the categories list returned below that has the highest weight.
+  /// The main category to which this volume belongs.
+  ///
+  /// It will be the category from the categories list returned below that has
+  /// the highest weight.
   core.String mainCategory;
   core.String maturityRating;
 
@@ -9192,16 +9330,22 @@ class VolumeVolumeInfo {
   /// URL to preview this volume on the Google Books site.
   core.String previewLink;
 
-  /// Type of publication of this volume. Possible values are BOOK or MAGAZINE.
+  /// Type of publication of this volume.
+  ///
+  /// Possible values are BOOK or MAGAZINE.
   core.String printType;
 
   /// Total number of printed pages in generated pdf representation.
   core.int printedPageCount;
 
-  /// Date of publication. (In LITE projection.)
+  /// Date of publication.
+  ///
+  /// (In LITE projection.)
   core.String publishedDate;
 
-  /// Publisher of this volume. (In LITE projection.)
+  /// Publisher of this volume.
+  ///
+  /// (In LITE projection.)
   core.String publisher;
 
   /// The number of review ratings for this volume.
@@ -9214,10 +9358,14 @@ class VolumeVolumeInfo {
   core.int samplePageCount;
   Volumeseriesinfo seriesInfo;
 
-  /// Volume subtitle. (In LITE projection.)
+  /// Volume subtitle.
+  ///
+  /// (In LITE projection.)
   core.String subtitle;
 
-  /// Volume title. (In LITE projection.)
+  /// Volume title.
+  ///
+  /// (In LITE projection.)
   core.String title;
 
   VolumeVolumeInfo();
@@ -9415,18 +9563,25 @@ class VolumeVolumeInfo {
 
 class Volume {
   /// Any information about a volume related to reading or obtaining that volume
-  /// text. This information can depend on country (books may be public domain
-  /// in one country but not in another, e.g.).
+  /// text.
+  ///
+  /// This information can depend on country (books may be public domain in one
+  /// country but not in another, e.g.).
   VolumeAccessInfo accessInfo;
 
-  /// Opaque identifier for a specific version of a volume resource. (In LITE
-  /// projection)
+  /// Opaque identifier for a specific version of a volume resource.
+  ///
+  /// (In LITE projection)
   core.String etag;
 
-  /// Unique identifier for a volume. (In LITE projection.)
+  /// Unique identifier for a volume.
+  ///
+  /// (In LITE projection.)
   core.String id;
 
-  /// Resource type for a volume. (In LITE projection.)
+  /// Resource type for a volume.
+  ///
+  /// (In LITE projection.)
   core.String kind;
 
   /// What layers exist in this volume and high level information about them.
@@ -9436,19 +9591,23 @@ class Volume {
   VolumeRecommendedInfo recommendedInfo;
 
   /// Any information about a volume related to the eBookstore and/or
-  /// purchaseability. This information can depend on the country where the
-  /// request originates from (i.e. books may not be for sale in certain
-  /// countries).
+  /// purchaseability.
+  ///
+  /// This information can depend on the country where the request originates
+  /// from (i.e. books may not be for sale in certain countries).
   VolumeSaleInfo saleInfo;
 
   /// Search result information related to this volume.
   VolumeSearchInfo searchInfo;
 
-  /// URL to this resource. (In LITE projection.)
+  /// URL to this resource.
+  ///
+  /// (In LITE projection.)
   core.String selfLink;
 
-  /// User specific information related to this volume. (e.g. page this user
-  /// last read or whether they purchased this book)
+  /// User specific information related to this volume.
+  ///
+  /// (e.g. page this user last read or whether they purchased this book)
   VolumeUserInfo userInfo;
 
   /// General volume information.
@@ -9667,8 +9826,9 @@ class Volumeannotation {
   /// URL to this resource.
   core.String selfLink;
 
-  /// Timestamp for the last time this anntoation was updated. (RFC 3339 UTC
-  /// date-time format).
+  /// Timestamp for the last time this anntoation was updated.
+  ///
+  /// (RFC 3339 UTC date-time format).
   core.String updated;
 
   /// The Volume this annotation is for.
@@ -9779,17 +9939,20 @@ class Volumeannotations {
   /// Resource type
   core.String kind;
 
-  /// Token to pass in for pagination for the next page. This will not be
-  /// present if this request does not have more results.
+  /// Token to pass in for pagination for the next page.
+  ///
+  /// This will not be present if this request does not have more results.
   core.String nextPageToken;
 
   /// The total number of volume annotations found.
   core.int totalItems;
 
   /// The version string for all of the volume annotations in this layer (not
-  /// just the ones in this response). Note: the version string doesn't apply to
-  /// the annotation data, just the information in this response (e.g. the
-  /// location of annotations in the book).
+  /// just the ones in this response).
+  ///
+  /// Note: the version string doesn't apply to the annotation data, just the
+  /// information in this response (e.g. the location of annotations in the
+  /// book).
   core.String version;
 
   Volumeannotations();
@@ -9843,8 +10006,10 @@ class Volumes {
   /// Resource type.
   core.String kind;
 
-  /// Total number of volumes found. This might be greater than the number of
-  /// volumes returned in this response if results have been paginated.
+  /// Total number of volumes found.
+  ///
+  /// This might be greater than the number of volumes returned in this response
+  /// if results have been paginated.
   core.int totalItems;
 
   Volumes();
@@ -9907,14 +10072,17 @@ class VolumeseriesinfoVolumeSeriesIssue {
 }
 
 class VolumeseriesinfoVolumeSeries {
-  /// List of issues. Applicable only for Collection Edition and Omnibus.
+  /// List of issues.
+  ///
+  /// Applicable only for Collection Edition and Omnibus.
   core.List<VolumeseriesinfoVolumeSeriesIssue> issue;
 
   /// The book order number in the series.
   core.int orderNumber;
 
-  /// The book type in the context of series. Examples - Single Issue,
-  /// Collection Edition, etc.
+  /// The book type in the context of series.
+  ///
+  /// Examples - Single Issue, Collection Edition, etc.
   core.String seriesBookType;
 
   /// The series id.
@@ -9960,8 +10128,10 @@ class VolumeseriesinfoVolumeSeries {
 }
 
 class Volumeseriesinfo {
-  /// The display number string. This should be used only for display purposes
-  /// and the actual sequence should be inferred from the below orderNumber.
+  /// The display number string.
+  ///
+  /// This should be used only for display purposes and the actual sequence
+  /// should be inferred from the below orderNumber.
   core.String bookDisplayNumber;
 
   /// Resource type.

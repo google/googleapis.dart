@@ -61,10 +61,11 @@ class UrlNotificationsResource {
 
   UrlNotificationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets metadata about a Web Document. This method can _only_ be used to
-  /// query URLs that were previously seen in successful Indexing API
-  /// notifications. Includes the latest `UrlNotification` received via this
-  /// API.
+  /// Gets metadata about a Web Document.
+  ///
+  /// This method can _only_ be used to query URLs that were previously seen in
+  /// successful Indexing API notifications. Includes the latest
+  /// `UrlNotification` received via this API.
   ///
   /// Request parameters:
   ///
@@ -191,11 +192,13 @@ class PublishUrlNotificationResponse {
   }
 }
 
-/// `UrlNotification` is the resource used in all Indexing API calls. It
-/// describes one event in the life cycle of a Web Document.
+/// `UrlNotification` is the resource used in all Indexing API calls.
+///
+/// It describes one event in the life cycle of a Web Document.
 class UrlNotification {
-  /// Creation timestamp for this notification. Users should _not_ specify it,
-  /// the field is ignored at the request time.
+  /// Creation timestamp for this notification.
+  ///
+  /// Users should _not_ specify it, the field is ignored at the request time.
   core.String notifyTime;
 
   /// The URL life cycle event that Google is being notified about.
@@ -205,9 +208,10 @@ class UrlNotification {
   /// - "URL_DELETED" : The given URL (Web document) has been deleted.
   core.String type;
 
-  /// The object of this notification. The URL must be owned by the publisher of
-  /// this notification and, in case of `URL_UPDATED` notifications, it _must_
-  /// be crawlable by Google.
+  /// The object of this notification.
+  ///
+  /// The URL must be owned by the publisher of this notification and, in case
+  /// of `URL_UPDATED` notifications, it _must_ be crawlable by Google.
   core.String url;
 
   UrlNotification();

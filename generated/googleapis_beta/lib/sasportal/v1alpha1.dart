@@ -536,7 +536,9 @@ class CustomersDevicesResource {
 
   CustomersDevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a device under a node or customer. Returned devices are unordered.
+  /// Creates a device under a node or customer.
+  ///
+  /// Returned devices are unordered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2448,7 +2450,9 @@ class NodesDevicesResource {
 
   NodesDevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a device under a node or customer. Returned devices are unordered.
+  /// Creates a device under a node or customer.
+  ///
+  /// Returned devices are unordered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3422,7 +3426,9 @@ class NodesNodesDevicesResource {
 
   NodesNodesDevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a device under a node or customer. Returned devices are unordered.
+  /// Creates a device under a node or customer.
+  ///
+  /// Returned devices are unordered.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3818,8 +3824,10 @@ class PoliciesResource {
 
   PoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3870,8 +3878,9 @@ class PoliciesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3976,13 +3985,17 @@ class PoliciesResource {
 
 /// Associates `members` with a `role`.
 class SasPortalAssignment {
-  /// The identities the role is assigned to. It can have the following values:
-  /// * `{user_email}`: An email address that represents a specific Google
-  /// account. For example: `alice@gmail.com`. * `{group_email}`: An email
-  /// address that represents a Google group. For example, `viewers@gmail.com`.
+  /// The identities the role is assigned to.
+  ///
+  /// It can have the following values: * `{user_email}`: An email address that
+  /// represents a specific Google account. For example: `alice@gmail.com`. *
+  /// `{group_email}`: An email address that represents a Google group. For
+  /// example, `viewers@gmail.com`.
   core.List<core.String> members;
 
-  /// Required. Role that is assigned to `members`.
+  /// Role that is assigned to `members`.
+  ///
+  /// Required.
   core.String role;
 
   SasPortalAssignment();
@@ -4012,9 +4025,12 @@ class SasPortalAssignment {
 
 /// Request for BulkCreateDevice method.
 class SasPortalBulkCreateDeviceRequest {
-  /// Required. A csv with each row representing a [device]. Each row must
-  /// conform to the regulations described on CreateDeviceRequest's device
-  /// field.
+  /// A csv with each row representing a [device].
+  ///
+  /// Each row must conform to the regulations described on
+  /// CreateDeviceRequest's device field.
+  ///
+  /// Required.
   core.String csv;
 
   SasPortalBulkCreateDeviceRequest();
@@ -4036,7 +4052,9 @@ class SasPortalBulkCreateDeviceRequest {
 
 /// Response for BulkCreateDevice method.
 class SasPortalBulkCreateDeviceResponse {
-  /// Required. The devices that were imported.
+  /// The devices that were imported.
+  ///
+  /// Required.
   core.List<SasPortalDevice> devices;
 
   SasPortalBulkCreateDeviceResponse();
@@ -4061,8 +4079,12 @@ class SasPortalBulkCreateDeviceResponse {
 
 /// Request for CreateSignedDevice method.
 class SasPortalCreateSignedDeviceRequest {
-  /// Required. JSON Web Token signed using a CPI private key. Payload must be
-  /// the JSON encoding of the [Device]. The user_id field must be set.
+  /// JSON Web Token signed using a CPI private key.
+  ///
+  /// Payload must be the JSON encoding of the [Device]. The user_id field must
+  /// be set.
+  ///
+  /// Required.
   core.String encodedDevice;
   core.List<core.int> get encodedDeviceAsBytes =>
       convert.base64.decode(encodedDevice);
@@ -4072,8 +4094,10 @@ class SasPortalCreateSignedDeviceRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Required. Unique installer id (cpiId) from the Certified Professional
-  /// Installers database.
+  /// Unique installer id (cpiId) from the Certified Professional Installers
+  /// database.
+  ///
+  /// Required.
   core.String installerId;
 
   SasPortalCreateSignedDeviceRequest();
@@ -4101,10 +4125,14 @@ class SasPortalCreateSignedDeviceRequest {
 
 /// Entity representing a SAS customer.
 class SasPortalCustomer {
-  /// Required. Name of the organization that the customer entity represents.
+  /// Name of the organization that the customer entity represents.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Output only. Resource name of the customer.
+  /// Resource name of the customer.
+  ///
+  /// Output only.
   core.String name;
 
   /// User IDs used by the devices belonging to this customer.
@@ -4142,7 +4170,9 @@ class SasPortalCustomer {
 }
 
 class SasPortalDevice {
-  /// Output only. Current configuration of the device as registered to the SAS.
+  /// Current configuration of the device as registered to the SAS.
+  ///
+  /// Output only.
   SasPortalDeviceConfig activeConfig;
 
   /// Device parameters that can be overridden by both SAS Portal and SAS
@@ -4155,10 +4185,14 @@ class SasPortalDevice {
   /// The FCC identifier of the device.
   core.String fccId;
 
-  /// Output only. Grants held by the device.
+  /// Grants held by the device.
+  ///
+  /// Output only.
   core.List<SasPortalDeviceGrant> grants;
 
-  /// Output only. The resource path name.
+  /// The resource path name.
+  ///
+  /// Output only.
   core.String name;
 
   /// Configuration of the device, as specified via SAS Portal API.
@@ -4167,7 +4201,9 @@ class SasPortalDevice {
   /// A serial number assigned to the device by the device manufacturer.
   core.String serialNumber;
 
-  /// Output only. Device state.
+  /// Device state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "DEVICE_STATE_UNSPECIFIED" : Unspecified state.
   /// - "RESERVED" : Device created in the SAS Portal, however, not yet
@@ -4250,7 +4286,9 @@ class SasPortalDevice {
 /// Information about the device's air interface.
 class SasPortalDeviceAirInterface {
   /// This field specifies the radio access technology that is used for the
-  /// CBSD. Conditional
+  /// CBSD.
+  ///
+  /// Conditional
   /// Possible string values are:
   /// - "RADIO_TECHNOLOGY_UNSPECIFIED"
   /// - "E_UTRA"
@@ -4265,7 +4303,9 @@ class SasPortalDeviceAirInterface {
 
   /// This field is related to the radioTechnology field and provides the air
   /// interface specification that the CBSD is compliant with at the time of
-  /// registration. Optional
+  /// registration.
+  ///
+  /// Optional
   core.String supportedSpec;
 
   SasPortalDeviceAirInterface();
@@ -4309,7 +4349,9 @@ class SasPortalDeviceConfig {
   /// Installation parameters for the device.
   SasPortalInstallationParams installationParams;
 
-  /// Output-only. Whether the configuration has been signed by a CPI.
+  /// Output-only.
+  ///
+  /// Whether the configuration has been signed by a CPI.
   core.bool isSigned;
 
   /// Measurement reporting capabilities of the device.
@@ -4325,7 +4367,9 @@ class SasPortalDeviceConfig {
   /// - "FINAL"
   core.String state;
 
-  /// Output-only. The last time the device configuration was edited.
+  /// Output-only.
+  ///
+  /// The last time the device configuration was edited.
   core.String updateTime;
 
   /// The identifier of a device user.
@@ -4407,9 +4451,11 @@ class SasPortalDeviceConfig {
   }
 }
 
-/// Device grant. It is an authorization provided by the Spectrum Access System
-/// to a device to transmit using specified operating parameters after a
-/// successful heartbeat by the device.
+/// Device grant.
+///
+/// It is an authorization provided by the Spectrum Access System to a device to
+/// transmit using specified operating parameters after a successful heartbeat
+/// by the device.
 class SasPortalDeviceGrant {
   /// Type of channel used.
   /// Possible string values are:
@@ -4428,9 +4474,11 @@ class SasPortalDeviceGrant {
   core.String grantId;
 
   /// Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the
-  /// grant. The maximum EIRP is in units of dBm/MHz. The value of maxEirp
-  /// represents the average (RMS) EIRP that would be measured by the procedure
-  /// defined in FCC part 96.41(e)(3).
+  /// grant.
+  ///
+  /// The maximum EIRP is in units of dBm/MHz. The value of maxEirp represents
+  /// the average (RMS) EIRP that would be measured by the procedure defined in
+  /// FCC part 96.41(e)(3).
   core.double maxEirp;
 
   /// The DPA move lists on which this grant appears.
@@ -4620,10 +4668,12 @@ class SasPortalDpaMoveList {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class SasPortalEmpty {
   SasPortalEmpty();
 
@@ -4707,7 +4757,9 @@ class SasPortalGenerateSecretResponse {
 
 /// Request message for `GetPolicy` method.
 class SasPortalGetPolicyRequest {
-  /// Required. The resource for which the policy is being requested.
+  /// The resource for which the policy is being requested.
+  ///
+  /// Required.
   core.String resource;
 
   SasPortalGetPolicyRequest();
@@ -4730,13 +4782,16 @@ class SasPortalGetPolicyRequest {
 /// Information about the device installation parameters.
 class SasPortalInstallationParams {
   /// Boresight direction of the horizontal plane of the antenna in degrees with
-  /// respect to true north. The value of this parameter is an integer with a
-  /// value between 0 and 359 inclusive. A value of 0 degrees means true north;
-  /// a value of 90 degrees means east. This parameter is optional for Category
-  /// A devices and conditional for Category B devices.
+  /// respect to true north.
+  ///
+  /// The value of this parameter is an integer with a value between 0 and 359
+  /// inclusive. A value of 0 degrees means true north; a value of 90 degrees
+  /// means east. This parameter is optional for Category A devices and
+  /// conditional for Category B devices.
   core.int antennaAzimuth;
 
   /// 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees.
+  ///
   /// This parameter is an unsigned integer having a value between 0 and 360
   /// (degrees) inclusive; it is optional for Category A devices and conditional
   /// for Category B devices.
@@ -4744,16 +4799,22 @@ class SasPortalInstallationParams {
 
   /// Antenna downtilt in degrees and is an integer with a value between -90 and
   /// +90 inclusive; a negative value means the antenna is tilted up (above
-  /// horizontal). This parameter is optional for Category A devices and
-  /// conditional for Category B devices.
+  /// horizontal).
+  ///
+  /// This parameter is optional for Category A devices and conditional for
+  /// Category B devices.
   core.int antennaDowntilt;
 
-  /// Peak antenna gain in dBi. This parameter is an integer with a value
-  /// between -127 and +128 (dBi) inclusive.
+  /// Peak antenna gain in dBi.
+  ///
+  /// This parameter is an integer with a value between -127 and +128 (dBi)
+  /// inclusive.
   core.int antennaGain;
 
   /// If an external antenna is used, the antenna model is optionally provided
-  /// in this field. The string has a maximum length of 128 octets.
+  /// in this field.
+  ///
+  /// The string has a maximum length of 128 octets.
   core.String antennaModel;
 
   /// If present, this parameter specifies whether the CBSD is a CPE-CBSD or
@@ -4761,15 +4822,17 @@ class SasPortalInstallationParams {
   core.bool cpeCbsdIndication;
 
   /// This parameter is the maximum device EIRP in units of dBm/10MHz and is an
-  /// integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not
-  /// included, SAS interprets it as maximum allowable EIRP in units of
+  /// integer with a value between -127 and +47 (dBm/10 MHz) inclusive.
+  ///
+  /// If not included, SAS interprets it as maximum allowable EIRP in units of
   /// dBm/10MHz for device category.
   core.int eirpCapability;
 
-  /// Device antenna height in meters. When the heightType parameter value is
-  /// "AGL", the antenna height should be given relative to ground level. When
-  /// the heightType parameter value is "AMSL", it is given with respect to
-  /// WGS84 datum.
+  /// Device antenna height in meters.
+  ///
+  /// When the heightType parameter value is "AGL", the antenna height should be
+  /// given relative to ground level. When the heightType parameter value is
+  /// "AMSL", it is given with respect to WGS84 datum.
   core.double height;
 
   /// Specifies how the height is measured.
@@ -4781,28 +4844,37 @@ class SasPortalInstallationParams {
   core.String heightType;
 
   /// A positive number in meters to indicate accuracy of the device antenna
-  /// horizontal location. This optional parameter should only be present if its
-  /// value is less than the FCC requirement of 50 meters.
+  /// horizontal location.
+  ///
+  /// This optional parameter should only be present if its value is less than
+  /// the FCC requirement of 50 meters.
   core.double horizontalAccuracy;
 
-  /// Whether the device antenna is indoor or not. True: indoor. False: outdoor.
+  /// Whether the device antenna is indoor or not.
+  ///
+  /// True: indoor. False: outdoor.
   core.bool indoorDeployment;
 
   /// Latitude of the device antenna location in degrees relative to the WGS 84
-  /// datum. The allowed range is from -90.000000 to +90.000000. Positive values
+  /// datum.
+  ///
+  /// The allowed range is from -90.000000 to +90.000000. Positive values
   /// represent latitudes north of the equator; negative values south of the
   /// equator.
   core.double latitude;
 
-  /// Longitude of the device antenna location. in degrees relative to the WGS
-  /// 84 datum. The allowed range is from -180.000000 to +180.000000. Positive
-  /// values represent longitudes east of the prime meridian; negative values
-  /// west of the prime meridian.
+  /// Longitude of the device antenna location.
+  ///
+  /// in degrees relative to the WGS 84 datum. The allowed range is from
+  /// -180.000000 to +180.000000. Positive values represent longitudes east of
+  /// the prime meridian; negative values west of the prime meridian.
   core.double longitude;
 
   /// A positive number in meters to indicate accuracy of the device antenna
-  /// vertical location. This optional parameter should only be present if its
-  /// value is less than the FCC requirement of 3 meters.
+  /// vertical location.
+  ///
+  /// This optional parameter should only be present if its value is less than
+  /// the FCC requirement of 3 meters.
   core.double verticalAccuracy;
 
   SasPortalInstallationParams();
@@ -4906,8 +4978,9 @@ class SasPortalListCustomersResponse {
   core.List<SasPortalCustomer> customers;
 
   /// A pagination token returned from a previous call to ListCustomers method
-  /// that indicates from where listing should continue. If the field is missing
-  /// or empty, it means there are no more customers.
+  /// that indicates from where listing should continue.
+  ///
+  /// If the field is missing or empty, it means there are no more customers.
   core.String nextPageToken;
 
   SasPortalListCustomersResponse();
@@ -4942,8 +5015,9 @@ class SasPortalListDevicesResponse {
   core.List<SasPortalDevice> devices;
 
   /// A pagination token returned from a previous call to ListDevices method
-  /// that indicates from where listing should continue. If the field is missing
-  /// or empty, it means there is no more devices.
+  /// that indicates from where listing should continue.
+  ///
+  /// If the field is missing or empty, it means there is no more devices.
   core.String nextPageToken;
 
   SasPortalListDevicesResponse();
@@ -4975,8 +5049,9 @@ class SasPortalListDevicesResponse {
 /// Response for ListNodes method.
 class SasPortalListNodesResponse {
   /// A pagination token returned from a previous call to ListNodes method that
-  /// indicates from where listing should continue. If the field is missing or
-  /// empty, it means there is no more nodes.
+  /// indicates from where listing should continue.
+  ///
+  /// If the field is missing or empty, it means there is no more nodes.
   core.String nextPageToken;
 
   /// The nodes that match the request.
@@ -5010,8 +5085,10 @@ class SasPortalListNodesResponse {
 
 /// Request for MoveDeployment method.
 class SasPortalMoveDeploymentRequest {
-  /// Required. The name of the new parent resource Node or Customer to reparent
-  /// the deployment under.
+  /// The name of the new parent resource Node or Customer to reparent the
+  /// deployment under.
+  ///
+  /// Required.
   core.String destination;
 
   SasPortalMoveDeploymentRequest();
@@ -5033,8 +5110,10 @@ class SasPortalMoveDeploymentRequest {
 
 /// Request for MoveDevice method.
 class SasPortalMoveDeviceRequest {
-  /// Required. The name of the new parent resource (Node or Customer) to
-  /// reparent the device under.
+  /// The name of the new parent resource (Node or Customer) to reparent the
+  /// device under.
+  ///
+  /// Required.
   core.String destination;
 
   SasPortalMoveDeviceRequest();
@@ -5056,8 +5135,10 @@ class SasPortalMoveDeviceRequest {
 
 /// Request for MoveNode method.
 class SasPortalMoveNodeRequest {
-  /// Required. The name of the new parent resource node or Customer) to
-  /// reparent the node under.
+  /// The name of the new parent resource node or Customer) to reparent the node
+  /// under.
+  ///
+  /// Required.
   core.String destination;
 
   SasPortalMoveNodeRequest();
@@ -5082,7 +5163,9 @@ class SasPortalNode {
   /// The node's display name.
   core.String displayName;
 
-  /// Output only. Resource name.
+  /// Resource name.
+  ///
+  /// Output only.
   core.String name;
 
   /// User ids used by the devices belonging to this node.
@@ -5122,31 +5205,37 @@ class SasPortalNode {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class SasPortalOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   SasPortalStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -5215,8 +5304,9 @@ class SasPortalPolicy {
   core.List<SasPortalAssignment> assignments;
 
   /// The [etag] is used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates of a policy from overwriting each other. It
-  /// is strongly suggested that systems make use of the [etag] in the
+  /// prevent simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the [etag] in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An [etag] is returned in the response to [GetPolicy], and
   /// systems are expected to put that etag in the request to [SetPolicy] to
@@ -5260,11 +5350,16 @@ class SasPortalPolicy {
 
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {
-  /// Required. The policy to be applied to the `resource`.
+  /// The policy to be applied to the `resource`.
+  ///
+  /// Required.
   SasPortalPolicy policy;
 
-  /// Required. The resource for which the policy is being specified. This
-  /// policy replaces any existing policy.
+  /// The resource for which the policy is being specified.
+  ///
+  /// This policy replaces any existing policy.
+  ///
+  /// Required.
   core.String resource;
 
   SasPortalSetPolicyRequest();
@@ -5293,8 +5388,12 @@ class SasPortalSetPolicyRequest {
 
 /// Request for SignDevice method.
 class SasPortalSignDeviceRequest {
-  /// Required. The device to sign. The device fields name, fcc_id and
-  /// serial_number must be set. The user_id field must be set.
+  /// The device to sign.
+  ///
+  /// The device fields name, fcc_id and serial_number must be set. The user_id
+  /// field must be set.
+  ///
+  /// Required.
   SasPortalDevice device;
 
   SasPortalSignDeviceRequest();
@@ -5316,24 +5415,27 @@ class SasPortalSignDeviceRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class SasPortalStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -5379,7 +5481,9 @@ class SasPortalTestPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   core.List<core.String> permissions;
 
-  /// Required. The resource for which the permissions are being requested.
+  /// The resource for which the permissions are being requested.
+  ///
+  /// Required.
   core.String resource;
 
   SasPortalTestPermissionsRequest();
@@ -5433,8 +5537,12 @@ class SasPortalTestPermissionsResponse {
 
 /// Request for UpdateSignedDevice method.
 class SasPortalUpdateSignedDeviceRequest {
-  /// Required. The JSON Web Token signed using a CPI private key. Payload must
-  /// be the JSON encoding of the device. The user_id field must be set.
+  /// The JSON Web Token signed using a CPI private key.
+  ///
+  /// Payload must be the JSON encoding of the device. The user_id field must be
+  /// set.
+  ///
+  /// Required.
   core.String encodedDevice;
   core.List<core.int> get encodedDeviceAsBytes =>
       convert.base64.decode(encodedDevice);
@@ -5444,8 +5552,10 @@ class SasPortalUpdateSignedDeviceRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Required. Unique installer ID (CPI ID) from the Certified Professional
-  /// Installers database.
+  /// Unique installer ID (CPI ID) from the Certified Professional Installers
+  /// database.
+  ///
+  /// Required.
   core.String installerId;
 
   SasPortalUpdateSignedDeviceRequest();
@@ -5473,15 +5583,22 @@ class SasPortalUpdateSignedDeviceRequest {
 
 /// Request for ValidateInstaller method.
 class SasPortalValidateInstallerRequest {
-  /// Required. JSON Web Token signed using a CPI private key. Payload must
-  /// include a "secret" claim whose value is the secret.
+  /// JSON Web Token signed using a CPI private key.
+  ///
+  /// Payload must include a "secret" claim whose value is the secret.
+  ///
+  /// Required.
   core.String encodedSecret;
 
-  /// Required. Unique installer id (cpiId) from the Certified Professional
-  /// Installers database.
+  /// Unique installer id (cpiId) from the Certified Professional Installers
+  /// database.
+  ///
+  /// Required.
   core.String installerId;
 
-  /// Required. Secret returned by the GenerateSecret method.
+  /// Secret returned by the GenerateSecret method.
+  ///
+  /// Required.
   core.String secret;
 
   SasPortalValidateInstallerRequest();

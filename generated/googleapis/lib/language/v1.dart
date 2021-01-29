@@ -383,7 +383,9 @@ class DocumentsResource {
 
 /// The entity analysis request message.
 class AnalyzeEntitiesRequest {
-  /// Required. Input document.
+  /// Input document.
+  ///
+  /// Required.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -432,6 +434,7 @@ class AnalyzeEntitiesResponse {
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -463,7 +466,9 @@ class AnalyzeEntitiesResponse {
 
 /// The entity-level sentiment analysis request message.
 class AnalyzeEntitySentimentRequest {
-  /// Required. Input document.
+  /// Input document.
+  ///
+  /// Required.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -512,6 +517,7 @@ class AnalyzeEntitySentimentResponse {
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -543,7 +549,9 @@ class AnalyzeEntitySentimentResponse {
 
 /// The sentiment analysis request message.
 class AnalyzeSentimentRequest {
-  /// Required. Input document.
+  /// Input document.
+  ///
+  /// Required.
   Document document;
 
   /// The encoding type used by the API to calculate sentence offsets.
@@ -592,6 +600,7 @@ class AnalyzeSentimentResponse {
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -633,7 +642,9 @@ class AnalyzeSentimentResponse {
 
 /// The syntax analysis request message.
 class AnalyzeSyntaxRequest {
-  /// Required. Input document.
+  /// Input document.
+  ///
+  /// Required.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -679,6 +690,7 @@ class AnalyzeSyntaxRequest {
 class AnalyzeSyntaxResponse {
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
@@ -726,7 +738,9 @@ class AnalyzeSyntaxResponse {
 /// The request message for the text annotation API, which can perform multiple
 /// analysis types (sentiment, entities, and syntax) in one call.
 class AnnotateTextRequest {
-  /// Required. Input document.
+  /// Input document.
+  ///
+  /// Required.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -744,7 +758,9 @@ class AnnotateTextRequest {
   /// of a language that uses this encoding natively.
   core.String encodingType;
 
-  /// Required. The enabled features.
+  /// The enabled features.
+  ///
+  /// Required.
   Features features;
 
   AnnotateTextRequest();
@@ -783,25 +799,31 @@ class AnnotateTextResponse {
   /// Categories identified in the input document.
   core.List<ClassificationCategory> categories;
 
-  /// The overall sentiment for the document. Populated if the user enables
+  /// The overall sentiment for the document.
+  ///
+  /// Populated if the user enables
   /// AnnotateTextRequest.Features.extract_document_sentiment.
   Sentiment documentSentiment;
 
   /// Entities, along with their semantic information, in the input document.
+  ///
   /// Populated if the user enables
   /// AnnotateTextRequest.Features.extract_entities.
   core.List<Entity> entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
+  ///
   /// See Document.language field for more details.
   core.String language;
 
-  /// Sentences in the input document. Populated if the user enables
-  /// AnnotateTextRequest.Features.extract_syntax.
+  /// Sentences in the input document.
+  ///
+  /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
   core.List<Sentence> sentences;
 
   /// Tokens, along with their syntactic information, in the input document.
+  ///
   /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
   core.List<Token> tokens;
 
@@ -868,8 +890,10 @@ class AnnotateTextResponse {
 
 /// Represents a category returned from the text classifier.
 class ClassificationCategory {
-  /// The classifier's confidence of the category. Number represents how certain
-  /// the classifier is that this category represents the given text.
+  /// The classifier's confidence of the category.
+  ///
+  /// Number represents how certain the classifier is that this category
+  /// represents the given text.
   core.double confidence;
 
   /// The name of the category representing the document, from the [predefined
@@ -901,7 +925,9 @@ class ClassificationCategory {
 
 /// The document classification request message.
 class ClassifyTextRequest {
-  /// Required. Input document.
+  /// Input document.
+  ///
+  /// Required.
   Document document;
 
   ClassifyTextRequest();
@@ -948,15 +974,17 @@ class ClassifyTextResponse {
   }
 }
 
-/// Represents dependency parse tree information for a token. (For more
-/// information on dependency labels, see
+/// Represents dependency parse tree information for a token.
+///
+/// (For more information on dependency labels, see
 /// http://www.aclweb.org/anthology/P13-2017
 class DependencyEdge {
-  /// Represents the head of this token in the dependency tree. This is the
-  /// index of the token which has an arc going to this token. The index is the
-  /// position of the token in the array of tokens returned by the API method.
-  /// If this token is a root token, then the `head_token_index` is its own
-  /// index.
+  /// Represents the head of this token in the dependency tree.
+  ///
+  /// This is the index of the token which has an arc going to this token. The
+  /// index is the position of the token in the array of tokens returned by the
+  /// API method. If this token is a root token, then the `head_token_index` is
+  /// its own index.
   core.int headTokenIndex;
 
   /// The parse label for the token.
@@ -1073,27 +1101,32 @@ class DependencyEdge {
 /// ################################################################ #
 /// Represents the input to API methods.
 class Document {
-  /// The content of the input in string format. Cloud audit logging exempt
-  /// since it is based on user data.
+  /// The content of the input in string format.
+  ///
+  /// Cloud audit logging exempt since it is based on user data.
   core.String content;
 
-  /// The Google Cloud Storage URI where the file content is located. This URI
-  /// must be of the form: gs://bucket_name/object_name. For more details, see
-  /// https://cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage
-  /// object versioning is not supported.
+  /// The Google Cloud Storage URI where the file content is located.
+  ///
+  /// This URI must be of the form: gs://bucket_name/object_name. For more
+  /// details, see https://cloud.google.com/storage/docs/reference-uris. NOTE:
+  /// Cloud Storage object versioning is not supported.
   core.String gcsContentUri;
 
   /// The language of the document (if not specified, the language is
-  /// automatically detected). Both ISO and BCP-47 language codes are accepted.
-  /// [Language
+  /// automatically detected).
+  ///
+  /// Both ISO and BCP-47 language codes are accepted. [Language
   /// Support](https://cloud.google.com/natural-language/docs/languages) lists
   /// currently supported languages for each API method. If the language (either
   /// specified by the caller or automatically detected) is not supported by the
   /// called API method, an `INVALID_ARGUMENT` error is returned.
   core.String language;
 
-  /// Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an
+  /// If the type is not set or is `TYPE_UNSPECIFIED`, returns an
   /// `INVALID_ARGUMENT` error.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The content type is not specified.
   /// - "PLAIN_TEXT" : Plain text
@@ -1136,26 +1169,31 @@ class Document {
 }
 
 /// Represents a phrase in the text that is a known entity, such as a person, an
-/// organization, or location. The API associates information, such as salience
-/// and mentions, with entities.
+/// organization, or location.
+///
+/// The API associates information, such as salience and mentions, with
+/// entities.
 class Entity {
-  /// The mentions of this entity in the input document. The API currently
-  /// supports proper noun mentions.
+  /// The mentions of this entity in the input document.
+  ///
+  /// The API currently supports proper noun mentions.
   core.List<EntityMention> mentions;
 
-  /// Metadata associated with the entity. For most entity types, the metadata
-  /// is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if
-  /// they are available. For the metadata associated with other entity types,
-  /// see the Type table below.
+  /// Metadata associated with the entity.
+  ///
+  /// For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)
+  /// and Knowledge Graph MID (`mid`), if they are available. For the metadata
+  /// associated with other entity types, see the Type table below.
   core.Map<core.String, core.String> metadata;
 
   /// The representative name for the entity.
   core.String name;
 
-  /// The salience score associated with the entity in the [0, 1.0] range. The
-  /// salience score for an entity provides information about the importance or
-  /// centrality of that entity to the entire document text. Scores closer to 0
-  /// are less salient, while scores closer to 1.0 are highly salient.
+  /// The salience score associated with the entity in the [0, 1.0] range.
+  ///
+  /// The salience score for an entity provides information about the importance
+  /// or centrality of that entity to the entire document text. Scores closer to
+  /// 0 are less salient, while scores closer to 1.0 are highly salient.
   core.double salience;
 
   /// For calls to AnalyzeEntitySentiment or if
@@ -1252,8 +1290,9 @@ class Entity {
   }
 }
 
-/// Represents a mention for an entity in the text. Currently, proper noun
-/// mentions are supported.
+/// Represents a mention for an entity in the text.
+///
+/// Currently, proper noun mentions are supported.
 class EntityMention {
   /// For calls to AnalyzeEntitySentiment or if
   /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
@@ -1302,8 +1341,9 @@ class EntityMention {
   }
 }
 
-/// All available features for sentiment, syntax, and semantic analysis. Setting
-/// each one to true will enable that specific analysis for the input.
+/// All available features for sentiment, syntax, and semantic analysis.
+///
+/// Setting each one to true will enable that specific analysis for the input.
 class Features {
   /// Classify the full document into categories.
   core.bool classifyText;
@@ -1361,8 +1401,10 @@ class Features {
   }
 }
 
-/// Represents part of speech information for a token. Parts of speech are as
-/// defined in http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
+/// Represents part of speech information for a token.
+///
+/// Parts of speech are as defined in
+/// http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
 class PartOfSpeech {
   /// The grammatical aspect.
   /// Possible string values are:
@@ -1659,24 +1701,27 @@ class Sentiment {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

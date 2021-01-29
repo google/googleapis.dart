@@ -1169,8 +1169,9 @@ class PoliciesResource {
     );
   }
 
-  /// Delete a previously created Policy. Will fail if the policy is still being
-  /// referenced by a network.
+  /// Delete a previously created Policy.
+  ///
+  /// Will fail if the policy is still being referenced by a network.
   ///
   /// Request parameters:
   ///
@@ -1685,12 +1686,13 @@ class ResourceRecordSetsResource {
 }
 
 /// A Change represents a set of ResourceRecordSet additions and deletions
-/// applied atomically to a ManagedZone. ResourceRecordSets within a ManagedZone
-/// are modified by creating a new Change element in the Changes collection. In
-/// turn the Changes collection also records the past modifications to the
-/// ResourceRecordSets in a ManagedZone. The current state of the ManagedZone is
-/// the sum effect of applying all Change elements in the Changes collection in
-/// sequence.
+/// applied atomically to a ManagedZone.
+///
+/// ResourceRecordSets within a ManagedZone are modified by creating a new
+/// Change element in the Changes collection. In turn the Changes collection
+/// also records the past modifications to the ResourceRecordSets in a
+/// ManagedZone. The current state of the ManagedZone is the sum effect of
+/// applying all Change elements in the Changes collection in sequence.
 class Change {
   /// Which ResourceRecordSets to add?
   core.List<ResourceRecordSet> additions;
@@ -1705,13 +1707,15 @@ class Change {
   core.bool isServing;
   core.String kind;
 
-  /// The time that this operation was started by the server (output only). This
-  /// is in RFC3339 text format.
+  /// The time that this operation was started by the server (output only).
+  ///
+  /// This is in RFC3339 text format.
   core.String startTime;
 
-  /// Status of the operation (output only). A status of "done" means that the
-  /// request to update the authoritative servers has been sent but the servers
-  /// might not be updated yet.
+  /// Status of the operation (output only).
+  ///
+  /// A status of "done" means that the request to update the authoritative
+  /// servers has been sent but the servers might not be updated yet.
   /// Possible string values are:
   /// - "pending"
   /// - "done"
@@ -1787,14 +1791,15 @@ class ChangesListResponse {
   core.String kind;
 
   /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your pagination token. In
-  /// this way you can retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
-  /// change between the first and last paginated list request, the set of all
-  /// elements returned will be an inconsistent view of the collection. There is
-  /// no way to retrieve a "snapshot" of collections larger than the maximum
-  /// page size.
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your
+  /// pagination token. In this way you can retrieve the complete contents of
+  /// even very large collections one page at a time. However, if the contents
+  /// of the collection change between the first and last paginated list
+  /// request, the set of all elements returned will be an inconsistent view of
+  /// the collection. There is no way to retrieve a "snapshot" of collections
+  /// larger than the maximum page size.
   core.String nextPageToken;
 
   ChangesListResponse();
@@ -1838,8 +1843,9 @@ class ChangesListResponse {
 
 /// A DNSSEC key pair.
 class DnsKey {
-  /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable
-  /// after creation time.
+  /// String mnemonic specifying the DNSSEC algorithm of this key.
+  ///
+  /// Immutable after creation time.
   /// Possible string values are:
   /// - "rsasha1"
   /// - "rsasha256"
@@ -1848,47 +1854,61 @@ class DnsKey {
   /// - "ecdsap384sha384"
   core.String algorithm;
 
-  /// The time that this resource was created in the control plane. This is in
-  /// RFC3339 text format. Output only.
+  /// The time that this resource was created in the control plane.
+  ///
+  /// This is in RFC3339 text format. Output only.
   core.String creationTime;
 
   /// A mutable string of at most 1024 characters associated with this resource
-  /// for the user's convenience. Has no effect on the resource's function.
+  /// for the user's convenience.
+  ///
+  /// Has no effect on the resource's function.
   core.String description;
 
   /// Cryptographic hashes of the DNSKEY resource record associated with this
-  /// DnsKey. These digests are needed to construct a DS record that points at
-  /// this DNS key. Output only.
+  /// DnsKey.
+  ///
+  /// These digests are needed to construct a DS record that points at this DNS
+  /// key. Output only.
   core.List<DnsKeyDigest> digests;
 
   /// Unique identifier for the resource; defined by the server (output only).
   core.String id;
 
   /// Active keys will be used to sign subsequent changes to the ManagedZone.
+  ///
   /// Inactive keys will still be present as DNSKEY Resource Records for the use
   /// of resolvers validating existing signatures.
   core.bool isActive;
 
-  /// Length of the key in bits. Specified at creation time then immutable.
+  /// Length of the key in bits.
+  ///
+  /// Specified at creation time then immutable.
   core.int keyLength;
 
   /// The key tag is a non-cryptographic hash of the a DNSKEY resource record
-  /// associated with this DnsKey. The key tag can be used to identify a DNSKEY
-  /// more quickly (but it is not a unique identifier). In particular, the key
-  /// tag is used in a parent zone's DS record to point at the DNSKEY in this
-  /// child ManagedZone. The key tag is a number in the range [0, 65535] and the
-  /// algorithm to calculate it is specified in RFC4034 Appendix B. Output only.
+  /// associated with this DnsKey.
+  ///
+  /// The key tag can be used to identify a DNSKEY more quickly (but it is not a
+  /// unique identifier). In particular, the key tag is used in a parent zone's
+  /// DS record to point at the DNSKEY in this child ManagedZone. The key tag is
+  /// a number in the range [0, 65535] and the algorithm to calculate it is
+  /// specified in RFC4034 Appendix B. Output only.
   core.int keyTag;
   core.String kind;
 
-  /// Base64 encoded public half of this key. Output only.
+  /// Base64 encoded public half of this key.
+  ///
+  /// Output only.
   core.String publicKey;
 
-  /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
-  /// Secure Entry Point flag set and, when active, will be used to sign only
-  /// resource record sets of type DNSKEY. Otherwise, the Secure Entry Point
-  /// flag will be cleared and this key will be used to sign only resource
-  /// record sets of other types. Immutable after creation time.
+  /// One of "KEY_SIGNING" or "ZONE_SIGNING".
+  ///
+  /// Keys of type KEY_SIGNING have the Secure Entry Point flag set and, when
+  /// active, will be used to sign only resource record sets of type DNSKEY.
+  /// Otherwise, the Secure Entry Point flag will be cleared and this key will
+  /// be used to sign only resource record sets of other types. Immutable after
+  /// creation time.
   /// Possible string values are:
   /// - "keySigning"
   /// - "zoneSigning"
@@ -1975,8 +1995,9 @@ class DnsKey {
 }
 
 class DnsKeyDigest {
-  /// The base-16 encoded bytes of this digest. Suitable for use in a DS
-  /// resource record.
+  /// The base-16 encoded bytes of this digest.
+  ///
+  /// Suitable for use in a DS resource record.
   core.String digest;
 
   /// Specifies the algorithm used to calculate this digest.
@@ -2009,8 +2030,10 @@ class DnsKeyDigest {
   }
 }
 
-/// Parameters for DnsKey key generation. Used for generating initial keys for a
-/// new ManagedZone and as default when adding a new DnsKey.
+/// Parameters for DnsKey key generation.
+///
+/// Used for generating initial keys for a new ManagedZone and as default when
+/// adding a new DnsKey.
 class DnsKeySpec {
   /// String mnemonic specifying the DNSSEC algorithm of this key.
   /// Possible string values are:
@@ -2025,10 +2048,12 @@ class DnsKeySpec {
   core.int keyLength;
 
   /// Specifies whether this is a key signing key (KSK) or a zone signing key
-  /// (ZSK). Key signing keys have the Secure Entry Point flag set and, when
-  /// active, will only be used to sign resource record sets of type DNSKEY.
-  /// Zone signing keys do not have the Secure Entry Point flag set and will be
-  /// used to sign all other types of resource record sets.
+  /// (ZSK).
+  ///
+  /// Key signing keys have the Secure Entry Point flag set and, when active,
+  /// will only be used to sign resource record sets of type DNSKEY. Zone
+  /// signing keys do not have the Secure Entry Point flag set and will be used
+  /// to sign all other types of resource record sets.
   /// Possible string values are:
   /// - "keySigning"
   /// - "zoneSigning"
@@ -2080,14 +2105,15 @@ class DnsKeysListResponse {
   core.String kind;
 
   /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your pagination token. In
-  /// this way you can retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
-  /// change between the first and last paginated list request, the set of all
-  /// elements returned will be an inconsistent view of the collection. There is
-  /// no way to retrieve a "snapshot" of collections larger than the maximum
-  /// page size.
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your
+  /// pagination token. In this way you can retrieve the complete contents of
+  /// even very large collections one page at a time. However, if the contents
+  /// of the collection change between the first and last paginated list
+  /// request, the set of all elements returned will be an inconsistent view of
+  /// the collection. There is no way to retrieve a "snapshot" of collections
+  /// larger than the maximum page size.
   core.String nextPageToken;
 
   DnsKeysListResponse();
@@ -2130,15 +2156,20 @@ class DnsKeysListResponse {
 }
 
 /// A zone is a subtree of the DNS namespace under one administrative
-/// responsibility. A ManagedZone is a resource that represents a DNS zone
-/// hosted by the Cloud DNS service.
+/// responsibility.
+///
+/// A ManagedZone is a resource that represents a DNS zone hosted by the Cloud
+/// DNS service.
 class ManagedZone {
-  /// The time that this resource was created on the server. This is in RFC3339
-  /// text format. Output only.
+  /// The time that this resource was created on the server.
+  ///
+  /// This is in RFC3339 text format. Output only.
   core.String creationTime;
 
   /// A mutable string of at most 1024 characters associated with this resource
-  /// for the user's convenience. Has no effect on the managed zone's function.
+  /// for the user's convenience.
+  ///
+  /// Has no effect on the managed zone's function.
   core.String description;
 
   /// The DNS name of this managed zone, for instance "example.com.".
@@ -2148,8 +2179,9 @@ class ManagedZone {
   ManagedZoneDnsSecConfig dnssecConfig;
 
   /// The presence for this field indicates that outbound forwarding is enabled
-  /// for this zone. The value of this field contains the set of destinations to
-  /// forward to.
+  /// for this zone.
+  ///
+  /// The value of this field contains the set of destinations to forward to.
   ManagedZoneForwardingConfig forwardingConfig;
 
   /// Unique identifier for the resource; defined by the server (output only)
@@ -2159,13 +2191,16 @@ class ManagedZone {
   /// User labels.
   core.Map<core.String, core.String> labels;
 
-  /// User assigned name for this resource. Must be unique within the project.
-  /// The name must be 1-63 characters long, must begin with a letter, end with
-  /// a letter or digit, and only contain lowercase letters, digits or dashes.
+  /// User assigned name for this resource.
+  ///
+  /// Must be unique within the project. The name must be 1-63 characters long,
+  /// must begin with a letter, end with a letter or digit, and only contain
+  /// lowercase letters, digits or dashes.
   core.String name;
 
-  /// Optionally specifies the NameServerSet for this ManagedZone. A
-  /// NameServerSet is a set of DNS name servers that all host the same
+  /// Optionally specifies the NameServerSet for this ManagedZone.
+  ///
+  /// A NameServerSet is a set of DNS name servers that all host the same
   /// ManagedZones. Most users will leave this field unset.
   core.String nameServerSet;
 
@@ -2174,7 +2209,9 @@ class ManagedZone {
   core.List<core.String> nameServers;
 
   /// The presence of this field indicates that DNS Peering is enabled for this
-  /// zone. The value of this field contains the network to peer with.
+  /// zone.
+  ///
+  /// The value of this field contains the network to peer with.
   ManagedZonePeeringConfig peeringConfig;
 
   /// For privately visible zones, the set of Virtual Private Cloud resources
@@ -2183,8 +2220,9 @@ class ManagedZone {
 
   /// The presence of this field indicates that this is a managed reverse lookup
   /// zone and Cloud DNS will resolve reverse lookup queries using automatically
-  /// configured records for VPC resources. This only applies to networks listed
-  /// under private_visibility_config.
+  /// configured records for VPC resources.
+  ///
+  /// This only applies to networks listed under private_visibility_config.
   ManagedZoneReverseLookupConfig reverseLookupConfig;
 
   /// The zone's visibility: public zones are exposed to the Internet, while
@@ -2311,11 +2349,13 @@ class ManagedZone {
 
 class ManagedZoneDnsSecConfig {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
+  ///
   /// Can only be changed while the state is OFF.
   core.List<DnsKeySpec> defaultKeySpecs;
   core.String kind;
 
   /// Specifies the mechanism for authenticated denial-of-existence responses.
+  ///
   /// Can only be changed while the state is OFF.
   /// Possible string values are:
   /// - "nsec"
@@ -2371,8 +2411,10 @@ class ManagedZoneDnsSecConfig {
 class ManagedZoneForwardingConfig {
   core.String kind;
 
-  /// List of target name servers to forward to. Cloud DNS will select the best
-  /// available name server if more than one target is given.
+  /// List of target name servers to forward to.
+  ///
+  /// Cloud DNS will select the best available name server if more than one
+  /// target is given.
   core.List<ManagedZoneForwardingConfigNameServerTarget> targetNameServers;
 
   ManagedZoneForwardingConfig();
@@ -2404,11 +2446,12 @@ class ManagedZoneForwardingConfig {
 }
 
 class ManagedZoneForwardingConfigNameServerTarget {
-  /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT,
-  /// Cloud DNS will make forwarding decision based on address ranges, i.e.
-  /// RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet.
-  /// When set to PRIVATE, Cloud DNS will always send queries through VPC for
-  /// this target.
+  /// Forwarding path for this NameServerTarget.
+  ///
+  /// If unset or set to DEFAULT, Cloud DNS will make forwarding decision based
+  /// on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918
+  /// addresses go to the Internet. When set to PRIVATE, Cloud DNS will always
+  /// send queries through VPC for this target.
   /// Possible string values are:
   /// - "default" : Cloud DNS will make forwarding decision based on address
   /// ranges, i.e. RFC1918 addresses forward to the target through the VPC and
@@ -2455,14 +2498,15 @@ class ManagedZoneOperationsListResponse {
   core.String kind;
 
   /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your page token. In this way
-  /// you can retrieve the complete contents of even very large collections one
-  /// page at a time. However, if the contents of the collection change between
-  /// the first and last paginated list request, the set of all elements
-  /// returned will be an inconsistent view of the collection. There is no way
-  /// to retrieve a consistent snapshot of a collection larger than the maximum
-  /// page size.
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your page
+  /// token. In this way you can retrieve the complete contents of even very
+  /// large collections one page at a time. However, if the contents of the
+  /// collection change between the first and last paginated list request, the
+  /// set of all elements returned will be an inconsistent view of the
+  /// collection. There is no way to retrieve a consistent snapshot of a
+  /// collection larger than the maximum page size.
   core.String nextPageToken;
 
   /// The operation resources.
@@ -2539,6 +2583,7 @@ class ManagedZonePeeringConfig {
 
 class ManagedZonePeeringConfigTargetNetwork {
   /// The time at which the zone was deactivated, in RFC 3339 date-time format.
+  ///
   /// An empty string indicates that the peering connection is active. The
   /// producer network can deactivate a zone. The zone is automatically
   /// deactivated if the producer network that the zone targeted is deleted.
@@ -2546,8 +2591,9 @@ class ManagedZonePeeringConfigTargetNetwork {
   core.String deactivateTime;
   core.String kind;
 
-  /// The fully qualified URL of the VPC network to forward queries to. This
-  /// should be formatted like
+  /// The fully qualified URL of the VPC network to forward queries to.
+  ///
+  /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   core.String networkUrl;
 
@@ -2616,8 +2662,9 @@ class ManagedZonePrivateVisibilityConfig {
 class ManagedZonePrivateVisibilityConfigNetwork {
   core.String kind;
 
-  /// The fully qualified URL of the VPC network to bind to. This should be
-  /// formatted like
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   core.String networkUrl;
 
@@ -2674,14 +2721,15 @@ class ManagedZonesListResponse {
   core.List<ManagedZone> managedZones;
 
   /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your page token. In this way
-  /// you can retrieve the complete contents of even very large collections one
-  /// page at a time. However, if the contents of the collection change between
-  /// the first and last paginated list request, the set of all elements
-  /// returned will be an inconsistent view of the collection. There is no way
-  /// to retrieve a consistent snapshot of a collection larger than the maximum
-  /// page size.
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your page
+  /// token. In this way you can retrieve the complete contents of even very
+  /// large collections one page at a time. However, if the contents of the
+  /// collection change between the first and last paginated list request, the
+  /// set of all elements returned will be an inconsistent view of the
+  /// collection. There is no way to retrieve a consistent snapshot of a
+  /// collection larger than the maximum page size.
   core.String nextPageToken;
 
   ManagedZonesListResponse();
@@ -2725,38 +2773,46 @@ class ManagedZonesListResponse {
 }
 
 /// An operation represents a successful mutation performed on a Cloud DNS
-/// resource. Operations provide: - An audit log of server resource mutations. -
-/// A way to recover/retry API calls in the case where the response is never
-/// received by the caller. Use the caller specified client_operation_id.
+/// resource.
+///
+/// Operations provide: - An audit log of server resource mutations. - A way to
+/// recover/retry API calls in the case where the response is never received by
+/// the caller. Use the caller specified client_operation_id.
 class Operation {
   /// Only populated if the operation targeted a DnsKey (output only).
   OperationDnsKeyContext dnsKeyContext;
 
-  /// Unique identifier for the resource. This is the client_operation_id if the
-  /// client specified it when the mutation was initiated, otherwise, it is
-  /// generated by the server. The name must be 1-63 characters long and match
-  /// the regular expression [-a-z0-9]? (output only)
+  /// Unique identifier for the resource.
+  ///
+  /// This is the client_operation_id if the client specified it when the
+  /// mutation was initiated, otherwise, it is generated by the server. The name
+  /// must be 1-63 characters long and match the regular expression [-a-z0-9]?
+  /// (output only)
   core.String id;
   core.String kind;
 
-  /// The time that this operation was started by the server. This is in RFC3339
-  /// text format (output only).
+  /// The time that this operation was started by the server.
+  ///
+  /// This is in RFC3339 text format (output only).
   core.String startTime;
 
-  /// Status of the operation. Can be one of the following: "PENDING" or "DONE"
-  /// (output only). A status of "DONE" means that the request to update the
-  /// authoritative servers has been sent, but the servers might not be updated
-  /// yet.
+  /// Status of the operation.
+  ///
+  /// Can be one of the following: "PENDING" or "DONE" (output only). A status
+  /// of "DONE" means that the request to update the authoritative servers has
+  /// been sent, but the servers might not be updated yet.
   /// Possible string values are:
   /// - "pending"
   /// - "done"
   core.String status;
 
-  /// Type of the operation. Operations include insert, update, and delete
-  /// (output only).
+  /// Type of the operation.
+  ///
+  /// Operations include insert, update, and delete (output only).
   core.String type;
 
   /// User who requested the operation, for example: user@example.com.
+  ///
   /// cloud-dns-system for operations automatically done by the system. (output
   /// only)
   core.String user;
@@ -2896,14 +2952,15 @@ class PoliciesListResponse {
   core.String kind;
 
   /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your page token. In this way
-  /// you can retrieve the complete contents of even very large collections one
-  /// page at a time. However, if the contents of the collection change between
-  /// the first and last paginated list request, the set of all elements
-  /// returned will be an inconsistent view of the collection. There is no way
-  /// to retrieve a consistent snapshot of a collection larger than the maximum
-  /// page size.
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your page
+  /// token. In this way you can retrieve the complete contents of even very
+  /// large collections one page at a time. However, if the contents of the
+  /// collection change between the first and last paginated list request, the
+  /// set of all elements returned will be an inconsistent view of the
+  /// collection. There is no way to retrieve a consistent snapshot of a
+  /// collection larger than the maximum page size.
   core.String nextPageToken;
 
   /// The policy resources.
@@ -3009,22 +3066,28 @@ class PoliciesUpdateResponse {
 /// A policy is a collection of DNS rules applied to one or more Virtual Private
 /// Cloud resources.
 class Policy {
-  /// Sets an alternative name server for the associated networks. When
-  /// specified, all DNS queries are forwarded to a name server that you choose.
-  /// Names such as .internal are not available when an alternative name server
-  /// is specified.
+  /// Sets an alternative name server for the associated networks.
+  ///
+  /// When specified, all DNS queries are forwarded to a name server that you
+  /// choose. Names such as .internal are not available when an alternative name
+  /// server is specified.
   PolicyAlternativeNameServerConfig alternativeNameServerConfig;
 
   /// A mutable string of at most 1024 characters associated with this resource
-  /// for the user's convenience. Has no effect on the policy's function.
+  /// for the user's convenience.
+  ///
+  /// Has no effect on the policy's function.
   core.String description;
 
   /// Allows networks bound to this policy to receive DNS queries sent by VMs or
-  /// applications over VPN connections. When enabled, a virtual IP address will
-  /// be allocated from each of the sub-networks that are bound to this policy.
+  /// applications over VPN connections.
+  ///
+  /// When enabled, a virtual IP address will be allocated from each of the
+  /// sub-networks that are bound to this policy.
   core.bool enableInboundForwarding;
 
   /// Controls whether logging is enabled for the networks bound to this policy.
+  ///
   /// Defaults to no logging if not set.
   core.bool enableLogging;
 
@@ -3106,10 +3169,11 @@ class Policy {
 class PolicyAlternativeNameServerConfig {
   core.String kind;
 
-  /// Sets an alternative name server for the associated networks. When
-  /// specified, all DNS queries are forwarded to a name server that you choose.
-  /// Names such as .internal are not available when an alternative name server
-  /// is specified.
+  /// Sets an alternative name server for the associated networks.
+  ///
+  /// When specified, all DNS queries are forwarded to a name server that you
+  /// choose. Names such as .internal are not available when an alternative name
+  /// server is specified.
   core.List<PolicyAlternativeNameServerConfigTargetNameServer>
       targetNameServers;
 
@@ -3142,11 +3206,12 @@ class PolicyAlternativeNameServerConfig {
 }
 
 class PolicyAlternativeNameServerConfigTargetNameServer {
-  /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT,
-  /// Cloud DNS will make forwarding decision based on address ranges, i.e.
-  /// RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the Internet.
-  /// When set to PRIVATE, Cloud DNS will always send queries through VPC for
-  /// this target.
+  /// Forwarding path for this TargetNameServer.
+  ///
+  /// If unset or set to DEFAULT, Cloud DNS will make forwarding decision based
+  /// on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918
+  /// addresses go to the Internet. When set to PRIVATE, Cloud DNS will always
+  /// send queries through VPC for this target.
   /// Possible string values are:
   /// - "default" : Cloud DNS will make forwarding decision based on address
   /// ranges, i.e. RFC1918 addresses forward to the target through the VPC and
@@ -3191,8 +3256,9 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
 class PolicyNetwork {
   core.String kind;
 
-  /// The fully qualified URL of the VPC network to bind to. This should be
-  /// formatted like
+  /// The fully qualified URL of the VPC network to bind to.
+  ///
+  /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   core.String networkUrl;
 
@@ -3219,9 +3285,10 @@ class PolicyNetwork {
   }
 }
 
-/// A project resource. The project is a top level container for resources
-/// including Cloud DNS ManagedZones. Projects can be created only in the APIs
-/// console.
+/// A project resource.
+///
+/// The project is a top level container for resources including Cloud DNS
+/// ManagedZones. Projects can be created only in the APIs console.
 class Project {
   /// User assigned unique identifier for the resource (output only).
   core.String id;
@@ -3445,8 +3512,9 @@ class ResourceRecordSet {
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
   core.int ttl;
 
-  /// The identifier of a supported record type. See the list of Supported DNS
-  /// record types.
+  /// The identifier of a supported record type.
+  ///
+  /// See the list of Supported DNS record types.
   core.String type;
 
   ResourceRecordSet();
@@ -3507,14 +3575,15 @@ class ResourceRecordSetsListResponse {
   core.String kind;
 
   /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order. To fetch them,
-  /// make another list request using this value as your pagination token. In
-  /// this way you can retrieve the complete contents of even very large
-  /// collections one page at a time. However, if the contents of the collection
-  /// change between the first and last paginated list request, the set of all
-  /// elements returned will be an inconsistent view of the collection. There is
-  /// no way to retrieve a consistent snapshot of a collection larger than the
-  /// maximum page size.
+  /// following your last page of results in pagination order.
+  ///
+  /// To fetch them, make another list request using this value as your
+  /// pagination token. In this way you can retrieve the complete contents of
+  /// even very large collections one page at a time. However, if the contents
+  /// of the collection change between the first and last paginated list
+  /// request, the set of all elements returned will be an inconsistent view of
+  /// the collection. There is no way to retrieve a consistent snapshot of a
+  /// collection larger than the maximum page size.
   core.String nextPageToken;
 
   /// The resource record set resources.
@@ -3561,9 +3630,10 @@ class ResourceRecordSetsListResponse {
 
 /// Elements common to every response.
 class ResponseHeader {
-  /// For mutating operation requests that completed successfully. This is the
-  /// client_operation_id if the client specified it, otherwise it is generated
-  /// by the server (output only).
+  /// For mutating operation requests that completed successfully.
+  ///
+  /// This is the client_operation_id if the client specified it, otherwise it
+  /// is generated by the server (output only).
   core.String operationId;
 
   ResponseHeader();

@@ -61,22 +61,24 @@ class AssetlinksResource {
   AssetlinksResource(commons.ApiRequester client) : _requester = client;
 
   /// Determines whether the specified (directional) relationship exists between
-  /// the specified source and target assets. The relation describes the intent
-  /// of the link between the two assets as claimed by the source asset. An
-  /// example for such relationships is the delegation of privileges or
-  /// permissions. This command is most often used by infrastructure systems to
-  /// check preconditions for an action. For example, a client may want to know
-  /// if it is OK to send a web URL to a particular mobile app instead. The
-  /// client can check for the relevant asset link from the website to the
-  /// mobile app to decide if the operation should be allowed. A note about
-  /// security: if you specify a secure asset as the source, such as an HTTPS
-  /// website or an Android app, the API will ensure that any statements used to
-  /// generate the response have been made in a secure way by the owner of that
-  /// asset. Conversely, if the source asset is an insecure HTTP website (that
-  /// is, the URL starts with `http://` instead of `https://`), the API cannot
-  /// verify its statements securely, and it is not possible to ensure that the
-  /// website's statements have not been altered by a third party. For more
-  /// information, see the [Digital Asset Links technical design
+  /// the specified source and target assets.
+  ///
+  /// The relation describes the intent of the link between the two assets as
+  /// claimed by the source asset. An example for such relationships is the
+  /// delegation of privileges or permissions. This command is most often used
+  /// by infrastructure systems to check preconditions for an action. For
+  /// example, a client may want to know if it is OK to send a web URL to a
+  /// particular mobile app instead. The client can check for the relevant asset
+  /// link from the website to the mobile app to decide if the operation should
+  /// be allowed. A note about security: if you specify a secure asset as the
+  /// source, such as an HTTPS website or an Android app, the API will ensure
+  /// that any statements used to generate the response have been made in a
+  /// secure way by the owner of that asset. Conversely, if the source asset is
+  /// an insecure HTTP website (that is, the URL starts with `http://` instead
+  /// of `https://`), the API cannot verify its statements securely, and it is
+  /// not possible to ensure that the website's statements have not been altered
+  /// by a third party. For more information, see the [Digital Asset Links
+  /// technical design
   /// specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
   ///
   /// Request parameters:
@@ -245,10 +247,12 @@ class StatementsResource {
   StatementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a list of all statements from a given source that match the
-  /// specified target and statement string. The API guarantees that all
-  /// statements with secure source assets, such as HTTPS websites or Android
-  /// apps, have been made in a secure way by the owner of those assets, as
-  /// described in the [Digital Asset Links technical design
+  /// specified target and statement string.
+  ///
+  /// The API guarantees that all statements with secure source assets, such as
+  /// HTTPS websites or Android apps, have been made in a secure way by the
+  /// owner of those assets, as described in the [Digital Asset Links technical
+  /// design
   /// specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
   /// Specifically, you should consider that for insecure websites (that is,
   /// where the URL starts with `http://` instead of `https://`), this guarantee
@@ -371,18 +375,20 @@ class StatementsResource {
 class AndroidAppAsset {
   /// Because there is no global enforcement of package name uniqueness, we also
   /// require a signing certificate, which in combination with the package name
-  /// uniquely identifies an app. Some apps' signing keys are rotated, so they
-  /// may be signed by different keys over time. We treat these as distinct
-  /// assets, since we use (package name, cert) as the unique ID. This should
-  /// not normally pose any problems as both versions of the app will make the
-  /// same or similar statements. Other assets making statements about the app
-  /// will have to be updated when a key is rotated, however. (Note that the
-  /// syntaxes for publishing and querying for statements contain syntactic
-  /// sugar to easily let you specify apps that are known by multiple
-  /// certificates.) REQUIRED
+  /// uniquely identifies an app.
+  ///
+  /// Some apps' signing keys are rotated, so they may be signed by different
+  /// keys over time. We treat these as distinct assets, since we use (package
+  /// name, cert) as the unique ID. This should not normally pose any problems
+  /// as both versions of the app will make the same or similar statements.
+  /// Other assets making statements about the app will have to be updated when
+  /// a key is rotated, however. (Note that the syntaxes for publishing and
+  /// querying for statements contain syntactic sugar to easily let you specify
+  /// apps that are known by multiple certificates.) REQUIRED
   CertificateInfo certificate;
 
   /// Android App assets are naturally identified by their Java package name.
+  ///
   /// For example, the Google Maps app uses the package name
   /// `com.google.android.apps.maps`. REQUIRED
   core.String packageName;
@@ -411,10 +417,11 @@ class AndroidAppAsset {
   }
 }
 
-/// Uniquely identifies an asset. A digital asset is an identifiable and
-/// addressable online entity that typically provides some service or content.
-/// Examples of assets are websites, Android apps, Twitter feeds, and Plus
-/// Pages.
+/// Uniquely identifies an asset.
+///
+/// A digital asset is an identifiable and addressable online entity that
+/// typically provides some service or content. Examples of assets are websites,
+/// Android apps, Twitter feeds, and Plus Pages.
 class Asset {
   /// Set if this is an Android App asset.
   AndroidAppAsset androidApp;
@@ -449,9 +456,10 @@ class Asset {
 
 /// Describes an X509 certificate.
 class CertificateInfo {
-  /// The uppercase SHA-265 fingerprint of the certificate. From the PEM
-  /// certificate, it can be acquired like this: $ keytool -printcert -file
-  /// $CERTFILE | grep SHA256: SHA256:
+  /// The uppercase SHA-265 fingerprint of the certificate.
+  ///
+  /// From the PEM certificate, it can be acquired like this: $ keytool
+  /// -printcert -file $CERTFILE | grep SHA256: SHA256:
   /// 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \
   /// 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in
   /// $CERTFILE -noout -fingerprint -sha256 SHA256
@@ -485,12 +493,13 @@ class CertificateInfo {
 /// Response message for the CheckAssetLinks call.
 class CheckResponse {
   /// Human-readable message containing information intended to help end users
-  /// understand, reproduce and debug the result. The message will be in English
-  /// and we are currently not planning to offer any translations. Please note
-  /// that no guarantees are made about the contents or format of this string.
-  /// Any aspect of it may be subject to change without notice. You should not
-  /// attempt to programmatically parse this data. For programmatic access, use
-  /// the error_code field below.
+  /// understand, reproduce and debug the result.
+  ///
+  /// The message will be in English and we are currently not planning to offer
+  /// any translations. Please note that no guarantees are made about the
+  /// contents or format of this string. Any aspect of it may be subject to
+  /// change without notice. You should not attempt to programmatically parse
+  /// this data. For programmatic access, use the error_code field below.
   core.String debugString;
 
   /// Error codes that describe the result of the Check operation.
@@ -501,7 +510,9 @@ class CheckResponse {
   core.bool linked;
 
   /// From serving time, how much longer the response should be considered valid
-  /// barring further updates. REQUIRED
+  /// barring further updates.
+  ///
+  /// REQUIRED
   core.String maxAge;
 
   CheckResponse();
@@ -544,19 +555,22 @@ class CheckResponse {
 /// Response message for the List call.
 class ListResponse {
   /// Human-readable message containing information intended to help end users
-  /// understand, reproduce and debug the result. The message will be in English
-  /// and we are currently not planning to offer any translations. Please note
-  /// that no guarantees are made about the contents or format of this string.
-  /// Any aspect of it may be subject to change without notice. You should not
-  /// attempt to programmatically parse this data. For programmatic access, use
-  /// the error_code field below.
+  /// understand, reproduce and debug the result.
+  ///
+  /// The message will be in English and we are currently not planning to offer
+  /// any translations. Please note that no guarantees are made about the
+  /// contents or format of this string. Any aspect of it may be subject to
+  /// change without notice. You should not attempt to programmatically parse
+  /// this data. For programmatic access, use the error_code field below.
   core.String debugString;
 
   /// Error codes that describe the result of the List operation.
   core.List<core.String> errorCode;
 
   /// From serving time, how much longer the response should be considered valid
-  /// barring further updates. REQUIRED
+  /// barring further updates.
+  ///
+  /// REQUIRED
   core.String maxAge;
 
   /// A list of all the matching statements that have been found.
@@ -603,14 +617,16 @@ class ListResponse {
 }
 
 /// Describes a reliable statement that has been made about the relationship
-/// between a source asset and a target asset. Statements are always made by the
-/// source asset, either directly or by delegating to a statement list that is
-/// stored elsewhere. For more detailed definitions of statements and assets,
-/// please refer to our [API documentation landing
-/// page](/digital-asset-links/v1/getting-started).
+/// between a source asset and a target asset.
+///
+/// Statements are always made by the source asset, either directly or by
+/// delegating to a statement list that is stored elsewhere. For more detailed
+/// definitions of statements and assets, please refer to our [API documentation
+/// landing page](/digital-asset-links/v1/getting-started).
 class Statement {
   /// The relation identifies the use of the statement as intended by the source
   /// asset's owner (that is, the person or entity who issued the statement).
+  ///
   /// Every complete statement has a relation. We identify relations with
   /// strings of the format `/`, where `` must be one of a set of pre-defined
   /// purpose categories, and `` is a free-form lowercase alphanumeric string
@@ -620,10 +636,14 @@ class Statement {
   /// `delegate_permission/common.handle_all_urls` REQUIRED
   core.String relation;
 
-  /// Every statement has a source asset. REQUIRED
+  /// Every statement has a source asset.
+  ///
+  /// REQUIRED
   Asset source;
 
-  /// Every statement has a target asset. REQUIRED
+  /// Every statement has a target asset.
+  ///
+  /// REQUIRED
   Asset target;
 
   Statement();
@@ -660,14 +680,16 @@ class Statement {
 /// Describes a web asset.
 class WebAsset {
   /// Web assets are identified by a URL that contains only the scheme, hostname
-  /// and port parts. The format is http[s]://[:] Hostnames must be fully
-  /// qualified: they must end in a single period ("`.`"). Only the schemes
-  /// "http" and "https" are currently allowed. Port numbers are given as a
-  /// decimal number, and they must be omitted if the standard port numbers are
-  /// used: 80 for http and 443 for https. We call this limited URL the "site".
-  /// All URLs that share the same scheme, hostname and port are considered to
-  /// be a part of the site and thus belong to the web asset. Example: the asset
-  /// with the site `https://www.google.com` contains all these URLs: *
+  /// and port parts.
+  ///
+  /// The format is http[s]://[:] Hostnames must be fully qualified: they must
+  /// end in a single period ("`.`"). Only the schemes "http" and "https" are
+  /// currently allowed. Port numbers are given as a decimal number, and they
+  /// must be omitted if the standard port numbers are used: 80 for http and 443
+  /// for https. We call this limited URL the "site". All URLs that share the
+  /// same scheme, hostname and port are considered to be a part of the site and
+  /// thus belong to the web asset. Example: the asset with the site
+  /// `https://www.google.com` contains all these URLs: *
   /// `https://www.google.com/` * `https://www.google.com:443/` *
   /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
   /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`

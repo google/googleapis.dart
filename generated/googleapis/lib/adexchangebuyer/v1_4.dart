@@ -185,7 +185,9 @@ class AccountsResource {
     );
   }
 
-  /// Updates an existing account. This method supports patch semantics.
+  /// Updates an existing account.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -485,8 +487,9 @@ class BudgetResource {
   }
 
   /// Updates the budget amount for the budget of the adgroup specified by the
-  /// accountId and billingId, with the budget amount in the request. This
-  /// method supports patch semantics.
+  /// accountId and billingId, with the budget amount in the request.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -690,8 +693,9 @@ class CreativesResource {
     );
   }
 
-  /// Gets the status for a single creative. A creative will be available 30-40
-  /// minutes after submission.
+  /// Gets the status for a single creative.
+  ///
+  /// A creative will be available 30-40 minutes after submission.
   ///
   /// Request parameters:
   ///
@@ -800,8 +804,9 @@ class CreativesResource {
     );
   }
 
-  /// Retrieves a list of the authenticated user's active creatives. A creative
-  /// will be available 30-40 minutes after submission.
+  /// Retrieves a list of the authenticated user's active creatives.
+  ///
+  /// A creative will be available 30-40 minutes after submission.
   ///
   /// Request parameters:
   ///
@@ -1789,8 +1794,9 @@ class PretargetingConfigResource {
     );
   }
 
-  /// Updates an existing pretargeting config. This method supports patch
-  /// semantics.
+  /// Updates an existing pretargeting config.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2136,7 +2142,9 @@ class ProposalsResource {
     );
   }
 
-  /// Update the given proposal. This method supports patch semantics.
+  /// Update the given proposal.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2468,9 +2476,10 @@ class PubprofilesResource {
 }
 
 class AccountBidderLocation {
-  /// The protocol that the bidder endpoint is using. OpenRTB protocols with
-  /// prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.
-  /// Allowed values:
+  /// The protocol that the bidder endpoint is using.
+  ///
+  /// OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer,
+  /// otherwise use JSON.  Allowed values:
   /// - PROTOCOL_ADX
   /// - PROTOCOL_OPENRTB_2_2
   /// - PROTOCOL_OPENRTB_2_3
@@ -2484,9 +2493,10 @@ class AccountBidderLocation {
   /// The maximum queries per second the Ad Exchange will send.
   core.int maximumQps;
 
-  /// The geographical region the Ad Exchange should send requests from. Only
-  /// used by some quota systems, but always setting the value is recommended.
-  /// Allowed values:
+  /// The geographical region the Ad Exchange should send requests from.
+  ///
+  /// Only used by some quota systems, but always setting the value is
+  /// recommended. Allowed values:
   /// - ASIA
   /// - EUROPE
   /// - US_EAST
@@ -2534,17 +2544,19 @@ class AccountBidderLocation {
 /// Configuration data for an Ad Exchange buyer account.
 class Account {
   /// When this is false, bid requests that include a deal ID for a private
-  /// auction or preferred deal are always sent to your bidder. When true, all
-  /// active pretargeting configs will be applied to private auctions and
-  /// preferred deals. Programmatic Guaranteed deals (when enabled) are always
-  /// sent to your bidder.
+  /// auction or preferred deal are always sent to your bidder.
+  ///
+  /// When true, all active pretargeting configs will be applied to private
+  /// auctions and preferred deals. Programmatic Guaranteed deals (when enabled)
+  /// are always sent to your bidder.
   core.bool applyPretargetingToNonGuaranteedDeals;
 
   /// Your bidder locations that have distinct URLs.
   core.List<AccountBidderLocation> bidderLocation;
 
-  /// The nid parameter value used in cookie match requests. Please contact your
-  /// technical account manager if you need to change this.
+  /// The nid parameter value used in cookie match requests.
+  ///
+  /// Please contact your technical account manager if you need to change this.
   core.String cookieMatchingNid;
 
   /// The base URL used in cookie match requests.
@@ -2558,11 +2570,13 @@ class Account {
 
   /// The maximum number of active creatives that an account can have, where a
   /// creative is active if it was inserted or bid with in the last 30 days.
+  ///
   /// Please contact your technical account manager if you need to change this.
   core.int maximumActiveCreatives;
 
-  /// The sum of all bidderLocation.maximumQps values cannot exceed this. Please
-  /// contact your technical account manager if you need to change this.
+  /// The sum of all bidderLocation.maximumQps values cannot exceed this.
+  ///
+  /// Please contact your technical account manager if you need to change this.
   core.int maximumTotalQps;
 
   /// The number of creatives that this account inserted or bid with in the last
@@ -2641,7 +2655,9 @@ class Account {
 }
 
 /// An account feed lists Ad Exchange buyer accounts that the user has access
-/// to. Each entry in the feed corresponds to a single buyer account.
+/// to.
+///
+/// Each entry in the feed corresponds to a single buyer account.
 class AccountsList {
   /// A list of accounts.
   core.List<Account> items;
@@ -2805,9 +2821,10 @@ class BillingInfo {
   /// Account name.
   core.String accountName;
 
-  /// A list of adgroup IDs associated with this particular account. These IDs
-  /// may show up as part of a realtime bidding BidRequest, which indicates a
-  /// bid request for this account.
+  /// A list of adgroup IDs associated with this particular account.
+  ///
+  /// These IDs may show up as part of a realtime bidding BidRequest, which
+  /// indicates a bid request for this account.
   core.List<core.String> billingId;
 
   /// Resource type.
@@ -2851,7 +2868,9 @@ class BillingInfo {
 }
 
 /// A billing info feed lists Billing Info the Ad Exchange buyer account has
-/// access to. Each entry in the feed corresponds to a single billing info.
+/// access to.
+///
+/// Each entry in the feed corresponds to a single billing info.
 class BillingInfoList {
   /// A list of billing info relevant for your account.
   core.List<BillingInfo> items;
@@ -2887,18 +2906,26 @@ class BillingInfoList {
 
 /// The configuration data for Ad Exchange RTB - Budget API.
 class Budget {
-  /// The id of the account. This is required for get and update requests.
+  /// The id of the account.
+  ///
+  /// This is required for get and update requests.
   core.String accountId;
 
   /// The billing id to determine which adgroup to provide budget information
-  /// for. This is required for get and update requests.
+  /// for.
+  ///
+  /// This is required for get and update requests.
   core.String billingId;
 
   /// The daily budget amount in unit amount of the account currency to apply
-  /// for the billingId provided. This is required for update requests.
+  /// for the billingId provided.
+  ///
+  /// This is required for update requests.
   core.String budgetAmount;
 
-  /// The currency code for the buyer. This cannot be altered here.
+  /// The currency code for the buyer.
+  ///
+  /// This cannot be altered here.
   core.String currencyCode;
 
   /// The unique id that describes this item.
@@ -3063,8 +3090,9 @@ class CreateOrdersResponse {
 }
 
 class CreativeAdTechnologyProviders {
-  /// The detected ad technology provider IDs for this creative. See
-  /// https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
+  /// The detected ad technology provider IDs for this creative.
+  ///
+  /// See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
   /// mapping of provider ID to provided name, a privacy policy URL, and a list
   /// of domains which can be attributed to the provider. If this creative
   /// contains provider IDs that are outside of those listed in the
@@ -3077,8 +3105,9 @@ class CreativeAdTechnologyProviders {
   /// Authorized Buyers Program Guidelines.
   core.List<core.String> detectedProviderIds;
 
-  /// Whether the creative contains an unidentified ad technology provider. If
-  /// true, a bid submitted for a European Economic Area (EEA) user with this
+  /// Whether the creative contains an unidentified ad technology provider.
+  ///
+  /// If true, a bid submitted for a European Economic Area (EEA) user with this
   /// creative is not compliant with the GDPR policies as mentioned in the
   /// "Third-party Ad Technology Vendors" section of Authorized Buyers Program
   /// Guidelines.
@@ -3110,19 +3139,22 @@ class CreativeAdTechnologyProviders {
 }
 
 class CreativeCorrectionsContexts {
-  /// Only set when contextType=AUCTION_TYPE. Represents the auction types this
-  /// correction applies to.
+  /// Only set when contextType=AUCTION_TYPE.
+  ///
+  /// Represents the auction types this correction applies to.
   core.List<core.String> auctionType;
 
   /// The type of context (e.g., location, platform, auction type, SSL-ness).
   core.String contextType;
 
-  /// Only set when contextType=LOCATION. Represents the geo criterias this
-  /// correction applies to.
+  /// Only set when contextType=LOCATION.
+  ///
+  /// Represents the geo criterias this correction applies to.
   core.List<core.int> geoCriteriaId;
 
-  /// Only set when contextType=PLATFORM. Represents the platforms this
-  /// correction applies to.
+  /// Only set when contextType=PLATFORM.
+  ///
+  /// Represents the platforms this correction applies to.
   core.List<core.String> platform;
 
   CreativeCorrectionsContexts();
@@ -3212,8 +3244,9 @@ class CreativeCorrections {
 }
 
 class CreativeFilteringReasonsReasons {
-  /// The number of times the creative was filtered for the status. The count is
-  /// aggregated across all publishers on the exchange.
+  /// The number of times the creative was filtered for the status.
+  ///
+  /// The count is aggregated across all publishers on the exchange.
   core.String filteringCount;
 
   /// The filtering status code as defined in  creative-status-codes.txt.
@@ -3242,11 +3275,13 @@ class CreativeFilteringReasonsReasons {
   }
 }
 
-/// The filtering reasons for the creative. Read-only. This field should not be
-/// set in requests.
+/// The filtering reasons for the creative.
+///
+/// Read-only. This field should not be set in requests.
 class CreativeFilteringReasons {
-  /// The date in ISO 8601 format for the data. The data is collected from
-  /// 00:00:00 to 23:59:59 in PST.
+  /// The date in ISO 8601 format for the data.
+  ///
+  /// The data is collected from 00:00:00 to 23:59:59 in PST.
   core.String date;
 
   /// The filtering reasons.
@@ -3385,7 +3420,9 @@ class CreativeNativeAdLogo {
 }
 
 /// If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of
-/// nativeAd should not be set. (The videoURL inside nativeAd can be set.)
+/// nativeAd should not be set.
+///
+/// (The videoURL inside nativeAd can be set.)
 class CreativeNativeAd {
   core.String advertiser;
 
@@ -3419,11 +3456,14 @@ class CreativeNativeAd {
   /// The price of the promoted app including the currency info.
   core.String price;
 
-  /// The app rating in the app store. Must be in the range [0-5].
+  /// The app rating in the app store.
+  ///
+  /// Must be in the range [0-5].
   core.double starRating;
 
-  /// The URL of the XML VAST for a native ad. Note this is a separate field
-  /// from resource.video_url.
+  /// The URL of the XML VAST for a native ad.
+  ///
+  /// Note this is a separate field from resource.video_url.
   core.String videoURL;
 
   CreativeNativeAd();
@@ -3521,21 +3561,24 @@ class CreativeNativeAd {
 }
 
 class CreativeServingRestrictionsContexts {
-  /// Only set when contextType=AUCTION_TYPE. Represents the auction types this
-  /// restriction applies to.
+  /// Only set when contextType=AUCTION_TYPE.
+  ///
+  /// Represents the auction types this restriction applies to.
   core.List<core.String> auctionType;
 
   /// The type of context (e.g., location, platform, auction type, SSL-ness).
   core.String contextType;
 
-  /// Only set when contextType=LOCATION. Represents the geo criterias this
-  /// restriction applies to. Impressions are considered to match a context if
-  /// either the user location or publisher location matches a given
-  /// geoCriteriaId.
+  /// Only set when contextType=LOCATION.
+  ///
+  /// Represents the geo criterias this restriction applies to. Impressions are
+  /// considered to match a context if either the user location or publisher
+  /// location matches a given geoCriteriaId.
   core.List<core.int> geoCriteriaId;
 
-  /// Only set when contextType=PLATFORM. Represents the platforms this
-  /// restriction applies to.
+  /// Only set when contextType=PLATFORM.
+  ///
+  /// Represents the platforms this restriction applies to.
   core.List<core.String> platform;
 
   CreativeServingRestrictionsContexts();
@@ -3615,11 +3658,12 @@ class CreativeServingRestrictions {
   /// All known contexts/restrictions.
   core.List<CreativeServingRestrictionsContexts> contexts;
 
-  /// The reasons for disapproval within this restriction, if any. Note that not
-  /// all disapproval reasons may be categorized, so it is possible for the
-  /// creative to have a status of DISAPPROVED or CONDITIONALLY_APPROVED with an
-  /// empty list for disapproval_reasons. In this case, please reach out to your
-  /// TAM to help debug the issue.
+  /// The reasons for disapproval within this restriction, if any.
+  ///
+  /// Note that not all disapproval reasons may be categorized, so it is
+  /// possible for the creative to have a status of DISAPPROVED or
+  /// CONDITIONALLY_APPROVED with an empty list for disapproval_reasons. In this
+  /// case, please reach out to your TAM to help debug the issue.
   core.List<CreativeServingRestrictionsDisapprovalReasons> disapprovalReasons;
 
   /// Why the creative is ineligible to serve in this context (e.g., it has been
@@ -3666,36 +3710,43 @@ class CreativeServingRestrictions {
 
 /// A creative and its classification data.
 class Creative {
-  /// The HTML snippet that displays the ad when inserted in the web page. If
-  /// set, videoURL, videoVastXML, and nativeAd should not be set.
+  /// The HTML snippet that displays the ad when inserted in the web page.
+  ///
+  /// If set, videoURL, videoVastXML, and nativeAd should not be set.
   core.String HTMLSnippet;
 
   /// Account id.
   core.int accountId;
 
-  /// The link to the Ad Preferences page. This is only supported for native
-  /// ads.
+  /// The link to the Ad Preferences page.
+  ///
+  /// This is only supported for native ads.
   core.String adChoicesDestinationUrl;
   CreativeAdTechnologyProviders adTechnologyProviders;
 
-  /// Detected advertiser id, if any. Read-only. This field should not be set in
-  /// requests.
+  /// Detected advertiser id, if any.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<core.String> advertiserId;
 
-  /// The name of the company being advertised in the creative. A list of
-  /// advertisers is provided in the advertisers.txt file.
+  /// The name of the company being advertised in the creative.
+  ///
+  /// A list of advertisers is provided in the advertisers.txt file.
   core.String advertiserName;
 
   /// The agency id for this creative.
   core.String agencyId;
 
   /// The last upload timestamp of this creative if it was uploaded via API.
+  ///
   /// Read-only. The value of this field is generated, and will be ignored for
   /// uploads. (formatted RFC 3339 timestamp).
   core.DateTime apiUploadTimestamp;
 
   /// List of buyer selectable attributes for the ads that may be shown from
-  /// this snippet. Each attribute is represented by an integer as defined in
+  /// this snippet.
+  ///
+  /// Each attribute is represented by an integer as defined in
   /// buyer-declarable-creative-attributes.txt.
   core.List<core.int> attribute;
 
@@ -3705,12 +3756,14 @@ class Creative {
   /// The set of destination urls for the snippet.
   core.List<core.String> clickThroughUrl;
 
-  /// Shows any corrections that were applied to this creative. Read-only. This
-  /// field should not be set in requests.
+  /// Shows any corrections that were applied to this creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<CreativeCorrections> corrections;
 
-  /// Creative status identity type that the creative item applies to. Ad
-  /// Exchange real-time bidding is migrating to the sizeless creative
+  /// Creative status identity type that the creative item applies to.
+  ///
+  /// Ad Exchange real-time bidding is migrating to the sizeless creative
   /// verification. Originally, Ad Exchange assigned creative verification
   /// status to a unique combination of a buyer creative ID and creative
   /// dimensions. Post-migration, a single verification status will be assigned
@@ -3719,19 +3772,23 @@ class Creative {
   /// ID and creative dimensions, or to a buyer creative ID as a whole.
   core.String creativeStatusIdentityType;
 
-  /// Top-level deals status. Read-only. This field should not be set in
-  /// requests. If disapproved, an entry for auctionType=DIRECT_DEALS (or ALL)
-  /// in servingRestrictions will also exist. Note that this may be nuanced with
-  /// other contextual restrictions, in which case it may be preferable to read
-  /// from servingRestrictions directly.
+  /// Top-level deals status.
+  ///
+  /// Read-only. This field should not be set in requests. If disapproved, an
+  /// entry for auctionType=DIRECT_DEALS (or ALL) in servingRestrictions will
+  /// also exist. Note that this may be nuanced with other contextual
+  /// restrictions, in which case it may be preferable to read from
+  /// servingRestrictions directly.
   core.String dealsStatus;
 
-  /// Detected domains for this creative. Read-only. This field should not be
-  /// set in requests.
+  /// Detected domains for this creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<core.String> detectedDomains;
 
-  /// The filtering reasons for the creative. Read-only. This field should not
-  /// be set in requests.
+  /// The filtering reasons for the creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   CreativeFilteringReasons filteringReasons;
 
   /// Ad height.
@@ -3743,59 +3800,74 @@ class Creative {
   /// Resource type.
   core.String kind;
 
-  /// Detected languages for this creative. Read-only. This field should not be
-  /// set in requests.
+  /// Detected languages for this creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.List<core.String> languages;
 
   /// If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of
-  /// nativeAd should not be set. (The videoURL inside nativeAd can be set.)
+  /// nativeAd should not be set.
+  ///
+  /// (The videoURL inside nativeAd can be set.)
   CreativeNativeAd nativeAd;
 
-  /// Top-level open auction status. Read-only. This field should not be set in
-  /// requests. If disapproved, an entry for auctionType=OPEN_AUCTION (or ALL)
-  /// in servingRestrictions will also exist. Note that this may be nuanced with
-  /// other contextual restrictions, in which case it may be preferable to read
-  /// from ServingRestrictions directly.
+  /// Top-level open auction status.
+  ///
+  /// Read-only. This field should not be set in requests. If disapproved, an
+  /// entry for auctionType=OPEN_AUCTION (or ALL) in servingRestrictions will
+  /// also exist. Note that this may be nuanced with other contextual
+  /// restrictions, in which case it may be preferable to read from
+  /// ServingRestrictions directly.
   core.String openAuctionStatus;
 
-  /// Detected product categories, if any. Each category is represented by an
-  /// integer as defined in  ad-product-categories.txt. Read-only. This field
-  /// should not be set in requests.
+  /// Detected product categories, if any.
+  ///
+  /// Each category is represented by an integer as defined in
+  /// ad-product-categories.txt. Read-only. This field should not be set in
+  /// requests.
   core.List<core.int> productCategories;
 
   /// All restricted categories for the ads that may be shown from this snippet.
+  ///
   /// Each category is represented by an integer as defined in the
   /// ad-restricted-categories.txt.
   core.List<core.int> restrictedCategories;
 
-  /// Detected sensitive categories, if any. Each category is represented by an
-  /// integer as defined in  ad-sensitive-categories.txt. Read-only. This field
-  /// should not be set in requests.
+  /// Detected sensitive categories, if any.
+  ///
+  /// Each category is represented by an integer as defined in
+  /// ad-sensitive-categories.txt. Read-only. This field should not be set in
+  /// requests.
   core.List<core.int> sensitiveCategories;
 
-  /// The granular status of this ad in specific contexts. A context here
-  /// relates to where something ultimately serves (for example, a physical
-  /// location, a platform, an HTTPS vs HTTP request, or the type of auction).
-  /// Read-only. This field should not be set in requests. See the examples in
-  /// the Creatives guide for more details.
+  /// The granular status of this ad in specific contexts.
+  ///
+  /// A context here relates to where something ultimately serves (for example,
+  /// a physical location, a platform, an HTTPS vs HTTP request, or the type of
+  /// auction). Read-only. This field should not be set in requests. See the
+  /// examples in the Creatives guide for more details.
   core.List<CreativeServingRestrictions> servingRestrictions;
 
-  /// List of vendor types for the ads that may be shown from this snippet. Each
-  /// vendor type is represented by an integer as defined in vendors.txt.
+  /// List of vendor types for the ads that may be shown from this snippet.
+  ///
+  /// Each vendor type is represented by an integer as defined in vendors.txt.
   core.List<core.int> vendorType;
 
-  /// The version for this creative. Read-only. This field should not be set in
-  /// requests.
+  /// The version for this creative.
+  ///
+  /// Read-only. This field should not be set in requests.
   core.int version;
 
-  /// The URL to fetch a video ad. If set, HTMLSnippet, videoVastXML, and
-  /// nativeAd should not be set. Note, this is different from
-  /// resource.native_ad.video_url above.
+  /// The URL to fetch a video ad.
+  ///
+  /// If set, HTMLSnippet, videoVastXML, and nativeAd should not be set. Note,
+  /// this is different from resource.native_ad.video_url above.
   core.String videoURL;
 
-  /// The contents of a VAST document for a video ad. This document should
-  /// conform to the VAST 2.0 or 3.0 standard. If set, HTMLSnippet, videoURL,
-  /// and nativeAd and should not be set.
+  /// The contents of a VAST document for a video ad.
+  ///
+  /// This document should conform to the VAST 2.0 or 3.0 standard. If set,
+  /// HTMLSnippet, videoURL, and nativeAd and should not be set.
   core.String videoVastXML;
 
   /// Ad width.
@@ -4109,8 +4181,9 @@ class CreativeDealIds {
 }
 
 /// The creatives feed lists the active creatives for the Ad Exchange buyer
-/// accounts that the user has access to. Each entry in the feed corresponds to
-/// a single creative.
+/// accounts that the user has access to.
+///
+/// Each entry in the feed corresponds to a single creative.
 class CreativesList {
   /// A list of creatives.
   core.List<Creative> items;
@@ -4118,8 +4191,10 @@ class CreativesList {
   /// Resource type.
   core.String kind;
 
-  /// Continuation token used to page through creatives. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through creatives.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   CreativesList();
@@ -4155,13 +4230,15 @@ class CreativesList {
 }
 
 class DealServingMetadata {
-  /// True if alcohol ads are allowed for this deal (read-only). This field is
-  /// only populated when querying for finalized orders using the method
-  /// GetFinalizedOrderDeals
+  /// True if alcohol ads are allowed for this deal (read-only).
+  ///
+  /// This field is only populated when querying for finalized orders using the
+  /// method GetFinalizedOrderDeals
   core.bool alcoholAdsAllowed;
 
-  /// Tracks which parties (if any) have paused a deal. (readonly, except via
-  /// PauseResumeOrderDeals action)
+  /// Tracks which parties (if any) have paused a deal.
+  ///
+  /// (readonly, except via PauseResumeOrderDeals action)
   DealServingMetadataDealPauseStatus dealPauseStatus;
 
   DealServingMetadata();
@@ -4188,9 +4265,11 @@ class DealServingMetadata {
   }
 }
 
-/// Tracks which parties (if any) have paused a deal. The deal is considered
-/// paused if has_buyer_paused || has_seller_paused. Each of the
-/// has_buyer_paused or the has_seller_paused bits can be set independently.
+/// Tracks which parties (if any) have paused a deal.
+///
+/// The deal is considered paused if has_buyer_paused || has_seller_paused. Each
+/// of the has_buyer_paused or the has_seller_paused bits can be set
+/// independently.
 class DealServingMetadataDealPauseStatus {
   core.String buyerPauseReason;
 
@@ -4246,8 +4325,10 @@ class DealTerms {
   core.String brandingType;
 
   /// Indicates that this ExternalDealId exists under at least two different
-  /// AdxInventoryDeals. Currently, the only case that the same ExternalDealId
-  /// will exist is programmatic cross sell case.
+  /// AdxInventoryDeals.
+  ///
+  /// Currently, the only case that the same ExternalDealId will exist is
+  /// programmatic cross sell case.
   core.String crossListedExternalDealIdType;
 
   /// Description for the proposed terms of the deal.
@@ -4362,23 +4443,31 @@ class DealTerms {
 }
 
 class DealTermsGuaranteedFixedPriceTerms {
-  /// External billing info for this Deal. This field is relevant when external
-  /// billing info such as price has a different currency code than DFP/AdX.
+  /// External billing info for this Deal.
+  ///
+  /// This field is relevant when external billing info such as price has a
+  /// different currency code than DFP/AdX.
   DealTermsGuaranteedFixedPriceTermsBillingInfo billingInfo;
 
   /// Fixed price for the specified buyer.
   core.List<PricePerBuyer> fixedPrices;
 
-  /// Guaranteed impressions as a percentage. This is the percentage of
-  /// guaranteed looks that the buyer is guaranteeing to buy.
+  /// Guaranteed impressions as a percentage.
+  ///
+  /// This is the percentage of guaranteed looks that the buyer is guaranteeing
+  /// to buy.
   core.String guaranteedImpressions;
 
-  /// Count of guaranteed looks. Required for deal, optional for product. For
-  /// CPD deals, buyer changes to guaranteed_looks will be ignored.
+  /// Count of guaranteed looks.
+  ///
+  /// Required for deal, optional for product. For CPD deals, buyer changes to
+  /// guaranteed_looks will be ignored.
   core.String guaranteedLooks;
 
-  /// Count of minimum daily looks for a CPD deal. For CPD deals, buyer should
-  /// negotiate on this field instead of guaranteed_looks.
+  /// Count of minimum daily looks for a CPD deal.
+  ///
+  /// For CPD deals, buyer should negotiate on this field instead of
+  /// guaranteed_looks.
   core.String minimumDailyLooks;
 
   DealTermsGuaranteedFixedPriceTerms();
@@ -4429,19 +4518,24 @@ class DealTermsGuaranteedFixedPriceTerms {
 
 class DealTermsGuaranteedFixedPriceTermsBillingInfo {
   /// The timestamp (in ms since epoch) when the original reservation price for
-  /// the deal was first converted to DFP currency. This is used to convert the
-  /// contracted price into buyer's currency without discrepancy.
+  /// the deal was first converted to DFP currency.
+  ///
+  /// This is used to convert the contracted price into buyer's currency without
+  /// discrepancy.
   core.String currencyConversionTimeMs;
 
-  /// The DFP line item id associated with this deal. For features like CPD,
-  /// buyers can retrieve the DFP line item for billing reconciliation.
+  /// The DFP line item id associated with this deal.
+  ///
+  /// For features like CPD, buyers can retrieve the DFP line item for billing
+  /// reconciliation.
   core.String dfpLineItemId;
 
-  /// The original contracted quantity (# impressions) for this deal. To ensure
-  /// delivery, sometimes the publisher will book the deal with a impression
-  /// buffer, such that guaranteed_looks is greater than the contracted
-  /// quantity. However clients are billed using the original contracted
-  /// quantity.
+  /// The original contracted quantity (# impressions) for this deal.
+  ///
+  /// To ensure delivery, sometimes the publisher will book the deal with a
+  /// impression buffer, such that guaranteed_looks is greater than the
+  /// contracted quantity. However clients are billed using the original
+  /// contracted quantity.
   core.String originalContractedQuantity;
 
   /// The original reservation price for the deal, if the currency code is
@@ -4726,9 +4820,10 @@ class DeliveryControlFrequencyCap {
   }
 }
 
-/// This message carries publisher provided breakdown. E.g. {dimension_type:
-/// 'COUNTRY', [{dimension_value: {id: 1, name: 'US'}}, {dimension_value: {id:
-/// 2, name: 'UK'}}]}
+/// This message carries publisher provided breakdown.
+///
+/// E.g. {dimension_type: 'COUNTRY', [{dimension_value: {id: 1, name: 'US'}},
+/// {dimension_value: {id: 2, name: 'UK'}}]}
 class Dimension {
   core.String dimensionType;
   core.List<DimensionDimensionValue> dimensionValues;
@@ -4767,12 +4862,16 @@ class DimensionDimensionValue {
   core.int id;
 
   /// Name of the dimension mainly for debugging purposes, except for the case
-  /// of CREATIVE_SIZE. For CREATIVE_SIZE, strings are used instead of ids.
+  /// of CREATIVE_SIZE.
+  ///
+  /// For CREATIVE_SIZE, strings are used instead of ids.
   core.String name;
 
-  /// Percent of total impressions for a dimension type. e.g. {dimension_type:
-  /// 'GENDER', [{dimension_value: {id: 1, name: 'MALE', percentage: 60}}]}
-  /// Gender MALE is 60% of all impressions which have gender.
+  /// Percent of total impressions for a dimension type.
+  ///
+  /// e.g. {dimension_type: 'GENDER', [{dimension_value: {id: 1, name: 'MALE',
+  /// percentage: 60}}]} Gender MALE is 60% of all impressions which have
+  /// gender.
   core.int percentage;
 
   DimensionDimensionValue();
@@ -4805,21 +4904,24 @@ class DimensionDimensionValue {
 }
 
 class EditAllOrderDealsRequest {
-  /// List of deals to edit. Service may perform 3 different operations based on
-  /// comparison of deals in this list vs deals already persisted in database:
-  /// 1. Add new deal to proposal If a deal in this list does not exist in the
-  /// proposal, the service will create a new deal and add it to the proposal.
-  /// Validation will follow AddOrderDealsRequest. 2. Update existing deal in
-  /// the proposal If a deal in this list already exist in the proposal, the
-  /// service will update that existing deal to this new deal in the request.
-  /// Validation will follow UpdateOrderDealsRequest. 3. Delete deals from the
-  /// proposal (just need the id) If a existing deal in the proposal is not
-  /// present in this list, the service will delete that deal from the proposal.
-  /// Validation will follow DeleteOrderDealsRequest.
+  /// List of deals to edit.
+  ///
+  /// Service may perform 3 different operations based on comparison of deals in
+  /// this list vs deals already persisted in database: 1. Add new deal to
+  /// proposal If a deal in this list does not exist in the proposal, the
+  /// service will create a new deal and add it to the proposal. Validation will
+  /// follow AddOrderDealsRequest. 2. Update existing deal in the proposal If a
+  /// deal in this list already exist in the proposal, the service will update
+  /// that existing deal to this new deal in the request. Validation will follow
+  /// UpdateOrderDealsRequest. 3. Delete deals from the proposal (just need the
+  /// id) If a existing deal in the proposal is not present in this list, the
+  /// service will delete that deal from the proposal. Validation will follow
+  /// DeleteOrderDealsRequest.
   core.List<MarketplaceDeal> deals;
 
-  /// If specified, also updates the proposal in the batch transaction. This is
-  /// useful when the proposal and the deals need to be updated in one
+  /// If specified, also updates the proposal in the batch transaction.
+  ///
+  /// This is useful when the proposal and the deals need to be updated in one
   /// transaction.
   Proposal proposal;
 
@@ -4950,10 +5052,11 @@ class GetOrderDealsResponse {
 }
 
 class GetOrderNotesResponse {
-  /// The list of matching notes. The notes for a proposal are ordered from
-  /// oldest to newest. If the notes span multiple proposals, they will be
-  /// grouped by proposal, with the notes for the most recently modified
-  /// proposal appearing first.
+  /// The list of matching notes.
+  ///
+  /// The notes for a proposal are ordered from oldest to newest. If the notes
+  /// span multiple proposals, they will be grouped by proposal, with the notes
+  /// for the most recently modified proposal appearing first.
   core.List<MarketplaceNote> notes;
 
   GetOrderNotesResponse();
@@ -5025,13 +5128,17 @@ class GetPublisherProfilesByAccountIdResponse {
   }
 }
 
-/// A proposal can contain multiple deals. A deal contains the terms and
-/// targeting information that is used for serving.
+/// A proposal can contain multiple deals.
+///
+/// A deal contains the terms and targeting information that is used for
+/// serving.
 class MarketplaceDeal {
   /// Buyer private data (hidden from seller).
   PrivateData buyerPrivateData;
 
-  /// The time (ms since epoch) of the deal creation. (readonly)
+  /// The time (ms since epoch) of the deal creation.
+  ///
+  /// (readonly)
   core.String creationTimeMs;
 
   /// Specifies the creative pre-approval policy (buyer-readonly)
@@ -5048,47 +5155,63 @@ class MarketplaceDeal {
   DealServingMetadata dealServingMetadata;
 
   /// The set of fields around delivery control that are interesting for a buyer
-  /// to see but are non-negotiable. These are set by the publisher. This
-  /// message is assigned an id of 100 since some day we would want to model
-  /// this as a protobuf extension.
+  /// to see but are non-negotiable.
+  ///
+  /// These are set by the publisher. This message is assigned an id of 100
+  /// since some day we would want to model this as a protobuf extension.
   DeliveryControl deliveryControl;
 
   /// The external deal id assigned to this deal once the deal is finalized.
+  ///
   /// This is the deal-id that shows up in serving/reporting etc. (readonly)
   core.String externalDealId;
 
   /// Proposed flight end time of the deal (ms since epoch) This will generally
-  /// be stored in a granularity of a second. (updatable)
+  /// be stored in a granularity of a second.
+  ///
+  /// (updatable)
   core.String flightEndTimeMs;
 
   /// Proposed flight start time of the deal (ms since epoch) This will
-  /// generally be stored in a granularity of a second. (updatable)
+  /// generally be stored in a granularity of a second.
+  ///
+  /// (updatable)
   core.String flightStartTimeMs;
 
-  /// Description for the deal terms. (buyer-readonly)
+  /// Description for the deal terms.
+  ///
+  /// (buyer-readonly)
   core.String inventoryDescription;
 
-  /// Indicates whether the current deal is a RFP template. RFP template is
-  /// created by buyer and not based on seller created products.
+  /// Indicates whether the current deal is a RFP template.
+  ///
+  /// RFP template is created by buyer and not based on seller created products.
   core.bool isRfpTemplate;
 
-  /// True, if the buyside inventory setup is complete for this deal. (readonly,
-  /// except via OrderSetupCompleted action)
+  /// True, if the buyside inventory setup is complete for this deal.
+  ///
+  /// (readonly, except via OrderSetupCompleted action)
   core.bool isSetupComplete;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "adexchangebuyer#marketplaceDeal".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "adexchangebuyer#marketplaceDeal".
   core.String kind;
 
-  /// The time (ms since epoch) when the deal was last updated. (readonly)
+  /// The time (ms since epoch) when the deal was last updated.
+  ///
+  /// (readonly)
   core.String lastUpdateTimeMs;
   core.String makegoodRequestedReason;
 
-  /// The name of the deal. (updatable)
+  /// The name of the deal.
+  ///
+  /// (updatable)
   core.String name;
 
-  /// The product-id from which this deal was created. (readonly, except on
-  /// create)
+  /// The product-id from which this deal was created.
+  ///
+  /// (readonly, except on create)
   core.String productId;
 
   /// The revision number of the product that the deal was created from
@@ -5097,22 +5220,28 @@ class MarketplaceDeal {
 
   /// Specifies the creative source for programmatic deals, PUBLISHER means
   /// creative is provided by seller and ADVERTISR means creative is provided by
-  /// buyer. (buyer-readonly)
+  /// buyer.
+  ///
+  /// (buyer-readonly)
   core.String programmaticCreativeSource;
   core.String proposalId;
 
   /// Optional Seller contact information for the deal (buyer-readonly)
   core.List<ContactInformation> sellerContacts;
 
-  /// The shared targeting visible to buyers and sellers. Each shared targeting
-  /// entity is AND'd together. (updatable)
+  /// The shared targeting visible to buyers and sellers.
+  ///
+  /// Each shared targeting entity is AND'd together. (updatable)
   core.List<SharedTargeting> sharedTargetings;
 
-  /// The syndication product associated with the deal. (readonly, except on
-  /// create)
+  /// The syndication product associated with the deal.
+  ///
+  /// (readonly, except on create)
   core.String syndicationProduct;
 
-  /// The negotiable terms of the deal. (updatable)
+  /// The negotiable terms of the deal.
+  ///
+  /// (updatable)
   DealTerms terms;
   core.String webPropertyCode;
 
@@ -5299,12 +5428,14 @@ class MarketplaceDeal {
 }
 
 class MarketplaceDealParty {
-  /// The buyer/seller associated with the deal. One of buyer/seller is
-  /// specified for a deal-party.
+  /// The buyer/seller associated with the deal.
+  ///
+  /// One of buyer/seller is specified for a deal-party.
   Buyer buyer;
 
-  /// The buyer/seller associated with the deal. One of buyer/seller is
-  /// specified for a deal party.
+  /// The buyer/seller associated with the deal.
+  ///
+  /// One of buyer/seller is specified for a deal party.
   Seller seller;
 
   MarketplaceDealParty();
@@ -5386,31 +5517,45 @@ class MarketplaceLabel {
 /// A proposal is associated with a bunch of notes which may optionally be
 /// associated with a deal and/or revision number.
 class MarketplaceNote {
-  /// The role of the person (buyer/seller) creating the note. (readonly)
+  /// The role of the person (buyer/seller) creating the note.
+  ///
+  /// (readonly)
   core.String creatorRole;
 
-  /// Notes can optionally be associated with a deal. (readonly, except on
-  /// create)
+  /// Notes can optionally be associated with a deal.
+  ///
+  /// (readonly, except on create)
   core.String dealId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "adexchangebuyer#marketplaceNote".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "adexchangebuyer#marketplaceNote".
   core.String kind;
 
-  /// The actual note to attach. (readonly, except on create)
+  /// The actual note to attach.
+  ///
+  /// (readonly, except on create)
   core.String note;
 
-  /// The unique id for the note. (readonly)
+  /// The unique id for the note.
+  ///
+  /// (readonly)
   core.String noteId;
 
-  /// The proposalId that a note is attached to. (readonly)
+  /// The proposalId that a note is attached to.
+  ///
+  /// (readonly)
   core.String proposalId;
 
   /// If the note is associated with a proposal revision number, then store that
-  /// here. (readonly, except on create)
+  /// here.
+  ///
+  /// (readonly, except on create)
   core.String proposalRevisionNumber;
 
-  /// The timestamp (ms since epoch) that this note was created. (readonly)
+  /// The timestamp (ms since epoch) that this note was created.
+  ///
+  /// (readonly)
   core.String timestampMs;
 
   MarketplaceNote();
@@ -5507,8 +5652,9 @@ class PerformanceReport {
   /// The number of bid requests sent to your bidder.
   core.double bidRequestRate;
 
-  /// Rate of various prefiltering statuses per match. Please refer to the
-  /// callout-status-codes.txt file for different statuses.
+  /// Rate of various prefiltering statuses per match.
+  ///
+  /// Please refer to the callout-status-codes.txt file for different statuses.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5520,8 +5666,9 @@ class PerformanceReport {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> cookieMatcherStatusRate;
 
-  /// Rate of ads with a given status. Please refer to the
-  /// creative-status-codes.txt file for different statuses.
+  /// Rate of ads with a given status.
+  ///
+  /// Please refer to the creative-status-codes.txt file for different statuses.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5812,9 +5959,11 @@ class PretargetingConfigDimensions {
 }
 
 class PretargetingConfigExcludedPlacements {
-  /// The value of the placement. Interpretation depends on the placement type,
-  /// e.g. URL for a site placement, channel name for a channel placement, app
-  /// id for a mobile app placement.
+  /// The value of the placement.
+  ///
+  /// Interpretation depends on the placement type, e.g. URL for a site
+  /// placement, channel name for a channel placement, app id for a mobile app
+  /// placement.
   core.String token;
 
   /// The type of the placement.
@@ -5844,9 +5993,11 @@ class PretargetingConfigExcludedPlacements {
 }
 
 class PretargetingConfigPlacements {
-  /// The value of the placement. Interpretation depends on the placement type,
-  /// e.g. URL for a site placement, channel name for a channel placement, app
-  /// id for a mobile app placement.
+  /// The value of the placement.
+  ///
+  /// Interpretation depends on the placement type, e.g. URL for a site
+  /// placement, channel name for a channel placement, app id for a mobile app
+  /// placement.
   core.String token;
 
   /// The type of the placement.
@@ -5876,16 +6027,19 @@ class PretargetingConfigPlacements {
 }
 
 class PretargetingConfigVideoPlayerSizes {
-  /// The type of aspect ratio. Leave this field blank to match all aspect
-  /// ratios.
+  /// The type of aspect ratio.
+  ///
+  /// Leave this field blank to match all aspect ratios.
   core.String aspectRatio;
 
-  /// The minimum player height in pixels. Leave this field blank to match any
-  /// player height.
+  /// The minimum player height in pixels.
+  ///
+  /// Leave this field blank to match any player height.
   core.String minHeight;
 
-  /// The minimum player width in pixels. Leave this field blank to match any
-  /// player width.
+  /// The minimum player width in pixels.
+  ///
+  /// Leave this field blank to match any player width.
   core.String minWidth;
 
   PretargetingConfigVideoPlayerSizes();
@@ -5918,27 +6072,34 @@ class PretargetingConfigVideoPlayerSizes {
 }
 
 class PretargetingConfig {
-  /// The id for billing purposes, provided for reference. Leave this field
-  /// blank for insert requests; the id will be generated automatically.
+  /// The id for billing purposes, provided for reference.
+  ///
+  /// Leave this field blank for insert requests; the id will be generated
+  /// automatically.
   core.String billingId;
 
-  /// The config id; generated automatically. Leave this field blank for insert
-  /// requests.
+  /// The config id; generated automatically.
+  ///
+  /// Leave this field blank for insert requests.
   core.String configId;
 
-  /// The name of the config. Must be unique. Required for all requests.
+  /// The name of the config.
+  ///
+  /// Must be unique. Required for all requests.
   core.String configName;
 
   /// List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or
   /// PRETARGETING_CREATIVE_TYPE_VIDEO.
   core.List<core.String> creativeType;
 
-  /// Requests which allow one of these (width, height) pairs will match. All
-  /// pairs must be supported ad dimensions.
+  /// Requests which allow one of these (width, height) pairs will match.
+  ///
+  /// All pairs must be supported ad dimensions.
   core.List<PretargetingConfigDimensions> dimensions;
 
-  /// Requests with any of these content labels will not match. Values are from
-  /// content-labels.txt in the downloadable files section.
+  /// Requests with any of these content labels will not match.
+  ///
+  /// Values are from content-labels.txt in the downloadable files section.
   core.List<core.String> excludedContentLabels;
 
   /// Requests containing any of these geo criteria ids will not match.
@@ -5950,14 +6111,18 @@ class PretargetingConfig {
   /// Requests containing any of these users list ids will not match.
   core.List<core.String> excludedUserLists;
 
-  /// Requests containing any of these vertical ids will not match. Values are
-  /// from the publisher-verticals.txt file in the downloadable files section.
+  /// Requests containing any of these vertical ids will not match.
+  ///
+  /// Values are from the publisher-verticals.txt file in the downloadable files
+  /// section.
   core.List<core.String> excludedVerticals;
 
   /// Requests containing any of these geo criteria ids will match.
   core.List<core.String> geoCriteriaIds;
 
-  /// Whether this config is active. Required for all requests.
+  /// Whether this config is active.
+  ///
+  /// Required for all requests.
   core.bool isActive;
 
   /// The kind of the resource, i.e. "adexchangebuyer#pretargetingConfig".
@@ -5967,54 +6132,67 @@ class PretargetingConfig {
   core.List<core.String> languages;
 
   /// The maximum QPS allocated to this pretargeting configuration, used for
-  /// pretargeting-level QPS limits. By default, this is not set, which
-  /// indicates that there is no QPS limit at the configuration level (a global
-  /// or account-level limit may still be imposed).
+  /// pretargeting-level QPS limits.
+  ///
+  /// By default, this is not set, which indicates that there is no QPS limit at
+  /// the configuration level (a global or account-level limit may still be
+  /// imposed).
   core.String maximumQps;
 
   /// Requests where the predicted viewability is below the specified decile
-  /// will not match. E.g. if the buyer sets this value to 5, requests from
-  /// slots where the predicted viewability is below 50% will not match. If the
-  /// predicted viewability is unknown this field will be ignored.
+  /// will not match.
+  ///
+  /// E.g. if the buyer sets this value to 5, requests from slots where the
+  /// predicted viewability is below 50% will not match. If the predicted
+  /// viewability is unknown this field will be ignored.
   core.int minimumViewabilityDecile;
 
-  /// Requests containing any of these mobile carrier ids will match. Values are
-  /// from mobile-carriers.csv in the downloadable files section.
+  /// Requests containing any of these mobile carrier ids will match.
+  ///
+  /// Values are from mobile-carriers.csv in the downloadable files section.
   core.List<core.String> mobileCarriers;
 
-  /// Requests containing any of these mobile device ids will match. Values are
-  /// from mobile-devices.csv in the downloadable files section.
+  /// Requests containing any of these mobile device ids will match.
+  ///
+  /// Values are from mobile-devices.csv in the downloadable files section.
   core.List<core.String> mobileDevices;
 
   /// Requests containing any of these mobile operating system version ids will
-  /// match. Values are from mobile-os.csv in the downloadable files section.
+  /// match.
+  ///
+  /// Values are from mobile-os.csv in the downloadable files section.
   core.List<core.String> mobileOperatingSystemVersions;
 
   /// Requests containing any of these placements will match.
   core.List<PretargetingConfigPlacements> placements;
 
-  /// Requests matching any of these platforms will match. Possible values are
-  /// PRETARGETING_PLATFORM_MOBILE, PRETARGETING_PLATFORM_DESKTOP, and
-  /// PRETARGETING_PLATFORM_TABLET.
+  /// Requests matching any of these platforms will match.
+  ///
+  /// Possible values are PRETARGETING_PLATFORM_MOBILE,
+  /// PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET.
   core.List<core.String> platforms;
 
   /// Creative attributes should be declared here if all creatives corresponding
-  /// to this pretargeting configuration have that creative attribute. Values
-  /// are from pretargetable-creative-attributes.txt in the downloadable files
-  /// section.
+  /// to this pretargeting configuration have that creative attribute.
+  ///
+  /// Values are from pretargetable-creative-attributes.txt in the downloadable
+  /// files section.
   core.List<core.String> supportedCreativeAttributes;
 
-  /// Requests containing the specified type of user data will match. Possible
-  /// values are HOSTED_MATCH_DATA, which means the request is cookie-targetable
-  /// and has a match in the buyer's hosted match table, and COOKIE_OR_IDFA,
-  /// which means the request has either a targetable cookie or an iOS IDFA.
+  /// Requests containing the specified type of user data will match.
+  ///
+  /// Possible values are HOSTED_MATCH_DATA, which means the request is
+  /// cookie-targetable and has a match in the buyer's hosted match table, and
+  /// COOKIE_OR_IDFA, which means the request has either a targetable cookie or
+  /// an iOS IDFA.
   core.List<core.String> userIdentifierDataRequired;
 
   /// Requests containing any of these user list ids will match.
   core.List<core.String> userLists;
 
-  /// Requests that allow any of these vendor ids will match. Values are from
-  /// vendors.txt in the downloadable files section.
+  /// Requests that allow any of these vendor ids will match.
+  ///
+  /// Values are from vendors.txt in the downloadable files section.
   core.List<core.String> vendorTypes;
 
   /// Requests containing any of these vertical ids will match.
@@ -6330,11 +6508,12 @@ class Price {
   }
 }
 
-/// Used to specify pricing rules for buyers. Each PricePerBuyer in a product
-/// can become [0,1] deals. To check if there is a PricePerBuyer for a
-/// particular buyer we look for the most specific matching rule - we first look
-/// for a rule matching the buyer and otherwise look for a matching rule where
-/// no buyer is set.
+/// Used to specify pricing rules for buyers.
+///
+/// Each PricePerBuyer in a product can become [0,1] deals. To check if there is
+/// a PricePerBuyer for a particular buyer we look for the most specific
+/// matching rule - we first look for a rule matching the buyer and otherwise
+/// look for a matching rule where no buyer is set.
 class PricePerBuyer {
   /// Optional access type for this buyer.
   core.String auctionTier;
@@ -6342,9 +6521,10 @@ class PricePerBuyer {
   /// Reference to the buyer that will get billed.
   Buyer billedBuyer;
 
-  /// The buyer who will pay this price. If unset, all buyers can pay this price
-  /// (if the advertisers match, and there's no more specific rule matching the
-  /// buyer).
+  /// The buyer who will pay this price.
+  ///
+  /// If unset, all buyers can pay this price (if the advertisers match, and
+  /// there's no more specific rule matching the buyer).
   Buyer buyer;
 
   /// The specified price
@@ -6422,10 +6602,11 @@ class PrivateData {
   }
 }
 
-/// A product is segment of inventory that a seller wishes to sell. It is
-/// associated with certain terms and targeting information which helps buyer
-/// know more about the inventory. Each field in a product can have one of the
-/// following setting:
+/// A product is segment of inventory that a seller wishes to sell.
+///
+/// It is associated with certain terms and targeting information which helps
+/// buyer know more about the inventory. Each field in a product can have one of
+/// the following setting:
 ///
 /// (readonly) - It is an error to try and set this field. (buyer-readonly) -
 /// Only the seller can set this field. (seller-readonly) - Only the buyer can
@@ -6433,6 +6614,7 @@ class PrivateData {
 /// buyer or the seller.
 class Product {
   /// The billed buyer corresponding to the buyer that created the offer.
+  ///
   /// (readonly, except on create)
   Buyer billedBuyer;
 
@@ -6440,58 +6622,73 @@ class Product {
   /// (readonly, except on create)
   Buyer buyer;
 
-  /// Creation time in ms. since epoch (readonly)
+  /// Creation time in ms.
+  ///
+  /// since epoch (readonly)
   core.String creationTimeMs;
 
   /// Optional contact information for the creator of this product.
+  ///
   /// (buyer-readonly)
   core.List<ContactInformation> creatorContacts;
 
-  /// The role that created the offer. Set to BUYER for buyer initiated offers.
+  /// The role that created the offer.
+  ///
+  /// Set to BUYER for buyer initiated offers.
   core.String creatorRole;
 
   /// The set of fields around delivery control that are interesting for a buyer
-  /// to see but are non-negotiable. These are set by the publisher. This
-  /// message is assigned an id of 100 since some day we would want to model
-  /// this as a protobuf extension.
+  /// to see but are non-negotiable.
+  ///
+  /// These are set by the publisher. This message is assigned an id of 100
+  /// since some day we would want to model this as a protobuf extension.
   DeliveryControl deliveryControl;
 
   /// The proposed end time for the deal (ms since epoch) (buyer-readonly)
   core.String flightEndTimeMs;
 
-  /// Inventory availability dates. (times are in ms since epoch) The
-  /// granularity is generally in the order of seconds. (buyer-readonly)
+  /// Inventory availability dates.
+  ///
+  /// (times are in ms since epoch) The granularity is generally in the order of
+  /// seconds. (buyer-readonly)
   core.String flightStartTimeMs;
 
   /// If the creator has already signed off on the product, then the buyer can
-  /// finalize the deal by accepting the product as is. When copying to a
-  /// proposal, if any of the terms are changed, then auto_finalize is
-  /// automatically set to false.
+  /// finalize the deal by accepting the product as is.
+  ///
+  /// When copying to a proposal, if any of the terms are changed, then
+  /// auto_finalize is automatically set to false.
   core.bool hasCreatorSignedOff;
 
   /// What exchange will provide this inventory (readonly, except on create).
   core.String inventorySource;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "adexchangebuyer#product".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "adexchangebuyer#product".
   core.String kind;
 
   /// Optional List of labels for the product (optional, buyer-readonly).
   core.List<MarketplaceLabel> labels;
 
-  /// Time of last update in ms. since epoch (readonly)
+  /// Time of last update in ms.
+  ///
+  /// since epoch (readonly)
   core.String lastUpdateTimeMs;
 
   /// Optional legacy offer id if this offer is a preferred deal offer.
   core.String legacyOfferId;
 
-  /// Marketplace publisher profile Id. This Id differs from the regular
-  /// publisher_profile_id in that 1. This is a new id, the old Id will be
-  /// deprecated in 2017. 2. This id uniquely identifies a publisher profile by
-  /// itself.
+  /// Marketplace publisher profile Id.
+  ///
+  /// This Id differs from the regular publisher_profile_id in that 1. This is a
+  /// new id, the old Id will be deprecated in 2017. 2. This id uniquely
+  /// identifies a publisher profile by itself.
   core.String marketplacePublisherProfileId;
 
-  /// The name for this product as set by the seller. (buyer-readonly)
+  /// The name for this product as set by the seller.
+  ///
+  /// (buyer-readonly)
   core.String name;
 
   /// Optional private auction id if this offer is a private auction offer.
@@ -6500,39 +6697,47 @@ class Product {
   /// The unique id for the product (readonly)
   core.String productId;
 
-  /// Id of the publisher profile for a given seller. A (seller.account_id,
-  /// publisher_profile_id) pair uniquely identifies a publisher profile. Buyers
-  /// can call the PublisherProfiles::List endpoint to get a list of publisher
-  /// profiles for a given seller.
+  /// Id of the publisher profile for a given seller.
+  ///
+  /// A (seller.account_id, publisher_profile_id) pair uniquely identifies a
+  /// publisher profile. Buyers can call the PublisherProfiles::List endpoint to
+  /// get a list of publisher profiles for a given seller.
   core.String publisherProfileId;
 
   /// Publisher self-provided forecast information.
   PublisherProvidedForecast publisherProvidedForecast;
 
-  /// The revision number of the product. (readonly)
+  /// The revision number of the product.
+  ///
+  /// (readonly)
   core.String revisionNumber;
 
   /// Information about the seller that created this product (readonly, except
   /// on create)
   Seller seller;
 
-  /// Targeting that is shared between the buyer and the seller. Each targeting
-  /// criteria has a specified key and for each key there is a list of inclusion
-  /// value or exclusion values. (buyer-readonly)
+  /// Targeting that is shared between the buyer and the seller.
+  ///
+  /// Each targeting criteria has a specified key and for each key there is a
+  /// list of inclusion value or exclusion values. (buyer-readonly)
   core.List<SharedTargeting> sharedTargetings;
 
-  /// The state of the product. (buyer-readonly)
+  /// The state of the product.
+  ///
+  /// (buyer-readonly)
   core.String state;
 
-  /// The syndication product associated with the deal. (readonly, except on
-  /// create)
+  /// The syndication product associated with the deal.
+  ///
+  /// (readonly, except on create)
   core.String syndicationProduct;
 
   /// The negotiable terms of the deal (buyer-readonly)
   DealTerms terms;
 
-  /// The web property code for the seller. This field is meant to be copied
-  /// over as is when creating deals.
+  /// The web property code for the seller.
+  ///
+  /// This field is meant to be copied over as is when creating deals.
   core.String webPropertyCode;
 
   Product();
@@ -6727,38 +6932,52 @@ class Product {
   }
 }
 
-/// Represents a proposal in the marketplace. A proposal is the unit of
-/// negotiation between a seller and a buyer and contains deals which are
-/// served. Each field in a proposal can have one of the following setting:
+/// Represents a proposal in the marketplace.
+///
+/// A proposal is the unit of negotiation between a seller and a buyer and
+/// contains deals which are served. Each field in a proposal can have one of
+/// the following setting:
 ///
 /// (readonly) - It is an error to try and set this field. (buyer-readonly) -
 /// Only the seller can set this field. (seller-readonly) - Only the buyer can
 /// set this field. (updatable) - The field is updatable at all times by either
 /// buyer or the seller.
 class Proposal {
-  /// Reference to the buyer that will get billed for this proposal. (readonly)
+  /// Reference to the buyer that will get billed for this proposal.
+  ///
+  /// (readonly)
   Buyer billedBuyer;
 
-  /// Reference to the buyer on the proposal. (readonly, except on create)
+  /// Reference to the buyer on the proposal.
+  ///
+  /// (readonly, except on create)
   Buyer buyer;
 
-  /// Optional contact information of the buyer. (seller-readonly)
+  /// Optional contact information of the buyer.
+  ///
+  /// (seller-readonly)
   core.List<ContactInformation> buyerContacts;
 
-  /// Private data for buyer. (hidden from seller).
+  /// Private data for buyer.
+  ///
+  /// (hidden from seller).
   PrivateData buyerPrivateData;
 
   /// IDs of DBM advertisers permission to this proposal.
   core.List<core.String> dbmAdvertiserIds;
 
   /// When an proposal is in an accepted state, indicates whether the buyer has
-  /// signed off. Once both sides have signed off on a deal, the proposal can be
-  /// finalized by the seller. (seller-readonly)
+  /// signed off.
+  ///
+  /// Once both sides have signed off on a deal, the proposal can be finalized
+  /// by the seller. (seller-readonly)
   core.bool hasBuyerSignedOff;
 
   /// When an proposal is in an accepted state, indicates whether the buyer has
   /// signed off Once both sides have signed off on a deal, the proposal can be
-  /// finalized by the seller. (buyer-readonly)
+  /// finalized by the seller.
+  ///
+  /// (buyer-readonly)
   core.bool hasSellerSignedOff;
 
   /// What exchange will provide this inventory (readonly, except on create).
@@ -6768,19 +6987,25 @@ class Proposal {
   core.bool isRenegotiating;
 
   /// True, if the buyside inventory setup is complete for this proposal.
+  ///
   /// (readonly, except via OrderSetupCompleted action) Deprecated in favor of
   /// deal level setup complete flag.
   core.bool isSetupComplete;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "adexchangebuyer#proposal".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "adexchangebuyer#proposal".
   core.String kind;
 
-  /// List of labels associated with the proposal. (readonly)
+  /// List of labels associated with the proposal.
+  ///
+  /// (readonly)
   core.List<MarketplaceLabel> labels;
 
   /// The role of the last user that either updated the proposal or left a
-  /// comment. (readonly)
+  /// comment.
+  ///
+  /// (readonly)
   core.String lastUpdaterOrCommentorRole;
 
   /// The name for the proposal (updatable)
@@ -6796,10 +7021,14 @@ class Proposal {
   /// proposal.
   core.String privateAuctionId;
 
-  /// The unique id of the proposal. (readonly).
+  /// The unique id of the proposal.
+  ///
+  /// (readonly).
   core.String proposalId;
 
-  /// The current state of the proposal. (readonly)
+  /// The current state of the proposal.
+  ///
+  /// (readonly)
   core.String proposalState;
 
   /// The revision number for the proposal (readonly).
@@ -6808,7 +7037,9 @@ class Proposal {
   /// The time (ms since epoch) when the proposal was last revised (readonly).
   core.String revisionTimeMs;
 
-  /// Reference to the seller on the proposal. (readonly, except on create)
+  /// Reference to the seller on the proposal.
+  ///
+  /// (readonly, except on create)
   Seller seller;
 
   /// Optional contact information of the seller (buyer-readonly).
@@ -6991,7 +7222,9 @@ class PublisherProfileApiProto {
   /// Direct contact for the publisher profile.
   core.String directContact;
 
-  /// Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...
+  /// Exchange where this publisher profile is from.
+  ///
+  /// E.g. AdX, Rubicon etc...
   core.String exchange;
 
   /// Link to publisher's Google+ page.
@@ -7001,11 +7234,14 @@ class PublisherProfileApiProto {
   /// the publisher.
   core.bool isParent;
 
-  /// True, if this profile is published. Deprecated for state.
+  /// True, if this profile is published.
+  ///
+  /// Deprecated for state.
   core.bool isPublished;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "adexchangebuyer#publisherProfileApiProto".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "adexchangebuyer#publisherProfileApiProto".
   core.String kind;
 
   /// The url to the logo for the publisher.
@@ -7025,16 +7261,19 @@ class PublisherProfileApiProto {
   /// Programmatic contact for the publisher profile.
   core.String programmaticContact;
 
-  /// The list of app IDs represented in this pubisher profile. Empty if this is
-  /// a parent profile. Deprecated in favor of publisher_app.
+  /// The list of app IDs represented in this pubisher profile.
+  ///
+  /// Empty if this is a parent profile. Deprecated in favor of publisher_app.
   core.List<core.String> publisherAppIds;
 
-  /// The list of apps represented in this pubisher profile. Empty if this is a
-  /// parent profile.
+  /// The list of apps represented in this pubisher profile.
+  ///
+  /// Empty if this is a parent profile.
   core.List<MobileApplication> publisherApps;
 
-  /// The list of domains represented in this publisher profile. Empty if this
-  /// is a parent profile.
+  /// The list of domains represented in this publisher profile.
+  ///
+  /// Empty if this is a parent profile.
   core.List<core.String> publisherDomains;
 
   /// Unique Id for publisher profile.
@@ -7228,7 +7467,9 @@ class PublisherProfileApiProto {
 
 /// This message carries publisher provided forecasting information.
 class PublisherProvidedForecast {
-  /// Publisher provided dimensions. E.g. geo, sizes etc...
+  /// Publisher provided dimensions.
+  ///
+  /// E.g. geo, sizes etc...
   core.List<Dimension> dimensions;
 
   /// Publisher provided weekly impressions.
@@ -7270,8 +7511,10 @@ class PublisherProvidedForecast {
 }
 
 class Seller {
-  /// The unique id for the seller. The seller fills in this field. The seller
-  /// account id is then available to buyer in the product.
+  /// The unique id for the seller.
+  ///
+  /// The seller fills in this field. The seller account id is then available to
+  /// buyer in the product.
   core.String accountId;
 
   /// Optional sub-account id for the seller.
@@ -7301,12 +7544,14 @@ class Seller {
 }
 
 class SharedTargeting {
-  /// The list of values to exclude from targeting. Each value is AND'd
-  /// together.
+  /// The list of values to exclude from targeting.
+  ///
+  /// Each value is AND'd together.
   core.List<TargetingValue> exclusions;
 
-  /// The list of value to include as part of the targeting. Each value is OR'd
-  /// together.
+  /// The list of value to include as part of the targeting.
+  ///
+  /// Each value is OR'd together.
   core.List<TargetingValue> inclusions;
 
   /// The key representing the shared targeting criterion.
@@ -7351,8 +7596,9 @@ class TargetingValue {
   /// The creative size value to exclude/include.
   TargetingValueCreativeSize creativeSizeValue;
 
-  /// The daypart targeting to include / exclude. Filled in when the key is
-  /// GOOG_DAYPART_TARGETING.
+  /// The daypart targeting to include / exclude.
+  ///
+  /// Filled in when the key is GOOG_DAYPART_TARGETING.
   TargetingValueDayPartTargeting dayPartTargetingValue;
   TargetingValueDemogAgeCriteria demogAgeCriteriaValue;
   TargetingValueDemogGenderCriteria demogGenderCriteriaValue;

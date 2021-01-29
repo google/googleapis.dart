@@ -493,13 +493,13 @@
      "parameters": {
       "resource": {
        "type": "string",
-       "description": "Path parameter: 'resource'.",
+       "description": "Path parameter: 'resource'. Should not be empty.",
        "required": true,
        "location": "path"
       },
       "compute": {
        "type": "string",
-       "description": "Path parameter: 'compute'.",
+       "description": "Path parameter: 'compute'. Must be at least three characters long.",
        "required": true,
        "location": "path"
       }

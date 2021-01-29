@@ -1088,8 +1088,10 @@ class BucketsResource {
     );
   }
 
-  /// Patches a bucket. Changes to the bucket will be readable immediately after
-  /// writing, but configuration changes may take time to propagate.
+  /// Patches a bucket.
+  ///
+  /// Changes to the bucket will be readable immediately after writing, but
+  /// configuration changes may take time to propagate.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1365,8 +1367,10 @@ class BucketsResource {
     );
   }
 
-  /// Updates a bucket. Changes to the bucket will be readable immediately after
-  /// writing, but configuration changes may take time to propagate.
+  /// Updates a bucket.
+  ///
+  /// Changes to the bucket will be readable immediately after writing, but
+  /// configuration changes may take time to propagate.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3013,8 +3017,9 @@ class ObjectsResource {
     );
   }
 
-  /// Copies a source object to a destination object. Optionally overrides
-  /// metadata.
+  /// Copies a source object to a destination object.
+  ///
+  /// Optionally overrides metadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3226,8 +3231,10 @@ class ObjectsResource {
     );
   }
 
-  /// Deletes an object and its metadata. Deletions are permanent if versioning
-  /// is not enabled for the bucket, or if the generation parameter is used.
+  /// Deletes an object and its metadata.
+  ///
+  /// Deletions are permanent if versioning is not enabled for the bucket, or if
+  /// the generation parameter is used.
   ///
   /// Request parameters:
   ///
@@ -4023,8 +4030,9 @@ class ObjectsResource {
     );
   }
 
-  /// Rewrites a source object to a destination object. Optionally overrides
-  /// metadata.
+  /// Rewrites a source object to a destination object.
+  ///
+  /// Optionally overrides metadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5027,8 +5035,9 @@ class ProjectsHmacKeysResource {
     );
   }
 
-  /// Updates the state of an HMAC key. See the HMAC Key resource descriptor for
-  /// valid states.
+  /// Updates the state of an HMAC key.
+  ///
+  /// See the HMAC Key resource descriptor for valid states.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5207,8 +5216,9 @@ class BucketCors {
   /// means "any method".
   core.List<core.String> method;
 
-  /// The list of Origins eligible to receive CORS response headers. Note: "*"
-  /// is permitted in the list of origins, and means "any Origin".
+  /// The list of Origins eligible to receive CORS response headers.
+  ///
+  /// Note: "*" is permitted in the list of origins, and means "any Origin".
   core.List<core.String> origin;
 
   /// The list of HTTP headers other than the simple response headers to give
@@ -5279,17 +5289,19 @@ class BucketEncryption {
   }
 }
 
-/// The bucket's uniform bucket-level access configuration. The feature was
-/// formerly known as Bucket Policy Only. For backward compatibility, this field
-/// will be populated with identical information as the uniformBucketLevelAccess
-/// field. We recommend using the uniformBucketLevelAccess field to enable and
-/// disable the feature.
+/// The bucket's uniform bucket-level access configuration.
+///
+/// The feature was formerly known as Bucket Policy Only. For backward
+/// compatibility, this field will be populated with identical information as
+/// the uniformBucketLevelAccess field. We recommend using the
+/// uniformBucketLevelAccess field to enable and disable the feature.
 class BucketIamConfigurationBucketPolicyOnly {
   /// If set, access is controlled only by bucket-level or above IAM policies.
   core.bool enabled;
 
   /// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from
   /// true to false in RFC 3339 format.
+  ///
   /// iamConfiguration.bucketPolicyOnly.enabled may be changed from true to
   /// false until the locked time, after which the field is immutable.
   core.DateTime lockedTime;
@@ -5324,9 +5336,10 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
   /// The deadline for changing
   /// iamConfiguration.uniformBucketLevelAccess.enabled from true to false in
-  /// RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be
-  /// changed from true to false until the locked time, after which the field is
-  /// immutable.
+  /// RFC 3339  format.
+  ///
+  /// iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true
+  /// to false until the locked time, after which the field is immutable.
   core.DateTime lockedTime;
 
   BucketIamConfigurationUniformBucketLevelAccess();
@@ -5354,10 +5367,11 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
 /// The bucket's IAM configuration.
 class BucketIamConfiguration {
-  /// The bucket's uniform bucket-level access configuration. The feature was
-  /// formerly known as Bucket Policy Only. For backward compatibility, this
-  /// field will be populated with identical information as the
-  /// uniformBucketLevelAccess field. We recommend using the
+  /// The bucket's uniform bucket-level access configuration.
+  ///
+  /// The feature was formerly known as Bucket Policy Only. For backward
+  /// compatibility, this field will be populated with identical information as
+  /// the uniformBucketLevelAccess field. We recommend using the
   /// uniformBucketLevelAccess field to enable and disable the feature.
   BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
 
@@ -5393,12 +5407,14 @@ class BucketIamConfiguration {
 
 /// The action to take.
 class BucketLifecycleRuleAction {
-  /// Target storage class. Required iff the type of the action is
-  /// SetStorageClass.
+  /// Target storage class.
+  ///
+  /// Required iff the type of the action is SetStorageClass.
   core.String storageClass;
 
-  /// Type of the action. Currently, only Delete and SetStorageClass are
-  /// supported.
+  /// Type of the action.
+  ///
+  /// Currently, only Delete and SetStorageClass are supported.
   core.String type;
 
   BucketLifecycleRuleAction();
@@ -5426,59 +5442,76 @@ class BucketLifecycleRuleAction {
 
 /// The condition(s) under which the action will be taken.
 class BucketLifecycleRuleCondition {
-  /// Age of an object (in days). This condition is satisfied when an object
-  /// reaches the specified age.
+  /// Age of an object (in days).
+  ///
+  /// This condition is satisfied when an object reaches the specified age.
   core.int age;
 
   /// A date in RFC 3339 format with only the date part (for instance,
-  /// "2013-01-15"). This condition is satisfied when an object is created
-  /// before midnight of the specified date in UTC.
+  /// "2013-01-15").
+  ///
+  /// This condition is satisfied when an object is created before midnight of
+  /// the specified date in UTC.
   core.DateTime createdBefore;
 
   /// A date in RFC 3339 format with only the date part (for instance,
-  /// "2013-01-15"). This condition is satisfied when the custom time on an
-  /// object is before this date in UTC.
+  /// "2013-01-15").
+  ///
+  /// This condition is satisfied when the custom time on an object is before
+  /// this date in UTC.
   core.DateTime customTimeBefore;
 
   /// Number of days elapsed since the user-specified timestamp set on an
-  /// object. The condition is satisfied if the days elapsed is at least this
-  /// number. If no custom timestamp is specified on an object, the condition
-  /// does not apply.
+  /// object.
+  ///
+  /// The condition is satisfied if the days elapsed is at least this number. If
+  /// no custom timestamp is specified on an object, the condition does not
+  /// apply.
   core.int daysSinceCustomTime;
 
-  /// Number of days elapsed since the noncurrent timestamp of an object. The
-  /// condition is satisfied if the days elapsed is at least this number. This
-  /// condition is relevant only for versioned objects. The value of the field
-  /// must be a nonnegative integer. If it's zero, the object version will
+  /// Number of days elapsed since the noncurrent timestamp of an object.
+  ///
+  /// The condition is satisfied if the days elapsed is at least this number.
+  /// This condition is relevant only for versioned objects. The value of the
+  /// field must be a nonnegative integer. If it's zero, the object version will
   /// become eligible for Lifecycle action as soon as it becomes noncurrent.
   core.int daysSinceNoncurrentTime;
 
-  /// Relevant only for versioned objects. If the value is true, this condition
-  /// matches live objects; if the value is false, it matches archived objects.
+  /// Relevant only for versioned objects.
+  ///
+  /// If the value is true, this condition matches live objects; if the value is
+  /// false, it matches archived objects.
   core.bool isLive;
 
-  /// A regular expression that satisfies the RE2 syntax. This condition is
-  /// satisfied when the name of the object matches the RE2 pattern. Note: This
-  /// feature is currently in the "Early Access" launch stage and is only
-  /// available to a whitelisted set of users; that means that this feature may
-  /// be changed in backward-incompatible ways and that it is not guaranteed to
-  /// be released.
+  /// A regular expression that satisfies the RE2 syntax.
+  ///
+  /// This condition is satisfied when the name of the object matches the RE2
+  /// pattern. Note: This feature is currently in the "Early Access" launch
+  /// stage and is only available to a whitelisted set of users; that means that
+  /// this feature may be changed in backward-incompatible ways and that it is
+  /// not guaranteed to be released.
   core.String matchesPattern;
 
   /// Objects having any of the storage classes specified by this condition will
-  /// be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
-  /// ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+  /// be matched.
+  ///
+  /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE,
+  /// STANDARD, and DURABLE_REDUCED_AVAILABILITY.
   core.List<core.String> matchesStorageClass;
 
   /// A date in RFC 3339 format with only the date part (for instance,
-  /// "2013-01-15"). This condition is satisfied when the noncurrent time on an
-  /// object is before this date in UTC. This condition is relevant only for
-  /// versioned objects.
+  /// "2013-01-15").
+  ///
+  /// This condition is satisfied when the noncurrent time on an object is
+  /// before this date in UTC. This condition is relevant only for versioned
+  /// objects.
   core.DateTime noncurrentTimeBefore;
 
-  /// Relevant only for versioned objects. If the value is N, this condition is
-  /// satisfied when there are at least N versions (including the live version)
-  /// newer than this version of the object.
+  /// Relevant only for versioned objects.
+  ///
+  /// If the value is N, this condition is satisfied when there are at least N
+  /// versions (including the live version) newer than this version of the
+  /// object.
   core.int numNewerVersions;
 
   BucketLifecycleRuleCondition();
@@ -5592,8 +5625,9 @@ class BucketLifecycleRule {
   }
 }
 
-/// The bucket's lifecycle configuration. See lifecycle management for more
-/// information.
+/// The bucket's lifecycle configuration.
+///
+/// See lifecycle management for more information.
 class BucketLifecycle {
   /// A lifecycle management rule, which is made of an action to take and the
   /// condition(s) under which the action will be taken.
@@ -5651,7 +5685,9 @@ class BucketLogging {
   }
 }
 
-/// The owner of the bucket. This is always the project team's owner group.
+/// The owner of the bucket.
+///
+/// This is always the project team's owner group.
 class BucketOwner {
   /// The entity, in the form project-owner-projectId.
   core.String entity;
@@ -5682,27 +5718,31 @@ class BucketOwner {
   }
 }
 
-/// The bucket's retention policy. The retention policy enforces a minimum
-/// retention time for all objects contained in the bucket, based on their
-/// creation time. Any attempt to overwrite or delete objects younger than the
-/// retention period will result in a PERMISSION_DENIED error. An unlocked
-/// retention policy can be modified or removed from the bucket via a
-/// storage.buckets.update operation. A locked retention policy cannot be
-/// removed or shortened in duration for the lifetime of the bucket. Attempting
-/// to remove or decrease period of a locked retention policy will result in a
-/// PERMISSION_DENIED error.
+/// The bucket's retention policy.
+///
+/// The retention policy enforces a minimum retention time for all objects
+/// contained in the bucket, based on their creation time. Any attempt to
+/// overwrite or delete objects younger than the retention period will result in
+/// a PERMISSION_DENIED error. An unlocked retention policy can be modified or
+/// removed from the bucket via a storage.buckets.update operation. A locked
+/// retention policy cannot be removed or shortened in duration for the lifetime
+/// of the bucket. Attempting to remove or decrease period of a locked retention
+/// policy will result in a PERMISSION_DENIED error.
 class BucketRetentionPolicy {
   /// Server-determined value that indicates the time from which policy was
-  /// enforced and effective. This value is in RFC 3339 format.
+  /// enforced and effective.
+  ///
+  /// This value is in RFC 3339 format.
   core.DateTime effectiveTime;
 
   /// Once locked, an object retention policy cannot be modified.
   core.bool isLocked;
 
-  /// The duration in seconds that objects need to be retained. Retention
-  /// duration must be greater than zero and less than 100 years. Note that
-  /// enforcement of retention periods less than a day is not guaranteed. Such
-  /// periods should only be used for testing purposes.
+  /// The duration in seconds that objects need to be retained.
+  ///
+  /// Retention duration must be greater than zero and less than 100 years. Note
+  /// that enforcement of retention periods less than a day is not guaranteed.
+  /// Such periods should only be used for testing purposes.
   core.String retentionPeriod;
 
   BucketRetentionPolicy();
@@ -5758,13 +5798,16 @@ class BucketVersioning {
 }
 
 /// The bucket's website configuration, controlling how the service behaves when
-/// accessing bucket contents as a web site. See the Static Website Examples for
-/// more information.
+/// accessing bucket contents as a web site.
+///
+/// See the Static Website Examples for more information.
 class BucketWebsite {
   /// If the requested object path is missing, the service will ensure the path
   /// has a trailing '/', append this suffix, and attempt to retrieve the
-  /// resulting object. This allows the creation of index.html objects to
-  /// represent directory pages.
+  /// resulting object.
+  ///
+  /// This allows the creation of index.html objects to represent directory
+  /// pages.
   core.String mainPageSuffix;
 
   /// If the requested object path is missing, and any mainPageSuffix object is
@@ -5807,8 +5850,10 @@ class Bucket {
   core.List<BucketCors> cors;
 
   /// The default value for event-based hold on newly created objects in this
-  /// bucket. Event-based hold is a way to retain objects indefinitely until an
-  /// event occurs, signified by the hold's release. After being released, such
+  /// bucket.
+  ///
+  /// Event-based hold is a way to retain objects indefinitely until an event
+  /// occurs, signified by the hold's release. After being released, such
   /// objects will be subject to bucket-level retention (if any). One sample use
   /// case of this flag is for banks to hold loan documents for at least 3 years
   /// after loan is paid in full. Here, bucket-level retention is 3 years and
@@ -5833,23 +5878,29 @@ class Bucket {
   /// The bucket's IAM configuration.
   BucketIamConfiguration iamConfiguration;
 
-  /// The ID of the bucket. For buckets, the id and name properties are the
-  /// same.
+  /// The ID of the bucket.
+  ///
+  /// For buckets, the id and name properties are the same.
   core.String id;
 
-  /// The kind of item this is. For buckets, this is always storage#bucket.
+  /// The kind of item this is.
+  ///
+  /// For buckets, this is always storage#bucket.
   core.String kind;
 
   /// User-provided labels, in key/value pairs.
   core.Map<core.String, core.String> labels;
 
-  /// The bucket's lifecycle configuration. See lifecycle management for more
-  /// information.
+  /// The bucket's lifecycle configuration.
+  ///
+  /// See lifecycle management for more information.
   BucketLifecycle lifecycle;
 
-  /// The location of the bucket. Object data for objects in the bucket resides
-  /// in physical storage within this region. Defaults to US. See the
-  /// developer's guide for the authoritative list.
+  /// The location of the bucket.
+  ///
+  /// Object data for objects in the bucket resides in physical storage within
+  /// this region. Defaults to US. See the developer's guide for the
+  /// authoritative list.
   core.String location;
 
   /// The type of the bucket location.
@@ -5865,33 +5916,37 @@ class Bucket {
   /// The name of the bucket.
   core.String name;
 
-  /// The owner of the bucket. This is always the project team's owner group.
+  /// The owner of the bucket.
+  ///
+  /// This is always the project team's owner group.
   BucketOwner owner;
 
   /// The project number of the project the bucket belongs to.
   core.String projectNumber;
 
-  /// The bucket's retention policy. The retention policy enforces a minimum
-  /// retention time for all objects contained in the bucket, based on their
-  /// creation time. Any attempt to overwrite or delete objects younger than the
-  /// retention period will result in a PERMISSION_DENIED error. An unlocked
-  /// retention policy can be modified or removed from the bucket via a
-  /// storage.buckets.update operation. A locked retention policy cannot be
-  /// removed or shortened in duration for the lifetime of the bucket.
-  /// Attempting to remove or decrease period of a locked retention policy will
-  /// result in a PERMISSION_DENIED error.
+  /// The bucket's retention policy.
+  ///
+  /// The retention policy enforces a minimum retention time for all objects
+  /// contained in the bucket, based on their creation time. Any attempt to
+  /// overwrite or delete objects younger than the retention period will result
+  /// in a PERMISSION_DENIED error. An unlocked retention policy can be modified
+  /// or removed from the bucket via a storage.buckets.update operation. A
+  /// locked retention policy cannot be removed or shortened in duration for the
+  /// lifetime of the bucket. Attempting to remove or decrease period of a
+  /// locked retention policy will result in a PERMISSION_DENIED error.
   BucketRetentionPolicy retentionPolicy;
 
   /// The URI of this bucket.
   core.String selfLink;
 
   /// The bucket's default storage class, used whenever no storageClass is
-  /// specified for a newly-created object. This defines how objects in the
-  /// bucket are stored and determines the SLA and the cost of storage. Values
-  /// include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE,
-  /// and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
-  /// bucket is created, it will default to STANDARD. For more information, see
-  /// storage classes.
+  /// specified for a newly-created object.
+  ///
+  /// This defines how objects in the bucket are stored and determines the SLA
+  /// and the cost of storage. Values include MULTI_REGIONAL, REGIONAL,
+  /// STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY.
+  /// If this value is not specified when the bucket is created, it will default
+  /// to STANDARD. For more information, see storage classes.
   core.String storageClass;
 
   /// The creation time of the bucket in RFC 3339 format.
@@ -5904,11 +5959,13 @@ class Bucket {
   BucketVersioning versioning;
 
   /// The bucket's website configuration, controlling how the service behaves
-  /// when accessing bucket contents as a web site. See the Static Website
-  /// Examples for more information.
+  /// when accessing bucket contents as a web site.
+  ///
+  /// See the Static Website Examples for more information.
   BucketWebsite website;
 
   /// The zone or zones from which the bucket is intended to use zonal quota.
+  ///
   /// Requests for data from outside the specified affinities are still allowed
   /// but won't be able to use zonal quota. The zone or zones need to be within
   /// the bucket location otherwise the requests will fail with a 400 Bad
@@ -6167,6 +6224,8 @@ class BucketAccessControl {
   /// - allUsers
   /// - allAuthenticatedUsers Examples:
   /// - The user liz@example.com would be user-liz@example.com.
+  ///
+  ///
   /// - The group example@googlegroups.com would be
   /// group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain
@@ -6182,8 +6241,10 @@ class BucketAccessControl {
   /// The ID of the access-control entry.
   core.String id;
 
-  /// The kind of item this is. For bucket access control entries, this is
-  /// always storage#bucketAccessControl.
+  /// The kind of item this is.
+  ///
+  /// For bucket access control entries, this is always
+  /// storage#bucketAccessControl.
   core.String kind;
 
   /// The project team associated with the entity, if any.
@@ -6278,8 +6339,10 @@ class BucketAccessControls {
   /// The list of items.
   core.List<BucketAccessControl> items;
 
-  /// The kind of item this is. For lists of bucket access control entries, this
-  /// is always storage#bucketAccessControls.
+  /// The kind of item this is.
+  ///
+  /// For lists of bucket access control entries, this is always
+  /// storage#bucketAccessControls.
   core.String kind;
 
   BucketAccessControls();
@@ -6313,12 +6376,15 @@ class Buckets {
   /// The list of items.
   core.List<Bucket> items;
 
-  /// The kind of item this is. For lists of buckets, this is always
-  /// storage#buckets.
+  /// The kind of item this is.
+  ///
+  /// For lists of buckets, this is always storage#buckets.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   Buckets();
@@ -6359,7 +6425,9 @@ class Channel {
   core.String address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds. Optional.
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
   core.String expiration;
 
   /// A UUID or similar unique string that identifies this channel.
@@ -6369,13 +6437,18 @@ class Channel {
   /// resource, which is "api#channel".
   core.String kind;
 
-  /// Additional parameters controlling delivery channel behavior. Optional.
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> params;
 
-  /// A Boolean value to indicate whether payload is wanted. Optional.
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
   core.bool payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
+  ///
   /// Stable across different API versions.
   core.String resourceId;
 
@@ -6383,7 +6456,9 @@ class Channel {
   core.String resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel. Optional.
+  /// delivered over this channel.
+  ///
+  /// Optional.
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
@@ -6469,8 +6544,10 @@ class Channel {
 /// Conditions that must be met for this operation to execute.
 class ComposeRequestSourceObjectsObjectPreconditions {
   /// Only perform the composition if the generation of the source object that
-  /// would be used matches this value. If this value and a generation are both
-  /// specified, they must be the same value or the call will fail.
+  /// would be used matches this value.
+  ///
+  /// If this value and a generation are both specified, they must be the same
+  /// value or the call will fail.
   core.String ifGenerationMatch;
 
   ComposeRequestSourceObjectsObjectPreconditions();
@@ -6494,8 +6571,9 @@ class ComposeRequestSourceObjects {
   /// The generation of this object to use as the source.
   core.String generation;
 
-  /// The source object's name. All source objects must reside in the same
-  /// bucket.
+  /// The source object's name.
+  ///
+  /// All source objects must reside in the same bucket.
   core.String name;
 
   /// Conditions that must be met for this operation to execute.
@@ -6579,16 +6657,21 @@ class ComposeRequest {
   }
 }
 
-/// Represents an expression text. Example: title: "User account presence"
-/// description: "Determines whether the request has a user account" expression:
-/// "size(request.user) > 0"
+/// Represents an expression text.
+///
+/// Example: title: "User account presence" description: "Determines whether the
+/// request has a user account" expression: "size(request.user) > 0"
 class Expr {
-  /// An optional description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// An optional description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
-  /// syntax. The application context of the containing message determines which
+  /// syntax.
+  ///
+  /// The application context of the containing message determines which
   /// well-known feature set of CEL is supported.
   core.String expression;
 
@@ -6597,7 +6680,9 @@ class Expr {
   core.String location;
 
   /// An optional title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
   Expr();
@@ -6638,7 +6723,9 @@ class Expr {
 /// JSON template to produce a JSON-style HMAC Key resource for Create
 /// responses.
 class HmacKey {
-  /// The kind of item this is. For HMAC keys, this is always storage#hmacKey.
+  /// The kind of item this is.
+  ///
+  /// For HMAC keys, this is always storage#hmacKey.
   core.String kind;
 
   /// Key metadata.
@@ -6688,8 +6775,9 @@ class HmacKeyMetadata {
   /// The ID of the HMAC key, including the Project ID and the Access ID.
   core.String id;
 
-  /// The kind of item this is. For HMAC Key metadata, this is always
-  /// storage#hmacKeyMetadata.
+  /// The kind of item this is.
+  ///
+  /// For HMAC Key metadata, this is always storage#hmacKeyMetadata.
   core.String kind;
 
   /// Project ID owning the service account to which the key authenticates.
@@ -6701,7 +6789,9 @@ class HmacKeyMetadata {
   /// The email address of the key's associated service account.
   core.String serviceAccountEmail;
 
-  /// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
+  /// The state of the key.
+  ///
+  /// Can be one of ACTIVE, INACTIVE, or DELETED.
   core.String state;
 
   /// The creation time of the HMAC key in RFC 3339 format.
@@ -6786,12 +6876,15 @@ class HmacKeysMetadata {
   /// The list of items.
   core.List<HmacKeyMetadata> items;
 
-  /// The kind of item this is. For lists of hmacKeys, this is always
-  /// storage#hmacKeysMetadata.
+  /// The kind of item this is.
+  ///
+  /// For lists of hmacKeys, this is always storage#hmacKeysMetadata.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   HmacKeysMetadata();
@@ -6835,15 +6928,17 @@ class Notification {
   /// HTTP 1.1 Entity tag for this subscription notification.
   core.String etag;
 
-  /// If present, only send notifications about listed event types. If empty,
-  /// sent notifications for all event types.
+  /// If present, only send notifications about listed event types.
+  ///
+  /// If empty, sent notifications for all event types.
   core.List<core.String> eventTypes;
 
   /// The ID of the notification.
   core.String id;
 
-  /// The kind of item this is. For notifications, this is always
-  /// storage#notification.
+  /// The kind of item this is.
+  ///
+  /// For notifications, this is always storage#notification.
   core.String kind;
 
   /// If present, only apply this notification configuration to object names
@@ -6856,7 +6951,9 @@ class Notification {
   /// The canonical URL of this notification.
   core.String selfLink;
 
-  /// The Cloud PubSub topic to which this subscription publishes. Formatted as:
+  /// The Cloud PubSub topic to which this subscription publishes.
+  ///
+  /// Formatted as:
   /// '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
   core.String topic;
 
@@ -6939,8 +7036,9 @@ class Notifications {
   /// The list of items.
   core.List<Notification> items;
 
-  /// The kind of item this is. For lists of notifications, this is always
-  /// storage#notifications.
+  /// The kind of item this is.
+  ///
+  /// For lists of notifications, this is always storage#notifications.
   core.String kind;
 
   Notifications();
@@ -7001,7 +7099,9 @@ class ObjectCustomerEncryption {
   }
 }
 
-/// The owner of the object. This will always be the uploader of the object.
+/// The owner of the object.
+///
+/// This will always be the uploader of the object.
 class ObjectOwner {
   /// The entity, in the form user-userId.
   core.String entity;
@@ -7040,13 +7140,15 @@ class Object {
   /// The name of the bucket containing this object.
   core.String bucket;
 
-  /// Cache-Control directive for the object data. If omitted, and the object is
-  /// accessible to all anonymous users, the default will be public,
-  /// max-age=3600.
+  /// Cache-Control directive for the object data.
+  ///
+  /// If omitted, and the object is accessible to all anonymous users, the
+  /// default will be public, max-age=3600.
   core.String cacheControl;
 
-  /// Number of underlying components that make up this object. Components are
-  /// accumulated by compose operations.
+  /// Number of underlying components that make up this object.
+  ///
+  /// Components are accumulated by compose operations.
   core.int componentCount;
 
   /// Content-Disposition of the object data.
@@ -7058,13 +7160,17 @@ class Object {
   /// Content-Language of the object data.
   core.String contentLanguage;
 
-  /// Content-Type of the object data. If an object is stored without a
-  /// Content-Type, it is served as application/octet-stream.
+  /// Content-Type of the object data.
+  ///
+  /// If an object is stored without a Content-Type, it is served as
+  /// application/octet-stream.
   core.String contentType;
 
   /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using
-  /// base64 in big-endian byte order. For more information about using the
-  /// CRC32c checksum, see Hashes and ETags: Best Practices.
+  /// base64 in big-endian byte order.
+  ///
+  /// For more information about using the CRC32c checksum, see Hashes and
+  /// ETags: Best Practices.
   core.String crc32c;
 
   /// A timestamp in RFC 3339 format specified by the user for an object.
@@ -7077,35 +7183,45 @@ class Object {
   /// HTTP 1.1 Entity tag for the object.
   core.String etag;
 
-  /// Whether an object is under event-based hold. Event-based hold is a way to
-  /// retain objects until an event occurs, which is signified by the hold's
-  /// release (i.e. this value is set to false). After being released (set to
-  /// false), such objects will be subject to bucket-level retention (if any).
-  /// One sample use case of this flag is for banks to hold loan documents for
-  /// at least 3 years after loan is paid in full. Here, bucket-level retention
-  /// is 3 years and the event is the loan being paid in full. In this example,
-  /// these objects will be held intact for any number of years until the event
-  /// has occurred (event-based hold on the object is released) and then 3 more
-  /// years after that. That means retention duration of the objects begins from
-  /// the moment event-based hold transitioned from true to false.
+  /// Whether an object is under event-based hold.
+  ///
+  /// Event-based hold is a way to retain objects until an event occurs, which
+  /// is signified by the hold's release (i.e. this value is set to false).
+  /// After being released (set to false), such objects will be subject to
+  /// bucket-level retention (if any). One sample use case of this flag is for
+  /// banks to hold loan documents for at least 3 years after loan is paid in
+  /// full. Here, bucket-level retention is 3 years and the event is the loan
+  /// being paid in full. In this example, these objects will be held intact for
+  /// any number of years until the event has occurred (event-based hold on the
+  /// object is released) and then 3 more years after that. That means retention
+  /// duration of the objects begins from the moment event-based hold
+  /// transitioned from true to false.
   core.bool eventBasedHold;
 
-  /// The content generation of this object. Used for object versioning.
+  /// The content generation of this object.
+  ///
+  /// Used for object versioning.
   core.String generation;
 
   /// The ID of the object, including the bucket name, object name, and
   /// generation number.
   core.String id;
 
-  /// The kind of item this is. For objects, this is always storage#object.
+  /// The kind of item this is.
+  ///
+  /// For objects, this is always storage#object.
   core.String kind;
 
-  /// Not currently supported. Specifying the parameter causes the request to
-  /// fail with status code 400 - Bad Request.
+  /// Not currently supported.
+  ///
+  /// Specifying the parameter causes the request to fail with status code 400 -
+  /// Bad Request.
   core.String kmsKeyName;
 
-  /// MD5 hash of the data; encoded using base64. For more information about
-  /// using the MD5 hash, see Hashes and ETags: Best Practices.
+  /// MD5 hash of the data; encoded using base64.
+  ///
+  /// For more information about using the MD5 hash, see Hashes and ETags: Best
+  /// Practices.
   core.String md5Hash;
 
   /// Media download link.
@@ -7114,25 +7230,31 @@ class Object {
   /// User-provided metadata, in key/value pairs.
   core.Map<core.String, core.String> metadata;
 
-  /// The version of the metadata for this object at this generation. Used for
-  /// preconditions and for detecting changes in metadata. A metageneration
-  /// number is only meaningful in the context of a particular generation of a
-  /// particular object.
+  /// The version of the metadata for this object at this generation.
+  ///
+  /// Used for preconditions and for detecting changes in metadata. A
+  /// metageneration number is only meaningful in the context of a particular
+  /// generation of a particular object.
   core.String metageneration;
 
-  /// The name of the object. Required if not specified by URL parameter.
+  /// The name of the object.
+  ///
+  /// Required if not specified by URL parameter.
   core.String name;
 
-  /// The owner of the object. This will always be the uploader of the object.
+  /// The owner of the object.
+  ///
+  /// This will always be the uploader of the object.
   ObjectOwner owner;
 
   /// A server-determined value that specifies the earliest time that the
-  /// object's retention period expires. This value is in RFC 3339 format. Note
-  /// 1: This field is not provided for objects with an active event-based hold,
-  /// since retention expiration is unknown until the hold is removed. Note 2:
-  /// This value can be provided even when temporary hold is set (so that the
-  /// user can reason about policy without having to first unset the temporary
-  /// hold).
+  /// object's retention period expires.
+  ///
+  /// This value is in RFC 3339 format. Note 1: This field is not provided for
+  /// objects with an active event-based hold, since retention expiration is
+  /// unknown until the hold is removed. Note 2: This value can be provided even
+  /// when temporary hold is set (so that the user can reason about policy
+  /// without having to first unset the temporary hold).
   core.DateTime retentionExpirationTime;
 
   /// The link to this object.
@@ -7144,23 +7266,27 @@ class Object {
   /// Storage class of the object.
   core.String storageClass;
 
-  /// Whether an object is under temporary hold. While this flag is set to true,
-  /// the object is protected against deletion and overwrites. A common use case
-  /// of this flag is regulatory investigations where objects need to be
-  /// retained while the investigation is ongoing. Note that unlike event-based
-  /// hold, temporary hold does not impact retention expiration time of an
-  /// object.
+  /// Whether an object is under temporary hold.
+  ///
+  /// While this flag is set to true, the object is protected against deletion
+  /// and overwrites. A common use case of this flag is regulatory
+  /// investigations where objects need to be retained while the investigation
+  /// is ongoing. Note that unlike event-based hold, temporary hold does not
+  /// impact retention expiration time of an object.
   core.bool temporaryHold;
 
   /// The creation time of the object in RFC 3339 format.
   core.DateTime timeCreated;
 
-  /// The deletion time of the object in RFC 3339 format. Will be returned if
-  /// and only if this version of the object has been deleted.
+  /// The deletion time of the object in RFC 3339 format.
+  ///
+  /// Will be returned if and only if this version of the object has been
+  /// deleted.
   core.DateTime timeDeleted;
 
-  /// The time at which the object's storage class was last changed. When the
-  /// object is initially created, it will be set to timeCreated.
+  /// The time at which the object's storage class was last changed.
+  ///
+  /// When the object is initially created, it will be set to timeCreated.
   core.DateTime timeStorageClassUpdated;
 
   /// The modification time of the object metadata in RFC 3339 format.
@@ -7436,6 +7562,8 @@ class ObjectAccessControl {
   /// - allUsers
   /// - allAuthenticatedUsers Examples:
   /// - The user liz@example.com would be user-liz@example.com.
+  ///
+  ///
   /// - The group example@googlegroups.com would be
   /// group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain
@@ -7454,8 +7582,10 @@ class ObjectAccessControl {
   /// The ID of the access-control entry.
   core.String id;
 
-  /// The kind of item this is. For object access control entries, this is
-  /// always storage#objectAccessControl.
+  /// The kind of item this is.
+  ///
+  /// For object access control entries, this is always
+  /// storage#objectAccessControl.
   core.String kind;
 
   /// The name of the object, if applied to an object.
@@ -7565,8 +7695,10 @@ class ObjectAccessControls {
   /// The list of items.
   core.List<ObjectAccessControl> items;
 
-  /// The kind of item this is. For lists of object access control entries, this
-  /// is always storage#objectAccessControls.
+  /// The kind of item this is.
+  ///
+  /// For lists of object access control entries, this is always
+  /// storage#objectAccessControls.
   core.String kind;
 
   ObjectAccessControls();
@@ -7600,12 +7732,15 @@ class Objects {
   /// The list of items.
   core.List<Object> items;
 
-  /// The kind of item this is. For lists of objects, this is always
-  /// storage#objects.
+  /// The kind of item this is.
+  ///
+  /// For lists of objects, this is always storage#objects.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   /// The list of prefixes of objects matching-but-not-listed up to and
@@ -7653,12 +7788,15 @@ class Objects {
 }
 
 class PolicyBindings {
-  /// The condition that is associated with this binding. NOTE: an unsatisfied
-  /// condition will not allow user access via current binding. Different
-  /// bindings, including their conditions, are examined independently.
+  /// The condition that is associated with this binding.
+  ///
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
   Expr condition;
 
   /// A collection of identifiers for members who may assume the provided role.
+  ///
   /// Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet;
   /// with or without a Google account.
@@ -7681,10 +7819,12 @@ class PolicyBindings {
   /// projectViewer:my-example-project
   core.List<core.String> members;
 
-  /// The role to which members belong. Two types of roles are supported: new
-  /// IAM roles, which grant permissions that do not map directly to those
-  /// provided by ACLs, and legacy IAM roles, which do map directly to ACL
-  /// permissions. All roles are of the format roles/storage.specificRole.
+  /// The role to which members belong.
+  ///
+  /// Two types of roles are supported: new IAM roles, which grant permissions
+  /// that do not map directly to those provided by ACLs, and legacy IAM roles,
+  /// which do map directly to ACL permissions. All roles are of the format
+  /// roles/storage.specificRole.
   /// The new IAM roles are:
   /// - roles/storage.admin — Full control of Google Cloud Storage resources.
   /// - roles/storage.objectViewer — Read-Only access to Google Cloud Storage
@@ -7755,12 +7895,15 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The kind of item this is. For policies, this is always storage#policy.
-  /// This field is ignored on input.
+  /// The kind of item this is.
+  ///
+  /// For policies, this is always storage#policy. This field is ignored on
+  /// input.
   core.String kind;
 
-  /// The ID of the resource to which this policy belongs. Will be of the form
-  /// projects/_/buckets/bucket for buckets, and
+  /// The ID of the resource to which this policy belongs.
+  ///
+  /// Will be of the form projects/_/buckets/bucket for buckets, and
   /// projects/_/buckets/bucket/objects/object for objects. A specific
   /// generation may be specified by appending #generationNumber to the end of
   /// the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17.
@@ -7818,27 +7961,33 @@ class Policy {
 /// A rewrite response.
 class RewriteResponse {
   /// true if the copy is finished; otherwise, false if the copy is in progress.
+  ///
   /// This property is always present in the response.
   core.bool done;
 
   /// The kind of item this is.
   core.String kind;
 
-  /// The total size of the object being copied in bytes. This property is
-  /// always present in the response.
+  /// The total size of the object being copied in bytes.
+  ///
+  /// This property is always present in the response.
   core.String objectSize;
 
-  /// A resource containing the metadata for the copied-to object. This property
-  /// is present in the response only when copying completes.
+  /// A resource containing the metadata for the copied-to object.
+  ///
+  /// This property is present in the response only when copying completes.
   Object resource;
 
-  /// A token to use in subsequent requests to continue copying data. This token
-  /// is present in the response only when there is more data to copy.
+  /// A token to use in subsequent requests to continue copying data.
+  ///
+  /// This token is present in the response only when there is more data to
+  /// copy.
   core.String rewriteToken;
 
   /// The total bytes written so far, which can be used to provide a waiting
-  /// user with a progress indicator. This property is always present in the
-  /// response.
+  /// user with a progress indicator.
+  ///
+  /// This property is always present in the response.
   core.String totalBytesRewritten;
 
   RewriteResponse();
@@ -7894,8 +8043,9 @@ class ServiceAccount {
   /// The ID of the notification.
   core.String emailAddress;
 
-  /// The kind of item this is. For notifications, this is always
-  /// storage#notification.
+  /// The kind of item this is.
+  ///
+  /// For notifications, this is always storage#notification.
   core.String kind;
 
   ServiceAccount();
@@ -7926,9 +8076,11 @@ class TestIamPermissionsResponse {
   /// The kind of item this is.
   core.String kind;
 
-  /// The permissions held by the caller. Permissions are always of the format
-  /// storage.resource.capability, where resource is one of buckets or objects.
-  /// The supported permissions are as follows:
+  /// The permissions held by the caller.
+  ///
+  /// Permissions are always of the format storage.resource.capability, where
+  /// resource is one of buckets or objects. The supported permissions are as
+  /// follows:
   /// - storage.buckets.delete — Delete bucket.
   /// - storage.buckets.get — Read bucket metadata.
   /// - storage.buckets.getIamPolicy — Read bucket IAM policy.

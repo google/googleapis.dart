@@ -70,8 +70,10 @@ class AchievementsResource {
   AchievementsResource(commons.ApiRequester client) : _requester = client;
 
   /// Resets the achievement with the given ID for the currently authenticated
-  /// player. This method is only accessible to whitelisted tester accounts for
-  /// your application.
+  /// player.
+  ///
+  /// This method is only accessible to whitelisted tester accounts for your
+  /// application.
   ///
   /// Request parameters:
   ///
@@ -125,8 +127,10 @@ class AchievementsResource {
   }
 
   /// Resets all achievements for the currently authenticated player for your
-  /// application. This method is only accessible to whitelisted tester accounts
-  /// for your application.
+  /// application.
+  ///
+  /// This method is only accessible to whitelisted tester accounts for your
+  /// application.
   ///
   /// Request parameters:
   ///
@@ -171,8 +175,9 @@ class AchievementsResource {
     );
   }
 
-  /// Resets all draft achievements for all players. This method is only
-  /// available to user accounts for your developer console.
+  /// Resets all draft achievements for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
   ///
   /// Request parameters:
   ///
@@ -216,9 +221,10 @@ class AchievementsResource {
     );
   }
 
-  /// Resets the achievement with the given ID for all players. This method is
-  /// only available to user accounts for your developer console. Only draft
-  /// achievements can be reset.
+  /// Resets the achievement with the given ID for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
+  /// Only draft achievements can be reset.
   ///
   /// Request parameters:
   ///
@@ -270,9 +276,10 @@ class AchievementsResource {
     );
   }
 
-  /// Resets achievements with the given IDs for all players. This method is
-  /// only available to user accounts for your developer console. Only draft
-  /// achievements may be reset.
+  /// Resets achievements with the given IDs for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
+  /// Only draft achievements may be reset.
   ///
   /// [request] - The metadata request object.
   ///
@@ -328,8 +335,9 @@ class ApplicationsResource {
 
   ApplicationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get the list of players hidden from the given application. This method is
-  /// only available to user accounts for your developer console.
+  /// Get the list of players hidden from the given application.
+  ///
+  /// This method is only available to user accounts for your developer console.
   ///
   /// Request parameters:
   ///
@@ -404,8 +412,10 @@ class EventsResource {
   EventsResource(commons.ApiRequester client) : _requester = client;
 
   /// Resets all player progress on the event with the given ID for the
-  /// currently authenticated player. This method is only accessible to
-  /// whitelisted tester accounts for your application.
+  /// currently authenticated player.
+  ///
+  /// This method is only accessible to whitelisted tester accounts for your
+  /// application.
   ///
   /// Request parameters:
   ///
@@ -458,8 +468,10 @@ class EventsResource {
   }
 
   /// Resets all player progress on all events for the currently authenticated
-  /// player. This method is only accessible to whitelisted tester accounts for
-  /// your application.
+  /// player.
+  ///
+  /// This method is only accessible to whitelisted tester accounts for your
+  /// application.
   ///
   /// Request parameters:
   ///
@@ -503,8 +515,9 @@ class EventsResource {
     );
   }
 
-  /// Resets all draft events for all players. This method is only available to
-  /// user accounts for your developer console.
+  /// Resets all draft events for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
   ///
   /// Request parameters:
   ///
@@ -548,9 +561,10 @@ class EventsResource {
     );
   }
 
-  /// Resets the event with the given ID for all players. This method is only
-  /// available to user accounts for your developer console. Only draft events
-  /// can be reset.
+  /// Resets the event with the given ID for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
+  /// Only draft events can be reset.
   ///
   /// Request parameters:
   ///
@@ -602,9 +616,10 @@ class EventsResource {
     );
   }
 
-  /// Resets events with the given IDs for all players. This method is only
-  /// available to user accounts for your developer console. Only draft events
-  /// may be reset.
+  /// Resets events with the given IDs for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
+  /// Only draft events may be reset.
   ///
   /// [request] - The metadata request object.
   ///
@@ -661,6 +676,7 @@ class PlayersResource {
   PlayersResource(commons.ApiRequester client) : _requester = client;
 
   /// Hide the given player's leaderboard scores from the given application.
+  ///
   /// This method is only available to user accounts for your developer console.
   ///
   /// Request parameters:
@@ -723,6 +739,7 @@ class PlayersResource {
   }
 
   /// Unhide the given player's leaderboard scores from the given application.
+  ///
   /// This method is only available to user accounts for your developer console.
   ///
   /// Request parameters:
@@ -791,8 +808,10 @@ class ScoresResource {
   ScoresResource(commons.ApiRequester client) : _requester = client;
 
   /// Resets scores for the leaderboard with the given ID for the currently
-  /// authenticated player. This method is only accessible to whitelisted tester
-  /// accounts for your application.
+  /// authenticated player.
+  ///
+  /// This method is only accessible to whitelisted tester accounts for your
+  /// application.
   ///
   /// Request parameters:
   ///
@@ -846,8 +865,10 @@ class ScoresResource {
   }
 
   /// Resets all scores for all leaderboards for the currently authenticated
-  /// players. This method is only accessible to whitelisted tester accounts for
-  /// your application.
+  /// players.
+  ///
+  /// This method is only accessible to whitelisted tester accounts for your
+  /// application.
   ///
   /// Request parameters:
   ///
@@ -892,8 +913,9 @@ class ScoresResource {
     );
   }
 
-  /// Resets scores for all draft leaderboards for all players. This method is
-  /// only available to user accounts for your developer console.
+  /// Resets scores for all draft leaderboards for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
   ///
   /// Request parameters:
   ///
@@ -937,9 +959,10 @@ class ScoresResource {
     );
   }
 
-  /// Resets scores for the leaderboard with the given ID for all players. This
-  /// method is only available to user accounts for your developer console. Only
-  /// draft leaderboards can be reset.
+  /// Resets scores for the leaderboard with the given ID for all players.
+  ///
+  /// This method is only available to user accounts for your developer console.
+  /// Only draft leaderboards can be reset.
   ///
   /// Request parameters:
   ///
@@ -992,6 +1015,7 @@ class ScoresResource {
   }
 
   /// Resets scores for the leaderboards with the given IDs for all players.
+  ///
   /// This method is only available to user accounts for your developer console.
   /// Only draft leaderboards may be reset.
   ///
@@ -1046,8 +1070,10 @@ class ScoresResource {
 
 /// Achievement reset all response.
 class AchievementResetAllResponse {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#achievementResetAllResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#achievementResetAllResponse`.
   core.String kind;
 
   /// The achievement reset results.
@@ -1084,8 +1110,10 @@ class AchievementResetMultipleForAllRequest {
   /// The IDs of achievements to reset.
   core.List<core.String> achievementIds;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#achievementResetMultipleForAllRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#achievementResetMultipleForAllRequest`.
   core.String kind;
 
   AchievementResetMultipleForAllRequest();
@@ -1115,17 +1143,20 @@ class AchievementResetMultipleForAllRequest {
 
 /// An achievement reset response.
 class AchievementResetResponse {
-  /// The current state of the achievement. This is the same as the initial
-  /// state of the achievement. Possible values are: - "`HIDDEN`"- Achievement
-  /// is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" -
-  /// Achievement is unlocked.
+  /// The current state of the achievement.
+  ///
+  /// This is the same as the initial state of the achievement. Possible values
+  /// are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is
+  /// revealed. - "`UNLOCKED`" - Achievement is unlocked.
   core.String currentState;
 
   /// The ID of an achievement for which player state has been updated.
   core.String definitionId;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#achievementResetResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#achievementResetResponse`.
   core.String kind;
 
   /// Flag to indicate if the requested update actually occurred.
@@ -1171,8 +1202,10 @@ class EventsResetMultipleForAllRequest {
   /// The IDs of events to reset.
   core.List<core.String> eventIds;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#eventsResetMultipleForAllRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#eventsResetMultipleForAllRequest`.
   core.String kind;
 
   EventsResetMultipleForAllRequest();
@@ -1212,8 +1245,10 @@ class GamesPlayerExperienceInfoResource {
   /// UTC.
   core.String lastLevelUpTimestampMillis;
 
-  /// The next level of the player. If the current level is the maximum level,
-  /// this should be same as the current level.
+  /// The next level of the player.
+  ///
+  /// If the current level is the maximum level, this should be same as the
+  /// current level.
   GamesPlayerLevelResource nextLevel;
 
   GamesPlayerExperienceInfoResource();
@@ -1296,14 +1331,21 @@ class GamesPlayerLevelResource {
 
 /// The HiddenPlayer resource.
 class HiddenPlayer {
-  /// Output only. The time this player was hidden.
+  /// The time this player was hidden.
+  ///
+  /// Output only.
   core.String hiddenTimeMillis;
 
-  /// Output only. Uniquely identifies the type of this resource. Value is
-  /// always the fixed string `gamesManagement#hiddenPlayer`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `gamesManagement#hiddenPlayer`.
+  ///
+  /// Output only.
   core.String kind;
 
-  /// Output only. The player information.
+  /// The player information.
+  ///
+  /// Output only.
   Player player;
 
   HiddenPlayer();
@@ -1341,8 +1383,9 @@ class HiddenPlayerList {
   /// The players.
   core.List<HiddenPlayer> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#hiddenPlayerList`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `gamesManagement#hiddenPlayerList`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -1381,14 +1424,17 @@ class HiddenPlayerList {
 }
 
 /// An object representation of the individual components of the player's name.
+///
 /// For some players, these fields may not be present.
 class PlayerName {
-  /// The family name of this player. In some places, this is known as the last
-  /// name.
+  /// The family name of this player.
+  ///
+  /// In some places, this is known as the last name.
   core.String familyName;
 
-  /// The given name of this player. In some places, this is known as the first
-  /// name.
+  /// The given name of this player.
+  ///
+  /// In some places, this is known as the first name.
   core.String givenName;
 
   PlayerName();
@@ -1431,25 +1477,31 @@ class Player {
   /// An object to represent Play Game experience information for the player.
   GamesPlayerExperienceInfoResource experienceInfo;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#player`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `gamesManagement#player`.
   core.String kind;
 
   /// An object representation of the individual components of the player's
-  /// name. For some players, these fields may not be present.
+  /// name.
+  ///
+  /// For some players, these fields may not be present.
   PlayerName name;
 
   /// The player ID that was used for this player the first time they signed
-  /// into the game in question. This is only populated for calls to player.get
-  /// for the requesting player, only if the player ID has subsequently changed,
-  /// and only to clients that support remapping player IDs.
+  /// into the game in question.
+  ///
+  /// This is only populated for calls to player.get for the requesting player,
+  /// only if the player ID has subsequently changed, and only to clients that
+  /// support remapping player IDs.
   core.String originalPlayerId;
 
   /// The ID of the player.
   core.String playerId;
 
-  /// The player's profile settings. Controls whether or not the player's
-  /// profile is visible to other players.
+  /// The player's profile settings.
+  ///
+  /// Controls whether or not the player's profile is visible to other players.
   ProfileSettings profileSettings;
 
   /// The player's title rewarded for their game activities.
@@ -1537,8 +1589,10 @@ class Player {
 
 /// A list of leaderboard reset resources.
 class PlayerScoreResetAllResponse {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#playerScoreResetAllResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#playerScoreResetAllResponse`.
   core.String kind;
 
   /// The leaderboard reset results.
@@ -1576,13 +1630,17 @@ class PlayerScoreResetResponse {
   /// The ID of an leaderboard for which player state has been updated.
   core.String definitionId;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#playerScoreResetResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#playerScoreResetResponse`.
   core.String kind;
 
-  /// The time spans of the updated score. Possible values are: - "`ALL_TIME`" -
-  /// The score is an all-time score. - "`WEEKLY`" - The score is a weekly
-  /// score. - "`DAILY`" - The score is a daily score.
+  /// The time spans of the updated score.
+  ///
+  /// Possible values are: - "`ALL_TIME`" - The score is an all-time score. -
+  /// "`WEEKLY`" - The score is a weekly score. - "`DAILY`" - The score is a
+  /// daily score.
   core.List<core.String> resetScoreTimeSpans;
 
   PlayerScoreResetResponse();
@@ -1618,8 +1676,9 @@ class PlayerScoreResetResponse {
 
 /// Profile settings
 class ProfileSettings {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#profileSettings`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `gamesManagement#profileSettings`.
   core.String kind;
   core.bool profileVisible;
 
@@ -1647,8 +1706,10 @@ class ProfileSettings {
 }
 
 class ScoresResetMultipleForAllRequest {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `gamesManagement#scoresResetMultipleForAllRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `gamesManagement#scoresResetMultipleForAllRequest`.
   core.String kind;
 
   /// The IDs of leaderboards to reset.

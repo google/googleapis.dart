@@ -390,8 +390,9 @@ class UsersDraftsResource {
     );
   }
 
-  /// Immediately and permanently deletes the specified draft. Does not simply
-  /// trash it.
+  /// Immediately and permanently deletes the specified draft.
+  ///
+  /// Does not simply trash it.
   ///
   /// Request parameters:
   ///
@@ -786,8 +787,10 @@ class UsersHistoryResource {
 
   UsersHistoryResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists the history of all changes to the given mailbox. History results are
-  /// returned in chronological order (increasing `historyId`).
+  /// Lists the history of all changes to the given mailbox.
+  ///
+  /// History results are returned in chronological order (increasing
+  /// `historyId`).
   ///
   /// Request parameters:
   ///
@@ -1263,8 +1266,10 @@ class UsersMessagesResource {
 
   UsersMessagesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes many messages by message ID. Provides no guarantees that messages
-  /// were not already deleted or even existed at all.
+  /// Deletes many messages by message ID.
+  ///
+  /// Provides no guarantees that messages were not already deleted or even
+  /// existed at all.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1382,8 +1387,9 @@ class UsersMessagesResource {
     );
   }
 
-  /// Immediately and permanently deletes the specified message. This operation
-  /// cannot be undone. Prefer `messages.trash` instead.
+  /// Immediately and permanently deletes the specified message.
+  ///
+  /// This operation cannot be undone. Prefer `messages.trash` instead.
   ///
   /// Request parameters:
   ///
@@ -1528,9 +1534,10 @@ class UsersMessagesResource {
   }
 
   /// Imports a message into only this user's mailbox, with standard email
-  /// delivery scanning and classification similar to receiving via SMTP. Does
-  /// not send a message. Note: This function doesn't trigger forwarding rules
-  /// or filters set up by the user.
+  /// delivery scanning and classification similar to receiving via SMTP.
+  ///
+  /// Does not send a message. Note: This function doesn't trigger forwarding
+  /// rules or filters set up by the user.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1644,8 +1651,9 @@ class UsersMessagesResource {
   }
 
   /// Directly inserts a message into only this user's mailbox similar to `IMAP
-  /// APPEND`, bypassing most scanning and classification. Does not send a
-  /// message.
+  /// APPEND`, bypassing most scanning and classification.
+  ///
+  /// Does not send a message.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2465,10 +2473,11 @@ class UsersSettingsResource {
     );
   }
 
-  /// Updates the auto-forwarding setting for the specified account. A verified
-  /// forwarding address must be specified when auto-forwarding is enabled. This
-  /// method is only available to service account clients that have been
-  /// delegated domain-wide authority.
+  /// Updates the auto-forwarding setting for the specified account.
+  ///
+  /// A verified forwarding address must be specified when auto-forwarding is
+  /// enabled. This method is only available to service account clients that
+  /// have been delegated domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2588,11 +2597,13 @@ class UsersSettingsResource {
     );
   }
 
-  /// Updates language settings. If successful, the return object contains the
-  /// `displayLanguage` that was saved for the user, which may differ from the
-  /// value passed into the request. This is because the requested
-  /// `displayLanguage` may not be directly supported by Gmail but have a close
-  /// variant that is, and so the variant may be chosen and saved instead.
+  /// Updates language settings.
+  ///
+  /// If successful, the return object contains the `displayLanguage` that was
+  /// saved for the user, which may differ from the value passed into the
+  /// request. This is because the requested `displayLanguage` may not be
+  /// directly supported by Gmail but have a close variant that is, and so the
+  /// variant may be chosen and saved instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2780,16 +2791,18 @@ class UsersSettingsDelegatesResource {
       : _requester = client;
 
   /// Adds a delegate with its verification status set directly to `accepted`,
-  /// without sending any verification email. The delegate user must be a member
-  /// of the same G Suite organization as the delegator user. Gmail imposes
-  /// limitations on the number of delegates and delegators each user in a G
-  /// Suite organization can have. These limits depend on your organization, but
-  /// in general each user can have up to 25 delegates and up to 10 delegators.
-  /// Note that a delegate user must be referred to by their primary email
-  /// address, and not an email alias. Also note that when a new delegate is
-  /// created, there may be up to a one minute delay before the new delegate is
-  /// available for use. This method is only available to service account
-  /// clients that have been delegated domain-wide authority.
+  /// without sending any verification email.
+  ///
+  /// The delegate user must be a member of the same G Suite organization as the
+  /// delegator user. Gmail imposes limitations on the number of delegates and
+  /// delegators each user in a G Suite organization can have. These limits
+  /// depend on your organization, but in general each user can have up to 25
+  /// delegates and up to 10 delegators. Note that a delegate user must be
+  /// referred to by their primary email address, and not an email alias. Also
+  /// note that when a new delegate is created, there may be up to a one minute
+  /// delay before the new delegate is available for use. This method is only
+  /// available to service account clients that have been delegated domain-wide
+  /// authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2850,6 +2863,7 @@ class UsersSettingsDelegatesResource {
 
   /// Removes the specified delegate (which can be of any verification status),
   /// and revokes any verification that may have been required for using it.
+  ///
   /// Note that a delegate user must be referred to by their primary email
   /// address, and not an email alias. This method is only available to service
   /// account clients that have been delegated domain-wide authority.
@@ -2913,10 +2927,11 @@ class UsersSettingsDelegatesResource {
     );
   }
 
-  /// Gets the specified delegate. Note that a delegate user must be referred to
-  /// by their primary email address, and not an email alias. This method is
-  /// only available to service account clients that have been delegated
-  /// domain-wide authority.
+  /// Gets the specified delegate.
+  ///
+  /// Note that a delegate user must be referred to by their primary email
+  /// address, and not an email alias. This method is only available to service
+  /// account clients that have been delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -2977,9 +2992,10 @@ class UsersSettingsDelegatesResource {
     );
   }
 
-  /// Lists the delegates for the specified account. This method is only
-  /// available to service account clients that have been delegated domain-wide
-  /// authority.
+  /// Lists the delegates for the specified account.
+  ///
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -3040,7 +3056,9 @@ class UsersSettingsFiltersResource {
   UsersSettingsFiltersResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a filter. Note: you can only create a maximum of 1,000 filters.
+  /// Creates a filter.
+  ///
+  /// Note: you can only create a maximum of 1,000 filters.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3280,11 +3298,13 @@ class UsersSettingsForwardingAddressesResource {
   UsersSettingsForwardingAddressesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a forwarding address. If ownership verification is required, a
-  /// message will be sent to the recipient and the resource's verification
-  /// status will be set to `pending`; otherwise, the resource will be created
-  /// with verification status set to `accepted`. This method is only available
-  /// to service account clients that have been delegated domain-wide authority.
+  /// Creates a forwarding address.
+  ///
+  /// If ownership verification is required, a message will be sent to the
+  /// recipient and the resource's verification status will be set to `pending`;
+  /// otherwise, the resource will be created with verification status set to
+  /// `accepted`. This method is only available to service account clients that
+  /// have been delegated domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3345,8 +3365,10 @@ class UsersSettingsForwardingAddressesResource {
   }
 
   /// Deletes the specified forwarding address and revokes any verification that
-  /// may have been required. This method is only available to service account
-  /// clients that have been delegated domain-wide authority.
+  /// may have been required.
+  ///
+  /// This method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -3531,15 +3553,16 @@ class UsersSettingsSendAsResource {
   UsersSettingsSendAsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail
-  /// will attempt to connect to the SMTP service to validate the configuration
-  /// before creating the alias. If ownership verification is required for the
-  /// alias, a message will be sent to the email address and the resource's
-  /// verification status will be set to `pending`; otherwise, the resource will
-  /// be created with verification status set to `accepted`. If a signature is
-  /// provided, Gmail will sanitize the HTML before saving it with the alias.
-  /// This method is only available to service account clients that have been
-  /// delegated domain-wide authority.
+  /// Creates a custom "from" send-as alias.
+  ///
+  /// If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP
+  /// service to validate the configuration before creating the alias. If
+  /// ownership verification is required for the alias, a message will be sent
+  /// to the email address and the resource's verification status will be set to
+  /// `pending`; otherwise, the resource will be created with verification
+  /// status set to `accepted`. If a signature is provided, Gmail will sanitize
+  /// the HTML before saving it with the alias. This method is only available to
+  /// service account clients that have been delegated domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3598,9 +3621,11 @@ class UsersSettingsSendAsResource {
     );
   }
 
-  /// Deletes the specified send-as alias. Revokes any verification that may
-  /// have been required for using it. This method is only available to service
-  /// account clients that have been delegated domain-wide authority.
+  /// Deletes the specified send-as alias.
+  ///
+  /// Revokes any verification that may have been required for using it. This
+  /// method is only available to service account clients that have been
+  /// delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -3660,8 +3685,10 @@ class UsersSettingsSendAsResource {
     );
   }
 
-  /// Gets the specified send-as alias. Fails with an HTTP 404 error if the
-  /// specified address is not a member of the collection.
+  /// Gets the specified send-as alias.
+  ///
+  /// Fails with an HTTP 404 error if the specified address is not a member of
+  /// the collection.
   ///
   /// Request parameters:
   ///
@@ -3721,9 +3748,10 @@ class UsersSettingsSendAsResource {
     );
   }
 
-  /// Lists the send-as aliases for the specified account. The result includes
-  /// the primary send-as address associated with the account as well as any
-  /// custom "from" aliases.
+  /// Lists the send-as aliases for the specified account.
+  ///
+  /// The result includes the primary send-as address associated with the
+  /// account as well as any custom "from" aliases.
   ///
   /// Request parameters:
   ///
@@ -3843,10 +3871,12 @@ class UsersSettingsSendAsResource {
     );
   }
 
-  /// Updates a send-as alias. If a signature is provided, Gmail will sanitize
-  /// the HTML before saving it with the alias. Addresses other than the primary
-  /// address for the account can only be updated by service account clients
-  /// that have been delegated domain-wide authority.
+  /// Updates a send-as alias.
+  ///
+  /// If a signature is provided, Gmail will sanitize the HTML before saving it
+  /// with the alias. Addresses other than the primary address for the account
+  /// can only be updated by service account clients that have been delegated
+  /// domain-wide authority.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3912,9 +3942,10 @@ class UsersSettingsSendAsResource {
     );
   }
 
-  /// Sends a verification email to the specified send-as alias address. The
-  /// verification status must be `pending`. This method is only available to
-  /// service account clients that have been delegated domain-wide authority.
+  /// Sends a verification email to the specified send-as alias address.
+  ///
+  /// The verification status must be `pending`. This method is only available
+  /// to service account clients that have been delegated domain-wide authority.
   ///
   /// Request parameters:
   ///
@@ -4121,6 +4152,7 @@ class UsersSettingsSendAsSmimeInfoResource {
   }
 
   /// Insert (upload) the given S/MIME config for the specified send-as alias.
+  ///
   /// Note that pkcs12 format is required for the key.
   ///
   /// [request] - The metadata request object.
@@ -4328,8 +4360,9 @@ class UsersThreadsResource {
 
   UsersThreadsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Immediately and permanently deletes the specified thread. This operation
-  /// cannot be undone. Prefer `threads.trash` instead.
+  /// Immediately and permanently deletes the specified thread.
+  ///
+  /// This operation cannot be undone. Prefer `threads.trash` instead.
   ///
   /// Request parameters:
   ///
@@ -4559,8 +4592,9 @@ class UsersThreadsResource {
     );
   }
 
-  /// Modifies the labels applied to the thread. This applies to all messages in
-  /// the thread.
+  /// Modifies the labels applied to the thread.
+  ///
+  /// This applies to all messages in the thread.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4761,8 +4795,9 @@ class AutoForwarding {
   /// - "markRead" : Leave the message in the `INBOX` and mark it as read.
   core.String disposition;
 
-  /// Email address to which all incoming messages are forwarded. This email
-  /// address must be a verified member of the forwarding addresses.
+  /// Email address to which all incoming messages are forwarded.
+  ///
+  /// This email address must be a verified member of the forwarding addresses.
   core.String emailAddress;
 
   /// Whether all incoming mail is automatically forwarded to another address.
@@ -4824,8 +4859,9 @@ class BatchModifyMessagesRequest {
   /// A list of label IDs to add to messages.
   core.List<core.String> addLabelIds;
 
-  /// The IDs of the messages to modify. There is a limit of 1000 ids per
-  /// request.
+  /// The IDs of the messages to modify.
+  ///
+  /// There is a limit of 1000 ids per request.
   core.List<core.String> ids;
 
   /// A list of label IDs to remove from messages.
@@ -4866,15 +4902,19 @@ class BatchModifyMessagesRequest {
   }
 }
 
-/// Settings for a delegate. Delegates can read, send, and delete messages, as
-/// well as view and add contacts, for the delegator's account. See "Set up mail
-/// delegation" for more information about delegates.
+/// Settings for a delegate.
+///
+/// Delegates can read, send, and delete messages, as well as view and add
+/// contacts, for the delegator's account. See "Set up mail delegation" for more
+/// information about delegates.
 class Delegate {
   /// The email address of the delegate.
   core.String delegateEmail;
 
   /// Indicates whether this address has been verified and can act as a delegate
-  /// for the account. Read-only.
+  /// for the account.
+  ///
+  /// Read-only.
   /// Possible string values are:
   /// - "verificationStatusUnspecified" : Unspecified verification status.
   /// - "accepted" : The address can act a delegate for the account.
@@ -4941,8 +4981,9 @@ class Draft {
   }
 }
 
-/// Resource definition for Gmail filters. Filters apply to specific messages
-/// instead of an entire email thread.
+/// Resource definition for Gmail filters.
+///
+/// Filters apply to specific messages instead of an entire email thread.
 class Filter {
   /// Action that the filter performs.
   FilterAction action;
@@ -5039,14 +5080,16 @@ class FilterCriteria {
   /// Whether the message has any attachment.
   core.bool hasAttachment;
 
-  /// Only return messages not matching the specified query. Supports the same
-  /// query format as the Gmail search box. For example,
+  /// Only return messages not matching the specified query.
+  ///
+  /// Supports the same query format as the Gmail search box. For example,
   /// `"from:someuser@example.com rfc822msgid: is:unread"`.
   core.String negatedQuery;
 
-  /// Only return messages matching the specified query. Supports the same query
-  /// format as the Gmail search box. For example, `"from:someuser@example.com
-  /// rfc822msgid: is:unread"`.
+  /// Only return messages matching the specified query.
+  ///
+  /// Supports the same query format as the Gmail search box. For example,
+  /// `"from:someuser@example.com rfc822msgid: is:unread"`.
   core.String query;
 
   /// The size of the entire RFC822 message in bytes, including all headers and
@@ -5060,14 +5103,17 @@ class FilterCriteria {
   /// - "larger" : Find messages larger than the given size.
   core.String sizeComparison;
 
-  /// Case-insensitive phrase found in the message's subject. Trailing and
-  /// leading whitespace are be trimmed and adjacent spaces are collapsed.
+  /// Case-insensitive phrase found in the message's subject.
+  ///
+  /// Trailing and leading whitespace are be trimmed and adjacent spaces are
+  /// collapsed.
   core.String subject;
 
-  /// The recipient's display name or email address. Includes recipients in the
-  /// "to", "cc", and "bcc" header fields. You can use simply the local part of
-  /// the email address. For example, "example" and "example@" both match
-  /// "example@gmail.com". This field is case-insensitive.
+  /// The recipient's display name or email address.
+  ///
+  /// Includes recipients in the "to", "cc", and "bcc" header fields. You can
+  /// use simply the local part of the email address. For example, "example" and
+  /// "example@" both match "example@gmail.com". This field is case-insensitive.
   core.String to;
 
   FilterCriteria();
@@ -5141,7 +5187,9 @@ class ForwardingAddress {
   core.String forwardingEmail;
 
   /// Indicates whether this address has been verified and is usable for
-  /// forwarding. Read-only.
+  /// forwarding.
+  ///
+  /// Read-only.
   /// Possible string values are:
   /// - "verificationStatusUnspecified" : Unspecified verification status.
   /// - "accepted" : The address is ready to use for forwarding.
@@ -5171,8 +5219,9 @@ class ForwardingAddress {
   }
 }
 
-/// A record of a change to the user's mailbox. Each history change may affect
-/// multiple messages in multiple ways.
+/// A record of a change to the user's mailbox.
+///
+/// Each history change may affect multiple messages in multiple ways.
 class History {
   /// The mailbox sequence ID.
   core.String id;
@@ -5183,9 +5232,11 @@ class History {
   /// Labels removed from messages in this history record.
   core.List<HistoryLabelRemoved> labelsRemoved;
 
-  /// List of messages changed in this history record. The fields for specific
-  /// change types, such as `messagesAdded` may duplicate messages in this
-  /// field. We recommend using the specific change-type fields instead of this.
+  /// List of messages changed in this history record.
+  ///
+  /// The fields for specific change types, such as `messagesAdded` may
+  /// duplicate messages in this field. We recommend using the specific
+  /// change-type fields instead of this.
   core.List<Message> messages;
 
   /// Messages added to the mailbox in this history record.
@@ -5367,8 +5418,10 @@ class HistoryMessageDeleted {
 /// IMAP settings for an account.
 class ImapSettings {
   /// If this value is true, Gmail will immediately expunge a message when it is
-  /// marked as deleted in IMAP. Otherwise, Gmail will wait for an update from
-  /// the client before expunging messages marked as deleted.
+  /// marked as deleted in IMAP.
+  ///
+  /// Otherwise, Gmail will wait for an update from the client before expunging
+  /// messages marked as deleted.
   core.bool autoExpunge;
 
   /// Whether IMAP is enabled for the account.
@@ -5385,7 +5438,9 @@ class ImapSettings {
   core.String expungeBehavior;
 
   /// An optional limit on the number of messages that an IMAP folder may
-  /// contain. Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is
+  /// contain.
+  ///
+  /// Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is
   /// interpreted to mean that there is no limit.
   core.int maxFolderSize;
 
@@ -5427,8 +5482,9 @@ class ImapSettings {
 /// Labels are used to categorize messages and threads within the user's
 /// mailbox.
 class Label {
-  /// The color to assign to the label. Color is only available for labels that
-  /// have their `type` set to `user`.
+  /// The color to assign to the label.
+  ///
+  /// Color is only available for labels that have their `type` set to `user`.
   LabelColor color;
 
   /// The immutable ID of the label.
@@ -5464,14 +5520,16 @@ class Label {
   /// The number of unread threads with the label.
   core.int threadsUnread;
 
-  /// The owner type for the label. User labels are created by the user and can
-  /// be modified and deleted by the user and can be applied to any message or
-  /// thread. System labels are internally created and cannot be added,
-  /// modified, or deleted. System labels may be able to be applied to or
-  /// removed from messages and threads under some circumstances but this is not
-  /// guaranteed. For example, users can apply and remove the `INBOX` and
-  /// `UNREAD` labels from messages and threads, but cannot apply or remove the
-  /// `DRAFTS` or `SENT` labels from messages or threads.
+  /// The owner type for the label.
+  ///
+  /// User labels are created by the user and can be modified and deleted by the
+  /// user and can be applied to any message or thread. System labels are
+  /// internally created and cannot be added, modified, or deleted. System
+  /// labels may be able to be applied to or removed from messages and threads
+  /// under some circumstances but this is not guaranteed. For example, users
+  /// can apply and remove the `INBOX` and `UNREAD` labels from messages and
+  /// threads, but cannot apply or remove the `DRAFTS` or `SENT` labels from
+  /// messages or threads.
   /// Possible string values are:
   /// - "system" : Labels created by Gmail.
   /// - "user" : Custom labels created by the user or application.
@@ -5550,40 +5608,42 @@ class Label {
 }
 
 class LabelColor {
-  /// The background color represented as hex string #RRGGBB (ex #000000). This
-  /// field is required in order to set the color of a label. Only the following
-  /// predefined set of color values are allowed: \#000000, #434343, #666666,
-  /// #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165,
-  /// #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1,
-  /// #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3,
-  /// #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83,
-  /// #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960,
-  /// #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49,
-  /// #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831,
-  /// #076239, #1a764d, #1c4587, #41236d, #83334c \#464646, #e7e7e7, #0d3472,
-  /// #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a,
-  /// #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07,
-  /// #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb,
-  /// #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac,
-  /// #094228, #42d692, #16a765
+  /// The background color represented as hex string #RRGGBB (ex #000000).
+  ///
+  /// This field is required in order to set the color of a label. Only the
+  /// following predefined set of color values are allowed: \#000000, #434343,
+  /// #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47,
+  /// #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7,
+  /// #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2,
+  /// #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b,
+  /// #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041,
+  /// #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933,
+  /// #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21,
+  /// #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c \#464646, #e7e7e7,
+  /// #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0,
+  /// #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983,
+  /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7,
+  /// #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde,
+  /// #cca6ac, #094228, #42d692, #16a765
   core.String backgroundColor;
 
-  /// The text color of the label, represented as hex string. This field is
-  /// required in order to set the color of a label. Only the following
-  /// predefined set of color values are allowed: \#000000, #434343, #666666,
-  /// #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165,
-  /// #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1,
-  /// #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3,
-  /// #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83,
-  /// #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960,
-  /// #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49,
-  /// #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831,
-  /// #076239, #1a764d, #1c4587, #41236d, #83334c \#464646, #e7e7e7, #0d3472,
-  /// #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a,
-  /// #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07,
-  /// #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb,
-  /// #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac,
-  /// #094228, #42d692, #16a765
+  /// The text color of the label, represented as hex string.
+  ///
+  /// This field is required in order to set the color of a label. Only the
+  /// following predefined set of color values are allowed: \#000000, #434343,
+  /// #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47,
+  /// #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7,
+  /// #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2,
+  /// #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b,
+  /// #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041,
+  /// #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933,
+  /// #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21,
+  /// #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c \#464646, #e7e7e7,
+  /// #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0,
+  /// #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983,
+  /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7,
+  /// #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde,
+  /// #cca6ac, #094228, #42d692, #16a765
   core.String textColor;
 
   LabelColor();
@@ -5609,19 +5669,23 @@ class LabelColor {
   }
 }
 
-/// Language settings for an account. These settings correspond to the "Language
-/// settings" feature in the web interface.
+/// Language settings for an account.
+///
+/// These settings correspond to the "Language settings" feature in the web
+/// interface.
 class LanguageSettings {
   /// The language to display Gmail in, formatted as an RFC 3066 Language Tag
   /// (for example `en-GB`, `fr` or `ja` for British English, French, or
-  /// Japanese respectively). The set of languages supported by Gmail evolves
-  /// over time, so please refer to the "Language" dropdown in the Gmail
-  /// settings for all available options, as described in the language settings
-  /// help article. A table of sample values is also provided in the Managing
-  /// Language Settings guide Not all Gmail clients can display the same set of
-  /// languages. In the case that a user's display language is not available for
-  /// use on a particular client, said client automatically chooses to display
-  /// in the closest supported variant (or a reasonable default).
+  /// Japanese respectively).
+  ///
+  /// The set of languages supported by Gmail evolves over time, so please refer
+  /// to the "Language" dropdown in the Gmail settings for all available
+  /// options, as described in the language settings help article. A table of
+  /// sample values is also provided in the Managing Language Settings guide Not
+  /// all Gmail clients can display the same set of languages. In the case that
+  /// a user's display language is not available for use on a particular client,
+  /// said client automatically chooses to display in the closest supported
+  /// variant (or a reasonable default).
   core.String displayLanguage;
 
   LanguageSettings();
@@ -5643,8 +5707,9 @@ class LanguageSettings {
 
 /// Response for the ListDelegates method.
 class ListDelegatesResponse {
-  /// List of the user's delegates (with any verification status). If an account
-  /// doesn't have delegates, this field doesn't appear.
+  /// List of the user's delegates (with any verification status).
+  ///
+  /// If an account doesn't have delegates, this field doesn't appear.
   core.List<Delegate> delegates;
 
   ListDelegatesResponse();
@@ -5668,9 +5733,11 @@ class ListDelegatesResponse {
 }
 
 class ListDraftsResponse {
-  /// List of drafts. Note that the `Message` property in each `Draft` resource
-  /// only contains an `id` and a `threadId`. The messages.get method can fetch
-  /// additional message details.
+  /// List of drafts.
+  ///
+  /// Note that the `Message` property in each `Draft` resource only contains an
+  /// `id` and a `threadId`. The messages.get method can fetch additional
+  /// message details.
   core.List<Draft> drafts;
 
   /// Token to retrieve the next page of results in the list.
@@ -5763,8 +5830,10 @@ class ListForwardingAddressesResponse {
 }
 
 class ListHistoryResponse {
-  /// List of history records. Any `messages` contained in the response will
-  /// typically only have `id` and `threadId` fields populated.
+  /// List of history records.
+  ///
+  /// Any `messages` contained in the response will typically only have `id` and
+  /// `threadId` fields populated.
   core.List<History> history;
 
   /// The ID of the mailbox's current history record.
@@ -5806,9 +5875,11 @@ class ListHistoryResponse {
 }
 
 class ListLabelsResponse {
-  /// List of labels. Note that each label resource only contains an `id`,
-  /// `name`, `messageListVisibility`, `labelListVisibility`, and `type`. The
-  /// labels.get method can fetch additional label details.
+  /// List of labels.
+  ///
+  /// Note that each label resource only contains an `id`, `name`,
+  /// `messageListVisibility`, `labelListVisibility`, and `type`. The labels.get
+  /// method can fetch additional label details.
   core.List<Label> labels;
 
   ListLabelsResponse();
@@ -5832,9 +5903,10 @@ class ListLabelsResponse {
 }
 
 class ListMessagesResponse {
-  /// List of messages. Note that each message resource contains only an `id`
-  /// and a `threadId`. Additional message details can be fetched using the
-  /// messages.get method.
+  /// List of messages.
+  ///
+  /// Note that each message resource contains only an `id` and a `threadId`.
+  /// Additional message details can be fetched using the messages.get method.
   core.List<Message> messages;
 
   /// Token to retrieve the next page of results in the list.
@@ -5931,9 +6003,11 @@ class ListThreadsResponse {
   /// Estimated total number of results.
   core.int resultSizeEstimate;
 
-  /// List of threads. Note that each thread resource does not contain a list of
-  /// `messages`. The list of `messages` for a given thread can be fetched using
-  /// the threads.get method.
+  /// List of threads.
+  ///
+  /// Note that each thread resource does not contain a list of `messages`. The
+  /// list of `messages` for a given thread can be fetched using the threads.get
+  /// method.
   core.List<Thread> threads;
 
   ListThreadsResponse();
@@ -5977,10 +6051,12 @@ class Message {
   core.String id;
 
   /// The internal message creation timestamp (epoch ms), which determines
-  /// ordering in the inbox. For normal SMTP-received email, this represents the
-  /// time the message was originally accepted by Google, which is more reliable
-  /// than the `Date` header. However, for API-migrated mail, it can be
-  /// configured by client to be based on the `Date` header.
+  /// ordering in the inbox.
+  ///
+  /// For normal SMTP-received email, this represents the time the message was
+  /// originally accepted by Google, which is more reliable than the `Date`
+  /// header. However, for API-migrated mail, it can be configured by client to
+  /// be based on the `Date` header.
   core.String internalDate;
 
   /// List of IDs of labels applied to this message.
@@ -5990,7 +6066,9 @@ class Message {
   MessagePart payload;
 
   /// The entire email message in an RFC 2822 formatted and base64url encoded
-  /// string. Returned in `messages.get` and `drafts.get` responses when the
+  /// string.
+  ///
+  /// Returned in `messages.get` and `drafts.get` responses when the
   /// `format=RAW` parameter is supplied.
   core.String raw;
   core.List<core.int> get rawAsBytes => convert.base64.decode(raw);
@@ -6006,12 +6084,14 @@ class Message {
   /// A short part of the message text.
   core.String snippet;
 
-  /// The ID of the thread the message belongs to. To add a message or draft to
-  /// a thread, the following criteria must be met: 1. The requested `threadId`
-  /// must be specified on the `Message` or `Draft.Message` you supply with your
-  /// request. 2. The `References` and `In-Reply-To` headers must be set in
-  /// compliance with the [RFC 2822](https://tools.ietf.org/html/rfc2822)
-  /// standard. 3. The `Subject` headers must match.
+  /// The ID of the thread the message belongs to.
+  ///
+  /// To add a message or draft to a thread, the following criteria must be met:
+  /// 1. The requested `threadId` must be specified on the `Message` or
+  /// `Draft.Message` you supply with your request. 2. The `References` and
+  /// `In-Reply-To` headers must be set in compliance with the [RFC
+  /// 2822](https://tools.ietf.org/html/rfc2822) standard. 3. The `Subject`
+  /// headers must match.
   core.String threadId;
 
   Message();
@@ -6088,13 +6168,16 @@ class MessagePart {
   /// message parts.
   MessagePartBody body;
 
-  /// The filename of the attachment. Only present if this message part
-  /// represents an attachment.
+  /// The filename of the attachment.
+  ///
+  /// Only present if this message part represents an attachment.
   core.String filename;
 
-  /// List of headers on this message part. For the top-level message part,
-  /// representing the entire message payload, it will contain the standard RFC
-  /// 2822 email headers such as `To`, `From`, and `Subject`.
+  /// List of headers on this message part.
+  ///
+  /// For the top-level message part, representing the entire message payload,
+  /// it will contain the standard RFC 2822 email headers such as `To`, `From`,
+  /// and `Subject`.
   core.List<MessagePartHeader> headers;
 
   /// The MIME type of the message part.
@@ -6103,10 +6186,11 @@ class MessagePart {
   /// The immutable ID of the message part.
   core.String partId;
 
-  /// The child MIME message parts of this part. This only applies to container
-  /// MIME message parts, for example `multipart / * `. For non- container MIME
-  /// message part types, such as `text/plain`, this field is empty. For more
-  /// information, see RFC 1521.
+  /// The child MIME message parts of this part.
+  ///
+  /// This only applies to container MIME message parts, for example `multipart
+  /// / * `. For non- container MIME message part types, such as `text/plain`,
+  /// this field is empty. For more information, see RFC 1521.
   core.List<MessagePart> parts;
 
   MessagePart();
@@ -6166,15 +6250,17 @@ class MessagePart {
 /// The body of a single MIME message part.
 class MessagePartBody {
   /// When present, contains the ID of an external attachment that can be
-  /// retrieved in a separate `messages.attachments.get` request. When not
-  /// present, the entire content of the message part body is contained in the
-  /// data field.
+  /// retrieved in a separate `messages.attachments.get` request.
+  ///
+  /// When not present, the entire content of the message part body is contained
+  /// in the data field.
   core.String attachmentId;
 
-  /// The body data of a MIME message part as a base64url encoded string. May be
-  /// empty for MIME container types that have no message body or when the body
-  /// data is sent as a separate attachment. An attachment ID is present if the
-  /// body data is contained in a separate attachment.
+  /// The body data of a MIME message part as a base64url encoded string.
+  ///
+  /// May be empty for MIME container types that have no message body or when
+  /// the body data is sent as a separate attachment. An attachment ID is
+  /// present if the body data is contained in a separate attachment.
   core.String data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
@@ -6216,11 +6302,14 @@ class MessagePartBody {
 }
 
 class MessagePartHeader {
-  /// The name of the header before the `:` separator. For example, `To`.
+  /// The name of the header before the `:` separator.
+  ///
+  /// For example, `To`.
   core.String name;
 
-  /// The value of the header after the `:` separator. For example,
-  /// `someuser@example.com`.
+  /// The value of the header after the `:` separator.
+  ///
+  /// For example, `someuser@example.com`.
   core.String value;
 
   MessagePartHeader();
@@ -6410,10 +6499,12 @@ class Profile {
 
 /// Settings associated with a send-as alias, which can be either the primary
 /// login address associated with the account or a custom "from" address.
+///
 /// Send-as aliases correspond to the "Send Mail As" feature in the web
 /// interface.
 class SendAs {
   /// A name that appears in the "From:" header for mail sent using this alias.
+  ///
   /// For custom "from" addresses, when this is empty, Gmail will populate the
   /// "From:" header with the name that is used for the primary address
   /// associated with the account. If the admin has disabled the ability for
@@ -6423,24 +6514,30 @@ class SendAs {
 
   /// Whether this address is selected as the default "From:" address in
   /// situations such as composing a new message or sending a vacation
-  /// auto-reply. Every Gmail account has exactly one default send-as address,
-  /// so the only legal value that clients may write to this field is `true`.
-  /// Changing this from `false` to `true` for an address will result in this
-  /// field becoming `false` for the other previous default address.
+  /// auto-reply.
+  ///
+  /// Every Gmail account has exactly one default send-as address, so the only
+  /// legal value that clients may write to this field is `true`. Changing this
+  /// from `false` to `true` for an address will result in this field becoming
+  /// `false` for the other previous default address.
   core.bool isDefault;
 
   /// Whether this address is the primary address used to login to the account.
+  ///
   /// Every Gmail account has exactly one primary address, and it cannot be
   /// deleted from the collection of send-as aliases. This field is read-only.
   core.bool isPrimary;
 
   /// An optional email address that is included in a "Reply-To:" header for
-  /// mail sent using this alias. If this is empty, Gmail will not generate a
-  /// "Reply-To:" header.
+  /// mail sent using this alias.
+  ///
+  /// If this is empty, Gmail will not generate a "Reply-To:" header.
   core.String replyToAddress;
 
   /// The email address that appears in the "From:" header for mail sent using
-  /// this alias. This is read-only for all operations except create.
+  /// this alias.
+  ///
+  /// This is read-only for all operations except create.
   core.String sendAsEmail;
 
   /// An optional HTML signature that is included in messages composed with this
@@ -6448,17 +6545,23 @@ class SendAs {
   core.String signature;
 
   /// An optional SMTP service that will be used as an outbound relay for mail
-  /// sent using this alias. If this is empty, outbound mail will be sent
-  /// directly from Gmail's servers to the destination SMTP service. This
-  /// setting only applies to custom "from" aliases.
+  /// sent using this alias.
+  ///
+  /// If this is empty, outbound mail will be sent directly from Gmail's servers
+  /// to the destination SMTP service. This setting only applies to custom
+  /// "from" aliases.
   SmtpMsa smtpMsa;
 
   /// Whether Gmail should treat this address as an alias for the user's primary
-  /// email address. This setting only applies to custom "from" aliases.
+  /// email address.
+  ///
+  /// This setting only applies to custom "from" aliases.
   core.bool treatAsAlias;
 
   /// Indicates whether this address has been verified for use as a send-as
-  /// alias. Read-only. This setting only applies to custom "from" aliases.
+  /// alias.
+  ///
+  /// Read-only. This setting only applies to custom "from" aliases.
   /// Possible string values are:
   /// - "verificationStatusUnspecified" : Unspecified verification status.
   /// - "accepted" : The address is ready to use as a send-as alias.
@@ -6549,15 +6652,19 @@ class SmimeInfo {
   core.String issuerCn;
 
   /// PEM formatted X509 concatenated certificate string (standard base64
-  /// encoding). Format used for returning key, which includes public key as
-  /// well as certificate chain (not private key).
+  /// encoding).
+  ///
+  /// Format used for returning key, which includes public key as well as
+  /// certificate chain (not private key).
   core.String pem;
 
   /// PKCS#12 format containing a single private/public key pair and certificate
-  /// chain. This format is only accepted from client for creating a new
-  /// SmimeInfo and is never returned, because the private key is not intended
-  /// to be exported. PKCS#12 may be encrypted, in which case
-  /// encryptedKeyPassword should be set appropriately.
+  /// chain.
+  ///
+  /// This format is only accepted from client for creating a new SmimeInfo and
+  /// is never returned, because the private key is not intended to be exported.
+  /// PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
+  /// appropriately.
   core.String pkcs12;
   core.List<core.int> get pkcs12AsBytes => convert.base64.decode(pkcs12);
 
@@ -6621,19 +6728,26 @@ class SmimeInfo {
 
 /// Configuration for communication with an SMTP service.
 class SmtpMsa {
-  /// The hostname of the SMTP service. Required.
+  /// The hostname of the SMTP service.
+  ///
+  /// Required.
   core.String host;
 
   /// The password that will be used for authentication with the SMTP service.
+  ///
   /// This is a write-only field that can be specified in requests to create or
   /// update SendAs settings; it is never populated in responses.
   core.String password;
 
-  /// The port of the SMTP service. Required.
+  /// The port of the SMTP service.
+  ///
+  /// Required.
   core.int port;
 
   /// The protocol that will be used to secure communication with the SMTP
-  /// service. Required.
+  /// service.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "securityModeUnspecified" : Unspecified security mode.
   /// - "none" : Communication with the remote SMTP service is unsecured.
@@ -6644,6 +6758,7 @@ class SmtpMsa {
   core.String securityMode;
 
   /// The username that will be used for authentication with the SMTP service.
+  ///
   /// This is a write-only field that can be specified in requests to create or
   /// update SendAs settings; it is never populated in responses.
   core.String username;
@@ -6741,30 +6856,38 @@ class Thread {
   }
 }
 
-/// Vacation auto-reply settings for an account. These settings correspond to
-/// the "Vacation responder" feature in the web interface.
+/// Vacation auto-reply settings for an account.
+///
+/// These settings correspond to the "Vacation responder" feature in the web
+/// interface.
 class VacationSettings {
   /// Flag that controls whether Gmail automatically replies to messages.
   core.bool enableAutoReply;
 
-  /// An optional end time for sending auto-replies (epoch ms). When this is
-  /// specified, Gmail will automatically reply only to messages that it
-  /// receives before the end time. If both `startTime` and `endTime` are
-  /// specified, `startTime` must precede `endTime`.
+  /// An optional end time for sending auto-replies (epoch ms).
+  ///
+  /// When this is specified, Gmail will automatically reply only to messages
+  /// that it receives before the end time. If both `startTime` and `endTime`
+  /// are specified, `startTime` must precede `endTime`.
   core.String endTime;
 
-  /// Response body in HTML format. Gmail will sanitize the HTML before storing
-  /// it. If both `response_body_plain_text` and `response_body_html` are
-  /// specified, `response_body_html` will be used.
+  /// Response body in HTML format.
+  ///
+  /// Gmail will sanitize the HTML before storing it. If both
+  /// `response_body_plain_text` and `response_body_html` are specified,
+  /// `response_body_html` will be used.
   core.String responseBodyHtml;
 
-  /// Response body in plain text format. If both `response_body_plain_text` and
-  /// `response_body_html` are specified, `response_body_html` will be used.
+  /// Response body in plain text format.
+  ///
+  /// If both `response_body_plain_text` and `response_body_html` are specified,
+  /// `response_body_html` will be used.
   core.String responseBodyPlainText;
 
-  /// Optional text to prepend to the subject line in vacation responses. In
-  /// order to enable auto-replies, either the response subject or the response
-  /// body must be nonempty.
+  /// Optional text to prepend to the subject line in vacation responses.
+  ///
+  /// In order to enable auto-replies, either the response subject or the
+  /// response body must be nonempty.
   core.String responseSubject;
 
   /// Flag that determines whether responses are sent to recipients who are not
@@ -6772,14 +6895,16 @@ class VacationSettings {
   core.bool restrictToContacts;
 
   /// Flag that determines whether responses are sent to recipients who are
-  /// outside of the user's domain. This feature is only available for G Suite
-  /// users.
+  /// outside of the user's domain.
+  ///
+  /// This feature is only available for G Suite users.
   core.bool restrictToDomain;
 
-  /// An optional start time for sending auto-replies (epoch ms). When this is
-  /// specified, Gmail will automatically reply only to messages that it
-  /// receives after the start time. If both `startTime` and `endTime` are
-  /// specified, `startTime` must precede `endTime`.
+  /// An optional start time for sending auto-replies (epoch ms).
+  ///
+  /// When this is specified, Gmail will automatically reply only to messages
+  /// that it receives after the start time. If both `startTime` and `endTime`
+  /// are specified, `startTime` must precede `endTime`.
   core.String startTime;
 
   VacationSettings();
@@ -6851,18 +6976,22 @@ class WatchRequest {
   /// relating to labelIds specified.
   core.String labelFilterAction;
 
-  /// List of label_ids to restrict notifications about. By default, if
-  /// unspecified, all changes are pushed out. If specified then dictates which
-  /// labels are required for a push notification to be generated.
+  /// List of label_ids to restrict notifications about.
+  ///
+  /// By default, if unspecified, all changes are pushed out. If specified then
+  /// dictates which labels are required for a push notification to be
+  /// generated.
   core.List<core.String> labelIds;
 
   /// A fully qualified Google Cloud Pub/Sub API topic name to publish the
-  /// events to. This topic name **must** already exist in Cloud Pub/Sub and you
-  /// **must** have already granted gmail "publish" permission on it. For
-  /// example, "projects/my-project-identifier/topics/my-topic-name" (using the
-  /// Cloud Pub/Sub "v1" topic naming format). Note that the
-  /// "my-project-identifier" portion must exactly match your Google developer
-  /// project id (the one executing this watch request).
+  /// events to.
+  ///
+  /// This topic name **must** already exist in Cloud Pub/Sub and you **must**
+  /// have already granted gmail "publish" permission on it. For example,
+  /// "projects/my-project-identifier/topics/my-topic-name" (using the Cloud
+  /// Pub/Sub "v1" topic naming format). Note that the "my-project-identifier"
+  /// portion must exactly match your Google developer project id (the one
+  /// executing this watch request).
   core.String topicName;
 
   WatchRequest();
@@ -6899,7 +7028,9 @@ class WatchRequest {
 /// Push notification watch response.
 class WatchResponse {
   /// When Gmail will stop sending notifications for mailbox updates (epoch
-  /// millis). Call `watch` again before this time to renew the watch.
+  /// millis).
+  ///
+  /// Call `watch` again before this time to renew the watch.
   core.String expiration;
 
   /// The ID of the mailbox's current history record.

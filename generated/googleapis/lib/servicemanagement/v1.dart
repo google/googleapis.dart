@@ -81,9 +81,10 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -227,12 +228,13 @@ class ServicesResource {
 
   ServicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new managed service. A managed service is immutable, and is
-  /// subject to mandatory 30-day data retention. You cannot move a service or
-  /// recreate it within 30 days after deletion. One producer project can own no
-  /// more than 500 services. For security and reliability purposes, a
-  /// production service should be hosted in a dedicated producer project.
-  /// Operation
+  /// Creates a new managed service.
+  ///
+  /// A managed service is immutable, and is subject to mandatory 30-day data
+  /// retention. You cannot move a service or recreate it within 30 days after
+  /// deletion. One producer project can own no more than 500 services. For
+  /// security and reliability purposes, a production service should be hosted
+  /// in a dedicated producer project. Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -282,10 +284,12 @@ class ServicesResource {
     );
   }
 
-  /// Deletes a managed service. This method will change the service to the
-  /// `Soft-Delete` state for 30 days. Within this period, service producers may
-  /// call UndeleteService to restore the service. After 30 days, the service
-  /// will be permanently deleted. Operation
+  /// Deletes a managed service.
+  ///
+  /// This method will change the service to the `Soft-Delete` state for 30
+  /// days. Within this period, service producers may call UndeleteService to
+  /// restore the service. After 30 days, the service will be permanently
+  /// deleted. Operation
   ///
   /// Request parameters:
   ///
@@ -337,9 +341,10 @@ class ServicesResource {
     );
   }
 
-  /// Enables a service for a project, so it can be used for the project. See
-  /// [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for more
-  /// information. Operation
+  /// Enables a service for a project, so it can be used for the project.
+  ///
+  /// See [Cloud Auth Guide](https://cloud.google.com/docs/authentication) for
+  /// more information. Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -403,10 +408,11 @@ class ServicesResource {
   /// GenerateConfigReportRequest.old_value is specified,
   /// GenerateConfigReportRequest will contain a single ChangeReport based on
   /// the comparison between GenerateConfigReportRequest.new_value and
-  /// GenerateConfigReportRequest.old_value. If
-  /// GenerateConfigReportRequest.old_value is not specified, this method will
-  /// compare GenerateConfigReportRequest.new_value with the last pushed service
-  /// configuration.
+  /// GenerateConfigReportRequest.old_value.
+  ///
+  /// If GenerateConfigReportRequest.old_value is not specified, this method
+  /// will compare GenerateConfigReportRequest.new_value with the last pushed
+  /// service configuration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -457,8 +463,9 @@ class ServicesResource {
     );
   }
 
-  /// Gets a managed service. Authentication is required unless the service is
-  /// public.
+  /// Gets a managed service.
+  ///
+  /// Authentication is required unless the service is public.
   ///
   /// Request parameters:
   ///
@@ -586,8 +593,10 @@ class ServicesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -648,12 +657,13 @@ class ServicesResource {
     );
   }
 
-  /// Lists managed services. Returns all public services. For authenticated
-  /// users, also returns all services the calling user has
-  /// "servicemanagement.services.get" permission for. **BETA:** If the caller
-  /// specifies the `consumer_id`, it returns only the services enabled on the
-  /// consumer. The `consumer_id` must have the format of
-  /// "project:{PROJECT-ID}".
+  /// Lists managed services.
+  ///
+  /// Returns all public services. For authenticated users, also returns all
+  /// services the calling user has "servicemanagement.services.get" permission
+  /// for. **BETA:** If the caller specifies the `consumer_id`, it returns only
+  /// the services enabled on the consumer. The `consumer_id` must have the
+  /// format of "project:{PROJECT-ID}".
   ///
   /// Request parameters:
   ///
@@ -726,9 +736,10 @@ class ServicesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -789,10 +800,11 @@ class ServicesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -855,10 +867,11 @@ class ServicesResource {
     );
   }
 
-  /// Revives a previously deleted managed service. The method restores the
-  /// service using the configuration at the time the service was deleted. The
-  /// target service must exist and must have been deleted within the last 30
-  /// days. Operation
+  /// Revives a previously deleted managed service.
+  ///
+  /// The method restores the service using the configuration at the time the
+  /// service was deleted. The target service must exist and must have been
+  /// deleted within the last 30 days. Operation
   ///
   /// Request parameters:
   ///
@@ -918,8 +931,9 @@ class ServicesConfigsResource {
 
   ServicesConfigsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new service configuration (version) for a managed service. This
-  /// method only stores the service configuration. To roll out the service
+  /// Creates a new service configuration (version) for a managed service.
+  ///
+  /// This method only stores the service configuration. To roll out the service
   /// configuration to backend systems please call CreateServiceRollout. Only
   /// the 100 most recent service configurations and ones referenced by existing
   /// rollouts are kept for each service. The rest will be deleted eventually.
@@ -1129,10 +1143,12 @@ class ServicesConfigsResource {
 
   /// Creates a new service configuration (version) for a managed service based
   /// on user-supplied configuration source files (for example: OpenAPI
-  /// Specification). This method stores the source configurations as well as
-  /// the generated service configuration. To rollout the service configuration
-  /// to other services, please call CreateServiceRollout. Only the 100 most
-  /// recent configuration sources and ones referenced by existing service
+  /// Specification).
+  ///
+  /// This method stores the source configurations as well as the generated
+  /// service configuration. To rollout the service configuration to other
+  /// services, please call CreateServiceRollout. Only the 100 most recent
+  /// configuration sources and ones referenced by existing service
   /// configurtions are kept for each service. The rest will be deleted
   /// eventually. Operation
   ///
@@ -1200,8 +1216,10 @@ class ServicesConsumersResource {
 
   ServicesConsumersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1262,9 +1280,10 @@ class ServicesConsumersResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1325,10 +1344,11 @@ class ServicesConsumersResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -1397,15 +1417,16 @@ class ServicesRolloutsResource {
 
   ServicesRolloutsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new service configuration rollout. Based on rollout, the Google
-  /// Service Management will roll out the service configurations to different
-  /// backend services. For example, the logging configuration will be pushed to
-  /// Google Cloud Logging. Please note that any previous pending and running
-  /// Rollouts and associated Operations will be automatically cancelled so that
-  /// the latest Rollout will not be blocked by previous Rollouts. Only the 100
-  /// most recent (in any state) and the last 10 successful (if not already part
-  /// of the set of 100 most recent) rollouts are kept for each service. The
-  /// rest will be deleted eventually. Operation
+  /// Creates a new service configuration rollout.
+  ///
+  /// Based on rollout, the Google Service Management will roll out the service
+  /// configurations to different backend services. For example, the logging
+  /// configuration will be pushed to Google Cloud Logging. Please note that any
+  /// previous pending and running Rollouts and associated Operations will be
+  /// automatically cancelled so that the latest Rollout will not be blocked by
+  /// previous Rollouts. Only the 100 most recent (in any state) and the last 10
+  /// successful (if not already part of the set of 100 most recent) rollouts
+  /// are kept for each service. The rest will be deleted eventually. Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -1631,19 +1652,22 @@ class Advice {
   }
 }
 
-/// Api is a light-weight descriptor for an API Interface. Interfaces are also
-/// described as "protocol buffer services" in some contexts, such as by the
-/// "service" keyword in a .proto file, but they are different from API
-/// Services, which represent a concrete implementation of an interface as
-/// opposed to simply a description of methods and bindings. They are also
-/// sometimes simply referred to as "APIs" in other contexts, such as the name
-/// of this message itself. See https://cloud.google.com/apis/design/glossary
-/// for detailed terminology.
+/// Api is a light-weight descriptor for an API Interface.
+///
+/// Interfaces are also described as "protocol buffer services" in some
+/// contexts, such as by the "service" keyword in a .proto file, but they are
+/// different from API Services, which represent a concrete implementation of an
+/// interface as opposed to simply a description of methods and bindings. They
+/// are also sometimes simply referred to as "APIs" in other contexts, such as
+/// the name of this message itself. See
+/// https://cloud.google.com/apis/design/glossary for detailed terminology.
 class Api {
   /// The methods of this interface, in unspecified order.
   core.List<Method> methods;
 
-  /// Included interfaces. See Mixin.
+  /// Included interfaces.
+  ///
+  /// See Mixin.
   core.List<Mixin> mixins;
 
   /// The fully qualified name of this interface, including package name
@@ -1663,20 +1687,22 @@ class Api {
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
   core.String syntax;
 
-  /// A version string for this interface. If specified, must have the form
-  /// `major-version.minor-version`, as in `1.10`. If the minor version is
-  /// omitted, it defaults to zero. If the entire version field is empty, the
-  /// major version is derived from the package name, as outlined below. If the
-  /// field is not empty, the version in the package name will be verified to be
-  /// consistent with what is provided here. The versioning schema uses
-  /// [semantic versioning](http://semver.org) where the major version number
-  /// indicates a breaking change and the minor version an additive,
-  /// non-breaking change. Both version numbers are signals to users what to
-  /// expect from different versions, and should be carefully chosen based on
-  /// the product plan. The major version is also reflected in the package name
-  /// of the interface, which must end in `v`, as in `google.feature.v1`. For
-  /// major versions 0 and 1, the suffix can be omitted. Zero major versions
-  /// must only be used for experimental, non-GA interfaces.
+  /// A version string for this interface.
+  ///
+  /// If specified, must have the form `major-version.minor-version`, as in
+  /// `1.10`. If the minor version is omitted, it defaults to zero. If the
+  /// entire version field is empty, the major version is derived from the
+  /// package name, as outlined below. If the field is not empty, the version in
+  /// the package name will be verified to be consistent with what is provided
+  /// here. The versioning schema uses [semantic versioning](http://semver.org)
+  /// where the major version number indicates a breaking change and the minor
+  /// version an additive, non-breaking change. Both version numbers are signals
+  /// to users what to expect from different versions, and should be carefully
+  /// chosen based on the product plan. The major version is also reflected in
+  /// the package name of the interface, which must end in `v`, as in
+  /// `google.feature.v1`. For major versions 0 and 1, the suffix can be
+  /// omitted. Zero major versions must only be used for experimental, non-GA
+  /// interfaces.
   core.String version;
 
   Api();
@@ -1742,11 +1768,12 @@ class Api {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -1762,9 +1789,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1794,14 +1822,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -1843,6 +1874,7 @@ class AuditLogConfig {
 class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
+  ///
   /// that are allowed to access. A JWT containing any of these audiences will
   /// be accepted. When this setting is absent, JWTs with audiences: -
   /// "https://[service.name]/[google.protobuf.Api.name]" -
@@ -1856,21 +1888,27 @@ class AuthProvider {
   core.String audiences;
 
   /// Redirect URL if JWT token is required but not present or is expired.
+  ///
   /// Implement authorizationUrl of securityDefinitions in OpenAPI spec.
   core.String authorizationUrl;
 
-  /// The unique identifier of the auth provider. It will be referred to by
-  /// `AuthRequirement.provider_id`. Example: "bookstore_auth".
+  /// The unique identifier of the auth provider.
+  ///
+  /// It will be referred to by `AuthRequirement.provider_id`. Example:
+  /// "bookstore_auth".
   core.String id;
 
-  /// Identifies the principal that issued the JWT. See
+  /// Identifies the principal that issued the JWT.
+  ///
+  /// See
   /// https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1
   /// Usually a URL or an email address. Example: https://securetoken.google.com
   /// Example: 1234567-compute@developer.gserviceaccount.com
   core.String issuer;
 
-  /// URL of the provider's public key set to validate signature of the JWT. See
-  /// [OpenID
+  /// URL of the provider's public key set to validate signature of the JWT.
+  ///
+  /// See [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document: - can be retrieved from [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
@@ -1879,14 +1917,16 @@ class AuthProvider {
   /// https://www.googleapis.com/oauth2/v1/certs
   core.String jwksUri;
 
-  /// Defines the locations to extract the JWT. JWT locations can be either from
-  /// HTTP headers or URL query parameters. The rule is that the first match
-  /// wins. The checking order is: checking all headers first, then URL query
-  /// parameters. If not specified, default to use following 3 locations: 1)
-  /// Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query
-  /// parameter Default locations can be specified as followings: jwt_locations:
-  /// - header: Authorization value_prefix: "Bearer " - header:
-  /// x-goog-iap-jwt-assertion - query: access_token
+  /// Defines the locations to extract the JWT.
+  ///
+  /// JWT locations can be either from HTTP headers or URL query parameters. The
+  /// rule is that the first match wins. The checking order is: checking all
+  /// headers first, then URL query parameters. If not specified, default to use
+  /// following 3 locations: 1) Authorization: Bearer 2)
+  /// x-goog-iap-jwt-assertion 3) access_token query parameter Default locations
+  /// can be specified as followings: jwt_locations: - header: Authorization
+  /// value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query:
+  /// access_token
   core.List<JwtLocation> jwtLocations;
 
   AuthProvider();
@@ -1945,7 +1985,9 @@ class AuthProvider {
 /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
-  /// implemented and accepted in all the runtime components. The list of JWT
+  /// implemented and accepted in all the runtime components.
+  ///
+  /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
   /// that are allowed to access. A JWT containing any of these audiences will
   /// be accepted. When this setting is absent, only JWTs with audience
@@ -1957,7 +1999,9 @@ class AuthRequirement {
   /// bookstore_web.apps.googleusercontent.com
   core.String audiences;
 
-  /// id from authentication provider. Example: provider_id: bookstore_auth
+  /// id from authentication provider.
+  ///
+  /// Example: provider_id: bookstore_auth
   core.String providerId;
 
   AuthRequirement();
@@ -1984,6 +2028,7 @@ class AuthRequirement {
 }
 
 /// `Authentication` defines the authentication configuration for an API.
+///
 /// Example for an API targeted for external use: name: calendar.googleapis.com
 /// authentication: providers: - id: google_calendar_auth jwks_uri:
 /// https://www.googleapis.com/oauth2/v1/certs issuer:
@@ -1994,6 +2039,7 @@ class Authentication {
   core.List<AuthProvider> providers;
 
   /// A list of authentication rules that apply to individual API methods.
+  ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<AuthenticationRule> rules;
 
@@ -2026,11 +2072,13 @@ class Authentication {
   }
 }
 
-/// Authentication rules for the service. By default, if a method has any
-/// authentication requirements, every request must include a valid credential
-/// matching one of the requirements. It's an error to include more than one
-/// kind of credential in a single request. If a method doesn't have any auth
-/// requirements, request credentials will be ignored.
+/// Authentication rules for the service.
+///
+/// By default, if a method has any authentication requirements, every request
+/// must include a valid credential matching one of the requirements. It's an
+/// error to include more than one kind of credential in a single request. If a
+/// method doesn't have any auth requirements, request credentials will be
+/// ignored.
 class AuthenticationRule {
   /// If true, the service accepts API keys without any other credential.
   core.bool allowWithoutCredential;
@@ -2041,8 +2089,9 @@ class AuthenticationRule {
   /// Requirements for additional authentication providers.
   core.List<AuthRequirement> requirements;
 
-  /// Selects the methods to which this rule applies. Refer to selector for
-  /// syntax details.
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
   core.String selector;
 
   AuthenticationRule();
@@ -2088,6 +2137,7 @@ class AuthenticationRule {
 /// `Backend` defines the backend configuration for a service.
 class Backend {
   /// A list of API backend rules that apply to individual API methods.
+  ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<BackendRule> rules;
 
@@ -2113,37 +2163,45 @@ class Backend {
 
 /// A backend rule provides configuration for an individual API element.
 class BackendRule {
-  /// The address of the API backend. The scheme is used to determine the
-  /// backend protocol and security. The following schemes are accepted: SCHEME
-  /// PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc:// gRPC None
-  /// grpcs:// gRPC TLS It is recommended to explicitly include a scheme.
-  /// Leaving out the scheme may cause constrasting behaviors across platforms.
-  /// If the port is unspecified, the default is: - 80 for schemes without TLS -
-  /// 443 for schemes with TLS For HTTP backends, use protocol to specify the
-  /// protocol version.
+  /// The address of the API backend.
+  ///
+  /// The scheme is used to determine the backend protocol and security. The
+  /// following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None
+  /// https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to
+  /// explicitly include a scheme. Leaving out the scheme may cause constrasting
+  /// behaviors across platforms. If the port is unspecified, the default is: -
+  /// 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends,
+  /// use protocol to specify the protocol version.
   core.String address;
 
-  /// The number of seconds to wait for a response from a request. The default
-  /// varies based on the request protocol and deployment environment.
+  /// The number of seconds to wait for a response from a request.
+  ///
+  /// The default varies based on the request protocol and deployment
+  /// environment.
   core.double deadline;
 
   /// When disable_auth is true, a JWT ID token won't be generated and the
-  /// original "Authorization" HTTP header will be preserved. If the header is
-  /// used to carry the original token and is expected by the backend, this
-  /// field must be set to true to preserve the header.
+  /// original "Authorization" HTTP header will be preserved.
+  ///
+  /// If the header is used to carry the original token and is expected by the
+  /// backend, this field must be set to true to preserve the header.
   core.bool disableAuth;
 
   /// The JWT audience is used when generating a JWT ID token for the backend.
+  ///
   /// This ID token will be added in the HTTP "authorization" header, and sent
   /// to the backend.
   core.String jwtAudience;
 
-  /// Minimum deadline in seconds needed for this method. Calls having deadline
-  /// value lower than this will be rejected.
+  /// Minimum deadline in seconds needed for this method.
+  ///
+  /// Calls having deadline value lower than this will be rejected.
   core.double minDeadline;
 
   /// The number of seconds to wait for the completion of a long running
-  /// operation. The default is no deadline.
+  /// operation.
+  ///
+  /// The default is no deadline.
   core.double operationDeadline;
 
   ///
@@ -2173,19 +2231,22 @@ class BackendRule {
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
   core.String pathTranslation;
 
-  /// The protocol used for sending a request to the backend. The supported
-  /// values are "http/1.1" and "h2". The default value is inferred from the
-  /// scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https://
-  /// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that
-  /// support HTTP/2, set this field to "h2" for improved performance.
-  /// Configuring this field to non-default values is only supported for secure
-  /// HTTP backends. This field will be ignored for all other backends. See
+  /// The protocol used for sending a request to the backend.
+  ///
+  /// The supported values are "http/1.1" and "h2". The default value is
+  /// inferred from the scheme in the address field: SCHEME PROTOCOL http://
+  /// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends
+  /// (https://) that support HTTP/2, set this field to "h2" for improved
+  /// performance. Configuring this field to non-default values is only
+  /// supported for secure HTTP backends. This field will be ignored for all
+  /// other backends. See
   /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
   /// for more details on the supported values.
   core.String protocol;
 
-  /// Selects the methods to which this rule applies. Refer to selector for
-  /// syntax details.
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
   core.String selector;
 
   BackendRule();
@@ -2253,14 +2314,15 @@ class BackendRule {
   }
 }
 
-/// Billing related configuration of the service. The following example shows
-/// how to configure monitored resources and metrics for billing,
-/// `consumer_destinations` is the only supported destination and the monitored
-/// resources need at least one label key `cloud.googleapis.com/location` to
-/// indicate the location of the billing usage, using different monitored
-/// resources between monitoring and billing is recommended so they can be
-/// evolved independently: monitored_resources: - type:
-/// library.googleapis.com/billing_branch labels: - key:
+/// Billing related configuration of the service.
+///
+/// The following example shows how to configure monitored resources and metrics
+/// for billing, `consumer_destinations` is the only supported destination and
+/// the monitored resources need at least one label key
+/// `cloud.googleapis.com/location` to indicate the location of the billing
+/// usage, using different monitored resources between monitoring and billing is
+/// recommended so they can be evolved independently: monitored_resources: -
+/// type: library.googleapis.com/billing_branch labels: - key:
 /// cloud.googleapis.com/location description: | Predefined label to support
 /// billing location restriction. - key: city description: | Custom label to
 /// define the city where the library branch is located in. - key: name
@@ -2270,10 +2332,11 @@ class BackendRule {
 /// monitored_resource: library.googleapis.com/billing_branch metrics: -
 /// library.googleapis.com/book/borrowed_count
 class Billing {
-  /// Billing configurations for sending metrics to the consumer project. There
-  /// can be multiple consumer destinations per service, each one must have a
-  /// different monitored resource type. A metric can be used in at most one
-  /// consumer destination.
+  /// Billing configurations for sending metrics to the consumer project.
+  ///
+  /// There can be multiple consumer destinations per service, each one must
+  /// have a different monitored resource type. A metric can be used in at most
+  /// one consumer destination.
   core.List<BillingDestination> consumerDestinations;
 
   Billing();
@@ -2300,12 +2363,14 @@ class Billing {
 /// Configuration of a specific billing destination (Currently only support bill
 /// against consumer project).
 class BillingDestination {
-  /// Names of the metrics to report to this billing destination. Each name must
-  /// be defined in Service.metrics section.
+  /// Names of the metrics to report to this billing destination.
+  ///
+  /// Each name must be defined in Service.metrics section.
   core.List<core.String> metrics;
 
-  /// The monitored resource type. The type must be defined in
-  /// Service.monitored_resources section.
+  /// The monitored resource type.
+  ///
+  /// The type must be defined in Service.monitored_resources section.
   core.String monitoredResource;
 
   BillingDestination();
@@ -2335,16 +2400,19 @@ class BillingDestination {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -2375,8 +2443,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -2411,14 +2480,16 @@ class Binding {
   }
 }
 
-/// Change report associated with a particular service configuration. It
-/// contains a list of ConfigChanges based on the comparison between two service
-/// configurations.
+/// Change report associated with a particular service configuration.
+///
+/// It contains a list of ConfigChanges based on the comparison between two
+/// service configurations.
 class ChangeReport {
-  /// List of changes between two service configurations. The changes will be
-  /// alphabetically sorted based on the identifier of each change. A
-  /// ConfigChange identifier is a dot separated path to the configuration.
-  /// Example:
+  /// List of changes between two service configurations.
+  ///
+  /// The changes will be alphabetically sorted based on the identifier of each
+  /// change. A ConfigChange identifier is a dot separated path to the
+  /// configuration. Example:
   /// visibility.rules[selector='LibraryService.CreateBook'].restriction
   core.List<ConfigChange> configChanges;
 
@@ -2444,8 +2515,10 @@ class ChangeReport {
 }
 
 /// Output generated from semantically comparing two versions of a service
-/// configuration. Includes detailed information about a field that have changed
-/// with applicable advice about potential consequences for the change, such as
+/// configuration.
+///
+/// Includes detailed information about a field that have changed with
+/// applicable advice about potential consequences for the change, such as
 /// backwards-incompatibility.
 class ConfigChange {
   /// Collection of advice provided for this change, useful for determining the
@@ -2464,21 +2537,27 @@ class ConfigChange {
   core.String changeType;
 
   /// Object hierarchy path to the change, with levels separated by a '.'
-  /// character. For repeated fields, an applicable unique identifier field is
-  /// used for the index (usually selector, name, or id). For maps, the term
-  /// 'key' is used. If the field has no unique identifier, the numeric index is
-  /// used. Examples: -
+  /// character.
+  ///
+  /// For repeated fields, an applicable unique identifier field is used for the
+  /// index (usually selector, name, or id). For maps, the term 'key' is used.
+  /// If the field has no unique identifier, the numeric index is used.
+  /// Examples: -
   /// visibility.rules[selector=="google.LibraryService.ListBooks"].restriction
   /// - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value
   /// - logging.producer_destinations[0]
   core.String element;
 
   /// Value of the changed object in the new Service configuration, in JSON
-  /// format. This field will not be populated if ChangeType == REMOVED.
+  /// format.
+  ///
+  /// This field will not be populated if ChangeType == REMOVED.
   core.String newValue;
 
   /// Value of the changed object in the old Service configuration, in JSON
-  /// format. This field will not be populated if ChangeType == ADDED.
+  /// format.
+  ///
+  /// This field will not be populated if ChangeType == ADDED.
   core.String oldValue;
 
   ConfigChange();
@@ -2589,8 +2668,10 @@ class ConfigFile {
 
 /// Represents a service configuration with its name and id.
 class ConfigRef {
-  /// Resource name of a service config. It must have the following format:
-  /// "services/{service name}/configs/{config id}".
+  /// Resource name of a service config.
+  ///
+  /// It must have the following format: "services/{service
+  /// name}/configs/{config id}".
   core.String name;
 
   ConfigRef();
@@ -2618,8 +2699,9 @@ class ConfigSource {
   core.List<ConfigFile> files;
 
   /// A unique ID for a specific instance of this message, typically assigned by
-  /// the client for tracking purpose. If empty, the server may choose to
-  /// generate one instead.
+  /// the client for tracking purpose.
+  ///
+  /// If empty, the server may choose to generate one instead.
   core.String id;
 
   ConfigSource();
@@ -2648,22 +2730,24 @@ class ConfigSource {
   }
 }
 
-/// `Context` defines which contexts an API requests. Example: context: rules: -
-/// selector: "*" requested: - google.rpc.context.ProjectContext -
-/// google.rpc.context.OriginContext The above specifies that all methods in the
-/// API request `google.rpc.context.ProjectContext` and
-/// `google.rpc.context.OriginContext`. Available context types are defined in
-/// package `google.rpc.context`. This also provides mechanism to whitelist any
-/// protobuf message extension that can be sent in grpc metadata using
-/// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any
-/// service specific protobuf types that can appear in grpc metadata as follows
-/// in your yaml file: Example: context: rules: - selector:
-/// "google.example.library.v1.LibraryService.CreateBook"
+/// `Context` defines which contexts an API requests.
+///
+/// Example: context: rules: - selector: "*" requested: -
+/// google.rpc.context.ProjectContext - google.rpc.context.OriginContext The
+/// above specifies that all methods in the API request
+/// `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`.
+/// Available context types are defined in package `google.rpc.context`. This
+/// also provides mechanism to whitelist any protobuf message extension that can
+/// be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb”
+/// format. For example, list any service specific protobuf types that can
+/// appear in grpc metadata as follows in your yaml file: Example: context:
+/// rules: - selector: "google.example.library.v1.LibraryService.CreateBook"
 /// allowed_request_extensions: - google.foo.v1.NewExtension
 /// allowed_response_extensions: - google.foo.v1.NewExtension You can also
 /// specify extension ID instead of fully qualified extension name here.
 class Context {
   /// A list of RPC context rules that apply to individual API methods.
+  ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<ContextRule> rules;
 
@@ -2704,8 +2788,9 @@ class ContextRule {
   /// A list of full type names of requested contexts.
   core.List<core.String> requested;
 
-  /// Selects the methods to which this rule applies. Refer to selector for
-  /// syntax details.
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
   core.String selector;
 
   ContextRule();
@@ -2759,12 +2844,15 @@ class ContextRule {
   }
 }
 
-/// Selects and configures the service controller used by the service. The
-/// service controller handles features like abuse, quota, billing, logging,
+/// Selects and configures the service controller used by the service.
+///
+/// The service controller handles features like abuse, quota, billing, logging,
 /// monitoring, etc.
 class Control {
-  /// The service control environment to use. If empty, no control plane feature
-  /// (like quota and billing) will be enabled.
+  /// The service control environment to use.
+  ///
+  /// If empty, no control plane feature (like quota and billing) will be
+  /// enabled.
   core.String environment;
 
   Control();
@@ -2784,12 +2872,14 @@ class Control {
   }
 }
 
-/// Customize service error responses. For example, list any service specific
-/// protobuf types that can appear in error detail lists of error responses.
-/// Example: custom_error: types: - google.foo.v1.CustomError -
-/// google.foo.v1.AnotherError
+/// Customize service error responses.
+///
+/// For example, list any service specific protobuf types that can appear in
+/// error detail lists of error responses. Example: custom_error: types: -
+/// google.foo.v1.CustomError - google.foo.v1.AnotherError
 class CustomError {
   /// The list of custom error rules that apply to individual API messages.
+  ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<CustomErrorRule> rules;
 
@@ -2826,12 +2916,15 @@ class CustomError {
 
 /// A custom error rule.
 class CustomErrorRule {
-  /// Mark this message as possible payload in error response. Otherwise,
-  /// objects of this type will be filtered when they appear in error payload.
+  /// Mark this message as possible payload in error response.
+  ///
+  /// Otherwise, objects of this type will be filtered when they appear in error
+  /// payload.
   core.bool isErrorType;
 
-  /// Selects messages to which this rule applies. Refer to selector for syntax
-  /// details.
+  /// Selects messages to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
   core.String selector;
 
   CustomErrorRule();
@@ -2888,8 +2981,10 @@ class CustomHttpPattern {
   }
 }
 
-/// Strategy used to delete a service. This strategy is a placeholder only used
-/// by the system generated rollout to delete a service.
+/// Strategy used to delete a service.
+///
+/// This strategy is a placeholder only used by the system generated rollout to
+/// delete a service.
 class DeleteServiceStrategy {
   DeleteServiceStrategy();
 
@@ -2960,9 +3055,10 @@ class DisableServiceResponse {
   }
 }
 
-/// `Documentation` provides the information for describing a service. Example:
-/// documentation: summary: > The Google Calendar API gives access to most
-/// calendar features. pages: - name: Overview content: (== include
+/// `Documentation` provides the information for describing a service.
+///
+/// Example: documentation: summary: > The Google Calendar API gives access to
+/// most calendar features. pages: - name: Overview content: (== include
 /// google/foo/overview.md ==) - name: Tutorial content: (== include
 /// google/foo/tutorial.md ==) subpages; - name: Java content: (== include
 /// google/foo/tutorial_java.md ==) rules: - selector:
@@ -2992,28 +3088,33 @@ class Documentation {
   /// The URL to the root of documentation.
   core.String documentationRootUrl;
 
-  /// Declares a single overview page. For example: documentation: summary: ...
-  /// overview: (== include overview.md ==) This is a shortcut for the following
-  /// declaration (using pages style): documentation: summary: ... pages: -
-  /// name: Overview content: (== include overview.md ==) Note: you cannot
-  /// specify both `overview` field and `pages` field.
+  /// Declares a single overview page.
+  ///
+  /// For example: documentation: summary: ... overview: (== include overview.md
+  /// ==) This is a shortcut for the following declaration (using pages style):
+  /// documentation: summary: ... pages: - name: Overview content: (== include
+  /// overview.md ==) Note: you cannot specify both `overview` field and `pages`
+  /// field.
   core.String overview;
 
   /// The top level pages for the documentation set.
   core.List<Page> pages;
 
   /// A list of documentation rules that apply to individual API elements.
+  ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule> rules;
 
   /// Specifies the service root url if the default one (the service name from
-  /// the yaml file) is not suitable. This can be seen in any fully specified
-  /// service urls as well as sections that show a base that other urls are
-  /// relative to.
+  /// the yaml file) is not suitable.
+  ///
+  /// This can be seen in any fully specified service urls as well as sections
+  /// that show a base that other urls are relative to.
   core.String serviceRootUrl;
 
-  /// A short summary of what the service does. Can only be provided by plain
-  /// text.
+  /// A short summary of what the service does.
+  ///
+  /// Can only be provided by plain text.
   core.String summary;
 
   Documentation();
@@ -3071,19 +3172,22 @@ class Documentation {
 
 /// A documentation rule provides information about individual API elements.
 class DocumentationRule {
-  /// Deprecation description of the selected element(s). It can be provided if
-  /// an element is marked as `deprecated`.
+  /// Deprecation description of the selected element(s).
+  ///
+  /// It can be provided if an element is marked as `deprecated`.
   core.String deprecationDescription;
 
   /// Description of the selected API(s).
   core.String description;
 
-  /// The selector is a comma-separated list of patterns. Each pattern is a
-  /// qualified name of the element which may end in "*", indicating a wildcard.
-  /// Wildcards are only allowed at the end and for a whole component of the
-  /// qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A
-  /// wildcard will match one or more components. To specify a default for all
-  /// applicable elements, the whole pattern "*" is used.
+  /// The selector is a comma-separated list of patterns.
+  ///
+  /// Each pattern is a qualified name of the element which may end in "*",
+  /// indicating a wildcard. Wildcards are only allowed at the end and for a
+  /// whole component of the qualified name, i.e. "foo.*" is ok, but not
+  /// "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To
+  /// specify a default for all applicable elements, the whole pattern "*" is
+  /// used.
   core.String selector;
 
   DocumentationRule();
@@ -3117,10 +3221,14 @@ class DocumentationRule {
 
 /// Request message for EnableService method.
 class EnableServiceRequest {
-  /// Required. The identity of consumer resource which service enablement will
-  /// be applied to. The Google Service Management implementation accepts the
-  /// following forms: - "project:" Note: this is made compatible with
+  /// The identity of consumer resource which service enablement will be applied
+  /// to.
+  ///
+  /// The Google Service Management implementation accepts the following forms:
+  /// - "project:" Note: this is made compatible with
   /// google.api.servicecontrol.v1.Operation.consumer_id.
+  ///
+  /// Required.
   core.String consumerId;
 
   EnableServiceRequest();
@@ -3154,27 +3262,32 @@ class EnableServiceResponse {
   }
 }
 
-/// `Endpoint` describes a network endpoint that serves a set of APIs. A service
-/// may expose any number of endpoints, and all endpoints share the same service
-/// configuration, such as quota configuration and monitoring configuration.
-/// Example service configuration: name: library-example.googleapis.com
-/// endpoints: # Below entry makes 'google.example.library.v1.Library' # API be
-/// served from endpoint address library-example.googleapis.com. # It also
-/// allows HTTP OPTIONS calls to be passed to the backend, for # it to decide
-/// whether the subsequent cross-origin request is # allowed to proceed. - name:
+/// `Endpoint` describes a network endpoint that serves a set of APIs.
+///
+/// A service may expose any number of endpoints, and all endpoints share the
+/// same service configuration, such as quota configuration and monitoring
+/// configuration. Example service configuration: name:
+/// library-example.googleapis.com endpoints: # Below entry makes
+/// 'google.example.library.v1.Library' # API be served from endpoint address
+/// library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be
+/// passed to the backend, for # it to decide whether the subsequent
+/// cross-origin request is # allowed to proceed. - name:
 /// library-example.googleapis.com allow_cors: true
 class Endpoint {
-  /// DEPRECATED: This field is no longer supported. Instead of using aliases,
-  /// please specify multiple google.api.Endpoint for each of the intended
-  /// aliases. Additional names that this endpoint will be hosted on.
+  /// DEPRECATED: This field is no longer supported.
+  ///
+  /// Instead of using aliases, please specify multiple google.api.Endpoint for
+  /// each of the intended aliases. Additional names that this endpoint will be
+  /// hosted on.
   core.List<core.String> aliases;
 
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
   /// cross-domain traffic, would allow the backends served from this endpoint
-  /// to receive and respond to HTTP OPTIONS requests. The response will be used
-  /// by the browser to determine whether the subsequent cross-origin request is
-  /// allowed to proceed.
+  /// to receive and respond to HTTP OPTIONS requests.
+  ///
+  /// The response will be used by the browser to determine whether the
+  /// subsequent cross-origin request is allowed to proceed.
   core.bool allowCors;
 
   /// The canonical name of this endpoint.
@@ -3182,9 +3295,10 @@ class Endpoint {
 
   /// The specification of an Internet routable address of API frontend that
   /// will handle requests to this [API
-  /// Endpoint](https://cloud.google.com/apis/design/glossary). It should be
-  /// either a valid IPv4 address or a fully-qualified domain name. For example,
-  /// "8.8.8.8" or "myservice.appspot.com".
+  /// Endpoint](https://cloud.google.com/apis/design/glossary).
+  ///
+  /// It should be either a valid IPv4 address or a fully-qualified domain name.
+  /// For example, "8.8.8.8" or "myservice.appspot.com".
   core.String target;
 
   Endpoint();
@@ -3336,8 +3450,10 @@ class EnumValue {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -3352,20 +3468,29 @@ class EnumValue {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -3413,7 +3538,9 @@ class Field {
   /// - "CARDINALITY_REPEATED" : For repeated fields.
   core.String cardinality;
 
-  /// The string value of the default value of this field. Proto2 syntax only.
+  /// The string value of the default value of this field.
+  ///
+  /// Proto2 syntax only.
   core.String defaultValue;
 
   /// The field JSON name.
@@ -3449,7 +3576,9 @@ class Field {
   core.int number;
 
   /// The index of the field type in `Type.oneofs`, for message or enumeration
-  /// types. The first type has index 1; zero means the type is not in the list.
+  /// types.
+  ///
+  /// The first type has index 1; zero means the type is not in the list.
   core.int oneofIndex;
 
   /// The protocol buffer options.
@@ -3459,6 +3588,7 @@ class Field {
   core.bool packed;
 
   /// The field type URL, without the scheme, for message or enumeration types.
+  ///
   /// Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
   core.String typeUrl;
 
@@ -3536,8 +3666,9 @@ class Field {
   }
 }
 
-/// Encapsulation of flow-specific error details for debugging. Used as a
-/// details field on an error Status, not intended for external use.
+/// Encapsulation of flow-specific error details for debugging.
+///
+/// Used as a details field on an error Status, not intended for external use.
 class FlowErrorDetails {
   /// The type of exception (as a class name).
   core.String exceptionType;
@@ -3570,19 +3701,25 @@ class FlowErrorDetails {
 
 /// Request message for GenerateConfigReport method.
 class GenerateConfigReportRequest {
-  /// Required. Service configuration for which we want to generate the report.
+  /// Service configuration for which we want to generate the report.
+  ///
   /// For this version of API, the supported types are
   /// google.api.servicemanagement.v1.ConfigRef,
   /// google.api.servicemanagement.v1.ConfigSource, and google.api.Service
+  ///
+  /// Required.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> newConfig;
 
-  /// Optional. Service configuration against which the comparison will be done.
+  /// Service configuration against which the comparison will be done.
+  ///
   /// For this version of API, the supported types are
   /// google.api.servicemanagement.v1.ConfigRef,
   /// google.api.servicemanagement.v1.ConfigSource, and google.api.Service
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3708,13 +3845,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -3734,17 +3874,21 @@ class GetPolicyOptions {
   }
 }
 
-/// Defines the HTTP configuration for an API service. It contains a list of
-/// HttpRule, each specifying the mapping of an RPC method to one or more HTTP
-/// REST API methods.
+/// Defines the HTTP configuration for an API service.
+///
+/// It contains a list of HttpRule, each specifying the mapping of an RPC method
+/// to one or more HTTP REST API methods.
 class Http {
   /// When set to true, URL path parameters will be fully URI-decoded except in
   /// cases of single segment matches in reserved expansion, where "%2F" will be
-  /// left encoded. The default behavior is to not decode RFC 6570 reserved
-  /// characters in multi segment matches.
+  /// left encoded.
+  ///
+  /// The default behavior is to not decode RFC 6570 reserved characters in
+  /// multi segment matches.
   core.bool fullyDecodeReservedExpansion;
 
   /// A list of HTTP configuration rules that apply to individual API methods.
+  ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<HttpRule> rules;
 
@@ -3776,9 +3920,11 @@ class Http {
 }
 
 /// # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC
-/// method and one or more HTTP REST endpoints. It allows developers to build a
-/// single API service that supports both gRPC APIs and REST APIs. Many systems,
-/// including [Google APIs](https://github.com/googleapis/googleapis), [Cloud
+/// method and one or more HTTP REST endpoints.
+///
+/// It allows developers to build a single API service that supports both gRPC
+/// APIs and REST APIs. Many systems, including [Google
+/// APIs](https://github.com/googleapis/googleapis), [Cloud
 /// Endpoints](https://cloud.google.com/endpoints), [gRPC
 /// Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and
 /// [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and
@@ -3912,9 +4058,10 @@ class Http {
 /// it can map the request or response body to a repeated field. However, some
 /// gRPC Transcoding implementations may not support this feature.
 class HttpRule {
-  /// Additional HTTP bindings for the selector. Nested bindings must not
-  /// contain an `additional_bindings` field themselves (that is, the nesting
-  /// may only be one level deep).
+  /// Additional HTTP bindings for the selector.
+  ///
+  /// Nested bindings must not contain an `additional_bindings` field themselves
+  /// (that is, the nesting may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
   /// When this flag is set to true, HTTP requests will be allowed to invoke a
@@ -3924,40 +4071,57 @@ class HttpRule {
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
   /// pattern to the HTTP body, or omitted for not having any HTTP request body.
+  ///
   /// NOTE: the referred field must be present at the top-level of the request
   /// message type.
   core.String body;
 
   /// The custom pattern is used for specifying an HTTP method that is not
   /// included in the `pattern` field, such as HEAD, or "*" to leave the HTTP
-  /// method unspecified for this rule. The wild-card rule is useful for
-  /// services that provide content to Web (HTML) clients.
+  /// method unspecified for this rule.
+  ///
+  /// The wild-card rule is useful for services that provide content to Web
+  /// (HTML) clients.
   CustomHttpPattern custom;
 
-  /// Maps to HTTP DELETE. Used for deleting a resource.
+  /// Maps to HTTP DELETE.
+  ///
+  /// Used for deleting a resource.
   core.String delete;
 
-  /// Maps to HTTP GET. Used for listing and getting information about
-  /// resources.
+  /// Maps to HTTP GET.
+  ///
+  /// Used for listing and getting information about resources.
   core.String get;
 
-  /// Maps to HTTP PATCH. Used for updating a resource.
+  /// Maps to HTTP PATCH.
+  ///
+  /// Used for updating a resource.
   core.String patch;
 
-  /// Maps to HTTP POST. Used for creating a resource or performing an action.
+  /// Maps to HTTP POST.
+  ///
+  /// Used for creating a resource or performing an action.
   core.String post;
 
-  /// Maps to HTTP PUT. Used for replacing a resource.
+  /// Maps to HTTP PUT.
+  ///
+  /// Used for replacing a resource.
   core.String put;
 
-  /// Optional. The name of the response field whose value is mapped to the HTTP
-  /// response body. When omitted, the entire response message will be used as
-  /// the HTTP response body. NOTE: The referred field must be present at the
-  /// top-level of the response message type.
+  /// The name of the response field whose value is mapped to the HTTP response
+  /// body.
+  ///
+  /// When omitted, the entire response message will be used as the HTTP
+  /// response body. NOTE: The referred field must be present at the top-level
+  /// of the response message type.
+  ///
+  /// Optional.
   core.String responseBody;
 
-  /// Selects a method to which this rule applies. Refer to selector for syntax
-  /// details.
+  /// Selects a method to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
   core.String selector;
 
   HttpRule();
@@ -4050,12 +4214,14 @@ class JwtLocation {
   /// Specifies URL query parameter name to extract JWT token.
   core.String query;
 
-  /// The value prefix. The value format is "value_prefix{token}" Only applies
-  /// to "in" header type. Must be empty for "in" query type. If not empty, the
-  /// header value has to match (case sensitive) this prefix. If not matched,
-  /// JWT will not be extracted. If matched, JWT will be extracted after the
-  /// prefix is removed. For example, for "Authorization: Bearer {JWT}",
-  /// value_prefix="Bearer " with a space at the end.
+  /// The value prefix.
+  ///
+  /// The value format is "value_prefix{token}" Only applies to "in" header
+  /// type. Must be empty for "in" query type. If not empty, the header value
+  /// has to match (case sensitive) this prefix. If not matched, JWT will not be
+  /// extracted. If matched, JWT will be extracted after the prefix is removed.
+  /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
+  /// with a space at the end.
   core.String valuePrefix;
 
   JwtLocation();
@@ -4268,28 +4434,34 @@ class ListServicesResponse {
   }
 }
 
-/// A description of a log type. Example in YAML format: - name:
-/// library.googleapis.com/activity_history description: The history of
-/// borrowing and returning library items. display_name: Activity labels: - key:
-/// /customer_id description: Identifier of a library customer
+/// A description of a log type.
+///
+/// Example in YAML format: - name: library.googleapis.com/activity_history
+/// description: The history of borrowing and returning library items.
+/// display_name: Activity labels: - key: /customer_id description: Identifier
+/// of a library customer
 class LogDescriptor {
-  /// A human-readable description of this log. This information appears in the
-  /// documentation and can contain details.
+  /// A human-readable description of this log.
+  ///
+  /// This information appears in the documentation and can contain details.
   core.String description;
 
-  /// The human-readable name for this log. This information appears on the user
-  /// interface and should be concise.
+  /// The human-readable name for this log.
+  ///
+  /// This information appears on the user interface and should be concise.
   core.String displayName;
 
   /// The set of labels that are available to describe a specific log entry.
+  ///
   /// Runtime requests that contain labels not specified here are considered
   /// invalid.
   core.List<LabelDescriptor> labels;
 
-  /// The name of the log. It must be less than 512 characters long and can
-  /// include the following characters: upper- and lower-case alphanumeric
-  /// characters [A-Za-z0-9], and punctuation characters including slash,
-  /// underscore, hyphen, period [/_-.].
+  /// The name of the log.
+  ///
+  /// It must be less than 512 characters long and can include the following
+  /// characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and
+  /// punctuation characters including slash, underscore, hyphen, period [/_-.].
   core.String name;
 
   LogDescriptor();
@@ -4330,29 +4502,32 @@ class LogDescriptor {
   }
 }
 
-/// Logging configuration of the service. The following example shows how to
-/// configure logs to be sent to the producer and consumer projects. In the
-/// example, the `activity_history` log is sent to both the producer and
-/// consumer projects, whereas the `purchase_history` log is only sent to the
-/// producer project. monitored_resources: - type: library.googleapis.com/branch
-/// labels: - key: /city description: The city where the library branch is
-/// located in. - key: /name description: The name of the branch. logs: - name:
-/// activity_history labels: - key: /customer_id - name: purchase_history
-/// logging: producer_destinations: - monitored_resource:
+/// Logging configuration of the service.
+///
+/// The following example shows how to configure logs to be sent to the producer
+/// and consumer projects. In the example, the `activity_history` log is sent to
+/// both the producer and consumer projects, whereas the `purchase_history` log
+/// is only sent to the producer project. monitored_resources: - type:
+/// library.googleapis.com/branch labels: - key: /city description: The city
+/// where the library branch is located in. - key: /name description: The name
+/// of the branch. logs: - name: activity_history labels: - key: /customer_id -
+/// name: purchase_history logging: producer_destinations: - monitored_resource:
 /// library.googleapis.com/branch logs: - activity_history - purchase_history
 /// consumer_destinations: - monitored_resource: library.googleapis.com/branch
 /// logs: - activity_history
 class Logging {
-  /// Logging configurations for sending logs to the consumer project. There can
-  /// be multiple consumer destinations, each one must have a different
-  /// monitored resource type. A log can be used in at most one consumer
-  /// destination.
+  /// Logging configurations for sending logs to the consumer project.
+  ///
+  /// There can be multiple consumer destinations, each one must have a
+  /// different monitored resource type. A log can be used in at most one
+  /// consumer destination.
   core.List<LoggingDestination> consumerDestinations;
 
-  /// Logging configurations for sending logs to the producer project. There can
-  /// be multiple producer destinations, each one must have a different
-  /// monitored resource type. A log can be used in at most one producer
-  /// destination.
+  /// Logging configurations for sending logs to the producer project.
+  ///
+  /// There can be multiple producer destinations, each one must have a
+  /// different monitored resource type. A log can be used in at most one
+  /// producer destination.
   core.List<LoggingDestination> producerDestinations;
 
   Logging();
@@ -4389,14 +4564,16 @@ class Logging {
 /// Configuration of a specific logging destination (the producer project or the
 /// consumer project).
 class LoggingDestination {
-  /// Names of the logs to be sent to this destination. Each name must be
-  /// defined in the Service.logs section. If the log name is not a domain
-  /// scoped name, it will be automatically prefixed with the service name
-  /// followed by "/".
+  /// Names of the logs to be sent to this destination.
+  ///
+  /// Each name must be defined in the Service.logs section. If the log name is
+  /// not a domain scoped name, it will be automatically prefixed with the
+  /// service name followed by "/".
   core.List<core.String> logs;
 
-  /// The monitored resource type. The type must be defined in the
-  /// Service.monitored_resources section.
+  /// The monitored resource type.
+  ///
+  /// The type must be defined in the Service.monitored_resources section.
   core.String monitoredResource;
 
   LoggingDestination();
@@ -4430,8 +4607,9 @@ class ManagedService {
   /// ID of the project that produces and owns this service.
   core.String producerProjectId;
 
-  /// The name of the service. See the [overview](/service-management/overview)
-  /// for naming requirements.
+  /// The name of the service.
+  ///
+  /// See the [overview](/service-management/overview) for naming requirements.
   core.String serviceName;
 
   ManagedService();
@@ -4539,27 +4717,33 @@ class Method {
   }
 }
 
-/// Defines a metric type and its schema. Once a metric descriptor is created,
-/// deleting or altering it stops data collection and makes the metric type's
-/// existing data unusable.
+/// Defines a metric type and its schema.
+///
+/// Once a metric descriptor is created, deleting or altering it stops data
+/// collection and makes the metric type's existing data unusable.
 class MetricDescriptor {
   /// A detailed description of the metric, which can be used in documentation.
   core.String description;
 
   /// A concise name for the metric, which can be displayed in user interfaces.
+  ///
   /// Use sentence case without an ending period, for example "Request count".
   /// This field is optional but it is recommended to be set for any metrics
   /// associated with user-visible concepts, such as Quota.
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
-  /// metric type. For example, the
-  /// `appengine.googleapis.com/http/server/response_latencies` metric type has
-  /// a label for the HTTP response code, `response_code`, so you can look at
-  /// latencies for successful responses or just for responses that failed.
+  /// metric type.
+  ///
+  /// For example, the `appengine.googleapis.com/http/server/response_latencies`
+  /// metric type has a label for the HTTP response code, `response_code`, so
+  /// you can look at latencies for successful responses or just for responses
+  /// that failed.
   core.List<LabelDescriptor> labels;
 
-  /// Optional. The launch stage of the metric definition.
+  /// The launch stage of the metric definition.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -4594,10 +4778,13 @@ class MetricDescriptor {
   /// Policy](https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// Optional. Metadata which can be used to guide usage of the metric.
+  /// Metadata which can be used to guide usage of the metric.
+  ///
+  /// Optional.
   MetricDescriptorMetadata metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc.
+  ///
   /// Some combinations of `metric_kind` and `value_type` might not be
   /// supported.
   /// Possible string values are:
@@ -4610,50 +4797,54 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// Read-only. If present, then a time series, which is identified partially
-  /// by a metric type and a MonitoredResourceDescriptor, that is associated
-  /// with this metric type can only be associated with one of the monitored
-  /// resource types listed here.
+  /// Read-only.
+  ///
+  /// If present, then a time series, which is identified partially by a metric
+  /// type and a MonitoredResourceDescriptor, that is associated with this
+  /// metric type can only be associated with one of the monitored resource
+  /// types listed here.
   core.List<core.String> monitoredResourceTypes;
 
   /// The resource name of the metric descriptor.
   core.String name;
 
-  /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded. All user-defined metric types have the DNS name
-  /// `custom.googleapis.com` or `external.googleapis.com`. Metric types should
-  /// use a natural hierarchical grouping. For example:
+  /// The metric type, including its DNS name prefix.
+  ///
+  /// The type is not URL-encoded. All user-defined metric types have the DNS
+  /// name `custom.googleapis.com` or `external.googleapis.com`. Metric types
+  /// should use a natural hierarchical grouping. For example:
   /// "custom.googleapis.com/invoice/paid/amount"
   /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The units in which the metric value is reported. It is only applicable if
-  /// the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`
-  /// defines the representation of the stored metric values. Different systems
-  /// may scale the values to be more easily displayed (so a value of `0.02KBy`
-  /// _might_ be displayed as `20By`, and a value of `3523KBy` _might_ be
-  /// displayed as `3.5MBy`). However, if the `unit` is `KBy`, then the value of
-  /// the metric is always in thousands of bytes, no matter how it may be
-  /// displayed.. If you want a custom metric to record the exact number of
-  /// CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric
-  /// whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the
-  /// job uses 12,005 CPU-seconds, then the value is written as `12005`.
-  /// Alternatively, if you want a custom metric to record data in a more
-  /// granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is
-  /// `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or
-  /// use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported
-  /// units are a subset of [The Unified Code for Units of
-  /// Measure](http://unitsofmeasure.org/ucum.html) standard: **Basic units
-  /// (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour *
-  /// `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M`
-  /// mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E`
-  /// exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) *
-  /// `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto
-  /// (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) *
-  /// `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40)
-  /// * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors:
-  /// * `/` division or ratio (as an infix operator). For examples,
+  /// The units in which the metric value is reported.
+  ///
+  /// It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or
+  /// `DISTRIBUTION`. The `unit` defines the representation of the stored metric
+  /// values. Different systems may scale the values to be more easily displayed
+  /// (so a value of `0.02KBy` _might_ be displayed as `20By`, and a value of
+  /// `3523KBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is
+  /// `KBy`, then the value of the metric is always in thousands of bytes, no
+  /// matter how it may be displayed.. If you want a custom metric to record the
+  /// exact number of CPU-seconds used by a job, you can create an `INT64
+  /// CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or
+  /// just `s`). If the job uses 12,005 CPU-seconds, then the value is written
+  /// as `12005`. Alternatively, if you want a custom metric to record data in a
+  /// more granular way, you can create a `DOUBLE CUMULATIVE` metric whose
+  /// `unit` is `ks{CPU}`, and then write the value `12.005` (which is
+  /// `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is
+  /// `12005/1024`). The supported units are a subset of [The Unified Code for
+  /// Units of Measure](http://unitsofmeasure.org/ucum.html) standard: **Basic
+  /// units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h`
+  /// hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3)
+  /// * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15)
+  /// * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli
+  /// (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f`
+  /// femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto
+  /// (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti`
+  /// tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these
+  /// connectors: * `/` division or ratio (as an infix operator). For examples,
   /// `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s`
   /// in a metric `unit`; rates should always be computed at query time from the
   /// underlying cumulative or delta value). * `.` multiplication or composition
@@ -4679,8 +4870,10 @@ class MetricDescriptor {
   /// percentage (so a metric value `0.03` means "3 percent").
   core.String unit;
 
-  /// Whether the measurement is an integer, a floating-point number, etc. Some
-  /// combinations of `metric_kind` and `value_type` might not be supported.
+  /// Whether the measurement is an integer, a floating-point number, etc.
+  ///
+  /// Some combinations of `metric_kind` and `value_type` might not be
+  /// supported.
   /// Possible string values are:
   /// - "VALUE_TYPE_UNSPECIFIED" : Do not use this default value.
   /// - "BOOL" : The value is a boolean. This value type can be used only if the
@@ -4778,12 +4971,15 @@ class MetricDescriptor {
 
 /// Additional annotations that can be used to guide the usage of a metric.
 class MetricDescriptorMetadata {
-  /// The delay of data points caused by ingestion. Data points older than this
-  /// age are guaranteed to be ingested and available to be read, excluding data
-  /// loss due to errors.
+  /// The delay of data points caused by ingestion.
+  ///
+  /// Data points older than this age are guaranteed to be ingested and
+  /// available to be read, excluding data loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+  /// Must use the MetricDescriptor.launch_stage instead.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -4818,10 +5014,11 @@ class MetricDescriptorMetadata {
   /// Policy](https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// The sampling period of metric data points. For metrics which are written
-  /// periodically, consecutive data points are stored at this time interval,
-  /// excluding data loss due to errors. Metrics with a higher granularity have
-  /// a smaller sampling period.
+  /// The sampling period of metric data points.
+  ///
+  /// For metrics which are written periodically, consecutive data points are
+  /// stored at this time interval, excluding data loss due to errors. Metrics
+  /// with a higher granularity have a smaller sampling period.
   core.String samplePeriod;
 
   MetricDescriptorMetadata();
@@ -4853,17 +5050,22 @@ class MetricDescriptorMetadata {
   }
 }
 
-/// Bind API methods to metrics. Binding a method to a metric causes that
-/// metric's configured quota behaviors to apply to the method call.
+/// Bind API methods to metrics.
+///
+/// Binding a method to a metric causes that metric's configured quota behaviors
+/// to apply to the method call.
 class MetricRule {
   /// Metrics to update when the selected methods are called, and the associated
-  /// cost applied to each metric. The key of the map is the metric name, and
-  /// the values are the amount increased for the metric against which the quota
-  /// limits are defined. The value must not be negative.
+  /// cost applied to each metric.
+  ///
+  /// The key of the map is the metric name, and the values are the amount
+  /// increased for the metric against which the quota limits are defined. The
+  /// value must not be negative.
   core.Map<core.String, core.String> metricCosts;
 
-  /// Selects the methods to which this rule applies. Refer to selector for
-  /// syntax details.
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Refer to selector for syntax details.
   core.String selector;
 
   MetricRule();
@@ -4896,36 +5098,38 @@ class MetricRule {
   }
 }
 
-/// Declares an API Interface to be included in this interface. The including
-/// interface must redeclare all the methods from the included interface, but
-/// documentation and options are inherited as follows: - If after comment and
-/// whitespace stripping, the documentation string of the redeclared method is
-/// empty, it will be inherited from the original method. - Each annotation
-/// belonging to the service config (http, visibility) which is not set in the
-/// redeclared method will be inherited. - If an http annotation is inherited,
-/// the path pattern will be modified as follows. Any version prefix will be
-/// replaced by the version of the including interface plus the root path if
-/// specified. Example of a simple mixin: package google.acl.v1; service
-/// AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest)
-/// returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; }
-/// } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest)
-/// returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns
-/// (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of
-/// a mixin configuration: apis: - name: google.storage.v2.Storage mixins: -
-/// name: google.acl.v1.AccessControl The mixin construct implies that all
-/// methods in `AccessControl` are also declared with same name and
-/// request/response types in `Storage`. A documentation generator or annotation
-/// processor will see the effective `Storage.GetAcl` method after inheriting
-/// documentation and annotations as follows: service Storage { // Get the
-/// underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option
-/// (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the
-/// version in the path pattern changed from `v1` to `v2`. If the `root` field
-/// in the mixin is specified, it should be a relative path under which
-/// inherited HTTP paths are placed. Example: apis: - name:
-/// google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root:
-/// acls This implies the following inherited HTTP annotation: service Storage {
-/// // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) {
-/// option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+/// Declares an API Interface to be included in this interface.
+///
+/// The including interface must redeclare all the methods from the included
+/// interface, but documentation and options are inherited as follows: - If
+/// after comment and whitespace stripping, the documentation string of the
+/// redeclared method is empty, it will be inherited from the original method. -
+/// Each annotation belonging to the service config (http, visibility) which is
+/// not set in the redeclared method will be inherited. - If an http annotation
+/// is inherited, the path pattern will be modified as follows. Any version
+/// prefix will be replaced by the version of the including interface plus the
+/// root path if specified. Example of a simple mixin: package google.acl.v1;
+/// service AccessControl { // Get the underlying ACL object. rpc
+/// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
+/// "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage {
+/// // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc
+/// GetData(GetDataRequest) returns (Data) { option (google.api.http).get =
+/// "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name:
+/// google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The
+/// mixin construct implies that all methods in `AccessControl` are also
+/// declared with same name and request/response types in `Storage`. A
+/// documentation generator or annotation processor will see the effective
+/// `Storage.GetAcl` method after inheriting documentation and annotations as
+/// follows: service Storage { // Get the underlying ACL object. rpc
+/// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
+/// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern
+/// changed from `v1` to `v2`. If the `root` field in the mixin is specified, it
+/// should be a relative path under which inherited HTTP paths are placed.
+/// Example: apis: - name: google.storage.v2.Storage mixins: - name:
+/// google.acl.v1.AccessControl root: acls This implies the following inherited
+/// HTTP annotation: service Storage { // Get the underlying ACL object. rpc
+/// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
+/// "/v2/acls/{resource=**}:getAcl"; } ... }
 class Mixin {
   /// The fully qualified name of the interface which is included.
   core.String name;
@@ -4957,29 +5161,42 @@ class Mixin {
 }
 
 /// An object that describes the schema of a MonitoredResource object using a
-/// type name and a set of labels. For example, the monitored resource
-/// descriptor for Google Compute Engine VM instances has a type of
-/// `"gce_instance"` and specifies the use of the labels `"instance_id"` and
-/// `"zone"` to identify particular VM instances. Different APIs can support
-/// different monitored resource types. APIs generally provide a `list` method
-/// that returns the monitored resource descriptors used by the API.
+/// type name and a set of labels.
+///
+/// For example, the monitored resource descriptor for Google Compute Engine VM
+/// instances has a type of `"gce_instance"` and specifies the use of the labels
+/// `"instance_id"` and `"zone"` to identify particular VM instances. Different
+/// APIs can support different monitored resource types. APIs generally provide
+/// a `list` method that returns the monitored resource descriptors used by the
+/// API.
 class MonitoredResourceDescriptor {
-  /// Optional. A detailed description of the monitored resource type that might
-  /// be used in documentation.
+  /// A detailed description of the monitored resource type that might be used
+  /// in documentation.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. A concise name for the monitored resource type that might be
-  /// displayed in user interfaces. It should be a Title Cased Noun Phrase,
-  /// without any article or other determiners. For example, `"Google Cloud SQL
-  /// Database"`.
+  /// A concise name for the monitored resource type that might be displayed in
+  /// user interfaces.
+  ///
+  /// It should be a Title Cased Noun Phrase, without any article or other
+  /// determiners. For example, `"Google Cloud SQL Database"`.
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// Required. A set of labels used to describe instances of this monitored
-  /// resource type. For example, an individual Google Cloud SQL database is
-  /// identified by values for the labels `"database_id"` and `"zone"`.
+  /// A set of labels used to describe instances of this monitored resource
+  /// type.
+  ///
+  /// For example, an individual Google Cloud SQL database is identified by
+  /// values for the labels `"database_id"` and `"zone"`.
+  ///
+  /// Required.
   core.List<LabelDescriptor> labels;
 
-  /// Optional. The launch stage of the monitored resource definition.
+  /// The launch stage of the monitored resource definition.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -5014,16 +5231,23 @@ class MonitoredResourceDescriptor {
   /// Policy](https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// Optional. The resource name of the monitored resource descriptor:
+  /// The resource name of the monitored resource descriptor:
   /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type}
   /// is the value of the `type` field in this object and {project_id} is a
-  /// project ID that provides API-specific context for accessing the type. APIs
-  /// that do not use project information can use the resource name format
+  /// project ID that provides API-specific context for accessing the type.
+  ///
+  /// APIs that do not use project information can use the resource name format
   /// `"monitoredResourceDescriptors/{type}"`.
+  ///
+  /// Optional.
   core.String name;
 
-  /// Required. The monitored resource type. For example, the type
-  /// `"cloudsql_database"` represents databases in Google Cloud SQL.
+  /// The monitored resource type.
+  ///
+  /// For example, the type `"cloudsql_database"` represents databases in Google
+  /// Cloud SQL.
+  ///
+  /// Required.
   core.String type;
 
   MonitoredResourceDescriptor();
@@ -5076,22 +5300,23 @@ class MonitoredResourceDescriptor {
   }
 }
 
-/// Monitoring configuration of the service. The example below shows how to
-/// configure monitored resources and metrics for monitoring. In the example, a
-/// monitored resource and two metrics are defined. The
-/// `library.googleapis.com/book/returned_count` metric is sent to both producer
-/// and consumer projects, whereas the `library.googleapis.com/book/num_overdue`
-/// metric is only sent to the consumer project. monitored_resources: - type:
-/// library.googleapis.com/Branch display_name: "Library Branch" description: "A
-/// branch of a library." launch_stage: GA labels: - key: resource_container
-/// description: "The Cloud container (ie. project id) for the Branch." - key:
-/// location description: "The location of the library branch." - key: branch_id
-/// description: "The id of the branch." metrics: - name:
-/// library.googleapis.com/book/returned_count display_name: "Books Returned"
-/// description: "The count of books that have been returned." launch_stage: GA
-/// metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id
-/// description: "The id of the customer." - name:
-/// library.googleapis.com/book/num_overdue display_name: "Books Overdue"
+/// Monitoring configuration of the service.
+///
+/// The example below shows how to configure monitored resources and metrics for
+/// monitoring. In the example, a monitored resource and two metrics are
+/// defined. The `library.googleapis.com/book/returned_count` metric is sent to
+/// both producer and consumer projects, whereas the
+/// `library.googleapis.com/book/num_overdue` metric is only sent to the
+/// consumer project. monitored_resources: - type: library.googleapis.com/Branch
+/// display_name: "Library Branch" description: "A branch of a library."
+/// launch_stage: GA labels: - key: resource_container description: "The Cloud
+/// container (ie. project id) for the Branch." - key: location description:
+/// "The location of the library branch." - key: branch_id description: "The id
+/// of the branch." metrics: - name: library.googleapis.com/book/returned_count
+/// display_name: "Books Returned" description: "The count of books that have
+/// been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit:
+/// "1" labels: - key: customer_id description: "The id of the customer." -
+/// name: library.googleapis.com/book/num_overdue display_name: "Books Overdue"
 /// description: "The current number of overdue books." launch_stage: GA
 /// metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id
 /// description: "The id of the customer." monitoring: producer_destinations: -
@@ -5102,6 +5327,7 @@ class MonitoredResourceDescriptor {
 /// library.googleapis.com/book/num_overdue
 class Monitoring {
   /// Monitoring configurations for sending metrics to the consumer project.
+  ///
   /// There can be multiple consumer destinations. A monitored resource type may
   /// appear in multiple monitoring destinations if different aggregations are
   /// needed for different sets of metrics associated with that monitored
@@ -5110,6 +5336,7 @@ class Monitoring {
   core.List<MonitoringDestination> consumerDestinations;
 
   /// Monitoring configurations for sending metrics to the producer project.
+  ///
   /// There can be multiple producer destinations. A monitored resource type may
   /// appear in multiple monitoring destinations if different aggregations are
   /// needed for different sets of metrics associated with that monitored
@@ -5151,12 +5378,14 @@ class Monitoring {
 /// Configuration of a specific monitoring destination (the producer project or
 /// the consumer project).
 class MonitoringDestination {
-  /// Types of the metrics to report to this monitoring destination. Each type
-  /// must be defined in Service.metrics section.
+  /// Types of the metrics to report to this monitoring destination.
+  ///
+  /// Each type must be defined in Service.metrics section.
   core.List<core.String> metrics;
 
-  /// The monitored resource type. The type must be defined in
-  /// Service.monitored_resources section.
+  /// The monitored resource type.
+  ///
+  /// The type must be defined in Service.monitored_resources section.
   core.String monitoredResource;
 
   MonitoringDestination();
@@ -5184,22 +5413,25 @@ class MonitoringDestination {
   }
 }
 
-/// OAuth scopes are a way to define data and permissions on data. For example,
-/// there are scopes defined for "Read-only access to Google Calendar" and
-/// "Access to Cloud Platform". Users can consent to a scope for an application,
-/// giving it permission to access that data on their behalf. OAuth scope
-/// specifications should be fairly coarse grained; a user will need to see and
-/// understand the text description of what your scope means. In most cases: use
-/// one or at most two OAuth scopes for an entire family of products. If your
-/// product has multiple APIs, you should probably be sharing the OAuth scope
-/// across all of those APIs. When you need finer grained OAuth consent screens:
-/// talk with your product management about how developers will use them in
-/// practice. Please note that even though each of the canonical scopes is
-/// enough for a request to be accepted and passed to the backend, a request can
-/// still fail due to the backend requiring additional scopes or permissions.
+/// OAuth scopes are a way to define data and permissions on data.
+///
+/// For example, there are scopes defined for "Read-only access to Google
+/// Calendar" and "Access to Cloud Platform". Users can consent to a scope for
+/// an application, giving it permission to access that data on their behalf.
+/// OAuth scope specifications should be fairly coarse grained; a user will need
+/// to see and understand the text description of what your scope means. In most
+/// cases: use one or at most two OAuth scopes for an entire family of products.
+/// If your product has multiple APIs, you should probably be sharing the OAuth
+/// scope across all of those APIs. When you need finer grained OAuth consent
+/// screens: talk with your product management about how developers will use
+/// them in practice. Please note that even though each of the canonical scopes
+/// is enough for a request to be accepted and passed to the backend, a request
+/// can still fail due to the backend requiring additional scopes or
+/// permissions.
 class OAuthRequirements {
-  /// The list of publicly documented OAuth scopes that are allowed access. An
-  /// OAuth token containing any of these scopes will be accepted. Example:
+  /// The list of publicly documented OAuth scopes that are allowed access.
+  ///
+  /// An OAuth token containing any of these scopes will be accepted. Example:
   /// canonical_scopes: https://www.googleapis.com/auth/calendar,
   /// https://www.googleapis.com/auth/calendar.read
   core.String canonicalScopes;
@@ -5224,31 +5456,37 @@ class OAuthRequirements {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -5324,7 +5562,9 @@ class OperationMetadata {
   /// The start time of the operation.
   core.String startTime;
 
-  /// Detailed status information for each step. The order is undetermined.
+  /// Detailed status information for each step.
+  ///
+  /// The order is undetermined.
   core.List<Step> steps;
 
   OperationMetadata();
@@ -5370,16 +5610,19 @@ class OperationMetadata {
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
 class Option {
-  /// The option's name. For protobuf built-in options (options defined in
-  /// descriptor.proto), this is the short name. For example, `"map_entry"`. For
-  /// custom options, it should be the fully-qualified name. For example,
-  /// `"google.api.http"`.
+  /// The option's name.
+  ///
+  /// For protobuf built-in options (options defined in descriptor.proto), this
+  /// is the short name. For example, `"map_entry"`. For custom options, it
+  /// should be the fully-qualified name. For example, `"google.api.http"`.
   core.String name;
 
-  /// The option's value packed in an Any message. If the value is a primitive,
-  /// the corresponding wrapper type defined in google/protobuf/wrappers.proto
-  /// should be used. If the value is an enum, it should be stored as an int32
-  /// value using the google.protobuf.Int32Value type.
+  /// The option's value packed in an Any message.
+  ///
+  /// If the value is a primitive, the corresponding wrapper type defined in
+  /// google/protobuf/wrappers.proto should be used. If the value is an enum, it
+  /// should be stored as an int32 value using the google.protobuf.Int32Value
+  /// type.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5413,25 +5656,31 @@ class Option {
   }
 }
 
-/// Represents a documentation page. A page can contain subpages to represent
-/// nested documentation set structure.
+/// Represents a documentation page.
+///
+/// A page can contain subpages to represent nested documentation set structure.
 class Page {
-  /// The Markdown content of the page. You can use (== include {path} ==) to
-  /// include content from a Markdown file.
+  /// The Markdown content of the page.
+  ///
+  /// You can use (== include {path} ==) to include content from a Markdown
+  /// file.
   core.String content;
 
-  /// The name of the page. It will be used as an identity of the page to
-  /// generate URI of the page, text of the link to this page in navigation,
-  /// etc. The full page name (start from the root page name to this page
-  /// concatenated with `.`) can be used as reference to the page in your
-  /// documentation. For example: pages: - name: Tutorial content: (== include
-  /// tutorial.md ==) subpages: - name: Java content: (== include
-  /// tutorial_java.md ==) You can reference `Java` page using Markdown
-  /// reference link syntax: `Java`.
+  /// The name of the page.
+  ///
+  /// It will be used as an identity of the page to generate URI of the page,
+  /// text of the link to this page in navigation, etc. The full page name
+  /// (start from the root page name to this page concatenated with `.`) can be
+  /// used as reference to the page in your documentation. For example: pages: -
+  /// name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java
+  /// content: (== include tutorial_java.md ==) You can reference `Java` page
+  /// using Markdown reference link syntax: `Java`.
   core.String name;
 
-  /// Subpages of this page. The order of subpages specified here will be
-  /// honored in the generated docset.
+  /// Subpages of this page.
+  ///
+  /// The order of subpages specified here will be honored in the generated
+  /// docset.
   core.List<Page> subpages;
 
   Page();
@@ -5467,16 +5716,18 @@ class Page {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -5499,14 +5750,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -5523,20 +5777,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -5583,7 +5839,9 @@ class Policy {
 }
 
 /// Quota configuration helps to achieve fairness and budgeting in service
-/// usage. The metric based quota configuration works this way: - The service
+/// usage.
+///
+/// The metric based quota configuration works this way: - The service
 /// configuration defines a set of metrics. - For API calls, the
 /// quota.metric_rules maps methods to metrics with corresponding costs. - The
 /// quota.limits defines limits on the metrics, which will be used for quota
@@ -5643,69 +5901,88 @@ class Quota {
 }
 
 /// `QuotaLimit` defines a specific limit that applies over a specified duration
-/// for a limit type. There can be at most one limit for a duration and limit
-/// type combination defined within a `QuotaGroup`.
+/// for a limit type.
+///
+/// There can be at most one limit for a duration and limit type combination
+/// defined within a `QuotaGroup`.
 class QuotaLimit {
   /// Default number of tokens that can be consumed during the specified
-  /// duration. This is the number of tokens assigned when a client application
-  /// developer activates the service for his/her project. Specifying a value of
-  /// 0 will block all requests. This can be used if you are provisioning quota
-  /// to selected consumers and blocking others. Similarly, a value of -1 will
+  /// duration.
+  ///
+  /// This is the number of tokens assigned when a client application developer
+  /// activates the service for his/her project. Specifying a value of 0 will
+  /// block all requests. This can be used if you are provisioning quota to
+  /// selected consumers and blocking others. Similarly, a value of -1 will
   /// indicate an unlimited quota. No other negative values are allowed. Used by
   /// group-based quotas only.
   core.String defaultLimit;
 
-  /// Optional. User-visible, extended description for this quota limit. Should
-  /// be used only when more context is needed to understand this limit than
-  /// provided by the limit's display name (see: `display_name`).
+  /// User-visible, extended description for this quota limit.
+  ///
+  /// Should be used only when more context is needed to understand this limit
+  /// than provided by the limit's display name (see: `display_name`).
+  ///
+  /// Optional.
   core.String description;
 
-  /// User-visible display name for this limit. Optional. If not set, the UI
-  /// will provide a default display name based on the quota configuration. This
-  /// field can be used to override the default display name generated from the
-  /// configuration.
+  /// User-visible display name for this limit.
+  ///
+  /// Optional. If not set, the UI will provide a default display name based on
+  /// the quota configuration. This field can be used to override the default
+  /// display name generated from the configuration.
   core.String displayName;
 
-  /// Duration of this limit in textual notation. Must be "100s" or "1d". Used
-  /// by group-based quotas only.
+  /// Duration of this limit in textual notation.
+  ///
+  /// Must be "100s" or "1d". Used by group-based quotas only.
   core.String duration;
 
-  /// Free tier value displayed in the Developers Console for this limit. The
-  /// free tier is the number of tokens that will be subtracted from the billed
-  /// amount when billing is enabled. This field can only be set on a limit with
-  /// duration "1d", in a billable group; it is invalid on any other limit. If
-  /// this field is not set, it defaults to 0, indicating that there is no free
-  /// tier for this service. Used by group-based quotas only.
+  /// Free tier value displayed in the Developers Console for this limit.
+  ///
+  /// The free tier is the number of tokens that will be subtracted from the
+  /// billed amount when billing is enabled. This field can only be set on a
+  /// limit with duration "1d", in a billable group; it is invalid on any other
+  /// limit. If this field is not set, it defaults to 0, indicating that there
+  /// is no free tier for this service. Used by group-based quotas only.
   core.String freeTier;
 
   /// Maximum number of tokens that can be consumed during the specified
-  /// duration. Client application developers can override the default limit up
-  /// to this maximum. If specified, this value cannot be set to a value less
-  /// than the default limit. If not specified, it is set to the default limit.
-  /// To allow clients to apply overrides with no upper bound, set this to -1,
-  /// indicating unlimited maximum quota. Used by group-based quotas only.
+  /// duration.
+  ///
+  /// Client application developers can override the default limit up to this
+  /// maximum. If specified, this value cannot be set to a value less than the
+  /// default limit. If not specified, it is set to the default limit. To allow
+  /// clients to apply overrides with no upper bound, set this to -1, indicating
+  /// unlimited maximum quota. Used by group-based quotas only.
   core.String maxLimit;
 
-  /// The name of the metric this quota limit applies to. The quota limits with
-  /// the same metric will be checked together during runtime. The metric must
-  /// be defined within the service config.
+  /// The name of the metric this quota limit applies to.
+  ///
+  /// The quota limits with the same metric will be checked together during
+  /// runtime. The metric must be defined within the service config.
   core.String metric;
 
-  /// Name of the quota limit. The name must be provided, and it must be unique
-  /// within the service. The name can only include alphanumeric characters as
-  /// well as '-'. The maximum length of the limit name is 64 characters.
+  /// Name of the quota limit.
+  ///
+  /// The name must be provided, and it must be unique within the service. The
+  /// name can only include alphanumeric characters as well as '-'. The maximum
+  /// length of the limit name is 64 characters.
   core.String name;
 
-  /// Specify the unit of the quota limit. It uses the same syntax as
-  /// Metric.unit. The supported unit kinds are determined by the quota backend
-  /// system. Here are some examples: * "1/min/{project}" for quota per minute
-  /// per project. Note: the order of unit components is insignificant. The "1"
-  /// at the beginning is required to follow the metric unit syntax.
+  /// Specify the unit of the quota limit.
+  ///
+  /// It uses the same syntax as Metric.unit. The supported unit kinds are
+  /// determined by the quota backend system. Here are some examples: *
+  /// "1/min/{project}" for quota per minute per project. Note: the order of
+  /// unit components is insignificant. The "1" at the beginning is required to
+  /// follow the metric unit syntax.
   core.String unit;
 
-  /// Tiered limit values. You must specify this as a key:value pair, with an
-  /// integer value that is the maximum number of requests allowed for the
-  /// specified unit. Currently only STANDARD is supported.
+  /// Tiered limit values.
+  ///
+  /// You must specify this as a key:value pair, with an integer value that is
+  /// the maximum number of requests allowed for the specified unit. Currently
+  /// only STANDARD is supported.
   core.Map<core.String, core.String> values;
 
   QuotaLimit();
@@ -5789,18 +6066,22 @@ class QuotaLimit {
 /// API resource.
 class ResourceReference {
   /// The resource type of a child collection that the annotated field
-  /// references. This is useful for annotating the `parent` field that doesn't
-  /// have a fixed resource type. Example: message ListLogEntriesRequest {
-  /// string parent = 1 [(google.api.resource_reference) = { child_type:
+  /// references.
+  ///
+  /// This is useful for annotating the `parent` field that doesn't have a fixed
+  /// resource type. Example: message ListLogEntriesRequest { string parent = 1
+  /// [(google.api.resource_reference) = { child_type:
   /// "logging.googleapis.com/LogEntry" }; }
   core.String childType;
 
-  /// The resource type that the annotated field references. Example: message
-  /// Subscription { string topic = 2 [(google.api.resource_reference) = { type:
-  /// "pubsub.googleapis.com/Topic" }]; } Occasionally, a field may reference an
-  /// arbitrary resource. In this case, APIs use the special value * in their
-  /// resource reference. Example: message GetIamPolicyRequest { string resource
-  /// = 2 [(google.api.resource_reference) = { type: "*" }]; }
+  /// The resource type that the annotated field references.
+  ///
+  /// Example: message Subscription { string topic = 2
+  /// [(google.api.resource_reference) = { type: "pubsub.googleapis.com/Topic"
+  /// }]; } Occasionally, a field may reference an arbitrary resource. In this
+  /// case, APIs use the special value * in their resource reference. Example:
+  /// message GetIamPolicyRequest { string resource = 2
+  /// [(google.api.resource_reference) = { type: "*" }]; }
   core.String type;
 
   ResourceReference();
@@ -5827,35 +6108,45 @@ class ResourceReference {
 }
 
 /// A rollout resource that defines how service configuration versions are
-/// pushed to control plane systems. Typically, you create a new version of the
-/// service config, and then create a Rollout to push the service config.
+/// pushed to control plane systems.
+///
+/// Typically, you create a new version of the service config, and then create a
+/// Rollout to push the service config.
 class Rollout {
-  /// Creation time of the rollout. Readonly.
+  /// Creation time of the rollout.
+  ///
+  /// Readonly.
   core.String createTime;
 
-  /// This field is deprecated and will be deleted. Please remove usage of this
-  /// field.
+  /// This field is deprecated and will be deleted.
+  ///
+  /// Please remove usage of this field.
   core.String createdBy;
 
   /// The strategy associated with a rollout to delete a `ManagedService`.
+  ///
   /// Readonly.
   DeleteServiceStrategy deleteServiceStrategy;
 
-  /// Optional. Unique identifier of this Rollout. Must be no longer than 63
-  /// characters and only lower case letters, digits, '.', '_' and '-' are
-  /// allowed. If not specified by client, the server will generate one. The
-  /// generated id will have the form of , where "date" is the create date in
-  /// ISO 8601 format. "revision number" is a monotonically increasing positive
-  /// number that is reset every day for each service. An example of the
-  /// generated rollout_id is '2016-02-16r1'
+  /// Unique identifier of this Rollout.
+  ///
+  /// Must be no longer than 63 characters and only lower case letters, digits,
+  /// '.', '_' and '-' are allowed. If not specified by client, the server will
+  /// generate one. The generated id will have the form of , where "date" is the
+  /// create date in ISO 8601 format. "revision number" is a monotonically
+  /// increasing positive number that is reset every day for each service. An
+  /// example of the generated rollout_id is '2016-02-16r1'
+  ///
+  /// Optional.
   core.String rolloutId;
 
   /// The name of the service associated with this Rollout.
   core.String serviceName;
 
-  /// The status of this rollout. Readonly. In case of a failed rollout, the
-  /// system will automatically rollback to the current Rollout version.
-  /// Readonly.
+  /// The status of this rollout.
+  ///
+  /// Readonly. In case of a failed rollout, the system will automatically
+  /// rollback to the current Rollout version. Readonly.
   /// Possible string values are:
   /// - "ROLLOUT_STATUS_UNSPECIFIED" : No status specified.
   /// - "IN_PROGRESS" : The Rollout is in progress.
@@ -5931,23 +6222,25 @@ class Rollout {
   }
 }
 
-/// `Service` is the root object of Google service configuration schema. It
-/// describes basic information about a service, such as the name and the title,
-/// and delegates other aspects to sub-sections. Each sub-section is either a
-/// proto message or a repeated proto message that configures a specific aspect,
-/// such as auth. See each proto message definition for details. Example: type:
-/// google.api.Service config_version: 3 name: calendar.googleapis.com title:
-/// Google Calendar API apis: - name: google.calendar.v3.Calendar
-/// authentication: providers: - id: google_calendar_auth jwks_uri:
-/// https://www.googleapis.com/oauth2/v1/certs issuer:
-/// https://securetoken.google.com rules: - selector: "*" requirements:
+/// `Service` is the root object of Google service configuration schema.
+///
+/// It describes basic information about a service, such as the name and the
+/// title, and delegates other aspects to sub-sections. Each sub-section is
+/// either a proto message or a repeated proto message that configures a
+/// specific aspect, such as auth. See each proto message definition for
+/// details. Example: type: google.api.Service config_version: 3 name:
+/// calendar.googleapis.com title: Google Calendar API apis: - name:
+/// google.calendar.v3.Calendar authentication: providers: - id:
+/// google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+/// issuer: https://securetoken.google.com rules: - selector: "*" requirements:
 /// provider_id: google_calendar_auth
 class Service {
-  /// A list of API interfaces exported by this service. Only the `name` field
-  /// of the google.protobuf.Api needs to be provided by the configuration
-  /// author, as the remaining fields will be derived from the IDL during the
-  /// normalization process. It is an error to specify an API interface here
-  /// which cannot be resolved against the associated IDL files.
+  /// A list of API interfaces exported by this service.
+  ///
+  /// Only the `name` field of the google.protobuf.Api needs to be provided by
+  /// the configuration author, as the remaining fields will be derived from the
+  /// IDL during the normalization process. It is an error to specify an API
+  /// interface here which cannot be resolved against the associated IDL files.
   core.List<Api> apis;
 
   /// Auth configuration.
@@ -5959,10 +6252,11 @@ class Service {
   /// Billing configuration.
   Billing billing;
 
-  /// The semantic version of the service configuration. The config version
-  /// affects the interpretation of the service configuration. For example,
-  /// certain features are enabled by default for certain config versions. The
-  /// latest config version is `3`.
+  /// The semantic version of the service configuration.
+  ///
+  /// The config version affects the interpretation of the service
+  /// configuration. For example, certain features are enabled by default for
+  /// certain config versions. The latest config version is `3`.
   core.int configVersion;
 
   /// Context configuration.
@@ -5977,24 +6271,28 @@ class Service {
   /// Additional API documentation.
   Documentation documentation;
 
-  /// Configuration for network endpoints. If this is empty, then an endpoint
-  /// with the same name as the service is automatically generated to service
-  /// all defined APIs.
+  /// Configuration for network endpoints.
+  ///
+  /// If this is empty, then an endpoint with the same name as the service is
+  /// automatically generated to service all defined APIs.
   core.List<Endpoint> endpoints;
 
-  /// A list of all enum types included in this API service. Enums referenced
-  /// directly or indirectly by the `apis` are automatically included. Enums
-  /// which are not referenced but shall be included should be listed here by
-  /// name. Example: enums: - name: google.someapi.v1.SomeEnum
+  /// A list of all enum types included in this API service.
+  ///
+  /// Enums referenced directly or indirectly by the `apis` are automatically
+  /// included. Enums which are not referenced but shall be included should be
+  /// listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
   core.List<Enum> enums;
 
   /// HTTP configuration.
   Http http;
 
   /// A unique ID for a specific instance of this message, typically assigned by
-  /// the client for tracking purpose. Must be no longer than 63 characters and
-  /// only lower case letters, digits, '.', '_' and '-' are allowed. If empty,
-  /// the server may choose to generate one instead.
+  /// the client for tracking purpose.
+  ///
+  /// Must be no longer than 63 characters and only lower case letters, digits,
+  /// '.', '_' and '-' are allowed. If empty, the server may choose to generate
+  /// one instead.
   core.String id;
 
   /// Logging configuration.
@@ -6006,17 +6304,20 @@ class Service {
   /// Defines the metrics used by this service.
   core.List<MetricDescriptor> metrics;
 
-  /// Defines the monitored resources used by this service. This is required by
-  /// the Service.monitoring and Service.logging configurations.
+  /// Defines the monitored resources used by this service.
+  ///
+  /// This is required by the Service.monitoring and Service.logging
+  /// configurations.
   core.List<MonitoredResourceDescriptor> monitoredResources;
 
   /// Monitoring configuration.
   Monitoring monitoring;
 
   /// The service name, which is a DNS-like logical identifier for the service,
-  /// such as `calendar.googleapis.com`. The service name typically goes through
-  /// DNS verification to make sure the owner of the service also owns the DNS
-  /// name.
+  /// such as `calendar.googleapis.com`.
+  ///
+  /// The service name typically goes through DNS verification to make sure the
+  /// owner of the service also owns the DNS name.
   core.String name;
 
   /// The Google project that owns this service.
@@ -6025,24 +6326,28 @@ class Service {
   /// Quota configuration.
   Quota quota;
 
-  /// Output only. The source information for this configuration if available.
+  /// The source information for this configuration if available.
+  ///
+  /// Output only.
   SourceInfo sourceInfo;
 
   /// System parameter configuration.
   SystemParameters systemParameters;
 
-  /// A list of all proto message types included in this API service. It serves
-  /// similar purpose as [google.api.Service.types], except that these types are
-  /// not needed by user-defined APIs. Therefore, they will not show up in the
-  /// generated discovery doc. This field should only be used to define system
-  /// APIs in ESF.
+  /// A list of all proto message types included in this API service.
+  ///
+  /// It serves similar purpose as [google.api.Service.types], except that these
+  /// types are not needed by user-defined APIs. Therefore, they will not show
+  /// up in the generated discovery doc. This field should only be used to
+  /// define system APIs in ESF.
   core.List<Type> systemTypes;
 
   /// The product title for this service.
   core.String title;
 
-  /// A list of all proto message types included in this API service. Types
-  /// referenced directly or indirectly by the `apis` are automatically
+  /// A list of all proto message types included in this API service.
+  ///
+  /// Types referenced directly or indirectly by the `apis` are automatically
   /// included. Messages which are not referenced but shall be included, such as
   /// types used by the `google.protobuf.Any` type, should be listed here by
   /// name. Example: types: - name: google.protobuf.Int32
@@ -6265,22 +6570,31 @@ class Service {
   }
 }
 
-/// The per-product per-project service identity for a service. Use this field
-/// to configure per-product per-project service identity. Example of a service
-/// identity configuration. usage: service_identity: - service_account_parent:
-/// "projects/123456789" display_name: "Cloud XXX Service Agent" description:
-/// "Used as the identity of Cloud XXX to access resources"
+/// The per-product per-project service identity for a service.
+///
+/// Use this field to configure per-product per-project service identity.
+/// Example of a service identity configuration. usage: service_identity: -
+/// service_account_parent: "projects/123456789" display_name: "Cloud XXX
+/// Service Agent" description: "Used as the identity of Cloud XXX to access
+/// resources"
 class ServiceIdentity {
-  /// Optional. A user-specified opaque description of the service account. Must
-  /// be less than or equal to 256 UTF-8 bytes.
+  /// A user-specified opaque description of the service account.
+  ///
+  /// Must be less than or equal to 256 UTF-8 bytes.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. A user-specified name for the service account. Must be less than
-  /// or equal to 100 UTF-8 bytes.
+  /// A user-specified name for the service account.
+  ///
+  /// Must be less than or equal to 100 UTF-8 bytes.
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// A service account project that hosts the service accounts. An example name
-  /// would be: `projects/123456789`
+  /// A service account project that hosts the service accounts.
+  ///
+  /// An example name would be: `projects/123456789`
   core.String serviceAccountParent;
 
   ServiceIdentity();
@@ -6314,13 +6628,15 @@ class ServiceIdentity {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -6353,7 +6669,9 @@ class SetIamPolicyRequest {
 /// element, like the file in which it is defined.
 class SourceContext {
   /// The path-qualified name of the .proto file that contained the associated
-  /// protobuf element. For example: `"google/protobuf/source_context.proto"`.
+  /// protobuf element.
+  ///
+  /// For example: `"google/protobuf/source_context.proto"`.
   core.String fileName;
 
   SourceContext();
@@ -6407,24 +6725,27 @@ class SourceInfo {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -6506,12 +6827,16 @@ class Step {
 
 /// Request message for SubmitConfigSource method.
 class SubmitConfigSourceRequest {
-  /// Required. The source configuration for the service.
+  /// The source configuration for the service.
+  ///
+  /// Required.
   ConfigSource configSource;
 
-  /// Optional. If set, this will result in the generation of a
-  /// `google.api.Service` configuration based on the `ConfigSource` provided,
-  /// but the generated config and the sources will NOT be persisted.
+  /// If set, this will result in the generation of a `google.api.Service`
+  /// configuration based on the `ConfigSource` provided, but the generated
+  /// config and the sources will NOT be persisted.
+  ///
+  /// Optional.
   core.bool validateOnly;
 
   SubmitConfigSourceRequest();
@@ -6561,20 +6886,24 @@ class SubmitConfigSourceResponse {
   }
 }
 
-/// Define a parameter's name and location. The parameter may be passed as
-/// either an HTTP header or a URL query parameter, and if both are passed the
-/// behavior is implementation-dependent.
+/// Define a parameter's name and location.
+///
+/// The parameter may be passed as either an HTTP header or a URL query
+/// parameter, and if both are passed the behavior is implementation-dependent.
 class SystemParameter {
-  /// Define the HTTP header name to use for the parameter. It is case
-  /// insensitive.
+  /// Define the HTTP header name to use for the parameter.
+  ///
+  /// It is case insensitive.
   core.String httpHeader;
 
-  /// Define the name of the parameter, such as "api_key" . It is case
-  /// sensitive.
+  /// Define the name of the parameter, such as "api_key" .
+  ///
+  /// It is case sensitive.
   core.String name;
 
-  /// Define the URL query parameter name to use for the parameter. It is case
-  /// sensitive.
+  /// Define the URL query parameter name to use for the parameter.
+  ///
+  /// It is case sensitive.
   core.String urlQueryParameter;
 
   SystemParameter();
@@ -6609,14 +6938,18 @@ class SystemParameter {
 /// Define a system parameter rule mapping system parameter definitions to
 /// methods.
 class SystemParameterRule {
-  /// Define parameters. Multiple names may be defined for a parameter. For a
-  /// given method call, only one of them should be used. If multiple names are
-  /// used the behavior is implementation-dependent. If none of the specified
-  /// names are present the behavior is parameter-dependent.
+  /// Define parameters.
+  ///
+  /// Multiple names may be defined for a parameter. For a given method call,
+  /// only one of them should be used. If multiple names are used the behavior
+  /// is implementation-dependent. If none of the specified names are present
+  /// the behavior is parameter-dependent.
   core.List<SystemParameter> parameters;
 
-  /// Selects the methods to which this rule applies. Use '*' to indicate all
-  /// methods in all APIs. Refer to selector for syntax details.
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Use '*' to indicate all methods in all APIs. Refer to selector for syntax
+  /// details.
   core.String selector;
 
   SystemParameterRule();
@@ -6646,21 +6979,24 @@ class SystemParameterRule {
 }
 
 /// ### System parameter configuration A system parameter is a special kind of
-/// parameter defined by the API system, not by an individual API. It is
-/// typically mapped to an HTTP header and/or a URL query parameter. This
+/// parameter defined by the API system, not by an individual API.
+///
+/// It is typically mapped to an HTTP header and/or a URL query parameter. This
 /// configuration specifies which methods change the names of the system
 /// parameters.
 class SystemParameters {
-  /// Define system parameters. The parameters defined here will override the
-  /// default parameters implemented by the system. If this field is missing
-  /// from the service config, default system parameters will be used. Default
-  /// system parameters and names is implementation-dependent. Example: define
-  /// api key for all methods system_parameters rules: - selector: "*"
-  /// parameters: - name: api_key url_query_parameter: api_key Example: define 2
-  /// api key names for a specific method. system_parameters rules: - selector:
-  /// "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name:
-  /// api_key http_header: Api-Key2 **NOTE:** All service configuration rules
-  /// follow "last one wins" order.
+  /// Define system parameters.
+  ///
+  /// The parameters defined here will override the default parameters
+  /// implemented by the system. If this field is missing from the service
+  /// config, default system parameters will be used. Default system parameters
+  /// and names is implementation-dependent. Example: define api key for all
+  /// methods system_parameters rules: - selector: "*" parameters: - name:
+  /// api_key url_query_parameter: api_key Example: define 2 api key names for a
+  /// specific method. system_parameters rules: - selector: "/ListShelves"
+  /// parameters: - name: api_key http_header: Api-Key1 - name: api_key
+  /// http_header: Api-Key2 **NOTE:** All service configuration rules follow
+  /// "last one wins" order.
   core.List<SystemParameterRule> rules;
 
   SystemParameters();
@@ -6685,9 +7021,10 @@ class SystemParameters {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -6736,17 +7073,19 @@ class TestIamPermissionsResponse {
 }
 
 /// Strategy that specifies how clients of Google Service Controller want to
-/// send traffic to use different config versions. This is generally used by API
-/// proxy to split traffic based on your configured percentage for each config
-/// version. One example of how to gradually rollout a new service configuration
-/// using this strategy: Day 1 Rollout { id:
-/// "example.googleapis.com/rollout_20160206" traffic_percent_strategy {
-/// percentages: { "example.googleapis.com/20160201": 70.00
-/// "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id:
+/// send traffic to use different config versions.
+///
+/// This is generally used by API proxy to split traffic based on your
+/// configured percentage for each config version. One example of how to
+/// gradually rollout a new service configuration using this strategy: Day 1
+/// Rollout { id: "example.googleapis.com/rollout_20160206"
+/// traffic_percent_strategy { percentages: { "example.googleapis.com/20160201":
+/// 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id:
 /// "example.googleapis.com/rollout_20160207" traffic_percent_strategy: {
 /// percentages: { "example.googleapis.com/20160206": 100.00 } } }
 class TrafficPercentStrategy {
   /// Maps service configuration IDs to their corresponding traffic percentage.
+  ///
   /// Key is the service configuration ID, Value is the traffic percentage which
   /// must be greater than 0.0 and the sum must equal to 100.0.
   core.Map<core.String, core.double> percentages;
@@ -6879,20 +7218,25 @@ class UndeleteServiceResponse {
 /// Configuration controlling usage of a service.
 class Usage {
   /// The full resource name of a channel used for sending notifications to the
-  /// service producer. Google Service Management currently only supports
-  /// [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification
-  /// channel. To use Google Cloud Pub/Sub as the channel, this must be the name
-  /// of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format
-  /// documented in https://cloud.google.com/pubsub/docs/overview.
+  /// service producer.
+  ///
+  /// Google Service Management currently only supports [Google Cloud
+  /// Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To
+  /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
+  /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
+  /// https://cloud.google.com/pubsub/docs/overview.
   core.String producerNotificationChannel;
 
   /// Requirements that must be satisfied before a consumer project can use the
-  /// service. Each requirement is of the form /; for example
+  /// service.
+  ///
+  /// Each requirement is of the form /; for example
   /// 'serviceusage.googleapis.com/billing-enabled'.
   core.List<core.String> requirements;
 
-  /// A list of usage rules that apply to individual API methods. **NOTE:** All
-  /// service configuration rules follow "last one wins" order.
+  /// A list of usage rules that apply to individual API methods.
+  ///
+  /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<UsageRule> rules;
 
   /// The configuration of a per-product per-project service identity.
@@ -6940,15 +7284,17 @@ class Usage {
   }
 }
 
-/// Usage configuration rules for the service. NOTE: Under development. Use this
-/// rule to configure unregistered calls for the service. Unregistered calls are
-/// calls that do not contain consumer project identity. (Example: calls that do
-/// not contain an API key). By default, API methods do not allow unregistered
-/// calls, and each method call must be identified by a consumer project
-/// identity. Use this rule to allow/disallow unregistered calls. Example of an
-/// API that wants to allow unregistered calls for entire service. usage: rules:
-/// - selector: "*" allow_unregistered_calls: true Example of a method that
-/// wants to allow unregistered calls. usage: rules: - selector:
+/// Usage configuration rules for the service.
+///
+/// NOTE: Under development. Use this rule to configure unregistered calls for
+/// the service. Unregistered calls are calls that do not contain consumer
+/// project identity. (Example: calls that do not contain an API key). By
+/// default, API methods do not allow unregistered calls, and each method call
+/// must be identified by a consumer project identity. Use this rule to
+/// allow/disallow unregistered calls. Example of an API that wants to allow
+/// unregistered calls for entire service. usage: rules: - selector: "*"
+/// allow_unregistered_calls: true Example of a method that wants to allow
+/// unregistered calls. usage: rules: - selector:
 /// "google.example.library.v1.LibraryService.CreateBook"
 /// allow_unregistered_calls: true
 class UsageRule {
@@ -6956,13 +7302,16 @@ class UsageRule {
   /// don't identify any user or application.
   core.bool allowUnregisteredCalls;
 
-  /// Selects the methods to which this rule applies. Use '*' to indicate all
-  /// methods in all APIs. Refer to selector for syntax details.
+  /// Selects the methods to which this rule applies.
+  ///
+  /// Use '*' to indicate all methods in all APIs. Refer to selector for syntax
+  /// details.
   core.String selector;
 
   /// If true, the selected method should skip service control and the control
-  /// plane features, such as quota and billing, will not be available. This
-  /// flag is used by Google Cloud Endpoints to bypass checks for internal
+  /// plane features, such as quota and billing, will not be available.
+  ///
+  /// This flag is used by Google Cloud Endpoints to bypass checks for internal
   /// methods, such as service health check methods.
   core.bool skipServiceControl;
 

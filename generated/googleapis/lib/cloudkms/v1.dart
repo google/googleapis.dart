@@ -334,8 +334,10 @@ class ProjectsLocationsKeyRingsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -491,9 +493,10 @@ class ProjectsLocationsKeyRingsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -554,10 +557,11 @@ class ProjectsLocationsKeyRingsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -632,8 +636,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   ProjectsLocationsKeyRingsCryptoKeysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a new CryptoKey within a KeyRing. CryptoKey.purpose and
-  /// CryptoKey.version_template.algorithm are required.
+  /// Create a new CryptoKey within a KeyRing.
+  ///
+  /// CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
   ///
   /// [request] - The metadata request object.
   ///
@@ -711,8 +716,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
-  /// Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be
-  /// ENCRYPT_DECRYPT.
+  /// Decrypts data that was protected by Encrypt.
+  ///
+  /// The CryptoKey.purpose must be ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///
@@ -772,8 +778,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
-  /// Encrypts data, so that it can only be recovered by a call to Decrypt. The
-  /// CryptoKey.purpose must be ENCRYPT_DECRYPT.
+  /// Encrypts data, so that it can only be recovered by a call to Decrypt.
+  ///
+  /// The CryptoKey.purpose must be ENCRYPT_DECRYPT.
   ///
   /// [request] - The metadata request object.
   ///
@@ -887,8 +894,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -1123,9 +1132,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1187,10 +1197,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -1254,8 +1265,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     );
   }
 
-  /// Update the version of a CryptoKey that will be used in Encrypt. Returns an
-  /// error if called on an asymmetric key.
+  /// Update the version of a CryptoKey that will be used in Encrypt.
+  ///
+  /// Returns an error if called on an asymmetric key.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1451,8 +1463,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
-  /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the
-  /// next sequential id. If unset, state will be set to ENABLED.
+  /// Create a new CryptoKeyVersion in a CryptoKey.
+  ///
+  /// The server will assign the next sequential id. If unset, state will be set
+  /// to ENABLED.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1514,12 +1528,13 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
-  /// Schedule a CryptoKeyVersion for destruction. Upon calling this method,
-  /// CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time
-  /// will be set to a time 24 hours in the future, at which point the state
-  /// will be changed to DESTROYED, and the key material will be irrevocably
-  /// destroyed. Before the destroy_time is reached, RestoreCryptoKeyVersion may
-  /// be called to reverse the process.
+  /// Schedule a CryptoKeyVersion for destruction.
+  ///
+  /// Upon calling this method, CryptoKeyVersion.state will be set to
+  /// DESTROY_SCHEDULED and destroy_time will be set to a time 24 hours in the
+  /// future, at which point the state will be changed to DESTROYED, and the key
+  /// material will be irrevocably destroyed. Before the destroy_time is
+  /// reached, RestoreCryptoKeyVersion may be called to reverse the process.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1631,8 +1646,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
-  /// Returns the public key for the given CryptoKeyVersion. The
-  /// CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT.
+  /// Returns the public key for the given CryptoKeyVersion.
+  ///
+  /// The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT.
   ///
   /// Request parameters:
   ///
@@ -1686,8 +1702,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }
 
   /// Imports a new CryptoKeyVersion into an existing CryptoKey using the
-  /// wrapped key material provided in the request. The version ID will be
-  /// assigned the next sequential id within the CryptoKey.
+  /// wrapped key material provided in the request.
+  ///
+  /// The version ID will be assigned the next sequential id within the
+  /// CryptoKey.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1849,9 +1867,11 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
-  /// Update a CryptoKeyVersion's metadata. state may be changed between ENABLED
-  /// and DISABLED using this method. See DestroyCryptoKeyVersion and
-  /// RestoreCryptoKeyVersion to move between other states.
+  /// Update a CryptoKeyVersion's metadata.
+  ///
+  /// state may be changed between ENABLED and DISABLED using this method. See
+  /// DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other
+  /// states.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1918,9 +1938,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
-  /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon
-  /// restoration of the CryptoKeyVersion, state will be set to DISABLED, and
-  /// destroy_time will be cleared.
+  /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
+  ///
+  /// Upon restoration of the CryptoKeyVersion, state will be set to DISABLED,
+  /// and destroy_time will be cleared.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1986,8 +2007,9 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   ProjectsLocationsKeyRingsImportJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a new ImportJob within a KeyRing. ImportJob.import_method is
-  /// required.
+  /// Create a new ImportJob within a KeyRing.
+  ///
+  /// ImportJob.import_method is required.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2106,8 +2128,10 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -2265,9 +2289,10 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2329,10 +2354,11 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -2399,8 +2425,10 @@ class ProjectsLocationsKeyRingsImportJobsResource {
 
 /// Request message for KeyManagementService.AsymmetricDecrypt.
 class AsymmetricDecryptRequest {
-  /// Required. The data encrypted with the named CryptoKeyVersion's public key
-  /// using OAEP.
+  /// The data encrypted with the named CryptoKeyVersion's public key using
+  /// OAEP.
+  ///
+  /// Required.
   core.String ciphertext;
   core.List<core.int> get ciphertextAsBytes =>
       convert.base64.decode(ciphertext);
@@ -2410,10 +2438,10 @@ class AsymmetricDecryptRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. An optional CRC32C checksum of the
-  /// AsymmetricDecryptRequest.ciphertext. If specified, KeyManagementService
-  /// will verify the integrity of the received
-  /// AsymmetricDecryptRequest.ciphertext using this checksum.
+  /// An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received AsymmetricDecryptRequest.ciphertext using this checksum.
   /// KeyManagementService will report an error if the checksum verification
   /// fails. If you receive a checksum error, your client should verify that
   /// CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to
@@ -2424,6 +2452,8 @@ class AsymmetricDecryptRequest {
   /// non-negative integer, which will never exceed 2^32-1, and can be safely
   /// downconverted to uint32 in languages that support this type. NOTE: This
   /// field is in Beta.
+  ///
+  /// Optional.
   core.String ciphertextCrc32c;
 
   AsymmetricDecryptRequest();
@@ -2460,23 +2490,26 @@ class AsymmetricDecryptResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Integrity verification field. A CRC32C checksum of the returned
-  /// AsymmetricDecryptResponse.plaintext. An integrity check of
-  /// AsymmetricDecryptResponse.plaintext can be performed by computing the
-  /// CRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing your
-  /// results to this field. Discard the response in case of non-matching
-  /// checksum values, and perform a limited number of retries. A persistent
-  /// mismatch may indicate an issue in your computation of the CRC32C checksum.
-  /// Note: This field is defined as int64 for reasons of compatibility across
-  /// different languages. However, it is a non-negative integer, which will
-  /// never exceed 2^32-1, and can be safely downconverted to uint32 in
-  /// languages that support this type. NOTE: This field is in Beta.
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned AsymmetricDecryptResponse.plaintext. An
+  /// integrity check of AsymmetricDecryptResponse.plaintext can be performed by
+  /// computing the CRC32C checksum of AsymmetricDecryptResponse.plaintext and
+  /// comparing your results to this field. Discard the response in case of
+  /// non-matching checksum values, and perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type. NOTE: This field is in
+  /// Beta.
   core.String plaintextCrc32c;
 
-  /// Integrity verification field. A flag indicating whether
-  /// AsymmetricDecryptRequest.ciphertext_crc32c was received by
-  /// KeyManagementService and used for the integrity verification of the
-  /// ciphertext. A false value of this field indicates either that
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c was
+  /// received by KeyManagementService and used for the integrity verification
+  /// of the ciphertext. A false value of this field indicates either that
   /// AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that it was
   /// not delivered to KeyManagementService. If you've set
   /// AsymmetricDecryptRequest.ciphertext_crc32c but this field is still false,
@@ -2515,11 +2548,16 @@ class AsymmetricDecryptResponse {
 
 /// Request message for KeyManagementService.AsymmetricSign.
 class AsymmetricSignRequest {
-  /// Required. The digest of the data to sign. The digest must be produced with
-  /// the same digest algorithm as specified by the key version's algorithm.
+  /// The digest of the data to sign.
+  ///
+  /// The digest must be produced with the same digest algorithm as specified by
+  /// the key version's algorithm.
+  ///
+  /// Required.
   Digest digest;
 
-  /// Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest.
+  /// An optional CRC32C checksum of the AsymmetricSignRequest.digest.
+  ///
   /// If specified, KeyManagementService will verify the integrity of the
   /// received AsymmetricSignRequest.digest using this checksum.
   /// KeyManagementService will report an error if the checksum verification
@@ -2532,6 +2570,8 @@ class AsymmetricSignRequest {
   /// non-negative integer, which will never exceed 2^32-1, and can be safely
   /// downconverted to uint32 in languages that support this type. NOTE: This
   /// field is in Beta.
+  ///
+  /// Optional.
   core.String digestCrc32c;
 
   AsymmetricSignRequest();
@@ -2560,9 +2600,10 @@ class AsymmetricSignRequest {
 
 /// Response message for KeyManagementService.AsymmetricSign.
 class AsymmetricSignResponse {
-  /// The resource name of the CryptoKeyVersion used for signing. Check this
-  /// field to verify that the intended resource was used for signing. NOTE:
-  /// This field is in Beta.
+  /// The resource name of the CryptoKeyVersion used for signing.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// signing. NOTE: This field is in Beta.
   core.String name;
 
   /// The created signature.
@@ -2574,27 +2615,31 @@ class AsymmetricSignResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Integrity verification field. A CRC32C checksum of the returned
-  /// AsymmetricSignResponse.signature. An integrity check of
-  /// AsymmetricSignResponse.signature can be performed by computing the CRC32C
-  /// checksum of AsymmetricSignResponse.signature and comparing your results to
-  /// this field. Discard the response in case of non-matching checksum values,
-  /// and perform a limited number of retries. A persistent mismatch may
-  /// indicate an issue in your computation of the CRC32C checksum. Note: This
-  /// field is defined as int64 for reasons of compatibility across different
-  /// languages. However, it is a non-negative integer, which will never exceed
-  /// 2^32-1, and can be safely downconverted to uint32 in languages that
-  /// support this type. NOTE: This field is in Beta.
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned AsymmetricSignResponse.signature. An
+  /// integrity check of AsymmetricSignResponse.signature can be performed by
+  /// computing the CRC32C checksum of AsymmetricSignResponse.signature and
+  /// comparing your results to this field. Discard the response in case of
+  /// non-matching checksum values, and perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type. NOTE: This field is in
+  /// Beta.
   core.String signatureCrc32c;
 
-  /// Integrity verification field. A flag indicating whether
-  /// AsymmetricSignRequest.digest_crc32c was received by KeyManagementService
-  /// and used for the integrity verification of the digest. A false value of
-  /// this field indicates either that AsymmetricSignRequest.digest_crc32c was
-  /// left unset or that it was not delivered to KeyManagementService. If you've
-  /// set AsymmetricSignRequest.digest_crc32c but this field is still false,
-  /// discard the response and perform a limited number of retries. NOTE: This
-  /// field is in Beta.
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether AsymmetricSignRequest.digest_crc32c was received
+  /// by KeyManagementService and used for the integrity verification of the
+  /// digest. A false value of this field indicates either that
+  /// AsymmetricSignRequest.digest_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// AsymmetricSignRequest.digest_crc32c but this field is still false, discard
+  /// the response and perform a limited number of retries. NOTE: This field is
+  /// in Beta.
   core.bool verifiedDigestCrc32c;
 
   AsymmetricSignResponse();
@@ -2632,11 +2677,12 @@ class AsymmetricSignResponse {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -2652,9 +2698,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -2684,14 +2731,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -2729,20 +2779,24 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -2773,8 +2827,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -2815,8 +2870,9 @@ class Binding {
   }
 }
 
-/// Certificate chains needed to verify the attestation. Certificates in chains
-/// are PEM-encoded and are ordered based on
+/// Certificate chains needed to verify the attestation.
+///
+/// Certificates in chains are PEM-encoded and are ordered based on
 /// https://tools.ietf.org/html/rfc5246#section-7.4.2.
 class CertificateChains {
   /// Cavium certificate chain corresponding to the attestation.
@@ -2864,21 +2920,30 @@ class CertificateChains {
 }
 
 /// A CryptoKey represents a logical key that can be used for cryptographic
-/// operations. A CryptoKey is made up of zero or more versions, which represent
-/// the actual key material used in cryptographic operations.
+/// operations.
+///
+/// A CryptoKey is made up of zero or more versions, which represent the actual
+/// key material used in cryptographic operations.
 class CryptoKey {
-  /// Output only. The time at which this CryptoKey was created.
+  /// The time at which this CryptoKey was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Labels with user-defined metadata. For more information, see [Labeling
+  /// Labels with user-defined metadata.
+  ///
+  /// For more information, see [Labeling
   /// Keys](https://cloud.google.com/kms/docs/labeling-keys).
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The resource name for this CryptoKey in the format `projects
-  /// / * /locations / * /keyRings / * /cryptoKeys / * `.
+  /// The resource name for this CryptoKey in the format `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `.
+  ///
+  /// Output only.
   core.String name;
 
   /// At next_rotation_time, the Key Management Service will automatically: 1.
+  ///
   /// Create a new version of this CryptoKey. 2. Mark the new version as
   /// primary. Key rotations performed manually via CreateCryptoKeyVersion and
   /// UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with
@@ -2886,14 +2951,19 @@ class CryptoKey {
   /// field must be omitted.
   core.String nextRotationTime;
 
-  /// Output only. A copy of the "primary" CryptoKeyVersion that will be used by
-  /// Encrypt when this CryptoKey is given in EncryptRequest.name. The
-  /// CryptoKey's primary version can be updated via
+  /// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when
+  /// this CryptoKey is given in EncryptRequest.name.
+  ///
+  /// The CryptoKey's primary version can be updated via
   /// UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have
   /// a primary. For other keys, this field will be omitted.
+  ///
+  /// Output only.
   CryptoKeyVersion primary;
 
-  /// Immutable. The immutable purpose of this CryptoKey.
+  /// The immutable purpose of this CryptoKey.
+  ///
+  /// Immutable.
   /// Possible string values are:
   /// - "CRYPTO_KEY_PURPOSE_UNSPECIFIED" : Not specified.
   /// - "ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
@@ -2905,14 +2975,17 @@ class CryptoKey {
   core.String purpose;
 
   /// next_rotation_time will be advanced by this period when the service
-  /// automatically rotates a key. Must be at least 24 hours and at most 876,000
-  /// hours. If rotation_period is set, next_rotation_time must also be set.
-  /// Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other
-  /// keys, this field must be omitted.
+  /// automatically rotates a key.
+  ///
+  /// Must be at least 24 hours and at most 876,000 hours. If rotation_period is
+  /// set, next_rotation_time must also be set. Keys with purpose
+  /// ENCRYPT_DECRYPT support automatic rotation. For other keys, this field
+  /// must be omitted.
   core.String rotationPeriod;
 
-  /// A template describing settings for new CryptoKeyVersion instances. The
-  /// properties of new CryptoKeyVersion instances created by either
+  /// A template describing settings for new CryptoKeyVersion instances.
+  ///
+  /// The properties of new CryptoKeyVersion instances created by either
   /// CreateCryptoKeyVersion or auto-rotation are controlled by this template.
   CryptoKeyVersionTemplate versionTemplate;
 
@@ -2984,14 +3057,17 @@ class CryptoKey {
 }
 
 /// A CryptoKeyVersion represents an individual cryptographic key, and the
-/// associated key material. An ENABLED version can be used for cryptographic
-/// operations. For security reasons, the raw cryptographic key material
-/// represented by a CryptoKeyVersion can never be viewed or exported. It can
-/// only be used to encrypt, decrypt, or sign data when an authorized user or
-/// application invokes Cloud KMS.
+/// associated key material.
+///
+/// An ENABLED version can be used for cryptographic operations. For security
+/// reasons, the raw cryptographic key material represented by a
+/// CryptoKeyVersion can never be viewed or exported. It can only be used to
+/// encrypt, decrypt, or sign data when an authorized user or application
+/// invokes Cloud KMS.
 class CryptoKeyVersion {
-  /// Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion
-  /// supports.
+  /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
@@ -3027,21 +3103,33 @@ class CryptoKeyVersion {
   /// encryption by an external key manager.
   core.String algorithm;
 
-  /// Output only. Statement that was generated and signed by the HSM at key
-  /// creation time. Use this statement to verify attributes of the key as
-  /// stored on the HSM, independently of Google. Only provided for key versions
-  /// with protection_level HSM.
+  /// Statement that was generated and signed by the HSM at key creation time.
+  ///
+  /// Use this statement to verify attributes of the key as stored on the HSM,
+  /// independently of Google. Only provided for key versions with
+  /// protection_level HSM.
+  ///
+  /// Output only.
   KeyOperationAttestation attestation;
 
-  /// Output only. The time at which this CryptoKeyVersion was created.
+  /// The time at which this CryptoKeyVersion was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. The time this CryptoKeyVersion's key material was destroyed.
+  /// The time this CryptoKeyVersion's key material was destroyed.
+  ///
   /// Only present if state is DESTROYED.
+  ///
+  /// Output only.
   core.String destroyEventTime;
 
-  /// Output only. The time this CryptoKeyVersion's key material is scheduled
-  /// for destruction. Only present if state is DESTROY_SCHEDULED.
+  /// The time this CryptoKeyVersion's key material is scheduled for
+  /// destruction.
+  ///
+  /// Only present if state is DESTROY_SCHEDULED.
+  ///
+  /// Output only.
   core.String destroyTime;
 
   /// ExternalProtectionLevelOptions stores a group of additional fields for
@@ -3049,29 +3137,40 @@ class CryptoKeyVersion {
   /// protection level.
   ExternalProtectionLevelOptions externalProtectionLevelOptions;
 
-  /// Output only. The time this CryptoKeyVersion's key material was generated.
+  /// The time this CryptoKeyVersion's key material was generated.
+  ///
+  /// Output only.
   core.String generateTime;
 
-  /// Output only. The root cause of an import failure. Only present if state is
-  /// IMPORT_FAILED.
+  /// The root cause of an import failure.
+  ///
+  /// Only present if state is IMPORT_FAILED.
+  ///
+  /// Output only.
   core.String importFailureReason;
 
-  /// Output only. The name of the ImportJob used to import this
-  /// CryptoKeyVersion. Only present if the underlying key material was
-  /// imported.
+  /// The name of the ImportJob used to import this CryptoKeyVersion.
+  ///
+  /// Only present if the underlying key material was imported.
+  ///
+  /// Output only.
   core.String importJob;
 
-  /// Output only. The time at which this CryptoKeyVersion's key material was
-  /// imported.
+  /// The time at which this CryptoKeyVersion's key material was imported.
+  ///
+  /// Output only.
   core.String importTime;
 
-  /// Output only. The resource name for this CryptoKeyVersion in the format
-  /// `projects / * /locations / * /keyRings / * /cryptoKeys / *
-  /// /cryptoKeyVersions / * `.
+  /// The resource name for this CryptoKeyVersion in the format `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * /cryptoKeyVersions / * `.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The ProtectionLevel describing how crypto operations are
-  /// performed with this CryptoKeyVersion.
+  /// The ProtectionLevel describing how crypto operations are performed with
+  /// this CryptoKeyVersion.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
@@ -3199,10 +3298,12 @@ class CryptoKeyVersion {
 /// new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or
 /// automatically as a result of auto-rotation.
 class CryptoKeyVersionTemplate {
-  /// Required. Algorithm to use when creating a CryptoKeyVersion based on this
-  /// template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is
-  /// implied if both this field is omitted and CryptoKey.purpose is
-  /// ENCRYPT_DECRYPT.
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
@@ -3239,7 +3340,9 @@ class CryptoKeyVersionTemplate {
   core.String algorithm;
 
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
-  /// template. Immutable. Defaults to SOFTWARE.
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
   /// Possible string values are:
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
@@ -3272,8 +3375,10 @@ class CryptoKeyVersionTemplate {
 
 /// Request message for KeyManagementService.Decrypt.
 class DecryptRequest {
-  /// Optional. Optional data that must match the data originally supplied in
+  /// Optional data that must match the data originally supplied in
   /// EncryptRequest.additional_authenticated_data.
+  ///
+  /// Optional.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes =>
       convert.base64.decode(additionalAuthenticatedData);
@@ -3283,10 +3388,11 @@ class DecryptRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. An optional CRC32C checksum of the
-  /// DecryptRequest.additional_authenticated_data. If specified,
-  /// KeyManagementService will verify the integrity of the received
-  /// DecryptRequest.additional_authenticated_data using this checksum.
+  /// An optional CRC32C checksum of the
+  /// DecryptRequest.additional_authenticated_data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received DecryptRequest.additional_authenticated_data using this checksum.
   /// KeyManagementService will report an error if the checksum verification
   /// fails. If you receive a checksum error, your client should verify that
   /// CRC32C(DecryptRequest.additional_authenticated_data) is equal to
@@ -3297,10 +3403,13 @@ class DecryptRequest {
   /// is a non-negative integer, which will never exceed 2^32-1, and can be
   /// safely downconverted to uint32 in languages that support this type. NOTE:
   /// This field is in Beta.
+  ///
+  /// Optional.
   core.String additionalAuthenticatedDataCrc32c;
 
-  /// Required. The encrypted data originally returned in
-  /// EncryptResponse.ciphertext.
+  /// The encrypted data originally returned in EncryptResponse.ciphertext.
+  ///
+  /// Required.
   core.String ciphertext;
   core.List<core.int> get ciphertextAsBytes =>
       convert.base64.decode(ciphertext);
@@ -3310,11 +3419,12 @@ class DecryptRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If
-  /// specified, KeyManagementService will verify the integrity of the received
-  /// DecryptRequest.ciphertext using this checksum. KeyManagementService will
-  /// report an error if the checksum verification fails. If you receive a
-  /// checksum error, your client should verify that
+  /// An optional CRC32C checksum of the DecryptRequest.ciphertext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received DecryptRequest.ciphertext using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
   /// CRC32C(DecryptRequest.ciphertext) is equal to
   /// DecryptRequest.ciphertext_crc32c, and if so, perform a limited number of
   /// retries. A persistent mismatch may indicate an issue in your computation
@@ -3323,6 +3433,8 @@ class DecryptRequest {
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
   /// to uint32 in languages that support this type. NOTE: This field is in
   /// Beta.
+  ///
+  /// Optional.
   core.String ciphertextCrc32c;
 
   DecryptRequest();
@@ -3374,19 +3486,20 @@ class DecryptResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Integrity verification field. A CRC32C checksum of the returned
-  /// DecryptResponse.plaintext. An integrity check of DecryptResponse.plaintext
-  /// can be performed by computing the CRC32C checksum of
-  /// DecryptResponse.plaintext and comparing your results to this field.
-  /// Discard the response in case of non-matching checksum values, and perform
-  /// a limited number of retries. A persistent mismatch may indicate an issue
-  /// in your computation of the CRC32C checksum. Note: receiving this response
-  /// message indicates that KeyManagementService is able to successfully
-  /// decrypt the ciphertext. Note: This field is defined as int64 for reasons
-  /// of compatibility across different languages. However, it is a non-negative
-  /// integer, which will never exceed 2^32-1, and can be safely downconverted
-  /// to uint32 in languages that support this type. NOTE: This field is in
-  /// Beta.
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned DecryptResponse.plaintext. An integrity
+  /// check of DecryptResponse.plaintext can be performed by computing the
+  /// CRC32C checksum of DecryptResponse.plaintext and comparing your results to
+  /// this field. Discard the response in case of non-matching checksum values,
+  /// and perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note:
+  /// receiving this response message indicates that KeyManagementService is
+  /// able to successfully decrypt the ciphertext. Note: This field is defined
+  /// as int64 for reasons of compatibility across different languages. However,
+  /// it is a non-negative integer, which will never exceed 2^32-1, and can be
+  /// safely downconverted to uint32 in languages that support this type. NOTE:
+  /// This field is in Beta.
   core.String plaintextCrc32c;
 
   DecryptResponse();
@@ -3486,12 +3599,15 @@ class Digest {
 
 /// Request message for KeyManagementService.Encrypt.
 class EncryptRequest {
-  /// Optional. Optional data that, if specified, must also be provided during
-  /// decryption through DecryptRequest.additional_authenticated_data. The
-  /// maximum size depends on the key version's protection_level. For SOFTWARE
-  /// keys, the AAD must be no larger than 64KiB. For HSM keys, the combined
-  /// length of the plaintext and additional_authenticated_data fields must be
-  /// no larger than 8KiB.
+  /// Optional data that, if specified, must also be provided during decryption
+  /// through DecryptRequest.additional_authenticated_data.
+  ///
+  /// The maximum size depends on the key version's protection_level. For
+  /// SOFTWARE keys, the AAD must be no larger than 64KiB. For HSM keys, the
+  /// combined length of the plaintext and additional_authenticated_data fields
+  /// must be no larger than 8KiB.
+  ///
+  /// Optional.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes =>
       convert.base64.decode(additionalAuthenticatedData);
@@ -3501,10 +3617,11 @@ class EncryptRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. An optional CRC32C checksum of the
-  /// EncryptRequest.additional_authenticated_data. If specified,
-  /// KeyManagementService will verify the integrity of the received
-  /// EncryptRequest.additional_authenticated_data using this checksum.
+  /// An optional CRC32C checksum of the
+  /// EncryptRequest.additional_authenticated_data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received EncryptRequest.additional_authenticated_data using this checksum.
   /// KeyManagementService will report an error if the checksum verification
   /// fails. If you receive a checksum error, your client should verify that
   /// CRC32C(EncryptRequest.additional_authenticated_data) is equal to
@@ -3515,13 +3632,18 @@ class EncryptRequest {
   /// is a non-negative integer, which will never exceed 2^32-1, and can be
   /// safely downconverted to uint32 in languages that support this type. NOTE:
   /// This field is in Beta.
+  ///
+  /// Optional.
   core.String additionalAuthenticatedDataCrc32c;
 
-  /// Required. The data to encrypt. Must be no larger than 64KiB. The maximum
-  /// size depends on the key version's protection_level. For SOFTWARE keys, the
-  /// plaintext must be no larger than 64KiB. For HSM keys, the combined length
-  /// of the plaintext and additional_authenticated_data fields must be no
-  /// larger than 8KiB.
+  /// The data to encrypt.
+  ///
+  /// Must be no larger than 64KiB. The maximum size depends on the key
+  /// version's protection_level. For SOFTWARE keys, the plaintext must be no
+  /// larger than 64KiB. For HSM keys, the combined length of the plaintext and
+  /// additional_authenticated_data fields must be no larger than 8KiB.
+  ///
+  /// Required.
   core.String plaintext;
   core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext);
 
@@ -3530,11 +3652,12 @@ class EncryptRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If
-  /// specified, KeyManagementService will verify the integrity of the received
-  /// EncryptRequest.plaintext using this checksum. KeyManagementService will
-  /// report an error if the checksum verification fails. If you receive a
-  /// checksum error, your client should verify that
+  /// An optional CRC32C checksum of the EncryptRequest.plaintext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received EncryptRequest.plaintext using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
   /// CRC32C(EncryptRequest.plaintext) is equal to
   /// EncryptRequest.plaintext_crc32c, and if so, perform a limited number of
   /// retries. A persistent mismatch may indicate an issue in your computation
@@ -3543,6 +3666,8 @@ class EncryptRequest {
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
   /// to uint32 in languages that support this type. NOTE: This field is in
   /// Beta.
+  ///
+  /// Optional.
   core.String plaintextCrc32c;
 
   EncryptRequest();
@@ -3595,24 +3720,29 @@ class EncryptResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Integrity verification field. A CRC32C checksum of the returned
-  /// EncryptResponse.ciphertext. An integrity check of
-  /// EncryptResponse.ciphertext can be performed by computing the CRC32C
-  /// checksum of EncryptResponse.ciphertext and comparing your results to this
-  /// field. Discard the response in case of non-matching checksum values, and
-  /// perform a limited number of retries. A persistent mismatch may indicate an
-  /// issue in your computation of the CRC32C checksum. Note: This field is
-  /// defined as int64 for reasons of compatibility across different languages.
-  /// However, it is a non-negative integer, which will never exceed 2^32-1, and
-  /// can be safely downconverted to uint32 in languages that support this type.
-  /// NOTE: This field is in Beta.
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned EncryptResponse.ciphertext. An integrity
+  /// check of EncryptResponse.ciphertext can be performed by computing the
+  /// CRC32C checksum of EncryptResponse.ciphertext and comparing your results
+  /// to this field. Discard the response in case of non-matching checksum
+  /// values, and perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type. NOTE: This field is in Beta.
   core.String ciphertextCrc32c;
 
-  /// The resource name of the CryptoKeyVersion used in encryption. Check this
-  /// field to verify that the intended resource was used for encryption.
+  /// The resource name of the CryptoKeyVersion used in encryption.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// encryption.
   core.String name;
 
-  /// Integrity verification field. A flag indicating whether
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether
   /// EncryptRequest.additional_authenticated_data_crc32c was received by
   /// KeyManagementService and used for the integrity verification of the AAD. A
   /// false value of this field indicates either that
@@ -3623,11 +3753,13 @@ class EncryptResponse {
   /// NOTE: This field is in Beta.
   core.bool verifiedAdditionalAuthenticatedDataCrc32c;
 
-  /// Integrity verification field. A flag indicating whether
-  /// EncryptRequest.plaintext_crc32c was received by KeyManagementService and
-  /// used for the integrity verification of the plaintext. A false value of
-  /// this field indicates either that EncryptRequest.plaintext_crc32c was left
-  /// unset or that it was not delivered to KeyManagementService. If you've set
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether EncryptRequest.plaintext_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of the
+  /// plaintext. A false value of this field indicates either that
+  /// EncryptRequest.plaintext_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
   /// EncryptRequest.plaintext_crc32c but this field is still false, discard the
   /// response and perform a limited number of retries. NOTE: This field is in
   /// Beta.
@@ -3677,8 +3809,10 @@ class EncryptResponse {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -3693,20 +3827,29 @@ class EncryptResponse {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -3770,8 +3913,12 @@ class ExternalProtectionLevelOptions {
 
 /// Request message for KeyManagementService.ImportCryptoKeyVersion.
 class ImportCryptoKeyVersionRequest {
-  /// Required. The algorithm of the key being imported. This does not need to
-  /// match the version_template of the CryptoKey this version imports into.
+  /// The algorithm of the key being imported.
+  ///
+  /// This does not need to match the version_template of the CryptoKey this
+  /// version imports into.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
@@ -3807,21 +3954,23 @@ class ImportCryptoKeyVersionRequest {
   /// encryption by an external key manager.
   core.String algorithm;
 
-  /// Required. The name of the ImportJob that was used to wrap this key
-  /// material.
+  /// The name of the ImportJob that was used to wrap this key material.
+  ///
+  /// Required.
   core.String importJob;
 
   /// Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or
-  /// RSA_OAEP_4096_SHA1_AES_256. This field contains the concatenation of two
-  /// wrapped keys: 1. An ephemeral AES-256 wrapping key wrapped with the
-  /// public_key using RSAES-OAEP with SHA-1, MGF1 with SHA-1, and an empty
-  /// label. 2. The key to be imported, wrapped with the ephemeral AES-256 key
-  /// using AES-KWP (RFC 5649). If importing symmetric key material, it is
-  /// expected that the unwrapped key contains plain bytes. If importing
-  /// asymmetric key material, it is expected that the unwrapped key is in
-  /// PKCS#8-encoded DER format (the PrivateKeyInfo structure from RFC 5208).
-  /// This format is the same as the format produced by PKCS#11 mechanism
-  /// CKM_RSA_AES_KEY_WRAP.
+  /// RSA_OAEP_4096_SHA1_AES_256.
+  ///
+  /// This field contains the concatenation of two wrapped keys: 1. An ephemeral
+  /// AES-256 wrapping key wrapped with the public_key using RSAES-OAEP with
+  /// SHA-1, MGF1 with SHA-1, and an empty label. 2. The key to be imported,
+  /// wrapped with the ephemeral AES-256 key using AES-KWP (RFC 5649). If
+  /// importing symmetric key material, it is expected that the unwrapped key
+  /// contains plain bytes. If importing asymmetric key material, it is expected
+  /// that the unwrapped key is in PKCS#8-encoded DER format (the PrivateKeyInfo
+  /// structure from RFC 5208). This format is the same as the format produced
+  /// by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.
   core.String rsaAesWrappedKey;
   core.List<core.int> get rsaAesWrappedKeyAsBytes =>
       convert.base64.decode(rsaAesWrappedKey);
@@ -3861,45 +4010,61 @@ class ImportCryptoKeyVersionRequest {
 }
 
 /// An ImportJob can be used to create CryptoKeys and CryptoKeyVersions using
-/// pre-existing key material, generated outside of Cloud KMS. When an ImportJob
-/// is created, Cloud KMS will generate a "wrapping key", which is a
-/// public/private key pair. You use the wrapping key to encrypt (also known as
-/// wrap) the pre-existing key material to protect it during the import process.
-/// The nature of the wrapping key depends on the choice of import_method. When
-/// the wrapping key generation is complete, the state will be set to ACTIVE and
-/// the public_key can be fetched. The fetched public key can then be used to
-/// wrap your pre-existing key material. Once the key material is wrapped, it
-/// can be imported into a new CryptoKeyVersion in an existing CryptoKey by
-/// calling ImportCryptoKeyVersion. Multiple CryptoKeyVersions can be imported
-/// with a single ImportJob. Cloud KMS uses the private key portion of the
-/// wrapping key to unwrap the key material. Only Cloud KMS has access to the
-/// private key. An ImportJob expires 3 days after it is created. Once expired,
-/// Cloud KMS will no longer be able to import or unwrap any key material that
-/// was wrapped with the ImportJob's public key. For more information, see
-/// [Importing a key](https://cloud.google.com/kms/docs/importing-a-key).
+/// pre-existing key material, generated outside of Cloud KMS.
+///
+/// When an ImportJob is created, Cloud KMS will generate a "wrapping key",
+/// which is a public/private key pair. You use the wrapping key to encrypt
+/// (also known as wrap) the pre-existing key material to protect it during the
+/// import process. The nature of the wrapping key depends on the choice of
+/// import_method. When the wrapping key generation is complete, the state will
+/// be set to ACTIVE and the public_key can be fetched. The fetched public key
+/// can then be used to wrap your pre-existing key material. Once the key
+/// material is wrapped, it can be imported into a new CryptoKeyVersion in an
+/// existing CryptoKey by calling ImportCryptoKeyVersion. Multiple
+/// CryptoKeyVersions can be imported with a single ImportJob. Cloud KMS uses
+/// the private key portion of the wrapping key to unwrap the key material. Only
+/// Cloud KMS has access to the private key. An ImportJob expires 3 days after
+/// it is created. Once expired, Cloud KMS will no longer be able to import or
+/// unwrap any key material that was wrapped with the ImportJob's public key.
+/// For more information, see [Importing a
+/// key](https://cloud.google.com/kms/docs/importing-a-key).
 class ImportJob {
-  /// Output only. Statement that was generated and signed by the key creator
-  /// (for example, an HSM) at key creation time. Use this statement to verify
-  /// attributes of the key as stored on the HSM, independently of Google. Only
-  /// present if the chosen ImportMethod is one with a protection level of HSM.
+  /// Statement that was generated and signed by the key creator (for example,
+  /// an HSM) at key creation time.
+  ///
+  /// Use this statement to verify attributes of the key as stored on the HSM,
+  /// independently of Google. Only present if the chosen ImportMethod is one
+  /// with a protection level of HSM.
+  ///
+  /// Output only.
   KeyOperationAttestation attestation;
 
-  /// Output only. The time at which this ImportJob was created.
+  /// The time at which this ImportJob was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. The time this ImportJob expired. Only present if state is
-  /// EXPIRED.
+  /// The time this ImportJob expired.
+  ///
+  /// Only present if state is EXPIRED.
+  ///
+  /// Output only.
   core.String expireEventTime;
 
-  /// Output only. The time at which this ImportJob is scheduled for expiration
-  /// and can no longer be used to import key material.
+  /// The time at which this ImportJob is scheduled for expiration and can no
+  /// longer be used to import key material.
+  ///
+  /// Output only.
   core.String expireTime;
 
-  /// Output only. The time this ImportJob's key material was generated.
+  /// The time this ImportJob's key material was generated.
+  ///
+  /// Output only.
   core.String generateTime;
 
-  /// Required. Immutable. The wrapping method to be used for incoming key
-  /// material.
+  /// The wrapping method to be used for incoming key material.
+  ///
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "IMPORT_METHOD_UNSPECIFIED" : Not specified.
   /// - "RSA_OAEP_3072_SHA1_AES_256" : This ImportMethod represents the
@@ -3916,13 +4081,18 @@ class ImportJob {
   /// mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
   core.String importMethod;
 
-  /// Output only. The resource name for this ImportJob in the format `projects
-  /// / * /locations / * /keyRings / * /importJobs / * `.
+  /// The resource name for this ImportJob in the format `projects / *
+  /// /locations / * /keyRings / * /importJobs / * `.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. Immutable. The protection level of the ImportJob. This must
-  /// match the protection_level of the version_template on the CryptoKey you
-  /// attempt to import into.
+  /// The protection level of the ImportJob.
+  ///
+  /// This must match the protection_level of the version_template on the
+  /// CryptoKey you attempt to import into.
+  ///
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
@@ -3930,12 +4100,16 @@ class ImportJob {
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String protectionLevel;
 
-  /// Output only. The public key with which to wrap key material prior to
-  /// import. Only returned if state is ACTIVE.
+  /// The public key with which to wrap key material prior to import.
+  ///
+  /// Only returned if state is ACTIVE.
+  ///
+  /// Output only.
   WrappingPublicKey publicKey;
 
-  /// Output only. The current state of the ImportJob, indicating if it can be
-  /// used.
+  /// The current state of the ImportJob, indicating if it can be used.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "IMPORT_JOB_STATE_UNSPECIFIED" : Not specified.
   /// - "PENDING_GENERATION" : The wrapping key for this job is still being
@@ -4020,15 +4194,20 @@ class ImportJob {
   }
 }
 
-/// Contains an HSM-generated attestation about a key operation. For more
-/// information, see [Verifying attestations]
+/// Contains an HSM-generated attestation about a key operation.
+///
+/// For more information, see [Verifying attestations]
 /// (https://cloud.google.com/kms/docs/attest-key).
 class KeyOperationAttestation {
-  /// Output only. The certificate chains needed to validate the attestation
+  /// The certificate chains needed to validate the attestation
+  ///
+  /// Output only.
   CertificateChains certChains;
 
-  /// Output only. The attestation data provided by the HSM when the key
-  /// operation was performed.
+  /// The attestation data provided by the HSM when the key operation was
+  /// performed.
+  ///
+  /// Output only.
   core.String content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
@@ -4037,7 +4216,9 @@ class KeyOperationAttestation {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Output only. The format of the attestation data.
+  /// The format of the attestation data.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "ATTESTATION_FORMAT_UNSPECIFIED" : Not specified.
   /// - "CAVIUM_V1_COMPRESSED" : Cavium HSM attestation compressed with gzip.
@@ -4079,11 +4260,15 @@ class KeyOperationAttestation {
 
 /// A KeyRing is a toplevel logical grouping of CryptoKeys.
 class KeyRing {
-  /// Output only. The time at which this KeyRing was created.
+  /// The time at which this KeyRing was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. The resource name for the KeyRing in the format `projects / *
-  /// /locations / * /keyRings / * `.
+  /// The resource name for the KeyRing in the format `projects / * /locations /
+  /// * /keyRings / * `.
+  ///
+  /// Output only.
   core.String name;
 
   KeyRing();
@@ -4114,9 +4299,10 @@ class ListCryptoKeyVersionsResponse {
   /// The list of CryptoKeyVersions.
   core.List<CryptoKeyVersion> cryptoKeyVersions;
 
-  /// A token to retrieve next page of results. Pass this value in
-  /// ListCryptoKeyVersionsRequest.page_token to retrieve the next page of
-  /// results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListCryptoKeyVersionsRequest.page_token to retrieve the
+  /// next page of results.
   core.String nextPageToken;
 
   /// The total number of CryptoKeyVersions that matched the query.
@@ -4160,8 +4346,10 @@ class ListCryptoKeysResponse {
   /// The list of CryptoKeys.
   core.List<CryptoKey> cryptoKeys;
 
-  /// A token to retrieve next page of results. Pass this value in
-  /// ListCryptoKeysRequest.page_token to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListCryptoKeysRequest.page_token to retrieve the next
+  /// page of results.
   core.String nextPageToken;
 
   /// The total number of CryptoKeys that matched the query.
@@ -4204,8 +4392,10 @@ class ListImportJobsResponse {
   /// The list of ImportJobs.
   core.List<ImportJob> importJobs;
 
-  /// A token to retrieve next page of results. Pass this value in
-  /// ListImportJobsRequest.page_token to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListImportJobsRequest.page_token to retrieve the next
+  /// page of results.
   core.String nextPageToken;
 
   /// The total number of ImportJobs that matched the query.
@@ -4248,8 +4438,10 @@ class ListKeyRingsResponse {
   /// The list of KeyRings.
   core.List<KeyRing> keyRings;
 
-  /// A token to retrieve next page of results. Pass this value in
-  /// ListKeyRingsRequest.page_token to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in ListKeyRingsRequest.page_token to retrieve the next
+  /// page of results.
   core.String nextPageToken;
 
   /// The total number of KeyRings that matched the query.
@@ -4323,25 +4515,31 @@ class ListLocationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -4432,16 +4630,18 @@ class LocationMetadata {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -4464,14 +4664,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -4488,20 +4691,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -4547,7 +4752,9 @@ class Policy {
   }
 }
 
-/// The public key for a given CryptoKeyVersion. Obtained via GetPublicKey.
+/// The public key for a given CryptoKeyVersion.
+///
+/// Obtained via GetPublicKey.
 class PublicKey {
   /// The Algorithm associated with this key.
   /// Possible string values are:
@@ -4585,27 +4792,32 @@ class PublicKey {
   /// encryption by an external key manager.
   core.String algorithm;
 
-  /// The name of the CryptoKeyVersion public key. Provided here for
-  /// verification. NOTE: This field is in Beta.
+  /// The name of the CryptoKeyVersion public key.
+  ///
+  /// Provided here for verification. NOTE: This field is in Beta.
   core.String name;
 
-  /// The public key, encoded in PEM format. For more information, see the [RFC
+  /// The public key, encoded in PEM format.
+  ///
+  /// For more information, see the [RFC
   /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
   /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
   /// [Textual Encoding of Subject Public Key Info]
   /// (https://tools.ietf.org/html/rfc7468#section-13).
   core.String pem;
 
-  /// Integrity verification field. A CRC32C checksum of the returned
-  /// PublicKey.pem. An integrity check of PublicKey.pem can be performed by
-  /// computing the CRC32C checksum of PublicKey.pem and comparing your results
-  /// to this field. Discard the response in case of non-matching checksum
-  /// values, and perform a limited number of retries. A persistent mismatch may
-  /// indicate an issue in your computation of the CRC32C checksum. Note: This
-  /// field is defined as int64 for reasons of compatibility across different
-  /// languages. However, it is a non-negative integer, which will never exceed
-  /// 2^32-1, and can be safely downconverted to uint32 in languages that
-  /// support this type. NOTE: This field is in Beta.
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned PublicKey.pem. An integrity check of
+  /// PublicKey.pem can be performed by computing the CRC32C checksum of
+  /// PublicKey.pem and comparing your results to this field. Discard the
+  /// response in case of non-matching checksum values, and perform a limited
+  /// number of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type. NOTE: This
+  /// field is in Beta.
   core.String pemCrc32c;
 
   PublicKey();
@@ -4659,13 +4871,15 @@ class RestoreCryptoKeyVersionRequest {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -4696,9 +4910,10 @@ class SetIamPolicyRequest {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -4748,7 +4963,9 @@ class TestIamPermissionsResponse {
 
 /// Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.
 class UpdateCryptoKeyPrimaryVersionRequest {
-  /// Required. The id of the child CryptoKeyVersion to use as primary.
+  /// The id of the child CryptoKeyVersion to use as primary.
+  ///
+  /// Required.
   core.String cryptoKeyVersionId;
 
   UpdateCryptoKeyPrimaryVersionRequest();
@@ -4768,10 +4985,14 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   }
 }
 
-/// The public key component of the wrapping key. For details of the type of key
-/// this public key corresponds to, see the ImportMethod.
+/// The public key component of the wrapping key.
+///
+/// For details of the type of key this public key corresponds to, see the
+/// ImportMethod.
 class WrappingPublicKey {
-  /// The public key, encoded in PEM format. For more information, see the [RFC
+  /// The public key, encoded in PEM format.
+  ///
+  /// For more information, see the [RFC
   /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
   /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
   /// [Textual Encoding of Subject Public Key Info]

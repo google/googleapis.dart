@@ -43,8 +43,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Publishes 360 photos to Google Maps, along with position, orientation, and
-/// connectivity metadata. Apps can offer an interface for positioning,
-/// connecting, and uploading user-generated Street View images.
+/// connectivity metadata.
+///
+/// Apps can offer an interface for positioning, connecting, and uploading
+/// user-generated Street View images.
 class StreetViewPublishApi {
   /// Publish and manage your 360 photos on Google Street View
   static const streetviewpublishScope =
@@ -69,6 +71,7 @@ class PhotoResource {
 
   /// After the client finishes uploading the photo with the returned UploadRef,
   /// CreatePhoto publishes the uploaded Photo to Street View on Google Maps.
+  ///
   /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is
   /// through the [Photo Sphere XMP
   /// metadata](https://developers.google.com/streetview/spherical-metadata) in
@@ -128,10 +131,12 @@ class PhotoResource {
     );
   }
 
-  /// Deletes a Photo and its metadata. This method returns the following error
-  /// codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-  /// create the requested photo. * google.rpc.Code.NOT_FOUND if the photo ID
-  /// does not exist.
+  /// Deletes a Photo and its metadata.
+  ///
+  /// This method returns the following error codes: *
+  /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create
+  /// the requested photo. * google.rpc.Code.NOT_FOUND if the photo ID does not
+  /// exist.
   ///
   /// Request parameters:
   ///
@@ -181,11 +186,13 @@ class PhotoResource {
     );
   }
 
-  /// Gets the metadata of the specified Photo. This method returns the
-  /// following error codes: * google.rpc.Code.PERMISSION_DENIED if the
-  /// requesting user did not create the requested Photo. *
-  /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist. *
-  /// google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.
+  /// Gets the metadata of the specified Photo.
+  ///
+  /// This method returns the following error codes: *
+  /// google.rpc.Code.PERMISSION_DENIED if the requesting user did not create
+  /// the requested Photo. * google.rpc.Code.NOT_FOUND if the requested Photo
+  /// does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is
+  /// still being indexed.
   ///
   /// Request parameters:
   ///
@@ -257,9 +264,10 @@ class PhotoResource {
     );
   }
 
-  /// Creates an upload session to start uploading photo bytes. The method uses
-  /// the upload URL of the returned UploadRef to upload the bytes for the
-  /// Photo. In addition to the photo requirements shown in
+  /// Creates an upload session to start uploading photo bytes.
+  ///
+  /// The method uses the upload URL of the returned UploadRef to upload the
+  /// bytes for the Photo. In addition to the photo requirements shown in
   /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
   /// the photo must meet the following requirements: * Photo Sphere XMP
   /// metadata must be included in the photo metadata. See
@@ -320,14 +328,16 @@ class PhotoResource {
   }
 
   /// Updates the metadata of a Photo, such as pose, place association,
-  /// connections, etc. Changing the pixels of a photo is not supported. Only
-  /// the fields specified in the updateMask field are used. If `updateMask` is
-  /// not present, the update applies to all fields. This method returns the
-  /// following error codes: * google.rpc.Code.PERMISSION_DENIED if the
-  /// requesting user did not create the requested photo. *
-  /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. *
-  /// google.rpc.Code.NOT_FOUND if the requested photo does not exist. *
-  /// google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.
+  /// connections, etc.
+  ///
+  /// Changing the pixels of a photo is not supported. Only the fields specified
+  /// in the updateMask field are used. If `updateMask` is not present, the
+  /// update applies to all fields. This method returns the following error
+  /// codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+  /// create the requested photo. * google.rpc.Code.INVALID_ARGUMENT if the
+  /// request is malformed. * google.rpc.Code.NOT_FOUND if the requested photo
+  /// does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is
+  /// still being indexed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -405,12 +415,14 @@ class PhotosResource {
 
   PhotosResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a list of Photos and their metadata. Note that if
-  /// BatchDeletePhotos fails, either critical fields are missing or there is an
-  /// authentication error. Even if BatchDeletePhotos succeeds, individual
-  /// photos in the batch may have failures. These failures are specified in
-  /// each PhotoResponse.status in BatchDeletePhotosResponse.results. See
-  /// DeletePhoto for specific failures that can occur per photo.
+  /// Deletes a list of Photos and their metadata.
+  ///
+  /// Note that if BatchDeletePhotos fails, either critical fields are missing
+  /// or there is an authentication error. Even if BatchDeletePhotos succeeds,
+  /// individual photos in the batch may have failures. These failures are
+  /// specified in each PhotoResponse.status in
+  /// BatchDeletePhotosResponse.results. See DeletePhoto for specific failures
+  /// that can occur per photo.
   ///
   /// [request] - The metadata request object.
   ///
@@ -461,12 +473,13 @@ class PhotosResource {
     );
   }
 
-  /// Gets the metadata of the specified Photo batch. Note that if
-  /// BatchGetPhotos fails, either critical fields are missing or there is an
-  /// authentication error. Even if BatchGetPhotos succeeds, individual photos
-  /// in the batch may have failures. These failures are specified in each
-  /// PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for
-  /// specific failures that can occur per photo.
+  /// Gets the metadata of the specified Photo batch.
+  ///
+  /// Note that if BatchGetPhotos fails, either critical fields are missing or
+  /// there is an authentication error. Even if BatchGetPhotos succeeds,
+  /// individual photos in the batch may have failures. These failures are
+  /// specified in each PhotoResponse.status in BatchGetPhotosResponse.results.
+  /// See GetPhoto for specific failures that can occur per photo.
   ///
   /// Request parameters:
   ///
@@ -541,18 +554,19 @@ class PhotosResource {
   }
 
   /// Updates the metadata of Photos, such as pose, place association,
-  /// connections, etc. Changing the pixels of photos is not supported. Note
-  /// that if BatchUpdatePhotos fails, either critical fields are missing or
-  /// there is an authentication error. Even if BatchUpdatePhotos succeeds,
-  /// individual photos in the batch may have failures. These failures are
-  /// specified in each PhotoResponse.status in
-  /// BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures
-  /// that can occur per photo. Only the fields specified in updateMask field
-  /// are used. If `updateMask` is not present, the update applies to all
-  /// fields. The number of UpdatePhotoRequest messages in a
-  /// BatchUpdatePhotosRequest must not exceed 20. *Note:* To update
-  /// Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the
-  /// request will fail.
+  /// connections, etc.
+  ///
+  /// Changing the pixels of photos is not supported. Note that if
+  /// BatchUpdatePhotos fails, either critical fields are missing or there is an
+  /// authentication error. Even if BatchUpdatePhotos succeeds, individual
+  /// photos in the batch may have failures. These failures are specified in
+  /// each PhotoResponse.status in BatchUpdatePhotosResponse.results. See
+  /// UpdatePhoto for specific failures that can occur per photo. Only the
+  /// fields specified in updateMask field are used. If `updateMask` is not
+  /// present, the update applies to all fields. The number of
+  /// UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed
+  /// 20. *Note:* To update Pose.altitude, Pose.latLngPair has to be filled as
+  /// well. Otherwise, the request will fail.
   ///
   /// [request] - The metadata request object.
   ///
@@ -603,8 +617,10 @@ class PhotosResource {
     );
   }
 
-  /// Lists all the Photos that belong to the user. *Note:* Recently created
-  /// photos that are still being indexed are not returned in the response.
+  /// Lists all the Photos that belong to the user.
+  ///
+  /// *Note:* Recently created photos that are still being indexed are not
+  /// returned in the response.
   ///
   /// Request parameters:
   ///
@@ -699,8 +715,12 @@ class PhotosResource {
 
 /// Request to delete multiple Photos.
 class BatchDeletePhotosRequest {
-  /// Required. IDs of the Photos. HTTP GET requests require the following
-  /// syntax for the URL query parameter: `photoIds=&photoIds=&...`.
+  /// IDs of the Photos.
+  ///
+  /// HTTP GET requests require the following syntax for the URL query
+  /// parameter: `photoIds=&photoIds=&...`.
+  ///
+  /// Required.
   core.List<core.String> photoIds;
 
   BatchDeletePhotosRequest();
@@ -774,10 +794,13 @@ class BatchGetPhotosResponse {
   }
 }
 
-/// Request to update the metadata of photos. Updating the pixels of photos is
-/// not supported.
+/// Request to update the metadata of photos.
+///
+/// Updating the pixels of photos is not supported.
 class BatchUpdatePhotosRequest {
-  /// Required. List of UpdatePhotoRequests.
+  /// List of UpdatePhotoRequests.
+  ///
+  /// Required.
   core.List<UpdatePhotoRequest> updatePhotoRequests;
 
   BatchUpdatePhotosRequest();
@@ -829,8 +852,10 @@ class BatchUpdatePhotosResponse {
 
 /// A connection is the link from a source photo to a destination photo.
 class Connection {
-  /// Required. The destination of the connection from the containing photo to
-  /// another photo.
+  /// The destination of the connection from the containing photo to another
+  /// photo.
+  ///
+  /// Required.
   PhotoId target;
 
   Connection();
@@ -852,10 +877,12 @@ class Connection {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -869,15 +896,20 @@ class Empty {
   }
 }
 
-/// An object representing a latitude/longitude pair. This is expressed as a
-/// pair of doubles representing degrees latitude and degrees longitude. Unless
-/// specified otherwise, this must conform to the WGS84 standard. Values must be
-/// within normalized ranges.
+/// An object representing a latitude/longitude pair.
+///
+/// This is expressed as a pair of doubles representing degrees latitude and
+/// degrees longitude. Unless specified otherwise, this must conform to the
+/// WGS84 standard. Values must be within normalized ranges.
 class LatLng {
-  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
+  /// The latitude in degrees.
+  ///
+  /// It must be in the range [-90.0, +90.0].
   core.double latitude;
 
-  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
+  /// The longitude in degrees.
+  ///
+  /// It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   LatLng();
@@ -905,14 +937,19 @@ class LatLng {
 
 /// Level information containing level number and its corresponding name.
 class Level {
-  /// Required. A name assigned to this Level, restricted to 3 characters.
+  /// A name assigned to this Level, restricted to 3 characters.
+  ///
   /// Consider how the elevator buttons would be labeled for this level if there
   /// was an elevator.
+  ///
+  /// Required.
   core.String name;
 
-  /// Floor number, used for ordering. 0 indicates the ground level, 1 indicates
-  /// the first level above ground level, -1 indicates the first level under
-  /// ground level. Non-integer values are OK.
+  /// Floor number, used for ordering.
+  ///
+  /// 0 indicates the ground level, 1 indicates the first level above ground
+  /// level, -1 indicates the first level under ground level. Non-integer values
+  /// are OK.
   core.double number;
 
   Level();
@@ -944,8 +981,9 @@ class ListPhotosResponse {
   /// results in the list.
   core.String nextPageToken;
 
-  /// List of photos. The pageSize field in the request determines the number of
-  /// items returned.
+  /// List of photos.
+  ///
+  /// The pageSize field in the request determines the number of items returned.
   core.List<Photo> photos;
 
   ListPhotosResponse();
@@ -977,31 +1015,37 @@ class ListPhotosResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -1067,28 +1111,40 @@ class Operation {
 
 /// Photo is used to store 360 photos along with photo metadata.
 class Photo {
-  /// Absolute time when the photo was captured. When the photo has no exif
-  /// timestamp, this is used to set a timestamp in the photo metadata.
+  /// Absolute time when the photo was captured.
+  ///
+  /// When the photo has no exif timestamp, this is used to set a timestamp in
+  /// the photo metadata.
   core.String captureTime;
 
-  /// Connections to other photos. A connection represents the link from this
-  /// photo to another photo.
+  /// Connections to other photos.
+  ///
+  /// A connection represents the link from this photo to another photo.
   core.List<Connection> connections;
 
-  /// Output only. The download URL for the photo bytes. This field is set only
-  /// when GetPhotoRequest.view is set to PhotoView.INCLUDE_DOWNLOAD_URL.
+  /// The download URL for the photo bytes.
+  ///
+  /// This field is set only when GetPhotoRequest.view is set to
+  /// PhotoView.INCLUDE_DOWNLOAD_URL.
+  ///
+  /// Output only.
   core.String downloadUrl;
 
-  /// Output only. Status in Google Maps, whether this photo was published or
-  /// rejected. Not currently populated.
+  /// Status in Google Maps, whether this photo was published or rejected.
+  ///
+  /// Not currently populated.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
   /// - "PUBLISHED" : The photo is published to the public through Google Maps.
   /// - "REJECTED_UNKNOWN" : The photo has been rejected for an unknown reason.
   core.String mapsPublishStatus;
 
-  /// Required when updating a photo. Output only when creating a photo.
-  /// Identifier for the photo, which is unique among all photos in Google.
+  /// Required when updating a photo.
+  ///
+  /// Output only when creating a photo. Identifier for the photo, which is
+  /// unique among all photos in Google.
   PhotoId photoId;
 
   /// Places where this photo belongs.
@@ -1097,13 +1153,19 @@ class Photo {
   /// Pose of the photo.
   Pose pose;
 
-  /// Output only. The share link for the photo.
+  /// The share link for the photo.
+  ///
+  /// Output only.
   core.String shareLink;
 
-  /// Output only. The thumbnail URL for showing a preview of the given photo.
+  /// The thumbnail URL for showing a preview of the given photo.
+  ///
+  /// Output only.
   core.String thumbnailUrl;
 
-  /// Output only. Status of rights transfer on this photo.
+  /// Status of rights transfer on this photo.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TRANSFER_STATUS_UNKNOWN" : The status of this transfer is unspecified.
   /// - "NEVER_TRANSFERRED" : This photo has never been in a transfer.
@@ -1119,11 +1181,14 @@ class Photo {
   /// transfer.
   core.String transferStatus;
 
-  /// Required when creating a photo. Input only. The resource URL where the
-  /// photo bytes are uploaded to.
+  /// Required when creating a photo.
+  ///
+  /// Input only. The resource URL where the photo bytes are uploaded to.
   UploadRef uploadReference;
 
-  /// Output only. View count of the photo.
+  /// View count of the photo.
+  ///
+  /// Output only.
   core.String viewCount;
 
   Photo();
@@ -1221,7 +1286,9 @@ class Photo {
 
 /// Identifier for a Photo.
 class PhotoId {
-  /// Required. A unique identifier for a photo.
+  /// A unique identifier for a photo.
+  ///
+  /// Required.
   core.String id;
 
   PhotoId();
@@ -1278,12 +1345,15 @@ class PhotoResponse {
 
 /// Place metadata for an entity.
 class Place {
-  /// Output-only. The language_code that the name is localized with. This
-  /// should be the language_code specified in the request, but may be a
-  /// fallback.
+  /// Output-only.
+  ///
+  /// The language_code that the name is localized with. This should be the
+  /// language_code specified in the request, but may be a fallback.
   core.String languageCode;
 
-  /// Output-only. The name of the place, localized to the language_code.
+  /// Output-only.
+  ///
+  /// The name of the place, localized to the language_code.
   core.String name;
 
   /// Place identifier, as described in
@@ -1322,40 +1392,48 @@ class Place {
 /// Raw pose measurement for an entity.
 class Pose {
   /// The estimated horizontal accuracy of this pose in meters with 68%
-  /// confidence (one standard deviation). For example, on Android, this value
-  /// is available from this method:
+  /// confidence (one standard deviation).
+  ///
+  /// For example, on Android, this value is available from this method:
   /// https://developer.android.com/reference/android/location/Location#getAccuracy().
   /// Other platforms have different methods of obtaining similar accuracy
   /// estimations.
   core.double accuracyMeters;
 
-  /// Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an
-  /// unmeasured quantity.
+  /// Altitude of the pose in meters above WGS84 ellipsoid.
+  ///
+  /// NaN indicates an unmeasured quantity.
   core.double altitude;
 
   /// Compass heading, measured at the center of the photo in degrees clockwise
-  /// from North. Value must be >=0 and <360. NaN indicates an unmeasured
-  /// quantity.
+  /// from North.
+  ///
+  /// Value must be >=0 and <360. NaN indicates an unmeasured quantity.
   core.double heading;
 
   /// Latitude and longitude pair of the pose, as explained here:
   /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng
   /// When creating a Photo, if the latitude and longitude pair are not
-  /// provided, the geolocation from the exif header is used. A latitude and
-  /// longitude pair not provided in the photo or exif header causes the photo
-  /// process to fail.
+  /// provided, the geolocation from the exif header is used.
+  ///
+  /// A latitude and longitude pair not provided in the photo or exif header
+  /// causes the photo process to fail.
   LatLng latLngPair;
 
   /// Level (the floor in a building) used to configure vertical navigation.
   Level level;
 
-  /// Pitch, measured at the center of the photo in degrees. Value must be >=-90
-  /// and <= 90. A value of -90 means looking directly down, and a value of 90
-  /// means looking directly up. NaN indicates an unmeasured quantity.
+  /// Pitch, measured at the center of the photo in degrees.
+  ///
+  /// Value must be >=-90 and <= 90. A value of -90 means looking directly down,
+  /// and a value of 90 means looking directly up. NaN indicates an unmeasured
+  /// quantity.
   core.double pitch;
 
-  /// Roll, measured in degrees. Value must be >= 0 and <360. A value of 0 means
-  /// level with the horizon. NaN indicates an unmeasured quantity.
+  /// Roll, measured in degrees.
+  ///
+  /// Value must be >= 0 and <360. A value of 0 means level with the horizon.
+  /// NaN indicates an unmeasured quantity.
   core.double roll;
 
   Pose();
@@ -1414,24 +1492,27 @@ class Pose {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -1472,14 +1553,18 @@ class Status {
   }
 }
 
-/// Request to update the metadata of a Photo. Updating the pixels of a photo is
-/// not supported.
+/// Request to update the metadata of a Photo.
+///
+/// Updating the pixels of a photo is not supported.
 class UpdatePhotoRequest {
-  /// Required. Photo object containing the new metadata.
+  /// Photo object containing the new metadata.
+  ///
+  /// Required.
   Photo photo;
 
-  /// Required. Mask that identifies fields on the photo metadata to update. If
-  /// not present, the old Photo metadata is entirely replaced with the new
+  /// Mask that identifies fields on the photo metadata to update.
+  ///
+  /// If not present, the old Photo metadata is entirely replaced with the new
   /// Photo metadata in this request. The update fails if invalid fields are
   /// specified. Multiple fields can be specified in a comma-delimited list. The
   /// following fields are valid: * `pose.heading` * `pose.latLngPair` *
@@ -1489,6 +1574,8 @@ class UpdatePhotoRequest {
   /// example, if updateMask contains `connections` and
   /// `UpdatePhotoRequest.photo.connections` is empty, all connections are
   /// removed.
+  ///
+  /// Required.
   core.String updateMask;
 
   UpdatePhotoRequest();
@@ -1517,9 +1604,12 @@ class UpdatePhotoRequest {
 
 /// Upload reference for media files.
 class UploadRef {
-  /// Required. An upload reference should be unique for each user. It follows
-  /// the form:
+  /// An upload reference should be unique for each user.
+  ///
+  /// It follows the form:
   /// "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"
+  ///
+  /// Required.
   core.String uploadUrl;
 
   UploadRef();

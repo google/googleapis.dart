@@ -680,6 +680,7 @@ class AccountsAdunitsResource {
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
+  ///
   /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
@@ -826,8 +827,10 @@ class AccountsReportsResource {
   AccountsReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
-  /// parameters. Returns the result as JSON; to retrieve output in CSV format
-  /// specify "alt=csv" as a query parameter.
+  /// parameters.
+  ///
+  /// Returns the result as JSON; to retrieve output in CSV format specify
+  /// "alt=csv" as a query parameter.
   ///
   /// Request parameters:
   ///
@@ -1460,8 +1463,9 @@ class CustomchannelsResource {
     );
   }
 
-  /// Update a custom channel in the host AdSense account. This method supports
-  /// patch semantics.
+  /// Update a custom channel in the host AdSense account.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1593,8 +1597,10 @@ class ReportsResource {
   ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
-  /// parameters. Returns the result as JSON; to retrieve output in CSV format
-  /// specify "alt=csv" as a query parameter.
+  /// parameters.
+  ///
+  /// Returns the result as JSON; to retrieve output in CSV format specify
+  /// "alt=csv" as a query parameter.
   ///
   /// Request parameters:
   ///
@@ -1915,7 +1921,9 @@ class Account {
   /// Name of this account.
   core.String name;
 
-  /// Approval status of this account. One of: PENDING, APPROVED, DISABLED.
+  /// Approval status of this account.
+  ///
+  /// One of: PENDING, APPROVED, DISABLED.
   core.String status;
 
   Account();
@@ -2063,8 +2071,10 @@ class AdClients {
   /// Kind of list this is, in this case adsensehost#adClients.
   core.String kind;
 
-  /// Continuation token used to page through ad clients. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through ad clients.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   AdClients();
@@ -2135,8 +2145,10 @@ class AdCode {
   }
 }
 
-/// The colors included in the style. These are represented as six hexadecimal
-/// characters, similar to HTML color codes, but without the leading hash.
+/// The colors included in the style.
+///
+/// These are represented as six hexadecimal characters, similar to HTML color
+/// codes, but without the leading hash.
 class AdStyleColors {
   /// The color of the ad background.
   core.String background;
@@ -2196,12 +2208,16 @@ class AdStyleColors {
 
 /// The font which is included in the style.
 class AdStyleFont {
-  /// The family of the font. Possible values are: ACCOUNT_DEFAULT_FAMILY,
-  /// ADSENSE_DEFAULT_FAMILY, ARIAL, TIMES and VERDANA.
+  /// The family of the font.
+  ///
+  /// Possible values are: ACCOUNT_DEFAULT_FAMILY, ADSENSE_DEFAULT_FAMILY,
+  /// ARIAL, TIMES and VERDANA.
   core.String family;
 
-  /// The size of the font. Possible values are: ACCOUNT_DEFAULT_SIZE,
-  /// ADSENSE_DEFAULT_SIZE, SMALL, MEDIUM and LARGE.
+  /// The size of the font.
+  ///
+  /// Possible values are: ACCOUNT_DEFAULT_SIZE, ADSENSE_DEFAULT_SIZE, SMALL,
+  /// MEDIUM and LARGE.
   core.String size;
 
   AdStyleFont();
@@ -2228,8 +2244,10 @@ class AdStyleFont {
 }
 
 class AdStyle {
-  /// The colors included in the style. These are represented as six hexadecimal
-  /// characters, similar to HTML color codes, but without the leading hash.
+  /// The colors included in the style.
+  ///
+  /// These are represented as six hexadecimal characters, similar to HTML color
+  /// codes, but without the leading hash.
   AdStyleColors colors;
 
   /// The style of the corners in the ad (deprecated: never populated, ignored).
@@ -2280,12 +2298,15 @@ class AdStyle {
 
 /// The backup option to be used in instances where no ad is available.
 class AdUnitContentAdsSettingsBackupOption {
-  /// Color to use when type is set to COLOR. These are represented as six
-  /// hexadecimal characters, similar to HTML color codes, but without the
-  /// leading hash.
+  /// Color to use when type is set to COLOR.
+  ///
+  /// These are represented as six hexadecimal characters, similar to HTML color
+  /// codes, but without the leading hash.
   core.String color;
 
-  /// Type of the backup option. Possible values are BLANK, COLOR and URL.
+  /// Type of the backup option.
+  ///
+  /// Possible values are BLANK, COLOR and URL.
   core.String type;
 
   /// URL to use when type is set to URL.
@@ -2326,11 +2347,14 @@ class AdUnitContentAdsSettings {
   /// The backup option to be used in instances where no ad is available.
   AdUnitContentAdsSettingsBackupOption backupOption;
 
-  /// Size of this ad unit. Size values are in the form SIZE_{width}_{height}.
+  /// Size of this ad unit.
+  ///
+  /// Size values are in the form SIZE_{width}_{height}.
   core.String size;
 
-  /// Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and
-  /// LINK.
+  /// Type of this ad unit.
+  ///
+  /// Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK.
   core.String type;
 
   AdUnitContentAdsSettings();
@@ -2423,8 +2447,10 @@ class AdUnit {
   /// Custom style information specific to this ad unit.
   AdStyle customStyle;
 
-  /// Unique identifier of this ad unit. This should be considered an opaque
-  /// identifier; it is not safe to rely on it being in any particular format.
+  /// Unique identifier of this ad unit.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsensehost#adUnit.
@@ -2436,7 +2462,9 @@ class AdUnit {
   /// Name of this ad unit.
   core.String name;
 
-  /// Status of this ad unit. Possible values are:
+  /// Status of this ad unit.
+  ///
+  /// Possible values are:
   /// NEW: Indicates that the ad unit was created within the last seven days and
   /// does not yet have any activity associated with it.
   ///
@@ -2520,8 +2548,10 @@ class AdUnits {
   /// Kind of list this is, in this case adsensehost#adUnits.
   core.String kind;
 
-  /// Continuation token used to page through ad units. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through ad units.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   AdUnits();
@@ -2563,8 +2593,9 @@ class AdUnits {
 }
 
 class AssociationSession {
-  /// Hosted account id of the associated publisher after association. Present
-  /// if status is ACCEPTED.
+  /// Hosted account id of the associated publisher after association.
+  ///
+  /// Present if status is ACCEPTED.
   core.String accountId;
 
   /// Unique identifier of this association session.
@@ -2573,16 +2604,20 @@ class AssociationSession {
   /// Kind of resource this is, in this case adsensehost#associationSession.
   core.String kind;
 
-  /// The products to associate with the user. Options: AFC, AFG, AFV, AFS
-  /// (deprecated), AFMC (deprecated)
+  /// The products to associate with the user.
+  ///
+  /// Options: AFC, AFG, AFV, AFS (deprecated), AFMC (deprecated)
   core.List<core.String> productCodes;
 
-  /// Redirect URL of this association session. Used to redirect users into the
-  /// AdSense association flow.
+  /// Redirect URL of this association session.
+  ///
+  /// Used to redirect users into the AdSense association flow.
   core.String redirectUrl;
 
   /// Status of the completed association, available once the association
-  /// callback token has been verified. One of ACCEPTED, REJECTED, or ERROR.
+  /// callback token has been verified.
+  ///
+  /// One of ACCEPTED, REJECTED, or ERROR.
   core.String status;
 
   /// The preferred locale of the user themselves when going through the AdSense
@@ -2666,9 +2701,10 @@ class CustomChannel {
   /// Code of this custom channel, not necessarily unique across ad clients.
   core.String code;
 
-  /// Unique identifier of this custom channel. This should be considered an
-  /// opaque identifier; it is not safe to rely on it being in any particular
-  /// format.
+  /// Unique identifier of this custom channel.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsensehost#customChannel.
@@ -2722,8 +2758,10 @@ class CustomChannels {
   /// Kind of list this is, in this case adsensehost#customChannels.
   core.String kind;
 
-  /// Continuation token used to page through custom channels. To retrieve the
-  /// next page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through custom channels.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   CustomChannels();
@@ -2765,8 +2803,9 @@ class CustomChannels {
 }
 
 class ReportHeaders {
-  /// The currency of this column. Only present if the header type is
-  /// METRIC_CURRENCY.
+  /// The currency of this column.
+  ///
+  /// Only present if the header type is METRIC_CURRENCY.
   core.String currency;
 
   /// The name of the header.
@@ -2806,30 +2845,38 @@ class ReportHeaders {
 }
 
 class Report {
-  /// The averages of the report. This is the same length as any other row in
-  /// the report; cells corresponding to dimension columns are empty.
+  /// The averages of the report.
+  ///
+  /// This is the same length as any other row in the report; cells
+  /// corresponding to dimension columns are empty.
   core.List<core.String> averages;
 
-  /// The header information of the columns requested in the report. This is a
-  /// list of headers; one for each dimension in the request, followed by one
-  /// for each metric in the request.
+  /// The header information of the columns requested in the report.
+  ///
+  /// This is a list of headers; one for each dimension in the request, followed
+  /// by one for each metric in the request.
   core.List<ReportHeaders> headers;
 
   /// Kind this is, in this case adsensehost#report.
   core.String kind;
 
-  /// The output rows of the report. Each row is a list of cells; one for each
-  /// dimension in the request, followed by one for each metric in the request.
-  /// The dimension cells contain strings, and the metric cells contain numbers.
+  /// The output rows of the report.
+  ///
+  /// Each row is a list of cells; one for each dimension in the request,
+  /// followed by one for each metric in the request. The dimension cells
+  /// contain strings, and the metric cells contain numbers.
   core.List<core.List<core.String>> rows;
 
-  /// The total number of rows matched by the report request. Fewer rows may be
-  /// returned in the response due to being limited by the row count requested
-  /// or the report row limit.
+  /// The total number of rows matched by the report request.
+  ///
+  /// Fewer rows may be returned in the response due to being limited by the row
+  /// count requested or the report row limit.
   core.String totalMatchedRows;
 
-  /// The totals of the report. This is the same length as any other row in the
-  /// report; cells corresponding to dimension columns are empty.
+  /// The totals of the report.
+  ///
+  /// This is the same length as any other row in the report; cells
+  /// corresponding to dimension columns are empty.
   core.List<core.String> totals;
 
   /// Any warnings associated with generation of the report.
@@ -2902,15 +2949,18 @@ class Report {
 }
 
 class UrlChannel {
-  /// Unique identifier of this URL channel. This should be considered an opaque
-  /// identifier; it is not safe to rely on it being in any particular format.
+  /// Unique identifier of this URL channel.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsensehost#urlChannel.
   core.String kind;
 
-  /// URL Pattern of this URL channel. Does not include "http://" or "https://".
-  /// Example: www.example.com/home
+  /// URL Pattern of this URL channel.
+  ///
+  /// Does not include "http://" or "https://". Example: www.example.com/home
   core.String urlPattern;
 
   UrlChannel();
@@ -2952,8 +3002,10 @@ class UrlChannels {
   /// Kind of list this is, in this case adsensehost#urlChannels.
   core.String kind;
 
-  /// Continuation token used to page through URL channels. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through URL channels.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   UrlChannels();

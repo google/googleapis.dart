@@ -195,8 +195,10 @@ class ProjectsReposResource {
 
   ProjectsReposResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a repo in the given project with the given name. If the named
-  /// repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
+  /// Creates a repo in the given project with the given name.
+  ///
+  /// If the named repository already exists, `CreateRepo` returns
+  /// `ALREADY_EXISTS`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -358,8 +360,10 @@ class ProjectsReposResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -428,8 +432,10 @@ class ProjectsReposResource {
     );
   }
 
-  /// Returns all repos belonging to a project. The sizes of the repos are not
-  /// set by ListRepos. To get the size of a repo, use GetRepo.
+  /// Returns all repos belonging to a project.
+  ///
+  /// The sizes of the repos are not set by ListRepos. To get the size of a
+  /// repo, use GetRepo.
   ///
   /// Request parameters:
   ///
@@ -555,8 +561,9 @@ class ProjectsReposResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -617,8 +624,9 @@ class ProjectsReposResource {
     );
   }
 
-  /// Synchronize a connected repo. The response contains SyncRepoMetadata in
-  /// the metadata field.
+  /// Synchronize a connected repo.
+  ///
+  /// The response contains SyncRepoMetadata in the metadata field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -676,9 +684,10 @@ class ProjectsReposResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -741,11 +750,12 @@ class ProjectsReposResource {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -761,9 +771,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -793,14 +804,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -838,16 +852,19 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -878,8 +895,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -915,10 +933,12 @@ class Binding {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -933,8 +953,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -949,20 +971,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1000,11 +1031,14 @@ class Expr {
   }
 }
 
-/// Response for ListRepos. The size is not set in the returned repositories.
+/// Response for ListRepos.
+///
+/// The size is not set in the returned repositories.
 class ListReposResponse {
-  /// If non-empty, additional repositories exist within the project. These can
-  /// be retrieved by including this value in the next ListReposRequest's
-  /// page_token field.
+  /// If non-empty, additional repositories exist within the project.
+  ///
+  /// These can be retrieved by including this value in the next
+  /// ListReposRequest's page_token field.
   core.String nextPageToken;
 
   /// The listed repos.
@@ -1039,18 +1073,20 @@ class ListReposResponse {
 /// Configuration to automatically mirror a repository from another hosting
 /// service, for example GitHub or Bitbucket.
 class MirrorConfig {
-  /// ID of the SSH deploy key at the other hosting service. Removing this key
-  /// from the other service would deauthorize Google Cloud Source Repositories
-  /// from mirroring.
+  /// ID of the SSH deploy key at the other hosting service.
+  ///
+  /// Removing this key from the other service would deauthorize Google Cloud
+  /// Source Repositories from mirroring.
   core.String deployKeyId;
 
   /// URL of the main repository at the other hosting service.
   core.String url;
 
-  /// ID of the webhook listening to updates to trigger mirroring. Removing this
-  /// webhook from the other hosting service will stop Google Cloud Source
-  /// Repositories from receiving notifications, and thereby disabling
-  /// mirroring.
+  /// ID of the webhook listening to updates to trigger mirroring.
+  ///
+  /// Removing this webhook from the other hosting service will stop Google
+  /// Cloud Source Repositories from receiving notifications, and thereby
+  /// disabling mirroring.
   core.String webhookId;
 
   MirrorConfig();
@@ -1085,31 +1121,37 @@ class MirrorConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -1174,16 +1216,18 @@ class Operation {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -1206,14 +1250,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -1230,20 +1277,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -1294,11 +1343,15 @@ class ProjectConfig {
   /// Reject a Git push that contains a private key.
   core.bool enablePrivateKeyCheck;
 
-  /// The name of the project. Values are of the form `projects/`.
+  /// The name of the project.
+  ///
+  /// Values are of the form `projects/`.
   core.String name;
 
   /// How this project publishes a change in the repositories through Cloud
-  /// Pub/Sub. Keyed by the topic names.
+  /// Pub/Sub.
+  ///
+  /// Keyed by the topic names.
   core.Map<core.String, PubsubConfig> pubsubConfigs;
 
   ProjectConfig();
@@ -1350,14 +1403,18 @@ class PubsubConfig {
   core.String messageFormat;
 
   /// Email address of the service account used for publishing Cloud Pub/Sub
-  /// messages. This service account needs to be in the same project as the
-  /// PubsubConfig. When added, the caller needs to have
-  /// iam.serviceAccounts.actAs permission on this service account. If
-  /// unspecified, it defaults to the compute engine default service account.
+  /// messages.
+  ///
+  /// This service account needs to be in the same project as the PubsubConfig.
+  /// When added, the caller needs to have iam.serviceAccounts.actAs permission
+  /// on this service account. If unspecified, it defaults to the compute engine
+  /// default service account.
   core.String serviceAccountEmail;
 
-  /// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The
-  /// project needs to be the same project as this config is in.
+  /// A topic of Cloud Pub/Sub.
+  ///
+  /// Values are of the form `projects//topics/`. The project needs to be the
+  /// same project as this config is in.
   core.String topic;
 
   PubsubConfig();
@@ -1392,22 +1449,29 @@ class PubsubConfig {
 /// A repository (or repo) is a Git repository storing versioned source content.
 class Repo {
   /// How this repository mirrors a repository managed by another service.
+  ///
   /// Read-only field.
   MirrorConfig mirrorConfig;
 
-  /// Resource name of the repository, of the form `projects//repos/`. The repo
-  /// name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
+  /// Resource name of the repository, of the form `projects//repos/`.
+  ///
+  /// The repo name may contain slashes. eg,
+  /// `projects/myproject/repos/name/with/slash`
   core.String name;
 
   /// How this repository publishes a change in the repository through Cloud
-  /// Pub/Sub. Keyed by the topic names.
+  /// Pub/Sub.
+  ///
+  /// Keyed by the topic names.
   core.Map<core.String, PubsubConfig> pubsubConfigs;
 
-  /// The disk usage of the repo, in bytes. Read-only field. Size is only
-  /// returned by GetRepo.
+  /// The disk usage of the repo, in bytes.
+  ///
+  /// Read-only field. Size is only returned by GetRepo.
   core.String size;
 
   /// URL to clone the repository from Google Cloud Source Repositories.
+  ///
   /// Read-only field.
   core.String url;
 
@@ -1464,13 +1528,15 @@ class Repo {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -1500,24 +1566,27 @@ class SetIamPolicyRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -1558,10 +1627,13 @@ class Status {
   }
 }
 
-/// Metadata of SyncRepo. This message is in the metadata field of Operation.
+/// Metadata of SyncRepo.
+///
+/// This message is in the metadata field of Operation.
 class SyncRepoMetadata {
-  /// The name of the repo being synchronized. Values are of the form
-  /// `projects//repos/`.
+  /// The name of the repo being synchronized.
+  ///
+  /// Values are of the form `projects//repos/`.
   core.String name;
 
   /// The time this operation is started.
@@ -1624,9 +1696,10 @@ class SyncRepoRequest {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -1679,8 +1752,9 @@ class UpdateProjectConfigRequest {
   /// The new configuration for the project.
   ProjectConfig projectConfig;
 
-  /// A FieldMask specifying which fields of the project_config to modify. Only
-  /// the fields in the mask will be modified. If no mask is provided, this
+  /// A FieldMask specifying which fields of the project_config to modify.
+  ///
+  /// Only the fields in the mask will be modified. If no mask is provided, this
   /// request is no-op.
   core.String updateMask;
 
@@ -1713,9 +1787,10 @@ class UpdateRepoRequest {
   /// The new configuration for the repository.
   Repo repo;
 
-  /// A FieldMask specifying which fields of the repo to modify. Only the fields
-  /// in the mask will be modified. If no mask is provided, this request is
-  /// no-op.
+  /// A FieldMask specifying which fields of the repo to modify.
+  ///
+  /// Only the fields in the mask will be modified. If no mask is provided, this
+  /// request is no-op.
   core.String updateMask;
 
   UpdateRepoRequest();

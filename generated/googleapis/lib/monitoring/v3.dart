@@ -56,10 +56,11 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Manages your Cloud Monitoring data and configurations. Most projects must be
-/// associated with a Workspace, with a few exceptions as noted on the
-/// individual method pages. The table entries below are presented in
-/// alphabetical order, not in order of common use. For explanations of the
+/// Manages your Cloud Monitoring data and configurations.
+///
+/// Most projects must be associated with a Workspace, with a few exceptions as
+/// noted on the individual method pages. The table entries below are presented
+/// in alphabetical order, not in order of common use. For explanations of the
 /// concepts found in the table entries, read the Cloud Monitoring
 /// documentation.
 class MonitoringApi {
@@ -390,10 +391,11 @@ class ProjectsAlertPoliciesResource {
     );
   }
 
-  /// Updates an alerting policy. You can either replace the entire policy with
-  /// a new one or replace only certain fields in the current alerting policy by
-  /// specifying the fields to be updated via updateMask. Returns the updated
-  /// alerting policy.
+  /// Updates an alerting policy.
+  ///
+  /// You can either replace the entire policy with a new one or replace only
+  /// certain fields in the current alerting policy by specifying the fields to
+  /// be updated via updateMask. Returns the updated alerting policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -485,8 +487,9 @@ class ProjectsCollectdTimeSeriesResource {
       : _requester = client;
 
   /// Stackdriver Monitoring Agent only: Creates a new time series.This method
-  /// is only for use by the Stackdriver Monitoring Agent. Use
-  /// projects.timeSeries.create instead.
+  /// is only for use by the Stackdriver Monitoring Agent.
+  ///
+  /// Use projects.timeSeries.create instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -831,8 +834,9 @@ class ProjectsGroupsResource {
     );
   }
 
-  /// Updates an existing group. You can change any group attributes except
-  /// name.
+  /// Updates an existing group.
+  ///
+  /// You can change any group attributes except name.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1008,8 +1012,10 @@ class ProjectsMetricDescriptorsResource {
   ProjectsMetricDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new metric descriptor. User-created metric descriptors define
-  /// custom metrics (https://cloud.google.com/monitoring/custom-metrics).
+  /// Creates a new metric descriptor.
+  ///
+  /// User-created metric descriptors define custom metrics
+  /// (https://cloud.google.com/monitoring/custom-metrics).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1070,7 +1076,9 @@ class ProjectsMetricDescriptorsResource {
     );
   }
 
-  /// Deletes a metric descriptor. Only user-created custom metrics
+  /// Deletes a metric descriptor.
+  ///
+  /// Only user-created custom metrics
   /// (https://cloud.google.com/monitoring/custom-metrics) can be deleted.
   ///
   /// Request parameters:
@@ -1125,7 +1133,9 @@ class ProjectsMetricDescriptorsResource {
     );
   }
 
-  /// Gets a single metric descriptor. This method does not require a Workspace.
+  /// Gets a single metric descriptor.
+  ///
+  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -1181,8 +1191,9 @@ class ProjectsMetricDescriptorsResource {
     );
   }
 
-  /// Lists metric descriptors that match a filter. This method does not require
-  /// a Workspace.
+  /// Lists metric descriptors that match a filter.
+  ///
+  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -1272,8 +1283,9 @@ class ProjectsMonitoredResourceDescriptorsResource {
   ProjectsMonitoredResourceDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a single monitored resource descriptor. This method does not require
-  /// a Workspace.
+  /// Gets a single monitored resource descriptor.
+  ///
+  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -1329,8 +1341,9 @@ class ProjectsMonitoredResourceDescriptorsResource {
     );
   }
 
-  /// Lists monitored resource descriptors that match a filter. This method does
-  /// not require a Workspace.
+  /// Lists monitored resource descriptors that match a filter.
+  ///
+  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -1419,8 +1432,10 @@ class ProjectsNotificationChannelDescriptorsResource {
   ProjectsNotificationChannelDescriptorsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets a single channel descriptor. The descriptor indicates which fields
-  /// are expected / permitted for a notification channel of the given type.
+  /// Gets a single channel descriptor.
+  ///
+  /// The descriptor indicates which fields are expected / permitted for a
+  /// notification channel of the given type.
   ///
   /// Request parameters:
   ///
@@ -1475,8 +1490,10 @@ class ProjectsNotificationChannelDescriptorsResource {
     );
   }
 
-  /// Lists the descriptors for supported channel types. The use of descriptors
-  /// makes it possible for new channel types to be dynamically added.
+  /// Lists the descriptors for supported channel types.
+  ///
+  /// The use of descriptors makes it possible for new channel types to be
+  /// dynamically added.
   ///
   /// Request parameters:
   ///
@@ -1685,11 +1702,13 @@ class ProjectsNotificationChannelsResource {
     );
   }
 
-  /// Gets a single notification channel. The channel includes the relevant
-  /// configuration details with which the channel was created. However, the
-  /// response may truncate or omit passwords, API keys, or other private key
-  /// matter and thus the response may not be 100% identical to the information
-  /// that was supplied in the call to the create method.
+  /// Gets a single notification channel.
+  ///
+  /// The channel includes the relevant configuration details with which the
+  /// channel was created. However, the response may truncate or omit passwords,
+  /// API keys, or other private key matter and thus the response may not be
+  /// 100% identical to the information that was supplied in the call to the
+  /// create method.
   ///
   /// Request parameters:
   ///
@@ -1745,11 +1764,12 @@ class ProjectsNotificationChannelsResource {
 
   /// Requests a verification code for an already verified channel that can then
   /// be used in a call to VerifyNotificationChannel() on a different channel
-  /// with an equivalent identity in the same or in a different project. This
-  /// makes it possible to copy a channel between projects without requiring
-  /// manual reverification of the channel. If the channel is not in the
-  /// verified state, this method will fail (in other words, this may only be
-  /// used if the SendNotificationChannelVerificationCode and
+  /// with an equivalent identity in the same or in a different project.
+  ///
+  /// This makes it possible to copy a channel between projects without
+  /// requiring manual reverification of the channel. If the channel is not in
+  /// the verified state, this method will fail (in other words, this may only
+  /// be used if the SendNotificationChannelVerificationCode and
   /// VerifyNotificationChannel paths have already been used to put the given
   /// channel into the verified state).There is no guarantee that the
   /// verification codes returned by this method will be of a similar structure
@@ -1918,8 +1938,9 @@ class ProjectsNotificationChannelsResource {
     );
   }
 
-  /// Updates a notification channel. Fields not specified in the field mask
-  /// remain unchanged.
+  /// Updates a notification channel.
+  ///
+  /// Fields not specified in the field mask remain unchanged.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1985,8 +2006,10 @@ class ProjectsNotificationChannelsResource {
     );
   }
 
-  /// Causes a verification code to be delivered to the channel. The code can
-  /// then be supplied in VerifyNotificationChannel to verify the channel.
+  /// Causes a verification code to be delivered to the channel.
+  ///
+  /// The code can then be supplied in VerifyNotificationChannel to verify the
+  /// channel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2112,10 +2135,11 @@ class ProjectsTimeSeriesResource {
 
   ProjectsTimeSeriesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates or adds data to one or more time series. The response is empty if
-  /// all time series in the request were written. If any time series could not
-  /// be written, a corresponding failure message is included in the error
-  /// response.
+  /// Creates or adds data to one or more time series.
+  ///
+  /// The response is empty if all time series in the request were written. If
+  /// any time series could not be written, a corresponding failure message is
+  /// included in the error response.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2174,8 +2198,9 @@ class ProjectsTimeSeriesResource {
     );
   }
 
-  /// Lists time series that match a filter. This method does not require a
-  /// Workspace.
+  /// Lists time series that match a filter.
+  ///
+  /// This method does not require a Workspace.
   ///
   /// Request parameters:
   ///
@@ -2518,8 +2543,9 @@ class ProjectsTimeSeriesResource {
     );
   }
 
-  /// Queries time series using Monitoring Query Language. This method does not
-  /// require a Workspace.
+  /// Queries time series using Monitoring Query Language.
+  ///
+  /// This method does not require a Workspace.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2648,9 +2674,11 @@ class ProjectsUptimeCheckConfigsResource {
     );
   }
 
-  /// Deletes an Uptime check configuration. Note that this method will fail if
-  /// the Uptime check configuration is referenced by an alert policy or other
-  /// dependent configs that would be rendered invalid by the deletion.
+  /// Deletes an Uptime check configuration.
+  ///
+  /// Note that this method will fail if the Uptime check configuration is
+  /// referenced by an alert policy or other dependent configs that would be
+  /// rendered invalid by the deletion.
   ///
   /// Request parameters:
   ///
@@ -2829,10 +2857,11 @@ class ProjectsUptimeCheckConfigsResource {
     );
   }
 
-  /// Updates an Uptime check configuration. You can either replace the entire
-  /// configuration with a new one or replace only certain fields in the current
-  /// configuration by specifying the fields to be updated via updateMask.
-  /// Returns the updated configuration.
+  /// Updates an Uptime check configuration.
+  ///
+  /// You can either replace the entire configuration with a new one or replace
+  /// only certain fields in the current configuration by specifying the fields
+  /// to be updated via updateMask. Returns the updated configuration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3676,12 +3705,14 @@ class UptimeCheckIpsResource {
 }
 
 /// Describes how to combine multiple time series to provide a different view of
-/// the data. Aggregation of time series is done in two steps. First, each time
-/// series in the set is aligned to the same time interval boundaries, then the
-/// set of time series is optionally reduced in number.Alignment consists of
-/// applying the per_series_aligner operation to each time series after its data
-/// has been divided into regular alignment_period time intervals. This process
-/// takes all of the data points in an alignment period, applies a mathematical
+/// the data.
+///
+/// Aggregation of time series is done in two steps. First, each time series in
+/// the set is aligned to the same time interval boundaries, then the set of
+/// time series is optionally reduced in number.Alignment consists of applying
+/// the per_series_aligner operation to each time series after its data has been
+/// divided into regular alignment_period time intervals. This process takes all
+/// of the data points in an alignment period, applies a mathematical
 /// transformation such as averaging, minimum, maximum, delta, etc., and
 /// converts them into a single data point per period.Reduction is when the
 /// aligned and transformed time series can optionally be combined, reducing the
@@ -3699,6 +3730,7 @@ class UptimeCheckIpsResource {
 class Aggregation {
   /// The alignment_period specifies a time interval, in seconds, that is used
   /// to divide the data in all the time series into consistent blocks of time.
+  ///
   /// This will be done before the per-series aligner can be applied to the
   /// data.The value must be at least 60 seconds. If a per-series aligner other
   /// than ALIGN_NONE is specified, this field is required or an error is
@@ -3711,14 +3743,15 @@ class Aggregation {
   /// The reduction operation to be used to combine time series into a single
   /// time series, where the value of each data point in the resulting series is
   /// a function of all the already aligned values in the input time series.Not
-  /// all reducer operations can be applied to all time series. The valid
-  /// choices depend on the metric_kind and the value_type of the original time
-  /// series. Reduction can yield a time series with a different metric_kind or
-  /// value_type than the input time series.Time series data must first be
-  /// aligned (see per_series_aligner) in order to perform cross-time series
-  /// reduction. If cross_series_reducer is specified, then per_series_aligner
-  /// must be specified, and must not be ALIGN_NONE. An alignment_period must
-  /// also be specified; otherwise, an error is returned.
+  /// all reducer operations can be applied to all time series.
+  ///
+  /// The valid choices depend on the metric_kind and the value_type of the
+  /// original time series. Reduction can yield a time series with a different
+  /// metric_kind or value_type than the input time series.Time series data must
+  /// first be aligned (see per_series_aligner) in order to perform cross-time
+  /// series reduction. If cross_series_reducer is specified, then
+  /// per_series_aligner must be specified, and must not be ALIGN_NONE. An
+  /// alignment_period must also be specified; otherwise, an error is returned.
   /// Possible string values are:
   /// - "REDUCE_NONE" : No cross-time series reduction. The output of the
   /// Aligner is returned.
@@ -3781,10 +3814,11 @@ class Aggregation {
   /// DOUBLE.
   core.String crossSeriesReducer;
 
-  /// The set of fields to preserve when cross_series_reducer is specified. The
-  /// group_by_fields determine how the time series are partitioned into subsets
-  /// prior to applying the aggregation operation. Each subset contains time
-  /// series that have the same value for each of the grouping fields. Each
+  /// The set of fields to preserve when cross_series_reducer is specified.
+  ///
+  /// The group_by_fields determine how the time series are partitioned into
+  /// subsets prior to applying the aggregation operation. Each subset contains
+  /// time series that have the same value for each of the grouping fields. Each
   /// individual time series is a member of exactly one subset. The
   /// cross_series_reducer is applied to each subset of time series. It is not
   /// possible to reduce across different resource types, so this field
@@ -3796,17 +3830,18 @@ class Aggregation {
   core.List<core.String> groupByFields;
 
   /// An Aligner describes how to bring the data points in a single time series
-  /// into temporal alignment. Except for ALIGN_NONE, all alignments cause all
-  /// the data points in an alignment_period to be mathematically grouped
-  /// together, resulting in a single data point for each alignment_period with
-  /// end timestamp at the end of the period.Not all alignment operations may be
-  /// applied to all time series. The valid choices depend on the metric_kind
-  /// and value_type of the original time series. Alignment can change the
-  /// metric_kind or the value_type of the time series.Time series data must be
-  /// aligned in order to perform cross-time series reduction. If
-  /// cross_series_reducer is specified, then per_series_aligner must be
-  /// specified and not equal to ALIGN_NONE and alignment_period must be
-  /// specified; otherwise, an error is returned.
+  /// into temporal alignment.
+  ///
+  /// Except for ALIGN_NONE, all alignments cause all the data points in an
+  /// alignment_period to be mathematically grouped together, resulting in a
+  /// single data point for each alignment_period with end timestamp at the end
+  /// of the period.Not all alignment operations may be applied to all time
+  /// series. The valid choices depend on the metric_kind and value_type of the
+  /// original time series. Alignment can change the metric_kind or the
+  /// value_type of the time series.Time series data must be aligned in order to
+  /// perform cross-time series reduction. If cross_series_reducer is specified,
+  /// then per_series_aligner must be specified and not equal to ALIGN_NONE and
+  /// alignment_period must be specified; otherwise, an error is returned.
   /// Possible string values are:
   /// - "ALIGN_NONE" : No alignment. Raw data is returned. Not valid if
   /// cross-series reduction is requested. The value_type of the result is the
@@ -3941,12 +3976,16 @@ class Aggregation {
 
 /// A description of the conditions under which some aspect of your system is
 /// considered to be "unhealthy" and the ways to notify people or services about
-/// this state. For an overview of alert policies, see Introduction to Alerting
+/// this state.
+///
+/// For an overview of alert policies, see Introduction to Alerting
 /// (https://cloud.google.com/monitoring/alerts/).
 class AlertPolicy {
   /// How to combine the results of multiple conditions to determine if an
-  /// incident should be opened. If condition_time_series_query_language is
-  /// present, this must be COMBINE_UNSPECIFIED.
+  /// incident should be opened.
+  ///
+  /// If condition_time_series_query_language is present, this must be
+  /// COMBINE_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMBINE_UNSPECIFIED" : An unspecified combiner.
   /// - "AND" : Combine conditions using the logical AND operator. An incident
@@ -3960,43 +3999,54 @@ class AlertPolicy {
   /// if all conditions are met simultaneously on at least one resource.
   core.String combiner;
 
-  /// A list of conditions for the policy. The conditions are combined by AND or
-  /// OR according to the combiner field. If the combined conditions evaluate to
-  /// true, then an incident is created. A policy can have from one to six
-  /// conditions. If condition_time_series_query_language is present, it must be
-  /// the only condition.
+  /// A list of conditions for the policy.
+  ///
+  /// The conditions are combined by AND or OR according to the combiner field.
+  /// If the combined conditions evaluate to true, then an incident is created.
+  /// A policy can have from one to six conditions. If
+  /// condition_time_series_query_language is present, it must be the only
+  /// condition.
   core.List<Condition> conditions;
 
-  /// A read-only record of the creation of the alerting policy. If provided in
-  /// a call to create or update, this field will be ignored.
+  /// A read-only record of the creation of the alerting policy.
+  ///
+  /// If provided in a call to create or update, this field will be ignored.
   MutationRecord creationRecord;
 
   /// A short name or phrase used to identify the policy in dashboards,
-  /// notifications, and incidents. To avoid confusion, don't use the same
-  /// display name for multiple policies in the same project. The name is
-  /// limited to 512 Unicode characters.
+  /// notifications, and incidents.
+  ///
+  /// To avoid confusion, don't use the same display name for multiple policies
+  /// in the same project. The name is limited to 512 Unicode characters.
   core.String displayName;
 
   /// Documentation that is included with notifications and incidents related to
-  /// this policy. Best practice is for the documentation to include information
-  /// to help responders understand, mitigate, escalate, and correct the
-  /// underlying problems detected by the alerting policy. Notification channels
-  /// that have limited capacity might not show this documentation.
+  /// this policy.
+  ///
+  /// Best practice is for the documentation to include information to help
+  /// responders understand, mitigate, escalate, and correct the underlying
+  /// problems detected by the alerting policy. Notification channels that have
+  /// limited capacity might not show this documentation.
   Documentation documentation;
 
-  /// Whether or not the policy is enabled. On write, the default interpretation
-  /// if unset is that the policy is enabled. On read, clients should not make
-  /// any assumption about the state if it has not been populated. The field
-  /// should always be populated on List and Get operations, unless a field
-  /// projection has been specified that strips it out.
+  /// Whether or not the policy is enabled.
+  ///
+  /// On write, the default interpretation if unset is that the policy is
+  /// enabled. On read, clients should not make any assumption about the state
+  /// if it has not been populated. The field should always be populated on List
+  /// and Get operations, unless a field projection has been specified that
+  /// strips it out.
   core.bool enabled;
 
-  /// A read-only record of the most recent change to the alerting policy. If
-  /// provided in a call to create or update, this field will be ignored.
+  /// A read-only record of the most recent change to the alerting policy.
+  ///
+  /// If provided in a call to create or update, this field will be ignored.
   MutationRecord mutationRecord;
 
-  /// Required if the policy exists. The resource name for this policy. The
-  /// format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+  /// Required if the policy exists.
+  ///
+  /// The resource name for this policy. The format is:
+  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
   /// [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
   /// created. When calling the alertPolicies.create method, do not include the
   /// name field in the alerting policy passed as part of the request.
@@ -4004,22 +4054,26 @@ class AlertPolicy {
 
   /// Identifies the notification channels to which notifications should be sent
   /// when incidents are opened or closed or when new violations occur on an
-  /// already opened incident. Each element of this array corresponds to the
-  /// name field in each of the NotificationChannel objects that are returned
-  /// from the ListNotificationChannels method. The format of the entries in
-  /// this field is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+  /// already opened incident.
+  ///
+  /// Each element of this array corresponds to the name field in each of the
+  /// NotificationChannel objects that are returned from the
+  /// ListNotificationChannels method. The format of the entries in this field
+  /// is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
   core.List<core.String> notificationChannels;
 
   /// User-supplied key/value data to be used for organizing and identifying the
-  /// AlertPolicy objects.The field can contain up to 64 entries. Each key and
-  /// value is limited to 63 Unicode characters or 128 bytes, whichever is
-  /// smaller. Labels and values can contain only lowercase letters, numerals,
-  /// underscores, and dashes. Keys must begin with a letter.
+  /// AlertPolicy objects.The field can contain up to 64 entries.
+  ///
+  /// Each key and value is limited to 63 Unicode characters or 128 bytes,
+  /// whichever is smaller. Labels and values can contain only lowercase
+  /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
   core.Map<core.String, core.String> userLabels;
 
-  /// Read-only description of how the alert policy is invalid. OK if the alert
-  /// policy is valid. If not OK, the alert policy will not generate incidents.
+  /// Read-only description of how the alert policy is invalid.
+  ///
+  /// OK if the alert policy is valid. If not OK, the alert policy will not
+  /// generate incidents.
   Status validity;
 
   AlertPolicy();
@@ -4115,11 +4169,14 @@ class AlertPolicy {
   }
 }
 
-/// App Engine service. Learn more at https://cloud.google.com/appengine.
+/// App Engine service.
+///
+/// Learn more at https://cloud.google.com/appengine.
 class AppEngine {
-  /// The ID of the App Engine module underlying this service. Corresponds to
-  /// the module_id resource label in the gae_app monitored resource:
-  /// https://cloud.google.com/monitoring/api/resources#tag_gae_app
+  /// The ID of the App Engine module underlying this service.
+  ///
+  /// Corresponds to the module_id resource label in the gae_app monitored
+  /// resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
   core.String moduleId;
 
   AppEngine();
@@ -4154,9 +4211,10 @@ class AvailabilityCriteria {
 }
 
 /// The authentication parameters to provide to the specified resource or URL
-/// that requires a username and password. Currently, only Basic HTTP
-/// authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime
-/// checks.
+/// that requires a username and password.
+///
+/// Currently, only Basic HTTP authentication
+/// (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
 class BasicAuthentication {
   /// The password to use when authenticating with the HTTP server.
   core.String password;
@@ -4187,9 +4245,10 @@ class BasicAuthentication {
   }
 }
 
-/// An SLI measuring performance on a well-known service type. Performance will
-/// be computed on the basis of pre-defined metrics. The type of the
-/// service_resource determines the metrics to use and the
+/// An SLI measuring performance on a well-known service type.
+///
+/// Performance will be computed on the basis of pre-defined metrics. The type
+/// of the service_resource determines the metrics to use and the
 /// service_resource.labels and metric_labels are used to construct a monitoring
 /// filter to filter that metric down to just the data relevant to this service.
 class BasicSli {
@@ -4201,25 +4260,28 @@ class BasicSli {
   /// that are fast enough with respect to latency.threshold.
   LatencyCriteria latency;
 
-  /// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry
-  /// from other locations will not be used to calculate performance for this
-  /// SLI. If omitted, this SLI applies to all locations in which the Service
-  /// has activity. For service types that don't support breaking down by
-  /// location, setting this field will result in an error.
+  /// OPTIONAL: The set of locations to which this SLI is relevant.
+  ///
+  /// Telemetry from other locations will not be used to calculate performance
+  /// for this SLI. If omitted, this SLI applies to all locations in which the
+  /// Service has activity. For service types that don't support breaking down
+  /// by location, setting this field will result in an error.
   core.List<core.String> location;
 
-  /// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from
-  /// other methods will not be used to calculate performance for this SLI. If
-  /// omitted, this SLI applies to all the Service's methods. For service types
-  /// that don't support breaking down by method, setting this field will result
-  /// in an error.
+  /// OPTIONAL: The set of RPCs to which this SLI is relevant.
+  ///
+  /// Telemetry from other methods will not be used to calculate performance for
+  /// this SLI. If omitted, this SLI applies to all the Service's methods. For
+  /// service types that don't support breaking down by method, setting this
+  /// field will result in an error.
   core.List<core.String> method;
 
-  /// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry
-  /// from other API versions will not be used to calculate performance for this
-  /// SLI. If omitted, this SLI applies to all API versions. For service types
-  /// that don't support breaking down by version, setting this field will
-  /// result in an error.
+  /// OPTIONAL: The set of API versions to which this SLI is relevant.
+  ///
+  /// Telemetry from other API versions will not be used to calculate
+  /// performance for this SLI. If omitted, this SLI applies to all API
+  /// versions. For service types that don't support breaking down by version,
+  /// setting this field will result in an error.
   core.List<core.String> version;
 
   BasicSli();
@@ -4272,18 +4334,20 @@ class BasicSli {
 }
 
 /// BucketOptions describes the bucket boundaries used to create a histogram for
-/// the distribution. The buckets can be in a linear sequence, an exponential
-/// sequence, or each bucket can be specified explicitly. BucketOptions does not
-/// include the number of values in each bucket.A bucket has an inclusive lower
-/// bound and exclusive upper bound for the values that are counted for that
-/// bucket. The upper bound of a bucket must be strictly greater than the lower
-/// bound. The sequence of N buckets for a distribution consists of an underflow
-/// bucket (number 0), zero or more finite buckets (number 1 through N - 2) and
-/// an overflow bucket (number N - 1). The buckets are contiguous: the lower
-/// bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1.
-/// The buckets span the whole range of finite values: lower bound of the
-/// underflow bucket is -infinity and the upper bound of the overflow bucket is
-/// +infinity. The finite buckets are so-called because both bounds are finite.
+/// the distribution.
+///
+/// The buckets can be in a linear sequence, an exponential sequence, or each
+/// bucket can be specified explicitly. BucketOptions does not include the
+/// number of values in each bucket.A bucket has an inclusive lower bound and
+/// exclusive upper bound for the values that are counted for that bucket. The
+/// upper bound of a bucket must be strictly greater than the lower bound. The
+/// sequence of N buckets for a distribution consists of an underflow bucket
+/// (number 0), zero or more finite buckets (number 1 through N - 2) and an
+/// overflow bucket (number N - 1). The buckets are contiguous: the lower bound
+/// of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The
+/// buckets span the whole range of finite values: lower bound of the underflow
+/// bucket is -infinity and the upper bound of the overflow bucket is +infinity.
+/// The finite buckets are so-called because both bounds are finite.
 class BucketOptions {
   /// The explicit buckets.
   Explicit explicitBuckets;
@@ -4326,9 +4390,12 @@ class BucketOptions {
   }
 }
 
-/// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+/// Cloud Endpoints service.
+///
+/// Learn more at https://cloud.google.com/endpoints.
 class CloudEndpoints {
   /// The name of the Cloud Endpoints service underlying this service.
+  ///
   /// Corresponds to the service resource label in the api monitored resource:
   /// https://cloud.google.com/monitoring/api/resources#tag_api
   core.String service;
@@ -4350,24 +4417,30 @@ class CloudEndpoints {
   }
 }
 
-/// Istio service scoped to a single Kubernetes cluster. Learn more at
-/// http://istio.io.
+/// Istio service scoped to a single Kubernetes cluster.
+///
+/// Learn more at http://istio.io.
 class ClusterIstio {
   /// The name of the Kubernetes cluster in which this Istio service is defined.
+  ///
   /// Corresponds to the cluster_name resource label in k8s_cluster resources.
   core.String clusterName;
 
   /// The location of the Kubernetes cluster in which this Istio service is
-  /// defined. Corresponds to the location resource label in k8s_cluster
-  /// resources.
+  /// defined.
+  ///
+  /// Corresponds to the location resource label in k8s_cluster resources.
   core.String location;
 
-  /// The name of the Istio service underlying this service. Corresponds to the
-  /// destination_service_name metric label in Istio metrics.
+  /// The name of the Istio service underlying this service.
+  ///
+  /// Corresponds to the destination_service_name metric label in Istio metrics.
   core.String serviceName;
 
-  /// The namespace of the Istio service underlying this service. Corresponds to
-  /// the destination_service_namespace metric label in Istio metrics.
+  /// The namespace of the Istio service underlying this service.
+  ///
+  /// Corresponds to the destination_service_namespace metric label in Istio
+  /// metrics.
   core.String serviceNamespace;
 
   ClusterIstio();
@@ -4405,16 +4478,21 @@ class ClusterIstio {
   }
 }
 
-/// A collection of data points sent from a collectd-based plugin. See the
-/// collectd documentation for more information.
+/// A collection of data points sent from a collectd-based plugin.
+///
+/// See the collectd documentation for more information.
 class CollectdPayload {
   /// The end time of the interval.
   core.String endTime;
 
-  /// The measurement metadata. Example: "process_id" -> 12345
+  /// The measurement metadata.
+  ///
+  /// Example: "process_id" -> 12345
   core.Map<core.String, TypedValue> metadata;
 
-  /// The name of the plugin. Example: "disk".
+  /// The name of the plugin.
+  ///
+  /// Example: "disk".
   core.String plugin;
 
   /// The instance name of the plugin Example: "hdcl".
@@ -4423,14 +4501,19 @@ class CollectdPayload {
   /// The start time of the interval.
   core.String startTime;
 
-  /// The measurement type. Example: "memory".
+  /// The measurement type.
+  ///
+  /// Example: "memory".
   core.String type;
 
-  /// The measurement type instance. Example: "used".
+  /// The measurement type instance.
+  ///
+  /// Example: "used".
   core.String typeInstance;
 
-  /// The measured values during this time interval. Each value must have a
-  /// different data_source_name.
+  /// The measured values during this time interval.
+  ///
+  /// Each value must have a different data_source_name.
   core.List<CollectdValue> values;
 
   CollectdPayload();
@@ -4505,8 +4588,10 @@ class CollectdPayload {
 
 /// Describes the error status for payloads that were not written.
 class CollectdPayloadError {
-  /// Records the error status for the payload. If this field is present, the
-  /// partial errors for nested values won't be populated.
+  /// Records the error status for the payload.
+  ///
+  /// If this field is present, the partial errors for nested values won't be
+  /// populated.
   Status error;
 
   /// The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads.
@@ -4553,8 +4638,10 @@ class CollectdPayloadError {
 
 /// A single data point from a collectd-based plugin.
 class CollectdValue {
-  /// The data source for the collectd value. For example, there are two data
-  /// sources for network measurements: "rx" and "tx".
+  /// The data source for the collectd value.
+  ///
+  /// For example, there are two data sources for network measurements: "rx" and
+  /// "tx".
   core.String dataSourceName;
 
   /// The type of measurement.
@@ -4638,8 +4725,9 @@ class CollectdValueError {
 }
 
 /// A condition is a true/false test that determines when an alerting policy
-/// should open an incident. If a condition evaluates to true, it signifies that
-/// something is wrong.
+/// should open an incident.
+///
+/// If a condition evaluates to true, it signifies that something is wrong.
 class Condition {
   /// A condition that checks that a time series continues to receive new data
   /// points.
@@ -4652,12 +4740,15 @@ class Condition {
   MetricThreshold conditionThreshold;
 
   /// A short name or phrase used to identify the condition in dashboards,
-  /// notifications, and incidents. To avoid confusion, don't use the same
-  /// display name for multiple conditions in the same policy.
+  /// notifications, and incidents.
+  ///
+  /// To avoid confusion, don't use the same display name for multiple
+  /// conditions in the same policy.
   core.String displayName;
 
-  /// Required if the condition exists. The unique resource name for this
-  /// condition. Its format is:
+  /// Required if the condition exists.
+  ///
+  /// The unique resource name for this condition. Its format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
   /// [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is
   /// created as part of a new or updated alerting policy.When calling the
@@ -4720,13 +4811,19 @@ class Condition {
   }
 }
 
-/// Optional. Used to perform content matching. This allows matching based on
-/// substrings and regular expressions, together with their negations. Only the
-/// first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP
-/// check's response) are examined for purposes of content matching.
+/// Used to perform content matching.
+///
+/// This allows matching based on substrings and regular expressions, together
+/// with their negations. Only the first 4 MB of an HTTP or HTTPS check's
+/// response (and the first 1 MB of a TCP check's response) are examined for
+/// purposes of content matching.
+///
+/// Optional.
 class ContentMatcher {
-  /// String or regex content to match. Maximum 1024 bytes. An empty content
-  /// string indicates no content matching is to be performed.
+  /// String or regex content to match.
+  ///
+  /// Maximum 1024 bytes. An empty content string indicates no content matching
+  /// is to be performed.
   core.String content;
 
   /// The type of content matcher that will be applied to the server output,
@@ -4774,13 +4871,16 @@ class ContentMatcher {
 
 /// The CreateCollectdTimeSeries request.
 class CreateCollectdTimeSeriesRequest {
-  /// The collectd payloads representing the time series data. You must not
-  /// include more than a single point for each time series, so no two payloads
-  /// can have the same values for all of the fields plugin, plugin_instance,
-  /// type, and type_instance.
+  /// The collectd payloads representing the time series data.
+  ///
+  /// You must not include more than a single point for each time series, so no
+  /// two payloads can have the same values for all of the fields plugin,
+  /// plugin_instance, type, and type_instance.
   core.List<CollectdPayload> collectdPayloads;
 
-  /// The version of collectd that collected the data. Example: "5.3.0-192.el6".
+  /// The version of collectd that collected the data.
+  ///
+  /// Example: "5.3.0-192.el6".
   core.String collectdVersion;
 
   /// The monitored resource associated with the time series.
@@ -4824,14 +4924,17 @@ class CreateCollectdTimeSeriesRequest {
 class CreateCollectdTimeSeriesResponse {
   /// Records the error status for points that were not written due to an error
   /// in the request.Failed requests for which nothing is written will return an
-  /// error response instead. Requests where data points were rejected by the
-  /// backend will set summary instead.
+  /// error response instead.
+  ///
+  /// Requests where data points were rejected by the backend will set summary
+  /// instead.
   core.List<CollectdPayloadError> payloadErrors;
 
-  /// Aggregate statistics from writing the payloads. This field is omitted if
-  /// all points were successfully written, so that the response is empty. This
-  /// is for backwards compatibility with clients that log errors on any
-  /// non-empty response.
+  /// Aggregate statistics from writing the payloads.
+  ///
+  /// This field is omitted if all points were successfully written, so that the
+  /// response is empty. This is for backwards compatibility with clients that
+  /// log errors on any non-empty response.
   CreateTimeSeriesSummary summary;
 
   CreateCollectdTimeSeriesResponse();
@@ -4864,12 +4967,15 @@ class CreateCollectdTimeSeriesResponse {
 
 /// The CreateTimeSeries request.
 class CreateTimeSeriesRequest {
-  /// Required. The new data to be added to a list of time series. Adds at most
-  /// one data point to each of several time series. The new data point must be
-  /// more recent than any other point in its time series. Each TimeSeries value
-  /// must fully specify a unique time series by supplying all label values for
-  /// the metric and the monitored resource.The maximum number of TimeSeries
-  /// objects per Create request is 200.
+  /// The new data to be added to a list of time series.
+  ///
+  /// Adds at most one data point to each of several time series. The new data
+  /// point must be more recent than any other point in its time series. Each
+  /// TimeSeries value must fully specify a unique time series by supplying all
+  /// label values for the metric and the monitored resource.The maximum number
+  /// of TimeSeries objects per Create request is 200.
+  ///
+  /// Required.
   core.List<TimeSeries> timeSeries;
 
   CreateTimeSeriesRequest();
@@ -4894,7 +5000,9 @@ class CreateTimeSeriesRequest {
 
 /// Summary of the result of a failed request to write data to a time series.
 class CreateTimeSeriesSummary {
-  /// The number of points that failed to be written. Order is not guaranteed.
+  /// The number of points that failed to be written.
+  ///
+  /// Order is not guaranteed.
   core.List<Error> errors;
 
   /// The number of points that were successfully written.
@@ -4935,8 +5043,9 @@ class CreateTimeSeriesSummary {
   }
 }
 
-/// Custom view of service telemetry. Currently a place-holder pending final
-/// design.
+/// Custom view of service telemetry.
+///
+/// Currently a place-holder pending final design.
 class Custom {
   Custom();
 
@@ -4950,8 +5059,9 @@ class Custom {
   }
 }
 
-/// Distribution contains summary statistics for a population of values. It
-/// optionally contains a histogram representing the distribution of those
+/// Distribution contains summary statistics for a population of values.
+///
+/// It optionally contains a histogram representing the distribution of those
 /// values across a set of buckets.The summary statistics are the count, mean,
 /// sum of the squared deviation from the mean, the minimum, and the maximum of
 /// the set of population of values. The histogram is based on a sequence of
@@ -4962,42 +5072,50 @@ class Custom {
 /// (infinities or NaNs) in the population of values, as this will render the
 /// mean and sum_of_squared_deviation fields meaningless.
 class Distribution {
-  /// Required in the Cloud Monitoring API v3. The values for each bucket
-  /// specified in bucket_options. The sum of the values in bucketCounts must
-  /// equal the value in the count field of the Distribution object. The order
-  /// of the bucket counts follows the numbering schemes described for the three
-  /// bucket types. The underflow bucket has number 0; the finite buckets, if
-  /// any, have numbers 1 through N-2; and the overflow bucket has number N-1.
-  /// The size of bucket_counts must not be greater than N. If the size is less
-  /// than N, then the remaining buckets are assigned values of zero.
+  /// Required in the Cloud Monitoring API v3.
+  ///
+  /// The values for each bucket specified in bucket_options. The sum of the
+  /// values in bucketCounts must equal the value in the count field of the
+  /// Distribution object. The order of the bucket counts follows the numbering
+  /// schemes described for the three bucket types. The underflow bucket has
+  /// number 0; the finite buckets, if any, have numbers 1 through N-2; and the
+  /// overflow bucket has number N-1. The size of bucket_counts must not be
+  /// greater than N. If the size is less than N, then the remaining buckets are
+  /// assigned values of zero.
   core.List<core.String> bucketCounts;
 
-  /// Required in the Cloud Monitoring API v3. Defines the histogram bucket
-  /// boundaries.
+  /// Required in the Cloud Monitoring API v3.
+  ///
+  /// Defines the histogram bucket boundaries.
   BucketOptions bucketOptions;
 
-  /// The number of values in the population. Must be non-negative. This value
-  /// must equal the sum of the values in bucket_counts if a histogram is
-  /// provided.
+  /// The number of values in the population.
+  ///
+  /// Must be non-negative. This value must equal the sum of the values in
+  /// bucket_counts if a histogram is provided.
   core.String count;
 
   /// Must be in increasing order of value field.
   core.List<Exemplar> exemplars;
 
-  /// The arithmetic mean of the values in the population. If count is zero then
-  /// this field must be zero.
+  /// The arithmetic mean of the values in the population.
+  ///
+  /// If count is zero then this field must be zero.
   core.double mean;
 
-  /// If specified, contains the range of the population values. The field must
-  /// not be present if the count is zero. This field is presently ignored by
-  /// the Cloud Monitoring API v3.
+  /// If specified, contains the range of the population values.
+  ///
+  /// The field must not be present if the count is zero. This field is
+  /// presently ignored by the Cloud Monitoring API v3.
   Range range;
 
   /// The sum of squared deviations from the mean of the values in the
-  /// population. For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth,
-  /// "The Art of Computer Programming", Vol. 2, page 232, 3rd edition describes
-  /// Welford's method for accumulating this sum in one pass.If count is zero
-  /// then this field must be zero.
+  /// population.
+  ///
+  /// For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
+  /// Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
+  /// method for accumulating this sum in one pass.If count is zero then this
+  /// field must be zero.
   core.double sumOfSquaredDeviation;
 
   Distribution();
@@ -5062,14 +5180,17 @@ class Distribution {
 }
 
 /// A DistributionCut defines a TimeSeries and thresholds used for measuring
-/// good service and total service. The TimeSeries must have ValueType =
-/// DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed
-/// good_service will be the count of values x in the Distribution such that
-/// range.min <= x < range.max.
+/// good service and total service.
+///
+/// The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or
+/// MetricKind = CUMULATIVE. The computed good_service will be the count of
+/// values x in the Distribution such that range.min <= x < range.max.
 class DistributionCut {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
-  /// specifying a TimeSeries aggregating values. Must have ValueType =
-  /// DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+  /// specifying a TimeSeries aggregating values.
+  ///
+  /// Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind =
+  /// CUMULATIVE.
   core.String distributionFilter;
 
   /// Range of values considered "good." For a one-sided range, set one bound to
@@ -5102,14 +5223,16 @@ class DistributionCut {
 
 /// A content string and a MIME type that describes the content string's format.
 class Documentation {
-  /// The text of the documentation, interpreted according to mime_type. The
-  /// content may not exceed 8,192 Unicode characters and may not exceed more
-  /// than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+  /// The text of the documentation, interpreted according to mime_type.
+  ///
+  /// The content may not exceed 8,192 Unicode characters and may not exceed
+  /// more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
   core.String content;
 
-  /// The format of the content field. Presently, only the value "text/markdown"
-  /// is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for
-  /// more information.
+  /// The format of the content field.
+  ///
+  /// Presently, only the value "text/markdown" is supported. See Markdown
+  /// (https://en.wikipedia.org/wiki/Markdown) for more information.
   core.String mimeType;
 
   Documentation();
@@ -5139,14 +5262,16 @@ class Documentation {
 /// series during aggregation and then added as an attachment to a
 /// Distribution.Exemplar.The full label set for the exemplars is constructed by
 /// using the dropped pairs in combination with the label values that remain on
-/// the aggregated Distribution time series. The constructed full label set can
-/// be used to identify the specific entity, such as the instance or job, which
-/// might be contributing to a long-tail. However, with dropped labels, the
-/// storage requirements are reduced because only the aggregated distribution
-/// values for a large group of time series are stored.Note that there are no
-/// guarantees on ordering of the labels from exemplar-to-exemplar and from
-/// distribution-to-distribution in the same stream, and there may be
-/// duplicates. It is up to clients to resolve any ambiguities.
+/// the aggregated Distribution time series.
+///
+/// The constructed full label set can be used to identify the specific entity,
+/// such as the instance or job, which might be contributing to a long-tail.
+/// However, with dropped labels, the storage requirements are reduced because
+/// only the aggregated distribution values for a large group of time series are
+/// stored.Note that there are no guarantees on ordering of the labels from
+/// exemplar-to-exemplar and from distribution-to-distribution in the same
+/// stream, and there may be duplicates. It is up to clients to resolve any
+/// ambiguities.
 class DroppedLabels {
   /// Map from label to its value, for all labels dropped in any aggregation.
   core.Map<core.String, core.String> label;
@@ -5174,10 +5299,12 @@ class DroppedLabels {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for Empty is empty JSON object {}.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
+/// object {}.
 class Empty {
   Empty();
 
@@ -5224,12 +5351,16 @@ class Error {
 }
 
 /// Exemplars are example points that may be used to annotate aggregated
-/// distribution values. They are metadata that gives information about a
-/// particular value added to a Distribution bucket, such as a trace ID that was
-/// active when a value was added. They may contain further information, such as
-/// a example values and timestamps, origin, etc.
+/// distribution values.
+///
+/// They are metadata that gives information about a particular value added to a
+/// Distribution bucket, such as a trace ID that was active when a value was
+/// added. They may contain further information, such as a example values and
+/// timestamps, origin, etc.
 class Exemplar {
-  /// Contextual information about the example value. Examples are:Trace:
+  /// Contextual information about the example value.
+  ///
+  /// Examples are:Trace:
   /// type.googleapis.com/google.monitoring.v3.SpanContextLiteral string:
   /// type.googleapis.com/google.protobuf.StringValueLabels dropped during
   /// aggregation: type.googleapis.com/google.monitoring.v3.DroppedLabelsThere
@@ -5243,8 +5374,9 @@ class Exemplar {
   /// The observation (sampling) time of the above value.
   core.String timestamp;
 
-  /// Value of the exemplar point. This value determines to which bucket the
-  /// exemplar belongs.
+  /// Value of the exemplar point.
+  ///
+  /// This value determines to which bucket the exemplar belongs.
   core.double value;
 
   Exemplar();
@@ -5285,11 +5417,13 @@ class Exemplar {
 }
 
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
-/// (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i <
-/// N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must
-/// contain at least one element. If bounds has only one element, then there are
-/// no finite buckets, and that single element is the common boundary of the
-/// overflow and underflow buckets.
+/// (= N) buckets.
+///
+/// Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi
+/// Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least
+/// one element. If bounds has only one element, then there are no finite
+/// buckets, and that single element is the common boundary of the overflow and
+/// underflow buckets.
 class Explicit {
   /// The values must be monotonically increasing.
   core.List<core.double> bounds;
@@ -5314,11 +5448,12 @@ class Explicit {
 }
 
 /// Specifies an exponential sequence of buckets that have a width that is
-/// proportional to the value of the lower bound. Each bucket represents a
-/// constant relative uncertainty on a specific value in the bucket.There are
-/// num_finite_buckets + 2 (= N) buckets. Bucket i has the following
-/// boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower
-/// bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+/// proportional to the value of the lower bound.
+///
+/// Each bucket represents a constant relative uncertainty on a specific value
+/// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
+/// the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor
+/// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 class Exponential {
   /// Must be greater than 1.
   core.double growthFactor;
@@ -5368,7 +5503,9 @@ class Field {
   /// - "CARDINALITY_REPEATED" : For repeated fields.
   core.String cardinality;
 
-  /// The string value of the default value of this field. Proto2 syntax only.
+  /// The string value of the default value of this field.
+  ///
+  /// Proto2 syntax only.
   core.String defaultValue;
 
   /// The field JSON name.
@@ -5404,7 +5541,9 @@ class Field {
   core.int number;
 
   /// The index of the field type in Type.oneofs, for message or enumeration
-  /// types. The first type has index 1; zero means the type is not in the list.
+  /// types.
+  ///
+  /// The first type has index 1; zero means the type is not in the list.
   core.int oneofIndex;
 
   /// The protocol buffer options.
@@ -5414,6 +5553,7 @@ class Field {
   core.bool packed;
 
   /// The field type URL, without the scheme, for message or enumeration types.
+  ///
   /// Example: "type.googleapis.com/google.protobuf.Timestamp".
   core.String typeUrl;
 
@@ -5493,15 +5633,17 @@ class Field {
 
 /// The GetNotificationChannelVerificationCode request.
 class GetNotificationChannelVerificationCodeRequest {
-  /// The desired expiration time. If specified, the API will guarantee that the
-  /// returned code will not be valid after the specified timestamp; however,
-  /// the API cannot guarantee that the returned code will be valid for at least
-  /// as long as the requested time (the API puts an upper bound on the amount
-  /// of time for which a code may be valid). If omitted, a default expiration
-  /// will be used, which may be less than the max permissible expiration (so
-  /// specifying an expiration may extend the code's lifetime over omitting an
-  /// expiration, even though the API does impose an upper limit on the maximum
-  /// expiration that is permitted).
+  /// The desired expiration time.
+  ///
+  /// If specified, the API will guarantee that the returned code will not be
+  /// valid after the specified timestamp; however, the API cannot guarantee
+  /// that the returned code will be valid for at least as long as the requested
+  /// time (the API puts an upper bound on the amount of time for which a code
+  /// may be valid). If omitted, a default expiration will be used, which may be
+  /// less than the max permissible expiration (so specifying an expiration may
+  /// extend the code's lifetime over omitting an expiration, even though the
+  /// API does impose an upper limit on the maximum expiration that is
+  /// permitted).
   core.String expireTime;
 
   GetNotificationChannelVerificationCodeRequest();
@@ -5529,8 +5671,9 @@ class GetNotificationChannelVerificationCodeResponse {
   /// or other sms channels with the same number).
   core.String code;
 
-  /// The expiration time associated with the code that was returned. If an
-  /// expiration was provided in the request, this is the minimum of the
+  /// The expiration time associated with the code that was returned.
+  ///
+  /// If an expiration was provided in the request, this is the minimum of the
   /// requested expiration in the request and the max permitted expiration.
   core.String expireTime;
 
@@ -5557,9 +5700,10 @@ class GetNotificationChannelVerificationCodeResponse {
   }
 }
 
-/// Range of numerical values, inclusive of min and exclusive of max. If the
-/// open range "< range.max" is desired, set range.min = -infinity. If the open
-/// range ">= range.min" is desired, set range.max = infinity.
+/// Range of numerical values, inclusive of min and exclusive of max.
+///
+/// If the open range "< range.max" is desired, set range.min = -infinity. If
+/// the open range ">= range.min" is desired, set range.max = infinity.
 class GoogleMonitoringV3Range {
   /// Range maximum.
   core.double max;
@@ -5590,12 +5734,13 @@ class GoogleMonitoringV3Range {
   }
 }
 
-/// The description of a dynamic collection of monitored resources. Each group
-/// has a filter that is matched against monitored resources and their
-/// associated metadata. If a group's filter matches an available monitored
-/// resource, then that resource is a member of that group. Groups can contain
-/// any number of monitored resources, and each monitored resource can be a
-/// member of any number of groups.Groups can be nested in parent-child
+/// The description of a dynamic collection of monitored resources.
+///
+/// Each group has a filter that is matched against monitored resources and
+/// their associated metadata. If a group's filter matches an available
+/// monitored resource, then that resource is a member of that group. Groups can
+/// contain any number of monitored resources, and each monitored resource can
+/// be a member of any number of groups.Groups can be nested in parent-child
 /// hierarchies. The parentName field identifies an optional parent for each
 /// group. If a group has a parent, then the only monitored resources available
 /// to be matched by the group's filter are the resources contained in the
@@ -5619,20 +5764,25 @@ class Group {
   /// group.
   core.String filter;
 
-  /// If true, the members of this group are considered to be a cluster. The
-  /// system can perform additional analysis on groups that are clusters.
+  /// If true, the members of this group are considered to be a cluster.
+  ///
+  /// The system can perform additional analysis on groups that are clusters.
   core.bool isCluster;
 
-  /// Output only. The name of this group. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group,
-  /// this field is ignored and a new name is created consisting of the project
-  /// specified in the call to CreateGroup and a unique [GROUP_ID] that is
-  /// generated automatically.
+  /// The name of this group.
+  ///
+  /// The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When
+  /// creating a group, this field is ignored and a new name is created
+  /// consisting of the project specified in the call to CreateGroup and a
+  /// unique [GROUP_ID] that is generated automatically.
+  ///
+  /// Output only.
   core.String name;
 
-  /// The name of the group's parent, if it has one. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no
-  /// parent, parent_name is the empty string, "".
+  /// The name of the group's parent, if it has one.
+  ///
+  /// The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For
+  /// groups with no parent, parent_name is the empty string, "".
   core.String parentName;
 
   Group();
@@ -5678,17 +5828,20 @@ class Group {
 
 /// Information involved in an HTTP/HTTPS Uptime check request.
 class HttpCheck {
-  /// The authentication information. Optional when creating an HTTP check;
-  /// defaults to empty.
+  /// The authentication information.
+  ///
+  /// Optional when creating an HTTP check; defaults to empty.
   BasicAuthentication authInfo;
 
-  /// The request body associated with the HTTP POST request. If content_type is
-  /// URL_ENCODED, the body passed in must be URL-encoded. Users can provide a
-  /// Content-Length header via the headers field or the API will do so. If the
-  /// request_method is GET and body is not empty, the API will return an error.
-  /// The maximum byte size is 1 megabyte. Note: As with all bytes fields JSON
-  /// representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is
-  /// "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+  /// The request body associated with the HTTP POST request.
+  ///
+  /// If content_type is URL_ENCODED, the body passed in must be URL-encoded.
+  /// Users can provide a Content-Length header via the headers field or the API
+  /// will do so. If the request_method is GET and body is not empty, the API
+  /// will return an error. The maximum byte size is 1 megabyte. Note: As with
+  /// all bytes fields JSON representations are base64 encoded. e.g.: "foo=bar"
+  /// in URL-encoded form is "foo%3Dbar" and in base64 encoding is
+  /// "Zm9vJTI1M0RiYXI=".
   core.String body;
   core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
@@ -5705,37 +5858,45 @@ class HttpCheck {
   /// Content-Type to application/x-www-form-urlencoded in the HTTP request.
   core.String contentType;
 
-  /// The list of headers to send as part of the Uptime check request. If two
-  /// headers have the same key and different values, they should be entered as
-  /// a single header, with the value being a comma-separated list of all the
-  /// desired values as described at
+  /// The list of headers to send as part of the Uptime check request.
+  ///
+  /// If two headers have the same key and different values, they should be
+  /// entered as a single header, with the value being a comma-separated list of
+  /// all the desired values as described at
   /// https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two
   /// separate headers with the same key in a Create call will cause the first
   /// to be overwritten by the second. The maximum number of headers allowed is
   /// 100.
   core.Map<core.String, core.String> headers;
 
-  /// Boolean specifying whether to encrypt the header information. Encryption
-  /// should be specified for any headers related to authentication that you do
-  /// not wish to be seen when retrieving the configuration. The server will be
-  /// responsible for encrypting the headers. On Get/List calls, if mask_headers
-  /// is set to true then the headers will be obscured with ******.
+  /// Boolean specifying whether to encrypt the header information.
+  ///
+  /// Encryption should be specified for any headers related to authentication
+  /// that you do not wish to be seen when retrieving the configuration. The
+  /// server will be responsible for encrypting the headers. On Get/List calls,
+  /// if mask_headers is set to true then the headers will be obscured with
+  /// ******.
   core.bool maskHeaders;
 
-  /// Optional (defaults to "/"). The path to the page against which to run the
-  /// check. Will be combined with the host (specified within the
-  /// monitored_resource) and port to construct the full URL. If the provided
-  /// path does not begin with "/", a "/" will be prepended automatically.
+  /// Optional (defaults to "/").
+  ///
+  /// The path to the page against which to run the check. Will be combined with
+  /// the host (specified within the monitored_resource) and port to construct
+  /// the full URL. If the provided path does not begin with "/", a "/" will be
+  /// prepended automatically.
   core.String path;
 
   /// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is
-  /// true). The TCP port on the HTTP server against which to run the check.
-  /// Will be combined with host (specified within the monitored_resource) and
-  /// path to construct the full URL.
+  /// true).
+  ///
+  /// The TCP port on the HTTP server against which to run the check. Will be
+  /// combined with host (specified within the monitored_resource) and path to
+  /// construct the full URL.
   core.int port;
 
-  /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED
-  /// then request_method defaults to GET.
+  /// The HTTP request method to use for the check.
+  ///
+  /// If set to METHOD_UNSPECIFIED then request_method defaults to GET.
   /// Possible string values are:
   /// - "METHOD_UNSPECIFIED" : No request method specified.
   /// - "GET" : GET request.
@@ -5746,9 +5907,10 @@ class HttpCheck {
   core.bool useSsl;
 
   /// Boolean specifying whether to include SSL certificate validation as a part
-  /// of the Uptime check. Only applies to checks where monitored_resource is
-  /// set to uptime_url. If use_ssl is false, setting validate_ssl to true has
-  /// no effect.
+  /// of the Uptime check.
+  ///
+  /// Only applies to checks where monitored_resource is set to uptime_url. If
+  /// use_ssl is false, setting validate_ssl to true has no effect.
   core.bool validateSsl;
 
   HttpCheck();
@@ -5832,16 +5994,21 @@ class HttpCheck {
 /// An internal checker allows Uptime checks to run on private/internal GCP
 /// resources.
 class InternalChecker {
-  /// The checker's human-readable name. The display name should be unique
-  /// within a Stackdriver Workspace in order to make it easier to identify;
-  /// however, uniqueness is not enforced.
+  /// The checker's human-readable name.
+  ///
+  /// The display name should be unique within a Stackdriver Workspace in order
+  /// to make it easier to identify; however, uniqueness is not enforced.
   core.String displayName;
 
-  /// The GCP zone the Uptime check should egress from. Only respected for
-  /// internal Uptime checks, where internal_network is specified.
+  /// The GCP zone the Uptime check should egress from.
+  ///
+  /// Only respected for internal Uptime checks, where internal_network is
+  /// specified.
   core.String gcpZone;
 
-  /// A unique resource name for this InternalChecker. The format is:
+  /// A unique resource name for this InternalChecker.
+  ///
+  /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID]
   /// [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime
   /// check config associated with the internal checker.
@@ -5851,8 +6018,9 @@ class InternalChecker {
   /// internal resource lives (ex: "default").
   core.String network;
 
-  /// The GCP project ID where the internal checker lives. Not necessary the
-  /// same as the Workspace project.
+  /// The GCP project ID where the internal checker lives.
+  ///
+  /// Not necessary the same as the Workspace project.
   core.String peerProjectId;
 
   /// The current operational state of the internal checker.
@@ -5924,10 +6092,12 @@ class LabelDescriptor {
   /// A human-readable description for the label.
   core.String description;
 
-  /// The key for this label. The key must meet the following criteria: Does not
-  /// exceed 100 characters. Matches the following regular expression:
-  /// [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case
-  /// letter. The remaining characters must be letters, digits, or underscores.
+  /// The key for this label.
+  ///
+  /// The key must meet the following criteria: Does not exceed 100 characters.
+  /// Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first
+  /// character must be an upper- or lower-case letter. The remaining characters
+  /// must be letters, digits, or underscores.
   core.String key;
 
   /// The type of data that can be assigned to the label.
@@ -6031,11 +6201,12 @@ class LatencyCriteria {
 }
 
 /// Specifies a linear sequence of buckets that all have the same width (except
-/// overflow and underflow). Each bucket represents a constant absolute
-/// uncertainty on the specific value in the bucket.There are num_finite_buckets
-/// + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i
-/// < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i
-/// - 1)).
+/// overflow and underflow).
+///
+/// Each bucket represents a constant absolute uncertainty on the specific value
+/// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
+/// the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).
+/// Lower bound (1 <= i < N): offset + (width * (i - 1)).
 class Linear {
   /// Must be greater than 0.
   core.int numFiniteBuckets;
@@ -6081,12 +6252,16 @@ class ListAlertPoliciesResponse {
   core.List<AlertPolicy> alertPolicies;
 
   /// If there might be more results than were returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
-  /// The total number of alert policies in all pages. This number is only an
-  /// estimate, and may change in subsequent pages. https://aip.dev/158
+  /// The total number of alert policies in all pages.
+  ///
+  /// This number is only an estimate, and may change in subsequent pages.
+  /// https://aip.dev/158
   core.int totalSize;
 
   ListAlertPoliciesResponse();
@@ -6128,8 +6303,10 @@ class ListGroupMembersResponse {
   core.List<MonitoredResource> members;
 
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   /// The total number of elements matching this request.
@@ -6173,8 +6350,10 @@ class ListGroupsResponse {
   core.List<Group> group;
 
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   ListGroupsResponse();
@@ -6210,8 +6389,10 @@ class ListMetricDescriptorsResponse {
   core.List<MetricDescriptor> metricDescriptors;
 
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   ListMetricDescriptorsResponse();
@@ -6244,8 +6425,10 @@ class ListMetricDescriptorsResponse {
 /// The ListMonitoredResourceDescriptors response.
 class ListMonitoredResourceDescriptorsResponse {
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   /// The monitored resource descriptors that are available to this project and
@@ -6287,8 +6470,10 @@ class ListNotificationChannelDescriptorsResponse {
   core.List<NotificationChannelDescriptor> channelDescriptors;
 
   /// If not empty, indicates that there may be more results that match the
-  /// request. Use the value in the page_token field in a subsequent request to
-  /// fetch the next set of results. If empty, all results have been returned.
+  /// request.
+  ///
+  /// Use the value in the page_token field in a subsequent request to fetch the
+  /// next set of results. If empty, all results have been returned.
   core.String nextPageToken;
 
   ListNotificationChannelDescriptorsResponse();
@@ -6322,15 +6507,19 @@ class ListNotificationChannelDescriptorsResponse {
 /// The ListNotificationChannels response.
 class ListNotificationChannelsResponse {
   /// If not empty, indicates that there may be more results that match the
-  /// request. Use the value in the page_token field in a subsequent request to
-  /// fetch the next set of results. If empty, all results have been returned.
+  /// request.
+  ///
+  /// Use the value in the page_token field in a subsequent request to fetch the
+  /// next set of results. If empty, all results have been returned.
   core.String nextPageToken;
 
   /// The notification channels defined for the specified project.
   core.List<NotificationChannel> notificationChannels;
 
-  /// The total number of notification channels in all pages. This number is
-  /// only an estimate, and may change in subsequent pages. https://aip.dev/158
+  /// The total number of notification channels in all pages.
+  ///
+  /// This number is only an estimate, and may change in subsequent pages.
+  /// https://aip.dev/158
   core.int totalSize;
 
   ListNotificationChannelsResponse();
@@ -6369,8 +6558,10 @@ class ListNotificationChannelsResponse {
 /// The ListServiceLevelObjectives response.
 class ListServiceLevelObjectivesResponse {
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   /// The ServiceLevelObjectives matching the specified filter.
@@ -6406,8 +6597,10 @@ class ListServiceLevelObjectivesResponse {
 /// The ListServices response.
 class ListServicesResponse {
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   /// The Services matching the specified filter.
@@ -6446,18 +6639,21 @@ class ListTimeSeriesResponse {
   core.List<Status> executionErrors;
 
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   /// One or more time series that match the filter included in the request.
   core.List<TimeSeries> timeSeries;
 
-  /// The unit in which all time_series point values are reported. unit follows
-  /// the UCUM format for units as seen in https://unitsofmeasure.org/ucum.html.
-  /// If different time_series have different units (for example, because they
-  /// come from different metric types, or a unit is absent), then unit will be
-  /// "{not_a_unit}".
+  /// The unit in which all time_series point values are reported.
+  ///
+  /// unit follows the UCUM format for units as seen in
+  /// https://unitsofmeasure.org/ucum.html. If different time_series have
+  /// different units (for example, because they come from different metric
+  /// types, or a unit is absent), then unit will be "{not_a_unit}".
   core.String unit;
 
   ListTimeSeriesResponse();
@@ -6505,10 +6701,12 @@ class ListTimeSeriesResponse {
 /// The protocol for the ListUptimeCheckConfigs response.
 class ListUptimeCheckConfigsResponse {
   /// This field represents the pagination token to retrieve the next page of
-  /// results. If the value is empty, it means no further results for the
-  /// request. To retrieve the next page of results, the value of the
-  /// next_page_token is passed to the subsequent List method call (in the
-  /// request message's page_token field).
+  /// results.
+  ///
+  /// If the value is empty, it means no further results for the request. To
+  /// retrieve the next page of results, the value of the next_page_token is
+  /// passed to the subsequent List method call (in the request message's
+  /// page_token field).
   core.String nextPageToken;
 
   /// The total number of Uptime check configurations for the project,
@@ -6554,11 +6752,12 @@ class ListUptimeCheckConfigsResponse {
 /// The protocol for the ListUptimeCheckIps response.
 class ListUptimeCheckIpsResponse {
   /// This field represents the pagination token to retrieve the next page of
-  /// results. If the value is empty, it means no further results for the
-  /// request. To retrieve the next page of results, the value of the
-  /// next_page_token is passed to the subsequent List method call (in the
-  /// request message's page_token field). NOTE: this field is not yet
-  /// implemented
+  /// results.
+  ///
+  /// If the value is empty, it means no further results for the request. To
+  /// retrieve the next page of results, the value of the next_page_token is
+  /// passed to the subsequent List method call (in the request message's
+  /// page_token field). NOTE: this field is not yet implemented
   core.String nextPageToken;
 
   /// The returned list of IP addresses (including region and location) that the
@@ -6595,15 +6794,19 @@ class ListUptimeCheckIpsResponse {
 /// Istio service scoped to an Istio mesh
 class MeshIstio {
   /// Identifier for the mesh in which this Istio service is defined.
+  ///
   /// Corresponds to the mesh_uid metric label in Istio metrics.
   core.String meshUid;
 
-  /// The name of the Istio service underlying this service. Corresponds to the
-  /// destination_service_name metric label in Istio metrics.
+  /// The name of the Istio service underlying this service.
+  ///
+  /// Corresponds to the destination_service_name metric label in Istio metrics.
   core.String serviceName;
 
-  /// The namespace of the Istio service underlying this service. Corresponds to
-  /// the destination_service_namespace metric label in Istio metrics.
+  /// The namespace of the Istio service underlying this service.
+  ///
+  /// Corresponds to the destination_service_namespace metric label in Istio
+  /// metrics.
   core.String serviceNamespace;
 
   MeshIstio();
@@ -6638,12 +6841,14 @@ class MeshIstio {
 /// A specific metric, identified by specifying values for all of the labels of
 /// a MetricDescriptor.
 class Metric {
-  /// The set of label values that uniquely identify this metric. All labels
-  /// listed in the MetricDescriptor must be assigned values.
+  /// The set of label values that uniquely identify this metric.
+  ///
+  /// All labels listed in the MetricDescriptor must be assigned values.
   core.Map<core.String, core.String> labels;
 
-  /// An existing metric type, see google.api.MetricDescriptor. For example,
-  /// custom.googleapis.com/invoice/paid/amount.
+  /// An existing metric type, see google.api.MetricDescriptor.
+  ///
+  /// For example, custom.googleapis.com/invoice/paid/amount.
   core.String type;
 
   Metric();
@@ -6676,6 +6881,7 @@ class Metric {
 }
 
 /// A condition type that checks that monitored resources are reporting data.
+///
 /// The configuration defines a metric and a set of monitored resources. The
 /// predicate is considered in violation when a time series for the specified
 /// metric of a monitored resource does not include any data in the specified
@@ -6685,17 +6891,21 @@ class MetricAbsence {
   /// as how to combine the retrieved time series together (such as when
   /// aggregating multiple streams on each resource to a single stream for each
   /// resource or when aggregating streams across all members of a group of
-  /// resrouces). Multiple aggregations are applied in the order specified.This
-  /// field is similar to the one in the ListTimeSeries request
+  /// resrouces).
+  ///
+  /// Multiple aggregations are applied in the order specified.This field is
+  /// similar to the one in the ListTimeSeries request
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
   /// It is advisable to use the ListTimeSeries method when debugging this
   /// field.
   core.List<Aggregation> aggregations;
 
   /// The amount of time that a time series must fail to report new data to be
-  /// considered failing. Currently, only values that are a multiple of a
-  /// minute--e.g. 60, 120, or 300 seconds--are supported. If an invalid value
-  /// is given, an error will be returned. The Duration.nanos field is ignored.
+  /// considered failing.
+  ///
+  /// Currently, only values that are a multiple of a minute--e.g. 60, 120, or
+  /// 300 seconds--are supported. If an invalid value is given, an error will be
+  /// returned. The Duration.nanos field is ignored.
   core.String duration;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
@@ -6705,14 +6915,17 @@ class MetricAbsence {
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list)
   /// (that call is useful to verify the time series that will be retrieved /
   /// processed) and must specify the metric type and optionally may contain
-  /// restrictions on resource type, resource labels, and metric labels. This
-  /// field may not exceed 2048 Unicode characters in length.
+  /// restrictions on resource type, resource labels, and metric labels.
+  ///
+  /// This field may not exceed 2048 Unicode characters in length.
   core.String filter;
 
   /// The number/percent of time series for which the comparison must hold in
-  /// order for the condition to trigger. If unspecified, then the condition
-  /// will trigger if the comparison is true for any of the time series that
-  /// have been identified by filter and aggregations.
+  /// order for the condition to trigger.
+  ///
+  /// If unspecified, then the condition will trigger if the comparison is true
+  /// for any of the time series that have been identified by filter and
+  /// aggregations.
   Trigger trigger;
 
   MetricAbsence();
@@ -6755,27 +6968,33 @@ class MetricAbsence {
   }
 }
 
-/// Defines a metric type and its schema. Once a metric descriptor is created,
-/// deleting or altering it stops data collection and makes the metric type's
-/// existing data unusable.
+/// Defines a metric type and its schema.
+///
+/// Once a metric descriptor is created, deleting or altering it stops data
+/// collection and makes the metric type's existing data unusable.
 class MetricDescriptor {
   /// A detailed description of the metric, which can be used in documentation.
   core.String description;
 
   /// A concise name for the metric, which can be displayed in user interfaces.
+  ///
   /// Use sentence case without an ending period, for example "Request count".
   /// This field is optional but it is recommended to be set for any metrics
   /// associated with user-visible concepts, such as Quota.
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
-  /// metric type. For example, the
-  /// appengine.googleapis.com/http/server/response_latencies metric type has a
-  /// label for the HTTP response code, response_code, so you can look at
-  /// latencies for successful responses or just for responses that failed.
+  /// metric type.
+  ///
+  /// For example, the appengine.googleapis.com/http/server/response_latencies
+  /// metric type has a label for the HTTP response code, response_code, so you
+  /// can look at latencies for successful responses or just for responses that
+  /// failed.
   core.List<LabelDescriptor> labels;
 
-  /// Optional. The launch stage of the metric definition.
+  /// The launch stage of the metric definition.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -6810,10 +7029,13 @@ class MetricDescriptor {
   /// (https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// Optional. Metadata which can be used to guide usage of the metric.
+  /// Metadata which can be used to guide usage of the metric.
+  ///
+  /// Optional.
   MetricDescriptorMetadata metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc.
+  ///
   /// Some combinations of metric_kind and value_type might not be supported.
   /// Possible string values are:
   /// - "METRIC_KIND_UNSPECIFIED" : Do not use this default value.
@@ -6825,62 +7047,66 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// Read-only. If present, then a time series, which is identified partially
-  /// by a metric type and a MonitoredResourceDescriptor, that is associated
-  /// with this metric type can only be associated with one of the monitored
-  /// resource types listed here.
+  /// Read-only.
+  ///
+  /// If present, then a time series, which is identified partially by a metric
+  /// type and a MonitoredResourceDescriptor, that is associated with this
+  /// metric type can only be associated with one of the monitored resource
+  /// types listed here.
   core.List<core.String> monitoredResourceTypes;
 
   /// The resource name of the metric descriptor.
   core.String name;
 
-  /// The metric type, including its DNS name prefix. The type is not
-  /// URL-encoded. All user-defined metric types have the DNS name
-  /// custom.googleapis.com or external.googleapis.com. Metric types should use
-  /// a natural hierarchical grouping. For example:
+  /// The metric type, including its DNS name prefix.
+  ///
+  /// The type is not URL-encoded. All user-defined metric types have the DNS
+  /// name custom.googleapis.com or external.googleapis.com. Metric types should
+  /// use a natural hierarchical grouping. For example:
   /// "custom.googleapis.com/invoice/paid/amount"
   /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The units in which the metric value is reported. It is only applicable if
-  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
-  /// representation of the stored metric values.Different systems may scale the
-  /// values to be more easily displayed (so a value of 0.02KBy might be
-  /// displayed as 20By, and a value of 3523KBy might be displayed as 3.5MBy).
-  /// However, if the unit is KBy, then the value of the metric is always in
-  /// thousands of bytes, no matter how it may be displayed..If you want a
-  /// custom metric to record the exact number of CPU-seconds used by a job, you
-  /// can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or
-  /// equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then
-  /// the value is written as 12005.Alternatively, if you want a custom metric
-  /// to record data in a more granular way, you can create a DOUBLE CUMULATIVE
-  /// metric whose unit is ks{CPU}, and then write the value 12.005 (which is
-  /// 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The
-  /// supported units are a subset of The Unified Code for Units of Measure
-  /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit
-  /// By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX)
-  /// k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E
-  /// exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro
-  /// (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z
-  /// zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi
-  /// (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these
-  /// connectors: / division or ratio (as an infix operator). For examples,
-  /// kBy/{email} or MiBy/10ms (although you should almost never have /s in a
-  /// metric unit; rates should always be computed at query time from the
-  /// underlying cumulative or delta value). . multiplication or composition (as
-  /// an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a
-  /// unit is as follows: Expression = Component { "." Component } { "/"
-  /// Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
-  /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a
-  /// comment if it follows a UNIT. If the annotation is used alone, then the
-  /// unit is equivalent to 1. For examples, {request}/s == 1/s,
-  /// By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII
-  /// characters not containing { or }. 1 represents a unitary dimensionless
-  /// unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as
-  /// in 1/s. It is typically used when none of the basic units are appropriate.
-  /// For example, "new users per day" can be represented as 1/d or
-  /// {new-users}/d (and a metric value 5 would mean "5 new users).
+  /// The units in which the metric value is reported.
+  ///
+  /// It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION.
+  /// The unit defines the representation of the stored metric values.Different
+  /// systems may scale the values to be more easily displayed (so a value of
+  /// 0.02KBy might be displayed as 20By, and a value of 3523KBy might be
+  /// displayed as 3.5MBy). However, if the unit is KBy, then the value of the
+  /// metric is always in thousands of bytes, no matter how it may be
+  /// displayed..If you want a custom metric to record the exact number of
+  /// CPU-seconds used by a job, you can create an INT64 CUMULATIVE metric whose
+  /// unit is s{CPU} (or equivalently 1s{CPU} or just s). If the job uses 12,005
+  /// CPU-seconds, then the value is written as 12005.Alternatively, if you want
+  /// a custom metric to record data in a more granular way, you can create a
+  /// DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value
+  /// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is
+  /// 12005/1024).The supported units are a subset of The Unified Code for Units
+  /// of Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units
+  /// (UNIT) bit bit By byte s second min minute h hour d day 1
+  /// dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T
+  /// tera (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24)
+  /// m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico (10^-12) f femto
+  /// (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10)
+  /// Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe
+  /// grammar also includes these connectors: / division or ratio (as an infix
+  /// operator). For examples, kBy/{email} or MiBy/10ms (although you should
+  /// almost never have /s in a metric unit; rates should always be computed at
+  /// query time from the underlying cumulative or delta value). .
+  /// multiplication or composition (as an infix operator). For examples, GBy.d
+  /// or k{watt}.h.The grammar for a unit is as follows: Expression = Component
+  /// { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%"
+  /// ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes:
+  /// Annotation is just a comment if it follows a UNIT. If the annotation is
+  /// used alone, then the unit is equivalent to 1. For examples, {request}/s ==
+  /// 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable
+  /// ASCII characters not containing { or }. 1 represents a unitary
+  /// dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity)
+  /// of 1, such as in 1/s. It is typically used when none of the basic units
+  /// are appropriate. For example, "new users per day" can be represented as
+  /// 1/d or {new-users}/d (and a metric value 5 would mean "5 new users).
   /// Alternatively, "thousands of page views per day" would be represented as
   /// 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean
   /// "5300 page views per day"). % represents dimensionless value of 1/100, and
@@ -6891,8 +7117,9 @@ class MetricDescriptor {
   /// 0.03 means "3 percent").
   core.String unit;
 
-  /// Whether the measurement is an integer, a floating-point number, etc. Some
-  /// combinations of metric_kind and value_type might not be supported.
+  /// Whether the measurement is an integer, a floating-point number, etc.
+  ///
+  /// Some combinations of metric_kind and value_type might not be supported.
   /// Possible string values are:
   /// - "VALUE_TYPE_UNSPECIFIED" : Do not use this default value.
   /// - "BOOL" : The value is a boolean. This value type can be used only if the
@@ -6990,12 +7217,15 @@ class MetricDescriptor {
 
 /// Additional annotations that can be used to guide the usage of a metric.
 class MetricDescriptorMetadata {
-  /// The delay of data points caused by ingestion. Data points older than this
-  /// age are guaranteed to be ingested and available to be read, excluding data
-  /// loss due to errors.
+  /// The delay of data points caused by ingestion.
+  ///
+  /// Data points older than this age are guaranteed to be ingested and
+  /// available to be read, excluding data loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+  /// Must use the MetricDescriptor.launch_stage instead.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -7030,10 +7260,11 @@ class MetricDescriptorMetadata {
   /// (https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// The sampling period of metric data points. For metrics which are written
-  /// periodically, consecutive data points are stored at this time interval,
-  /// excluding data loss due to errors. Metrics with a higher granularity have
-  /// a smaller sampling period.
+  /// The sampling period of metric data points.
+  ///
+  /// For metrics which are written periodically, consecutive data points are
+  /// stored at this time interval, excluding data loss due to errors. Metrics
+  /// with a higher granularity have a smaller sampling period.
   core.String samplePeriod;
 
   MetricDescriptorMetadata();
@@ -7066,8 +7297,10 @@ class MetricDescriptorMetadata {
 }
 
 /// A MetricRange is used when each window is good when the value x of a single
-/// TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries
-/// must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+/// TimeSeries satisfies range.min <= x < range.max.
+///
+/// The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE
+/// and MetricKind = GAUGE.
 class MetricRange {
   /// Range of values considered "good." For a one-sided range, set one bound to
   /// an infinite value.
@@ -7108,16 +7341,19 @@ class MetricThreshold {
   /// as how to combine the retrieved time series together (such as when
   /// aggregating multiple streams on each resource to a single stream for each
   /// resource or when aggregating streams across all members of a group of
-  /// resrouces). Multiple aggregations are applied in the order specified.This
-  /// field is similar to the one in the ListTimeSeries request
+  /// resrouces).
+  ///
+  /// Multiple aggregations are applied in the order specified.This field is
+  /// similar to the one in the ListTimeSeries request
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
   /// It is advisable to use the ListTimeSeries method when debugging this
   /// field.
   core.List<Aggregation> aggregations;
 
   /// The comparison to apply between the time series (indicated by filter and
-  /// aggregation) and the threshold (indicated by threshold_value). The
-  /// comparison is applied on each time series, with the time series on the
+  /// aggregation) and the threshold (indicated by threshold_value).
+  ///
+  /// The comparison is applied on each time series, with the time series on the
   /// left-hand side and the threshold on the right-hand side.Only COMPARISON_LT
   /// and COMPARISON_GT are supported currently.
   /// Possible string values are:
@@ -7147,22 +7383,26 @@ class MetricThreshold {
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
   /// identifies a time series that should be used as the denominator of a ratio
-  /// that will be compared with the threshold. If a denominator_filter is
-  /// specified, the time series specified by the filter field will be used as
-  /// the numerator.The filter must specify the metric type and optionally may
-  /// contain restrictions on resource type, resource labels, and metric labels.
-  /// This field may not exceed 2048 Unicode characters in length.
+  /// that will be compared with the threshold.
+  ///
+  /// If a denominator_filter is specified, the time series specified by the
+  /// filter field will be used as the numerator.The filter must specify the
+  /// metric type and optionally may contain restrictions on resource type,
+  /// resource labels, and metric labels. This field may not exceed 2048 Unicode
+  /// characters in length.
   core.String denominatorFilter;
 
   /// The amount of time that a time series must violate the threshold to be
-  /// considered failing. Currently, only values that are a multiple of a
-  /// minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid
-  /// value is given, an error will be returned. When choosing a duration, it is
-  /// useful to keep in mind the frequency of the underlying time series data
-  /// (which may also be affected by any alignments specified in the
-  /// aggregations field); a good duration is long enough so that a single
-  /// outlier does not generate spurious alerts, but short enough that unhealthy
-  /// states are detected and alerted on quickly.
+  /// considered failing.
+  ///
+  /// Currently, only values that are a multiple of a minute--e.g., 0, 60, 120,
+  /// or 300 seconds--are supported. If an invalid value is given, an error will
+  /// be returned. When choosing a duration, it is useful to keep in mind the
+  /// frequency of the underlying time series data (which may also be affected
+  /// by any alignments specified in the aggregations field); a good duration is
+  /// long enough so that a single outlier does not generate spurious alerts,
+  /// but short enough that unhealthy states are detected and alerted on
+  /// quickly.
   core.String duration;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
@@ -7172,18 +7412,21 @@ class MetricThreshold {
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list)
   /// (that call is useful to verify the time series that will be retrieved /
   /// processed) and must specify the metric type and optionally may contain
-  /// restrictions on resource type, resource labels, and metric labels. This
-  /// field may not exceed 2048 Unicode characters in length.
+  /// restrictions on resource type, resource labels, and metric labels.
+  ///
+  /// This field may not exceed 2048 Unicode characters in length.
   core.String filter;
 
   /// A value against which to compare the time series.
   core.double thresholdValue;
 
   /// The number/percent of time series for which the comparison must hold in
-  /// order for the condition to trigger. If unspecified, then the condition
-  /// will trigger if the comparison is true for any of the time series that
-  /// have been identified by filter and aggregations, or by the ratio, if
-  /// denominator_filter and denominator_aggregations are specified.
+  /// order for the condition to trigger.
+  ///
+  /// If unspecified, then the condition will trigger if the comparison is true
+  /// for any of the time series that have been identified by filter and
+  /// aggregations, or by the ratio, if denominator_filter and
+  /// denominator_aggregations are specified.
   Trigger trigger;
 
   MetricThreshold();
@@ -7255,25 +7498,35 @@ class MetricThreshold {
 }
 
 /// An object representing a resource that can be used for monitoring, logging,
-/// billing, or other purposes. Examples include virtual machine instances,
-/// databases, and storage devices such as disks. The type field identifies a
-/// MonitoredResourceDescriptor object that describes the resource's schema.
-/// Information in the labels field identifies the actual resource and its
-/// attributes according to the schema. For example, a particular Compute Engine
-/// VM instance could be represented by the following object, because the
-/// MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and
-/// "zone": { "type": "gce_instance", "labels": { "instance_id":
-/// "12345678901234", "zone": "us-central1-a" }}
+/// billing, or other purposes.
+///
+/// Examples include virtual machine instances, databases, and storage devices
+/// such as disks. The type field identifies a MonitoredResourceDescriptor
+/// object that describes the resource's schema. Information in the labels field
+/// identifies the actual resource and its attributes according to the schema.
+/// For example, a particular Compute Engine VM instance could be represented by
+/// the following object, because the MonitoredResourceDescriptor for
+/// "gce_instance" has labels "instance_id" and "zone": { "type":
+/// "gce_instance", "labels": { "instance_id": "12345678901234", "zone":
+/// "us-central1-a" }}
 class MonitoredResource {
-  /// Required. Values for all of the labels listed in the associated monitored
-  /// resource descriptor. For example, Compute Engine VM instances use the
-  /// labels "project_id", "instance_id", and "zone".
+  /// Values for all of the labels listed in the associated monitored resource
+  /// descriptor.
+  ///
+  /// For example, Compute Engine VM instances use the labels "project_id",
+  /// "instance_id", and "zone".
+  ///
+  /// Required.
   core.Map<core.String, core.String> labels;
 
-  /// Required. The monitored resource type. This field must match the type
-  /// field of a MonitoredResourceDescriptor object. For example, the type of a
-  /// Compute Engine VM instance is gce_instance. For a list of types, see
-  /// Monitoring resource types and Logging resource types.
+  /// The monitored resource type.
+  ///
+  /// This field must match the type field of a MonitoredResourceDescriptor
+  /// object. For example, the type of a Compute Engine VM instance is
+  /// gce_instance. For a list of types, see Monitoring resource types and
+  /// Logging resource types.
+  ///
+  /// Required.
   core.String type;
 
   MonitoredResource();
@@ -7306,29 +7559,41 @@ class MonitoredResource {
 }
 
 /// An object that describes the schema of a MonitoredResource object using a
-/// type name and a set of labels. For example, the monitored resource
-/// descriptor for Google Compute Engine VM instances has a type of
-/// "gce_instance" and specifies the use of the labels "instance_id" and "zone"
-/// to identify particular VM instances.Different APIs can support different
-/// monitored resource types. APIs generally provide a list method that returns
-/// the monitored resource descriptors used by the API.
+/// type name and a set of labels.
+///
+/// For example, the monitored resource descriptor for Google Compute Engine VM
+/// instances has a type of "gce_instance" and specifies the use of the labels
+/// "instance_id" and "zone" to identify particular VM instances.Different APIs
+/// can support different monitored resource types. APIs generally provide a
+/// list method that returns the monitored resource descriptors used by the API.
 class MonitoredResourceDescriptor {
-  /// Optional. A detailed description of the monitored resource type that might
-  /// be used in documentation.
+  /// A detailed description of the monitored resource type that might be used
+  /// in documentation.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. A concise name for the monitored resource type that might be
-  /// displayed in user interfaces. It should be a Title Cased Noun Phrase,
-  /// without any article or other determiners. For example, "Google Cloud SQL
-  /// Database".
+  /// A concise name for the monitored resource type that might be displayed in
+  /// user interfaces.
+  ///
+  /// It should be a Title Cased Noun Phrase, without any article or other
+  /// determiners. For example, "Google Cloud SQL Database".
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// Required. A set of labels used to describe instances of this monitored
-  /// resource type. For example, an individual Google Cloud SQL database is
-  /// identified by values for the labels "database_id" and "zone".
+  /// A set of labels used to describe instances of this monitored resource
+  /// type.
+  ///
+  /// For example, an individual Google Cloud SQL database is identified by
+  /// values for the labels "database_id" and "zone".
+  ///
+  /// Required.
   core.List<LabelDescriptor> labels;
 
-  /// Optional. The launch stage of the monitored resource definition.
+  /// The launch stage of the monitored resource definition.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -7363,16 +7628,23 @@ class MonitoredResourceDescriptor {
   /// (https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// Optional. The resource name of the monitored resource descriptor:
+  /// The resource name of the monitored resource descriptor:
   /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type}
   /// is the value of the type field in this object and {project_id} is a
-  /// project ID that provides API-specific context for accessing the type. APIs
-  /// that do not use project information can use the resource name format
+  /// project ID that provides API-specific context for accessing the type.
+  ///
+  /// APIs that do not use project information can use the resource name format
   /// "monitoredResourceDescriptors/{type}".
+  ///
+  /// Optional.
   core.String name;
 
-  /// Required. The monitored resource type. For example, the type
-  /// "cloudsql_database" represents databases in Google Cloud SQL.
+  /// The monitored resource type.
+  ///
+  /// For example, the type "cloudsql_database" represents databases in Google
+  /// Cloud SQL.
+  ///
+  /// Required.
   core.String type;
 
   MonitoredResourceDescriptor();
@@ -7425,24 +7697,31 @@ class MonitoredResourceDescriptor {
   }
 }
 
-/// Auxiliary metadata for a MonitoredResource object. MonitoredResource objects
-/// contain the minimum set of information to uniquely identify a monitored
-/// resource instance. There is some other useful auxiliary metadata. Monitoring
-/// and Logging use an ingestion pipeline to extract metadata for cloud
-/// resources of all types, and store the metadata in this message.
+/// Auxiliary metadata for a MonitoredResource object.
+///
+/// MonitoredResource objects contain the minimum set of information to uniquely
+/// identify a monitored resource instance. There is some other useful auxiliary
+/// metadata. Monitoring and Logging use an ingestion pipeline to extract
+/// metadata for cloud resources of all types, and store the metadata in this
+/// message.
 class MonitoredResourceMetadata {
-  /// Output only. Values for predefined system metadata labels. System labels
-  /// are a kind of metadata extracted by Google, including "machine_image",
-  /// "vpc", "subnet_id", "security_group", "name", etc. System label values can
-  /// be only strings, Boolean values, or a list of strings. For example: {
-  /// "name": "my-test-instance", "security_group": ["a", "b", "c"],
-  /// "spot_instance": false }
+  /// Values for predefined system metadata labels.
+  ///
+  /// System labels are a kind of metadata extracted by Google, including
+  /// "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
+  /// label values can be only strings, Boolean values, or a list of strings.
+  /// For example: { "name": "my-test-instance", "security_group": ["a", "b",
+  /// "c"], "spot_instance": false }
+  ///
+  /// Output only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> systemLabels;
 
-  /// Output only. A map of user-defined metadata labels.
+  /// A map of user-defined metadata labels.
+  ///
+  /// Output only.
   core.Map<core.String, core.String> userLabels;
 
   MonitoredResourceMetadata();
@@ -7486,24 +7765,28 @@ class MonitoredResourceMetadata {
 /// Query Language.
 class MonitoringQueryLanguageCondition {
   /// The amount of time that a time series must violate the threshold to be
-  /// considered failing. Currently, only values that are a multiple of a
-  /// minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid
-  /// value is given, an error will be returned. When choosing a duration, it is
-  /// useful to keep in mind the frequency of the underlying time series data
-  /// (which may also be affected by any alignments specified in the
-  /// aggregations field); a good duration is long enough so that a single
-  /// outlier does not generate spurious alerts, but short enough that unhealthy
-  /// states are detected and alerted on quickly.
+  /// considered failing.
+  ///
+  /// Currently, only values that are a multiple of a minute--e.g., 0, 60, 120,
+  /// or 300 seconds--are supported. If an invalid value is given, an error will
+  /// be returned. When choosing a duration, it is useful to keep in mind the
+  /// frequency of the underlying time series data (which may also be affected
+  /// by any alignments specified in the aggregations field); a good duration is
+  /// long enough so that a single outlier does not generate spurious alerts,
+  /// but short enough that unhealthy states are detected and alerted on
+  /// quickly.
   core.String duration;
 
   /// Monitoring Query Language query that outputs a boolean stream.
   core.String query;
 
   /// The number/percent of time series for which the comparison must hold in
-  /// order for the condition to trigger. If unspecified, then the condition
-  /// will trigger if the comparison is true for any of the time series that
-  /// have been identified by filter and aggregations, or by the ratio, if
-  /// denominator_filter and denominator_aggregations are specified.
+  /// order for the condition to trigger.
+  ///
+  /// If unspecified, then the condition will trigger if the comparison is true
+  /// for any of the time series that have been identified by filter and
+  /// aggregations, or by the ratio, if denominator_filter and
+  /// denominator_aggregations are specified.
   Trigger trigger;
 
   MonitoringQueryLanguageCondition();
@@ -7568,63 +7851,75 @@ class MutationRecord {
 }
 
 /// A NotificationChannel is a medium through which an alert is delivered when a
-/// policy violation is detected. Examples of channels include email, SMS, and
-/// third-party messaging applications. Fields containing sensitive information
-/// like authentication tokens or contact info are only partially populated on
-/// retrieval.
+/// policy violation is detected.
+///
+/// Examples of channels include email, SMS, and third-party messaging
+/// applications. Fields containing sensitive information like authentication
+/// tokens or contact info are only partially populated on retrieval.
 class NotificationChannel {
-  /// An optional human-readable description of this notification channel. This
-  /// description may provide additional details, beyond the display name, for
-  /// the channel. This may not exceed 1024 Unicode characters.
+  /// An optional human-readable description of this notification channel.
+  ///
+  /// This description may provide additional details, beyond the display name,
+  /// for the channel. This may not exceed 1024 Unicode characters.
   core.String description;
 
-  /// An optional human-readable name for this notification channel. It is
-  /// recommended that you specify a non-empty and unique name in order to make
-  /// it easier to identify the channels in your project, though this is not
-  /// enforced. The display name is limited to 512 Unicode characters.
+  /// An optional human-readable name for this notification channel.
+  ///
+  /// It is recommended that you specify a non-empty and unique name in order to
+  /// make it easier to identify the channels in your project, though this is
+  /// not enforced. The display name is limited to 512 Unicode characters.
   core.String displayName;
 
-  /// Whether notifications are forwarded to the described channel. This makes
-  /// it possible to disable delivery of notifications to a particular channel
-  /// without removing the channel from all alerting policies that reference the
-  /// channel. This is a more convenient approach when the change is temporary
-  /// and you want to receive notifications from the same set of alerting
-  /// policies on the channel at some point in the future.
+  /// Whether notifications are forwarded to the described channel.
+  ///
+  /// This makes it possible to disable delivery of notifications to a
+  /// particular channel without removing the channel from all alerting policies
+  /// that reference the channel. This is a more convenient approach when the
+  /// change is temporary and you want to receive notifications from the same
+  /// set of alerting policies on the channel at some point in the future.
   core.bool enabled;
 
-  /// Configuration fields that define the channel and its behavior. The
-  /// permissible and required labels are specified in the
+  /// Configuration fields that define the channel and its behavior.
+  ///
+  /// The permissible and required labels are specified in the
   /// NotificationChannelDescriptor.labels of the NotificationChannelDescriptor
   /// corresponding to the type field.
   core.Map<core.String, core.String> labels;
 
-  /// The full REST resource name for this channel. The format is:
+  /// The full REST resource name for this channel.
+  ///
+  /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The
   /// [CHANNEL_ID] is automatically assigned by the server on creation.
   core.String name;
 
-  /// The type of the notification channel. This field matches the value of the
-  /// NotificationChannelDescriptor.type field.
+  /// The type of the notification channel.
+  ///
+  /// This field matches the value of the NotificationChannelDescriptor.type
+  /// field.
   core.String type;
 
   /// User-supplied key/value data that does not need to conform to the
   /// corresponding NotificationChannelDescriptor's schema, unlike the labels
-  /// field. This field is intended to be used for organizing and identifying
-  /// the NotificationChannel objects.The field can contain up to 64 entries.
-  /// Each key and value is limited to 63 Unicode characters or 128 bytes,
-  /// whichever is smaller. Labels and values can contain only lowercase
-  /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
+  /// field.
+  ///
+  /// This field is intended to be used for organizing and identifying the
+  /// NotificationChannel objects.The field can contain up to 64 entries. Each
+  /// key and value is limited to 63 Unicode characters or 128 bytes, whichever
+  /// is smaller. Labels and values can contain only lowercase letters,
+  /// numerals, underscores, and dashes. Keys must begin with a letter.
   core.Map<core.String, core.String> userLabels;
 
-  /// Indicates whether this channel has been verified or not. On a
-  /// ListNotificationChannels or GetNotificationChannel operation, this field
-  /// is expected to be populated.If the value is UNVERIFIED, then it indicates
-  /// that the channel is non-functioning (it both requires verification and
-  /// lacks verification); otherwise, it is assumed that the channel works.If
-  /// the channel is neither VERIFIED nor UNVERIFIED, it implies that the
-  /// channel is of a type that does not require verification or that this
-  /// specific channel has been exempted from verification because it was
-  /// created prior to verification being required for channels of this
+  /// Indicates whether this channel has been verified or not.
+  ///
+  /// On a ListNotificationChannels or GetNotificationChannel operation, this
+  /// field is expected to be populated.If the value is UNVERIFIED, then it
+  /// indicates that the channel is non-functioning (it both requires
+  /// verification and lacks verification); otherwise, it is assumed that the
+  /// channel works.If the channel is neither VERIFIED nor UNVERIFIED, it
+  /// implies that the channel is of a type that does not require verification
+  /// or that this specific channel has been exempted from verification because
+  /// it was created prior to verification being required for channels of this
   /// type.This field cannot be modified using a standard
   /// UpdateNotificationChannel operation. To change the value of this field,
   /// you must call VerifyNotificationChannel.
@@ -7715,22 +8010,26 @@ class NotificationChannel {
   }
 }
 
-/// A description of a notification channel. The descriptor includes the
-/// properties of the channel and the set of labels or fields that must be
-/// specified to configure channels of a given type.
+/// A description of a notification channel.
+///
+/// The descriptor includes the properties of the channel and the set of labels
+/// or fields that must be specified to configure channels of a given type.
 class NotificationChannelDescriptor {
-  /// A human-readable description of the notification channel type. The
-  /// description may include a description of the properties of the channel and
-  /// pointers to external documentation.
+  /// A human-readable description of the notification channel type.
+  ///
+  /// The description may include a description of the properties of the channel
+  /// and pointers to external documentation.
   core.String description;
 
-  /// A human-readable name for the notification channel type. This form of the
-  /// name is suitable for a user interface.
+  /// A human-readable name for the notification channel type.
+  ///
+  /// This form of the name is suitable for a user interface.
   core.String displayName;
 
   /// The set of labels that must be defined to identify a particular channel of
-  /// the corresponding type. Each label includes a description for how that
-  /// field should be populated.
+  /// the corresponding type.
+  ///
+  /// Each label includes a description for how that field should be populated.
   core.List<LabelDescriptor> labels;
 
   /// The product launch stage for channels of this type.
@@ -7768,13 +8067,16 @@ class NotificationChannelDescriptor {
   /// (https://cloud.google.com/terms/deprecation) documentation.
   core.String launchStage;
 
-  /// The full REST resource name for this descriptor. The format is:
+  /// The full REST resource name for this descriptor.
+  ///
+  /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In
   /// the above, [TYPE] is the value of the type field.
   core.String name;
 
-  /// The type of notification channel, such as "email" and "sms". To view the
-  /// full list of channels, see Channel descriptors
+  /// The type of notification channel, such as "email" and "sms".
+  ///
+  /// To view the full list of channels, see Channel descriptors
   /// (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd).
   /// Notification channel types are globally unique.
   core.String type;
@@ -7832,16 +8134,19 @@ class NotificationChannelDescriptor {
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
 class Option {
-  /// The option's name. For protobuf built-in options (options defined in
-  /// descriptor.proto), this is the short name. For example, "map_entry". For
-  /// custom options, it should be the fully-qualified name. For example,
-  /// "google.api.http".
+  /// The option's name.
+  ///
+  /// For protobuf built-in options (options defined in descriptor.proto), this
+  /// is the short name. For example, "map_entry". For custom options, it should
+  /// be the fully-qualified name. For example, "google.api.http".
   core.String name;
 
-  /// The option's value packed in an Any message. If the value is a primitive,
-  /// the corresponding wrapper type defined in google/protobuf/wrappers.proto
-  /// should be used. If the value is an enum, it should be stored as an int32
-  /// value using the google.protobuf.Int32Value type.
+  /// The option's value packed in an Any message.
+  ///
+  /// If the value is a primitive, the corresponding wrapper type defined in
+  /// google/protobuf/wrappers.proto should be used. If the value is an enum, it
+  /// should be stored as an int32 value using the google.protobuf.Int32Value
+  /// type.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -7920,14 +8225,16 @@ class PerformanceThreshold {
 
 /// A single data point in a time series.
 class Point {
-  /// The time interval to which the data point applies. For GAUGE metrics, the
-  /// start time is optional, but if it is supplied, it must equal the end time.
-  /// For DELTA metrics, the start and end time should specify a non-zero
-  /// interval, with subsequent points specifying contiguous and non-overlapping
-  /// intervals. For CUMULATIVE metrics, the start and end time should specify a
-  /// non-zero interval, with subsequent points specifying the same start time
-  /// and increasing end times, until an event resets the cumulative value to
-  /// zero and sets a new start time for the following points.
+  /// The time interval to which the data point applies.
+  ///
+  /// For GAUGE metrics, the start time is optional, but if it is supplied, it
+  /// must equal the end time. For DELTA metrics, the start and end time should
+  /// specify a non-zero interval, with subsequent points specifying contiguous
+  /// and non-overlapping intervals. For CUMULATIVE metrics, the start and end
+  /// time should specify a non-zero interval, with subsequent points specifying
+  /// the same start time and increasing end times, until an event resets the
+  /// cumulative value to zero and sets a new start time for the following
+  /// points.
   TimeInterval interval;
 
   /// The value of the data point.
@@ -7958,9 +8265,11 @@ class Point {
   }
 }
 
-/// A point's value columns and time interval. Each point has one or more point
-/// values corresponding to the entries in point_descriptors field in the
-/// TimeSeriesDescriptor associated with this object.
+/// A point's value columns and time interval.
+///
+/// Each point has one or more point values corresponding to the entries in
+/// point_descriptors field in the TimeSeriesDescriptor associated with this
+/// object.
 class PointData {
   /// The time interval associated with the point.
   TimeInterval timeInterval;
@@ -8002,13 +8311,18 @@ class QueryTimeSeriesRequest {
   core.int pageSize;
 
   /// If this field is not empty then it must contain the nextPageToken value
-  /// returned by a previous call to this method. Using this field causes the
-  /// method to return additional results from the previous method call.
+  /// returned by a previous call to this method.
+  ///
+  /// Using this field causes the method to return additional results from the
+  /// previous method call.
   core.String pageToken;
 
-  /// Required. The query in the Monitoring Query Language
-  /// (https://cloud.google.com/monitoring/mql/reference) format. The default
-  /// time zone is in UTC.
+  /// The query in the Monitoring Query Language
+  /// (https://cloud.google.com/monitoring/mql/reference) format.
+  ///
+  /// The default time zone is in UTC.
+  ///
+  /// Required.
   core.String query;
 
   QueryTimeSeriesRequest();
@@ -8043,12 +8357,16 @@ class QueryTimeSeriesRequest {
 /// The QueryTimeSeries response.
 class QueryTimeSeriesResponse {
   /// If there are more results than have been returned, then this field is set
-  /// to a non-empty value. To see the additional results, use that value as
-  /// page_token in the next call to this method.
+  /// to a non-empty value.
+  ///
+  /// To see the additional results, use that value as page_token in the next
+  /// call to this method.
   core.String nextPageToken;
 
   /// Query execution errors that may have caused the time series data returned
-  /// to be incomplete. The available data will be available in the response.
+  /// to be incomplete.
+  ///
+  /// The available data will be available in the response.
   core.List<Status> partialErrors;
 
   /// The time series data.
@@ -8136,8 +8454,10 @@ class Range {
 /// directly.
 class RequestBasedSli {
   /// distribution_cut is used when good_service is a count of values aggregated
-  /// in a Distribution that fall into a good range. The total_service is the
-  /// total count of all values aggregated in the Distribution.
+  /// in a Distribution that fall into a good range.
+  ///
+  /// The total_service is the total count of all values aggregated in the
+  /// Distribution.
   DistributionCut distributionCut;
 
   /// good_total_ratio is used when the ratio of good_service to total_service
@@ -8169,11 +8489,15 @@ class RequestBasedSli {
   }
 }
 
-/// The resource submessage for group checks. It can be used instead of a
-/// monitored resource, when multiple resources are being monitored.
+/// The resource submessage for group checks.
+///
+/// It can be used instead of a monitored resource, when multiple resources are
+/// being monitored.
 class ResourceGroup {
-  /// The group of resources being monitored. Should be only the [GROUP_ID], and
-  /// not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
+  /// The group of resources being monitored.
+  ///
+  /// Should be only the [GROUP_ID], and not the full-path
+  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
   core.String groupId;
 
   /// The resource type of the group members.
@@ -8223,9 +8547,10 @@ class SendNotificationChannelVerificationCodeRequest {
 
 /// A Service is a discrete, autonomous, and network-accessible unit, designed
 /// to solve an individual concern (Wikipedia
-/// (https://en.wikipedia.org/wiki/Service-orientation)). In Cloud Monitoring, a
-/// Service acts as the root resource under which operational aspects of the
-/// service are accessible.
+/// (https://en.wikipedia.org/wiki/Service-orientation)).
+///
+/// In Cloud Monitoring, a Service acts as the root resource under which
+/// operational aspects of the service are accessible.
 class Service {
   /// Type used for App Engine services.
   AppEngine appEngine;
@@ -8245,8 +8570,9 @@ class Service {
   /// Type used for Istio services scoped to an Istio mesh.
   MeshIstio meshIstio;
 
-  /// Resource name for this Service. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+  /// Resource name for this Service.
+  ///
+  /// The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
   core.String name;
 
   /// Configuration for how to query telemetry on a Service.
@@ -8318,6 +8644,7 @@ class Service {
 }
 
 /// A Service-Level Indicator (SLI) describes the "performance" of a service.
+///
 /// For some services, the SLI is well-defined. In such cases, the SLI can be
 /// described easily by referencing the well-known SLI and providing the needed
 /// parameters. Alternatively, a "custom" SLI can be defined with a query to the
@@ -8373,6 +8700,7 @@ class ServiceLevelIndicator {
 }
 
 /// A Service-Level Objective (SLO) describes a level of desired good service.
+///
 /// It consists of a service-level indicator (SLI), a performance goal, and a
 /// period over which the objective is to be evaluated against that goal. The
 /// SLO can use SLIs defined in a number of different manners. Typical SLOs
@@ -8380,8 +8708,9 @@ class ServiceLevelIndicator {
 /// milliseconds" or "99.5% of requests in each calendar month return
 /// successfully."
 class ServiceLevelObjective {
-  /// A calendar period, semantically "since the start of the current ". At this
-  /// time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+  /// A calendar period, semantically "since the start of the current ".
+  ///
+  /// At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
   /// Possible string values are:
   /// - "CALENDAR_PERIOD_UNSPECIFIED" : Undefined period, raises an error.
   /// - "DAY" : A day.
@@ -8401,15 +8730,20 @@ class ServiceLevelObjective {
   core.String displayName;
 
   /// The fraction of service that must be good in order for this objective to
-  /// be met. 0 < goal <= 0.999.
+  /// be met.
+  ///
+  /// 0 < goal <= 0.999.
   core.double goal;
 
-  /// Resource name for this ServiceLevelObjective. The format is:
+  /// Resource name for this ServiceLevelObjective.
+  ///
+  /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
   core.String name;
 
-  /// A rolling time period, semantically "in the past ". Must be an integer
-  /// multiple of 1 day no larger than 30 days.
+  /// A rolling time period, semantically "in the past ".
+  ///
+  /// Must be an integer multiple of 1 day no larger than 30 days.
   core.String rollingPeriod;
 
   /// The definition of good service, used to measure and calculate the quality
@@ -8470,7 +8804,9 @@ class ServiceLevelObjective {
 /// like the file in which it is defined.
 class SourceContext {
   /// The path-qualified name of the .proto file that contained the associated
-  /// protobuf element. For example: "google/protobuf/source_context.proto".
+  /// protobuf element.
+  ///
+  /// For example: "google/protobuf/source_context.proto".
   core.String fileName;
 
   SourceContext();
@@ -8494,7 +8830,9 @@ class SourceContext {
 /// aggregation.It contains the name of a span with format:
 /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
 class SpanContext {
-  /// The resource name of the span. The format is:
+  /// The resource name of the span.
+  ///
+  /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
   /// [TRACE_ID] is a unique identifier for a trace within a project; it is a
   /// 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
@@ -8520,24 +8858,27 @@ class SpanContext {
 }
 
 /// The Status type defines a logical error model that is suitable for different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// gRPC (https://github.com/grpc). Each Status message contains three pieces of
-/// data: error code, error message, and error details.You can find out more
-/// about this error model and how to work with it in the API Design Guide
-/// (https://cloud.google.com/apis/design/errors).
+/// programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by gRPC (https://github.com/grpc). Each Status message contains
+/// three pieces of data: error code, error message, and error details.You can
+/// find out more about this error model and how to work with it in the API
+/// Design Guide (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -8580,9 +8921,10 @@ class Status {
 
 /// Information required for a TCP Uptime check request.
 class TcpCheck {
-  /// The TCP port on the server against which to run the check. Will be
-  /// combined with host (specified within the monitored_resource) to construct
-  /// the full URL. Required.
+  /// The TCP port on the server against which to run the check.
+  ///
+  /// Will be combined with host (specified within the monitored_resource) to
+  /// construct the full URL. Required.
   core.int port;
 
   TcpCheck();
@@ -8604,8 +8946,10 @@ class TcpCheck {
 
 /// Configuration for how to query telemetry on a Service.
 class Telemetry {
-  /// The full name of the resource that defines this service. Formatted as
-  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// The full name of the resource that defines this service.
+  ///
+  /// Formatted as described in
+  /// https://cloud.google.com/apis/design/resource_names.
   core.String resourceName;
 
   Telemetry();
@@ -8625,20 +8969,22 @@ class Telemetry {
   }
 }
 
-/// A closed time interval. It extends from the start time to the end time, and
-/// includes both: [startTime, endTime]. Valid time intervals depend on the
-/// MetricKind of the metric value. The end time must not be earlier than the
-/// start time. When writing data points, the start time must not be more than
-/// 25 hours in the past and the end time must not be more than five minutes in
-/// the future. For GAUGE metrics, the startTime value is technically optional;
-/// if no value is specified, the start time defaults to the value of the end
-/// time, and the interval represents a single point in time. If both start and
-/// end times are specified, they must be identical. Such an interval is valid
-/// only for GAUGE metrics, which are point-in-time measurements. The end time
-/// of a new interval must be at least a millisecond after the end time of the
-/// previous interval. For DELTA metrics, the start time and end time must
-/// specify a non-zero interval, with subsequent points specifying contiguous
-/// and non-overlapping intervals. For DELTA metrics, the start time of the next
+/// A closed time interval.
+///
+/// It extends from the start time to the end time, and includes both:
+/// [startTime, endTime]. Valid time intervals depend on the MetricKind of the
+/// metric value. The end time must not be earlier than the start time. When
+/// writing data points, the start time must not be more than 25 hours in the
+/// past and the end time must not be more than five minutes in the future. For
+/// GAUGE metrics, the startTime value is technically optional; if no value is
+/// specified, the start time defaults to the value of the end time, and the
+/// interval represents a single point in time. If both start and end times are
+/// specified, they must be identical. Such an interval is valid only for GAUGE
+/// metrics, which are point-in-time measurements. The end time of a new
+/// interval must be at least a millisecond after the end time of the previous
+/// interval. For DELTA metrics, the start time and end time must specify a
+/// non-zero interval, with subsequent points specifying contiguous and
+/// non-overlapping intervals. For DELTA metrics, the start time of the next
 /// interval must be at least a millisecond after the end time of the previous
 /// interval. For CUMULATIVE metrics, the start time and end time must specify a
 /// a non-zero interval, with subsequent points specifying the same start time
@@ -8651,12 +8997,17 @@ class Telemetry {
 /// then data written at the new start time could overwrite data written at the
 /// previous end time.
 class TimeInterval {
-  /// Required. The end of the time interval.
+  /// The end of the time interval.
+  ///
+  /// Required.
   core.String endTime;
 
-  /// Optional. The beginning of the time interval. The default value for the
-  /// start time is the end time. The start time must not be later than the end
-  /// time.
+  /// The beginning of the time interval.
+  ///
+  /// The default value for the start time is the end time. The start time must
+  /// not be later than the end time.
+  ///
+  /// Optional.
   core.String startTime;
 
   TimeInterval();
@@ -8683,28 +9034,35 @@ class TimeInterval {
 }
 
 /// A collection of data points that describes the time-varying values of a
-/// metric. A time series is identified by a combination of a fully-specified
-/// monitored resource and a fully-specified metric. This type is used for both
-/// listing and creating time series.
+/// metric.
+///
+/// A time series is identified by a combination of a fully-specified monitored
+/// resource and a fully-specified metric. This type is used for both listing
+/// and creating time series.
 class TimeSeries {
-  /// Output only. The associated monitored resource metadata. When reading a
-  /// time series, this field will include metadata labels that are explicitly
-  /// named in the reduction. When creating a time series, this field is
-  /// ignored.
+  /// The associated monitored resource metadata.
+  ///
+  /// When reading a time series, this field will include metadata labels that
+  /// are explicitly named in the reduction. When creating a time series, this
+  /// field is ignored.
+  ///
+  /// Output only.
   MonitoredResourceMetadata metadata;
 
-  /// The associated metric. A fully-specified metric used to identify the time
-  /// series.
+  /// The associated metric.
+  ///
+  /// A fully-specified metric used to identify the time series.
   Metric metric;
 
-  /// The metric kind of the time series. When listing time series, this metric
-  /// kind might be different from the metric kind of the associated metric if
-  /// this time series is an alignment or reduction of other time series.When
-  /// creating a time series, this field is optional. If present, it must be the
-  /// same as the metric kind of the associated metric. If the associated
-  /// metric's descriptor must be auto-created, then this field specifies the
-  /// metric kind of the new descriptor and must be either GAUGE (the default)
-  /// or CUMULATIVE.
+  /// The metric kind of the time series.
+  ///
+  /// When listing time series, this metric kind might be different from the
+  /// metric kind of the associated metric if this time series is an alignment
+  /// or reduction of other time series.When creating a time series, this field
+  /// is optional. If present, it must be the same as the metric kind of the
+  /// associated metric. If the associated metric's descriptor must be
+  /// auto-created, then this field specifies the metric kind of the new
+  /// descriptor and must be either GAUGE (the default) or CUMULATIVE.
   /// Possible string values are:
   /// - "METRIC_KIND_UNSPECIFIED" : Do not use this default value.
   /// - "GAUGE" : An instantaneous measurement of a value.
@@ -8715,29 +9073,35 @@ class TimeSeries {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// The data points of this time series. When listing time series, points are
-  /// returned in reverse time order.When creating a time series, this field
-  /// must contain exactly one point and the point's type must be the same as
-  /// the value type of the associated metric. If the associated metric's
-  /// descriptor must be auto-created, then the value type of the descriptor is
-  /// determined by the point's type, which must be BOOL, INT64, DOUBLE, or
-  /// DISTRIBUTION.
+  /// The data points of this time series.
+  ///
+  /// When listing time series, points are returned in reverse time order.When
+  /// creating a time series, this field must contain exactly one point and the
+  /// point's type must be the same as the value type of the associated metric.
+  /// If the associated metric's descriptor must be auto-created, then the value
+  /// type of the descriptor is determined by the point's type, which must be
+  /// BOOL, INT64, DOUBLE, or DISTRIBUTION.
   core.List<Point> points;
 
-  /// The associated monitored resource. Custom metrics can use only certain
-  /// monitored resource types in their time series data.
+  /// The associated monitored resource.
+  ///
+  /// Custom metrics can use only certain monitored resource types in their time
+  /// series data.
   MonitoredResource resource;
 
-  /// The units in which the metric value is reported. It is only applicable if
-  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
-  /// representation of the stored metric values.
+  /// The units in which the metric value is reported.
+  ///
+  /// It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION.
+  /// The unit defines the representation of the stored metric values.
   core.String unit;
 
-  /// The value type of the time series. When listing time series, this value
-  /// type might be different from the value type of the associated metric if
-  /// this time series is an alignment or reduction of other time series.When
-  /// creating a time series, this field is optional. If present, it must be the
-  /// same as the type of the data in the points field.
+  /// The value type of the time series.
+  ///
+  /// When listing time series, this value type might be different from the
+  /// value type of the associated metric if this time series is an alignment or
+  /// reduction of other time series.When creating a time series, this field is
+  /// optional. If present, it must be the same as the type of the data in the
+  /// points field.
   /// Possible string values are:
   /// - "VALUE_TYPE_UNSPECIFIED" : Do not use this default value.
   /// - "BOOL" : The value is a boolean. This value type can be used only if the
@@ -8814,8 +9178,10 @@ class TimeSeries {
 class TimeSeriesData {
   /// The values of the labels in the time series identifier, given in the same
   /// order as the label_descriptors field of the TimeSeriesDescriptor
-  /// associated with this object. Each value must have a value of the type
-  /// given in the corresponding entry of label_descriptors.
+  /// associated with this object.
+  ///
+  /// Each value must have a value of the type given in the corresponding entry
+  /// of label_descriptors.
   core.List<LabelValue> labelValues;
 
   /// The points in the time series.
@@ -8891,29 +9257,33 @@ class TimeSeriesDescriptor {
 }
 
 /// A TimeSeriesRatio specifies two TimeSeries to use for computing the
-/// good_service / total_service ratio. The specified TimeSeries must have
-/// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
-/// MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of
-/// good, bad, and total, and the relationship good_service + bad_service =
-/// total_service will be assumed.
+/// good_service / total_service ratio.
+///
+/// The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64
+/// and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The
+/// TimeSeriesRatio must specify exactly two of good, bad, and total, and the
+/// relationship good_service + bad_service = total_service will be assumed.
 class TimeSeriesRatio {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying a TimeSeries quantifying bad service, either demanded service
   /// that was not provided or demanded service that was of inadequate quality.
+  ///
   /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
   /// = DELTA or MetricKind = CUMULATIVE.
   core.String badServiceFilter;
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
-  /// specifying a TimeSeries quantifying good service provided. Must have
-  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA
-  /// or MetricKind = CUMULATIVE.
+  /// specifying a TimeSeries quantifying good service provided.
+  ///
+  /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
+  /// = DELTA or MetricKind = CUMULATIVE.
   core.String goodServiceFilter;
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
-  /// specifying a TimeSeries quantifying total demanded service. Must have
-  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA
-  /// or MetricKind = CUMULATIVE.
+  /// specifying a TimeSeries quantifying total demanded service.
+  ///
+  /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
+  /// = DELTA or MetricKind = CUMULATIVE.
   core.String totalServiceFilter;
 
   TimeSeriesRatio();
@@ -8946,6 +9316,7 @@ class TimeSeriesRatio {
 }
 
 /// Specifies how many time series must fail a predicate to trigger a condition.
+///
 /// If not specified, then a {count: 1} trigger is used.
 class Trigger {
   /// The absolute number of time series that must fail the predicate for the
@@ -9066,11 +9437,15 @@ class TypedValue {
   /// A distribution value.
   Distribution distributionValue;
 
-  /// A 64-bit double-precision floating-point number. Its magnitude is
-  /// approximately ±10±300 and it has 16 significant digits of precision.
+  /// A 64-bit double-precision floating-point number.
+  ///
+  /// Its magnitude is approximately ±10±300 and it has 16 significant digits of
+  /// precision.
   core.double doubleValue;
 
-  /// A 64-bit integer. Its range is approximately ±9.2x1018.
+  /// A 64-bit integer.
+  ///
+  /// Its range is approximately ±9.2x1018.
   core.String int64Value;
 
   /// A variable-length string value.
@@ -9122,65 +9497,78 @@ class TypedValue {
 /// availability.
 class UptimeCheckConfig {
   /// The content that is expected to appear in the data returned by the target
-  /// server against which the check is run. Currently, only the first entry in
-  /// the content_matchers list is supported, and additional entries will be
-  /// ignored. This field is optional and should only be specified if a content
-  /// match is required as part of the/ Uptime check.
+  /// server against which the check is run.
+  ///
+  /// Currently, only the first entry in the content_matchers list is supported,
+  /// and additional entries will be ignored. This field is optional and should
+  /// only be specified if a content match is required as part of the/ Uptime
+  /// check.
   core.List<ContentMatcher> contentMatchers;
 
-  /// A human-friendly name for the Uptime check configuration. The display name
-  /// should be unique within a Stackdriver Workspace in order to make it easier
-  /// to identify; however, uniqueness is not enforced. Required.
+  /// A human-friendly name for the Uptime check configuration.
+  ///
+  /// The display name should be unique within a Stackdriver Workspace in order
+  /// to make it easier to identify; however, uniqueness is not enforced.
+  /// Required.
   core.String displayName;
 
   /// Contains information needed to make an HTTP or HTTPS check.
   HttpCheck httpCheck;
 
-  /// The internal checkers that this check will egress from. If is_internal is
-  /// true and this list is empty, the check will egress from all the
-  /// InternalCheckers configured for the project that owns this
+  /// The internal checkers that this check will egress from.
+  ///
+  /// If is_internal is true and this list is empty, the check will egress from
+  /// all the InternalCheckers configured for the project that owns this
   /// UptimeCheckConfig.
   core.List<InternalChecker> internalCheckers;
 
   /// If this is true, then checks are made only from the 'internal_checkers'.
+  ///
   /// If it is false, then checks are made only from the 'selected_regions'. It
   /// is an error to provide 'selected_regions' when is_internal is true, or to
   /// provide 'internal_checkers' when is_internal is false.
   core.bool isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
-  /// associated with the configuration. The following monitored resource types
-  /// are supported for Uptime checks: uptime_url, gce_instance, gae_app,
-  /// aws_ec2_instance, aws_elb_load_balancer
+  /// associated with the configuration.
+  ///
+  /// The following monitored resource types are supported for Uptime checks:
+  /// uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
   MonitoredResource monitoredResource;
 
-  /// A unique resource name for this Uptime check configuration. The format is:
+  /// A unique resource name for this Uptime check configuration.
+  ///
+  /// The format is:
   /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
   /// field should be omitted when creating the Uptime check configuration; on
   /// create, the resource name is assigned by the server and included in the
   /// response.
   core.String name;
 
-  /// How often, in seconds, the Uptime check is performed. Currently, the only
-  /// supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes),
-  /// and 900s (15 minutes). Optional, defaults to 60s.
+  /// How often, in seconds, the Uptime check is performed.
+  ///
+  /// Currently, the only supported values are 60s (1 minute), 300s (5 minutes),
+  /// 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
   core.String period;
 
   /// The group resource associated with the configuration.
   ResourceGroup resourceGroup;
 
-  /// The list of regions from which the check will be run. Some regions contain
-  /// one location, and others contain more than one. If this field is
-  /// specified, enough regions must be provided to include a minimum of 3
-  /// locations. Not specifying this field will result in Uptime checks running
-  /// from all available regions.
+  /// The list of regions from which the check will be run.
+  ///
+  /// Some regions contain one location, and others contain more than one. If
+  /// this field is specified, enough regions must be provided to include a
+  /// minimum of 3 locations. Not specifying this field will result in Uptime
+  /// checks running from all available regions.
   core.List<core.String> selectedRegions;
 
   /// Contains information needed to make a TCP check.
   TcpCheck tcpCheck;
 
   /// The maximum amount of time to wait for the request to complete (must be
-  /// between 1 and 60 seconds). Required.
+  /// between 1 and 60 seconds).
+  ///
+  /// Required.
   core.String timeout;
 
   UptimeCheckConfig();
@@ -9283,11 +9671,12 @@ class UptimeCheckConfig {
 /// Contains the region, location, and list of IP addresses where checkers in
 /// the location run from.
 class UptimeCheckIp {
-  /// The IP address from which the Uptime check originates. This is a fully
-  /// specified IP address (not an IP address range). Most IP addresses, as of
-  /// this publication, are in IPv4 format; however, one should not rely on the
-  /// IP addresses being in IPv4 format indefinitely, and should support
-  /// interpreting this field in either IPv4 or IPv6 format.
+  /// The IP address from which the Uptime check originates.
+  ///
+  /// This is a fully specified IP address (not an IP address range). Most IP
+  /// addresses, as of this publication, are in IPv4 format; however, one should
+  /// not rely on the IP addresses being in IPv4 format indefinitely, and should
+  /// support interpreting this field in either IPv4 or IPv6 format.
   core.String ipAddress;
 
   /// A more specific location within the region that typically encodes a
@@ -9354,9 +9743,11 @@ class ValueDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// The unit in which time_series point values are reported. unit follows the
-  /// UCUM format for units as seen in https://unitsofmeasure.org/ucum.html.
-  /// unit is only valid if value_type is INTEGER, DOUBLE, DISTRIBUTION.
+  /// The unit in which time_series point values are reported.
+  ///
+  /// unit follows the UCUM format for units as seen in
+  /// https://unitsofmeasure.org/ucum.html. unit is only valid if value_type is
+  /// INTEGER, DOUBLE, DISTRIBUTION.
   core.String unit;
 
   /// The value type.
@@ -9409,13 +9800,16 @@ class ValueDescriptor {
 
 /// The VerifyNotificationChannel request.
 class VerifyNotificationChannelRequest {
-  /// Required. The verification code that was delivered to the channel as a
-  /// result of invoking the SendNotificationChannelVerificationCode API method
-  /// or that was retrieved from a verified channel via
-  /// GetNotificationChannelVerificationCode. For example, one might have
-  /// "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in general, one is only
-  /// guaranteed that the code is valid UTF-8; one should not make any
-  /// assumptions regarding the structure or format of the code).
+  /// The verification code that was delivered to the channel as a result of
+  /// invoking the SendNotificationChannelVerificationCode API method or that
+  /// was retrieved from a verified channel via
+  /// GetNotificationChannelVerificationCode.
+  ///
+  /// For example, one might have "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in
+  /// general, one is only guaranteed that the code is valid UTF-8; one should
+  /// not make any assumptions regarding the structure or format of the code).
+  ///
+  /// Required.
   core.String code;
 
   VerifyNotificationChannelRequest();
@@ -9436,12 +9830,15 @@ class VerifyNotificationChannelRequest {
 }
 
 /// A WindowsBasedSli defines good_service as the count of time windows for
-/// which the provided service was of good quality. Criteria for determining if
-/// service was good are embedded in the window_criterion.
+/// which the provided service was of good quality.
+///
+/// Criteria for determining if service was good are embedded in the
+/// window_criterion.
 class WindowsBasedSli {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
-  /// specifying a TimeSeries with ValueType = BOOL. The window is good if any
-  /// true values appear in the window.
+  /// specifying a TimeSeries with ValueType = BOOL.
+  ///
+  /// The window is good if any true values appear in the window.
   core.String goodBadMetricFilter;
 
   /// A window is good if its performance is high enough.
@@ -9455,8 +9852,9 @@ class WindowsBasedSli {
   /// returned streams.
   MetricRange metricSumInRange;
 
-  /// Duration over which window quality is evaluated. Must be an integer
-  /// fraction of a day and at least 60s.
+  /// Duration over which window quality is evaluated.
+  ///
+  /// Must be an integer fraction of a day and at least 60s.
   core.String windowPeriod;
 
   WindowsBasedSli();

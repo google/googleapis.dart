@@ -532,10 +532,11 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -587,9 +588,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -641,10 +643,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -722,10 +725,12 @@ class ProjectsLocationsOperationsResource {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -744,15 +749,20 @@ class Environment {
   /// Configuration parameters for this environment.
   EnvironmentConfig config;
 
-  /// Output only. The time at which this environment was created.
+  /// The time at which this environment was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Optional. User-defined labels for this environment. The labels map can
-  /// contain no more than 64 entries. Entries of the labels map are UTF8
-  /// strings that comply with the following restrictions: * Keys must conform
-  /// to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp:
-  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally
-  /// constrained to be <= 128 bytes in size.
+  /// User-defined labels for this environment.
+  ///
+  /// The labels map can contain no more than 64 entries. Entries of the labels
+  /// map are UTF8 strings that comply with the following restrictions: * Keys
+  /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
+  /// regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are
+  /// additionally constrained to be <= 128 bytes in size.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
   /// The resource name of the environment, in the form:
@@ -773,11 +783,16 @@ class Environment {
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String state;
 
-  /// Output only. The time at which this environment was last modified.
+  /// The time at which this environment was last modified.
+  ///
+  /// Output only.
   core.String updateTime;
 
-  /// Output only. The UUID (Universally Unique IDentifier) associated with this
-  /// environment. This value is generated when the environment is created.
+  /// The UUID (Universally Unique IDentifier) associated with this environment.
+  ///
+  /// This value is generated when the environment is created.
+  ///
+  /// Output only.
   core.String uuid;
 
   Environment();
@@ -842,19 +857,26 @@ class Environment {
 
 /// Configuration information for an environment.
 class EnvironmentConfig {
-  /// Output only. The URI of the Apache Airflow Web UI hosted within this
-  /// environment (see [Airflow web
+  /// The URI of the Apache Airflow Web UI hosted within this environment (see
+  /// [Airflow web
   /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
+  ///
+  /// Output only.
   core.String airflowUri;
 
-  /// Output only. The Cloud Storage prefix of the DAGs for this environment.
+  /// The Cloud Storage prefix of the DAGs for this environment.
+  ///
   /// Although Cloud Storage objects reside in a flat namespace, a hierarchical
   /// file tree can be simulated using "/"-delimited object name prefixes. DAG
   /// objects for this environment reside in a simulated directory with the
   /// given prefix.
+  ///
+  /// Output only.
   core.String dagGcsPrefix;
 
-  /// Output only. The Kubernetes Engine cluster used to run this environment.
+  /// The Kubernetes Engine cluster used to run this environment.
+  ///
+  /// Output only.
   core.String gkeCluster;
 
   /// The configuration used for the Kubernetes Engine cluster.
@@ -930,39 +952,54 @@ class EnvironmentConfig {
 /// Configuration for controlling how IPs are allocated in the GKE cluster
 /// running the Apache Airflow software.
 class IPAllocationPolicy {
-  /// Optional. The IP address range used to allocate IP addresses to pods in
-  /// the GKE cluster. This field is applicable only when `use_ip_aliases` is
-  /// true. Set to blank to have GKE choose a range with the default size. Set
-  /// to /netmask (e.g. `/14`) to have GKE choose a range with a specific
-  /// netmask. Set to a
+  /// The IP address range used to allocate IP addresses to pods in the GKE
+  /// cluster.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true. Set to blank
+  /// to have GKE choose a range with the default size. Set to /netmask (e.g.
+  /// `/14`) to have GKE choose a range with a specific netmask. Set to a
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
   /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
   /// to use.
+  ///
+  /// Optional.
   core.String clusterIpv4CidrBlock;
 
-  /// Optional. The name of the GKE cluster's secondary range used to allocate
-  /// IP addresses to pods. This field is applicable only when `use_ip_aliases`
-  /// is true.
+  /// The name of the GKE cluster's secondary range used to allocate IP
+  /// addresses to pods.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true.
+  ///
+  /// Optional.
   core.String clusterSecondaryRangeName;
 
-  /// Optional. The IP address range of the services IP addresses in this GKE
-  /// cluster. This field is applicable only when `use_ip_aliases` is true. Set
-  /// to blank to have GKE choose a range with the default size. Set to /netmask
-  /// (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
+  /// The IP address range of the services IP addresses in this GKE cluster.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true. Set to blank
+  /// to have GKE choose a range with the default size. Set to /netmask (e.g.
+  /// `/14`) to have GKE choose a range with a specific netmask. Set to a
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
   /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
   /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
   /// to use.
+  ///
+  /// Optional.
   core.String servicesIpv4CidrBlock;
 
-  /// Optional. The name of the services' secondary range used to allocate IP
-  /// addresses to the GKE cluster. This field is applicable only when
-  /// `use_ip_aliases` is true.
+  /// The name of the services' secondary range used to allocate IP addresses to
+  /// the GKE cluster.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true.
+  ///
+  /// Optional.
   core.String servicesSecondaryRangeName;
 
-  /// Optional. Whether or not to enable Alias IPs in the GKE cluster. If
-  /// `true`, a VPC-native cluster is created.
+  /// Whether or not to enable Alias IPs in the GKE cluster.
+  ///
+  /// If `true`, a VPC-native cluster is created.
+  ///
+  /// Optional.
   core.bool useIpAliases;
 
   IPAllocationPolicy();
@@ -1159,32 +1196,42 @@ class ListOperationsResponse {
 /// The configuration information for the Kubernetes Engine nodes running the
 /// Apache Airflow software.
 class NodeConfig {
-  /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If
-  /// unspecified, defaults to 100GB. Cannot be updated.
+  /// The disk size in GB used for node VMs.
+  ///
+  /// Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be
+  /// updated.
+  ///
+  /// Optional.
   core.int diskSizeGb;
 
-  /// Optional. The configuration for controlling how IPs are allocated in the
-  /// GKE cluster.
+  /// The configuration for controlling how IPs are allocated in the GKE
+  /// cluster.
+  ///
+  /// Optional.
   IPAllocationPolicy ipAllocationPolicy;
 
-  /// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which
-  /// to deploy the VMs used to run the Apache Airflow software, specified as a
-  /// [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name). For example:
-  /// "projects/{projectId}/zones/{zoneId}". This `location` must belong to the
-  /// enclosing environment's project and location. If both this field and
-  /// `nodeConfig.machineType` are specified, `nodeConfig.machineType` must
-  /// belong to this `location`; if both are unspecified, the service will pick
-  /// a zone in the Compute Engine region corresponding to the Cloud Composer
-  /// location, and propagate that choice to both fields. If only one field
-  /// (`location` or `nodeConfig.machineType`) is specified, the location
+  /// The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy
+  /// the VMs used to run the Apache Airflow software, specified as a [relative
+  /// resource name](/apis/design/resource_names#relative_resource_name).
+  ///
+  /// For example: "projects/{projectId}/zones/{zoneId}". This `location` must
+  /// belong to the enclosing environment's project and location. If both this
+  /// field and `nodeConfig.machineType` are specified, `nodeConfig.machineType`
+  /// must belong to this `location`; if both are unspecified, the service will
+  /// pick a zone in the Compute Engine region corresponding to the Cloud
+  /// Composer location, and propagate that choice to both fields. If only one
+  /// field (`location` or `nodeConfig.machineType`) is specified, the location
   /// information from the specified field will be propagated to the unspecified
   /// field.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. The Compute Engine [machine type](/compute/docs/machine-types)
-  /// used for cluster instances, specified as a [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name). For example:
+  /// The Compute Engine [machine type](/compute/docs/machine-types) used for
+  /// cluster instances, specified as a [relative resource
+  /// name](/apis/design/resource_names#relative_resource_name).
+  ///
+  /// For example:
   /// "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The
   /// `machineType` must belong to the enclosing environment's project and
   /// location. If both this field and `nodeConfig.location` are specified, this
@@ -1197,42 +1244,60 @@ class NodeConfig {
   /// [shared-core machine type](/compute/docs/machine-types#sharedcore). If
   /// this field is unspecified, the `machineTypeId` defaults to
   /// "n1-standard-1".
+  ///
+  /// Optional.
   core.String machineType;
 
-  /// Optional. The Compute Engine network to be used for machine
-  /// communications, specified as a [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name). For example:
-  /// "projects/{projectId}/global/networks/{networkId}". [Shared
+  /// The Compute Engine network to be used for machine communications,
+  /// specified as a [relative resource
+  /// name](/apis/design/resource_names#relative_resource_name).
+  ///
+  /// For example: "projects/{projectId}/global/networks/{networkId}". [Shared
   /// VPC](/vpc/docs/shared-vpc) is not currently supported. The network must
   /// belong to the environment's project. If unspecified, the "default" network
   /// ID in the environment's project is used. If a [Custom Subnet
   /// Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided,
   /// `nodeConfig.subnetwork` must also be provided.
+  ///
+  /// Optional.
   core.String network;
 
-  /// Optional. The set of Google API scopes to be made available on all node
-  /// VMs. If `oauth_scopes` is empty, defaults to
+  /// The set of Google API scopes to be made available on all node VMs.
+  ///
+  /// If `oauth_scopes` is empty, defaults to
   /// ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+  ///
+  /// Optional.
   core.List<core.String> oauthScopes;
 
-  /// Optional. The Google Cloud Platform Service Account to be used by the node
-  /// VMs. If a service account is not specified, the "default" Compute Engine
+  /// The Google Cloud Platform Service Account to be used by the node VMs.
+  ///
+  /// If a service account is not specified, the "default" Compute Engine
   /// service account is used. Cannot be updated.
+  ///
+  /// Optional.
   core.String serviceAccount;
 
-  /// Optional. The Compute Engine subnetwork to be used for machine
-  /// communications, specified as a [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name). For example:
+  /// The Compute Engine subnetwork to be used for machine communications,
+  /// specified as a [relative resource
+  /// name](/apis/design/resource_names#relative_resource_name).
+  ///
+  /// For example:
   /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a
   /// subnetwork is provided, `nodeConfig.network` must also be provided, and
   /// the subnetwork must belong to the enclosing environment's project and
   /// location.
+  ///
+  /// Optional.
   core.String subnetwork;
 
-  /// Optional. The list of instance tags applied to all node VMs. Tags are used
-  /// to identify valid sources or targets for network firewalls. Each tag
-  /// within the list must comply with
+  /// The list of instance tags applied to all node VMs.
+  ///
+  /// Tags are used to identify valid sources or targets for network firewalls.
+  /// Each tag within the list must comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+  ///
+  /// Optional.
   core.List<core.String> tags;
 
   NodeConfig();
@@ -1308,31 +1373,37 @@ class NodeConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -1398,14 +1469,21 @@ class Operation {
 
 /// Metadata describing an operation.
 class OperationMetadata {
-  /// Output only. The time the operation was submitted to the server.
+  /// The time the operation was submitted to the server.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. The time when the operation terminated, regardless of its
-  /// success. This field is unset if the operation is still ongoing.
+  /// The time when the operation terminated, regardless of its success.
+  ///
+  /// This field is unset if the operation is still ongoing.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Output only. The type of operation being performed.
+  /// The type of operation being performed.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unused.
   /// - "CREATE" : A resource creation operation.
@@ -1413,14 +1491,20 @@ class OperationMetadata {
   /// - "UPDATE" : A resource update operation.
   core.String operationType;
 
-  /// Output only. The resource being operated on, as a [relative resource
-  /// name]( /apis/design/resource_names#relative_resource_name).
+  /// The resource being operated on, as a [relative resource name](
+  /// /apis/design/resource_names#relative_resource_name).
+  ///
+  /// Output only.
   core.String resource;
 
-  /// Output only. The UUID of the resource being operated on.
+  /// The UUID of the resource being operated on.
+  ///
+  /// Output only.
   core.String resourceUuid;
 
-  /// Output only. The current operation state.
+  /// The current operation state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unused.
   /// - "PENDING" : The operation has been created but is not yet started.
@@ -1480,19 +1564,26 @@ class OperationMetadata {
 /// Configuration options for the private GKE cluster in a Cloud Composer
 /// environment.
 class PrivateClusterConfig {
-  /// Optional. If `true`, access to the public endpoint of the GKE cluster is
-  /// denied.
+  /// If `true`, access to the public endpoint of the GKE cluster is denied.
+  ///
+  /// Optional.
   core.bool enablePrivateEndpoint;
 
-  /// Optional. The CIDR block from which IPv4 range for GKE master will be
-  /// reserved. If left blank, the default value of '172.16.0.0/23' is used.
+  /// The CIDR block from which IPv4 range for GKE master will be reserved.
+  ///
+  /// If left blank, the default value of '172.16.0.0/23' is used.
+  ///
+  /// Optional.
   core.String masterIpv4CidrBlock;
 
-  /// Output only. The IP range in CIDR notation to use for the hosted master
-  /// network. This range is used for assigning internal IP addresses to the GKE
-  /// cluster master or set of masters and to the internal load balancer virtual
-  /// IP. This range must not overlap with any other ranges in use within the
+  /// The IP range in CIDR notation to use for the hosted master network.
+  ///
+  /// This range is used for assigning internal IP addresses to the GKE cluster
+  /// master or set of masters and to the internal load balancer virtual IP.
+  /// This range must not overlap with any other ranges in use within the
   /// cluster's network.
+  ///
+  /// Output only.
   core.String masterIpv4ReservedRange;
 
   PrivateClusterConfig();
@@ -1527,28 +1618,39 @@ class PrivateClusterConfig {
 /// The configuration information for configuring a Private IP Cloud Composer
 /// environment.
 class PrivateEnvironmentConfig {
-  /// Optional. The CIDR block from which IP range in tenant project will be
-  /// reserved for Cloud SQL. Needs to be disjoint from
-  /// `web_server_ipv4_cidr_block`.
+  /// The CIDR block from which IP range in tenant project will be reserved for
+  /// Cloud SQL.
+  ///
+  /// Needs to be disjoint from `web_server_ipv4_cidr_block`.
+  ///
+  /// Optional.
   core.String cloudSqlIpv4CidrBlock;
 
-  /// Optional. If `true`, a Private IP Cloud Composer environment is created.
+  /// If `true`, a Private IP Cloud Composer environment is created.
+  ///
   /// If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be
   /// set to true.
+  ///
+  /// Optional.
   core.bool enablePrivateEnvironment;
 
-  /// Optional. Configuration for the private GKE cluster for a Private IP Cloud
-  /// Composer environment.
+  /// Configuration for the private GKE cluster for a Private IP Cloud Composer
+  /// environment.
+  ///
+  /// Optional.
   PrivateClusterConfig privateClusterConfig;
 
-  /// Optional. The CIDR block from which IP range for web server will be
-  /// reserved. Needs to be disjoint from
-  /// `private_cluster_config.master_ipv4_cidr_block` and
-  /// `cloud_sql_ipv4_cidr_block`.
+  /// The CIDR block from which IP range for web server will be reserved.
+  ///
+  /// Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block`
+  /// and `cloud_sql_ipv4_cidr_block`.
+  ///
+  /// Optional.
   core.String webServerIpv4CidrBlock;
 
-  /// Output only. The IP range reserved for the tenant project's App Engine
-  /// VMs.
+  /// The IP range reserved for the tenant project's App Engine VMs.
+  ///
+  /// Output only.
   core.String webServerIpv4ReservedRange;
 
   PrivateEnvironmentConfig();
@@ -1597,34 +1699,43 @@ class PrivateEnvironmentConfig {
 /// Specifies the selection and configuration of software inside the
 /// environment.
 class SoftwareConfig {
-  /// Optional. Apache Airflow configuration properties to override. Property
-  /// keys contain the section and property names, separated by a hyphen, for
-  /// example "core-dags_are_paused_at_creation". Section names must not contain
-  /// hyphens ("-"), opening square brackets ("["), or closing square brackets
-  /// ("]"). The property name must not be empty and must not contain an equals
-  /// sign ("=") or semicolon (";"). Section and property names must not contain
-  /// a period ("."). Apache Airflow configuration property names must be
-  /// written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).
-  /// Property values can contain any character, and can be written in any
-  /// lower/upper case format. Certain Apache Airflow configuration property
-  /// values are [blocked](/composer/docs/concepts/airflow-configurations), and
-  /// cannot be overridden.
+  /// Apache Airflow configuration properties to override.
+  ///
+  /// Property keys contain the section and property names, separated by a
+  /// hyphen, for example "core-dags_are_paused_at_creation". Section names must
+  /// not contain hyphens ("-"), opening square brackets ("["), or closing
+  /// square brackets ("]"). The property name must not be empty and must not
+  /// contain an equals sign ("=") or semicolon (";"). Section and property
+  /// names must not contain a period ("."). Apache Airflow configuration
+  /// property names must be written in
+  /// [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values
+  /// can contain any character, and can be written in any lower/upper case
+  /// format. Certain Apache Airflow configuration property values are
+  /// [blocked](/composer/docs/concepts/airflow-configurations), and cannot be
+  /// overridden.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> airflowConfigOverrides;
 
-  /// Optional. Additional environment variables to provide to the Apache
-  /// Airflow scheduler, worker, and webserver processes. Environment variable
-  /// names must match the regular expression `a-zA-Z_*`. They cannot specify
-  /// Apache Airflow software configuration overrides (they cannot match the
-  /// regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot
-  /// match any of the following reserved names: * `AIRFLOW_HOME` *
-  /// `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` *
-  /// `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` *
-  /// `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
+  /// Additional environment variables to provide to the Apache Airflow
+  /// scheduler, worker, and webserver processes.
+  ///
+  /// Environment variable names must match the regular expression `a-zA-Z_*`.
+  /// They cannot specify Apache Airflow software configuration overrides (they
+  /// cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`),
+  /// and they cannot match any of the following reserved names: *
+  /// `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` *
+  /// `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` *
+  /// `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` *
+  /// `SQL_USER`
+  ///
+  /// Optional.
   core.Map<core.String, core.String> envVariables;
 
-  /// The version of the software running in the environment. This encapsulates
-  /// both the version of Cloud Composer functionality and the version of Apache
-  /// Airflow. It must match the regular expression
+  /// The version of the software running in the environment.
+  ///
+  /// This encapsulates both the version of Cloud Composer functionality and the
+  /// version of Apache Airflow. It must match the regular expression
   /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
   /// When used as input, the server also checks if the provided version is
   /// supported and denies the request for an unsupported version. The Cloud
@@ -1639,17 +1750,25 @@ class SoftwareConfig {
   /// [Version List](/composer/docs/concepts/versioning/composer-versions).
   core.String imageVersion;
 
-  /// Optional. Custom Python Package Index (PyPI) packages to be installed in
-  /// the environment. Keys refer to the lowercase package name such as "numpy"
-  /// and values are the lowercase extras and version specifier such as
-  /// "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a
-  /// package without pinning it to a version specifier, use the empty string as
-  /// the value.
+  /// Custom Python Package Index (PyPI) packages to be installed in the
+  /// environment.
+  ///
+  /// Keys refer to the lowercase package name such as "numpy" and values are
+  /// the lowercase extras and version specifier such as "==1.12.0",
+  /// "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package
+  /// without pinning it to a version specifier, use the empty string as the
+  /// value.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> pypiPackages;
 
-  /// Optional. The major version of Python used to run the Apache Airflow
-  /// scheduler, worker, and webserver processes. Can be set to '2' or '3'. If
-  /// not specified, the default is '2'. Cannot be updated.
+  /// The major version of Python used to run the Apache Airflow scheduler,
+  /// worker, and webserver processes.
+  ///
+  /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
+  /// updated.
+  ///
+  /// Optional.
   core.String pythonVersion;
 
   SoftwareConfig();
@@ -1715,24 +1834,27 @@ class SoftwareConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

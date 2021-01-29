@@ -62,7 +62,9 @@ class ShelvesResource {
 
   ShelvesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets a shelf. Returns NOT_FOUND if the shelf does not exist.
+  /// Gets a shelf.
+  ///
+  /// Returns NOT_FOUND if the shelf does not exist.
   ///
   /// Request parameters:
   ///
@@ -114,8 +116,10 @@ class ShelvesResource {
     );
   }
 
-  /// Lists shelves. The order is unspecified but deterministic. Newly created
-  /// shelves will not necessarily be added to the end of this list.
+  /// Lists shelves.
+  ///
+  /// The order is unspecified but deterministic. Newly created shelves will not
+  /// necessarily be added to the end of this list.
   ///
   /// Request parameters:
   ///
@@ -182,10 +186,11 @@ class ShelvesBooksResource {
 
   ShelvesBooksResource(commons.ApiRequester client) : _requester = client;
 
-  /// Borrow a book from the library. Returns the book if it is borrowed
-  /// successfully. Returns NOT_FOUND if the book does not exist in the library.
-  /// Returns quota exceeded error if the amount of books borrowed exceeds
-  /// allocation quota in any dimensions.
+  /// Borrow a book from the library.
+  ///
+  /// Returns the book if it is borrowed successfully. Returns NOT_FOUND if the
+  /// book does not exist in the library. Returns quota exceeded error if the
+  /// amount of books borrowed exceeds allocation quota in any dimensions.
   ///
   /// Request parameters:
   ///
@@ -237,7 +242,9 @@ class ShelvesBooksResource {
     );
   }
 
-  /// Gets a book. Returns NOT_FOUND if the book does not exist.
+  /// Gets a book.
+  ///
+  /// Returns NOT_FOUND if the book does not exist.
   ///
   /// Request parameters:
   ///
@@ -289,9 +296,11 @@ class ShelvesBooksResource {
     );
   }
 
-  /// Lists books in a shelf. The order is unspecified but deterministic. Newly
-  /// created books will not necessarily be added to the end of this list.
-  /// Returns NOT_FOUND if the shelf does not exist.
+  /// Lists books in a shelf.
+  ///
+  /// The order is unspecified but deterministic. Newly created books will not
+  /// necessarily be added to the end of this list. Returns NOT_FOUND if the
+  /// shelf does not exist.
   ///
   /// Request parameters:
   ///
@@ -358,9 +367,11 @@ class ShelvesBooksResource {
     );
   }
 
-  /// Return a book to the library. Returns the book if it is returned to the
-  /// library successfully. Returns error if the book does not belong to the
-  /// library or the users didn't borrow before.
+  /// Return a book to the library.
+  ///
+  /// Returns the book if it is returned to the library successfully. Returns
+  /// error if the book does not belong to the library or the users didn't
+  /// borrow before.
   ///
   /// Request parameters:
   ///
@@ -418,9 +429,10 @@ class GoogleExampleLibraryagentV1Book {
   /// The name of the book author.
   core.String author;
 
-  /// The resource name of the book. Book names have the form
-  /// `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a
-  /// book.
+  /// The resource name of the book.
+  ///
+  /// Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is
+  /// ignored when creating a book.
   core.String name;
 
   /// Value indicating whether the book has been read.
@@ -469,9 +481,10 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   /// The list of books.
   core.List<GoogleExampleLibraryagentV1Book> books;
 
-  /// A token to retrieve next page of results. Pass this value in the
-  /// ListBooksRequest.page_token field in the subsequent call to `ListBooks`
-  /// method to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in the ListBooksRequest.page_token field in the subsequent
+  /// call to `ListBooks` method to retrieve the next page of results.
   core.String nextPageToken;
 
   GoogleExampleLibraryagentV1ListBooksResponse();
@@ -503,9 +516,11 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
 
 /// Response message for LibraryAgent.ListShelves.
 class GoogleExampleLibraryagentV1ListShelvesResponse {
-  /// A token to retrieve next page of results. Pass this value in the
-  /// ListShelvesRequest.page_token field in the subsequent call to
-  /// `ListShelves` method to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in the ListShelvesRequest.page_token field in the
+  /// subsequent call to `ListShelves` method to retrieve the next page of
+  /// results.
   core.String nextPageToken;
 
   /// The list of shelves.
@@ -540,8 +555,12 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
 
 /// A Shelf contains a collection of books with a theme.
 class GoogleExampleLibraryagentV1Shelf {
-  /// Output only. The resource name of the shelf. Shelf names have the form
-  /// `shelves/{shelf_id}`. The name is ignored when creating a shelf.
+  /// The resource name of the shelf.
+  ///
+  /// Shelf names have the form `shelves/{shelf_id}`. The name is ignored when
+  /// creating a shelf.
+  ///
+  /// Output only.
   core.String name;
 
   /// The theme of the shelf

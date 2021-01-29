@@ -417,9 +417,10 @@ class GroupsResource {
     );
   }
 
-  /// Returns a collection of groups that match the API request parameters. For
-  /// example, you can retrieve all groups that the authenticated user owns, or
-  /// you can retrieve one or more groups by their unique IDs.
+  /// Returns a collection of groups that match the API request parameters.
+  ///
+  /// For example, you can retrieve all groups that the authenticated user owns,
+  /// or you can retrieve one or more groups by their unique IDs.
   ///
   /// Request parameters:
   ///
@@ -506,7 +507,9 @@ class GroupsResource {
     );
   }
 
-  /// Modifies a group. For example, you could change a group's title.
+  /// Modifies a group.
+  ///
+  /// For example, you could change a group's title.
   ///
   /// [request] - The metadata request object.
   ///
@@ -757,24 +760,28 @@ class EmptyResponse {
 /// Describes one specific error.
 class ErrorProto {
   /// Error arguments, to be used when building user-friendly error messages
-  /// given the error domain and code. Different error codes require different
-  /// arguments.
+  /// given the error domain and code.
+  ///
+  /// Different error codes require different arguments.
   core.List<core.String> argument;
 
-  /// Error code in the error domain. This should correspond to a value of the
-  /// enum type whose name is in domain. See the core error domain in
-  /// error_domain.proto.
+  /// Error code in the error domain.
+  ///
+  /// This should correspond to a value of the enum type whose name is in
+  /// domain. See the core error domain in error_domain.proto.
   core.String code;
 
   /// Debugging information, which should not be shared externally.
   core.String debugInfo;
 
-  /// Error domain. RoSy services can define their own domain and error codes.
-  /// This should normally be the name of an enum type, such as:
-  /// gdata.CoreErrorDomain
+  /// Error domain.
+  ///
+  /// RoSy services can define their own domain and error codes. This should
+  /// normally be the name of an enum type, such as: gdata.CoreErrorDomain
   core.String domain;
 
   /// A short explanation for the error, which can be shared outside Google.
+  ///
   /// Please set domain, code and arguments whenever possible instead of this
   /// error message so that external APIs can build safe error messages
   /// themselves. External messages built in a RoSy interface will most likely
@@ -783,9 +790,11 @@ class ErrorProto {
   /// errors and decide what the error message should look like.
   core.String externalErrorMessage;
 
-  /// Location of the error, as specified by the location type. If location_type
-  /// is PATH, this should be a path to a field that's relative to the request,
-  /// using FieldPath notation (net/proto2/util/public/field_path.h). Examples:
+  /// Location of the error, as specified by the location type.
+  ///
+  /// If location_type is PATH, this should be a path to a field that's relative
+  /// to the request, using FieldPath notation
+  /// (net/proto2/util/public/field_path.h). Examples:
   /// authenticated_user.gaia_id resource.address[2].country
   core.String location;
 
@@ -853,11 +862,14 @@ class ErrorProto {
   }
 }
 
-/// Request Error information. The presence of an error field signals that the
-/// operation has failed.
+/// Request Error information.
+///
+/// The presence of an error field signals that the operation has failed.
 class Errors {
-  /// Global error code. Deprecated and ignored. Set custom error codes in
-  /// ErrorProto.domain and ErrorProto.code instead.
+  /// Global error code.
+  ///
+  /// Deprecated and ignored. Set custom error codes in ErrorProto.domain and
+  /// ErrorProto.code instead.
   /// Possible string values are:
   /// - "BAD_REQUEST"
   /// - "FORBIDDEN"
@@ -923,7 +935,9 @@ class Group {
   /// The ID that YouTube uses to uniquely identify the group.
   core.String id;
 
-  /// Identifies the API resource's type. The value will be `youtube#group`.
+  /// Identifies the API resource's type.
+  ///
+  /// The value will be `youtube#group`.
   core.String kind;
 
   /// The `snippet` object contains basic information about the group, including
@@ -985,9 +999,10 @@ class GroupContentDetails {
   /// The number of items in the group.
   core.String itemCount;
 
-  /// The type of resources that the group contains. Valid values for this
-  /// property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` *
-  /// `youtubePartner#asset`
+  /// The type of resources that the group contains.
+  ///
+  /// Valid values for this property are: * `youtube#channel` *
+  /// `youtube#playlist` * `youtube#video` * `youtubePartner#asset`
   core.String itemType;
 
   GroupContentDetails();
@@ -1026,15 +1041,18 @@ class GroupItem {
   core.String groupId;
 
   /// The ID that YouTube uses to uniquely identify the `channel`, `video`,
-  /// `playlist`, or `asset` resource that is included in the group. Note that
-  /// this ID refers specifically to the inclusion of that resource in a
-  /// particular group and is different than the channel ID, video ID, playlist
-  /// ID, or asset ID that uniquely identifies the resource itself. The
+  /// `playlist`, or `asset` resource that is included in the group.
+  ///
+  /// Note that this ID refers specifically to the inclusion of that resource in
+  /// a particular group and is different than the channel ID, video ID,
+  /// playlist ID, or asset ID that uniquely identifies the resource itself. The
   /// `resource.id` property's value specifies the unique channel, video,
   /// playlist, or asset ID.
   core.String id;
 
-  /// Identifies the API resource's type. The value will be `youtube#groupItem`.
+  /// Identifies the API resource's type.
+  ///
+  /// The value will be `youtube#groupItem`.
   core.String kind;
 
   /// The `resource` object contains information that identifies the item being
@@ -1095,9 +1113,10 @@ class GroupItemResource {
   /// identify the item that is being added to the group.
   core.String id;
 
-  /// Identifies the type of resource being added to the group. Valid values for
-  /// this property are: * `youtube#channel` * `youtube#playlist` *
-  /// `youtube#video` * `youtubePartner#asset`
+  /// Identifies the type of resource being added to the group.
+  ///
+  /// Valid values for this property are: * `youtube#channel` *
+  /// `youtube#playlist` * `youtube#video` * `youtubePartner#asset`
   core.String kind;
 
   GroupItemResource();
@@ -1125,11 +1144,14 @@ class GroupItemResource {
 
 /// A group snippet.
 class GroupSnippet {
-  /// The date and time that the group was created. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+  /// The date and time that the group was created.
+  ///
+  /// The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
   core.String publishedAt;
 
-  /// The group name. The value must be a non-empty string.
+  /// The group name.
+  ///
+  /// The value must be a non-empty string.
   core.String title;
 
   GroupSnippet();
@@ -1163,12 +1185,14 @@ class ListGroupItemsResponse {
   /// The Etag of this resource.
   core.String etag;
 
-  /// A list of groups that match the API request parameters. Each item in the
-  /// list represents a `groupItem` resource.
+  /// A list of groups that match the API request parameters.
+  ///
+  /// Each item in the list represents a `groupItem` resource.
   core.List<GroupItem> items;
 
-  /// Identifies the API resource's type. The value will be
-  /// `youtube#groupItemListResponse`.
+  /// Identifies the API resource's type.
+  ///
+  /// The value will be `youtube#groupItemListResponse`.
   core.String kind;
 
   ListGroupItemsResponse();
@@ -1218,12 +1242,14 @@ class ListGroupsResponse {
   /// The Etag of this resource.
   core.String etag;
 
-  /// A list of groups that match the API request parameters. Each item in the
-  /// list represents a `group` resource.
+  /// A list of groups that match the API request parameters.
+  ///
+  /// Each item in the list represents a `group` resource.
   core.List<Group> items;
 
-  /// Identifies the API resource's type. The value will be
-  /// `youtube#groupListResponse`.
+  /// Identifies the API resource's type.
+  ///
+  /// The value will be `youtube#groupListResponse`.
   core.String kind;
 
   /// The token that can be used as the value of the `pageToken` parameter to
@@ -1278,8 +1304,10 @@ class ListGroupsResponse {
 /// Response message for TargetedQueriesService.Query.
 class QueryResponse {
   /// This value specifies information about the data returned in the `rows`
-  /// fields. Each item in the `columnHeaders` list identifies a field returned
-  /// in the `rows` value, which contains a list of comma-delimited data. The
+  /// fields.
+  ///
+  /// Each item in the `columnHeaders` list identifies a field returned in the
+  /// `rows` value, which contains a list of comma-delimited data. The
   /// `columnHeaders` list will begin with the dimensions specified in the API
   /// request, which will be followed by the metrics specified in the API
   /// request. The order of both dimensions and metrics will match the ordering
@@ -1292,18 +1320,20 @@ class QueryResponse {
   /// When set, indicates that the operation failed.
   Errors errors;
 
-  /// This value specifies the type of data included in the API response. For
-  /// the query method, the kind property value will be
+  /// This value specifies the type of data included in the API response.
+  ///
+  /// For the query method, the kind property value will be
   /// `youtubeAnalytics#resultTable`.
   core.String kind;
 
-  /// The list contains all rows of the result table. Each item in the list is
-  /// an array that contains comma-delimited data corresponding to a single row
-  /// of data. The order of the comma-delimited data fields will match the order
-  /// of the columns listed in the `columnHeaders` field. If no data is
-  /// available for the given query, the `rows` element will be omitted from the
-  /// response. The response for a query with the `day` dimension will not
-  /// contain rows for the most recent days.
+  /// The list contains all rows of the result table.
+  ///
+  /// Each item in the list is an array that contains comma-delimited data
+  /// corresponding to a single row of data. The order of the comma-delimited
+  /// data fields will match the order of the columns listed in the
+  /// `columnHeaders` field. If no data is available for the given query, the
+  /// `rows` element will be omitted from the response. The response for a query
+  /// with the `day` dimension will not contain rows for the most recent days.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

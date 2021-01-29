@@ -1532,8 +1532,9 @@ class DrivesResource {
 
   DrivesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Permanently deletes a shared drive for which the user is an organizer. The
-  /// shared drive cannot contain any untrashed items.
+  /// Permanently deletes a shared drive for which the user is an organizer.
+  ///
+  /// The shared drive cannot contain any untrashed items.
   ///
   /// Request parameters:
   ///
@@ -1943,7 +1944,9 @@ class FilesResource {
 
   FilesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a copy of the specified file. Folders cannot be copied.
+  /// Creates a copy of the specified file.
+  ///
+  /// Folders cannot be copied.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2078,9 +2081,10 @@ class FilesResource {
     );
   }
 
-  /// Permanently deletes a file by ID. Skips the trash. The currently
-  /// authenticated user must own the file or be an organizer on the parent for
-  /// shared drive files.
+  /// Permanently deletes a file by ID.
+  ///
+  /// Skips the trash. The currently authenticated user must own the file or be
+  /// an organizer on the parent for shared drive files.
   ///
   /// Request parameters:
   ///
@@ -2208,7 +2212,9 @@ class FilesResource {
   }
 
   /// Exports a Google Doc to the requested MIME type and returns the exported
-  /// content. Please note that the exported content is limited to 10MB.
+  /// content.
+  ///
+  /// Please note that the exported content is limited to 10MB.
   ///
   /// Request parameters:
   ///
@@ -2770,8 +2776,9 @@ class FilesResource {
     );
   }
 
-  /// Updates file metadata and/or content. This method supports patch
-  /// semantics.
+  /// Updates file metadata and/or content.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3037,13 +3044,14 @@ class FilesResource {
     );
   }
 
-  /// Moves a file to the trash. The currently authenticated user must own the
-  /// file or be at least a fileOrganizer on the parent for shared drive files.
-  /// Only the owner may trash a file. The trashed item is excluded from all
-  /// files.list responses returned for any user who does not own the file.
-  /// However, all users with access to the file can see the trashed item
-  /// metadata in an API response. All users with access can copy, download,
-  /// export, and share the file.
+  /// Moves a file to the trash.
+  ///
+  /// The currently authenticated user must own the file or be at least a
+  /// fileOrganizer on the parent for shared drive files. Only the owner may
+  /// trash a file. The trashed item is excluded from all files.list responses
+  /// returned for any user who does not own the file. However, all users with
+  /// access to the file can see the trashed item metadata in an API response.
+  /// All users with access can copy, download, export, and share the file.
   ///
   /// Request parameters:
   ///
@@ -3113,9 +3121,11 @@ class FilesResource {
     );
   }
 
-  /// Restores a file from the trash. The currently authenticated user must own
-  /// the file or be at least a fileOrganizer on the parent for shared drive
-  /// files. Only the owner may untrash a file.
+  /// Restores a file from the trash.
+  ///
+  /// The currently authenticated user must own the file or be at least a
+  /// fileOrganizer on the parent for shared drive files. Only the owner may
+  /// untrash a file.
   ///
   /// Request parameters:
   ///
@@ -5267,10 +5277,11 @@ class RevisionsResource {
 
   RevisionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Permanently deletes a file version. You can only delete revisions for
-  /// files with binary content, like images or videos. Revisions for other
-  /// files, like Google Docs or Sheets, and the last remaining file version
-  /// can't be deleted.
+  /// Permanently deletes a file version.
+  ///
+  /// You can only delete revisions for files with binary content, like images
+  /// or videos. Revisions for other files, like Google Docs or Sheets, and the
+  /// last remaining file version can't be deleted.
   ///
   /// Request parameters:
   ///
@@ -6196,8 +6207,9 @@ class AboutTeamDriveThemes {
 
 /// An item with user information and settings.
 class About {
-  /// Information about supported additional roles per file type. The most
-  /// specific type takes precedence.
+  /// Information about supported additional roles per file type.
+  ///
+  /// The most specific type takes precedence.
   core.List<AboutAdditionalRoleInfo> additionalRoleInfo;
 
   /// Whether the user can create shared drives.
@@ -6206,7 +6218,9 @@ class About {
   /// Deprecated - use canCreateDrives instead.
   core.bool canCreateTeamDrives;
 
-  /// The domain sharing policy for the current user. Possible values are:
+  /// The domain sharing policy for the current user.
+  ///
+  /// Possible values are:
   /// - allowed
   /// - allowedWithWarning
   /// - incomingOnly
@@ -6246,8 +6260,9 @@ class About {
   /// The largest change id.
   core.String largestChangeId;
 
-  /// List of max upload sizes for each file type. The most specific type takes
-  /// precedence.
+  /// List of max upload sizes for each file type.
+  ///
+  /// The most specific type takes precedence.
   core.List<AboutMaxUploadSizes> maxUploadSizes;
 
   /// The name of the current user.
@@ -6259,8 +6274,9 @@ class About {
   /// The amount of storage quota used by different Google services.
   core.List<AboutQuotaBytesByService> quotaBytesByService;
 
-  /// The total number of quota bytes. This is only relevant when quotaType is
-  /// LIMITED.
+  /// The total number of quota bytes.
+  ///
+  /// This is only relevant when quotaType is LIMITED.
   core.String quotaBytesTotal;
 
   /// The number of quota bytes used by Google Drive.
@@ -6272,7 +6288,9 @@ class About {
   /// The number of quota bytes used by trashed items.
   core.String quotaBytesUsedInTrash;
 
-  /// The type of the user's storage quota. Possible values are:
+  /// The type of the user's storage quota.
+  ///
+  /// Possible values are:
   /// - LIMITED
   /// - UNLIMITED
   core.String quotaType;
@@ -6508,7 +6526,9 @@ class About {
 }
 
 class AppIcons {
-  /// Category of the icon. Allowed values are:
+  /// Category of the icon.
+  ///
+  /// Allowed values are:
   /// - application - icon for the application
   /// - document - icon for a file associated with the app
   /// - documentShared - icon for a shared file associated with the app
@@ -6517,7 +6537,9 @@ class AppIcons {
   /// URL for the icon.
   core.String iconUrl;
 
-  /// Size of the icon. Represented as the maximum of the width and height.
+  /// Size of the icon.
+  ///
+  /// Represented as the maximum of the width and height.
   core.int size;
 
   AppIcons();
@@ -6556,16 +6578,18 @@ class App {
   /// Whether the app is authorized to access data on the user's Drive.
   core.bool authorized;
 
-  /// The template url to create a new file with this app in a given folder. The
-  /// template will contain {folderId} to be replaced by the folder to create
-  /// the new file in.
+  /// The template url to create a new file with this app in a given folder.
+  ///
+  /// The template will contain {folderId} to be replaced by the folder to
+  /// create the new file in.
   core.String createInFolderTemplate;
 
   /// The url to create a new file with this app.
   core.String createUrl;
 
-  /// Whether the app has drive-wide scope. An app with drive-wide scope can
-  /// access all files in the user's drive.
+  /// Whether the app has drive-wide scope.
+  ///
+  /// An app with drive-wide scope can access all files in the user's drive.
   core.bool hasDriveWideScope;
 
   /// The various icons for the app.
@@ -6586,13 +6610,15 @@ class App {
   /// The name of the app.
   core.String name;
 
-  /// The type of object this app creates (e.g. Chart). If empty, the app name
-  /// should be used instead.
+  /// The type of object this app creates (e.g. Chart).
+  ///
+  /// If empty, the app name should be used instead.
   core.String objectType;
 
-  /// The template url for opening files with this app. The template will
-  /// contain {ids} and/or {exportIds} to be replaced by the actual file ids.
-  /// See  Open Files  for the full documentation.
+  /// The template url for opening files with this app.
+  ///
+  /// The template will contain {ids} and/or {exportIds} to be replaced by the
+  /// actual file ids. See  Open Files  for the full documentation.
   core.String openUrlTemplate;
 
   /// The list of primary file extensions.
@@ -6801,8 +6827,9 @@ class App {
 /// A list of third-party applications which the user has installed or given
 /// access to Google Drive.
 class AppList {
-  /// List of app IDs that the user has specified to use by default. The list is
-  /// in reverse-priority order (lowest to highest).
+  /// List of app IDs that the user has specified to use by default.
+  ///
+  /// The list is in reverse-priority order (lowest to highest).
   core.List<core.String> defaultAppIds;
 
   /// The ETag of the list.
@@ -6865,23 +6892,28 @@ class AppList {
 
 /// Representation of a change to a file or shared drive.
 class Change {
-  /// The type of the change. Possible values are file and drive.
+  /// The type of the change.
+  ///
+  /// Possible values are file and drive.
   core.String changeType;
 
   /// Whether the file or shared drive has been removed from this list of
   /// changes, for example by deletion or loss of access.
   core.bool deleted;
 
-  /// The updated state of the shared drive. Present if the changeType is drive,
-  /// the user is still a member of the shared drive, and the shared drive has
-  /// not been deleted.
+  /// The updated state of the shared drive.
+  ///
+  /// Present if the changeType is drive, the user is still a member of the
+  /// shared drive, and the shared drive has not been deleted.
   Drive drive;
 
   /// The ID of the shared drive associated with this change.
   core.String driveId;
 
-  /// The updated state of the file. Present if the type is file and the file
-  /// has not been removed from this list of changes.
+  /// The updated state of the file.
+  ///
+  /// Present if the type is file and the file has not been removed from this
+  /// list of changes.
   File file;
 
   /// The ID of the file associated with this change.
@@ -7006,8 +7038,10 @@ class ChangeList {
   /// The ETag of the list.
   core.String etag;
 
-  /// The list of changes. If nextPageToken is populated, then this list may be
-  /// incomplete and an additional page of results should be fetched.
+  /// The list of changes.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<Change> items;
 
   /// This is always drive#changeList.
@@ -7016,17 +7050,20 @@ class ChangeList {
   /// The current largest change ID.
   core.String largestChangeId;
 
-  /// The starting page token for future changes. This will be present only if
-  /// the end of the current changes list has been reached.
+  /// The starting page token for future changes.
+  ///
+  /// This will be present only if the end of the current changes list has been
+  /// reached.
   core.String newStartPageToken;
 
   /// A link to the next page of changes.
   core.String nextLink;
 
-  /// The page token for the next page of changes. This will be absent if the
-  /// end of the changes list has been reached. If the token is rejected for any
-  /// reason, it should be discarded, and pagination should be restarted from
-  /// the first page of results.
+  /// The page token for the next page of changes.
+  ///
+  /// This will be absent if the end of the changes list has been reached. If
+  /// the token is rejected for any reason, it should be discarded, and
+  /// pagination should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -7100,7 +7137,9 @@ class Channel {
   core.String address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds. Optional.
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
   core.String expiration;
 
   /// A UUID or similar unique string that identifies this channel.
@@ -7110,13 +7149,18 @@ class Channel {
   /// resource, which is "api#channel".
   core.String kind;
 
-  /// Additional parameters controlling delivery channel behavior. Optional.
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> params;
 
-  /// A Boolean value to indicate whether payload is wanted. Optional.
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
   core.bool payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
+  ///
   /// Stable across different API versions.
   core.String resourceId;
 
@@ -7124,7 +7168,9 @@ class Channel {
   core.String resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel. Optional.
+  /// delivered over this channel.
+  ///
+  /// Optional.
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
@@ -7212,8 +7258,10 @@ class ChildList {
   /// The ETag of the list.
   core.String etag;
 
-  /// The list of children. If nextPageToken is populated, then this list may be
-  /// incomplete and an additional page of results should be fetched.
+  /// The list of children.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<ChildReference> items;
 
   /// This is always drive#childList.
@@ -7222,10 +7270,11 @@ class ChildList {
   /// A link to the next page of children.
   core.String nextLink;
 
-  /// The page token for the next page of children. This will be absent if the
-  /// end of the children list has been reached. If the token is rejected for
-  /// any reason, it should be discarded, and pagination should be restarted
-  /// from the first page of results.
+  /// The page token for the next page of children.
+  ///
+  /// This will be absent if the end of the children list has been reached. If
+  /// the token is rejected for any reason, it should be discarded, and
+  /// pagination should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -7335,9 +7384,10 @@ class CommentContext {
   /// The MIME type of the context snippet.
   core.String type;
 
-  /// Data representation of the segment of the file being commented on. In the
-  /// case of a text file for example, this would be the actual text that the
-  /// comment is about.
+  /// Data representation of the segment of the file being commented on.
+  ///
+  /// In the case of a text file for example, this would be the actual text that
+  /// the comment is about.
   core.String value;
 
   CommentContext();
@@ -7365,21 +7415,24 @@ class CommentContext {
 
 /// A comment on a file in Google Drive.
 class Comment {
-  /// A region of the document represented as a JSON string. See anchor
-  /// documentation for details on how to define and interpret anchor
+  /// A region of the document represented as a JSON string.
+  ///
+  /// See anchor documentation for details on how to define and interpret anchor
   /// properties.
   core.String anchor;
 
-  /// The author of the comment. The author's email address and permission ID
-  /// will not be populated.
+  /// The author of the comment.
+  ///
+  /// The author's email address and permission ID will not be populated.
   User author;
 
   /// The ID of the comment.
   core.String commentId;
 
-  /// The plain text content used to create this comment. This is not HTML safe
-  /// and should only be used as a starting point to make edits to a comment's
-  /// content.
+  /// The plain text content used to create this comment.
+  ///
+  /// This is not HTML safe and should only be used as a starting point to make
+  /// edits to a comment's content.
   core.String content;
 
   /// The context of the file which is being commented on.
@@ -7388,9 +7441,10 @@ class Comment {
   /// The date when this comment was first created.
   core.DateTime createdDate;
 
-  /// Whether this comment has been deleted. If a comment has been deleted the
-  /// content will be cleared and this will only represent a comment that once
-  /// existed.
+  /// Whether this comment has been deleted.
+  ///
+  /// If a comment has been deleted the content will be cleared and this will
+  /// only represent a comment that once existed.
   core.bool deleted;
 
   /// The file which this comment is addressing.
@@ -7414,8 +7468,10 @@ class Comment {
   /// A link back to this comment.
   core.String selfLink;
 
-  /// The status of this comment. Status can be changed by posting a reply to a
-  /// comment with the desired status.
+  /// The status of this comment.
+  ///
+  /// Status can be changed by posting a reply to a comment with the desired
+  /// status.
   /// - "open" - The comment is still open.
   /// - "resolved" - The comment has been resolved by one of its replies.
   core.String status;
@@ -7528,8 +7584,10 @@ class Comment {
 
 /// A list of comments on a file in Google Drive.
 class CommentList {
-  /// The list of comments. If nextPageToken is populated, then this list may be
-  /// incomplete and an additional page of results should be fetched.
+  /// The list of comments.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<Comment> items;
 
   /// This is always drive#commentList.
@@ -7538,10 +7596,11 @@ class CommentList {
   /// A link to the next page of comments.
   core.String nextLink;
 
-  /// The page token for the next page of comments. This will be absent if the
-  /// end of the comments list has been reached. If the token is rejected for
-  /// any reason, it should be discarded, and pagination should be restarted
-  /// from the first page of results.
+  /// The page token for the next page of comments.
+  ///
+  /// This will be absent if the end of the comments list has been reached. If
+  /// the token is rejected for any reason, it should be discarded, and
+  /// pagination should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -7593,22 +7652,25 @@ class CommentList {
 
 /// A comment on a file in Google Drive.
 class CommentReply {
-  /// The author of the reply. The author's email address and permission ID will
-  /// not be populated.
+  /// The author of the reply.
+  ///
+  /// The author's email address and permission ID will not be populated.
   User author;
 
-  /// The plain text content used to create this reply. This is not HTML safe
-  /// and should only be used as a starting point to make edits to a reply's
-  /// content. This field is required on inserts if no verb is specified
-  /// (resolve/reopen).
+  /// The plain text content used to create this reply.
+  ///
+  /// This is not HTML safe and should only be used as a starting point to make
+  /// edits to a reply's content. This field is required on inserts if no verb
+  /// is specified (resolve/reopen).
   core.String content;
 
   /// The date when this reply was first created.
   core.DateTime createdDate;
 
-  /// Whether this reply has been deleted. If a reply has been deleted the
-  /// content will be cleared and this will only represent a reply that once
-  /// existed.
+  /// Whether this reply has been deleted.
+  ///
+  /// If a reply has been deleted the content will be cleared and this will only
+  /// represent a reply that once existed.
   core.bool deleted;
 
   /// HTML formatted content for this reply.
@@ -7623,9 +7685,10 @@ class CommentReply {
   /// The ID of the reply.
   core.String replyId;
 
-  /// The action this reply performed to the parent comment. When creating a new
-  /// reply this is the action to be perform to the parent comment. Possible
-  /// values are:
+  /// The action this reply performed to the parent comment.
+  ///
+  /// When creating a new reply this is the action to be perform to the parent
+  /// comment. Possible values are:
   /// - "resolve" - To resolve a comment.
   /// - "reopen" - To reopen (un-resolve) a comment.
   core.String verb;
@@ -7698,8 +7761,10 @@ class CommentReply {
 
 /// A list of replies to a comment on a file in Google Drive.
 class CommentReplyList {
-  /// The list of replies. If nextPageToken is populated, then this list may be
-  /// incomplete and an additional page of results should be fetched.
+  /// The list of replies.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<CommentReply> items;
 
   /// This is always drive#commentReplyList.
@@ -7708,10 +7773,11 @@ class CommentReplyList {
   /// A link to the next page of replies.
   core.String nextLink;
 
-  /// The page token for the next page of replies. This will be absent if the
-  /// end of the replies list has been reached. If the token is rejected for any
-  /// reason, it should be discarded, and pagination should be restarted from
-  /// the first page of results.
+  /// The page token for the next page of replies.
+  ///
+  /// This will be absent if the end of the replies list has been reached. If
+  /// the token is rejected for any reason, it should be discarded, and
+  /// pagination should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -7763,25 +7829,32 @@ class CommentReplyList {
 
 /// A restriction for accessing the content of the file.
 class ContentRestriction {
-  /// Whether the content of the file is read-only. If a file is read-only, a
-  /// new revision of the file may not be added, comments may not be added or
-  /// modified, and the title of the file may not be modified.
+  /// Whether the content of the file is read-only.
+  ///
+  /// If a file is read-only, a new revision of the file may not be added,
+  /// comments may not be added or modified, and the title of the file may not
+  /// be modified.
   core.bool readOnly;
 
-  /// Reason for why the content of the file is restricted. This is only mutable
-  /// on requests that also set readOnly=true.
+  /// Reason for why the content of the file is restricted.
+  ///
+  /// This is only mutable on requests that also set readOnly=true.
   core.String reason;
 
-  /// The user who set the content restriction. Only populated if readOnly is
-  /// true.
+  /// The user who set the content restriction.
+  ///
+  /// Only populated if readOnly is true.
   User restrictingUser;
 
   /// The time at which the content restriction was set (formatted RFC 3339
-  /// timestamp). Only populated if readOnly is true.
+  /// timestamp).
+  ///
+  /// Only populated if readOnly is true.
   core.DateTime restrictionDate;
 
-  /// The type of the content restriction. Currently the only possible value is
-  /// globalContentRestriction.
+  /// The type of the content restriction.
+  ///
+  /// Currently the only possible value is globalContentRestriction.
   core.String type;
 
   ContentRestriction();
@@ -7828,32 +7901,37 @@ class ContentRestriction {
 }
 
 /// An image file and cropping parameters from which a background image for this
-/// shared drive is set. This is a write only field; it can only be set on
-/// drive.drives.update requests that don't set themeId. When specified, all
-/// fields of the backgroundImageFile must be set.
+/// shared drive is set.
+///
+/// This is a write only field; it can only be set on drive.drives.update
+/// requests that don't set themeId. When specified, all fields of the
+/// backgroundImageFile must be set.
 class DriveBackgroundImageFile {
   /// The ID of an image file in Google Drive to use for the background image.
   core.String id;
 
-  /// The width of the cropped image in the closed range of 0 to 1. This value
-  /// represents the width of the cropped image divided by the width of the
-  /// entire image. The height is computed by applying a width to height aspect
-  /// ratio of 80 to 9. The resulting image must be at least 1280 pixels wide
-  /// and 144 pixels high.
+  /// The width of the cropped image in the closed range of 0 to 1.
+  ///
+  /// This value represents the width of the cropped image divided by the width
+  /// of the entire image. The height is computed by applying a width to height
+  /// aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels
+  /// wide and 144 pixels high.
   core.double width;
 
   /// The X coordinate of the upper left corner of the cropping area in the
-  /// background image. This is a value in the closed range of 0 to 1. This
-  /// value represents the horizontal distance from the left side of the entire
-  /// image to the left side of the cropping area divided by the width of the
-  /// entire image.
+  /// background image.
+  ///
+  /// This is a value in the closed range of 0 to 1. This value represents the
+  /// horizontal distance from the left side of the entire image to the left
+  /// side of the cropping area divided by the width of the entire image.
   core.double xCoordinate;
 
   /// The Y coordinate of the upper left corner of the cropping area in the
-  /// background image. This is a value in the closed range of 0 to 1. This
-  /// value represents the vertical distance from the top side of the entire
-  /// image to the top side of the cropping area divided by the height of the
-  /// entire image.
+  /// background image.
+  ///
+  /// This is a value in the closed range of 0 to 1. This value represents the
+  /// vertical distance from the top side of the entire image to the top side of
+  /// the cropping area divided by the height of the entire image.
   core.double yCoordinate;
 
   DriveBackgroundImageFile();
@@ -7921,9 +7999,10 @@ class DriveCapabilities {
   /// drive.
   core.bool canDeleteChildren;
 
-  /// Whether the current user can delete this shared drive. Attempting to
-  /// delete the shared drive may still fail if there are untrashed items inside
-  /// the shared drive.
+  /// Whether the current user can delete this shared drive.
+  ///
+  /// Attempting to delete the shared drive may still fail if there are
+  /// untrashed items inside the shared drive.
   core.bool canDeleteDrive;
 
   /// Whether the current user can download files in this shared drive.
@@ -8091,15 +8170,17 @@ class DriveRestrictions {
   core.bool adminManagedRestrictions;
 
   /// Whether the options to copy, print, or download files inside this shared
-  /// drive, should be disabled for readers and commenters. When this
-  /// restriction is set to true, it will override the similarly named field to
-  /// true for any file inside this shared drive.
+  /// drive, should be disabled for readers and commenters.
+  ///
+  /// When this restriction is set to true, it will override the similarly named
+  /// field to true for any file inside this shared drive.
   core.bool copyRequiresWriterPermission;
 
   /// Whether access to this shared drive and items inside this shared drive is
-  /// restricted to users of the domain to which this shared drive belongs. This
-  /// restriction may be overridden by other sharing policies controlled outside
-  /// of this shared drive.
+  /// restricted to users of the domain to which this shared drive belongs.
+  ///
+  /// This restriction may be overridden by other sharing policies controlled
+  /// outside of this shared drive.
   core.bool domainUsersOnly;
 
   /// Whether access to items inside this shared drive is restricted to its
@@ -8145,9 +8226,11 @@ class DriveRestrictions {
 /// Representation of a shared drive.
 class Drive {
   /// An image file and cropping parameters from which a background image for
-  /// this shared drive is set. This is a write only field; it can only be set
-  /// on drive.drives.update requests that don't set themeId. When specified,
-  /// all fields of the backgroundImageFile must be set.
+  /// this shared drive is set.
+  ///
+  /// This is a write only field; it can only be set on drive.drives.update
+  /// requests that don't set themeId. When specified, all fields of the
+  /// backgroundImageFile must be set.
   DriveBackgroundImageFile backgroundImageFile;
 
   /// A short-lived link to this shared drive's background image.
@@ -8156,8 +8239,10 @@ class Drive {
   /// Capabilities the current user has on this shared drive.
   DriveCapabilities capabilities;
 
-  /// The color of this shared drive as an RGB hex string. It can only be set on
-  /// a drive.drives.update request that does not set themeId.
+  /// The color of this shared drive as an RGB hex string.
+  ///
+  /// It can only be set on a drive.drives.update request that does not set
+  /// themeId.
   core.String colorRgb;
 
   /// The time at which the shared drive was created (RFC 3339 date-time).
@@ -8181,6 +8266,7 @@ class Drive {
   DriveRestrictions restrictions;
 
   /// The ID of the theme from which the background image and color will be set.
+  ///
   /// The set of possible driveThemes can be retrieved from a drive.about.get
   /// response. When not specified on a drive.drives.insert request, a random
   /// theme is chosen from which the background image and color are set. This is
@@ -8270,17 +8356,20 @@ class Drive {
 
 /// A list of shared drives.
 class DriveList {
-  /// The list of shared drives. If nextPageToken is populated, then this list
-  /// may be incomplete and an additional page of results should be fetched.
+  /// The list of shared drives.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<Drive> items;
 
   /// This is always drive#driveList
   core.String kind;
 
-  /// The page token for the next page of shared drives. This will be absent if
-  /// the end of the list has been reached. If the token is rejected for any
-  /// reason, it should be discarded, and pagination should be restarted from
-  /// the first page of results.
+  /// The page token for the next page of shared drives.
+  ///
+  /// This will be absent if the end of the list has been reached. If the token
+  /// is rejected for any reason, it should be discarded, and pagination should
+  /// be restarted from the first page of results.
   core.String nextPageToken;
 
   DriveList();
@@ -8315,20 +8404,26 @@ class DriveList {
   }
 }
 
-/// Capabilities the current user has on this file. Each capability corresponds
-/// to a fine-grained action that a user may take.
+/// Capabilities the current user has on this file.
+///
+/// Each capability corresponds to a fine-grained action that a user may take.
 class FileCapabilities {
-  /// Whether the current user can add children to this folder. This is always
-  /// false when the item is not a folder.
+  /// Whether the current user can add children to this folder.
+  ///
+  /// This is always false when the item is not a folder.
   core.bool canAddChildren;
 
   /// Whether the current user can add a folder from another drive (different
-  /// shared drive or My Drive) to this folder. This is false when the item is
-  /// not a folder. Only populated for items in shared drives.
+  /// shared drive or My Drive) to this folder.
+  ///
+  /// This is false when the item is not a folder. Only populated for items in
+  /// shared drives.
   core.bool canAddFolderFromAnotherDrive;
 
   /// Whether the current user can add a parent for the item without removing an
-  /// existing parent in the same request. Not populated for shared drive files.
+  /// existing parent in the same request.
+  ///
+  /// Not populated for shared drive files.
   core.bool canAddMyDriveParent;
 
   /// Whether the current user can change the copyRequiresWriterPermission
@@ -8341,28 +8436,34 @@ class FileCapabilities {
   /// Whether the current user can comment on this file.
   core.bool canComment;
 
-  /// Whether the current user can copy this file. For an item in a shared
-  /// drive, whether the current user can copy non-folder descendants of this
-  /// item, or this item itself if it is not a folder.
+  /// Whether the current user can copy this file.
+  ///
+  /// For an item in a shared drive, whether the current user can copy
+  /// non-folder descendants of this item, or this item itself if it is not a
+  /// folder.
   core.bool canCopy;
 
   /// Whether the current user can delete this file.
   core.bool canDelete;
 
-  /// Whether the current user can delete children of this folder. This is false
-  /// when the item is not a folder. Only populated for items in shared drives.
+  /// Whether the current user can delete children of this folder.
+  ///
+  /// This is false when the item is not a folder. Only populated for items in
+  /// shared drives.
   core.bool canDeleteChildren;
 
   /// Whether the current user can download this file.
   core.bool canDownload;
 
-  /// Whether the current user can edit this file. Other factors may limit the
-  /// type of changes a user can make to a file. For example, see
-  /// canChangeCopyRequiresWriterPermission or canModifyContent.
+  /// Whether the current user can edit this file.
+  ///
+  /// Other factors may limit the type of changes a user can make to a file. For
+  /// example, see canChangeCopyRequiresWriterPermission or canModifyContent.
   core.bool canEdit;
 
-  /// Whether the current user can list the children of this folder. This is
-  /// always false when the item is not a folder.
+  /// Whether the current user can list the children of this folder.
+  ///
+  /// This is always false when the item is not a folder.
   core.bool canListChildren;
 
   /// Whether the current user can modify the content of this file.
@@ -8372,17 +8473,21 @@ class FileCapabilities {
   core.bool canModifyContentRestriction;
 
   /// Whether the current user can move children of this folder outside of the
-  /// shared drive. This is false when the item is not a folder. Only populated
-  /// for items in shared drives.
+  /// shared drive.
+  ///
+  /// This is false when the item is not a folder. Only populated for items in
+  /// shared drives.
   core.bool canMoveChildrenOutOfDrive;
 
   /// Deprecated - use canMoveChildrenOutOfDrive instead.
   core.bool canMoveChildrenOutOfTeamDrive;
 
   /// Whether the current user can move children of this folder within this
-  /// drive. This is false when the item is not a folder. Note that a request to
-  /// move the child may still fail depending on the current user's access to
-  /// the child and to the destination folder.
+  /// drive.
+  ///
+  /// This is false when the item is not a folder. Note that a request to move
+  /// the child may still fail depending on the current user's access to the
+  /// child and to the destination folder.
   core.bool canMoveChildrenWithinDrive;
 
   /// Deprecated - use canMoveChildrenWithinDrive instead.
@@ -8392,16 +8497,20 @@ class FileCapabilities {
   core.bool canMoveItemIntoTeamDrive;
 
   /// Whether the current user can move this item outside of this drive by
-  /// changing its parent. Note that a request to change the parent of the item
-  /// may still fail depending on the new parent that is being added.
+  /// changing its parent.
+  ///
+  /// Note that a request to change the parent of the item may still fail
+  /// depending on the new parent that is being added.
   core.bool canMoveItemOutOfDrive;
 
   /// Deprecated - use canMoveItemOutOfDrive instead.
   core.bool canMoveItemOutOfTeamDrive;
 
-  /// Whether the current user can move this item within this drive. Note that a
-  /// request to change the parent of the item may still fail depending on the
-  /// new parent that is being added and the parent that is being removed.
+  /// Whether the current user can move this item within this drive.
+  ///
+  /// Note that a request to change the parent of the item may still fail
+  /// depending on the new parent that is being added and the parent that is
+  /// being removed.
   core.bool canMoveItemWithinDrive;
 
   /// Deprecated - use canMoveItemWithinDrive instead.
@@ -8411,24 +8520,30 @@ class FileCapabilities {
   core.bool canMoveTeamDriveItem;
 
   /// Whether the current user can read the shared drive to which this file
-  /// belongs. Only populated for items in shared drives.
+  /// belongs.
+  ///
+  /// Only populated for items in shared drives.
   core.bool canReadDrive;
 
-  /// Whether the current user can read the revisions resource of this file. For
-  /// a shared drive item, whether revisions of non-folder descendants of this
-  /// item, or this item itself if it is not a folder, can be read.
+  /// Whether the current user can read the revisions resource of this file.
+  ///
+  /// For a shared drive item, whether revisions of non-folder descendants of
+  /// this item, or this item itself if it is not a folder, can be read.
   core.bool canReadRevisions;
 
   /// Deprecated - use canReadDrive instead.
   core.bool canReadTeamDrive;
 
-  /// Whether the current user can remove children from this folder. This is
-  /// always false when the item is not a folder. For a folder in a shared
-  /// drive, use canDeleteChildren or canTrashChildren instead.
+  /// Whether the current user can remove children from this folder.
+  ///
+  /// This is always false when the item is not a folder. For a folder in a
+  /// shared drive, use canDeleteChildren or canTrashChildren instead.
   core.bool canRemoveChildren;
 
   /// Whether the current user can remove a parent from the item without adding
-  /// another parent in the same request. Not populated for shared drive files.
+  /// another parent in the same request.
+  ///
+  /// Not populated for shared drive files.
   core.bool canRemoveMyDriveParent;
 
   /// Whether the current user can rename this file.
@@ -8440,8 +8555,10 @@ class FileCapabilities {
   /// Whether the current user can move this file to trash.
   core.bool canTrash;
 
-  /// Whether the current user can trash children of this folder. This is false
-  /// when the item is not a folder. Only populated for items in shared drives.
+  /// Whether the current user can trash children of this folder.
+  ///
+  /// This is false when the item is not a folder. Only populated for items in
+  /// shared drives.
   core.bool canTrashChildren;
 
   /// Whether the current user can restore this file from trash.
@@ -8713,8 +8830,10 @@ class FileImageMediaMetadataLocation {
   }
 }
 
-/// Metadata about image media. This will only be present for image types, and
-/// its contents will depend on what can be parsed from the image content.
+/// Metadata about image media.
+///
+/// This will only be present for image types, and its contents will depend on
+/// what can be parsed from the image content.
 class FileImageMediaMetadata {
   /// The aperture used to create the photo (f-number).
   core.double aperture;
@@ -8956,11 +9075,13 @@ class FileLabels {
   core.bool starred;
 
   /// Whether the file has been trashed, either explicitly or from a trashed
-  /// parent folder. Only the owner may trash a file. The trashed item is
-  /// excluded from all files.list responses returned for any user who does not
-  /// own the file. However, all users with access to the file can see the
-  /// trashed item metadata in an API response. All users with access can copy,
-  /// download, export, and share the file.
+  /// parent folder.
+  ///
+  /// Only the owner may trash a file. The trashed item is excluded from all
+  /// files.list responses returned for any user who does not own the file.
+  /// However, all users with access to the file can see the trashed item
+  /// metadata in an API response. All users with access can copy, download,
+  /// export, and share the file.
   core.bool trashed;
 
   /// Whether this file has been viewed by this user.
@@ -9013,15 +9134,18 @@ class FileLabels {
   }
 }
 
-/// Shortcut file details. Only populated for shortcut files, which have the
-/// mimeType field set to application/vnd.google-apps.shortcut.
+/// Shortcut file details.
+///
+/// Only populated for shortcut files, which have the mimeType field set to
+/// application/vnd.google-apps.shortcut.
 class FileShortcutDetails {
   /// The ID of the file that this shortcut points to.
   core.String targetId;
 
-  /// The MIME type of the file that this shortcut points to. The value of this
-  /// field is a snapshot of the target's MIME type, captured when the shortcut
-  /// is created.
+  /// The MIME type of the file that this shortcut points to.
+  ///
+  /// The value of this field is a snapshot of the target's MIME type, captured
+  /// when the shortcut is created.
   core.String targetMimeType;
 
   FileShortcutDetails();
@@ -9047,11 +9171,13 @@ class FileShortcutDetails {
   }
 }
 
-/// A thumbnail for the file. This will only be used if a standard thumbnail
-/// cannot be generated.
+/// A thumbnail for the file.
+///
+/// This will only be used if a standard thumbnail cannot be generated.
 class FileThumbnail {
-  /// The URL-safe Base64 encoded bytes of the thumbnail image. It should
-  /// conform to RFC 4648 section 5.
+  /// The URL-safe Base64 encoded bytes of the thumbnail image.
+  ///
+  /// It should conform to RFC 4648 section 5.
   core.String image;
   core.List<core.int> get imageAsBytes => convert_1.base64.decode(image);
 
@@ -9088,7 +9214,9 @@ class FileThumbnail {
   }
 }
 
-/// Metadata about video media. This will only be present for video types.
+/// Metadata about video media.
+///
+/// This will only be present for video types.
 class FileVideoMediaMetadata {
   /// The duration of the video in milliseconds.
   core.String durationMillis;
@@ -9142,12 +9270,14 @@ class File {
   /// Deprecated: use capabilities/canReadRevisions.
   core.bool canReadRevisions;
 
-  /// Capabilities the current user has on this file. Each capability
-  /// corresponds to a fine-grained action that a user may take.
+  /// Capabilities the current user has on this file.
+  ///
+  /// Each capability corresponds to a fine-grained action that a user may take.
   FileCapabilities capabilities;
 
-  /// Restrictions for accessing the content of the file. Only populated if such
-  /// a restriction exists.
+  /// Restrictions for accessing the content of the file.
+  ///
+  /// Only populated if such a restriction exists.
   core.List<ContentRestriction> contentRestrictions;
 
   /// Whether the options to copy, print, or download this file, should be
@@ -9160,20 +9290,23 @@ class File {
   /// Create time for this file (formatted RFC 3339 timestamp).
   core.DateTime createdDate;
 
-  /// A link to open this file with the user's default app for this file. Only
-  /// populated when the drive.apps.readonly scope is used.
+  /// A link to open this file with the user's default app for this file.
+  ///
+  /// Only populated when the drive.apps.readonly scope is used.
   core.String defaultOpenWithLink;
 
   /// A short description of the file.
   core.String description;
 
-  /// Short lived download URL for the file. This field is only populated for
-  /// files with content stored in Google Drive; it is not populated for Google
-  /// Docs or shortcut files.
+  /// Short lived download URL for the file.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Google Docs or shortcut files.
   core.String downloadUrl;
 
-  /// ID of the shared drive the file resides in. Only populated for items in
-  /// shared drives.
+  /// ID of the shared drive the file resides in.
+  ///
+  /// Only populated for items in shared drives.
   core.String driveId;
 
   /// Deprecated: use capabilities/canEdit.
@@ -9193,42 +9326,51 @@ class File {
   core.Map<core.String, core.String> exportLinks;
 
   /// The final component of fullFileExtension with trailing text that does not
-  /// appear to be part of the extension removed. This field is only populated
-  /// for files with content stored in Google Drive; it is not populated for
-  /// Google Docs or shortcut files.
+  /// appear to be part of the extension removed.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Google Docs or shortcut files.
   core.String fileExtension;
 
-  /// The size of the file in bytes. This field is only populated for files with
-  /// content stored in Google Drive; it is not populated for Google Docs or
-  /// shortcut files.
+  /// The size of the file in bytes.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Google Docs or shortcut files.
   core.String fileSize;
 
-  /// Folder color as an RGB hex string if the file is a folder. The list of
-  /// supported colors is available in the folderColorPalette field of the About
-  /// resource. If an unsupported color is specified, it will be changed to the
-  /// closest color in the palette. Not populated for items in shared drives.
+  /// Folder color as an RGB hex string if the file is a folder.
+  ///
+  /// The list of supported colors is available in the folderColorPalette field
+  /// of the About resource. If an unsupported color is specified, it will be
+  /// changed to the closest color in the palette. Not populated for items in
+  /// shared drives.
   core.String folderColorRgb;
 
-  /// The full file extension; extracted from the title. May contain multiple
-  /// concatenated extensions, such as "tar.gz". Removing an extension from the
-  /// title does not clear this field; however, changing the extension on the
-  /// title does update this field. This field is only populated for files with
-  /// content stored in Google Drive; it is not populated for Google Docs or
-  /// shortcut files.
+  /// The full file extension; extracted from the title.
+  ///
+  /// May contain multiple concatenated extensions, such as "tar.gz". Removing
+  /// an extension from the title does not clear this field; however, changing
+  /// the extension on the title does update this field. This field is only
+  /// populated for files with content stored in Google Drive; it is not
+  /// populated for Google Docs or shortcut files.
   core.String fullFileExtension;
 
-  /// Whether there are permissions directly on this file. This field is only
-  /// populated for items in shared drives.
+  /// Whether there are permissions directly on this file.
+  ///
+  /// This field is only populated for items in shared drives.
   core.bool hasAugmentedPermissions;
 
-  /// Whether this file has a thumbnail. This does not indicate whether the
-  /// requesting app has access to the thumbnail. To check access, look for the
-  /// presence of the thumbnailLink field.
+  /// Whether this file has a thumbnail.
+  ///
+  /// This does not indicate whether the requesting app has access to the
+  /// thumbnail. To check access, look for the presence of the thumbnailLink
+  /// field.
   core.bool hasThumbnail;
 
-  /// The ID of the file's head revision. This field is only populated for files
-  /// with content stored in Google Drive; it is not populated for Google Docs
-  /// or shortcut files.
+  /// The ID of the file's head revision.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Google Docs or shortcut files.
   core.String headRevisionId;
 
   /// A link to the file's icon.
@@ -9237,8 +9379,10 @@ class File {
   /// The ID of the file.
   core.String id;
 
-  /// Metadata about image media. This will only be present for image types, and
-  /// its contents will depend on what can be parsed from the image content.
+  /// Metadata about image media.
+  ///
+  /// This will only be present for image types, and its contents will depend on
+  /// what can be parsed from the image content.
   FileImageMediaMetadata imageMediaMetadata;
 
   /// Indexable text attributes for the file (can only be written)
@@ -9247,7 +9391,9 @@ class File {
   /// Whether the file was created or opened by the requesting app.
   core.bool isAppAuthorized;
 
-  /// The type of file. This is always drive#file.
+  /// The type of file.
+  ///
+  /// This is always drive#file.
   core.String kind;
 
   /// A group of labels for the file.
@@ -9265,58 +9411,73 @@ class File {
   /// Deprecated.
   core.DateTime markedViewedByMeDate;
 
-  /// An MD5 checksum for the content of this file. This field is only populated
-  /// for files with content stored in Google Drive; it is not populated for
-  /// Google Docs or shortcut files.
+  /// An MD5 checksum for the content of this file.
+  ///
+  /// This field is only populated for files with content stored in Google
+  /// Drive; it is not populated for Google Docs or shortcut files.
   core.String md5Checksum;
 
-  /// The MIME type of the file. This is only mutable on update when uploading
-  /// new content. This field can be left blank, and the mimetype will be
-  /// determined from the uploaded content's MIME type.
+  /// The MIME type of the file.
+  ///
+  /// This is only mutable on update when uploading new content. This field can
+  /// be left blank, and the mimetype will be determined from the uploaded
+  /// content's MIME type.
   core.String mimeType;
 
   /// Last time this file was modified by the user (formatted RFC 3339
-  /// timestamp). Note that setting modifiedDate will also update the
-  /// modifiedByMe date for the user which set the date.
+  /// timestamp).
+  ///
+  /// Note that setting modifiedDate will also update the modifiedByMe date for
+  /// the user which set the date.
   core.DateTime modifiedByMeDate;
 
   /// Last time this file was modified by anyone (formatted RFC 3339 timestamp).
+  ///
   /// This is only mutable on update when the setModifiedDate parameter is set.
   core.DateTime modifiedDate;
 
   /// A map of the id of each of the user's apps to a link to open this file
-  /// with that app. Only populated when the drive.apps.readonly scope is used.
+  /// with that app.
+  ///
+  /// Only populated when the drive.apps.readonly scope is used.
   core.Map<core.String, core.String> openWithLinks;
 
   /// The original filename of the uploaded content if available, or else the
-  /// original value of the title field. This is only available for files with
-  /// binary content in Google Drive.
+  /// original value of the title field.
+  ///
+  /// This is only available for files with binary content in Google Drive.
   core.String originalFilename;
 
-  /// Whether the file is owned by the current user. Not populated for items in
-  /// shared drives.
+  /// Whether the file is owned by the current user.
+  ///
+  /// Not populated for items in shared drives.
   core.bool ownedByMe;
 
-  /// Name(s) of the owner(s) of this file. Not populated for items in shared
-  /// drives.
+  /// Name(s) of the owner(s) of this file.
+  ///
+  /// Not populated for items in shared drives.
   core.List<core.String> ownerNames;
 
-  /// The owner(s) of this file. Not populated for items in shared drives.
+  /// The owner(s) of this file.
+  ///
+  /// Not populated for items in shared drives.
   core.List<User> owners;
 
   /// Collection of parent folders which contain this file.
   /// If not specified as part of an insert request, the file will be placed
-  /// directly in the user's My Drive folder. If not specified as part of a copy
-  /// request, the file will inherit any discoverable parents of the source
-  /// file. Update requests can also use the addParents and removeParents
-  /// parameters to modify the parents list.
+  /// directly in the user's My Drive folder.
+  ///
+  /// If not specified as part of a copy request, the file will inherit any
+  /// discoverable parents of the source file. Update requests can also use the
+  /// addParents and removeParents parameters to modify the parents list.
   core.List<ParentReference> parents;
 
   /// List of permission IDs for users with access to this file.
   core.List<core.String> permissionIds;
 
-  /// The list of permissions for users with access to this file. Not populated
-  /// for items in shared drives.
+  /// The list of permissions for users with access to this file.
+  ///
+  /// Not populated for items in shared drives.
   core.List<Permission> permissions;
 
   /// The list of properties.
@@ -9331,8 +9492,9 @@ class File {
   /// Deprecated: use capabilities/canShare.
   core.bool shareable;
 
-  /// Whether the file has been shared. Not populated for items in shared
-  /// drives.
+  /// Whether the file has been shared.
+  ///
+  /// Not populated for items in shared drives.
   core.bool shared;
 
   /// Time at which this file was shared with the user (formatted RFC 3339
@@ -9342,64 +9504,79 @@ class File {
   /// User that shared the item with the current user, if available.
   User sharingUser;
 
-  /// Shortcut file details. Only populated for shortcut files, which have the
-  /// mimeType field set to application/vnd.google-apps.shortcut.
+  /// Shortcut file details.
+  ///
+  /// Only populated for shortcut files, which have the mimeType field set to
+  /// application/vnd.google-apps.shortcut.
   FileShortcutDetails shortcutDetails;
 
-  /// The list of spaces which contain the file. Supported values are 'drive',
-  /// 'appDataFolder' and 'photos'.
+  /// The list of spaces which contain the file.
+  ///
+  /// Supported values are 'drive', 'appDataFolder' and 'photos'.
   core.List<core.String> spaces;
 
   /// Deprecated - use driveId instead.
   core.String teamDriveId;
 
-  /// A thumbnail for the file. This will only be used if a standard thumbnail
-  /// cannot be generated.
+  /// A thumbnail for the file.
+  ///
+  /// This will only be used if a standard thumbnail cannot be generated.
   FileThumbnail thumbnail;
 
-  /// A short-lived link to the file's thumbnail. Typically lasts on the order
-  /// of hours. Only populated when the requesting app can access the file's
-  /// content.
+  /// A short-lived link to the file's thumbnail.
+  ///
+  /// Typically lasts on the order of hours. Only populated when the requesting
+  /// app can access the file's content.
   core.String thumbnailLink;
 
   /// The thumbnail version for use in thumbnail cache invalidation.
   core.String thumbnailVersion;
 
-  /// The title of this file. Note that for immutable items such as the top
-  /// level folders of shared drives, My Drive root folder, and Application Data
-  /// folder the title is constant.
+  /// The title of this file.
+  ///
+  /// Note that for immutable items such as the top level folders of shared
+  /// drives, My Drive root folder, and Application Data folder the title is
+  /// constant.
   core.String title;
 
-  /// The time that the item was trashed (formatted RFC 3339 timestamp). Only
-  /// populated for items in shared drives.
+  /// The time that the item was trashed (formatted RFC 3339 timestamp).
+  ///
+  /// Only populated for items in shared drives.
   core.DateTime trashedDate;
 
-  /// If the file has been explicitly trashed, the user who trashed it. Only
-  /// populated for items in shared drives.
+  /// If the file has been explicitly trashed, the user who trashed it.
+  ///
+  /// Only populated for items in shared drives.
   User trashingUser;
 
   /// The permissions for the authenticated user on this file.
   Permission userPermission;
 
-  /// A monotonically increasing version number for the file. This reflects
-  /// every change made to the file on the server, even those not visible to the
-  /// requesting user.
+  /// A monotonically increasing version number for the file.
+  ///
+  /// This reflects every change made to the file on the server, even those not
+  /// visible to the requesting user.
   core.String version;
 
-  /// Metadata about video media. This will only be present for video types.
+  /// Metadata about video media.
+  ///
+  /// This will only be present for video types.
   FileVideoMediaMetadata videoMediaMetadata;
 
   /// A link for downloading the content of the file in a browser using cookie
-  /// based authentication. In cases where the content is shared publicly, the
-  /// content can be downloaded without any credentials.
+  /// based authentication.
+  ///
+  /// In cases where the content is shared publicly, the content can be
+  /// downloaded without any credentials.
   core.String webContentLink;
 
   /// A link only available on public folders for viewing their static web
   /// assets (HTML, CSS, JS, etc) via Google Drive's Website Hosting.
   core.String webViewLink;
 
-  /// Whether writers can share the document with other users. Not populated for
-  /// items in shared drives.
+  /// Whether writers can share the document with other users.
+  ///
+  /// Not populated for items in shared drives.
   core.bool writersCanShare;
 
   File();
@@ -9891,16 +10068,19 @@ class FileList {
   /// The ETag of the list.
   core.String etag;
 
-  /// Whether the search process was incomplete. If true, then some search
-  /// results may be missing, since all documents were not searched. This may
-  /// occur when searching multiple drives with the "allDrives" corpora, but all
-  /// corpora could not be searched. When this happens, it is suggested that
-  /// clients narrow their query by choosing a different corpus such as
-  /// "default" or "drive".
+  /// Whether the search process was incomplete.
+  ///
+  /// If true, then some search results may be missing, since all documents were
+  /// not searched. This may occur when searching multiple drives with the
+  /// "allDrives" corpora, but all corpora could not be searched. When this
+  /// happens, it is suggested that clients narrow their query by choosing a
+  /// different corpus such as "default" or "drive".
   core.bool incompleteSearch;
 
-  /// The list of files. If nextPageToken is populated, then this list may be
-  /// incomplete and an additional page of results should be fetched.
+  /// The list of files.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<File> items;
 
   /// This is always drive#fileList.
@@ -9909,10 +10089,11 @@ class FileList {
   /// A link to the next page of files.
   core.String nextLink;
 
-  /// The page token for the next page of files. This will be absent if the end
-  /// of the files list has been reached. If the token is rejected for any
-  /// reason, it should be discarded, and pagination should be restarted from
-  /// the first page of results.
+  /// The page token for the next page of files.
+  ///
+  /// This will be absent if the end of the files list has been reached. If the
+  /// token is rejected for any reason, it should be discarded, and pagination
+  /// should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -10127,26 +10308,34 @@ class ParentReference {
 }
 
 class PermissionPermissionDetails {
-  /// Additional roles for this user. Only commenter is currently possible,
-  /// though more may be supported in the future.
+  /// Additional roles for this user.
+  ///
+  /// Only commenter is currently possible, though more may be supported in the
+  /// future.
   core.List<core.String> additionalRoles;
 
-  /// Whether this permission is inherited. This field is always populated. This
-  /// is an output-only field.
+  /// Whether this permission is inherited.
+  ///
+  /// This field is always populated. This is an output-only field.
   core.bool inherited;
 
-  /// The ID of the item from which this permission is inherited. This is an
-  /// output-only field.
+  /// The ID of the item from which this permission is inherited.
+  ///
+  /// This is an output-only field.
   core.String inheritedFrom;
 
-  /// The permission type for this user. While new values may be added in
-  /// future, the following are currently possible:
+  /// The permission type for this user.
+  ///
+  /// While new values may be added in future, the following are currently
+  /// possible:
   /// - file
   /// - member
   core.String permissionType;
 
-  /// The primary role for this user. While new values may be added in the
-  /// future, the following are currently possible:
+  /// The primary role for this user.
+  ///
+  /// While new values may be added in the future, the following are currently
+  /// possible:
   /// - organizer
   /// - fileOrganizer
   /// - writer
@@ -10257,31 +10446,37 @@ class PermissionTeamDrivePermissionDetails {
 
 /// A permission for a file.
 class Permission {
-  /// Additional roles for this user. Only commenter is currently allowed,
-  /// though more may be supported in the future.
+  /// Additional roles for this user.
+  ///
+  /// Only commenter is currently allowed, though more may be supported in the
+  /// future.
   core.List<core.String> additionalRoles;
 
   /// Deprecated.
   core.String authKey;
 
-  /// Whether the account associated with this permission has been deleted. This
-  /// field only pertains to user and group permissions.
+  /// Whether the account associated with this permission has been deleted.
+  ///
+  /// This field only pertains to user and group permissions.
   core.bool deleted;
 
-  /// The domain name of the entity this permission refers to. This is an
-  /// output-only field which is present when the permission type is user, group
-  /// or domain.
+  /// The domain name of the entity this permission refers to.
+  ///
+  /// This is an output-only field which is present when the permission type is
+  /// user, group or domain.
   core.String domain;
 
-  /// The email address of the user or group this permission refers to. This is
-  /// an output-only field which is present when the permission type is user or
-  /// group.
+  /// The email address of the user or group this permission refers to.
+  ///
+  /// This is an output-only field which is present when the permission type is
+  /// user or group.
   core.String emailAddress;
 
   /// The ETag of the permission.
   core.String etag;
 
   /// The time at which this permission will expire (RFC 3339 date-time).
+  ///
   /// Expiration dates have the following restrictions:
   /// - They cannot be set on shared drive items
   /// - They can only be set on user and group permissions
@@ -10292,10 +10487,11 @@ class Permission {
   core.DateTime expirationDate;
 
   /// The ID of the user this permission refers to, and identical to the
-  /// permissionId in the About and Files resources. When making a
-  /// drive.permissions.insert request, exactly one of the id or value fields
-  /// must be specified unless the permission type is anyone, in which case both
-  /// id and value are ignored.
+  /// permissionId in the About and Files resources.
+  ///
+  /// When making a drive.permissions.insert request, exactly one of the id or
+  /// value fields must be specified unless the permission type is anyone, in
+  /// which case both id and value are ignored.
   core.String id;
 
   /// This is always drive#permission.
@@ -10305,15 +10501,18 @@ class Permission {
   core.String name;
 
   /// Details of whether the permissions on this shared drive item are inherited
-  /// or directly on this item. This is an output-only field which is present
-  /// only for shared drive items.
+  /// or directly on this item.
+  ///
+  /// This is an output-only field which is present only for shared drive items.
   core.List<PermissionPermissionDetails> permissionDetails;
 
   /// A link to the profile photo, if available.
   core.String photoLink;
 
-  /// The primary role for this user. While new values may be supported in the
-  /// future, the following are currently allowed:
+  /// The primary role for this user.
+  ///
+  /// While new values may be supported in the future, the following are
+  /// currently allowed:
   /// - owner
   /// - organizer
   /// - fileOrganizer
@@ -10327,22 +10526,27 @@ class Permission {
   /// Deprecated - use permissionDetails instead.
   core.List<PermissionTeamDrivePermissionDetails> teamDrivePermissionDetails;
 
-  /// The account type. Allowed values are:
+  /// The account type.
+  ///
+  /// Allowed values are:
   /// - user
   /// - group
   /// - domain
   /// - anyone
   core.String type;
 
-  /// The email address or domain name for the entity. This is used during
-  /// inserts and is not populated in responses. When making a
-  /// drive.permissions.insert request, exactly one of the id or value fields
+  /// The email address or domain name for the entity.
+  ///
+  /// This is used during inserts and is not populated in responses. When making
+  /// a drive.permissions.insert request, exactly one of the id or value fields
   /// must be specified unless the permission type is anyone, in which case both
   /// id and value are ignored.
   core.String value;
 
-  /// Indicates the view for this permission. Only populated for permissions
-  /// that belong to a view. published is the only supported value.
+  /// Indicates the view for this permission.
+  ///
+  /// Only populated for permissions that belong to a view. published is the
+  /// only supported value.
   core.String view;
 
   /// Whether the link is required for this permission.
@@ -10529,10 +10733,11 @@ class PermissionList {
   /// This is always drive#permissionList.
   core.String kind;
 
-  /// The page token for the next page of permissions. This field will be absent
-  /// if the end of the permissions list has been reached. If the token is
-  /// rejected for any reason, it should be discarded, and pagination should be
-  /// restarted from the first page of results.
+  /// The page token for the next page of permissions.
+  ///
+  /// This field will be absent if the end of the permissions list has been
+  /// reached. If the token is rejected for any reason, it should be discarded,
+  /// and pagination should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -10606,8 +10811,9 @@ class Property {
   /// The value of this property.
   core.String value;
 
-  /// The visibility of this property. Allowed values are PRIVATE and PUBLIC.
-  /// (Default: PRIVATE)
+  /// The visibility of this property.
+  ///
+  /// Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE)
   core.String visibility;
 
   Property();
@@ -10720,8 +10926,9 @@ class Revision {
   /// Links for exporting Google Docs to specific formats.
   core.Map<core.String, core.String> exportLinks;
 
-  /// The size of the revision in bytes. This will only be populated on files
-  /// with content stored in Drive.
+  /// The size of the revision in bytes.
+  ///
+  /// This will only be populated on files with content stored in Drive.
   core.String fileSize;
 
   /// The ID of the revision.
@@ -10736,8 +10943,9 @@ class Revision {
   /// Name of the last user to modify this revision.
   core.String lastModifyingUserName;
 
-  /// An MD5 checksum for the content of this revision. This will only be
-  /// populated on files with content stored in Drive.
+  /// An MD5 checksum for the content of this revision.
+  ///
+  /// This will only be populated on files with content stored in Drive.
   core.String md5Checksum;
 
   /// The MIME type of the revision.
@@ -10746,31 +10954,36 @@ class Revision {
   /// Last time this revision was modified (formatted RFC 3339 timestamp).
   core.DateTime modifiedDate;
 
-  /// The original filename when this revision was created. This will only be
-  /// populated on files with content stored in Drive.
+  /// The original filename when this revision was created.
+  ///
+  /// This will only be populated on files with content stored in Drive.
   core.String originalFilename;
 
-  /// Whether this revision is pinned to prevent automatic purging. This will
-  /// only be populated and can only be modified on files with content stored in
-  /// Drive which are not Google Docs. Revisions can also be pinned when they
-  /// are created through the drive.files.insert/update/copy by using the pinned
-  /// query parameter. Pinned revisions are stored indefinitely using additional
-  /// storage quota, up to a maximum of 200 revisions.
+  /// Whether this revision is pinned to prevent automatic purging.
+  ///
+  /// This will only be populated and can only be modified on files with content
+  /// stored in Drive which are not Google Docs. Revisions can also be pinned
+  /// when they are created through the drive.files.insert/update/copy by using
+  /// the pinned query parameter. Pinned revisions are stored indefinitely using
+  /// additional storage quota, up to a maximum of 200 revisions.
   core.bool pinned;
 
-  /// Whether subsequent revisions will be automatically republished. This is
-  /// only populated and can only be modified for Google Docs.
+  /// Whether subsequent revisions will be automatically republished.
+  ///
+  /// This is only populated and can only be modified for Google Docs.
   core.bool publishAuto;
 
-  /// Whether this revision is published. This is only populated and can only be
-  /// modified for Google Docs.
+  /// Whether this revision is published.
+  ///
+  /// This is only populated and can only be modified for Google Docs.
   core.bool published;
 
   /// A link to the published revision.
   core.String publishedLink;
 
-  /// Whether this revision is published outside the domain. This is only
-  /// populated and can only be modified for Google Docs.
+  /// Whether this revision is published outside the domain.
+  ///
+  /// This is only populated and can only be modified for Google Docs.
   core.bool publishedOutsideDomain;
 
   /// A link back to this revision.
@@ -10908,17 +11121,20 @@ class RevisionList {
   /// The ETag of the list.
   core.String etag;
 
-  /// The list of revisions. If nextPageToken is populated, then this list may
-  /// be incomplete and an additional page of results should be fetched.
+  /// The list of revisions.
+  ///
+  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// additional page of results should be fetched.
   core.List<Revision> items;
 
   /// This is always drive#revisionList.
   core.String kind;
 
-  /// The page token for the next page of revisions. This field will be absent
-  /// if the end of the revisions list has been reached. If the token is
-  /// rejected for any reason, it should be discarded and pagination should be
-  /// restarted from the first page of results.
+  /// The page token for the next page of revisions.
+  ///
+  /// This field will be absent if the end of the revisions list has been
+  /// reached. If the token is rejected for any reason, it should be discarded
+  /// and pagination should be restarted from the first page of results.
   core.String nextPageToken;
 
   /// A link back to this list.
@@ -10969,8 +11185,9 @@ class RevisionList {
 }
 
 class StartPageToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "drive#startPageToken".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "drive#startPageToken".
   core.String kind;
 
   /// The starting page token for listing changes.
@@ -11000,32 +11217,37 @@ class StartPageToken {
 }
 
 /// An image file and cropping parameters from which a background image for this
-/// Team Drive is set. This is a write only field; it can only be set on
-/// drive.teamdrives.update requests that don't set themeId. When specified, all
-/// fields of the backgroundImageFile must be set.
+/// Team Drive is set.
+///
+/// This is a write only field; it can only be set on drive.teamdrives.update
+/// requests that don't set themeId. When specified, all fields of the
+/// backgroundImageFile must be set.
 class TeamDriveBackgroundImageFile {
   /// The ID of an image file in Drive to use for the background image.
   core.String id;
 
-  /// The width of the cropped image in the closed range of 0 to 1. This value
-  /// represents the width of the cropped image divided by the width of the
-  /// entire image. The height is computed by applying a width to height aspect
-  /// ratio of 80 to 9. The resulting image must be at least 1280 pixels wide
-  /// and 144 pixels high.
+  /// The width of the cropped image in the closed range of 0 to 1.
+  ///
+  /// This value represents the width of the cropped image divided by the width
+  /// of the entire image. The height is computed by applying a width to height
+  /// aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels
+  /// wide and 144 pixels high.
   core.double width;
 
   /// The X coordinate of the upper left corner of the cropping area in the
-  /// background image. This is a value in the closed range of 0 to 1. This
-  /// value represents the horizontal distance from the left side of the entire
-  /// image to the left side of the cropping area divided by the width of the
-  /// entire image.
+  /// background image.
+  ///
+  /// This is a value in the closed range of 0 to 1. This value represents the
+  /// horizontal distance from the left side of the entire image to the left
+  /// side of the cropping area divided by the width of the entire image.
   core.double xCoordinate;
 
   /// The Y coordinate of the upper left corner of the cropping area in the
-  /// background image. This is a value in the closed range of 0 to 1. This
-  /// value represents the vertical distance from the top side of the entire
-  /// image to the top side of the cropping area divided by the height of the
-  /// entire image.
+  /// background image.
+  ///
+  /// This is a value in the closed range of 0 to 1. This value represents the
+  /// vertical distance from the top side of the entire image to the top side of
+  /// the cropping area divided by the height of the entire image.
   core.double yCoordinate;
 
   TeamDriveBackgroundImageFile();
@@ -11093,9 +11315,10 @@ class TeamDriveCapabilities {
   /// Drive.
   core.bool canDeleteChildren;
 
-  /// Whether the current user can delete this Team Drive. Attempting to delete
-  /// the Team Drive may still fail if there are untrashed items inside the Team
-  /// Drive.
+  /// Whether the current user can delete this Team Drive.
+  ///
+  /// Attempting to delete the Team Drive may still fail if there are untrashed
+  /// items inside the Team Drive.
   core.bool canDeleteTeamDrive;
 
   /// Whether the current user can download files in this Team Drive.
@@ -11273,15 +11496,17 @@ class TeamDriveRestrictions {
   core.bool adminManagedRestrictions;
 
   /// Whether the options to copy, print, or download files inside this Team
-  /// Drive, should be disabled for readers and commenters. When this
-  /// restriction is set to true, it will override the similarly named field to
-  /// true for any file inside this Team Drive.
+  /// Drive, should be disabled for readers and commenters.
+  ///
+  /// When this restriction is set to true, it will override the similarly named
+  /// field to true for any file inside this Team Drive.
   core.bool copyRequiresWriterPermission;
 
   /// Whether access to this Team Drive and items inside this Team Drive is
-  /// restricted to users of the domain to which this Team Drive belongs. This
-  /// restriction may be overridden by other sharing policies controlled outside
-  /// of this Team Drive.
+  /// restricted to users of the domain to which this Team Drive belongs.
+  ///
+  /// This restriction may be overridden by other sharing policies controlled
+  /// outside of this Team Drive.
   core.bool domainUsersOnly;
 
   /// Whether access to items inside this Team Drive is restricted to members of
@@ -11327,9 +11552,11 @@ class TeamDriveRestrictions {
 /// Deprecated: use the drive collection instead.
 class TeamDrive {
   /// An image file and cropping parameters from which a background image for
-  /// this Team Drive is set. This is a write only field; it can only be set on
-  /// drive.teamdrives.update requests that don't set themeId. When specified,
-  /// all fields of the backgroundImageFile must be set.
+  /// this Team Drive is set.
+  ///
+  /// This is a write only field; it can only be set on drive.teamdrives.update
+  /// requests that don't set themeId. When specified, all fields of the
+  /// backgroundImageFile must be set.
   TeamDriveBackgroundImageFile backgroundImageFile;
 
   /// A short-lived link to this Team Drive's background image.
@@ -11338,8 +11565,10 @@ class TeamDrive {
   /// Capabilities the current user has on this Team Drive.
   TeamDriveCapabilities capabilities;
 
-  /// The color of this Team Drive as an RGB hex string. It can only be set on a
-  /// drive.teamdrives.update request that does not set themeId.
+  /// The color of this Team Drive as an RGB hex string.
+  ///
+  /// It can only be set on a drive.teamdrives.update request that does not set
+  /// themeId.
   core.String colorRgb;
 
   /// The time at which the Team Drive was created (RFC 3339 date-time).
@@ -11360,6 +11589,7 @@ class TeamDrive {
   TeamDriveRestrictions restrictions;
 
   /// The ID of the theme from which the background image and color will be set.
+  ///
   /// The set of possible teamDriveThemes can be retrieved from a
   /// drive.about.get response. When not specified on a drive.teamdrives.insert
   /// request, a random theme is chosen from which the background image and

@@ -82,13 +82,14 @@ class DevicesResource {
 
   DevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Cancels an unfinished device wipe. This operation can be used to cancel
-  /// device wipe in the gap between the wipe operation returning success and
-  /// the device being wiped. This operation is possible when the device is in a
-  /// "pending wipe" state. The device enters the "pending wipe" state when a
-  /// wipe device command is issued, but has not yet been sent to the device.
-  /// The cancel wipe will fail if the wipe command has already been issued to
-  /// the device.
+  /// Cancels an unfinished device wipe.
+  ///
+  /// This operation can be used to cancel device wipe in the gap between the
+  /// wipe operation returning success and the device being wiped. This
+  /// operation is possible when the device is in a "pending wipe" state. The
+  /// device enters the "pending wipe" state when a wipe device command is
+  /// issued, but has not yet been sent to the device. The cancel wipe will fail
+  /// if the wipe command has already been issued to the device.
   ///
   /// [request] - The metadata request object.
   ///
@@ -150,7 +151,9 @@ class DevicesResource {
     );
   }
 
-  /// Creates a device. Only company-owned device may be created.
+  /// Creates a device.
+  ///
+  /// Only company-owned device may be created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -642,9 +645,10 @@ class DevicesDeviceUsersResource {
     );
   }
 
-  /// Cancels an unfinished user account wipe. This operation can be used to
-  /// cancel device wipe in the gap between the wipe operation returning success
-  /// and the device being wiped.
+  /// Cancels an unfinished user account wipe.
+  ///
+  /// This operation can be used to cancel device wipe in the gap between the
+  /// wipe operation returning success and the device being wiped.
   ///
   /// [request] - The metadata request object.
   ///
@@ -706,8 +710,9 @@ class DevicesDeviceUsersResource {
     );
   }
 
-  /// Deletes the specified DeviceUser. This also revokes the user's access to
-  /// device data.
+  /// Deletes the specified DeviceUser.
+  ///
+  /// This also revokes the user's access to device data.
   ///
   /// Request parameters:
   ///
@@ -940,8 +945,9 @@ class DevicesDeviceUsersResource {
   }
 
   /// Looks up resource names of the DeviceUsers associated with the caller's
-  /// credentials, as well as the properties provided in the request. This
-  /// method must be called with end-user credentials with the scope:
+  /// credentials, as well as the properties provided in the request.
+  ///
+  /// This method must be called with end-user credentials with the scope:
   /// https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple
   /// properties are provided, only DeviceUsers having all of these properties
   /// are considered as matches - i.e. the query behaves like an AND. Different
@@ -1047,13 +1053,14 @@ class DevicesDeviceUsersResource {
     );
   }
 
-  /// Wipes the user's account on a device. Other data on the device that is not
-  /// associated with the user's work account is not affected. For example, if a
-  /// Gmail app is installed on a device that is used for personal and work
-  /// purposes, and the user is logged in to the Gmail app with their personal
-  /// account as well as their work account, wiping the "deviceUser" by their
-  /// work administrator will not affect their personal account within Gmail or
-  /// other apps such as Photos.
+  /// Wipes the user's account on a device.
+  ///
+  /// Other data on the device that is not associated with the user's work
+  /// account is not affected. For example, if a Gmail app is installed on a
+  /// device that is used for personal and work purposes, and the user is logged
+  /// in to the Gmail app with their personal account as well as their work
+  /// account, wiping the "deviceUser" by their work administrator will not
+  /// affect their personal account within Gmail or other apps such as Photos.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2241,19 +2248,23 @@ class GroupsMembershipsResource {
   }
 }
 
-/// An EntityKey uniquely identifies an Entity. Namespaces are used to provide
-/// isolation for IDs. A single ID can be reused across namespaces but the
-/// combination of a namespace and an ID must be unique.
+/// An EntityKey uniquely identifies an Entity.
+///
+/// Namespaces are used to provide isolation for IDs. A single ID can be reused
+/// across namespaces but the combination of a namespace and an ID must be
+/// unique.
 class EntityKey {
-  /// The ID of the entity within the given namespace. The ID must be unique
-  /// within its namespace.
+  /// The ID of the entity within the given namespace.
+  ///
+  /// The ID must be unique within its namespace.
   core.String id;
 
   /// Namespaces provide isolation for IDs, so an ID only needs to be unique
-  /// within its namespace. Namespaces are currently only created as part of
-  /// IdentitySource creation from Admin Console. A namespace
-  /// `"identitysources/{identity_source_id}"` is created corresponding to every
-  /// Identity Source `identity_source_id`.
+  /// within its namespace.
+  ///
+  /// Namespaces are currently only created as part of IdentitySource creation
+  /// from Admin Console. A namespace `"identitysources/{identity_source_id}"`
+  /// is created corresponding to every Identity Source `identity_source_id`.
   core.String namespace;
 
   EntityKey();
@@ -2284,9 +2295,10 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// Whether applications from unknown sources can be installed on device.
   core.bool enabledUnknownSources;
 
-  /// Whether this account is on an owner/primary profile. For phones, only true
-  /// for owner profiles. Android 4+ devices can have secondary or restricted
-  /// user profiles.
+  /// Whether this account is on an owner/primary profile.
+  ///
+  /// For phones, only true for owner profiles. Android 4+ devices can have
+  /// secondary or restricted user profiles.
   core.bool ownerProfileAccount;
 
   /// Ownership privileges on device.
@@ -2299,9 +2311,10 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// - "DEVICE_OWNER" : Device Owner privileges on the device.
   core.String ownershipPrivilege;
 
-  /// Whether device supports Android work profiles. If false, this service will
-  /// not block access to corp data even if an administrator turns on the
-  /// "Enforce Work Profile" policy.
+  /// Whether device supports Android work profiles.
+  ///
+  /// If false, this service will not block access to corp data even if an
+  /// administrator turns on the "Enforce Work Profile" policy.
   core.bool supportsWorkProfile;
 
   GoogleAppsCloudidentityDevicesV1AndroidAttributes();
@@ -2341,12 +2354,15 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 
 /// Request message for approving the device to access user data.
 class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
-  /// Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
+  ///
+  /// Required.
   core.String customer;
 
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
@@ -2393,12 +2409,15 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
 
 /// Request message for blocking account on device.
 class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
-  /// Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
+  ///
+  /// Required.
   core.String customer;
 
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
@@ -2445,12 +2464,15 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
 
 /// Request message for cancelling an unfinished device wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
-  /// Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
+  ///
+  /// Required.
   core.String customer;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
@@ -2473,8 +2495,9 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
 
 /// Response message for cancelling an unfinished device wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
-  /// Resultant Device object for the action. Note that asset tags will not be
-  /// returned in the device object.
+  /// Resultant Device object for the action.
+  ///
+  /// Note that asset tags will not be returned in the device object.
   GoogleAppsCloudidentityDevicesV1Device device;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
@@ -2498,12 +2521,15 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
 
 /// Request message for cancelling an unfinished user account wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
-  /// Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
+  ///
+  /// Required.
   core.String customer;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
@@ -2549,6 +2575,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
 }
 
 /// Represents the state associated with an API client calling the Devices API.
+///
 /// Resource representing ClientState and supports updates from API users
 class GoogleAppsCloudidentityDevicesV1ClientState {
   /// The caller can specify asset tags for this resource
@@ -2562,7 +2589,9 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// - "NON_COMPLIANT" : Device is not compliant with third party policies
   core.String complianceState;
 
-  /// Output only. The time the client state data was created.
+  /// The time the client state data was created.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// This field may be used to store a unique identifier for the API resource
@@ -2570,13 +2599,16 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   core.String customId;
 
   /// The token that needs to be passed back for concurrency control in updates.
+  ///
   /// Token needs to be passed back in UpdateRequest
   core.String etag;
 
-  /// The Health score of the resource. The Health score is the callers
-  /// specification of the condition of the device from a usability point of
-  /// view. For example, a third-party device management provider may specify a
-  /// health score based on its compliance with organizational policies.
+  /// The Health score of the resource.
+  ///
+  /// The Health score is the callers specification of the condition of the
+  /// device from a usability point of view. For example, a third-party device
+  /// management provider may specify a health score based on its compliance
+  /// with organizational policies.
   /// Possible string values are:
   /// - "HEALTH_SCORE_UNSPECIFIED" : Default value
   /// - "VERY_POOR" : The object is in very poor health as defined by the
@@ -2590,12 +2622,15 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   core.String healthScore;
 
   /// The map of key-value attributes stored by callers specific to a device.
+  ///
   /// The total serialized length of this map may not exceed 10KB. No limit is
   /// placed on the number of attributes in a map.
   core.Map<core.String, GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
       keyValuePairs;
 
-  /// Output only. The time the client state data was last updated.
+  /// The time the client state data was last updated.
+  ///
+  /// Output only.
   core.String lastUpdateTime;
 
   /// The management state of the resource as specified by the API client.
@@ -2606,25 +2641,29 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// - "UNMANAGED" : The resource is not managed.
   core.String managed;
 
-  /// Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// ClientState in format:
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the ClientState in format:
   /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`,
-  /// where partner_id corresponds to the partner storing the data. For partners
-  /// belonging to the "BeyondCorp Alliance", this is the partner ID specified
-  /// to you by Google. For all other callers, this is a string of the form:
-  /// `{customer_id}-suffix`, where `customer_id` is your customer ID. The
-  /// *suffix* is any string the caller specifies. This string will be displayed
-  /// verbatim in the administration console. This suffix is used in setting up
-  /// Custom Access Levels in Context-Aware Access. Your organization's customer
-  /// ID can be obtained from the URL: `GET
+  /// where partner_id corresponds to the partner storing the data.
+  ///
+  /// For partners belonging to the "BeyondCorp Alliance", this is the partner
+  /// ID specified to you by Google. For all other callers, this is a string of
+  /// the form: `{customer_id}-suffix`, where `customer_id` is your customer ID.
+  /// The *suffix* is any string the caller specifies. This string will be
+  /// displayed verbatim in the administration console. This suffix is used in
+  /// setting up Custom Access Levels in Context-Aware Access. Your
+  /// organization's customer ID can be obtained from the URL: `GET
   /// https://www.googleapis.com/admin/directory/v1/customers/my_customer` The
   /// `id` field in the response contains the customer ID starting with the
   /// letter 'C'. The customer ID to be used in this API is the string after the
   /// letter 'C' (not including 'C')
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The owner of the ClientState
+  /// The owner of the ClientState
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "OWNER_TYPE_UNSPECIFIED" : Unknown owner type
   /// - "OWNER_TYPE_CUSTOMER" : Customer is the owner
@@ -2769,29 +2808,46 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   }
 }
 
-/// A Device within the Cloud Identity Devices API. Represents a Device known to
-/// Google Cloud, independent of the device ownership, type, and whether it is
-/// assigned or in use by a user.
+///  A Device within the Cloud Identity Devices API.
+///
+/// Represents a Device known to Google Cloud, independent of the device
+/// ownership, type, and whether it is assigned or in use by a user.
 class GoogleAppsCloudidentityDevicesV1Device {
-  /// Output only. Attributes specific to Android devices.
+  /// Attributes specific to Android devices.
+  ///
+  /// Output only.
   GoogleAppsCloudidentityDevicesV1AndroidAttributes androidSpecificAttributes;
 
   /// Asset tag of the device.
   core.String assetTag;
 
-  /// Output only. Baseband version of the device.
+  /// Baseband version of the device.
+  ///
+  /// Output only.
   core.String basebandVersion;
 
-  /// Output only. Device bootloader version. Example: 0.6.7.
+  /// Device bootloader version.
+  ///
+  /// Example: 0.6.7.
+  ///
+  /// Output only.
   core.String bootloaderVersion;
 
-  /// Output only. Device brand. Example: Samsung.
+  /// Device brand.
+  ///
+  /// Example: Samsung.
+  ///
+  /// Output only.
   core.String brand;
 
-  /// Output only. Build number of the device.
+  /// Build number of the device.
+  ///
+  /// Output only.
   core.String buildNumber;
 
-  /// Output only. Represents whether the Device is compromised.
+  /// Represents whether the Device is compromised.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "COMPROMISED_STATE_UNSPECIFIED" : Default value.
   /// - "COMPROMISED" : The device is compromised (currently, this means Android
@@ -2800,11 +2856,16 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// device is unrooted).
   core.String compromisedState;
 
-  /// Output only. When the Company-Owned device was imported. This field is
-  /// empty for BYOD devices.
+  /// When the Company-Owned device was imported.
+  ///
+  /// This field is empty for BYOD devices.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. Type of device.
+  /// Type of device.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : Unknown device type
   /// - "ANDROID" : Device is an Android device
@@ -2816,13 +2877,19 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "CHROME_OS" : Device is a ChromeOS device.
   core.String deviceType;
 
-  /// Output only. Whether developer options is enabled on device.
+  /// Whether developer options is enabled on device.
+  ///
+  /// Output only.
   core.bool enabledDeveloperOptions;
 
-  /// Output only. Whether USB debugging is enabled on device.
+  /// Whether USB debugging is enabled on device.
+  ///
+  /// Output only.
   core.bool enabledUsbDebugging;
 
-  /// Output only. Device encryption state.
+  /// Device encryption state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "ENCRYPTION_STATE_UNSPECIFIED" : Encryption Status is not set.
   /// - "UNSUPPORTED_BY_DEVICE" : Device doesn't support encryption.
@@ -2830,16 +2897,22 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "NOT_ENCRYPTED" : Device is not encrypted.
   core.String encryptionState;
 
-  /// Output only. IMEI number of device if GSM device; empty otherwise.
+  /// IMEI number of device if GSM device; empty otherwise.
+  ///
+  /// Output only.
   core.String imei;
 
-  /// Output only. Kernel version of the device.
+  /// Kernel version of the device.
+  ///
+  /// Output only.
   core.String kernelVersion;
 
   /// Most recent time when device synced with this service.
   core.String lastSyncTime;
 
-  /// Output only. Management state of the device
+  /// Management state of the device
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "MANAGEMENT_STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "APPROVED" : Device is approved.
@@ -2852,48 +2925,78 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "WIPED" : All data and settings on the device are removed.
   core.String managementState;
 
-  /// Output only. Device manufacturer. Example: Motorola.
+  /// Device manufacturer.
+  ///
+  /// Example: Motorola.
+  ///
+  /// Output only.
   core.String manufacturer;
 
-  /// Output only. MEID number of device if CDMA device; empty otherwise.
+  /// MEID number of device if CDMA device; empty otherwise.
+  ///
+  /// Output only.
   core.String meid;
 
-  /// Output only. Model name of device. Example: Pixel 3.
+  /// Model name of device.
+  ///
+  /// Example: Pixel 3.
+  ///
+  /// Output only.
   core.String model;
 
-  /// Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}`, where device_id is the unique id
-  /// assigned to the Device.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}`, where device_id is the unique
+  /// id assigned to the Device.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. Mobile or network operator of device, if available.
+  /// Mobile or network operator of device, if available.
+  ///
+  /// Output only.
   core.String networkOperator;
 
-  /// Output only. OS version of the device. Example: Android 8.1.0.
+  /// OS version of the device.
+  ///
+  /// Example: Android 8.1.0.
+  ///
+  /// Output only.
   core.String osVersion;
 
-  /// Output only. Domain name for Google accounts on device. Type for other
-  /// accounts on device. On Android, will only be populated if
+  /// Domain name for Google accounts on device.
+  ///
+  /// Type for other accounts on device. On Android, will only be populated if
   /// |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not
   /// include the account signed in to the device policy app if that account's
   /// domain has only one account. Examples: "com.example", "xyz.com".
+  ///
+  /// Output only.
   core.List<core.String> otherAccounts;
 
-  /// Output only. Whether the device is owned by the company or an individual
+  /// Whether the device is owned by the company or an individual
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "DEVICE_OWNERSHIP_UNSPECIFIED" : Default value. The value is unused.
   /// - "COMPANY" : Company owns the device.
   /// - "BYOD" : Bring Your Own Device (i.e. individual owns the device)
   core.String ownerType;
 
-  /// Output only. OS release version. Example: 6.0.
+  /// OS release version.
+  ///
+  /// Example: 6.0.
+  ///
+  /// Output only.
   core.String releaseVersion;
 
-  /// Output only. OS security patch update time on device.
+  /// OS security patch update time on device.
+  ///
+  /// Output only.
   core.String securityPatchTime;
 
-  /// Serial Number of device. Example: HT82V1A01076.
+  /// Serial Number of device.
+  ///
+  /// Example: HT82V1A01076.
   core.String serialNumber;
 
   /// WiFi MAC addresses of device.
@@ -3085,8 +3188,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
   }
 }
 
-/// Represents a user's use of a Device in the Cloud Identity Devices API. A
-/// DeviceUser is a resource representing a user's use of a Device
+/// Represents a user's use of a Device in the Cloud Identity Devices API.
+///
+/// A DeviceUser is a resource representing a user's use of a Device
 class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// Compromised State of the DeviceUser object
   /// Possible string values are:
@@ -3099,16 +3203,24 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// When the user first signed in to the device
   core.String createTime;
 
-  /// Output only. Most recent time when user registered with this service.
+  /// Most recent time when user registered with this service.
+  ///
+  /// Output only.
   core.String firstSyncTime;
 
-  /// Output only. Default locale used on device, in IETF BCP-47 format.
+  /// Default locale used on device, in IETF BCP-47 format.
+  ///
+  /// Output only.
   core.String languageCode;
 
-  /// Output only. Last time when user synced with policies.
+  /// Last time when user synced with policies.
+  ///
+  /// Output only.
   core.String lastSyncTime;
 
-  /// Output only. Management state of the user on the device.
+  /// Management state of the user on the device.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "MANAGEMENT_STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "WIPING" : This user's data and profile is being removed from the
@@ -3121,10 +3233,11 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// the Windows account is still intact.
   core.String managementState;
 
-  /// Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// DeviceUser in format: `devices/{device_id}/deviceUsers/{user_id}`, where
-  /// user_id is the ID of the user associated with the user session.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the DeviceUser in format: `devices/{device_id}/deviceUsers/{user_id}`,
+  /// where user_id is the ID of the user associated with the user session.
+  ///
+  /// Output only.
   core.String name;
 
   /// Password state of the DeviceUser object
@@ -3134,7 +3247,9 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// - "PASSWORD_NOT_SET" : Password not set in object.
   core.String passwordState;
 
-  /// Output only. User agent on the device for this specific user
+  /// User agent on the device for this specific user
+  ///
+  /// Output only.
   core.String userAgent;
 
   /// Email address of the user registered on the device.
@@ -3216,8 +3331,9 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   /// Client states meeting the list restrictions.
   core.List<GoogleAppsCloudidentityDevicesV1ClientState> clientStates;
 
-  /// Token to retrieve the next page of results. Empty if there are no more
-  /// results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// Empty if there are no more results.
   core.String nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
@@ -3254,8 +3370,9 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   /// Devices meeting the list restrictions.
   core.List<GoogleAppsCloudidentityDevicesV1DeviceUser> deviceUsers;
 
-  /// Token to retrieve the next page of results. Empty if there are no more
-  /// results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// Empty if there are no more results.
   core.String nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
@@ -3292,8 +3409,9 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   /// Devices meeting the list restrictions.
   core.List<GoogleAppsCloudidentityDevicesV1Device> devices;
 
-  /// Token to retrieve the next page of results. Empty if there are no more
-  /// results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// Empty if there are no more results.
   core.String nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
@@ -3337,8 +3455,9 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   /// ID
   core.List<core.String> names;
 
-  /// Token to retrieve the next page of results. Empty if there are no more
-  /// results.
+  /// Token to retrieve the next page of results.
+  ///
+  /// Empty if there are no more results.
   core.String nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
@@ -3375,12 +3494,15 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
 
 /// Request message for wiping all data on the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
-  /// Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
+  ///
+  /// Required.
   core.String customer;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
@@ -3402,8 +3524,9 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
 
 /// Response message for wiping all data on the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
-  /// Resultant Device object for the action. Note that asset tags will not be
-  /// returned in the device object.
+  /// Resultant Device object for the action.
+  ///
+  /// Note that asset tags will not be returned in the device object.
   GoogleAppsCloudidentityDevicesV1Device device;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
@@ -3426,12 +3549,15 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
 
 /// Request message for starting an account wipe on device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
-  /// Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer.
+  ///
+  /// If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
+  ///
+  /// Required.
   core.String customer;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
@@ -3478,10 +3604,15 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
 
 /// Resource representing a Group.
 class Group {
-  /// Output only. The time when the Group was created. Output only.
+  /// The time when the Group was created.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// An extended description to help users determine the purpose of a Group.
+  ///
   /// For example, you can include information about who should join the Group,
   /// the types of messages to send to the Group, links to FAQs about the Group,
   /// or related Groups. Maximum length is 4,096 characters.
@@ -3490,27 +3621,44 @@ class Group {
   /// The Group's display name.
   core.String displayName;
 
-  /// Required. Immutable. EntityKey of the Group. Must be set when creating a
-  /// Group, read-only afterwards.
+  /// EntityKey of the Group.
+  ///
+  /// Must be set when creating a Group, read-only afterwards.
+  ///
+  /// Required. Immutable.
   EntityKey groupKey;
 
-  /// Required. `Required`. Labels for Group resource. For creating Groups under
-  /// a namespace, set label key to 'labels/system/groups/external' and label
-  /// value as empty.
+  /// `Required`.
+  ///
+  /// Labels for Group resource. For creating Groups under a namespace, set
+  /// label key to 'labels/system/groups/external' and label value as empty.
+  ///
+  /// Required.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
-  /// the format: `groups/{group_id}`, where group_id is the unique ID assigned
-  /// to the Group. Must be left blank while creating a Group.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group in the format: `groups/{group_id}`, where group_id is the unique
+  /// ID assigned to the Group.
+  ///
+  /// Must be left blank while creating a Group.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. Immutable. The entity under which this Group resides in Cloud
-  /// Identity resource hierarchy. Must be set when creating a Group, read-only
-  /// afterwards. Currently allowed types: `identitysources`.
+  /// The entity under which this Group resides in Cloud Identity resource
+  /// hierarchy.
+  ///
+  /// Must be set when creating a Group, read-only afterwards. Currently allowed
+  /// types: `identitysources`.
+  ///
+  /// Required. Immutable.
   core.String parent;
 
-  /// Output only. The time when the Group was last updated. Output only.
+  /// The time when the Group was last updated.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Group();
@@ -3581,7 +3729,9 @@ class Group {
 
 /// Response message for ListGroups operation.
 class ListGroupsResponse {
-  /// Groups returned in response to list request. The results are not sorted.
+  /// Groups returned in response to list request.
+  ///
+  /// The results are not sorted.
   core.List<Group> groups;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -3674,9 +3824,10 @@ class LookupGroupNameResponse {
 
 class LookupMembershipNameResponse {
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Membership being looked up. Format:
-  /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
-  /// unique ID assigned to the Group to which Membership belongs to, and
+  /// the Membership being looked up.
+  ///
+  /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is
+  /// the unique ID assigned to the Group to which Membership belongs to, and
   /// `member_id` is the unique ID assigned to the member.
   core.String name;
 
@@ -3699,27 +3850,38 @@ class LookupMembershipNameResponse {
 
 /// Resource representing a Membership within a Group
 class Membership {
-  /// Output only. Creation timestamp of the Membership. Output only.
+  /// Creation timestamp of the Membership.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// Membership in the format: `groups/{group_id}/memberships/{member_id}`,
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Membership in the format: `groups/{group_id}/memberships/{member_id}`,
   /// where group_id is the unique ID assigned to the Group to which Membership
   /// belongs to, and member_id is the unique ID assigned to the member Must be
   /// left blank while creating a Membership.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. Immutable. EntityKey of the entity to be added as the member.
+  /// EntityKey of the entity to be added as the member.
+  ///
   /// Must be set while creating a Membership, read-only afterwards. Currently
   /// allowed entity types: `Users`, `Groups`.
+  ///
+  /// Required. Immutable.
   EntityKey preferredMemberKey;
 
-  /// Roles for a member within the Group. Currently supported MembershipRoles:
-  /// `"MEMBER"`.
+  /// Roles for a member within the Group.
+  ///
+  /// Currently supported MembershipRoles: `"MEMBER"`.
   core.List<MembershipRole> roles;
 
-  /// Output only. The type of the membership.
+  /// The type of the membership.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default. Should not be used.
   /// - "USER" : Represents user type.
@@ -3728,7 +3890,11 @@ class Membership {
   /// - "OTHER" : Represents other type.
   core.String type;
 
-  /// Output only. Last updated timestamp of the Membership. Output only.
+  /// Last updated timestamp of the Membership.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Membership();
@@ -3784,8 +3950,9 @@ class Membership {
 
 /// Resource representing a role within a Membership.
 class MembershipRole {
-  /// MembershipRole in string format. Currently supported MembershipRoles:
-  /// `"MEMBER"`.
+  /// MembershipRole in string format.
+  ///
+  /// Currently supported MembershipRoles: `"MEMBER"`.
   core.String name;
 
   MembershipRole();
@@ -3807,16 +3974,19 @@ class MembershipRole {
 
 /// The request message for MembershipsService.ModifyMembershipRoles.
 class ModifyMembershipRolesRequest {
-  /// The `MembershipRole`s to be added. Adding or removing roles in the same
-  /// request as updating roles is not supported. Must not be set if
-  /// `update_roles_params` is set.
+  /// The `MembershipRole`s to be added.
+  ///
+  /// Adding or removing roles in the same request as updating roles is not
+  /// supported. Must not be set if `update_roles_params` is set.
   core.List<MembershipRole> addRoles;
 
-  /// The `name`s of the `MembershipRole`s to be removed. Adding or removing
-  /// roles in the same request as updating roles is not supported. It is not
-  /// possible to remove the `MEMBER` `MembershipRole`. If you wish to delete a
-  /// `Membership`, call MembershipsService.DeleteMembership instead. Must not
-  /// contain `MEMBER`. Must not be set if `update_roles_params` is set.
+  /// The `name`s of the `MembershipRole`s to be removed.
+  ///
+  /// Adding or removing roles in the same request as updating roles is not
+  /// supported. It is not possible to remove the `MEMBER` `MembershipRole`. If
+  /// you wish to delete a `Membership`, call
+  /// MembershipsService.DeleteMembership instead. Must not contain `MEMBER`.
+  /// Must not be set if `update_roles_params` is set.
   core.List<core.String> removeRoles;
 
   ModifyMembershipRolesRequest();
@@ -3873,31 +4043,37 @@ class ModifyMembershipRolesResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -3996,24 +4172,27 @@ class SearchGroupsResponse {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

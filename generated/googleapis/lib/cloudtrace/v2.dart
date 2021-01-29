@@ -44,11 +44,12 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Sends application trace data to Cloud Trace for viewing. Trace data is
-/// collected for all App Engine applications by default. Trace data from other
-/// applications can be provided using this API. This library is used to
-/// interact with the Cloud Trace API directly. If you are looking to instrument
-/// your application for Cloud Trace, we recommend using OpenCensus.
+/// Sends application trace data to Cloud Trace for viewing.
+///
+/// Trace data is collected for all App Engine applications by default. Trace
+/// data from other applications can be provided using this API. This library is
+/// used to interact with the Cloud Trace API directly. If you are looking to
+/// instrument your application for Cloud Trace, we recommend using OpenCensus.
 class CloudTraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -85,8 +86,9 @@ class ProjectsTracesResource {
 
   ProjectsTracesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Sends new spans to new or existing traces. You cannot update existing
-  /// spans.
+  /// Sends new spans to new or existing traces.
+  ///
+  /// You cannot update existing spans.
   ///
   /// [request] - The metadata request object.
   ///
@@ -218,12 +220,14 @@ class ProjectsTracesSpansResource {
 
 /// Text annotation with a set of attributes.
 class Annotation {
-  /// A set of attributes on the annotation. You can have up to 4 attributes per
-  /// Annotation.
+  /// A set of attributes on the annotation.
+  ///
+  /// You can have up to 4 attributes per Annotation.
   Attributes attributes;
 
-  /// A user-supplied message describing the event. The maximum length for the
-  /// description is 256 bytes.
+  /// A user-supplied message describing the event.
+  ///
+  /// The maximum length for the description is 256 bytes.
   TruncatableString description;
 
   Annotation();
@@ -294,16 +298,20 @@ class AttributeValue {
 
 /// A set of attributes, each in the format `[KEY]:[VALUE]`.
 class Attributes {
-  /// The set of attributes. Each attribute's key can be up to 128 bytes long.
-  /// The value can be a string up to 256 bytes, a signed 64-bit integer, or the
-  /// Boolean values `true` and `false`. For example: "/instance_id": {
-  /// "string_value": { "value": "my-instance" } } "/http/request_bytes": {
-  /// "int_value": 300 } "abc.com/myattribute": { "bool_value": false }
+  /// The set of attributes.
+  ///
+  /// Each attribute's key can be up to 128 bytes long. The value can be a
+  /// string up to 256 bytes, a signed 64-bit integer, or the Boolean values
+  /// `true` and `false`. For example: "/instance_id": { "string_value": {
+  /// "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
+  /// "abc.com/myattribute": { "bool_value": false }
   core.Map<core.String, AttributeValue> attributeMap;
 
-  /// The number of attributes that were discarded. Attributes can be discarded
-  /// because their keys are too long or because there are too many attributes.
-  /// If this value is 0 then all attributes are valid.
+  /// The number of attributes that were discarded.
+  ///
+  /// Attributes can be discarded because their keys are too long or because
+  /// there are too many attributes. If this value is 0 then all attributes are
+  /// valid.
   core.int droppedAttributesCount;
 
   Attributes();
@@ -339,8 +347,12 @@ class Attributes {
 
 /// The request message for the `BatchWriteSpans` method.
 class BatchWriteSpansRequest {
-  /// Required. A list of new spans. The span names must not match existing
-  /// spans, or the results are undefined.
+  /// A list of new spans.
+  ///
+  /// The span names must not match existing spans, or the results are
+  /// undefined.
+  ///
+  /// Required.
   core.List<Span> spans;
 
   BatchWriteSpansRequest();
@@ -364,10 +376,12 @@ class BatchWriteSpansRequest {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -382,12 +396,15 @@ class Empty {
 }
 
 /// A pointer from the current span to another span in the same trace or in a
-/// different trace. For example, this can be used in batching operations, where
-/// a single batch handler processes multiple requests from different traces or
-/// when the handler receives a request from a different project.
+/// different trace.
+///
+/// For example, this can be used in batching operations, where a single batch
+/// handler processes multiple requests from different traces or when the
+/// handler receives a request from a different project.
 class Link {
-  /// A set of attributes on the link. You have have up to 32 attributes per
-  /// link.
+  /// A set of attributes on the link.
+  ///
+  /// You have have up to 32 attributes per link.
   Attributes attributes;
 
   /// The [SPAN_ID] for a span within a trace.
@@ -442,8 +459,9 @@ class Link {
 /// A collection of links, which are references from this span to a span in the
 /// same or different trace.
 class Links {
-  /// The number of dropped links after the maximum size was enforced. If this
-  /// value is 0, then no links were dropped.
+  /// The number of dropped links after the maximum size was enforced.
+  ///
+  /// If this value is 0, then no links were dropped.
   core.int droppedLinksCount;
 
   /// A collection of links.
@@ -477,16 +495,20 @@ class Links {
 
 /// An event describing a message sent/received between Spans.
 class MessageEvent {
-  /// The number of compressed bytes sent or received. If missing assumed to be
-  /// the same size as uncompressed.
+  /// The number of compressed bytes sent or received.
+  ///
+  /// If missing assumed to be the same size as uncompressed.
   core.String compressedSizeBytes;
 
   /// An identifier for the MessageEvent's message that can be used to match
-  /// SENT and RECEIVED MessageEvents. It is recommended to be unique within a
-  /// Span.
+  /// SENT and RECEIVED MessageEvents.
+  ///
+  /// It is recommended to be unique within a Span.
   core.String id;
 
-  /// Type of MessageEvent. Indicates whether the message was sent or received.
+  /// Type of MessageEvent.
+  ///
+  /// Indicates whether the message was sent or received.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unknown event type.
   /// - "SENT" : Indicates a sent message.
@@ -566,59 +588,88 @@ class Module {
   }
 }
 
-/// A span represents a single operation within a trace. Spans can be nested to
-/// form a trace tree. Often, a trace contains a root span that describes the
-/// end-to-end latency, and one or more subspans for its sub-operations. A trace
-/// can also contain multiple root spans, or none at all. Spans do not need to
-/// be contiguous—there may be gaps or overlaps between spans in a trace.
+/// A span represents a single operation within a trace.
+///
+/// Spans can be nested to form a trace tree. Often, a trace contains a root
+/// span that describes the end-to-end latency, and one or more subspans for its
+/// sub-operations. A trace can also contain multiple root spans, or none at
+/// all. Spans do not need to be contiguous—there may be gaps or overlaps
+/// between spans in a trace.
 class Span {
-  /// A set of attributes on the span. You can have up to 32 attributes per
-  /// span.
+  /// A set of attributes on the span.
+  ///
+  /// You can have up to 32 attributes per span.
   Attributes attributes;
 
-  /// Optional. The number of child spans that were generated while this span
-  /// was active. If set, allows implementation to detect missing child spans.
+  /// The number of child spans that were generated while this span was active.
+  ///
+  /// If set, allows implementation to detect missing child spans.
+  ///
+  /// Optional.
   core.int childSpanCount;
 
-  /// Required. A description of the span's operation (up to 128 bytes). Trace
-  /// displays the description in the Google Cloud Platform Console. For
+  /// A description of the span's operation (up to 128 bytes).
+  ///
+  /// Trace displays the description in the Google Cloud Platform Console. For
   /// example, the display name can be a qualified method name or a file name
   /// and a line number where the operation is called. A best practice is to use
   /// the same display name within an application and at the same call point.
   /// This makes it easier to correlate spans in different traces.
+  ///
+  /// Required.
   TruncatableString displayName;
 
-  /// Required. The end time of the span. On the client side, this is the time
-  /// kept by the local machine where the span execution ends. On the server
-  /// side, this is the time when the server application handler stops running.
+  /// The end time of the span.
+  ///
+  /// On the client side, this is the time kept by the local machine where the
+  /// span execution ends. On the server side, this is the time when the server
+  /// application handler stops running.
+  ///
+  /// Required.
   core.String endTime;
 
-  /// Links associated with the span. You can have up to 128 links per Span.
+  /// Links associated with the span.
+  ///
+  /// You can have up to 128 links per Span.
   Links links;
 
-  /// Required. The resource name of the span in the following format:
+  /// The resource name of the span in the following format:
   /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project; it is a 32-character hexadecimal
-  /// encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
-  /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte
-  /// array. It should not be zero.
+  /// encoding of a 16-byte array.
+  ///
+  /// [SPAN_ID] is a unique identifier for a span within a trace; it is a
+  /// 16-character hexadecimal encoding of an 8-byte array. It should not be
+  /// zero.
+  ///
+  /// Required.
   core.String name;
 
-  /// The [SPAN_ID] of this span's parent span. If this is a root span, then
-  /// this field must be empty.
+  /// The [SPAN_ID] of this span's parent span.
+  ///
+  /// If this is a root span, then this field must be empty.
   core.String parentSpanId;
 
-  /// Optional. Set this parameter to indicate whether this span is in the same
-  /// process as its parent. If you do not set this parameter, Trace is unable
-  /// to take advantage of this helpful information.
+  /// Set this parameter to indicate whether this span is in the same process as
+  /// its parent.
+  ///
+  /// If you do not set this parameter, Trace is unable to take advantage of
+  /// this helpful information.
+  ///
+  /// Optional.
   core.bool sameProcessAsParentSpan;
 
-  /// Required. The [SPAN_ID] portion of the span's resource name.
+  /// The [SPAN_ID] portion of the span's resource name.
+  ///
+  /// Required.
   core.String spanId;
 
-  /// Optional. Distinguishes between spans generated in a particular context.
+  /// Distinguishes between spans generated in a particular context.
+  ///
   /// For example, two spans with the same name may be distinguished using
   /// `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SPAN_KIND_UNSPECIFIED" : Unspecified. Do NOT use as default.
   /// Implementations MAY assume SpanKind.INTERNAL to be default.
@@ -640,17 +691,23 @@ class Span {
   /// Stack trace captured at the start of the span.
   StackTrace stackTrace;
 
-  /// Required. The start time of the span. On the client side, this is the time
-  /// kept by the local machine where the span execution starts. On the server
-  /// side, this is the time when the server's application handler starts
-  /// running.
+  /// The start time of the span.
+  ///
+  /// On the client side, this is the time kept by the local machine where the
+  /// span execution starts. On the server side, this is the time when the
+  /// server's application handler starts running.
+  ///
+  /// Required.
   core.String startTime;
 
-  /// Optional. The final status for this span.
+  /// The final status for this span.
+  ///
+  /// Optional.
   Status status;
 
-  /// A set of time events. You can have up to 32 annotations and 128 message
-  /// events per span.
+  /// A set of time events.
+  ///
+  /// You can have up to 32 annotations and 128 message events per span.
   TimeEvents timeEvents;
 
   Span();
@@ -756,8 +813,9 @@ class Span {
 
 /// Represents a single stack frame in a stack trace.
 class StackFrame {
-  /// The column number where the function call appears, if available. This is
-  /// important in JavaScript because of its anonymous functions.
+  /// The column number where the function call appears, if available.
+  ///
+  /// This is important in JavaScript because of its anonymous functions.
   core.String columnNumber;
 
   /// The name of the source file where the function call appears (up to 256
@@ -775,8 +833,9 @@ class StackFrame {
   Module loadModule;
 
   /// An un-mangled function name, if `function_name` is
-  /// [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can be
-  /// fully-qualified (up to 1024 bytes).
+  /// [mangled](http://www.avabodh.com/cxxin/namemangling.html).
+  ///
+  /// The name can be fully-qualified (up to 1024 bytes).
   TruncatableString originalFunctionName;
 
   /// The version of the deployed source code (up to 128 bytes).
@@ -843,7 +902,9 @@ class StackFrame {
 /// A collection of stack frames, which can be truncated.
 class StackFrames {
   /// The number of stack frames that were dropped because there were too many
-  /// stack frames. If this value is 0, then no stack frames were dropped.
+  /// stack frames.
+  ///
+  /// If this value is 0, then no stack frames were dropped.
   core.int droppedFramesCount;
 
   /// Stack frames in this call stack.
@@ -877,15 +938,18 @@ class StackFrames {
 
 /// A call stack appearing in a trace.
 class StackTrace {
-  /// Stack frames in this stack trace. A maximum of 128 frames are allowed.
+  /// Stack frames in this stack trace.
+  ///
+  /// A maximum of 128 frames are allowed.
   StackFrames stackFrames;
 
   /// The hash ID is used to conserve network bandwidth for duplicate stack
-  /// traces within a single trace. Often multiple spans will have identical
-  /// stack traces. The first occurrence of a stack trace should contain both
-  /// the `stackFrame` content and a value in `stackTraceHashId`. Subsequent
-  /// spans within the same request can refer to that stack trace by only
-  /// setting `stackTraceHashId`.
+  /// traces within a single trace.
+  ///
+  /// Often multiple spans will have identical stack traces. The first
+  /// occurrence of a stack trace should contain both the `stackFrame` content
+  /// and a value in `stackTraceHashId`. Subsequent spans within the same
+  /// request can refer to that stack trace by only setting `stackTraceHashId`.
   core.String stackTraceHashId;
 
   StackTrace();
@@ -913,24 +977,27 @@ class StackTrace {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -1013,16 +1080,20 @@ class TimeEvent {
   }
 }
 
-/// A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on
-/// the span, consisting of either user-supplied key:value pairs, or details of
-/// a message sent/received between Spans.
+/// A collection of `TimeEvent`s.
+///
+/// A `TimeEvent` is a time-stamped annotation on the span, consisting of either
+/// user-supplied key:value pairs, or details of a message sent/received between
+/// Spans.
 class TimeEvents {
-  /// The number of dropped annotations in all the included time events. If the
-  /// value is 0, then no annotations were dropped.
+  /// The number of dropped annotations in all the included time events.
+  ///
+  /// If the value is 0, then no annotations were dropped.
   core.int droppedAnnotationsCount;
 
-  /// The number of dropped message events in all the included time events. If
-  /// the value is 0, then no message events were dropped.
+  /// The number of dropped message events in all the included time events.
+  ///
+  /// If the value is 0, then no message events were dropped.
   core.int droppedMessageEventsCount;
 
   /// A collection of `TimeEvent`s.
@@ -1063,15 +1134,18 @@ class TimeEvents {
 
 /// Represents a string that might be shortened to a specified length.
 class TruncatableString {
-  /// The number of bytes removed from the original string. If this value is 0,
-  /// then the string was not shortened.
+  /// The number of bytes removed from the original string.
+  ///
+  /// If this value is 0, then the string was not shortened.
   core.int truncatedByteCount;
 
-  /// The shortened string. For example, if the original string is 500 bytes
-  /// long and the limit of the string is 128 bytes, then `value` contains the
-  /// first 128 bytes of the 500-byte string. Truncation always happens on a
-  /// UTF8 character boundary. If there are multi-byte characters in the string,
-  /// then the length of the shortened string might be less than the size limit.
+  /// The shortened string.
+  ///
+  /// For example, if the original string is 500 bytes long and the limit of the
+  /// string is 128 bytes, then `value` contains the first 128 bytes of the
+  /// 500-byte string. Truncation always happens on a UTF8 character boundary.
+  /// If there are multi-byte characters in the string, then the length of the
+  /// shortened string might be less than the size limit.
   core.String value;
 
   TruncatableString();

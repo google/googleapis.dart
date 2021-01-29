@@ -105,8 +105,9 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -164,10 +165,11 @@ class OperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -218,9 +220,10 @@ class OperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -287,10 +290,11 @@ class OperationsProjectsOperationsResource {
   OperationsProjectsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -553,8 +557,10 @@ class ProjectsInstancesResource {
     );
   }
 
-  /// Gets the access control policy for an instance resource. Returns an empty
-  /// policy if an instance exists but does not have a policy set.
+  /// Gets the access control policy for an instance resource.
+  ///
+  /// Returns an empty policy if an instance exists but does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -675,8 +681,10 @@ class ProjectsInstancesResource {
     );
   }
 
-  /// Partially updates an instance within a project. This method can modify all
-  /// fields of an Instance and is the preferred way to update an Instance.
+  /// Partially updates an instance within a project.
+  ///
+  /// This method can modify all fields of an Instance and is the preferred way
+  /// to update an Instance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -741,8 +749,9 @@ class ProjectsInstancesResource {
     );
   }
 
-  /// Sets the access control policy on an instance resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on an instance resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -866,9 +875,11 @@ class ProjectsInstancesResource {
     );
   }
 
-  /// Updates an instance within a project. This method updates only the display
-  /// name and type for an Instance. To update other Instance properties, such
-  /// as labels, use PartialUpdateInstance.
+  /// Updates an instance within a project.
+  ///
+  /// This method updates only the display name and type for an Instance. To
+  /// update other Instance properties, such as labels, use
+  /// PartialUpdateInstance.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1586,11 +1597,12 @@ class ProjectsInstancesClustersBackupsResource {
   ProjectsInstancesClustersBackupsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts creating a new Cloud Bigtable Backup. The returned backup
-  /// long-running operation can be used to track creation of the backup. The
-  /// metadata field type is CreateBackupMetadata. The response field type is
-  /// Backup, if successful. Cancelling the returned operation will stop the
-  /// creation and delete the backup.
+  /// Starts creating a new Cloud Bigtable Backup.
+  ///
+  /// The returned backup long-running operation can be used to track creation
+  /// of the backup. The metadata field type is CreateBackupMetadata. The
+  /// response field type is Backup, if successful. Cancelling the returned
+  /// operation will stop the creation and delete the backup.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1768,8 +1780,10 @@ class ProjectsInstancesClustersBackupsResource {
     );
   }
 
-  /// Gets the access control policy for a Table resource. Returns an empty
-  /// policy if the resource exists but does not have a policy set.
+  /// Gets the access control policy for a Table resource.
+  ///
+  /// Returns an empty policy if the resource exists but does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1831,7 +1845,9 @@ class ProjectsInstancesClustersBackupsResource {
     );
   }
 
-  /// Lists Cloud Bigtable backups. Returns both completed and pending backups.
+  /// Lists Cloud Bigtable backups.
+  ///
+  /// Returns both completed and pending backups.
   ///
   /// Request parameters:
   ///
@@ -2018,8 +2034,9 @@ class ProjectsInstancesClustersBackupsResource {
     );
   }
 
-  /// Sets the access control policy on a Table resource. Replaces any existing
-  /// policy.
+  /// Sets the access control policy on a Table resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2215,8 +2232,10 @@ class ProjectsInstancesTablesResource {
     );
   }
 
-  /// Creates a new table in the specified instance. The table can be created
-  /// with a full set of initial column families, specified in the request.
+  /// Creates a new table in the specified instance.
+  ///
+  /// The table can be created with a full set of initial column families,
+  /// specified in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2327,9 +2346,10 @@ class ProjectsInstancesTablesResource {
     );
   }
 
-  /// Permanently drop/delete a row range from a specified table. The request
-  /// can specify whether to delete all rows in a table, or only those that
-  /// match a particular prefix.
+  /// Permanently drop/delete a row range from a specified table.
+  ///
+  /// The request can specify whether to delete all rows in a table, or only
+  /// those that match a particular prefix.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2392,8 +2412,9 @@ class ProjectsInstancesTablesResource {
 
   /// Generates a consistency token for a Table, which can be used in
   /// CheckConsistency to check whether mutations to the table that finished
-  /// before this call started have been replicated. The tokens will be
-  /// available for 90 days.
+  /// before this call started have been replicated.
+  ///
+  /// The tokens will be available for 90 days.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2523,8 +2544,10 @@ class ProjectsInstancesTablesResource {
     );
   }
 
-  /// Gets the access control policy for a Table resource. Returns an empty
-  /// policy if the resource exists but does not have a policy set.
+  /// Gets the access control policy for a Table resource.
+  ///
+  /// Returns an empty policy if the resource exists but does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2674,6 +2697,7 @@ class ProjectsInstancesTablesResource {
   }
 
   /// Performs a series of column family modifications on the specified table.
+  ///
   /// Either all or none of the modifications will occur before this method
   /// returns, but data requests received prior to that point may see a table
   /// where only some modifications have taken effect.
@@ -2737,10 +2761,11 @@ class ProjectsInstancesTablesResource {
     );
   }
 
-  /// Create a new table by restoring from a completed backup. The new table
-  /// must be in the same instance as the instance containing the backup. The
-  /// returned table long-running operation can be used to track the progress of
-  /// the operation, and to cancel it. The metadata field type is
+  /// Create a new table by restoring from a completed backup.
+  ///
+  /// The new table must be in the same instance as the instance containing the
+  /// backup. The returned table long-running operation can be used to track the
+  /// progress of the operation, and to cancel it. The metadata field type is
   /// RestoreTableMetadata. The response type is Table, if successful.
   ///
   /// [request] - The metadata request object.
@@ -2802,8 +2827,9 @@ class ProjectsInstancesTablesResource {
     );
   }
 
-  /// Sets the access control policy on a Table resource. Replaces any existing
-  /// policy.
+  /// Sets the access control policy on a Table resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3061,19 +3087,22 @@ class AppProfile {
   /// Long form description of the use case for this AppProfile.
   core.String description;
 
-  /// Strongly validated etag for optimistic concurrency control. Preserve the
-  /// value returned from `GetAppProfile` when calling `UpdateAppProfile` to
-  /// fail the request if there has been a modification in the mean time. The
-  /// `update_mask` of the request need not include `etag` for this protection
-  /// to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and
-  /// [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more
-  /// details.
+  /// Strongly validated etag for optimistic concurrency control.
+  ///
+  /// Preserve the value returned from `GetAppProfile` when calling
+  /// `UpdateAppProfile` to fail the request if there has been a modification in
+  /// the mean time. The `update_mask` of the request need not include `etag`
+  /// for this protection to apply. See
+  /// [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC
+  /// 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
   core.String etag;
 
   /// Use a multi-cluster routing policy.
   MultiClusterRoutingUseAny multiClusterRoutingUseAny;
 
-  /// The unique name of the app profile. Values are of the form
+  /// The unique name of the app profile.
+  ///
+  /// Values are of the form
   /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   core.String name;
 
@@ -3124,11 +3153,12 @@ class AppProfile {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -3144,9 +3174,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -3176,14 +3207,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -3221,17 +3255,25 @@ class AuditLogConfig {
 
 /// A backup of a Cloud Bigtable table.
 class Backup {
-  /// Output only. `end_time` is the time that the backup was finished. The row
-  /// data in the backup will be no newer than this timestamp.
+  /// `end_time` is the time that the backup was finished.
+  ///
+  /// The row data in the backup will be no newer than this timestamp.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Required. The expiration time of the backup, with microseconds granularity
-  /// that must be at least 6 hours and at most 30 days from the time the
-  /// request is received. Once the `expire_time` has passed, Cloud Bigtable
-  /// will delete the backup and free the resources used by the backup.
+  /// The expiration time of the backup, with microseconds granularity that must
+  /// be at least 6 hours and at most 30 days from the time the request is
+  /// received.
+  ///
+  /// Once the `expire_time` has passed, Cloud Bigtable will delete the backup
+  /// and free the resources used by the backup.
+  ///
+  /// Required.
   core.String expireTime;
 
   /// A globally unique identifier for the backup which cannot be changed.
+  ///
   /// Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/{cluster}/
   /// backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and
@@ -3240,20 +3282,30 @@ class Backup {
   /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
   core.String name;
 
-  /// Output only. Size of the backup in bytes.
+  /// Size of the backup in bytes.
+  ///
+  /// Output only.
   core.String sizeBytes;
 
-  /// Required. Immutable. Name of the table from which this backup was created.
+  /// Name of the table from which this backup was created.
+  ///
   /// This needs to be in the same instance as the backup. Values are of the
   /// form `projects/{project}/instances/{instance}/tables/{source_table}`.
+  ///
+  /// Required. Immutable.
   core.String sourceTable;
 
-  /// Output only. `start_time` is the time that the backup was started (i.e.
-  /// approximately the time the CreateBackup request is received). The row data
-  /// in this backup will be no older than this timestamp.
+  /// `start_time` is the time that the backup was started (i.e. approximately
+  /// the time the CreateBackup request is received).
+  ///
+  /// The row data in this backup will be no older than this timestamp.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. The current state of the backup.
+  /// The current state of the backup.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not specified.
   /// - "CREATING" : The pending backup is still being created. Operations on
@@ -3316,18 +3368,28 @@ class Backup {
 
 /// Information about a backup.
 class BackupInfo {
-  /// Output only. Name of the backup.
+  /// Name of the backup.
+  ///
+  /// Output only.
   core.String backup;
 
-  /// Output only. This time that the backup was finished. Row data in the
-  /// backup will be no newer than this timestamp.
+  /// This time that the backup was finished.
+  ///
+  /// Row data in the backup will be no newer than this timestamp.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Output only. Name of the table the backup was created from.
+  /// Name of the table the backup was created from.
+  ///
+  /// Output only.
   core.String sourceTable;
 
-  /// Output only. The time that the backup was started. Row data in the backup
-  /// will be no older than this timestamp.
+  /// The time that the backup was started.
+  ///
+  /// Row data in the backup will be no older than this timestamp.
+  ///
+  /// Output only.
   core.String startTime;
 
   BackupInfo();
@@ -3367,16 +3429,19 @@ class BackupInfo {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -3407,8 +3472,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -3446,7 +3512,9 @@ class Binding {
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.CheckConsistency
 class CheckConsistencyRequest {
-  /// Required. The token created using GenerateConsistencyToken for the Table.
+  /// The token created using GenerateConsistencyToken for the Table.
+  ///
+  /// Required.
   core.String consistencyToken;
 
   CheckConsistencyRequest();
@@ -3469,8 +3537,10 @@ class CheckConsistencyRequest {
 /// Response message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.CheckConsistency
 class CheckConsistencyResponse {
-  /// True only if the token is consistent. A token is consistent if replication
-  /// has caught up with the restrictions specified in the request.
+  /// True only if the token is consistent.
+  ///
+  /// A token is consistent if replication has caught up with the restrictions
+  /// specified in the request.
   core.bool consistent;
 
   CheckConsistencyResponse();
@@ -3493,29 +3563,41 @@ class CheckConsistencyResponse {
 /// A resizable group of nodes in a particular cloud location, capable of
 /// serving all Tables in the parent Instance.
 class Cluster {
-  /// Immutable. The type of storage used by this cluster to serve its parent
-  /// instance's tables, unless explicitly overridden.
+  /// The type of storage used by this cluster to serve its parent instance's
+  /// tables, unless explicitly overridden.
+  ///
+  /// Immutable.
   /// Possible string values are:
   /// - "STORAGE_TYPE_UNSPECIFIED" : The user did not specify a storage type.
   /// - "SSD" : Flash (SSD) storage should be used.
   /// - "HDD" : Magnetic drive (HDD) storage should be used.
   core.String defaultStorageType;
 
-  /// Immutable. The location where this cluster's nodes and storage reside. For
-  /// best performance, clients should be located as close as possible to this
-  /// cluster. Currently only zones are supported, so values should be of the
-  /// form `projects/{project}/locations/{zone}`.
+  /// The location where this cluster's nodes and storage reside.
+  ///
+  /// For best performance, clients should be located as close as possible to
+  /// this cluster. Currently only zones are supported, so values should be of
+  /// the form `projects/{project}/locations/{zone}`.
+  ///
+  /// Immutable.
   core.String location;
 
-  /// The unique name of the cluster. Values are of the form
+  /// The unique name of the cluster.
+  ///
+  /// Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
   core.String name;
 
-  /// Required. The number of nodes allocated to this cluster. More nodes enable
-  /// higher throughput and more consistent performance.
+  /// The number of nodes allocated to this cluster.
+  ///
+  /// More nodes enable higher throughput and more consistent performance.
+  ///
+  /// Required.
   core.int serveNodes;
 
-  /// Output only. The current state of the cluster.
+  /// The current state of the cluster.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_NOT_KNOWN" : The state of the cluster could not be determined.
   /// - "READY" : The cluster has been successfully created and is ready to
@@ -3575,7 +3657,9 @@ class Cluster {
 
 /// The state of a table's data in a particular cluster.
 class ClusterState {
-  /// Output only. The state of replication for the table in this cluster.
+  /// The state of replication for the table in this cluster.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_NOT_KNOWN" : The replication state of the table is unknown in
   /// this cluster.
@@ -3613,10 +3697,11 @@ class ClusterState {
 
 /// A set of columns within a table which share a common configuration.
 class ColumnFamily {
-  /// Garbage collection rule specified as a protobuf. Must serialize to at most
-  /// 500 bytes. NOTE: Garbage collection executes opportunistically in the
-  /// background, and so it's possible for reads to return a cell even if it
-  /// matches the active GC expression for its family.
+  /// Garbage collection rule specified as a protobuf.
+  ///
+  /// Must serialize to at most 500 bytes. NOTE: Garbage collection executes
+  /// opportunistically in the background, and so it's possible for reads to
+  /// return a cell even if it matches the active GC expression for its family.
   GcRule gcRule;
 
   ColumnFamily();
@@ -3698,10 +3783,12 @@ class CreateClusterMetadata {
   core.String requestTime;
 
   /// Keys: the full `name` of each table that existed in the instance when
-  /// CreateCluster was first called, i.e. `projects//instances//tables/`. Any
-  /// table added to the instance by a later API call will be created in the new
-  /// cluster by that API call, not this one. Values: information on how much of
-  /// a table's data has been copied to the newly-created cluster so far.
+  /// CreateCluster was first called, i.e. `projects//instances//tables/`.
+  ///
+  /// Any table added to the instance by a later API call will be created in the
+  /// new cluster by that API call, not this one. Values: information on how
+  /// much of a table's data has been copied to the newly-created cluster so
+  /// far.
   core.Map<core.String, TableProgress> tables;
 
   CreateClusterMetadata();
@@ -3749,17 +3836,25 @@ class CreateClusterMetadata {
 
 /// Request message for BigtableInstanceAdmin.CreateCluster.
 class CreateClusterRequest {
-  /// Required. The cluster to be created. Fields marked `OutputOnly` must be
-  /// left blank.
+  /// The cluster to be created.
+  ///
+  /// Fields marked `OutputOnly` must be left blank.
+  ///
+  /// Required.
   Cluster cluster;
 
-  /// Required. The ID to be used when referring to the new cluster within its
-  /// instance, e.g., just `mycluster` rather than
+  /// The ID to be used when referring to the new cluster within its instance,
+  /// e.g., just `mycluster` rather than
   /// `projects/myproject/instances/myinstance/clusters/mycluster`.
+  ///
+  /// Required.
   core.String clusterId;
 
-  /// Required. The unique name of the instance in which to create the new
-  /// cluster. Values are of the form `projects/{project}/instances/{instance}`.
+  /// The unique name of the instance in which to create the new cluster.
+  ///
+  /// Values are of the form `projects/{project}/instances/{instance}`.
+  ///
+  /// Required.
   core.String parent;
 
   CreateClusterRequest();
@@ -3835,24 +3930,35 @@ class CreateInstanceMetadata {
 
 /// Request message for BigtableInstanceAdmin.CreateInstance.
 class CreateInstanceRequest {
-  /// Required. The clusters to be created within the instance, mapped by
-  /// desired cluster ID, e.g., just `mycluster` rather than
-  /// `projects/myproject/instances/myinstance/clusters/mycluster`. Fields
-  /// marked `OutputOnly` must be left blank. Currently, at most four clusters
-  /// can be specified.
+  /// The clusters to be created within the instance, mapped by desired cluster
+  /// ID, e.g., just `mycluster` rather than
+  /// `projects/myproject/instances/myinstance/clusters/mycluster`.
+  ///
+  /// Fields marked `OutputOnly` must be left blank. Currently, at most four
+  /// clusters can be specified.
+  ///
+  /// Required.
   core.Map<core.String, Cluster> clusters;
 
-  /// Required. The instance to create. Fields marked `OutputOnly` must be left
-  /// blank.
+  /// The instance to create.
+  ///
+  /// Fields marked `OutputOnly` must be left blank.
+  ///
+  /// Required.
   Instance instance;
 
-  /// Required. The ID to be used when referring to the new instance within its
-  /// project, e.g., just `myinstance` rather than
+  /// The ID to be used when referring to the new instance within its project,
+  /// e.g., just `myinstance` rather than
   /// `projects/myproject/instances/myinstance`.
+  ///
+  /// Required.
   core.String instanceId;
 
-  /// Required. The unique name of the project in which to create the new
-  /// instance. Values are of the form `projects/{project}`.
+  /// The unique name of the project in which to create the new instance.
+  ///
+  /// Values are of the form `projects/{project}`.
+  ///
+  /// Required.
   core.String parent;
 
   CreateInstanceRequest();
@@ -3901,23 +4007,29 @@ class CreateInstanceRequest {
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
 class CreateTableRequest {
   /// The optional list of row keys that will be used to initially split the
-  /// table into several tablets (tablets are similar to HBase regions). Given
-  /// two split keys, `s1` and `s2`, three tablets will be created, spanning the
-  /// key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a",
-  /// "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` *
-  /// initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` *
+  /// table into several tablets (tablets are similar to HBase regions).
+  ///
+  /// Given two split keys, `s1` and `s2`, three tablets will be created,
+  /// spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys
+  /// := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]`
+  /// * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` *
   /// Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple,
   /// customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2)
   /// => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` -
   /// Tablet 5 `[other, ) => {"other", "zz"}.`
   core.List<Split> initialSplits;
 
-  /// Required. The Table to create.
+  /// The Table to create.
+  ///
+  /// Required.
   Table table;
 
-  /// Required. The name by which the new table should be referred to within the
-  /// parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`.
+  /// The name by which the new table should be referred to within the parent
+  /// instance, e.g., `foobar` rather than `{parent}/tables/foobar`.
+  ///
   /// Maximum 50 characters.
+  ///
+  /// Required.
   core.String tableId;
 
   CreateTableRequest();
@@ -3956,11 +4068,14 @@ class CreateTableRequest {
 
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange
 class DropRowRangeRequest {
-  /// Delete all rows in the table. Setting this to false is a no-op.
+  /// Delete all rows in the table.
+  ///
+  /// Setting this to false is a no-op.
   core.bool deleteAllDataFromTable;
 
-  /// Delete all rows that start with this row key prefix. Prefix cannot be zero
-  /// length.
+  /// Delete all rows that start with this row key prefix.
+  ///
+  /// Prefix cannot be zero length.
   core.String rowKeyPrefix;
   core.List<core.int> get rowKeyPrefixAsBytes =>
       convert.base64.decode(rowKeyPrefix);
@@ -3994,10 +4109,12 @@ class DropRowRangeRequest {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -4012,8 +4129,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -4028,20 +4147,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -4142,8 +4270,10 @@ class GcRule {
   /// Delete cells that would be deleted by every nested rule.
   Intersection intersection;
 
-  /// Delete cells in a column older than the given age. Values must be at least
-  /// one millisecond, and will be truncated to microsecond granularity.
+  /// Delete cells in a column older than the given age.
+  ///
+  /// Values must be at least one millisecond, and will be truncated to
+  /// microsecond granularity.
   core.String maxAge;
 
   /// Delete all cells in a column except the most recent N.
@@ -4253,13 +4383,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -4279,30 +4412,40 @@ class GetPolicyOptions {
   }
 }
 
-/// A collection of Bigtable Tables and the resources that serve them. All
-/// tables in an instance are served from all Clusters in the instance.
+/// A collection of Bigtable Tables and the resources that serve them.
+///
+/// All tables in an instance are served from all Clusters in the instance.
 class Instance {
-  /// Required. The descriptive name for this instance as it appears in UIs. Can
-  /// be changed at any time, but should be kept globally unique to avoid
+  /// The descriptive name for this instance as it appears in UIs.
+  ///
+  /// Can be changed at any time, but should be kept globally unique to avoid
   /// confusion.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Required. Labels are a flexible and lightweight mechanism for organizing
-  /// cloud resources into groups that reflect a customer's organizational needs
-  /// and deployment strategies. They can be used to filter resources and
-  /// aggregate metrics. * Label keys must be between 1 and 63 characters long
-  /// and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label
-  /// values must be between 0 and 63 characters long and must conform to the
-  /// regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64
-  /// labels can be associated with a given resource. * Keys and values must
-  /// both be under 128 bytes.
+  /// Labels are a flexible and lightweight mechanism for organizing cloud
+  /// resources into groups that reflect a customer's organizational needs and
+  /// deployment strategies.
+  ///
+  /// They can be used to filter resources and aggregate metrics. * Label keys
+  /// must be between 1 and 63 characters long and must conform to the regular
+  /// expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63
+  /// characters long and must conform to the regular expression:
+  /// `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated
+  /// with a given resource. * Keys and values must both be under 128 bytes.
+  ///
+  /// Required.
   core.Map<core.String, core.String> labels;
 
-  /// The unique name of the instance. Values are of the form
-  /// `projects/{project}/instances/a-z+[a-z0-9]`.
+  /// The unique name of the instance.
+  ///
+  /// Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
   core.String name;
 
-  /// Output only. The current state of the instance.
+  /// The current state of the instance.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_NOT_KNOWN" : The state of the instance could not be determined.
   /// - "READY" : The instance has been successfully created and can serve
@@ -4311,7 +4454,11 @@ class Instance {
   /// destroyed if the creation process encounters an error.
   core.String state;
 
-  /// Required. The type of the instance. Defaults to `PRODUCTION`.
+  /// The type of the instance.
+  ///
+  /// Defaults to `PRODUCTION`.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The type of the instance is unspecified. If set
   /// when creating an instance, a `PRODUCTION` instance will be created. If set
@@ -4400,13 +4547,15 @@ class ListAppProfilesResponse {
   core.List<AppProfile> appProfiles;
 
   /// Locations from which AppProfile information could not be retrieved, due to
-  /// an outage or some other transient condition. AppProfiles from these
-  /// locations may be missing from `app_profiles`. Values are of the form
-  /// `projects//locations/`
+  /// an outage or some other transient condition.
+  ///
+  /// AppProfiles from these locations may be missing from `app_profiles`.
+  /// Values are of the form `projects//locations/`
   core.List<core.String> failedLocations;
 
-  /// Set if not all app profiles could be returned in a single response. Pass
-  /// this value to `page_token` in another request to get the next page of
+  /// Set if not all app profiles could be returned in a single response.
+  ///
+  /// Pass this value to `page_token` in another request to get the next page of
   /// results.
   core.String nextPageToken;
 
@@ -4486,9 +4635,11 @@ class ListClustersResponse {
   core.List<Cluster> clusters;
 
   /// Locations from which Cluster information could not be retrieved, due to an
-  /// outage or some other transient condition. Clusters from these locations
-  /// may be missing from `clusters`, or may only have partial information
-  /// returned. Values are of the form `projects//locations/`
+  /// outage or some other transient condition.
+  ///
+  /// Clusters from these locations may be missing from `clusters`, or may only
+  /// have partial information returned. Values are of the form
+  /// `projects//locations/`
   core.List<core.String> failedLocations;
 
   /// DEPRECATED: This field is unused and ignored.
@@ -4531,11 +4682,12 @@ class ListClustersResponse {
 /// Response message for BigtableInstanceAdmin.ListInstances.
 class ListInstancesResponse {
   /// Locations from which Instance information could not be retrieved, due to
-  /// an outage or some other transient condition. Instances whose Clusters are
-  /// all in one of the failed locations may be missing from `instances`, and
-  /// Instances with at least one Cluster in a failed location may only have
-  /// partial information returned. Values are of the form
-  /// `projects//locations/`
+  /// an outage or some other transient condition.
+  ///
+  /// Instances whose Clusters are all in one of the failed locations may be
+  /// missing from `instances`, and Instances with at least one Cluster in a
+  /// failed location may only have partial information returned. Values are of
+  /// the form `projects//locations/`
   core.List<core.String> failedLocations;
 
   /// The list of requested instances.
@@ -4648,8 +4800,10 @@ class ListOperationsResponse {
 
 /// Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables
 class ListTablesResponse {
-  /// Set if not all tables could be returned in a single response. Pass this
-  /// value to `page_token` in another request to get the next page of results.
+  /// Set if not all tables could be returned in a single response.
+  ///
+  /// Pass this value to `page_token` in another request to get the next page of
+  /// results.
   core.String nextPageToken;
 
   /// The tables present in the requested instance.
@@ -4683,25 +4837,31 @@ class ListTablesResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -4815,10 +4975,13 @@ class Modification {
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
-  /// Required. Modifications to be atomically applied to the specified table's
-  /// families. Entries are applied in order, meaning that earlier modifications
-  /// can be masked by later ones (in the case of repeated updates to the same
-  /// family, for example).
+  /// Modifications to be atomically applied to the specified table's families.
+  ///
+  /// Entries are applied in order, meaning that earlier modifications can be
+  /// masked by later ones (in the case of repeated updates to the same family,
+  /// for example).
+  ///
+  /// Required.
   core.List<Modification> modifications;
 
   ModifyColumnFamiliesRequest();
@@ -4844,9 +5007,10 @@ class ModifyColumnFamiliesRequest {
 
 /// Read/write requests are routed to the nearest cluster in the instance, and
 /// will fail over to the nearest cluster that is available in the event of
-/// transient errors or delays. Clusters in a region are considered equidistant.
-/// Choosing this option sacrifices read-your-writes consistency to improve
-/// availability.
+/// transient errors or delays.
+///
+/// Clusters in a region are considered equidistant. Choosing this option
+/// sacrifices read-your-writes consistency to improve availability.
 class MultiClusterRoutingUseAny {
   MultiClusterRoutingUseAny();
 
@@ -4863,31 +5027,37 @@ class MultiClusterRoutingUseAny {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -4958,8 +5128,9 @@ class OperationProgress {
   /// successfully.
   core.String endTime;
 
-  /// Percent completion of the operation. Values are between 0 and 100
-  /// inclusive.
+  /// Percent completion of the operation.
+  ///
+  /// Values are between 0 and 100 inclusive.
   core.int progressPercent;
 
   /// Time the request was received.
@@ -4995,9 +5166,10 @@ class OperationProgress {
 }
 
 /// Metadata type for the long-running operation used to track the progress of
-/// optimizations performed on a newly restored table. This long-running
-/// operation is automatically created by the system after the successful
-/// completion of a table restore, and cannot be cancelled.
+/// optimizations performed on a newly restored table.
+///
+/// This long-running operation is automatically created by the system after the
+/// successful completion of a table restore, and cannot be cancelled.
 class OptimizeRestoredTableMetadata {
   /// Name of the restored table being optimized.
   core.String name;
@@ -5031,11 +5203,16 @@ class OptimizeRestoredTableMetadata {
 
 /// Request message for BigtableInstanceAdmin.PartialUpdateInstance.
 class PartialUpdateInstanceRequest {
-  /// Required. The Instance which will (partially) replace the current value.
+  /// The Instance which will (partially) replace the current value.
+  ///
+  /// Required.
   Instance instance;
 
-  /// Required. The subset of Instance fields which should be replaced. Must be
-  /// explicitly set.
+  /// The subset of Instance fields which should be replaced.
+  ///
+  /// Must be explicitly set.
+  ///
+  /// Required.
   core.String updateMask;
 
   PartialUpdateInstanceRequest();
@@ -5063,16 +5240,18 @@ class PartialUpdateInstanceRequest {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -5095,14 +5274,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -5119,20 +5301,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -5180,8 +5364,9 @@ class Policy {
 
 /// Information about a table restore.
 class RestoreInfo {
-  /// Information about the backup used to restore the table. The backup may no
-  /// longer exist.
+  /// Information about the backup used to restore the table.
+  ///
+  /// The backup may no longer exist.
   BackupInfo backupInfo;
 
   /// The type of the restore source.
@@ -5223,7 +5408,9 @@ class RestoreTableMetadata {
 
   /// If exists, the name of the long-running operation that will be used to
   /// track the post-restore optimization process to optimize the performance of
-  /// the restored table. The metadata type of the long-running operation is
+  /// the restored table.
+  ///
+  /// The metadata type of the long-running operation is
   /// OptimizeRestoreTableMetadata. The response type is Empty. This
   /// long-running operation may be automatically created by the system if
   /// applicable after the RestoreTable long-running operation completes
@@ -5286,13 +5473,17 @@ class RestoreTableMetadata {
 
 /// The request for RestoreTable.
 class RestoreTableRequest {
-  /// Name of the backup from which to restore. Values are of the form
-  /// `projects//instances//clusters//backups/`.
+  /// Name of the backup from which to restore.
+  ///
+  /// Values are of the form `projects//instances//clusters//backups/`.
   core.String backup;
 
-  /// Required. The id of the table to create and restore to. This table must
-  /// not already exist. The `table_id` appended to `parent` forms the full
-  /// table name of the form `projects//instances//tables/`.
+  /// The id of the table to create and restore to.
+  ///
+  /// This table must not already exist. The `table_id` appended to `parent`
+  /// forms the full table name of the form `projects//instances//tables/`.
+  ///
+  /// Required.
   core.String tableId;
 
   RestoreTableRequest();
@@ -5320,13 +5511,15 @@ class RestoreTableRequest {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -5355,13 +5548,16 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Unconditionally routes all read/write requests to a specific cluster. This
-/// option preserves read-your-writes consistency but does not improve
+/// Unconditionally routes all read/write requests to a specific cluster.
+///
+/// This option preserves read-your-writes consistency but does not improve
 /// availability.
 class SingleClusterRouting {
   /// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are
-  /// allowed by this app profile. It is unsafe to send these requests to the
-  /// same table/row/column in multiple clusters.
+  /// allowed by this app profile.
+  ///
+  /// It is unsafe to send these requests to the same table/row/column in
+  /// multiple clusters.
   core.bool allowTransactionalWrites;
 
   /// The cluster to which read/write requests should be routed.
@@ -5419,24 +5615,27 @@ class Split {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -5477,24 +5676,33 @@ class Status {
   }
 }
 
-/// A collection of user data indexed by row, column, and timestamp. Each table
-/// is served using the resources of its parent cluster.
+/// A collection of user data indexed by row, column, and timestamp.
+///
+/// Each table is served using the resources of its parent cluster.
 class Table {
-  /// Output only. Map from cluster ID to per-cluster table state. If it could
-  /// not be determined whether or not the table has data in a particular
-  /// cluster (for example, if its zone is unavailable), then there will be an
-  /// entry for the cluster with UNKNOWN `replication_status`. Views:
+  /// Map from cluster ID to per-cluster table state.
+  ///
+  /// If it could not be determined whether or not the table has data in a
+  /// particular cluster (for example, if its zone is unavailable), then there
+  /// will be an entry for the cluster with UNKNOWN `replication_status`. Views:
   /// `REPLICATION_VIEW`, `FULL`
+  ///
+  /// Output only.
   core.Map<core.String, ClusterState> clusterStates;
 
   /// The column families configured for this table, mapped by column family ID.
+  ///
   /// Views: `SCHEMA_VIEW`, `FULL`
   core.Map<core.String, ColumnFamily> columnFamilies;
 
-  /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored
-  /// in this table. Timestamps not matching the granularity will be rejected.
-  /// If unspecified at creation time, the value will be set to `MILLIS`. Views:
-  /// `SCHEMA_VIEW`, `FULL`.
+  /// The granularity (i.e. `MILLIS`) at which timestamps are stored in this
+  /// table.
+  ///
+  /// Timestamps not matching the granularity will be rejected. If unspecified
+  /// at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`,
+  /// `FULL`.
+  ///
+  /// Immutable.
   /// Possible string values are:
   /// - "TIMESTAMP_GRANULARITY_UNSPECIFIED" : The user did not specify a
   /// granularity. Should not be returned. When specified during table creation,
@@ -5502,13 +5710,17 @@ class Table {
   /// - "MILLIS" : The table keeps data versioned at a granularity of 1ms.
   core.String granularity;
 
-  /// The unique name of the table. Values are of the form
+  /// The unique name of the table.
+  ///
+  /// Values are of the form
   /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views:
   /// `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
   core.String name;
 
-  /// Output only. If this table was restored from another data source (e.g. a
-  /// backup), this field will be populated with information about the restore.
+  /// If this table was restored from another data source (e.g. a backup), this
+  /// field will be populated with information about the restore.
+  ///
+  /// Output only.
   RestoreInfo restoreInfo;
 
   Table();
@@ -5573,8 +5785,9 @@ class Table {
 
 /// Progress info for copying a table's data to the new cluster.
 class TableProgress {
-  /// Estimate of the number of bytes copied so far for this table. This will
-  /// eventually reach 'estimated_size_bytes' unless the table copy is
+  /// Estimate of the number of bytes copied so far for this table.
+  ///
+  /// This will eventually reach 'estimated_size_bytes' unless the table copy is
   /// CANCELLED.
   core.String estimatedCopiedBytes;
 
@@ -5623,9 +5836,10 @@ class TableProgress {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 

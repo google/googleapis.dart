@@ -42,8 +42,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Admin SDK lets administrators of enterprise domains to view and manage
-/// resources like user, groups etc. It also provides audit and usage reports of
-/// domain.
+/// resources like user, groups etc.
+///
+/// It also provides audit and usage reports of domain.
 class DataTransferApi {
   /// View and manage data transfers between users in your organization
   static const adminDatatransferScope =
@@ -380,8 +381,9 @@ class TransfersResource {
   }
 }
 
-/// The JSON template for an Application resource. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// The JSON template for an Application resource.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Application {
@@ -397,9 +399,10 @@ class Application {
   /// The application's name.
   core.String name;
 
-  /// The list of all possible transfer parameters for this application. These
-  /// parameters can be used to select the data of the user in this application
-  /// to be transferred.
+  /// The list of all possible transfer parameters for this application.
+  ///
+  /// These parameters can be used to select the data of the user in this
+  /// application to be transferred.
   core.List<ApplicationTransferParam> transferParams;
 
   Application();
@@ -453,11 +456,15 @@ class ApplicationDataTransfer {
   /// The application's ID.
   core.String applicationId;
 
-  /// The transfer parameters for the application. These parameters are used to
-  /// select the data which will get transferred in context of this application.
+  /// The transfer parameters for the application.
+  ///
+  /// These parameters are used to select the data which will get transferred in
+  /// context of this application.
   core.List<ApplicationTransferParam> applicationTransferParams;
 
-  /// Current status of transfer for this application. (Read-only)
+  /// Current status of transfer for this application.
+  ///
+  /// (Read-only)
   core.String applicationTransferStatus;
 
   ApplicationDataTransfer();
@@ -498,11 +505,14 @@ class ApplicationDataTransfer {
 
 /// Template for application transfer parameters.
 class ApplicationTransferParam {
-  /// The type of the transfer parameter. eg: 'PRIVACY_LEVEL'
+  /// The type of the transfer parameter.
+  ///
+  /// eg: 'PRIVACY_LEVEL'
   core.String key;
 
-  /// The value of the corresponding transfer parameter. eg: 'PRIVATE' or
-  /// 'SHARED'
+  /// The value of the corresponding transfer parameter.
+  ///
+  /// eg: 'PRIVATE' or 'SHARED'
   core.List<core.String> value;
 
   ApplicationTransferParam();
@@ -530,10 +540,11 @@ class ApplicationTransferParam {
   }
 }
 
-/// Template for a collection of Applications. STEPLADDER: Generated unstable
-/// field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
-/// STEPLADDER: Generated unstable field number for field 'etag'. (See
-/// http://go/stepladder-help#fieldNumber)
+/// Template for a collection of Applications.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ApplicationsListResponse {
   /// List of applications that support data transfer and are also installed for
   /// the customer.
@@ -587,15 +598,18 @@ class ApplicationsListResponse {
   }
 }
 
-/// The JSON template for a DataTransfer resource. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// The JSON template for a DataTransfer resource.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class DataTransfer {
-  /// List of per application data transfer resources. It contains data transfer
-  /// details of the applications associated with this transfer resource. Note
-  /// that this list is also used to specify the applications for which data
-  /// transfer has to be done at the time of the transfer resource creation.
+  /// List of per application data transfer resources.
+  ///
+  /// It contains data transfer details of the applications associated with this
+  /// transfer resource. Note that this list is also used to specify the
+  /// applications for which data transfer has to be done at the time of the
+  /// transfer resource creation.
   core.List<ApplicationDataTransfer> applicationDataTransfers;
 
   /// ETag of the resource.
@@ -685,8 +699,9 @@ class DataTransfer {
   }
 }
 
-/// Template for a collection of DataTransfer resources. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// Template for a collection of DataTransfer resources.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class DataTransfersListResponse {

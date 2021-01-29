@@ -133,7 +133,9 @@ class MattersResource {
     );
   }
 
-  /// Closes the specified matter. Returns matter with updated state.
+  /// Closes the specified matter.
+  ///
+  /// Returns matter with updated state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -191,9 +193,10 @@ class MattersResource {
     );
   }
 
-  /// Creates a new matter with the given name and description. The initial
-  /// state is open, and the owner is the method caller. Returns the created
-  /// matter with default view.
+  /// Creates a new matter with the given name and description.
+  ///
+  /// The initial state is open, and the owner is the method caller. Returns the
+  /// created matter with default view.
   ///
   /// [request] - The metadata request object.
   ///
@@ -243,7 +246,9 @@ class MattersResource {
     );
   }
 
-  /// Deletes the specified matter. Returns matter with updated state.
+  /// Deletes the specified matter.
+  ///
+  /// Returns matter with updated state.
   ///
   /// Request parameters:
   ///
@@ -495,7 +500,9 @@ class MattersResource {
     );
   }
 
-  /// Reopens the specified matter. Returns matter with updated state.
+  /// Reopens the specified matter.
+  ///
+  /// Returns matter with updated state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -553,7 +560,9 @@ class MattersResource {
     );
   }
 
-  /// Undeletes the specified matter. Returns matter with updated state.
+  /// Undeletes the specified matter.
+  ///
+  /// Returns matter with updated state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -611,9 +620,11 @@ class MattersResource {
     );
   }
 
-  /// Updates the specified matter. This updates only the name and description
-  /// of the matter, identified by matter ID. Changes to any other fields are
-  /// ignored. Returns the default view of the matter.
+  /// Updates the specified matter.
+  ///
+  /// This updates only the name and description of the matter, identified by
+  /// matter ID. Changes to any other fields are ignored. Returns the default
+  /// view of the matter.
   ///
   /// [request] - The metadata request object.
   ///
@@ -923,9 +934,10 @@ class MattersHoldsResource {
 
   MattersHoldsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Adds HeldAccounts to a hold. Returns a list of accounts that have been
-  /// successfully added. Accounts can only be added to an existing
-  /// account-based hold.
+  /// Adds HeldAccounts to a hold.
+  ///
+  /// Returns a list of accounts that have been successfully added. Accounts can
+  /// only be added to an existing account-based hold.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1049,7 +1061,9 @@ class MattersHoldsResource {
     );
   }
 
-  /// Removes a hold by ID. This will release any HeldAccounts on this Hold.
+  /// Removes a hold by ID.
+  ///
+  /// This will release any HeldAccounts on this Hold.
   ///
   /// Request parameters:
   ///
@@ -1181,8 +1195,9 @@ class MattersHoldsResource {
     );
   }
 
-  /// Lists holds within a matter. An empty page token in ListHoldsResponse
-  /// denotes no more holds to list.
+  /// Lists holds within a matter.
+  ///
+  /// An empty page token in ListHoldsResponse denotes no more holds to list.
   ///
   /// Request parameters:
   ///
@@ -1263,9 +1278,11 @@ class MattersHoldsResource {
     );
   }
 
-  /// Removes HeldAccounts from a hold. Returns a list of statuses in the same
-  /// order as the request. If this request leaves the hold with no held
-  /// accounts, the hold will not apply to any accounts.
+  /// Removes HeldAccounts from a hold.
+  ///
+  /// Returns a list of statuses in the same order as the request. If this
+  /// request leaves the hold with no held accounts, the hold will not apply to
+  /// any accounts.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1332,9 +1349,11 @@ class MattersHoldsResource {
     );
   }
 
-  /// Updates the OU and/or query parameters of a hold. You cannot add accounts
-  /// to a hold that covers an OU, nor can you add OUs to a hold that covers
-  /// individual accounts. Accounts listed in the hold will be ignored.
+  /// Updates the OU and/or query parameters of a hold.
+  ///
+  /// You cannot add accounts to a hold that covers an OU, nor can you add OUs
+  /// to a hold that covers individual accounts. Accounts listed in the hold
+  /// will be ignored.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1406,9 +1425,10 @@ class MattersHoldsAccountsResource {
   MattersHoldsAccountsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Adds a HeldAccount to a hold. Accounts can only be added to a hold that
-  /// has no held_org_unit set. Attempting to add an account to an OU-based hold
-  /// will result in an error.
+  /// Adds a HeldAccount to a hold.
+  ///
+  /// Accounts can only be added to a hold that has no held_org_unit set.
+  /// Attempting to add an account to an OU-based hold will result in an error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1475,8 +1495,10 @@ class MattersHoldsAccountsResource {
     );
   }
 
-  /// Removes a HeldAccount from a hold. If this request leaves the hold with no
-  /// held accounts, the hold will not apply to any accounts.
+  /// Removes a HeldAccount from a hold.
+  ///
+  /// If this request leaves the hold with no held accounts, the hold will not
+  /// apply to any accounts.
   ///
   /// Request parameters:
   ///
@@ -1543,9 +1565,10 @@ class MattersHoldsAccountsResource {
     );
   }
 
-  /// Lists HeldAccounts for a hold. This will only list individually specified
-  /// held accounts. If the hold is on an OU, then use Admin SDK to enumerate
-  /// its members.
+  /// Lists HeldAccounts for a hold.
+  ///
+  /// This will only list individually specified held accounts. If the hold is
+  /// on an OU, then use Admin SDK to enumerate its members.
   ///
   /// Request parameters:
   ///
@@ -1794,8 +1817,10 @@ class MattersSavedQueriesResource {
     );
   }
 
-  /// Lists saved queries within a matter. An empty page token in
-  /// ListSavedQueriesResponse denotes no more saved queries to list.
+  /// Lists saved queries within a matter.
+  ///
+  /// An empty page token in ListSavedQueriesResponse denotes no more saved
+  /// queries to list.
   ///
   /// Request parameters:
   ///
@@ -1868,10 +1893,11 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -1953,7 +1979,9 @@ class AddHeldAccountResult {
   /// If present, this account was successfully created.
   HeldAccount account;
 
-  /// This represents the success status. If failed, check message.
+  /// This represents the success status.
+  ///
+  /// If failed, check message.
   Status status;
 
   AddHeldAccountResult();
@@ -1983,12 +2011,14 @@ class AddHeldAccountResult {
 
 /// Add a list of accounts to a hold.
 class AddHeldAccountsRequest {
-  /// Account IDs to identify which accounts to add. Only account_ids or only
-  /// emails should be specified, but not both.
+  /// Account IDs to identify which accounts to add.
+  ///
+  /// Only account_ids or only emails should be specified, but not both.
   core.List<core.String> accountIds;
 
-  /// Emails to identify which accounts to add. Only emails or only account_ids
-  /// should be specified, but not both.
+  /// Emails to identify which accounts to add.
+  ///
+  /// Only emails or only account_ids should be specified, but not both.
   core.List<core.String> emails;
 
   AddHeldAccountsRequest();
@@ -2043,18 +2073,22 @@ class AddHeldAccountsResponse {
   }
 }
 
-/// Add an account with the permission specified. The role cannot be owner. If
-/// an account already has a role in the matter, it will be overwritten.
+/// Add an account with the permission specified.
+///
+/// The role cannot be owner. If an account already has a role in the matter, it
+/// will be overwritten.
 class AddMatterPermissionsRequest {
-  /// Only relevant if send_emails is true. True to CC requestor in the email
-  /// message. False to not CC requestor.
+  /// Only relevant if send_emails is true.
+  ///
+  /// True to CC requestor in the email message. False to not CC requestor.
   core.bool ccMe;
 
   /// The MatterPermission to add.
   MatterPermission matterPermission;
 
-  /// True to send notification email to the added account. False to not send
-  /// notification email.
+  /// True to send notification email to the added account.
+  ///
+  /// False to not send notification email.
   core.bool sendEmails;
 
   AddMatterPermissionsRequest();
@@ -2126,16 +2160,18 @@ class CloseMatterResponse {
 
 /// An export file on cloud storage
 class CloudStorageFile {
-  /// The cloud storage bucket name of this export file. Can be used in cloud
-  /// storage JSON/XML API, but not to list the bucket contents. Instead, you
-  /// can get individual export files by object name.
+  /// The cloud storage bucket name of this export file.
+  ///
+  /// Can be used in cloud storage JSON/XML API, but not to list the bucket
+  /// contents. Instead, you can get individual export files by object name.
   core.String bucketName;
 
   /// The md5 hash of the file.
   core.String md5Hash;
 
-  /// The cloud storage object name of this export file. Can be used in cloud
-  /// storage JSON/XML API.
+  /// The cloud storage object name of this export file.
+  ///
+  /// Can be used in cloud storage JSON/XML API.
   core.String objectName;
 
   /// The size of the export file.
@@ -2178,7 +2214,9 @@ class CloudStorageFile {
 
 /// Export sink for cloud storage files.
 class CloudStorageSink {
-  /// Output only. The exported files on cloud storage.
+  /// The exported files on cloud storage.
+  ///
+  /// Output only.
   core.List<CloudStorageFile> files;
 
   CloudStorageSink();
@@ -2203,17 +2241,24 @@ class CloudStorageSink {
 
 /// Corpus specific queries.
 class CorpusQuery {
-  /// Details pertaining to Drive holds. If set, corpus must be Drive.
+  /// Details pertaining to Drive holds.
+  ///
+  /// If set, corpus must be Drive.
   HeldDriveQuery driveQuery;
 
-  /// Details pertaining to Groups holds. If set, corpus must be Groups.
+  /// Details pertaining to Groups holds.
+  ///
+  /// If set, corpus must be Groups.
   HeldGroupsQuery groupsQuery;
 
-  /// Details pertaining to Hangouts Chat holds. If set, corpus must be Hangouts
-  /// Chat.
+  /// Details pertaining to Hangouts Chat holds.
+  ///
+  /// If set, corpus must be Hangouts Chat.
   HeldHangoutsChatQuery hangoutsChatQuery;
 
-  /// Details pertaining to mail holds. If set, corpus must be mail.
+  /// Details pertaining to mail holds.
+  ///
+  /// If set, corpus must be mail.
   HeldMailQuery mailQuery;
 
   CorpusQuery();
@@ -2286,8 +2331,9 @@ class DriveOptions {
   /// Set to true to include Team Drive.
   core.bool includeTeamDrives;
 
-  /// Search the versions of the Drive file as of the reference date. These
-  /// timestamps are in GMT and rounded down to the given date.
+  /// Search the versions of the Drive file as of the reference date.
+  ///
+  /// These timestamps are in GMT and rounded down to the given date.
   core.String versionDate;
 
   DriveOptions();
@@ -2320,10 +2366,12 @@ class DriveOptions {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2339,19 +2387,27 @@ class Empty {
 
 /// An export
 class Export {
-  /// Output only. Export sink for cloud storage files.
+  /// Export sink for cloud storage files.
+  ///
+  /// Output only.
   CloudStorageSink cloudStorageSink;
 
-  /// Output only. The time when the export was created.
+  /// The time when the export was created.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// Advanced options of the export.
   ExportOptions exportOptions;
 
-  /// Output only. The generated export ID.
+  /// The generated export ID.
+  ///
+  /// Output only.
   core.String id;
 
-  /// Output only. The matter ID.
+  /// The matter ID.
+  ///
+  /// Output only.
   core.String matterId;
 
   /// The export name.
@@ -2360,13 +2416,19 @@ class Export {
   /// The search query being exported.
   Query query;
 
-  /// Output only. The requester of the export.
+  /// The requester of the export.
+  ///
+  /// Output only.
   UserInfo requester;
 
-  /// Output only. Export statistics.
+  /// Export statistics.
+  ///
+  /// Output only.
   ExportStats stats;
 
-  /// Output only. The export status.
+  /// The export status.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "EXPORT_STATUS_UNSPECIFIED" : The status is unspecified.
   /// - "COMPLETED" : The export completed.
@@ -2656,23 +2718,32 @@ class HangoutsChatOptions {
   }
 }
 
-/// An account being held in a particular hold. This structure is immutable.
-/// This can be either a single user or a google group, depending on the corpus.
+/// An account being held in a particular hold.
+///
+/// This structure is immutable. This can be either a single user or a google
+/// group, depending on the corpus.
 class HeldAccount {
   /// The account's ID as provided by the Admin SDK.
   core.String accountId;
 
-  /// The primary email address of the account. If used as an input, this takes
-  /// precedence over account ID.
+  /// The primary email address of the account.
+  ///
+  /// If used as an input, this takes precedence over account ID.
   core.String email;
 
-  /// Output only. The first name of the account holder.
+  /// The first name of the account holder.
+  ///
+  /// Output only.
   core.String firstName;
 
-  /// Output only. When the account was put on hold.
+  /// When the account was put on hold.
+  ///
+  /// Output only.
   core.String holdTime;
 
-  /// Output only. The last name of the account holder.
+  /// The last name of the account holder.
+  ///
+  /// Output only.
   core.String lastName;
 
   HeldAccount();
@@ -2749,12 +2820,16 @@ class HeldDriveQuery {
 
 /// Query options for group holds.
 class HeldGroupsQuery {
-  /// The end time range for the search query. These timestamps are in GMT and
-  /// rounded down to the start of the given date.
+  /// The end time range for the search query.
+  ///
+  /// These timestamps are in GMT and rounded down to the start of the given
+  /// date.
   core.String endTime;
 
-  /// The start time range for the search query. These timestamps are in GMT and
-  /// rounded down to the start of the given date.
+  /// The start time range for the search query.
+  ///
+  /// These timestamps are in GMT and rounded down to the start of the given
+  /// date.
   core.String startTime;
 
   /// The search terms for the hold.
@@ -2813,12 +2888,16 @@ class HeldHangoutsChatQuery {
 
 /// Query options for mail holds.
 class HeldMailQuery {
-  /// The end time range for the search query. These timestamps are in GMT and
-  /// rounded down to the start of the given date.
+  /// The end time range for the search query.
+  ///
+  /// These timestamps are in GMT and rounded down to the start of the given
+  /// date.
   core.String endTime;
 
-  /// The start time range for the search query. These timestamps are in GMT and
-  /// rounded down to the start of the given date.
+  /// The start time range for the search query.
+  ///
+  /// These timestamps are in GMT and rounded down to the start of the given
+  /// date.
   core.String startTime;
 
   /// The search terms for the hold.
@@ -2853,10 +2932,13 @@ class HeldMailQuery {
   }
 }
 
-/// A organizational unit being held in a particular hold. This structure is
-/// immutable.
+/// A organizational unit being held in a particular hold.
+///
+/// This structure is immutable.
 class HeldOrgUnit {
-  /// When the org unit was put on hold. This property is immutable.
+  /// When the org unit was put on hold.
+  ///
+  /// This property is immutable.
   core.String holdTime;
 
   /// The org unit's immutable ID as provided by the Admin SDK.
@@ -2885,10 +2967,12 @@ class HeldOrgUnit {
   }
 }
 
-/// Represents a hold within Vault. A hold restricts purging of artifacts based
-/// on the combination of the query and accounts restrictions. A hold can be
-/// configured to either apply to an explicitly configured set of accounts, or
-/// can be applied to all members of an organizational unit.
+/// Represents a hold within Vault.
+///
+/// A hold restricts purging of artifacts based on the combination of the query
+/// and accounts restrictions. A hold can be configured to either apply to an
+/// explicitly configured set of accounts, or can be applied to all members of
+/// an organizational unit.
 class Hold {
   /// If set, the hold applies to the enumerated accounts and org_unit must be
   /// empty.
@@ -2903,18 +2987,23 @@ class Hold {
   /// - "HANGOUTS_CHAT" : Hangouts Chat.
   core.String corpus;
 
-  /// The unique immutable ID of the hold. Assigned during creation.
+  /// The unique immutable ID of the hold.
+  ///
+  /// Assigned during creation.
   core.String holdId;
 
   /// The name of the hold.
   core.String name;
 
   /// If set, the hold applies to all members of the organizational unit and
-  /// accounts must be empty. This property is mutable. For groups holds, set
-  /// the accounts field.
+  /// accounts must be empty.
+  ///
+  /// This property is mutable. For groups holds, set the accounts field.
   HeldOrgUnit orgUnit;
 
-  /// The corpus-specific query. If set, the corpusQuery must match corpus type.
+  /// The corpus-specific query.
+  ///
+  /// If set, the corpusQuery must match corpus type.
   CorpusQuery query;
 
   /// The last time this hold was modified.
@@ -3042,8 +3131,9 @@ class ListHoldsResponse {
   /// The list of holds.
   core.List<Hold> holds;
 
-  /// Page token to retrieve the next page of results in the list. If this is
-  /// empty, then there are no more holds to list.
+  /// Page token to retrieve the next page of results in the list.
+  ///
+  /// If this is empty, then there are no more holds to list.
   core.String nextPageToken;
 
   ListHoldsResponse();
@@ -3108,8 +3198,9 @@ class ListMattersResponse {
 
 /// Definition of the response for method ListSaveQuery.
 class ListSavedQueriesResponse {
-  /// Page token to retrieve the next page of results in the list. If this is
-  /// empty, then there are no more saved queries to list.
+  /// Page token to retrieve the next page of results in the list.
+  ///
+  /// If this is empty, then there are no more saved queries to list.
   core.String nextPageToken;
 
   /// List of output saved queries.
@@ -3205,12 +3296,15 @@ class Matter {
   /// The description of the matter.
   core.String description;
 
-  /// The matter ID which is generated by the server. Should be blank when
-  /// creating a new matter.
+  /// The matter ID which is generated by the server.
+  ///
+  /// Should be blank when creating a new matter.
   core.String matterId;
 
-  /// List of users and access to the matter. Currently there is no programmer
-  /// defined limit on the number of permissions a matter can have.
+  /// List of users and access to the matter.
+  ///
+  /// Currently there is no programmer defined limit on the number of
+  /// permissions a matter can have.
   core.List<MatterPermission> matterPermissions;
 
   /// The name of the matter.
@@ -3270,6 +3364,7 @@ class Matter {
 }
 
 /// Currently each matter only has one owner, and all others are collaborators.
+///
 /// When an account is purged, its corresponding MatterPermission resources
 /// cease to exist.
 class MatterPermission {
@@ -3354,24 +3449,32 @@ class Query {
   /// For Drive search, specify more options in this field.
   DriveOptions driveOptions;
 
-  /// The end time range for the search query. These timestamps are in GMT and
-  /// rounded down to the start of the given date.
+  /// The end time range for the search query.
+  ///
+  /// These timestamps are in GMT and rounded down to the start of the given
+  /// date.
   core.String endTime;
 
   /// When 'ROOM' is chosen as search method, hangout_chats_info needs to be
-  /// specified. (read-only)
+  /// specified.
+  ///
+  /// (read-only)
   HangoutsChatInfo hangoutsChatInfo;
 
-  /// For hangouts chat search, specify more options in this field. (read-only)
+  /// For hangouts chat search, specify more options in this field.
+  ///
+  /// (read-only)
   HangoutsChatOptions hangoutsChatOptions;
 
   /// For mail search, specify more options in this field.
   MailOptions mailOptions;
 
-  /// The search method to use. This field is similar to the search_method field
-  /// but is introduced to support shared drives. It supports all search method
-  /// types. In case the search_method is TEAM_DRIVE the response of this field
-  /// will be SHARED_DRIVE only.
+  /// The search method to use.
+  ///
+  /// This field is similar to the search_method field but is introduced to
+  /// support shared drives. It supports all search method types. In case the
+  /// search_method is TEAM_DRIVE the response of this field will be
+  /// SHARED_DRIVE only.
   /// Possible string values are:
   /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified. If a
   /// request does not specify a search method, it will be rejected.
@@ -3413,8 +3516,10 @@ class Query {
   /// be specified.
   SharedDriveInfo sharedDriveInfo;
 
-  /// The start time range for the search query. These timestamps are in GMT and
-  /// rounded down to the start of the given date.
+  /// The start time range for the search query.
+  ///
+  /// These timestamps are in GMT and rounded down to the start of the given
+  /// date.
   core.String startTime;
 
   /// When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be
@@ -3424,8 +3529,10 @@ class Query {
   /// The corpus-specific search operators used to generate search results.
   core.String terms;
 
-  /// The time zone name. It should be an IANA TZ name, such as
-  /// "America/Los_Angeles". For more information, see Time Zone.
+  /// The time zone name.
+  ///
+  /// It should be an IANA TZ name, such as "America/Los_Angeles". For more
+  /// information, see Time Zone.
   core.String timeZone;
 
   Query();
@@ -3569,8 +3676,9 @@ class RemoveHeldAccountsRequest {
 
 /// Response for batch delete held accounts.
 class RemoveHeldAccountsResponse {
-  /// A list of statuses for deleted accounts. Results have the same order as
-  /// the request.
+  /// A list of statuses for deleted accounts.
+  ///
+  /// Results have the same order as the request.
   core.List<Status> statuses;
 
   RemoveHeldAccountsResponse();
@@ -3654,15 +3762,20 @@ class ReopenMatterResponse {
 
 /// Definition of the saved query.
 class SavedQuery {
-  /// Output only. The server generated timestamp at which saved query was
-  /// created.
+  /// The server generated timestamp at which saved query was created.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// Name of the saved query.
   core.String displayName;
 
-  /// Output only. The matter ID of the associated matter. The server does not
-  /// look at this field during create and always uses matter id in the URL.
+  /// The matter ID of the associated matter.
+  ///
+  /// The server does not look at this field during create and always uses
+  /// matter id in the URL.
+  ///
+  /// Output only.
   core.String matterId;
 
   /// The underlying Query object which contains all the information of the
@@ -3739,24 +3852,27 @@ class SharedDriveInfo {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

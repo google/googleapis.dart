@@ -69,8 +69,9 @@ class MediaResource {
 
   MediaResource(commons.ApiRequester client) : _requester = client;
 
-  /// Downloads media. Download is supported on the URI
-  /// `/v1/media/{+name}?alt=media`.
+  /// Downloads media.
+  ///
+  /// Download is supported on the URI `/v1/media/{+name}?alt=media`.
   ///
   /// Request parameters:
   ///
@@ -648,8 +649,9 @@ class SpacesMessagesAttachmentsResource {
   SpacesMessagesAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the metadata of a message attachment. The attachment data is fetched
-  /// using the media API.
+  /// Gets the metadata of a message attachment.
+  ///
+  /// The attachment data is fetched using the media API.
   ///
   /// Request parameters:
   ///
@@ -703,8 +705,9 @@ class SpacesMessagesAttachmentsResource {
   }
 }
 
-/// List of string parameters to supply when the action method is invoked. For
-/// example, consider three snooze buttons: snooze now, snooze 1 day, snooze
+/// List of string parameters to supply when the action method is invoked.
+///
+/// For example, consider three snooze buttons: snooze now, snooze 1 day, snooze
 /// next week. You might use action method = snooze(), passing the snooze type
 /// and snooze time in the list of string parameters.
 class ActionParameter {
@@ -748,7 +751,9 @@ class ActionResponse {
   /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
   core.String type;
 
-  /// URL for users to auth or config. (Only for REQUEST_CONFIG response types.)
+  /// URL for users to auth or config.
+  ///
+  /// (Only for REQUEST_CONFIG response types.)
   core.String url;
 
   ActionResponse();
@@ -774,8 +779,9 @@ class ActionResponse {
   }
 }
 
-/// Annotations associated with the plain-text body of the message. Example
-/// plain-text message body: ``` Hello @FooBot how are you!" ``` The
+/// Annotations associated with the plain-text body of the message.
+///
+/// Example plain-text message body: ``` Hello @FooBot how are you!" ``` The
 /// corresponding annotations metadata: ``` "annotations":[{
 /// "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user":
 /// { "name":"users/107946847022116401880", "displayName":"FooBot",
@@ -848,8 +854,9 @@ class Annotation {
 
 /// An attachment in Hangouts Chat.
 class Attachment {
-  /// A reference to the attachment data. This is used with the media API to
-  /// download the attachment data.
+  /// A reference to the attachment data.
+  ///
+  /// This is used with the media API to download the attachment data.
   AttachmentDataRef attachmentDataRef;
 
   /// The original file name for the content, not the full path.
@@ -858,12 +865,17 @@ class Attachment {
   /// The content type (MIME type) of the file.
   core.String contentType;
 
-  /// Output only. The download URL which should be used to allow a human user
-  /// to download the attachment. Bots should not use this URL to download
-  /// attachment content.
+  /// The download URL which should be used to allow a human user to download
+  /// the attachment.
+  ///
+  /// Bots should not use this URL to download attachment content.
+  ///
+  /// Output only.
   core.String downloadUri;
 
-  /// A reference to the drive attachment. This is used with the Drive API.
+  /// A reference to the drive attachment.
+  ///
+  /// This is used with the Drive API.
   DriveDataRef driveDataRef;
 
   /// Resource name of the attachment, in the form "spaces / * /messages / *
@@ -877,9 +889,12 @@ class Attachment {
   /// - "UPLOADED_CONTENT"
   core.String source;
 
-  /// Output only. The thumbnail URL which should be used to preview the
-  /// attachment to a human user. Bots should not use this URL to download
-  /// attachment content.
+  /// The thumbnail URL which should be used to preview the attachment to a
+  /// human user.
+  ///
+  /// Bots should not use this URL to download attachment content.
+  ///
+  /// Output only.
   core.String thumbnailUri;
 
   Attachment();
@@ -945,8 +960,9 @@ class Attachment {
 
 /// A reference to the data of an attachment.
 class AttachmentDataRef {
-  /// The resource name of the attachment data. This is used with the media API
-  /// to download the attachment data.
+  /// The resource name of the attachment data.
+  ///
+  /// This is used with the media API to download the attachment data.
   core.String resourceName;
 
   AttachmentDataRef();
@@ -966,7 +982,9 @@ class AttachmentDataRef {
   }
 }
 
-/// A button. Can be a text button or an image button.
+/// A button.
+///
+/// Can be a text button or an image button.
 class Button {
   /// A button with image and onclick action.
   ImageButton imageButton;
@@ -1004,7 +1022,9 @@ class Card {
   /// The actions of this card.
   core.List<CardAction> cardActions;
 
-  /// The header of the card. A header usually contains a title and an image.
+  /// The header of the card.
+  ///
+  /// A header usually contains a title and an image.
   CardHeader header;
 
   /// Name of the card.
@@ -1056,9 +1076,10 @@ class Card {
   }
 }
 
-/// A card action is the action associated with the card. For an invoice card, a
-/// typical action would be: delete invoice, email invoice or open the invoice
-/// in browser.
+/// A card action is the action associated with the card.
+///
+/// For an invoice card, a typical action would be: delete invoice, email
+/// invoice or open the invoice in browser.
 class CardAction {
   /// The label used to be displayed in the action menu item.
   core.String actionLabel;
@@ -1104,9 +1125,11 @@ class CardHeader {
   /// The subtitle of the card header.
   core.String subtitle;
 
-  /// The title must be specified. The header has a fixed height: if both a
-  /// title and subtitle is specified, each will take up 1 line. If only the
-  /// title is specified, it will take up both lines.
+  /// The title must be specified.
+  ///
+  /// The header has a fixed height: if both a title and subtitle is specified,
+  /// each will take up 1 line. If only the title is specified, it will take up
+  /// both lines.
   core.String title;
 
   CardHeader();
@@ -1147,14 +1170,16 @@ class CardHeader {
 /// Google Chat events.
 class DeprecatedEvent {
   /// The form action data associated with an interactive card that was clicked.
+  ///
   /// Only populated for CARD_CLICKED events. See the [Interactive Cards
   /// guide](/hangouts/chat/how-tos/cards-onclick) for more information.
   FormAction action;
 
   /// The URL the bot should redirect the user to after they have completed an
-  /// authorization or configuration flow outside of Google Chat. See the
-  /// [Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)
-  /// for more information.
+  /// authorization or configuration flow outside of Google Chat.
+  ///
+  /// See the [Authorizing access to 3p services
+  /// guide](/hangouts/chat/how-tos/auth-3p) for more information.
   core.String configCompleteRedirectUrl;
 
   /// The timestamp indicating when the event was dispatched.
@@ -1166,12 +1191,14 @@ class DeprecatedEvent {
   /// The room or DM in which the event occurred.
   Space space;
 
-  /// The bot-defined key for the thread related to the event. See the
-  /// thread_key field of the `spaces.message.create` request for more
+  /// The bot-defined key for the thread related to the event.
+  ///
+  /// See the thread_key field of the `spaces.message.create` request for more
   /// information.
   core.String threadKey;
 
   /// A secret value that bots can use to verify if a request is from Google.
+  ///
   /// The token is randomly generated by Google, remains static, and can be
   /// obtained from the Google Chat API configuration page in the Cloud Console.
   /// Developers can revoke/regenerate it if needed from the same page.
@@ -1282,10 +1309,12 @@ class DriveDataRef {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1299,13 +1328,16 @@ class Empty {
   }
 }
 
-/// A form action describes the behavior when the form is submitted. For
-/// example, an Apps Script can be invoked to handle the form.
+/// A form action describes the behavior when the form is submitted.
+///
+/// For example, an Apps Script can be invoked to handle the form.
 class FormAction {
   /// The method name is used to identify which part of the form triggered the
-  /// form submission. This information is echoed back to the bot as part of the
-  /// card click event. The same method name can be used for several elements
-  /// that trigger a common behavior if desired.
+  /// form submission.
+  ///
+  /// This information is echoed back to the bot as part of the card click
+  /// event. The same method name can be used for several elements that trigger
+  /// a common behavior if desired.
   core.String actionMethodName;
 
   /// List of action parameters.
@@ -1339,10 +1371,11 @@ class FormAction {
 
 /// An image that is specified by a URL and can have an onclick action.
 class Image {
-  /// The aspect ratio of this image (width/height). This field allows clients
-  /// to reserve the right height for the image while waiting for it to load.
-  /// It's not meant to override the native aspect ratio of the image. If unset,
-  /// the server fills it by prefetching the image.
+  /// The aspect ratio of this image (width/height).
+  ///
+  /// This field allows clients to reserve the right height for the image while
+  /// waiting for it to load. It's not meant to override the native aspect ratio
+  /// of the image. If unset, the server fills it by prefetching the image.
   core.double aspectRatio;
 
   /// The URL of the image.
@@ -1423,6 +1456,7 @@ class ImageButton {
   core.String iconUrl;
 
   /// The name of this image_button which will be used for accessibility.
+  ///
   /// Default value will be provided if developers don't specify.
   core.String name;
 
@@ -1465,16 +1499,21 @@ class ImageButton {
   }
 }
 
-/// A UI element contains a key (label) and a value (content). And this element
-/// may also contain some actions such as onclick button.
+/// A UI element contains a key (label) and a value (content).
+///
+/// And this element may also contain some actions such as onclick button.
 class KeyValue {
-  /// The text of the bottom label. Formatted text supported.
+  /// The text of the bottom label.
+  ///
+  /// Formatted text supported.
   core.String bottomLabel;
 
   /// A button that can be clicked to trigger an action.
   Button button;
 
-  /// The text of the content. Formatted text supported and always required.
+  /// The text of the content.
+  ///
+  /// Formatted text supported and always required.
   core.String content;
 
   /// If the content should be multiline.
@@ -1519,11 +1558,14 @@ class KeyValue {
   /// The icon specified by a URL.
   core.String iconUrl;
 
-  /// The onclick action. Only the top label, bottom label and content region
-  /// are clickable.
+  /// The onclick action.
+  ///
+  /// Only the top label, bottom label and content region are clickable.
   OnClick onClick;
 
-  /// The text of the top label. Formatted text supported.
+  /// The text of the top label.
+  ///
+  /// Formatted text supported.
   core.String topLabel;
 
   KeyValue();
@@ -1591,8 +1633,9 @@ class ListMembershipsResponse {
   /// List of memberships in the requested (or first) page.
   core.List<Membership> memberships;
 
-  /// Continuation token to retrieve the next page of results. It will be empty
-  /// for the last page of results.
+  /// Continuation token to retrieve the next page of results.
+  ///
+  /// It will be empty for the last page of results.
   core.String nextPageToken;
 
   ListMembershipsResponse();
@@ -1623,9 +1666,10 @@ class ListMembershipsResponse {
 }
 
 class ListSpacesResponse {
-  /// Continuation token to retrieve the next page of results. It will be empty
-  /// for the last page of results. Tokens expire in an hour. An error is thrown
-  /// if an expired token is passed.
+  /// Continuation token to retrieve the next page of results.
+  ///
+  /// It will be empty for the last page of results. Tokens expire in an hour.
+  /// An error is thrown if an expired token is passed.
   core.String nextPageToken;
 
   /// List of spaces in the requested (or first) page.
@@ -1737,11 +1781,14 @@ class Membership {
 
 /// A message in Hangouts Chat.
 class Message {
-  /// Input only. Parameters that a bot can use to configure how its response is
-  /// posted.
+  /// Input only.
+  ///
+  /// Parameters that a bot can use to configure how its response is posted.
   ActionResponse actionResponse;
 
-  /// Output only. Annotations associated with the text in this message.
+  /// Annotations associated with the text in this message.
+  ///
+  /// Output only.
   core.List<Annotation> annotations;
 
   /// Plain-text body of the message with all bot mentions stripped out.
@@ -1751,25 +1798,29 @@ class Message {
   core.List<Attachment> attachment;
 
   /// Rich, formatted and interactive cards that can be used to display UI
-  /// elements such as: formatted texts, buttons, clickable images. Cards are
-  /// normally displayed below the plain-text body of the message.
+  /// elements such as: formatted texts, buttons, clickable images.
+  ///
+  /// Cards are normally displayed below the plain-text body of the message.
   core.List<Card> cards;
 
-  /// Output only. The time at which the message was created in Hangouts Chat
-  /// server.
+  /// The time at which the message was created in Hangouts Chat server.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// A plain-text description of the message's cards, used when the actual
   /// cards cannot be displayed (e.g. mobile notifications).
   core.String fallbackText;
 
-  /// Resource name, in the form "spaces / * /messages / * ". Example:
-  /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+  /// Resource name, in the form "spaces / * /messages / * ".
+  ///
+  /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   core.String name;
 
-  /// Text for generating preview chips. This text will not be displayed to the
-  /// user, but any links to images, web pages, videos, etc. included here will
-  /// generate preview chips.
+  /// Text for generating preview chips.
+  ///
+  /// This text will not be displayed to the user, but any links to images, web
+  /// pages, videos, etc. included here will generate preview chips.
   core.String previewText;
 
   /// The user who created the message.
@@ -1953,9 +2004,10 @@ class OpenLink {
 }
 
 /// A section contains a collection of widgets that are rendered (vertically) in
-/// the order that they are specified. Across all platforms, cards have a narrow
-/// fixed width, so there is currently no need for layout properties (e.g.
-/// float).
+/// the order that they are specified.
+///
+/// Across all platforms, cards have a narrow fixed width, so there is currently
+/// no need for layout properties (e.g. float).
 class Section {
   /// The header of the section, text formatted supported.
   core.String header;
@@ -2075,12 +2127,17 @@ class SlashCommandMetadata {
 
 /// A room or DM in Hangouts Chat.
 class Space {
-  /// Output only. The display name (only if the space is a room). Please note
-  /// that this field might not be populated in direct messages between humans.
+  /// The display name (only if the space is a room).
+  ///
+  /// Please note that this field might not be populated in direct messages
+  /// between humans.
+  ///
+  /// Output only.
   core.String displayName;
 
-  /// Resource name of the space, in the form "spaces / * ". Example:
-  /// spaces/AAAAMpdlehYs
+  /// Resource name of the space, in the form "spaces / * ".
+  ///
+  /// Example: spaces/AAAAMpdlehYs
   core.String name;
 
   /// Whether the space is a DM between a bot and a single human.
@@ -2089,8 +2146,11 @@ class Space {
   /// Whether the messages are threaded in this space.
   core.bool threaded;
 
-  /// Output only. The type of a space. This is deprecated. Use
-  /// `single_user_bot_dm` instead.
+  /// The type of a space.
+  ///
+  /// This is deprecated. Use `single_user_bot_dm` instead.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED"
   /// - "ROOM" : Multi-user spaces such as rooms and DMs between humans.
@@ -2171,7 +2231,9 @@ class TextButton {
   }
 }
 
-/// A paragraph of text. Formatted text supported.
+/// A paragraph of text.
+///
+/// Formatted text supported.
 class TextParagraph {
   core.String text;
 
@@ -2194,8 +2256,9 @@ class TextParagraph {
 
 /// A thread in Hangouts Chat.
 class Thread {
-  /// Resource name, in the form "spaces / * /threads / * ". Example:
-  /// spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
+  /// Resource name, in the form "spaces / * /threads / * ".
+  ///
+  /// Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
   core.String name;
 
   Thread();
@@ -2306,8 +2369,9 @@ class UserMentionMetadata {
 
 /// A widget is a UI element that presents texts, images, etc.
 class WidgetMarkup {
-  /// A list of buttons. Buttons is also oneof data and only one of these fields
-  /// should be set.
+  /// A list of buttons.
+  ///
+  /// Buttons is also oneof data and only one of these fields should be set.
   core.List<Button> buttons;
 
   /// Display an image in this widget.

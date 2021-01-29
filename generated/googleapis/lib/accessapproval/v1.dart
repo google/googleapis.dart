@@ -71,6 +71,7 @@ class FoldersResource {
   FoldersResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the settings associated with a project, folder, or organization.
+  ///
   /// This will have the effect of disabling Access Approval for the project,
   /// folder, or organization, but only if all ancestors also have Access
   /// Approval disabled. If Access Approval is enabled at a higher level of the
@@ -179,6 +180,7 @@ class FoldersResource {
   }
 
   /// Updates the settings associated with a project, folder, or organization.
+  ///
   /// Settings to update are determined by the value of field_mask.
   ///
   /// [request] - The metadata request object.
@@ -260,9 +262,10 @@ class FoldersApprovalRequestsResource {
   FoldersApprovalRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Approves a request and returns the updated ApprovalRequest. Returns
-  /// NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if
-  /// the request exists but is not in a pending state.
+  /// Approves a request and returns the updated ApprovalRequest.
+  ///
+  /// Returns NOT_FOUND if the request does not exist. Returns
+  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -320,11 +323,13 @@ class FoldersApprovalRequestsResource {
     );
   }
 
-  /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
-  /// not deny access to the resource if another request has been made and
-  /// approved. It is equivalent in effect to ignoring the request altogether.
-  /// Returns NOT_FOUND if the request does not exist. Returns
-  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
+  /// Dismisses a request.
+  ///
+  /// Returns the updated ApprovalRequest. NOTE: This does not deny access to
+  /// the resource if another request has been made and approved. It is
+  /// equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
+  /// if the request does not exist. Returns FAILED_PRECONDITION if the request
+  /// exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -382,7 +387,9 @@ class FoldersApprovalRequestsResource {
     );
   }
 
-  /// Gets an approval request. Returns NOT_FOUND if the request does not exist.
+  /// Gets an approval request.
+  ///
+  /// Returns NOT_FOUND if the request does not exist.
   ///
   /// Request parameters:
   ///
@@ -435,8 +442,10 @@ class FoldersApprovalRequestsResource {
   }
 
   /// Lists approval requests associated with a project, folder, or
-  /// organization. Approval requests can be filtered by state (pending, active,
-  /// dismissed). The order is reverse chronological.
+  /// organization.
+  ///
+  /// Approval requests can be filtered by state (pending, active, dismissed).
+  /// The order is reverse chronological.
   ///
   /// Request parameters:
   ///
@@ -524,6 +533,7 @@ class OrganizationsResource {
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the settings associated with a project, folder, or organization.
+  ///
   /// This will have the effect of disabling Access Approval for the project,
   /// folder, or organization, but only if all ancestors also have Access
   /// Approval disabled. If Access Approval is enabled at a higher level of the
@@ -632,6 +642,7 @@ class OrganizationsResource {
   }
 
   /// Updates the settings associated with a project, folder, or organization.
+  ///
   /// Settings to update are determined by the value of field_mask.
   ///
   /// [request] - The metadata request object.
@@ -713,9 +724,10 @@ class OrganizationsApprovalRequestsResource {
   OrganizationsApprovalRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Approves a request and returns the updated ApprovalRequest. Returns
-  /// NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if
-  /// the request exists but is not in a pending state.
+  /// Approves a request and returns the updated ApprovalRequest.
+  ///
+  /// Returns NOT_FOUND if the request does not exist. Returns
+  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -773,11 +785,13 @@ class OrganizationsApprovalRequestsResource {
     );
   }
 
-  /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
-  /// not deny access to the resource if another request has been made and
-  /// approved. It is equivalent in effect to ignoring the request altogether.
-  /// Returns NOT_FOUND if the request does not exist. Returns
-  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
+  /// Dismisses a request.
+  ///
+  /// Returns the updated ApprovalRequest. NOTE: This does not deny access to
+  /// the resource if another request has been made and approved. It is
+  /// equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
+  /// if the request does not exist. Returns FAILED_PRECONDITION if the request
+  /// exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -835,7 +849,9 @@ class OrganizationsApprovalRequestsResource {
     );
   }
 
-  /// Gets an approval request. Returns NOT_FOUND if the request does not exist.
+  /// Gets an approval request.
+  ///
+  /// Returns NOT_FOUND if the request does not exist.
   ///
   /// Request parameters:
   ///
@@ -888,8 +904,10 @@ class OrganizationsApprovalRequestsResource {
   }
 
   /// Lists approval requests associated with a project, folder, or
-  /// organization. Approval requests can be filtered by state (pending, active,
-  /// dismissed). The order is reverse chronological.
+  /// organization.
+  ///
+  /// Approval requests can be filtered by state (pending, active, dismissed).
+  /// The order is reverse chronological.
   ///
   /// Request parameters:
   ///
@@ -977,6 +995,7 @@ class ProjectsResource {
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Deletes the settings associated with a project, folder, or organization.
+  ///
   /// This will have the effect of disabling Access Approval for the project,
   /// folder, or organization, but only if all ancestors also have Access
   /// Approval disabled. If Access Approval is enabled at a higher level of the
@@ -1085,6 +1104,7 @@ class ProjectsResource {
   }
 
   /// Updates the settings associated with a project, folder, or organization.
+  ///
   /// Settings to update are determined by the value of field_mask.
   ///
   /// [request] - The metadata request object.
@@ -1166,9 +1186,10 @@ class ProjectsApprovalRequestsResource {
   ProjectsApprovalRequestsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Approves a request and returns the updated ApprovalRequest. Returns
-  /// NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if
-  /// the request exists but is not in a pending state.
+  /// Approves a request and returns the updated ApprovalRequest.
+  ///
+  /// Returns NOT_FOUND if the request does not exist. Returns
+  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1226,11 +1247,13 @@ class ProjectsApprovalRequestsResource {
     );
   }
 
-  /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
-  /// not deny access to the resource if another request has been made and
-  /// approved. It is equivalent in effect to ignoring the request altogether.
-  /// Returns NOT_FOUND if the request does not exist. Returns
-  /// FAILED_PRECONDITION if the request exists but is not in a pending state.
+  /// Dismisses a request.
+  ///
+  /// Returns the updated ApprovalRequest. NOTE: This does not deny access to
+  /// the resource if another request has been made and approved. It is
+  /// equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
+  /// if the request does not exist. Returns FAILED_PRECONDITION if the request
+  /// exists but is not in a pending state.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1288,7 +1311,9 @@ class ProjectsApprovalRequestsResource {
     );
   }
 
-  /// Gets an approval request. Returns NOT_FOUND if the request does not exist.
+  /// Gets an approval request.
+  ///
+  /// Returns NOT_FOUND if the request does not exist.
   ///
   /// Request parameters:
   ///
@@ -1341,8 +1366,10 @@ class ProjectsApprovalRequestsResource {
   }
 
   /// Lists approval requests associated with a project, folder, or
-  /// organization. Approval requests can be filtered by state (pending, active,
-  /// dismissed). The order is reverse chronological.
+  /// organization.
+  ///
+  /// Approval requests can be filtered by state (pending, active, dismissed).
+  /// The order is reverse chronological.
   ///
   /// Request parameters:
   ///
@@ -1423,34 +1450,43 @@ class ProjectsApprovalRequestsResource {
 
 /// Settings on a Project/Folder/Organization related to Access Approval.
 class AccessApprovalSettings {
-  /// Output only. This field is read only (not settable via
-  /// UpdateAccessAccessApprovalSettings method). If the field is true, that
-  /// indicates that at least one service is enrolled for Access Approval in one
-  /// or more ancestors of the Project or Folder (this field will always be
-  /// unset for the organization since organizations do not have ancestors).
+  /// This field is read only (not settable via
+  /// UpdateAccessAccessApprovalSettings method).
+  ///
+  /// If the field is true, that indicates that at least one service is enrolled
+  /// for Access Approval in one or more ancestors of the Project or Folder
+  /// (this field will always be unset for the organization since organizations
+  /// do not have ancestors).
+  ///
+  /// Output only.
   core.bool enrolledAncestor;
 
   /// A list of Google Cloud Services for which the given resource has Access
-  /// Approval enrolled. Access requests for the resource given by name against
-  /// any of these services contained here will be required to have explicit
-  /// approval. If name refers to an organization, enrollment can be done for
-  /// individual services. If name refers to a folder or project, enrollment can
-  /// only be done on an all or nothing basis. If a cloud_product is repeated in
-  /// this list, the first entry will be honored and all following entries will
-  /// be discarded. A maximum of 10 enrolled services will be enforced, to be
+  /// Approval enrolled.
+  ///
+  /// Access requests for the resource given by name against any of these
+  /// services contained here will be required to have explicit approval. If
+  /// name refers to an organization, enrollment can be done for individual
+  /// services. If name refers to a folder or project, enrollment can only be
+  /// done on an all or nothing basis. If a cloud_product is repeated in this
+  /// list, the first entry will be honored and all following entries will be
+  /// discarded. A maximum of 10 enrolled services will be enforced, to be
   /// expanded as the set of supported services is expanded.
   core.List<EnrolledService> enrolledServices;
 
-  /// The resource name of the settings. Format is one of: *
-  /// "projects/{project}/accessApprovalSettings" *
+  /// The resource name of the settings.
+  ///
+  /// Format is one of: * "projects/{project}/accessApprovalSettings" *
   /// "folders/{folder}/accessApprovalSettings" *
   /// "organizations/{organization}/accessApprovalSettings"
   core.String name;
 
   /// A list of email addresses to which notifications relating to approval
-  /// requests should be sent. Notifications relating to a resource will be sent
-  /// to all emails in the settings of ancestor resources of that resource. A
-  /// maximum of 50 email addresses are allowed.
+  /// requests should be sent.
+  ///
+  /// Notifications relating to a resource will be sent to all emails in the
+  /// settings of ancestor resources of that resource. A maximum of 50 email
+  /// addresses are allowed.
   core.List<core.String> notificationEmails;
 
   AccessApprovalSettings();
@@ -1496,20 +1532,22 @@ class AccessApprovalSettings {
 
 /// Home office and physical location of the principal.
 class AccessLocations {
-  /// The "home office" location of the principal. A two-letter country code
-  /// (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some
-  /// limited situations Google systems may refer refer to a region code instead
-  /// of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE:
-  /// Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT:
-  /// Antarctica * ANY: Any location
+  /// The "home office" location of the principal.
+  ///
+  /// A two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB"
+  /// or a region code. In some limited situations Google systems may refer
+  /// refer to a region code instead of a country code. Possible Region Codes: *
+  /// ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America
+  /// * SAM: South America * ANT: Antarctica * ANY: Any location
   core.String principalOfficeCountry;
 
-  /// Physical location of the principal at the time of the access. A two-letter
-  /// country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region
-  /// code. In some limited situations Google systems may refer refer to a
-  /// region code instead of a country code. Possible Region Codes: * ASI: Asia
-  /// * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM:
-  /// South America * ANT: Antarctica * ANY: Any location
+  /// Physical location of the principal at the time of the access.
+  ///
+  /// A two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB"
+  /// or a region code. In some limited situations Google systems may refer
+  /// refer to a region code instead of a country code. Possible Region Codes: *
+  /// ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America
+  /// * SAM: South America * ANT: Antarctica * ANY: Any location
   core.String principalPhysicalLocationCountry;
 
   AccessLocations();
@@ -1538,7 +1576,9 @@ class AccessLocations {
 }
 
 class AccessReason {
-  /// More detail about certain reason types. See comments for each type above.
+  /// More detail about certain reason types.
+  ///
+  /// See comments for each type above.
   core.String detail;
 
   /// Type of access justification.
@@ -1589,16 +1629,19 @@ class ApprovalRequest {
   /// The request was dismissed.
   DismissDecision dismiss;
 
-  /// The resource name of the request. Format is
+  /// The resource name of the request.
+  ///
+  /// Format is
   /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}".
   core.String name;
 
   /// The time at which approval was requested.
   core.String requestTime;
 
-  /// The requested expiration for the approval. If the request is approved,
-  /// access will be granted from the time of approval until the expiration
-  /// time.
+  /// The requested expiration for the approval.
+  ///
+  /// If the request is approved, access will be granted from the time of
+  /// approval until the expiration time.
   core.String requestedExpiration;
 
   /// The locations for which approval is being requested.
@@ -1607,8 +1650,9 @@ class ApprovalRequest {
   /// The justification for which approval is being requested.
   AccessReason requestedReason;
 
-  /// The resource for which approval is being requested. The format of the
-  /// resource name is defined at
+  /// The resource for which approval is being requested.
+  ///
+  /// The format of the resource name is defined at
   /// https://cloud.google.com/apis/design/resource_names. The resource name
   /// here may either be a "full" resource name (e.g.
   /// "//library.googleapis.com/shelves/shelf1/books/book2") or a "relative"
@@ -1792,10 +1836,12 @@ class DismissDecision {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1811,13 +1857,14 @@ class Empty {
 
 /// Represents the enrollment of a cloud resource into a specific service.
 class EnrolledService {
-  /// The product for which Access Approval will be enrolled. Allowed values are
-  /// listed below (case-sensitive): * all * GA * App Engine * BigQuery * Cloud
-  /// Bigtable * Cloud Key Management Service * Compute Engine * Cloud Dataflow
-  /// * Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage *
-  /// Persistent Disk Note: These values are supported as input for legacy
-  /// purposes, but will not be returned from the API. * all * ga-only *
-  /// appengine.googleapis.com * bigquery.googleapis.com *
+  /// The product for which Access Approval will be enrolled.
+  ///
+  /// Allowed values are listed below (case-sensitive): * all * GA * App Engine
+  /// * BigQuery * Cloud Bigtable * Cloud Key Management Service * Compute
+  /// Engine * Cloud Dataflow * Cloud Identity and Access Management * Cloud
+  /// Pub/Sub * Cloud Storage * Persistent Disk Note: These values are supported
+  /// as input for legacy purposes, but will not be returned from the API. * all
+  /// * ga-only * appengine.googleapis.com * bigquery.googleapis.com *
   /// bigtable.googleapis.com * cloudkms.googleapis.com * compute.googleapis.com
   /// * dataflow.googleapis.com * iam.googleapis.com * pubsub.googleapis.com *
   /// storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all',

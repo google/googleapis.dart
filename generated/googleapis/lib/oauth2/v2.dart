@@ -226,18 +226,22 @@ class UserinfoV2MeResource {
 }
 
 class Tokeninfo {
-  /// Who is the intended audience for this token. In general the same as
-  /// issued_to.
+  /// Who is the intended audience for this token.
+  ///
+  /// In general the same as issued_to.
   core.String audience;
 
-  /// The email address of the user. Present only if the email scope is present
-  /// in the request.
+  /// The email address of the user.
+  ///
+  /// Present only if the email scope is present in the request.
   core.String email;
 
   /// The expiry time of the token, as number of seconds left until expiry.
   core.int expiresIn;
 
-  /// To whom was the token issued to. In general the same as audience.
+  /// To whom was the token issued to.
+  ///
+  /// In general the same as audience.
   core.String issuedTo;
 
   /// The space separated list of scopes granted to this token.
@@ -246,8 +250,9 @@ class Tokeninfo {
   /// The obfuscated user id.
   core.String userId;
 
-  /// Boolean flag which is true if the email address is verified. Present only
-  /// if the email scope is present in the request.
+  /// Boolean flag which is true if the email address is verified.
+  ///
+  /// Present only if the email scope is present in the request.
   core.bool verifiedEmail;
 
   Tokeninfo();
@@ -334,8 +339,9 @@ class Userinfo {
   /// URL of the user's picture image.
   core.String picture;
 
-  /// Boolean flag which is true if the email address is verified. Always
-  /// verified because we only return the user's primary email address.
+  /// Boolean flag which is true if the email address is verified.
+  ///
+  /// Always verified because we only return the user's primary email address.
   core.bool verifiedEmail;
 
   Userinfo();

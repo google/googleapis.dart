@@ -294,9 +294,10 @@ class CompaniesResource {
     );
   }
 
-  /// Updates the specified company. Company names can't be updated. To update a
-  /// company name, delete the company and all jobs associated with it, and only
-  /// then re-create them.
+  /// Updates the specified company.
+  ///
+  /// Company names can't be updated. To update a company name, delete the
+  /// company and all jobs associated with it, and only then re-create them.
   ///
   /// [request] - The metadata request object.
   ///
@@ -374,8 +375,11 @@ class CompaniesJobsResource {
 
   CompaniesJobsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deprecated. Use ListJobs instead. Lists all jobs associated with a
-  /// company.
+  /// Use ListJobs instead.
+  ///
+  /// Lists all jobs associated with a company.
+  ///
+  /// Deprecated.
   ///
   /// Request parameters:
   ///
@@ -526,8 +530,10 @@ class JobsResource {
     );
   }
 
-  /// Creates a new job. Typically, the job becomes searchable within 10
-  /// seconds, but it may take up to 5 minutes.
+  /// Creates a new job.
+  ///
+  /// Typically, the job becomes searchable within 10 seconds, but it may take
+  /// up to 5 minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -577,8 +583,10 @@ class JobsResource {
     );
   }
 
-  /// Deletes the specified job. Typically, the job becomes unsearchable within
-  /// 10 seconds, but it may take up to 5 minutes.
+  /// Deletes the specified job.
+  ///
+  /// Typically, the job becomes unsearchable within 10 seconds, but it may take
+  /// up to 5 minutes.
   ///
   /// Request parameters:
   ///
@@ -639,10 +647,13 @@ class JobsResource {
     );
   }
 
-  /// Deprecated. Use BatchDeleteJobs instead. Deletes the specified job by
-  /// filter. You can specify whether to synchronously wait for validation,
-  /// indexing, and general processing to be completed before the response is
-  /// returned.
+  /// Use BatchDeleteJobs instead.
+  ///
+  /// Deletes the specified job by filter. You can specify whether to
+  /// synchronously wait for validation, indexing, and general processing to be
+  /// completed before the response is returned.
+  ///
+  /// Deprecated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -745,13 +756,17 @@ class JobsResource {
     );
   }
 
-  /// Deprecated. Use SearchJobsRequest.histogram_facets instead to make a
-  /// single call with both search and histogram. Retrieves a histogram for the
-  /// given GetHistogramRequest. This call provides a structured count of jobs
-  /// that match against the search query, grouped by specified facets. This
-  /// call constrains the visibility of jobs present in the database, and only
-  /// counts jobs the caller has permission to search against. For example, use
-  /// this call to generate the number of jobs in the U.S. by state.
+  /// Use SearchJobsRequest.histogram_facets instead to make a single call with
+  /// both search and histogram.
+  ///
+  /// Retrieves a histogram for the given GetHistogramRequest. This call
+  /// provides a structured count of jobs that match against the search query,
+  /// grouped by specified facets. This call constrains the visibility of jobs
+  /// present in the database, and only counts jobs the caller has permission to
+  /// search against. For example, use this call to generate the number of jobs
+  /// in the U.S. by state.
+  ///
+  /// Deprecated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -880,8 +895,10 @@ class JobsResource {
     );
   }
 
-  /// Updates specified job. Typically, updated contents become visible in
-  /// search results within 10 seconds, but it may take up to 5 minutes.
+  /// Updates specified job.
+  ///
+  /// Typically, updated contents become visible in search results within 10
+  /// seconds, but it may take up to 5 minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -941,9 +958,10 @@ class JobsResource {
     );
   }
 
-  /// Searches for jobs using the provided SearchJobsRequest. This call
-  /// constrains the visibility of jobs present in the database, and only
-  /// returns jobs that the caller has permission to search against.
+  /// Searches for jobs using the provided SearchJobsRequest.
+  ///
+  /// This call constrains the visibility of jobs present in the database, and
+  /// only returns jobs that the caller has permission to search against.
   ///
   /// [request] - The metadata request object.
   ///
@@ -994,13 +1012,14 @@ class JobsResource {
     );
   }
 
-  /// Searches for jobs using the provided SearchJobsRequest. This API call is
-  /// intended for the use case of targeting passive job seekers (for example,
-  /// job seekers who have signed up to receive email alerts about potential job
-  /// opportunities), and has different algorithmic adjustments that are
-  /// targeted to passive job seekers. This call constrains the visibility of
-  /// jobs present in the database, and only returns jobs the caller has
-  /// permission to search against.
+  /// Searches for jobs using the provided SearchJobsRequest.
+  ///
+  /// This API call is intended for the use case of targeting passive job
+  /// seekers (for example, job seekers who have signed up to receive email
+  /// alerts about potential job opportunities), and has different algorithmic
+  /// adjustments that are targeted to passive job seekers. This call constrains
+  /// the visibility of jobs present in the database, and only returns jobs the
+  /// caller has permission to search against.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1057,8 +1076,9 @@ class V2Resource {
 
   V2Resource(commons.ApiRequester client) : _requester = client;
 
-  /// Completes the specified prefix with job keyword suggestions. Intended for
-  /// use by a job search auto-complete search box.
+  /// Completes the specified prefix with job keyword suggestions.
+  ///
+  /// Intended for use by a job search auto-complete search box.
   ///
   /// Request parameters:
   ///
@@ -1162,12 +1182,17 @@ class V2Resource {
   }
 }
 
-/// Input only. Batch delete jobs request.
+/// Input only.
+///
+/// Batch delete jobs request.
 class BatchDeleteJobsRequest {
-  /// Required. The filter string specifies the jobs to be deleted. Supported
-  /// operator: =, AND The fields eligible for filtering are: * `companyName`
-  /// (Required) * `requisitionId` (Required) Sample Query: companyName =
-  /// "companies/123" AND requisitionId = "req-1"
+  /// The filter string specifies the jobs to be deleted.
+  ///
+  /// Supported operator: =, AND The fields eligible for filtering are: *
+  /// `companyName` (Required) * `requisitionId` (Required) Sample Query:
+  /// companyName = "companies/123" AND requisitionId = "req-1"
+  ///
+  /// Required.
   core.String filter;
 
   BatchDeleteJobsRequest();
@@ -1251,15 +1276,18 @@ class BucketizedCount {
   }
 }
 
-/// Output only. Commute details related to this job.
+/// Commute details related to this job.
+///
+/// Output only.
 class CommuteInfo {
   /// Location used as the destination in the commute calculation.
   JobLocation jobLocation;
 
   /// The number of seconds required to travel to the job location from the
-  /// query location. A duration of 0 seconds indicates that the job is not
-  /// reachable within the requested duration, but was returned as part of an
-  /// expanded query.
+  /// query location.
+  ///
+  /// A duration of 0 seconds indicates that the job is not reachable within the
+  /// requested duration, but was returned as part of an expanded query.
   core.String travelDuration;
 
   CommuteInfo();
@@ -1286,22 +1314,32 @@ class CommuteInfo {
   }
 }
 
-/// Input only. Parameters needed for commute search.
+/// Input only.
+///
+/// Parameters needed for commute search.
 class CommutePreference {
-  /// Optional. If `true`, jobs without street level addresses may also be
-  /// returned. For city level addresses, the city center is used. For state and
-  /// coarser level addresses, text matching is used. If this field is set to
-  /// `false` or is not specified, only jobs that include street level addresses
-  /// will be returned by commute search.
+  /// If `true`, jobs without street level addresses may also be returned.
+  ///
+  /// For city level addresses, the city center is used. For state and coarser
+  /// level addresses, text matching is used. If this field is set to `false` or
+  /// is not specified, only jobs that include street level addresses will be
+  /// returned by commute search.
+  ///
+  /// Optional.
   core.bool allowNonStreetLevelAddress;
 
-  /// Optional. The departure hour to use to calculate traffic impact. Accepts
-  /// an integer between 0 and 23, representing the hour in the time zone of the
-  /// start_location. Must not be present if road_traffic is specified.
+  /// The departure hour to use to calculate traffic impact.
+  ///
+  /// Accepts an integer between 0 and 23, representing the hour in the time
+  /// zone of the start_location. Must not be present if road_traffic is
+  /// specified.
+  ///
+  /// Optional.
   core.int departureHourLocal;
 
-  /// Required. The method of transportation for which to calculate the commute
-  /// time.
+  /// The method of transportation for which to calculate the commute time.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "COMMUTE_METHOD_UNSPECIFIED" : Commute method is not specified.
   /// - "DRIVING" : Commute time is calculated based on driving time.
@@ -1309,8 +1347,11 @@ class CommutePreference {
   /// bus, metro, subway, etc.
   core.String method;
 
-  /// Optional. Specifies the traffic density to use when calculating commute
-  /// time. Must not be present if departure_hour_local is specified.
+  /// Specifies the traffic density to use when calculating commute time.
+  ///
+  /// Must not be present if departure_hour_local is specified.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ROAD_TRAFFIC_UNSPECIFIED" : Road traffic situation is not specified.
   /// - "TRAFFIC_FREE" : Optimal commute time without considering any traffic
@@ -1319,12 +1360,17 @@ class CommutePreference {
   /// impact.
   core.String roadTraffic;
 
-  /// Required. The latitude and longitude of the location from which to
-  /// calculate the commute time.
+  /// The latitude and longitude of the location from which to calculate the
+  /// commute time.
+  ///
+  /// Required.
   LatLng startLocation;
 
-  /// Required. The maximum travel time in seconds. The maximum allowed value is
-  /// `3600s` (one hour). Format is `123s`.
+  /// The maximum travel time in seconds.
+  ///
+  /// The maximum allowed value is `3600s` (one hour). Format is `123s`.
+  ///
+  /// Required.
   core.String travelTime;
 
   CommutePreference();
@@ -1376,19 +1422,26 @@ class CommutePreference {
   }
 }
 
-/// A Company resource represents a company in the service. A company is the
-/// entity that owns job listings, that is, the hiring entity responsible for
-/// employing applicants for the job position.
+/// A Company resource represents a company in the service.
+///
+/// A company is the entity that owns job listings, that is, the hiring entity
+/// responsible for employing applicants for the job position.
 class Company {
-  /// Optional. The URL to employer's career site or careers page on the
-  /// employer's web site.
+  /// The URL to employer's career site or careers page on the employer's web
+  /// site.
+  ///
+  /// Optional.
   core.String careerPageLink;
 
-  /// Optional. Identifiers external to the application that help to further
-  /// identify the employer.
+  /// Identifiers external to the application that help to further identify the
+  /// employer.
+  ///
+  /// Optional.
   core.List<CompanyInfoSource> companyInfoSources;
 
-  /// Optional. The employer's company size.
+  /// The employer's company size.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMPANY_SIZE_UNSPECIFIED" : Default value if the size is not specified.
   /// - "MINI" : The company has less than 50 employees.
@@ -1400,84 +1453,126 @@ class Company {
   /// - "GIANT" : The company has 10,000 or more employees.
   core.String companySize;
 
-  /// Deprecated. Do not use this field. Optional. This field is no longer used.
-  /// Any value set to it is ignored.
+  /// Do not use this field.
+  ///
+  /// Optional. This field is no longer used. Any value set to it is ignored.
+  ///
+  /// Deprecated.
   core.bool disableLocationOptimization;
 
-  /// Required. The name of the employer to be displayed with the job, for
-  /// example, "Google, LLC.".
+  /// The name of the employer to be displayed with the job, for example,
+  /// "Google, LLC.".
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. The unique company identifier provided by the client to identify
-  /// an employer for billing purposes. Recommended practice is to use the
-  /// distributor_company_id. Defaults to same value as distributor_company_id
-  /// when a value is not provided.
+  /// The unique company identifier provided by the client to identify an
+  /// employer for billing purposes.
+  ///
+  /// Recommended practice is to use the distributor_company_id. Defaults to
+  /// same value as distributor_company_id when a value is not provided.
+  ///
+  /// Optional.
   core.String distributorBillingCompanyId;
 
-  /// Required. A client's company identifier, used to uniquely identify the
-  /// company. If an employer has a subsidiary or sub-brand, such as "Alphabet"
-  /// and "Google", which the client wishes to use as the company displayed on
-  /// the job. Best practice is to create a distinct company identifier for each
+  /// A client's company identifier, used to uniquely identify the company.
+  ///
+  /// If an employer has a subsidiary or sub-brand, such as "Alphabet" and
+  /// "Google", which the client wishes to use as the company displayed on the
+  /// job. Best practice is to create a distinct company identifier for each
   /// distinct brand displayed. The maximum number of allowed characters is 255.
+  ///
+  /// Required.
   core.String distributorCompanyId;
 
-  /// Optional. Equal Employment Opportunity legal disclaimer text to be
-  /// associated with all jobs, and typically to be displayed in all roles. The
-  /// maximum number of allowed characters is 500.
+  /// Equal Employment Opportunity legal disclaimer text to be associated with
+  /// all jobs, and typically to be displayed in all roles.
+  ///
+  /// The maximum number of allowed characters is 500.
+  ///
+  /// Optional.
   core.String eeoText;
 
-  /// Optional. Set to true if it is the hiring agency that post jobs for other
-  /// employers. Defaults to false if not provided.
+  /// Set to true if it is the hiring agency that post jobs for other employers.
+  ///
+  /// Defaults to false if not provided.
+  ///
+  /// Optional.
   core.bool hiringAgency;
 
-  /// Optional. The street address of the company's main headquarters, which may
-  /// be different from the job location. The service attempts to geolocate the
-  /// provided address, and populates a more specific location wherever possible
-  /// in structured_company_hq_location.
+  /// The street address of the company's main headquarters, which may be
+  /// different from the job location.
+  ///
+  /// The service attempts to geolocate the provided address, and populates a
+  /// more specific location wherever possible in
+  /// structured_company_hq_location.
+  ///
+  /// Optional.
   core.String hqLocation;
 
-  /// Optional. A URL that hosts the employer's company logo. If provided, the
-  /// logo image should be squared at 80x80 pixels. The url must be a Google
-  /// Photos or Google Album url. Only images in these Google sub-domains are
-  /// accepted.
+  /// A URL that hosts the employer's company logo.
+  ///
+  /// If provided, the logo image should be squared at 80x80 pixels. The url
+  /// must be a Google Photos or Google Album url. Only images in these Google
+  /// sub-domains are accepted.
+  ///
+  /// Optional.
   core.String imageUrl;
 
-  /// Optional. A list of keys of filterable Job.custom_attributes, whose
-  /// corresponding `string_values` are used in keyword search. Jobs with
-  /// `string_values` under these specified field keys are returned if any of
-  /// the values matches the search keyword. Custom field values with
+  /// A list of keys of filterable Job.custom_attributes, whose corresponding
+  /// `string_values` are used in keyword search.
+  ///
+  /// Jobs with `string_values` under these specified field keys are returned if
+  /// any of the values matches the search keyword. Custom field values with
   /// parenthesis, brackets and special symbols might not be properly
   /// searchable, and those keyword queries need to be surrounded by quotes.
+  ///
+  /// Optional.
   core.List<core.String> keywordSearchableCustomAttributes;
 
-  /// Deprecated. Use keyword_searchable_custom_attributes instead. Optional. A
-  /// list of filterable custom fields that should be used in keyword search.
-  /// The jobs of this company are returned if any of these custom fields
-  /// matches the search keyword. Custom field values with parenthesis, brackets
-  /// and special symbols might not be properly searchable, and those keyword
-  /// queries need to be surrounded by quotes.
+  /// Use keyword_searchable_custom_attributes instead.
+  ///
+  /// Optional. A list of filterable custom fields that should be used in
+  /// keyword search. The jobs of this company are returned if any of these
+  /// custom fields matches the search keyword. Custom field values with
+  /// parenthesis, brackets and special symbols might not be properly
+  /// searchable, and those keyword queries need to be surrounded by quotes.
+  ///
+  /// Deprecated.
   core.List<core.int> keywordSearchableCustomFields;
 
-  /// Required during company update. The resource name for a company. This is
-  /// generated by the service when a company is created, for example,
+  /// Required during company update.
+  ///
+  /// The resource name for a company. This is generated by the service when a
+  /// company is created, for example,
   /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
   core.String name;
 
-  /// Output only. A structured headquarters location of the company, resolved
-  /// from hq_location if possible.
+  /// A structured headquarters location of the company, resolved from
+  /// hq_location if possible.
+  ///
+  /// Output only.
   JobLocation structuredCompanyHqLocation;
 
-  /// Output only. Indicates whether a company is flagged to be suspended from
-  /// public availability by the service when job content appears suspicious,
-  /// abusive, or spammy.
+  /// Indicates whether a company is flagged to be suspended from public
+  /// availability by the service when job content appears suspicious, abusive,
+  /// or spammy.
+  ///
+  /// Output only.
   core.bool suspended;
 
-  /// Deprecated. Use display_name instead. Required. The name of the employer
-  /// to be displayed with the job, for example, "Google, LLC.".
+  /// Use display_name instead.
+  ///
+  /// Required. The name of the employer to be displayed with the job, for
+  /// example, "Google, LLC.".
+  ///
+  /// Deprecated.
   core.String title;
 
-  /// Optional. The URL representing the company's primary web site or home
-  /// page, such as, "www.google.com".
+  /// The URL representing the company's primary web site or home page, such as,
+  /// "www.google.com".
+  ///
+  /// Optional.
   core.String website;
 
   Company();
@@ -1616,20 +1711,29 @@ class Company {
 }
 
 /// A resource that represents an external Google identifier for a company, for
-/// example, a Google+ business page or a Google Maps business page. For
-/// unsupported types, use `unknown_type_id`.
+/// example, a Google+ business page or a Google Maps business page.
+///
+/// For unsupported types, use `unknown_type_id`.
 class CompanyInfoSource {
-  /// Optional. The Google's Knowledge Graph value for the employer's company.
+  /// The Google's Knowledge Graph value for the employer's company.
+  ///
+  /// Optional.
   core.String freebaseMid;
 
-  /// Optional. The numeric identifier for the employer's Google+ business page.
+  /// The numeric identifier for the employer's Google+ business page.
+  ///
+  /// Optional.
   core.String gplusId;
 
-  /// Optional. The numeric identifier for the employer's headquarters on Google
-  /// Maps, namely, the Google Maps CID (cell id).
+  /// The numeric identifier for the employer's headquarters on Google Maps,
+  /// namely, the Google Maps CID (cell id).
+  ///
+  /// Optional.
   core.String mapsCid;
 
-  /// Optional. A Google identifier that does not match any of the other types.
+  /// A Google identifier that does not match any of the other types.
+  ///
+  /// Optional.
   core.String unknownTypeId;
 
   CompanyInfoSource();
@@ -1668,28 +1772,43 @@ class CompanyInfoSource {
 }
 
 /// A compensation entry that represents one component of compensation, such as
-/// base pay, bonus, or other compensation type. Annualization: One compensation
-/// entry can be annualized if - it contains valid amount or range. - and its
-/// expected_units_per_year is set or can be derived. Its annualized range is
-/// determined as (amount or range) times expected_units_per_year.
+/// base pay, bonus, or other compensation type.
+///
+/// Annualization: One compensation entry can be annualized if - it contains
+/// valid amount or range. - and its expected_units_per_year is set or can be
+/// derived. Its annualized range is determined as (amount or range) times
+/// expected_units_per_year.
 class CompensationEntry {
-  /// Optional. Compensation amount.
+  /// Compensation amount.
+  ///
+  /// Optional.
   Money amount;
 
-  /// Optional. Compensation description. For example, could indicate equity
-  /// terms or provide additional context to an estimated bonus.
+  /// Compensation description.
+  ///
+  /// For example, could indicate equity terms or provide additional context to
+  /// an estimated bonus.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Expected number of units paid each year. If not specified, when
-  /// Job.employment_types is FULLTIME, a default value is inferred based on
-  /// unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY:
-  /// 12 - ANNUAL: 1
+  /// Expected number of units paid each year.
+  ///
+  /// If not specified, when Job.employment_types is FULLTIME, a default value
+  /// is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 -
+  /// WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
+  ///
+  /// Optional.
   core.double expectedUnitsPerYear;
 
-  /// Optional. Compensation range.
+  /// Compensation range.
+  ///
+  /// Optional.
   CompensationRange range;
 
-  /// Required. Compensation type.
+  /// Compensation type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "COMPENSATION_TYPE_UNSPECIFIED" : Default value. Equivalent to
   /// OTHER_COMPENSATION_TYPE.
@@ -1706,8 +1825,11 @@ class CompensationEntry {
   /// - "OTHER_COMPENSATION_TYPE" : Other compensation type.
   core.String type;
 
-  /// Optional. Frequency of the specified amount. Default is
-  /// CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+  /// Frequency of the specified amount.
+  ///
+  /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMPENSATION_UNIT_UNSPECIFIED" : Default value. Equivalent to
   /// OTHER_COMPENSATION_UNIT.
@@ -1770,15 +1892,23 @@ class CompensationEntry {
   }
 }
 
-/// Input only. Filter on job compensation type and amount.
+/// Input only.
+///
+/// Filter on job compensation type and amount.
 class CompensationFilter {
-  /// Optional. Whether to include jobs whose compensation range is unspecified.
+  /// Whether to include jobs whose compensation range is unspecified.
+  ///
+  /// Optional.
   core.bool includeJobsWithUnspecifiedCompensationRange;
 
-  /// Optional. Compensation range.
+  /// Compensation range.
+  ///
+  /// Optional.
   CompensationRange range;
 
-  /// Required. Type of filter.
+  /// Type of filter.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "FILTER_TYPE_UNSPECIFIED" : Filter type unspecified. Position holder,
   /// INVALID, should never be used.
@@ -1801,8 +1931,10 @@ class CompensationFilter {
   /// more units.
   core.String type;
 
-  /// Required. Specify desired `base compensation entry's`
+  /// Specify desired `base compensation entry's`
   /// CompensationInfo.CompensationUnit.
+  ///
+  /// Required.
   core.List<core.String> units;
 
   CompensationFilter();
@@ -1845,15 +1977,22 @@ class CompensationFilter {
   }
 }
 
-/// Input only. Compensation based histogram request.
+/// Input only.
+///
+/// Compensation based histogram request.
 class CompensationHistogramRequest {
-  /// Required. Numeric histogram options, like buckets, whether include min or
-  /// max value.
+  /// Numeric histogram options, like buckets, whether include min or max value.
+  ///
+  /// Required.
   NumericBucketingOption bucketingOption;
 
-  /// Required. Type of the request, representing which field the histogramming
-  /// should be performed over. A single request can only specify one histogram
-  /// of each `CompensationHistogramRequestType`.
+  /// Type of the request, representing which field the histogramming should be
+  /// performed over.
+  ///
+  /// A single request can only specify one histogram of each
+  /// `CompensationHistogramRequestType`.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED" : Default value.
   /// Invalid.
@@ -1889,7 +2028,9 @@ class CompensationHistogramRequest {
   }
 }
 
-/// Output only. Compensation based histogram result.
+/// Compensation based histogram result.
+///
+/// Output only.
 class CompensationHistogramResult {
   /// Histogram result.
   NumericBucketingResult result;
@@ -1932,39 +2073,62 @@ class CompensationHistogramResult {
 
 /// Job compensation details.
 class CompensationInfo {
-  /// Deprecated. Use entries instead. Optional. The amount of compensation or
-  /// pay for the job. As an alternative, compensation_amount_min and
-  /// compensation_amount_max may be used to define a range of compensation.
+  /// Use entries instead.
+  ///
+  /// Optional. The amount of compensation or pay for the job. As an
+  /// alternative, compensation_amount_min and compensation_amount_max may be
+  /// used to define a range of compensation.
+  ///
+  /// Deprecated.
   Money amount;
 
-  /// Output only. Annualized base compensation range. Computed as base
-  /// compensation entry's CompensationEntry.compensation times
+  /// Annualized base compensation range.
+  ///
+  /// Computed as base compensation entry's CompensationEntry.compensation times
   /// CompensationEntry.expected_units_per_year. See CompensationEntry for
   /// explanation on compensation annualization.
+  ///
+  /// Output only.
   CompensationRange annualizedBaseCompensationRange;
 
-  /// Output only. Annualized total compensation range. Computed as all
-  /// compensation entries' CompensationEntry.compensation times
+  /// Annualized total compensation range.
+  ///
+  /// Computed as all compensation entries' CompensationEntry.compensation times
   /// CompensationEntry.expected_units_per_year. See CompensationEntry for
   /// explanation on compensation annualization.
+  ///
+  /// Output only.
   CompensationRange annualizedTotalCompensationRange;
 
-  /// Optional. Job compensation information. At most one entry can be of type
-  /// CompensationInfo.CompensationType.BASE, which is referred as ** base
-  /// compensation entry ** for the job.
+  /// Job compensation information.
+  ///
+  /// At most one entry can be of type CompensationInfo.CompensationType.BASE,
+  /// which is referred as ** base compensation entry ** for the job.
+  ///
+  /// Optional.
   core.List<CompensationEntry> entries;
 
-  /// Deprecated. Use entries instead. Optional. An upper bound on a range for
-  /// compensation or pay for the job. The currency type is specified in
-  /// compensation_amount.
+  /// Use entries instead.
+  ///
+  /// Optional. An upper bound on a range for compensation or pay for the job.
+  /// The currency type is specified in compensation_amount.
+  ///
+  /// Deprecated.
   Money max;
 
-  /// Deprecated. Use entries instead. Optional. A lower bound on a range for
-  /// compensation or pay for the job. The currency type is specified in
-  /// compensation_amount.
+  /// Use entries instead.
+  ///
+  /// Optional. A lower bound on a range for compensation or pay for the job.
+  /// The currency type is specified in compensation_amount.
+  ///
+  /// Deprecated.
   Money min;
 
-  /// Deprecated. Use entries instead. Optional. Type of job compensation.
+  /// Use entries instead.
+  ///
+  /// Optional. Type of job compensation.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "JOB_COMPENSATION_TYPE_UNSPECIFIED" : The default value if the type is
   /// not specified.
@@ -2042,14 +2206,20 @@ class CompensationInfo {
 
 /// Compensation range.
 class CompensationRange {
-  /// Optional. The maximum amount of compensation. If left empty, the value is
-  /// set to a maximal compensation value and the currency code is set to match
-  /// the currency code of min_compensation.
+  /// The maximum amount of compensation.
+  ///
+  /// If left empty, the value is set to a maximal compensation value and the
+  /// currency code is set to match the currency code of min_compensation.
+  ///
+  /// Optional.
   Money max;
 
-  /// Optional. The minimum amount of compensation. If left empty, the value is
-  /// set to zero and the currency code is set to match the currency code of
-  /// max_compensation.
+  /// The minimum amount of compensation.
+  ///
+  /// If left empty, the value is set to zero and the currency code is set to
+  /// match the currency code of max_compensation.
+  ///
+  /// Optional.
   Money min;
 
   CompensationRange();
@@ -2075,7 +2245,9 @@ class CompensationRange {
   }
 }
 
-/// Output only. Response of auto-complete query.
+/// Response of auto-complete query.
+///
+/// Output only.
 class CompleteQueryResponse {
   /// Results of the matching job/company candidates.
   core.List<CompletionResult> completionResults;
@@ -2112,7 +2284,9 @@ class CompleteQueryResponse {
   }
 }
 
-/// Output only. Resource that represents completion results.
+/// Resource that represents completion results.
+///
+/// Output only.
 class CompletionResult {
   /// The URL for the company logo if `type=COMPANY_NAME`.
   core.String imageUrl;
@@ -2157,17 +2331,27 @@ class CompletionResult {
   }
 }
 
-/// Input only. Create job request.
+/// Input only.
+///
+/// Create job request.
 class CreateJobRequest {
-  /// Deprecated. Please use processing_options. This flag is ignored if
-  /// processing_options is set. Optional. If set to `true`, the service does
-  /// not attempt to resolve a more precise address for the job.
+  /// Please use processing_options.
+  ///
+  /// This flag is ignored if processing_options is set. Optional. If set to
+  /// `true`, the service does not attempt to resolve a more precise address for
+  /// the job.
+  ///
+  /// Deprecated.
   core.bool disableStreetAddressResolution;
 
-  /// Required. The Job to be created.
+  /// The Job to be created.
+  ///
+  /// Required.
   Job job;
 
-  /// Optional. Options for job processing.
+  /// Options for job processing.
+  ///
+  /// Optional.
   JobProcessingOptions processingOptions;
 
   CreateJobRequest();
@@ -2203,23 +2387,30 @@ class CreateJobRequest {
 
 /// Custom attribute values that are either filterable or non-filterable.
 class CustomAttribute {
-  /// Optional. If the `filterable` flag is true, custom field values are
-  /// searchable. If false, values are not searchable. Default is false.
+  /// If the `filterable` flag is true, custom field values are searchable.
+  ///
+  /// If false, values are not searchable. Default is false.
+  ///
+  /// Optional.
   core.bool filterable;
 
   /// Optional but at least one of string_values or long_value must be
-  /// specified. This field is used to perform number range search. (`EQ`, `GT`,
-  /// `GE`, `LE`, `LT`) over filterable `long_value`. For `long_value`, a value
+  /// specified.
+  ///
+  /// This field is used to perform number range search. (`EQ`, `GT`, `GE`,
+  /// `LE`, `LT`) over filterable `long_value`. For `long_value`, a value
   /// between Long.MIN and Long.MAX is allowed.
   core.String longValue;
 
   /// Optional but at least one of string_values or long_value must be
-  /// specified. This field is used to perform a string match
-  /// (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For
-  /// filterable `string_values`, a maximum total number of 200 values is
-  /// allowed, with each `string_value` has a byte size of no more than 255B.
-  /// For unfilterable `string_values`, the maximum total byte size of
-  /// unfilterable `string_values` is 50KB. Empty strings are not allowed.
+  /// specified.
+  ///
+  /// This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or
+  /// `CASE_INSENSITIVE_MATCH`) search. For filterable `string_values`, a
+  /// maximum total number of 200 values is allowed, with each `string_value`
+  /// has a byte size of no more than 255B. For unfilterable `string_values`,
+  /// the maximum total byte size of unfilterable `string_values` is 50KB. Empty
+  /// strings are not allowed.
   StringValues stringValues;
 
   CustomAttribute();
@@ -2252,22 +2443,30 @@ class CustomAttribute {
   }
 }
 
-/// Custom attributes histogram request. An error will be thrown if neither
-/// string_value_histogram or long_value_histogram_bucketing_option has been
-/// defined.
+/// Custom attributes histogram request.
+///
+/// An error will be thrown if neither string_value_histogram or
+/// long_value_histogram_bucketing_option has been defined.
 class CustomAttributeHistogramRequest {
-  /// Required. Specifies the custom field key to perform a histogram on. If
-  /// specified without `long_value_histogram_bucketing_option`, histogram on
+  /// Specifies the custom field key to perform a histogram on.
+  ///
+  /// If specified without `long_value_histogram_bucketing_option`, histogram on
   /// string values of the given `key` is triggered, otherwise histogram is
   /// performed on long values.
+  ///
+  /// Required.
   core.String key;
 
-  /// Optional. Specifies buckets used to perform a range histogram on Job's
-  /// filterable long custom field values, or min/max value requirements.
+  /// Specifies buckets used to perform a range histogram on Job's filterable
+  /// long custom field values, or min/max value requirements.
+  ///
+  /// Optional.
   NumericBucketingOption longValueHistogramBucketingOption;
 
-  /// Optional. If set to true, the response will include the histogram value
-  /// for each key as a string.
+  /// If set to true, the response will include the histogram value for each key
+  /// as a string.
+  ///
+  /// Optional.
   core.bool stringValueHistogram;
 
   CustomAttributeHistogramRequest();
@@ -2302,7 +2501,9 @@ class CustomAttributeHistogramRequest {
   }
 }
 
-/// Output only. Custom attribute histogram result.
+/// Custom attribute histogram result.
+///
+/// Output only.
 class CustomAttributeHistogramResult {
   /// Stores the key of custom attribute the histogram is performed on.
   core.String key;
@@ -2357,7 +2558,9 @@ class CustomAttributeHistogramResult {
 /// Resource that represents the custom data not captured by the standard
 /// fields.
 class CustomField {
-  /// Optional. The values of the custom data.
+  /// The values of the custom data.
+  ///
+  /// Optional.
   core.List<core.String> values;
 
   CustomField();
@@ -2379,12 +2582,20 @@ class CustomField {
   }
 }
 
-/// Input only. Custom field filter of the search.
+/// Input only.
+///
+/// Custom field filter of the search.
 class CustomFieldFilter {
-  /// Required. The query strings for the filter.
+  /// The query strings for the filter.
+  ///
+  /// Required.
   core.List<core.String> queries;
 
-  /// Optional. The type of filter. Defaults to FilterType.OR.
+  /// The type of filter.
+  ///
+  /// Defaults to FilterType.OR.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "FILTER_TYPE_UNSPECIFIED" : Default value.
   /// - "OR" : Search for a match with any query.
@@ -2417,26 +2628,30 @@ class CustomFieldFilter {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
-/// A full date, with non-zero year, month and day values * A month and day
-/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
-/// month and day values * A year and month value, with a zero day, e.g. a
-/// credit card expiration date Related types are google.type.TimeOfDay and
-/// `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are not
+/// significant. The date is relative to the Proleptic Gregorian Calendar. This
+/// can represent: * A full date, with non-zero year, month and day values * A
+/// month and day value, with a zero year, e.g. an anniversary * A year on its
+/// own, with zero month and day values * A year and month value, with a zero
+/// day, e.g. a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
-  /// significant.
+  /// Day of month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
+  /// a year by itself or a year and month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-  /// month and day.
+  /// Month of year.
+  ///
+  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
-  /// year.
+  /// Year of date.
+  ///
+  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
   core.int year;
 
   Date();
@@ -2468,16 +2683,25 @@ class Date {
   }
 }
 
-/// Deprecated. Use BatchDeleteJobsRequest instead. Input only. Delete job by
-/// filter request. The job typically becomes unsearchable within 10 seconds,
-/// but it may take up to 5 minutes.
+/// Use BatchDeleteJobsRequest instead.
+///
+/// Input only. Delete job by filter request. The job typically becomes
+/// unsearchable within 10 seconds, but it may take up to 5 minutes.
+///
+/// Deprecated.
 class DeleteJobsByFilterRequest {
-  /// Optional. If set to true, this call waits for all processing steps to
-  /// complete before the job is cleaned up. Otherwise, the call returns while
-  /// some steps are still taking place asynchronously, hence faster.
+  /// If set to true, this call waits for all processing steps to complete
+  /// before the job is cleaned up.
+  ///
+  /// Otherwise, the call returns while some steps are still taking place
+  /// asynchronously, hence faster.
+  ///
+  /// Optional.
   core.bool disableFastProcess;
 
-  /// Required. Restrictions on the scope of the delete request.
+  /// Restrictions on the scope of the delete request.
+  ///
+  /// Required.
   Filter filter;
 
   DeleteJobsByFilterRequest();
@@ -2504,11 +2728,15 @@ class DeleteJobsByFilterRequest {
   }
 }
 
-/// Input only. Device information collected from the job seeker, candidate, or
-/// other entity conducting the job search. Providing this information improves
-/// the quality of the search results across devices.
+/// Input only.
+///
+/// Device information collected from the job seeker, candidate, or other entity
+/// conducting the job search. Providing this information improves the quality
+/// of the search results across devices.
 class DeviceInfo {
-  /// Optional. Type of the device.
+  /// Type of the device.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : The device type isn't specified.
   /// - "WEB" : A desktop web browser, such as, Chrome, Firefox, Safari, or
@@ -2522,8 +2750,12 @@ class DeviceInfo {
   /// - "OTHER" : Other devices types.
   core.String deviceType;
 
-  /// Optional. A device-specific ID. The ID must be a unique identifier that
-  /// distinguishes the device from other devices.
+  /// A device-specific ID.
+  ///
+  /// The ID must be a unique identifier that distinguishes the device from
+  /// other devices.
+  ///
+  /// Optional.
   core.String id;
 
   DeviceInfo();
@@ -2550,10 +2782,12 @@ class DeviceInfo {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2567,25 +2801,39 @@ class Empty {
   }
 }
 
-/// Deprecated. Always use CompensationFilter. Input only. Filter on job
-/// compensation type and amount.
+/// Always use CompensationFilter.
+///
+/// Input only. Filter on job compensation type and amount.
+///
+/// Deprecated.
 class ExtendedCompensationFilter {
-  /// Optional. Compensation range.
+  /// Compensation range.
+  ///
+  /// Optional.
   ExtendedCompensationInfoCompensationRange compensationRange;
 
-  /// Required. Specify desired `base compensation entry's`
+  /// Specify desired `base compensation entry's`
   /// ExtendedCompensationInfo.CompensationUnit.
+  ///
+  /// Required.
   core.List<core.String> compensationUnits;
 
-  /// Optional. Specify currency in 3-letter [ISO
-  /// 4217](https://www.iso.org/iso-4217-currency-codes.html) format. If
-  /// unspecified, jobs are returned regardless of currency.
+  /// Specify currency in 3-letter [ISO
+  /// 4217](https://www.iso.org/iso-4217-currency-codes.html) format.
+  ///
+  /// If unspecified, jobs are returned regardless of currency.
+  ///
+  /// Optional.
   core.String currency;
 
-  /// Optional. Whether to include jobs whose compensation range is unspecified.
+  /// Whether to include jobs whose compensation range is unspecified.
+  ///
+  /// Optional.
   core.bool includeJobWithUnspecifiedCompensationRange;
 
-  /// Required. Type of filter.
+  /// Type of filter.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "FILTER_TYPE_UNSPECIFIED" : Filter type unspecified. Position holder,
   /// INVALID, should never be used.
@@ -2656,33 +2904,53 @@ class ExtendedCompensationFilter {
   }
 }
 
-/// Deprecated. Use CompensationInfo. Describes job compensation.
+/// Use CompensationInfo.
+///
+/// Describes job compensation.
+///
+/// Deprecated.
 class ExtendedCompensationInfo {
-  /// Output only. Annualized base compensation range.
+  /// Annualized base compensation range.
+  ///
+  /// Output only.
   ExtendedCompensationInfoCompensationRange annualizedBaseCompensationRange;
 
-  /// Output only. Indicates annualized base compensation range cannot be
-  /// derived, due to the job's base compensation entry cannot be annualized.
+  /// Indicates annualized base compensation range cannot be derived, due to the
+  /// job's base compensation entry cannot be annualized.
+  ///
   /// See CompensationEntry for explanation on annualization and base
   /// compensation entry.
+  ///
+  /// Output only.
   core.bool annualizedBaseCompensationUnspecified;
 
-  /// Output only. Annualized total compensation range.
+  /// Annualized total compensation range.
+  ///
+  /// Output only.
   ExtendedCompensationInfoCompensationRange annualizedTotalCompensationRange;
 
-  /// Output only. Indicates annualized total compensation range cannot be
-  /// derived, due to the job's all CompensationEntry cannot be annualized. See
-  /// CompensationEntry for explanation on annualization and base compensation
-  /// entry.
+  /// Indicates annualized total compensation range cannot be derived, due to
+  /// the job's all CompensationEntry cannot be annualized.
+  ///
+  /// See CompensationEntry for explanation on annualization and base
+  /// compensation entry.
+  ///
+  /// Output only.
   core.bool annualizedTotalCompensationUnspecified;
 
-  /// Optional. A 3-letter [ISO
-  /// 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code.
+  /// A 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)
+  /// currency code.
+  ///
+  /// Optional.
   core.String currency;
 
-  /// Optional. Job compensation information. At most one entry can be of type
+  /// Job compensation information.
+  ///
+  /// At most one entry can be of type
   /// ExtendedCompensationInfo.CompensationType.BASE, which is referred as **
   /// base compensation entry ** for the job.
+  ///
+  /// Optional.
   core.List<ExtendedCompensationInfoCompensationEntry> entries;
 
   ExtendedCompensationInfo();
@@ -2748,29 +3016,43 @@ class ExtendedCompensationInfo {
   }
 }
 
-/// Deprecated. See CompensationInfo. A compensation entry that represents one
-/// component of compensation, such as base pay, bonus, or other compensation
-/// type. Annualization: One compensation entry can be annualized if - it
-/// contains valid amount or range. - and its expected_units_per_year is set or
-/// can be derived. Its annualized range is determined as (amount or range)
-/// times expected_units_per_year.
+/// See CompensationInfo.
+///
+/// A compensation entry that represents one component of compensation, such as
+/// base pay, bonus, or other compensation type. Annualization: One compensation
+/// entry can be annualized if - it contains valid amount or range. - and its
+/// expected_units_per_year is set or can be derived. Its annualized range is
+/// determined as (amount or range) times expected_units_per_year.
+///
+/// Deprecated.
 class ExtendedCompensationInfoCompensationEntry {
-  /// Optional. Monetary amount.
+  /// Monetary amount.
+  ///
+  /// Optional.
   ExtendedCompensationInfoDecimal amount;
 
-  /// Optional. Compensation description.
+  /// Compensation description.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Expected number of units paid each year. If not specified, when
-  /// Job.employment_types is FULLTIME, a default value is inferred based on
-  /// unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY:
-  /// 12 - ANNUAL: 1
+  /// Expected number of units paid each year.
+  ///
+  /// If not specified, when Job.employment_types is FULLTIME, a default value
+  /// is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 -
+  /// WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
+  ///
+  /// Optional.
   ExtendedCompensationInfoDecimal expectedUnitsPerYear;
 
-  /// Optional. Compensation range.
+  /// Compensation range.
+  ///
+  /// Optional.
   ExtendedCompensationInfoCompensationRange range;
 
-  /// Required. Compensation type.
+  /// Compensation type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "EXTENDED_COMPENSATION_TYPE_UNSPECIFIED" : Default value. Equivalent to
   /// OTHER_COMPENSATION_TYPE.
@@ -2787,8 +3069,11 @@ class ExtendedCompensationInfoCompensationEntry {
   /// - "OTHER_COMPENSATION_TYPE" : Other compensation type.
   core.String type;
 
-  /// Optional. Frequency of the specified amount. Default is
-  /// CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+  /// Frequency of the specified amount.
+  ///
+  /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "EXTENDED_COMPENSATION_UNIT_UNSPECIFIED" : Default value. Equivalent to
   /// OTHER_COMPENSATION_UNIT.
@@ -2801,7 +3086,9 @@ class ExtendedCompensationInfoCompensationEntry {
   /// - "OTHER_COMPENSATION_UNIT" : Other compensation units.
   core.String unit;
 
-  /// Optional. Indicates compensation amount and range are unset.
+  /// Indicates compensation amount and range are unset.
+  ///
+  /// Optional.
   core.bool unspecified;
 
   ExtendedCompensationInfoCompensationEntry();
@@ -2860,12 +3147,20 @@ class ExtendedCompensationInfoCompensationEntry {
   }
 }
 
-/// Deprecated. See CompensationInfo. Compensation range.
+/// See CompensationInfo.
+///
+/// Compensation range.
+///
+/// Deprecated.
 class ExtendedCompensationInfoCompensationRange {
-  /// Required. Maximum value.
+  /// Maximum value.
+  ///
+  /// Required.
   ExtendedCompensationInfoDecimal max;
 
-  /// Required. Minimum value.
+  /// Minimum value.
+  ///
+  /// Required.
   ExtendedCompensationInfoDecimal min;
 
   ExtendedCompensationInfoCompensationRange();
@@ -2893,13 +3188,19 @@ class ExtendedCompensationInfoCompensationRange {
   }
 }
 
-/// Deprecated. See CompensationInfo. Decimal number.
+/// See CompensationInfo.
+///
+/// Decimal number.
+///
+/// Deprecated.
 class ExtendedCompensationInfoDecimal {
-  /// Micro (10^-6) units. The value must be between -999,999 and +999,999
-  /// inclusive. If `units` is positive, `micros` must be positive or zero. If
-  /// `units` is zero, `micros` can be positive, zero, or negative. If `units`
-  /// is negative, `micros` must be negative or zero. For example -1.75 is
-  /// represented as `units`=-1 and `micros`=-750,000.
+  /// Micro (10^-6) units.
+  ///
+  /// The value must be between -999,999 and +999,999 inclusive. If `units` is
+  /// positive, `micros` must be positive or zero. If `units` is zero, `micros`
+  /// can be positive, zero, or negative. If `units` is negative, `micros` must
+  /// be negative or zero. For example -1.75 is represented as `units`=-1 and
+  /// `micros`=-750,000.
   core.int micros;
 
   /// Whole units.
@@ -2928,13 +3229,20 @@ class ExtendedCompensationInfoDecimal {
   }
 }
 
-/// Deprecated. Use BatchDeleteJobsRequest instead. Input only. Filter for jobs
-/// to be deleted.
+/// Use BatchDeleteJobsRequest instead.
+///
+/// Input only. Filter for jobs to be deleted.
+///
+/// Deprecated.
 class Filter {
-  /// Required. The requisition ID (or posting ID) assigned by the client to
-  /// identify a job. This is intended for client identification and tracking of
-  /// listings. name takes precedence over this field The maximum number of
-  /// allowed characters is 225.
+  /// The requisition ID (or posting ID) assigned by the client to identify a
+  /// job.
+  ///
+  /// This is intended for client identification and tracking of listings. name
+  /// takes precedence over this field The maximum number of allowed characters
+  /// is 225.
+  ///
+  /// Required.
   core.String requisitionId;
 
   Filter();
@@ -2954,34 +3262,49 @@ class Filter {
   }
 }
 
-/// Deprecated. Use SearchJobsRequest.histogram_facets instead to make a single
-/// call with both search and histogram. Input only. A request for the
-/// `GetHistogram` method.
+/// Use SearchJobsRequest.histogram_facets instead to make a single call with
+/// both search and histogram.
+///
+/// Input only. A request for the `GetHistogram` method.
+///
+/// Deprecated.
 class GetHistogramRequest {
-  /// Optional. Controls whether to broaden the search to avoid too few results
-  /// for a given query in instances where a search has sparse results. Results
-  /// from a broadened query is a superset of the results from the original
-  /// query. Defaults to false.
+  /// Controls whether to broaden the search to avoid too few results for a
+  /// given query in instances where a search has sparse results.
+  ///
+  /// Results from a broadened query is a superset of the results from the
+  /// original query. Defaults to false.
+  ///
+  /// Optional.
   core.bool allowBroadening;
 
-  /// Deprecated. Use query instead. Optional. Restrictions on the scope of the
-  /// histogram.
+  /// Use query instead.
+  ///
+  /// Optional. Restrictions on the scope of the histogram.
+  ///
+  /// Deprecated.
   JobFilters filters;
 
-  /// Optional. Query used to search against jobs, such as keyword, location
-  /// filters, etc.
+  /// Query used to search against jobs, such as keyword, location filters, etc.
+  ///
+  /// Optional.
   JobQuery query;
 
   /// Meta information, such as `user_id`, collected from the job searcher or
   /// other entity conducting a job search, is used to improve the service's
-  /// search quality. Users determine identifier values, which must be unique
-  /// and consist.
+  /// search quality.
+  ///
+  /// Users determine identifier values, which must be unique and consist.
   RequestMetadata requestMetadata;
 
-  /// Required. A list of facets that specify the histogram data to be
-  /// calculated against and returned. Histogram response times can be slow, and
-  /// counts can be approximations. This call may be temporarily or permanently
-  /// removed prior to the production release of Cloud Talent Solution.
+  /// A list of facets that specify the histogram data to be calculated against
+  /// and returned.
+  ///
+  /// Histogram response times can be slow, and counts can be approximations.
+  /// This call may be temporarily or permanently removed prior to the
+  /// production release of Cloud Talent Solution.
+  ///
+  /// Required.
   core.List<core.String> searchTypes;
 
   GetHistogramRequest();
@@ -3030,9 +3353,12 @@ class GetHistogramRequest {
   }
 }
 
-/// Deprecated. Use SearchJobsRequest.histogram_facets instead to make a single
-/// call with both search and histogram. Output only. The response of the
-/// GetHistogram method.
+/// Use SearchJobsRequest.histogram_facets instead to make a single call with
+/// both search and histogram.
+///
+/// Output only. The response of the GetHistogram method.
+///
+/// Deprecated.
 class GetHistogramResponse {
   /// Additional information for the API invocation, such as the request
   /// tracking id.
@@ -3068,11 +3394,14 @@ class GetHistogramResponse {
   }
 }
 
-/// The result of JobService.BatchCreateJobs. It's used to replace
-/// google.longrunning.Operation.response in case of success.
+/// The result of JobService.BatchCreateJobs.
+///
+/// It's used to replace google.longrunning.Operation.response in case of
+/// success.
 class GoogleCloudTalentV4BatchCreateJobsResponse {
-  /// List of job mutation results from a batch create operation. It can change
-  /// until operation status is FINISHED, FAILED or CANCELLED.
+  /// List of job mutation results from a batch create operation.
+  ///
+  /// It can change until operation status is FINISHED, FAILED or CANCELLED.
   core.List<GoogleCloudTalentV4JobResult> jobResults;
 
   GoogleCloudTalentV4BatchCreateJobsResponse();
@@ -3096,11 +3425,14 @@ class GoogleCloudTalentV4BatchCreateJobsResponse {
   }
 }
 
-/// The result of JobService.BatchDeleteJobs. It's used to replace
-/// google.longrunning.Operation.response in case of success.
+/// The result of JobService.BatchDeleteJobs.
+///
+/// It's used to replace google.longrunning.Operation.response in case of
+/// success.
 class GoogleCloudTalentV4BatchDeleteJobsResponse {
-  /// List of job mutation results from a batch delete operation. It can change
-  /// until operation status is FINISHED, FAILED or CANCELLED.
+  /// List of job mutation results from a batch delete operation.
+  ///
+  /// It can change until operation status is FINISHED, FAILED or CANCELLED.
   core.List<GoogleCloudTalentV4JobResult> jobResults;
 
   GoogleCloudTalentV4BatchDeleteJobsResponse();
@@ -3124,8 +3456,9 @@ class GoogleCloudTalentV4BatchDeleteJobsResponse {
   }
 }
 
-/// Metadata used for long running operations returned by CTS batch APIs. It's
-/// used to replace google.longrunning.Operation.metadata.
+/// Metadata used for long running operations returned by CTS batch APIs.
+///
+/// It's used to replace google.longrunning.Operation.metadata.
 class GoogleCloudTalentV4BatchOperationMetadata {
   /// The time when the batch operation is created.
   core.String createTime;
@@ -3162,8 +3495,10 @@ class GoogleCloudTalentV4BatchOperationMetadata {
   /// Count of total item(s) inside an operation.
   core.int totalCount;
 
-  /// The time when the batch operation status is updated. The metadata and the
-  /// update_time is refreshed every minute otherwise cached data is returned.
+  /// The time when the batch operation status is updated.
+  ///
+  /// The metadata and the update_time is refreshed every minute otherwise
+  /// cached data is returned.
   core.String updateTime;
 
   GoogleCloudTalentV4BatchOperationMetadata();
@@ -3225,11 +3560,14 @@ class GoogleCloudTalentV4BatchOperationMetadata {
   }
 }
 
-/// The result of JobService.BatchUpdateJobs. It's used to replace
-/// google.longrunning.Operation.response in case of success.
+/// The result of JobService.BatchUpdateJobs.
+///
+/// It's used to replace google.longrunning.Operation.response in case of
+/// success.
 class GoogleCloudTalentV4BatchUpdateJobsResponse {
-  /// List of job mutation results from a batch update operation. It can change
-  /// until operation status is FINISHED, FAILED or CANCELLED.
+  /// List of job mutation results from a batch update operation.
+  ///
+  /// It can change until operation status is FINISHED, FAILED or CANCELLED.
   core.List<GoogleCloudTalentV4JobResult> jobResults;
 
   GoogleCloudTalentV4BatchUpdateJobsResponse();
@@ -3255,23 +3593,30 @@ class GoogleCloudTalentV4BatchUpdateJobsResponse {
 
 /// Job compensation details.
 class GoogleCloudTalentV4CompensationInfo {
-  /// Output only. Annualized base compensation range. Computed as base
-  /// compensation entry's CompensationEntry.amount times
+  /// Annualized base compensation range.
+  ///
+  /// Computed as base compensation entry's CompensationEntry.amount times
   /// CompensationEntry.expected_units_per_year. See CompensationEntry for
   /// explanation on compensation annualization.
+  ///
+  /// Output only.
   GoogleCloudTalentV4CompensationInfoCompensationRange
       annualizedBaseCompensationRange;
 
-  /// Output only. Annualized total compensation range. Computed as all
-  /// compensation entries' CompensationEntry.amount times
+  /// Annualized total compensation range.
+  ///
+  /// Computed as all compensation entries' CompensationEntry.amount times
   /// CompensationEntry.expected_units_per_year. See CompensationEntry for
   /// explanation on compensation annualization.
+  ///
+  /// Output only.
   GoogleCloudTalentV4CompensationInfoCompensationRange
       annualizedTotalCompensationRange;
 
-  /// Job compensation information. At most one entry can be of type
-  /// CompensationInfo.CompensationType.BASE, which is referred as **base
-  /// compensation entry** for the job.
+  /// Job compensation information.
+  ///
+  /// At most one entry can be of type CompensationInfo.CompensationType.BASE,
+  /// which is referred as **base compensation entry** for the job.
   core.List<GoogleCloudTalentV4CompensationInfoCompensationEntry> entries;
 
   GoogleCloudTalentV4CompensationInfo();
@@ -3316,29 +3661,35 @@ class GoogleCloudTalentV4CompensationInfo {
 }
 
 /// A compensation entry that represents one component of compensation, such as
-/// base pay, bonus, or other compensation type. Annualization: One compensation
-/// entry can be annualized if - it contains valid amount or range. - and its
-/// expected_units_per_year is set or can be derived. Its annualized range is
-/// determined as (amount or range) times expected_units_per_year.
+/// base pay, bonus, or other compensation type.
+///
+/// Annualization: One compensation entry can be annualized if - it contains
+/// valid amount or range. - and its expected_units_per_year is set or can be
+/// derived. Its annualized range is determined as (amount or range) times
+/// expected_units_per_year.
 class GoogleCloudTalentV4CompensationInfoCompensationEntry {
   /// Compensation amount.
   Money amount;
 
-  /// Compensation description. For example, could indicate equity terms or
-  /// provide additional context to an estimated bonus.
+  /// Compensation description.
+  ///
+  /// For example, could indicate equity terms or provide additional context to
+  /// an estimated bonus.
   core.String description;
 
-  /// Expected number of units paid each year. If not specified, when
-  /// Job.employment_types is FULLTIME, a default value is inferred based on
-  /// unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY:
-  /// 12 - ANNUAL: 1
+  /// Expected number of units paid each year.
+  ///
+  /// If not specified, when Job.employment_types is FULLTIME, a default value
+  /// is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 -
+  /// WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
   core.double expectedUnitsPerYear;
 
   /// Compensation range.
   GoogleCloudTalentV4CompensationInfoCompensationRange range;
 
-  /// Compensation type. Default is
-  /// CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
+  /// Compensation type.
+  ///
+  /// Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMPENSATION_TYPE_UNSPECIFIED" : Default value.
   /// - "BASE" : Base compensation: Refers to the fixed amount of money paid to
@@ -3354,8 +3705,9 @@ class GoogleCloudTalentV4CompensationInfoCompensationEntry {
   /// - "OTHER_COMPENSATION_TYPE" : Other compensation type.
   core.String type;
 
-  /// Frequency of the specified amount. Default is
-  /// CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+  /// Frequency of the specified amount.
+  ///
+  /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMPENSATION_UNIT_UNSPECIFIED" : Default value.
   /// - "HOURLY" : Hourly.
@@ -3420,14 +3772,16 @@ class GoogleCloudTalentV4CompensationInfoCompensationEntry {
 
 /// Compensation range.
 class GoogleCloudTalentV4CompensationInfoCompensationRange {
-  /// The maximum amount of compensation. If left empty, the value is set to a
-  /// maximal compensation value and the currency code is set to match the
-  /// currency code of min_compensation.
+  /// The maximum amount of compensation.
+  ///
+  /// If left empty, the value is set to a maximal compensation value and the
+  /// currency code is set to match the currency code of min_compensation.
   Money maxCompensation;
 
-  /// The minimum amount of compensation. If left empty, the value is set to
-  /// zero and the currency code is set to match the currency code of
-  /// max_compensation.
+  /// The minimum amount of compensation.
+  ///
+  /// If left empty, the value is set to zero and the currency code is set to
+  /// match the currency code of max_compensation.
   Money minCompensation;
 
   GoogleCloudTalentV4CompensationInfoCompensationRange();
@@ -3459,23 +3813,29 @@ class GoogleCloudTalentV4CompensationInfoCompensationRange {
 /// Custom attribute values that are either filterable or non-filterable.
 class GoogleCloudTalentV4CustomAttribute {
   /// If the `filterable` flag is true, the custom field values may be used for
-  /// custom attribute filters JobQuery.custom_attribute_filter. If false, these
-  /// values may not be used for custom attribute filters. Default is false.
+  /// custom attribute filters JobQuery.custom_attribute_filter.
+  ///
+  /// If false, these values may not be used for custom attribute filters.
+  /// Default is false.
   core.bool filterable;
 
   /// If the `keyword_searchable` flag is true, the keywords in custom fields
-  /// are searchable by keyword match. If false, the values are not searchable
-  /// by keyword match. Default is false.
+  /// are searchable by keyword match.
+  ///
+  /// If false, the values are not searchable by keyword match. Default is
+  /// false.
   core.bool keywordSearchable;
 
-  /// Exactly one of string_values or long_values must be specified. This field
-  /// is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`)
-  /// over filterable `long_value`. Currently at most 1 long_values is
-  /// supported.
+  /// Exactly one of string_values or long_values must be specified.
+  ///
+  /// This field is used to perform number range search. (`EQ`, `GT`, `GE`,
+  /// `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values
+  /// is supported.
   core.List<core.String> longValues;
 
-  /// Exactly one of string_values or long_values must be specified. This field
-  /// is used to perform a string match (`CASE_SENSITIVE_MATCH` or
+  /// Exactly one of string_values or long_values must be specified.
+  ///
+  /// This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or
   /// `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a
   /// maximum total number of 200 values is allowed, with each `string_value`
   /// has a byte size of no more than 500B. For unfilterable `string_values`,
@@ -3523,32 +3883,41 @@ class GoogleCloudTalentV4CustomAttribute {
 }
 
 /// A Job resource represents a job posting (also referred to as a "job listing"
-/// or "job requisition"). A job belongs to a Company, which is the hiring
-/// entity responsible for the job.
+/// or "job requisition").
+///
+/// A job belongs to a Company, which is the hiring entity responsible for the
+/// job.
 class GoogleCloudTalentV4Job {
-  /// Strongly recommended for the best service experience. Location(s) where
-  /// the employer is looking to hire for this job posting. Specifying the full
-  /// street address(es) of the hiring location enables better API results,
-  /// especially job searches by commute time. At most 50 locations are allowed
-  /// for best search performance. If a job has more locations, it is suggested
-  /// to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA'
-  /// becomes 'ReqA-1', 'ReqA-2', and so on.) as multiple jobs with the same
-  /// company, language_code and requisition_id are not allowed. If the original
-  /// requisition_id must be preserved, a custom field should be used for
-  /// storage. It is also suggested to group the locations that close to each
-  /// other in the same job for better search experience. The maximum number of
-  /// allowed characters is 500.
+  /// Strongly recommended for the best service experience.
+  ///
+  /// Location(s) where the employer is looking to hire for this job posting.
+  /// Specifying the full street address(es) of the hiring location enables
+  /// better API results, especially job searches by commute time. At most 50
+  /// locations are allowed for best search performance. If a job has more
+  /// locations, it is suggested to split it into multiple jobs with unique
+  /// requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', and so on.) as
+  /// multiple jobs with the same company, language_code and requisition_id are
+  /// not allowed. If the original requisition_id must be preserved, a custom
+  /// field should be used for storage. It is also suggested to group the
+  /// locations that close to each other in the same job for better search
+  /// experience. The maximum number of allowed characters is 500.
   core.List<core.String> addresses;
 
   /// Job application information.
   GoogleCloudTalentV4JobApplicationInfo applicationInfo;
 
-  /// Required. The resource name of the company listing the job. The format is
+  /// The resource name of the company listing the job.
+  ///
+  /// The format is
   /// "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For
   /// example, "projects/foo/tenants/bar/companies/baz".
+  ///
+  /// Required.
   core.String company;
 
-  /// Output only. Display name of the company listing the job.
+  /// Display name of the company listing the job.
+  ///
+  /// Output only.
   core.String companyDisplayName;
 
   /// Job compensation information (a.k.a. "pay rate") i.e., the compensation
@@ -3556,8 +3925,9 @@ class GoogleCloudTalentV4Job {
   GoogleCloudTalentV4CompensationInfo compensationInfo;
 
   /// A map of fields to hold both filterable and non-filterable custom job
-  /// attributes that are not covered by the provided structured fields. The
-  /// keys of the map are strings up to 64 bytes and must match the pattern:
+  /// attributes that are not covered by the provided structured fields.
+  ///
+  /// The keys of the map are strings up to 64 bytes and must match the pattern:
   /// a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100
   /// filterable and at most 100 unfilterable keys are supported. For filterable
   /// `string_values`, across all keys at most 200 values are allowed, with each
@@ -3569,34 +3939,44 @@ class GoogleCloudTalentV4Job {
   core.List<core.String> degreeTypes;
 
   /// The department or functional area within the company with the open
-  /// position. The maximum number of allowed characters is 255.
+  /// position.
+  ///
+  /// The maximum number of allowed characters is 255.
   core.String department;
 
-  /// Output only. Derived details about the job posting.
+  /// Derived details about the job posting.
+  ///
+  /// Output only.
   GoogleCloudTalentV4JobDerivedInfo derivedInfo;
 
-  /// Required. The description of the job, which typically includes a
-  /// multi-paragraph description of the company and related information.
+  /// The description of the job, which typically includes a multi-paragraph
+  /// description of the company and related information.
+  ///
   /// Separate fields are provided on the job object for responsibilities,
   /// qualifications, and other job characteristics. Use of these separate job
   /// fields is recommended. This field accepts and sanitizes HTML input, and
   /// also accepts bold, italic, ordered list, and unordered list markup tags.
   /// The maximum number of allowed characters is 100,000.
+  ///
+  /// Required.
   core.String description;
 
   /// The employment type(s) of a job, for example, full time or part time.
   core.List<core.String> employmentTypes;
 
   /// A description of bonus, commission, and other compensation incentives
-  /// associated with the job not including salary or pay. The maximum number of
-  /// allowed characters is 10,000.
+  /// associated with the job not including salary or pay.
+  ///
+  /// The maximum number of allowed characters is 10,000.
   core.String incentives;
 
   /// The benefits included with the job.
   core.List<core.String> jobBenefits;
 
-  /// The end timestamp of the job. Typically this field is used for contracting
-  /// engagements. Invalid timestamps are ignored.
+  /// The end timestamp of the job.
+  ///
+  /// Typically this field is used for contracting engagements. Invalid
+  /// timestamps are ignored.
   core.String jobEndTime;
 
   /// The experience level associated with the job, such as "Entry Level".
@@ -3615,70 +3995,83 @@ class GoogleCloudTalentV4Job {
   /// positions.
   core.String jobLevel;
 
-  /// The start timestamp of the job in UTC time zone. Typically this field is
-  /// used for contracting engagements. Invalid timestamps are ignored.
+  /// The start timestamp of the job in UTC time zone.
+  ///
+  /// Typically this field is used for contracting engagements. Invalid
+  /// timestamps are ignored.
   core.String jobStartTime;
 
-  /// The language of the posting. This field is distinct from any requirements
-  /// for fluency that are associated with the job. Language codes must be in
-  /// BCP-47 format, such as "en-US" or "sr-Latn". For more information, see
-  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
-  /// class="external" target="_blank" }. If this field is unspecified and
-  /// Job.description is present, detected language code based on
-  /// Job.description is assigned, otherwise defaults to 'en_US'.
+  /// The language of the posting.
+  ///
+  /// This field is distinct from any requirements for fluency that are
+  /// associated with the job. Language codes must be in BCP-47 format, such as
+  /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
+  /// Languages](https://tools.ietf.org/html/bcp47){: class="external"
+  /// target="_blank" }. If this field is unspecified and Job.description is
+  /// present, detected language code based on Job.description is assigned,
+  /// otherwise defaults to 'en_US'.
   core.String languageCode;
 
-  /// Required during job update. The resource name for the job. This is
-  /// generated by the service when a job is created. The format is
+  /// Required during job update.
+  ///
+  /// The resource name for the job. This is generated by the service when a job
+  /// is created. The format is
   /// "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example,
   /// "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and
   /// API calls is preferred over the use of requisition_id since this value is
   /// unique.
   core.String name;
 
-  /// Output only. The timestamp when this job posting was created.
+  /// The timestamp when this job posting was created.
+  ///
+  /// Output only.
   core.String postingCreateTime;
 
-  /// Strongly recommended for the best service experience. The expiration
-  /// timestamp of the job. After this timestamp, the job is marked as expired,
-  /// and it no longer appears in search results. The expired job can't be
-  /// listed by the ListJobs API, but it can be retrieved with the GetJob API or
-  /// updated with the UpdateJob API or deleted with the DeleteJob API. An
-  /// expired job can be updated and opened again by using a future expiration
-  /// timestamp. Updating an expired job fails if there is another existing open
-  /// job with same company, language_code and requisition_id. The expired jobs
-  /// are retained in our system for 90 days. However, the overall expired job
-  /// count cannot exceed 3 times the maximum number of open jobs over previous
-  /// 7 days. If this threshold is exceeded, expired jobs are cleaned out in
-  /// order of earliest expire time. Expired jobs are no longer accessible after
-  /// they are cleaned out. Invalid timestamps are ignored, and treated as
-  /// expire time not provided. If the timestamp is before the instant request
-  /// is made, the job is treated as expired immediately on creation. This kind
-  /// of job can not be updated. And when creating a job with past timestamp,
-  /// the posting_publish_time must be set before posting_expire_time. The
-  /// purpose of this feature is to allow other objects, such as Application, to
-  /// refer a job that didn't exist in the system prior to becoming expired. If
-  /// you want to modify a job that was expired on creation, delete it and
-  /// create a new one. If this value isn't provided at the time of job creation
-  /// or is invalid, the job posting expires after 30 days from the job's
-  /// creation time. For example, if the job was created on 2017/01/01 13:00AM
-  /// UTC with an unspecified expiration date, the job expires after 2017/01/31
-  /// 13:00AM UTC. If this value isn't provided on job update, it depends on the
-  /// field masks set by UpdateJobRequest.update_mask. If the field masks
-  /// include job_end_time, or the masks are empty meaning that every field is
-  /// updated, the job posting expires after 30 days from the job's last update
-  /// time. Otherwise the expiration date isn't updated.
+  /// Strongly recommended for the best service experience.
+  ///
+  /// The expiration timestamp of the job. After this timestamp, the job is
+  /// marked as expired, and it no longer appears in search results. The expired
+  /// job can't be listed by the ListJobs API, but it can be retrieved with the
+  /// GetJob API or updated with the UpdateJob API or deleted with the DeleteJob
+  /// API. An expired job can be updated and opened again by using a future
+  /// expiration timestamp. Updating an expired job fails if there is another
+  /// existing open job with same company, language_code and requisition_id. The
+  /// expired jobs are retained in our system for 90 days. However, the overall
+  /// expired job count cannot exceed 3 times the maximum number of open jobs
+  /// over previous 7 days. If this threshold is exceeded, expired jobs are
+  /// cleaned out in order of earliest expire time. Expired jobs are no longer
+  /// accessible after they are cleaned out. Invalid timestamps are ignored, and
+  /// treated as expire time not provided. If the timestamp is before the
+  /// instant request is made, the job is treated as expired immediately on
+  /// creation. This kind of job can not be updated. And when creating a job
+  /// with past timestamp, the posting_publish_time must be set before
+  /// posting_expire_time. The purpose of this feature is to allow other
+  /// objects, such as Application, to refer a job that didn't exist in the
+  /// system prior to becoming expired. If you want to modify a job that was
+  /// expired on creation, delete it and create a new one. If this value isn't
+  /// provided at the time of job creation or is invalid, the job posting
+  /// expires after 30 days from the job's creation time. For example, if the
+  /// job was created on 2017/01/01 13:00AM UTC with an unspecified expiration
+  /// date, the job expires after 2017/01/31 13:00AM UTC. If this value isn't
+  /// provided on job update, it depends on the field masks set by
+  /// UpdateJobRequest.update_mask. If the field masks include job_end_time, or
+  /// the masks are empty meaning that every field is updated, the job posting
+  /// expires after 30 days from the job's last update time. Otherwise the
+  /// expiration date isn't updated.
   core.String postingExpireTime;
 
-  /// The timestamp this job posting was most recently published. The default
-  /// value is the time the request arrives at the server. Invalid timestamps
-  /// are ignored.
+  /// The timestamp this job posting was most recently published.
+  ///
+  /// The default value is the time the request arrives at the server. Invalid
+  /// timestamps are ignored.
   core.String postingPublishTime;
 
   /// The job PostingRegion (for example, state, country) throughout which the
-  /// job is available. If this field is set, a LocationFilter in a search query
-  /// within the job region finds this job posting if an exact location match
-  /// isn't specified. If this field is set to PostingRegion.NATION or
+  /// job is available.
+  ///
+  /// If this field is set, a LocationFilter in a search query within the job
+  /// region finds this job posting if an exact location match isn't specified.
+  /// If this field is set to PostingRegion.NATION or
   /// PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same
   /// location level as this field is strongly recommended.
   /// Possible string values are:
@@ -3700,48 +4093,63 @@ class GoogleCloudTalentV4Job {
   /// location, but telecommuting is allowed.
   core.String postingRegion;
 
-  /// Output only. The timestamp when this job posting was last updated.
+  /// The timestamp when this job posting was last updated.
+  ///
+  /// Output only.
   core.String postingUpdateTime;
 
   /// Options for job processing.
   GoogleCloudTalentV4JobProcessingOptions processingOptions;
 
-  /// A promotion value of the job, as determined by the client. The value
-  /// determines the sort order of the jobs returned when searching for jobs
-  /// using the featured jobs search call, with higher promotional values being
-  /// returned first and ties being resolved by relevance sort. Only the jobs
-  /// with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default
-  /// value is 0, and negative values are treated as 0.
+  /// A promotion value of the job, as determined by the client.
+  ///
+  /// The value determines the sort order of the jobs returned when searching
+  /// for jobs using the featured jobs search call, with higher promotional
+  /// values being returned first and ties being resolved by relevance sort.
+  /// Only the jobs with a promotionValue >0 are returned in a
+  /// FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated
+  /// as 0.
   core.int promotionValue;
 
-  /// A description of the qualifications required to perform the job. The use
-  /// of this field is recommended as an alternative to using the more general
-  /// description field. This field accepts and sanitizes HTML input, and also
-  /// accepts bold, italic, ordered list, and unordered list markup tags. The
-  /// maximum number of allowed characters is 10,000.
+  /// A description of the qualifications required to perform the job.
+  ///
+  /// The use of this field is recommended as an alternative to using the more
+  /// general description field. This field accepts and sanitizes HTML input,
+  /// and also accepts bold, italic, ordered list, and unordered list markup
+  /// tags. The maximum number of allowed characters is 10,000.
   core.String qualifications;
 
-  /// Required. The requisition ID, also referred to as the posting ID, is
-  /// assigned by the client to identify a job. This field is intended to be
-  /// used by clients for client identification and tracking of postings. A job
-  /// isn't allowed to be created if there is another job with the same company,
-  /// language_code and requisition_id. The maximum number of allowed characters
-  /// is 255.
+  /// The requisition ID, also referred to as the posting ID, is assigned by the
+  /// client to identify a job.
+  ///
+  /// This field is intended to be used by clients for client identification and
+  /// tracking of postings. A job isn't allowed to be created if there is
+  /// another job with the same company, language_code and requisition_id. The
+  /// maximum number of allowed characters is 255.
+  ///
+  /// Required.
   core.String requisitionId;
 
-  /// A description of job responsibilities. The use of this field is
-  /// recommended as an alternative to using the more general description field.
-  /// This field accepts and sanitizes HTML input, and also accepts bold,
-  /// italic, ordered list, and unordered list markup tags. The maximum number
-  /// of allowed characters is 10,000.
+  /// A description of job responsibilities.
+  ///
+  /// The use of this field is recommended as an alternative to using the more
+  /// general description field. This field accepts and sanitizes HTML input,
+  /// and also accepts bold, italic, ordered list, and unordered list markup
+  /// tags. The maximum number of allowed characters is 10,000.
   core.String responsibilities;
 
-  /// Required. The title of the job, such as "Software Engineer" The maximum
-  /// number of allowed characters is 500.
+  /// The title of the job, such as "Software Engineer" The maximum number of
+  /// allowed characters is 500.
+  ///
+  /// Required.
   core.String title;
 
-  /// Deprecated. The job is only visible to the owner. The visibility of the
-  /// job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+  /// The job is only visible to the owner.
+  ///
+  /// The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not
+  /// specified.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "VISIBILITY_UNSPECIFIED" : Default value.
   /// - "ACCOUNT_ONLY" : The resource is only visible to the GCP account who
@@ -3967,20 +4375,23 @@ class GoogleCloudTalentV4Job {
 /// Application related details of a job posting.
 class GoogleCloudTalentV4JobApplicationInfo {
   /// Use this field to specify email address(es) to which resumes or
-  /// applications can be sent. The maximum number of allowed characters for
-  /// each entry is 255.
+  /// applications can be sent.
+  ///
+  /// The maximum number of allowed characters for each entry is 255.
   core.List<core.String> emails;
 
   /// Use this field to provide instructions, such as "Mail your application to
-  /// ...", that a candidate can follow to apply for the job. This field accepts
-  /// and sanitizes HTML input, and also accepts bold, italic, ordered list, and
-  /// unordered list markup tags. The maximum number of allowed characters is
-  /// 3,000.
+  /// ...", that a candidate can follow to apply for the job.
+  ///
+  /// This field accepts and sanitizes HTML input, and also accepts bold,
+  /// italic, ordered list, and unordered list markup tags. The maximum number
+  /// of allowed characters is 3,000.
   core.String instruction;
 
   /// Use this URI field to direct an applicant to a website, for example to
-  /// link to an online application form. The maximum number of allowed
-  /// characters for each entry is 2,000.
+  /// link to an online application form.
+  ///
+  /// The maximum number of allowed characters for each entry is 2,000.
   core.List<core.String> uris;
 
   GoogleCloudTalentV4JobApplicationInfo();
@@ -4021,8 +4432,9 @@ class GoogleCloudTalentV4JobDerivedInfo {
   /// Job categories derived from Job.title and Job.description.
   core.List<core.String> jobCategories;
 
-  /// Structured locations of the job, resolved from Job.addresses. locations
-  /// are exactly matched to Job.addresses in the same order.
+  /// Structured locations of the job, resolved from Job.addresses.
+  ///
+  /// locations are exactly matched to Job.addresses in the same order.
   core.List<GoogleCloudTalentV4Location> locations;
 
   GoogleCloudTalentV4JobDerivedInfo();
@@ -4060,10 +4472,11 @@ class GoogleCloudTalentV4JobProcessingOptions {
   /// address for the job.
   core.bool disableStreetAddressResolution;
 
-  /// Option for job HTML content sanitization. Applied fields are: *
-  /// description * applicationInfo.instruction * incentives * qualifications *
-  /// responsibilities HTML tags in these fields may be stripped if
-  /// sanitiazation isn't disabled. Defaults to
+  /// Option for job HTML content sanitization.
+  ///
+  /// Applied fields are: * description * applicationInfo.instruction *
+  /// incentives * qualifications * responsibilities HTML tags in these fields
+  /// may be stripped if sanitiazation isn't disabled. Defaults to
   /// HtmlSanitization.SIMPLE_FORMATTING_ONLY.
   /// Possible string values are:
   /// - "HTML_SANITIZATION_UNSPECIFIED" : Default value.
@@ -4103,8 +4516,9 @@ class GoogleCloudTalentV4JobResult {
   /// information of the created/updated job.
   GoogleCloudTalentV4Job job;
 
-  /// The status of the job processed. This field is populated if the processing
-  /// of the job fails.
+  /// The status of the job processed.
+  ///
+  /// This field is populated if the processing of the job fails.
   Status status;
 
   GoogleCloudTalentV4JobResult();
@@ -4138,9 +4552,11 @@ class GoogleCloudTalentV4Location {
   LatLng latLng;
 
   /// The type of a location, which corresponds to the address lines field of
-  /// google.type.PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a
-  /// type of LocationType.NEIGHBORHOOD, and "Kansas City, KS, USA" has a type
-  /// of LocationType.LOCALITY.
+  /// google.type.PostalAddress.
+  ///
+  /// For example, "Downtown, Atlanta, GA, USA" has a type of
+  /// LocationType.NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of
+  /// LocationType.LOCALITY.
   /// Possible string values are:
   /// - "LOCATION_TYPE_UNSPECIFIED" : Default value if the type isn't specified.
   /// - "COUNTRY" : A country level location.
@@ -4160,16 +4576,18 @@ class GoogleCloudTalentV4Location {
   core.String locationType;
 
   /// Postal address of the location that includes human readable information,
-  /// such as postal delivery and payments addresses. Given a postal address, a
-  /// postal service can deliver items to a premises, P.O. Box, or other
-  /// delivery location.
+  /// such as postal delivery and payments addresses.
+  ///
+  /// Given a postal address, a postal service can deliver items to a premises,
+  /// P.O. Box, or other delivery location.
   PostalAddress postalAddress;
 
-  /// Radius in miles of the job location. This value is derived from the
-  /// location bounding box in which a circle with the specified radius centered
-  /// from google.type.LatLng covers the area associated with the job location.
-  /// For example, currently, "Mountain View, CA, USA" has a radius of 6.17
-  /// miles.
+  /// Radius in miles of the job location.
+  ///
+  /// This value is derived from the location bounding box in which a circle
+  /// with the specified radius centered from google.type.LatLng covers the area
+  /// associated with the job location. For example, currently, "Mountain View,
+  /// CA, USA" has a radius of 6.17 miles.
   core.double radiusMiles;
 
   GoogleCloudTalentV4Location();
@@ -4209,19 +4627,30 @@ class GoogleCloudTalentV4Location {
   }
 }
 
-/// Input only. Histogram facets to be specified in SearchJobsRequest.
+/// Input only.
+///
+/// Histogram facets to be specified in SearchJobsRequest.
 class HistogramFacets {
-  /// Optional. Specifies compensation field-based histogram requests. Duplicate
-  /// values of CompensationHistogramRequest.type are not allowed.
+  /// Specifies compensation field-based histogram requests.
+  ///
+  /// Duplicate values of CompensationHistogramRequest.type are not allowed.
+  ///
+  /// Optional.
   core.List<CompensationHistogramRequest> compensationHistogramFacets;
 
-  /// Optional. Specifies the custom attributes histogram requests. Duplicate
-  /// values of CustomAttributeHistogramRequest.key are not allowed.
+  /// Specifies the custom attributes histogram requests.
+  ///
+  /// Duplicate values of CustomAttributeHistogramRequest.key are not allowed.
+  ///
+  /// Optional.
   core.List<CustomAttributeHistogramRequest> customAttributeHistogramFacets;
 
-  /// Optional. Specifies the simple type of histogram facets, for example,
-  /// `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. This field is equivalent to
-  /// GetHistogramRequest.
+  /// Specifies the simple type of histogram facets, for example,
+  /// `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc.
+  ///
+  /// This field is equivalent to GetHistogramRequest.
+  ///
+  /// Optional.
   core.List<core.String> simpleHistogramFacets;
 
   HistogramFacets();
@@ -4268,10 +4697,13 @@ class HistogramFacets {
   }
 }
 
-/// Output only. Result of a histogram call. The response contains the histogram
-/// map for the search type specified by HistogramResult.field. The response is
-/// a map of each filter value to the corresponding count of jobs for that
-/// filter.
+/// Result of a histogram call.
+///
+/// The response contains the histogram map for the search type specified by
+/// HistogramResult.field. The response is a map of each filter value to the
+/// corresponding count of jobs for that filter.
+///
+/// Output only.
 class HistogramResult {
   /// The Histogram search filters.
   /// Possible string values are:
@@ -4334,9 +4766,10 @@ class HistogramResult {
   core.String searchType;
 
   /// A map from the values of field to the number of jobs with that value in
-  /// this search result. Key: search type (filter names, such as the
-  /// companyName). Values: the count of jobs that match the filter for this
-  /// search.
+  /// this search result.
+  ///
+  /// Key: search type (filter names, such as the companyName). Values: the
+  /// count of jobs that match the filter for this search.
   core.Map<core.String, core.int> values;
 
   HistogramResult();
@@ -4367,8 +4800,10 @@ class HistogramResult {
   }
 }
 
-/// Output only. Histogram results that matches HistogramFacets specified in
+/// Histogram results that matches HistogramFacets specified in
 /// SearchJobsRequest.
+///
+/// Output only.
 class HistogramResults {
   /// Specifies compensation field-based histogram results that matches
   /// HistogramFacets.compensation_histogram_requests.
@@ -4429,101 +4864,140 @@ class HistogramResults {
 }
 
 /// A Job resource represents a job posting (also referred to as a "job listing"
-/// or "job requisition"). A job belongs to a Company, which is the hiring
-/// entity responsible for the job.
+/// or "job requisition").
+///
+/// A job belongs to a Company, which is the hiring entity responsible for the
+/// job.
 class Job {
   /// Optional but at least one of application_urls, application_email_list or
-  /// application_instruction must be specified. Use this field to specify email
-  /// address(es) to which resumes or applications can be sent. The maximum
-  /// number of allowed characters is 255.
+  /// application_instruction must be specified.
+  ///
+  /// Use this field to specify email address(es) to which resumes or
+  /// applications can be sent. The maximum number of allowed characters is 255.
   core.List<core.String> applicationEmailList;
 
   /// Optional but at least one of application_urls, application_email_list or
-  /// application_instruction must be specified. Use this field to provide
-  /// instructions, such as "Mail your application to ...", that a candidate can
-  /// follow to apply for the job. This field accepts and sanitizes HTML input,
-  /// and also accepts bold, italic, ordered list, and unordered list markup
-  /// tags. The maximum number of allowed characters is 3,000.
+  /// application_instruction must be specified.
+  ///
+  /// Use this field to provide instructions, such as "Mail your application to
+  /// ...", that a candidate can follow to apply for the job. This field accepts
+  /// and sanitizes HTML input, and also accepts bold, italic, ordered list, and
+  /// unordered list markup tags. The maximum number of allowed characters is
+  /// 3,000.
   core.String applicationInstruction;
 
   /// Optional but at least one of application_urls, application_email_list or
-  /// application_instruction must be specified. Use this URL field to direct an
-  /// applicant to a website, for example to link to an online application form.
-  /// The maximum number of allowed characters is 2,000.
+  /// application_instruction must be specified.
+  ///
+  /// Use this URL field to direct an applicant to a website, for example to
+  /// link to an online application form. The maximum number of allowed
+  /// characters is 2,000.
   core.List<core.String> applicationUrls;
 
-  /// Optional. The benefits included with the job.
+  /// The benefits included with the job.
+  ///
+  /// Optional.
   core.List<core.String> benefits;
 
-  /// Output only. The name of the company listing the job.
+  /// The name of the company listing the job.
+  ///
+  /// Output only.
   core.String companyDisplayName;
 
   /// Optional but one of company_name or distributor_company_id must be
-  /// provided. The resource name of the company listing the job, such as
-  /// /companies/foo. This field takes precedence over the distributor-assigned
-  /// company identifier, distributor_company_id.
+  /// provided.
+  ///
+  /// The resource name of the company listing the job, such as /companies/foo.
+  /// This field takes precedence over the distributor-assigned company
+  /// identifier, distributor_company_id.
   core.String companyName;
 
-  /// Deprecated. Use company_display_name instead. Output only. The name of the
-  /// company listing the job.
+  /// Use company_display_name instead.
+  ///
+  /// Output only. The name of the company listing the job.
+  ///
+  /// Deprecated.
   core.String companyTitle;
 
-  /// Optional. Job compensation information.
+  /// Job compensation information.
+  ///
+  /// Optional.
   CompensationInfo compensationInfo;
 
-  /// Output only. The timestamp when this job was created.
+  /// The timestamp when this job was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Optional. A map of fields to hold both filterable and non-filterable
-  /// custom job attributes that are not covered by the provided structured
-  /// fields. This field is a more general combination of the deprecated
-  /// id-based filterable_custom_fields and string-based
-  /// non_filterable_custom_fields. The keys of the map are strings up to 64
-  /// bytes and must match the pattern: a-zA-Z*. At most 100 filterable and at
-  /// most 100 unfilterable keys are supported. For filterable `string_values`,
-  /// across all keys at most 200 values are allowed, with each string no more
-  /// than 255 characters. For unfilterable `string_values`, the maximum total
-  /// size of `string_values` across all keys is 50KB.
+  /// A map of fields to hold both filterable and non-filterable custom job
+  /// attributes that are not covered by the provided structured fields.
+  ///
+  /// This field is a more general combination of the deprecated id-based
+  /// filterable_custom_fields and string-based non_filterable_custom_fields.
+  /// The keys of the map are strings up to 64 bytes and must match the pattern:
+  /// a-zA-Z*. At most 100 filterable and at most 100 unfilterable keys are
+  /// supported. For filterable `string_values`, across all keys at most 200
+  /// values are allowed, with each string no more than 255 characters. For
+  /// unfilterable `string_values`, the maximum total size of `string_values`
+  /// across all keys is 50KB.
+  ///
+  /// Optional.
   core.Map<core.String, CustomAttribute> customAttributes;
 
-  /// Optional. The department or functional area within the company with the
-  /// open position. The maximum number of allowed characters is 255.
+  /// The department or functional area within the company with the open
+  /// position.
+  ///
+  /// The maximum number of allowed characters is 255.
+  ///
+  /// Optional.
   core.String department;
 
-  /// Required. The description of the job, which typically includes a
-  /// multi-paragraph description of the company and related information.
+  /// The description of the job, which typically includes a multi-paragraph
+  /// description of the company and related information.
+  ///
   /// Separate fields are provided on the job object for responsibilities,
   /// qualifications, and other job characteristics. Use of these separate job
   /// fields is recommended. This field accepts and sanitizes HTML input, and
   /// also accepts bold, italic, ordered list, and unordered list markup tags.
   /// The maximum number of allowed characters is 100,000.
+  ///
+  /// Required.
   core.String description;
 
   /// Optional but one of company_name or distributor_company_id must be
-  /// provided. A unique company identifier used by job distributors to identify
-  /// an employer's company entity. company_name takes precedence over this
-  /// field, and is the recommended field to use to identify companies. The
-  /// maximum number of allowed characters is 255.
+  /// provided.
+  ///
+  /// A unique company identifier used by job distributors to identify an
+  /// employer's company entity. company_name takes precedence over this field,
+  /// and is the recommended field to use to identify companies. The maximum
+  /// number of allowed characters is 255.
   core.String distributorCompanyId;
 
-  /// Optional. The desired education level for the job, such as "Bachelors",
-  /// "Masters", "Doctorate".
+  /// The desired education level for the job, such as "Bachelors", "Masters",
+  /// "Doctorate".
+  ///
+  /// Optional.
   core.List<core.String> educationLevels;
 
-  /// Optional. The employment type(s) of a job, for example, full time or part
-  /// time.
+  /// The employment type(s) of a job, for example, full time or part time.
+  ///
+  /// Optional.
   core.List<core.String> employmentTypes;
 
-  /// Optional. The end date of the job in UTC time zone. Typically this field
-  /// is used for contracting engagements. Dates prior to 1970/1/1 and invalid
-  /// date formats are ignored.
+  /// The end date of the job in UTC time zone.
+  ///
+  /// Typically this field is used for contracting engagements. Dates prior to
+  /// 1970/1/1 and invalid date formats are ignored.
+  ///
+  /// Optional.
   Date endDate;
 
-  /// Optional but strongly recommended for the best service experience. The
-  /// expiration timestamp of the job. After this timestamp, the job is marked
-  /// as expired, and it no longer appears in search results. The expired job
-  /// can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can
-  /// be retrieved with the GetJob API or updated with the UpdateJob API. An
+  /// Optional but strongly recommended for the best service experience.
+  ///
+  /// The expiration timestamp of the job. After this timestamp, the job is
+  /// marked as expired, and it no longer appears in search results. The expired
+  /// job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it
+  /// can be retrieved with the GetJob API or updated with the UpdateJob API. An
   /// expired job can be updated and opened again by using a future expiration
   /// timestamp. Updating an expired job fails if there is another existing open
   /// job with same requisition_id, company_name and language_code. The expired
@@ -4548,74 +5022,96 @@ class Job {
   /// job's last update time. Otherwise the expiration date isn't updated.
   core.String expireTime;
 
-  /// Deprecated. Use expire_time instead. Optional but strongly recommended to
-  /// be provided for the best service experience. The expiration date of the
-  /// job in UTC time. After 12 am on this date, the job is marked as expired,
-  /// and it no longer appears in search results. The expired job can't be
-  /// deleted or listed by the DeleteJob and ListJobs APIs, but it can be
-  /// retrieved with the GetJob API or updated with the UpdateJob API. An
-  /// expired job can be updated and opened again by using a future expiration
-  /// date. It can also remain expired. Updating an expired job to be open fails
-  /// if there is another existing open job with same requisition_id,
-  /// company_name and language_code. The expired jobs are retained in our
-  /// system for 90 days. However, the overall expired job count cannot exceed 3
-  /// times the maximum of open jobs count over the past week, otherwise jobs
-  /// with earlier expire time are removed first. Expired jobs are no longer
-  /// accessible after they are cleaned out. A valid date range is between
-  /// 1970/1/1 and 2100/12/31. Invalid dates are ignored and treated as expiry
-  /// date not provided. If this value is not provided on job creation or is
-  /// invalid, the job posting expires after 30 days from the job's creation
-  /// time. For example, if the job was created on 2017/01/01 13:00AM UTC with
-  /// an unspecified expiration date, the job expires after 2017/01/31 13:00AM
-  /// UTC. If this value is not provided on job update, it depends on the field
-  /// masks set by UpdateJobRequest.update_job_fields. If the field masks
-  /// include expiry_date, or the masks are empty meaning that every field is
-  /// updated, the job expires after 30 days from the job's last update time.
-  /// Otherwise the expiration date isn't updated.
+  /// Use expire_time instead.
+  ///
+  /// Optional but strongly recommended to be provided for the best service
+  /// experience. The expiration date of the job in UTC time. After 12 am on
+  /// this date, the job is marked as expired, and it no longer appears in
+  /// search results. The expired job can't be deleted or listed by the
+  /// DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API
+  /// or updated with the UpdateJob API. An expired job can be updated and
+  /// opened again by using a future expiration date. It can also remain
+  /// expired. Updating an expired job to be open fails if there is another
+  /// existing open job with same requisition_id, company_name and
+  /// language_code. The expired jobs are retained in our system for 90 days.
+  /// However, the overall expired job count cannot exceed 3 times the maximum
+  /// of open jobs count over the past week, otherwise jobs with earlier expire
+  /// time are removed first. Expired jobs are no longer accessible after they
+  /// are cleaned out. A valid date range is between 1970/1/1 and 2100/12/31.
+  /// Invalid dates are ignored and treated as expiry date not provided. If this
+  /// value is not provided on job creation or is invalid, the job posting
+  /// expires after 30 days from the job's creation time. For example, if the
+  /// job was created on 2017/01/01 13:00AM UTC with an unspecified expiration
+  /// date, the job expires after 2017/01/31 13:00AM UTC. If this value is not
+  /// provided on job update, it depends on the field masks set by
+  /// UpdateJobRequest.update_job_fields. If the field masks include
+  /// expiry_date, or the masks are empty meaning that every field is updated,
+  /// the job expires after 30 days from the job's last update time. Otherwise
+  /// the expiration date isn't updated.
+  ///
+  /// Deprecated.
   Date expiryDate;
 
-  /// Deprecated. Always use compensation_info. Optional. Job compensation
-  /// information. This field replaces compensation_info. Only
-  /// CompensationInfo.entries or extended_compensation_info can be set,
-  /// otherwise an exception is thrown.
+  /// Always use compensation_info.
+  ///
+  /// Optional. Job compensation information. This field replaces
+  /// compensation_info. Only CompensationInfo.entries or
+  /// extended_compensation_info can be set, otherwise an exception is thrown.
+  ///
+  /// Deprecated.
   ExtendedCompensationInfo extendedCompensationInfo;
 
-  /// Deprecated. Use custom_attributes instead. Optional. A map of fields to
-  /// hold filterable custom job attributes not captured by the standard fields
-  /// such as job_title, company_name, or level. These custom fields store
-  /// arbitrary string values, and can be used for purposes not covered by the
-  /// structured fields. For the best search experience, use of the structured
-  /// rather than custom fields is recommended. Data stored in these custom
-  /// fields fields are indexed and searched against by keyword searches (see
+  /// Use custom_attributes instead.
+  ///
+  /// Optional. A map of fields to hold filterable custom job attributes not
+  /// captured by the standard fields such as job_title, company_name, or level.
+  /// These custom fields store arbitrary string values, and can be used for
+  /// purposes not covered by the structured fields. For the best search
+  /// experience, use of the structured rather than custom fields is
+  /// recommended. Data stored in these custom fields fields are indexed and
+  /// searched against by keyword searches (see
   /// SearchJobsRequest.custom_field_filters][]). The map key must be a number
   /// between 1-20. If an invalid key is provided on job create or update, an
   /// error is returned.
+  ///
+  /// Deprecated.
   core.Map<core.String, CustomField> filterableCustomFields;
 
-  /// Optional. A description of bonus, commission, and other compensation
-  /// incentives associated with the job not including salary or pay. The
-  /// maximum number of allowed characters is 10,000.
+  /// A description of bonus, commission, and other compensation incentives
+  /// associated with the job not including salary or pay.
+  ///
+  /// The maximum number of allowed characters is 10,000.
+  ///
+  /// Optional.
   core.String incentives;
 
-  /// Output only. Structured locations of the job, resolved from locations.
+  /// Structured locations of the job, resolved from locations.
+  ///
+  /// Output only.
   core.List<JobLocation> jobLocations;
 
-  /// Required. The title of the job, such as "Software Engineer" The maximum
-  /// number of allowed characters is 500.
+  /// The title of the job, such as "Software Engineer" The maximum number of
+  /// allowed characters is 500.
+  ///
+  /// Required.
   core.String jobTitle;
 
-  /// Optional. The language of the posting. This field is distinct from any
-  /// requirements for fluency that are associated with the job. Language codes
-  /// must be in BCP-47 format, such as "en-US" or "sr-Latn". For more
-  /// information, see [Tags for Identifying
+  /// The language of the posting.
+  ///
+  /// This field is distinct from any requirements for fluency that are
+  /// associated with the job. Language codes must be in BCP-47 format, such as
+  /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
   /// Languages](https://tools.ietf.org/html/bcp47){: class="external"
   /// target="_blank" }. If this field is unspecified and Job.description is
   /// present, detected language code based on Job.description is assigned,
   /// otherwise defaults to 'en_US'.
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. The experience level associated with the job, such as "Entry
-  /// Level".
+  /// The experience level associated with the job, such as "Entry Level".
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "JOB_LEVEL_UNSPECIFIED" : The default value if the level is not
   /// specified.
@@ -4632,6 +5128,7 @@ class Job {
   core.String level;
 
   /// Optional but strongly recommended for the best service experience.
+  ///
   /// Location(s) where the emploeyer is looking to hire for this job posting.
   /// Specifying the full street address(es) of the hiring location enables
   /// better API results, especially job searches by commute time. At most 50
@@ -4645,38 +5142,56 @@ class Job {
   /// maximum number of allowed characters is 500.
   core.List<core.String> locations;
 
-  /// Required during job update. Resource name assigned to a job by the API,
-  /// for example, "/jobs/foo". Use of this field in job queries and API calls
-  /// is preferred over the use of requisition_id since this value is unique.
+  /// Required during job update.
+  ///
+  /// Resource name assigned to a job by the API, for example, "/jobs/foo". Use
+  /// of this field in job queries and API calls is preferred over the use of
+  /// requisition_id since this value is unique.
   core.String name;
 
-  /// Optional. A promotion value of the job, as determined by the client. The
-  /// value determines the sort order of the jobs returned when searching for
-  /// jobs using the featured jobs search call, with higher promotional values
-  /// being returned first and ties being resolved by relevance sort. Only the
-  /// jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH.
-  /// Default value is 0, and negative values are treated as 0.
+  /// A promotion value of the job, as determined by the client.
+  ///
+  /// The value determines the sort order of the jobs returned when searching
+  /// for jobs using the featured jobs search call, with higher promotional
+  /// values being returned first and ties being resolved by relevance sort.
+  /// Only the jobs with a promotionValue >0 are returned in a
+  /// FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated
+  /// as 0.
+  ///
+  /// Optional.
   core.int promotionValue;
 
-  /// Optional. The date this job was most recently published in UTC format. The
-  /// default value is the time the request arrives at the server.
+  /// The date this job was most recently published in UTC format.
+  ///
+  /// The default value is the time the request arrives at the server.
+  ///
+  /// Optional.
   Date publishDate;
 
-  /// Optional. A description of the qualifications required to perform the job.
+  /// A description of the qualifications required to perform the job.
+  ///
   /// The use of this field is recommended as an alternative to using the more
   /// general description field. This field accepts and sanitizes HTML input,
   /// and also accepts bold, italic, ordered list, and unordered list markup
   /// tags. The maximum number of allowed characters is 10,000.
+  ///
+  /// Optional.
   core.String qualifications;
 
-  /// Output only. The URL of a web page that displays job details.
+  /// The URL of a web page that displays job details.
+  ///
+  /// Output only.
   core.String referenceUrl;
 
-  /// Optional. The job Region (for example, state, country) throughout which
-  /// the job is available. If this field is set, a LocationFilter in a search
-  /// query within the job region finds this job if an exact location match is
-  /// not specified. If this field is set, setting job locations to the same
-  /// location level as this field is strongly recommended.
+  /// The job Region (for example, state, country) throughout which the job is
+  /// available.
+  ///
+  /// If this field is set, a LocationFilter in a search query within the job
+  /// region finds this job if an exact location match is not specified. If this
+  /// field is set, setting job locations to the same location level as this
+  /// field is strongly recommended.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "REGION_UNSPECIFIED" : If the region is unspecified, the job is only
   /// returned if it matches the LocationFilter.
@@ -4693,39 +5208,57 @@ class Job {
   /// location, but telecommuting is allowed.
   core.String region;
 
-  /// Required. The requisition ID, also referred to as the posting ID, assigned
-  /// by the client to identify a job. This field is intended to be used by
-  /// clients for client identification and tracking of listings. A job is not
-  /// allowed to be created if there is another job with the same
-  /// requisition_id, company_name and language_code. The maximum number of
-  /// allowed characters is 255.
+  /// The requisition ID, also referred to as the posting ID, assigned by the
+  /// client to identify a job.
+  ///
+  /// This field is intended to be used by clients for client identification and
+  /// tracking of listings. A job is not allowed to be created if there is
+  /// another job with the same requisition_id, company_name and language_code.
+  /// The maximum number of allowed characters is 255.
+  ///
+  /// Required.
   core.String requisitionId;
 
-  /// Optional. A description of job responsibilities. The use of this field is
-  /// recommended as an alternative to using the more general description field.
-  /// This field accepts and sanitizes HTML input, and also accepts bold,
-  /// italic, ordered list, and unordered list markup tags. The maximum number
-  /// of allowed characters is 10,000.
+  /// A description of job responsibilities.
+  ///
+  /// The use of this field is recommended as an alternative to using the more
+  /// general description field. This field accepts and sanitizes HTML input,
+  /// and also accepts bold, italic, ordered list, and unordered list markup
+  /// tags. The maximum number of allowed characters is 10,000.
+  ///
+  /// Optional.
   core.String responsibilities;
 
-  /// Optional. The start date of the job in UTC time zone. Typically this field
-  /// is used for contracting engagements. Dates prior to 1970/1/1 and invalid
-  /// date formats are ignored.
+  /// The start date of the job in UTC time zone.
+  ///
+  /// Typically this field is used for contracting engagements. Dates prior to
+  /// 1970/1/1 and invalid date formats are ignored.
+  ///
+  /// Optional.
   Date startDate;
 
-  /// Deprecated. Use custom_attributes instead. Optional. A map of fields to
-  /// hold non-filterable custom job attributes, similar to
-  /// filterable_custom_fields. These fields are distinct in that the data in
-  /// these fields are not indexed. Therefore, the client cannot search against
-  /// them, nor can the client use them to list jobs. The key of the map can be
-  /// any valid string.
+  /// Use custom_attributes instead.
+  ///
+  /// Optional. A map of fields to hold non-filterable custom job attributes,
+  /// similar to filterable_custom_fields. These fields are distinct in that the
+  /// data in these fields are not indexed. Therefore, the client cannot search
+  /// against them, nor can the client use them to list jobs. The key of the map
+  /// can be any valid string.
+  ///
+  /// Deprecated.
   core.Map<core.String, CustomField> unindexedCustomFields;
 
-  /// Output only. The timestamp when this job was last updated.
+  /// The timestamp when this job was last updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
-  /// Optional. The visibility of the job. Defaults to JobVisibility.PRIVATE if
-  /// not specified. Currently only JobVisibility.PRIVATE is supported.
+  /// The visibility of the job.
+  ///
+  /// Defaults to JobVisibility.PRIVATE if not specified. Currently only
+  /// JobVisibility.PRIVATE is supported.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "JOB_VISIBILITY_UNSPECIFIED" : Default value.
   /// - "PRIVATE" : The Job is only visible to the owner.
@@ -5022,102 +5555,148 @@ class Job {
   }
 }
 
-/// Input only. Deprecated. Use JobQuery instead. The filters required to
-/// perform a search query or histogram.
+/// Input only.
+///
+/// Deprecated. Use JobQuery instead. The filters required to perform a search
+/// query or histogram.
 class JobFilters {
-  /// Optional. The category filter specifies the categories of jobs to search
-  /// against. See Category for more information. If a value is not specified,
-  /// jobs from any category are searched against. If multiple values are
-  /// specified, jobs from any of the specified categories are searched against.
+  /// The category filter specifies the categories of jobs to search against.
+  ///
+  /// See Category for more information. If a value is not specified, jobs from
+  /// any category are searched against. If multiple values are specified, jobs
+  /// from any of the specified categories are searched against.
+  ///
+  /// Optional.
   core.List<core.String> categories;
 
-  /// Optional. Allows filtering jobs by commute time with different travel
-  /// methods (e.g. driving or public transit). Note: this only works with
-  /// COMMUTE MODE. When specified, [JobFilters.location_filters] will be
-  /// ignored. Currently we do not support sorting by commute time.
+  /// Allows filtering jobs by commute time with different travel methods (e.g.
+  /// driving or public transit).
+  ///
+  /// Note: this only works with COMMUTE MODE. When specified,
+  /// [JobFilters.location_filters] will be ignored. Currently we do not support
+  /// sorting by commute time.
+  ///
+  /// Optional.
   CommutePreference commuteFilter;
 
-  /// Optional. The company names filter specifies the company entities to
-  /// search against. If a value is not specified, jobs are searched for against
-  /// all companies. If multiple values are specified, jobs are searched against
-  /// the specified companies. At most 20 company filters are allowed.
+  /// The company names filter specifies the company entities to search against.
+  ///
+  /// If a value is not specified, jobs are searched for against all companies.
+  /// If multiple values are specified, jobs are searched against the specified
+  /// companies. At most 20 company filters are allowed.
+  ///
+  /// Optional.
   core.List<core.String> companyNames;
 
-  /// Optional. This filter specifies the exact company titles of jobs to search
-  /// against. If a value is not specified, jobs within the search results can
-  /// be associated with any company. If multiple values are specified, jobs
-  /// within the search results may be associated with any of the specified
-  /// companies. At most 20 company title filters are allowed.
+  /// This filter specifies the exact company titles of jobs to search against.
+  ///
+  /// If a value is not specified, jobs within the search results can be
+  /// associated with any company. If multiple values are specified, jobs within
+  /// the search results may be associated with any of the specified companies.
+  /// At most 20 company title filters are allowed.
+  ///
+  /// Optional.
   core.List<core.String> companyTitles;
 
-  /// Optional. This search filter is applied only to Job.compensation_info. For
-  /// example, if the filter is specified as "Hourly job with per-hour
+  /// This search filter is applied only to Job.compensation_info.
+  ///
+  /// For example, if the filter is specified as "Hourly job with per-hour
   /// compensation > $15", only jobs that meet this criteria are searched. If a
   /// filter is not defined, all open jobs are searched.
+  ///
+  /// Optional.
   CompensationFilter compensationFilter;
 
-  /// Optional. This filter specifies a structured syntax to match against the
-  /// Job.custom_attributes that are marked as `filterable`. The syntax for this
-  /// expression is a subset of Google SQL syntax. Supported operators are: =,
-  /// !=, <, <=, >, >= where the left of the operator is a custom field key and
-  /// the right of the operator is a number or string (surrounded by quotes)
-  /// value. Supported functions are LOWER() to perform case insensitive match
-  /// and EMPTY() to filter on the existence of a key. Boolean expressions
-  /// (AND/OR/NOT) are supported up to 3 levels of nesting (For example, "((A
-  /// AND B AND C) OR NOT D) AND E"), and there can be a maximum of 100
-  /// comparisons/functions in the expression. The expression must be < 3000
-  /// bytes in length. Sample Query: (key1 = "TEST" OR LOWER(key1)="test" OR NOT
-  /// EMPTY(key1)) AND key2 > 100
+  /// This filter specifies a structured syntax to match against the
+  /// Job.custom_attributes that are marked as `filterable`.
+  ///
+  /// The syntax for this expression is a subset of Google SQL syntax. Supported
+  /// operators are: =, !=, <, <=, >, >= where the left of the operator is a
+  /// custom field key and the right of the operator is a number or string
+  /// (surrounded by quotes) value. Supported functions are LOWER() to perform
+  /// case insensitive match and EMPTY() to filter on the existence of a key.
+  /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting
+  /// (For example, "((A AND B AND C) OR NOT D) AND E"), and there can be a
+  /// maximum of 100 comparisons/functions in the expression. The expression
+  /// must be < 3000 bytes in length. Sample Query: (key1 = "TEST" OR
+  /// LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100
+  ///
+  /// Optional.
   core.String customAttributeFilter;
 
-  /// Deprecated. Use custom_attribute_filter instead. Optional. This filter
-  /// specifies searching against custom field values. See
+  /// Use custom_attribute_filter instead.
+  ///
+  /// Optional. This filter specifies searching against custom field values. See
   /// Job.filterable_custom_fields for information. The key value specifies a
   /// number between 1-20 (the service supports 20 custom fields) corresponding
   /// to the desired custom field map value. If an invalid key is provided or
   /// specified together with custom_attribute_filter, an error is thrown.
+  ///
+  /// Deprecated.
   core.Map<core.String, CustomFieldFilter> customFieldFilters;
 
-  /// Optional. This flag controls the spell-check feature. If false, the
-  /// service attempts to correct a misspelled query, for example, "enginee" is
-  /// corrected to "engineer". Defaults to false: a spell check is performed.
+  /// This flag controls the spell-check feature.
+  ///
+  /// If false, the service attempts to correct a misspelled query, for example,
+  /// "enginee" is corrected to "engineer". Defaults to false: a spell check is
+  /// performed.
+  ///
+  /// Optional.
   core.bool disableSpellCheck;
 
-  /// Optional. The employment type filter specifies the employment type of jobs
-  /// to search against, such as EmploymentType.FULL_TIME. If a value is not
-  /// specified, jobs in the search results include any employment type. If
-  /// multiple values are specified, jobs in the search results include any of
-  /// the specified employment types.
+  /// The employment type filter specifies the employment type of jobs to search
+  /// against, such as EmploymentType.FULL_TIME.
+  ///
+  /// If a value is not specified, jobs in the search results include any
+  /// employment type. If multiple values are specified, jobs in the search
+  /// results include any of the specified employment types.
+  ///
+  /// Optional.
   core.List<core.String> employmentTypes;
 
-  /// Deprecated. Always use compensation_filter. Optional. This search filter
-  /// is applied only to Job.extended_compensation_info. For example, if the
-  /// filter is specified as "Hourly job with per-hour compensation > $15", only
-  /// jobs that meet these criteria are searched. If a filter is not defined,
-  /// all open jobs are searched.
+  /// Always use compensation_filter.
+  ///
+  /// Optional. This search filter is applied only to
+  /// Job.extended_compensation_info. For example, if the filter is specified as
+  /// "Hourly job with per-hour compensation > $15", only jobs that meet these
+  /// criteria are searched. If a filter is not defined, all open jobs are
+  /// searched.
+  ///
+  /// Deprecated.
   ExtendedCompensationFilter extendedCompensationFilter;
 
-  /// Optional. This filter specifies the locale of jobs to search against, for
-  /// example, "en-US". If a value is not specified, the search results may
-  /// contain jobs in any locale. Language codes should be in BCP-47 format, for
-  /// example, "en-US" or "sr-Latn". For more information, see [Tags for
-  /// Identifying Languages](https://tools.ietf.org/html/bcp47). At most 10
-  /// language code filters are allowed.
+  /// This filter specifies the locale of jobs to search against, for example,
+  /// "en-US".
+  ///
+  /// If a value is not specified, the search results may contain jobs in any
+  /// locale. Language codes should be in BCP-47 format, for example, "en-US" or
+  /// "sr-Latn". For more information, see [Tags for Identifying
+  /// Languages](https://tools.ietf.org/html/bcp47). At most 10 language code
+  /// filters are allowed.
+  ///
+  /// Optional.
   core.List<core.String> languageCodes;
 
-  /// Optional. The location filter specifies geo-regions containing the jobs to
-  /// search against. See LocationFilter for more information. If a location
-  /// value is not specified, jobs are retrieved from all locations. If multiple
-  /// values are specified, jobs are retrieved from any of the specified
-  /// locations. If different values are specified for the
-  /// LocationFilter.distance_in_miles parameter, the maximum provided distance
-  /// is used for all locations. At most 5 location filters are allowed.
+  /// The location filter specifies geo-regions containing the jobs to search
+  /// against.
+  ///
+  /// See LocationFilter for more information. If a location value is not
+  /// specified, jobs are retrieved from all locations. If multiple values are
+  /// specified, jobs are retrieved from any of the specified locations. If
+  /// different values are specified for the LocationFilter.distance_in_miles
+  /// parameter, the maximum provided distance is used for all locations. At
+  /// most 5 location filters are allowed.
+  ///
+  /// Optional.
   core.List<LocationFilter> locationFilters;
 
-  /// Optional. Jobs published within a range specified by this filter are
-  /// searched against, for example, DateRange.PAST_MONTH. If a value is not
-  /// specified, all open jobs are searched against regardless of the date they
-  /// were published.
+  /// Jobs published within a range specified by this filter are searched
+  /// against, for example, DateRange.PAST_MONTH.
+  ///
+  /// If a value is not specified, all open jobs are searched against regardless
+  /// of the date they were published.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DATE_RANGE_UNSPECIFIED" : Default value: Filtering on time is not
   /// performed.
@@ -5128,14 +5707,21 @@ class JobFilters {
   /// - "PAST_3_DAYS" : The past 3 days
   core.String publishDateRange;
 
-  /// Optional. The query filter contains the keywords that match against the
-  /// job title, description, and location fields. The maximum query size is 255
-  /// bytes/characters.
+  /// The query filter contains the keywords that match against the job title,
+  /// description, and location fields.
+  ///
+  /// The maximum query size is 255 bytes/characters.
+  ///
+  /// Optional.
   core.String query;
 
-  /// Deprecated. Do not use this field. This flag controls whether the job
-  /// search should be restricted to jobs owned by the current user. Defaults to
-  /// false where all jobs accessible to the user are searched against.
+  /// Do not use this field.
+  ///
+  /// This flag controls whether the job search should be restricted to jobs
+  /// owned by the current user. Defaults to false where all jobs accessible to
+  /// the user are searched against.
+  ///
+  /// Deprecated.
   core.bool tenantJobOnly;
 
   JobFilters();
@@ -5266,14 +5852,17 @@ class JobFilters {
   }
 }
 
-/// Output only. A resource that represents a location with full geographic
-/// information.
+/// A resource that represents a location with full geographic information.
+///
+/// Output only.
 class JobLocation {
   /// An object representing a latitude/longitude pair.
   LatLng latLng;
 
   /// The type of a location, which corresponds to the address lines field of
-  /// PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of
+  /// PostalAddress.
+  ///
+  /// For example, "Downtown, Atlanta, GA, USA" has a type of
   /// LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of
   /// LocationType#LOCALITY.
   /// Possible string values are:
@@ -5296,15 +5885,18 @@ class JobLocation {
   core.String locationType;
 
   /// Postal address of the location that includes human readable information,
-  /// such as postal delivery and payments addresses. Given a postal address, a
-  /// postal service can deliver items to a premises, P.O. Box, or other
-  /// delivery location.
+  /// such as postal delivery and payments addresses.
+  ///
+  /// Given a postal address, a postal service can deliver items to a premises,
+  /// P.O. Box, or other delivery location.
   PostalAddress postalAddress;
 
-  /// Radius in meters of the job location. This value is derived from the
-  /// location bounding box in which a circle with the specified radius centered
-  /// from LatLng coves the area associated with the job location. For example,
-  /// currently, "Mountain View, CA, USA" has a radius of 7885.79 meters.
+  /// Radius in meters of the job location.
+  ///
+  /// This value is derived from the location bounding box in which a circle
+  /// with the specified radius centered from LatLng coves the area associated
+  /// with the job location. For example, currently, "Mountain View, CA, USA"
+  /// has a radius of 7885.79 meters.
   core.double radiusMeters;
 
   JobLocation();
@@ -5344,17 +5936,24 @@ class JobLocation {
   }
 }
 
-/// Input only. Options for job processing.
+/// Input only.
+///
+/// Options for job processing.
 class JobProcessingOptions {
-  /// Optional. If set to `true`, the service does not attempt to resolve a more
-  /// precise address for the job.
+  /// If set to `true`, the service does not attempt to resolve a more precise
+  /// address for the job.
+  ///
+  /// Optional.
   core.bool disableStreetAddressResolution;
 
-  /// Optional. Option for job HTML content sanitization. Applied fields are: *
-  /// description * applicationInstruction * incentives * qualifications *
-  /// responsibilities HTML tags in these fields may be stripped if
-  /// sanitiazation is not disabled. Defaults to
+  /// Option for job HTML content sanitization.
+  ///
+  /// Applied fields are: * description * applicationInstruction * incentives *
+  /// qualifications * responsibilities HTML tags in these fields may be
+  /// stripped if sanitiazation is not disabled. Defaults to
   /// HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "HTML_SANITIZATION_UNSPECIFIED" : Default value.
   /// - "HTML_SANITIZATION_DISABLED" : Disables sanitization on HTML input.
@@ -5386,87 +5985,127 @@ class JobProcessingOptions {
   }
 }
 
-/// Input only. The query required to perform a search query or histogram.
+/// Input only.
+///
+/// The query required to perform a search query or histogram.
 class JobQuery {
-  /// Optional. The category filter specifies the categories of jobs to search
-  /// against. See Category for more information. If a value is not specified,
-  /// jobs from any category are searched against. If multiple values are
-  /// specified, jobs from any of the specified categories are searched against.
+  /// The category filter specifies the categories of jobs to search against.
+  ///
+  /// See Category for more information. If a value is not specified, jobs from
+  /// any category are searched against. If multiple values are specified, jobs
+  /// from any of the specified categories are searched against.
+  ///
+  /// Optional.
   core.List<core.String> categories;
 
-  /// Optional. Allows filtering jobs by commute time with different travel
-  /// methods (for example, driving or public transit). Note: This only works
-  /// with COMMUTE MODE. When specified, [JobQuery.location_filters] is ignored.
-  /// Currently we don't support sorting by commute time.
+  /// Allows filtering jobs by commute time with different travel methods (for
+  /// example, driving or public transit).
+  ///
+  /// Note: This only works with COMMUTE MODE. When specified,
+  /// [JobQuery.location_filters] is ignored. Currently we don't support sorting
+  /// by commute time.
+  ///
+  /// Optional.
   CommutePreference commuteFilter;
 
-  /// Optional. This filter specifies the exact company display name of the jobs
-  /// to search against. If a value isn't specified, jobs within the search
-  /// results are associated with any company. If multiple values are specified,
-  /// jobs within the search results may be associated with any of the specified
-  /// companies. At most 20 company display name filters are allowed.
+  /// This filter specifies the exact company display name of the jobs to search
+  /// against.
+  ///
+  /// If a value isn't specified, jobs within the search results are associated
+  /// with any company. If multiple values are specified, jobs within the search
+  /// results may be associated with any of the specified companies. At most 20
+  /// company display name filters are allowed.
+  ///
+  /// Optional.
   core.List<core.String> companyDisplayNames;
 
-  /// Optional. This filter specifies the company entities to search against. If
-  /// a value isn't specified, jobs are searched for against all companies. If
-  /// multiple values are specified, jobs are searched against the companies
+  /// This filter specifies the company entities to search against.
+  ///
+  /// If a value isn't specified, jobs are searched for against all companies.
+  /// If multiple values are specified, jobs are searched against the companies
   /// specified. At most 20 company filters are allowed.
+  ///
+  /// Optional.
   core.List<core.String> companyNames;
 
-  /// Optional. This search filter is applied only to Job.compensation_info. For
-  /// example, if the filter is specified as "Hourly job with per-hour
+  /// This search filter is applied only to Job.compensation_info.
+  ///
+  /// For example, if the filter is specified as "Hourly job with per-hour
   /// compensation > $15", only jobs meeting these criteria are searched. If a
   /// filter isn't defined, all open jobs are searched.
+  ///
+  /// Optional.
   CompensationFilter compensationFilter;
 
-  /// Optional. This filter specifies a structured syntax to match against the
-  /// Job.custom_attributes marked as `filterable`. The syntax for this
-  /// expression is a subset of Google SQL syntax. Supported operators are: =,
-  /// !=, <, <=, >, >= where the left of the operator is a custom field key and
-  /// the right of the operator is a number or string (surrounded by quotes)
-  /// value. Supported functions are LOWER() to perform case insensitive match
-  /// and EMPTY() to filter on the existence of a key. Boolean expressions
-  /// (AND/OR/NOT) are supported up to 3 levels of nesting (for example, "((A
-  /// AND B AND C) OR NOT D) AND E"), a maximum of 50 comparisons/functions are
-  /// allowed in the expression. The expression must be < 2000 characters in
-  /// length. Sample Query: (key1 = "TEST" OR LOWER(key1)="test" OR NOT
-  /// EMPTY(key1)) AND key2 > 100
+  /// This filter specifies a structured syntax to match against the
+  /// Job.custom_attributes marked as `filterable`.
+  ///
+  /// The syntax for this expression is a subset of Google SQL syntax. Supported
+  /// operators are: =, !=, <, <=, >, >= where the left of the operator is a
+  /// custom field key and the right of the operator is a number or string
+  /// (surrounded by quotes) value. Supported functions are LOWER() to perform
+  /// case insensitive match and EMPTY() to filter on the existence of a key.
+  /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting
+  /// (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 50
+  /// comparisons/functions are allowed in the expression. The expression must
+  /// be < 2000 characters in length. Sample Query: (key1 = "TEST" OR
+  /// LOWER(key1)="test" OR NOT EMPTY(key1)) AND key2 > 100
+  ///
+  /// Optional.
   core.String customAttributeFilter;
 
-  /// Optional. This flag controls the spell-check feature. If false, the
-  /// service attempts to correct a misspelled query, for example, "enginee" is
-  /// corrected to "engineer". Defaults to false: a spell check is performed.
+  /// This flag controls the spell-check feature.
+  ///
+  /// If false, the service attempts to correct a misspelled query, for example,
+  /// "enginee" is corrected to "engineer". Defaults to false: a spell check is
+  /// performed.
+  ///
+  /// Optional.
   core.bool disableSpellCheck;
 
-  /// Optional. The employment type filter specifies the employment type of jobs
-  /// to search against, such as EmploymentType.FULL_TIME. If a value is not
-  /// specified, jobs in the search results include any employment type. If
-  /// multiple values are specified, jobs in the search results include any of
-  /// the specified employment types.
+  /// The employment type filter specifies the employment type of jobs to search
+  /// against, such as EmploymentType.FULL_TIME.
+  ///
+  /// If a value is not specified, jobs in the search results include any
+  /// employment type. If multiple values are specified, jobs in the search
+  /// results include any of the specified employment types.
+  ///
+  /// Optional.
   core.List<core.String> employmentTypes;
 
-  /// Optional. This filter specifies the locale of jobs to search against, for
-  /// example, "en-US". If a value isn't specified, the search results can
-  /// contain jobs in any locale. Language codes should be in BCP-47 format,
-  /// such as "en-US" or "sr-Latn". For more information, see [Tags for
-  /// Identifying Languages](https://tools.ietf.org/html/bcp47). At most 10
-  /// language code filters are allowed.
+  /// This filter specifies the locale of jobs to search against, for example,
+  /// "en-US".
+  ///
+  /// If a value isn't specified, the search results can contain jobs in any
+  /// locale. Language codes should be in BCP-47 format, such as "en-US" or
+  /// "sr-Latn". For more information, see [Tags for Identifying
+  /// Languages](https://tools.ietf.org/html/bcp47). At most 10 language code
+  /// filters are allowed.
+  ///
+  /// Optional.
   core.List<core.String> languageCodes;
 
-  /// Optional. The location filter specifies geo-regions containing the jobs to
-  /// search against. See LocationFilter for more information. If a location
-  /// value isn't specified, jobs fitting the other search criteria are
-  /// retrieved regardless of where they're located. If multiple values are
-  /// specified, jobs are retrieved from any of the specified locations. If
-  /// different values are specified for the LocationFilter.distance_in_miles
-  /// parameter, the maximum provided distance is used for all locations. At
-  /// most 5 location filters are allowed.
+  /// The location filter specifies geo-regions containing the jobs to search
+  /// against.
+  ///
+  /// See LocationFilter for more information. If a location value isn't
+  /// specified, jobs fitting the other search criteria are retrieved regardless
+  /// of where they're located. If multiple values are specified, jobs are
+  /// retrieved from any of the specified locations. If different values are
+  /// specified for the LocationFilter.distance_in_miles parameter, the maximum
+  /// provided distance is used for all locations. At most 5 location filters
+  /// are allowed.
+  ///
+  /// Optional.
   core.List<LocationFilter> locationFilters;
 
-  /// Optional. Jobs published within a range specified by this filter are
-  /// searched against, for example, DateRange.PAST_MONTH. If a value isn't
-  /// specified, all open jobs are searched against regardless of their
-  /// published date.
+  /// Jobs published within a range specified by this filter are searched
+  /// against, for example, DateRange.PAST_MONTH.
+  ///
+  /// If a value isn't specified, all open jobs are searched against regardless
+  /// of their published date.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DATE_RANGE_UNSPECIFIED" : Default value: Filtering on time is not
   /// performed.
@@ -5477,8 +6116,12 @@ class JobQuery {
   /// - "PAST_3_DAYS" : The past 3 days
   core.String publishDateRange;
 
-  /// Optional. The query string that matches against the job title,
-  /// description, and location fields. The maximum query size is 255 bytes.
+  /// The query string that matches against the job title, description, and
+  /// location fields.
+  ///
+  /// The maximum query size is 255 bytes.
+  ///
+  /// Optional.
   core.String query;
 
   JobQuery();
@@ -5580,15 +6223,20 @@ class JobQuery {
   }
 }
 
-/// An object representing a latitude/longitude pair. This is expressed as a
-/// pair of doubles representing degrees latitude and degrees longitude. Unless
-/// specified otherwise, this must conform to the WGS84 standard. Values must be
-/// within normalized ranges.
+/// An object representing a latitude/longitude pair.
+///
+/// This is expressed as a pair of doubles representing degrees latitude and
+/// degrees longitude. Unless specified otherwise, this must conform to the
+/// WGS84 standard. Values must be within normalized ranges.
 class LatLng {
-  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
+  /// The latitude in degrees.
+  ///
+  /// It must be in the range [-90.0, +90.0].
   core.double latitude;
 
-  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
+  /// The longitude in degrees.
+  ///
+  /// It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   LatLng();
@@ -5614,7 +6262,9 @@ class LatLng {
   }
 }
 
-/// Output only. The List companies response object.
+/// The List companies response object.
+///
+/// Output only.
 class ListCompaniesResponse {
   /// Companies for the current client.
   core.List<Company> companies;
@@ -5659,11 +6309,16 @@ class ListCompaniesResponse {
   }
 }
 
-/// Deprecated. Use ListJobsResponse instead. Output only. The List jobs
-/// response object.
+/// Use ListJobsResponse instead.
+///
+/// Output only. The List jobs response object.
+///
+/// Deprecated.
 class ListCompanyJobsResponse {
-  /// The Jobs for a given company. The maximum number of items returned is
-  /// based on the limit field provided in the request.
+  /// The Jobs for a given company.
+  ///
+  /// The maximum number of items returned is based on the limit field provided
+  /// in the request.
   core.List<Job> jobs;
 
   /// Additional information for the API invocation, such as the request
@@ -5673,9 +6328,10 @@ class ListCompanyJobsResponse {
   /// A token to retrieve the next page of results.
   core.String nextPageToken;
 
-  /// The total number of open jobs. The result will be empty if
-  /// ListCompanyJobsRequest.include_jobs_count is not enabled or if no open
-  /// jobs are available.
+  /// The total number of open jobs.
+  ///
+  /// The result will be empty if ListCompanyJobsRequest.include_jobs_count is
+  /// not enabled or if no open jobs are available.
   core.String totalSize;
 
   ListCompanyJobsResponse();
@@ -5717,10 +6373,14 @@ class ListCompanyJobsResponse {
   }
 }
 
-/// Output only. List jobs response.
+/// List jobs response.
+///
+/// Output only.
 class ListJobsResponse {
-  /// The Jobs for a given company. The maximum number of items returned is
-  /// based on the limit field provided in the request.
+  /// The Jobs for a given company.
+  ///
+  /// The maximum number of items returned is based on the limit field provided
+  /// in the request.
   core.List<Job> jobs;
 
   /// Additional information for the API invocation, such as the request
@@ -5763,39 +6423,58 @@ class ListJobsResponse {
   }
 }
 
-/// Input only. Geographic region of the search.
+/// Input only.
+///
+/// Geographic region of the search.
 class LocationFilter {
-  /// Optional. The distance_in_miles is applied when the location being
-  /// searched for is identified as a city or smaller. When the location being
-  /// searched for is a state or larger, this field is ignored.
+  /// The distance_in_miles is applied when the location being searched for is
+  /// identified as a city or smaller.
+  ///
+  /// When the location being searched for is a state or larger, this field is
+  /// ignored.
+  ///
+  /// Optional.
   core.double distanceInMiles;
 
-  /// Optional. Allows the client to return jobs without a set location,
-  /// specifically, telecommuting jobs (telecomuting is considered by the
-  /// service as a special location. Job.allow_telecommute indicates if a job
-  /// permits telecommuting. If this field is true, telecommuting jobs are
-  /// searched, and name and lat_lng are ignored. This filter can be used by
-  /// itself to search exclusively for telecommuting jobs, or it can be combined
-  /// with another location filter to search for a combination of job locations,
-  /// such as "Mountain View" or "telecommuting" jobs. However, when used in
-  /// combination with other location filters, telecommuting jobs can be treated
-  /// as less relevant than other jobs in the search response.
+  /// Allows the client to return jobs without a set location, specifically,
+  /// telecommuting jobs (telecomuting is considered by the service as a special
+  /// location.
+  ///
+  /// Job.allow_telecommute indicates if a job permits telecommuting. If this
+  /// field is true, telecommuting jobs are searched, and name and lat_lng are
+  /// ignored. This filter can be used by itself to search exclusively for
+  /// telecommuting jobs, or it can be combined with another location filter to
+  /// search for a combination of job locations, such as "Mountain View" or
+  /// "telecommuting" jobs. However, when used in combination with other
+  /// location filters, telecommuting jobs can be treated as less relevant than
+  /// other jobs in the search response.
+  ///
+  /// Optional.
   core.bool isTelecommute;
 
-  /// Optional. The latitude and longitude of the geographic center from which
-  /// to search. This field is ignored if `location_name` is provided.
+  /// The latitude and longitude of the geographic center from which to search.
+  ///
+  /// This field is ignored if `location_name` is provided.
+  ///
+  /// Optional.
   LatLng latLng;
 
-  /// Optional. The address name, such as "Mountain View" or "Bay Area".
+  /// The address name, such as "Mountain View" or "Bay Area".
+  ///
+  /// Optional.
   core.String name;
 
-  /// Optional. CLDR region code of the country/region of the address. This will
-  /// be used to address ambiguity of the user-input location, e.g. "Liverpool"
-  /// against "Liverpool, NY, US" or "Liverpool, UK". Set this field if all the
-  /// jobs to search against are from a same region, or jobs are world-wide but
-  /// the job seeker is from a specific region. See http://cldr.unicode.org/ and
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// This will be used to address ambiguity of the user-input location, e.g.
+  /// "Liverpool" against "Liverpool, NY, US" or "Liverpool, UK". Set this field
+  /// if all the jobs to search against are from a same region, or jobs are
+  /// world-wide but the job seeker is from a specific region. See
+  /// http://cldr.unicode.org/ and
   /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
+  ///
+  /// Optional.
   core.String regionCode;
 
   LocationFilter();
@@ -5840,7 +6519,9 @@ class LocationFilter {
   }
 }
 
-/// Output only. Job entry with metadata inside SearchJobsResponse.
+/// Job entry with metadata inside SearchJobsResponse.
+///
+/// Output only.
 class MatchingJob {
   /// Commute information which is generated based on specified
   /// CommutePreference.
@@ -5854,14 +6535,16 @@ class MatchingJob {
   core.String jobSummary;
 
   /// Contains snippets of text from the Job.job_title field most closely
-  /// matching a search query's keywords, if available. The matching query
-  /// keywords are enclosed in HTML bold tags.
+  /// matching a search query's keywords, if available.
+  ///
+  /// The matching query keywords are enclosed in HTML bold tags.
   core.String jobTitleSnippet;
 
   /// Contains snippets of text from the Job.description and similar fields that
-  /// most closely match a search query's keywords, if available. All HTML tags
-  /// in the original fields are stripped when returned in this field, and
-  /// matching query keywords are enclosed in HTML bold tags.
+  /// most closely match a search query's keywords, if available.
+  ///
+  /// All HTML tags in the original fields are stripped when returned in this
+  /// field, and matching query keywords are enclosed in HTML bold tags.
   core.String searchTextSnippet;
 
   MatchingJob();
@@ -5906,14 +6589,16 @@ class MatchingJob {
   }
 }
 
-/// Message representing input to a Mendel server for debug forcing. See
-/// go/mendel-debug-forcing for more details. Next ID: 2
+/// Message representing input to a Mendel server for debug forcing.
+///
+/// See go/mendel-debug-forcing for more details. Next ID: 2
 class MendelDebugInput {
   /// When a request spans multiple servers, a MendelDebugInput may travel with
-  /// the request and take effect in all the servers. This field is a map of
-  /// namespaces to NamespacedMendelDebugInput protos. In a single server, up to
-  /// two NamespacedMendelDebugInput protos are applied: 1.
-  /// NamespacedMendelDebugInput with the global namespace (key == ""). 2.
+  /// the request and take effect in all the servers.
+  ///
+  /// This field is a map of namespaces to NamespacedMendelDebugInput protos. In
+  /// a single server, up to two NamespacedMendelDebugInput protos are applied:
+  /// 1. NamespacedMendelDebugInput with the global namespace (key == ""). 2.
   /// NamespacedMendelDebugInput with the server's namespace. When both
   /// NamespacedMendelDebugInput protos are present, they are merged. See
   /// go/mendel-debug-forcing for more details.
@@ -5950,16 +6635,18 @@ class Money {
   /// The 3-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
-  /// Number of nano (10^-9) units of the amount. The value must be between
-  /// -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos`
-  /// must be positive or zero. If `units` is zero, `nanos` can be positive,
-  /// zero, or negative. If `units` is negative, `nanos` must be negative or
-  /// zero. For example $-1.75 is represented as `units`=-1 and
-  /// `nanos`=-750,000,000.
+  /// Number of nano (10^-9) units of the amount.
+  ///
+  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
+  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
+  /// `nanos` can be positive, zero, or negative. If `units` is negative,
+  /// `nanos` must be negative or zero. For example $-1.75 is represented as
+  /// `units`=-1 and `nanos`=-750,000,000.
   core.int nanos;
 
-  /// The whole units of the amount. For example if `currencyCode` is `"USD"`,
-  /// then 1 unit is one US dollar.
+  /// The whole units of the amount.
+  ///
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String units;
 
   Money();
@@ -5993,68 +6680,83 @@ class Money {
 
 /// Next ID: 15
 class NamespacedDebugInput {
-  /// Set of experiment names to be absolutely forced. These experiments will be
-  /// forced without evaluating the conditions.
+  /// Set of experiment names to be absolutely forced.
+  ///
+  /// These experiments will be forced without evaluating the conditions.
   core.List<core.String> absolutelyForcedExpNames;
 
-  /// Set of experiment tags to be absolutely forced. The experiments with these
-  /// tags will be forced without evaluating the conditions.
+  /// Set of experiment tags to be absolutely forced.
+  ///
+  /// The experiments with these tags will be forced without evaluating the
+  /// conditions.
   core.List<core.String> absolutelyForcedExpTags;
 
-  /// Set of experiment ids to be absolutely forced. These ids will be forced
-  /// without evaluating the conditions.
+  /// Set of experiment ids to be absolutely forced.
+  ///
+  /// These ids will be forced without evaluating the conditions.
   core.List<core.int> absolutelyForcedExps;
 
-  /// Set of experiment names to be conditionally forced. These experiments will
-  /// be forced only if their conditions and their parent domain's conditions
-  /// are true.
+  /// Set of experiment names to be conditionally forced.
+  ///
+  /// These experiments will be forced only if their conditions and their parent
+  /// domain's conditions are true.
   core.List<core.String> conditionallyForcedExpNames;
 
-  /// Set of experiment tags to be conditionally forced. The experiments with
-  /// these tags will be forced only if their conditions and their parent
-  /// domain's conditions are true.
+  /// Set of experiment tags to be conditionally forced.
+  ///
+  /// The experiments with these tags will be forced only if their conditions
+  /// and their parent domain's conditions are true.
   core.List<core.String> conditionallyForcedExpTags;
 
-  /// Set of experiment ids to be conditionally forced. These ids will be forced
-  /// only if their conditions and their parent domain's conditions are true.
+  /// Set of experiment ids to be conditionally forced.
+  ///
+  /// These ids will be forced only if their conditions and their parent
+  /// domain's conditions are true.
   core.List<core.int> conditionallyForcedExps;
 
   /// If true, disable automatic enrollment selection (at all diversion points).
+  ///
   /// Automatic enrollment selection means experiment selection process based on
   /// the experiment's automatic enrollment condition. This does not disable
   /// selection of forced experiments.
   core.bool disableAutomaticEnrollmentSelection;
 
-  /// Set of experiment names to be disabled. If an experiment is disabled, it
-  /// is never selected nor forced. If an aggregate experiment is disabled, its
-  /// partitions are disabled together. If an experiment with an enrollment is
-  /// disabled, the enrollment is disabled together. If a name corresponds to a
-  /// domain, the domain itself and all descendant experiments and domains are
-  /// disabled together.
+  /// Set of experiment names to be disabled.
+  ///
+  /// If an experiment is disabled, it is never selected nor forced. If an
+  /// aggregate experiment is disabled, its partitions are disabled together. If
+  /// an experiment with an enrollment is disabled, the enrollment is disabled
+  /// together. If a name corresponds to a domain, the domain itself and all
+  /// descendant experiments and domains are disabled together.
   core.List<core.String> disableExpNames;
 
-  /// Set of experiment tags to be disabled. All experiments that are tagged
-  /// with one or more of these tags are disabled. If an experiment is disabled,
-  /// it is never selected nor forced. If an aggregate experiment is disabled,
-  /// its partitions are disabled together. If an experiment with an enrollment
-  /// is disabled, the enrollment is disabled together.
+  /// Set of experiment tags to be disabled.
+  ///
+  /// All experiments that are tagged with one or more of these tags are
+  /// disabled. If an experiment is disabled, it is never selected nor forced.
+  /// If an aggregate experiment is disabled, its partitions are disabled
+  /// together. If an experiment with an enrollment is disabled, the enrollment
+  /// is disabled together.
   core.List<core.String> disableExpTags;
 
-  /// Set of experiment ids to be disabled. If an experiment is disabled, it is
-  /// never selected nor forced. If an aggregate experiment is disabled, its
-  /// partitions are disabled together. If an experiment with an enrollment is
-  /// disabled, the enrollment is disabled together. If an ID corresponds to a
-  /// domain, the domain itself and all descendant experiments and domains are
-  /// disabled together.
+  /// Set of experiment ids to be disabled.
+  ///
+  /// If an experiment is disabled, it is never selected nor forced. If an
+  /// aggregate experiment is disabled, its partitions are disabled together. If
+  /// an experiment with an enrollment is disabled, the enrollment is disabled
+  /// together. If an ID corresponds to a domain, the domain itself and all
+  /// descendant experiments and domains are disabled together.
   core.List<core.int> disableExps;
 
   /// If true, disable manual enrollment selection (at all diversion points).
+  ///
   /// Manual enrollment selection means experiment selection process based on
   /// the request's manual enrollment states (a.k.a. opt-in experiments). This
   /// does not disable selection of forced experiments.
   core.bool disableManualEnrollmentSelection;
 
   /// If true, disable organic experiment selection (at all diversion points).
+  ///
   /// Organic selection means experiment selection process based on traffic
   /// allocation and diversion condition evaluation. This does not disable
   /// selection of forced experiments. This is useful in cases when it is not
@@ -6063,12 +6765,14 @@ class NamespacedDebugInput {
   /// given problem.
   core.bool disableOrganicSelection;
 
-  /// Flags to force in a particular experiment state. Map from flag name to
-  /// flag value.
+  /// Flags to force in a particular experiment state.
+  ///
+  /// Map from flag name to flag value.
   core.Map<core.String, core.String> forcedFlags;
 
-  /// Rollouts to force in a particular experiment state. Map from rollout name
-  /// to rollout value.
+  /// Rollouts to force in a particular experiment state.
+  ///
+  /// Map from rollout name to rollout value.
   core.Map<core.String, core.bool> forcedRollouts;
 
   NamespacedDebugInput();
@@ -6205,17 +6909,24 @@ class NamespacedDebugInput {
   }
 }
 
-/// Input only. Use this field to specify bucketing option for the histogram
-/// search response.
+/// Input only.
+///
+/// Use this field to specify bucketing option for the histogram search
+/// response.
 class NumericBucketingOption {
-  /// Required. Two adjacent values form a histogram bucket. Values should be in
-  /// ascending order. For example, if [5, 10, 15] are provided, four buckets
-  /// are created: (-inf, 5), 5, 10), [10, 15), [15, inf). At most 20
-  /// [buckets_bound is supported.
+  /// Two adjacent values form a histogram bucket.
+  ///
+  /// Values should be in ascending order. For example, if [5, 10, 15] are
+  /// provided, four buckets are created: (-inf, 5), 5, 10), [10, 15), [15,
+  /// inf). At most 20 [buckets_bound is supported.
+  ///
+  /// Required.
   core.List<core.double> bucketBounds;
 
-  /// Optional. If set to true, the histogram result includes minimum/maximum
-  /// value of the numeric field.
+  /// If set to true, the histogram result includes minimum/maximum value of the
+  /// numeric field.
+  ///
+  /// Optional.
   core.bool requiresMinMax;
 
   NumericBucketingOption();
@@ -6243,18 +6954,25 @@ class NumericBucketingOption {
   }
 }
 
-/// Output only. Custom numeric bucketing result.
+/// Custom numeric bucketing result.
+///
+/// Output only.
 class NumericBucketingResult {
-  /// Count within each bucket. Its size is the length of
-  /// NumericBucketingOption.bucket_bounds plus 1.
+  /// Count within each bucket.
+  ///
+  /// Its size is the length of NumericBucketingOption.bucket_bounds plus 1.
   core.List<BucketizedCount> counts;
 
-  /// Stores the maximum value of the numeric field. Will be populated only if
-  /// [NumericBucketingOption.requires_min_max] is set to true.
+  /// Stores the maximum value of the numeric field.
+  ///
+  /// Will be populated only if [NumericBucketingOption.requires_min_max] is set
+  /// to true.
   core.double maxValue;
 
-  /// Stores the minimum value of the numeric field. Will be populated only if
-  /// [NumericBucketingOption.requires_min_max] is set to true.
+  /// Stores the minimum value of the numeric field.
+  ///
+  /// Will be populated only if [NumericBucketingOption.requires_min_max] is set
+  /// to true.
   core.double minValue;
 
   NumericBucketingResult();
@@ -6290,6 +7008,7 @@ class NumericBucketingResult {
 }
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
+///
 /// Given a postal address, a postal service can deliver items to a premise,
 /// P.O. Box or similar. It is not intended to model geographical locations
 /// (roads, towns, mountains). In typical usage an address would be created via
@@ -6301,6 +7020,7 @@ class NumericBucketingResult {
 /// schema, please see: https://support.google.com/business/answer/6397478
 class PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
+  ///
   /// Because values in address_lines do not have type information and may
   /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
   /// it is important that the line order is clear. The order of address lines
@@ -6319,15 +7039,20 @@ class PostalAddress {
   /// parts of the address should be localities or administrative areas).
   core.List<core.String> addressLines;
 
-  /// Optional. Highest administrative subdivision which is used for postal
-  /// addresses of a country or region. For example, this can be a state, a
-  /// province, an oblast, or a prefecture. Specifically, for Spain this is the
-  /// province and not the autonomous community (e.g. "Barcelona" and not
-  /// "Catalonia"). Many countries don't use an administrative area in postal
-  /// addresses. E.g. in Switzerland this should be left unpopulated.
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// For example, this can be a state, a province, an oblast, or a prefecture.
+  /// Specifically, for Spain this is the province and not the autonomous
+  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
+  /// an administrative area in postal addresses. E.g. in Switzerland this
+  /// should be left unpopulated.
+  ///
+  /// Optional.
   core.String administrativeArea;
 
-  /// Optional. BCP-47 language code of the contents of this address (if known).
+  /// BCP-47 language code of the contents of this address (if known).
+  ///
   /// This is often the UI language of the input form or is expected to match
   /// one of the languages used in the address' country/region, or their
   /// transliterated equivalents. This can affect formatting in certain
@@ -6335,49 +7060,72 @@ class PostalAddress {
   /// never affect any validation or other non-formatting related operations. If
   /// this value is not known, it should be omitted (rather than specifying a
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. Generally refers to the city/town portion of the address.
+  /// Generally refers to the city/town portion of the address.
+  ///
   /// Examples: US city, IT comune, UK post town. In regions of the world where
   /// localities are not well defined or do not fit into this structure well,
   /// leave locality empty and use address_lines.
+  ///
+  /// Optional.
   core.String locality;
 
-  /// Optional. The name of the organization at the address.
+  /// The name of the organization at the address.
+  ///
+  /// Optional.
   core.String organization;
 
-  /// Optional. Postal code of the address. Not all countries use or require
-  /// postal codes to be present, but where they are used, they may trigger
-  /// additional validation with other parts of the address (e.g. state/zip
-  /// validation in the U.S.A.).
+  /// Postal code of the address.
+  ///
+  /// Not all countries use or require postal codes to be present, but where
+  /// they are used, they may trigger additional validation with other parts of
+  /// the address (e.g. state/zip validation in the U.S.A.).
+  ///
+  /// Optional.
   core.String postalCode;
 
-  /// Optional. The recipient at the address. This field may, under certain
-  /// circumstances, contain multiline information. For example, it might
-  /// contain "care of" information.
+  /// The recipient at the address.
+  ///
+  /// This field may, under certain circumstances, contain multiline
+  /// information. For example, it might contain "care of" information.
+  ///
+  /// Optional.
   core.List<core.String> recipients;
 
-  /// Required. CLDR region code of the country/region of the address. This is
-  /// never inferred and it is up to the user to ensure the value is correct.
-  /// See http://cldr.unicode.org/ and
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// This is never inferred and it is up to the user to ensure the value is
+  /// correct. See http://cldr.unicode.org/ and
   /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
+  ///
+  /// Required.
   core.String regionCode;
 
-  /// The schema revision of the `PostalAddress`. This must be set to 0, which
-  /// is the latest revision. All new revisions **must** be backward compatible
-  /// with old revisions.
+  /// The schema revision of the `PostalAddress`.
+  ///
+  /// This must be set to 0, which is the latest revision. All new revisions
+  /// **must** be backward compatible with old revisions.
   core.int revision;
 
-  /// Optional. Additional, country-specific, sorting code. This is not used in
-  /// most regions. Where it is used, the value is either a string like "CEDEX",
-  /// optionally followed by a number (e.g. "CEDEX 7"), or just a number alone,
-  /// representing the "sector code" (Jamaica), "delivery area indicator"
-  /// (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+  /// Additional, country-specific, sorting code.
+  ///
+  /// This is not used in most regions. Where it is used, the value is either a
+  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
+  /// just a number alone, representing the "sector code" (Jamaica), "delivery
+  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+  ///
+  /// Optional.
   core.String sortingCode;
 
-  /// Optional. Sublocality of the address. For example, this can be
-  /// neighborhoods, boroughs, districts.
+  /// Sublocality of the address.
+  ///
+  /// For example, this can be neighborhoods, boroughs, districts.
+  ///
+  /// Optional.
   core.String sublocality;
 
   PostalAddress();
@@ -6461,41 +7209,54 @@ class PostalAddress {
   }
 }
 
-/// Input only. Meta information related to the job searcher or entity
-/// conducting the job search. This information is used to improve the
-/// performance of the service.
+/// Input only.
+///
+/// Meta information related to the job searcher or entity conducting the job
+/// search. This information is used to improve the performance of the service.
 class RequestMetadata {
-  /// Optional. The type of device used by the job seeker at the time of the
-  /// call to the service.
+  /// The type of device used by the job seeker at the time of the call to the
+  /// service.
+  ///
+  /// Optional.
   DeviceInfo deviceInfo;
 
-  /// Required. The client-defined scope or source of the service call, which
-  /// typically is the domain on which the service has been implemented and is
-  /// currently being run. For example, if the service is being run by client
-  /// *Foo, Inc.*, on job board www.foo.com and career site www.bar.com, then
-  /// this field is set to "foo.com" for use on the job board, and "bar.com" for
-  /// use on the career site. If this field is not available for some reason,
-  /// send "UNKNOWN". Note that any improvements to the service model for a
-  /// particular tenant site rely on this field being set correctly to some
-  /// domain.
+  /// The client-defined scope or source of the service call, which typically is
+  /// the domain on which the service has been implemented and is currently
+  /// being run.
+  ///
+  /// For example, if the service is being run by client *Foo, Inc.*, on job
+  /// board www.foo.com and career site www.bar.com, then this field is set to
+  /// "foo.com" for use on the job board, and "bar.com" for use on the career
+  /// site. If this field is not available for some reason, send "UNKNOWN". Note
+  /// that any improvements to the service model for a particular tenant site
+  /// rely on this field being set correctly to some domain.
+  ///
+  /// Required.
   core.String domain;
 
-  /// Required. A unique session identification string. A session is defined as
-  /// the duration of an end user's interaction with the service over a period.
-  /// Obfuscate this field for privacy concerns before providing it to the API.
-  /// If this field is not available for some reason, please send "UNKNOWN".
-  /// Note that any improvements to the service model for a particular tenant
-  /// site, rely on this field being set correctly to some unique session_id.
+  /// A unique session identification string.
+  ///
+  /// A session is defined as the duration of an end user's interaction with the
+  /// service over a period. Obfuscate this field for privacy concerns before
+  /// providing it to the API. If this field is not available for some reason,
+  /// please send "UNKNOWN". Note that any improvements to the service model for
+  /// a particular tenant site, rely on this field being set correctly to some
+  /// unique session_id.
+  ///
+  /// Required.
   core.String sessionId;
 
-  /// Required. A unique user identification string, as determined by the
-  /// client. The client is responsible for ensuring client-level uniqueness of
-  /// this value in order to have the strongest positive impact on search
-  /// quality. Obfuscate this field for privacy concerns before providing it to
-  /// the service. If this field is not available for some reason, please send
+  /// A unique user identification string, as determined by the client.
+  ///
+  /// The client is responsible for ensuring client-level uniqueness of this
+  /// value in order to have the strongest positive impact on search quality.
+  /// Obfuscate this field for privacy concerns before providing it to the
+  /// service. If this field is not available for some reason, please send
   /// "UNKNOWN". Note that any improvements to the service model for a
   /// particular tenant site, rely on this field being set correctly to some
   /// unique user_id.
+  ///
+  /// Required.
   core.String userId;
 
   RequestMetadata();
@@ -6534,15 +7295,19 @@ class RequestMetadata {
   }
 }
 
-/// Output only. Additional information returned to client, such as debugging
-/// information.
+/// Additional information returned to client, such as debugging information.
+///
+/// Output only.
 class ResponseMetadata {
   /// Identifiers for the versions of the search algorithm used during this API
-  /// invocation if multiple algorithms are used. The default value is empty.
-  /// For search response only.
+  /// invocation if multiple algorithms are used.
+  ///
+  /// The default value is empty. For search response only.
   core.List<core.int> experimentIdList;
 
-  /// For search response only. Indicates the mode of a performed search.
+  /// For search response only.
+  ///
+  /// Indicates the mode of a performed search.
   /// Possible string values are:
   /// - "SEARCH_MODE_UNSPECIFIED" : The mode of the search method isn't
   /// specified.
@@ -6556,8 +7321,9 @@ class ResponseMetadata {
   /// API. The job search matches against jobs suited to email notifications.
   core.String mode;
 
-  /// A unique id associated with this call. This id is logged for tracking
-  /// purposes.
+  /// A unique id associated with this call.
+  ///
+  /// This id is logged for tracking purposes.
   core.String requestId;
 
   ResponseMetadata();
@@ -6591,38 +7357,58 @@ class ResponseMetadata {
   }
 }
 
-/// Input only. The Request body of the `SearchJobs` call.
+/// Input only.
+///
+/// The Request body of the `SearchJobs` call.
 class SearchJobsRequest {
-  /// Optional. Controls whether to disable relevance thresholding. Relevance
-  /// thresholding removes jobs that have low relevance in search results, for
-  /// example, removing "Assistant to the CEO" positions from the search results
-  /// of a search for "CEO". Disabling relevance thresholding improves the
-  /// accuracy of subsequent search requests. Defaults to false.
+  /// Controls whether to disable relevance thresholding.
+  ///
+  /// Relevance thresholding removes jobs that have low relevance in search
+  /// results, for example, removing "Assistant to the CEO" positions from the
+  /// search results of a search for "CEO". Disabling relevance thresholding
+  /// improves the accuracy of subsequent search requests. Defaults to false.
+  ///
+  /// Optional.
   core.bool disableRelevanceThresholding;
 
-  /// Optional. Controls whether to broaden the search when it produces sparse
-  /// results. Broadened queries append results to the end of the matching
-  /// results list. Defaults to false.
+  /// Controls whether to broaden the search when it produces sparse results.
+  ///
+  /// Broadened queries append results to the end of the matching results list.
+  /// Defaults to false.
+  ///
+  /// Optional.
   core.bool enableBroadening;
 
-  /// Optional. Controls if the search job request requires the return of a
-  /// precise count of the first 300 results. Setting this to `true` ensures
-  /// consistency in the number of results per page. Best practice is to set
-  /// this value to true if a client allows users to jump directly to a
-  /// non-sequential search results page. Enabling this flag may adversely
-  /// impact performance. Defaults to false.
+  /// Controls if the search job request requires the return of a precise count
+  /// of the first 300 results.
+  ///
+  /// Setting this to `true` ensures consistency in the number of results per
+  /// page. Best practice is to set this value to true if a client allows users
+  /// to jump directly to a non-sequential search results page. Enabling this
+  /// flag may adversely impact performance. Defaults to false.
+  ///
+  /// Optional.
   core.bool enablePreciseResultSize;
 
-  /// Deprecated. Use query instead. Optional. Restrictions on the scope of the
-  /// search request, such as filtering by location.
+  /// Use query instead.
+  ///
+  /// Optional. Restrictions on the scope of the search request, such as
+  /// filtering by location.
+  ///
+  /// Deprecated.
   JobFilters filters;
 
-  /// Optional. Restrictions on what fields to perform histogram on, such as
+  /// Restrictions on what fields to perform histogram on, such as
   /// `COMPANY_SIZE` etc.
+  ///
+  /// Optional.
   HistogramFacets histogramFacets;
 
-  /// Optional. The number of job attributes returned for jobs in the search
-  /// response. Defaults to JobView.SMALL if no value is specified.
+  /// The number of job attributes returned for jobs in the search response.
+  ///
+  /// Defaults to JobView.SMALL if no value is specified.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "JOB_VIEW_UNSPECIFIED" : Default value.
   /// - "SMALL" : A small view of the job, with the following attributes in the
@@ -6641,7 +7427,9 @@ class SearchJobsRequest {
   /// MatchingJob.job_summary fields.
   core.String jobView;
 
-  /// Required. Mode of a search.
+  /// Mode of a search.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "SEARCH_MODE_UNSPECIFIED" : The mode of the search method isn't
   /// specified.
@@ -6655,18 +7443,24 @@ class SearchJobsRequest {
   /// API. The job search matches against jobs suited to email notifications.
   core.String mode;
 
-  /// Optional. An integer that specifies the current offset (that is, starting
-  /// result location, amongst the jobs deemed by the API as relevant) in search
-  /// results. This field is only considered if page_token is unset. For
-  /// example, 0 means to return results starting from the first matching job,
-  /// and 10 means to return from the 11th job. This can be used for pagination,
-  /// (for example, pageSize = 10 and offset = 10 means to return from the
-  /// second page).
+  /// An integer that specifies the current offset (that is, starting result
+  /// location, amongst the jobs deemed by the API as relevant) in search
+  /// results.
+  ///
+  /// This field is only considered if page_token is unset. For example, 0 means
+  /// to return results starting from the first matching job, and 10 means to
+  /// return from the 11th job. This can be used for pagination, (for example,
+  /// pageSize = 10 and offset = 10 means to return from the second page).
+  ///
+  /// Optional.
   core.int offset;
 
-  /// Deprecated. Use sort_by instead. Optional. The criteria determining how
-  /// search results are sorted. Defaults to SortBy.RELEVANCE_DESC if no value
-  /// is specified.
+  /// Use sort_by instead.
+  ///
+  /// Optional. The criteria determining how search results are sorted. Defaults
+  /// to SortBy.RELEVANCE_DESC if no value is specified.
+  ///
+  /// Deprecated.
   /// Possible string values are:
   /// - "SORT_BY_UNSPECIFIED" : Default value.
   /// - "RELEVANCE_DESC" : By descending relevance, as determined by the API
@@ -6690,27 +7484,41 @@ class SearchJobsRequest {
   /// is unspecified, they are put at the end of search result.
   core.String orderBy;
 
-  /// Optional. A limit on the number of jobs returned in the search results.
+  /// A limit on the number of jobs returned in the search results.
+  ///
   /// Increasing this value above the default value of 10 can increase search
   /// response time. The value can be between 1 and 100.
+  ///
+  /// Optional.
   core.int pageSize;
 
-  /// Optional. The token specifying the current offset within search results.
+  /// The token specifying the current offset within search results.
+  ///
   /// See SearchJobsResponse.next_page_token for an explanation of how to obtain
   /// the next set of query results.
+  ///
+  /// Optional.
   core.String pageToken;
 
-  /// Optional. Query used to search against jobs, such as keyword, location
-  /// filters, etc.
+  /// Query used to search against jobs, such as keyword, location filters, etc.
+  ///
+  /// Optional.
   JobQuery query;
 
-  /// Required. The meta information collected about the job searcher, used to
-  /// improve the search quality of the service. The identifiers, (such as
-  /// `user_id`) are provided by users, and must be unique and consistent.
+  /// The meta information collected about the job searcher, used to improve the
+  /// search quality of the service.
+  ///
+  /// The identifiers, (such as `user_id`) are provided by users, and must be
+  /// unique and consistent.
+  ///
+  /// Required.
   RequestMetadata requestMetadata;
 
-  /// Optional. The criteria determining how search results are sorted. Defaults
-  /// to SortBy.RELEVANCE_DESC if no value is specified.
+  /// The criteria determining how search results are sorted.
+  ///
+  /// Defaults to SortBy.RELEVANCE_DESC if no value is specified.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SORT_BY_UNSPECIFIED" : Default value.
   /// - "RELEVANCE_DESC" : By descending relevance, as determined by the API
@@ -6834,19 +7642,25 @@ class SearchJobsRequest {
   }
 }
 
-/// Output only. Response for SearchJob method.
+/// Response for SearchJob method.
+///
+/// Output only.
 class SearchJobsResponse {
-  /// The commute filter the service applied to the specified query. This
-  /// information is only available when query has a valid CommutePreference.
+  /// The commute filter the service applied to the specified query.
+  ///
+  /// This information is only available when query has a valid
+  /// CommutePreference.
   CommutePreference appliedCommuteFilter;
 
-  /// The location filters that the service applied to the specified query. If
-  /// any filters are lat-lng based, the JobLocation.location_type is
+  /// The location filters that the service applied to the specified query.
+  ///
+  /// If any filters are lat-lng based, the JobLocation.location_type is
   /// JobLocation.LocationType#LOCATION_TYPE_UNSPECIFIED.
   core.List<JobLocation> appliedJobLocationFilters;
 
-  /// An estimation of the number of jobs that match the specified query. This
-  /// number is not guaranteed to be accurate. For accurate results,
+  /// An estimation of the number of jobs that match the specified query.
+  ///
+  /// This number is not guaranteed to be accurate. For accurate results,
   /// seenenable_precise_result_size.
   core.String estimatedTotalSize;
 
@@ -6881,16 +7695,20 @@ class SearchJobsResponse {
   ResponseMetadata metadata;
 
   /// The token that specifies the starting position of the next page of
-  /// results. This field is empty if there are no more results.
+  /// results.
+  ///
+  /// This field is empty if there are no more results.
   core.String nextPageToken;
 
   /// If query broadening is enabled, we may append additional results from the
-  /// broadened query. This number indicates how many of the jobs returned in
-  /// the jobs field are from the broadened query. These results are always at
-  /// the end of the jobs list. In particular, a value of 0 means all the jobs
-  /// in the jobs list are from the original (without broadening) query. If this
-  /// field is non-zero, subsequent requests with offset after this result set
-  /// should contain all broadened results.
+  /// broadened query.
+  ///
+  /// This number indicates how many of the jobs returned in the jobs field are
+  /// from the broadened query. These results are always at the end of the jobs
+  /// list. In particular, a value of 0 means all the jobs in the jobs list are
+  /// from the original (without broadening) query. If this field is non-zero,
+  /// subsequent requests with offset after this result set should contain all
+  /// broadened results.
   core.int numJobsFromBroadenedQuery;
 
   /// The spell checking result, and correction.
@@ -6898,7 +7716,9 @@ class SearchJobsResponse {
 
   /// The precise result count, which is available only if the client set
   /// enable_precise_result_size to `true` or if the response is the last page
-  /// of results. Otherwise, the value will be `-1`.
+  /// of results.
+  ///
+  /// Otherwise, the value will be `-1`.
   core.String totalSize;
 
   SearchJobsResponse();
@@ -6992,7 +7812,9 @@ class SearchJobsResponse {
   }
 }
 
-/// Output only. Spell check result.
+/// Spell check result.
+///
+/// Output only.
 class SpellingCorrection {
   /// Indicates if the query was corrected by the spell checker.
   core.bool corrected;
@@ -7024,24 +7846,27 @@ class SpellingCorrection {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -7084,7 +7909,9 @@ class Status {
 
 /// Represents array of string values.
 class StringValues {
-  /// Required. String values.
+  /// String values.
+  ///
+  /// Required.
   core.List<core.String> values;
 
   StringValues();
@@ -7106,25 +7933,38 @@ class StringValues {
   }
 }
 
-/// Input only. Update job request.
+/// Input only.
+///
+/// Update job request.
 class UpdateJobRequest {
-  /// Deprecated. Please use processing_options. This flag is ignored if
-  /// processing_options is set. Optional. If set to `true`, the service does
-  /// not attempt resolve a more precise address for the job.
+  /// Please use processing_options.
+  ///
+  /// This flag is ignored if processing_options is set. Optional. If set to
+  /// `true`, the service does not attempt resolve a more precise address for
+  /// the job.
+  ///
+  /// Deprecated.
   core.bool disableStreetAddressResolution;
 
-  /// Required. The Job to be updated.
+  /// The Job to be updated.
+  ///
+  /// Required.
   Job job;
 
-  /// Optional. Options for job processing.
+  /// Options for job processing.
+  ///
   /// UpdateJobRequest.disable_street_address_resolution is ignored if this flag
   /// is set.
+  ///
+  /// Optional.
   JobProcessingOptions processingOptions;
 
   /// Optional but strongly recommended to be provided for the best service
-  /// experience. If update_job_fields is provided, only the specified fields in
-  /// job are updated. Otherwise all the fields are updated. A field mask to
-  /// restrict the fields that are updated. Valid values are: * jobTitle *
+  /// experience.
+  ///
+  /// If update_job_fields is provided, only the specified fields in job are
+  /// updated. Otherwise all the fields are updated. A field mask to restrict
+  /// the fields that are updated. Valid values are: * jobTitle *
   /// employmentTypes * description * applicationUrls * applicationEmailList *
   /// applicationInstruction * responsibilities * qualifications *
   /// educationLevels * level * department * startDate * endDate *

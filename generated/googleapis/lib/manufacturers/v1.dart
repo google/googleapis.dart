@@ -138,10 +138,12 @@ class AccountsProductsResource {
   }
 
   /// Gets the product from a Manufacturer Center account, including product
-  /// issues. A recently updated product takes around 15 minutes to process.
-  /// Changes are only visible after it has been processed. While some issues
-  /// may be available once the product has been processed, other issues may
-  /// take days to appear.
+  /// issues.
+  ///
+  /// A recently updated product takes around 15 minutes to process. Changes are
+  /// only visible after it has been processed. While some issues may be
+  /// available once the product has been processed, other issues may take days
+  /// to appear.
   ///
   /// Request parameters:
   ///
@@ -291,16 +293,18 @@ class AccountsProductsResource {
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
-  /// account. Creates a product with the provided attributes. If the product
-  /// already exists, then all attributes are replaced with the new ones. The
-  /// checks at upload time are minimal. All required attributes need to be
-  /// present for a product to be valid. Issues may show up later after the API
-  /// has accepted a new upload for a product and it is possible to overwrite an
-  /// existing valid product with an invalid product. To detect this, you should
-  /// retrieve the product and check it for issues once the new version is
-  /// available. Uploaded attributes first need to be processed before they can
-  /// be retrieved. Until then, new products will be unavailable, and retrieval
-  /// of previously uploaded products will return the original state of the
+  /// account.
+  ///
+  /// Creates a product with the provided attributes. If the product already
+  /// exists, then all attributes are replaced with the new ones. The checks at
+  /// upload time are minimal. All required attributes need to be present for a
+  /// product to be valid. Issues may show up later after the API has accepted a
+  /// new upload for a product and it is possible to overwrite an existing valid
+  /// product with an invalid product. To detect this, you should retrieve the
+  /// product and check it for issues once the new version is available.
+  /// Uploaded attributes first need to be processed before they can be
+  /// retrieved. Until then, new products will be unavailable, and retrieval of
+  /// previously uploaded products will return the original state of the
   /// product.
   ///
   /// [request] - The metadata request object.
@@ -376,149 +380,217 @@ class AccountsProductsResource {
   }
 }
 
-/// Attributes of the product. For more information, see
+/// Attributes of the product.
+///
+/// For more information, see
 /// https://support.google.com/manufacturers/answer/6124116.
 class Attributes {
-  /// The additional images of the product. For more information, see
+  /// The additional images of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#addlimage.
   core.List<Image> additionalImageLink;
 
-  /// The target age group of the product. For more information, see
+  /// The target age group of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#agegroup.
   core.String ageGroup;
 
-  /// The brand name of the product. For more information, see
+  /// The brand name of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#brand.
   core.String brand;
 
-  /// The capacity of the product. For more information, see
+  /// The capacity of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#capacity.
   Capacity capacity;
 
-  /// The color of the product. For more information, see
+  /// The color of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#color.
   core.String color;
 
-  /// The count of the product. For more information, see
+  /// The count of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#count.
   Count count;
 
-  /// The description of the product. For more information, see
+  /// The description of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#description.
   core.String description;
 
-  /// The disclosure date of the product. For more information, see
+  /// The disclosure date of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#disclosure.
   core.String disclosureDate;
 
   /// A list of excluded destinations.
   core.List<core.String> excludedDestination;
 
-  /// The rich format description of the product. For more information, see
+  /// The rich format description of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#featuredesc.
   core.List<FeatureDescription> featureDescription;
 
-  /// The flavor of the product. For more information, see
+  /// The flavor of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#flavor.
   core.String flavor;
 
-  /// The format of the product. For more information, see
+  /// The format of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#format.
   core.String format;
 
-  /// The target gender of the product. For more information, see
+  /// The target gender of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#gender.
   core.String gender;
 
-  /// The Global Trade Item Number (GTIN) of the product. For more information,
-  /// see https://support.google.com/manufacturers/answer/6124116#gtin.
+  /// The Global Trade Item Number (GTIN) of the product.
+  ///
+  /// For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#gtin.
   core.List<core.String> gtin;
 
-  /// The image of the product. For more information, see
+  /// The image of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#image.
   Image imageLink;
 
   /// A list of included destinations.
   core.List<core.String> includedDestination;
 
-  /// The item group id of the product. For more information, see
+  /// The item group id of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.
   core.String itemGroupId;
 
-  /// The material of the product. For more information, see
+  /// The material of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#material.
   core.String material;
 
-  /// The Manufacturer Part Number (MPN) of the product. For more information,
-  /// see https://support.google.com/manufacturers/answer/6124116#mpn.
+  /// The Manufacturer Part Number (MPN) of the product.
+  ///
+  /// For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#mpn.
   core.String mpn;
 
-  /// The pattern of the product. For more information, see
+  /// The pattern of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#pattern.
   core.String pattern;
 
-  /// The details of the product. For more information, see
+  /// The details of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productdetail.
   core.List<ProductDetail> productDetail;
 
-  /// The name of the group of products related to the product. For more
-  /// information, see
+  /// The name of the group of products related to the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productline.
   core.String productLine;
 
-  /// The canonical name of the product. For more information, see
+  /// The canonical name of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productname.
   core.String productName;
 
-  /// The URL of the detail page of the product. For more information, see
+  /// The URL of the detail page of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productpage.
   core.String productPageUrl;
 
-  /// The type or category of the product. For more information, see
+  /// The type or category of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#producttype.
   core.List<core.String> productType;
 
-  /// The release date of the product. For more information, see
+  /// The release date of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#release.
   core.String releaseDate;
 
-  /// Rich product content. For more information, see
+  /// Rich product content.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/9389865
   core.List<core.String> richProductContent;
 
-  /// The scent of the product. For more information, see
+  /// The scent of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#scent.
   core.String scent;
 
-  /// The size of the product. For more information, see
+  /// The size of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#size.
   core.String size;
 
-  /// The size system of the product. For more information, see
+  /// The size system of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#sizesystem.
   core.String sizeSystem;
 
-  /// The size type of the product. For more information, see
+  /// The size type of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#sizetype.
   core.String sizeType;
 
-  /// The suggested retail price (MSRP) of the product. For more information,
-  /// see https://support.google.com/manufacturers/answer/6124116#price.
+  /// The suggested retail price (MSRP) of the product.
+  ///
+  /// For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#price.
   Price suggestedRetailPrice;
 
-  /// The target client id. Should only be used in the accounts of the data
-  /// partners.
+  /// The target client id.
+  ///
+  /// Should only be used in the accounts of the data partners.
   core.String targetClientId;
 
-  /// The theme of the product. For more information, see
+  /// The theme of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#theme.
   core.String theme;
 
-  /// The title of the product. For more information, see
+  /// The title of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#title.
   core.String title;
 
-  /// The videos of the product. For more information, see
+  /// The videos of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#video.
   core.List<core.String> videoLink;
 
@@ -777,7 +849,9 @@ class Attributes {
   }
 }
 
-/// The capacity of a product. For more information, see
+/// The capacity of a product.
+///
+/// For more information, see
 /// https://support.google.com/manufacturers/answer/6124116#capacity.
 class Capacity {
   /// The unit of the capacity, i.e., MB, GB, or TB.
@@ -809,7 +883,9 @@ class Capacity {
   }
 }
 
-/// The number of products in a single package. For more information, see
+/// The number of products in a single package.
+///
+/// For more information, see
 /// https://support.google.com/manufacturers/answer/6124116#count.
 class Count {
   /// The unit in which these products are counted.
@@ -878,10 +954,12 @@ class DestinationStatus {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -895,7 +973,9 @@ class Empty {
   }
 }
 
-/// A feature description of the product. For more information, see
+/// A feature description of the product.
+///
+/// For more information, see
 /// https://support.google.com/manufacturers/answer/6124116#featuredesc.
 class FeatureDescription {
   /// A short description of the feature.
@@ -939,12 +1019,15 @@ class FeatureDescription {
 
 /// An image.
 class Image {
-  /// The URL of the image. For crawled images, this is the provided URL. For
-  /// uploaded images, this is a serving URL from Google if the image has been
-  /// processed successfully.
+  /// The URL of the image.
+  ///
+  /// For crawled images, this is the provided URL. For uploaded images, this is
+  /// a serving URL from Google if the image has been processed successfully.
   core.String imageUrl;
 
-  /// The status of the image. @OutputOnly
+  /// The status of the image.
+  ///
+  /// @OutputOnly
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : The image status is unspecified. Should not be
   /// used.
@@ -966,7 +1049,9 @@ class Image {
   /// - "HTTP_404" : The image URL returned a "404 Not Found" error.
   core.String status;
 
-  /// The type of the image, i.e., crawled or uploaded. @OutputOnly
+  /// The type of the image, i.e., crawled or uploaded.
+  ///
+  /// @OutputOnly
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Type is unspecified. Should not be used.
   /// - "CRAWLED" : The image was crawled from a provided URL.
@@ -1004,8 +1089,9 @@ class Image {
 
 /// Product issue.
 class Issue {
-  /// If present, the attribute that triggered the issue. For more information
-  /// about attributes, see
+  /// If present, the attribute that triggered the issue.
+  ///
+  /// For more information about attributes, see
   /// https://support.google.com/manufacturers/answer/6124116.
   core.String attribute;
 
@@ -1173,8 +1259,9 @@ class Price {
 
 /// Product data.
 class Product {
-  /// Attributes of the product uploaded to the Manufacturer Center. Manually
-  /// edited attributes are taken into account.
+  /// Attributes of the product uploaded to the Manufacturer Center.
+  ///
+  /// Manually edited attributes are taken into account.
   Attributes attributes;
 
   /// The content language of the product as a two-letter ISO 639-1 language
@@ -1188,6 +1275,7 @@ class Product {
   core.List<Issue> issues;
 
   /// Name in the format `{target_country}:{content_language}:{product_id}`.
+  ///
   /// `target_country` - The target country of the product as a CLDR territory
   /// code (for example, US). `content_language` - The content language of the
   /// product as a two-letter ISO 639-1 language code (for example, en).
@@ -1195,11 +1283,14 @@ class Product {
   /// https://support.google.com/manufacturers/answer/6124116#id.
   core.String name;
 
-  /// Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of
-  /// the Manufacturer Center account.
+  /// Parent ID in the format `accounts/{account_id}`.
+  ///
+  /// `account_id` - The ID of the Manufacturer Center account.
   core.String parent;
 
-  /// The ID of the product. For more information, see
+  /// The ID of the product.
+  ///
+  /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
   core.String productId;
 
@@ -1274,7 +1365,9 @@ class Product {
   }
 }
 
-/// A product detail of the product. For more information, see
+/// A product detail of the product.
+///
+/// For more information, see
 /// https://support.google.com/manufacturers/answer/6124116#productdetail.
 class ProductDetail {
   /// The name of the attribute.

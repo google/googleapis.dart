@@ -620,8 +620,10 @@ class LicenseAssignment {
   /// Identifies the resource as a LicenseAssignment.
   core.String kind;
 
-  /// A product's unique identifier. For more information about products in this
-  /// version of the API, see Product and SKU IDs.
+  /// A product's unique identifier.
+  ///
+  /// For more information about products in this version of the API, see
+  /// Product and SKU IDs.
   core.String productId;
 
   /// Display Name of the product.
@@ -630,18 +632,22 @@ class LicenseAssignment {
   /// Link to this page.
   core.String selfLink;
 
-  /// A product SKU's unique identifier. For more information about available
-  /// SKUs in this version of the API, see Products and SKUs.
+  /// A product SKU's unique identifier.
+  ///
+  /// For more information about available SKUs in this version of the API, see
+  /// Products and SKUs.
   core.String skuId;
 
   /// Display Name of the sku of the product.
   core.String skuName;
 
-  /// The user's current primary email address. If the user's email address
-  /// changes, use the new email address in your API requests. Since a userId is
-  /// subject to change, do not use a userId value as a key for persistent data.
-  /// This key could break if the current user's email address changes. If the
-  /// userId is suspended, the license status changes.
+  /// The user's current primary email address.
+  ///
+  /// If the user's email address changes, use the new email address in your API
+  /// requests. Since a userId is subject to change, do not use a userId value
+  /// as a key for persistent data. This key could break if the current user's
+  /// email address changes. If the userId is suspended, the license status
+  /// changes.
   core.String userId;
 
   LicenseAssignment();
@@ -736,9 +742,10 @@ class LicenseAssignmentList {
   core.String kind;
 
   /// The token that you must submit in a subsequent request to retrieve
-  /// additional license results matching your query parameters. The maxResults
-  /// query string is related to the nextPageToken since maxResults determines
-  /// how many entries are returned on each next page.
+  /// additional license results matching your query parameters.
+  ///
+  /// The maxResults query string is related to the nextPageToken since
+  /// maxResults determines how many entries are returned on each next page.
   core.String nextPageToken;
 
   LicenseAssignmentList();

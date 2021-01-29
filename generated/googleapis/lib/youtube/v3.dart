@@ -2401,9 +2401,10 @@ class LiveBroadcastsResource {
     );
   }
 
-  /// Slate and recording control of the live broadcast. Support actions: slate
-  /// on/off, recording start/stop/pause/resume. Design doc:
-  /// goto/yt-api-liveBroadcast-control
+  /// Slate and recording control of the live broadcast.
+  ///
+  /// Support actions: slate on/off, recording start/stop/pause/resume. Design
+  /// doc: goto/yt-api-liveBroadcast-control
   ///
   /// Request parameters:
   ///
@@ -3797,7 +3798,9 @@ class LiveStreamsResource {
     );
   }
 
-  /// Retrieve the list of streams associated with the given channel. --
+  /// Retrieve the list of streams associated with the given channel.
+  ///
+  /// --
   ///
   /// Request parameters:
   ///
@@ -7159,15 +7162,17 @@ class AccessPolicy {
 /// An *activity* resource contains information about an action that a
 /// particular channel, or user, has taken on YouTube.The actions reported in
 /// activity feeds include rating a video, sharing a video, marking a video as a
-/// favorite, commenting on a video, uploading a video, and so forth. Each
-/// activity resource identifies the type of action, the channel associated with
-/// the action, and the resource(s) associated with the action, such as the
+/// favorite, commenting on a video, uploading a video, and so forth.
+///
+/// Each activity resource identifies the type of action, the channel associated
+/// with the action, and the resource(s) associated with the action, such as the
 /// video that was rated or uploaded.
 class Activity {
   /// The contentDetails object contains information about the content
-  /// associated with the activity. For example, if the snippet.type value is
-  /// videoRated, then the contentDetails object's content identifies the rated
-  /// video.
+  /// associated with the activity.
+  ///
+  /// For example, if the snippet.type value is videoRated, then the
+  /// contentDetails object's content identifies the rated video.
   ActivityContentDetails contentDetails;
 
   /// Etag of this resource
@@ -7176,8 +7181,9 @@ class Activity {
   /// The ID that YouTube uses to uniquely identify the activity.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#activity".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#activity".
   core.String kind;
 
   /// The snippet object contains basic details about the activity, including
@@ -7230,54 +7236,66 @@ class Activity {
 /// Details about the content of an activity: the video that was shared, the
 /// channel that was subscribed to, etc.
 class ActivityContentDetails {
-  /// The bulletin object contains details about a channel bulletin post. This
-  /// object is only present if the snippet.type is bulletin.
+  /// The bulletin object contains details about a channel bulletin post.
+  ///
+  /// This object is only present if the snippet.type is bulletin.
   ActivityContentDetailsBulletin bulletin;
 
   /// The channelItem object contains details about a resource which was added
-  /// to a channel. This property is only present if the snippet.type is
-  /// channelItem.
+  /// to a channel.
+  ///
+  /// This property is only present if the snippet.type is channelItem.
   ActivityContentDetailsChannelItem channelItem;
 
   /// The comment object contains information about a resource that received a
-  /// comment. This property is only present if the snippet.type is comment.
+  /// comment.
+  ///
+  /// This property is only present if the snippet.type is comment.
   ActivityContentDetailsComment comment;
 
   /// The favorite object contains information about a video that was marked as
-  /// a favorite video. This property is only present if the snippet.type is
-  /// favorite.
+  /// a favorite video.
+  ///
+  /// This property is only present if the snippet.type is favorite.
   ActivityContentDetailsFavorite favorite;
 
   /// The like object contains information about a resource that received a
-  /// positive (like) rating. This property is only present if the snippet.type
-  /// is like.
+  /// positive (like) rating.
+  ///
+  /// This property is only present if the snippet.type is like.
   ActivityContentDetailsLike like;
 
   /// The playlistItem object contains information about a new playlist item.
+  ///
   /// This property is only present if the snippet.type is playlistItem.
   ActivityContentDetailsPlaylistItem playlistItem;
 
   /// The promotedItem object contains details about a resource which is being
-  /// promoted. This property is only present if the snippet.type is
-  /// promotedItem.
+  /// promoted.
+  ///
+  /// This property is only present if the snippet.type is promotedItem.
   ActivityContentDetailsPromotedItem promotedItem;
 
   /// The recommendation object contains information about a recommended
-  /// resource. This property is only present if the snippet.type is
-  /// recommendation.
+  /// resource.
+  ///
+  /// This property is only present if the snippet.type is recommendation.
   ActivityContentDetailsRecommendation recommendation;
 
-  /// The social object contains details about a social network post. This
-  /// property is only present if the snippet.type is social.
+  /// The social object contains details about a social network post.
+  ///
+  /// This property is only present if the snippet.type is social.
   ActivityContentDetailsSocial social;
 
   /// The subscription object contains information about a channel that a user
-  /// subscribed to. This property is only present if the snippet.type is
-  /// subscription.
+  /// subscribed to.
+  ///
+  /// This property is only present if the snippet.type is subscription.
   ActivityContentDetailsSubscription subscription;
 
-  /// The upload object contains information about the uploaded video. This
-  /// property is only present if the snippet.type is upload.
+  /// The upload object contains information about the uploaded video.
+  ///
+  /// This property is only present if the snippet.type is upload.
   ActivityContentDetailsUpload upload;
 
   ActivityContentDetails();
@@ -7371,7 +7389,9 @@ class ActivityContentDetails {
 /// Details about a channel bulletin post.
 class ActivityContentDetailsBulletin {
   /// The resourceId object contains information that identifies the resource
-  /// associated with a bulletin post. @mutable youtube.activities.insert
+  /// associated with a bulletin post.
+  ///
+  /// @mutable youtube.activities.insert
   ResourceId resourceId;
 
   ActivityContentDetailsBulletin();
@@ -7550,8 +7570,9 @@ class ActivityContentDetailsPromotedItem {
   /// - "visitAdvertiserSite"
   core.String ctaType;
 
-  /// The custom call-to-action button text. If specified, it will override the
-  /// default button text for the cta_type.
+  /// The custom call-to-action button text.
+  ///
+  /// If specified, it will override the default button text for the cta_type.
   core.String customCtaButtonText;
 
   /// The text description to accompany the promoted item.
@@ -7561,13 +7582,16 @@ class ActivityContentDetailsPromotedItem {
   /// the advertiser's website.
   core.String destinationUrl;
 
-  /// The list of forecasting URLs. The client should ping all of these URLs
-  /// when a promoted item is not available, to indicate that a promoted item
-  /// could have been shown.
+  /// The list of forecasting URLs.
+  ///
+  /// The client should ping all of these URLs when a promoted item is not
+  /// available, to indicate that a promoted item could have been shown.
   core.List<core.String> forecastingUrl;
 
-  /// The list of impression URLs. The client should ping all of these URLs to
-  /// indicate that the user was shown this promoted item.
+  /// The list of impression URLs.
+  ///
+  /// The client should ping all of these URLs to indicate that the user was
+  /// shown this promoted item.
   core.List<core.String> impressionUrl;
 
   /// The ID that YouTube uses to uniquely identify the promoted video.
@@ -7816,8 +7840,9 @@ class ActivityListResponse {
   core.String eventId;
   core.List<Activity> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#activityListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#activityListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -7906,7 +7931,9 @@ class ActivityListResponse {
 }
 
 /// Basic details about an activity, including title, description, thumbnails,
-/// activity type and group. Next ID: 12
+/// activity type and group.
+///
+/// Next ID: 12
 class ActivitySnippet {
   /// The ID that YouTube uses to uniquely identify the channel associated with
   /// the activity.
@@ -7916,25 +7943,30 @@ class ActivitySnippet {
   core.String channelTitle;
 
   /// The description of the resource primarily associated with the activity.
+  ///
   /// @mutable youtube.activities.insert
   core.String description;
 
-  /// The group ID associated with the activity. A group ID identifies user
-  /// events that are associated with the same user and resource. For example,
-  /// if a user rates a video and marks the same video as a favorite, the
-  /// entries for those events would have the same group ID in the user's
-  /// activity feed. In your user interface, you can avoid repetition by
-  /// grouping events with the same groupId value.
+  /// The group ID associated with the activity.
+  ///
+  /// A group ID identifies user events that are associated with the same user
+  /// and resource. For example, if a user rates a video and marks the same
+  /// video as a favorite, the entries for those events would have the same
+  /// group ID in the user's activity feed. In your user interface, you can
+  /// avoid repetition by grouping events with the same groupId value.
   core.String groupId;
 
-  /// The date and time that the video was uploaded. The value is specified in
-  /// ISO 8601 format.
+  /// The date and time that the video was uploaded.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
   /// A map of thumbnail images associated with the resource that is primarily
-  /// associated with the activity. For each object in the map, the key is the
-  /// name of the thumbnail image, and the value is an object that contains
-  /// other information about the thumbnail.
+  /// associated with the activity.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail.
   ThumbnailDetails thumbnails;
 
   /// The title of the resource primarily associated with the activity.
@@ -8016,8 +8048,9 @@ class ActivitySnippet {
   }
 }
 
-/// A *caption* resource represents a YouTube caption track. A caption track is
-/// associated with exactly one YouTube video.
+/// A *caption* resource represents a YouTube caption track.
+///
+/// A caption track is associated with exactly one YouTube video.
 class Caption {
   /// Etag of this resource.
   core.String etag;
@@ -8025,8 +8058,9 @@ class Caption {
   /// The ID that YouTube uses to uniquely identify the caption track.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#caption".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#caption".
   core.String kind;
 
   /// The snippet object contains basic details about the caption.
@@ -8078,8 +8112,9 @@ class CaptionListResponse {
   /// A list of captions that match the request criteria.
   core.List<Caption> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#captionListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#captionListResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -8139,8 +8174,9 @@ class CaptionSnippet {
   /// - "descriptive"
   core.String audioTrackType;
 
-  /// The reason that YouTube failed to process the caption track. This property
-  /// is only present if the state property's value is failed.
+  /// The reason that YouTube failed to process the caption track.
+  ///
+  /// This property is only present if the state property's value is failed.
   /// Possible string values are:
   /// - "unknownFormat"
   /// - "unsupportedFormat"
@@ -8148,42 +8184,54 @@ class CaptionSnippet {
   core.String failureReason;
 
   /// Indicates whether YouTube synchronized the caption track to the audio
-  /// track in the video. The value will be true if a sync was explicitly
-  /// requested when the caption track was uploaded. For example, when calling
-  /// the captions.insert or captions.update methods, you can set the sync
-  /// parameter to true to instruct YouTube to sync the uploaded track to the
-  /// video. If the value is false, YouTube uses the time codes in the uploaded
-  /// caption track to determine when to display captions.
+  /// track in the video.
+  ///
+  /// The value will be true if a sync was explicitly requested when the caption
+  /// track was uploaded. For example, when calling the captions.insert or
+  /// captions.update methods, you can set the sync parameter to true to
+  /// instruct YouTube to sync the uploaded track to the video. If the value is
+  /// false, YouTube uses the time codes in the uploaded caption track to
+  /// determine when to display captions.
   core.bool isAutoSynced;
 
   /// Indicates whether the track contains closed captions for the deaf and hard
-  /// of hearing. The default value is false.
+  /// of hearing.
+  ///
+  /// The default value is false.
   core.bool isCC;
 
-  /// Indicates whether the caption track is a draft. If the value is true, then
-  /// the track is not publicly visible. The default value is false. @mutable
-  /// youtube.captions.insert youtube.captions.update
+  /// Indicates whether the caption track is a draft.
+  ///
+  /// If the value is true, then the track is not publicly visible. The default
+  /// value is false. @mutable youtube.captions.insert youtube.captions.update
   core.bool isDraft;
 
   /// Indicates whether caption track is formatted for "easy reader," meaning it
-  /// is at a third-grade level for language learners. The default value is
-  /// false.
+  /// is at a third-grade level for language learners.
+  ///
+  /// The default value is false.
   core.bool isEasyReader;
 
   /// Indicates whether the caption track uses large text for the
-  /// vision-impaired. The default value is false.
+  /// vision-impaired.
+  ///
+  /// The default value is false.
   core.bool isLarge;
 
-  /// The language of the caption track. The property value is a BCP-47 language
-  /// tag.
+  /// The language of the caption track.
+  ///
+  /// The property value is a BCP-47 language tag.
   core.String language;
 
-  /// The date and time when the caption track was last updated. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time when the caption track was last updated.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String lastUpdated;
 
-  /// The name of the caption track. The name is intended to be visible to the
-  /// user as an option during playback.
+  /// The name of the caption track.
+  ///
+  /// The name is intended to be visible to the user as an option during
+  /// playback.
   core.String name;
 
   /// The caption track's status.
@@ -8201,7 +8249,9 @@ class CaptionSnippet {
   core.String trackKind;
 
   /// The ID that YouTube uses to uniquely identify the video associated with
-  /// the caption track. @mutable youtube.captions.insert
+  /// the caption track.
+  ///
+  /// @mutable youtube.captions.insert
   core.String videoId;
 
   CaptionSnippet();
@@ -8399,8 +8449,9 @@ class Channel {
   /// The ID that YouTube uses to uniquely identify the channel.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#channel".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#channel".
   core.String kind;
 
   /// Localizations for different languages
@@ -8577,8 +8628,9 @@ class ChannelAuditDetails {
 class ChannelBannerResource {
   core.String etag;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#channelBannerResource".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#channelBannerResource".
   core.String kind;
 
   /// The URL of this banner image.
@@ -8669,27 +8721,32 @@ class ChannelBrandingSettings {
 }
 
 class ChannelContentDetailsRelatedPlaylists {
-  /// The ID of the playlist that contains the channel"s favorite videos. Use
-  /// the playlistItems.insert and playlistItems.delete to add or remove items
-  /// from that list.
+  /// The ID of the playlist that contains the channel"s favorite videos.
+  ///
+  /// Use the playlistItems.insert and playlistItems.delete to add or remove
+  /// items from that list.
   core.String favorites;
 
-  /// The ID of the playlist that contains the channel"s liked videos. Use the
-  /// playlistItems.insert and playlistItems.delete to add or remove items from
-  /// that list.
+  /// The ID of the playlist that contains the channel"s liked videos.
+  ///
+  /// Use the playlistItems.insert and playlistItems.delete to add or remove
+  /// items from that list.
   core.String likes;
 
-  /// The ID of the playlist that contains the channel"s uploaded videos. Use
-  /// the videos.insert method to upload new videos and the videos.delete method
-  /// to delete previously uploaded videos.
+  /// The ID of the playlist that contains the channel"s uploaded videos.
+  ///
+  /// Use the videos.insert method to upload new videos and the videos.delete
+  /// method to delete previously uploaded videos.
   core.String uploads;
 
-  /// The ID of the playlist that contains the channel"s watch history. Use the
-  /// playlistItems.insert and playlistItems.delete to add or remove items from
-  /// that list.
+  /// The ID of the playlist that contains the channel"s watch history.
+  ///
+  /// Use the playlistItems.insert and playlistItems.delete to add or remove
+  /// items from that list.
   core.String watchHistory;
 
   /// The ID of the playlist that contains the channel"s watch later playlist.
+  ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
   core.String watchLater;
@@ -8763,8 +8820,9 @@ class ChannelContentOwnerDetails {
   /// The ID of the content owner linked to the channel.
   core.String contentOwner;
 
-  /// The date and time of when the channel was linked to the content owner. The
-  /// value is specified in ISO 8601 format.
+  /// The date and time of when the channel was linked to the content owner.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String timeLinked;
 
   ChannelContentOwnerDetails();
@@ -8790,9 +8848,10 @@ class ChannelContentOwnerDetails {
   }
 }
 
-/// Pings that the app shall fire (authenticated by biscotti cookie). Each ping
-/// has a context, in which the app must fire the ping, and a url identifying
-/// the ping.
+/// Pings that the app shall fire (authenticated by biscotti cookie).
+///
+/// Each ping has a context, in which the app must fire the ping, and a url
+/// identifying the ping.
 class ChannelConversionPing {
   /// Defines the context of the ping.
   /// Possible string values are:
@@ -8801,8 +8860,9 @@ class ChannelConversionPing {
   /// - "cview"
   core.String context;
 
-  /// The url (without the schema) that the player shall send the ping to. It's
-  /// at caller's descretion to decide which schema to use (http vs https)
+  /// The url (without the schema) that the player shall send the ping to.
+  ///
+  /// It's at caller's descretion to decide which schema to use (http vs https)
   /// Example of a returned url: //googleads.g.doubleclick.net/pagead/
   /// viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D
   /// cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append
@@ -8836,8 +8896,9 @@ class ChannelConversionPing {
 /// The conversionPings object encapsulates information about conversion pings
 /// that need to be respected by the channel.
 class ChannelConversionPings {
-  /// Pings that the app shall fire (authenticated by biscotti cookie). Each
-  /// ping has a context, in which the app must fire the ping, and a url
+  /// Pings that the app shall fire (authenticated by biscotti cookie).
+  ///
+  /// Each ping has a context, in which the app must fire the ping, and a url
   /// identifying the ping.
   core.List<ChannelConversionPing> pings;
 
@@ -8869,8 +8930,9 @@ class ChannelListResponse {
   core.String eventId;
   core.List<Channel> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#channelListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#channelListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -9048,8 +9110,9 @@ class ChannelSection {
   /// The ID that YouTube uses to uniquely identify the channel section.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#channelSection".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#channelSection".
   core.String kind;
 
   /// Localizations for different languages
@@ -9133,8 +9196,9 @@ class ChannelSectionContentDetails {
   /// The channel ids for type multiple_channels.
   core.List<core.String> channels;
 
-  /// The playlist ids for type single_playlist and multiple_playlists. For
-  /// singlePlaylist, only one playlistId is allowed.
+  /// The playlist ids for type single_playlist and multiple_playlists.
+  ///
+  /// For singlePlaylist, only one playlistId is allowed.
   core.List<core.String> playlists;
 
   ChannelSectionContentDetails();
@@ -9174,8 +9238,9 @@ class ChannelSectionListResponse {
   /// A list of ChannelSections that match the request criteria.
   core.List<ChannelSection> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#channelSectionListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#channelSectionListResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -9552,22 +9617,25 @@ class ChannelSnippet {
   /// Localized title and description, read-only.
   ChannelLocalization localized;
 
-  /// The date and time that the channel was created. The value is specified in
-  /// < a href="//www.w3.org/TR/NOTE-datetime">ISO 8601 format.
+  /// The date and time that the channel was created.
+  ///
+  /// The value is specified in < a href="//www.w3.org/TR/NOTE-datetime">ISO
+  /// 8601 format.
   core.String publishedAt;
 
-  /// A map of thumbnail images associated with the channel. For each object in
-  /// the map, the key is the name of the thumbnail image, and the value is an
-  /// object that contains other information about the thumbnail. When
-  /// displaying thumbnails in your application, make sure that your code uses
-  /// the image URLs exactly as they are returned in API responses. For example,
-  /// your application should not use the http domain instead of the https
-  /// domain in a URL returned in an API response. Beginning in July 2018,
-  /// channel thumbnail URLs will only be available in the https domain, which
-  /// is how the URLs appear in API responses. After that time, you might see
-  /// broken images in your application if it tries to load YouTube images from
-  /// the http domain. Thumbnail images might be empty for newly created
-  /// channels and might take up to one day to populate.
+  /// A map of thumbnail images associated with the channel.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail. When displaying thumbnails in your application, make sure that
+  /// your code uses the image URLs exactly as they are returned in API
+  /// responses. For example, your application should not use the http domain
+  /// instead of the https domain in a URL returned in an API response.
+  /// Beginning in July 2018, channel thumbnail URLs will only be available in
+  /// the https domain, which is how the URLs appear in API responses. After
+  /// that time, you might see broken images in your application if it tries to
+  /// load YouTube images from the http domain. Thumbnail images might be empty
+  /// for newly created channels and might take up to one day to populate.
   ThumbnailDetails thumbnails;
 
   /// The channel's title.
@@ -9696,11 +9764,14 @@ class ChannelStatistics {
 /// JSON template for the status part of a channel.
 class ChannelStatus {
   /// If true, then the user is linked to either a YouTube username or G+
-  /// account. Otherwise, the user doesn't have a public YouTube identity.
+  /// account.
+  ///
+  /// Otherwise, the user doesn't have a public YouTube identity.
   core.bool isLinked;
 
-  /// The long uploads status of this channel. See
-  /// https://support.google.com/youtube/answer/71673 for more information.
+  /// The long uploads status of this channel.
+  ///
+  /// See https://support.google.com/youtube/answer/71673 for more information.
   /// Possible string values are:
   /// - "longUploadsUnspecified"
   /// - "allowed"
@@ -9795,8 +9866,10 @@ class ChannelTopicDetails {
   /// A list of Wikipedia URLs that describe the channel's content.
   core.List<core.String> topicCategories;
 
-  /// A list of Freebase topic IDs associated with the channel. You can retrieve
-  /// information about each topic using the Freebase Topic API.
+  /// A list of Freebase topic IDs associated with the channel.
+  ///
+  /// You can retrieve information about each topic using the Freebase Topic
+  /// API.
   core.List<core.String> topicIds;
 
   ChannelTopicDetails();
@@ -9834,8 +9907,9 @@ class Comment {
   /// The ID that YouTube uses to uniquely identify the comment.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#comment".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#comment".
   core.String kind;
 
   /// The snippet object contains basic details about the comment.
@@ -9887,8 +9961,9 @@ class CommentListResponse {
   /// A list of comments that match the request criteria.
   core.List<Comment> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#commentListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#commentListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -9982,16 +10057,18 @@ class CommentSnippet {
   /// Whether the current viewer can rate this comment.
   core.bool canRate;
 
-  /// The id of the corresponding YouTube channel. In case of a channel comment
-  /// this is the channel the comment refers to. In case of a video comment it's
-  /// the video's channel.
+  /// The id of the corresponding YouTube channel.
+  ///
+  /// In case of a channel comment this is the channel the comment refers to. In
+  /// case of a video comment it's the video's channel.
   core.String channelId;
 
   /// The total number of likes this comment has received.
   core.int likeCount;
 
-  /// The comment's moderation status. Will not be set if the comments were
-  /// requested through the id filter.
+  /// The comment's moderation status.
+  ///
+  /// Will not be set if the comments were requested through the id filter.
   /// Possible string values are:
   /// - "published" : The comment is available for public display.
   /// - "heldForReview" : The comment is awaiting review by a moderator.
@@ -10002,31 +10079,37 @@ class CommentSnippet {
   /// The unique id of the parent comment, only set for replies.
   core.String parentId;
 
-  /// The date and time when the comment was orignally published. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time when the comment was orignally published.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
-  /// The comment's text. The format is either plain text or HTML dependent on
-  /// what has been requested. Even the plain text representation may differ
-  /// from the text originally posted in that it may replace video links with
-  /// video titles etc.
+  /// The comment's text.
+  ///
+  /// The format is either plain text or HTML dependent on what has been
+  /// requested. Even the plain text representation may differ from the text
+  /// originally posted in that it may replace video links with video titles
+  /// etc.
   core.String textDisplay;
 
-  /// The comment's original raw text as initially posted or last updated. The
-  /// original text will only be returned if it is accessible to the viewer,
+  /// The comment's original raw text as initially posted or last updated.
+  ///
+  /// The original text will only be returned if it is accessible to the viewer,
   /// which is only guaranteed if the viewer is the comment's author.
   core.String textOriginal;
 
-  /// The date and time when was last updated . The value is specified in ISO
-  /// 8601 format.
+  /// The date and time when was last updated .
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String updatedAt;
 
   /// The ID of the video the comment refers to, if any.
   core.String videoId;
 
-  /// The rating the viewer has given to this comment. For the time being this
-  /// will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE.
-  /// This may change in the future.
+  /// The rating the viewer has given to this comment.
+  ///
+  /// For the time being this will never return RATE_TYPE_DISLIKE and instead
+  /// return RATE_TYPE_NONE. This may change in the future.
   /// Possible string values are:
   /// - "none"
   /// - "like" : The entity is liked.
@@ -10157,8 +10240,9 @@ class CommentSnippetAuthorChannelId {
 }
 
 /// A *comment thread* represents information that applies to a top level
-/// comment and all its replies. It can also include the top level comment
-/// itself and some of the replies.
+/// comment and all its replies.
+///
+/// It can also include the top level comment itself and some of the replies.
 class CommentThread {
   /// Etag of this resource.
   core.String etag;
@@ -10166,8 +10250,9 @@ class CommentThread {
   /// The ID that YouTube uses to uniquely identify the comment thread.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#commentThread".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#commentThread".
   core.String kind;
 
   /// The replies object contains a limited number of replies (if any) to the
@@ -10231,8 +10316,9 @@ class CommentThreadListResponse {
   /// A list of comment threads that match the request criteria.
   core.List<CommentThread> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#commentThreadListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#commentThreadListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -10312,9 +10398,11 @@ class CommentThreadListResponse {
 
 /// Comments written in (direct or indirect) reply to the top level comment.
 class CommentThreadReplies {
-  /// A limited number of replies. Unless the number of replies returned equals
-  /// total_reply_count in the snippet the returned replies are only a subset of
-  /// the total number of replies.
+  /// A limited number of replies.
+  ///
+  /// Unless the number of replies returned equals total_reply_count in the
+  /// snippet the returned replies are only a subset of the total number of
+  /// replies.
   core.List<Comment> comments;
 
   CommentThreadReplies();
@@ -10339,13 +10427,16 @@ class CommentThreadReplies {
 
 /// Basic details about a comment thread.
 class CommentThreadSnippet {
-  /// Whether the current viewer of the thread can reply to it. This is viewer
-  /// specific - other viewers may see a different value for this field.
+  /// Whether the current viewer of the thread can reply to it.
+  ///
+  /// This is viewer specific - other viewers may see a different value for this
+  /// field.
   core.bool canReply;
 
   /// The YouTube channel the comments in the thread refer to or the channel
-  /// with the video the comments refer to. If video_id isn't set the comments
-  /// refer to the channel itself.
+  /// with the video the comments refer to.
+  ///
+  /// If video_id isn't set the comments refer to the channel itself.
   core.String channelId;
 
   /// Whether the thread (and therefore all its comments) is visible to all
@@ -10358,8 +10449,9 @@ class CommentThreadSnippet {
   /// The total number of replies (not including the top level comment).
   core.int totalReplyCount;
 
-  /// The ID of the video the comments refer to, if any. No video_id implies a
-  /// channel discussion comment.
+  /// The ID of the video the comments refer to, if any.
+  ///
+  /// No video_id implies a channel discussion comment.
   core.String videoId;
 
   CommentThreadSnippet();
@@ -10410,12 +10502,14 @@ class CommentThreadSnippet {
   }
 }
 
-/// Ratings schemes. The country-specific ratings are mostly for movies and
-/// shows. LINT.IfChange
+/// Ratings schemes.
+///
+/// The country-specific ratings are mostly for movies and shows. LINT.IfChange
 class ContentRating {
   /// The video's Australian Classification Board (ACB) or Australian
-  /// Communications and Media Authority (ACMA) rating. ACMA ratings are used to
-  /// classify children's television programming.
+  /// Communications and Media Authority (ACMA) rating.
+  ///
+  /// ACMA ratings are used to classify children's television programming.
   /// Possible string values are:
   /// - "acbUnspecified"
   /// - "acbE" : E
@@ -10500,8 +10594,10 @@ class ContentRating {
 
   /// Rating system for Canadian TV - Canadian TV Classification System The
   /// video's rating from the Canadian Radio-Television and Telecommunications
-  /// Commission (CRTC) for Canadian English-language broadcasts. For more
-  /// information, see the Canadian Broadcast Standards Council website.
+  /// Commission (CRTC) for Canadian English-language broadcasts.
+  ///
+  /// For more information, see the Canadian Broadcast Standards Council
+  /// website.
   /// Possible string values are:
   /// - "catvUnspecified"
   /// - "catvC" : C
@@ -10516,8 +10612,10 @@ class ContentRating {
 
   /// The video's rating from the Canadian Radio-Television and
   /// Telecommunications Commission (CRTC) for Canadian French-language
-  /// broadcasts. For more information, see the Canadian Broadcast Standards
-  /// Council website.
+  /// broadcasts.
+  ///
+  /// For more information, see the Canadian Broadcast Standards Council
+  /// website.
   /// Possible string values are:
   /// - "catvfrUnspecified"
   /// - "catvfrG" : G
@@ -10728,7 +10826,9 @@ class ContentRating {
   /// - "egfilmUnrated"
   core.String egfilmRating;
 
-  /// The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
+  /// The video's Eirin (映倫) rating.
+  ///
+  /// Eirin is the Japanese rating system.
   /// Possible string values are:
   /// - "eirinUnspecified"
   /// - "eirinG" : G
@@ -10764,8 +10864,9 @@ class ContentRating {
   /// - "fcoUnrated"
   core.String fcoRating;
 
-  /// This property has been deprecated. Use the
-  /// contentDetails.contentRating.cncRating instead.
+  /// This property has been deprecated.
+  ///
+  /// Use the contentDetails.contentRating.cncRating instead.
   /// Possible string values are:
   /// - "fmocUnspecified"
   /// - "fmocU" : U
@@ -10835,8 +10936,9 @@ class ContentRating {
   /// - "icaaUnrated"
   core.String icaaRating;
 
-  /// The video's Irish Film Classification Office (IFCO - Ireland) rating. See
-  /// the IFCO website for more information.
+  /// The video's Irish Film Classification Office (IFCO - Ireland) rating.
+  ///
+  /// See the IFCO website for more information.
   /// Possible string values are:
   /// - "ifcoUnspecified"
   /// - "ifcoG" : G
@@ -10897,8 +10999,9 @@ class ContentRating {
   /// - "kijkwijzerUnrated"
   core.String kijkwijzerRating;
 
-  /// The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates
-  /// videos in South Korea.
+  /// The video's Korea Media Rating Board (영상물등급위원회) rating.
+  ///
+  /// The KMRB rates videos in South Korea.
   /// Possible string values are:
   /// - "kmrbUnspecified"
   /// - "kmrbAll" : 전체관람가
@@ -11002,9 +11105,11 @@ class ContentRating {
   /// - "mekuUnrated"
   core.String mekuRating;
 
-  /// The rating system for MENA countries, a clone of MPAA. It is needed to
-  /// prevent titles go live w/o additional QC check, since some of them can be
-  /// inappropriate for the countries at all. See b/33408548 for more details.
+  /// The rating system for MENA countries, a clone of MPAA.
+  ///
+  /// It is needed to prevent titles go live w/o additional QC check, since some
+  /// of them can be inappropriate for the countries at all. See b/33408548 for
+  /// more details.
   /// Possible string values are:
   /// - "menaMpaaUnspecified"
   /// - "menaMpaaG" : G
@@ -11065,8 +11170,9 @@ class ContentRating {
   /// - "mpaaUnrated"
   core.String mpaaRating;
 
-  /// The rating system for trailer, DVD, and Ad in the US. See
-  /// http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.
+  /// The rating system for trailer, DVD, and Ad in the US.
+  ///
+  /// See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.
   /// Possible string values are:
   /// - "mpaatUnspecified"
   /// - "mpaatGb" : GB
@@ -11821,8 +11927,9 @@ class I18nLanguage {
   /// The ID that YouTube uses to uniquely identify the i18n language.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#i18nLanguage".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#i18nLanguage".
   core.String kind;
 
   /// The snippet object contains basic details about the i18n language, such as
@@ -11872,12 +11979,15 @@ class I18nLanguageListResponse {
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
 
-  /// A list of supported i18n languages. In this map, the i18n language ID is
-  /// the map key, and its value is the corresponding i18nLanguage resource.
+  /// A list of supported i18n languages.
+  ///
+  /// In this map, the i18n language ID is the map key, and its value is the
+  /// corresponding i18nLanguage resource.
   core.List<I18nLanguage> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#i18nLanguageListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#i18nLanguageListResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -11967,8 +12077,9 @@ class I18nRegion {
   /// The ID that YouTube uses to uniquely identify the i18n region.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#i18nRegion".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#i18nRegion".
   core.String kind;
 
   /// The snippet object contains basic details about the i18n region, such as
@@ -12018,12 +12129,15 @@ class I18nRegionListResponse {
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
 
-  /// A list of regions where YouTube is available. In this map, the i18n region
-  /// ID is the map key, and its value is the corresponding i18nRegion resource.
+  /// A list of regions where YouTube is available.
+  ///
+  /// In this map, the i18n region ID is the map key, and its value is the
+  /// corresponding i18nRegion resource.
   core.List<I18nRegion> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#i18nRegionListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#i18nRegionListResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -12107,54 +12221,83 @@ class I18nRegionSnippet {
 
 /// Branding properties for images associated with the channel.
 class ImageSettings {
-  /// The URL for the background image shown on the video watch page. The image
-  /// should be 1200px by 615px, with a maximum file size of 128k.
+  /// The URL for the background image shown on the video watch page.
+  ///
+  /// The image should be 1200px by 615px, with a maximum file size of 128k.
   LocalizedProperty backgroundImageUrl;
 
   /// This is used only in update requests; if it's set, we use this URL to
   /// generate all of the above banner URLs.
   core.String bannerExternalUrl;
 
-  /// Banner image. Desktop size (1060x175).
+  /// Banner image.
+  ///
+  /// Desktop size (1060x175).
   core.String bannerImageUrl;
 
-  /// Banner image. Mobile size high resolution (1440x395).
+  /// Banner image.
+  ///
+  /// Mobile size high resolution (1440x395).
   core.String bannerMobileExtraHdImageUrl;
 
-  /// Banner image. Mobile size high resolution (1280x360).
+  /// Banner image.
+  ///
+  /// Mobile size high resolution (1280x360).
   core.String bannerMobileHdImageUrl;
 
-  /// Banner image. Mobile size (640x175).
+  /// Banner image.
+  ///
+  /// Mobile size (640x175).
   core.String bannerMobileImageUrl;
 
-  /// Banner image. Mobile size low resolution (320x88).
+  /// Banner image.
+  ///
+  /// Mobile size low resolution (320x88).
   core.String bannerMobileLowImageUrl;
 
-  /// Banner image. Mobile size medium/high resolution (960x263).
+  /// Banner image.
+  ///
+  /// Mobile size medium/high resolution (960x263).
   core.String bannerMobileMediumHdImageUrl;
 
-  /// Banner image. Tablet size extra high resolution (2560x424).
+  /// Banner image.
+  ///
+  /// Tablet size extra high resolution (2560x424).
   core.String bannerTabletExtraHdImageUrl;
 
-  /// Banner image. Tablet size high resolution (2276x377).
+  /// Banner image.
+  ///
+  /// Tablet size high resolution (2276x377).
   core.String bannerTabletHdImageUrl;
 
-  /// Banner image. Tablet size (1707x283).
+  /// Banner image.
+  ///
+  /// Tablet size (1707x283).
   core.String bannerTabletImageUrl;
 
-  /// Banner image. Tablet size low resolution (1138x188).
+  /// Banner image.
+  ///
+  /// Tablet size low resolution (1138x188).
   core.String bannerTabletLowImageUrl;
 
-  /// Banner image. TV size high resolution (1920x1080).
+  /// Banner image.
+  ///
+  /// TV size high resolution (1920x1080).
   core.String bannerTvHighImageUrl;
 
-  /// Banner image. TV size extra high resolution (2120x1192).
+  /// Banner image.
+  ///
+  /// TV size extra high resolution (2120x1192).
   core.String bannerTvImageUrl;
 
-  /// Banner image. TV size low resolution (854x480).
+  /// Banner image.
+  ///
+  /// TV size low resolution (854x480).
   core.String bannerTvLowImageUrl;
 
-  /// Banner image. TV size medium resolution (1280x720).
+  /// Banner image.
+  ///
+  /// TV size medium resolution (1280x720).
   core.String bannerTvMediumImageUrl;
 
   /// The image map script for the large banner image.
@@ -12168,9 +12311,11 @@ class ImageSettings {
   LocalizedProperty smallBrandedBannerImageImapScript;
 
   /// The URL for the 640px by 70px banner image that appears below the video
-  /// player in the default view of the video watch page. The URL for the image
-  /// that appears above the top-left corner of the video player. This is a
-  /// 25-pixel-high image with a flexible width that cannot exceed 170 pixels.
+  /// player in the default view of the video watch page.
+  ///
+  /// The URL for the image that appears above the top-left corner of the video
+  /// player. This is a 25-pixel-high image with a flexible width that cannot
+  /// exceed 170 pixels.
   LocalizedProperty smallBrandedBannerImageUrl;
 
   /// The URL for a 1px by 1px tracking pixel that can be used to collect
@@ -12338,11 +12483,13 @@ class ImageSettings {
 /// Describes information necessary for ingesting an RTMP or an HTTP stream.
 class IngestionInfo {
   /// The backup ingestion URL that you should use to stream video to YouTube.
+  ///
   /// You have the option of simultaneously streaming the content that you are
   /// sending to the ingestionAddress to this URL.
   core.String backupIngestionAddress;
 
   /// The primary ingestion URL that you should use to stream video to YouTube.
+  ///
   /// You must stream video to this URL. Depending on which application or tool
   /// you use to encode your video stream, you may need to enter the stream URL
   /// and stream name separately or you may need to concatenate them in the
@@ -12350,11 +12497,15 @@ class IngestionInfo {
   core.String ingestionAddress;
 
   /// This ingestion url may be used instead of backupIngestionAddress in order
-  /// to stream via RTMPS. Not applicable to non-RTMP streams.
+  /// to stream via RTMPS.
+  ///
+  /// Not applicable to non-RTMP streams.
   core.String rtmpsBackupIngestionAddress;
 
   /// This ingestion url may be used instead of ingestionAddress in order to
-  /// stream via RTMPS. Not applicable to non-RTMP streams.
+  /// stream via RTMPS.
+  ///
+  /// Not applicable to non-RTMP streams.
   core.String rtmpsIngestionAddress;
 
   /// The HTTP or RTMP stream name that YouTube assigns to the video stream.
@@ -12404,7 +12555,9 @@ class IngestionInfo {
 
 /// LINT.IfChange Describes an invideo branding.
 class InvideoBranding {
-  /// The bytes the uploaded image. Only used in api to youtube communication.
+  /// The bytes the uploaded image.
+  ///
+  /// Only used in api to youtube communication.
   core.String imageBytes;
   core.List<core.int> get imageBytesAsBytes =>
       convert.base64.decode(imageBytes);
@@ -12414,15 +12567,18 @@ class InvideoBranding {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The url of the uploaded image. Only used in apiary to api communication.
+  /// The url of the uploaded image.
+  ///
+  /// Only used in apiary to api communication.
   core.String imageUrl;
 
   /// The spatial position within the video where the branding watermark will be
   /// displayed.
   InvideoPosition position;
 
-  /// The channel to which this branding links. If not present it defaults to
-  /// the current channel.
+  /// The channel to which this branding links.
+  ///
+  /// If not present it defaults to the current channel.
   core.String targetChannelId;
 
   /// The temporal position within the video where watermark will be displayed.
@@ -12471,8 +12627,9 @@ class InvideoBranding {
   }
 }
 
-/// Describes the spatial position of a visual widget inside a video. It is a
-/// union of various position types, out of which only will be set one.
+/// Describes the spatial position of a visual widget inside a video.
+///
+/// It is a union of various position types, out of which only will be set one.
 class InvideoPosition {
   /// Describes in which corner of the video the visual widget will appear.
   /// Possible string values are:
@@ -12513,18 +12670,23 @@ class InvideoPosition {
 /// Describes a temporal position of a visual widget inside a video.
 class InvideoTiming {
   /// Defines the duration in milliseconds for which the promotion should be
-  /// displayed. If missing, the client should use the default.
+  /// displayed.
+  ///
+  /// If missing, the client should use the default.
   core.String durationMs;
 
-  /// Defines the time at which the promotion will appear. Depending on the
-  /// value of type the value of the offsetMs field will represent a time offset
-  /// from the start or from the end of the video, expressed in milliseconds.
+  /// Defines the time at which the promotion will appear.
+  ///
+  /// Depending on the value of type the value of the offsetMs field will
+  /// represent a time offset from the start or from the end of the video,
+  /// expressed in milliseconds.
   core.String offsetMs;
 
-  /// Describes a timing type. If the value is offsetFromStart, then the
-  /// offsetMs field represents an offset from the start of the video. If the
-  /// value is offsetFromEnd, then the offsetMs field represents an offset from
-  /// the end of the video.
+  /// Describes a timing type.
+  ///
+  /// If the value is offsetFromStart, then the offsetMs field represents an
+  /// offset from the start of the video. If the value is offsetFromEnd, then
+  /// the offsetMs field represents an offset from the end of the video.
   /// Possible string values are:
   /// - "offsetFromStart"
   /// - "offsetFromEnd"
@@ -12615,18 +12777,20 @@ class LiveBroadcast {
   /// The ID that YouTube assigns to uniquely identify the broadcast.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveBroadcast".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveBroadcast".
   core.String kind;
 
   /// The snippet object contains basic details about the event, including its
   /// title, description, start time, and end time.
   LiveBroadcastSnippet snippet;
 
-  /// The statistics object contains info about the event's current stats. These
-  /// include concurrent viewers and total chat count. Statistics can change (in
-  /// either direction) during the lifetime of an event. Statistics are only
-  /// returned while the event is live.
+  /// The statistics object contains info about the event's current stats.
+  ///
+  /// These include concurrent viewers and total chat count. Statistics can
+  /// change (in either direction) during the lifetime of an event. Statistics
+  /// are only returned while the event is live.
   LiveBroadcastStatistics statistics;
 
   /// The status object contains information about the event's status.
@@ -12707,18 +12871,22 @@ class LiveBroadcastContentDetails {
   core.String closedCaptionsType;
 
   /// This setting indicates whether auto start is enabled for this broadcast.
+  ///
   /// The default value for this property is false. This setting can only be
   /// used by Events.
   core.bool enableAutoStart;
 
   /// This setting indicates whether auto stop is enabled for this broadcast.
+  ///
   /// The default value for this property is false. This setting can only be
   /// used by Events.
   core.bool enableAutoStop;
 
   /// This setting indicates whether HTTP POST closed captioning is enabled for
-  /// this broadcast. The ingestion URL of the closed captions is returned
-  /// through the liveStreams API. This is mutually exclusive with using the
+  /// this broadcast.
+  ///
+  /// The ingestion URL of the closed captions is returned through the
+  /// liveStreams API. This is mutually exclusive with using the
   /// closed_captions_type property, and is equivalent to setting
   /// closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
   core.bool enableClosedCaptions;
@@ -12728,23 +12896,27 @@ class LiveBroadcastContentDetails {
   core.bool enableContentEncryption;
 
   /// This setting determines whether viewers can access DVR controls while
-  /// watching the video. DVR controls enable the viewer to control the video
-  /// playback experience by pausing, rewinding, or fast forwarding content. The
-  /// default value for this property is true. *Important:* You must set the
-  /// value to true and also set the enableArchive property's value to true if
-  /// you want to make playback available immediately after the broadcast ends.
+  /// watching the video.
+  ///
+  /// DVR controls enable the viewer to control the video playback experience by
+  /// pausing, rewinding, or fast forwarding content. The default value for this
+  /// property is true. *Important:* You must set the value to true and also set
+  /// the enableArchive property's value to true if you want to make playback
+  /// available immediately after the broadcast ends.
   core.bool enableDvr;
 
   /// This setting indicates whether the broadcast video can be played in an
-  /// embedded player. If you choose to archive the video (using the
-  /// enableArchive property), this setting will also apply to the archived
-  /// video.
+  /// embedded player.
+  ///
+  /// If you choose to archive the video (using the enableArchive property),
+  /// this setting will also apply to the archived video.
   core.bool enableEmbed;
 
   /// Indicates whether this broadcast has low latency enabled.
   core.bool enableLowLatency;
 
   /// If both this and enable_low_latency are set, they must match.
+  ///
   /// LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should
   /// match enable_low_latency=true LATENCY_ULTRA_LOW should have
   /// enable_low_latency omitted.
@@ -12758,11 +12930,12 @@ class LiveBroadcastContentDetails {
   /// captions, 1440p, and 4k resolutions
   core.String latencyPreference;
 
-  /// The mesh for projecting the video if projection is mesh. The mesh value
-  /// must be a UTF-8 string containing the base-64 encoding of 3D mesh data
-  /// that follows the Spherical Video V2 RFC specification for an mshp box,
-  /// excluding the box size and type but including the following four reserved
-  /// zero bytes for the version and flags.
+  /// The mesh for projecting the video if projection is mesh.
+  ///
+  /// The mesh value must be a UTF-8 string containing the base-64 encoding of
+  /// 3D mesh data that follows the Spherical Video V2 RFC specification for an
+  /// mshp box, excluding the box size and type but including the following four
+  /// reserved zero bytes for the version and flags.
   core.String mesh;
   core.List<core.int> get meshAsBytes => convert.base64.decode(mesh);
 
@@ -12776,7 +12949,9 @@ class LiveBroadcastContentDetails {
   /// broadcast stream is shown publicly.
   MonitorStreamInfo monitorStream;
 
-  /// The projection format of this broadcast. This defaults to rectangular.
+  /// The projection format of this broadcast.
+  ///
+  /// This defaults to rectangular.
   /// Possible string values are:
   /// - "projectionUnspecified"
   /// - "rectangular"
@@ -12784,17 +12959,19 @@ class LiveBroadcastContentDetails {
   /// - "mesh"
   core.String projection;
 
-  /// Automatically start recording after the event goes live. The default value
-  /// for this property is true. *Important:* You must also set the enableDvr
-  /// property's value to true if you want the playback to be available
-  /// immediately after the broadcast ends. If you set this property's value to
-  /// true but do not also set the enableDvr property to true, there may be a
-  /// delay of around one day before the archived video will be available for
-  /// playback.
+  /// Automatically start recording after the event goes live.
+  ///
+  /// The default value for this property is true. *Important:* You must also
+  /// set the enableDvr property's value to true if you want the playback to be
+  /// available immediately after the broadcast ends. If you set this property's
+  /// value to true but do not also set the enableDvr property to true, there
+  /// may be a delay of around one day before the archived video will be
+  /// available for playback.
   core.bool recordFromStart;
 
   /// This setting indicates whether the broadcast should automatically begin
   /// with an in-stream slate when you update the broadcast's status to live.
+  ///
   /// After updating the status, you then need to send a liveCuepoints.insert
   /// request that sets the cuepoint's eventState to end to remove the in-stream
   /// slate and make your broadcast stream visible to viewers.
@@ -12919,8 +13096,9 @@ class LiveBroadcastListResponse {
   /// A list of broadcasts that match the request criteria.
   core.List<LiveBroadcast> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveBroadcastListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveBroadcastListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -13010,51 +13188,65 @@ class LiveBroadcastListResponse {
 
 /// Basic broadcast information.
 class LiveBroadcastSnippet {
-  /// The date and time that the broadcast actually ended. This information is
-  /// only available once the broadcast's state is complete. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time that the broadcast actually ended.
+  ///
+  /// This information is only available once the broadcast's state is complete.
+  /// The value is specified in ISO 8601 format.
   core.String actualEndTime;
 
-  /// The date and time that the broadcast actually started. This information is
-  /// only available once the broadcast's state is live. The value is specified
-  /// in ISO 8601 format.
+  /// The date and time that the broadcast actually started.
+  ///
+  /// This information is only available once the broadcast's state is live. The
+  /// value is specified in ISO 8601 format.
   core.String actualStartTime;
 
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// publishing the broadcast.
   core.String channelId;
 
-  /// The broadcast's description. As with the title, you can set this field by
-  /// modifying the broadcast resource or by setting the description field of
-  /// the corresponding video resource.
+  /// The broadcast's description.
+  ///
+  /// As with the title, you can set this field by modifying the broadcast
+  /// resource or by setting the description field of the corresponding video
+  /// resource.
   core.String description;
 
-  /// Indicates whether this broadcast is the default broadcast. Internal only.
+  /// Indicates whether this broadcast is the default broadcast.
+  ///
+  /// Internal only.
   core.bool isDefaultBroadcast;
 
   /// The id of the live chat for this broadcast.
   core.String liveChatId;
 
   /// The date and time that the broadcast was added to YouTube's live broadcast
-  /// schedule. The value is specified in ISO 8601 format.
+  /// schedule.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
-  /// The date and time that the broadcast is scheduled to end. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time that the broadcast is scheduled to end.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String scheduledEndTime;
 
-  /// The date and time that the broadcast is scheduled to start. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time that the broadcast is scheduled to start.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String scheduledStartTime;
 
-  /// A map of thumbnail images associated with the broadcast. For each nested
-  /// object in this object, the key is the name of the thumbnail image, and the
-  /// value is an object that contains other information about the thumbnail.
+  /// A map of thumbnail images associated with the broadcast.
+  ///
+  /// For each nested object in this object, the key is the name of the
+  /// thumbnail image, and the value is an object that contains other
+  /// information about the thumbnail.
   ThumbnailDetails thumbnails;
 
-  /// The broadcast's title. Note that the broadcast represents exactly one
-  /// YouTube video. You can set this field by modifying the broadcast resource
-  /// or by setting the title field of the corresponding video resource.
+  /// The broadcast's title.
+  ///
+  /// Note that the broadcast represents exactly one YouTube video. You can set
+  /// this field by modifying the broadcast resource or by setting the title
+  /// field of the corresponding video resource.
   core.String title;
 
   LiveBroadcastSnippet();
@@ -13135,15 +13327,17 @@ class LiveBroadcastSnippet {
   }
 }
 
-/// Statistics about the live broadcast. These represent a snapshot of the
-/// values at the time of the request. Statistics are only returned for live
-/// broadcasts.
+/// Statistics about the live broadcast.
+///
+/// These represent a snapshot of the values at the time of the request.
+/// Statistics are only returned for live broadcasts.
 class LiveBroadcastStatistics {
-  /// The total number of live chat messages currently on the broadcast. The
-  /// property and its value will be present if the broadcast is public, has the
-  /// live chat feature enabled, and has at least one message. Note that this
-  /// field will not be filled after the broadcast ends. So this property would
-  /// not identify the number of chat messages for an archived video of a
+  /// The total number of live chat messages currently on the broadcast.
+  ///
+  /// The property and its value will be present if the broadcast is public, has
+  /// the live chat feature enabled, and has at least one message. Note that
+  /// this field will not be filled after the broadcast ends. So this property
+  /// would not identify the number of chat messages for an archived video of a
   /// completed live broadcast.
   core.String totalChatCount;
 
@@ -13166,8 +13360,10 @@ class LiveBroadcastStatistics {
 
 /// Live broadcast state.
 class LiveBroadcastStatus {
-  /// The broadcast's status. The status can be updated using the API's
-  /// liveBroadcasts.transition method.
+  /// The broadcast's status.
+  ///
+  /// The status can be updated using the API's liveBroadcasts.transition
+  /// method.
   /// Possible string values are:
   /// - "lifeCycleStatusUnspecified" : No value or the value is unknown.
   /// - "created" : Incomplete settings, but otherwise valid
@@ -13191,14 +13387,17 @@ class LiveBroadcastStatus {
   core.String liveBroadcastPriority;
 
   /// Whether the broadcast is made for kids or not, decided by YouTube instead
-  /// of the creator. This field is read only.
+  /// of the creator.
+  ///
+  /// This field is read only.
   core.bool madeForKids;
 
-  /// The broadcast's privacy status. Note that the broadcast represents exactly
-  /// one YouTube video, so the privacy settings are identical to those
-  /// supported for videos. In addition, you can set this field by modifying the
-  /// broadcast resource or by setting the privacyStatus field of the
-  /// corresponding video resource.
+  /// The broadcast's privacy status.
+  ///
+  /// Note that the broadcast represents exactly one YouTube video, so the
+  /// privacy settings are identical to those supported for videos. In addition,
+  /// you can set this field by modifying the broadcast resource or by setting
+  /// the privacyStatus field of the corresponding video resource.
   /// Possible string values are:
   /// - "public"
   /// - "unlisted"
@@ -13273,8 +13472,9 @@ class LiveChatBan {
   /// The ID that YouTube assigns to uniquely identify the ban.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// `"youtube#liveChatBan"`.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"youtube#liveChatBan"`.
   core.String kind;
 
   /// The `snippet` object contains basic details about the ban.
@@ -13428,8 +13628,9 @@ class LiveChatMessage {
   /// The ID that YouTube assigns to uniquely identify the message.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveChatMessage".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveChatMessage".
   core.String kind;
 
   /// The snippet object contains basic details about the message.
@@ -13590,13 +13791,15 @@ class LiveChatMessageListResponse {
   core.String eventId;
   core.List<LiveChatMessage> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveChatMessageListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveChatMessageListResponse".
   core.String kind;
   core.String nextPageToken;
 
-  /// The date and time when the underlying stream went offline. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time when the underlying stream went offline.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String offlineAt;
 
   /// General pagination information.
@@ -13707,17 +13910,20 @@ class LiveChatMessageRetractedDetails {
 
 class LiveChatMessageSnippet {
   /// The ID of the user that authored this message, this field is not always
-  /// filled. textMessageEvent - the user that wrote the message fanFundingEvent
-  /// - the user that funded the broadcast newSponsorEvent - the user that just
-  /// became a sponsor messageDeletedEvent - the moderator that took the action
+  /// filled.
+  ///
+  /// textMessageEvent - the user that wrote the message fanFundingEvent - the
+  /// user that funded the broadcast newSponsorEvent - the user that just became
+  /// a sponsor messageDeletedEvent - the moderator that took the action
   /// messageRetractedEvent - the author that retracted their message
   /// userBannedEvent - the moderator that took the action superChatEvent - the
   /// user that made the purchase
   core.String authorChannelId;
 
-  /// Contains a string that can be displayed to the user. If this field is not
-  /// present the message is silent, at the moment only messages of type
-  /// TOMBSTONE and CHAT_ENDED_EVENT are silent.
+  /// Contains a string that can be displayed to the user.
+  ///
+  /// If this field is not present the message is silent, at the moment only
+  /// messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent.
   core.String displayMessage;
 
   /// Details about the funding event, this is only set if the type is
@@ -13730,8 +13936,9 @@ class LiveChatMessageSnippet {
   LiveChatMessageDeletedDetails messageDeletedDetails;
   LiveChatMessageRetractedDetails messageRetractedDetails;
 
-  /// The date and time when the message was orignally published. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time when the message was orignally published.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
   /// Details about the Super Chat event, this is only set if the type is
@@ -13865,8 +14072,10 @@ class LiveChatMessageSnippet {
 }
 
 /// A *liveChatModerator* resource represents a moderator for a YouTube live
-/// chat. A chat moderator has the ability to ban/unban users from a chat,
-/// remove message, etc.
+/// chat.
+///
+/// A chat moderator has the ability to ban/unban users from a chat, remove
+/// message, etc.
 class LiveChatModerator {
   /// Etag of this resource.
   core.String etag;
@@ -13874,8 +14083,9 @@ class LiveChatModerator {
   /// The ID that YouTube assigns to uniquely identify the moderator.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveChatModerator".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveChatModerator".
   core.String kind;
 
   /// The snippet object contains basic details about the moderator.
@@ -13927,8 +14137,9 @@ class LiveChatModeratorListResponse {
   /// A list of moderators that match the request criteria.
   core.List<LiveChatModerator> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveChatModeratorListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveChatModeratorListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -14057,8 +14268,9 @@ class LiveChatSuperChatDetails {
   /// The currency in which the purchase was made.
   core.String currency;
 
-  /// The tier in which the amount belongs. Lower amounts belong to lower tiers.
-  /// The lowest tier is 1.
+  /// The tier in which the amount belongs.
+  ///
+  /// Lower amounts belong to lower tiers. The lowest tier is 1.
   core.int tier;
 
   /// The comment added by the user to this Super Chat event.
@@ -14118,8 +14330,9 @@ class LiveChatSuperStickerDetails {
   /// Information about the Super Sticker.
   SuperStickerMetadata superStickerMetadata;
 
-  /// The tier in which the amount belongs. Lower amounts belong to lower tiers.
-  /// The lowest tier is 1.
+  /// The tier in which the amount belongs.
+  ///
+  /// Lower amounts belong to lower tiers. The lowest tier is 1.
   core.int tier;
 
   LiveChatSuperStickerDetails();
@@ -14186,8 +14399,9 @@ class LiveChatTextMessageDetails {
 }
 
 class LiveChatUserBannedMessageDetails {
-  /// The duration of the ban. This property is only present if the banType is
-  /// temporary.
+  /// The duration of the ban.
+  ///
+  /// This property is only present if the banType is temporary.
   core.String banDurationSeconds;
 
   /// The type of ban.
@@ -14232,8 +14446,10 @@ class LiveChatUserBannedMessageDetails {
 /// A live stream describes a live ingestion point.
 class LiveStream {
   /// The cdn object defines the live stream's content delivery network (CDN)
-  /// settings. These settings provide details about the manner in which you
-  /// stream your content to YouTube.
+  /// settings.
+  ///
+  /// These settings provide details about the manner in which you stream your
+  /// content to YouTube.
   CdnSettings cdn;
 
   /// The content_details object contains information about the stream,
@@ -14246,8 +14462,9 @@ class LiveStream {
   /// The ID that YouTube assigns to uniquely identify the stream.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveStream".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveStream".
   core.String kind;
 
   /// The snippet object contains basic details about the stream, including its
@@ -14407,17 +14624,19 @@ class LiveStreamContentDetails {
   core.String closedCaptionsIngestionUrl;
 
   /// Indicates whether the stream is reusable, which means that it can be bound
-  /// to multiple broadcasts. It is common for broadcasters to reuse the same
-  /// stream for many different broadcasts if those broadcasts occur at
-  /// different times. If you set this value to false, then the stream will not
-  /// be reusable, which means that it can only be bound to one broadcast.
-  /// Non-reusable streams differ from reusable streams in the following ways: -
-  /// A non-reusable stream can only be bound to one broadcast. - A non-reusable
-  /// stream might be deleted by an automated process after the broadcast ends.
-  /// - The liveStreams.list method does not list non-reusable streams if you
-  /// call the method and set the mine parameter to true. The only way to use
-  /// that method to retrieve the resource for a non-reusable stream is to use
-  /// the id parameter to identify the stream.
+  /// to multiple broadcasts.
+  ///
+  /// It is common for broadcasters to reuse the same stream for many different
+  /// broadcasts if those broadcasts occur at different times. If you set this
+  /// value to false, then the stream will not be reusable, which means that it
+  /// can only be bound to one broadcast. Non-reusable streams differ from
+  /// reusable streams in the following ways: - A non-reusable stream can only
+  /// be bound to one broadcast. - A non-reusable stream might be deleted by an
+  /// automated process after the broadcast ends. - The liveStreams.list method
+  /// does not list non-reusable streams if you call the method and set the mine
+  /// parameter to true. The only way to use that method to retrieve the
+  /// resource for a non-reusable stream is to use the id parameter to identify
+  /// the stream.
   core.bool isReusable;
 
   LiveStreamContentDetails();
@@ -14504,8 +14723,9 @@ class LiveStreamListResponse {
   /// A list of live streams that match the request criteria.
   core.List<LiveStream> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#liveStreamListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#liveStreamListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -14596,16 +14816,20 @@ class LiveStreamSnippet {
   /// transmitting the stream.
   core.String channelId;
 
-  /// The stream's description. The value cannot be longer than 10000
-  /// characters.
+  /// The stream's description.
+  ///
+  /// The value cannot be longer than 10000 characters.
   core.String description;
   core.bool isDefaultStream;
 
-  /// The date and time that the stream was created. The value is specified in
-  /// ISO 8601 format.
+  /// The date and time that the stream was created.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
-  /// The stream's title. The value must be between 1 and 128 characters long.
+  /// The stream's title.
+  ///
+  /// The value must be between 1 and 128 characters long.
   core.String title;
 
   LiveStreamSnippet();
@@ -14754,15 +14978,17 @@ class LocalizedString {
   }
 }
 
-/// A *member* resource represents a member for a YouTube channel. A member
-/// provides recurring monetary support to a creator and receives special
-/// benefits.
+/// A *member* resource represents a member for a YouTube channel.
+///
+/// A member provides recurring monetary support to a creator and receives
+/// special benefits.
 class Member {
   /// Etag of this resource.
   core.String etag;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#member".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#member".
   core.String kind;
 
   /// The snippet object contains basic details about the member.
@@ -14808,8 +15034,9 @@ class MemberListResponse {
   /// A list of members that match the request criteria.
   core.List<Member> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#memberListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#memberListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -14927,9 +15154,10 @@ class MemberSnippet {
 }
 
 class MembershipsDetails {
-  /// Ids of all levels that the user has access to. This includes the currently
-  /// active level and all other levels that are included because of a higher
-  /// purchase.
+  /// Ids of all levels that the user has access to.
+  ///
+  /// This includes the currently active level and all other levels that are
+  /// included because of a higher purchase.
   core.List<core.String> accessibleLevels;
 
   /// Id of the highest level that the user has access to at the moment.
@@ -15074,9 +15302,11 @@ class MembershipsDurationAtLevel {
 }
 
 /// A *membershipsLevel* resource represents an offer made by YouTube creators
-/// for their fans. Users can become members of the channel by joining one of
-/// the available levels. They will provide recurring monetary support and
-/// receives special benefits.
+/// for their fans.
+///
+/// Users can become members of the channel by joining one of the available
+/// levels. They will provide recurring monetary support and receives special
+/// benefits.
 class MembershipsLevel {
   /// Etag of this resource.
   core.String etag;
@@ -15084,8 +15314,9 @@ class MembershipsLevel {
   /// The ID that YouTube assigns to uniquely identify the memberships level.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#membershipsLevelListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#membershipsLevelListResponse".
   core.String kind;
 
   /// The snippet object contains basic details about the level.
@@ -15137,8 +15368,9 @@ class MembershipsLevelListResponse {
   /// A list of pricing levels offered by a creator to the fans.
   core.List<MembershipsLevel> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#membershipsLevelListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#membershipsLevelListResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -15229,8 +15461,10 @@ class MonitorStreamInfo {
   core.String embedHtml;
 
   /// This value determines whether the monitor stream is enabled for the
-  /// broadcast. If the monitor stream is enabled, then YouTube will broadcast
-  /// the event content on a special stream intended only for the broadcaster's
+  /// broadcast.
+  ///
+  /// If the monitor stream is enabled, then YouTube will broadcast the event
+  /// content on a special stream intended only for the broadcaster's
   /// consumption. The broadcaster can use the stream to review the event
   /// content and also to identify the optimal times to insert cuepoints. You
   /// need to set this value to true if you intend to have a broadcast delay for
@@ -15299,20 +15533,22 @@ class PageInfo {
   }
 }
 
-/// A *playlist* resource represents a YouTube playlist. A playlist is a
-/// collection of videos that can be viewed sequentially and shared with other
-/// users. A playlist can contain up to 200 videos, and YouTube does not limit
-/// the number of playlists that each user creates. By default, playlists are
-/// publicly visible to other users, but playlists can be public or private.
-/// YouTube also uses playlists to identify special collections of videos for a
-/// channel, such as: - uploaded videos - favorite videos - positively rated
-/// (liked) videos - watch history - watch later To be more specific, these
-/// lists are associated with a channel, which is a collection of a person,
-/// group, or company's videos, playlists, and other YouTube information. You
-/// can retrieve the playlist IDs for each of these lists from the channel
-/// resource for a given channel. You can then use the playlistItems.list method
-/// to retrieve any of those lists. You can also add or remove items from those
-/// lists by calling the playlistItems.insert and playlistItems.delete methods.
+/// A *playlist* resource represents a YouTube playlist.
+///
+/// A playlist is a collection of videos that can be viewed sequentially and
+/// shared with other users. A playlist can contain up to 200 videos, and
+/// YouTube does not limit the number of playlists that each user creates. By
+/// default, playlists are publicly visible to other users, but playlists can be
+/// public or private. YouTube also uses playlists to identify special
+/// collections of videos for a channel, such as: - uploaded videos - favorite
+/// videos - positively rated (liked) videos - watch history - watch later To be
+/// more specific, these lists are associated with a channel, which is a
+/// collection of a person, group, or company's videos, playlists, and other
+/// YouTube information. You can retrieve the playlist IDs for each of these
+/// lists from the channel resource for a given channel. You can then use the
+/// playlistItems.list method to retrieve any of those lists. You can also add
+/// or remove items from those lists by calling the playlistItems.insert and
+/// playlistItems.delete methods.
 class Playlist {
   /// The contentDetails object contains information like video count.
   PlaylistContentDetails contentDetails;
@@ -15323,8 +15559,9 @@ class Playlist {
   /// The ID that YouTube uses to uniquely identify the playlist.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#playlist".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#playlist".
   core.String kind;
 
   /// Localizations for different languages
@@ -15435,24 +15672,27 @@ class PlaylistContentDetails {
 }
 
 /// A *playlistItem* resource identifies another resource, such as a video, that
-/// is included in a playlist. In addition, the playlistItem resource contains
-/// details about the included resource that pertain specifically to how that
-/// resource is used in that playlist. YouTube uses playlists to identify
-/// special collections of videos for a channel, such as: - uploaded videos -
-/// favorite videos - positively rated (liked) videos - watch history - watch
-/// later To be more specific, these lists are associated with a channel, which
-/// is a collection of a person, group, or company's videos, playlists, and
-/// other YouTube information. You can retrieve the playlist IDs for each of
-/// these lists from the channel resource for a given channel. You can then use
-/// the playlistItems.list method to retrieve any of those lists. You can also
-/// add or remove items from those lists by calling the playlistItems.insert and
+/// is included in a playlist.
+///
+/// In addition, the playlistItem resource contains details about the included
+/// resource that pertain specifically to how that resource is used in that
+/// playlist. YouTube uses playlists to identify special collections of videos
+/// for a channel, such as: - uploaded videos - favorite videos - positively
+/// rated (liked) videos - watch history - watch later To be more specific,
+/// these lists are associated with a channel, which is a collection of a
+/// person, group, or company's videos, playlists, and other YouTube
+/// information. You can retrieve the playlist IDs for each of these lists from
+/// the channel resource for a given channel. You can then use the
+/// playlistItems.list method to retrieve any of those lists. You can also add
+/// or remove items from those lists by calling the playlistItems.insert and
 /// playlistItems.delete methods. For example, if a user gives a positive rating
 /// to a video, you would insert that video into the liked videos playlist for
 /// that user's channel.
 class PlaylistItem {
   /// The contentDetails object is included in the resource if the included item
-  /// is a YouTube video. The object contains additional information about the
-  /// video.
+  /// is a YouTube video.
+  ///
+  /// The object contains additional information about the video.
   PlaylistItemContentDetails contentDetails;
 
   /// Etag of this resource.
@@ -15461,8 +15701,9 @@ class PlaylistItem {
   /// The ID that YouTube uses to uniquely identify the playlist item.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#playlistItem".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#playlistItem".
   core.String kind;
 
   /// The snippet object contains basic details about the playlist item, such as
@@ -15525,28 +15766,33 @@ class PlaylistItem {
 
 class PlaylistItemContentDetails {
   /// The time, measured in seconds from the start of the video, when the video
-  /// should stop playing. (The playlist owner can specify the times when the
-  /// video should start and stop playing when the video is played in the
-  /// context of the playlist.) By default, assume that the video.endTime is the
-  /// end of the video.
+  /// should stop playing.
+  ///
+  /// (The playlist owner can specify the times when the video should start and
+  /// stop playing when the video is played in the context of the playlist.) By
+  /// default, assume that the video.endTime is the end of the video.
   core.String endAt;
 
   /// A user-generated note for this item.
   core.String note;
 
   /// The time, measured in seconds from the start of the video, when the video
-  /// should start playing. (The playlist owner can specify the times when the
-  /// video should start and stop playing when the video is played in the
-  /// context of the playlist.) The default value is 0.
+  /// should start playing.
+  ///
+  /// (The playlist owner can specify the times when the video should start and
+  /// stop playing when the video is played in the context of the playlist.) The
+  /// default value is 0.
   core.String startAt;
 
-  /// The ID that YouTube uses to uniquely identify a video. To retrieve the
-  /// video resource, set the id query parameter to this value in your API
-  /// request.
+  /// The ID that YouTube uses to uniquely identify a video.
+  ///
+  /// To retrieve the video resource, set the id query parameter to this value
+  /// in your API request.
   core.String videoId;
 
-  /// The date and time that the video was published to YouTube. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time that the video was published to YouTube.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String videoPublishedAt;
 
   PlaylistItemContentDetails();
@@ -15599,8 +15845,10 @@ class PlaylistItemListResponse {
   /// A list of playlist items that match the request criteria.
   core.List<PlaylistItem> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#playlistItemListResponse". Etag of this resource.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#playlistItemListResponse". Etag of this
+  /// resource.
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -15689,6 +15937,7 @@ class PlaylistItemListResponse {
 }
 
 /// Basic details about a playlist, including title, description and thumbnails.
+///
 /// Basic details of a YouTube Playlist item provided by the author. Next ID: 13
 class PlaylistItemSnippet {
   /// The ID that YouTube uses to uniquely identify the user that added the item
@@ -15705,22 +15954,26 @@ class PlaylistItemSnippet {
   /// playlist item is in.
   core.String playlistId;
 
-  /// The order in which the item appears in the playlist. The value uses a
-  /// zero-based index, so the first item has a position of 0, the second item
-  /// has a position of 1, and so forth.
+  /// The order in which the item appears in the playlist.
+  ///
+  /// The value uses a zero-based index, so the first item has a position of 0,
+  /// the second item has a position of 1, and so forth.
   core.int position;
 
-  /// The date and time that the item was added to the playlist. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time that the item was added to the playlist.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
   /// The id object contains information that can be used to uniquely identify
   /// the resource that is included in the playlist as the playlist item.
   ResourceId resourceId;
 
-  /// A map of thumbnail images associated with the playlist item. For each
-  /// object in the map, the key is the name of the thumbnail image, and the
-  /// value is an object that contains other information about the thumbnail.
+  /// A map of thumbnail images associated with the playlist item.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail.
   ThumbnailDetails thumbnails;
 
   /// The item's title.
@@ -15829,8 +16082,9 @@ class PlaylistListResponse {
   /// A list of playlists that match the request criteria
   core.List<Playlist> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#playlistListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#playlistListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -15988,16 +16242,19 @@ class PlaylistSnippet {
   /// Localized title and description, read-only.
   PlaylistLocalization localized;
 
-  /// The date and time that the playlist was created. The value is specified in
-  /// ISO 8601 format.
+  /// The date and time that the playlist was created.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
   /// Keyword tags associated with the playlist.
   core.List<core.String> tags;
 
-  /// A map of thumbnail images associated with the playlist. For each object in
-  /// the map, the key is the name of the thumbnail image, and the value is an
-  /// object that contains other information about the thumbnail.
+  /// A map of thumbnail images associated with the playlist.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail.
   ThumbnailDetails thumbnails;
 
   /// The playlist's title.
@@ -16153,21 +16410,27 @@ class RelatedEntity {
 /// resource.
 class ResourceId {
   /// The ID that YouTube uses to uniquely identify the referred resource, if
-  /// that resource is a channel. This property is only present if the
-  /// resourceId.kind value is youtube#channel.
+  /// that resource is a channel.
+  ///
+  /// This property is only present if the resourceId.kind value is
+  /// youtube#channel.
   core.String channelId;
 
   /// The type of the API resource.
   core.String kind;
 
   /// The ID that YouTube uses to uniquely identify the referred resource, if
-  /// that resource is a playlist. This property is only present if the
-  /// resourceId.kind value is youtube#playlist.
+  /// that resource is a playlist.
+  ///
+  /// This property is only present if the resourceId.kind value is
+  /// youtube#playlist.
   core.String playlistId;
 
   /// The ID that YouTube uses to uniquely identify the referred resource, if
-  /// that resource is a video. This property is only present if the
-  /// resourceId.kind value is youtube#video.
+  /// that resource is a video.
+  ///
+  /// This property is only present if the resourceId.kind value is
+  /// youtube#video.
   core.String videoId;
 
   ResourceId();
@@ -16215,8 +16478,9 @@ class SearchListResponse {
   /// Pagination information for token pagination.
   core.List<SearchResult> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#searchListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#searchListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -16313,6 +16577,7 @@ class SearchListResponse {
 
 /// A search result contains information about a YouTube video, channel, or
 /// playlist that matches the search parameters specified in an API request.
+///
 /// While a search result points to a uniquely identifiable resource, like a
 /// video, it does not have its own persistent data.
 class SearchResult {
@@ -16323,14 +16588,16 @@ class SearchResult {
   /// the resource that matches the search request.
   ResourceId id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#searchResult".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#searchResult".
   core.String kind;
 
   /// The snippet object contains basic details about a search result, such as
-  /// its title or description. For example, if the search result is a video,
-  /// then the title will be the video's title and the description will be the
-  /// video's description.
+  /// its title or description.
+  ///
+  /// For example, if the search result is a video, then the title will be the
+  /// video's title and the description will be the video's description.
   SearchResultSnippet snippet;
 
   SearchResult();
@@ -16385,8 +16652,9 @@ class SearchResultSnippet {
   core.String description;
 
   /// It indicates if the resource (video or channel) has upcoming/active live
-  /// broadcast content. Or it's "none" if there is not any upcoming/active live
-  /// broadcasts.
+  /// broadcast content.
+  ///
+  /// Or it's "none" if there is not any upcoming/active live broadcasts.
   /// Possible string values are:
   /// - "none"
   /// - "upcoming" : The live broadcast is upcoming.
@@ -16395,12 +16663,16 @@ class SearchResultSnippet {
   core.String liveBroadcastContent;
 
   /// The creation date and time of the resource that the search result
-  /// identifies. The value is specified in ISO 8601 format.
+  /// identifies.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
-  /// A map of thumbnail images associated with the search result. For each
-  /// object in the map, the key is the name of the thumbnail image, and the
-  /// value is an object that contains other information about the thumbnail.
+  /// A map of thumbnail images associated with the search result.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail.
   ThumbnailDetails thumbnails;
 
   /// The title of the search result.
@@ -16460,15 +16732,17 @@ class SearchResultSnippet {
   }
 }
 
-/// A `__sponsor__` resource represents a sponsor for a YouTube channel. A
-/// sponsor provides recurring monetary support to a creator and receives
+/// A `__sponsor__` resource represents a sponsor for a YouTube channel.
+///
+/// A sponsor provides recurring monetary support to a creator and receives
 /// special benefits.
 class Sponsor {
   /// Etag of this resource.
   core.String etag;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// `"youtube#sponsor"`.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"youtube#sponsor"`.
   core.String kind;
 
   /// The `snippet` object contains basic details about the sponsor.
@@ -16514,8 +16788,9 @@ class SponsorListResponse {
   /// A list of sponsors that match the request criteria.
   core.List<Sponsor> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// `"youtube#sponsorListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"youtube#sponsorListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the `pageToken` parameter to
@@ -16601,8 +16876,9 @@ class SponsorSnippet {
   /// Details about the sponsor.
   ChannelProfileDetails sponsorDetails;
 
-  /// The date and time when the user became a sponsor. The value is specified
-  /// in ISO 8601 (`YYYY-MM-DDThh:mm:ss.sZ`) format.
+  /// The date and time when the user became a sponsor.
+  ///
+  /// The value is specified in ISO 8601 (`YYYY-MM-DDThh:mm:ss.sZ`) format.
   core.String sponsorSince;
 
   SponsorSnippet();
@@ -16642,9 +16918,11 @@ class SponsorSnippet {
 }
 
 /// A *subscription* resource contains information about a YouTube user
-/// subscription. A subscription notifies a user when new videos are added to a
-/// channel or when another user takes one of several actions on YouTube, such
-/// as uploading a video, rating a video, or commenting on a video.
+/// subscription.
+///
+/// A subscription notifies a user when new videos are added to a channel or
+/// when another user takes one of several actions on YouTube, such as uploading
+/// a video, rating a video, or commenting on a video.
 class Subscription {
   /// The contentDetails object contains basic statistics about the
   /// subscription.
@@ -16656,8 +16934,9 @@ class Subscription {
   /// The ID that YouTube uses to uniquely identify the subscription.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#subscription".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#subscription".
   core.String kind;
 
   /// The snippet object contains basic details about the subscription,
@@ -16772,8 +17051,9 @@ class SubscriptionListResponse {
   /// A list of subscriptions that match the request criteria.
   core.List<Subscription> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#subscriptionListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#subscriptionListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -16871,17 +17151,20 @@ class SubscriptionSnippet {
   /// The subscription's details.
   core.String description;
 
-  /// The date and time that the subscription was created. The value is
-  /// specified in ISO 8601 format.
+  /// The date and time that the subscription was created.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
   /// The id object contains information about the channel that the user
   /// subscribed to.
   ResourceId resourceId;
 
-  /// A map of thumbnail images associated with the video. For each object in
-  /// the map, the key is the name of the thumbnail image, and the value is an
-  /// object that contains other information about the thumbnail.
+  /// A map of thumbnail images associated with the video.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail.
   ThumbnailDetails thumbnails;
 
   /// The subscription's title.
@@ -17002,8 +17285,9 @@ class SuperChatEvent {
   /// The ID that YouTube assigns to uniquely identify the Super Chat event.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// `"youtube#superChatEvent"`.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"youtube#superChatEvent"`.
   core.String kind;
 
   /// The `snippet` object contains basic details about the Super Chat event.
@@ -17055,8 +17339,9 @@ class SuperChatEventListResponse {
   /// A list of Super Chat purchases that match the request criteria.
   core.List<SuperChatEvent> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#superChatEventListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#superChatEventListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -17133,8 +17418,9 @@ class SuperChatEventListResponse {
 }
 
 class SuperChatEventSnippet {
-  /// The purchase amount, in micros of the purchase currency. e.g., 1 is
-  /// represented as 1000000.
+  /// The purchase amount, in micros of the purchase currency.
+  ///
+  /// e.g., 1 is represented as 1000000.
   core.String amountMicros;
 
   /// Channel id where the event occurred.
@@ -17143,15 +17429,20 @@ class SuperChatEventSnippet {
   /// The text contents of the comment left by the user.
   core.String commentText;
 
-  /// The date and time when the event occurred. The value is specified in ISO
-  /// 8601 format.
+  /// The date and time when the event occurred.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String createdAt;
 
-  /// The currency in which the purchase was made. ISO 4217.
+  /// The currency in which the purchase was made.
+  ///
+  /// ISO 4217.
   core.String currency;
 
   /// A rendered string that displays the purchase amount and currency (e.g.,
-  /// "$1.00"). The string is rendered for the given language.
+  /// "$1.00").
+  ///
+  /// The string is rendered for the given language.
   core.String displayString;
 
   /// True if this event is a Super Sticker event.
@@ -17249,9 +17540,10 @@ class SuperStickerMetadata {
   /// Specifies the localization language in which the alt text is returned.
   core.String altTextLanguage;
 
-  /// Unique identifier of the Super Sticker. This is a shorter form of the
-  /// alt_text that includes pack name and a recognizable characteristic of the
-  /// sticker.
+  /// Unique identifier of the Super Sticker.
+  ///
+  /// This is a shorter form of the alt_text that includes pack name and a
+  /// recognizable characteristic of the sticker.
   core.String stickerId;
 
   SuperStickerMetadata();
@@ -17337,8 +17629,9 @@ class ThirdPartyLink {
   /// Etag of this resource
   core.String etag;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#thirdPartyLink".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#thirdPartyLink".
   core.String kind;
 
   /// The linking_token identifies a YouTube account and channel with which the
@@ -17575,8 +17868,9 @@ class ThumbnailSetResponse {
   /// A list of thumbnails.
   core.List<ThumbnailDetails> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#thumbnailSetResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#thumbnailSetResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -17642,8 +17936,9 @@ class TokenPagination {
 
 /// A *video* resource represents a YouTube video.
 class Video {
-  /// Age restriction details related to a video. This data can only be
-  /// retrieved by the video owner.
+  /// Age restriction details related to a video.
+  ///
+  /// This data can only be retrieved by the video owner.
   VideoAgeGating ageGating;
 
   /// The contentDetails object contains information about the video content,
@@ -17655,20 +17950,24 @@ class Video {
 
   /// The fileDetails object encapsulates information about the video file that
   /// was uploaded to YouTube, including the file's resolution, duration, audio
-  /// and video codecs, stream bitrates, and more. This data can only be
-  /// retrieved by the video owner.
+  /// and video codecs, stream bitrates, and more.
+  ///
+  /// This data can only be retrieved by the video owner.
   VideoFileDetails fileDetails;
 
   /// The ID that YouTube uses to uniquely identify the video.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#video".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#video".
   core.String kind;
 
   /// The liveStreamingDetails object contains metadata about a live video
-  /// broadcast. The object will only be present in a video resource if the
-  /// video is an upcoming, live, or completed live broadcast.
+  /// broadcast.
+  ///
+  /// The object will only be present in a video resource if the video is an
+  /// upcoming, live, or completed live broadcast.
   VideoLiveStreamingDetails liveStreamingDetails;
 
   /// The localizations object contains localized versions of the basic details
@@ -17684,14 +17983,16 @@ class Video {
   VideoPlayer player;
 
   /// The processingDetails object encapsulates information about YouTube's
-  /// progress in processing the uploaded video file. The properties in the
-  /// object identify the current processing status and an estimate of the time
-  /// remaining until YouTube finishes processing the video. This part also
-  /// indicates whether different types of data or content, such as file details
-  /// or thumbnail images, are available for the video. The processingProgress
-  /// object is designed to be polled so that the video uploaded can track the
-  /// progress that YouTube has made in processing the uploaded video file. This
-  /// data can only be retrieved by the video owner.
+  /// progress in processing the uploaded video file.
+  ///
+  /// The properties in the object identify the current processing status and an
+  /// estimate of the time remaining until YouTube finishes processing the
+  /// video. This part also indicates whether different types of data or
+  /// content, such as file details or thumbnail images, are available for the
+  /// video. The processingProgress object is designed to be polled so that the
+  /// video uploaded can track the progress that YouTube has made in processing
+  /// the uploaded video file. This data can only be retrieved by the video
+  /// owner.
   VideoProcessingDetails processingDetails;
 
   /// The projectDetails object contains information about the project specific
@@ -17715,7 +18016,9 @@ class Video {
 
   /// The suggestions object encapsulates suggestions that identify
   /// opportunities to improve the video quality or the metadata for the
-  /// uploaded video. This data can only be retrieved by the video owner.
+  /// uploaded video.
+  ///
+  /// This data can only be retrieved by the video owner.
   VideoSuggestions suggestions;
 
   /// The topicDetails object encapsulates information about Freebase topics
@@ -17871,13 +18174,16 @@ class VideoAbuseReport {
   /// The language that the content was viewed in.
   core.String language;
 
-  /// The high-level, or primary, reason that the content is abusive. The value
-  /// is an abuse report reason ID.
+  /// The high-level, or primary, reason that the content is abusive.
+  ///
+  /// The value is an abuse report reason ID.
   core.String reasonId;
 
   /// The specific, or secondary, reason that this content is abusive (if
-  /// available). The value is an abuse report reason ID that is a valid
-  /// secondary reason for the primary reason.
+  /// available).
+  ///
+  /// The value is an abuse report reason ID that is a valid secondary reason
+  /// for the primary reason.
   core.String secondaryReasonId;
 
   /// The ID that YouTube uses to uniquely identify the video.
@@ -17925,8 +18231,9 @@ class VideoAbuseReport {
 }
 
 /// A `__videoAbuseReportReason__` resource identifies a reason that a video
-/// could be reported as abusive. Video abuse report reasons are used with
-/// `video.ReportAbuse`.
+/// could be reported as abusive.
+///
+/// Video abuse report reasons are used with `video.ReportAbuse`.
 class VideoAbuseReportReason {
   /// Etag of this resource.
   core.String etag;
@@ -17934,8 +18241,9 @@ class VideoAbuseReportReason {
   /// The ID of this abuse report reason.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// `"youtube#videoAbuseReportReason"`.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"youtube#videoAbuseReportReason"`.
   core.String kind;
 
   /// The `snippet` object contains basic details about the abuse report reason.
@@ -17987,8 +18295,9 @@ class VideoAbuseReportReasonListResponse {
   /// A list of valid abuse reasons that are used with `video.ReportAbuse`.
   core.List<VideoAbuseReportReason> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// `"youtube#videoAbuseReportReasonListResponse"`.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `"youtube#videoAbuseReportReasonListResponse"`.
   core.String kind;
 
   /// The `visitorId` identifies the visitor.
@@ -18045,6 +18354,7 @@ class VideoAbuseReportReasonSnippet {
   core.String label;
 
   /// The secondary reasons associated with this reason, if any are available.
+  ///
   /// (There might be 0 or more.)
   core.List<VideoAbuseReportSecondaryReason> secondaryReasons;
 
@@ -18107,15 +18417,17 @@ class VideoAbuseReportSecondaryReason {
 }
 
 class VideoAgeGating {
-  /// Indicates whether or not the video has alcoholic beverage content. Only
-  /// users of legal purchasing age in a particular country, as identified by
-  /// ICAP, can view the content.
+  /// Indicates whether or not the video has alcoholic beverage content.
+  ///
+  /// Only users of legal purchasing age in a particular country, as identified
+  /// by ICAP, can view the content.
   core.bool alcoholContent;
 
-  /// Age-restricted trailers. For redband trailers and adult-rated video-games.
-  /// Only users aged 18+ can view the content. The the field is true the
-  /// content is restricted to viewers aged 18+. Otherwise The field won't be
-  /// present.
+  /// Age-restricted trailers.
+  ///
+  /// For redband trailers and adult-rated video-games. Only users aged 18+ can
+  /// view the content. The the field is true the content is restricted to
+  /// viewers aged 18+. Otherwise The field won't be present.
   core.bool restricted;
 
   /// Video game rating, if any.
@@ -18164,8 +18476,9 @@ class VideoCategory {
   /// The ID that YouTube uses to uniquely identify the video category.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoCategory".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoCategory".
   core.String kind;
 
   /// The snippet object contains basic details about the video category,
@@ -18215,13 +18528,15 @@ class VideoCategoryListResponse {
   /// Serialized EventId of the request which produced this response.
   core.String eventId;
 
-  /// A list of video categories that can be associated with YouTube videos. In
-  /// this map, the video category ID is the map key, and its value is the
+  /// A list of video categories that can be associated with YouTube videos.
+  ///
+  /// In this map, the video category ID is the map key, and its value is the
   /// corresponding videoCategory resource.
   core.List<VideoCategory> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoCategoryListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoCategoryListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -18375,17 +18690,20 @@ class VideoContentDetails {
   /// in 2D.
   core.String dimension;
 
-  /// The length of the video. The tag value is an ISO 8601 duration in the
-  /// format PT#M#S, in which the letters PT indicate that the value specifies a
-  /// period of time, and the letters M and S refer to length in minutes and
-  /// seconds, respectively. The # characters preceding the M and S letters are
-  /// both integers that specify the number of minutes (or seconds) of the
-  /// video. For example, a value of PT15M51S indicates that the video is 15
-  /// minutes and 51 seconds long.
+  /// The length of the video.
+  ///
+  /// The tag value is an ISO 8601 duration in the format PT#M#S, in which the
+  /// letters PT indicate that the value specifies a period of time, and the
+  /// letters M and S refer to length in minutes and seconds, respectively. The
+  /// # characters preceding the M and S letters are both integers that specify
+  /// the number of minutes (or seconds) of the video. For example, a value of
+  /// PT15M51S indicates that the video is 15 minutes and 51 seconds long.
   core.String duration;
 
   /// Indicates whether the video uploader has provided a custom thumbnail image
-  /// for the video. This property is only visible to the video uploader.
+  /// for the video.
+  ///
+  /// This property is only visible to the video uploader.
   core.bool hasCustomThumbnail;
 
   /// The value of is_license_content indicates whether the video is licensed
@@ -18399,7 +18717,9 @@ class VideoContentDetails {
   core.String projection;
 
   /// The regionRestriction object contains information about the countries
-  /// where a video is (or is not) viewable. The object will contain either the
+  /// where a video is (or is not) viewable.
+  ///
+  /// The object will contain either the
   /// contentDetails.regionRestriction.allowed property or the
   /// contentDetails.regionRestriction.blocked property.
   VideoContentDetailsRegionRestriction regionRestriction;
@@ -18481,13 +18801,15 @@ class VideoContentDetails {
 /// DEPRECATED Region restriction of the video.
 class VideoContentDetailsRegionRestriction {
   /// A list of region codes that identify countries where the video is
-  /// viewable. If this property is present and a country is not listed in its
-  /// value, then the video is blocked from appearing in that country. If this
-  /// property is present and contains an empty list, the video is blocked in
-  /// all countries.
+  /// viewable.
+  ///
+  /// If this property is present and a country is not listed in its value, then
+  /// the video is blocked from appearing in that country. If this property is
+  /// present and contains an empty list, the video is blocked in all countries.
   core.List<core.String> allowed;
 
   /// A list of region codes that identify countries where the video is blocked.
+  ///
   /// If this property is present and a country is not listed in its value, then
   /// the video is viewable in that country. If this property is present and
   /// contains an empty list, the video is viewable in all countries.
@@ -18524,8 +18846,9 @@ class VideoContentDetailsRegionRestriction {
 /// audio and video streams, but also metadata information like content length,
 /// digitization time, or geotagging information.
 class VideoFileDetails {
-  /// A list of audio streams contained in the uploaded video file. Each item in
-  /// the list contains detailed metadata about an audio stream.
+  /// A list of audio streams contained in the uploaded video file.
+  ///
+  /// Each item in the list contains detailed metadata about an audio stream.
   core.List<VideoFileDetailsAudioStream> audioStreams;
 
   /// The uploaded video file's combined (video and audio) bitrate in bits per
@@ -18535,24 +18858,30 @@ class VideoFileDetails {
   /// The uploaded video file's container format.
   core.String container;
 
-  /// The date and time when the uploaded video file was created. The value is
-  /// specified in ISO 8601 format. Currently, the following ISO 8601 formats
-  /// are supported: - Date only: YYYY-MM-DD - Naive time: YYYY-MM-DDTHH:MM:SS -
-  /// Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
+  /// The date and time when the uploaded video file was created.
+  ///
+  /// The value is specified in ISO 8601 format. Currently, the following ISO
+  /// 8601 formats are supported: - Date only: YYYY-MM-DD - Naive time:
+  /// YYYY-MM-DDTHH:MM:SS - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
   core.String creationTime;
 
   /// The length of the uploaded video in milliseconds.
   core.String durationMs;
 
-  /// The uploaded file's name. This field is present whether a video file or
-  /// another type of file was uploaded.
+  /// The uploaded file's name.
+  ///
+  /// This field is present whether a video file or another type of file was
+  /// uploaded.
   core.String fileName;
 
-  /// The uploaded file's size in bytes. This field is present whether a video
-  /// file or another type of file was uploaded.
+  /// The uploaded file's size in bytes.
+  ///
+  /// This field is present whether a video file or another type of file was
+  /// uploaded.
   core.String fileSize;
 
   /// The uploaded file's type as detected by YouTube's video processing engine.
+  ///
   /// Currently, YouTube only processes video files, but this field is present
   /// whether a video file or another type of file was uploaded.
   /// Possible string values are:
@@ -18566,8 +18895,9 @@ class VideoFileDetails {
   /// - "other" : Other non-video file type.
   core.String fileType;
 
-  /// A list of video streams contained in the uploaded video file. Each item in
-  /// the list contains detailed metadata about a video stream.
+  /// A list of video streams contained in the uploaded video file.
+  ///
+  /// Each item in the list contains detailed metadata about a video stream.
   core.List<VideoFileDetailsVideoStream> videoStreams;
 
   VideoFileDetails();
@@ -18656,8 +18986,9 @@ class VideoFileDetailsAudioStream {
   /// The audio codec that the stream uses.
   core.String codec;
 
-  /// A value that uniquely identifies a video vendor. Typically, the value is a
-  /// four-letter vendor code.
+  /// A value that uniquely identifies a video vendor.
+  ///
+  /// Typically, the value is a four-letter vendor code.
   core.String vendor;
 
   VideoFileDetailsAudioStream();
@@ -18723,12 +19054,15 @@ class VideoFileDetailsVideoStream {
   /// - "other"
   core.String rotation;
 
-  /// A value that uniquely identifies a video vendor. Typically, the value is a
-  /// four-letter vendor code.
+  /// A value that uniquely identifies a video vendor.
+  ///
+  /// Typically, the value is a four-letter vendor code.
   core.String vendor;
 
-  /// The encoded video content's width in pixels. You can calculate the video's
-  /// encoding aspect ratio as width_pixels / height_pixels.
+  /// The encoded video content's width in pixels.
+  ///
+  /// You can calculate the video's encoding aspect ratio as width_pixels /
+  /// height_pixels.
   core.int widthPixels;
 
   VideoFileDetailsVideoStream();
@@ -18798,8 +19132,9 @@ class VideoListResponse {
   core.String eventId;
   core.List<Video> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoListResponse".
   core.String kind;
 
   /// The token that can be used as the value of the pageToken parameter to
@@ -18889,39 +19224,47 @@ class VideoListResponse {
 
 /// Details about the live streaming metadata.
 class VideoLiveStreamingDetails {
-  /// The ID of the currently active live chat attached to this video. This
-  /// field is filled only if the video is a currently live broadcast that has
-  /// live chat. Once the broadcast transitions to complete this field will be
-  /// removed and the live chat closed down. For persistent broadcasts that live
-  /// chat id will no longer be tied to this video but rather to the new video
-  /// being displayed at the persistent page.
+  /// The ID of the currently active live chat attached to this video.
+  ///
+  /// This field is filled only if the video is a currently live broadcast that
+  /// has live chat. Once the broadcast transitions to complete this field will
+  /// be removed and the live chat closed down. For persistent broadcasts that
+  /// live chat id will no longer be tied to this video but rather to the new
+  /// video being displayed at the persistent page.
   core.String activeLiveChatId;
 
-  /// The time that the broadcast actually ended. The value is specified in ISO
-  /// 8601 format. This value will not be available until the broadcast is over.
+  /// The time that the broadcast actually ended.
+  ///
+  /// The value is specified in ISO 8601 format. This value will not be
+  /// available until the broadcast is over.
   core.String actualEndTime;
 
-  /// The time that the broadcast actually started. The value is specified in
-  /// ISO 8601 format. This value will not be available until the broadcast
-  /// begins.
+  /// The time that the broadcast actually started.
+  ///
+  /// The value is specified in ISO 8601 format. This value will not be
+  /// available until the broadcast begins.
   core.String actualStartTime;
 
-  /// The number of viewers currently watching the broadcast. The property and
-  /// its value will be present if the broadcast has current viewers and the
-  /// broadcast owner has not hidden the viewcount for the video. Note that
-  /// YouTube stops tracking the number of concurrent viewers for a broadcast
-  /// when the broadcast ends. So, this property would not identify the number
-  /// of viewers watching an archived video of a live broadcast that already
-  /// ended.
+  /// The number of viewers currently watching the broadcast.
+  ///
+  /// The property and its value will be present if the broadcast has current
+  /// viewers and the broadcast owner has not hidden the viewcount for the
+  /// video. Note that YouTube stops tracking the number of concurrent viewers
+  /// for a broadcast when the broadcast ends. So, this property would not
+  /// identify the number of viewers watching an archived video of a live
+  /// broadcast that already ended.
   core.String concurrentViewers;
 
-  /// The time that the broadcast is scheduled to end. The value is specified in
-  /// ISO 8601 format. If the value is empty or the property is not present,
-  /// then the broadcast is scheduled to continue indefinitely.
+  /// The time that the broadcast is scheduled to end.
+  ///
+  /// The value is specified in ISO 8601 format. If the value is empty or the
+  /// property is not present, then the broadcast is scheduled to continue
+  /// indefinitely.
   core.String scheduledEndTime;
 
-  /// The time that the broadcast is scheduled to begin. The value is specified
-  /// in ISO 8601 format.
+  /// The time that the broadcast is scheduled to begin.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String scheduledStartTime;
 
   VideoLiveStreamingDetails();
@@ -19069,17 +19412,23 @@ class VideoPlayer {
 class VideoProcessingDetails {
   /// This value indicates whether video editing suggestions, which might
   /// improve video quality or the playback experience, are available for the
-  /// video. You can retrieve these suggestions by requesting the suggestions
-  /// part in your videos.list() request.
+  /// video.
+  ///
+  /// You can retrieve these suggestions by requesting the suggestions part in
+  /// your videos.list() request.
   core.String editorSuggestionsAvailability;
 
   /// This value indicates whether file details are available for the uploaded
-  /// video. You can retrieve a video's file details by requesting the
-  /// fileDetails part in your videos.list() request.
+  /// video.
+  ///
+  /// You can retrieve a video's file details by requesting the fileDetails part
+  /// in your videos.list() request.
   core.String fileDetailsAvailability;
 
-  /// The reason that YouTube failed to process the video. This property will
-  /// only have a value if the processingStatus property's value is failed.
+  /// The reason that YouTube failed to process the video.
+  ///
+  /// This property will only have a value if the processingStatus property's
+  /// value is failed.
   /// Possible string values are:
   /// - "uploadFailed"
   /// - "transcodeFailed"
@@ -19090,17 +19439,23 @@ class VideoProcessingDetails {
   /// This value indicates whether the video processing engine has generated
   /// suggestions that might improve YouTube's ability to process the the video,
   /// warnings that explain video processing problems, or errors that cause
-  /// video processing problems. You can retrieve these suggestions by
-  /// requesting the suggestions part in your videos.list() request.
+  /// video processing problems.
+  ///
+  /// You can retrieve these suggestions by requesting the suggestions part in
+  /// your videos.list() request.
   core.String processingIssuesAvailability;
 
   /// The processingProgress object contains information about the progress
-  /// YouTube has made in processing the video. The values are really only
-  /// relevant if the video's processing status is processing.
+  /// YouTube has made in processing the video.
+  ///
+  /// The values are really only relevant if the video's processing status is
+  /// processing.
   VideoProcessingDetailsProcessingProgress processingProgress;
 
-  /// The video's processing status. This value indicates whether YouTube was
-  /// able to process the video or if the video is still being processed.
+  /// The video's processing status.
+  ///
+  /// This value indicates whether YouTube was able to process the video or if
+  /// the video is still being processed.
   /// Possible string values are:
   /// - "processing"
   /// - "succeeded"
@@ -19109,9 +19464,11 @@ class VideoProcessingDetails {
   core.String processingStatus;
 
   /// This value indicates whether keyword (tag) suggestions are available for
-  /// the video. Tags can be added to a video's metadata to make it easier for
-  /// other users to find the video. You can retrieve these suggestions by
-  /// requesting the suggestions part in your videos.list() request.
+  /// the video.
+  ///
+  /// Tags can be added to a video's metadata to make it easier for other users
+  /// to find the video. You can retrieve these suggestions by requesting the
+  /// suggestions part in your videos.list() request.
   core.String tagSuggestionsAvailability;
 
   /// This value indicates whether thumbnail images have been generated for the
@@ -19183,8 +19540,9 @@ class VideoProcessingDetails {
 
 /// Video processing progress and completion time estimate.
 class VideoProcessingDetailsProcessingProgress {
-  /// The number of parts of the video that YouTube has already processed. You
-  /// can estimate the percentage of the video that YouTube has already
+  /// The number of parts of the video that YouTube has already processed.
+  ///
+  /// You can estimate the percentage of the video that YouTube has already
   /// processed by calculating: 100 * parts_processed / parts_total Note that
   /// since the estimated number of parts could increase without a corresponding
   /// increase in the number of parts that have already been processed, it is
@@ -19193,7 +19551,9 @@ class VideoProcessingDetailsProcessingProgress {
   core.String partsProcessed;
 
   /// An estimate of the total number of parts that need to be processed for the
-  /// video. The number may be updated with more precise estimates while YouTube
+  /// video.
+  ///
+  /// The number may be updated with more precise estimates while YouTube
   /// processes the video.
   core.String partsTotal;
 
@@ -19299,8 +19659,9 @@ class VideoRatingListResponse {
   /// A list of ratings that match the request criteria.
   core.List<VideoRating> items;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "youtube#videoGetRatingResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "youtube#videoGetRatingResponse".
   core.String kind;
 
   /// The visitorId identifies the visitor.
@@ -19358,8 +19719,9 @@ class VideoRecordingDetails {
   /// The text description of the location where the video was recorded.
   core.String locationDescription;
 
-  /// The date and time when the video was recorded. The value is specified in
-  /// ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
+  /// The date and time when the video was recorded.
+  ///
+  /// The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
   core.String recordingDate;
 
   VideoRecordingDetails();
@@ -19412,12 +19774,14 @@ class VideoSnippet {
   /// The language of the videos's default snippet.
   core.String defaultLanguage;
 
-  /// The video's description. @mutable youtube.videos.insert
-  /// youtube.videos.update
+  /// The video's description.
+  ///
+  /// @mutable youtube.videos.insert youtube.videos.update
   core.String description;
 
-  /// Indicates if the video is an upcoming/active live broadcast. Or it's
-  /// "none" if the video is not an upcoming/active live broadcast.
+  /// Indicates if the video is an upcoming/active live broadcast.
+  ///
+  /// Or it's "none" if the video is not an upcoming/active live broadcast.
   /// Possible string values are:
   /// - "none"
   /// - "upcoming" : The live broadcast is upcoming.
@@ -19425,23 +19789,32 @@ class VideoSnippet {
   /// - "completed" : The live broadcast has been completed.
   core.String liveBroadcastContent;
 
-  /// Localized snippet selected with the hl parameter. If no such localization
-  /// exists, this field is populated with the default snippet. (Read-only)
+  /// Localized snippet selected with the hl parameter.
+  ///
+  /// If no such localization exists, this field is populated with the default
+  /// snippet. (Read-only)
   VideoLocalization localized;
 
-  /// The date and time that the video was uploaded. The value is specified in
-  /// ISO 8601 format.
+  /// The date and time that the video was uploaded.
+  ///
+  /// The value is specified in ISO 8601 format.
   core.String publishedAt;
 
-  /// A list of keyword tags associated with the video. Tags may contain spaces.
+  /// A list of keyword tags associated with the video.
+  ///
+  /// Tags may contain spaces.
   core.List<core.String> tags;
 
-  /// A map of thumbnail images associated with the video. For each object in
-  /// the map, the key is the name of the thumbnail image, and the value is an
-  /// object that contains other information about the thumbnail.
+  /// A map of thumbnail images associated with the video.
+  ///
+  /// For each object in the map, the key is the name of the thumbnail image,
+  /// and the value is an object that contains other information about the
+  /// thumbnail.
   ThumbnailDetails thumbnails;
 
-  /// The video's title. @mutable youtube.videos.insert youtube.videos.update
+  /// The video's title.
+  ///
+  /// @mutable youtube.videos.insert youtube.videos.update
   core.String title;
 
   VideoSnippet();
@@ -19593,15 +19966,19 @@ class VideoStatistics {
   }
 }
 
-/// Basic details about a video category, such as its localized title. Next Id:
-/// 17
+/// Basic details about a video category, such as its localized title.
+///
+/// Next Id: 17
 class VideoStatus {
   /// This value indicates if the video can be embedded on another website.
+  ///
   /// @mutable youtube.videos.insert youtube.videos.update
   core.bool embeddable;
 
-  /// This value explains why a video failed to upload. This property is only
-  /// present if the uploadStatus property indicates that the upload failed.
+  /// This value explains why a video failed to upload.
+  ///
+  /// This property is only present if the uploadStatus property indicates that
+  /// the upload failed.
   /// Possible string values are:
   /// - "conversion" : Unable to convert video content.
   /// - "invalidFile" : Invalid file format.
@@ -19611,7 +19988,9 @@ class VideoStatus {
   /// - "uploadAborted" : Upload wasn't finished.
   core.String failureReason;
 
-  /// The video's license. @mutable youtube.videos.insert youtube.videos.update
+  /// The video's license.
+  ///
+  /// @mutable youtube.videos.insert youtube.videos.update
   /// Possible string values are:
   /// - "youtube"
   /// - "creativeCommon"
@@ -19626,19 +20005,22 @@ class VideoStatus {
   core.String privacyStatus;
 
   /// This value indicates if the extended video statistics on the watch page
-  /// can be viewed by everyone. Note that the view count, likes, etc will still
-  /// be visible if this is disabled. @mutable youtube.videos.insert
-  /// youtube.videos.update
+  /// can be viewed by everyone.
+  ///
+  /// Note that the view count, likes, etc will still be visible if this is
+  /// disabled. @mutable youtube.videos.insert youtube.videos.update
   core.bool publicStatsViewable;
 
-  /// The date and time when the video is scheduled to publish. It can be set
-  /// only if the privacy status of the video is private. The value is specified
-  /// in ISO 8601 format.
+  /// The date and time when the video is scheduled to publish.
+  ///
+  /// It can be set only if the privacy status of the video is private. The
+  /// value is specified in ISO 8601 format.
   core.String publishAt;
 
-  /// This value explains why YouTube rejected an uploaded video. This property
-  /// is only present if the uploadStatus property indicates that the upload was
-  /// rejected.
+  /// This value explains why YouTube rejected an uploaded video.
+  ///
+  /// This property is only present if the uploadStatus property indicates that
+  /// the upload was rejected.
   /// Possible string values are:
   /// - "copyright" : Copyright infringement.
   /// - "inappropriate" : Inappropriate video content.
@@ -19741,9 +20123,10 @@ class VideoSuggestions {
   core.List<core.String> editorSuggestions;
 
   /// A list of errors that will prevent YouTube from successfully processing
-  /// the uploaded video video. These errors indicate that, regardless of the
-  /// video's current processing status, eventually, that status will almost
-  /// certainly be failed.
+  /// the uploaded video video.
+  ///
+  /// These errors indicate that, regardless of the video's current processing
+  /// status, eventually, that status will almost certainly be failed.
   core.List<core.String> processingErrors;
 
   /// A list of suggestions that may improve YouTube's ability to process the
@@ -19751,11 +20134,12 @@ class VideoSuggestions {
   core.List<core.String> processingHints;
 
   /// A list of reasons why YouTube may have difficulty transcoding the uploaded
-  /// video or that might result in an erroneous transcoding. These warnings are
-  /// generated before YouTube actually processes the uploaded video file. In
-  /// addition, they identify issues that are unlikely to cause the video
-  /// processing to fail but that might cause problems such as sync issues,
-  /// video artifacts, or a missing audio track.
+  /// video or that might result in an erroneous transcoding.
+  ///
+  /// These warnings are generated before YouTube actually processes the
+  /// uploaded video file. In addition, they identify issues that are unlikely
+  /// to cause the video processing to fail but that might cause problems such
+  /// as sync issues, video artifacts, or a missing audio track.
   core.List<core.String> processingWarnings;
 
   /// A list of keyword tags that could be added to the video's metadata to
@@ -19819,11 +20203,12 @@ class VideoSuggestions {
 
 /// A single tag suggestion with it's relevance information.
 class VideoSuggestionsTagSuggestion {
-  /// A set of video categories for which the tag is relevant. You can use this
-  /// information to display appropriate tag suggestions based on the video
-  /// category that the video uploader associates with the video. By default,
-  /// tag suggestions are relevant for all categories if there are no restricts
-  /// defined for the keyword.
+  /// A set of video categories for which the tag is relevant.
+  ///
+  /// You can use this information to display appropriate tag suggestions based
+  /// on the video category that the video uploader associates with the video.
+  /// By default, tag suggestions are relevant for all categories if there are
+  /// no restricts defined for the keyword.
   core.List<core.String> categoryRestricts;
 
   /// The keyword tag suggested for the video.
@@ -19857,8 +20242,10 @@ class VideoSuggestionsTagSuggestion {
 /// Freebase topic information related to the video.
 class VideoTopicDetails {
   /// Similar to topic_id, except that these topics are merely relevant to the
-  /// video. These are topics that may be mentioned in, or appear in the video.
-  /// You can retrieve information about each topic using Freebase Topic API.
+  /// video.
+  ///
+  /// These are topics that may be mentioned in, or appear in the video. You can
+  /// retrieve information about each topic using Freebase Topic API.
   core.List<core.String> relevantTopicIds;
 
   /// A list of Wikipedia URLs that provide a high-level description of the
@@ -19866,6 +20253,7 @@ class VideoTopicDetails {
   core.List<core.String> topicCategories;
 
   /// A list of Freebase topic IDs that are centrally associated with the video.
+  ///
   /// These are topics that are centrally featured in the video, and it can be
   /// said that the video is mainly about each of these. You can retrieve
   /// information about each topic using the < a
@@ -19907,7 +20295,9 @@ class VideoTopicDetails {
   }
 }
 
-/// Branding properties for the watch. All deprecated.
+/// Branding properties for the watch.
+///
+/// All deprecated.
 class WatchSettings {
   /// The text color for the video watch page's branded area.
   core.String backgroundColor;

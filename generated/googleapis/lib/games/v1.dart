@@ -373,9 +373,11 @@ class AchievementsResource {
   }
 
   /// Sets the steps for the currently authenticated player towards unlocking an
-  /// achievement. If the steps parameter is less than the current number of
-  /// steps that the player already gained for the achievement, the achievement
-  /// is not modified.
+  /// achievement.
+  ///
+  /// If the steps parameter is less than the current number of steps that the
+  /// player already gained for the achievement, the achievement is not
+  /// modified.
   ///
   /// Request parameters:
   ///
@@ -545,9 +547,10 @@ class ApplicationsResource {
 
   ApplicationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves the metadata of the application with the given ID. If the
-  /// requested application is not available for the specified `platformType`,
-  /// the returned response will not include any instance data.
+  /// Retrieves the metadata of the application with the given ID.
+  ///
+  /// If the requested application is not available for the specified
+  /// `platformType`, the returned response will not include any instance data.
   ///
   /// Request parameters:
   ///
@@ -1193,8 +1196,10 @@ class PlayersResource {
 
   PlayersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves the Player resource with the given ID. To retrieve the player
-  /// for the currently authenticated user, set `playerId` to `me`.
+  /// Retrieves the Player resource with the given ID.
+  ///
+  /// To retrieve the player for the currently authenticated user, set
+  /// `playerId` to `me`.
   ///
   /// Request parameters:
   ///
@@ -1401,10 +1406,12 @@ class ScoresResource {
   ScoresResource(commons.ApiRequester client) : _requester = client;
 
   /// Get high scores, and optionally ranks, in leaderboards for the currently
-  /// authenticated player. For a specific time span, `leaderboardId` can be set
-  /// to `ALL` to retrieve data for all leaderboards in a given time span.
-  /// `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the
-  /// same request; only one parameter may be set to 'ALL'.
+  /// authenticated player.
+  ///
+  /// For a specific time span, `leaderboardId` can be set to `ALL` to retrieve
+  /// data for all leaderboards in a given time span. `NOTE: You cannot ask for
+  /// 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
+  /// parameter may be set to 'ALL'.
   ///
   /// Request parameters:
   ///
@@ -2097,8 +2104,9 @@ class AchievementDefinition {
   /// image, or is game-provided.
   core.bool isUnlockedIconUrlDefault;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementDefinition`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementDefinition`.
   core.String kind;
 
   /// The name of the achievement.
@@ -2207,8 +2215,10 @@ class AchievementDefinitionsListResponse {
   /// The achievement definitions.
   core.List<AchievementDefinition> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementDefinitionsListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `games#achievementDefinitionsListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -2251,8 +2261,9 @@ class AchievementIncrementResponse {
   /// The current steps recorded for this incremental achievement.
   core.int currentSteps;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementIncrementResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementIncrementResponse`.
   core.String kind;
 
   /// Whether the current steps for the achievement has reached the number of
@@ -2291,6 +2302,7 @@ class AchievementIncrementResponse {
 /// An achievement reveal response
 class AchievementRevealResponse {
   /// The current state of the achievement for which a reveal was attempted.
+  ///
   /// This might be `UNLOCKED` if the achievement was already unlocked.
   /// Possible string values are:
   /// - "REVEAL_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
@@ -2298,8 +2310,9 @@ class AchievementRevealResponse {
   /// - "UNLOCKED" : Achievement is unlocked.
   core.String currentState;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementRevealResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementRevealResponse`.
   core.String kind;
 
   AchievementRevealResponse();
@@ -2330,8 +2343,10 @@ class AchievementSetStepsAtLeastResponse {
   /// The current steps recorded for this incremental achievement.
   core.int currentSteps;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementSetStepsAtLeastResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `games#achievementSetStepsAtLeastResponse`.
   core.String kind;
 
   /// Whether the current steps for the achievement has reached the number of
@@ -2369,8 +2384,9 @@ class AchievementSetStepsAtLeastResponse {
 
 /// An achievement unlock response
 class AchievementUnlockResponse {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementUnlockResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementUnlockResponse`.
   core.String kind;
 
   /// Whether this achievement was newly unlocked (that is, whether the unlock
@@ -2402,8 +2418,9 @@ class AchievementUnlockResponse {
 
 /// A list of achievement update requests.
 class AchievementUpdateMultipleRequest {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementUpdateMultipleRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementUpdateMultipleRequest`.
   core.String kind;
 
   /// The individual achievement update requests.
@@ -2438,8 +2455,10 @@ class AchievementUpdateMultipleRequest {
 
 /// Response message for UpdateMultipleAchievements rpc.
 class AchievementUpdateMultipleResponse {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementUpdateMultipleResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `games#achievementUpdateMultipleResponse`.
   core.String kind;
 
   /// The updated state of the achievements.
@@ -2482,8 +2501,9 @@ class AchievementUpdateRequest {
   /// achievement.
   GamesAchievementIncrement incrementPayload;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementUpdateRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementUpdateRequest`.
   core.String kind;
 
   /// The payload if an update of type `SET_STEPS_AT_LEAST` was requested for
@@ -2560,8 +2580,9 @@ class AchievementUpdateResponse {
   /// The current steps recorded for this achievement if it is incremental.
   core.int currentSteps;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#achievementUpdateResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#achievementUpdateResponse`.
   core.String kind;
 
   /// Whether this achievement was newly unlocked (that is, whether the unlock
@@ -2644,8 +2665,9 @@ class Application {
   /// The instances of the application.
   core.List<Instance> instances;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#application`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#application`.
   core.String kind;
 
   /// The last updated timestamp of the application.
@@ -2657,8 +2679,9 @@ class Application {
   /// The name of the application.
   core.String name;
 
-  /// A hint to the client UI for what color to use as an app-themed color. The
-  /// color is given as an RGB triplet (e.g. "E0E0E0").
+  /// A hint to the client UI for what color to use as an app-themed color.
+  ///
+  /// The color is given as an RGB triplet (e.g. "E0E0E0").
   core.String themeColor;
 
   Application();
@@ -2761,8 +2784,9 @@ class Application {
 
 /// An application category object.
 class ApplicationCategory {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#applicationCategory`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#applicationCategory`.
   core.String kind;
 
   /// The primary category.
@@ -2803,11 +2827,14 @@ class ApplicationCategory {
 /// A third party application verification response resource.
 class ApplicationVerifyResponse {
   /// An alternate ID that was once used for the player that was issued the auth
-  /// token used in this request. (This field is not normally populated.)
+  /// token used in this request.
+  ///
+  /// (This field is not normally populated.)
   core.String alternatePlayerId;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#applicationVerifyResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#applicationVerifyResponse`.
   core.String kind;
 
   /// The ID of the player that was issued the auth token used in this request.
@@ -2850,8 +2877,9 @@ class Category {
   /// Experience points earned in this category.
   core.String experiencePoints;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#category`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#category`.
   core.String kind;
 
   Category();
@@ -2888,8 +2916,9 @@ class CategoryListResponse {
   /// The list of categories with usage data.
   core.List<Category> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#categoryListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#categoryListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -2946,8 +2975,9 @@ class EventBatchRecordFailure {
   /// server will apply updates.
   core.String failureCause;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventBatchRecordFailure`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventBatchRecordFailure`.
   core.String kind;
 
   /// The time range which was rejected; empty for a request-wide failure.
@@ -2988,8 +3018,9 @@ class EventChild {
   /// The ID of the child event.
   core.String childId;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventChild`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventChild`.
   core.String kind;
 
   EventChild();
@@ -3036,8 +3067,9 @@ class EventDefinition {
   /// game-provided.
   core.bool isDefaultImageUrl;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventDefinition`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventDefinition`.
   core.String kind;
 
   /// The visibility of event being tracked in this definition.
@@ -3116,8 +3148,9 @@ class EventDefinitionListResponse {
   /// The event definitions.
   core.List<EventDefinition> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventDefinitionListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventDefinitionListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -3157,8 +3190,9 @@ class EventDefinitionListResponse {
 
 /// An event period time range.
 class EventPeriodRange {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventPeriodRange`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventPeriodRange`.
   core.String kind;
 
   /// The time when this update period ends, in millis, since 1970 UTC (Unix
@@ -3200,8 +3234,9 @@ class EventPeriodRange {
 
 /// An event period update resource.
 class EventPeriodUpdate {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventPeriodUpdate`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventPeriodUpdate`.
   core.String kind;
 
   /// The time period being covered by this update.
@@ -3257,8 +3292,9 @@ class EventRecordFailure {
   /// non-positive value.
   core.String failureCause;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventRecordFailure`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventRecordFailure`.
   core.String kind;
 
   EventRecordFailure();
@@ -3296,8 +3332,9 @@ class EventRecordRequest {
   /// UTC (Unix Epoch).
   core.String currentTimeMillis;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventRecordRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventRecordRequest`.
   core.String kind;
 
   /// The request ID used to identify this attempt to record events.
@@ -3350,8 +3387,9 @@ class EventUpdateRequest {
   /// The ID of the event being modified in this update.
   core.String definitionId;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventUpdateRequest`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventUpdateRequest`.
   core.String kind;
 
   /// The number of times this event occurred in this time period.
@@ -3394,8 +3432,9 @@ class EventUpdateResponse {
   /// Any failures updating a particular event.
   core.List<EventRecordFailure> eventFailures;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#eventUpdateResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#eventUpdateResponse`.
   core.String kind;
 
   /// The current status of any updated events
@@ -3451,8 +3490,9 @@ class EventUpdateResponse {
 
 /// The payload to request to increment an achievement.
 class GamesAchievementIncrement {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#GamesAchievementIncrement`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#GamesAchievementIncrement`.
   core.String kind;
 
   /// The requestId associated with an increment to an achievement.
@@ -3492,8 +3532,9 @@ class GamesAchievementIncrement {
 
 /// The payload to request to increment an achievement.
 class GamesAchievementSetStepsAtLeast {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#GamesAchievementSetStepsAtLeast`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#GamesAchievementSetStepsAtLeast`.
   core.String kind;
 
   /// The minimum number of steps for the achievement to be set to.
@@ -3527,8 +3568,9 @@ class ImageAsset {
   /// The height of the asset.
   core.int height;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#imageAsset`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#imageAsset`.
   core.String kind;
 
   /// The name of the asset.
@@ -3592,8 +3634,9 @@ class Instance {
   /// Platform dependent details for iOS.
   InstanceIosDetails iosInstance;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#instance`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#instance`.
   core.String kind;
 
   /// Localized display name.
@@ -3689,8 +3732,9 @@ class InstanceAndroidDetails {
   /// Flag indicating whether the anti-piracy check is enabled.
   core.bool enablePiracyCheck;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#instanceAndroidDetails`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#instanceAndroidDetails`.
   core.String kind;
 
   /// Android package name which maps to Google Play URL.
@@ -3742,8 +3786,9 @@ class InstanceIosDetails {
   /// iTunes App ID.
   core.String itunesAppId;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#instanceIosDetails`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#instanceIosDetails`.
   core.String kind;
 
   /// Indicates that this instance is the default for new installations on iPad
@@ -3815,8 +3860,9 @@ class InstanceIosDetails {
 
 /// The Web details resource.
 class InstanceWebDetails {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#instanceWebDetails`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#instanceWebDetails`.
   core.String kind;
 
   /// Launch URL for the game.
@@ -3866,8 +3912,9 @@ class Leaderboard {
   /// game-provided.
   core.bool isIconUrlDefault;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#leaderboard`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#leaderboard`.
   core.String kind;
 
   /// The name of the leaderboard.
@@ -3937,8 +3984,9 @@ class LeaderboardEntry {
   /// The localized string for the rank of this score for this leaderboard.
   core.String formattedScoreRank;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#leaderboardEntry`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#leaderboardEntry`.
   core.String kind;
 
   /// The player who holds this score.
@@ -3947,8 +3995,10 @@ class LeaderboardEntry {
   /// The rank of this score for this leaderboard.
   core.String scoreRank;
 
-  /// Additional information about the score. Values must contain no more than
-  /// 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+  /// Additional information about the score.
+  ///
+  /// Values must contain no more than 64 URI-safe characters as defined by
+  /// section 2.3 of RFC 3986.
   core.String scoreTag;
 
   /// The numerical value of this score.
@@ -4037,8 +4087,9 @@ class LeaderboardListResponse {
   /// The leaderboards.
   core.List<Leaderboard> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#leaderboardListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#leaderboardListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -4084,8 +4135,9 @@ class LeaderboardScoreRank {
   /// The rank in the leaderboard as a string.
   core.String formattedRank;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#leaderboardScoreRank`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#leaderboardScoreRank`.
   core.String kind;
 
   /// The number of scores in the leaderboard.
@@ -4140,8 +4192,9 @@ class LeaderboardScores {
   /// The scores in the leaderboard.
   core.List<LeaderboardEntry> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#leaderboardScores`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#leaderboardScores`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -4150,11 +4203,12 @@ class LeaderboardScores {
   /// The total number of scores in the leaderboard.
   core.String numScores;
 
-  /// The score of the requesting player on the leaderboard. The player's score
-  /// may appear both here and in the list of scores above. If you are viewing a
-  /// public leaderboard and the player is not sharing their gameplay
-  /// information publicly, the `scoreRank`and `formattedScoreRank` values will
-  /// not be present.
+  /// The score of the requesting player on the leaderboard.
+  ///
+  /// The player's score may appear both here and in the list of scores above.
+  /// If you are viewing a public leaderboard and the player is not sharing
+  /// their gameplay information publicly, the `scoreRank`and
+  /// `formattedScoreRank` values will not be present.
   LeaderboardEntry playerScore;
 
   /// The pagination token for the previous page of results.
@@ -4213,12 +4267,14 @@ class LeaderboardScores {
 
 /// The metagame config resource
 class MetagameConfig {
-  /// Current version of the metagame configuration data. When this data is
-  /// updated, the version number will be increased by one.
+  /// Current version of the metagame configuration data.
+  ///
+  /// When this data is updated, the version number will be increased by one.
   core.int currentVersion;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#metagameConfig`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#metagameConfig`.
   core.String kind;
 
   /// The list of player levels.
@@ -4259,12 +4315,14 @@ class MetagameConfig {
 
 /// A representation of the individual components of the name.
 class PlayerName {
-  /// The family name of this player. In some places, this is known as the last
-  /// name.
+  /// The family name of this player.
+  ///
+  /// In some places, this is known as the last name.
   core.String familyName;
 
-  /// The given name of this player. In some places, this is known as the first
-  /// name.
+  /// The given name of this player.
+  ///
+  /// In some places, this is known as the first name.
   core.String givenName;
 
   PlayerName();
@@ -4307,32 +4365,38 @@ class Player {
   /// An object to represent Play Game experience information for the player.
   PlayerExperienceInfo experienceInfo;
 
-  /// The friend status of the given player, relative to the requester. This is
-  /// unset if the player is not sharing their friends list with the game.
+  /// The friend status of the given player, relative to the requester.
+  ///
+  /// This is unset if the player is not sharing their friends list with the
+  /// game.
   /// Possible string values are:
   /// - "FRIEND_STATUS_UNSPECIFIED" : Default value. This value is unused.
   /// - "NO_RELATIONSHIP" : There is no relationship between the players.
   /// - "FRIEND" : The player and requester are friends.
   core.String friendStatus;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#player`
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#player`
   core.String kind;
 
   /// A representation of the individual components of the name.
   PlayerName name;
 
   /// The player ID that was used for this player the first time they signed
-  /// into the game in question. This is only populated for calls to player.get
-  /// for the requesting player, only if the player ID has subsequently changed,
-  /// and only to clients that support remapping player IDs.
+  /// into the game in question.
+  ///
+  /// This is only populated for calls to player.get for the requesting player,
+  /// only if the player ID has subsequently changed, and only to clients that
+  /// support remapping player IDs.
   core.String originalPlayerId;
 
   /// The ID of the player.
   core.String playerId;
 
-  /// The player's profile settings. Controls whether or not the player's
-  /// profile is visible to other players.
+  /// The player's profile settings.
+  ///
+  /// Controls whether or not the player's profile is visible to other players.
   ProfileSettings profileSettings;
 
   /// The player's title rewarded for their game activities.
@@ -4437,9 +4501,11 @@ class PlayerAchievement {
   /// The current steps for an incremental achievement.
   core.int currentSteps;
 
-  /// Experience points earned for the achievement. This field is absent for
-  /// achievements that have not yet been unlocked and 0 for achievements that
-  /// have been unlocked by testers but that are unpublished.
+  /// Experience points earned for the achievement.
+  ///
+  /// This field is absent for achievements that have not yet been unlocked and
+  /// 0 for achievements that have been unlocked by testers but that are
+  /// unpublished.
   core.String experiencePoints;
 
   /// The current steps for an incremental achievement as a string.
@@ -4448,8 +4514,9 @@ class PlayerAchievement {
   /// The ID of the achievement.
   core.String id;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerAchievement`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerAchievement`.
   core.String kind;
 
   /// The timestamp of the last modification to this achievement's state.
@@ -4514,8 +4581,9 @@ class PlayerAchievementListResponse {
   /// The achievements.
   core.List<PlayerAchievement> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerAchievementListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerAchievementListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -4558,13 +4626,15 @@ class PlayerEvent {
   /// The ID of the event definition.
   core.String definitionId;
 
-  /// The current number of times this event has occurred, as a string. The
-  /// formatting of this string depends on the configuration of your event in
-  /// the Play Games Developer Console.
+  /// The current number of times this event has occurred, as a string.
+  ///
+  /// The formatting of this string depends on the configuration of your event
+  /// in the Play Games Developer Console.
   core.String formattedNumEvents;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerEvent`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerEvent`.
   core.String kind;
 
   /// The current number of times this event has occurred.
@@ -4619,8 +4689,9 @@ class PlayerEventListResponse {
   /// The player events.
   core.List<PlayerEvent> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerEventListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerEventListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -4666,16 +4737,19 @@ class PlayerExperienceInfo {
   /// The current level of the player.
   PlayerLevel currentLevel;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerExperienceInfo`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerExperienceInfo`.
   core.String kind;
 
   /// The timestamp when the player was leveled up, in millis since Unix epoch
   /// UTC.
   core.String lastLevelUpTimestampMillis;
 
-  /// The next level of the player. If the current level is the maximum level,
-  /// this should be same as the current level.
+  /// The next level of the player.
+  ///
+  /// If the current level is the maximum level, this should be same as the
+  /// current level.
   PlayerLevel nextLevel;
 
   PlayerExperienceInfo();
@@ -4727,22 +4801,27 @@ class PlayerLeaderboardScore {
   /// The rank of the score in the friends collection for this leaderboard.
   LeaderboardScoreRank friendsRank;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerLeaderboardScore`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerLeaderboardScore`.
   core.String kind;
 
   /// The ID of the leaderboard this score is in.
   core.String leaderboardId;
 
-  /// The public rank of the score in this leaderboard. This object will not be
-  /// present if the user is not sharing their scores publicly.
+  /// The public rank of the score in this leaderboard.
+  ///
+  /// This object will not be present if the user is not sharing their scores
+  /// publicly.
   LeaderboardScoreRank publicRank;
 
   /// The formatted value of this score.
   core.String scoreString;
 
-  /// Additional information about the score. Values must contain no more than
-  /// 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+  /// Additional information about the score.
+  ///
+  /// Values must contain no more than 64 URI-safe characters as defined by
+  /// section 2.3 of RFC 3986.
   core.String scoreTag;
 
   /// The numerical value of this score.
@@ -4842,8 +4921,10 @@ class PlayerLeaderboardScoreListResponse {
   /// The leaderboard scores.
   core.List<PlayerLeaderboardScore> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerLeaderboardScoreListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string
+  /// `games#playerLeaderboardScoreListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -4894,8 +4975,9 @@ class PlayerLeaderboardScoreListResponse {
 
 /// 1P/3P metadata about a user's level.
 class PlayerLevel {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerLevel`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerLevel`.
   core.String kind;
 
   /// The level for the user.
@@ -4947,8 +5029,9 @@ class PlayerListResponse {
   /// The players.
   core.List<Player> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerListResponse`.
   core.String kind;
 
   /// Token corresponding to the next page of results.
@@ -4991,15 +5074,18 @@ class PlayerScore {
   /// The formatted score for this player score.
   core.String formattedScore;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerScore`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerScore`.
   core.String kind;
 
   /// The numerical value for this player score.
   core.String score;
 
-  /// Additional information about this score. Values will contain no more than
-  /// 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+  /// Additional information about this score.
+  ///
+  /// Values will contain no more than 64 URI-safe characters as defined by
+  /// section 2.3 of RFC 3986.
   core.String scoreTag;
 
   /// The time span for this player score.
@@ -5053,8 +5139,9 @@ class PlayerScore {
 
 /// A list of score submission statuses.
 class PlayerScoreListResponse {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerScoreListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerScoreListResponse`.
   core.String kind;
 
   /// The score submissions statuses.
@@ -5096,20 +5183,25 @@ class PlayerScoreResponse {
   /// The formatted value of the submitted score.
   core.String formattedScore;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerScoreResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerScoreResponse`.
   core.String kind;
 
   /// The leaderboard ID that this score was submitted to.
   core.String leaderboardId;
 
-  /// Additional information about this score. Values will contain no more than
-  /// 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+  /// Additional information about this score.
+  ///
+  /// Values will contain no more than 64 URI-safe characters as defined by
+  /// section 2.3 of RFC 3986.
   core.String scoreTag;
 
-  /// The scores in time spans that have not been beaten. As an example, the
-  /// submitted score may be better than the player's `DAILY` score, but not
-  /// better than the player's scores for the `WEEKLY` or `ALL_TIME` time spans.
+  /// The scores in time spans that have not been beaten.
+  ///
+  /// As an example, the submitted score may be better than the player's `DAILY`
+  /// score, but not better than the player's scores for the `WEEKLY` or
+  /// `ALL_TIME` time spans.
   core.List<PlayerScore> unbeatenScores;
 
   PlayerScoreResponse();
@@ -5167,8 +5259,9 @@ class PlayerScoreResponse {
 
 /// A list of score submission requests.
 class PlayerScoreSubmissionList {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#playerScoreSubmissionList`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#playerScoreSubmissionList`.
   core.String kind;
 
   /// The score submissions.
@@ -5215,8 +5308,9 @@ class ProfileSettings {
   /// will be unsuccessful.
   core.String friendsListVisibility;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#profileSettings`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#profileSettings`.
   core.String kind;
 
   /// Whether the player's profile is visible to the currently signed in player.
@@ -5257,8 +5351,9 @@ class RevisionCheckResponse {
   /// methods.
   core.String apiVersion;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#revisionCheckResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#revisionCheckResponse`.
   core.String kind;
 
   /// The result of the revision check.
@@ -5302,8 +5397,9 @@ class RevisionCheckResponse {
 
 /// A request to submit a score to leaderboards.
 class ScoreSubmission {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#scoreSubmission`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#scoreSubmission`.
   core.String kind;
 
   /// The leaderboard this score is being submitted to.
@@ -5312,8 +5408,10 @@ class ScoreSubmission {
   /// The new score being submitted.
   core.String score;
 
-  /// Additional information about this score. Values will contain no more than
-  /// 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+  /// Additional information about this score.
+  ///
+  /// Values will contain no more than 64 URI-safe characters as defined by
+  /// section 2.3 of RFC 3986.
   core.String scoreTag;
 
   /// Signature Values will contain URI-safe characters as defined by section
@@ -5363,15 +5461,18 @@ class ScoreSubmission {
 
 /// An snapshot object.
 class Snapshot {
-  /// The cover image of this snapshot. May be absent if there is no image.
+  /// The cover image of this snapshot.
+  ///
+  /// May be absent if there is no image.
   SnapshotImage coverImage;
 
   /// The description of this snapshot.
   core.String description;
 
-  /// The ID of the file underlying this snapshot in the Drive API. Only present
-  /// if the snapshot is a view on a Drive file and the file is owned by the
-  /// caller.
+  /// The ID of the file underlying this snapshot in the Drive API.
+  ///
+  /// Only present if the snapshot is a view on a Drive file and the file is
+  /// owned by the caller.
   core.String driveId;
 
   /// The duration associated with this snapshot, in millis.
@@ -5380,8 +5481,9 @@ class Snapshot {
   /// The ID of the snapshot.
   core.String id;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#snapshot`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#snapshot`.
   core.String kind;
 
   /// The timestamp (in millis since Unix epoch) of the last modification to
@@ -5487,15 +5589,17 @@ class SnapshotImage {
   /// The height of the image.
   core.int height;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#snapshotImage`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#snapshotImage`.
   core.String kind;
 
   /// The MIME type of the image.
   core.String mimeType;
 
-  /// The URL of the image. This URL may be invalidated at any time and should
-  /// not be cached.
+  /// The URL of the image.
+  ///
+  /// This URL may be invalidated at any time and should not be cached.
   core.String url;
 
   /// The width of the image.
@@ -5547,12 +5651,14 @@ class SnapshotListResponse {
   /// The snapshots.
   core.List<Snapshot> items;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#snapshotListResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#snapshotListResponse`.
   core.String kind;
 
-  /// Token corresponding to the next page of results. If there are no more
-  /// results, the token is omitted.
+  /// Token corresponding to the next page of results.
+  ///
+  /// If there are no more results, the token is omitted.
   core.String nextPageToken;
 
   SnapshotListResponse();
@@ -5589,56 +5695,72 @@ class SnapshotListResponse {
 
 /// A third party stats resource.
 class StatsResponse {
-  /// Average session length in minutes of the player. E.g., 1, 30, 60, ... .
-  /// Not populated if there is not enough information.
+  /// Average session length in minutes of the player.
+  ///
+  /// E.g., 1, 30, 60, ... . Not populated if there is not enough information.
   core.double avgSessionLengthMinutes;
 
   /// The probability of the player not returning to play the game in the next
-  /// day. E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough
+  /// day.
+  ///
+  /// E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough
   /// information.
   core.double churnProbability;
 
-  /// Number of days since the player last played this game. E.g., 0, 1, 5, 10,
-  /// ... . Not populated if there is not enough information.
+  /// Number of days since the player last played this game.
+  ///
+  /// E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information.
   core.int daysSinceLastPlayed;
 
   /// The probability of the player going to spend beyond a threshold amount of
-  /// money. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
+  /// money.
+  ///
+  /// E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
   /// information.
   core.double highSpenderProbability;
 
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string `games#statsResponse`.
+  /// Uniquely identifies the type of this resource.
+  ///
+  /// Value is always the fixed string `games#statsResponse`.
   core.String kind;
 
-  /// Number of in-app purchases made by the player in this game. E.g., 0, 1, 5,
-  /// 10, ... . Not populated if there is not enough information.
+  /// Number of in-app purchases made by the player in this game.
+  ///
+  /// E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information.
   core.int numPurchases;
 
   /// The approximate number of sessions of the player within the last 28 days,
   /// where a session begins when the player is connected to Play Games Services
-  /// and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not
-  /// populated if there is not enough information.
+  /// and ends when they are disconnected.
+  ///
+  /// E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information.
   core.int numSessions;
 
   /// The approximation of the sessions percentile of the player within the last
   /// 30 days, where a session begins when the player is connected to Play Games
-  /// Services and ends when they are disconnected. E.g., 0, 0.25, 0.5, 0.75.
-  /// Not populated if there is not enough information.
+  /// Services and ends when they are disconnected.
+  ///
+  /// E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough
+  /// information.
   core.double numSessionsPercentile;
 
-  /// The approximate spend percentile of the player in this game. E.g., 0,
-  /// 0.25, 0.5, 0.75. Not populated if there is not enough information.
+  /// The approximate spend percentile of the player in this game.
+  ///
+  /// E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough
+  /// information.
   core.double spendPercentile;
 
   /// The probability of the player going to spend the game in the next seven
-  /// days. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
+  /// days.
+  ///
+  /// E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
   /// information.
   core.double spendProbability;
 
   /// The predicted amount of money that the player going to spend in the next
-  /// 28 days. E.g., 1, 30, 60, ... . Not populated if there is not enough
-  /// information.
+  /// 28 days.
+  ///
+  /// E.g., 1, 30, 60, ... . Not populated if there is not enough information.
   core.double totalSpendNext28Days;
 
   StatsResponse();

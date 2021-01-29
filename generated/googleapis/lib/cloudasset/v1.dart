@@ -356,9 +356,10 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -415,8 +416,9 @@ class V1Resource {
 
   V1Resource(commons.ApiRequester client) : _requester = client;
 
-  /// Batch gets the update history of assets that overlap a time window. For
-  /// IAM_POLICY content, this API outputs history when the asset and its
+  /// Batch gets the update history of assets that overlap a time window.
+  ///
+  /// For IAM_POLICY content, this API outputs history when the asset and its
   /// attached IAM POLICY both exist. This can create gaps in the output
   /// history. Otherwise, this API outputs history with asset in both non-delete
   /// or deleted status. If a specified asset does not exist, this API returns
@@ -515,15 +517,16 @@ class V1Resource {
   }
 
   /// Exports assets with time and resource types to a given Cloud Storage
-  /// location/BigQuery table. For Cloud Storage location destinations, the
-  /// output format is newline-delimited JSON. Each line represents a
-  /// google.cloud.asset.v1.Asset in the JSON format; for BigQuery table
-  /// destinations, the output table stores the fields in asset proto as
-  /// columns. This API implements the google.longrunning.Operation API , which
-  /// allows you to keep track of the export. We recommend intervals of at least
-  /// 2 seconds with exponential retry to poll the export operation result. For
-  /// regular-size resource parent, the export operation usually finishes within
-  /// 5 minutes.
+  /// location/BigQuery table.
+  ///
+  /// For Cloud Storage location destinations, the output format is
+  /// newline-delimited JSON. Each line represents a google.cloud.asset.v1.Asset
+  /// in the JSON format; for BigQuery table destinations, the output table
+  /// stores the fields in asset proto as columns. This API implements the
+  /// google.longrunning.Operation API , which allows you to keep track of the
+  /// export. We recommend intervals of at least 2 seconds with exponential
+  /// retry to poll the export operation result. For regular-size resource
+  /// parent, the export operation usually finishes within 5 minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -586,9 +589,10 @@ class V1Resource {
   }
 
   /// Searches all IAM policies within the specified scope, such as a project,
-  /// folder, or organization. The caller must be granted the
-  /// `cloudasset.assets.searchAllIamPolicies` permission on the desired scope,
-  /// otherwise the request will be rejected.
+  /// folder, or organization.
+  ///
+  /// The caller must be granted the `cloudasset.assets.searchAllIamPolicies`
+  /// permission on the desired scope, otherwise the request will be rejected.
   ///
   /// Request parameters:
   ///
@@ -695,9 +699,10 @@ class V1Resource {
   }
 
   /// Searches all Cloud resources within the specified scope, such as a
-  /// project, folder, or organization. The caller must be granted the
-  /// `cloudasset.assets.searchAllResources` permission on the desired scope,
-  /// otherwise the request will be rejected.
+  /// project, folder, or organization.
+  ///
+  /// The caller must be granted the `cloudasset.assets.searchAllResources`
+  /// permission on the desired scope, otherwise the request will be rejected.
   ///
   /// Request parameters:
   ///
@@ -831,8 +836,9 @@ class V1Resource {
   }
 }
 
-/// An asset in Google Cloud. An asset can be any resource in the Google Cloud
-/// [resource
+/// An asset in Google Cloud.
+///
+/// An asset can be any resource in the Google Cloud [resource
 /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
 /// a resource outside the Google Cloud resource hierarchy (such as Google
 /// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
@@ -850,20 +856,23 @@ class Asset {
 
   /// The ancestry path of an asset in Google Cloud [resource
   /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
-  /// represented as a list of relative resource names. An ancestry path starts
-  /// with the closest ancestor in the hierarchy and ends at root. If the asset
-  /// is a project, folder, or organization, the ancestry path starts from the
-  /// asset itself. Example: `["projects/123456789", "folders/5432",
-  /// "organizations/1234"]`
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. If the asset is a project, folder, or organization, the
+  /// ancestry path starts from the asset itself. Example:
+  /// `["projects/123456789", "folders/5432", "organizations/1234"]`
   core.List<core.String> ancestors;
 
-  /// The type of the asset. Example: `compute.googleapis.com/Disk` See
-  /// [Supported asset
+  /// The type of the asset.
+  ///
+  /// Example: `compute.googleapis.com/Disk` See [Supported asset
   /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// for more information.
   core.String assetType;
 
   /// A representation of the Cloud IAM policy set on a Google Cloud resource.
+  ///
   /// There can be a maximum of one Cloud IAM policy set on any given resource.
   /// In addition, Cloud IAM policies inherit their granted access scope from
   /// any policies set on parent resources in the resource hierarchy. Therefore,
@@ -874,7 +883,9 @@ class Asset {
   /// information.
   Policy iamPolicy;
 
-  /// The full name of the asset. Example:
+  /// The full name of the asset.
+  ///
+  /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
   /// See [Resource
   /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
@@ -883,6 +894,7 @@ class Asset {
 
   /// A representation of an [organization
   /// policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
+  ///
   /// There can be more than one organization policy with different constraints
   /// set on a given resource.
   core.List<GoogleCloudOrgpolicyV1Policy> orgPolicy;
@@ -894,8 +906,9 @@ class Asset {
   /// guide](https://cloud.google.com/vpc-service-controls/docs/overview).
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter servicePerimeter;
 
-  /// The last update timestamp of an asset. update_time is updated when
-  /// create/update/delete operation is performed.
+  /// The last update timestamp of an asset.
+  ///
+  /// update_time is updated when create/update/delete operation is performed.
   core.String updateTime;
 
   Asset();
@@ -981,11 +994,12 @@ class Asset {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -1001,9 +1015,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1033,14 +1048,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -1103,37 +1121,44 @@ class BatchGetAssetsHistoryResponse {
 
 /// A BigQuery destination for exporting assets to.
 class BigQueryDestination {
-  /// Required. The BigQuery dataset in format
-  /// "projects/projectId/datasets/datasetId", to which the snapshot result
-  /// should be exported. If this dataset does not exist, the export call
-  /// returns an INVALID_ARGUMENT error.
+  /// The BigQuery dataset in format "projects/projectId/datasets/datasetId", to
+  /// which the snapshot result should be exported.
+  ///
+  /// If this dataset does not exist, the export call returns an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// Required.
   core.String dataset;
 
   /// If the destination table already exists and this flag is `TRUE`, the table
-  /// will be overwritten by the contents of assets snapshot. If the flag is
-  /// `FALSE` or unset and the destination table already exists, the export call
-  /// returns an INVALID_ARGUMEMT error.
+  /// will be overwritten by the contents of assets snapshot.
+  ///
+  /// If the flag is `FALSE` or unset and the destination table already exists,
+  /// the export call returns an INVALID_ARGUMEMT error.
   core.bool force;
 
   /// [partition_spec] determines whether to export to partitioned table(s) and
-  /// how to partition the data. If [partition_spec] is unset or
-  /// [partition_spec.partion_key] is unset or `PARTITION_KEY_UNSPECIFIED`, the
-  /// snapshot results will be exported to non-partitioned table(s). [force]
-  /// will decide whether to overwrite existing table(s). If [partition_spec] is
-  /// specified. First, the snapshot results will be written to partitioned
-  /// table(s) with two additional timestamp columns, readTime and requestTime,
-  /// one of which will be the partition key. Secondly, in the case when any
-  /// destination table already exists, it will first try to update existing
-  /// table's schema as necessary by appending additional columns. Then, if
-  /// [force] is `TRUE`, the corresponding partition will be overwritten by the
-  /// snapshot results (data in different partitions will remain intact); if
-  /// [force] is unset or `FALSE`, it will append the data. An error will be
-  /// returned if the schema update or data appension fails.
+  /// how to partition the data.
+  ///
+  /// If [partition_spec] is unset or [partition_spec.partion_key] is unset or
+  /// `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be exported to
+  /// non-partitioned table(s). [force] will decide whether to overwrite
+  /// existing table(s). If [partition_spec] is specified. First, the snapshot
+  /// results will be written to partitioned table(s) with two additional
+  /// timestamp columns, readTime and requestTime, one of which will be the
+  /// partition key. Secondly, in the case when any destination table already
+  /// exists, it will first try to update existing table's schema as necessary
+  /// by appending additional columns. Then, if [force] is `TRUE`, the
+  /// corresponding partition will be overwritten by the snapshot results (data
+  /// in different partitions will remain intact); if [force] is unset or
+  /// `FALSE`, it will append the data. An error will be returned if the schema
+  /// update or data appension fails.
   PartitionSpec partitionSpec;
 
   /// If this flag is `TRUE`, the snapshot results will be written to one or
-  /// multiple tables, each of which contains results of one asset type. The
-  /// [force] and [partition_spec] fields will apply to each of them. Field
+  /// multiple tables, each of which contains results of one asset type.
+  ///
+  /// The [force] and [partition_spec] fields will apply to each of them. Field
   /// [table] will be concatenated with "_" and the asset type names (see
   /// https://cloud.google.com/asset-inventory/docs/supported-asset-types for
   /// supported asset types) to construct per-asset-type table names, in which
@@ -1156,9 +1181,12 @@ class BigQueryDestination {
   /// be partial results persisting in a table.
   core.bool separateTablesPerAssetType;
 
-  /// Required. The BigQuery table to which the snapshot result should be
-  /// written. If this table does not exist, a new table with the given name
-  /// will be created.
+  /// The BigQuery table to which the snapshot result should be written.
+  ///
+  /// If this table does not exist, a new table with the given name will be
+  /// created.
+  ///
+  /// Required.
   core.String table;
 
   BigQueryDestination();
@@ -1206,16 +1234,19 @@ class BigQueryDestination {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -1246,8 +1277,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1284,14 +1316,19 @@ class Binding {
 
 /// Create asset feed request.
 class CreateFeedRequest {
-  /// Required. The feed details. The field `name` must be empty and it will be
-  /// generated in the format of: projects/project_number/feeds/feed_id
-  /// folders/folder_number/feeds/feed_id
+  /// The feed details.
+  ///
+  /// The field `name` must be empty and it will be generated in the format of:
+  /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
   /// organizations/organization_number/feeds/feed_id
+  ///
+  /// Required.
   Feed feed;
 
-  /// Required. This is the client-assigned asset feed identifier and it needs
-  /// to be unique under a specific parent project/folder/organization.
+  /// This is the client-assigned asset feed identifier and it needs to be
+  /// unique under a specific parent project/folder/organization.
+  ///
+  /// Required.
   core.String feedId;
 
   CreateFeedRequest();
@@ -1319,10 +1356,12 @@ class CreateFeedRequest {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1339,12 +1378,13 @@ class Empty {
 /// Explanation about the IAM policy search result.
 class Explanation {
   /// The map from roles to their included permissions that match the permission
-  /// query (i.e., a query containing `policy.role.permissions:`). Example: if
-  /// query `policy.role.permissions:compute.disk.get` matches a policy binding
-  /// that contains owner role, the matched_permissions will be `{"roles/owner":
-  /// ["compute.disk.get"]}`. The roles can also be found in the returned
-  /// `policy` bindings. Note that the map is populated only for requests with
-  /// permission queries.
+  /// query (i.e., a query containing `policy.role.permissions:`).
+  ///
+  /// Example: if query `policy.role.permissions:compute.disk.get` matches a
+  /// policy binding that contains owner role, the matched_permissions will be
+  /// `{"roles/owner": ["compute.disk.get"]}`. The roles can also be found in
+  /// the returned `policy` bindings. Note that the map is populated only for
+  /// requests with permission queries.
   core.Map<core.String, Permissions> matchedPermissions;
 
   Explanation();
@@ -1374,23 +1414,25 @@ class Explanation {
 
 /// Export asset request.
 class ExportAssetsRequest {
-  /// A list of asset types to take a snapshot for. For example:
-  /// "compute.googleapis.com/Disk". Regular expressions are also supported. For
-  /// example: * "compute.googleapis.com.*" snapshots resources whose asset type
-  /// starts with "compute.googleapis.com". * ".*Instance" snapshots resources
-  /// whose asset type ends with "Instance". * ".*Instance.*" snapshots
-  /// resources whose asset type contains "Instance". See
-  /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
-  /// expression syntax. If the regular expression does not match any supported
-  /// asset type, an INVALID_ARGUMENT error will be returned. If specified, only
-  /// matching assets will be returned, otherwise, it will snapshot all asset
-  /// types. See [Introduction to Cloud Asset
+  /// A list of asset types to take a snapshot for.
+  ///
+  /// For example: "compute.googleapis.com/Disk". Regular expressions are also
+  /// supported. For example: * "compute.googleapis.com.*" snapshots resources
+  /// whose asset type starts with "compute.googleapis.com". * ".*Instance"
+  /// snapshots resources whose asset type ends with "Instance". *
+  /// ".*Instance.*" snapshots resources whose asset type contains "Instance".
+  /// See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported
+  /// regular expression syntax. If the regular expression does not match any
+  /// supported asset type, an INVALID_ARGUMENT error will be returned. If
+  /// specified, only matching assets will be returned, otherwise, it will
+  /// snapshot all asset types. See [Introduction to Cloud Asset
   /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all
   /// supported asset types.
   core.List<core.String> assetTypes;
 
-  /// Asset content type. If not specified, no content but the asset name will
-  /// be returned.
+  /// Asset content type.
+  ///
+  /// If not specified, no content but the asset name will be returned.
   /// Possible string values are:
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
   /// - "RESOURCE" : Resource metadata.
@@ -1400,15 +1442,18 @@ class ExportAssetsRequest {
   /// asset.
   core.String contentType;
 
-  /// Required. Output configuration indicating where the results will be output
-  /// to.
+  /// Output configuration indicating where the results will be output to.
+  ///
+  /// Required.
   OutputConfig outputConfig;
 
-  /// Timestamp to take an asset snapshot. This can only be set to a timestamp
-  /// between the current time and the current time minus 35 days (inclusive).
-  /// If not specified, the current time will be used. Due to delays in resource
-  /// data collection and indexing, there is a volatile window during which
-  /// running the same query may get different results.
+  /// Timestamp to take an asset snapshot.
+  ///
+  /// This can only be set to a timestamp between the current time and the
+  /// current time minus 35 days (inclusive). If not specified, the current time
+  /// will be used. Due to delays in resource data collection and indexing,
+  /// there is a volatile window during which running the same query may get
+  /// different results.
   core.String readTime;
 
   ExportAssetsRequest();
@@ -1450,8 +1495,10 @@ class ExportAssetsRequest {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -1466,20 +1513,29 @@ class ExportAssetsRequest {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1517,30 +1573,34 @@ class Expr {
   }
 }
 
-/// An asset feed used to export asset updates to a destinations. An asset feed
-/// filter controls what updates are exported. The asset feed must be created
-/// within a project, organization, or folder. Supported destinations are:
-/// Pub/Sub topics.
+/// An asset feed used to export asset updates to a destinations.
+///
+/// An asset feed filter controls what updates are exported. The asset feed must
+/// be created within a project, organization, or folder. Supported destinations
+/// are: Pub/Sub topics.
 class Feed {
-  /// A list of the full names of the assets to receive updates. You must
-  /// specify either or both of asset_names and asset_types. Only asset updates
-  /// matching specified asset_names or asset_types are exported to the feed.
-  /// Example:
+  /// A list of the full names of the assets to receive updates.
+  ///
+  /// You must specify either or both of asset_names and asset_types. Only asset
+  /// updates matching specified asset_names or asset_types are exported to the
+  /// feed. Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
   /// See [Resource
   /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more info.
   core.List<core.String> assetNames;
 
-  /// A list of types of the assets to receive updates. You must specify either
-  /// or both of asset_names and asset_types. Only asset updates matching
-  /// specified asset_names or asset_types are exported to the feed. Example:
-  /// `"compute.googleapis.com/Disk"` See [this
+  /// A list of types of the assets to receive updates.
+  ///
+  /// You must specify either or both of asset_names and asset_types. Only asset
+  /// updates matching specified asset_names or asset_types are exported to the
+  /// feed. Example: `"compute.googleapis.com/Disk"` See [this
   /// topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// for a list of all supported asset types.
   core.List<core.String> assetTypes;
 
   /// A condition which determines whether an asset update should be published.
+  ///
   /// If specified, an asset will be returned only when the expression evaluates
   /// to true. When set, `expression` field in the `Expr` must be a valid [CEL
   /// expression] (https://github.com/google/cel-spec) on a TemporalAsset with
@@ -1551,8 +1611,9 @@ class Feed {
   /// for detailed instructions.
   Expr condition;
 
-  /// Asset content type. If not specified, no content but the asset name and
-  /// type will be returned.
+  /// Asset content type.
+  ///
+  /// If not specified, no content but the asset name and type will be returned.
   /// Possible string values are:
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
   /// - "RESOURCE" : Resource metadata.
@@ -1562,16 +1623,20 @@ class Feed {
   /// asset.
   core.String contentType;
 
-  /// Required. Feed output configuration defining where the asset updates are
-  /// published to.
+  /// Feed output configuration defining where the asset updates are published
+  /// to.
+  ///
+  /// Required.
   FeedOutputConfig feedOutputConfig;
 
-  /// Required. The format will be
+  /// The format will be
   /// projects/{project_number}/feeds/{client-assigned_feed_identifier} or
   /// folders/{folder_number}/feeds/{client-assigned_feed_identifier} or
   /// organizations/{organization_number}/feeds/{client-assigned_feed_identifier}
   /// The client-assigned feed identifier must be unique within the parent
   /// project/folder/organization.
+  ///
+  /// Required.
   core.String name;
 
   Feed();
@@ -1652,17 +1717,19 @@ class FeedOutputConfig {
 
 /// A Cloud Storage location.
 class GcsDestination {
-  /// The uri of the Cloud Storage object. It's the same uri that is used by
-  /// gsutil. Example: "gs://bucket_name/object_name". See [Viewing and Editing
-  /// Object
+  /// The uri of the Cloud Storage object.
+  ///
+  /// It's the same uri that is used by gsutil. Example:
+  /// "gs://bucket_name/object_name". See [Viewing and Editing Object
   /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information.
   core.String uri;
 
-  /// The uri prefix of all generated Cloud Storage objects. Example:
-  /// "gs://bucket_name/object_name_prefix". Each object uri is in format:
-  /// "gs://bucket_name/object_name_prefix// and only contains assets for that
-  /// type. starts from 0. Example:
+  /// The uri prefix of all generated Cloud Storage objects.
+  ///
+  /// Example: "gs://bucket_name/object_name_prefix". Each object uri is in
+  /// format: "gs://bucket_name/object_name_prefix// and only contains assets
+  /// for that type. starts from 0. Example:
   /// "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the
   /// first shard of output objects containing all compute.googleapis.com/Disk
   /// assets. An INVALID_ARGUMENT error will be returned if file with the same
@@ -1695,23 +1762,24 @@ class GcsDestination {
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
 /// resource.
 class GoogleCloudOrgpolicyV1BooleanPolicy {
-  /// If `true`, then the `Policy` is enforced. If `false`, then any
-  /// configuration is acceptable. Suppose you have a `Constraint`
-  /// `constraints/compute.disableSerialPortAccess` with `constraint_default`
-  /// set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following
-  /// behavior: - If the `Policy` at this resource has enforced set to `false`,
-  /// serial port connection attempts will be allowed. - If the `Policy` at this
-  /// resource has enforced set to `true`, serial port connection attempts will
-  /// be refused. - If the `Policy` at this resource is `RestoreDefault`, serial
-  /// port connection attempts will be allowed. - If no `Policy` is set at this
-  /// resource or anywhere higher in the resource hierarchy, serial port
-  /// connection attempts will be allowed. - If no `Policy` is set at this
-  /// resource, but one exists higher in the resource hierarchy, the behavior is
-  /// as if the`Policy` were set at this resource. The following examples
-  /// demonstrate the different possible layerings: Example 1 (nearest
-  /// `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced:
-  /// false} `projects/bar` has no `Policy` set. The constraint at
-  /// `projects/bar` and `organizations/foo` will not be enforced. Example 2
+  /// If `true`, then the `Policy` is enforced.
+  ///
+  /// If `false`, then any configuration is acceptable. Suppose you have a
+  /// `Constraint` `constraints/compute.disableSerialPortAccess` with
+  /// `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint`
+  /// exhibits the following behavior: - If the `Policy` at this resource has
+  /// enforced set to `false`, serial port connection attempts will be allowed.
+  /// - If the `Policy` at this resource has enforced set to `true`, serial port
+  /// connection attempts will be refused. - If the `Policy` at this resource is
+  /// `RestoreDefault`, serial port connection attempts will be allowed. - If no
+  /// `Policy` is set at this resource or anywhere higher in the resource
+  /// hierarchy, serial port connection attempts will be allowed. - If no
+  /// `Policy` is set at this resource, but one exists higher in the resource
+  /// hierarchy, the behavior is as if the`Policy` were set at this resource.
+  /// The following examples demonstrate the different possible layerings:
+  /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy`
+  /// with: {enforced: false} `projects/bar` has no `Policy` set. The constraint
+  /// at `projects/bar` and `organizations/foo` will not be enforced. Example 2
   /// (enforcement gets replaced): `organizations/foo` has a `Policy` with:
   /// {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The
   /// constraint at `organizations/foo` is not enforced. The constraint at
@@ -1740,6 +1808,7 @@ class GoogleCloudOrgpolicyV1BooleanPolicy {
 }
 
 /// Used in `policy_type` to specify how `list_policy` behaves at this resource.
+///
 /// `ListPolicy` can define specific values and subtrees of Cloud Resource
 /// Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are
 /// allowed or denied by setting the `allowed_values` and `denied_values`
@@ -1765,26 +1834,29 @@ class GoogleCloudOrgpolicyV1ListPolicy {
   /// - "DENY" : A policy with this set denies all values.
   core.String allValues;
 
-  /// List of values allowed at this resource. Can only be set if `all_values`
-  /// is set to `ALL_VALUES_UNSPECIFIED`.
+  /// List of values allowed at this resource.
+  ///
+  /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
   core.List<core.String> allowedValues;
 
-  /// List of values denied at this resource. Can only be set if `all_values` is
-  /// set to `ALL_VALUES_UNSPECIFIED`.
+  /// List of values denied at this resource.
+  ///
+  /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
   core.List<core.String> deniedValues;
 
-  /// Determines the inheritance behavior for this `Policy`. By default, a
-  /// `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the
-  /// resource hierarchy. However, if `inherit_from_parent` is set to `true`,
-  /// then the values from the effective `Policy` of the parent resource are
-  /// inherited, meaning the values set in this `Policy` are added to the values
-  /// inherited up the hierarchy. Setting `Policy` hierarchies that inherit both
-  /// allowed values and denied values isn't recommended in most circumstances
-  /// to keep the configuration simple and understandable. However, it is
-  /// possible to set a `Policy` with `allowed_values` set that inherits a
-  /// `Policy` with `denied_values` set. In this case, the values that are
-  /// allowed must be in `allowed_values` and not present in `denied_values`.
-  /// For example, suppose you have a `Constraint`
+  /// Determines the inheritance behavior for this `Policy`.
+  ///
+  /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set
+  /// anywhere up the resource hierarchy. However, if `inherit_from_parent` is
+  /// set to `true`, then the values from the effective `Policy` of the parent
+  /// resource are inherited, meaning the values set in this `Policy` are added
+  /// to the values inherited up the hierarchy. Setting `Policy` hierarchies
+  /// that inherit both allowed values and denied values isn't recommended in
+  /// most circumstances to keep the configuration simple and understandable.
+  /// However, it is possible to set a `Policy` with `allowed_values` set that
+  /// inherits a `Policy` with `denied_values` set. In this case, the values
+  /// that are allowed must be in `allowed_values` and not present in
+  /// `denied_values`. For example, suppose you have a `Constraint`
   /// `constraints/serviceuser.services`, which has a `constraint_type` of
   /// `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose
   /// that at the Organization level, a `Policy` is applied that restricts the
@@ -1835,10 +1907,13 @@ class GoogleCloudOrgpolicyV1ListPolicy {
   /// `organizations/O1`, `folders/F1`, `projects/P1`.
   core.bool inheritFromParent;
 
-  /// Optional. The Google Cloud Console will try to default to a configuration
-  /// that matches the value specified in this `Policy`. If `suggested_value` is
-  /// not set, it will inherit the value specified higher in the hierarchy,
-  /// unless `inherit_from_parent` is `false`.
+  /// The Google Cloud Console will try to default to a configuration that
+  /// matches the value specified in this `Policy`.
+  ///
+  /// If `suggested_value` is not set, it will inherit the value specified
+  /// higher in the hierarchy, unless `inherit_from_parent` is `false`.
+  ///
+  /// Optional.
   core.String suggestedValue;
 
   GoogleCloudOrgpolicyV1ListPolicy();
@@ -1893,21 +1968,25 @@ class GoogleCloudOrgpolicyV1Policy {
   GoogleCloudOrgpolicyV1BooleanPolicy booleanPolicy;
 
   /// The name of the `Constraint` the `Policy` is configuring, for example,
-  /// `constraints/serviceuser.services`. A [list of available
+  /// `constraints/serviceuser.services`.
+  ///
+  /// A [list of available
   /// constraints](/resource-manager/docs/organization-policy/org-policy-constraints)
   /// is available. Immutable after creation.
   core.String constraint;
 
   /// An opaque tag indicating the current version of the `Policy`, used for
-  /// concurrency control. When the `Policy` is returned from either a
-  /// `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the
-  /// version of the current `Policy` to use when executing a read-modify-write
-  /// loop. When the `Policy` is returned from a `GetEffectivePolicy` request,
-  /// the `etag` will be unset. When the `Policy` is used in a `SetOrgPolicy`
-  /// method, use the `etag` value that was returned from a `GetOrgPolicy`
-  /// request as part of a read-modify-write loop for concurrency control. Not
-  /// setting the `etag`in a `SetOrgPolicy` request will result in an
-  /// unconditional write of the `Policy`.
+  /// concurrency control.
+  ///
+  /// When the `Policy` is returned from either a `GetPolicy` or a
+  /// `ListOrgPolicy` request, this `etag` indicates the version of the current
+  /// `Policy` to use when executing a read-modify-write loop. When the `Policy`
+  /// is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+  /// When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value
+  /// that was returned from a `GetOrgPolicy` request as part of a
+  /// read-modify-write loop for concurrency control. Not setting the `etag`in a
+  /// `SetOrgPolicy` request will result in an unconditional write of the
+  /// `Policy`.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
@@ -1923,13 +2002,16 @@ class GoogleCloudOrgpolicyV1Policy {
   /// `Constraint` type.
   GoogleCloudOrgpolicyV1RestoreDefault restoreDefault;
 
-  /// The time stamp the `Policy` was previously updated. This is set by the
-  /// server, not specified by the caller, and represents the last time a call
-  /// to `SetOrgPolicy` was made for that `Policy`. Any value set by the client
-  /// will be ignored.
+  /// The time stamp the `Policy` was previously updated.
+  ///
+  /// This is set by the server, not specified by the caller, and represents the
+  /// last time a call to `SetOrgPolicy` was made for that `Policy`. Any value
+  /// set by the client will be ignored.
   core.String updateTime;
 
-  /// Version of the `Policy`. Default version is 0;
+  /// Version of the `Policy`.
+  ///
+  /// Default version is 0;
   core.int version;
 
   GoogleCloudOrgpolicyV1Policy();
@@ -1990,14 +2072,16 @@ class GoogleCloudOrgpolicyV1Policy {
 
 /// Ignores policies set above this resource and restores the
 /// `constraint_default` enforcement behavior of the specific `Constraint` at
-/// this resource. Suppose that `constraint_default` is set to `ALLOW` for the
-/// `Constraint` `constraints/serviceuser.services`. Suppose that organization
-/// foo.com sets a `Policy` at their Organization resource node that restricts
-/// the allowed service activations to deny all service activations. They could
-/// then set a `Policy` with the `policy_type` `restore_default` on several
-/// experimental projects, restoring the `constraint_default` enforcement of the
-/// `Constraint` for only those projects, allowing those projects to have all
-/// services activated.
+/// this resource.
+///
+/// Suppose that `constraint_default` is set to `ALLOW` for the `Constraint`
+/// `constraints/serviceuser.services`. Suppose that organization foo.com sets a
+/// `Policy` at their Organization resource node that restricts the allowed
+/// service activations to deny all service activations. They could then set a
+/// `Policy` with the `policy_type` `restore_default` on several experimental
+/// projects, restoring the `constraint_default` enforcement of the `Constraint`
+/// for only those projects, allowing those projects to have all services
+/// activated.
 class GoogleCloudOrgpolicyV1RestoreDefault {
   GoogleCloudOrgpolicyV1RestoreDefault();
 
@@ -2021,16 +2105,24 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /// A `CustomLevel` written in the Common Expression Language.
   GoogleIdentityAccesscontextmanagerV1CustomLevel custom;
 
-  /// Description of the `AccessLevel` and its use. Does not affect behavior.
+  /// Description of the `AccessLevel` and its use.
+  ///
+  /// Does not affect behavior.
   core.String description;
 
-  /// Required. Resource name for the Access Level. The `short_name` component
-  /// must begin with a letter and only include alphanumeric and '_'. Format:
+  /// Resource name for the Access Level.
+  ///
+  /// The `short_name` component must begin with a letter and only include
+  /// alphanumeric and '_'. Format:
   /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length
   /// of the `short_name` component is 50 characters.
+  ///
+  /// Required.
   core.String name;
 
-  /// Human readable title. Must be unique within the Policy.
+  /// Human readable title.
+  ///
+  /// Must be unique within the Policy.
   core.String title;
 
   GoogleIdentityAccesscontextmanagerV1AccessLevel();
@@ -2078,26 +2170,40 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
 
 /// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
 /// attributes to use Google Cloud services) and `ServicePerimeters` (which
-/// define regions of services able to freely pass data within a perimeter). An
-/// access policy is globally visible within an organization, and the
+/// define regions of services able to freely pass data within a perimeter).
+///
+/// An access policy is globally visible within an organization, and the
 /// restrictions it specifies apply to all projects within an organization.
 class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
-  /// Output only. An opaque identifier for the current version of the
-  /// `AccessPolicy`. This will always be a strongly validated etag, meaning
-  /// that two Access Polices will be identical if and only if their etags are
-  /// identical. Clients should not expect this to be in any specific format.
+  /// An opaque identifier for the current version of the `AccessPolicy`.
+  ///
+  /// This will always be a strongly validated etag, meaning that two Access
+  /// Polices will be identical if and only if their etags are identical.
+  /// Clients should not expect this to be in any specific format.
+  ///
+  /// Output only.
   core.String etag;
 
-  /// Output only. Resource name of the `AccessPolicy`. Format:
-  /// `accessPolicies/{policy_id}`
+  /// Resource name of the `AccessPolicy`.
+  ///
+  /// Format: `accessPolicies/{policy_id}`
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. The parent of this `AccessPolicy` in the Cloud Resource
-  /// Hierarchy. Currently immutable once created. Format:
+  /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+  ///
+  /// Currently immutable once created. Format:
   /// `organizations/{organization_id}`
+  ///
+  /// Required.
   core.String parent;
 
-  /// Required. Human readable title. Does not affect behavior.
+  /// Human readable title.
+  ///
+  /// Does not affect behavior.
+  ///
+  /// Required.
   core.String title;
 
   GoogleIdentityAccesscontextmanagerV1AccessPolicy();
@@ -2138,17 +2244,21 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
-  /// granted this `AccessLevel`. If AND is used, each `Condition` in
-  /// `conditions` must be satisfied for the `AccessLevel` to be applied. If OR
-  /// is used, at least one `Condition` in `conditions` must be satisfied for
-  /// the `AccessLevel` to be applied. Default behavior is AND.
+  /// granted this `AccessLevel`.
+  ///
+  /// If AND is used, each `Condition` in `conditions` must be satisfied for the
+  /// `AccessLevel` to be applied. If OR is used, at least one `Condition` in
+  /// `conditions` must be satisfied for the `AccessLevel` to be applied.
+  /// Default behavior is AND.
   /// Possible string values are:
   /// - "AND" : All `Conditions` must be true for the `BasicLevel` to be true.
   /// - "OR" : If at least one `Condition` is true, then the `BasicLevel` is
   /// true.
   core.String combiningFunction;
 
-  /// Required. A list of requirements for the `AccessLevel` to be granted.
+  /// A list of requirements for the `AccessLevel` to be granted.
+  ///
+  /// Required.
   core.List<GoogleIdentityAccesscontextmanagerV1Condition> conditions;
 
   GoogleIdentityAccesscontextmanagerV1BasicLevel();
@@ -2178,45 +2288,56 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
   }
 }
 
-/// A condition necessary for an `AccessLevel` to be granted. The Condition is
-/// an AND over its fields. So a Condition is true if: 1) the request IP is from
-/// one of the listed subnetworks AND 2) the originating device complies with
-/// the listed device policy AND 3) all listed access levels are granted AND 4)
-/// the request was sent at a time allowed by the DateTimeRestriction.
+/// A condition necessary for an `AccessLevel` to be granted.
+///
+/// The Condition is an AND over its fields. So a Condition is true if: 1) the
+/// request IP is from one of the listed subnetworks AND 2) the originating
+/// device complies with the listed device policy AND 3) all listed access
+/// levels are granted AND 4) the request was sent at a time allowed by the
+/// DateTimeRestriction.
 class GoogleIdentityAccesscontextmanagerV1Condition {
   /// Device specific restrictions, all restrictions must hold for the Condition
-  /// to be true. If not specified, all devices are allowed.
+  /// to be true.
+  ///
+  /// If not specified, all devices are allowed.
   GoogleIdentityAccesscontextmanagerV1DevicePolicy devicePolicy;
 
-  /// CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for
-  /// a CIDR IP address block, the specified IP address portion must be properly
-  /// truncated (i.e. all the host bits must be zero) or the input is considered
-  /// malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is
-  /// not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas
-  /// "2001:db8::1/32" is not. The originating IP of a request must be in one of
-  /// the listed subnets in order for this Condition to be true. If empty, all
-  /// IP addresses are allowed.
+  /// CIDR block IP subnetwork specification.
+  ///
+  /// May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified
+  /// IP address portion must be properly truncated (i.e. all the host bits must
+  /// be zero) or the input is considered malformed. For example, "192.0.2.0/24"
+  /// is accepted but "192.0.2.1/24" is not. Similarly, for IPv6,
+  /// "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The
+  /// originating IP of a request must be in one of the listed subnets in order
+  /// for this Condition to be true. If empty, all IP addresses are allowed.
   core.List<core.String> ipSubnetworks;
 
   /// The request must be made by one of the provided user or service accounts.
+  ///
   /// Groups are not supported. Syntax: `user:{emailid}`
   /// `serviceAccount:{emailid}` If not specified, a request may come from any
   /// user.
   core.List<core.String> members;
 
-  /// Whether to negate the Condition. If true, the Condition becomes a NAND
-  /// over its non-empty fields, each field must be false for the Condition
-  /// overall to be satisfied. Defaults to false.
+  /// Whether to negate the Condition.
+  ///
+  /// If true, the Condition becomes a NAND over its non-empty fields, each
+  /// field must be false for the Condition overall to be satisfied. Defaults to
+  /// false.
   core.bool negate;
 
   /// The request must originate from one of the provided countries/regions.
+  ///
   /// Must be valid ISO 3166-1 alpha-2 codes.
   core.List<core.String> regions;
 
   /// A list of other access levels defined in the same `Policy`, referenced by
-  /// resource name. Referencing an `AccessLevel` which does not exist is an
-  /// error. All access levels listed must be granted for the Condition to be
-  /// true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+  /// resource name.
+  ///
+  /// Referencing an `AccessLevel` which does not exist is an error. All access
+  /// levels listed must be granted for the Condition to be true. Example:
+  /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   core.List<core.String> requiredAccessLevels;
 
   GoogleIdentityAccesscontextmanagerV1Condition();
@@ -2277,9 +2398,12 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
 
 /// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
 /// to represent the necessary conditions for the level to apply to a request.
+///
 /// See CEL spec at: https://github.com/google/cel-spec
 class GoogleIdentityAccesscontextmanagerV1CustomLevel {
-  /// Required. A Cloud CEL expression evaluating to a boolean.
+  /// A Cloud CEL expression evaluating to a boolean.
+  ///
+  /// Required.
   Expr expr;
 
   GoogleIdentityAccesscontextmanagerV1CustomLevel();
@@ -2301,14 +2425,16 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
 }
 
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a
-/// given access level. A `DevicePolicy` specifies requirements for requests
-/// from devices to be granted access levels, it does not do any enforcement on
-/// the device. `DevicePolicy` acts as an AND over all specified fields, and
-/// each repeated field is an OR over its elements. Any unset fields are
-/// ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type :
-/// DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be
-/// true for requests originating from encrypted Linux desktops and encrypted
-/// Windows desktops.
+/// given access level.
+///
+/// A `DevicePolicy` specifies requirements for requests from devices to be
+/// granted access levels, it does not do any enforcement on the device.
+/// `DevicePolicy` acts as an AND over all specified fields, and each repeated
+/// field is an OR over its elements. Any unset fields are ignored. For example,
+/// if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+/// encryption_status: ENCRYPTED}, then the DevicePolicy will be true for
+/// requests originating from encrypted Linux desktops and encrypted Windows
+/// desktops.
 class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   /// Allowed device management levels, an empty list allows all management
   /// levels.
@@ -2327,6 +2453,7 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   core.bool requireCorpOwned;
 
   /// Whether or not screenlock is required for the DevicePolicy to be true.
+  ///
   /// Defaults to `false`.
   core.bool requireScreenlock;
 
@@ -2390,12 +2517,15 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 
 /// A restriction on the OS type and version of devices making requests.
 class GoogleIdentityAccesscontextmanagerV1OsConstraint {
-  /// The minimum allowed OS version. If not set, any version of this OS
-  /// satisfies the constraint. Format: `"major.minor.patch"`. Examples:
-  /// `"10.5.301"`, `"9.2.1"`.
+  /// The minimum allowed OS version.
+  ///
+  /// If not set, any version of this OS satisfies the constraint. Format:
+  /// `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
   core.String minimumVersion;
 
-  /// Required. The allowed OS type.
+  /// The allowed OS type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "OS_UNSPECIFIED" : The operating system of the device is not specified
   /// or not known.
@@ -2407,10 +2537,11 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
   /// - "IOS" : An iOS operating system.
   core.String osType;
 
-  /// Only allows requests from devices with a verified Chrome OS. Verifications
-  /// includes requirements that the device is enterprise-managed, conformant to
-  /// domain policies, and the caller has permission to call the API targeted by
-  /// the request.
+  /// Only allows requests from devices with a verified Chrome OS.
+  ///
+  /// Verifications includes requirements that the device is enterprise-managed,
+  /// conformant to domain policies, and the caller has permission to call the
+  /// API targeted by the request.
   core.bool requireVerifiedChromeOs;
 
   GoogleIdentityAccesscontextmanagerV1OsConstraint();
@@ -2444,58 +2575,73 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
 
 /// `ServicePerimeter` describes a set of Google Cloud resources which can
 /// freely import and export data amongst themselves, but not export outside of
-/// the `ServicePerimeter`. If a request with a source within this
-/// `ServicePerimeter` has a target outside of the `ServicePerimeter`, the
-/// request will be blocked. Otherwise the request is allowed. There are two
-/// types of Service Perimeter - Regular and Bridge. Regular Service Perimeters
-/// cannot overlap, a single Google Cloud project can only belong to a single
-/// regular Service Perimeter. Service Perimeter Bridges can contain only Google
-/// Cloud projects as members, a single Google Cloud project may belong to
-/// multiple Service Perimeter Bridges.
+/// the `ServicePerimeter`.
+///
+/// If a request with a source within this `ServicePerimeter` has a target
+/// outside of the `ServicePerimeter`, the request will be blocked. Otherwise
+/// the request is allowed. There are two types of Service Perimeter - Regular
+/// and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud
+/// project can only belong to a single regular Service Perimeter. Service
+/// Perimeter Bridges can contain only Google Cloud projects as members, a
+/// single Google Cloud project may belong to multiple Service Perimeter
+/// Bridges.
 class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
-  /// Description of the `ServicePerimeter` and its use. Does not affect
-  /// behavior.
+  /// Description of the `ServicePerimeter` and its use.
+  ///
+  /// Does not affect behavior.
   core.String description;
 
-  /// Required. Resource name for the ServicePerimeter. The `short_name`
-  /// component must begin with a letter and only include alphanumeric and '_'.
-  /// Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  /// Resource name for the ServicePerimeter.
+  ///
+  /// The `short_name` component must begin with a letter and only include
+  /// alphanumeric and '_'. Format:
+  /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+  ///
+  /// Required.
   core.String name;
 
-  /// Perimeter type indicator. A single project is allowed to be a member of
-  /// single regular perimeter, but multiple service perimeter bridges. A
-  /// project cannot be a included in a perimeter bridge without being included
-  /// in regular perimeter. For perimeter bridges, the restricted service list
-  /// as well as access level lists must be empty.
+  /// Perimeter type indicator.
+  ///
+  /// A single project is allowed to be a member of single regular perimeter,
+  /// but multiple service perimeter bridges. A project cannot be a included in
+  /// a perimeter bridge without being included in regular perimeter. For
+  /// perimeter bridges, the restricted service list as well as access level
+  /// lists must be empty.
   /// Possible string values are:
   /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
   core.String perimeterType;
 
-  /// Proposed (or dry run) ServicePerimeter configuration. This configuration
-  /// allows to specify and test ServicePerimeter configuration without
-  /// enforcing actual access restrictions. Only allowed to be set when the
-  /// "use_explicit_dry_run_spec" flag is set.
+  /// Proposed (or dry run) ServicePerimeter configuration.
+  ///
+  /// This configuration allows to specify and test ServicePerimeter
+  /// configuration without enforcing actual access restrictions. Only allowed
+  /// to be set when the "use_explicit_dry_run_spec" flag is set.
   GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig spec;
 
-  /// Current ServicePerimeter configuration. Specifies sets of resources,
-  /// restricted services and access levels that determine perimeter content and
-  /// boundaries.
+  /// Current ServicePerimeter configuration.
+  ///
+  /// Specifies sets of resources, restricted services and access levels that
+  /// determine perimeter content and boundaries.
   GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig status;
 
-  /// Human readable title. Must be unique within the Policy.
+  /// Human readable title.
+  ///
+  /// Must be unique within the Policy.
   core.String title;
 
-  /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly
-  /// exists for all Service Perimeters, and that spec is identical to the
-  /// status for those Service Perimeters. When this flag is set, it inhibits
-  /// the generation of the implicit spec, thereby allowing the user to
-  /// explicitly provide a configuration ("spec") to use in a dry-run version of
-  /// the Service Perimeter. This allows the user to test changes to the
-  /// enforced config ("status") without actually enforcing them. This testing
-  /// is done through analyzing the differences between currently enforced and
-  /// suggested restrictions. use_explicit_dry_run_spec must bet set to True if
-  /// any of the fields in the spec are set to non-default values.
+  /// Use explicit dry run spec flag.
+  ///
+  /// Ordinarily, a dry-run spec implicitly exists for all Service Perimeters,
+  /// and that spec is identical to the status for those Service Perimeters.
+  /// When this flag is set, it inhibits the generation of the implicit spec,
+  /// thereby allowing the user to explicitly provide a configuration ("spec")
+  /// to use in a dry-run version of the Service Perimeter. This allows the user
+  /// to test changes to the enforced config ("status") without actually
+  /// enforcing them. This testing is done through analyzing the differences
+  /// between currently enforced and suggested restrictions.
+  /// use_explicit_dry_run_spec must bet set to True if any of the fields in the
+  /// spec are set to non-default values.
   core.bool useExplicitDryRunSpec;
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter();
@@ -2560,23 +2706,28 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
 /// describe specific Service Perimeter configuration.
 class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /// A list of `AccessLevel` resource names that allow resources within the
-  /// `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed
-  /// must be in the same policy as this `ServicePerimeter`. Referencing a
-  /// nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are
-  /// listed, resources within the perimeter can only be accessed via Google
-  /// Cloud calls with request origins within the perimeter. Example:
+  /// `ServicePerimeter` to be accessed from the internet.
+  ///
+  /// `AccessLevels` listed must be in the same policy as this
+  /// `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax
+  /// error. If no `AccessLevel` names are listed, resources within the
+  /// perimeter can only be accessed via Google Cloud calls with request origins
+  /// within the perimeter. Example:
   /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter
   /// Bridge, must be empty.
   core.List<core.String> accessLevels;
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
+  ///
   /// Currently only projects are allowed. Format: `projects/{project_number}`
   core.List<core.String> resources;
 
   /// Google Cloud services that are subject to the Service Perimeter
-  /// restrictions. For example, if `storage.googleapis.com` is specified,
-  /// access to the storage buckets inside the perimeter must meet the
-  /// perimeter's access restrictions.
+  /// restrictions.
+  ///
+  /// For example, if `storage.googleapis.com` is specified, access to the
+  /// storage buckets inside the perimeter must meet the perimeter's access
+  /// restrictions.
   core.List<core.String> restrictedServices;
 
   /// Configuration for APIs allowed within Perimeter.
@@ -2630,10 +2781,12 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
 class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
-  /// The list of APIs usable within the Service Perimeter. Must be empty unless
-  /// 'enable_restriction' is True. You can specify a list of individual
-  /// services, as well as include the 'RESTRICTED-SERVICES' value, which
-  /// automatically includes all of the services protected by the perimeter.
+  /// The list of APIs usable within the Service Perimeter.
+  ///
+  /// Must be empty unless 'enable_restriction' is True. You can specify a list
+  /// of individual services, as well as include the 'RESTRICTED-SERVICES'
+  /// value, which automatically includes all of the services protected by the
+  /// perimeter.
   core.List<core.String> allowedServices;
 
   /// Whether to restrict API calls within the Service Perimeter to the list of
@@ -2668,31 +2821,37 @@ class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
 
 /// A result of IAM Policy search, containing information of an IAM policy.
 class IamPolicySearchResult {
-  /// Explanation about the IAM policy search result. It contains additional
-  /// information to explain why the search result matches the query.
+  /// Explanation about the IAM policy search result.
+  ///
+  /// It contains additional information to explain why the search result
+  /// matches the query.
   Explanation explanation;
 
-  /// The IAM policy directly set on the given resource. Note that the original
-  /// IAM policy can contain multiple bindings. This only contains the bindings
-  /// that match the given query. For queries that don't contain a constrain on
-  /// policies (e.g., an empty query), this contains all the bindings. To search
-  /// against the `policy` bindings: * use a field query: - query by the policy
-  /// contained members. Example: `policy:amy@gmail.com` - query by the policy
-  /// contained roles. Example: `policy:roles/compute.admin` - query by the
-  /// policy contained roles' included permissions. Example:
+  /// The IAM policy directly set on the given resource.
+  ///
+  /// Note that the original IAM policy can contain multiple bindings. This only
+  /// contains the bindings that match the given query. For queries that don't
+  /// contain a constrain on policies (e.g., an empty query), this contains all
+  /// the bindings. To search against the `policy` bindings: * use a field
+  /// query: - query by the policy contained members. Example:
+  /// `policy:amy@gmail.com` - query by the policy contained roles. Example:
+  /// `policy:roles/compute.admin` - query by the policy contained roles'
+  /// included permissions. Example:
   /// `policy.role.permissions:compute.instances.create`
   Policy policy;
 
   /// The project that the associated GCP resource belongs to, in the form of
-  /// projects/{PROJECT_NUMBER}. If an IAM policy is set on a resource (like VM
-  /// instance, Cloud Storage bucket), the project field will indicate the
-  /// project that contains the resource. If an IAM policy is set on a folder or
-  /// orgnization, the project field will be empty. To search against the
-  /// `project`: * specify the `scope` field as this project in your search
-  /// request.
+  /// projects/{PROJECT_NUMBER}.
+  ///
+  /// If an IAM policy is set on a resource (like VM instance, Cloud Storage
+  /// bucket), the project field will indicate the project that contains the
+  /// resource. If an IAM policy is set on a folder or orgnization, the project
+  /// field will be empty. To search against the `project`: * specify the
+  /// `scope` field as this project in your search request.
   core.String project;
 
   /// The full resource name of the resource associated with this IAM policy.
+  ///
   /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
   /// See [Cloud Asset Inventory Resource Name
@@ -2765,31 +2924,37 @@ class ListFeedsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2855,8 +3020,9 @@ class Operation {
 
 /// Output configuration for export assets destination.
 class OutputConfig {
-  /// Destination on BigQuery. The output table stores the fields in asset proto
-  /// as columns in BigQuery.
+  /// Destination on BigQuery.
+  ///
+  /// The output table stores the fields in asset proto as columns in BigQuery.
   BigQueryDestination bigqueryDestination;
 
   /// Destination on Cloud Storage.
@@ -2923,7 +3089,9 @@ class PartitionSpec {
 
 /// IAM permissions
 class Permissions {
-  /// A list of permissions. A sample permission string: `compute.disk.get`.
+  /// A list of permissions.
+  ///
+  /// A sample permission string: `compute.disk.get`.
   core.List<core.String> permissions;
 
   Permissions();
@@ -2946,16 +3114,18 @@ class Permissions {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -2978,14 +3148,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -3002,20 +3175,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -3063,8 +3238,9 @@ class Policy {
 
 /// A Pub/Sub destination.
 class PubsubDestination {
-  /// The name of the Pub/Sub topic to publish to. Example:
-  /// `projects/PROJECT_ID/topics/TOPIC_ID`.
+  /// The name of the Pub/Sub topic to publish to.
+  ///
+  /// Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
   core.String topic;
 
   PubsubDestination();
@@ -3094,21 +3270,26 @@ class Resource {
   core.Map<core.String, core.Object> data;
 
   /// The URL of the discovery document containing the resource's JSON schema.
+  ///
   /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
   /// This value is unspecified for resources that do not have an API based on a
   /// discovery document, such as Cloud Bigtable.
   core.String discoveryDocumentUri;
 
-  /// The JSON schema name listed in the discovery document. Example: `Project`
-  /// This value is unspecified for resources that do not have an API based on a
-  /// discovery document, such as Cloud Bigtable.
+  /// The JSON schema name listed in the discovery document.
+  ///
+  /// Example: `Project` This value is unspecified for resources that do not
+  /// have an API based on a discovery document, such as Cloud Bigtable.
   core.String discoveryName;
 
   /// The location of the resource in Google Cloud, such as its zone and region.
+  ///
   /// For more information, see https://cloud.google.com/about/locations/.
   core.String location;
 
-  /// The full name of the immediate parent of this resource. See [Resource
+  /// The full name of the immediate parent of this resource.
+  ///
+  /// See [Resource
   /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more information. For Google Cloud assets, this value is the parent
   /// resource defined in the [Cloud IAM policy
@@ -3117,13 +3298,16 @@ class Resource {
   /// For third-party assets, this field may be set differently.
   core.String parent;
 
-  /// The REST URL for accessing the resource. An HTTP `GET` request using this
-  /// URL returns the resource itself. Example:
+  /// The REST URL for accessing the resource.
+  ///
+  /// An HTTP `GET` request using this URL returns the resource itself. Example:
   /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
   /// This value is unspecified for resources without a REST API.
   core.String resourceUrl;
 
-  /// The API version. Example: `v1`
+  /// The API version.
+  ///
+  /// Example: `v1`
   core.String version;
 
   Resource();
@@ -3186,12 +3370,13 @@ class Resource {
 
 /// A result of Resource Search, containing information of a cloud resource.
 class ResourceSearchResult {
-  /// The additional searchable attributes of this resource. The attributes may
-  /// vary from one resource type to another. Examples: `projectId` for Project,
-  /// `dnsName` for DNS ManagedZone. This field contains a subset of the
-  /// resource metadata fields that are returned by the List or Get APIs
-  /// provided by the corresponding GCP service (e.g., Compute Engine). see [API
-  /// references and supported searchable
+  /// The additional searchable attributes of this resource.
+  ///
+  /// The attributes may vary from one resource type to another. Examples:
+  /// `projectId` for Project, `dnsName` for DNS ManagedZone. This field
+  /// contains a subset of the resource metadata fields that are returned by the
+  /// List or Get APIs provided by the corresponding GCP service (e.g., Compute
+  /// Engine). see [API references and supported searchable
   /// attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
   /// for more information. You can search values of these fields through free
   /// text search. However, you should not consume the field programically as
@@ -3205,23 +3390,29 @@ class ResourceSearchResult {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> additionalAttributes;
 
-  /// The type of this resource. Example: `compute.googleapis.com/Disk`. To
-  /// search against the `asset_type`: * specify the `asset_type` field in your
-  /// search request.
+  /// The type of this resource.
+  ///
+  /// Example: `compute.googleapis.com/Disk`. To search against the
+  /// `asset_type`: * specify the `asset_type` field in your search request.
   core.String assetType;
 
-  /// One or more paragraphs of text description of this resource. Maximum
-  /// length could be up to 1M bytes. To search against the `description`: * use
-  /// a field query. Example: `description:"*important instance*"` * use a free
-  /// text query. Example: `"*important instance*"`
+  /// One or more paragraphs of text description of this resource.
+  ///
+  /// Maximum length could be up to 1M bytes. To search against the
+  /// `description`: * use a field query. Example: `description:"*important
+  /// instance*"` * use a free text query. Example: `"*important instance*"`
   core.String description;
 
-  /// The display name of this resource. To search against the `display_name`: *
-  /// use a field query. Example: `displayName:"My Instance"` * use a free text
-  /// query. Example: `"My Instance"`
+  /// The display name of this resource.
+  ///
+  /// To search against the `display_name`: * use a field query. Example:
+  /// `displayName:"My Instance"` * use a free text query. Example: `"My
+  /// Instance"`
   core.String displayName;
 
-  /// Labels associated with this resource. See [Labelling and grouping GCP
+  /// Labels associated with this resource.
+  ///
+  /// See [Labelling and grouping GCP
   /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. To search against the `labels`: * use a field query:
   /// - query on any label's key or value. Example: `labels:prod` - query by a
@@ -3231,11 +3422,15 @@ class ResourceSearchResult {
   core.Map<core.String, core.String> labels;
 
   /// Location can be `global`, regional like `us-east1`, or zonal like
-  /// `us-west1-b`. To search against the `location`: * use a field query.
-  /// Example: `location:us-west*` * use a free text query. Example: `us-west*`
+  /// `us-west1-b`.
+  ///
+  /// To search against the `location`: * use a field query. Example:
+  /// `location:us-west*` * use a free text query. Example: `us-west*`
   core.String location;
 
-  /// The full resource name of this resource. Example:
+  /// The full resource name of this resource.
+  ///
+  /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
   /// See [Cloud Asset Inventory Resource Name
   /// Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
@@ -3243,8 +3438,10 @@ class ResourceSearchResult {
   /// Example: `name:instance1` * use a free text query. Example: `instance1`
   core.String name;
 
-  /// Network tags associated with this resource. Like labels, network tags are
-  /// a type of annotations used to group GCP resources. See [Labelling GCP
+  /// Network tags associated with this resource.
+  ///
+  /// Like labels, network tags are a type of annotations used to group GCP
+  /// resources. See [Labelling GCP
   /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. To search against the `network_tags`: * use a field
   /// query. Example: `networkTags:internal` * use a free text query. Example:
@@ -3252,8 +3449,10 @@ class ResourceSearchResult {
   core.List<core.String> networkTags;
 
   /// The project that this resource belongs to, in the form of
-  /// projects/{PROJECT_NUMBER}. To search against the `project`: * specify the
-  /// `scope` field as this project in your search request.
+  /// projects/{PROJECT_NUMBER}.
+  ///
+  /// To search against the `project`: * specify the `scope` field as this
+  /// project in your search request.
   core.String project;
 
   ResourceSearchResult();
@@ -3343,8 +3542,10 @@ class SearchAllIamPoliciesResponse {
   /// the `page_token`.
   core.String nextPageToken;
 
-  /// A list of IamPolicy that match the search query. Related information such
-  /// as the associated resource is returned along with the policy.
+  /// A list of IamPolicy that match the search query.
+  ///
+  /// Related information such as the associated resource is returned along with
+  /// the policy.
   core.List<IamPolicySearchResult> results;
 
   SearchAllIamPoliciesResponse();
@@ -3376,12 +3577,15 @@ class SearchAllIamPoliciesResponse {
 /// Search all resources response.
 class SearchAllResourcesResponse {
   /// If there are more results than those appearing in this response, then
-  /// `next_page_token` is included. To get the next set of results, call this
-  /// method again using the value of `next_page_token` as `page_token`.
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
   core.String nextPageToken;
 
-  /// A list of Resources that match the search query. It contains the resource
-  /// standard metadata information.
+  /// A list of Resources that match the search query.
+  ///
+  /// It contains the resource standard metadata information.
   core.List<ResourceSearchResult> results;
 
   SearchAllResourcesResponse();
@@ -3411,24 +3615,27 @@ class SearchAllResourcesResponse {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3478,8 +3685,10 @@ class TemporalAsset {
   /// Whether the asset has been deleted or not.
   core.bool deleted;
 
-  /// Prior copy of the asset. Populated if prior_asset_state is PRESENT.
-  /// Currently this is only set for responses in Real-Time Feed.
+  /// Prior copy of the asset.
+  ///
+  /// Populated if prior_asset_state is PRESENT. Currently this is only set for
+  /// responses in Real-Time Feed.
   Asset priorAsset;
 
   /// State of prior_asset.
@@ -3541,8 +3750,9 @@ class TemporalAsset {
 
 /// A time window specified by its `start_time` and `end_time`.
 class TimeWindow {
-  /// End time of the time window (inclusive). If not specified, the current
-  /// timestamp is used instead.
+  /// End time of the time window (inclusive).
+  ///
+  /// If not specified, the current timestamp is used instead.
   core.String endTime;
 
   /// Start time of the time window (exclusive).
@@ -3573,16 +3783,22 @@ class TimeWindow {
 
 /// Update asset feed request.
 class UpdateFeedRequest {
-  /// Required. The new values of feed details. It must match an existing feed
-  /// and the field `name` must be in the format of:
-  /// projects/project_number/feeds/feed_id or
+  /// The new values of feed details.
+  ///
+  /// It must match an existing feed and the field `name` must be in the format
+  /// of: projects/project_number/feeds/feed_id or
   /// folders/folder_number/feeds/feed_id or
   /// organizations/organization_number/feeds/feed_id.
+  ///
+  /// Required.
   Feed feed;
 
-  /// Required. Only updates the `feed` fields indicated by this mask. The field
-  /// mask must not be empty, and it must not contain fields that are immutable
-  /// or only set by the server.
+  /// Only updates the `feed` fields indicated by this mask.
+  ///
+  /// The field mask must not be empty, and it must not contain fields that are
+  /// immutable or only set by the server.
+  ///
+  /// Required.
   core.String updateMask;
 
   UpdateFeedRequest();

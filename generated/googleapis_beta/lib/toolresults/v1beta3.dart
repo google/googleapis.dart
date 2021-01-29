@@ -73,9 +73,10 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the Tool Results settings for a project. May return any of the
-  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
-  /// authorized to read from project
+  /// Gets the Tool Results settings for a project.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to read from project
   ///
   /// Request parameters:
   ///
@@ -128,12 +129,13 @@ class ProjectsResource {
     );
   }
 
-  /// Creates resources for settings which have not yet been set. Currently,
-  /// this creates a single resource: a Google Cloud Storage bucket, to be used
-  /// as the default bucket for this project. The bucket is created in an
-  /// FTL-own storage project. Except for in rare cases, calling this method in
-  /// parallel from multiple clients will only create a single bucket. In order
-  /// to avoid unnecessary storage charges, the bucket is configured to
+  /// Creates resources for settings which have not yet been set.
+  ///
+  /// Currently, this creates a single resource: a Google Cloud Storage bucket,
+  /// to be used as the default bucket for this project. The bucket is created
+  /// in an FTL-own storage project. Except for in rare cases, calling this
+  /// method in parallel from multiple clients will only create a single bucket.
+  /// In order to avoid unnecessary storage charges, the bucket is configured to
   /// automatically delete objects older than 90 days. The bucket is created
   /// with the following permissions: - Owner access for owners of central
   /// storage project (FTL-owned) - Writer access for owners/editors of customer
@@ -208,11 +210,12 @@ class ProjectsHistoriesResource {
 
   ProjectsHistoriesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a History. The returned History will have the id set. May return
-  /// any of the following canonical error codes: - PERMISSION_DENIED - if the
-  /// user is not authorized to write to project - INVALID_ARGUMENT - if the
-  /// request is malformed - NOT_FOUND - if the containing project does not
-  /// exist
+  /// Creates a History.
+  ///
+  /// The returned History will have the id set. May return any of the following
+  /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+  /// to write to project - INVALID_ARGUMENT - if the request is malformed -
+  /// NOT_FOUND - if the containing project does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -277,10 +280,11 @@ class ProjectsHistoriesResource {
     );
   }
 
-  /// Gets a History. May return any of the following canonical error codes: -
-  /// PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// History does not exist
+  /// Gets a History.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to read project - INVALID_ARGUMENT - if
+  /// the request is malformed - NOT_FOUND - if the History does not exist
   ///
   /// Request parameters:
   ///
@@ -339,12 +343,14 @@ class ProjectsHistoriesResource {
     );
   }
 
-  /// Lists Histories for a given Project. The histories are sorted by
-  /// modification time in descending order. The history_id key will be used to
-  /// order the history with the same modification time. May return any of the
-  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
-  /// authorized to read project - INVALID_ARGUMENT - if the request is
-  /// malformed - NOT_FOUND - if the History does not exist
+  /// Lists Histories for a given Project.
+  ///
+  /// The histories are sorted by modification time in descending order. The
+  /// history_id key will be used to order the history with the same
+  /// modification time. May return any of the following canonical error codes:
+  /// - PERMISSION_DENIED - if the user is not authorized to read project -
+  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+  /// History does not exist
   ///
   /// Request parameters:
   ///
@@ -433,11 +439,12 @@ class ProjectsHistoriesExecutionsResource {
   ProjectsHistoriesExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an Execution. The returned Execution will have the id set. May
-  /// return any of the following canonical error codes: - PERMISSION_DENIED -
-  /// if the user is not authorized to write to project - INVALID_ARGUMENT - if
-  /// the request is malformed - NOT_FOUND - if the containing History does not
-  /// exist
+  /// Creates an Execution.
+  ///
+  /// The returned Execution will have the id set. May return any of the
+  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
+  /// authorized to write to project - INVALID_ARGUMENT - if the request is
+  /// malformed - NOT_FOUND - if the containing History does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -510,10 +517,11 @@ class ProjectsHistoriesExecutionsResource {
     );
   }
 
-  /// Gets an Execution. May return any of the following canonical error codes:
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// Execution does not exist
+  /// Gets an Execution.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to write to project - INVALID_ARGUMENT -
+  /// if the request is malformed - NOT_FOUND - if the Execution does not exist
   ///
   /// Request parameters:
   ///
@@ -580,12 +588,14 @@ class ProjectsHistoriesExecutionsResource {
     );
   }
 
-  /// Lists Executions for a given History. The executions are sorted by
-  /// creation_time in descending order. The execution_id key will be used to
-  /// order the executions with the same creation_time. May return any of the
-  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
-  /// authorized to read project - INVALID_ARGUMENT - if the request is
-  /// malformed - NOT_FOUND - if the containing History does not exist
+  /// Lists Executions for a given History.
+  ///
+  /// The executions are sorted by creation_time in descending order. The
+  /// execution_id key will be used to order the executions with the same
+  /// creation_time. May return any of the following canonical error codes: -
+  /// PERMISSION_DENIED - if the user is not authorized to read project -
+  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+  /// containing History does not exist
   ///
   /// Request parameters:
   ///
@@ -661,10 +671,11 @@ class ProjectsHistoriesExecutionsResource {
     );
   }
 
-  /// Updates an existing Execution with the supplied partial entity. May return
-  /// any of the following canonical error codes: - PERMISSION_DENIED - if the
-  /// user is not authorized to write to project - INVALID_ARGUMENT - if the
-  /// request is malformed - FAILED_PRECONDITION - if the requested state
+  /// Updates an existing Execution with the supplied partial entity.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to write to project - INVALID_ARGUMENT -
+  /// if the request is malformed - FAILED_PRECONDITION - if the requested state
   /// transition is illegal - NOT_FOUND - if the containing History does not
   /// exist
   ///
@@ -830,12 +841,13 @@ class ProjectsHistoriesExecutionsClustersResource {
   }
 
   /// Lists Screenshot Clusters Returns the list of screenshot clusters
-  /// corresponding to an execution. Screenshot clusters are created after the
-  /// execution is finished. Clusters are created from a set of screenshots.
-  /// Between any two screenshots, a matching score is calculated based off
-  /// their metadata that determines how similar they are. Screenshots are
-  /// placed in the cluster that has screens which have the highest matching
-  /// scores.
+  /// corresponding to an execution.
+  ///
+  /// Screenshot clusters are created after the execution is finished. Clusters
+  /// are created from a set of screenshots. Between any two screenshots, a
+  /// matching score is calculated based off their metadata that determines how
+  /// similar they are. Screenshots are placed in the cluster that has screens
+  /// which have the highest matching scores.
   ///
   /// Request parameters:
   ///
@@ -911,10 +923,11 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
   ProjectsHistoriesExecutionsEnvironmentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets an Environment. May return any of the following canonical error
-  /// codes: - PERMISSION_DENIED - if the user is not authorized to read project
-  /// - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// Environment does not exist
+  /// Gets an Environment.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to read project - INVALID_ARGUMENT - if
+  /// the request is malformed - NOT_FOUND - if the Environment does not exist
   ///
   /// Request parameters:
   ///
@@ -990,11 +1003,12 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     );
   }
 
-  /// Lists Environments for a given Execution. The Environments are sorted by
-  /// display name. May return any of the following canonical error codes: -
-  /// PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing Execution does not exist
+  /// Lists Environments for a given Execution.
+  ///
+  /// The Environments are sorted by display name. May return any of the
+  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
+  /// authorized to read project - INVALID_ARGUMENT - if the request is
+  /// malformed - NOT_FOUND - if the containing Execution does not exist
   ///
   /// Request parameters:
   ///
@@ -1168,11 +1182,13 @@ class ProjectsHistoriesExecutionsStepsResource {
     );
   }
 
-  /// Creates a Step. The returned Step will have the id set. May return any of
-  /// the following canonical error codes: - PERMISSION_DENIED - if the user is
-  /// not authorized to write to project - INVALID_ARGUMENT - if the request is
-  /// malformed - FAILED_PRECONDITION - if the step is too large (more than
-  /// 10Mib) - NOT_FOUND - if the containing Execution does not exist
+  /// Creates a Step.
+  ///
+  /// The returned Step will have the id set. May return any of the following
+  /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized
+  /// to write to project - INVALID_ARGUMENT - if the request is malformed -
+  /// FAILED_PRECONDITION - if the step is too large (more than 10Mib) -
+  /// NOT_FOUND - if the containing Execution does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1253,10 +1269,11 @@ class ProjectsHistoriesExecutionsStepsResource {
     );
   }
 
-  /// Gets a Step. May return any of the following canonical error codes: -
-  /// PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step
-  /// does not exist
+  /// Gets a Step.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to read project - INVALID_ARGUMENT - if
+  /// the request is malformed - NOT_FOUND - if the Step does not exist
   ///
   /// Request parameters:
   ///
@@ -1331,8 +1348,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     );
   }
 
-  /// Retrieves a PerfMetricsSummary. May return any of the following error
-  /// code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist
+  /// Retrieves a PerfMetricsSummary.
+  ///
+  /// May return any of the following error code(s): - NOT_FOUND - The specified
+  /// PerfMetricsSummary does not exist
   ///
   /// Request parameters:
   ///
@@ -1409,14 +1428,15 @@ class ProjectsHistoriesExecutionsStepsResource {
     );
   }
 
-  /// Lists Steps for a given Execution. The steps are sorted by creation_time
-  /// in descending order. The step_id key will be used to order the steps with
-  /// the same creation_time. May return any of the following canonical error
-  /// codes: - PERMISSION_DENIED - if the user is not authorized to read project
-  /// - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION -
-  /// if an argument in the request happens to be invalid; e.g. if an attempt is
-  /// made to list the children of a nonexistent Step - NOT_FOUND - if the
-  /// containing Execution does not exist
+  /// Lists Steps for a given Execution.
+  ///
+  /// The steps are sorted by creation_time in descending order. The step_id key
+  /// will be used to order the steps with the same creation_time. May return
+  /// any of the following canonical error codes: - PERMISSION_DENIED - if the
+  /// user is not authorized to read project - INVALID_ARGUMENT - if the request
+  /// is malformed - FAILED_PRECONDITION - if an argument in the request happens
+  /// to be invalid; e.g. if an attempt is made to list the children of a
+  /// nonexistent Step - NOT_FOUND - if the containing Execution does not exist
   ///
   /// Request parameters:
   ///
@@ -1500,13 +1520,14 @@ class ProjectsHistoriesExecutionsStepsResource {
     );
   }
 
-  /// Updates an existing Step with the supplied partial entity. May return any
-  /// of the following canonical error codes: - PERMISSION_DENIED - if the user
-  /// is not authorized to write project - INVALID_ARGUMENT - if the request is
-  /// malformed - FAILED_PRECONDITION - if the requested state transition is
-  /// illegal (e.g try to upload a duplicate xml file), if the updated step is
-  /// too large (more than 10Mib) - NOT_FOUND - if the containing Execution does
-  /// not exist
+  /// Updates an existing Step with the supplied partial entity.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to write project - INVALID_ARGUMENT - if
+  /// the request is malformed - FAILED_PRECONDITION - if the requested state
+  /// transition is illegal (e.g try to upload a duplicate xml file), if the
+  /// updated step is too large (more than 10Mib) - NOT_FOUND - if the
+  /// containing Execution does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1594,12 +1615,13 @@ class ProjectsHistoriesExecutionsStepsResource {
     );
   }
 
-  /// Publish xml files to an existing Step. May return any of the following
-  /// canonical error codes: - PERMISSION_DENIED - if the user is not authorized
-  /// to write project - INVALID_ARGUMENT - if the request is malformed -
-  /// FAILED_PRECONDITION - if the requested state transition is illegal, e.g
-  /// try to upload a duplicate xml file or a file too large. - NOT_FOUND - if
-  /// the containing Execution does not exist
+  /// Publish xml files to an existing Step.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to write project - INVALID_ARGUMENT - if
+  /// the request is malformed - FAILED_PRECONDITION - if the requested state
+  /// transition is illegal, e.g try to upload a duplicate xml file or a file
+  /// too large. - NOT_FOUND - if the containing Execution does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1690,9 +1712,11 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a PerfMetricsSummary resource. Returns the existing one if it has
-  /// already been created. May return any of the following error code(s): -
-  /// NOT_FOUND - The containing Step does not exist
+  /// Creates a PerfMetricsSummary resource.
+  ///
+  /// Returns the existing one if it has already been created. May return any of
+  /// the following error code(s): - NOT_FOUND - The containing Step does not
+  /// exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1787,9 +1811,11 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a PerfSampleSeries. May return any of the following error code(s):
-  /// - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step -
-  /// NOT_FOUND - The containing Step does not exist
+  /// Creates a PerfSampleSeries.
+  ///
+  /// May return any of the following error code(s): - ALREADY_EXISTS -
+  /// PerfMetricSummary already exists for the given Step - NOT_FOUND - The
+  /// containing Step does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1872,8 +1898,10 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     );
   }
 
-  /// Gets a PerfSampleSeries. May return any of the following error code(s): -
-  /// NOT_FOUND - The specified PerfSampleSeries does not exist
+  /// Gets a PerfSampleSeries.
+  ///
+  /// May return any of the following error code(s): - NOT_FOUND - The specified
+  /// PerfSampleSeries does not exist
   ///
   /// Request parameters:
   ///
@@ -1957,11 +1985,13 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     );
   }
 
-  /// Lists PerfSampleSeries for a given Step. The request provides an optional
-  /// filter which specifies one or more PerfMetricsType to include in the
-  /// result; if none returns all. The resulting PerfSampleSeries are sorted by
-  /// ids. May return any of the following canonical error codes: - NOT_FOUND -
-  /// The containing Step does not exist
+  /// Lists PerfSampleSeries for a given Step.
+  ///
+  /// The request provides an optional filter which specifies one or more
+  /// PerfMetricsType to include in the result; if none returns all. The
+  /// resulting PerfSampleSeries are sorted by ids. May return any of the
+  /// following canonical error codes: - NOT_FOUND - The containing Step does
+  /// not exist
   ///
   /// Request parameters:
   ///
@@ -2056,7 +2086,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
   /// Creates a batch of PerfSamples - a client can submit multiple batches of
   /// Perf Samples through repeated calls to this method in order to split up a
   /// large request payload - duplicates and existing timestamp entries will be
-  /// ignored. - the batch operation may partially succeed - the set of elements
+  /// ignored.
+  ///
+  /// - the batch operation may partially succeed - the set of elements
   /// successfully inserted is returned in the response (omits items which
   /// already existed in the database). May return any of the following
   /// canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does
@@ -2266,11 +2298,12 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
   ProjectsHistoriesExecutionsStepsTestCasesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets details of a Test Case for a Step. Experimental test cases API. Still
-  /// in active development. May return any of the following canonical error
-  /// codes: - PERMISSION_DENIED - if the user is not authorized to write to
-  /// project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if
-  /// the containing Test Case does not exist
+  /// Gets details of a Test Case for a Step.
+  ///
+  /// Experimental test cases API. Still in active development. May return any
+  /// of the following canonical error codes: - PERMISSION_DENIED - if the user
+  /// is not authorized to write to project - INVALID_ARGUMENT - if the request
+  /// is malformed - NOT_FOUND - if the containing Test Case does not exist
   ///
   /// Request parameters:
   ///
@@ -2354,11 +2387,12 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     );
   }
 
-  /// Lists Test Cases attached to a Step. Experimental test cases API. Still in
-  /// active development. May return any of the following canonical error codes:
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing Step does not exist
+  /// Lists Test Cases attached to a Step.
+  ///
+  /// Experimental test cases API. Still in active development. May return any
+  /// of the following canonical error codes: - PERMISSION_DENIED - if the user
+  /// is not authorized to write to project - INVALID_ARGUMENT - if the request
+  /// is malformed - NOT_FOUND - if the containing Step does not exist
   ///
   /// Request parameters:
   ///
@@ -2459,11 +2493,12 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists thumbnails of images attached to a step. May return any of the
-  /// following canonical error codes: - PERMISSION_DENIED - if the user is not
-  /// authorized to read from the project, or from any of the images -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the step
-  /// does not exist, or if any of the images do not exist
+  /// Lists thumbnails of images attached to a step.
+  ///
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to read from the project, or from any of
+  /// the images - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND -
+  /// if the step does not exist, or if any of the images do not exist
   ///
   /// Request parameters:
   ///
@@ -2558,7 +2593,9 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
 
 /// Additional details for an ANR crash.
 class ANR {
-  /// The stack trace of the ANR crash. Optional.
+  /// The stack trace of the ANR crash.
+  ///
+  /// Optional.
   StackTrace stackTrace;
 
   ANR();
@@ -2581,16 +2618,24 @@ class ANR {
 
 /// Android app information.
 class AndroidAppInfo {
-  /// The name of the app. Optional
+  /// The name of the app.
+  ///
+  /// Optional
   core.String name;
 
-  /// The package name of the app. Required.
+  /// The package name of the app.
+  ///
+  /// Required.
   core.String packageName;
 
-  /// The internal version code of the app. Optional.
+  /// The internal version code of the app.
+  ///
+  /// Optional.
   core.String versionCode;
 
-  /// The version name of the app. Optional.
+  /// The version name of the app.
+  ///
+  /// Optional.
   core.String versionName;
 
   AndroidAppInfo();
@@ -2629,13 +2674,18 @@ class AndroidAppInfo {
 }
 
 /// A test of an Android application that can control an Android component
-/// independently of its normal lifecycle. See for more information on types of
-/// Android tests.
+/// independently of its normal lifecycle.
+///
+/// See for more information on types of Android tests.
 class AndroidInstrumentationTest {
-  /// The java package for the test to be executed. Required
+  /// The java package for the test to be executed.
+  ///
+  /// Required
   core.String testPackageId;
 
-  /// The InstrumentationTestRunner class. Required
+  /// The InstrumentationTestRunner class.
+  ///
+  /// Required
   core.String testRunnerClass;
 
   /// Each target must be fully qualified with the package name or class name,
@@ -2688,20 +2738,29 @@ class AndroidInstrumentationTest {
 /// A test of an android application that explores the application on a virtual
 /// or physical Android device, finding culprits and crashes as it goes.
 class AndroidRoboTest {
-  /// The initial activity that should be used to start the app. Optional
+  /// The initial activity that should be used to start the app.
+  ///
+  /// Optional
   core.String appInitialActivity;
 
-  /// The java package for the bootstrap. Optional
+  /// The java package for the bootstrap.
+  ///
+  /// Optional
   core.String bootstrapPackageId;
 
-  /// The runner class for the bootstrap. Optional
+  /// The runner class for the bootstrap.
+  ///
+  /// Optional
   core.String bootstrapRunnerClass;
 
-  /// The max depth of the traversal stack Robo can explore. Optional
+  /// The max depth of the traversal stack Robo can explore.
+  ///
+  /// Optional
   core.int maxDepth;
 
-  /// The max number of steps/actions Robo can execute. Default is no limit (0).
-  /// Optional
+  /// The max number of steps/actions Robo can execute.
+  ///
+  /// Default is no limit (0). Optional
   core.int maxSteps;
 
   AndroidRoboTest();
@@ -2825,18 +2884,19 @@ class AndroidTestLoop {
 }
 
 /// `Any` contains an arbitrary serialized protocol buffer message along with a
-/// URL that describes the type of the serialized message. Protobuf library
-/// provides support to pack/unpack Any values in the form of utility functions
-/// or additional generated methods of the Any type. Example 1: Pack and unpack
-/// a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if
-/// (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java.
-/// Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo =
-/// any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo
-/// = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR):
-/// any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo :=
-/// &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err
-/// := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods
-/// provided by protobuf library will by default use
+/// URL that describes the type of the serialized message.
+///
+/// Protobuf library provides support to pack/unpack Any values in the form of
+/// utility functions or additional generated methods of the Any type. Example
+/// 1: Pack and unpack a message in C++. Foo foo = ...; Any any;
+/// any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and
+/// unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if
+/// (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and
+/// unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if
+/// any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a
+/// message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo
+/// := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The
+/// pack methods provided by protobuf library will by default use
 /// 'type.googleapis.com/full.type.name' as the type URL and the unpack methods
 /// only use the fully qualified type name after the last '/' in the type URL,
 /// for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON
@@ -2852,24 +2912,25 @@ class AndroidTestLoop {
 /// "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 class Any {
   /// A URL/resource name that uniquely identifies the type of the serialized
-  /// protocol buffer message. This string must contain at least one "/"
-  /// character. The last segment of the URL's path must represent the fully
-  /// qualified name of the type (as in `path/google.protobuf.Duration`). The
-  /// name should be in a canonical form (e.g., leading "." is not accepted). In
-  /// practice, teams usually precompile into the binary all types that they
-  /// expect it to use in the context of Any. However, for URLs which use the
-  /// scheme `http`, `https`, or no scheme, one can optionally set up a type
-  /// server that maps type URLs to message definitions as follows: * If no
-  /// scheme is provided, `https` is assumed. * An HTTP GET on the URL must
-  /// yield a google.protobuf.Type value in binary format, or produce an error.
-  /// * Applications are allowed to cache lookup results based on the URL, or
-  /// have them precompiled into a binary to avoid any lookup. Therefore, binary
-  /// compatibility needs to be preserved on changes to types. (Use versioned
-  /// type names to manage breaking changes.) Note: this functionality is not
-  /// currently available in the official protobuf release, and it is not used
-  /// for type URLs beginning with type.googleapis.com. Schemes other than
-  /// `http`, `https` (or the empty scheme) might be used with implementation
-  /// specific semantics.
+  /// protocol buffer message.
+  ///
+  /// This string must contain at least one "/" character. The last segment of
+  /// the URL's path must represent the fully qualified name of the type (as in
+  /// `path/google.protobuf.Duration`). The name should be in a canonical form
+  /// (e.g., leading "." is not accepted). In practice, teams usually precompile
+  /// into the binary all types that they expect it to use in the context of
+  /// Any. However, for URLs which use the scheme `http`, `https`, or no scheme,
+  /// one can optionally set up a type server that maps type URLs to message
+  /// definitions as follows: * If no scheme is provided, `https` is assumed. *
+  /// An HTTP GET on the URL must yield a google.protobuf.Type value in binary
+  /// format, or produce an error. * Applications are allowed to cache lookup
+  /// results based on the URL, or have them precompiled into a binary to avoid
+  /// any lookup. Therefore, binary compatibility needs to be preserved on
+  /// changes to types. (Use versioned type names to manage breaking changes.)
+  /// Note: this functionality is not currently available in the official
+  /// protobuf release, and it is not used for type URLs beginning with
+  /// type.googleapis.com. Schemes other than `http`, `https` (or the empty
+  /// scheme) might be used with implementation specific semantics.
   core.String typeUrl;
 
   /// Must be a valid serialized protocol buffer of the above specified type.
@@ -2905,14 +2966,20 @@ class Any {
 }
 
 class AppStartTime {
-  /// Optional. The time from app start to reaching the developer-reported
-  /// "fully drawn" time. This is only stored if the app includes a call to
+  /// The time from app start to reaching the developer-reported "fully drawn"
+  /// time.
+  ///
+  /// This is only stored if the app includes a call to
   /// Activity.reportFullyDrawn(). See
   /// https://developer.android.com/topic/performance/launch-time.html#time-full
+  ///
+  /// Optional.
   Duration fullyDrawnTime;
 
   /// The time from app start to the first displayed activity being drawn, as
-  /// reported in Logcat. See
+  /// reported in Logcat.
+  ///
+  /// See
   /// https://developer.android.com/topic/performance/launch-time.html#time-initial
   Duration initialDisplayTime;
 
@@ -3159,22 +3226,26 @@ class CrashDialogError {
 }
 
 /// A Duration represents a signed, fixed-length span of time represented as a
-/// count of seconds and fractions of seconds at nanosecond resolution. It is
-/// independent of any calendar and concepts like "day" or "month". It is
+/// count of seconds and fractions of seconds at nanosecond resolution.
+///
+/// It is independent of any calendar and concepts like "day" or "month". It is
 /// related to Timestamp in that the difference between two Timestamp values is
 /// a Duration and it can be added or subtracted from a Timestamp. Range is
 /// approximately +-10,000 years.
 class Duration {
   /// Signed fractions of a second at nanosecond resolution of the span of time.
+  ///
   /// Durations less than one second are represented with a 0 `seconds` field
   /// and a positive or negative `nanos` field. For durations of one second or
   /// more, a non-zero value for the `nanos` field must be of the same sign as
   /// the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
   core.int nanos;
 
-  /// Signed seconds of the span of time. Must be from -315,576,000,000 to
-  /// +315,576,000,000 inclusive. Note: these bounds are computed from: 60
-  /// sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+  /// Signed seconds of the span of time.
+  ///
+  /// Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these
+  /// bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25
+  /// days/year * 10000 years
   core.String seconds;
 
   Duration();
@@ -3269,47 +3340,68 @@ class EncounteredNonAndroidUiWidgetScreen {
 
 /// An Environment represents the set of test runs (Steps) from the parent
 /// Execution that are configured with the same set of dimensions (Model,
-/// Version, Locale, and Orientation). Multiple such runs occur particularly
-/// because of features like sharding (splitting up a test suite to run in
-/// parallel across devices) and reruns (running a test multiple times to check
-/// for different outcomes).
+/// Version, Locale, and Orientation).
+///
+/// Multiple such runs occur particularly because of features like sharding
+/// (splitting up a test suite to run in parallel across devices) and reruns
+/// (running a test multiple times to check for different outcomes).
 class Environment {
-  /// Output only. The time when the Environment status was set to complete.
+  /// The time when the Environment status was set to complete.
+  ///
   /// This value will be set automatically when state transitions to COMPLETE.
+  ///
+  /// Output only.
   Timestamp completionTime;
 
-  /// Output only. The time when the Environment was created.
+  /// The time when the Environment was created.
+  ///
+  /// Output only.
   Timestamp creationTime;
 
-  /// Dimension values describing the environment. Dimension values always
-  /// consist of "Model", "Version", "Locale", and "Orientation". - In response:
-  /// always set - In create request: always set - In update request: never set
+  /// Dimension values describing the environment.
+  ///
+  /// Dimension values always consist of "Model", "Version", "Locale", and
+  /// "Orientation". - In response: always set - In create request: always set -
+  /// In update request: never set
   core.List<EnvironmentDimensionValueEntry> dimensionValue;
 
-  /// A short human-readable name to display in the UI. Maximum of 100
-  /// characters. For example: Nexus 5, API 27.
+  /// A short human-readable name to display in the UI.
+  ///
+  /// Maximum of 100 characters. For example: Nexus 5, API 27.
   core.String displayName;
 
-  /// Output only. An Environment id.
+  /// An Environment id.
+  ///
+  /// Output only.
   core.String environmentId;
 
   /// Merged result of the environment.
   MergedResult environmentResult;
 
-  /// Output only. An Execution id.
+  /// An Execution id.
+  ///
+  /// Output only.
   core.String executionId;
 
-  /// Output only. A History id.
+  /// A History id.
+  ///
+  /// Output only.
   core.String historyId;
 
-  /// Output only. A Project id.
+  /// A Project id.
+  ///
+  /// Output only.
   core.String projectId;
 
   /// The location where output files are stored in the user bucket.
   ResultsStorage resultsStorage;
 
-  /// Output only. Summaries of shards. Only one shard will present unless
-  /// sharding feature is enabled in TestExecutionService.
+  /// Summaries of shards.
+  ///
+  /// Only one shard will present unless sharding feature is enabled in
+  /// TestExecutionService.
+  ///
+  /// Output only.
   core.List<ShardSummary> shardSummaries;
 
   Environment();
@@ -3429,24 +3521,29 @@ class EnvironmentDimensionValueEntry {
   }
 }
 
-/// An Execution represents a collection of Steps. For instance, it could
-/// represent: - a mobile test executed across a range of device configurations
-/// - a jenkins job with a build step followed by a test step The maximum size
-/// of an execution message is 1 MiB. An Execution can be updated until its
-/// state is set to COMPLETE at which point it becomes immutable.
+/// An Execution represents a collection of Steps.
+///
+/// For instance, it could represent: - a mobile test executed across a range of
+/// device configurations - a jenkins job with a build step followed by a test
+/// step The maximum size of an execution message is 1 MiB. An Execution can be
+/// updated until its state is set to COMPLETE at which point it becomes
+/// immutable.
 class Execution {
-  /// The time when the Execution status transitioned to COMPLETE. This value
-  /// will be set automatically when state transitions to COMPLETE. - In
-  /// response: set if the execution state is COMPLETE. - In create/update
+  /// The time when the Execution status transitioned to COMPLETE.
+  ///
+  /// This value will be set automatically when state transitions to COMPLETE. -
+  /// In response: set if the execution state is COMPLETE. - In create/update
   /// request: never set
   Timestamp completionTime;
 
-  /// The time when the Execution was created. This value will be set
-  /// automatically when CreateExecution is called. - In response: always set -
-  /// In create/update request: never set
+  /// The time when the Execution was created.
+  ///
+  /// This value will be set automatically when CreateExecution is called. - In
+  /// response: always set - In create/update request: never set
   Timestamp creationTime;
 
   /// The dimensions along which different steps in this execution may vary.
+  ///
   /// This must remain fixed over the life of the execution. Returns
   /// INVALID_ARGUMENT if this field is set in an update request. Returns
   /// INVALID_ARGUMENT if the same name occurs in more than one
@@ -3455,9 +3552,10 @@ class Execution {
   /// optional - In update request: never set
   core.List<MatrixDimensionDefinition> dimensionDefinitions;
 
-  /// A unique identifier within a History for this Execution. Returns
-  /// INVALID_ARGUMENT if this field is set or overwritten by the caller. - In
-  /// response always set - In create/update request: never set
+  /// A unique identifier within a History for this Execution.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
+  /// caller. - In response always set - In create/update request: never set
   core.String executionId;
 
   /// Classify the result, for example into SUCCESS or FAILURE - In response:
@@ -3465,18 +3563,22 @@ class Execution {
   /// optional
   Outcome outcome;
 
-  /// Lightweight information about execution request. - In response: present if
-  /// set by create - In create: optional - In update: optional
+  /// Lightweight information about execution request.
+  ///
+  /// - In response: present if set by create - In create: optional - In update:
+  /// optional
   Specification specification;
 
-  /// The initial state is IN_PROGRESS. The only legal state transitions is from
-  /// IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an
-  /// invalid transition is requested. The state can only be set to COMPLETE
-  /// once. A FAILED_PRECONDITION will be returned if the state is set to
-  /// COMPLETE multiple times. If the state is set to COMPLETE, all the
-  /// in-progress steps within the execution will be set as COMPLETE. If the
-  /// outcome of the step is not set, the outcome will be set to INCONCLUSIVE. -
-  /// In response always set - In create/update request: optional
+  /// The initial state is IN_PROGRESS.
+  ///
+  /// The only legal state transitions is from IN_PROGRESS to COMPLETE. A
+  /// PRECONDITION_FAILED will be returned if an invalid transition is
+  /// requested. The state can only be set to COMPLETE once. A
+  /// FAILED_PRECONDITION will be returned if the state is set to COMPLETE
+  /// multiple times. If the state is set to COMPLETE, all the in-progress steps
+  /// within the execution will be set as COMPLETE. If the outcome of the step
+  /// is not set, the outcome will be set to INCONCLUSIVE. - In response always
+  /// set - In create/update request: optional
   /// Possible string values are:
   /// - "unknownState" : Should never be in this state. Exists for proto
   /// deserialization backward compatibility.
@@ -3488,8 +3590,10 @@ class Execution {
   /// state cannot be modified.
   core.String state;
 
-  /// TestExecution Matrix ID that the TestExecutionService uses. - In response:
-  /// present if set by create - In create: optional - In update: never set
+  /// TestExecution Matrix ID that the TestExecutionService uses.
+  ///
+  /// - In response: present if set by create - In create: optional - In update:
+  /// never set
   core.String testExecutionMatrixId;
 
   Execution();
@@ -3587,8 +3691,9 @@ class FailureDetail {
   /// matched during the entire crawl.
   core.bool failedRoboscript;
 
-  /// If an app is not installed and thus no test can be run with the app. This
-  /// might be caused by trying to run a test on an unsupported platform.
+  /// If an app is not installed and thus no test can be run with the app.
+  ///
+  /// This might be caused by trying to run a test on an unsupported platform.
   core.bool notInstalled;
 
   /// If a native process (including any other than the app) crashed.
@@ -3656,7 +3761,9 @@ class FailureDetail {
 
 /// Additional details for a fatal exception.
 class FatalException {
-  /// The stack trace of the fatal exception. Optional.
+  /// The stack trace of the fatal exception.
+  ///
+  /// Optional.
   StackTrace stackTrace;
 
   FatalException();
@@ -3679,9 +3786,10 @@ class FatalException {
 
 /// A reference to a file.
 class FileReference {
-  /// The URI of a file stored in Google Cloud Storage. For example:
-  /// http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil
-  /// format: gs://mybucket/path/to/test.xml with version-specific info,
+  /// The URI of a file stored in Google Cloud Storage.
+  ///
+  /// For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in
+  /// gsutil format: gs://mybucket/path/to/test.xml with version-specific info,
   /// gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error
   /// will be returned if the URI format is not supported. - In response: always
   /// set - In create/update request: always set
@@ -3704,19 +3812,24 @@ class FileReference {
   }
 }
 
-/// Graphics statistics for the App. The information is collected from 'adb
-/// shell dumpsys graphicsstats'. For more info see:
+/// Graphics statistics for the App.
+///
+/// The information is collected from 'adb shell dumpsys graphicsstats'. For
+/// more info see:
 /// https://developer.android.com/training/testing/performance.html Statistics
 /// will only be present for API 23+.
 class GraphicsStats {
-  /// Histogram of frame render times. There should be 154 buckets ranging from
-  /// [5ms, 6ms) to [4950ms, infinity)
+  /// Histogram of frame render times.
+  ///
+  /// There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)
   core.List<GraphicsStatsBucket> buckets;
 
   /// Total "high input latency" events.
   core.String highInputLatencyCount;
 
-  /// Total frames with slow render time. Should be <= total_frames.
+  /// Total frames with slow render time.
+  ///
+  /// Should be <= total_frames.
   core.String jankyFrames;
 
   /// Total "missed vsync" events.
@@ -3863,27 +3976,35 @@ class GraphicsStatsBucket {
 }
 
 /// A History represents a sorted list of Executions ordered by the
-/// start_timestamp_millis field (descending). It can be used to group all the
-/// Executions of a continuous build. Note that the ordering only operates on
-/// one-dimension. If a repository has multiple branches, it means that multiple
-/// histories will need to be used in order to order Executions per branch.
+/// start_timestamp_millis field (descending).
+///
+/// It can be used to group all the Executions of a continuous build. Note that
+/// the ordering only operates on one-dimension. If a repository has multiple
+/// branches, it means that multiple histories will need to be used in order to
+/// order Executions per branch.
 class History {
-  /// A short human-readable (plain text) name to display in the UI. Maximum of
-  /// 100 characters. - In response: present if set during create. - In create
-  /// request: optional
+  /// A short human-readable (plain text) name to display in the UI.
+  ///
+  /// Maximum of 100 characters. - In response: present if set during create. -
+  /// In create request: optional
   core.String displayName;
 
-  /// A unique identifier within a project for this History. Returns
-  /// INVALID_ARGUMENT if this field is set or overwritten by the caller. - In
-  /// response always set - In create request: never set
+  /// A unique identifier within a project for this History.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
+  /// caller. - In response always set - In create request: never set
   core.String historyId;
 
-  /// A name to uniquely identify a history within a project. Maximum of 200
-  /// characters. - In response always set - In create request: always set
+  /// A name to uniquely identify a history within a project.
+  ///
+  /// Maximum of 200 characters. - In response always set - In create request:
+  /// always set
   core.String name;
 
-  /// The platform of the test history. - In response: always set. Returns the
-  /// platform of the last execution if unknown.
+  /// The platform of the test history.
+  ///
+  /// - In response: always set. Returns the platform of the last execution if
+  /// unknown.
   /// Possible string values are:
   /// - "unknownPlatform"
   /// - "android"
@@ -3930,11 +4051,15 @@ class Image {
   /// An error explaining why the thumbnail could not be rendered.
   Status error;
 
-  /// A reference to the full-size, original image. This is the same as the
-  /// tool_outputs entry for the image under its Step. Always set.
+  /// A reference to the full-size, original image.
+  ///
+  /// This is the same as the tool_outputs entry for the image under its Step.
+  /// Always set.
   ToolOutputReference sourceImage;
 
-  /// The step to which the image is attached. Always set.
+  /// The step to which the image is attached.
+  ///
+  /// Always set.
   core.String stepId;
 
   /// The thumbnail.
@@ -4015,8 +4140,10 @@ class InAppPurchasesFound {
 /// Details for an outcome with an INCONCLUSIVE outcome summary.
 class InconclusiveDetail {
   /// If the end user aborted the test execution before a pass or fail could be
-  /// determined. For example, the user pressed ctrl-c which sent a kill signal
-  /// to the test runner while the test was running.
+  /// determined.
+  ///
+  /// For example, the user pressed ctrl-c which sent a kill signal to the test
+  /// runner while the test was running.
   core.bool abortedByUser;
 
   /// If results are being provided to the user in certain cases of
@@ -4024,8 +4151,9 @@ class InconclusiveDetail {
   core.bool hasErrorLogs;
 
   /// If the test runner could not determine success or failure because the test
-  /// depends on a component other than the system under test which failed. For
-  /// example, a mobile test requires provisioning a device where the test
+  /// depends on a component other than the system under test which failed.
+  ///
+  /// For example, a mobile test requires provisioning a device where the test
   /// executes, and that provisioning can fail.
   core.bool infrastructureFailure;
 
@@ -4061,8 +4189,10 @@ class InconclusiveDetail {
 /// Step Id and outcome of each individual step that was run as a group with
 /// other steps with the same configuration.
 class IndividualOutcome {
-  /// Unique int given to each step. Ranges from 0(inclusive) to total number of
-  /// steps(exclusive). The primary step is 0.
+  /// Unique int given to each step.
+  ///
+  /// Ranges from 0(inclusive) to total number of steps(exclusive). The primary
+  /// step is 0.
   core.int multistepNumber;
 
   ///
@@ -4138,7 +4268,9 @@ class InsufficientCoverage {
 
 /// Additional details for an iOS app crash.
 class IosAppCrashed {
-  /// The stack trace, if one is available. Optional.
+  /// The stack trace, if one is available.
+  ///
+  /// Optional.
   StackTrace stackTrace;
 
   IosAppCrashed();
@@ -4161,7 +4293,9 @@ class IosAppCrashed {
 
 /// iOS app information
 class IosAppInfo {
-  /// The name of the app. Required
+  /// The name of the app.
+  ///
+  /// Required
   core.String name;
 
   IosAppInfo();
@@ -4327,20 +4461,27 @@ class LauncherActivityNotFound {
 
 /// Response message for EnvironmentService.ListEnvironments.
 class ListEnvironmentsResponse {
-  /// Environments. Always set.
+  /// Environments.
+  ///
+  /// Always set.
   core.List<Environment> environments;
 
   /// A Execution id Always set.
   core.String executionId;
 
-  /// A History id. Always set.
+  /// A History id.
+  ///
+  /// Always set.
   core.String historyId;
 
-  /// A continuation token to resume the query at the next item. Will only be
-  /// set if there are more Environments to fetch.
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// Will only be set if there are more Environments to fetch.
   core.String nextPageToken;
 
-  /// A Project id. Always set.
+  /// A Project id.
+  ///
+  /// Always set.
   core.String projectId;
 
   ListEnvironmentsResponse();
@@ -4389,11 +4530,14 @@ class ListEnvironmentsResponse {
 }
 
 class ListExecutionsResponse {
-  /// Executions. Always set.
+  /// Executions.
+  ///
+  /// Always set.
   core.List<Execution> executions;
 
-  /// A continuation token to resume the query at the next item. Will only be
-  /// set if there are more Executions to fetch.
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// Will only be set if there are more Executions to fetch.
   core.String nextPageToken;
 
   ListExecutionsResponse();
@@ -4427,12 +4571,13 @@ class ListHistoriesResponse {
   /// Histories.
   core.List<History> histories;
 
-  /// A continuation token to resume the query at the next item. Will only be
-  /// set if there are more histories to fetch. Tokens are valid for up to one
-  /// hour from the time of the first list request. For instance, if you make a
-  /// list request at 1PM and use the token from this first request 10 minutes
-  /// later, the token from this second response will only be valid for 50
-  /// minutes.
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// Will only be set if there are more histories to fetch. Tokens are valid
+  /// for up to one hour from the time of the first list request. For instance,
+  /// if you make a list request at 1PM and use the token from this first
+  /// request 10 minutes later, the token from this second response will only be
+  /// valid for 50 minutes.
   core.String nextPageToken;
 
   ListHistoriesResponse();
@@ -4488,8 +4633,10 @@ class ListPerfSampleSeriesResponse {
 
 class ListPerfSamplesResponse {
   /// Optional, returned if result size exceeds the page size specified in the
-  /// request (or the default page size, 500, if unspecified). It indicates the
-  /// last sample timestamp to be used as page_token in subsequent request
+  /// request (or the default page size, 500, if unspecified).
+  ///
+  /// It indicates the last sample timestamp to be used as page_token in
+  /// subsequent request
   core.String nextPageToken;
   core.List<PerfSample> perfSamples;
 
@@ -4546,15 +4693,17 @@ class ListScreenshotClustersResponse {
 
 /// Response message for AccessibilityService.ListStepAccessibilityClusters.
 class ListStepAccessibilityClustersResponse {
-  /// A sequence of accessibility suggestions, grouped into clusters. Within the
-  /// sequence, clusters that belong to the same SuggestionCategory should be
-  /// adjacent. Within each category, clusters should be ordered by their
-  /// SuggestionPriority (ERRORs first). The categories should be ordered by
-  /// their highest priority cluster.
+  /// A sequence of accessibility suggestions, grouped into clusters.
+  ///
+  /// Within the sequence, clusters that belong to the same SuggestionCategory
+  /// should be adjacent. Within each category, clusters should be ordered by
+  /// their SuggestionPriority (ERRORs first). The categories should be ordered
+  /// by their highest priority cluster.
   core.List<SuggestionClusterProto> clusters;
 
-  /// A full resource name of the step. For example,
-  /// projects/my-project/histories/bh.1234567890abcdef/executions/
+  /// A full resource name of the step.
+  ///
+  /// For example, projects/my-project/histories/bh.1234567890abcdef/executions/
   /// 1234567890123456789/steps/bs.1234567890abcdef Always presents.
   core.String name;
 
@@ -4587,17 +4736,20 @@ class ListStepAccessibilityClustersResponse {
 
 /// A response containing the thumbnails in a step.
 class ListStepThumbnailsResponse {
-  /// A continuation token to resume the query at the next item. If set,
-  /// indicates that there are more thumbnails to read, by calling list again
-  /// with this value in the page_token field.
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// If set, indicates that there are more thumbnails to read, by calling list
+  /// again with this value in the page_token field.
   core.String nextPageToken;
 
-  /// A list of image data. Images are returned in a deterministic order; they
-  /// are ordered by these factors, in order of importance: * First, by their
-  /// associated test case. Images without a test case are considered greater
-  /// than images with one. * Second, by their creation time. Images without a
-  /// creation time are greater than images with one. * Third, by the order in
-  /// which they were added to the step (by calls to CreateStep or UpdateStep).
+  /// A list of image data.
+  ///
+  /// Images are returned in a deterministic order; they are ordered by these
+  /// factors, in order of importance: * First, by their associated test case.
+  /// Images without a test case are considered greater than images with one. *
+  /// Second, by their creation time. Images without a creation time are greater
+  /// than images with one. * Third, by the order in which they were added to
+  /// the step (by calls to CreateStep or UpdateStep).
   core.List<Image> thumbnails;
 
   ListStepThumbnailsResponse();
@@ -4628,9 +4780,10 @@ class ListStepThumbnailsResponse {
 
 /// Response message for StepService.List.
 class ListStepsResponse {
-  /// A continuation token to resume the query at the next item. If set,
-  /// indicates that there are more steps to read, by calling list again with
-  /// this value in the page_token field.
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// If set, indicates that there are more steps to read, by calling list again
+  /// with this value in the page_token field.
   core.String nextPageToken;
 
   /// Steps.
@@ -4739,11 +4892,12 @@ class MemoryInfo {
   }
 }
 
-/// Merged test result for environment. If the environment has only one step (no
-/// reruns or shards), then the merged result is the same as the step result. If
-/// the environment has multiple shards and/or reruns, then the results of
-/// shards and reruns that belong to the same environment are merged into one
-/// environment result.
+/// Merged test result for environment.
+///
+/// If the environment has only one step (no reruns or shards), then the merged
+/// result is the same as the step result. If the environment has multiple
+/// shards and/or reruns, then the results of shards and reruns that belong to
+/// the same environment are merged into one environment result.
 class MergedResult {
   /// Outcome of the resource
   Outcome outcome;
@@ -4761,14 +4915,15 @@ class MergedResult {
   core.String state;
 
   /// The combined and rolled-up result of each test suite that was run as part
-  /// of this environment. Combining: When the test cases from a suite are run
-  /// in different steps (sharding), the results are added back together in one
-  /// overview. (e.g., if shard1 has 2 failures and shard2 has 1 failure than
-  /// the overview failure_count = 3). Rollup: When test cases from the same
-  /// suite are run multiple times (flaky), the results are combined (e.g., if
-  /// testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and
-  /// testcase2.run2 fail then the overview flaky_count = 1 and failure_count =
-  /// 1).
+  /// of this environment.
+  ///
+  /// Combining: When the test cases from a suite are run in different steps
+  /// (sharding), the results are added back together in one overview. (e.g., if
+  /// shard1 has 2 failures and shard2 has 1 failure than the overview
+  /// failure_count = 3). Rollup: When test cases from the same suite are run
+  /// multiple times (flaky), the results are combined (e.g., if testcase1.run1
+  /// fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2
+  /// fail then the overview flaky_count = 1 and failure_count = 1).
   core.List<TestSuiteOverview> testSuiteOverviews;
 
   MergedResult();
@@ -4807,8 +4962,10 @@ class MergedResult {
 
 /// Details when multiple steps are run with the same configuration as a group.
 class MultiStep {
-  /// Unique int given to each step. Ranges from 0(inclusive) to total number of
-  /// steps(exclusive). The primary step is 0.
+  /// Unique int given to each step.
+  ///
+  /// Ranges from 0(inclusive) to total number of steps(exclusive). The primary
+  /// step is 0.
   core.int multistepNumber;
 
   /// Present if it is a primary (original) step.
@@ -4849,7 +5006,9 @@ class MultiStep {
 
 /// Additional details for a native crash.
 class NativeCrash {
-  /// The stack trace of the native crash. Optional.
+  /// The stack trace of the native crash.
+  ///
+  /// Optional.
   StackTrace stackTrace;
 
   NativeCrash();
@@ -4950,7 +5109,9 @@ class NonSdkApiInsight {
   core.List<core.String> exampleTraceMessages;
 
   /// A unique ID, to be used for determining the effectiveness of this
-  /// particular insight in the context of a matcher. (required)
+  /// particular insight in the context of a matcher.
+  ///
+  /// (required)
   core.String matcherId;
 
   /// An insight indicating that the hidden API usage originates from a
@@ -5089,23 +5250,33 @@ class NonSdkApiUsageViolationReport {
 
 /// Interprets a result so that humans and machines can act on it.
 class Outcome {
-  /// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this
-  /// field is set but the summary is not FAILURE. Optional
+  /// More information about a FAILURE outcome.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
+  /// FAILURE. Optional
   FailureDetail failureDetail;
 
-  /// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT
-  /// if this field is set but the summary is not INCONCLUSIVE. Optional
+  /// More information about an INCONCLUSIVE outcome.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
+  /// INCONCLUSIVE. Optional
   InconclusiveDetail inconclusiveDetail;
 
-  /// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this
-  /// field is set but the summary is not SKIPPED. Optional
+  /// More information about a SKIPPED outcome.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
+  /// SKIPPED. Optional
   SkippedDetail skippedDetail;
 
-  /// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this
-  /// field is set but the summary is not SUCCESS. Optional
+  /// More information about a SUCCESS outcome.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
+  /// SUCCESS. Optional
   SuccessDetail successDetail;
 
-  /// The simplest way to interpret a result. Required
+  /// The simplest way to interpret a result.
+  ///
+  /// Required
   /// Possible string values are:
   /// - "unset" : Do not use. For proto versioning only.
   /// - "success" : The test matrix run was successful, for instance: - All the
@@ -5202,7 +5373,9 @@ class OverlappingUIElements {
 }
 
 /// This insight indicates that the hidden API usage originates from a
-/// Google-provided library. Users need not take any action.
+/// Google-provided library.
+///
+/// Users need not take any action.
 class PendingGoogleUpdateInsight {
   /// The name of the Google-provided library with the non-SDK API dependency.
   core.String nameOfGoogleLibrary;
@@ -5261,14 +5434,20 @@ class PerfEnvironment {
 class PerfMetricsSummary {
   AppStartTime appStartTime;
 
-  /// A tool results execution ID. @OutputOnly
+  /// A tool results execution ID.
+  ///
+  /// @OutputOnly
   core.String executionId;
 
-  /// Graphics statistics for the entire run. Statistics are reset at the
-  /// beginning of the run and collected at the end of the run.
+  /// Graphics statistics for the entire run.
+  ///
+  /// Statistics are reset at the beginning of the run and collected at the end
+  /// of the run.
   GraphicsStats graphicsStats;
 
-  /// A tool results history ID. @OutputOnly
+  /// A tool results history ID.
+  ///
+  /// @OutputOnly
   core.String historyId;
 
   /// Describes the environment in which the performance metrics were collected
@@ -5280,7 +5459,9 @@ class PerfMetricsSummary {
   /// The cloud project @OutputOnly
   core.String projectId;
 
-  /// A tool results step ID. @OutputOnly
+  /// A tool results step ID.
+  ///
+  /// @OutputOnly
   core.String stepId;
 
   PerfMetricsSummary();
@@ -5384,10 +5565,14 @@ class PerfSampleSeries {
   /// Basic series represented by a line chart
   BasicPerfSampleSeries basicPerfSampleSeries;
 
-  /// A tool results execution ID. @OutputOnly
+  /// A tool results execution ID.
+  ///
+  /// @OutputOnly
   core.String executionId;
 
-  /// A tool results history ID. @OutputOnly
+  /// A tool results history ID.
+  ///
+  /// @OutputOnly
   core.String historyId;
 
   /// The cloud project @OutputOnly
@@ -5396,7 +5581,9 @@ class PerfSampleSeries {
   /// A sample series id @OutputOnly
   core.String sampleSeriesId;
 
-  /// A tool results step ID. @OutputOnly
+  /// A tool results step ID.
+  ///
+  /// @OutputOnly
   core.String stepId;
 
   PerfSampleSeries();
@@ -5538,13 +5725,15 @@ class PrimaryStep {
 /// Per-project settings for the Tool Results service.
 class ProjectSettings {
   /// The name of the Google Cloud Storage bucket to which results are written.
+  ///
   /// By default, this is unset. In update request: optional In response:
   /// optional
   core.String defaultBucket;
 
-  /// The name of the project's settings. Always of the form:
-  /// projects/{project-id}/settings In update request: never set In response:
-  /// always set
+  /// The name of the project's settings.
+  ///
+  /// Always of the form: projects/{project-id}/settings In update request:
+  /// never set In response: always set
   core.String name;
 
   ProjectSettings();
@@ -5572,8 +5761,10 @@ class ProjectSettings {
 
 /// Request message for StepService.PublishXunitXmlFiles.
 class PublishXunitXmlFilesRequest {
-  /// URI of the Xunit XML files to publish. The maximum size of the file this
-  /// reference is pointing to is 50MB. Required.
+  /// URI of the Xunit XML files to publish.
+  ///
+  /// The maximum size of the file this reference is pointing to is 50MB.
+  /// Required.
   core.List<FileReference> xunitXmlFiles;
 
   PublishXunitXmlFilesRequest();
@@ -5599,16 +5790,24 @@ class PublishXunitXmlFilesRequest {
 
 /// A rectangular region.
 class RegionProto {
-  /// The height, in pixels. Always set.
+  /// The height, in pixels.
+  ///
+  /// Always set.
   core.int heightPx;
 
-  /// The left side of the rectangle, in pixels. Always set.
+  /// The left side of the rectangle, in pixels.
+  ///
+  /// Always set.
   core.int leftPx;
 
-  /// The top of the rectangle, in pixels. Always set.
+  /// The top of the rectangle, in pixels.
+  ///
+  /// Always set.
   core.int topPx;
 
-  /// The width, in pixels. Always set.
+  /// The width, in pixels.
+  ///
+  /// Always set.
   core.int widthPx;
 
   RegionProto();
@@ -5713,11 +5912,14 @@ class RoboScriptExecution {
 /// IMPORTANT: It is unsafe to accept this message from an untrusted source,
 /// since it's trivial for an attacker to forge serialized messages that don't
 /// fulfill the type's safety contract -- for example, it could contain attacker
-/// controlled script. A system which receives a SafeHtmlProto implicitly trusts
-/// the producer of the SafeHtmlProto. So, it's generally safe to return this
-/// message in RPC responses, but generally unsafe to accept it in RPC requests.
+/// controlled script.
+///
+/// A system which receives a SafeHtmlProto implicitly trusts the producer of
+/// the SafeHtmlProto. So, it's generally safe to return this message in RPC
+/// responses, but generally unsafe to accept it in RPC requests.
 class SafeHtmlProto {
   /// IMPORTANT: Never set or read this field, even from tests, it is private.
+  ///
   /// See documentation at the top of .proto file for programming language
   /// packages with which to create or read this message.
   core.String privateDoNotAccessOrElseSafeHtmlWrappedValue;
@@ -5742,16 +5944,24 @@ class SafeHtmlProto {
 }
 
 class Screen {
-  /// File reference of the png file. Required.
+  /// File reference of the png file.
+  ///
+  /// Required.
   core.String fileReference;
 
-  /// Locale of the device that the screenshot was taken on. Required.
+  /// Locale of the device that the screenshot was taken on.
+  ///
+  /// Required.
   core.String locale;
 
-  /// Model of the device that the screenshot was taken on. Required.
+  /// Model of the device that the screenshot was taken on.
+  ///
+  /// Required.
   core.String model;
 
-  /// OS version of the device that the screenshot was taken on. Required.
+  /// OS version of the device that the screenshot was taken on.
+  ///
+  /// Required.
   core.String version;
 
   Screen();
@@ -5793,13 +6003,16 @@ class ScreenshotCluster {
   /// A string that describes the activity of every screen in the cluster.
   core.String activity;
 
-  /// A unique identifier for the cluster. @OutputOnly
+  /// A unique identifier for the cluster.
+  ///
+  /// @OutputOnly
   core.String clusterId;
 
-  /// A singular screen that represents the cluster as a whole. This screen will
-  /// act as the "cover" of the entire cluster. When users look at the clusters,
-  /// only the key screen from each cluster will be shown. Which screen is the
-  /// key screen is determined by the ClusteringAlgorithm
+  /// A singular screen that represents the cluster as a whole.
+  ///
+  /// This screen will act as the "cover" of the entire cluster. When users look
+  /// at the clusters, only the key screen from each cluster will be shown.
+  /// Which screen is the key screen is determined by the ClusteringAlgorithm
   Screen keyScreen;
 
   /// Full list of screens.
@@ -5846,9 +6059,10 @@ class ScreenshotCluster {
 
 /// Result summary for a shard in an environment.
 class ShardSummary {
-  /// Summaries of the steps belonging to the shard. With flaky_test_attempts
-  /// enabled from TestExecutionService, more than one run (Step) can present.
-  /// And the runs will be sorted by multistep_number.
+  /// Summaries of the steps belonging to the shard.
+  ///
+  /// With flaky_test_attempts enabled from TestExecutionService, more than one
+  /// run (Step) can present. And the runs will be sorted by multistep_number.
   core.List<StepSummary> runs;
 
   /// Merged result of the shard.
@@ -5956,7 +6170,9 @@ class Specification {
 
 /// A stacktrace.
 class StackTrace {
-  /// The stack trace message. Required
+  /// The stack trace message.
+  ///
+  /// Required
   core.String exception;
 
   StackTrace();
@@ -6005,24 +6221,27 @@ class StartActivityNotFound {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -6063,13 +6282,14 @@ class Status {
   }
 }
 
-/// A Step represents a single operation performed as part of Execution. A step
-/// can be used to represent the execution of a tool ( for example a test runner
-/// execution or an execution of a compiler). Steps can overlap (for instance
-/// two steps might have the same start time if some operations are done in
-/// parallel). Here is an example, let's consider that we have a continuous
-/// build is executing a test runner for each iteration. The workflow would look
-/// like: - user creates a Execution with id 1 - user creates an
+/// A Step represents a single operation performed as part of Execution.
+///
+/// A step can be used to represent the execution of a tool ( for example a test
+/// runner execution or an execution of a compiler). Steps can overlap (for
+/// instance two steps might have the same start time if some operations are
+/// done in parallel). Here is an example, let's consider that we have a
+/// continuous build is executing a test runner for each iteration. The workflow
+/// would look like: - user creates a Execution with id 1 - user creates an
 /// TestExecutionStep with id 100 for Execution 1 - user update
 /// TestExecutionStep with id 100 to add a raw xml log + the service parses the
 /// xml logs and returns a TestExecutionStep with updated TestResult(s). - user
@@ -6077,13 +6297,16 @@ class Status {
 /// updated until its state is set to COMPLETE at which points it becomes
 /// immutable. Next tag: 27
 class Step {
-  /// The time when the step status was set to complete. This value will be set
-  /// automatically when state transitions to COMPLETE. - In response: set if
-  /// the execution state is COMPLETE. - In create/update request: never set
+  /// The time when the step status was set to complete.
+  ///
+  /// This value will be set automatically when state transitions to COMPLETE. -
+  /// In response: set if the execution state is COMPLETE. - In create/update
+  /// request: never set
   Timestamp completionTime;
 
-  /// The time when the step was created. - In response: always set - In
-  /// create/update request: never set
+  /// The time when the step was created.
+  ///
+  /// - In response: always set - In create/update request: never set
   Timestamp creationTime;
 
   /// A description of this tool For example: mvn clean package -D
@@ -6091,9 +6314,10 @@ class Step {
   /// create/update request: optional
   core.String description;
 
-  /// How much the device resource is used to perform the test. This is the
-  /// device usage used for billing purpose, which is different from the
-  /// run_duration, for example, infrastructure failure won't be charged for
+  /// How much the device resource is used to perform the test.
+  ///
+  /// This is the device usage used for billing purpose, which is different from
+  /// the run_duration, for example, infrastructure failure won't be charged for
   /// device usage. PRECONDITION_FAILED will be returned if one attempts to set
   /// a device_usage on a step which already has this field set. - In response:
   /// present if previously set. - In create request: optional - In update
@@ -6102,6 +6326,7 @@ class Step {
 
   /// If the execution containing this step has any dimension_definition set,
   /// then this field allows the child to specify the values of the dimensions.
+  ///
   /// The keys must exactly match the dimension_definition of the execution. For
   /// example, if the execution has `dimension_definition = ['attempt',
   /// 'device']` then a step must define values for those dimensions, eg.
@@ -6123,11 +6348,13 @@ class Step {
   core.List<StepDimensionValueEntry> dimensionValue;
 
   /// Whether any of the outputs of this step are images whose thumbnails can be
-  /// fetched with ListThumbnails. - In response: always set - In create/update
-  /// request: never set
+  /// fetched with ListThumbnails.
+  ///
+  /// - In response: always set - In create/update request: never set
   core.bool hasImages;
 
   /// Arbitrary user-supplied key/value pairs that are associated with the step.
+  ///
   /// Users are responsible for managing the key namespace such that keys don't
   /// accidentally collide. An INVALID_ARGUMENT will be returned if the number
   /// of labels exceeds 100 or if the length of any of the keys or values
@@ -6138,16 +6365,19 @@ class Step {
   core.List<StepLabelsEntry> labels;
 
   /// Details when multiple steps are run with the same configuration as a
-  /// group. These details can be used identify which group this step is part
-  /// of. It also identifies the groups 'primary step' which indexes all the
-  /// group members. - In response: present if previously set. - In create
-  /// request: optional, set iff this step was performed more than once. - In
-  /// update request: optional
+  /// group.
+  ///
+  /// These details can be used identify which group this step is part of. It
+  /// also identifies the groups 'primary step' which indexes all the group
+  /// members. - In response: present if previously set. - In create request:
+  /// optional, set iff this step was performed more than once. - In update
+  /// request: optional
   MultiStep multiStep;
 
-  /// A short human-readable name to display in the UI. Maximum of 100
-  /// characters. For example: Clean build A PRECONDITION_FAILED will be
-  /// returned upon creating a new step if it shares its name and
+  /// A short human-readable name to display in the UI.
+  ///
+  /// Maximum of 100 characters. For example: Clean build A PRECONDITION_FAILED
+  /// will be returned upon creating a new step if it shares its name and
   /// dimension_value with an existing step. If two steps represent a similar
   /// action, but have different dimension values, they should share the same
   /// name. For instance, if the same set of tests is run on two different
@@ -6160,25 +6390,27 @@ class Step {
   /// request: optional
   Outcome outcome;
 
-  /// How long it took for this step to run. If unset, this is set to the
-  /// difference between creation_time and completion_time when the step is set
-  /// to the COMPLETE state. In some cases, it is appropriate to set this value
-  /// separately: For instance, if a step is created, but the operation it
-  /// represents is queued for a few minutes before it executes, it would be
-  /// appropriate not to include the time spent queued in its run_duration.
-  /// PRECONDITION_FAILED will be returned if one attempts to set a run_duration
-  /// on a step which already has this field set. - In response: present if
-  /// previously set; always present on COMPLETE step - In create request:
-  /// optional - In update request: optional
+  /// How long it took for this step to run.
+  ///
+  /// If unset, this is set to the difference between creation_time and
+  /// completion_time when the step is set to the COMPLETE state. In some cases,
+  /// it is appropriate to set this value separately: For instance, if a step is
+  /// created, but the operation it represents is queued for a few minutes
+  /// before it executes, it would be appropriate not to include the time spent
+  /// queued in its run_duration. PRECONDITION_FAILED will be returned if one
+  /// attempts to set a run_duration on a step which already has this field set.
+  /// - In response: present if previously set; always present on COMPLETE step
+  /// - In create request: optional - In update request: optional
   Duration runDuration;
 
-  /// The initial state is IN_PROGRESS. The only legal state transitions are *
-  /// IN_PROGRESS -> COMPLETE A PRECONDITION_FAILED will be returned if an
-  /// invalid transition is requested. It is valid to create Step with a state
-  /// set to COMPLETE. The state can only be set to COMPLETE once. A
-  /// PRECONDITION_FAILED will be returned if the state is set to COMPLETE
-  /// multiple times. - In response: always set - In create/update request:
-  /// optional
+  /// The initial state is IN_PROGRESS.
+  ///
+  /// The only legal state transitions are * IN_PROGRESS -> COMPLETE A
+  /// PRECONDITION_FAILED will be returned if an invalid transition is
+  /// requested. It is valid to create Step with a state set to COMPLETE. The
+  /// state can only be set to COMPLETE once. A PRECONDITION_FAILED will be
+  /// returned if the state is set to COMPLETE multiple times. - In response:
+  /// always set - In create/update request: optional
   /// Possible string values are:
   /// - "unknownState" : Should never be in this state. Exists for proto
   /// deserialization backward compatibility.
@@ -6190,9 +6422,10 @@ class Step {
   /// state cannot be modified.
   core.String state;
 
-  /// A unique identifier within a Execution for this Step. Returns
-  /// INVALID_ARGUMENT if this field is set or overwritten by the caller. - In
-  /// response: always set - In create/update request: never set
+  /// A unique identifier within a Execution for this Step.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
+  /// caller. - In response: always set - In create/update request: never set
   core.String stepId;
 
   /// An execution of a test runner.
@@ -6386,7 +6619,9 @@ class StepSummary {
   }
 }
 
-/// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+/// Details for an outcome with a SUCCESS outcome summary.
+///
+/// LINT.IfChange
 class SuccessDetail {
   /// If a native process other than the app crashed.
   core.bool otherNativeCrash;
@@ -6408,12 +6643,15 @@ class SuccessDetail {
   }
 }
 
-/// A set of similar suggestions that we suspect are closely related. This proto
-/// and most of the nested protos are branched from
+/// A set of similar suggestions that we suspect are closely related.
+///
+/// This proto and most of the nested protos are branched from
 /// foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's
 /// dependencies with FTL's.
 class SuggestionClusterProto {
-  /// Category in which these types of suggestions should appear. Always set.
+  /// Category in which these types of suggestions should appear.
+  ///
+  /// Always set.
   /// Possible string values are:
   /// - "unknownCategory"
   /// - "contentLabeling"
@@ -6422,10 +6660,11 @@ class SuggestionClusterProto {
   /// - "implementation"
   core.String category;
 
-  /// A sequence of suggestions. All of the suggestions within a cluster must
-  /// have the same SuggestionPriority and belong to the same
-  /// SuggestionCategory. Suggestions with the same screenshot URL should be
-  /// adjacent.
+  /// A sequence of suggestions.
+  ///
+  /// All of the suggestions within a cluster must have the same
+  /// SuggestionPriority and belong to the same SuggestionCategory. Suggestions
+  /// with the same screenshot URL should be adjacent.
   core.List<SuggestionProto> suggestions;
 
   SuggestionClusterProto();
@@ -6457,14 +6696,19 @@ class SuggestionClusterProto {
 
 class SuggestionProto {
   /// Reference to a help center article concerning this type of suggestion.
+  ///
   /// Always set.
   core.String helpUrl;
 
   /// Message, in the user's language, explaining the suggestion, which may
-  /// contain markup. Always set.
+  /// contain markup.
+  ///
+  /// Always set.
   SafeHtmlProto longMessage;
 
-  /// Relative importance of a suggestion. Always set.
+  /// Relative importance of a suggestion.
+  ///
+  /// Always set.
   /// Possible string values are:
   /// - "unknownPriority"
   /// - "error"
@@ -6473,11 +6717,14 @@ class SuggestionProto {
   core.String priority;
 
   /// A somewhat human readable identifier of the source view, if it does not
-  /// have a resource_name. This is a path within the accessibility hierarchy,
-  /// an element with resource name; similar to an XPath.
+  /// have a resource_name.
+  ///
+  /// This is a path within the accessibility hierarchy, an element with
+  /// resource name; similar to an XPath.
   core.String pseudoResourceId;
 
   /// Region within the screenshot that is relevant to this suggestion.
+  ///
   /// Optional.
   RegionProto region;
 
@@ -6485,23 +6732,28 @@ class SuggestionProto {
   /// one.
   core.String resourceName;
 
-  /// ID of the screen for the suggestion. It is used for getting the
-  /// corresponding screenshot path. For example, screen_id "1" corresponds to
-  /// "1.png" file in GCS. Always set.
+  /// ID of the screen for the suggestion.
+  ///
+  /// It is used for getting the corresponding screenshot path. For example,
+  /// screen_id "1" corresponds to "1.png" file in GCS. Always set.
   core.String screenId;
 
   /// Relative importance of a suggestion as compared with other suggestions
-  /// that have the same priority and category. This is a meaningless value that
-  /// can be used to order suggestions that are in the same category and have
-  /// the same priority. The larger values have higher priority (i.e., are more
-  /// important). Optional.
+  /// that have the same priority and category.
+  ///
+  /// This is a meaningless value that can be used to order suggestions that are
+  /// in the same category and have the same priority. The larger values have
+  /// higher priority (i.e., are more important). Optional.
   core.double secondaryPriority;
 
   /// Concise message, in the user's language, representing the suggestion,
-  /// which may contain markup. Always set.
+  /// which may contain markup.
+  ///
+  /// Always set.
   SafeHtmlProto shortMessage;
 
   /// General title for the suggestion, in the user's language, without markup.
+  ///
   /// Always set.
   core.String title;
 
@@ -6580,16 +6832,21 @@ class SuggestionProto {
 }
 
 class TestCase {
-  /// The elapsed run time of the test case. Required.
+  /// The elapsed run time of the test case.
+  ///
+  /// Required.
   Duration elapsedTime;
 
   /// The end time of the test case.
   Timestamp endTime;
 
-  /// Why the test case was skipped. Present only for skipped test case
+  /// Why the test case was skipped.
+  ///
+  /// Present only for skipped test case
   core.String skippedMessage;
 
   /// The stack trace details if the test case failed or encountered an error.
+  ///
   /// The maximum size of the stack traces is 100KiB, beyond which the stack
   /// track will be truncated. Zero if the test case passed.
   core.List<StackTrace> stackTraces;
@@ -6597,7 +6854,9 @@ class TestCase {
   /// The start time of the test case.
   Timestamp startTime;
 
-  /// The status of the test case. Required.
+  /// The status of the test case.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "passed" : Test passed.
   /// - "failed" : Test failed.
@@ -6611,10 +6870,13 @@ class TestCase {
   /// A unique identifier within a Step for this Test Case.
   core.String testCaseId;
 
-  /// Test case reference, e.g. name, class name and test suite name. Required.
+  /// Test case reference, e.g. name, class name and test suite name.
+  ///
+  /// Required.
   TestCaseReference testCaseReference;
 
   /// References to opaque files of any format output by the tool execution.
+  ///
   /// @OutputOnly
   core.List<ToolOutputReference> toolOutputs;
 
@@ -6695,14 +6957,18 @@ class TestCase {
   }
 }
 
-/// A reference to a test case. Test case references are canonically ordered
-/// lexicographically by these three factors: * First, by test_suite_name. *
-/// Second, by class_name. * Third, by name.
+/// A reference to a test case.
+///
+/// Test case references are canonically ordered lexicographically by these
+/// three factors: * First, by test_suite_name. * Second, by class_name. *
+/// Third, by name.
 class TestCaseReference {
   /// The name of the class.
   core.String className;
 
-  /// The name of the test case. Required.
+  /// The name of the test case.
+  ///
+  /// Required.
   core.String name;
 
   /// The name of the test suite to which this test case belongs.
@@ -6737,32 +7003,40 @@ class TestCaseReference {
   }
 }
 
-/// A step that represents running tests. It accepts ant-junit xml files which
-/// will be parsed into structured test results by the service. Xml file paths
-/// are updated in order to append more files, however they can't be deleted.
-/// Users can also add test results manually by using the test_result field.
+/// A step that represents running tests.
+///
+/// It accepts ant-junit xml files which will be parsed into structured test
+/// results by the service. Xml file paths are updated in order to append more
+/// files, however they can't be deleted. Users can also add test results
+/// manually by using the test_result field.
 class TestExecutionStep {
-  /// Issues observed during the test execution. For example, if the mobile app
-  /// under test crashed during the test, the error message and the stack trace
-  /// content can be recorded here to assist debugging. - In response: present
-  /// if set by create or update - In create/update request: optional
+  /// Issues observed during the test execution.
+  ///
+  /// For example, if the mobile app under test crashed during the test, the
+  /// error message and the stack trace content can be recorded here to assist
+  /// debugging. - In response: present if set by create or update - In
+  /// create/update request: optional
   core.List<TestIssue> testIssues;
 
-  /// List of test suite overview contents. This could be parsed from xUnit XML
-  /// log by server, or uploaded directly by user. This references should only
-  /// be called when test suites are fully parsed or uploaded. The maximum
-  /// allowed number of test suite overviews per step is 1000. - In response:
-  /// always set - In create request: optional - In update request: never (use
-  /// publishXunitXmlFiles custom method instead)
+  /// List of test suite overview contents.
+  ///
+  /// This could be parsed from xUnit XML log by server, or uploaded directly by
+  /// user. This references should only be called when test suites are fully
+  /// parsed or uploaded. The maximum allowed number of test suite overviews per
+  /// step is 1000. - In response: always set - In create request: optional - In
+  /// update request: never (use publishXunitXmlFiles custom method instead)
   core.List<TestSuiteOverview> testSuiteOverviews;
 
-  /// The timing break down of the test execution. - In response: present if set
-  /// by create or update - In create/update request: optional
+  /// The timing break down of the test execution.
+  ///
+  /// - In response: present if set by create or update - In create/update
+  /// request: optional
   TestTiming testTiming;
 
-  /// Represents the execution of the test runner. The exit code of this tool
-  /// will be used to determine if the test passed. - In response: always set -
-  /// In create/update request: optional
+  /// Represents the execution of the test runner.
+  ///
+  /// The exit code of this tool will be used to determine if the test passed. -
+  /// In response: always set - In create/update request: optional
   ToolExecution toolExecution;
 
   TestExecutionStep();
@@ -6811,7 +7085,9 @@ class TestExecutionStep {
 
 /// An issue detected occurring during a test execution.
 class TestIssue {
-  /// Category of issue. Required.
+  /// Category of issue.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "unspecifiedCategory" : Default unspecified category. Do not use. For
   /// versioning only.
@@ -6820,10 +7096,14 @@ class TestIssue {
   /// - "robo" : Issue is specific to Robo run.
   core.String category;
 
-  /// A brief human-readable message describing the issue. Required.
+  /// A brief human-readable message describing the issue.
+  ///
+  /// Required.
   core.String errorMessage;
 
-  /// Severity of issue. Required.
+  /// Severity of issue.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "unspecifiedSeverity" : Default unspecified severity. Do not use. For
   /// versioning only.
@@ -6838,7 +7118,9 @@ class TestIssue {
   /// Deprecated in favor of stack trace fields inside specific warnings.
   StackTrace stackTrace;
 
-  /// Type of issue. Required.
+  /// Type of issue.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "unspecifiedType" : Default unspecified type. Do not use. For versioning
   /// only.
@@ -6884,8 +7166,10 @@ class TestIssue {
   /// crash apps).
   core.String type;
 
-  /// Warning message with additional details of the issue. Should always be a
-  /// message from com.google.devtools.toolresults.v1.warnings
+  /// Warning message with additional details of the issue.
+  ///
+  /// Should always be a message from
+  /// com.google.devtools.toolresults.v1.warnings
   Any warning;
 
   TestIssue();
@@ -6938,43 +7222,58 @@ class TestIssue {
 }
 
 /// A summary of a test suite result either parsed from XML or uploaded directly
-/// by a user. Note: the API related comments are for StepService only. This
-/// message is also being used in ExecutionService in a read only mode for the
+/// by a user.
+///
+/// Note: the API related comments are for StepService only. This message is
+/// also being used in ExecutionService in a read only mode for the
 /// corresponding step.
 class TestSuiteOverview {
   /// Elapsed time of test suite.
   Duration elapsedTime;
 
   /// Number of test cases in error, typically set by the service by parsing the
-  /// xml_source. - In create/response: always set - In update request: never
+  /// xml_source.
+  ///
+  /// - In create/response: always set - In update request: never
   core.int errorCount;
 
   /// Number of failed test cases, typically set by the service by parsing the
-  /// xml_source. May also be set by the user. - In create/response: always set
-  /// - In update request: never
+  /// xml_source.
+  ///
+  /// May also be set by the user. - In create/response: always set - In update
+  /// request: never
   core.int failureCount;
 
   /// Number of flaky test cases, set by the service by rolling up flaky test
-  /// attempts. Present only for rollup test suite overview at environment
-  /// level. A step cannot have flaky test cases.
+  /// attempts.
+  ///
+  /// Present only for rollup test suite overview at environment level. A step
+  /// cannot have flaky test cases.
   core.int flakyCount;
 
-  /// The name of the test suite. - In create/response: always set - In update
-  /// request: never
+  /// The name of the test suite.
+  ///
+  /// - In create/response: always set - In update request: never
   core.String name;
 
   /// Number of test cases not run, typically set by the service by parsing the
-  /// xml_source. - In create/response: always set - In update request: never
+  /// xml_source.
+  ///
+  /// - In create/response: always set - In update request: never
   core.int skippedCount;
 
   /// Number of test cases, typically set by the service by parsing the
-  /// xml_source. - In create/response: always set - In update request: never
+  /// xml_source.
+  ///
+  /// - In create/response: always set - In update request: never
   core.int totalCount;
 
   /// If this test suite was parsed from XML, this is the URI where the original
-  /// XML file is stored. Note: Multiple test suites can share the same
-  /// xml_source Returns INVALID_ARGUMENT if the uri format is not supported. -
-  /// In create/response: optional - In update request: never
+  /// XML file is stored.
+  ///
+  /// Note: Multiple test suites can share the same xml_source Returns
+  /// INVALID_ARGUMENT if the uri format is not supported. - In create/response:
+  /// optional - In update request: never
   FileReference xmlSource;
 
   TestSuiteOverview();
@@ -7040,8 +7339,10 @@ class TestSuiteOverview {
 
 /// Testing timing break down to know phases.
 class TestTiming {
-  /// How long it took to run the test process. - In response: present if
-  /// previously set. - In create/update request: optional
+  /// How long it took to run the test process.
+  ///
+  /// - In response: present if previously set. - In create/update request:
+  /// optional
   Duration testProcessDuration;
 
   TestTiming();
@@ -7064,12 +7365,16 @@ class TestTiming {
 
 /// A single thumbnail, with its size and format.
 class Thumbnail {
-  /// The thumbnail's content type, i.e. "image/png". Always set.
+  /// The thumbnail's content type, i.e. "image/png".
+  ///
+  /// Always set.
   core.String contentType;
 
-  /// The thumbnail file itself. That is, the bytes here are precisely the bytes
-  /// that make up the thumbnail file; they can be served as an image as-is
-  /// (with the appropriate content type.) Always set.
+  /// The thumbnail file itself.
+  ///
+  /// That is, the bytes here are precisely the bytes that make up the thumbnail
+  /// file; they can be served as an image as-is (with the appropriate content
+  /// type.) Always set.
   core.String data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
@@ -7078,10 +7383,14 @@ class Thumbnail {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The height of the thumbnail, in pixels. Always set.
+  /// The height of the thumbnail, in pixels.
+  ///
+  /// Always set.
   core.int heightPx;
 
-  /// The width of the thumbnail, in pixels. Always set.
+  /// The width of the thumbnail, in pixels.
+  ///
+  /// Always set.
   core.int widthPx;
 
   Thumbnail();
@@ -7121,23 +7430,27 @@ class Thumbnail {
 
 /// A Timestamp represents a point in time independent of any time zone or local
 /// calendar, encoded as a count of seconds and fractions of seconds at
-/// nanosecond resolution. The count is relative to an epoch at UTC midnight on
-/// January 1, 1970, in the proleptic Gregorian calendar which extends the
-/// Gregorian calendar backwards to year one. All minutes are 60 seconds long.
-/// Leap seconds are "smeared" so that no leap second table is needed for
-/// interpretation, using a [24-hour linear
-/// smear](https://developers.google.com/time/smear). The range is from
+/// nanosecond resolution.
+///
+/// The count is relative to an epoch at UTC midnight on January 1, 1970, in the
+/// proleptic Gregorian calendar which extends the Gregorian calendar backwards
+/// to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so
+/// that no leap second table is needed for interpretation, using a [24-hour
+/// linear smear](https://developers.google.com/time/smear). The range is from
 /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to
 /// that range, we ensure that we can convert to and from [RFC
 /// 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
 class Timestamp {
-  /// Non-negative fractions of a second at nanosecond resolution. Negative
-  /// second values with fractions must still have non-negative nanos values
-  /// that count forward in time. Must be from 0 to 999,999,999 inclusive.
+  /// Non-negative fractions of a second at nanosecond resolution.
+  ///
+  /// Negative second values with fractions must still have non-negative nanos
+  /// values that count forward in time. Must be from 0 to 999,999,999
+  /// inclusive.
   core.int nanos;
 
-  /// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must
-  /// be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+  /// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z.
+  ///
+  /// Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
   core.String seconds;
 
   Timestamp();
@@ -7163,33 +7476,41 @@ class Timestamp {
   }
 }
 
-/// An execution of an arbitrary tool. It could be a test runner or a tool
-/// copying artifacts or deploying code.
+/// An execution of an arbitrary tool.
+///
+/// It could be a test runner or a tool copying artifacts or deploying code.
 class ToolExecution {
   /// The full tokenized command line including the program name (equivalent to
-  /// argv in a C program). - In response: present if set by create request - In
-  /// create request: optional - In update request: never set
+  /// argv in a C program).
+  ///
+  /// - In response: present if set by create request - In create request:
+  /// optional - In update request: never set
   core.List<core.String> commandLineArguments;
 
-  /// Tool execution exit code. This field will be set once the tool has exited.
-  /// - In response: present if set by create/update request - In create
-  /// request: optional - In update request: optional, a FAILED_PRECONDITION
-  /// error will be returned if an exit_code is already set.
+  /// Tool execution exit code.
+  ///
+  /// This field will be set once the tool has exited. - In response: present if
+  /// set by create/update request - In create request: optional - In update
+  /// request: optional, a FAILED_PRECONDITION error will be returned if an
+  /// exit_code is already set.
   ToolExitCode exitCode;
 
-  /// References to any plain text logs output the tool execution. This field
-  /// can be set before the tool has exited in order to be able to have access
-  /// to a live view of the logs while the tool is running. The maximum allowed
-  /// number of tool logs per step is 1000. - In response: present if set by
-  /// create/update request - In create request: optional - In update request:
-  /// optional, any value provided will be appended to the existing list
-  core.List<FileReference> toolLogs;
-
-  /// References to opaque files of any format output by the tool execution. The
-  /// maximum allowed number of tool outputs per step is 1000. - In response:
+  /// References to any plain text logs output the tool execution.
+  ///
+  /// This field can be set before the tool has exited in order to be able to
+  /// have access to a live view of the logs while the tool is running. The
+  /// maximum allowed number of tool logs per step is 1000. - In response:
   /// present if set by create/update request - In create request: optional - In
   /// update request: optional, any value provided will be appended to the
   /// existing list
+  core.List<FileReference> toolLogs;
+
+  /// References to opaque files of any format output by the tool execution.
+  ///
+  /// The maximum allowed number of tool outputs per step is 1000. - In
+  /// response: present if set by create/update request - In create request:
+  /// optional - In update request: optional, any value provided will be
+  /// appended to the existing list
   core.List<ToolOutputReference> toolOutputs;
 
   ToolExecution();
@@ -7237,11 +7558,14 @@ class ToolExecution {
   }
 }
 
-/// Generic tool step to be used for binaries we do not explicitly support. For
-/// example: running cp to copy artifacts from one location to another.
+/// Generic tool step to be used for binaries we do not explicitly support.
+///
+/// For example: running cp to copy artifacts from one location to another.
 class ToolExecutionStep {
-  /// A Tool execution. - In response: present if set by create/update request -
-  /// In create/update request: optional
+  /// A Tool execution.
+  ///
+  /// - In response: present if set by create/update request - In create/update
+  /// request: optional
   ToolExecution toolExecution;
 
   ToolExecutionStep();
@@ -7264,9 +7588,10 @@ class ToolExecutionStep {
 
 /// Exit code from a tool execution.
 class ToolExitCode {
-  /// Tool execution exit code. A value of 0 means that the execution was
-  /// successful. - In response: always set - In create/update request: always
-  /// set
+  /// Tool execution exit code.
+  ///
+  /// A value of 0 means that the execution was successful. - In response:
+  /// always set - In create/update request: always set
   core.int number;
 
   ToolExitCode();
@@ -7288,16 +7613,21 @@ class ToolExitCode {
 
 /// A reference to a ToolExecution output file.
 class ToolOutputReference {
-  /// The creation time of the file. - In response: present if set by
-  /// create/update request - In create/update request: optional
+  /// The creation time of the file.
+  ///
+  /// - In response: present if set by create/update request - In create/update
+  /// request: optional
   Timestamp creationTime;
 
-  /// A FileReference to an output file. - In response: always set - In
-  /// create/update request: always set
+  /// A FileReference to an output file.
+  ///
+  /// - In response: always set - In create/update request: always set
   FileReference output;
 
-  /// The test case to which this output file belongs. - In response: present if
-  /// set by create/update request - In create/update request: optional
+  /// The test case to which this output file belongs.
+  ///
+  /// - In response: present if set by create/update request - In create/update
+  /// request: optional
   TestCaseReference testCase;
 
   ToolOutputReference();
@@ -7415,8 +7745,9 @@ class UpgradeInsight {
   /// The name of the package to be upgraded.
   core.String packageName;
 
-  /// The suggested version to upgrade to. Optional: In case we are not sure
-  /// which version solves this problem
+  /// The suggested version to upgrade to.
+  ///
+  /// Optional: In case we are not sure which version solves this problem
   core.String upgradeToVersion;
 
   UpgradeInsight();
@@ -7464,8 +7795,9 @@ class UsedRoboDirective {
   }
 }
 
-/// Additional details of a used Robo directive with an ignore action. Note:
-/// This is a different scenario than unused directive.
+/// Additional details of a used Robo directive with an ignore action.
+///
+/// Note: This is a different scenario than unused directive.
 class UsedRoboIgnoreDirective {
   /// The name of the resource that was ignored.
   core.String resourceName;

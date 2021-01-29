@@ -68,8 +68,9 @@ class LineitemsResource {
 
   LineitemsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves line items in CSV format. YouTube & partners line items are not
-  /// supported.
+  /// Retrieves line items in CSV format.
+  ///
+  /// YouTube & partners line items are not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -120,8 +121,9 @@ class LineitemsResource {
     );
   }
 
-  /// Uploads line items in CSV format. YouTube & partners line items are not
-  /// supported.
+  /// Uploads line items in CSV format.
+  ///
+  /// YouTube & partners line items are not supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -593,8 +595,9 @@ class ChannelGrouping {
   /// Channel Grouping name.
   core.String name;
 
-  /// Rules within Channel Grouping. There is a limit of 100 rules that can be
-  /// set per channel grouping.
+  /// Rules within Channel Grouping.
+  ///
+  /// There is a limit of 100 rules that can be set per channel grouping.
   core.List<Rule> rules;
 
   ChannelGrouping();
@@ -631,8 +634,10 @@ class ChannelGrouping {
 
 /// DisjunctiveMatchStatement that OR's all contained filters.
 class DisjunctiveMatchStatement {
-  /// Filters. There is a limit of 100 filters that can be set per disjunctive
-  /// match statement.
+  /// Filters.
+  ///
+  /// There is a limit of 100 filters that can be set per disjunctive match
+  /// statement.
   core.List<EventFilter> eventFilters;
 
   DisjunctiveMatchStatement();
@@ -659,13 +664,16 @@ class DisjunctiveMatchStatement {
 /// Request to fetch stored line items.
 class DownloadLineItemsRequest {
   /// File specification (column names, types, order) in which the line items
-  /// will be returned. Default to EWF.
+  /// will be returned.
+  ///
+  /// Default to EWF.
   /// Possible string values are:
   /// - "EWF"
   core.String fileSpec;
 
-  /// Ids of the specified filter type used to filter line items to fetch. If
-  /// omitted, all the line items will be returned.
+  /// Ids of the specified filter type used to filter line items to fetch.
+  ///
+  /// If omitted, all the line items will be returned.
   core.List<core.String> filterIds;
 
   /// Filter type used to filter line items to fetch.
@@ -675,7 +683,9 @@ class DownloadLineItemsRequest {
   /// - "LINE_ITEM_ID"
   core.String filterType;
 
-  /// Format in which the line items will be returned. Default to CSV.
+  /// Format in which the line items will be returned.
+  ///
+  /// Default to CSV.
   /// Possible string values are:
   /// - "CSV"
   core.String format;
@@ -719,8 +729,9 @@ class DownloadLineItemsRequest {
 
 /// Download line items response.
 class DownloadLineItemsResponse {
-  /// Retrieved line items in CSV format. For more information about file
-  /// formats, see Entity Write File Format.
+  /// Retrieved line items in CSV format.
+  ///
+  /// For more information about file formats, see Entity Write File Format.
   core.String lineItems;
 
   DownloadLineItemsResponse();
@@ -743,18 +754,23 @@ class DownloadLineItemsResponse {
 /// Request to fetch stored inventory sources, campaigns, insertion orders, line
 /// items, YouTube ad groups and ads.
 class DownloadRequest {
-  /// File types that will be returned. If INVENTORY_SOURCE is requested, no
-  /// other file types may be requested. Acceptable values are: - "AD" -
-  /// "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE" -
-  /// "LINE_ITEM"
+  /// File types that will be returned.
+  ///
+  /// If INVENTORY_SOURCE is requested, no other file types may be requested.
+  /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" -
+  /// "INSERTION_ORDER" - "INVENTORY_SOURCE" - "LINE_ITEM"
   core.List<core.String> fileTypes;
 
-  /// The IDs of the specified filter type. This is used to filter entities to
-  /// fetch. At least one ID must be specified.
+  /// The IDs of the specified filter type.
+  ///
+  /// This is used to filter entities to fetch. At least one ID must be
+  /// specified.
   core.List<core.String> filterIds;
 
-  /// Filter type used to filter entities to fetch. PARTNER_ID and
-  /// INVENTORY_SOURCE_ID may only be used when downloading inventory sources.
+  /// Filter type used to filter entities to fetch.
+  ///
+  /// PARTNER_ID and INVENTORY_SOURCE_ID may only be used when downloading
+  /// inventory sources.
   /// Possible string values are:
   /// - "ADVERTISER_ID"
   /// - "INSERTION_ORDER_ID"
@@ -765,7 +781,9 @@ class DownloadRequest {
   core.String filterType;
 
   /// SDF Version (column names, types, order) in which the entities will be
-  /// returned. Default to 5.
+  /// returned.
+  ///
+  /// Default to 5.
   core.String version;
 
   DownloadRequest();
@@ -1191,8 +1209,9 @@ class FilterPair {
 
 /// List queries response.
 class ListQueriesResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "doubleclickbidmanager#listQueriesResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "doubleclickbidmanager#listQueriesResponse".
   core.String kind;
 
   /// Next page's pagination token if one exists.
@@ -1235,8 +1254,9 @@ class ListQueriesResponse {
 
 /// List reports response.
 class ListReportsResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "doubleclickbidmanager#listReportsResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "doubleclickbidmanager#listReportsResponse".
   core.String kind;
 
   /// Next page's pagination token if one exists.
@@ -1320,7 +1340,9 @@ class Parameters {
   /// Data is grouped by the filters listed in this field.
   core.List<core.String> groupBys;
 
-  /// Deprecated. This field is no longer in use.
+  /// This field is no longer in use.
+  ///
+  /// Deprecated.
   core.bool includeInviteData;
 
   /// Metrics to include as columns in your report.
@@ -1422,11 +1444,12 @@ class Parameters {
   }
 }
 
-/// Path filters specify which paths to include in a report. A path is the
-/// result of combining DV360 events based on User ID to create a workflow of
-/// users' actions. When a path filter is set, the resulting report will only
-/// include paths that match the specified event at the specified position. All
-/// other paths will be excluded.
+/// Path filters specify which paths to include in a report.
+///
+/// A path is the result of combining DV360 events based on User ID to create a
+/// workflow of users' actions. When a path filter is set, the resulting report
+/// will only include paths that match the specified event at the specified
+/// position. All other paths will be excluded.
 class PathFilter {
   /// Filter on an event to be applied to some part of the path.
   core.List<EventFilter> eventFilters;
@@ -1471,8 +1494,9 @@ class PathQueryOptions {
   /// Custom Channel Groupings.
   ChannelGrouping channelGrouping;
 
-  /// Path Filters. There is a limit of 100 path filters that can be set per
-  /// report.
+  /// Path Filters.
+  ///
+  /// There is a limit of 100 path filters that can be set per report.
   core.List<PathFilter> pathFilters;
 
   PathQueryOptions();
@@ -1815,8 +1839,9 @@ class PathQueryOptionsFilter {
 
 /// Represents a query.
 class Query {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "doubleclickbidmanager#query".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "doubleclickbidmanager#query".
   core.String kind;
 
   /// Query metadata.
@@ -1828,21 +1853,24 @@ class Query {
   /// Query ID.
   core.String queryId;
 
-  /// The ending time for the data that is shown in the report. Note,
-  /// reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and
-  /// ignored otherwise.
+  /// The ending time for the data that is shown in the report.
+  ///
+  /// Note, reportDataEndTimeMs is required if metadata.dataRange is
+  /// CUSTOM_DATES and ignored otherwise.
   core.String reportDataEndTimeMs;
 
-  /// The starting time for the data that is shown in the report. Note,
-  /// reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES
-  /// and ignored otherwise.
+  /// The starting time for the data that is shown in the report.
+  ///
+  /// Note, reportDataStartTimeMs is required if metadata.dataRange is
+  /// CUSTOM_DATES and ignored otherwise.
   core.String reportDataStartTimeMs;
 
   /// Information on how often and when to run a query.
   QuerySchedule schedule;
 
-  /// Canonical timezone code for report data time. Defaults to
-  /// America/New_York.
+  /// Canonical timezone code for report data time.
+  ///
+  /// Defaults to America/New_York.
   core.String timezoneCode;
 
   Query();
@@ -1950,11 +1978,12 @@ class QueryMetadata {
   /// The time when the latest report started to run.
   core.String latestReportRunTimeMs;
 
-  /// Locale of the generated reports. Valid values are cs CZECH de GERMAN en
-  /// ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH
-  /// pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN
-  /// CHINA_CHINESE zh-TW TAIWAN_CHINESE An locale string not in the list above
-  /// will generate reports in English.
+  /// Locale of the generated reports.
+  ///
+  /// Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr FRENCH it
+  /// ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru
+  /// RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE
+  /// An locale string not in the list above will generate reports in English.
   core.String locale;
 
   /// Number of reports that have been generated for the query.
@@ -1963,15 +1992,20 @@ class QueryMetadata {
   /// Whether the latest report is currently running.
   core.bool running;
 
-  /// Whether to send an email notification when a report is ready. Default to
-  /// false.
+  /// Whether to send an email notification when a report is ready.
+  ///
+  /// Default to false.
   core.bool sendNotification;
 
   /// List of email addresses which are sent email notifications when the report
-  /// is finished. Separate from sendNotification.
+  /// is finished.
+  ///
+  /// Separate from sendNotification.
   core.List<core.String> shareEmailAddress;
 
-  /// Query title. It is used to name the reports generated from this query.
+  /// Query title.
+  ///
+  /// It is used to name the reports generated from this query.
   core.String title;
 
   QueryMetadata();
@@ -2071,14 +2105,19 @@ class QuerySchedule {
   /// - "QUARTERLY"
   core.String frequency;
 
-  /// Deprecated. This field has no effect.
+  /// This field has no effect.
+  ///
+  /// Deprecated.
   core.int nextRunMinuteOfDay;
 
-  /// Canonical timezone code for report generation time. Defaults to
-  /// America/New_York.
+  /// Canonical timezone code for report generation time.
+  ///
+  /// Defaults to America/New_York.
   core.String nextRunTimezoneCode;
 
-  /// When to start running the query. Not applicable to `ONE_TIME` frequency.
+  /// When to start running the query.
+  ///
+  /// Not applicable to `ONE_TIME` frequency.
   core.String startTimeMs;
 
   QuerySchedule();
@@ -2480,18 +2519,21 @@ class RunQueryRequest {
   /// - "LAST_60_DAYS"
   core.String dataRange;
 
-  /// The ending time for the data that is shown in the report. Note,
-  /// reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored
-  /// otherwise.
+  /// The ending time for the data that is shown in the report.
+  ///
+  /// Note, reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and
+  /// ignored otherwise.
   core.String reportDataEndTimeMs;
 
-  /// The starting time for the data that is shown in the report. Note,
-  /// reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored
-  /// otherwise.
+  /// The starting time for the data that is shown in the report.
+  ///
+  /// Note, reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and
+  /// ignored otherwise.
   core.String reportDataStartTimeMs;
 
-  /// Canonical timezone code for report data time. Defaults to
-  /// America/New_York.
+  /// Canonical timezone code for report data time.
+  ///
+  /// Defaults to America/New_York.
   core.String timezoneCode;
 
   RunQueryRequest();
@@ -2535,13 +2577,16 @@ class UploadLineItemsRequest {
   /// items.
   core.bool dryRun;
 
-  /// Format the line items are in. Default to CSV.
+  /// Format the line items are in.
+  ///
+  /// Default to CSV.
   /// Possible string values are:
   /// - "CSV"
   core.String format;
 
-  /// Line items in CSV to upload. Refer to Entity Write File Format for more
-  /// information on file format.
+  /// Line items in CSV to upload.
+  ///
+  /// Refer to Entity Write File Format for more information on file format.
   core.String lineItems;
 
   UploadLineItemsRequest();

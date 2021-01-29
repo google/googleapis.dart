@@ -222,8 +222,9 @@ class BatchGetAmpUrlsRequest {
   /// IN_INDEX_DOC strategy is recommended.
   core.String lookupStrategy;
 
-  /// List of URLs to look up for the paired AMP URLs. The URLs are
-  /// case-sensitive. Up to 50 URLs per lookup (see [Usage
+  /// List of URLs to look up for the paired AMP URLs.
+  ///
+  /// The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage
   /// Limits](/amp/cache/reference/limits)).
   core.List<core.String> urls;
 
@@ -254,9 +255,10 @@ class BatchGetAmpUrlsRequest {
 
 /// Batch AMP URL response.
 class BatchGetAmpUrlsResponse {
-  /// For each URL in BatchAmpUrlsRequest, the URL response. The response might
-  /// not be in the same order as URLs in the batch request. If
-  /// BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
+  /// For each URL in BatchAmpUrlsRequest, the URL response.
+  ///
+  /// The response might not be in the same order as URLs in the batch request.
+  /// If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
   /// once.
   core.List<AmpUrl> ampUrls;
 

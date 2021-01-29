@@ -69,7 +69,9 @@ class AutnumResource {
   AutnumResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -184,7 +186,9 @@ class EntityResource {
   EntityResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -242,7 +246,9 @@ class IpResource {
   IpResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -309,7 +315,9 @@ class NameserverResource {
   NameserverResource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -367,7 +375,9 @@ class V1Resource {
   V1Resource(commons.ApiRequester client) : _requester = client;
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -413,7 +423,9 @@ class V1Resource {
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -503,7 +515,9 @@ class V1Resource {
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -548,7 +562,9 @@ class V1Resource {
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
-  /// not support it. The response is a formatted 501 error.
+  /// not support it.
+  ///
+  /// The response is a formatted 501 error.
   ///
   /// Request parameters:
   ///
@@ -594,19 +610,20 @@ class V1Resource {
   }
 }
 
-/// Message that represents an arbitrary HTTP body. It should only be used for
-/// payload formats that can't be represented as JSON, such as raw binary or an
-/// HTML page. This message can be used both in streaming and non-streaming API
-/// methods in the request as well as the response. It can be used as a
-/// top-level request field, which is convenient if one wants to extract
-/// parameters from either the URL or HTTP template into the request fields and
-/// also want access to the raw HTTP body. Example: message GetResourceRequest {
-/// // A unique request id. string request_id = 1; // The raw HTTP body is bound
-/// to this field. google.api.HttpBody http_body = 2; } service ResourceService
-/// { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
-/// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
-/// Example with streaming methods: service CaldavService { rpc
-/// GetCalendar(stream google.api.HttpBody) returns (stream
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
 /// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
@@ -625,8 +642,9 @@ class HttpBody {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Application specific response metadata. Must be set in the first response
-  /// for streaming APIs.
+  /// Application specific response metadata.
+  ///
+  /// Must be set in the first response for streaming APIs.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -672,25 +690,39 @@ class HttpBody {
 /// Links object defined in [section 4.2 of RFC
 /// 7483](https://tools.ietf.org/html/rfc7483#section-4.2).
 class Link {
-  /// Target URL of a link. Example: "http://example.com/previous".
+  /// Target URL of a link.
+  ///
+  /// Example: "http://example.com/previous".
   core.String href;
 
-  /// Language code of a link. Example: "en".
+  /// Language code of a link.
+  ///
+  /// Example: "en".
   core.String hreflang;
 
-  /// Media type of the link destination. Example: "screen".
+  /// Media type of the link destination.
+  ///
+  /// Example: "screen".
   core.String media;
 
-  /// Relation type of a link. Example: "previous".
+  /// Relation type of a link.
+  ///
+  /// Example: "previous".
   core.String rel;
 
-  /// Title of this link. Example: "title".
+  /// Title of this link.
+  ///
+  /// Example: "title".
   core.String title;
 
-  /// Content type of the link. Example: "application/json".
+  /// Content type of the link.
+  ///
+  /// Example: "application/json".
   core.String type;
 
-  /// URL giving context for the link. Example: "http://example.com/current".
+  /// URL giving context for the link.
+  ///
+  /// Example: "http://example.com/current".
   core.String value;
 
   Link();
@@ -755,7 +787,9 @@ class Notice {
   /// Link to a document containing more information.
   core.List<Link> links;
 
-  /// Title of a notice. Example: "Terms of Service".
+  /// Title of a notice.
+  ///
+  /// Example: "Terms of Service".
   core.String title;
 
   /// Type values defined in [section 10.2.1 of RFC
@@ -810,14 +844,18 @@ class RdapResponse {
   /// Error description.
   core.List<core.String> description;
 
-  /// Error HTTP code. Example: "501".
+  /// Error HTTP code.
+  ///
+  /// Example: "501".
   core.int errorCode;
 
   /// HTTP response with content type set to "application/json+rdap".
   HttpBody jsonResponse;
 
-  /// Error language code. Error response info fields are defined in [section 6
-  /// of RFC 7483](https://tools.ietf.org/html/rfc7483#section-6).
+  /// Error language code.
+  ///
+  /// Error response info fields are defined in [section 6 of RFC
+  /// 7483](https://tools.ietf.org/html/rfc7483#section-6).
   core.String lang;
 
   /// Notices applying to this response.

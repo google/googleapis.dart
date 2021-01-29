@@ -46,11 +46,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const userAgent = 'dart-api-client toyApi/0.1';
 
 /// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-/// tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-/// quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-/// consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-/// cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-/// non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+/// tempor incididunt ut labore et dolore magna aliqua.
+///
+/// Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+/// aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+/// voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+/// occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+/// anim id est laborum.
 class ToyApi {
   final commons.ApiRequester _requester;
 
@@ -938,9 +940,10 @@ class ComputeResource {
 
   /// Request parameters:
   ///
-  /// [resource] - Path parameter: 'resource'.
+  /// [resource] - Path parameter: 'resource'. Should not be empty.
   ///
-  /// [compute] - Path parameter: 'compute'.
+  /// [compute] - Path parameter: 'compute'. Must be at least three characters
+  /// long.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

@@ -59,9 +59,10 @@ class AgentUsersResource {
 
   AgentUsersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Unlinks the given third-party user from your smart home Action. All data
-  /// related to this user will be deleted. For more details on how users link
-  /// their accounts, see [fulfillment and
+  /// Unlinks the given third-party user from your smart home Action.
+  ///
+  /// All data related to this user will be deleted. For more details on how
+  /// users link their accounts, see [fulfillment and
   /// authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
   /// The third-party user's identity is passed in via the `agent_user_id` (see
   /// DeleteAgentUserRequest). This request must be authorized using service
@@ -129,9 +130,11 @@ class DevicesResource {
   DevicesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the current states in Home Graph for the given set of the third-party
-  /// user's devices. The third-party user's identity is passed in via the
-  /// `agent_user_id` (see QueryRequest). This request must be authorized using
-  /// service account credentials from your Actions console project.
+  /// user's devices.
+  ///
+  /// The third-party user's identity is passed in via the `agent_user_id` (see
+  /// QueryRequest). This request must be authorized using service account
+  /// credentials from your Actions console project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -182,9 +185,11 @@ class DevicesResource {
     );
   }
 
-  /// Reports device state and optionally sends device notifications. Called by
-  /// your smart home Action when the state of a third-party device changes or
-  /// you need to send a notification about the device. See [Implement Report
+  /// Reports device state and optionally sends device notifications.
+  ///
+  /// Called by your smart home Action when the state of a third-party device
+  /// changes or you need to send a notification about the device. See
+  /// [Implement Report
   /// State](https://developers.google.com/assistant/smarthome/develop/report-state)
   /// for more information. This method updates the device state according to
   /// its declared
@@ -247,6 +252,7 @@ class DevicesResource {
   /// Requests Google to send an `action.devices.SYNC`
   /// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync)
   /// to your smart home Action to update device metadata for the given user.
+  ///
   /// The third-party user's identity is passed via the `agent_user_id` (see
   /// RequestSyncDevicesRequest). This request must be authorized using service
   /// account credentials from your Actions console project.
@@ -300,8 +306,9 @@ class DevicesResource {
     );
   }
 
-  /// Gets all the devices associated with the given third-party user. The
-  /// third-party user's identity is passed in via the `agent_user_id` (see
+  /// Gets all the devices associated with the given third-party user.
+  ///
+  /// The third-party user's identity is passed in via the `agent_user_id` (see
   /// SyncRequest). This request must be authorized using service account
   /// credentials from your Actions console project.
   ///
@@ -437,29 +444,37 @@ class Device {
   DeviceNames name;
 
   /// Indicates whether your smart home Action will report notifications to
-  /// Google for this device via ReportStateAndNotification. If your smart home
-  /// Action enables users to control device notifications, you should update
-  /// this field and call RequestSyncDevices.
+  /// Google for this device via ReportStateAndNotification.
+  ///
+  /// If your smart home Action enables users to control device notifications,
+  /// you should update this field and call RequestSyncDevices.
   core.bool notificationSupportedByAgent;
 
-  /// Alternate IDs associated with this device. This is used to identify cloud
-  /// synced devices enabled for [local
+  /// Alternate IDs associated with this device.
+  ///
+  /// This is used to identify cloud synced devices enabled for [local
   /// fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
   core.List<AgentOtherDeviceId> otherDeviceIds;
 
-  /// Suggested name for the room where this device is installed. Google
-  /// attempts to use this value during user setup.
+  /// Suggested name for the room where this device is installed.
+  ///
+  /// Google attempts to use this value during user setup.
   core.String roomHint;
 
-  /// Suggested name for the structure where this device is installed. Google
-  /// attempts to use this value during user setup.
+  /// Suggested name for the structure where this device is installed.
+  ///
+  /// Google attempts to use this value during user setup.
   core.String structureHint;
 
-  /// Traits supported by the device. See [device
+  /// Traits supported by the device.
+  ///
+  /// See [device
   /// traits](https://developers.google.com/assistant/smarthome/traits).
   core.List<core.String> traits;
 
-  /// Hardware type of the device. See [device
+  /// Hardware type of the device.
+  ///
+  /// See [device
   /// types](https://developers.google.com/assistant/smarthome/guides).
   core.String type;
 
@@ -668,10 +683,12 @@ class DeviceNames {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -688,11 +705,15 @@ class Empty {
 /// Request type for the
 /// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
 class QueryRequest {
-  /// Required. Third-party user ID.
+  /// Third-party user ID.
+  ///
+  /// Required.
   core.String agentUserId;
 
-  /// Required. Inputs containing third-party device IDs for which to get the
-  /// device states.
+  /// Inputs containing third-party device IDs for which to get the device
+  /// states.
+  ///
+  /// Required.
   core.List<QueryRequestInput> inputs;
 
   /// Request ID used for debugging.
@@ -779,8 +800,10 @@ class QueryRequestPayload {
 }
 
 /// Response type for the
-/// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should
-/// follow the same format as the Google smart home `action.devices.QUERY`
+/// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
+///
+/// This should follow the same format as the Google smart home
+/// `action.devices.QUERY`
 /// [response](https://developers.google.com/assistant/smarthome/reference/intent/query).
 /// # Example ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
 /// "payload": { "devices": { "123": { "on": true, "online": true }, "456": {
@@ -790,7 +813,9 @@ class QueryResponse {
   /// Device states for the devices given in the request.
   QueryResponsePayload payload;
 
-  /// Request ID used for debugging. Copied from the request.
+  /// Request ID used for debugging.
+  ///
+  /// Copied from the request.
   core.String requestId;
 
   QueryResponse();
@@ -819,8 +844,9 @@ class QueryResponse {
 
 /// Payload containing device states information.
 class QueryResponsePayload {
-  /// States of the devices. Map of third-party device ID to struct of device
-  /// states.
+  /// States of the devices.
+  ///
+  /// Map of third-party device ID to struct of device states.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -856,16 +882,19 @@ class QueryResponsePayload {
 
 /// The states and notifications specific to a device.
 class ReportStateAndNotificationDevice {
-  /// Notifications metadata for devices. See the **Device NOTIFICATIONS**
-  /// section of the individual trait [reference
+  /// Notifications metadata for devices.
+  ///
+  /// See the **Device NOTIFICATIONS** section of the individual trait
+  /// [reference
   /// guides](https://developers.google.com/assistant/smarthome/traits).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> notifications;
 
-  /// States of devices to update. See the **Device STATES** section of the
-  /// individual trait [reference
+  /// States of devices to update.
+  ///
+  /// See the **Device STATES** section of the individual trait [reference
   /// guides](https://developers.google.com/assistant/smarthome/traits).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -910,27 +939,33 @@ class ReportStateAndNotificationDevice {
 
 /// Request type for the
 /// [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
-/// call. It may include states, notifications, or both. States and
-/// notifications are defined per `device_id` (for example, "123" and "456" in
-/// the following example). # Example ```json { "requestId":
+/// call.
+///
+/// It may include states, notifications, or both. States and notifications are
+/// defined per `device_id` (for example, "123" and "456" in the following
+/// example). # Example ```json { "requestId":
 /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": {
 /// "devices": { "states": { "123": { "on": true }, "456": { "on": true,
 /// "brightness": 10 } }, } } } ```
 class ReportStateAndNotificationRequest {
-  /// Required. Third-party user ID.
+  /// Third-party user ID.
+  ///
+  /// Required.
   core.String agentUserId;
 
   /// Unique identifier per event (for example, a doorbell press).
   core.String eventId;
 
   /// Token to maintain state in the follow up notification response.
+  ///
   /// Deprecated. See the [notifications
   /// guide](https://developers.google.com/assistant/smarthome/develop/notifications)
   /// for details on implementing follow up notifications.
   core.String followUpToken;
 
-  /// Required. State of devices to update and notification metadata for
-  /// devices.
+  /// State of devices to update and notification metadata for devices.
+  ///
+  /// Required.
   StateAndNotificationPayload payload;
 
   /// Request ID used for debugging.
@@ -1006,12 +1041,18 @@ class ReportStateAndNotificationResponse {
 /// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
 /// call.
 class RequestSyncDevicesRequest {
-  /// Required. Third-party user ID.
+  /// Third-party user ID.
+  ///
+  /// Required.
   core.String agentUserId;
 
-  /// Optional. If set, the request will be added to a queue and a response will
-  /// be returned immediately. This enables concurrent requests for the given
-  /// `agent_user_id`, but the caller will not receive any error responses.
+  /// If set, the request will be added to a queue and a response will be
+  /// returned immediately.
+  ///
+  /// This enables concurrent requests for the given `agent_user_id`, but the
+  /// caller will not receive any error responses.
+  ///
+  /// Optional.
   core.bool async;
 
   RequestSyncDevicesRequest();
@@ -1039,8 +1080,10 @@ class RequestSyncDevicesRequest {
 
 /// Response type for the
 /// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
-/// call. Intentionally empty upon success. An HTTP response code is returned
-/// with more details upon failure.
+/// call.
+///
+/// Intentionally empty upon success. An HTTP response code is returned with
+/// more details upon failure.
 class RequestSyncDevicesResponse {
   RequestSyncDevicesResponse();
 
@@ -1080,7 +1123,9 @@ class StateAndNotificationPayload {
 /// Request type for the
 /// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.
 class SyncRequest {
-  /// Required. Third-party user ID.
+  /// Third-party user ID.
+  ///
+  /// Required.
   core.String agentUserId;
 
   /// Request ID used for debugging.
@@ -1110,8 +1155,10 @@ class SyncRequest {
 }
 
 /// Response type for the
-/// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should
-/// follow the same format as the Google smart home `action.devices.SYNC`
+/// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.
+///
+/// This should follow the same format as the Google smart home
+/// `action.devices.SYNC`
 /// [response](https://developers.google.com/assistant/smarthome/reference/intent/sync).
 /// # Example ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
 /// "payload": { "agentUserId": "1836.15267389", "devices": [{ "id": "123",
@@ -1125,7 +1172,9 @@ class SyncResponse {
   /// Devices associated with the third-party user.
   SyncResponsePayload payload;
 
-  /// Request ID used for debugging. Copied from the request.
+  /// Request ID used for debugging.
+  ///
+  /// Copied from the request.
   core.String requestId;
 
   SyncResponse();

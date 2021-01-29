@@ -219,16 +219,17 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   ProjectsLocationsGlobalConnectivityTestsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Connectivity Test. After you create a test, the reachability
-  /// analysis is performed as part of the long running operation, which
-  /// completes when the analysis completes. If the endpoint specifications in
-  /// `ConnectivityTest` are invalid (for example, containing non-existent
-  /// resources in the network, or you don't have read permissions to the
-  /// network configurations of listed projects), then the reachability result
-  /// returns a value of `UNKNOWN`. If the endpoint specifications in
-  /// `ConnectivityTest` are incomplete, the reachability result returns a value
-  /// of AMBIGUOUS. For more information, see the Connectivity Test
-  /// documentation.
+  /// Creates a new Connectivity Test.
+  ///
+  /// After you create a test, the reachability analysis is performed as part of
+  /// the long running operation, which completes when the analysis completes.
+  /// If the endpoint specifications in `ConnectivityTest` are invalid (for
+  /// example, containing non-existent resources in the network, or you don't
+  /// have read permissions to the network configurations of listed projects),
+  /// then the reachability result returns a value of `UNKNOWN`. If the endpoint
+  /// specifications in `ConnectivityTest` are incomplete, the reachability
+  /// result returns a value of AMBIGUOUS. For more information, see the
+  /// Connectivity Test documentation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -405,8 +406,10 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// Request parameters:
   ///
@@ -565,15 +568,16 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     );
   }
 
-  /// Updates the configuration of an existing `ConnectivityTest`. After you
-  /// update a test, the reachability analysis is performed as part of the long
-  /// running operation, which completes when the analysis completes. The
-  /// Reachability state in the test resource is updated with the new result. If
-  /// the endpoint specifications in `ConnectivityTest` are invalid (for
-  /// example, they contain non-existent resources in the network, or the user
-  /// does not have read permissions to the network configurations of listed
-  /// projects), then the reachability result returns a value of UNKNOWN. If the
-  /// endpoint specifications in `ConnectivityTest` are incomplete, the
+  /// Updates the configuration of an existing `ConnectivityTest`.
+  ///
+  /// After you update a test, the reachability analysis is performed as part of
+  /// the long running operation, which completes when the analysis completes.
+  /// The Reachability state in the test resource is updated with the new
+  /// result. If the endpoint specifications in `ConnectivityTest` are invalid
+  /// (for example, they contain non-existent resources in the network, or the
+  /// user does not have read permissions to the network configurations of
+  /// listed projects), then the reachability result returns a value of UNKNOWN.
+  /// If the endpoint specifications in `ConnectivityTest` are incomplete, the
   /// reachability result returns a value of `AMBIGUOUS`. See the documentation
   /// in `ConnectivityTest` for for more details.
   ///
@@ -641,15 +645,16 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     );
   }
 
-  /// Rerun an existing `ConnectivityTest`. After the user triggers the rerun,
-  /// the reachability analysis is performed as part of the long running
-  /// operation, which completes when the analysis completes. Even though the
-  /// test configuration remains the same, the reachability result may change
-  /// due to underlying network configuration changes. If the endpoint
-  /// specifications in `ConnectivityTest` become invalid (for example,
-  /// specified resources are deleted in the network, or you lost read
-  /// permissions to the network configurations of listed projects), then the
-  /// reachability result returns a value of `UNKNOWN`.
+  /// Rerun an existing `ConnectivityTest`.
+  ///
+  /// After the user triggers the rerun, the reachability analysis is performed
+  /// as part of the long running operation, which completes when the analysis
+  /// completes. Even though the test configuration remains the same, the
+  /// reachability result may change due to underlying network configuration
+  /// changes. If the endpoint specifications in `ConnectivityTest` become
+  /// invalid (for example, specified resources are deleted in the network, or
+  /// you lost read permissions to the network configurations of listed
+  /// projects), then the reachability result returns a value of `UNKNOWN`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -708,9 +713,10 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -772,10 +778,11 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -846,8 +853,9 @@ class ProjectsLocationsGlobalOperationsResource {
   ProjectsLocationsGlobalOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -912,10 +920,11 @@ class ProjectsLocationsGlobalOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -967,9 +976,10 @@ class ProjectsLocationsGlobalOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1021,10 +1031,11 @@ class ProjectsLocationsGlobalOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1158,11 +1169,12 @@ class AbortInfo {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -1178,9 +1190,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -1210,14 +1223,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -1255,16 +1271,19 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -1295,8 +1314,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1347,65 +1367,86 @@ class CancelOperationRequest {
 
 /// A Connectivity Test for a network reachability analysis.
 class ConnectivityTest {
-  /// Output only. The time the test was created.
+  /// The time the test was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// The user-supplied description of the Connectivity Test. Maximum of 512
-  /// characters.
+  /// The user-supplied description of the Connectivity Test.
+  ///
+  /// Maximum of 512 characters.
   core.String description;
 
-  /// Required. Destination specification of the Connectivity Test. You can use
-  /// a combination of destination IP address, Compute Engine VM instance, or
-  /// VPC network to uniquely identify the destination location. Even if the
-  /// destination IP address is not unique, the source IP location is unique.
-  /// Usually, the analysis can infer the destination endpoint from route
-  /// information. If the destination you specify is a VM instance and the
+  /// Destination specification of the Connectivity Test.
+  ///
+  /// You can use a combination of destination IP address, Compute Engine VM
+  /// instance, or VPC network to uniquely identify the destination location.
+  /// Even if the destination IP address is not unique, the source IP location
+  /// is unique. Usually, the analysis can infer the destination endpoint from
+  /// route information. If the destination you specify is a VM instance and the
   /// instance has multiple network interfaces, then you must also specify
   /// either a destination IP address or VPC network to identify the destination
   /// interface. A reachability analysis proceeds even if the destination
   /// location is ambiguous. However, the result can include endpoints that you
   /// don't intend to test.
+  ///
+  /// Required.
   Endpoint destination;
 
-  /// Output only. The display name of a Connectivity Test.
+  /// The display name of a Connectivity Test.
+  ///
+  /// Output only.
   core.String displayName;
 
   /// Resource labels to represent user-provided metadata.
   core.Map<core.String, core.String> labels;
 
-  /// Required. Unique name of the resource using the form:
+  /// Unique name of the resource using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
+  ///
+  /// Required.
   core.String name;
 
-  /// IP Protocol of the test. When not provided, "TCP" is assumed.
+  /// IP Protocol of the test.
+  ///
+  /// When not provided, "TCP" is assumed.
   core.String protocol;
 
-  /// Output only. The reachability details of this test from the latest run.
+  /// The reachability details of this test from the latest run.
+  ///
   /// The details are updated when creating a new test, updating an existing
   /// test, or triggering a one-time rerun of an existing test.
+  ///
+  /// Output only.
   ReachabilityDetails reachabilityDetails;
 
-  /// Other projects that may be relevant for reachability analysis. This is
-  /// applicable to scenarios where a test can cross project boundaries.
+  /// Other projects that may be relevant for reachability analysis.
+  ///
+  /// This is applicable to scenarios where a test can cross project boundaries.
   core.List<core.String> relatedProjects;
 
-  /// Required. Source specification of the Connectivity Test. You can use a
-  /// combination of source IP address, virtual machine (VM) instance, or
-  /// Compute Engine network to uniquely identify the source location. Examples:
-  /// If the source IP address is an internal IP address within a Google Cloud
-  /// Virtual Private Cloud (VPC) network, then you must also specify the VPC
-  /// network. Otherwise, specify the VM instance, which already contains its
-  /// internal IP address and VPC network information. If the source of the test
-  /// is within an on-premises network, then you must provide the destination
-  /// VPC network. If the source endpoint is a Compute Engine VM instance with
-  /// multiple network interfaces, the instance itself is not sufficient to
-  /// identify the endpoint. So, you must also specify the source IP address or
-  /// VPC network. A reachability analysis proceeds even if the source location
-  /// is ambiguous. However, the test result may include endpoints that you
-  /// don't intend to test.
+  /// Source specification of the Connectivity Test.
+  ///
+  /// You can use a combination of source IP address, virtual machine (VM)
+  /// instance, or Compute Engine network to uniquely identify the source
+  /// location. Examples: If the source IP address is an internal IP address
+  /// within a Google Cloud Virtual Private Cloud (VPC) network, then you must
+  /// also specify the VPC network. Otherwise, specify the VM instance, which
+  /// already contains its internal IP address and VPC network information. If
+  /// the source of the test is within an on-premises network, then you must
+  /// provide the destination VPC network. If the source endpoint is a Compute
+  /// Engine VM instance with multiple network interfaces, the instance itself
+  /// is not sufficient to identify the endpoint. So, you must also specify the
+  /// source IP address or VPC network. A reachability analysis proceeds even if
+  /// the source location is ambiguous. However, the test result may include
+  /// endpoints that you don't intend to test.
+  ///
+  /// Required.
   Endpoint source;
 
-  /// Output only. The time the test's configuration was updated.
+  /// The time the test's configuration was updated.
+  ///
+  /// Output only.
   core.String updateTime;
 
   ConnectivityTest();
@@ -1608,10 +1649,12 @@ class DropInfo {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1631,6 +1674,7 @@ class Endpoint {
   core.String instance;
 
   /// The IP address of the endpoint, which can be an external or internal IP.
+  ///
   /// An IPv6 address is only allowed when the test's destination is a [global
   /// load balancer VIP](/load-balancing/docs/load-balancing-overview).
   core.String ipAddress;
@@ -1638,9 +1682,10 @@ class Endpoint {
   /// A Compute Engine network URI.
   core.String network;
 
-  /// Type of the network where the endpoint is located. Applicable only to
-  /// source endpoint, as destination network type can be inferred from the
-  /// source.
+  /// Type of the network where the endpoint is located.
+  ///
+  /// Applicable only to source endpoint, as destination network type can be
+  /// inferred from the source.
   /// Possible string values are:
   /// - "NETWORK_TYPE_UNSPECIFIED" : Default type if unspecified.
   /// - "GCP_NETWORK" : A network hosted within Google Cloud Platform. To
@@ -1651,17 +1696,19 @@ class Endpoint {
   /// provider.
   core.String networkType;
 
-  /// The IP protocol port of the endpoint. Only applicable when protocol is TCP
-  /// or UDP.
+  /// The IP protocol port of the endpoint.
+  ///
+  /// Only applicable when protocol is TCP or UDP.
   core.int port;
 
-  /// Project ID where the endpoint is located. The Project ID can be derived
-  /// from the URI if you provide a VM instance or network URI. The following
-  /// are two cases where you must provide the project ID: 1. Only the IP
-  /// address is specified, and the IP address is within a GCP project. 2. When
-  /// you are using Shared VPC and the IP address that you provide is from the
-  /// service project. In this case, the network that the IP address resides in
-  /// is defined in the host project.
+  /// Project ID where the endpoint is located.
+  ///
+  /// The Project ID can be derived from the URI if you provide a VM instance or
+  /// network URI. The following are two cases where you must provide the
+  /// project ID: 1. Only the IP address is specified, and the IP address is
+  /// within a GCP project. 2. When you are using Shared VPC and the IP address
+  /// that you provide is from the service project. In this case, the network
+  /// that the IP address resides in is defined in the host project.
   core.String projectId;
 
   Endpoint();
@@ -1711,9 +1758,11 @@ class Endpoint {
   }
 }
 
-/// For display only. The specification of the endpoints for the test.
-/// EndpointInfo is derived from source and destination Endpoint and validated
-/// by the backend data plane model.
+/// For display only.
+///
+/// The specification of the endpoints for the test. EndpointInfo is derived
+/// from source and destination Endpoint and validated by the backend data plane
+/// model.
 class EndpointInfo {
   /// Destination IP address.
   core.String destinationIp;
@@ -1721,7 +1770,9 @@ class EndpointInfo {
   /// URI of the network where this packet is sent to.
   core.String destinationNetworkUri;
 
-  /// Destination port. Only valid when protocol is TCP or UDP.
+  /// Destination port.
+  ///
+  /// Only valid when protocol is TCP or UDP.
   core.int destinationPort;
 
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
@@ -1733,7 +1784,9 @@ class EndpointInfo {
   /// URI of the network where this packet originates from.
   core.String sourceNetworkUri;
 
-  /// Source port. Only valid when protocol is TCP or UDP.
+  /// Source port.
+  ///
+  /// Only valid when protocol is TCP or UDP.
   core.int sourcePort;
 
   EndpointInfo();
@@ -1790,8 +1843,10 @@ class EndpointInfo {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -1806,20 +1861,29 @@ class EndpointInfo {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -1857,7 +1921,9 @@ class Expr {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine firewall rule.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine firewall rule.
 class FirewallInfo {
   /// Possible values: ALLOW, DENY
   core.String action;
@@ -1880,8 +1946,9 @@ class FirewallInfo {
   /// Target tags of the firewall rule.
   core.List<core.String> targetTags;
 
-  /// URI of a Compute Engine firewall rule. Implied default rule does not have
-  /// URI.
+  /// URI of a Compute Engine firewall rule.
+  ///
+  /// Implied default rule does not have URI.
   core.String uri;
 
   FirewallInfo();
@@ -1987,7 +2054,9 @@ class ForwardInfo {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine forwarding rule.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine forwarding rule.
 class ForwardingRuleInfo {
   /// Name of a Compute Engine forwarding rule.
   core.String displayName;
@@ -1998,7 +2067,9 @@ class ForwardingRuleInfo {
   /// Protocol defined in the forwarding rule that matches the test.
   core.String matchedProtocol;
 
-  /// Network URI. Only valid for Internal Load Balancer.
+  /// Network URI.
+  ///
+  /// Only valid for Internal Load Balancer.
   core.String networkUri;
 
   /// Target type of the forwarding rule.
@@ -2063,7 +2134,9 @@ class ForwardingRuleInfo {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine instance.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine instance.
 class InstanceInfo {
   /// Name of a Compute Engine instance.
   core.String displayName;
@@ -2264,7 +2337,9 @@ class ListOperationsResponse {
   }
 }
 
-/// For display only. Metadata associated with a specific load balancer backend.
+/// For display only.
+///
+/// Metadata associated with a specific load balancer backend.
 class LoadBalancerBackend {
   /// Name of a Compute Engine instance or network endpoint.
   core.String displayName;
@@ -2341,7 +2416,9 @@ class LoadBalancerBackend {
   }
 }
 
-/// For display only. Metadata associated with a load balancer.
+/// For display only.
+///
+/// Metadata associated with a load balancer.
 class LoadBalancerInfo {
   /// Type of load balancer's backend configuration.
   /// Possible string values are:
@@ -2415,25 +2492,31 @@ class LoadBalancerInfo {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -2490,7 +2573,9 @@ class Location {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine network.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine network.
 class NetworkInfo {
   /// Name of a Compute Engine network.
   core.String displayName;
@@ -2533,31 +2618,37 @@ class NetworkInfo {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2699,16 +2790,18 @@ class OperationMetadata {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -2731,14 +2824,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -2755,20 +2851,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -2900,7 +2998,9 @@ class RerunConnectivityTestRequest {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine route.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine route.
 class RouteInfo {
   /// Destination IP range of the route.
   core.String destIpRange;
@@ -2953,9 +3053,10 @@ class RouteInfo {
   /// - "PEERING_DYNAMIC" : A dynamic route received from peering network.
   core.String routeType;
 
-  /// URI of a Compute Engine route. Dynamic route from cloud router does not
-  /// have a URI. Advertised route from Google Cloud VPC to on-premises network
-  /// also does not have a URI.
+  /// URI of a Compute Engine route.
+  ///
+  /// Dynamic route from cloud router does not have a URI. Advertised route from
+  /// Google Cloud VPC to on-premises network also does not have a URI.
   core.String uri;
 
   RouteInfo();
@@ -3027,13 +3128,15 @@ class RouteInfo {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -3063,24 +3166,27 @@ class SetIamPolicyRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3121,8 +3227,9 @@ class Status {
   }
 }
 
-/// A simulated forwarding path is composed of multiple steps. Each step has a
-/// well-defined state and an associated configuration.
+/// A simulated forwarding path is composed of multiple steps.
+///
+/// Each step has a well-defined state and an associated configuration.
 class Step {
   /// Display info of the final state "abort" and reason.
   AbortInfo abort;
@@ -3133,15 +3240,18 @@ class Step {
   /// Display info of the final state "deliver" and reason.
   DeliverInfo deliver;
 
-  /// A description of the step. Usually this is a summary of the state.
+  /// A description of the step.
+  ///
+  /// Usually this is a summary of the state.
   core.String description;
 
   /// Display info of the final state "drop" and reason.
   DropInfo drop;
 
-  /// Display info of the source and destination under analysis. The endpiont
-  /// info in an intermediate state may differ with the initial input, as it
-  /// might be modified by state like NAT, or Connection Proxy.
+  /// Display info of the source and destination under analysis.
+  ///
+  /// The endpiont info in an intermediate state may differ with the initial
+  /// input, as it might be modified by state like NAT, or Connection Proxy.
   EndpointInfo endpoint;
 
   /// Display info of a Compute Engine firewall rule.
@@ -3344,9 +3454,10 @@ class Step {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -3394,25 +3505,28 @@ class TestIamPermissionsResponse {
   }
 }
 
-/// Trace represents one simulated packet forwarding path. - Each trace contains
-/// multiple ordered steps. - Each step is in a particular state and has an
-/// associated configuration. - State is categorized as a final or non-final
-/// state. - Each final state has a reason associated with it. - Each trace must
-/// end with a final state (the last step).
+/// Trace represents one simulated packet forwarding path.
+///
+/// - Each trace contains multiple ordered steps. - Each step is in a particular
+/// state and has an associated configuration. - State is categorized as a final
+/// or non-final state. - Each final state has a reason associated with it. -
+/// Each trace must end with a final state (the last step).
 /// |---------------------Trace----------------------| Step1(State) Step2(State)
 /// --- StepN(State(final))
 class Trace {
   /// Derived from the source and destination endpoints definition, and
-  /// validated by the data plane model. If there are multiple traces starting
-  /// from different source locations, then the endpoint_info may be different
-  /// between traces.
+  /// validated by the data plane model.
+  ///
+  /// If there are multiple traces starting from different source locations,
+  /// then the endpoint_info may be different between traces.
   EndpointInfo endpointInfo;
 
   /// A trace of a test contains multiple steps from the initial state to the
-  /// final state (delivered, dropped, forwarded, or aborted). The steps are
-  /// ordered by the processing sequence within the simulated network state
-  /// machine. It is critical to preserve the order of the steps and avoid
-  /// reordering or sorting them.
+  /// final state (delivered, dropped, forwarded, or aborted).
+  ///
+  /// The steps are ordered by the processing sequence within the simulated
+  /// network state machine. It is critical to preserve the order of the steps
+  /// and avoid reordering or sorting them.
   core.List<Step> steps;
 
   Trace();
@@ -3442,7 +3556,9 @@ class Trace {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine VPN gateway.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine VPN gateway.
 class VpnGatewayInfo {
   /// Name of a VPN gateway.
   core.String displayName;
@@ -3459,9 +3575,10 @@ class VpnGatewayInfo {
   /// URI of a VPN gateway.
   core.String uri;
 
-  /// A VPN tunnel that is associated with this VPN gateway. There may be
-  /// multiple VPN tunnels configured on a VPN gateway, and only the one
-  /// relevant to the test is displayed.
+  /// A VPN tunnel that is associated with this VPN gateway.
+  ///
+  /// There may be multiple VPN tunnels configured on a VPN gateway, and only
+  /// the one relevant to the test is displayed.
   core.String vpnTunnelUri;
 
   VpnGatewayInfo();
@@ -3511,7 +3628,9 @@ class VpnGatewayInfo {
   }
 }
 
-/// For display only. Metadata associated with a Compute Engine VPN tunnel.
+/// For display only.
+///
+/// Metadata associated with a Compute Engine VPN tunnel.
 class VpnTunnelInfo {
   /// Name of a VPN tunnel.
   core.String displayName;

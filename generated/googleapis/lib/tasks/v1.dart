@@ -275,8 +275,9 @@ class TasklistsResource {
     );
   }
 
-  /// Updates the authenticated user's specified task list. This method supports
-  /// patch semantics.
+  /// Updates the authenticated user's specified task list.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -396,9 +397,10 @@ class TasksResource {
 
   TasksResource(commons.ApiRequester client) : _requester = client;
 
-  /// Clears all completed tasks from the specified task list. The affected
-  /// tasks will be marked as 'hidden' and no longer be returned by default when
-  /// retrieving all tasks for a task list.
+  /// Clears all completed tasks from the specified task list.
+  ///
+  /// The affected tasks will be marked as 'hidden' and no longer be returned by
+  /// default when retrieving all tasks for a task list.
   ///
   /// Request parameters:
   ///
@@ -767,9 +769,10 @@ class TasksResource {
     );
   }
 
-  /// Moves the specified task to another position in the task list. This can
-  /// include putting it as a child task under a new parent and/or move it to a
-  /// different position among its sibling tasks.
+  /// Moves the specified task to another position in the task list.
+  ///
+  /// This can include putting it as a child task under a new parent and/or move
+  /// it to a different position among its sibling tasks.
   ///
   /// Request parameters:
   ///
@@ -844,7 +847,9 @@ class TasksResource {
     );
   }
 
-  /// Updates the specified task. This method supports patch semantics.
+  /// Updates the specified task.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -976,7 +981,9 @@ class TasksResource {
 }
 
 class TaskLinks {
-  /// The description. In HTML speak: Everything between <a> and </a>.
+  /// The description.
+  ///
+  /// In HTML speak: Everything between <a> and </a>.
   core.String description;
 
   /// The URL.
@@ -1016,56 +1023,75 @@ class TaskLinks {
 
 /// LINT.IfChange
 class Task {
-  /// Completion date of the task (as a RFC 3339 timestamp). This field is
-  /// omitted if the task has not been completed.
+  /// Completion date of the task (as a RFC 3339 timestamp).
+  ///
+  /// This field is omitted if the task has not been completed.
   core.String completed;
 
-  /// Flag indicating whether the task has been deleted. The default is False.
+  /// Flag indicating whether the task has been deleted.
+  ///
+  /// The default is False.
   core.bool deleted;
 
-  /// Due date of the task (as a RFC 3339 timestamp). Optional. The due date
-  /// only records date information; the time portion of the timestamp is
-  /// discarded when setting the due date. It isn't possible to read or write
-  /// the time that a task is due via the API.
+  /// Due date of the task (as a RFC 3339 timestamp).
+  ///
+  /// Optional. The due date only records date information; the time portion of
+  /// the timestamp is discarded when setting the due date. It isn't possible to
+  /// read or write the time that a task is due via the API.
   core.String due;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// Flag indicating whether the task is hidden. This is the case if the task
-  /// had been marked completed when the task list was last cleared. The default
-  /// is False. This field is read-only.
+  /// Flag indicating whether the task is hidden.
+  ///
+  /// This is the case if the task had been marked completed when the task list
+  /// was last cleared. The default is False. This field is read-only.
   core.bool hidden;
 
   /// Task identifier.
   core.String id;
 
-  /// Type of the resource. This is always "tasks#task".
+  /// Type of the resource.
+  ///
+  /// This is always "tasks#task".
   core.String kind;
 
-  /// Collection of links. This collection is read-only.
+  /// Collection of links.
+  ///
+  /// This collection is read-only.
   core.List<TaskLinks> links;
 
-  /// Notes describing the task. Optional.
+  /// Notes describing the task.
+  ///
+  /// Optional.
   core.String notes;
 
-  /// Parent task identifier. This field is omitted if it is a top-level task.
-  /// This field is read-only. Use the "move" method to move the task under a
-  /// different parent or to the top level.
+  /// Parent task identifier.
+  ///
+  /// This field is omitted if it is a top-level task. This field is read-only.
+  /// Use the "move" method to move the task under a different parent or to the
+  /// top level.
   core.String parent;
 
   /// String indicating the position of the task among its sibling tasks under
-  /// the same parent task or at the top level. If this string is greater than
-  /// another task's corresponding position string according to lexicographical
-  /// ordering, the task is positioned after the other task under the same
-  /// parent task (or at the top level). This field is read-only. Use the "move"
-  /// method to move the task to another position.
+  /// the same parent task or at the top level.
+  ///
+  /// If this string is greater than another task's corresponding position
+  /// string according to lexicographical ordering, the task is positioned after
+  /// the other task under the same parent task (or at the top level). This
+  /// field is read-only. Use the "move" method to move the task to another
+  /// position.
   core.String position;
 
-  /// URL pointing to this task. Used to retrieve, update, or delete this task.
+  /// URL pointing to this task.
+  ///
+  /// Used to retrieve, update, or delete this task.
   core.String selfLink;
 
-  /// Status of the task. This is either "needsAction" or "completed".
+  /// Status of the task.
+  ///
+  /// This is either "needsAction" or "completed".
   core.String status;
 
   /// Title of the task.
@@ -1185,11 +1211,14 @@ class TaskList {
   /// Task list identifier.
   core.String id;
 
-  /// Type of the resource. This is always "tasks#taskList".
+  /// Type of the resource.
+  ///
+  /// This is always "tasks#taskList".
   core.String kind;
 
-  /// URL pointing to this task list. Used to retrieve, update, or delete this
-  /// task list.
+  /// URL pointing to this task list.
+  ///
+  /// Used to retrieve, update, or delete this task list.
   core.String selfLink;
 
   /// Title of the task list.
@@ -1252,7 +1281,9 @@ class TaskLists {
   /// Collection of task lists.
   core.List<TaskList> items;
 
-  /// Type of the resource. This is always "tasks#taskLists".
+  /// Type of the resource.
+  ///
+  /// This is always "tasks#taskLists".
   core.String kind;
 
   /// Token that can be used to request the next page of this result.
@@ -1303,7 +1334,9 @@ class Tasks {
   /// Collection of tasks.
   core.List<Task> items;
 
-  /// Type of the resource. This is always "tasks#tasks".
+  /// Type of the resource.
+  ///
+  /// This is always "tasks#tasks".
   core.String kind;
 
   /// Token used to access the next page of this result.

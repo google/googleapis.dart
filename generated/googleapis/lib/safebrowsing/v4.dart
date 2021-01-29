@@ -49,9 +49,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Enables client applications to check web resources (most commonly URLs)
-/// against Google-generated lists of unsafe web resources. The Safe Browsing
-/// APIs are for non-commercial use only. If you need to use APIs to detect
-/// malicious URLs for commercial purposes – meaning “for sale or
+/// against Google-generated lists of unsafe web resources.
+///
+/// The Safe Browsing APIs are for non-commercial use only. If you need to use
+/// APIs to detect malicious URLs for commercial purposes – meaning “for sale or
 /// revenue-generating purposes” – please refer to the Web Risk API.
 class SafebrowsingApi {
   final commons.ApiRequester _requester;
@@ -274,8 +275,9 @@ class ThreatHitsResource {
 
   ThreatHitsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Reports a Safe Browsing threat list hit to Google. Only projects with
-  /// TRUSTED_REPORTER visibility can use this method.
+  /// Reports a Safe Browsing threat list hit to Google.
+  ///
+  /// Only projects with TRUSTED_REPORTER visibility can use this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -331,8 +333,9 @@ class ThreatListUpdatesResource {
 
   ThreatListUpdatesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Fetches the most recent threat list updates. A client can request updates
-  /// for multiple lists at once.
+  /// Fetches the most recent threat list updates.
+  ///
+  /// A client can request updates for multiple lists at once.
   ///
   /// [request] - The metadata request object.
   ///
@@ -559,23 +562,28 @@ class Constraints {
   /// code.
   core.String deviceLocation;
 
-  /// Requests the lists for a specific language. Expects ISO 639 alpha-2
-  /// format.
+  /// Requests the lists for a specific language.
+  ///
+  /// Expects ISO 639 alpha-2 format.
   core.String language;
 
   /// Sets the maximum number of entries that the client is willing to have in
-  /// the local database for the specified list. This should be a power of 2
-  /// between 2**10 and 2**20. If zero, no database size limit is set.
+  /// the local database for the specified list.
+  ///
+  /// This should be a power of 2 between 2**10 and 2**20. If zero, no database
+  /// size limit is set.
   core.int maxDatabaseEntries;
 
-  /// The maximum size in number of entries. The update will not contain more
-  /// entries than this value. This should be a power of 2 between 2**10 and
-  /// 2**20. If zero, no update size limit is set.
+  /// The maximum size in number of entries.
+  ///
+  /// The update will not contain more entries than this value. This should be a
+  /// power of 2 between 2**10 and 2**20. If zero, no update size limit is set.
   core.int maxUpdateEntries;
 
-  /// Requests the list for a specific geographic location. If not set the
-  /// server may pick that value based on the user's IP address. Expects ISO
-  /// 3166-1 alpha-2 format.
+  /// Requests the list for a specific geographic location.
+  ///
+  /// If not set the server may pick that value based on the user's IP address.
+  /// Expects ISO 3166-1 alpha-2 format.
   core.String region;
 
   /// The compression types supported by the client.
@@ -631,10 +639,12 @@ class Constraints {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -648,9 +658,10 @@ class Empty {
   }
 }
 
-/// Describes a Safe Browsing API update request. Clients can request updates
-/// for multiple lists in a single request. NOTE: Field index 2 is unused. NEXT:
-/// 5
+/// Describes a Safe Browsing API update request.
+///
+/// Clients can request updates for multiple lists in a single request. NOTE:
+/// Field index 2 is unused. NEXT: 5
 class FetchThreatListUpdatesRequest {
   /// The client metadata.
   ClientInfo client;
@@ -691,7 +702,9 @@ class FetchThreatListUpdatesResponse {
   core.List<ListUpdateResponse> listUpdateResponses;
 
   /// The minimum duration the client must wait before issuing any update
-  /// request. If this field is not set clients may update as soon as they want.
+  /// request.
+  ///
+  /// If this field is not set clients may update as soon as they want.
   core.String minimumWaitDuration;
 
   FetchThreatListUpdatesResponse();
@@ -781,8 +794,10 @@ class FindFullHashesResponse {
   core.List<ThreatMatch> matches;
 
   /// The minimum duration the client must wait before issuing any find hashes
-  /// request. If this field is not set, clients can issue a request as soon as
-  /// they want.
+  /// request.
+  ///
+  /// If this field is not set, clients can issue a request as soon as they
+  /// want.
   core.String minimumWaitDuration;
 
   /// For requested entities that did not match the threat list, how long to
@@ -1015,18 +1030,22 @@ class ListUpdateRequest {
 
 /// An update to an individual list.
 class ListUpdateResponse {
-  /// A set of entries to add to a local threat type's list. Repeated to allow
-  /// for a combination of compressed and raw data to be sent in a single
-  /// response.
+  /// A set of entries to add to a local threat type's list.
+  ///
+  /// Repeated to allow for a combination of compressed and raw data to be sent
+  /// in a single response.
   core.List<ThreatEntrySet> additions;
 
   /// The expected SHA256 hash of the client state; that is, of the sorted list
   /// of all hashes present in the database after applying the provided update.
+  ///
   /// If the client state doesn't match the expected state, the client must
   /// disregard this update and retry later.
   Checksum checksum;
 
-  /// The new client state, in encrypted format. Opaque to clients.
+  /// The new client state, in encrypted format.
+  ///
+  /// Opaque to clients.
   core.String newClientState;
   core.List<core.int> get newClientStateAsBytes =>
       convert.base64.decode(newClientState);
@@ -1049,12 +1068,15 @@ class ListUpdateResponse {
   /// - "CHROME" : Threat posed to Chrome.
   core.String platformType;
 
-  /// A set of entries to remove from a local threat type's list. In practice,
-  /// this field is empty or contains exactly one ThreatEntrySet.
+  /// A set of entries to remove from a local threat type's list.
+  ///
+  /// In practice, this field is empty or contains exactly one ThreatEntrySet.
   core.List<ThreatEntrySet> removals;
 
-  /// The type of response. This may indicate that an action is required by the
-  /// client when the response is received.
+  /// The type of response.
+  ///
+  /// This may indicate that an action is required by the client when the
+  /// response is received.
   /// Possible string values are:
   /// - "RESPONSE_TYPE_UNSPECIFIED" : Unknown.
   /// - "PARTIAL_UPDATE" : Partial updates are applied to the client's existing
@@ -1172,7 +1194,9 @@ class ListUpdateResponse {
 
 /// A single metadata entry.
 class MetadataEntry {
-  /// The metadata entry key. For JSON requests, the key is base64-encoded.
+  /// The metadata entry key.
+  ///
+  /// For JSON requests, the key is base64-encoded.
   core.String key;
   core.List<core.int> get keyAsBytes => convert.base64.decode(key);
 
@@ -1181,7 +1205,9 @@ class MetadataEntry {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The metadata entry value. For JSON requests, the value is base64-encoded.
+  /// The metadata entry value.
+  ///
+  /// For JSON requests, the value is base64-encoded.
   core.String value;
   core.List<core.int> get valueAsBytes => convert.base64.decode(value);
 
@@ -1214,18 +1240,23 @@ class MetadataEntry {
 }
 
 /// The uncompressed threat entries in hash format of a particular prefix
-/// length. Hashes can be anywhere from 4 to 32 bytes in size. A large majority
-/// are 4 bytes, but some hashes are lengthened if they collide with the hash of
-/// a popular URL. Used for sending ThreatEntrySet to clients that do not
-/// support compression, or when sending non-4-byte hashes to clients that do
-/// support compression.
+/// length.
+///
+/// Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4
+/// bytes, but some hashes are lengthened if they collide with the hash of a
+/// popular URL. Used for sending ThreatEntrySet to clients that do not support
+/// compression, or when sending non-4-byte hashes to clients that do support
+/// compression.
 class RawHashes {
-  /// The number of bytes for each prefix encoded below. This field can be
-  /// anywhere from 4 (shortest prefix) to 32 (full SHA256 hash).
+  /// The number of bytes for each prefix encoded below.
+  ///
+  /// This field can be anywhere from 4 (shortest prefix) to 32 (full SHA256
+  /// hash).
   core.int prefixSize;
 
-  /// The hashes, in binary format, concatenated into one long string. Hashes
-  /// are sorted in lexicographic order. For JSON API users, hashes are
+  /// The hashes, in binary format, concatenated into one long string.
+  ///
+  /// Hashes are sorted in lexicographic order. For JSON API users, hashes are
   /// base64-encoded.
   core.String rawHashes;
   core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes);
@@ -1282,8 +1313,9 @@ class RawIndices {
   }
 }
 
-/// The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or
-/// compressed removal indices.
+/// The Rice-Golomb encoded data.
+///
+/// Used for sending compressed 4-byte hashes or compressed removal indices.
 class RiceDeltaEncoding {
   /// The encoded deltas that are encoded using the Golomb-Rice coder.
   core.String encodedData;
@@ -1296,17 +1328,20 @@ class RiceDeltaEncoding {
   }
 
   /// The offset of the first entry in the encoded data, or, if only a single
-  /// integer was encoded, that single integer's value. If the field is empty or
-  /// missing, assume zero.
+  /// integer was encoded, that single integer's value.
+  ///
+  /// If the field is empty or missing, assume zero.
   core.String firstValue;
 
-  /// The number of entries that are delta encoded in the encoded data. If only
-  /// a single integer was encoded, this will be zero and the single value will
-  /// be stored in `first_value`.
+  /// The number of entries that are delta encoded in the encoded data.
+  ///
+  /// If only a single integer was encoded, this will be zero and the single
+  /// value will be stored in `first_value`.
   core.int numEntries;
 
-  /// The Golomb-Rice parameter, which is a number between 2 and 28. This field
-  /// is missing (that is, zero) if `num_entries` is zero.
+  /// The Golomb-Rice parameter, which is a number between 2 and 28.
+  ///
+  /// This field is missing (that is, zero) if `num_entries` is zero.
   core.int riceParameter;
 
   RiceDeltaEncoding();
@@ -1345,10 +1380,14 @@ class RiceDeltaEncoding {
 }
 
 /// An individual threat; for example, a malicious URL or its hash
-/// representation. Only one of these fields should be set.
+/// representation.
+///
+/// Only one of these fields should be set.
 class ThreatEntry {
-  /// The digest of an executable in SHA256 format. The API supports both binary
-  /// and hex digests. For JSON requests, digests are base64-encoded.
+  /// The digest of an executable in SHA256 format.
+  ///
+  /// The API supports both binary and hex digests. For JSON requests, digests
+  /// are base64-encoded.
   core.String digest;
   core.List<core.int> get digestAsBytes => convert.base64.decode(digest);
 
@@ -1358,7 +1397,9 @@ class ThreatEntry {
   }
 
   /// A hash prefix, consisting of the most significant 4-32 bytes of a SHA256
-  /// hash. This field is in binary format. For JSON requests, hashes are
+  /// hash.
+  ///
+  /// This field is in binary format. For JSON requests, hashes are
   /// base64-encoded.
   core.String hash;
   core.List<core.int> get hashAsBytes => convert.base64.decode(hash);
@@ -1400,8 +1441,10 @@ class ThreatEntry {
   }
 }
 
-/// The metadata associated with a specific threat entry. The client is expected
-/// to know the metadata key/value pairs associated with each threat type.
+/// The metadata associated with a specific threat entry.
+///
+/// The client is expected to know the metadata key/value pairs associated with
+/// each threat type.
 class ThreatEntryMetadata {
   /// The metadata entries.
   core.List<MetadataEntry> entries;
@@ -1443,14 +1486,18 @@ class ThreatEntrySet {
   RawIndices rawIndices;
 
   /// The encoded 4-byte prefixes of SHA256-formatted entries, using a
-  /// Golomb-Rice encoding. The hashes are converted to uint32, sorted in
-  /// ascending order, then delta encoded and stored as encoded_data.
+  /// Golomb-Rice encoding.
+  ///
+  /// The hashes are converted to uint32, sorted in ascending order, then delta
+  /// encoded and stored as encoded_data.
   RiceDeltaEncoding riceHashes;
 
   /// The encoded local, lexicographically-sorted list indices, using a
-  /// Golomb-Rice encoding. Used for sending compressed removal indices. The
-  /// removal indices (uint32) are sorted in ascending order, then delta encoded
-  /// and stored as encoded_data.
+  /// Golomb-Rice encoding.
+  ///
+  /// Used for sending compressed removal indices. The removal indices (uint32)
+  /// are sorted in ascending order, then delta encoded and stored as
+  /// encoded_data.
   RiceDeltaEncoding riceIndices;
 
   ThreatEntrySet();
@@ -1502,8 +1549,9 @@ class ThreatHit {
   /// Client-reported identification.
   ClientInfo clientInfo;
 
-  /// The threat entry responsible for the hit. Full hash should be reported for
-  /// hash-based hits.
+  /// The threat entry responsible for the hit.
+  ///
+  /// Full hash should be reported for hash-based hits.
   ThreatEntry entry;
 
   /// The platform type reported.
@@ -1667,9 +1715,10 @@ class ThreatInfo {
   }
 }
 
-/// Describes an individual threat list. A list is defined by three parameters:
-/// the type of threat posed, the type of platform targeted by the threat, and
-/// the type of entries in the list.
+/// Describes an individual threat list.
+///
+/// A list is defined by three parameters: the type of threat posed, the type of
+/// platform targeted by the threat, and the type of entries in the list.
 class ThreatListDescriptor {
   /// The platform type targeted by the list's entries.
   /// Possible string values are:
@@ -1755,8 +1804,10 @@ class ThreatListDescriptor {
 
 /// A match when checking a threat entry in the Safe Browsing threat lists.
 class ThreatMatch {
-  /// The cache lifetime for the returned match. Clients must not cache this
-  /// response for more than this duration to avoid false positives.
+  /// The cache lifetime for the returned match.
+  ///
+  /// Clients must not cache this response for more than this duration to avoid
+  /// false positives.
   core.String cacheDuration;
 
   /// The platform type matching this threat.
@@ -1869,10 +1920,14 @@ class ThreatMatch {
 
 /// A single resource related to a threat hit.
 class ThreatSource {
-  /// Referrer of the resource. Only set if the referrer is available.
+  /// Referrer of the resource.
+  ///
+  /// Only set if the referrer is available.
   core.String referrer;
 
-  /// The remote IP of the resource in ASCII format. Either IPv4 or IPv6.
+  /// The remote IP of the resource in ASCII format.
+  ///
+  /// Either IPv4 or IPv6.
   core.String remoteIp;
 
   /// The type of source reported.

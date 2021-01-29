@@ -696,8 +696,9 @@ class AccountsResource {
     );
   }
 
-  /// Updates a Merchant Center account. Any fields that are not provided are
-  /// deleted from the resource.
+  /// Updates a Merchant Center account.
+  ///
+  /// Any fields that are not provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -887,8 +888,9 @@ class AccountstatusesResource {
     );
   }
 
-  /// Retrieves the status of a Merchant Center account. No itemLevelIssues are
-  /// returned for multi-client accounts.
+  /// Retrieves the status of a Merchant Center account.
+  ///
+  /// No itemLevelIssues are returned for multi-client accounts.
   ///
   /// Request parameters:
   ///
@@ -1214,8 +1216,9 @@ class AccounttaxResource {
     );
   }
 
-  /// Updates the tax settings of the account. Any fields that are not provided
-  /// are deleted from the resource.
+  /// Updates the tax settings of the account.
+  ///
+  /// Any fields that are not provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1642,8 +1645,9 @@ class DatafeedsResource {
     );
   }
 
-  /// Updates a datafeed configuration of your Merchant Center account. Any
-  /// fields that are not provided are deleted from the resource.
+  /// Updates a datafeed configuration of your Merchant Center account.
+  ///
+  /// Any fields that are not provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2519,8 +2523,9 @@ class LiasettingsResource {
     );
   }
 
-  /// Updates the LIA settings of the account. Any fields that are not provided
-  /// are deleted from the resource.
+  /// Updates the LIA settings of the account.
+  ///
+  /// Any fields that are not provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2789,10 +2794,11 @@ class OrderinvoicesResource {
   }
 
   /// Creates a refund invoice for one or more shipment groups, and triggers a
-  /// refund for orderinvoice enabled orders. This can only be used for line
-  /// items that have previously been charged using `createChargeInvoice`. All
-  /// amounts (except for the summary) are incremental with respect to the
-  /// previous invoice.
+  /// refund for orderinvoice enabled orders.
+  ///
+  /// This can only be used for line items that have previously been charged
+  /// using `createChargeInvoice`. All amounts (except for the summary) are
+  /// incremental with respect to the previous invoice.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3519,8 +3525,9 @@ class OrdersResource {
     );
   }
 
-  /// Sandbox only. Moves a test order from state "`inProgress`" to state
-  /// "`pendingShipment`".
+  /// Sandbox only.
+  ///
+  /// Moves a test order from state "`inProgress`" to state "`pendingShipment`".
   ///
   /// Request parameters:
   ///
@@ -3715,7 +3722,9 @@ class OrdersResource {
     );
   }
 
-  /// Sandbox only. Cancels a test order for customer-initiated cancellation.
+  /// Sandbox only.
+  ///
+  /// Cancels a test order for customer-initiated cancellation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3783,7 +3792,9 @@ class OrdersResource {
     );
   }
 
-  /// Sandbox only. Creates a test order.
+  /// Sandbox only.
+  ///
+  /// Creates a test order.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3841,7 +3852,9 @@ class OrdersResource {
     );
   }
 
-  /// Sandbox only. Creates a test return.
+  /// Sandbox only.
+  ///
+  /// Creates a test return.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4027,8 +4040,10 @@ class OrdersResource {
     );
   }
 
-  /// Sandbox only. Retrieves an order template that can be used to quickly
-  /// create a new order in sandbox.
+  /// Sandbox only.
+  ///
+  /// Retrieves an order template that can be used to quickly create a new order
+  /// in sandbox.
   ///
   /// Request parameters:
   ///
@@ -4101,15 +4116,18 @@ class OrdersResource {
     );
   }
 
-  /// Deprecated. Notifies that item return and refund was handled directly by
-  /// merchant outside of Google payments processing (e.g. cash refund done in
-  /// store).
+  /// Notifies that item return and refund was handled directly by merchant
+  /// outside of Google payments processing (e.g. cash refund done in store).
   /// Note: We recommend calling the returnrefundlineitem method to refund
-  /// in-store returns. We will issue the refund directly to the customer. This
-  /// helps to prevent possible differences arising between merchant and Google
-  /// transaction records. We also recommend having the point of sale system
-  /// communicate with Google to ensure that customers do not receive a double
-  /// refund by first refunding via Google then via an in-store return.
+  /// in-store returns.
+  ///
+  /// We will issue the refund directly to the customer. This helps to prevent
+  /// possible differences arising between merchant and Google transaction
+  /// records. We also recommend having the point of sale system communicate
+  /// with Google to ensure that customers do not receive a double refund by
+  /// first refunding via Google then via an in-store return.
+  ///
+  /// Deprecated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4488,13 +4506,14 @@ class OrdersResource {
     );
   }
 
-  /// Returns and refunds a line item. Note that this method can only be called
-  /// on fully shipped orders. Please also note that the Orderreturns API is the
-  /// preferred way to handle returns after you receive a return from a
-  /// customer. You can use Orderreturns.list or Orderreturns.get to search for
-  /// the return, and then use Orderreturns.processreturn to issue the refund.
-  /// If the return cannot be found, then we recommend using this API to issue a
-  /// refund.
+  /// Returns and refunds a line item.
+  ///
+  /// Note that this method can only be called on fully shipped orders. Please
+  /// also note that the Orderreturns API is the preferred way to handle returns
+  /// after you receive a return from a customer. You can use Orderreturns.list
+  /// or Orderreturns.get to search for the return, and then use
+  /// Orderreturns.processreturn to issue the refund. If the return cannot be
+  /// found, then we recommend using this API to issue a refund.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4562,10 +4581,11 @@ class OrdersResource {
   }
 
   /// Sets (or overrides if it already exists) merchant provided annotations in
-  /// the form of key-value pairs. A common use case would be to supply us with
-  /// additional structured information about a line item that cannot be
-  /// provided via other methods. Submitted key-value pairs can be retrieved as
-  /// part of the orders resource.
+  /// the form of key-value pairs.
+  ///
+  /// A common use case would be to supply us with additional structured
+  /// information about a line item that cannot be provided via other methods.
+  /// Submitted key-value pairs can be retrieved as part of the orders resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5528,9 +5548,10 @@ class ProductsResource {
     );
   }
 
-  /// Uploads a product to your Merchant Center account. If an item with the
-  /// same channel, contentLanguage, offerId, and targetCountry already exists,
-  /// this method updates that entry.
+  /// Uploads a product to your Merchant Center account.
+  ///
+  /// If an item with the same channel, contentLanguage, offerId, and
+  /// targetCountry already exists, this method updates that entry.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5593,9 +5614,10 @@ class ProductsResource {
     );
   }
 
-  /// Lists the products in your Merchant Center account. The response might
-  /// contain fewer items than specified by maxResults. Rely on nextPageToken to
-  /// determine if there are more items to be requested.
+  /// Lists the products in your Merchant Center account.
+  ///
+  /// The response might contain fewer items than specified by maxResults. Rely
+  /// on nextPageToken to determine if there are more items to be requested.
   ///
   /// Request parameters:
   ///
@@ -5916,8 +5938,9 @@ class PubsubnotificationsettingsResource {
     );
   }
 
-  /// Register a Merchant Center account for pubsub notifications. Note that
-  /// cloud topic name should not be provided as part of the request.
+  /// Register a Merchant Center account for pubsub notifications.
+  ///
+  /// Note that cloud topic name should not be provided as part of the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6034,8 +6057,10 @@ class RegionalinventoryResource {
   }
 
   /// Update the regional inventory of a product in your Merchant Center
-  /// account. If a regional inventory with the same region ID already exists,
-  /// this method updates that entry.
+  /// account.
+  ///
+  /// If a regional inventory with the same region ID already exists, this
+  /// method updates that entry.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7267,8 +7292,9 @@ class ShippingsettingsResource {
     );
   }
 
-  /// Updates the shipping settings of the account. Any fields that are not
-  /// provided are deleted from the resource.
+  /// Updates the shipping settings of the account.
+  ///
+  /// Any fields that are not provided are deleted from the resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7337,15 +7363,18 @@ class ShippingsettingsResource {
   }
 }
 
-/// Account data. After the creation of a new account it may take a few minutes
-/// before it is fully operational. The methods delete, insert, and update
-/// require the admin role.
+/// Account data.
+///
+/// After the creation of a new account it may take a few minutes before it is
+/// fully operational. The methods delete, insert, and update require the admin
+/// role.
 class Account {
-  /// List of linked Ads accounts that are active or pending approval. To create
-  /// a new link request, add a new link with status `active` to the list. It
-  /// will remain in a `pending` state until approved or rejected either in the
-  /// Ads interface or through the AdWords API. To delete an active link, or to
-  /// cancel a link request, remove it from the list.
+  /// List of linked Ads accounts that are active or pending approval.
+  ///
+  /// To create a new link request, add a new link with status `active` to the
+  /// list. It will remain in a `pending` state until approved or rejected
+  /// either in the Ads interface or through the AdWords API. To delete an
+  /// active link, or to cancel a link request, remove it from the list.
   core.List<AccountAdsLink> adsLinks;
 
   /// Indicates whether the merchant sells adult content.
@@ -7361,31 +7390,38 @@ class Account {
   /// Merchant Center account.
   AccountGoogleMyBusinessLink googleMyBusinessLink;
 
-  /// Required for update. Merchant Center account ID.
+  /// Required for update.
+  ///
+  /// Merchant Center account ID.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#account`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#account`"
   core.String kind;
 
   /// List of label IDs that are assigned to the account by CSS.
   core.List<core.String> labelIds;
 
-  /// Required. Display name for the account.
+  /// Display name for the account.
+  ///
+  /// Required.
   core.String name;
 
   /// Client-specific, locally-unique, internal ID for the child account.
   core.String sellerId;
 
-  /// Users with access to the account. Every account (except for subaccounts)
-  /// must have at least one admin user.
+  /// Users with access to the account.
+  ///
+  /// Every account (except for subaccounts) must have at least one admin user.
   core.List<AccountUser> users;
 
   /// The merchant's website.
   core.String websiteUrl;
 
-  /// List of linked YouTube channels that are active or pending approval. To
-  /// create a new link request, add a new link with status `active` to the
+  /// List of linked YouTube channels that are active or pending approval.
+  ///
+  /// To create a new link request, add a new link with status `active` to the
   /// list. It will remain in a `pending` state until approved or rejected in
   /// the YT Creator Studio interface. To delete an active link, or to cancel a
   /// link request, remove it from the list.
@@ -7496,19 +7532,25 @@ class Account {
 }
 
 class AccountAddress {
-  /// CLDR country code (e.g. "US"). This value cannot be set for a sub-account
-  /// of an MCA. All MCA sub-accounts inherit the country of their parent MCA.
+  /// CLDR country code (e.g. "US").
+  ///
+  /// This value cannot be set for a sub-account of an MCA. All MCA sub-accounts
+  /// inherit the country of their parent MCA.
   core.String country;
 
-  /// City, town or commune. May also include dependent localities or
-  /// sublocalities (e.g. neighborhoods or suburbs).
+  /// City, town or commune.
+  ///
+  /// May also include dependent localities or sublocalities (e.g. neighborhoods
+  /// or suburbs).
   core.String locality;
 
   /// Postal code or ZIP (e.g. "94043").
   core.String postalCode;
 
-  /// Top-level administrative subdivision of the country. For example, a state
-  /// like California ("CA") or a province like Quebec ("QC").
+  /// Top-level administrative subdivision of the country.
+  ///
+  /// For example, a state like California ("CA") or a province like Quebec
+  /// ("QC").
   core.String region;
 
   /// Street-level part of the address.
@@ -7560,15 +7602,16 @@ class AccountAdsLink {
   core.String adsId;
 
   /// Status of the link between this Merchant Center account and the Ads
-  /// account. Upon retrieval, it represents the actual status of the link and
-  /// can be either `active` if it was approved in Google Ads or `pending` if
-  /// it's pending approval. Upon insertion, it represents the intended status
-  /// of the link. Re-uploading a link with status `active` when it's still
-  /// pending or with status `pending` when it's already active will have no
-  /// effect: the status will remain unchanged. Re-uploading a link with
-  /// deprecated status `inactive` is equivalent to not submitting the link at
-  /// all and will delete the link if it was active or cancel the link request
-  /// if it was pending.
+  /// account.
+  ///
+  /// Upon retrieval, it represents the actual status of the link and can be
+  /// either `active` if it was approved in Google Ads or `pending` if it's
+  /// pending approval. Upon insertion, it represents the intended status of the
+  /// link. Re-uploading a link with status `active` when it's still pending or
+  /// with status `pending` when it's already active will have no effect: the
+  /// status will remain unchanged. Re-uploading a link with deprecated status
+  /// `inactive` is equivalent to not submitting the link at all and will delete
+  /// the link if it was active or cancel the link request if it was pending.
   ///
   /// Acceptable values are:
   /// - "`active`"
@@ -7679,13 +7722,15 @@ class AccountCustomerService {
 }
 
 class AccountGoogleMyBusinessLink {
-  /// The ID of the GMB account. If this is provided, then `gmbEmail` is
-  /// ignored. The value of this field should match the `accountId` used by the
-  /// GMB API.
+  /// The ID of the GMB account.
+  ///
+  /// If this is provided, then `gmbEmail` is ignored. The value of this field
+  /// should match the `accountId` used by the GMB API.
   core.String gmbAccountId;
 
-  /// The GMB email address of which a specific account within a GMB account. A
-  /// sample account within a GMB account could be a business account with set
+  /// The GMB email address of which a specific account within a GMB account.
+  ///
+  /// A sample account within a GMB account could be a business account with set
   /// of locations, managed under the GMB account.
   core.String gmbEmail;
 
@@ -7766,12 +7811,14 @@ class AccountStatus {
   /// A list of account level issues.
   core.List<AccountStatusAccountLevelIssue> accountLevelIssues;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#accountStatus`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#accountStatus`"
   core.String kind;
 
-  /// List of product-related data by channel, destination, and country. Data in
-  /// this field may be delayed by up to 30 minutes.
+  /// List of product-related data by channel, destination, and country.
+  ///
+  /// Data in this field may be delayed by up to 30 minutes.
   core.List<AccountStatusProducts> products;
 
   /// Whether the account's website is claimed or not.
@@ -7830,8 +7877,10 @@ class AccountStatusAccountLevelIssue {
   /// Country for which this issue is reported.
   core.String country;
 
-  /// The destination the issue applies to. If this field is empty then the
-  /// issue applies to all available destinations.
+  /// The destination the issue applies to.
+  ///
+  /// If this field is empty then the issue applies to all available
+  /// destinations.
   core.String destination;
 
   /// Additional details about the issue.
@@ -8106,18 +8155,24 @@ class AccountStatusStatistics {
   }
 }
 
-/// The tax settings of a merchant account. All methods require the admin role.
+/// The tax settings of a merchant account.
+///
+/// All methods require the admin role.
 class AccountTax {
-  /// Required. The ID of the account to which these account tax settings
-  /// belong.
+  /// The ID of the account to which these account tax settings belong.
+  ///
+  /// Required.
   core.String accountId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountTax".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountTax".
   core.String kind;
 
-  /// Tax rules. Updating the tax rules will enable US taxes (not reversible).
-  /// Defining no rules is equivalent to not charging tax at all.
+  /// Tax rules.
+  ///
+  /// Updating the tax rules will enable US taxes (not reversible). Defining no
+  /// rules is equivalent to not charging tax at all.
   core.List<AccountTaxTaxRule> rules;
 
   AccountTax();
@@ -8157,12 +8212,16 @@ class AccountTaxTaxRule {
   /// Country code in which tax is applicable.
   core.String country;
 
-  /// Required. State (or province) is which the tax is applicable, described by
-  /// its location ID (also called criteria ID).
+  /// State (or province) is which the tax is applicable, described by its
+  /// location ID (also called criteria ID).
+  ///
+  /// Required.
   core.String locationId;
 
   /// Explicit tax rate in percent, represented as a floating point number
-  /// without the percentage character. Must not be negative.
+  /// without the percentage character.
+  ///
+  /// Must not be negative.
   core.String ratePercent;
 
   /// If true, shipping charges are also taxed.
@@ -8275,12 +8334,14 @@ class AccountYouTubeChannelLink {
   core.String channelId;
 
   /// Status of the link between this Merchant Center account and the YouTube
-  /// channel. Upon retrieval, it represents the actual status of the link and
-  /// can be either `active` if it was approved in YT Creator Studio or
-  /// `pending` if it's pending approval. Upon insertion, it represents the
-  /// intended status of the link. Re-uploading a link with status `active` when
-  /// it's still pending or with status `pending` when it's already active will
-  /// have no effect: the status will remain unchanged. Re-uploading a link with
+  /// channel.
+  ///
+  /// Upon retrieval, it represents the actual status of the link and can be
+  /// either `active` if it was approved in YT Creator Studio or `pending` if
+  /// it's pending approval. Upon insertion, it represents the intended status
+  /// of the link. Re-uploading a link with status `active` when it's still
+  /// pending or with status `pending` when it's already active will have no
+  /// effect: the status will remain unchanged. Re-uploading a link with
   /// deprecated status `inactive` is equivalent to not submitting the link at
   /// all and will delete the link if it was active or cancel the link request
   /// if it was pending.
@@ -8317,8 +8378,9 @@ class AccountsAuthInfoResponse {
   /// are defined.
   core.List<AccountIdentifier> accountIdentifiers;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsAuthInfoResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsAuthInfoResponse".
   core.String kind;
 
   AccountsAuthInfoResponse();
@@ -8349,8 +8411,9 @@ class AccountsAuthInfoResponse {
 }
 
 class AccountsClaimWebsiteResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsClaimWebsiteResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsClaimWebsiteResponse".
   core.String kind;
 
   AccountsClaimWebsiteResponse();
@@ -8397,19 +8460,22 @@ class AccountsCustomBatchRequest {
 
 /// A batch entry encoding a single non-batch accounts request.
 class AccountsCustomBatchRequestEntry {
-  /// The account to create or update. Only defined if the method is `insert` or
-  /// `update`.
+  /// The account to create or update.
+  ///
+  /// Only defined if the method is `insert` or `update`.
   Account account;
 
-  /// The ID of the targeted account. Only defined if the method is not
-  /// `insert`.
+  /// The ID of the targeted account.
+  ///
+  /// Only defined if the method is not `insert`.
   core.String accountId;
 
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
-  /// Whether the account should be deleted if the account has offers. Only
-  /// applicable if the method is `delete`.
+  /// Whether the account should be deleted if the account has offers.
+  ///
+  /// Only applicable if the method is `delete`.
   core.bool force;
 
   /// Label IDs for the 'updatelabels' request.
@@ -8432,11 +8498,15 @@ class AccountsCustomBatchRequestEntry {
   /// - "`update`"
   core.String method;
 
-  /// Only applicable if the method is `claimwebsite`. Indicates whether or not
-  /// to take the claim from another account in case there is a conflict.
+  /// Only applicable if the method is `claimwebsite`.
+  ///
+  /// Indicates whether or not to take the claim from another account in case
+  /// there is a conflict.
   core.bool overwrite;
 
-  /// Controls which fields are visible. Only applicable if the method is 'get'.
+  /// Controls which fields are visible.
+  ///
+  /// Only applicable if the method is 'get'.
   core.String view;
 
   AccountsCustomBatchRequestEntry();
@@ -8515,8 +8585,9 @@ class AccountsCustomBatchRequestEntry {
 }
 
 class AccountsCustomBatchRequestEntryLinkRequest {
-  /// Action to perform for this link. The `"request"` action is only available
-  /// to select merchants.
+  /// Action to perform for this link.
+  ///
+  /// The `"request"` action is only available to select merchants.
   ///
   /// Acceptable values are:
   /// - "`approve`"
@@ -8578,8 +8649,9 @@ class AccountsCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<AccountsCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsCustomBatchResponse".
   core.String kind;
 
   AccountsCustomBatchResponse();
@@ -8611,8 +8683,9 @@ class AccountsCustomBatchResponse {
 
 /// A batch entry encoding a single non-batch accounts response.
 class AccountsCustomBatchResponseEntry {
-  /// The retrieved, created, or updated account. Not defined if the method was
-  /// `delete`, `claimwebsite` or `link`.
+  /// The retrieved, created, or updated account.
+  ///
+  /// Not defined if the method was `delete`, `claimwebsite` or `link`.
   Account account;
 
   /// The ID of the request entry this entry responds to.
@@ -8621,8 +8694,9 @@ class AccountsCustomBatchResponseEntry {
   /// A list of errors defined if and only if the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#accountsCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#accountsCustomBatchResponseEntry`"
   core.String kind;
 
   AccountsCustomBatchResponseEntry();
@@ -8663,8 +8737,9 @@ class AccountsCustomBatchResponseEntry {
 }
 
 class AccountsLinkRequest {
-  /// Action to perform for this link. The `"request"` action is only available
-  /// to select merchants.
+  /// Action to perform for this link.
+  ///
+  /// The `"request"` action is only available to select merchants.
   ///
   /// Acceptable values are:
   /// - "`approve`"
@@ -8723,8 +8798,9 @@ class AccountsLinkRequest {
 }
 
 class AccountsLinkResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsLinkResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsLinkResponse".
   core.String kind;
 
   AccountsLinkResponse();
@@ -8745,8 +8821,9 @@ class AccountsLinkResponse {
 }
 
 class AccountsListLinksResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsListLinksResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsListLinksResponse".
   core.String kind;
 
   /// The list of available links.
@@ -8788,8 +8865,9 @@ class AccountsListLinksResponse {
 }
 
 class AccountsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of accounts.
@@ -8852,8 +8930,9 @@ class AccountsUpdateLabelsRequest {
 }
 
 class AccountsUpdateLabelsResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountsUpdateLabelsResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountsUpdateLabelsResponse".
   core.String kind;
 
   AccountsUpdateLabelsResponse();
@@ -8966,8 +9045,9 @@ class AccountstatusesCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<AccountstatusesCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountstatusesCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountstatusesCustomBatchResponse".
   core.String kind;
 
   AccountstatusesCustomBatchResponse();
@@ -8999,8 +9079,9 @@ class AccountstatusesCustomBatchResponse {
 
 /// A batch entry encoding a single non-batch accountstatuses response.
 class AccountstatusesCustomBatchResponseEntry {
-  /// The requested account status. Defined if and only if the request was
-  /// successful.
+  /// The requested account status.
+  ///
+  /// Defined if and only if the request was successful.
   AccountStatus accountStatus;
 
   /// The ID of the request entry this entry responds to.
@@ -9041,8 +9122,9 @@ class AccountstatusesCustomBatchResponseEntry {
 }
 
 class AccountstatusesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accountstatusesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accountstatusesListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of account statuses.
@@ -9111,8 +9193,9 @@ class AccounttaxCustomBatchRequestEntry {
   /// The ID of the account for which to get/update account tax settings.
   core.String accountId;
 
-  /// The account tax settings to update. Only defined if the method is
-  /// `update`.
+  /// The account tax settings to update.
+  ///
+  /// Only defined if the method is `update`.
   AccountTax accountTax;
 
   /// An entry ID, unique within the batch request.
@@ -9174,8 +9257,9 @@ class AccounttaxCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<AccounttaxCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accounttaxCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accounttaxCustomBatchResponse".
   core.String kind;
 
   AccounttaxCustomBatchResponse();
@@ -9216,8 +9300,9 @@ class AccounttaxCustomBatchResponseEntry {
   /// A list of errors defined if and only if the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#accounttaxCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#accounttaxCustomBatchResponseEntry`"
   core.String kind;
 
   AccounttaxCustomBatchResponseEntry();
@@ -9258,8 +9343,9 @@ class AccounttaxCustomBatchResponseEntry {
 }
 
 class AccounttaxListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#accounttaxListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#accounttaxListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of account tax settings.
@@ -9299,11 +9385,14 @@ class AccounttaxListResponse {
 }
 
 class Amount {
-  /// [required] The pre-tax or post-tax price depending on the location of the
-  /// order.
+  /// The pre-tax or post-tax price depending on the location of the order.
+  ///
+  /// Required.
   Price priceAmount;
 
-  /// [required] Tax value.
+  /// Tax value.
+  ///
+  /// Required.
   Price taxAmount;
 
   Amount();
@@ -9332,7 +9421,9 @@ class Amount {
 }
 
 class BusinessDayConfig {
-  /// Regular business days. May not be empty.
+  /// Regular business days.
+  ///
+  /// May not be empty.
   core.List<core.String> businessDays;
 
   BusinessDayConfig();
@@ -9355,28 +9446,38 @@ class BusinessDayConfig {
 }
 
 class CarrierRate {
-  /// Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported
-  /// carriers can be retrieved via the `getSupportedCarriers` method. Required.
+  /// Carrier service, such as `"UPS"` or `"Fedex"`.
+  ///
+  /// The list of supported carriers can be retrieved via the
+  /// `getSupportedCarriers` method. Required.
   core.String carrierName;
 
-  /// Carrier service, such as `"ground"` or `"2 days"`. The list of supported
-  /// services for a carrier can be retrieved via the `getSupportedCarriers`
-  /// method. Required.
+  /// Carrier service, such as `"ground"` or `"2 days"`.
+  ///
+  /// The list of supported services for a carrier can be retrieved via the
+  /// `getSupportedCarriers` method. Required.
   core.String carrierService;
 
-  /// Additive shipping rate modifier. Can be negative. For example `{ "value":
-  /// "1", "currency" : "USD" }` adds $1 to the rate, `{ "value": "-3",
-  /// "currency" : "USD" }` removes $3 from the rate. Optional.
+  /// Additive shipping rate modifier.
+  ///
+  /// Can be negative. For example `{ "value": "1", "currency" : "USD" }` adds
+  /// $1 to the rate, `{ "value": "-3", "currency" : "USD" }` removes $3 from
+  /// the rate. Optional.
   Price flatAdjustment;
 
-  /// Name of the carrier rate. Must be unique per rate group. Required.
+  /// Name of the carrier rate.
+  ///
+  /// Must be unique per rate group. Required.
   core.String name;
 
-  /// Shipping origin for this carrier rate. Required.
+  /// Shipping origin for this carrier rate.
+  ///
+  /// Required.
   core.String originPostalCode;
 
-  /// Multiplicative shipping rate modifier as a number in decimal notation. Can
-  /// be negative. For example `"5.4"` increases the rate by 5.4%, `"-3"`
+  /// Multiplicative shipping rate modifier as a number in decimal notation.
+  ///
+  /// Can be negative. For example `"5.4"` increases the rate by 5.4%, `"-3"`
   /// decreases the rate by 3%. Optional.
   core.String percentageAdjustment;
 
@@ -9429,14 +9530,19 @@ class CarrierRate {
 }
 
 class CarriersCarrier {
-  /// The CLDR country code of the carrier (e.g., "US"). Always present.
+  /// The CLDR country code of the carrier (e.g., "US").
+  ///
+  /// Always present.
   core.String country;
 
-  /// The name of the carrier (e.g., `"UPS"`). Always present.
+  /// The name of the carrier (e.g., `"UPS"`).
+  ///
+  /// Always present.
   core.String name;
 
-  /// A list of supported services (e.g., `"ground"`) for that carrier. Contains
-  /// at least one service.
+  /// A list of supported services (e.g., `"ground"`) for that carrier.
+  ///
+  /// Contains at least one service.
   core.List<core.String> services;
 
   CarriersCarrier();
@@ -9471,12 +9577,14 @@ class CarriersCarrier {
 }
 
 class CustomAttribute {
-  /// Subattributes within this attribute group. Exactly one of value or
-  /// groupValues must be provided.
+  /// Subattributes within this attribute group.
+  ///
+  /// Exactly one of value or groupValues must be provided.
   core.List<CustomAttribute> groupValues;
 
-  /// The name of the attribute. Underscores will be replaced by spaces upon
-  /// insertion.
+  /// The name of the attribute.
+  ///
+  /// Underscores will be replaced by spaces upon insertion.
   core.String name;
 
   /// The value of the attribute.
@@ -9563,15 +9671,21 @@ class CustomerReturnReason {
 
 class CutoffTime {
   /// Hour of the cutoff time until which an order has to be placed to be
-  /// processed in the same day. Required.
+  /// processed in the same day.
+  ///
+  /// Required.
   core.int hour;
 
   /// Minute of the cutoff time until which an order has to be placed to be
-  /// processed in the same day. Required.
+  /// processed in the same day.
+  ///
+  /// Required.
   core.int minute;
 
-  /// Timezone identifier for the cutoff time. A list of identifiers can be
-  /// found in  the AdWords API documentation. E.g. "Europe/Zurich". Required.
+  /// Timezone identifier for the cutoff time.
+  ///
+  /// A list of identifiers can be found in  the AdWords API documentation. E.g.
+  /// "Europe/Zurich". Required.
   core.String timezone;
 
   CutoffTime();
@@ -9609,33 +9723,45 @@ class Datafeed {
   /// the data feed.
   core.String attributeLanguage;
 
-  /// Required. The type of data feed. For product inventory feeds, only feeds
-  /// for local stores, not online stores, are supported.
+  /// The type of data feed.
+  ///
+  /// For product inventory feeds, only feeds for local stores, not online
+  /// stores, are supported.
   ///
   /// Acceptable values are:
   /// - "`local products`"
   /// - "`product inventory`"
   /// - "`products`"
+  ///
+  /// Required.
   core.String contentType;
 
   /// Fetch schedule for the feed file.
   DatafeedFetchSchedule fetchSchedule;
 
-  /// Required. The filename of the feed. All feeds must have a unique file
-  /// name.
+  /// The filename of the feed.
+  ///
+  /// All feeds must have a unique file name.
+  ///
+  /// Required.
   core.String fileName;
 
   /// Format of the feed file.
   DatafeedFormat format;
 
-  /// Required for update. The ID of the data feed.
+  /// Required for update.
+  ///
+  /// The ID of the data feed.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#datafeed`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#datafeed`"
   core.String kind;
 
-  /// Required for insert. A descriptive name of the data feed.
+  /// Required for insert.
+  ///
+  /// A descriptive name of the data feed.
   core.String name;
 
   /// The targets this feed should apply to (country, language, destinations).
@@ -9711,24 +9837,28 @@ class Datafeed {
   }
 }
 
-/// The required fields vary based on the frequency of fetching. For a monthly
-/// fetch schedule, day_of_month and hour are required. For a weekly fetch
-/// schedule, weekday and hour are required. For a daily fetch schedule, only
-/// hour is required.
+/// The required fields vary based on the frequency of fetching.
+///
+/// For a monthly fetch schedule, day_of_month and hour are required. For a
+/// weekly fetch schedule, weekday and hour are required. For a daily fetch
+/// schedule, only hour is required.
 class DatafeedFetchSchedule {
   /// The day of the month the feed file should be fetched (1-31).
   core.int dayOfMonth;
 
-  /// The URL where the feed file can be fetched. Google Merchant Center will
-  /// support automatic scheduled uploads using the HTTP, HTTPS, FTP, or SFTP
-  /// protocols, so the value will need to be a valid link using one of those
-  /// four protocols.
+  /// The URL where the feed file can be fetched.
+  ///
+  /// Google Merchant Center will support automatic scheduled uploads using the
+  /// HTTP, HTTPS, FTP, or SFTP protocols, so the value will need to be a valid
+  /// link using one of those four protocols.
   core.String fetchUrl;
 
   /// The hour of the day the feed file should be fetched (0-23).
   core.int hour;
 
-  /// The minute of the hour the feed file should be fetched (0-59). Read-only.
+  /// The minute of the hour the feed file should be fetched (0-59).
+  ///
+  /// Read-only.
   core.int minuteOfHour;
 
   /// An optional password for fetch_url.
@@ -9737,7 +9867,9 @@ class DatafeedFetchSchedule {
   /// Whether the scheduled fetch is paused or not.
   core.bool paused;
 
-  /// Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".
+  /// Time zone used for schedule.
+  ///
+  /// UTC by default. E.g., "America/Los_Angeles".
   core.String timeZone;
 
   /// An optional user name for fetch_url.
@@ -9822,8 +9954,10 @@ class DatafeedFetchSchedule {
 
 class DatafeedFormat {
   /// Delimiter for the separation of values in a delimiter-separated values
-  /// feed. If not specified, the delimiter will be auto-detected. Ignored for
-  /// non-DSV data feeds.
+  /// feed.
+  ///
+  /// If not specified, the delimiter will be auto-detected. Ignored for non-DSV
+  /// data feeds.
   ///
   /// Acceptable values are:
   /// - "`pipe`"
@@ -9831,8 +9965,9 @@ class DatafeedFormat {
   /// - "`tilde`"
   core.String columnDelimiter;
 
-  /// Character encoding scheme of the data feed. If not specified, the encoding
-  /// will be auto-detected.
+  /// Character encoding scheme of the data feed.
+  ///
+  /// If not specified, the encoding will be auto-detected.
   ///
   /// Acceptable values are:
   /// - "`latin-1`"
@@ -9842,8 +9977,10 @@ class DatafeedFormat {
   /// - "`windows-1252`"
   core.String fileEncoding;
 
-  /// Specifies how double quotes are interpreted. If not specified, the mode
-  /// will be auto-detected. Ignored for non-DSV data feeds.
+  /// Specifies how double quotes are interpreted.
+  ///
+  /// If not specified, the mode will be auto-detected. Ignored for non-DSV data
+  /// feeds.
   ///
   /// Acceptable values are:
   /// - "`normal character`"
@@ -9898,8 +10035,9 @@ class DatafeedStatus {
   /// The number of items in the feed that were valid.
   core.String itemsValid;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#datafeedStatus`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#datafeedStatus`"
   core.String kind;
 
   /// The two-letter ISO 639-1 language for which the status is reported.
@@ -9914,6 +10052,8 @@ class DatafeedStatus {
   /// - "`"`failure`": The feed could not be processed or all items had
   /// errors.`"
   /// - "`in progress`": The feed is being processed.
+  ///
+  ///
   /// - "`none`": The feed has not yet been processed. For example, a feed that
   /// has never been uploaded will have this processing status.
   /// - "`success`": The feed was processed successfully, though some items
@@ -10102,8 +10242,10 @@ class DatafeedTarget {
   core.List<core.String> excludedDestinations;
 
   /// The list of destinations to include for this target (corresponds to
-  /// checked check boxes in Merchant Center). Default destinations are always
-  /// included unless provided in `excludedDestinations`.
+  /// checked check boxes in Merchant Center).
+  ///
+  /// Default destinations are always included unless provided in
+  /// `excludedDestinations`.
   ///
   /// List of supported destinations (if available to the account):
   /// - DisplayAds
@@ -10112,8 +10254,9 @@ class DatafeedTarget {
   /// - SurfacesAcrossGoogle
   core.List<core.String> includedDestinations;
 
-  /// The two-letter ISO 639-1 language of the items in the feed. Must be a
-  /// valid language for `targets[].country`.
+  /// The two-letter ISO 639-1 language of the items in the feed.
+  ///
+  /// Must be a valid language for `targets[].country`.
   core.String language;
 
   DatafeedTarget();
@@ -10250,8 +10393,9 @@ class DatafeedsCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<DatafeedsCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#datafeedsCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#datafeedsCustomBatchResponse".
   core.String kind;
 
   DatafeedsCustomBatchResponse();
@@ -10286,8 +10430,9 @@ class DatafeedsCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int batchId;
 
-  /// The requested data feed. Defined if and only if the request was
-  /// successful.
+  /// The requested data feed.
+  ///
+  /// Defined if and only if the request was successful.
   Datafeed datafeed;
 
   /// A list of errors defined if and only if the request failed.
@@ -10325,8 +10470,9 @@ class DatafeedsCustomBatchResponseEntry {
 }
 
 class DatafeedsFetchNowResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#datafeedsFetchNowResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#datafeedsFetchNowResponse".
   core.String kind;
 
   DatafeedsFetchNowResponse();
@@ -10347,8 +10493,9 @@ class DatafeedsFetchNowResponse {
 }
 
 class DatafeedsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#datafeedsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#datafeedsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of datafeeds.
@@ -10417,17 +10564,19 @@ class DatafeedstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
-  /// The country for which to get the datafeed status. If this parameter is
-  /// provided then language must also be provided. Note that for multi-target
-  /// datafeeds this parameter is required.
+  /// The country for which to get the datafeed status.
+  ///
+  /// If this parameter is provided then language must also be provided. Note
+  /// that for multi-target datafeeds this parameter is required.
   core.String country;
 
   /// The ID of the data feed to get.
   core.String datafeedId;
 
-  /// The language for which to get the datafeed status. If this parameter is
-  /// provided then country must also be provided. Note that for multi-target
-  /// datafeeds this parameter is required.
+  /// The language for which to get the datafeed status.
+  ///
+  /// If this parameter is provided then country must also be provided. Note
+  /// that for multi-target datafeeds this parameter is required.
   core.String language;
 
   /// The ID of the managing account.
@@ -10490,8 +10639,9 @@ class DatafeedstatusesCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<DatafeedstatusesCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#datafeedstatusesCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#datafeedstatusesCustomBatchResponse".
   core.String kind;
 
   DatafeedstatusesCustomBatchResponse();
@@ -10526,8 +10676,9 @@ class DatafeedstatusesCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
   core.int batchId;
 
-  /// The requested data feed status. Defined if and only if the request was
-  /// successful.
+  /// The requested data feed status.
+  ///
+  /// Defined if and only if the request was successful.
   DatafeedStatus datafeedStatus;
 
   /// A list of errors defined if and only if the request failed.
@@ -10565,8 +10716,9 @@ class DatafeedstatusesCustomBatchResponseEntry {
 }
 
 class DatafeedstatusesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#datafeedstatusesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#datafeedstatusesListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of datafeed statuses.
@@ -10606,44 +10758,56 @@ class DatafeedstatusesListResponse {
 }
 
 class DeliveryTime {
-  /// Business days cutoff time definition. If not configured the cutoff time
-  /// will be defaulted to 8AM PST.
+  /// Business days cutoff time definition.
+  ///
+  /// If not configured the cutoff time will be defaulted to 8AM PST.
   CutoffTime cutoffTime;
 
-  /// The business days during which orders can be handled. If not provided,
-  /// Monday to Friday business days will be assumed.
+  /// The business days during which orders can be handled.
+  ///
+  /// If not provided, Monday to Friday business days will be assumed.
   BusinessDayConfig handlingBusinessDayConfig;
 
-  /// Holiday cutoff definitions. If configured, they specify order cutoff times
-  /// for holiday-specific shipping.
+  /// Holiday cutoff definitions.
+  ///
+  /// If configured, they specify order cutoff times for holiday-specific
+  /// shipping.
   core.List<HolidayCutoff> holidayCutoffs;
 
-  /// Maximum number of business days spent before an order is shipped. 0 means
-  /// same day shipped, 1 means next day shipped. Must be greater than or equal
-  /// to `minHandlingTimeInDays`.
+  /// Maximum number of business days spent before an order is shipped.
+  ///
+  /// 0 means same day shipped, 1 means next day shipped. Must be greater than
+  /// or equal to `minHandlingTimeInDays`.
   core.int maxHandlingTimeInDays;
 
-  /// Maximum number of business days that is spent in transit. 0 means same day
-  /// delivery, 1 means next day delivery. Must be greater than or equal to
-  /// `minTransitTimeInDays`.
+  /// Maximum number of business days that is spent in transit.
+  ///
+  /// 0 means same day delivery, 1 means next day delivery. Must be greater than
+  /// or equal to `minTransitTimeInDays`.
   core.int maxTransitTimeInDays;
 
-  /// Minimum number of business days spent before an order is shipped. 0 means
-  /// same day shipped, 1 means next day shipped.
+  /// Minimum number of business days spent before an order is shipped.
+  ///
+  /// 0 means same day shipped, 1 means next day shipped.
   core.int minHandlingTimeInDays;
 
-  /// Minimum number of business days that is spent in transit. 0 means same day
-  /// delivery, 1 means next day delivery. Either `{min,max}TransitTimeInDays`
-  /// or `transitTimeTable` must be set, but not both.
+  /// Minimum number of business days that is spent in transit.
+  ///
+  /// 0 means same day delivery, 1 means next day delivery. Either
+  /// `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not
+  /// both.
   core.int minTransitTimeInDays;
 
-  /// The business days during which orders can be in-transit. If not provided,
-  /// Monday to Friday business days will be assumed.
+  /// The business days during which orders can be in-transit.
+  ///
+  /// If not provided, Monday to Friday business days will be assumed.
   BusinessDayConfig transitBusinessDayConfig;
 
   /// Transit time table, number of business days spent in transit based on row
-  /// and column dimensions. Either `{min,max}TransitTimeInDays` or
-  /// `transitTimeTable` can be set, but not both.
+  /// and column dimensions.
+  ///
+  /// Either `{min,max}TransitTimeInDays` or `transitTimeTable` can be set, but
+  /// not both.
   TransitTable transitTimeTable;
 
   DeliveryTime();
@@ -10886,41 +11050,47 @@ class GmbAccountsGmbAccount {
   }
 }
 
-/// A non-empty list of row or column headers for a table. Exactly one of
-/// `prices`, `weights`, `numItems`, `postalCodeGroupNames`, or `location` must
-/// be set.
+/// A non-empty list of row or column headers for a table.
+///
+/// Exactly one of `prices`, `weights`, `numItems`, `postalCodeGroupNames`, or
+/// `location` must be set.
 class Headers {
-  /// A list of location ID sets. Must be non-empty. Can only be set if all
-  /// other fields are not set.
+  /// A list of location ID sets.
+  ///
+  /// Must be non-empty. Can only be set if all other fields are not set.
   core.List<LocationIdSet> locations;
 
-  /// A list of inclusive number of items upper bounds. The last value can be
-  /// `"infinity"`. For example `["10", "50", "infinity"]` represents the
-  /// headers "<= 10 items", " 50 items". Must be non-empty. Can only be set if
-  /// all other fields are not set.
+  /// A list of inclusive number of items upper bounds.
+  ///
+  /// The last value can be `"infinity"`. For example `["10", "50", "infinity"]`
+  /// represents the headers "<= 10 items", " 50 items". Must be non-empty. Can
+  /// only be set if all other fields are not set.
   core.List<core.String> numberOfItems;
 
-  /// A list of postal group names. The last value can be `"all other
-  /// locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The
-  /// referred postal code groups must match the delivery country of the
-  /// service. Must be non-empty. Can only be set if all other fields are not
-  /// set.
+  /// A list of postal group names.
+  ///
+  /// The last value can be `"all other locations"`. Example: `["zone 1", "zone
+  /// 2", "all other locations"]`. The referred postal code groups must match
+  /// the delivery country of the service. Must be non-empty. Can only be set if
+  /// all other fields are not set.
   core.List<core.String> postalCodeGroupNames;
 
-  /// A list of inclusive order price upper bounds. The last price's value can
-  /// be `"infinity"`. For example `[{"value": "10", "currency": "USD"},
-  /// {"value": "500", "currency": "USD"}, {"value": "infinity", "currency":
-  /// "USD"}]` represents the headers "<= $10", " $500". All prices within a
-  /// service must have the same currency. Must be non-empty. Can only be set if
-  /// all other fields are not set.
+  /// A list of inclusive order price upper bounds.
+  ///
+  /// The last price's value can be `"infinity"`. For example `[{"value": "10",
+  /// "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value":
+  /// "infinity", "currency": "USD"}]` represents the headers "<= $10", " $500".
+  /// All prices within a service must have the same currency. Must be
+  /// non-empty. Can only be set if all other fields are not set.
   core.List<Price> prices;
 
-  /// A list of inclusive order weight upper bounds. The last weight's value can
-  /// be `"infinity"`. For example `[{"value": "10", "unit": "kg"}, {"value":
-  /// "50", "unit": "kg"}, {"value": "infinity", "unit": "kg"}]` represents the
-  /// headers "<= 10kg", " 50kg". All weights within a service must have the
-  /// same unit. Must be non-empty. Can only be set if all other fields are not
-  /// set.
+  /// A list of inclusive order weight upper bounds.
+  ///
+  /// The last weight's value can be `"infinity"`. For example `[{"value": "10",
+  /// "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity",
+  /// "unit": "kg"}]` represents the headers "<= 10kg", " 50kg". All weights
+  /// within a service must have the same unit. Must be non-empty. Can only be
+  /// set if all other fields are not set.
   core.List<Weight> weights;
 
   Headers();
@@ -10978,24 +11148,33 @@ class Headers {
 }
 
 class HolidayCutoff {
-  /// Date of the order deadline, in ISO 8601 format. E.g. "2016-11-29" for 29th
-  /// November 2016. Required.
+  /// Date of the order deadline, in ISO 8601 format.
+  ///
+  /// E.g. "2016-11-29" for 29th November 2016. Required.
   core.String deadlineDate;
 
   /// Hour of the day on the deadline date until which the order has to be
-  /// placed to qualify for the delivery guarantee. Possible values are: 0
-  /// (midnight), 1, ..., 12 (noon), 13, ..., 23. Required.
+  /// placed to qualify for the delivery guarantee.
+  ///
+  /// Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23.
+  /// Required.
   core.int deadlineHour;
 
-  /// Timezone identifier for the deadline hour. A list of identifiers can be
-  /// found in  the AdWords API documentation. E.g. "Europe/Zurich". Required.
+  /// Timezone identifier for the deadline hour.
+  ///
+  /// A list of identifiers can be found in  the AdWords API documentation. E.g.
+  /// "Europe/Zurich". Required.
   core.String deadlineTimezone;
 
-  /// Unique identifier for the holiday. Required.
+  /// Unique identifier for the holiday.
+  ///
+  /// Required.
   core.String holidayId;
 
   /// Date on which the deadline will become visible to consumers in ISO 8601
-  /// format. E.g. "2016-10-31" for 31st October 2016. Required.
+  /// format.
+  ///
+  /// E.g. "2016-10-31" for 31st October 2016. Required.
   core.String visibleFromDate;
 
   HolidayCutoff();
@@ -11041,28 +11220,38 @@ class HolidayCutoff {
 
 class HolidaysHoliday {
   /// The CLDR territory code of the country in which the holiday is available.
+  ///
   /// E.g. "US", "DE", "GB". A holiday cutoff can only be configured in a
   /// shipping settings service with matching delivery country. Always present.
   core.String countryCode;
 
-  /// Date of the holiday, in ISO 8601 format. E.g. "2016-12-25" for Christmas
-  /// 2016. Always present.
+  /// Date of the holiday, in ISO 8601 format.
+  ///
+  /// E.g. "2016-12-25" for Christmas 2016. Always present.
   core.String date;
 
   /// Date on which the order has to arrive at the customer's, in ISO 8601
-  /// format. E.g. "2016-12-24" for 24th December 2016. Always present.
+  /// format.
+  ///
+  /// E.g. "2016-12-24" for 24th December 2016. Always present.
   core.String deliveryGuaranteeDate;
 
   /// Hour of the day in the delivery location's timezone on the guaranteed
-  /// delivery date by which the order has to arrive at the customer's. Possible
-  /// values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Always present.
+  /// delivery date by which the order has to arrive at the customer's.
+  ///
+  /// Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Always
+  /// present.
   core.String deliveryGuaranteeHour;
 
   /// Unique identifier for the holiday to be used when configuring holiday
-  /// cutoffs. Always present.
+  /// cutoffs.
+  ///
+  /// Always present.
   core.String id;
 
-  /// The holiday type. Always present.
+  /// The holiday type.
+  ///
+  /// Always present.
   ///
   /// Acceptable values are:
   /// - "`Christmas`"
@@ -11157,7 +11346,9 @@ class InvoiceSummary {
   /// Summary of the total amounts of the additional charges.
   core.List<InvoiceSummaryAdditionalChargeSummary> additionalChargeSummaries;
 
-  /// [required] Total price for the product.
+  /// Total price for the product.
+  ///
+  /// Required.
   Amount productTotal;
 
   InvoiceSummary();
@@ -11191,13 +11382,17 @@ class InvoiceSummary {
 }
 
 class InvoiceSummaryAdditionalChargeSummary {
-  /// [required] Total additional charge for this type.
+  /// Total additional charge for this type.
+  ///
+  /// Required.
   Amount totalAmount;
 
-  /// [required] Type of the additional charge.
+  /// Type of the additional charge.
   ///
   /// Acceptable values are:
   /// - "`shipping`"
+  ///
+  /// Required.
   core.String type;
 
   InvoiceSummaryAdditionalChargeSummary();
@@ -11263,7 +11458,9 @@ class LiaCountrySettings {
   /// The settings for the About page.
   LiaAboutPageSettings about;
 
-  /// Required. CLDR country code (e.g. "US").
+  /// CLDR country code (e.g. "US").
+  ///
+  /// Required.
   core.String country;
 
   /// The status of the "Merchant hosted local storefront" feature.
@@ -11468,18 +11665,21 @@ class LiaPosDataProvider {
   }
 }
 
-/// Local Inventory ads (LIA) settings. All methods except listposdataproviders
-/// require the admin role.
+/// Local Inventory ads (LIA) settings.
+///
+/// All methods except listposdataproviders require the admin role.
 class LiaSettings {
-  /// The ID of the account to which these LIA settings belong. Ignored upon
-  /// update, always present in get request responses.
+  /// The ID of the account to which these LIA settings belong.
+  ///
+  /// Ignored upon update, always present in get request responses.
   core.String accountId;
 
   /// The LIA settings for each country.
   core.List<LiaCountrySettings> countrySettings;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#liaSettings`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#liaSettings`"
   core.String kind;
 
   LiaSettings();
@@ -11547,22 +11747,29 @@ class LiasettingsCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
-  /// Inventory validation contact email. Required only for
-  /// SetInventoryValidationContact.
+  /// Inventory validation contact email.
+  ///
+  /// Required only for SetInventoryValidationContact.
   core.String contactEmail;
 
-  /// Inventory validation contact name. Required only for
-  /// SetInventoryValidationContact.
+  /// Inventory validation contact name.
+  ///
+  /// Required only for SetInventoryValidationContact.
   core.String contactName;
 
-  /// The country code. Required only for RequestInventoryVerification.
+  /// The country code.
+  ///
+  /// Required only for RequestInventoryVerification.
   core.String country;
 
-  /// The GMB account. Required only for RequestGmbAccess.
+  /// The GMB account.
+  ///
+  /// Required only for RequestGmbAccess.
   core.String gmbEmail;
 
-  /// The account Lia settings to update. Only defined if the method is
-  /// `update`.
+  /// The account Lia settings to update.
+  ///
+  /// Only defined if the method is `update`.
   LiaSettings liaSettings;
 
   /// The ID of the managing account.
@@ -11579,7 +11786,9 @@ class LiasettingsCustomBatchRequestEntry {
   /// - "`update`"
   core.String method;
 
-  /// The ID of POS data provider. Required only for SetPosProvider.
+  /// The ID of POS data provider.
+  ///
+  /// Required only for SetPosProvider.
   core.String posDataProviderId;
 
   /// The account ID by which this merchant is known to the POS provider.
@@ -11667,8 +11876,9 @@ class LiasettingsCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<LiasettingsCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#liasettingsCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#liasettingsCustomBatchResponse".
   core.String kind;
 
   LiasettingsCustomBatchResponse();
@@ -11708,8 +11918,9 @@ class LiasettingsCustomBatchResponseEntry {
   /// The the list of accessible GMB accounts.
   GmbAccounts gmbAccounts;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#liasettingsCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#liasettingsCustomBatchResponseEntry`"
   core.String kind;
 
   /// The retrieved or updated Lia settings.
@@ -11779,7 +11990,9 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
   /// A list of GMB accounts which are available to the merchant.
   core.List<GmbAccountsGmbAccount> gmbAccounts;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#liasettingsGetAccessibleGmbAccountsResponse".
   core.String kind;
 
@@ -11817,8 +12030,9 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
 }
 
 class LiasettingsListPosDataProvidersResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#liasettingsListPosDataProvidersResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#liasettingsListPosDataProvidersResponse".
   core.String kind;
 
   /// The list of POS data providers for each eligible country
@@ -11852,8 +12066,9 @@ class LiasettingsListPosDataProvidersResponse {
 }
 
 class LiasettingsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#liasettingsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#liasettingsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of LIA settings.
@@ -11893,8 +12108,9 @@ class LiasettingsListResponse {
 }
 
 class LiasettingsRequestGmbAccessResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#liasettingsRequestGmbAccessResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#liasettingsRequestGmbAccessResponse".
   core.String kind;
 
   LiasettingsRequestGmbAccessResponse();
@@ -11915,7 +12131,9 @@ class LiasettingsRequestGmbAccessResponse {
 }
 
 class LiasettingsRequestInventoryVerificationResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#liasettingsRequestInventoryVerificationResponse".
   core.String kind;
 
@@ -11937,7 +12155,9 @@ class LiasettingsRequestInventoryVerificationResponse {
 }
 
 class LiasettingsSetInventoryVerificationContactResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#liasettingsSetInventoryVerificationContactResponse".
   core.String kind;
 
@@ -11959,8 +12179,9 @@ class LiasettingsSetInventoryVerificationContactResponse {
 }
 
 class LiasettingsSetPosDataProviderResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#liasettingsSetPosDataProviderResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#liasettingsSetPosDataProviderResponse".
   core.String kind;
 
   LiasettingsSetPosDataProviderResponse();
@@ -12053,8 +12274,10 @@ class LinkedAccount {
   }
 }
 
-/// Local inventory resource. For accepted attribute values, see the local
-/// product inventory feed specification.
+/// Local inventory resource.
+///
+/// For accepted attribute values, see the local product inventory feed
+/// specification.
 class LocalInventory {
   /// Availability of the product.
   core.String availability;
@@ -12062,33 +12285,45 @@ class LocalInventory {
   /// In-store product location.
   core.String instoreProductLocation;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#localInventory`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#localInventory`"
   core.String kind;
 
-  /// Supported pickup method for this offer. Unless the value is "not
-  /// supported", this field must be submitted together with `pickupSla`.
+  /// Supported pickup method for this offer.
+  ///
+  /// Unless the value is "not supported", this field must be submitted together
+  /// with `pickupSla`.
   core.String pickupMethod;
 
   /// Expected date that an order will be ready for pickup relative to the order
-  /// date. Must be submitted together with `pickupMethod`.
+  /// date.
+  ///
+  /// Must be submitted together with `pickupMethod`.
   core.String pickupSla;
 
   /// Price of the product.
   Price price;
 
-  /// Quantity of the product. Must be nonnegative.
+  /// Quantity of the product.
+  ///
+  /// Must be nonnegative.
   core.int quantity;
 
-  /// Sale price of the product. Mandatory if `sale_price_effective_date` is
-  /// defined.
+  /// Sale price of the product.
+  ///
+  /// Mandatory if `sale_price_effective_date` is defined.
   Price salePrice;
 
   /// A date range represented by a pair of ISO 8601 dates separated by a space,
-  /// comma, or slash. Both dates may be specified as 'null' if undecided.
+  /// comma, or slash.
+  ///
+  /// Both dates may be specified as 'null' if undecided.
   core.String salePriceEffectiveDate;
 
-  /// Required. Store code of this local inventory resource.
+  /// Store code of this local inventory resource.
+  ///
+  /// Required.
   core.String storeCode;
 
   LocalInventory();
@@ -12255,8 +12490,9 @@ class LocalinventoryCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<LocalinventoryCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#localinventoryCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#localinventoryCustomBatchResponse".
   core.String kind;
 
   LocalinventoryCustomBatchResponse();
@@ -12294,8 +12530,9 @@ class LocalinventoryCustomBatchResponseEntry {
   /// A list of errors defined if and only if the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#localinventoryCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#localinventoryCustomBatchResponseEntry`"
   core.String kind;
 
   LocalinventoryCustomBatchResponseEntry();
@@ -12329,8 +12566,9 @@ class LocalinventoryCustomBatchResponseEntry {
 }
 
 class LocationIdSet {
-  /// A non-empty list of location IDs. They must all be of the same location
-  /// type (e.g., state).
+  /// A non-empty list of location IDs.
+  ///
+  /// They must all be of the same location type (e.g., state).
   core.List<core.String> locationIds;
 
   LocationIdSet();
@@ -12353,16 +12591,19 @@ class LocationIdSet {
 }
 
 class LoyaltyPoints {
-  /// Name of loyalty points program. It is recommended to limit the name to 12
-  /// full-width characters or 24 Roman characters.
+  /// Name of loyalty points program.
+  ///
+  /// It is recommended to limit the name to 12 full-width characters or 24
+  /// Roman characters.
   core.String name;
 
   /// The retailer's loyalty points in absolute value.
   core.String pointsValue;
 
-  /// The ratio of a point when converted to currency. Google assumes currency
-  /// based on Merchant Center settings. If ratio is left out, it defaults to
-  /// 1.0.
+  /// The ratio of a point when converted to currency.
+  ///
+  /// Google assumes currency based on Merchant Center settings. If ratio is
+  /// left out, it defaults to 1.0.
   core.double ratio;
 
   LoyaltyPoints();
@@ -12394,8 +12635,10 @@ class LoyaltyPoints {
   }
 }
 
-/// Order return. Production access (all methods) requires the order manager
-/// role. Sandbox access does not.
+/// Order return.
+///
+/// Production access (all methods) requires the order manager role. Sandbox
+/// access does not.
 class MerchantOrderReturn {
   /// The date of creation of the return, in ISO 8601 format.
   core.String creationDate;
@@ -12485,8 +12728,9 @@ class MerchantOrderReturnItem {
   /// The reason that the customer chooses to return an item.
   CustomerReturnReason customerReturnReason;
 
-  /// Product level item ID. If the returned items are of the same product, they
-  /// will have the same ID.
+  /// Product level item ID.
+  ///
+  /// If the returned items are of the same product, they will have the same ID.
   core.String itemId;
 
   /// The reason that the merchant chose to reject an item return.
@@ -12501,19 +12745,22 @@ class MerchantOrderReturnItem {
   /// Maximum amount that can be refunded for this return item.
   MonetaryAmount refundableAmount;
 
-  /// Unit level ID for the return item. Different units of the same product
-  /// will have different IDs.
+  /// Unit level ID for the return item.
+  ///
+  /// Different units of the same product will have different IDs.
   core.String returnItemId;
 
   /// IDs of the return shipments that this return item belongs to.
   core.List<core.String> returnShipmentIds;
 
-  /// ID of the original shipment group. Provided for shipments with invoice
-  /// support.
+  /// ID of the original shipment group.
+  ///
+  /// Provided for shipments with invoice support.
   core.String shipmentGroupId;
 
-  /// ID of the shipment unit assigned by the merchant. Provided for shipments
-  /// with invoice support.
+  /// ID of the shipment unit assigned by the merchant.
+  ///
+  /// Provided for shipments with invoice support.
   core.String shipmentUnitId;
 
   /// State of the item.
@@ -12666,10 +12913,12 @@ class MinimumOrderValueTable {
   }
 }
 
-/// A list of store code sets sharing the same minimum order value. At least two
-/// sets are required and the last one must be empty, which signifies 'MOV for
-/// all other stores'. Each store code can only appear once across all the sets.
-/// All prices within a service must have the same currency.
+/// A list of store code sets sharing the same minimum order value.
+///
+/// At least two sets are required and the last one must be empty, which
+/// signifies 'MOV for all other stores'. Each store code can only appear once
+/// across all the sets. All prices within a service must have the same
+/// currency.
 class MinimumOrderValueTableStoreCodeSetWithMov {
   /// A list of unique store codes or empty for the catch all.
   core.List<core.String> storeCodes;
@@ -12704,15 +12953,17 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
 }
 
 class MonetaryAmount {
-  /// The pre-tax or post-tax price depends on the location of the order. - For
-  /// countries (e.g. US) where price attribute excludes tax, this field
+  /// The pre-tax or post-tax price depends on the location of the order.
+  ///
+  /// - For countries (e.g. US) where price attribute excludes tax, this field
   /// corresponds to the pre-tax value. - For coutries (e.g. France) where price
   /// attribute includes tax, this field corresponds to the post-tax value .
   Price priceAmount;
 
   /// Tax value, present only for countries where price attribute excludes tax
-  /// (e.g. US). No tax is referenced as 0 value with the corresponding
-  /// `currency`.
+  /// (e.g. US).
+  ///
+  /// No tax is referenced as 0 value with the corresponding `currency`.
   Price taxAmount;
 
   MonetaryAmount();
@@ -12740,9 +12991,11 @@ class MonetaryAmount {
   }
 }
 
-/// Order. Production access (all methods) requires the order manager role.
-/// Sandbox access does not. (== resource_for v2.orders ==) (== resource_for
-/// v2.1.orders ==)
+/// Order.
+///
+/// Production access (all methods) requires the order manager role. Sandbox
+/// access does not. (== resource_for v2.orders ==) (== resource_for v2.1.orders
+/// ==)
 class Order {
   /// Whether the order was acknowledged.
   core.bool acknowledged;
@@ -12759,11 +13012,14 @@ class Order {
   /// Delivery details for shipments of type `delivery`.
   OrderDeliveryDetails deliveryDetails;
 
-  /// The REST ID of the order. Globally unique.
+  /// The REST ID of the order.
+  ///
+  /// Globally unique.
   core.String id;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#order`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#order`"
   core.String kind;
 
   /// Line items that are ordered.
@@ -12773,14 +13029,16 @@ class Order {
   /// Merchant-provided ID of the order.
   core.String merchantOrderId;
 
-  /// The net amount for the order (price part). For example, if an order was
-  /// originally for $100 and a refund was issued for $20, the net amount will
-  /// be $80.
+  /// The net amount for the order (price part).
+  ///
+  /// For example, if an order was originally for $100 and a refund was issued
+  /// for $20, the net amount will be $80.
   Price netPriceAmount;
 
-  /// The net amount for the order (tax part). Note that in certain cases due to
-  /// taxable base adjustment `netTaxAmount` might not match to a sum of tax
-  /// field across all lineItems and refunds.
+  /// The net amount for the order (tax part).
+  ///
+  /// Note that in certain cases due to taxable base adjustment `netTaxAmount`
+  /// might not match to a sum of tax field across all lineItems and refunds.
   Price netTaxAmount;
 
   /// The status of the payment.
@@ -12802,9 +13060,11 @@ class Order {
   ///
   /// To determine which promotions apply to which products, check the
   /// `Promotions[].appliedItems[].lineItemId` field against the
-  /// `LineItems[].id` field for each promotion. If a promotion is applied to
-  /// more than 1 offerId, divide the discount value by the number of affected
-  /// offers to determine how much discount to apply to each offerId.
+  /// `LineItems[].id` field for each promotion.
+  ///
+  /// If a promotion is applied to more than 1 offerId, divide the discount
+  /// value by the number of affected offers to determine how much discount to
+  /// apply to each offerId.
   ///
   /// Examples:
   /// - To calculate price paid by the customer for a single line item including
@@ -13039,8 +13299,10 @@ class OrderAddress {
   /// Whether the address is a post office box.
   core.bool isPostOfficeBox;
 
-  /// City, town or commune. May also include dependent localities or
-  /// sublocalities (e.g. neighborhoods or suburbs).
+  /// City, town or commune.
+  ///
+  /// May also include dependent localities or sublocalities (e.g. neighborhoods
+  /// or suburbs).
   core.String locality;
 
   /// Postal Code or ZIP (e.g. "94043").
@@ -13049,8 +13311,10 @@ class OrderAddress {
   /// Name of the recipient.
   core.String recipientName;
 
-  /// Top-level administrative subdivision of the country. For example, a state
-  /// like California ("CA") or a province like Quebec ("QC").
+  /// Top-level administrative subdivision of the country.
+  ///
+  /// For example, a state like California ("CA") or a province like Quebec
+  /// ("QC").
   core.String region;
 
   /// Street-level part of the address.
@@ -13137,10 +13401,11 @@ class OrderCancellation {
   /// The quantity that was canceled.
   core.int quantity;
 
-  /// The reason for the cancellation. Orders that are canceled with a
-  /// noInventory reason will lead to the removal of the product from Shopping
-  /// Actions until you make an update to that product. This will not affect
-  /// your Shopping ads.
+  /// The reason for the cancellation.
+  ///
+  /// Orders that are canceled with a noInventory reason will lead to the
+  /// removal of the product from Shopping Actions until you make an update to
+  /// that product. This will not affect your Shopping ads.
   ///
   /// Acceptable values are:
   /// - "`autoPostInternal`"
@@ -13222,18 +13487,20 @@ class OrderCustomer {
   core.String fullName;
 
   /// Email address for the merchant to send value-added tax or invoice
-  /// documentation of the order. Only the last document sent is made available
-  /// to the customer. For more information, see  About automated VAT invoicing
-  /// for Shopping Actions.
+  /// documentation of the order.
+  ///
+  /// Only the last document sent is made available to the customer. For more
+  /// information, see  About automated VAT invoicing for Shopping Actions.
   core.String invoiceReceivingEmail;
 
   /// Loyalty program information.
   OrderCustomerLoyaltyInfo loyaltyInfo;
 
-  /// Customer's marketing preferences. Contains the marketing opt-in
-  /// information that is current at the time that the merchant call. User
-  /// preference selections can change from one order to the next so preferences
-  /// must be checked with every order.
+  /// Customer's marketing preferences.
+  ///
+  /// Contains the marketing opt-in information that is current at the time that
+  /// the merchant call. User preference selections can change from one order to
+  /// the next so preferences must be checked with every order.
   OrderCustomerMarketingRightsInfo marketingRightsInfo;
 
   OrderCustomer();
@@ -13304,24 +13571,28 @@ class OrderCustomerLoyaltyInfo {
 }
 
 class OrderCustomerMarketingRightsInfo {
-  /// Last known customer selection regarding marketing preferences. In certain
-  /// cases this selection might not be known, so this field would be empty. If
-  /// a customer selected `granted` in their most recent order, they can be
-  /// subscribed to marketing emails. Customers who have chosen `denied` must
-  /// not be subscribed, or must be unsubscribed if already opted-in.
+  /// Last known customer selection regarding marketing preferences.
+  ///
+  /// In certain cases this selection might not be known, so this field would be
+  /// empty. If a customer selected `granted` in their most recent order, they
+  /// can be subscribed to marketing emails. Customers who have chosen `denied`
+  /// must not be subscribed, or must be unsubscribed if already opted-in.
   ///
   /// Acceptable values are:
   /// - "`denied`"
   /// - "`granted`"
   core.String explicitMarketingPreference;
 
-  /// Timestamp when last time marketing preference was updated. Could be empty,
-  /// if user wasn't offered a selection yet.
+  /// Timestamp when last time marketing preference was updated.
+  ///
+  /// Could be empty, if user wasn't offered a selection yet.
   core.String lastUpdatedTimestamp;
 
-  /// Email address that can be used for marketing purposes. The field may be
-  /// empty even if `explicitMarketingPreference` is 'granted'. This happens
-  /// when retrieving an old order from the customer who deleted their account.
+  /// Email address that can be used for marketing purposes.
+  ///
+  /// The field may be empty even if `explicitMarketingPreference` is 'granted'.
+  /// This happens when retrieving an old order from the customer who deleted
+  /// their account.
   core.String marketingEmailAddress;
 
   OrderCustomerMarketingRightsInfo();
@@ -13398,11 +13669,14 @@ class OrderLineItem {
   /// The ID of the line item.
   core.String id;
 
-  /// Total price for the line item. For example, if two items for $10 are
-  /// purchased, the total price will be $20.
+  /// Total price for the line item.
+  ///
+  /// For example, if two items for $10 are purchased, the total price will be
+  /// $20.
   Price price;
 
   /// Product data as seen by customer from the time of the order placement.
+  ///
   /// Note that certain attributes values (e.g. title or gtin) might be
   /// reformatted and no longer match values submitted via product feed.
   OrderLineItemProduct product;
@@ -13440,9 +13714,10 @@ class OrderLineItem {
   /// Details of the requested shipping for the line item.
   OrderLineItemShippingDetails shippingDetails;
 
-  /// Total tax amount for the line item. For example, if two items are
-  /// purchased, and each have a cost tax of $2, the total tax amount will be
-  /// $4.
+  /// Total tax amount for the line item.
+  ///
+  /// For example, if two items are purchased, and each have a cost tax of $2,
+  /// the total tax amount will be $4.
   Price tax;
 
   OrderLineItem();
@@ -13677,9 +13952,11 @@ class OrderLineItemProduct {
   /// The title of the product.
   core.String title;
 
-  /// Variant attributes for the item. These are dimensions of the product, such
-  /// as color, gender, material, pattern, and size. You can find a
-  /// comprehensive list of variant attributes here.
+  /// Variant attributes for the item.
+  ///
+  /// These are dimensions of the product, such as color, gender, material,
+  /// pattern, and size. You can find a comprehensive list of variant attributes
+  /// here.
   core.List<OrderLineItemProductVariantAttribute> variantAttributes;
 
   OrderLineItemProduct();
@@ -13855,13 +14132,19 @@ class OrderLineItemProductVariantAttribute {
 }
 
 class OrderLineItemReturnInfo {
-  /// Required. How many days later the item can be returned.
+  /// How many days later the item can be returned.
+  ///
+  /// Required.
   core.int daysToReturn;
 
-  /// Required. Whether the item is returnable.
+  /// Whether the item is returnable.
+  ///
+  /// Required.
   core.bool isReturnable;
 
-  /// Required. URL of the item return policy.
+  /// URL of the item return policy.
+  ///
+  /// Required.
   core.String policyUrl;
 
   OrderLineItemReturnInfo();
@@ -13894,21 +14177,30 @@ class OrderLineItemReturnInfo {
 }
 
 class OrderLineItemShippingDetails {
-  /// Required. The delivery by date, in ISO 8601 format.
+  /// The delivery by date, in ISO 8601 format.
+  ///
+  /// Required.
   core.String deliverByDate;
 
-  /// Required. Details of the shipping method.
+  /// Details of the shipping method.
+  ///
+  /// Required.
   OrderLineItemShippingDetailsMethod method;
 
   /// The promised time in minutes in which the order will be ready for pickup.
+  ///
   /// This only applies to buy-online-pickup-in-store same-day order.
   core.int pickupPromiseInMinutes;
 
-  /// Required. The ship by date, in ISO 8601 format.
+  /// The ship by date, in ISO 8601 format.
+  ///
+  /// Required.
   core.String shipByDate;
 
-  /// Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails`
-  /// is applicable for this shipment.
+  /// Type of shipment.
+  ///
+  /// Indicates whether `deliveryDetails` or `pickupDetails` is applicable for
+  /// this shipment.
   ///
   /// Acceptable values are:
   /// - "`delivery`"
@@ -13958,17 +14250,24 @@ class OrderLineItemShippingDetails {
 }
 
 class OrderLineItemShippingDetailsMethod {
-  /// The carrier for the shipping. Optional. See `shipments[].carrier` for a
-  /// list of acceptable values.
+  /// The carrier for the shipping.
+  ///
+  /// Optional. See `shipments[].carrier` for a list of acceptable values.
   core.String carrier;
 
-  /// Required. Maximum transit time.
+  /// Maximum transit time.
+  ///
+  /// Required.
   core.int maxDaysInTransit;
 
-  /// Required. The name of the shipping method.
+  /// The name of the shipping method.
+  ///
+  /// Required.
   core.String methodName;
 
-  /// Required. Minimum transit time.
+  /// Minimum transit time.
+  ///
+  /// Required.
   core.int minDaysInTransit;
 
   OrderLineItemShippingDetailsMethod();
@@ -14069,9 +14368,10 @@ class OrderOrderAnnotation {
 }
 
 class OrderPickupDetails {
-  /// Address of the pickup location where the shipment should be sent. Note
-  /// that `recipientName` in the address is the name of the business at the
-  /// pickup location.
+  /// Address of the pickup location where the shipment should be sent.
+  ///
+  /// Note that `recipientName` in the address is the name of the business at
+  /// the pickup location.
   OrderAddress address;
 
   /// Collectors authorized to pick up shipment from the pickup location.
@@ -14161,47 +14461,60 @@ class OrderPickupDetailsCollector {
 }
 
 class OrderPromotion {
-  /// Items that this promotion may be applied to. If empty, there are no
-  /// restrictions on applicable items and quantity. This field will also be
-  /// empty for shipping promotions because shipping is not tied to any specific
-  /// item.
+  /// Items that this promotion may be applied to.
+  ///
+  /// If empty, there are no restrictions on applicable items and quantity. This
+  /// field will also be empty for shipping promotions because shipping is not
+  /// tied to any specific item.
   core.List<OrderPromotionItem> applicableItems;
 
-  /// Items that this promotion have been applied to. Do not provide for
-  /// `orders.createtestorder`. This field will be empty for shipping promotions
-  /// because shipping is not tied to any specific item.
+  /// Items that this promotion have been applied to.
+  ///
+  /// Do not provide for `orders.createtestorder`. This field will be empty for
+  /// shipping promotions because shipping is not tied to any specific item.
   core.List<OrderPromotionItem> appliedItems;
 
-  /// Promotion end time in ISO 8601 format. Date, time, and offset required,
-  /// e.g., "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
+  /// Promotion end time in ISO 8601 format.
+  ///
+  /// Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
+  /// "2020-01-02T09:00:00Z".
   core.String endTime;
 
-  /// Required. The party funding the promotion. Only `merchant` is supported
-  /// for `orders.createtestorder`.
+  /// The party funding the promotion.
+  ///
+  /// Only `merchant` is supported for `orders.createtestorder`.
   ///
   /// Acceptable values are:
   /// - "`google`"
   /// - "`merchant`"
+  ///
+  /// Required.
   core.String funder;
 
-  /// Required. This field is used to identify promotions within merchants' own
-  /// systems.
+  /// This field is used to identify promotions within merchants' own systems.
+  ///
+  /// Required.
   core.String merchantPromotionId;
 
-  /// Estimated discount applied to price. Amount is pre-tax or post-tax
-  /// depending on location of order.
+  /// Estimated discount applied to price.
+  ///
+  /// Amount is pre-tax or post-tax depending on location of order.
   Price priceValue;
 
-  /// A short title of the promotion to be shown on the checkout page. Do not
-  /// provide for `orders.createtestorder`.
+  /// A short title of the promotion to be shown on the checkout page.
+  ///
+  /// Do not provide for `orders.createtestorder`.
   core.String shortTitle;
 
-  /// Promotion start time in ISO 8601 format. Date, time, and offset required,
-  /// e.g., "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
+  /// Promotion start time in ISO 8601 format.
+  ///
+  /// Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
+  /// "2020-01-02T09:00:00Z".
   core.String startTime;
 
-  /// Required. The category of the promotion. Only `moneyOff` is supported for
-  /// `orders.createtestorder`.
+  /// The category of the promotion.
+  ///
+  /// Only `moneyOff` is supported for `orders.createtestorder`.
   ///
   /// Acceptable values are:
   /// - "`buyMGetMoneyOff`"
@@ -14218,21 +14531,29 @@ class OrderPromotion {
   /// - "`percentOff`"
   /// - "`rewardPoints`"
   /// - "`salePrice`"
+  ///
+  /// Required.
   core.String subtype;
 
-  /// Estimated discount applied to tax (if allowed by law). Do not provide for
-  /// `orders.createtestorder`.
+  /// Estimated discount applied to tax (if allowed by law).
+  ///
+  /// Do not provide for `orders.createtestorder`.
   Price taxValue;
 
-  /// Required. The title of the promotion.
+  /// The title of the promotion.
+  ///
+  /// Required.
   core.String title;
 
-  /// Required. The scope of the promotion. Only `product` is supported for
-  /// `orders.createtestorder`.
+  /// The scope of the promotion.
+  ///
+  /// Only `product` is supported for `orders.createtestorder`.
   ///
   /// Acceptable values are:
   /// - "`product`"
   /// - "`shipping`"
+  ///
+  /// Required.
   core.String type;
 
   OrderPromotion();
@@ -14329,18 +14650,24 @@ class OrderPromotion {
 }
 
 class OrderPromotionItem {
-  /// The line item ID of a product. Do not provide for
-  /// `orders.createtestorder`.
+  /// The line item ID of a product.
+  ///
+  /// Do not provide for `orders.createtestorder`.
   core.String lineItemId;
 
-  /// Required. Offer ID of a product. Only for `orders.createtestorder`.
+  /// Offer ID of a product.
+  ///
+  /// Only for `orders.createtestorder`.
+  ///
+  /// Required.
   core.String offerId;
 
   /// `orders.createtestorder`.
   core.String productId;
 
-  /// The quantity of the associated product. Do not provide for
-  /// `orders.createtestorder`.
+  /// The quantity of the associated product.
+  ///
+  /// Do not provide for `orders.createtestorder`.
   core.int quantity;
 
   OrderPromotionItem();
@@ -14490,8 +14817,10 @@ class OrderRefund {
   }
 }
 
-/// Order disbursement. All methods require the payment analyst role. (==
-/// resource_for v2.orderreports ==) (== resource_for v2.1.orderreports ==)
+/// Order disbursement.
+///
+/// All methods require the payment analyst role. (== resource_for
+/// v2.orderreports ==) (== resource_for v2.1.orderreports ==)
 class OrderReportDisbursement {
   /// The disbursement amount.
   Price disbursementAmount;
@@ -14731,11 +15060,12 @@ class OrderShipment {
   /// The carrier handling the shipment.
   ///
   /// For supported carriers, Google includes the carrier name and tracking URL
-  /// in emails to customers. For select supported carriers, Google also
-  /// automatically updates the shipment status based on the provided shipment
-  /// ID. Note: You can also use unsupported carriers, but emails to customers
-  /// will not include the carrier name or tracking URL, and there will be no
-  /// automatic order status updates.
+  /// in emails to customers.
+  ///
+  /// For select supported carriers, Google also automatically updates the
+  /// shipment status based on the provided shipment ID. Note: You can also use
+  /// unsupported carriers, but emails to customers will not include the carrier
+  /// name or tracking URL, and there will be no automatic order status updates.
   /// Supported carriers for US are:
   /// - "`ups`" (United Parcel Service) automatic status updates
   /// - "`usps`" (United States Postal Service) automatic status updates
@@ -14787,8 +15117,9 @@ class OrderShipment {
   /// Date on which the shipment has been created, in ISO 8601 format.
   core.String creationDate;
 
-  /// Date on which the shipment has been delivered, in ISO 8601 format. Present
-  /// only if `status` is `delivered`
+  /// Date on which the shipment has been delivered, in ISO 8601 format.
+  ///
+  /// Present only if `status` is `delivered`
   core.String deliveryDate;
 
   /// The ID of the shipment.
@@ -14800,8 +15131,9 @@ class OrderShipment {
   /// Delivery details of the shipment if scheduling is needed.
   OrderShipmentScheduledDeliveryDetails scheduledDeliveryDetails;
 
-  /// The shipment group ID of the shipment. This is set in shiplineitems
-  /// request.
+  /// The shipment group ID of the shipment.
+  ///
+  /// This is set in shiplineitems request.
   core.String shipmentGroupId;
 
   /// The status of the shipment.
@@ -14888,12 +15220,16 @@ class OrderShipment {
 }
 
 class OrderShipmentLineItemShipment {
-  /// The ID of the line item that is shipped. This value is assigned by Google
-  /// when an order is created. Either lineItemId or productId is required.
+  /// The ID of the line item that is shipped.
+  ///
+  /// This value is assigned by Google when an order is created. Either
+  /// lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the product to ship. This is the REST ID used in the products
-  /// service. Either lineItemId or productId is required.
+  /// The ID of the product to ship.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   /// The quantity that is shipped.
@@ -14929,9 +15265,10 @@ class OrderShipmentLineItemShipment {
 }
 
 class OrderShipmentScheduledDeliveryDetails {
-  /// The phone number of the carrier fulfilling the delivery. The phone number
-  /// is formatted as the international notation in ITU-T Recommendation E.123
-  /// (e.g., "+41 44 668 1800").
+  /// The phone number of the carrier fulfilling the delivery.
+  ///
+  /// The phone number is formatted as the international notation in ITU-T
+  /// Recommendation E.123 (e.g., "+41 44 668 1800").
   core.String carrierPhoneNumber;
 
   /// The date a shipment is scheduled for delivery, in ISO 8601 format.
@@ -14961,22 +15298,32 @@ class OrderShipmentScheduledDeliveryDetails {
 }
 
 class OrderinvoicesCreateChargeInvoiceRequest {
-  /// [required] The ID of the invoice.
+  /// The ID of the invoice.
+  ///
+  /// Required.
   core.String invoiceId;
 
-  /// [required] Invoice summary.
+  /// Invoice summary.
+  ///
+  /// Required.
   InvoiceSummary invoiceSummary;
 
-  /// [required] Invoice details per line item.
+  /// Invoice details per line item.
+  ///
+  /// Required.
   core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
 
-  /// [required] The ID of the operation, unique across all operations for a
-  /// given order.
+  /// The ID of the operation, unique across all operations for a given order.
+  ///
+  /// Required.
   core.String operationId;
 
-  /// [required] ID of the shipment group. It is assigned by the merchant in the
-  /// `shipLineItems` method and is used to group multiple line items that have
-  /// the same kind of shipping charges.
+  /// ID of the shipment group.
+  ///
+  /// It is assigned by the merchant in the `shipLineItems` method and is used
+  /// to group multiple line items that have the same kind of shipping charges.
+  ///
+  /// Required.
   core.String shipmentGroupId;
 
   OrderinvoicesCreateChargeInvoiceRequest();
@@ -15034,7 +15381,9 @@ class OrderinvoicesCreateChargeInvoiceResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#orderinvoicesCreateChargeInvoiceResponse".
   core.String kind;
 
@@ -15062,21 +15411,26 @@ class OrderinvoicesCreateChargeInvoiceResponse {
 }
 
 class OrderinvoicesCreateRefundInvoiceRequest {
-  /// [required] The ID of the invoice.
+  /// The ID of the invoice.
+  ///
+  /// Required.
   core.String invoiceId;
 
-  /// [required] The ID of the operation, unique across all operations for a
-  /// given order.
+  /// The ID of the operation, unique across all operations for a given order.
+  ///
+  /// Required.
   core.String operationId;
 
-  /// Option to create a refund-only invoice. Exactly one of `refundOnlyOption`
-  /// or `returnOption` must be provided.
+  /// Option to create a refund-only invoice.
+  ///
+  /// Exactly one of `refundOnlyOption` or `returnOption` must be provided.
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
       refundOnlyOption;
 
   /// Option to create an invoice for a refund and mark all items within the
-  /// invoice as returned. Exactly one of `refundOnlyOption` or `returnOption`
-  /// must be provided.
+  /// invoice as returned.
+  ///
+  /// Exactly one of `refundOnlyOption` or `returnOption` must be provided.
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
       returnOption;
 
@@ -15142,7 +15496,9 @@ class OrderinvoicesCreateRefundInvoiceResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#orderinvoicesCreateRefundInvoiceResponse".
   core.String kind;
 
@@ -15173,7 +15529,7 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   /// Optional description of the refund reason.
   core.String description;
 
-  /// [required] Reason for the refund.
+  /// Reason for the refund.
   ///
   /// Acceptable values are:
   /// - "`adjustment`"
@@ -15220,6 +15576,8 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   /// - "`undeliverableShippingAddress`"
   /// - "`unsupportedPoBoxAddress`"
   /// - "`wrongProductShipped`"
+  ///
+  /// Required.
   core.String reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
@@ -15250,7 +15608,7 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   /// Optional description of the return reason.
   core.String description;
 
-  /// [required] Reason for the return.
+  /// Reason for the return.
   ///
   /// Acceptable values are:
   /// - "`customerDiscretionaryReturn`"
@@ -15266,6 +15624,8 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   /// - "`undeliverableShippingAddress`"
   /// - "`unsupportedPoBoxAddress`"
   /// - "`wrongProductShipped`"
+  ///
+  /// Required.
   core.String reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
@@ -15296,8 +15656,9 @@ class OrderreportsListDisbursementsResponse {
   /// The list of disbursements.
   core.List<OrderReportDisbursement> disbursements;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderreportsListDisbursementsResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#orderreportsListDisbursementsResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of disbursements.
@@ -15338,8 +15699,9 @@ class OrderreportsListDisbursementsResponse {
 }
 
 class OrderreportsListTransactionsResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderreportsListTransactionsResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#orderreportsListTransactionsResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of transactions.
@@ -15383,8 +15745,10 @@ class OrderreportsListTransactionsResponse {
 }
 
 class OrderreturnsAcknowledgeRequest {
-  /// [required] The ID of the operation, unique across all operations for a
-  /// given order return.
+  /// The ID of the operation, unique across all operations for a given order
+  /// return.
+  ///
+  /// Required.
   core.String operationId;
 
   OrderreturnsAcknowledgeRequest();
@@ -15412,8 +15776,9 @@ class OrderreturnsAcknowledgeResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderreturnsAcknowledgeResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#orderreturnsAcknowledgeResponse".
   core.String kind;
 
   OrderreturnsAcknowledgeResponse();
@@ -15443,7 +15808,9 @@ class OrderreturnsCreateOrderReturnRequest {
   /// The list of line items to return.
   core.List<OrderreturnsLineItem> lineItems;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   /// The ID of the order.
@@ -15498,8 +15865,9 @@ class OrderreturnsCreateOrderReturnResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderreturnsCreateOrderReturnResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#orderreturnsCreateOrderReturnResponse".
   core.String kind;
 
   /// Created order return.
@@ -15536,8 +15904,9 @@ class OrderreturnsCreateOrderReturnResponse {
 }
 
 class OrderreturnsLineItem {
-  /// The ID of the line item. This value is assigned by Google when an order is
-  /// created.
+  /// The ID of the line item.
+  ///
+  /// This value is assigned by Google when an order is created.
   core.String lineItemId;
 
   /// The quantity of this line item.
@@ -15567,8 +15936,9 @@ class OrderreturnsLineItem {
 }
 
 class OrderreturnsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderreturnsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#orderreturnsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of returns.
@@ -15612,8 +15982,9 @@ class OrderreturnsPartialRefund {
   /// of the order.
   Price priceAmount;
 
-  /// Tax amount to be refunded. Note: This has different meaning depending on
-  /// the location of the order.
+  /// Tax amount to be refunded.
+  ///
+  /// Note: This has different meaning depending on the location of the order.
   Price taxAmount;
 
   OrderreturnsPartialRefund();
@@ -15645,8 +16016,10 @@ class OrderreturnsProcessRequest {
   /// Option to charge the customer return shipping cost.
   core.bool fullChargeReturnShippingCost;
 
-  /// [required] The ID of the operation, unique across all operations for a
-  /// given order return.
+  /// The ID of the operation, unique across all operations for a given order
+  /// return.
+  ///
+  /// Required.
   core.String operationId;
 
   /// Refunds for original shipping fee.
@@ -15705,8 +16078,9 @@ class OrderreturnsProcessResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderreturnsProcessResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#orderreturnsProcessResponse".
   core.String kind;
 
   OrderreturnsProcessResponse();
@@ -15733,19 +16107,22 @@ class OrderreturnsProcessResponse {
 }
 
 class OrderreturnsRefundOperation {
-  /// If true, the item will be fully refunded. Allowed only when payment_type
-  /// is FOP. Merchant can choose this refund option to indicate the full
-  /// remaining amount of corresponding object to be refunded to the customer
-  /// via FOP.
+  /// If true, the item will be fully refunded.
+  ///
+  /// Allowed only when payment_type is FOP. Merchant can choose this refund
+  /// option to indicate the full remaining amount of corresponding object to be
+  /// refunded to the customer via FOP.
   core.bool fullRefund;
 
-  /// If this is set, the item will be partially refunded. Merchant can choose
-  /// this refund option to specify the customized amount that to be refunded to
-  /// the customer.
+  /// If this is set, the item will be partially refunded.
+  ///
+  /// Merchant can choose this refund option to specify the customized amount
+  /// that to be refunded to the customer.
   OrderreturnsPartialRefund partialRefund;
 
-  /// The payment way of issuing refund. Default value is ORIGINAL_FOP if not
-  /// set.
+  /// The payment way of issuing refund.
+  ///
+  /// Default value is ORIGINAL_FOP if not set.
   core.String paymentType;
 
   /// The explanation of the reason.
@@ -15833,8 +16210,9 @@ class OrderreturnsReturnItem {
   /// Rejects the item.
   OrderreturnsRejectOperation reject;
 
-  /// Unit level ID for the return item. Different units of the same product
-  /// will have different IDs.
+  /// Unit level ID for the return item.
+  ///
+  /// Different units of the same product will have different IDs.
   core.String returnItemId;
 
   OrderreturnsReturnItem();
@@ -15869,7 +16247,9 @@ class OrderreturnsReturnItem {
 }
 
 class OrdersAcknowledgeRequest {
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   OrdersAcknowledgeRequest();
@@ -15897,8 +16277,9 @@ class OrdersAcknowledgeResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersAcknowledgeResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersAcknowledgeResponse".
   core.String kind;
 
   OrdersAcknowledgeResponse();
@@ -15925,8 +16306,9 @@ class OrdersAcknowledgeResponse {
 }
 
 class OrdersAdvanceTestOrderResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersAdvanceTestOrderResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersAdvanceTestOrderResponse".
   core.String kind;
 
   OrdersAdvanceTestOrderResponse();
@@ -15947,15 +16329,20 @@ class OrdersAdvanceTestOrderResponse {
 }
 
 class OrdersCancelLineItemRequest {
-  /// The ID of the line item to cancel. Either lineItemId or productId is
-  /// required.
+  /// The ID of the line item to cancel.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// The ID of the product to cancel. This is the REST ID used in the products
-  /// service. Either lineItemId or productId is required.
+  /// The ID of the product to cancel.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   /// The quantity to cancel.
@@ -16034,8 +16421,9 @@ class OrdersCancelLineItemResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersCancelLineItemResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersCancelLineItemResponse".
   core.String kind;
 
   OrdersCancelLineItemResponse();
@@ -16062,7 +16450,9 @@ class OrdersCancelLineItemResponse {
 }
 
 class OrdersCancelRequest {
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   /// The reason for the cancellation.
@@ -16120,8 +16510,9 @@ class OrdersCancelResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersCancelResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersCancelResponse".
   core.String kind;
 
   OrdersCancelResponse();
@@ -16174,8 +16565,9 @@ class OrdersCancelTestOrderByCustomerRequest {
 }
 
 class OrdersCancelTestOrderByCustomerResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersCancelTestOrderByCustomerResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersCancelTestOrderByCustomerResponse".
   core.String kind;
 
   OrdersCancelTestOrderByCustomerResponse();
@@ -16197,6 +16589,7 @@ class OrdersCancelTestOrderByCustomerResponse {
 
 class OrdersCreateTestOrderRequest {
   /// The  CLDR territory code of the country of the test order to create.
+  ///
   /// Affects the currency and addresses of orders created via `template_name`,
   /// or the addresses of orders created via `test_order`.
   ///
@@ -16205,9 +16598,10 @@ class OrdersCreateTestOrderRequest {
   /// - "`FR`"  Defaults to `US`.
   core.String country;
 
-  /// The test order template to use. Specify as an alternative to `testOrder`
-  /// as a shortcut for retrieving a template and then creating an order using
-  /// that template.
+  /// The test order template to use.
+  ///
+  /// Specify as an alternative to `testOrder` as a shortcut for retrieving a
+  /// template and then creating an order using that template.
   ///
   /// Acceptable values are:
   /// - "`template1`"
@@ -16251,8 +16645,9 @@ class OrdersCreateTestOrderRequest {
 }
 
 class OrdersCreateTestOrderResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersCreateTestOrderResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersCreateTestOrderResponse".
   core.String kind;
 
   /// The ID of the newly created test order.
@@ -16307,8 +16702,9 @@ class OrdersCreateTestReturnRequest {
 }
 
 class OrdersCreateTestReturnResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersCreateTestReturnResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersCreateTestReturnResponse".
   core.String kind;
 
   /// The ID of the newly created test order return.
@@ -16369,21 +16765,27 @@ class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
 }
 
 class OrdersCustomBatchRequestEntryRefundItemItem {
-  /// The total amount that is refunded. (e.g. refunding $5 each for 2 products
-  /// should be done by setting quantity to 2 and amount to 10$) In case of
-  /// multiple refunds, this should be the amount you currently want to refund
-  /// to the customer.
+  /// The total amount that is refunded.
+  ///
+  /// (e.g. refunding $5 each for 2 products should be done by setting quantity
+  /// to 2 and amount to 10$) In case of multiple refunds, this should be the
+  /// amount you currently want to refund to the customer.
   MonetaryAmount amount;
 
-  /// If true, the full item will be refunded. If this is true, amount should
-  /// not be provided and will be ignored.
+  /// If true, the full item will be refunded.
+  ///
+  /// If this is true, amount should not be provided and will be ignored.
   core.bool fullRefund;
 
-  /// The ID of the line item. Either lineItemId or productId is required.
+  /// The ID of the line item.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the product. This is the REST ID used in the products service.
-  /// Either lineItemId or productId is required.
+  /// The ID of the product.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   /// The number of products that are refunded.
@@ -16432,12 +16834,15 @@ class OrdersCustomBatchRequestEntryRefundItemItem {
 }
 
 class OrdersCustomBatchRequestEntryRefundItemShipping {
-  /// The amount that is refunded. If this is not the first refund for the
-  /// shipment, this should be the newly refunded amount.
+  /// The amount that is refunded.
+  ///
+  /// If this is not the first refund for the shipment, this should be the newly
+  /// refunded amount.
   Price amount;
 
-  /// If set to true, all shipping costs for the order will be refunded. If this
-  /// is true, amount should not be provided and will be ignored.
+  /// If set to true, all shipping costs for the order will be refunded.
+  ///
+  /// If this is true, amount should not be provided and will be ignored.
   core.bool fullRefund;
 
   OrdersCustomBatchRequestEntryRefundItemShipping();
@@ -16465,12 +16870,17 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
 }
 
 class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
-  /// The carrier handling the shipment. See `shipments[].carrier` in the
-  /// Orders resource representation for a list of acceptable values.
+  /// The carrier handling the shipment.
+  ///
+  /// See `shipments[].carrier` in the  Orders resource representation for a
+  /// list of acceptable values.
   core.String carrier;
 
-  /// Required. The ID of the shipment. This is assigned by the merchant and is
-  /// unique to each shipment.
+  /// The ID of the shipment.
+  ///
+  /// This is assigned by the merchant and is unique to each shipment.
+  ///
+  /// Required.
   core.String shipmentId;
 
   /// The tracking ID for the shipment.
@@ -16507,8 +16917,9 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
 }
 
 class OrdersGetByMerchantOrderIdResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersGetByMerchantOrderIdResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersGetByMerchantOrderIdResponse".
   core.String kind;
 
   /// The requested order.
@@ -16539,8 +16950,9 @@ class OrdersGetByMerchantOrderIdResponse {
 }
 
 class OrdersGetTestOrderTemplateResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersGetTestOrderTemplateResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersGetTestOrderTemplateResponse".
   core.String kind;
 
   /// The requested test order template.
@@ -16571,19 +16983,26 @@ class OrdersGetTestOrderTemplateResponse {
 }
 
 class OrdersInStoreRefundLineItemRequest {
-  /// The ID of the line item to return. Either lineItemId or productId is
-  /// required.
+  /// The ID of the line item to return.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// The amount to be refunded. This may be pre-tax or post-tax depending on
-  /// the location of the order. Required.
+  /// The amount to be refunded.
+  ///
+  /// This may be pre-tax or post-tax depending on the location of the order.
+  /// Required.
   Price priceAmount;
 
-  /// The ID of the product to return. This is the REST ID used in the products
-  /// service. Either lineItemId or productId is required.
+  /// The ID of the product to return.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   /// The quantity to return and refund.
@@ -16610,7 +17029,9 @@ class OrdersInStoreRefundLineItemRequest {
   /// The explanation of the reason.
   core.String reasonText;
 
-  /// The amount of tax to be refunded. Required.
+  /// The amount of tax to be refunded.
+  ///
+  /// Required.
   Price taxAmount;
 
   OrdersInStoreRefundLineItemRequest();
@@ -16682,8 +17103,9 @@ class OrdersInStoreRefundLineItemResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersInStoreRefundLineItemResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersInStoreRefundLineItemResponse".
   core.String kind;
 
   OrdersInStoreRefundLineItemResponse();
@@ -16710,8 +17132,9 @@ class OrdersInStoreRefundLineItemResponse {
 }
 
 class OrdersListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of orders.
@@ -16751,11 +17174,14 @@ class OrdersListResponse {
 }
 
 class OrdersRefundItemRequest {
-  /// The items that are refunded. Either Item or Shipping must be provided in
-  /// the request.
+  /// The items that are refunded.
+  ///
+  /// Either Item or Shipping must be provided in the request.
   core.List<OrdersCustomBatchRequestEntryRefundItemItem> items;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   /// The reason for the refund.
@@ -16780,8 +17206,9 @@ class OrdersRefundItemRequest {
   /// The explanation of the reason.
   core.String reasonText;
 
-  /// The refund on shipping. Optional, but either Item or Shipping must be
-  /// provided in the request.
+  /// The refund on shipping.
+  ///
+  /// Optional, but either Item or Shipping must be provided in the request.
   OrdersCustomBatchRequestEntryRefundItemShipping shipping;
 
   OrdersRefundItemRequest();
@@ -16838,8 +17265,9 @@ class OrdersRefundItemResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersRefundItemResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersRefundItemResponse".
   core.String kind;
 
   OrdersRefundItemResponse();
@@ -16866,15 +17294,20 @@ class OrdersRefundItemResponse {
 }
 
 class OrdersRefundOrderRequest {
-  /// The amount that is refunded. If this is not the first refund for the
-  /// order, this should be the newly refunded amount.
+  /// The amount that is refunded.
+  ///
+  /// If this is not the first refund for the order, this should be the newly
+  /// refunded amount.
   MonetaryAmount amount;
 
-  /// If true, the full order will be refunded, including shipping. If this is
-  /// true, amount should not be provided and will be ignored.
+  /// If true, the full order will be refunded, including shipping.
+  ///
+  /// If this is true, amount should not be provided and will be ignored.
   core.bool fullRefund;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   /// The reason for the refund.
@@ -16937,8 +17370,9 @@ class OrdersRefundOrderResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersRefundOrderResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersRefundOrderResponse".
   core.String kind;
 
   OrdersRefundOrderResponse();
@@ -16965,15 +17399,20 @@ class OrdersRefundOrderResponse {
 }
 
 class OrdersRejectReturnLineItemRequest {
-  /// The ID of the line item to return. Either lineItemId or productId is
-  /// required.
+  /// The ID of the line item to return.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// The ID of the product to return. This is the REST ID used in the products
-  /// service. Either lineItemId or productId is required.
+  /// The ID of the product to return.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   /// The quantity to return and refund.
@@ -17047,8 +17486,9 @@ class OrdersRejectReturnLineItemResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersRejectReturnLineItemResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersRejectReturnLineItemResponse".
   core.String kind;
 
   OrdersRejectReturnLineItemResponse();
@@ -17075,19 +17515,26 @@ class OrdersRejectReturnLineItemResponse {
 }
 
 class OrdersReturnRefundLineItemRequest {
-  /// The ID of the line item to return. Either lineItemId or productId is
-  /// required.
+  /// The ID of the line item to return.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// The amount to be refunded. This may be pre-tax or post-tax depending on
-  /// the location of the order. If omitted, refundless return is assumed.
+  /// The amount to be refunded.
+  ///
+  /// This may be pre-tax or post-tax depending on the location of the order. If
+  /// omitted, refundless return is assumed.
   Price priceAmount;
 
-  /// The ID of the product to return. This is the REST ID used in the products
-  /// service. Either lineItemId or productId is required.
+  /// The ID of the product to return.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   /// The quantity to return and refund.
@@ -17114,8 +17561,10 @@ class OrdersReturnRefundLineItemRequest {
   /// The explanation of the reason.
   core.String reasonText;
 
-  /// The amount of tax to be refunded. Optional, but if filled, then
-  /// priceAmount must be set. Calculated automatically if not provided.
+  /// The amount of tax to be refunded.
+  ///
+  /// Optional, but if filled, then priceAmount must be set. Calculated
+  /// automatically if not provided.
   Price taxAmount;
 
   OrdersReturnRefundLineItemRequest();
@@ -17187,8 +17636,9 @@ class OrdersReturnRefundLineItemResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersReturnRefundLineItemResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersReturnRefundLineItemResponse".
   core.String kind;
 
   OrdersReturnRefundLineItemResponse();
@@ -17217,15 +17667,20 @@ class OrdersReturnRefundLineItemResponse {
 class OrdersSetLineItemMetadataRequest {
   core.List<OrderMerchantProvidedAnnotation> annotations;
 
-  /// The ID of the line item to set metadata. Either lineItemId or productId is
-  /// required.
+  /// The ID of the line item to set metadata.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// The ID of the product to set metadata. This is the REST ID used in the
-  /// products service. Either lineItemId or productId is required.
+  /// The ID of the product to set metadata.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
   OrdersSetLineItemMetadataRequest();
@@ -17276,8 +17731,9 @@ class OrdersSetLineItemMetadataResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersSetLineItemMetadataResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersSetLineItemMetadataResponse".
   core.String kind;
 
   OrdersSetLineItemMetadataResponse();
@@ -17307,15 +17763,20 @@ class OrdersShipLineItemsRequest {
   /// Line items to ship.
   core.List<OrderShipmentLineItemShipment> lineItems;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// ID of the shipment group. Required for orders that use the orderinvoices
-  /// service.
+  /// ID of the shipment group.
+  ///
+  /// Required for orders that use the orderinvoices service.
   core.String shipmentGroupId;
 
-  /// Shipment information. This field is repeated because a single line item
-  /// can be shipped in several packages (and have several tracking IDs).
+  /// Shipment information.
+  ///
+  /// This field is repeated because a single line item can be shipped in
+  /// several packages (and have several tracking IDs).
   core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
       shipmentInfos;
 
@@ -17371,8 +17832,9 @@ class OrdersShipLineItemsResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersShipLineItemsResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersShipLineItemsResponse".
   core.String kind;
 
   OrdersShipLineItemsResponse();
@@ -17399,26 +17861,33 @@ class OrdersShipLineItemsResponse {
 }
 
 class OrdersUpdateLineItemShippingDetailsRequest {
-  /// Updated delivery by date, in ISO 8601 format. If not specified only ship
-  /// by date is updated.
+  /// Updated delivery by date, in ISO 8601 format.
+  ///
+  /// If not specified only ship by date is updated.
   ///
   /// Provided date should be within 1 year timeframe and can not be a date in
   /// the past.
   core.String deliverByDate;
 
-  /// The ID of the line item to set metadata. Either lineItemId or productId is
-  /// required.
+  /// The ID of the line item to set metadata.
+  ///
+  /// Either lineItemId or productId is required.
   core.String lineItemId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
-  /// The ID of the product to set metadata. This is the REST ID used in the
-  /// products service. Either lineItemId or productId is required.
+  /// The ID of the product to set metadata.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId is required.
   core.String productId;
 
-  /// Updated ship by date, in ISO 8601 format. If not specified only deliver by
-  /// date is updated.
+  /// Updated ship by date, in ISO 8601 format.
+  ///
+  /// If not specified only deliver by date is updated.
   ///
   /// Provided date should be within 1 year timeframe and can not be a date in
   /// the past.
@@ -17473,7 +17942,9 @@ class OrdersUpdateLineItemShippingDetailsResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#ordersUpdateLineItemShippingDetailsResponse".
   core.String kind;
 
@@ -17501,11 +17972,14 @@ class OrdersUpdateLineItemShippingDetailsResponse {
 }
 
 class OrdersUpdateMerchantOrderIdRequest {
-  /// The merchant order id to be assigned to the order. Must be unique per
-  /// merchant.
+  /// The merchant order id to be assigned to the order.
+  ///
+  /// Must be unique per merchant.
   core.String merchantOrderId;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   OrdersUpdateMerchantOrderIdRequest();
@@ -17539,8 +18013,9 @@ class OrdersUpdateMerchantOrderIdResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersUpdateMerchantOrderIdResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersUpdateMerchantOrderIdResponse".
   core.String kind;
 
   OrdersUpdateMerchantOrderIdResponse();
@@ -17567,31 +18042,39 @@ class OrdersUpdateMerchantOrderIdResponse {
 }
 
 class OrdersUpdateShipmentRequest {
-  /// The carrier handling the shipment. Not updated if missing. See
-  /// `shipments[].carrier` in the  Orders resource representation for a list of
-  /// acceptable values.
+  /// The carrier handling the shipment.
+  ///
+  /// Not updated if missing. See `shipments[].carrier` in the  Orders resource
+  /// representation for a list of acceptable values.
   core.String carrier;
 
   /// Date on which the shipment has been delivered, in ISO 8601 format.
+  ///
   /// Optional and can be provided only if `status` is `delivered`.
   core.String deliveryDate;
 
-  /// Date after which the pickup will expire, in ISO 8601 format. Required only
-  /// when order is buy-online-pickup-in-store(BOPIS) and `status` is `ready for
-  /// pickup`.
+  /// Date after which the pickup will expire, in ISO 8601 format.
+  ///
+  /// Required only when order is buy-online-pickup-in-store(BOPIS) and `status`
+  /// is `ready for pickup`.
   core.String lastPickupDate;
 
-  /// The ID of the operation. Unique across all operations for a given order.
+  /// The ID of the operation.
+  ///
+  /// Unique across all operations for a given order.
   core.String operationId;
 
   /// Date on which the shipment has been ready for pickup, in ISO 8601 format.
+  ///
   /// Optional and can be provided only if `status` is `ready for pickup`.
   core.String readyPickupDate;
 
   /// The ID of the shipment.
   core.String shipmentId;
 
-  /// New status for the shipment. Not updated if missing.
+  /// New status for the shipment.
+  ///
+  /// Not updated if missing.
   ///
   /// Acceptable values are:
   /// - "`delivered`"
@@ -17599,10 +18082,13 @@ class OrdersUpdateShipmentRequest {
   /// - "`readyForPickup`"
   core.String status;
 
-  /// The tracking ID for the shipment. Not updated if missing.
+  /// The tracking ID for the shipment.
+  ///
+  /// Not updated if missing.
   core.String trackingId;
 
   /// Date on which the shipment has been undeliverable, in ISO 8601 format.
+  ///
   /// Optional and can be provided only if `status` is `undeliverable`.
   core.String undeliveredDate;
 
@@ -17679,8 +18165,9 @@ class OrdersUpdateShipmentResponse {
   /// - "`executed`"
   core.String executionStatus;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#ordersUpdateShipmentResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#ordersUpdateShipmentResponse".
   core.String kind;
 
   OrdersUpdateShipmentResponse();
@@ -17707,10 +18194,14 @@ class OrdersUpdateShipmentResponse {
 }
 
 class PickupCarrierService {
-  /// The name of the pickup carrier (e.g., `"UPS"`). Required.
+  /// The name of the pickup carrier (e.g., `"UPS"`).
+  ///
+  /// Required.
   core.String carrierName;
 
-  /// The name of the pickup service (e.g., `"Access point"`). Required.
+  /// The name of the pickup service (e.g., `"Access point"`).
+  ///
+  /// Required.
   core.String serviceName;
 
   PickupCarrierService();
@@ -17737,13 +18228,19 @@ class PickupCarrierService {
 }
 
 class PickupServicesPickupService {
-  /// The name of the carrier (e.g., `"UPS"`). Always present.
+  /// The name of the carrier (e.g., `"UPS"`).
+  ///
+  /// Always present.
   core.String carrierName;
 
-  /// The CLDR country code of the carrier (e.g., "US"). Always present.
+  /// The CLDR country code of the carrier (e.g., "US").
+  ///
+  /// Always present.
   core.String country;
 
-  /// The name of the pickup service (e.g., `"Access point"`). Always present.
+  /// The name of the pickup service (e.g., `"Access point"`).
+  ///
+  /// Always present.
   core.String serviceName;
 
   PickupServicesPickupService();
@@ -17804,7 +18301,9 @@ class PosCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
-  /// The inventory to submit. Set this only if the method is `inventory`.
+  /// The inventory to submit.
+  ///
+  /// Set this only if the method is `inventory`.
   PosInventory inventory;
 
   /// The ID of the POS data provider.
@@ -17820,13 +18319,19 @@ class PosCustomBatchRequestEntry {
   /// - "`sale`"
   core.String method;
 
-  /// The sale information to submit. Set this only if the method is `sale`.
+  /// The sale information to submit.
+  ///
+  /// Set this only if the method is `sale`.
   PosSale sale;
 
-  /// The store information to submit. Set this only if the method is `insert`.
+  /// The store information to submit.
+  ///
+  /// Set this only if the method is `insert`.
   PosStore store;
 
-  /// The store code. Set this only if the method is `delete` or `get`.
+  /// The store code.
+  ///
+  /// Set this only if the method is `delete` or `get`.
   core.String storeCode;
 
   /// The ID of the account for which to get/submit data.
@@ -17898,8 +18403,9 @@ class PosCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<PosCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#posCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#posCustomBatchResponse".
   core.String kind;
 
   PosCustomBatchResponse();
@@ -17939,8 +18445,9 @@ class PosCustomBatchResponseEntry {
   /// The updated inventory information.
   PosInventory inventory;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#posCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#posCustomBatchResponseEntry`"
   core.String kind;
 
   /// The updated sale information.
@@ -18076,33 +18583,50 @@ class PosDataProvidersPosDataProvider {
 
 /// The absolute quantity of an item available at the given store.
 class PosInventory {
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
   /// Global Trade Item Number.
   core.String gtin;
 
-  /// Required. A unique identifier for the item.
+  /// A unique identifier for the item.
+  ///
+  /// Required.
   core.String itemId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#posInventory`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#posInventory`"
   core.String kind;
 
-  /// Required. The current price of the item.
+  /// The current price of the item.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The available quantity of the item.
+  /// The available quantity of the item.
+  ///
+  /// Required.
   core.String quantity;
 
-  /// Required. The identifier of the merchant's store. Either a `storeCode`
-  /// inserted via the API or the code of the store in Google My Business.
+  /// The identifier of the merchant's store.
+  ///
+  /// Either a `storeCode` inserted via the API or the code of the store in
+  /// Google My Business.
+  ///
+  /// Required.
   core.String storeCode;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The inventory timestamp, in ISO 8601 format.
+  /// The inventory timestamp, in ISO 8601 format.
+  ///
+  /// Required.
   core.String timestamp;
 
   PosInventory();
@@ -18172,29 +18696,45 @@ class PosInventory {
 }
 
 class PosInventoryRequest {
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
   /// Global Trade Item Number.
   core.String gtin;
 
-  /// Required. A unique identifier for the item.
+  /// A unique identifier for the item.
+  ///
+  /// Required.
   core.String itemId;
 
-  /// Required. The current price of the item.
+  /// The current price of the item.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The available quantity of the item.
+  /// The available quantity of the item.
+  ///
+  /// Required.
   core.String quantity;
 
-  /// Required. The identifier of the merchant's store. Either a `storeCode`
-  /// inserted via the API or the code of the store in Google My Business.
+  /// The identifier of the merchant's store.
+  ///
+  /// Either a `storeCode` inserted via the API or the code of the store in
+  /// Google My Business.
+  ///
+  /// Required.
   core.String storeCode;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The inventory timestamp, in ISO 8601 format.
+  /// The inventory timestamp, in ISO 8601 format.
+  ///
+  /// Required.
   core.String timestamp;
 
   PosInventoryRequest();
@@ -18258,33 +18798,50 @@ class PosInventoryRequest {
 }
 
 class PosInventoryResponse {
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
   /// Global Trade Item Number.
   core.String gtin;
 
-  /// Required. A unique identifier for the item.
+  /// A unique identifier for the item.
+  ///
+  /// Required.
   core.String itemId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#posInventoryResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#posInventoryResponse".
   core.String kind;
 
-  /// Required. The current price of the item.
+  /// The current price of the item.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The available quantity of the item.
+  /// The available quantity of the item.
+  ///
+  /// Required.
   core.String quantity;
 
-  /// Required. The identifier of the merchant's store. Either a `storeCode`
-  /// inserted via the API or the code of the store in Google My Business.
+  /// The identifier of the merchant's store.
+  ///
+  /// Either a `storeCode` inserted via the API or the code of the store in
+  /// Google My Business.
+  ///
+  /// Required.
   core.String storeCode;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The inventory timestamp, in ISO 8601 format.
+  /// The inventory timestamp, in ISO 8601 format.
+  ///
+  /// Required.
   core.String timestamp;
 
   PosInventoryResponse();
@@ -18354,8 +18911,9 @@ class PosInventoryResponse {
 }
 
 class PosListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#posListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#posListResponse".
   core.String kind;
   core.List<PosStore> resources;
 
@@ -18387,37 +18945,55 @@ class PosListResponse {
 
 /// The change of the available quantity of an item at the given store.
 class PosSale {
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
   /// Global Trade Item Number.
   core.String gtin;
 
-  /// Required. A unique identifier for the item.
+  /// A unique identifier for the item.
+  ///
+  /// Required.
   core.String itemId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#posSale`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#posSale`"
   core.String kind;
 
-  /// Required. The price of the item.
+  /// The price of the item.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The relative change of the available quantity. Negative for
-  /// items returned.
+  /// The relative change of the available quantity.
+  ///
+  /// Negative for items returned.
+  ///
+  /// Required.
   core.String quantity;
 
   /// A unique ID to group items from the same sale event.
   core.String saleId;
 
-  /// Required. The identifier of the merchant's store. Either a `storeCode`
-  /// inserted via the API or the code of the store in Google My Business.
+  /// The identifier of the merchant's store.
+  ///
+  /// Either a `storeCode` inserted via the API or the code of the store in
+  /// Google My Business.
+  ///
+  /// Required.
   core.String storeCode;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The inventory timestamp, in ISO 8601 format.
+  /// The inventory timestamp, in ISO 8601 format.
+  ///
+  /// Required.
   core.String timestamp;
 
   PosSale();
@@ -18493,33 +19069,50 @@ class PosSale {
 }
 
 class PosSaleRequest {
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
   /// Global Trade Item Number.
   core.String gtin;
 
-  /// Required. A unique identifier for the item.
+  /// A unique identifier for the item.
+  ///
+  /// Required.
   core.String itemId;
 
-  /// Required. The price of the item.
+  /// The price of the item.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The relative change of the available quantity. Negative for
-  /// items returned.
+  /// The relative change of the available quantity.
+  ///
+  /// Negative for items returned.
+  ///
+  /// Required.
   core.String quantity;
 
   /// A unique ID to group items from the same sale event.
   core.String saleId;
 
-  /// Required. The identifier of the merchant's store. Either a `storeCode`
-  /// inserted via the API or the code of the store in Google My Business.
+  /// The identifier of the merchant's store.
+  ///
+  /// Either a `storeCode` inserted via the API or the code of the store in
+  /// Google My Business.
+  ///
+  /// Required.
   core.String storeCode;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The inventory timestamp, in ISO 8601 format.
+  /// The inventory timestamp, in ISO 8601 format.
+  ///
+  /// Required.
   core.String timestamp;
 
   PosSaleRequest();
@@ -18589,37 +19182,55 @@ class PosSaleRequest {
 }
 
 class PosSaleResponse {
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
   /// Global Trade Item Number.
   core.String gtin;
 
-  /// Required. A unique identifier for the item.
+  /// A unique identifier for the item.
+  ///
+  /// Required.
   core.String itemId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#posSaleResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#posSaleResponse".
   core.String kind;
 
-  /// Required. The price of the item.
+  /// The price of the item.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The relative change of the available quantity. Negative for
-  /// items returned.
+  /// The relative change of the available quantity.
+  ///
+  /// Negative for items returned.
+  ///
+  /// Required.
   core.String quantity;
 
   /// A unique ID to group items from the same sale event.
   core.String saleId;
 
-  /// Required. The identifier of the merchant's store. Either a `storeCode`
-  /// inserted via the API or the code of the store in Google My Business.
+  /// The identifier of the merchant's store.
+  ///
+  /// Either a `storeCode` inserted via the API or the code of the store in
+  /// Google My Business.
+  ///
+  /// Required.
   core.String storeCode;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The inventory timestamp, in ISO 8601 format.
+  /// The inventory timestamp, in ISO 8601 format.
+  ///
+  /// Required.
   core.String timestamp;
 
   PosSaleResponse();
@@ -18696,14 +19307,19 @@ class PosSaleResponse {
 
 /// Store resource.
 class PosStore {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#posStore`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#posStore`"
   core.String kind;
 
-  /// Required. The street address of the store.
+  /// The street address of the store.
+  ///
+  /// Required.
   core.String storeAddress;
 
-  /// Required. A store identifier that is unique for the given merchant.
+  /// A store identifier that is unique for the given merchant.
+  ///
+  /// Required.
   core.String storeCode;
 
   PosStore();
@@ -18737,13 +19353,18 @@ class PosStore {
 
 class PostalCodeGroup {
   /// The CLDR territory code of the country the postal code group applies to.
+  ///
   /// Required.
   core.String country;
 
-  /// The name of the postal code group, referred to in headers. Required.
+  /// The name of the postal code group, referred to in headers.
+  ///
+  /// Required.
   core.String name;
 
-  /// A range of postal codes. Required.
+  /// A range of postal codes.
+  ///
+  /// Required.
   core.List<PostalCodeRange> postalCodeRanges;
 
   PostalCodeGroup();
@@ -18781,17 +19402,20 @@ class PostalCodeGroup {
 
 class PostalCodeRange {
   /// A postal code or a pattern of the form `prefix*` denoting the inclusive
-  /// lower bound of the range defining the area. Examples values: `"94108"`,
-  /// `"9410*"`, `"9*"`. Required.
+  /// lower bound of the range defining the area.
+  ///
+  /// Examples values: `"94108"`, `"9410*"`, `"9*"`. Required.
   core.String postalCodeRangeBegin;
 
   /// A postal code or a pattern of the form `prefix*` denoting the inclusive
-  /// upper bound of the range defining the area. It must have the same length
-  /// as `postalCodeRangeBegin`: if `postalCodeRangeBegin` is a postal code then
-  /// `postalCodeRangeEnd` must be a postal code too; if `postalCodeRangeBegin`
-  /// is a pattern then `postalCodeRangeEnd` must be a pattern with the same
-  /// prefix length. Optional: if not set, then the area is defined as being all
-  /// the postal codes matching `postalCodeRangeBegin`.
+  /// upper bound of the range defining the area.
+  ///
+  /// It must have the same length as `postalCodeRangeBegin`: if
+  /// `postalCodeRangeBegin` is a postal code then `postalCodeRangeEnd` must be
+  /// a postal code too; if `postalCodeRangeBegin` is a pattern then
+  /// `postalCodeRangeEnd` must be a pattern with the same prefix length.
+  /// Optional: if not set, then the area is defined as being all the postal
+  /// codes matching `postalCodeRangeBegin`.
   core.String postalCodeRangeEnd;
 
   PostalCodeRange();
@@ -18848,8 +19472,9 @@ class Price {
 }
 
 /// Required product attributes are primarily defined by the products data
-/// specification. See the  Products Data Specification Help Center article for
-/// information.
+/// specification.
+///
+/// See the  Products Data Specification Help Center article for information.
 ///
 /// Some attributes are country-specific, so make sure you select the
 /// appropriate country in the drop-down selector at the top of the page.
@@ -18860,8 +19485,9 @@ class Product {
   /// Additional URLs of images of the item.
   core.List<core.String> additionalImageLinks;
 
-  /// Used to group items in an arbitrary way. Only for CPA%, discouraged
-  /// otherwise.
+  /// Used to group items in an arbitrary way.
+  ///
+  /// Only for CPA%, discouraged otherwise.
   core.String adsGrouping;
 
   /// Similar to ads_grouping, but only works on CPC.
@@ -18890,11 +19516,13 @@ class Product {
   /// URL for the canonical version of your item's landing page.
   core.String canonicalLink;
 
-  /// Required. The item's channel (online or local).
+  /// The item's channel (online or local).
   ///
   /// Acceptable values are:
   /// - "`local`"
   /// - "`online`"
+  ///
+  /// Required.
   core.String channel;
 
   /// Color of the item.
@@ -18903,17 +19531,22 @@ class Product {
   /// Condition or state of the item.
   core.String condition;
 
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
+  ///
+  /// Required.
   core.String contentLanguage;
 
-  /// Cost of goods sold. Used for gross profit reporting.
+  /// Cost of goods sold.
+  ///
+  /// Used for gross profit reporting.
   Price costOfGoodsSold;
 
-  /// A list of custom (merchant-provided) attributes. It can also be used for
-  /// submitting any attribute of the feed specification in its generic form
-  /// (e.g., `{ "name": "size type", "value": "regular" }`). This is useful for
-  /// submitting attributes not explicitly exposed by the API, such as
-  /// additional attributes used for Shopping Actions.
+  /// A list of custom (merchant-provided) attributes.
+  ///
+  /// It can also be used for submitting any attribute of the feed specification
+  /// in its generic form (e.g., `{ "name": "size type", "value": "regular" }`).
+  /// This is useful for submitting attributes not explicitly exposed by the
+  /// API, such as additional attributes used for Shopping Actions.
   core.List<CustomAttribute> customAttributes;
 
   /// Custom label 0 for custom grouping of items in a Shopping campaign.
@@ -18958,7 +19591,9 @@ class Product {
   core.List<core.String> excludedDestinations;
 
   /// Date on which the item should expire, as specified upon insertion, in ISO
-  /// 8601 format. The actual expiration date in Google Shopping is exposed in
+  /// 8601 format.
+  ///
+  /// The actual expiration date in Google Shopping is exposed in
   /// `productstatuses` as `googleExpirationDate` and might be earlier if
   /// `expirationDate` is too far in the future.
   core.String expirationDate;
@@ -18972,44 +19607,54 @@ class Product {
   /// Global Trade Item Number (GTIN) of the item.
   core.String gtin;
 
-  /// The REST ID of the product. Content API methods that operate on products
-  /// take this as their `productId` parameter.
+  /// The REST ID of the product.
+  ///
+  /// Content API methods that operate on products take this as their
+  /// `productId` parameter.
   /// The REST ID for a product is of the form
   /// channel:contentLanguage:targetCountry: offerId.
   core.String id;
 
   /// False when the item does not have unique product identifiers appropriate
-  /// to its category, such as GTIN, MPN, and brand. Required according to the
-  /// Unique Product Identifier Rules for all target countries except for
-  /// Canada.
+  /// to its category, such as GTIN, MPN, and brand.
+  ///
+  /// Required according to the Unique Product Identifier Rules for all target
+  /// countries except for Canada.
   core.bool identifierExists;
 
   /// URL of an image of the item.
   core.String imageLink;
 
   /// The list of destinations to include for this target (corresponds to
-  /// checked check boxes in Merchant Center). Default destinations are always
-  /// included unless provided in `excludedDestinations`.
+  /// checked check boxes in Merchant Center).
+  ///
+  /// Default destinations are always included unless provided in
+  /// `excludedDestinations`.
   core.List<core.String> includedDestinations;
 
   /// Number and amount of installments to pay for an item.
   Installment installment;
 
-  /// Whether the item is a merchant-defined bundle. A bundle is a custom
-  /// grouping of different products sold by a merchant for a single price.
+  /// Whether the item is a merchant-defined bundle.
+  ///
+  /// A bundle is a custom grouping of different products sold by a merchant for
+  /// a single price.
   core.bool isBundle;
 
   /// Shared identifier for all variants of the same product.
   core.String itemGroupId;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#product`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#product`"
   core.String kind;
 
   /// URL directly linking to your item's page on your website.
   core.String link;
 
-  /// Loyalty points that users receive after purchasing the item. Japan only.
+  /// Loyalty points that users receive after purchasing the item.
+  ///
+  /// Japan only.
   LoyaltyPoints loyaltyPoints;
 
   /// The material of which the item is made.
@@ -19036,12 +19681,15 @@ class Product {
   /// The number of identical products in a merchant-defined multipack.
   core.String multipack;
 
-  /// Required. A unique identifier for the item. Leading and trailing
-  /// whitespaces are stripped and multiple whitespaces are replaced by a single
-  /// whitespace upon submission. Only valid unicode characters are accepted.
-  /// See the products feed specification for details.
+  /// A unique identifier for the item.
+  ///
+  /// Leading and trailing whitespaces are stripped and multiple whitespaces are
+  /// replaced by a single whitespace upon submission. Only valid unicode
+  /// characters are accepted. See the products feed specification for details.
   /// Note: Content API methods that operate on products take the REST ID of the
   /// product, not this identifier.
+  ///
+  /// Required.
   core.String offerId;
 
   /// The item's pattern (e.g. polka dots).
@@ -19070,6 +19718,7 @@ class Product {
   core.String salePriceEffectiveDate;
 
   /// The quantity of the product that is available for selling on Google.
+  ///
   /// Supported only for online products.
   core.String sellOnGoogleQuantity;
 
@@ -19093,19 +19742,27 @@ class Product {
   ProductShippingDimension shippingWidth;
 
   /// List of country codes (ISO 3166-1 alpha-2) to exclude the offer from
-  /// Shopping Ads destination. Countries from this list are removed from
-  /// countries configured in MC feed settings.
+  /// Shopping Ads destination.
+  ///
+  /// Countries from this list are removed from countries configured in MC feed
+  /// settings.
   core.List<core.String> shoppingAdsExcludedCountries;
 
-  /// System in which the size is specified. Recommended for apparel items.
+  /// System in which the size is specified.
+  ///
+  /// Recommended for apparel items.
   core.String sizeSystem;
 
-  /// The cut of the item. Recommended for apparel items.
+  /// The cut of the item.
+  ///
+  /// Recommended for apparel items.
   core.String sizeType;
 
-  /// Size of the item. Only one value is allowed. For variants with different
-  /// sizes, insert a separate product for each size with the same `itemGroupId`
-  /// value (see size definition).
+  /// Size of the item.
+  ///
+  /// Only one value is allowed. For variants with different sizes, insert a
+  /// separate product for each size with the same `itemGroupId` value (see size
+  /// definition).
   core.List<core.String> sizes;
 
   /// The source of the offer, i.e., how the offer was created.
@@ -19120,7 +19777,9 @@ class Product {
   /// an item with an associated subscription contract.
   ProductSubscriptionCost subscriptionCost;
 
-  /// Required. The CLDR territory code for the item.
+  /// The CLDR territory code for the item.
+  ///
+  /// Required.
   core.String targetCountry;
 
   /// The tax category of the product, used to configure detailed tax nexus in
@@ -19921,8 +20580,9 @@ class ProductStatus {
   /// A list of all issues associated with the product.
   core.List<ProductStatusItemLevelIssue> itemLevelIssues;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#productStatus`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#productStatus`"
   core.String kind;
 
   /// Date on which the item has been last updated, in ISO 8601 format.
@@ -20223,8 +20883,9 @@ class ProductTax {
 
   /// The postal code range that the tax rate applies to, represented by a ZIP
   /// code, a ZIP code prefix using * wildcard, a range between two ZIP codes or
-  /// two ZIP code prefixes of equal length. Examples: 94114, 94*, 94002-95460,
-  /// 94*-95*.
+  /// two ZIP code prefixes of equal length.
+  ///
+  /// Examples: 94114, 94*, 94002-95460, 94*-95*.
   core.String postalCode;
 
   /// The percentage of tax rate that applies to the item price.
@@ -20387,11 +21048,14 @@ class ProductsCustomBatchRequestEntry {
   /// - "`insert`"
   core.String method;
 
-  /// The product to insert. Only required if the method is `insert`.
+  /// The product to insert.
+  ///
+  /// Only required if the method is `insert`.
   Product product;
 
-  /// The ID of the product to get or delete. Only defined if the method is
-  /// `get` or `delete`.
+  /// The ID of the product to get or delete.
+  ///
+  /// Only defined if the method is `get` or `delete`.
   core.String productId;
 
   ProductsCustomBatchRequestEntry();
@@ -20446,8 +21110,9 @@ class ProductsCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<ProductsCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#productsCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#productsCustomBatchResponse".
   core.String kind;
 
   ProductsCustomBatchResponse();
@@ -20485,12 +21150,14 @@ class ProductsCustomBatchResponseEntry {
   /// A list of errors defined if and only if the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#productsCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#productsCustomBatchResponseEntry`"
   core.String kind;
 
-  /// The inserted product. Only defined if the method is `insert` and if the
-  /// request was successful.
+  /// The inserted product.
+  ///
+  /// Only defined if the method is `insert` and if the request was successful.
   Product product;
 
   ProductsCustomBatchResponseEntry();
@@ -20531,8 +21198,9 @@ class ProductsCustomBatchResponseEntry {
 }
 
 class ProductsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#productsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#productsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of products.
@@ -20671,8 +21339,9 @@ class ProductstatusesCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<ProductstatusesCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#productstatusesCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#productstatusesCustomBatchResponse".
   core.String kind;
 
   ProductstatusesCustomBatchResponse();
@@ -20710,11 +21379,15 @@ class ProductstatusesCustomBatchResponseEntry {
   /// A list of errors, if the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "`content#productstatusesCustomBatchResponseEntry`"
   core.String kind;
 
-  /// The requested product status. Only defined if the request was successful.
+  /// The requested product status.
+  ///
+  /// Only defined if the request was successful.
   ProductStatus productStatus;
 
   ProductstatusesCustomBatchResponseEntry();
@@ -20755,8 +21428,9 @@ class ProductstatusesCustomBatchResponseEntry {
 }
 
 class ProductstatusesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#productstatusesListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#productstatusesListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of products statuses.
@@ -20796,14 +21470,16 @@ class ProductstatusesListResponse {
 }
 
 /// Settings for Pub/Sub notifications, all methods require that the caller is a
-/// direct user of the merchant center account. (== resource_for
-/// v2.1.pubsubnotificationsettings ==)
+/// direct user of the merchant center account.
+///
+/// (== resource_for v2.1.pubsubnotificationsettings ==)
 class PubsubNotificationSettings {
   /// Cloud pub/sub topic to which notifications are sent (read-only).
   core.String cloudTopicName;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#pubsubNotificationSettings`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#pubsubNotificationSettings`"
   core.String kind;
 
   /// List of event types.
@@ -20845,9 +21521,11 @@ class PubsubNotificationSettings {
 
 class RateGroup {
   /// A list of shipping labels defining the products to which this rate group
-  /// applies to. This is a disjunction: only one of the labels has to match for
-  /// the rate group to apply. May only be empty for the last rate group of a
-  /// service. Required.
+  /// applies to.
+  ///
+  /// This is a disjunction: only one of the labels has to match for the rate
+  /// group to apply. May only be empty for the last rate group of a service.
+  /// Required.
   core.List<core.String> applicableShippingLabels;
 
   /// A list of carrier rates that can be referred to by `mainTable` or
@@ -20855,19 +21533,24 @@ class RateGroup {
   core.List<CarrierRate> carrierRates;
 
   /// A table defining the rate group, when `singleValue` is not expressive
-  /// enough. Can only be set if `singleValue` is not set.
+  /// enough.
+  ///
+  /// Can only be set if `singleValue` is not set.
   Table mainTable;
 
-  /// Name of the rate group. Optional. If set has to be unique within shipping
-  /// service.
+  /// Name of the rate group.
+  ///
+  /// Optional. If set has to be unique within shipping service.
   core.String name;
 
-  /// The value of the rate group (e.g. flat rate $10). Can only be set if
-  /// `mainTable` and `subtables` are not set.
+  /// The value of the rate group (e.g. flat rate $10).
+  ///
+  /// Can only be set if `mainTable` and `subtables` are not set.
   Value singleValue;
 
-  /// A list of subtables referred to by `mainTable`. Can only be set if
-  /// `mainTable` is set.
+  /// A list of subtables referred to by `mainTable`.
+  ///
+  /// Can only be set if `mainTable` is set.
   core.List<Table> subtables;
 
   RateGroup();
@@ -21005,18 +21688,23 @@ class RefundReason {
   }
 }
 
-/// Regional inventory resource. contains the regional name and all attributes
-/// which are overridden for the specified region.
+/// Regional inventory resource.
+///
+/// contains the regional name and all attributes which are overridden for the
+/// specified region.
 class RegionalInventory {
   /// The availability of the product.
   core.String availability;
 
-  /// A list of custom (merchant-provided) attributes. It can also be used for
-  /// submitting any attribute of the feed specification in its generic form.
+  /// A list of custom (merchant-provided) attributes.
+  ///
+  /// It can also be used for submitting any attribute of the feed specification
+  /// in its generic form.
   core.List<CustomAttribute> customAttributes;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#regionalInventory".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#regionalInventory".
   core.String kind;
 
   /// The price of the product.
@@ -21025,12 +21713,15 @@ class RegionalInventory {
   /// The ID uniquely identifying each region.
   core.String regionId;
 
-  /// The sale price of the product. Mandatory if `sale_price_effective_date` is
-  /// defined.
+  /// The sale price of the product.
+  ///
+  /// Mandatory if `sale_price_effective_date` is defined.
   Price salePrice;
 
   /// A date range represented by a pair of ISO 8601 dates separated by a space,
-  /// comma, or slash. Both dates might be specified as 'null' if undecided.
+  /// comma, or slash.
+  ///
+  /// Both dates might be specified as 'null' if undecided.
   core.String salePriceEffectiveDate;
 
   RegionalInventory();
@@ -21183,8 +21874,9 @@ class RegionalinventoryCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<RegionalinventoryCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#regionalinventoryCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#regionalinventoryCustomBatchResponse".
   core.String kind;
 
   RegionalinventoryCustomBatchResponse();
@@ -21222,7 +21914,9 @@ class RegionalinventoryCustomBatchResponseEntry {
   /// A list of errors defined if and only if the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#regionalinventoryCustomBatchResponseEntry".
   core.String kind;
 
@@ -21268,21 +21962,31 @@ class RegionalinventoryCustomBatchResponseEntry {
 
 /// Return address resource.
 class ReturnAddress {
-  /// Required. The address.
+  /// The address.
+  ///
+  /// Required.
   ReturnAddressAddress address;
 
-  /// Required. The country of sale where the return address is applicable.
+  /// The country of sale where the return address is applicable.
+  ///
+  /// Required.
   core.String country;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#returnAddress`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#returnAddress`"
   core.String kind;
 
-  /// Required. The user-defined label of the return address. For the default
-  /// address, use the label "default".
+  /// The user-defined label of the return address.
+  ///
+  /// For the default address, use the label "default".
+  ///
+  /// Required.
   core.String label;
 
-  /// Required. The merchant's contact phone number regarding the return.
+  /// The merchant's contact phone number regarding the return.
+  ///
+  /// Required.
   core.String phoneNumber;
 
   /// Return address ID generated by Google.
@@ -21340,8 +22044,10 @@ class ReturnAddressAddress {
   /// CLDR country code (e.g. "US").
   core.String country;
 
-  /// City, town or commune. May also include dependent localities or
-  /// sublocalities (e.g. neighborhoods or suburbs).
+  /// City, town or commune.
+  ///
+  /// May also include dependent localities or sublocalities (e.g. neighborhoods
+  /// or suburbs).
   core.String locality;
 
   /// Postal code or ZIP (e.g. "94043").
@@ -21350,12 +22056,15 @@ class ReturnAddressAddress {
   /// Name of the recipient to address returns to.
   core.String recipientName;
 
-  /// Top-level administrative subdivision of the country. For example, a state
-  /// like California ("CA") or a province like Quebec ("QC").
+  /// Top-level administrative subdivision of the country.
+  ///
+  /// For example, a state like California ("CA") or a province like Quebec
+  /// ("QC").
   core.String region;
 
-  /// Street-level part of the address. May be up to two lines, each line
-  /// specified as an array element.
+  /// Street-level part of the address.
+  ///
+  /// May be up to two lines, each line specified as an array element.
   core.List<core.String> streetAddress;
 
   ReturnAddressAddress();
@@ -21409,24 +22118,34 @@ class ReturnAddressAddress {
 
 /// Return policy resource.
 class ReturnPolicy {
-  /// Required. The country of sale where the return policy is applicable.
+  /// The country of sale where the return policy is applicable.
+  ///
+  /// Required.
   core.String country;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#returnPolicy`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#returnPolicy`"
   core.String kind;
 
-  /// Required. The user-defined label of the return policy. For the default
-  /// policy, use the label "default".
+  /// The user-defined label of the return policy.
+  ///
+  /// For the default policy, use the label "default".
+  ///
+  /// Required.
   core.String label;
 
-  /// Required. The name of the policy as shown in Merchant Center.
+  /// The name of the policy as shown in Merchant Center.
+  ///
+  /// Required.
   core.String name;
 
   /// Return reasons that will incur return fees.
   core.List<core.String> nonFreeReturnReasons;
 
-  /// Required. The policy.
+  /// The policy.
+  ///
+  /// Required.
   ReturnPolicyPolicy policy;
 
   /// Return policy ID generated by Google.
@@ -21503,14 +22222,18 @@ class ReturnPolicy {
 }
 
 class ReturnPolicyPolicy {
-  /// Required. Last day for returning the items. In ISO 8601 format. When
-  /// specifying the return window like this, set the policy type to
-  /// "lastReturnDate". Use this for seasonal overrides only.
+  /// Last day for returning the items.
+  ///
+  /// In ISO 8601 format. When specifying the return window like this, set the
+  /// policy type to "lastReturnDate". Use this for seasonal overrides only.
+  ///
+  /// Required.
   core.String lastReturnDate;
 
   /// The number of days items can be returned after delivery, where one day is
-  /// defined to be 24 hours after the delivery timestamp. When specifying the
-  /// return window like this, set the policy type to
+  /// defined to be 24 hours after the delivery timestamp.
+  ///
+  /// When specifying the return window like this, set the policy type to
   /// "numberOfDaysAfterDelivery". Acceptable values are 30, 45, 60, 90, 100,
   /// 180, 270 and 365 for the default policy. Additional policies further allow
   /// 14, 15, 21 and 28 days, but note that for most items a minimum of 30 days
@@ -21518,11 +22241,12 @@ class ReturnPolicyPolicy {
   /// of less than 30 days can only be applied to those items.
   core.String numberOfDays;
 
-  /// Policy type. Use "lastReturnDate" for seasonal overrides only. Note that
-  /// for most items a minimum of 30 days is required for returns. Exceptions
-  /// may be made for electronics or non-returnable items such as food,
-  /// perishables, and living things. A policy of less than 30 days can only be
-  /// applied to those items.
+  /// Policy type.
+  ///
+  /// Use "lastReturnDate" for seasonal overrides only. Note that for most items
+  /// a minimum of 30 days is required for returns. Exceptions may be made for
+  /// electronics or non-returnable items such as food, perishables, and living
+  /// things. A policy of less than 30 days can only be applied to those items.
   ///
   /// Acceptable values are:
   /// - "`lastReturnDate`"
@@ -21561,16 +22285,28 @@ class ReturnPolicyPolicy {
 }
 
 class ReturnPolicySeasonalOverride {
-  /// Required. Last day on which the override applies. In ISO 8601 format.
+  /// Last day on which the override applies.
+  ///
+  /// In ISO 8601 format.
+  ///
+  /// Required.
   core.String endDate;
 
-  /// Required. The name of the seasonal override as shown in Merchant Center.
+  /// The name of the seasonal override as shown in Merchant Center.
+  ///
+  /// Required.
   core.String name;
 
-  /// Required. The policy which is in effect during that time.
+  /// The policy which is in effect during that time.
+  ///
+  /// Required.
   ReturnPolicyPolicy policy;
 
-  /// Required. First day on which the override applies. In ISO 8601 format.
+  /// First day on which the override applies.
+  ///
+  /// In ISO 8601 format.
+  ///
+  /// Required.
   core.String startDate;
 
   ReturnPolicySeasonalOverride();
@@ -21620,17 +22356,19 @@ class ReturnPricingInfo {
   /// return policy for the items being returned.
   MonetaryAmount maxReturnShippingFee;
 
-  /// Total amount that can be refunded for the items in this return. It
-  /// represents the total amount received by the merchant for the items, after
-  /// applying merchant coupons.
+  /// Total amount that can be refunded for the items in this return.
+  ///
+  /// It represents the total amount received by the merchant for the items,
+  /// after applying merchant coupons.
   MonetaryAmount refundableItemsTotalAmount;
 
   /// Maximum amount that can be refunded for the original shipping fee.
   MonetaryAmount refundableShippingAmount;
 
-  /// Total amount already refunded by the merchant. It includes all types of
-  /// refunds (items, shipping, etc.) Not provided if no refund has been applied
-  /// yet.
+  /// Total amount already refunded by the merchant.
+  ///
+  /// It includes all types of refunds (items, shipping, etc.) Not provided if
+  /// no refund has been applied yet.
   MonetaryAmount totalRefundedAmount;
 
   ReturnPricingInfo();
@@ -21698,8 +22436,10 @@ class ReturnShipment {
   /// Shipment ID generated by Google.
   core.String shipmentId;
 
-  /// Tracking information of the shipment. One return shipment might be handled
-  /// by several shipping carriers sequentially.
+  /// Tracking information of the shipment.
+  ///
+  /// One return shipment might be handled by several shipping carriers
+  /// sequentially.
   core.List<ShipmentTrackingInfo> shipmentTrackingInfos;
 
   /// The date of shipping of the shipment, in ISO 8601 format.
@@ -21812,10 +22552,14 @@ class ReturnaddressCustomBatchRequestEntry {
   /// - "`insert`"
   core.String method;
 
-  /// The return address to submit. Set this only if the method is `insert`.
+  /// The return address to submit.
+  ///
+  /// Set this only if the method is `insert`.
   ReturnAddress returnAddress;
 
-  /// The return address ID. Set this only if the method is `delete` or `get`.
+  /// The return address ID.
+  ///
+  /// Set this only if the method is `delete` or `get`.
   core.String returnAddressId;
 
   ReturnaddressCustomBatchRequestEntry();
@@ -21864,8 +22608,9 @@ class ReturnaddressCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<ReturnaddressCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#returnaddressCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#returnaddressCustomBatchResponse".
   core.String kind;
 
   ReturnaddressCustomBatchResponse();
@@ -21902,8 +22647,9 @@ class ReturnaddressCustomBatchResponseEntry {
   /// A list of errors defined if, and only if, the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#returnaddressCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#returnaddressCustomBatchResponseEntry`"
   core.String kind;
 
   /// The retrieved return address.
@@ -21947,8 +22693,9 @@ class ReturnaddressCustomBatchResponseEntry {
 }
 
 class ReturnaddressListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#returnaddressListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#returnaddressListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of addresses.
@@ -22027,10 +22774,14 @@ class ReturnpolicyCustomBatchRequestEntry {
   /// - "`insert`"
   core.String method;
 
-  /// The return policy to submit. Set this only if the method is `insert`.
+  /// The return policy to submit.
+  ///
+  /// Set this only if the method is `insert`.
   ReturnPolicy returnPolicy;
 
-  /// The return policy ID. Set this only if the method is `delete` or `get`.
+  /// The return policy ID.
+  ///
+  /// Set this only if the method is `delete` or `get`.
   core.String returnPolicyId;
 
   ReturnpolicyCustomBatchRequestEntry();
@@ -22079,8 +22830,9 @@ class ReturnpolicyCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<ReturnpolicyCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#returnpolicyCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#returnpolicyCustomBatchResponse".
   core.String kind;
 
   ReturnpolicyCustomBatchResponse();
@@ -22117,8 +22869,9 @@ class ReturnpolicyCustomBatchResponseEntry {
   /// A list of errors defined if, and only if, the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#returnpolicyCustomBatchResponseEntry`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#returnpolicyCustomBatchResponseEntry`"
   core.String kind;
 
   /// The retrieved return policy.
@@ -22162,8 +22915,9 @@ class ReturnpolicyCustomBatchResponseEntry {
 }
 
 class ReturnpolicyListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#returnpolicyListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#returnpolicyListResponse".
   core.String kind;
   core.List<ReturnPolicy> resources;
 
@@ -22194,9 +22948,10 @@ class ReturnpolicyListResponse {
 }
 
 class Row {
-  /// The list of cells that constitute the row. Must have the same length as
-  /// `columnHeaders` for two-dimensional tables, a length of 1 for
-  /// one-dimensional tables. Required.
+  /// The list of cells that constitute the row.
+  ///
+  /// Must have the same length as `columnHeaders` for two-dimensional tables, a
+  /// length of 1 for one-dimensional tables. Required.
   core.List<Value> cells;
 
   Row();
@@ -22220,18 +22975,23 @@ class Row {
 }
 
 class Service {
-  /// A boolean exposing the active status of the shipping service. Required.
+  /// A boolean exposing the active status of the shipping service.
+  ///
+  /// Required.
   core.bool active;
 
-  /// The CLDR code of the currency to which this service applies. Must match
-  /// that of the prices in rate groups.
+  /// The CLDR code of the currency to which this service applies.
+  ///
+  /// Must match that of the prices in rate groups.
   core.String currency;
 
   /// The CLDR territory code of the country to which the service applies.
+  ///
   /// Required.
   core.String deliveryCountry;
 
   /// Time spent in various aspects from order to the delivery of the product.
+  ///
   /// Required.
   DeliveryTime deliveryTime;
 
@@ -22243,29 +23003,35 @@ class Service {
   /// - "`Shopping Actions`"
   core.String eligibility;
 
-  /// Minimum order value for this service. If set, indicates that customers
-  /// will have to spend at least this amount. All prices within a service must
-  /// have the same currency. Cannot be set together with
-  /// minimum_order_value_table.
+  /// Minimum order value for this service.
+  ///
+  /// If set, indicates that customers will have to spend at least this amount.
+  /// All prices within a service must have the same currency. Cannot be set
+  /// together with minimum_order_value_table.
   Price minimumOrderValue;
 
   /// Table of per store minimum order values for the pickup fulfillment type.
+  ///
   /// Cannot be set together with minimum_order_value.
   MinimumOrderValueTable minimumOrderValueTable;
 
-  /// Free-form name of the service. Must be unique within target account.
-  /// Required.
+  /// Free-form name of the service.
+  ///
+  /// Must be unique within target account. Required.
   core.String name;
 
-  /// The carrier-service pair delivering items to collection points. The list
-  /// of supported pickup services can be retrieved via the
+  /// The carrier-service pair delivering items to collection points.
+  ///
+  /// The list of supported pickup services can be retrieved via the
   /// `getSupportedPickupServices` method. Required if and only if the service
   /// delivery type is `pickup`.
   PickupCarrierService pickupService;
 
-  /// Shipping rate group definitions. Only the last one is allowed to have an
-  /// empty `applicableShippingLabels`, which means "everything else". The other
-  /// `applicableShippingLabels` must not overlap.
+  /// Shipping rate group definitions.
+  ///
+  /// Only the last one is allowed to have an empty `applicableShippingLabels`,
+  /// which means "everything else". The other `applicableShippingLabels` must
+  /// not overlap.
   core.List<RateGroup> rateGroups;
 
   /// Type of locations this service ships orders to.
@@ -22367,12 +23133,15 @@ class SettlementReport {
   /// 8601 format.
   core.String endDate;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#settlementReport`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#settlementReport`"
   core.String kind;
 
-  /// The residual amount from the previous invoice. This is set only if the
-  /// previous invoices are not paid because of negative balance.
+  /// The residual amount from the previous invoice.
+  ///
+  /// This is set only if the previous invoices are not paid because of negative
+  /// balance.
   Price previousBalance;
 
   /// The ID of the settlement report.
@@ -22389,9 +23158,10 @@ class SettlementReport {
   /// 8601 format.
   core.String transferDate;
 
-  /// The list of bank identifiers used for the transfer. e.g. Trace ID for
-  /// Federal Automated Clearing House (ACH). This may also be known as the Wire
-  /// ID.
+  /// The list of bank identifiers used for the transfer.
+  ///
+  /// e.g. Trace ID for Federal Automated Clearing House (ACH). This may also be
+  /// known as the Wire ID.
   core.List<core.String> transferIds;
 
   SettlementReport();
@@ -22458,6 +23228,7 @@ class SettlementReport {
 }
 
 /// Settlement transactions give a detailed breakdown of the  settlement report.
+///
 /// (== resource_for v2.1.settlementtransactions ==)
 class SettlementTransaction {
   /// The amount for the transaction.
@@ -22466,8 +23237,9 @@ class SettlementTransaction {
   /// Identifiers of the transaction.
   SettlementTransactionIdentifiers identifiers;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#settlementTransaction`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#settlementTransaction`"
   core.String kind;
 
   /// Details of the transaction.
@@ -22797,8 +23569,9 @@ class SettlementTransactionTransaction {
 }
 
 class SettlementreportsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#settlementreportsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#settlementreportsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of returns.
@@ -22838,8 +23611,9 @@ class SettlementreportsListResponse {
 }
 
 class SettlementtransactionsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#settlementtransactionsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#settlementtransactionsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of returns.
@@ -22879,15 +23653,22 @@ class SettlementtransactionsListResponse {
 }
 
 class ShipmentInvoice {
-  /// [required] Invoice summary.
+  /// Invoice summary.
+  ///
+  /// Required.
   InvoiceSummary invoiceSummary;
 
-  /// [required] Invoice details per line item.
+  /// Invoice details per line item.
+  ///
+  /// Required.
   core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
 
-  /// [required] ID of the shipment group. It is assigned by the merchant in the
-  /// `shipLineItems` method and is used to group multiple line items that have
-  /// the same kind of shipping charges.
+  /// ID of the shipment group.
+  ///
+  /// It is assigned by the merchant in the `shipLineItems` method and is used
+  /// to group multiple line items that have the same kind of shipping charges.
+  ///
+  /// Required.
   core.String shipmentGroupId;
 
   ShipmentInvoice();
@@ -22926,20 +23707,30 @@ class ShipmentInvoice {
 }
 
 class ShipmentInvoiceLineItemInvoice {
-  /// ID of the line item. Either lineItemId or productId must be set.
+  /// ID of the line item.
+  ///
+  /// Either lineItemId or productId must be set.
   core.String lineItemId;
 
-  /// ID of the product. This is the REST ID used in the products service.
-  /// Either lineItemId or productId must be set.
+  /// ID of the product.
+  ///
+  /// This is the REST ID used in the products service. Either lineItemId or
+  /// productId must be set.
   core.String productId;
 
-  /// [required] The shipment unit ID is assigned by the merchant and defines
-  /// individual quantities within a line item. The same ID can be assigned to
-  /// units that are the same while units that differ must be assigned a
-  /// different ID (for example: free or promotional units).
+  /// The shipment unit ID is assigned by the merchant and defines individual
+  /// quantities within a line item.
+  ///
+  /// The same ID can be assigned to units that are the same while units that
+  /// differ must be assigned a different ID (for example: free or promotional
+  /// units).
+  ///
+  /// Required.
   core.List<core.String> shipmentUnitIds;
 
-  /// [required] Invoice details for a single unit.
+  /// Invoice details for a single unit.
+  ///
+  /// Required.
   UnitInvoice unitInvoice;
 
   ShipmentInvoiceLineItemInvoice();
@@ -23042,18 +23833,24 @@ class ShipmentTrackingInfo {
   }
 }
 
-/// The merchant account's shipping settings. All methods except
-/// getsupportedcarriers and getsupportedholidays require the admin role.
+/// The merchant account's shipping settings.
+///
+/// All methods except getsupportedcarriers and getsupportedholidays require the
+/// admin role.
 class ShippingSettings {
   /// The ID of the account to which these account shipping settings belong.
+  ///
   /// Ignored upon update, always present in get request responses.
   core.String accountId;
 
   /// A list of postal code groups that can be referred to in `services`.
+  ///
   /// Optional.
   core.List<PostalCodeGroup> postalCodeGroups;
 
-  /// The target account's list of services. Optional.
+  /// The target account's list of services.
+  ///
+  /// Optional.
   core.List<Service> services;
 
   ShippingSettings();
@@ -23135,8 +23932,9 @@ class ShippingsettingsCustomBatchRequestEntry {
   /// - "`update`"
   core.String method;
 
-  /// The account shipping settings to update. Only defined if the method is
-  /// `update`.
+  /// The account shipping settings to update.
+  ///
+  /// Only defined if the method is `update`.
   ShippingSettings shippingSettings;
 
   ShippingsettingsCustomBatchRequestEntry();
@@ -23185,8 +23983,9 @@ class ShippingsettingsCustomBatchResponse {
   /// The result of the execution of the batch requests.
   core.List<ShippingsettingsCustomBatchResponseEntry> entries;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#shippingsettingsCustomBatchResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#shippingsettingsCustomBatchResponse".
   core.String kind;
 
   ShippingsettingsCustomBatchResponse();
@@ -23224,7 +24023,9 @@ class ShippingsettingsCustomBatchResponseEntry {
   /// A list of errors defined if, and only if, the request failed.
   Errors errors;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "`content#shippingsettingsCustomBatchResponseEntry`"
   core.String kind;
 
@@ -23269,10 +24070,14 @@ class ShippingsettingsCustomBatchResponseEntry {
 }
 
 class ShippingsettingsGetSupportedCarriersResponse {
-  /// A list of supported carriers. May be empty.
+  /// A list of supported carriers.
+  ///
+  /// May be empty.
   core.List<CarriersCarrier> carriers;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#shippingsettingsGetSupportedCarriersResponse".
   core.String kind;
 
@@ -23303,10 +24108,14 @@ class ShippingsettingsGetSupportedCarriersResponse {
 }
 
 class ShippingsettingsGetSupportedHolidaysResponse {
-  /// A list of holidays applicable for delivery guarantees. May be empty.
+  /// A list of holidays applicable for delivery guarantees.
+  ///
+  /// May be empty.
   core.List<HolidaysHoliday> holidays;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#shippingsettingsGetSupportedHolidaysResponse".
   core.String kind;
 
@@ -23337,11 +24146,15 @@ class ShippingsettingsGetSupportedHolidaysResponse {
 }
 
 class ShippingsettingsGetSupportedPickupServicesResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
   /// "content#shippingsettingsGetSupportedPickupServicesResponse".
   core.String kind;
 
-  /// A list of supported pickup services. May be empty.
+  /// A list of supported pickup services.
+  ///
+  /// May be empty.
   core.List<PickupServicesPickupService> pickupServices;
 
   ShippingsettingsGetSupportedPickupServicesResponse();
@@ -23373,8 +24186,9 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
 }
 
 class ShippingsettingsListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#shippingsettingsListResponse".
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "content#shippingsettingsListResponse".
   core.String kind;
 
   /// The token for the retrieval of the next page of shipping settings.
@@ -23414,18 +24228,24 @@ class ShippingsettingsListResponse {
 }
 
 class Table {
-  /// Headers of the table's columns. Optional: if not set then the table has
-  /// only one dimension.
+  /// Headers of the table's columns.
+  ///
+  /// Optional: if not set then the table has only one dimension.
   Headers columnHeaders;
 
-  /// Name of the table. Required for subtables, ignored for the main table.
+  /// Name of the table.
+  ///
+  /// Required for subtables, ignored for the main table.
   core.String name;
 
-  /// Headers of the table's rows. Required.
+  /// Headers of the table's rows.
+  ///
+  /// Required.
   Headers rowHeaders;
 
-  /// The list of rows that constitute the table. Must have the same length as
-  /// `rowHeaders`. Required.
+  /// The list of rows that constitute the table.
+  ///
+  /// Must have the same length as `rowHeaders`. Required.
   core.List<Row> rows;
 
   Table();
@@ -23475,47 +24295,59 @@ class TestOrder {
   /// Whether the orderinvoices service should support this order.
   core.bool enableOrderinvoices;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "`content#testOrder`"
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "`content#testOrder`"
   core.String kind;
 
-  /// Required. Line items that are ordered. At least one line item must be
-  /// provided.
+  /// Line items that are ordered.
+  ///
+  /// At least one line item must be provided.
+  ///
+  /// Required.
   core.List<TestOrderLineItem> lineItems;
 
-  /// Restricted. Do not use.
+  /// Restricted.
+  ///
+  /// Do not use.
   core.String notificationMode;
 
   /// Overrides the predefined pickup details if provided.
   TestOrderPickupDetails pickupDetails;
 
-  /// Required. The billing address.
+  /// The billing address.
   ///
   /// Acceptable values are:
   /// - "`dwight`"
   /// - "`jim`"
   /// - "`pam`"
+  ///
+  /// Required.
   core.String predefinedBillingAddress;
 
-  /// Required. Identifier of one of the predefined delivery addresses for the
-  /// delivery.
+  /// Identifier of one of the predefined delivery addresses for the delivery.
   ///
   /// Acceptable values are:
   /// - "`dwight`"
   /// - "`jim`"
   /// - "`pam`"
+  ///
+  /// Required.
   core.String predefinedDeliveryAddress;
 
-  /// Required. Email address of the customer.
+  /// Email address of the customer.
   ///
   /// Acceptable values are:
   /// - "`pog.dwight.schrute@gmail.com`"
   /// - "`pog.jim.halpert@gmail.com`"
   /// - "`penpog.pam.beesly@gmail.comding`"
+  ///
+  /// Required.
   core.String predefinedEmail;
 
-  /// Identifier of one of the predefined pickup details. Required for orders
-  /// containing line items with shipping type `pickup`.
+  /// Identifier of one of the predefined pickup details.
+  ///
+  /// Required for orders containing line items with shipping type `pickup`.
   ///
   /// Acceptable values are:
   /// - "`dwight`"
@@ -23526,13 +24358,16 @@ class TestOrder {
   /// Promotions associated with the order.
   core.List<OrderPromotion> promotions;
 
-  /// Required. The price of shipping for all items. Shipping tax is
-  /// automatically calculated for orders where marketplace facilitator tax laws
-  /// are applicable. Otherwise, tax settings from Merchant Center are applied.
-  /// Note that shipping is not taxed in certain states.
+  /// The price of shipping for all items.
+  ///
+  /// Shipping tax is automatically calculated for orders where marketplace
+  /// facilitator tax laws are applicable. Otherwise, tax settings from Merchant
+  /// Center are applied. Note that shipping is not taxed in certain states.
+  ///
+  /// Required.
   Price shippingCost;
 
-  /// Required. The requested shipping option.
+  /// The requested shipping option.
   ///
   /// Acceptable values are:
   /// - "`economy`"
@@ -23541,6 +24376,8 @@ class TestOrder {
   /// - "`sameDay`"
   /// - "`standard`"
   /// - "`twoDay`"
+  ///
+  /// Required.
   core.String shippingOption;
 
   TestOrder();
@@ -23658,8 +24495,10 @@ class TestOrderAddress {
   /// Whether the address is a post office box.
   core.bool isPostOfficeBox;
 
-  /// City, town or commune. May also include dependent localities or
-  /// sublocalities (e.g. neighborhoods or suburbs).
+  /// City, town or commune.
+  ///
+  /// May also include dependent localities or sublocalities (e.g. neighborhoods
+  /// or suburbs).
   core.String locality;
 
   /// Postal Code or ZIP (e.g. "94043").
@@ -23668,8 +24507,10 @@ class TestOrderAddress {
   /// Name of the recipient.
   core.String recipientName;
 
-  /// Top-level administrative subdivision of the country. For example, a state
-  /// like California ("CA") or a province like Quebec ("QC").
+  /// Top-level administrative subdivision of the country.
+  ///
+  /// For example, a state like California ("CA") or a province like Quebec
+  /// ("QC").
   core.String region;
 
   /// Street-level part of the address.
@@ -23770,16 +24611,24 @@ class TestOrderDeliveryDetails {
 }
 
 class TestOrderLineItem {
-  /// Required. Product data from the time of the order placement.
+  /// Product data from the time of the order placement.
+  ///
+  /// Required.
   TestOrderLineItemProduct product;
 
-  /// Required. Number of items ordered.
+  /// Number of items ordered.
+  ///
+  /// Required.
   core.int quantityOrdered;
 
-  /// Required. Details of the return policy for the line item.
+  /// Details of the return policy for the line item.
+  ///
+  /// Required.
   OrderLineItemReturnInfo returnInfo;
 
-  /// Required. Details of the requested shipping for the line item.
+  /// Details of the requested shipping for the line item.
+  ///
+  /// Required.
   OrderLineItemShippingDetails shippingDetails;
 
   TestOrderLineItem();
@@ -23821,52 +24670,80 @@ class TestOrderLineItem {
 }
 
 class TestOrderLineItemProduct {
-  /// Required. Brand of the item.
+  /// Brand of the item.
+  ///
+  /// Required.
   core.String brand;
 
-  /// Required. Condition or state of the item.
+  /// Condition or state of the item.
   ///
   /// Acceptable values are:
   /// - "`new`"
+  ///
+  /// Required.
   core.String condition;
 
-  /// Required. The two-letter ISO 639-1 language code for the item.
+  /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Acceptable values are:
   /// - "`en`"
   /// - "`fr`"
+  ///
+  /// Required.
   core.String contentLanguage;
 
-  /// Fees for the item. Optional.
+  /// Fees for the item.
+  ///
+  /// Optional.
   core.List<OrderLineItemProductFee> fees;
 
-  /// Global Trade Item Number (GTIN) of the item. Optional.
+  /// Global Trade Item Number (GTIN) of the item.
+  ///
+  /// Optional.
   core.String gtin;
 
-  /// Required. URL of an image of the item.
+  /// URL of an image of the item.
+  ///
+  /// Required.
   core.String imageLink;
 
-  /// Shared identifier for all variants of the same product. Optional.
+  /// Shared identifier for all variants of the same product.
+  ///
+  /// Optional.
   core.String itemGroupId;
 
-  /// Manufacturer Part Number (MPN) of the item. Optional.
+  /// Manufacturer Part Number (MPN) of the item.
+  ///
+  /// Optional.
   core.String mpn;
 
-  /// Required. An identifier of the item.
+  /// An identifier of the item.
+  ///
+  /// Required.
   core.String offerId;
 
-  /// Required. The price for the product. Tax is automatically calculated for
-  /// orders where marketplace facilitator tax laws are applicable. Otherwise,
-  /// tax settings from Merchant Center are applied.
+  /// The price for the product.
+  ///
+  /// Tax is automatically calculated for orders where marketplace facilitator
+  /// tax laws are applicable. Otherwise, tax settings from Merchant Center are
+  /// applied.
+  ///
+  /// Required.
   Price price;
 
-  /// Required. The CLDR territory code of the target country of the product.
+  /// The CLDR territory code of the target country of the product.
+  ///
+  /// Required.
   core.String targetCountry;
 
-  /// Required. The title of the product.
+  /// The title of the product.
+  ///
+  /// Required.
   core.String title;
 
-  /// Variant attributes for the item. Optional.
+  /// Variant attributes for the item.
+  ///
+  /// Optional.
   core.List<OrderLineItemProductVariantAttribute> variantAttributes;
 
   TestOrderLineItemProduct();
@@ -23969,10 +24846,14 @@ class TestOrderLineItemProduct {
 }
 
 class TestOrderPickupDetails {
-  /// Required. Code of the location defined by provider or merchant.
+  /// Code of the location defined by provider or merchant.
+  ///
+  /// Required.
   core.String locationCode;
 
-  /// Required. Pickup location address.
+  /// Pickup location address.
+  ///
+  /// Required.
   TestOrderAddress pickupLocationAddress;
 
   /// Pickup location type.
@@ -23983,7 +24864,9 @@ class TestOrderPickupDetails {
   /// - "`curbside`"
   core.String pickupLocationType;
 
-  /// Required. all pickup persons set by users.
+  /// all pickup persons set by users.
+  ///
+  /// Required.
   core.List<TestOrderPickupDetailsPickupPerson> pickupPersons;
 
   TestOrderPickupDetails();
@@ -24029,10 +24912,14 @@ class TestOrderPickupDetails {
 }
 
 class TestOrderPickupDetailsPickupPerson {
-  /// Required. Full name of the pickup person.
+  /// Full name of the pickup person.
+  ///
+  /// Required.
   core.String name;
 
-  /// Required. The phone number of the person picking up the items.
+  /// The phone number of the person picking up the items.
+  ///
+  /// Required.
   core.String phoneNumber;
 
   TestOrderPickupDetailsPickupPerson();
@@ -24059,15 +24946,18 @@ class TestOrderPickupDetailsPickupPerson {
 }
 
 class TransitTable {
-  /// A list of postal group names. The last value can be `"all other
-  /// locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The
-  /// referred postal code groups must match the delivery country of the
-  /// service.
+  /// A list of postal group names.
+  ///
+  /// The last value can be `"all other locations"`. Example: `["zone 1", "zone
+  /// 2", "all other locations"]`. The referred postal code groups must match
+  /// the delivery country of the service.
   core.List<core.String> postalCodeGroupNames;
   core.List<TransitTableTransitTimeRow> rows;
 
-  /// A list of transit time labels. The last value can be `"all other labels"`.
-  /// Example: `["food", "electronics", "all other labels"]`.
+  /// A list of transit time labels.
+  ///
+  /// The last value can be `"all other labels"`. Example: `["food",
+  /// "electronics", "all other labels"]`.
   core.List<core.String> transitTimeLabels;
 
   TransitTable();
@@ -24135,8 +25025,9 @@ class TransitTableTransitTimeRowTransitTimeValue {
   /// Must be greater than or equal to `minTransitTimeInDays`.
   core.int maxTransitTimeInDays;
 
-  /// Transit time range (min-max) in business days. 0 means same day delivery,
-  /// 1 means next day delivery.
+  /// Transit time range (min-max) in business days.
+  ///
+  /// 0 means same day delivery, 1 means next day delivery.
   core.int minTransitTimeInDays;
 
   TransitTableTransitTimeRowTransitTimeValue();
@@ -24166,8 +25057,10 @@ class UnitInvoice {
   /// Additional charges for a unit, e.g. shipping costs.
   core.List<UnitInvoiceAdditionalCharge> additionalCharges;
 
-  /// [required] Pre-tax or post-tax price of the unit depending on the locality
-  /// of the order.
+  /// Pre-tax or post-tax price of the unit depending on the locality of the
+  /// order.
+  ///
+  /// Required.
   Price unitPrice;
 
   /// Tax amounts to apply to the unit price.
@@ -24213,13 +25106,17 @@ class UnitInvoice {
 }
 
 class UnitInvoiceAdditionalCharge {
-  /// [required] Amount of the additional charge.
+  /// Amount of the additional charge.
+  ///
+  /// Required.
   Amount additionalChargeAmount;
 
-  /// [required] Type of the additional charge.
+  /// Type of the additional charge.
   ///
   /// Acceptable values are:
   /// - "`shipping`"
+  ///
+  /// Required.
   core.String type;
 
   UnitInvoiceAdditionalCharge();
@@ -24247,19 +25144,24 @@ class UnitInvoiceAdditionalCharge {
 }
 
 class UnitInvoiceTaxLine {
-  /// [required] Tax amount for the tax type.
+  /// Tax amount for the tax type.
+  ///
+  /// Required.
   Price taxAmount;
 
-  /// Optional name of the tax type. This should only be provided if `taxType`
-  /// is `otherFeeTax`.
+  /// Optional name of the tax type.
+  ///
+  /// This should only be provided if `taxType` is `otherFeeTax`.
   core.String taxName;
 
-  /// [required] Type of the tax.
+  /// Type of the tax.
   ///
   /// Acceptable values are:
   /// - "`otherFee`"
   /// - "`otherFeeTax`"
   /// - "`sales`"
+  ///
+  /// Required.
   core.String taxType;
 
   UnitInvoiceTaxLine();
@@ -24293,26 +25195,36 @@ class UnitInvoiceTaxLine {
 }
 
 /// The single value of a rate group or the value of a rate group table's cell.
+///
 /// Exactly one of `noShipping`, `flatRate`, `pricePercentage`,
 /// `carrierRateName`, `subtableName` must be set.
 class Value {
   /// The name of a carrier rate referring to a carrier rate defined in the same
-  /// rate group. Can only be set if all other fields are not set.
+  /// rate group.
+  ///
+  /// Can only be set if all other fields are not set.
   core.String carrierRateName;
 
-  /// A flat rate. Can only be set if all other fields are not set.
+  /// A flat rate.
+  ///
+  /// Can only be set if all other fields are not set.
   Price flatRate;
 
-  /// If true, then the product can't ship. Must be true when set, can only be
-  /// set if all other fields are not set.
+  /// If true, then the product can't ship.
+  ///
+  /// Must be true when set, can only be set if all other fields are not set.
   core.bool noShipping;
 
   /// A percentage of the price represented as a number in decimal notation
-  /// (e.g., `"5.4"`). Can only be set if all other fields are not set.
+  /// (e.g., `"5.4"`).
+  ///
+  /// Can only be set if all other fields are not set.
   core.String pricePercentage;
 
-  /// The name of a subtable. Can only be set in table cells (i.e., not for
-  /// single values), and only if all other fields are not set.
+  /// The name of a subtable.
+  ///
+  /// Can only be set in table cells (i.e., not for single values), and only if
+  /// all other fields are not set.
   core.String subtableName;
 
   Value();
@@ -24358,14 +25270,18 @@ class Value {
 }
 
 class Weight {
-  /// Required. The weight unit.
+  /// The weight unit.
   ///
   /// Acceptable values are:
   /// - "`kg`"
   /// - "`lb`"
+  ///
+  /// Required.
   core.String unit;
 
-  /// Required. The weight represented as a number.
+  /// The weight represented as a number.
+  ///
+  /// Required.
   core.String value;
 
   Weight();

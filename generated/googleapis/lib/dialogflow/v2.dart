@@ -271,7 +271,9 @@ class ProjectsAgentResource {
 
   ProjectsAgentResource(commons.ApiRequester client) : _requester = client;
 
-  /// Exports the specified agent to a ZIP file. Operation
+  /// Exports the specified agent to a ZIP file.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -385,8 +387,10 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Gets agent validation result. Agent validation is performed during
-  /// training time and is updated automatically when training is completed.
+  /// Gets agent validation result.
+  ///
+  /// Agent validation is performed during training time and is updated
+  /// automatically when training is completed.
   ///
   /// Request parameters:
   ///
@@ -451,14 +455,15 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Imports the specified agent from a ZIP file. Uploads new intents and
-  /// entity types without deleting the existing ones. Intents and entity types
-  /// with the same name are replaced with the new versions from
-  /// ImportAgentRequest. After the import, the imported draft agent will be
-  /// trained automatically (unless disabled in agent settings). However, once
-  /// the import is done, training may not be completed yet. Please call
-  /// TrainAgent and wait for the operation it returns in order to train
-  /// explicitly. Operation An operation which tracks when importing is
+  /// Imports the specified agent from a ZIP file.
+  ///
+  /// Uploads new intents and entity types without deleting the existing ones.
+  /// Intents and entity types with the same name are replaced with the new
+  /// versions from ImportAgentRequest. After the import, the imported draft
+  /// agent will be trained automatically (unless disabled in agent settings).
+  /// However, once the import is done, training may not be completed yet.
+  /// Please call TrainAgent and wait for the operation it returns in order to
+  /// train explicitly. Operation An operation which tracks when importing is
   /// complete. It only tracks when the draft agent is updated not when it is
   /// done training.
   ///
@@ -521,15 +526,16 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Restores the specified agent from a ZIP file. Replaces the current agent
-  /// version with a new one. All the intents and entity types in the older
-  /// version are deleted. After the restore, the restored draft agent will be
-  /// trained automatically (unless disabled in agent settings). However, once
-  /// the restore is done, training may not be completed yet. Please call
-  /// TrainAgent and wait for the operation it returns in order to train
-  /// explicitly. Operation An operation which tracks when restoring is
-  /// complete. It only tracks when the draft agent is updated not when it is
-  /// done training.
+  /// Restores the specified agent from a ZIP file.
+  ///
+  /// Replaces the current agent version with a new one. All the intents and
+  /// entity types in the older version are deleted. After the restore, the
+  /// restored draft agent will be trained automatically (unless disabled in
+  /// agent settings). However, once the restore is done, training may not be
+  /// completed yet. Please call TrainAgent and wait for the operation it
+  /// returns in order to train explicitly. Operation An operation which tracks
+  /// when restoring is complete. It only tracks when the draft agent is updated
+  /// not when it is done training.
   ///
   /// [request] - The metadata request object.
   ///
@@ -590,10 +596,12 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Returns the list of agents. Since there is at most one conversational
-  /// agent per project, this method is useful primarily for listing all agents
-  /// across projects the caller has access to. One can achieve that with a
-  /// wildcard project collection id "-". Refer to [List
+  /// Returns the list of agents.
+  ///
+  /// Since there is at most one conversational agent per project, this method
+  /// is useful primarily for listing all agents across projects the caller has
+  /// access to. One can achieve that with a wildcard project collection id "-".
+  /// Refer to [List
   /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
   ///
   /// Request parameters:
@@ -662,7 +670,9 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Trains the specified agent. Operation
+  /// Trains the specified agent.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -799,7 +809,9 @@ class ProjectsAgentEntityTypesResource {
   ProjectsAgentEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes entity types in the specified agent. Operation
+  /// Deletes entity types in the specified agent.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -860,7 +872,9 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Updates/Creates multiple entity types in the specified agent. Operation
+  /// Updates/Creates multiple entity types in the specified agent.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -1266,7 +1280,9 @@ class ProjectsAgentEntityTypesEntitiesResource {
   ProjectsAgentEntityTypesEntitiesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates multiple new entities in the specified entity type. Operation
+  /// Creates multiple new entities in the specified entity type.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -1327,7 +1343,9 @@ class ProjectsAgentEntityTypesEntitiesResource {
     );
   }
 
-  /// Deletes entities in the specified entity type. Operation
+  /// Deletes entities in the specified entity type.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -1388,9 +1406,10 @@ class ProjectsAgentEntityTypesEntitiesResource {
     );
   }
 
-  /// Updates or creates multiple entities in the specified entity type. This
-  /// method does not affect entities in the entity type that aren't explicitly
-  /// specified in the request. Operation
+  /// Updates or creates multiple entities in the specified entity type.
+  ///
+  /// This method does not affect entities in the entity type that aren't
+  /// explicitly specified in the request. Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -1611,9 +1630,11 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   }
 
   /// Processes a natural language query and returns structured, actionable data
-  /// as a result. This method is not idempotent, because it may cause contexts
-  /// and session entity types to be updated, which in turn might affect results
-  /// of future queries.
+  /// as a result.
+  ///
+  /// This method is not idempotent, because it may cause contexts and session
+  /// entity types to be updated, which in turn might affect results of future
+  /// queries.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1691,8 +1712,9 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a context. If the specified context already exists, overrides the
-  /// context.
+  /// Creates a context.
+  ///
+  /// If the specified context already exists, overrides the context.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2024,10 +2046,12 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a session entity type. If the specified session entity type
-  /// already exists, overrides the session entity type. This method doesn't
-  /// work with Google Assistant integration. Contact Dialogflow support if you
-  /// need to use session entities with Google Assistant integration.
+  /// Creates a session entity type.
+  ///
+  /// If the specified session entity type already exists, overrides the session
+  /// entity type. This method doesn't work with Google Assistant integration.
+  /// Contact Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2092,9 +2116,11 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Deletes the specified session entity type. This method doesn't work with
-  /// Google Assistant integration. Contact Dialogflow support if you need to
-  /// use session entities with Google Assistant integration.
+  /// Deletes the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// Request parameters:
   ///
@@ -2151,9 +2177,11 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified session entity type. This method doesn't work with
-  /// Google Assistant integration. Contact Dialogflow support if you need to
-  /// use session entities with Google Assistant integration.
+  /// Retrieves the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// Request parameters:
   ///
@@ -2211,6 +2239,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   }
 
   /// Returns the list of all session entity types in the specified session.
+  ///
   /// This method doesn't work with Google Assistant integration. Contact
   /// Dialogflow support if you need to use session entities with Google
   /// Assistant integration.
@@ -2286,9 +2315,11 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Updates the specified session entity type. This method doesn't work with
-  /// Google Assistant integration. Contact Dialogflow support if you need to
-  /// use session entities with Google Assistant integration.
+  /// Updates the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2366,7 +2397,9 @@ class ProjectsAgentIntentsResource {
   ProjectsAgentIntentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes intents in the specified agent. Operation
+  /// Deletes intents in the specified agent.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -2427,7 +2460,9 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Updates/Creates multiple intents in the specified agent. Operation
+  /// Updates/Creates multiple intents in the specified agent.
+  ///
+  /// Operation
   ///
   /// [request] - The metadata request object.
   ///
@@ -2939,9 +2974,11 @@ class ProjectsAgentSessionsResource {
   }
 
   /// Processes a natural language query and returns structured, actionable data
-  /// as a result. This method is not idempotent, because it may cause contexts
-  /// and session entity types to be updated, which in turn might affect results
-  /// of future queries.
+  /// as a result.
+  ///
+  /// This method is not idempotent, because it may cause contexts and session
+  /// entity types to be updated, which in turn might affect results of future
+  /// queries.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3017,8 +3054,9 @@ class ProjectsAgentSessionsContextsResource {
   ProjectsAgentSessionsContextsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a context. If the specified context already exists, overrides the
-  /// context.
+  /// Creates a context.
+  ///
+  /// If the specified context already exists, overrides the context.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3347,10 +3385,12 @@ class ProjectsAgentSessionsEntityTypesResource {
   ProjectsAgentSessionsEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a session entity type. If the specified session entity type
-  /// already exists, overrides the session entity type. This method doesn't
-  /// work with Google Assistant integration. Contact Dialogflow support if you
-  /// need to use session entities with Google Assistant integration.
+  /// Creates a session entity type.
+  ///
+  /// If the specified session entity type already exists, overrides the session
+  /// entity type. This method doesn't work with Google Assistant integration.
+  /// Contact Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3414,9 +3454,11 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Deletes the specified session entity type. This method doesn't work with
-  /// Google Assistant integration. Contact Dialogflow support if you need to
-  /// use session entities with Google Assistant integration.
+  /// Deletes the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// Request parameters:
   ///
@@ -3473,9 +3515,11 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified session entity type. This method doesn't work with
-  /// Google Assistant integration. Contact Dialogflow support if you need to
-  /// use session entities with Google Assistant integration.
+  /// Retrieves the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// Request parameters:
   ///
@@ -3533,6 +3577,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   }
 
   /// Returns the list of all session entity types in the specified session.
+  ///
   /// This method doesn't work with Google Assistant integration. Contact
   /// Dialogflow support if you need to use session entities with Google
   /// Assistant integration.
@@ -3607,9 +3652,11 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Updates the specified session entity type. This method doesn't work with
-  /// Google Assistant integration. Contact Dialogflow support if you need to
-  /// use session entities with Google Assistant integration.
+  /// Updates the specified session entity type.
+  ///
+  /// This method doesn't work with Google Assistant integration. Contact
+  /// Dialogflow support if you need to use session entities with Google
+  /// Assistant integration.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3696,8 +3743,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -3757,9 +3805,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -3812,10 +3861,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -3897,8 +3947,9 @@ class ProjectsOperationsResource {
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -3957,9 +4008,10 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -4011,10 +4063,11 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -4094,8 +4147,9 @@ class ProjectsOperationsResource {
 /// Metadata associated with the long running operation for
 /// Versions.CreateVersion.
 class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata {
-  /// Name of the created version. Format:
-  /// `projects//locations//agents//flows//versions/`.
+  /// Name of the created version.
+  ///
+  /// Format: `projects//locations//agents//flows//versions/`.
   core.String version;
 
   GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata();
@@ -4128,8 +4182,10 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The URI to a file containing the exported agent. This field is populated
-  /// only if `agent_uri` is specified in ExportAgentRequest.
+  /// The URI to a file containing the exported agent.
+  ///
+  /// This field is populated only if `agent_uri` is specified in
+  /// ExportAgentRequest.
   core.String agentUri;
 
   GoogleCloudDialogflowCxV3beta1ExportAgentResponse();
@@ -4157,8 +4213,9 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
 
 /// The response message for Agents.ImportAgent.
 class GoogleCloudDialogflowCxV3beta1ImportAgentResponse {
-  /// The unique identifier of the new agent. Format:
-  /// `projects//locations//agents/`.
+  /// The unique identifier of the new agent.
+  ///
+  /// Format: `projects//locations//agents/`.
   core.String agent;
 
   GoogleCloudDialogflowCxV3beta1ImportAgentResponse();
@@ -4180,13 +4237,15 @@ class GoogleCloudDialogflowCxV3beta1ImportAgentResponse {
 
 /// Represents page information communicated to and from the webhook.
 class GoogleCloudDialogflowCxV3beta1PageInfo {
-  /// Always present for WebhookRequest. Ignored for WebhookResponse. The unique
-  /// identifier of the current page. Format:
-  /// `projects//locations//agents//flows//pages/`.
+  /// Always present for WebhookRequest.
+  ///
+  /// Ignored for WebhookResponse. The unique identifier of the current page.
+  /// Format: `projects//locations//agents//flows//pages/`.
   core.String currentPage;
 
-  /// Optional for both WebhookRequest and WebhookResponse. Information about
-  /// the form.
+  /// Optional for both WebhookRequest and WebhookResponse.
+  ///
+  /// Information about the form.
   GoogleCloudDialogflowCxV3beta1PageInfoFormInfo formInfo;
 
   GoogleCloudDialogflowCxV3beta1PageInfo();
@@ -4215,9 +4274,10 @@ class GoogleCloudDialogflowCxV3beta1PageInfo {
 
 /// Represents form information.
 class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
-  /// Optional for both WebhookRequest and WebhookResponse. The parameters
-  /// contained in the form. Note that the webhook cannot add or remove any form
-  /// parameter.
+  /// Optional for both WebhookRequest and WebhookResponse.
+  ///
+  /// The parameters contained in the form. Note that the webhook cannot add or
+  /// remove any form parameter.
   core.List<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>
       parameterInfo;
 
@@ -4246,24 +4306,30 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
 
 /// Represents parameter information.
 class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
-  /// Always present for WebhookRequest. Required for WebhookResponse. The
-  /// human-readable name of the parameter, unique within the form. This field
-  /// cannot be modified by the webhook.
+  /// Always present for WebhookRequest.
+  ///
+  /// Required for WebhookResponse. The human-readable name of the parameter,
+  /// unique within the form. This field cannot be modified by the webhook.
   core.String displayName;
 
-  /// Optional for WebhookRequest. Ignored for WebhookResponse. Indicates if the
-  /// parameter value was just collected on the last conversation turn.
+  /// Optional for WebhookRequest.
+  ///
+  /// Ignored for WebhookResponse. Indicates if the parameter value was just
+  /// collected on the last conversation turn.
   core.bool justCollected;
 
-  /// Optional for both WebhookRequest and WebhookResponse. Indicates whether
-  /// the parameter is required. Optional parameters will not trigger prompts;
-  /// however, they are filled if the user specifies them. Required parameters
-  /// must be filled before form filling concludes.
+  /// Optional for both WebhookRequest and WebhookResponse.
+  ///
+  /// Indicates whether the parameter is required. Optional parameters will not
+  /// trigger prompts; however, they are filled if the user specifies them.
+  /// Required parameters must be filled before form filling concludes.
   core.bool required;
 
-  /// Always present for WebhookRequest. Required for WebhookResponse. The state
-  /// of the parameter. This field can be set to INVALID by the webhook to
-  /// invalidate the parameter; other values set by the webhook will be ignored.
+  /// Always present for WebhookRequest.
+  ///
+  /// Required for WebhookResponse. The state of the parameter. This field can
+  /// be set to INVALID by the webhook to invalidate the parameter; other values
+  /// set by the webhook will be ignored.
   /// Possible string values are:
   /// - "PARAMETER_STATE_UNSPECIFIED" : Not specified. This value should be
   /// never used.
@@ -4274,9 +4340,10 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
   /// - "FILLED" : Indicates that the parameter has a value.
   core.String state;
 
-  /// Optional for both WebhookRequest and WebhookResponse. The value of the
-  /// parameter. This field can be set by the webhook to change the parameter
-  /// value.
+  /// Optional for both WebhookRequest and WebhookResponse.
+  ///
+  /// The value of the parameter. This field can be set by the webhook to change
+  /// the parameter value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4325,37 +4392,46 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
 }
 
 /// Represents a response message that can be returned by a conversational
-/// agent. Response messages are also used for output audio synthesis. The
-/// approach is as follows: * If at least one OutputAudioText response is
-/// present, then all OutputAudioText responses are linearly concatenated, and
-/// the result is used for output audio synthesis. * If the OutputAudioText
-/// responses are a mixture of text and SSML, then the concatenated result is
-/// treated as SSML; otherwise, the result is treated as either text or SSML as
-/// appropriate. The agent designer should ideally use either text or SSML
-/// consistently throughout the bot design. * Otherwise, all Text responses are
-/// linearly concatenated, and the result is used for output audio synthesis.
-/// This approach allows for more sophisticated user experience scenarios, where
-/// the text displayed to the user may differ from what is heard.
+/// agent.
+///
+/// Response messages are also used for output audio synthesis. The approach is
+/// as follows: * If at least one OutputAudioText response is present, then all
+/// OutputAudioText responses are linearly concatenated, and the result is used
+/// for output audio synthesis. * If the OutputAudioText responses are a mixture
+/// of text and SSML, then the concatenated result is treated as SSML;
+/// otherwise, the result is treated as either text or SSML as appropriate. The
+/// agent designer should ideally use either text or SSML consistently
+/// throughout the bot design. * Otherwise, all Text responses are linearly
+/// concatenated, and the result is used for output audio synthesis. This
+/// approach allows for more sophisticated user experience scenarios, where the
+/// text displayed to the user may differ from what is heard.
 class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   /// Indicates that the conversation succeeded.
   GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
       conversationSuccess;
 
-  /// Output only. A signal that indicates the interaction with the Dialogflow
-  /// agent has ended. This message is generated by Dialogflow only when the
-  /// conversation reaches `END_SESSION` or `END_PAGE` page. It is not supposed
-  /// to be defined by the user. It's guaranteed that there is at most one such
-  /// message in each response.
+  /// A signal that indicates the interaction with the Dialogflow agent has
+  /// ended.
+  ///
+  /// This message is generated by Dialogflow only when the conversation reaches
+  /// `END_SESSION` or `END_PAGE` page. It is not supposed to be defined by the
+  /// user. It's guaranteed that there is at most one such message in each
+  /// response.
+  ///
+  /// Output only.
   GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction endInteraction;
 
   /// Hands off conversation to a human agent.
   GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
       liveAgentHandoff;
 
-  /// Output only. An audio response message composed of both the synthesized
-  /// Dialogflow agent responses and responses defined via play_audio. This
-  /// message is generated by Dialogflow only and not supposed to be defined by
-  /// the user.
+  /// An audio response message composed of both the synthesized Dialogflow
+  /// agent responses and responses defined via play_audio.
+  ///
+  /// This message is generated by Dialogflow only and not supposed to be
+  /// defined by the user.
+  ///
+  /// Output only.
   GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio mixedAudio;
 
   /// A text or ssml response that is preferentially used for TTS output audio
@@ -4369,9 +4445,10 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
   core.Map<core.String, core.Object> payload;
 
   /// Signal that the client should play an audio clip hosted at a
-  /// client-specific URI. Dialogflow uses this to construct mixed_audio.
-  /// However, Dialogflow itself does not try to read or process the URI in any
-  /// way.
+  /// client-specific URI.
+  ///
+  /// Dialogflow uses this to construct mixed_audio. However, Dialogflow itself
+  /// does not try to read or process the URI in any way.
   GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio playAudio;
 
   /// Returns a text response.
@@ -4458,16 +4535,20 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
 }
 
 /// Indicates that the conversation succeeded, i.e., the bot handled the issue
-/// that the customer talked to it about. Dialogflow only uses this to determine
-/// which conversations should be counted as successful and doesn't process the
-/// metadata in this message in any way. Note that Dialogflow also considers
-/// conversations that get to the conversation end page as successful even if
-/// they don't return ConversationSuccess. You may set this, for example: * In
-/// the entry_fulfillment of a Page if entering the page indicates that the
+/// that the customer talked to it about.
+///
+/// Dialogflow only uses this to determine which conversations should be counted
+/// as successful and doesn't process the metadata in this message in any way.
+/// Note that Dialogflow also considers conversations that get to the
+/// conversation end page as successful even if they don't return
+/// ConversationSuccess. You may set this, for example: * In the
+/// entry_fulfillment of a Page if entering the page indicates that the
 /// conversation succeeded. * In a webhook response when you determine that you
 /// handled the customer issue.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
-  /// Custom metadata. Dialogflow doesn't impose any structure on this.
+  /// Custom metadata.
+  ///
+  /// Dialogflow doesn't impose any structure on this.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4497,8 +4578,10 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   }
 }
 
-/// Indicates that interaction with the Dialogflow agent has ended. This message
-/// is generated by Dialogflow only and not supposed to be defined by the user.
+/// Indicates that interaction with the Dialogflow agent has ended.
+///
+/// This message is generated by Dialogflow only and not supposed to be defined
+/// by the user.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
   GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction();
 
@@ -4513,6 +4596,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
 }
 
 /// Indicates that the conversation should be handed off to a live agent.
+///
 /// Dialogflow only uses this to determine which conversations were handed off
 /// to a human agent for measurement purposes. What else to do with this signal
 /// is up to you and your handoff procedures. You may set this, for example: *
@@ -4520,8 +4604,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
 /// went extremely wrong in the conversation. * In a webhook response when you
 /// determine that the customer issue can only be handled by a human.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
-  /// Custom metadata for your handoff procedure. Dialogflow doesn't impose any
-  /// structure on this.
+  /// Custom metadata for your handoff procedure.
+  ///
+  /// Dialogflow doesn't impose any structure on this.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4553,8 +4638,10 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
 
 /// Represents an audio message that is composed of both segments synthesized
 /// from the Dialogflow agent prompts and ones hosted externally at the
-/// specified URIs. The external URIs are specified via play_audio. This message
-/// is generated by Dialogflow only and not supposed to be defined by the user.
+/// specified URIs.
+///
+/// The external URIs are specified via play_audio. This message is generated by
+/// Dialogflow only and not supposed to be defined by the user.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
   /// Segments this audio response is composed of.
   core.List<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>
@@ -4585,9 +4672,10 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
 
 /// Represents one segment of audio.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
-  /// Output only. Whether the playback of this segment can be interrupted by
-  /// the end user's speech and the client should then start the next Dialogflow
-  /// request.
+  /// Whether the playback of this segment can be interrupted by the end user's
+  /// speech and the client should then start the next Dialogflow request.
+  ///
+  /// Output only.
   core.bool allowPlaybackInterruption;
 
   /// Raw audio synthesized from the Dialogflow agent's response using the
@@ -4601,6 +4689,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
   }
 
   /// Client-specific URI that points to an audio clip accessible to the client.
+  ///
   /// Dialogflow does not impose any validation on it.
   core.String uri;
 
@@ -4638,13 +4727,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
 /// A text or ssml response that is preferentially used for TTS output audio
 /// synthesis, as described in the comment on the ResponseMessage message.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
-  /// Output only. Whether the playback of this message can be interrupted by
-  /// the end user's speech and the client can then starts the next Dialogflow
-  /// request.
+  /// Whether the playback of this message can be interrupted by the end user's
+  /// speech and the client can then starts the next Dialogflow request.
+  ///
+  /// Output only.
   core.bool allowPlaybackInterruption;
 
-  /// The SSML text to be synthesized. For more information, see
-  /// [SSML](/speech/text-to-speech/docs/ssml).
+  /// The SSML text to be synthesized.
+  ///
+  /// For more information, see [SSML](/speech/text-to-speech/docs/ssml).
   core.String ssml;
 
   /// The raw text to be synthesized.
@@ -4683,13 +4774,18 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
 
 /// Specifies an audio clip to be played by the client as part of the response.
 class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
-  /// Output only. Whether the playback of this message can be interrupted by
-  /// the end user's speech and the client can then starts the next Dialogflow
-  /// request.
+  /// Whether the playback of this message can be interrupted by the end user's
+  /// speech and the client can then starts the next Dialogflow request.
+  ///
+  /// Output only.
   core.bool allowPlaybackInterruption;
 
-  /// Required. URI of the audio clip. Dialogflow does not impose any validation
-  /// on this value. It is specific to the client that reads it.
+  /// URI of the audio clip.
+  ///
+  /// Dialogflow does not impose any validation on this value. It is specific to
+  /// the client that reads it.
+  ///
+  /// Required.
   core.String audioUri;
 
   GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio();
@@ -4719,12 +4815,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
 
 /// The text response message.
 class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
-  /// Output only. Whether the playback of this message can be interrupted by
-  /// the end user's speech and the client can then starts the next Dialogflow
-  /// request.
+  /// Whether the playback of this message can be interrupted by the end user's
+  /// speech and the client can then starts the next Dialogflow request.
+  ///
+  /// Output only.
   core.bool allowPlaybackInterruption;
 
-  /// Required. A collection of text responses.
+  /// A collection of text responses.
+  ///
+  /// Required.
   core.List<core.String> text;
 
   GoogleCloudDialogflowCxV3beta1ResponseMessageText();
@@ -4755,19 +4854,23 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
 
 /// Represents session information communicated to and from the webhook.
 class GoogleCloudDialogflowCxV3beta1SessionInfo {
-  /// Optional for WebhookRequest. Optional for WebhookResponse. All parameters
-  /// collected from forms and intents during the session. Parameters can be
-  /// created, updated, or removed by the webhook. To remove a parameter from
-  /// the session, the webhook should explicitly set the parameter value to null
-  /// in WebhookResponse. The map is keyed by parameters' display names.
+  /// Optional for WebhookRequest.
+  ///
+  /// Optional for WebhookResponse. All parameters collected from forms and
+  /// intents during the session. Parameters can be created, updated, or removed
+  /// by the webhook. To remove a parameter from the session, the webhook should
+  /// explicitly set the parameter value to null in WebhookResponse. The map is
+  /// keyed by parameters' display names.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> parameters;
 
-  /// Always present for WebhookRequest. Ignored for WebhookResponse. The unique
-  /// identifier of the session. This field can be used by the webhook to
-  /// identify a user. Format: `projects//locations//agents//sessions/`.
+  /// Always present for WebhookRequest.
+  ///
+  /// Ignored for WebhookResponse. The unique identifier of the session. This
+  /// field can be used by the webhook to identify a user. Format:
+  /// `projects//locations//agents//sessions/`.
   core.String session;
 
   GoogleCloudDialogflowCxV3beta1SessionInfo();
@@ -4802,19 +4905,23 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
 
 /// The request message for a webhook call.
 class GoogleCloudDialogflowCxV3beta1WebhookRequest {
-  /// Always present. The unique identifier of the DetectIntentResponse that
-  /// will be returned to the API caller.
+  /// Always present.
+  ///
+  /// The unique identifier of the DetectIntentResponse that will be returned to
+  /// the API caller.
   core.String detectIntentResponseId;
 
-  /// Always present. Information about the fulfillment that triggered this
-  /// webhook call.
+  /// Always present.
+  ///
+  /// Information about the fulfillment that triggered this webhook call.
   GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo fulfillmentInfo;
 
   /// Information about the last matched intent.
   GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo intentInfo;
 
-  /// The list of rich message responses to present to the user. Webhook can
-  /// choose to append or replace this list in
+  /// The list of rich message responses to present to the user.
+  ///
+  /// Webhook can choose to append or replace this list in
   /// WebhookResponse.fulfillment_response;
   core.List<GoogleCloudDialogflowCxV3beta1ResponseMessage> messages;
 
@@ -4901,8 +5008,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
 
 /// Represents fulfillment information communicated to the webhook.
 class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
-  /// Always present. The tag used to identify which fulfillment is being
-  /// called.
+  /// Always present.
+  ///
+  /// The tag used to identify which fulfillment is being called.
   core.String tag;
 
   GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo();
@@ -4925,14 +5033,17 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
 
 /// Represents intent information communicated to the webhook.
 class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
-  /// Always present. The unique identifier of the last matched intent. Format:
+  /// Always present.
+  ///
+  /// The unique identifier of the last matched intent. Format:
   /// `projects//locations//agents//intents/`.
   core.String lastMatchedIntent;
 
-  /// Parameters identified as a result of intent matching. This is a map of the
-  /// name of the identified parameter to the value of the parameter identified
-  /// from the user's utterance. All parameters defined in the matched intent
-  /// that are identified will be surfaced here.
+  /// Parameters identified as a result of intent matching.
+  ///
+  /// This is a map of the name of the identified parameter to the value of the
+  /// parameter identified from the user's utterance. All parameters defined in
+  /// the matched intent that are identified will be surfaced here.
   core.Map<core.String,
           GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue>
       parameters;
@@ -4971,11 +5082,14 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
 
 /// Represents a value for an intent parameter.
 class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue {
-  /// Always present. Original text value extracted from user utterance.
+  /// Always present.
+  ///
+  /// Original text value extracted from user utterance.
   core.String originalValue;
 
-  /// Always present. Structured value for the parameter extracted from user
-  /// utterance.
+  /// Always present.
+  ///
+  /// Structured value for the parameter extracted from user utterance.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5007,13 +5121,17 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
 
 /// The response message for a webhook call.
 class GoogleCloudDialogflowCxV3beta1WebhookResponse {
-  /// The fulfillment response to send to the user. This field can be omitted by
-  /// the webhook if it does not intend to send any response to the user.
+  /// The fulfillment response to send to the user.
+  ///
+  /// This field can be omitted by the webhook if it does not intend to send any
+  /// response to the user.
   GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse
       fulfillmentResponse;
 
-  /// Information about page status. This field can be omitted by the webhook if
-  /// it does not intend to modify page status.
+  /// Information about page status.
+  ///
+  /// This field can be omitted by the webhook if it does not intend to modify
+  /// page status.
   GoogleCloudDialogflowCxV3beta1PageInfo pageInfo;
 
   /// Value to append directly to QueryResult.webhook_payloads.
@@ -5022,16 +5140,20 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// Information about session status. This field can be omitted by the webhook
-  /// if it does not intend to modify session status.
+  /// Information about session status.
+  ///
+  /// This field can be omitted by the webhook if it does not intend to modify
+  /// session status.
   GoogleCloudDialogflowCxV3beta1SessionInfo sessionInfo;
 
-  /// The target flow to transition to. Format:
-  /// `projects//locations//agents//flows/`.
+  /// The target flow to transition to.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
   core.String targetFlow;
 
-  /// The target page to transition to. Format:
-  /// `projects//locations//agents//flows//pages/`.
+  /// The target page to transition to.
+  ///
+  /// Format: `projects//locations//agents//flows//pages/`.
   core.String targetPage;
 
   GoogleCloudDialogflowCxV3beta1WebhookResponse();
@@ -5135,18 +5257,22 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
 }
 
 /// A Dialogflow agent is a virtual agent that handles conversations with your
-/// end-users. It is a natural language understanding module that understands
-/// the nuances of human language. Dialogflow translates end-user text or audio
-/// during a conversation to structured data that your apps and services can
-/// understand. You design and build a Dialogflow agent to handle the types of
-/// conversations required for your system. For more information about agents,
-/// see the [Agent
+/// end-users.
+///
+/// It is a natural language understanding module that understands the nuances
+/// of human language. Dialogflow translates end-user text or audio during a
+/// conversation to structured data that your apps and services can understand.
+/// You design and build a Dialogflow agent to handle the types of conversations
+/// required for your system. For more information about agents, see the [Agent
 /// guide](https://cloud.google.com/dialogflow/docs/agents-overview).
 class GoogleCloudDialogflowV2Agent {
-  /// Optional. API version displayed in Dialogflow console. If not specified,
-  /// V2 API is assumed. Clients are free to query different service endpoints
-  /// for different API versions. However, bots connectors and webhook calls
-  /// will follow the specified API version.
+  /// API version displayed in Dialogflow console.
+  ///
+  /// If not specified, V2 API is assumed. Clients are free to query different
+  /// service endpoints for different API versions. However, bots connectors and
+  /// webhook calls will follow the specified API version.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "API_VERSION_UNSPECIFIED" : Not specified.
   /// - "API_VERSION_V1" : Legacy V1 API.
@@ -5154,39 +5280,59 @@ class GoogleCloudDialogflowV2Agent {
   /// - "API_VERSION_V2_BETA_1" : V2beta1 API.
   core.String apiVersion;
 
-  /// Optional. The URI of the agent's avatar. Avatars are used throughout the
-  /// Dialogflow console and in the self-hosted [Web
-  /// Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)
+  /// The URI of the agent's avatar.
+  ///
+  /// Avatars are used throughout the Dialogflow console and in the self-hosted
+  /// [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)
   /// integration.
+  ///
+  /// Optional.
   core.String avatarUri;
 
-  /// Optional. To filter out false positive results and still get variety in
-  /// matched natural language inputs for your agent, you can tune the machine
-  /// learning classification threshold. If the returned score value is less
-  /// than the threshold value, then a fallback intent will be triggered or, if
-  /// there are no fallback intents defined, no intent will be triggered. The
-  /// score values range from 0.0 (completely uncertain) to 1.0 (completely
-  /// certain). If set to 0.0, the default of 0.3 is used.
+  /// To filter out false positive results and still get variety in matched
+  /// natural language inputs for your agent, you can tune the machine learning
+  /// classification threshold.
+  ///
+  /// If the returned score value is less than the threshold value, then a
+  /// fallback intent will be triggered or, if there are no fallback intents
+  /// defined, no intent will be triggered. The score values range from 0.0
+  /// (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
+  /// default of 0.3 is used.
+  ///
+  /// Optional.
   core.double classificationThreshold;
 
-  /// Required. The default language of the agent as a language tag. See
-  /// [Language
+  /// The default language of the agent as a language tag.
+  ///
+  /// See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes. This field cannot be set
   /// by the `Update` method.
+  ///
+  /// Required.
   core.String defaultLanguageCode;
 
-  /// Optional. The description of this agent. The maximum length is 500
-  /// characters. If exceeded, the request is rejected.
+  /// The description of this agent.
+  ///
+  /// The maximum length is 500 characters. If exceeded, the request is
+  /// rejected.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. The name of this agent.
+  /// The name of this agent.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. Determines whether this agent should log conversation queries.
+  /// Determines whether this agent should log conversation queries.
+  ///
+  /// Optional.
   core.bool enableLogging;
 
-  /// Optional. Determines how intents are detected from user queries.
+  /// Determines how intents are detected from user queries.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "MATCH_MODE_UNSPECIFIED" : Not specified.
   /// - "MATCH_MODE_HYBRID" : Best for agents with a small number of examples in
@@ -5196,14 +5342,24 @@ class GoogleCloudDialogflowV2Agent {
   /// custom entities.
   core.String matchMode;
 
-  /// Required. The project of this agent. Format: `projects/`.
+  /// The project of this agent.
+  ///
+  /// Format: `projects/`.
+  ///
+  /// Required.
   core.String parent;
 
-  /// Optional. The list of all languages supported by this agent (except for
-  /// the `default_language_code`).
+  /// The list of all languages supported by this agent (except for the
+  /// `default_language_code`).
+  ///
+  /// Optional.
   core.List<core.String> supportedLanguageCodes;
 
-  /// Optional. The agent tier. If not specified, TIER_STANDARD is assumed.
+  /// The agent tier.
+  ///
+  /// If not specified, TIER_STANDARD is assumed.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TIER_UNSPECIFIED" : Not specified. This value should never be used.
   /// - "TIER_STANDARD" : Standard tier.
@@ -5211,9 +5367,11 @@ class GoogleCloudDialogflowV2Agent {
   /// - "TIER_ENTERPRISE_PLUS" : Enterprise tier (Plus).
   core.String tier;
 
-  /// Required. The time zone of this agent from the [time zone
+  /// The time zone of this agent from the [time zone
   /// database](https://www.iana.org/time-zones), e.g., America/New_York,
   /// Europe/Paris.
+  ///
+  /// Required.
   core.String timeZone;
 
   GoogleCloudDialogflowV2Agent();
@@ -5302,20 +5460,25 @@ class GoogleCloudDialogflowV2Agent {
   }
 }
 
-/// Represents a part of a message possibly annotated with an entity. The part
-/// can be an entity or purely a part of the message between two entities or
-/// message start/end.
+/// Represents a part of a message possibly annotated with an entity.
+///
+/// The part can be an entity or purely a part of the message between two
+/// entities or message start/end.
 class GoogleCloudDialogflowV2AnnotatedMessagePart {
   /// The [Dialogflow system entity
   /// type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part. If this is empty, Dialogflow could not annotate the
-  /// phrase part with a system entity.
+  /// of this message part.
+  ///
+  /// If this is empty, Dialogflow could not annotate the phrase part with a
+  /// system entity.
   core.String entityType;
 
   /// The [Dialogflow system entity formatted value
   /// ](https://cloud.google.com/dialogflow/docs/reference/system-entities) of
-  /// this message part. For example for a system entity of type
-  /// `@sys.unit-currency`, this may contain: { "amount": 5, "currency": "USD" }
+  /// this message part.
+  ///
+  /// For example for a system entity of type `@sys.unit-currency`, this may
+  /// contain: { "amount": 5, "currency": "USD" }
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5355,13 +5518,18 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
 
 /// The request message for EntityTypes.BatchCreateEntities.
 class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
-  /// Required. The entities to create.
+  /// The entities to create.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity> entities;
 
-  /// Optional. The language used to access language-specific data. If not
-  /// specified, the agent's default language is used. For more information, see
-  /// [Multilingual intent and entity
+  /// The language used to access language-specific data.
+  ///
+  /// If not specified, the agent's default language is used. For more
+  /// information, see [Multilingual intent and entity
   /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// Optional.
   core.String languageCode;
 
   GoogleCloudDialogflowV2BatchCreateEntitiesRequest();
@@ -5393,15 +5561,21 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
 
 /// The request message for EntityTypes.BatchDeleteEntities.
 class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
-  /// Required. The reference `values` of the entities to delete. Note that
-  /// these are not fully-qualified names, i.e. they don't start with
+  /// The reference `values` of the entities to delete.
+  ///
+  /// Note that these are not fully-qualified names, i.e. they don't start with
   /// `projects/`.
+  ///
+  /// Required.
   core.List<core.String> entityValues;
 
-  /// Optional. The language used to access language-specific data. If not
-  /// specified, the agent's default language is used. For more information, see
-  /// [Multilingual intent and entity
+  /// The language used to access language-specific data.
+  ///
+  /// If not specified, the agent's default language is used. For more
+  /// information, see [Multilingual intent and entity
   /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// Optional.
   core.String languageCode;
 
   GoogleCloudDialogflowV2BatchDeleteEntitiesRequest();
@@ -5431,8 +5605,11 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
 
 /// The request message for EntityTypes.BatchDeleteEntityTypes.
 class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
-  /// Required. The names entity types to delete. All names must point to the
-  /// same agent as `parent`.
+  /// The names entity types to delete.
+  ///
+  /// All names must point to the same agent as `parent`.
+  ///
+  /// Required.
   core.List<core.String> entityTypeNames;
 
   GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest();
@@ -5457,8 +5634,11 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
 
 /// The request message for Intents.BatchDeleteIntents.
 class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
-  /// Required. The collection of intents to delete. Only intent `name` must be
-  /// filled in.
+  /// The collection of intents to delete.
+  ///
+  /// Only intent `name` must be filled in.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2Intent> intents;
 
   GoogleCloudDialogflowV2BatchDeleteIntentsRequest();
@@ -5484,16 +5664,23 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
 
 /// The request message for EntityTypes.BatchUpdateEntities.
 class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
-  /// Required. The entities to update or create.
+  /// The entities to update or create.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity> entities;
 
-  /// Optional. The language used to access language-specific data. If not
-  /// specified, the agent's default language is used. For more information, see
-  /// [Multilingual intent and entity
+  /// The language used to access language-specific data.
+  ///
+  /// If not specified, the agent's default language is used. For more
+  /// information, see [Multilingual intent and entity
   /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. The mask to control which fields get updated.
+  /// The mask to control which fields get updated.
+  ///
+  /// Optional.
   core.String updateMask;
 
   GoogleCloudDialogflowV2BatchUpdateEntitiesRequest();
@@ -5535,17 +5722,24 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
   GoogleCloudDialogflowV2EntityTypeBatch entityTypeBatchInline;
 
   /// The URI to a Google Cloud Storage file containing entity types to update
-  /// or create. The file format can either be a serialized proto (of
-  /// EntityBatch type) or a JSON object. Note: The URI must start with "gs://".
+  /// or create.
+  ///
+  /// The file format can either be a serialized proto (of EntityBatch type) or
+  /// a JSON object. Note: The URI must start with "gs://".
   core.String entityTypeBatchUri;
 
-  /// Optional. The language used to access language-specific data. If not
-  /// specified, the agent's default language is used. For more information, see
-  /// [Multilingual intent and entity
+  /// The language used to access language-specific data.
+  ///
+  /// If not specified, the agent's default language is used. For more
+  /// information, see [Multilingual intent and entity
   /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. The mask to control which fields get updated.
+  /// The mask to control which fields get updated.
+  ///
+  /// Optional.
   core.String updateMask;
 
   GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest();
@@ -5619,24 +5813,33 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
   GoogleCloudDialogflowV2IntentBatch intentBatchInline;
 
   /// The URI to a Google Cloud Storage file containing intents to update or
-  /// create. The file format can either be a serialized proto (of IntentBatch
-  /// type) or JSON object. Note: The URI must start with "gs://".
+  /// create.
+  ///
+  /// The file format can either be a serialized proto (of IntentBatch type) or
+  /// JSON object. Note: The URI must start with "gs://".
   core.String intentBatchUri;
 
-  /// Optional. The resource view to apply to the returned intent.
+  /// The resource view to apply to the returned intent.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
   /// the response.
   /// - "INTENT_VIEW_FULL" : All fields are populated.
   core.String intentView;
 
-  /// Optional. The language used to access language-specific data. If not
-  /// specified, the agent's default language is used. For more information, see
-  /// [Multilingual intent and entity
+  /// The language used to access language-specific data.
+  ///
+  /// If not specified, the agent's default language is used. For more
+  /// information, see [Multilingual intent and entity
   /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. The mask to control which fields get updated.
+  /// The mask to control which fields get updated.
+  ///
+  /// Optional.
   core.String updateMask;
 
   GoogleCloudDialogflowV2BatchUpdateIntentsRequest();
@@ -5707,27 +5910,33 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
   }
 }
 
-/// Dialogflow contexts are similar to natural language context. If a person
-/// says to you "they are orange", you need context in order to understand what
-/// "they" is referring to. Similarly, for Dialogflow to handle an end-user
-/// expression like that, it needs to be provided with context in order to
-/// correctly match an intent. Using contexts, you can control the flow of a
-/// conversation. You can configure contexts for an intent by setting input and
-/// output contexts, which are identified by string names. When an intent is
+/// Dialogflow contexts are similar to natural language context.
+///
+/// If a person says to you "they are orange", you need context in order to
+/// understand what "they" is referring to. Similarly, for Dialogflow to handle
+/// an end-user expression like that, it needs to be provided with context in
+/// order to correctly match an intent. Using contexts, you can control the flow
+/// of a conversation. You can configure contexts for an intent by setting input
+/// and output contexts, which are identified by string names. When an intent is
 /// matched, any configured output contexts for that intent become active. While
 /// any contexts are active, Dialogflow is more likely to match intents that are
 /// configured with input contexts that correspond to the currently active
 /// contexts. For more information about context, see the [Contexts
 /// guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class GoogleCloudDialogflowV2Context {
-  /// Optional. The number of conversational query requests after which the
-  /// context expires. The default is `0`. If set to `0`, the context expires
-  /// immediately. Contexts expire automatically after 20 minutes if there are
-  /// no matching queries.
+  /// The number of conversational query requests after which the context
+  /// expires.
+  ///
+  /// The default is `0`. If set to `0`, the context expires immediately.
+  /// Contexts expire automatically after 20 minutes if there are no matching
+  /// queries.
+  ///
+  /// Optional.
   core.int lifespanCount;
 
-  /// Required. The unique identifier of the context. Format:
-  /// `projects//agent/sessions//contexts/`, or
+  /// The unique identifier of the context.
+  ///
+  /// Format: `projects//agent/sessions//contexts/`, or
   /// `projects//agent/environments//users//sessions//contexts/`. The `Context
   /// ID` is always converted to lowercase, may only contain characters in
   /// a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not
@@ -5736,9 +5945,12 @@ class GoogleCloudDialogflowV2Context {
   /// reserved for internal use by Dialogflow. You should not use these contexts
   /// or create contexts with these names: * `__system_counters__` *
   /// `*_id_dialog_context` * `*_dialog_params_size`
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. The collection of parameters associated with this context.
+  /// The collection of parameters associated with this context.
+  ///
   /// Depending on your protocol or client library language, this is a map,
   /// associative array, symbol table, dictionary, or JSON object composed of a
   /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
@@ -5747,6 +5959,8 @@ class GoogleCloudDialogflowV2Context {
   /// value type - MapValue value: - If parameter's entity type is a composite
   /// entity: map from composite entity property names to property values -
   /// Else: parameter value
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5792,11 +6006,13 @@ class GoogleCloudDialogflowV2Context {
 /// lifecycle events.
 class GoogleCloudDialogflowV2ConversationEvent {
   /// The unique identifier of the conversation this notification refers to.
+  ///
   /// Format: `projects//conversations/`.
   core.String conversation;
 
-  /// More detailed information about an error. Only set for type
-  /// UNRECOVERABLE_ERROR_IN_PHONE_CALL.
+  /// More detailed information about an error.
+  ///
+  /// Only set for type UNRECOVERABLE_ERROR_IN_PHONE_CALL.
   GoogleRpcStatus errorStatus;
 
   /// Payload of NEW_MESSAGE event.
@@ -5863,9 +6079,10 @@ class GoogleCloudDialogflowV2ConversationEvent {
 
 /// The request to detect user's intent.
 class GoogleCloudDialogflowV2DetectIntentRequest {
-  /// The natural language speech audio to be processed. This field should be
-  /// populated iff `query_input` is set to an input audio config. A single
-  /// request can contain up to 1 minute of speech audio data.
+  /// The natural language speech audio to be processed.
+  ///
+  /// This field should be populated iff `query_input` is set to an input audio
+  /// config. A single request can contain up to 1 minute of speech audio data.
   core.String inputAudio;
   core.List<core.int> get inputAudioAsBytes =>
       convert.base64.decode(inputAudio);
@@ -5875,21 +6092,27 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Instructs the speech synthesizer how to generate the output audio. If this
-  /// field is not set and agent-level speech synthesizer is not configured, no
-  /// output audio is generated.
+  /// Instructs the speech synthesizer how to generate the output audio.
+  ///
+  /// If this field is not set and agent-level speech synthesizer is not
+  /// configured, no output audio is generated.
   GoogleCloudDialogflowV2OutputAudioConfig outputAudioConfig;
 
   /// Mask for output_audio_config indicating which settings in this
   /// request-level config should override speech synthesizer settings defined
-  /// at agent-level. If unspecified or empty, output_audio_config replaces the
-  /// agent-level config in its entirety.
+  /// at agent-level.
+  ///
+  /// If unspecified or empty, output_audio_config replaces the agent-level
+  /// config in its entirety.
   core.String outputAudioConfigMask;
 
-  /// Required. The input specification. It can be set to: 1. an audio config
-  /// which instructs the speech recognizer how to process the speech audio, 2.
-  /// a conversational query in the form of text, or 3. an event that specifies
-  /// which intent to trigger.
+  /// The input specification.
+  ///
+  /// It can be set to: 1. an audio config which instructs the speech recognizer
+  /// how to process the speech audio, 2. a conversational query in the form of
+  /// text, or 3. an event that specifies which intent to trigger.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2QueryInput queryInput;
 
   /// The parameters of this query.
@@ -5941,14 +6164,15 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
 
 /// The message returned from the DetectIntent method.
 class GoogleCloudDialogflowV2DetectIntentResponse {
-  /// The audio data bytes encoded as specified in the request. Note: The output
-  /// audio is generated based on the values of default platform text responses
-  /// found in the `query_result.fulfillment_messages` field. If multiple
-  /// default text responses exist, they will be concatenated when generating
-  /// audio. If no default platform text responses exist, the generated audio
-  /// content will be empty. In some scenarios, multiple output audio fields may
-  /// be present in the response structure. In these cases, only the
-  /// top-most-level audio output has content.
+  /// The audio data bytes encoded as specified in the request.
+  ///
+  /// Note: The output audio is generated based on the values of default
+  /// platform text responses found in the `query_result.fulfillment_messages`
+  /// field. If multiple default text responses exist, they will be concatenated
+  /// when generating audio. If no default platform text responses exist, the
+  /// generated audio content will be empty. In some scenarios, multiple output
+  /// audio fields may be present in the response structure. In these cases,
+  /// only the top-most-level audio output has content.
   core.String outputAudio;
   core.List<core.int> get outputAudioAsBytes =>
       convert.base64.decode(outputAudio);
@@ -5961,12 +6185,15 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
   /// The config used by the speech synthesizer to generate the output audio.
   GoogleCloudDialogflowV2OutputAudioConfig outputAudioConfig;
 
-  /// The selected results of the conversational query or event processing. See
-  /// `alternative_query_results` for additional potential results.
+  /// The selected results of the conversational query or event processing.
+  ///
+  /// See `alternative_query_results` for additional potential results.
   GoogleCloudDialogflowV2QueryResult queryResult;
 
-  /// The unique identifier of the response. It can be used to locate a response
-  /// in the training example set or for reporting issues.
+  /// The unique identifier of the response.
+  ///
+  /// It can be used to locate a response in the training example set or for
+  /// reporting issues.
   core.String responseId;
 
   /// Specifies the status of the webhook request.
@@ -6017,16 +6244,19 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
 }
 
 /// Each intent parameter has a type, called the entity type, which dictates
-/// exactly how data from an end-user expression is extracted. Dialogflow
-/// provides predefined system entities that can match many common types of
-/// data. For example, there are system entities for matching dates, times,
-/// colors, email addresses, and so on. You can also create your own custom
-/// entities for matching custom data. For example, you could define a vegetable
-/// entity that can match the types of vegetables available for purchase with a
-/// grocery store agent. For more information, see the [Entity
+/// exactly how data from an end-user expression is extracted.
+///
+/// Dialogflow provides predefined system entities that can match many common
+/// types of data. For example, there are system entities for matching dates,
+/// times, colors, email addresses, and so on. You can also create your own
+/// custom entities for matching custom data. For example, you could define a
+/// vegetable entity that can match the types of vegetables available for
+/// purchase with a grocery store agent. For more information, see the [Entity
 /// guide](https://cloud.google.com/dialogflow/docs/entities-overview).
 class GoogleCloudDialogflowV2EntityType {
-  /// Optional. Indicates whether the entity type can be automatically expanded.
+  /// Indicates whether the entity type can be automatically expanded.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "AUTO_EXPANSION_MODE_UNSPECIFIED" : Auto expansion disabled for the
   /// entity.
@@ -6034,17 +6264,24 @@ class GoogleCloudDialogflowV2EntityType {
   /// have not been explicitly listed in the entity.
   core.String autoExpansionMode;
 
-  /// Required. The name of the entity type.
+  /// The name of the entity type.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. Enables fuzzy entity extraction during classification.
+  /// Enables fuzzy entity extraction during classification.
+  ///
+  /// Optional.
   core.bool enableFuzzyExtraction;
 
-  /// Optional. The collection of entity entries associated with the entity
-  /// type.
+  /// The collection of entity entries associated with the entity type.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity> entities;
 
-  /// Required. Indicates the kind of entity type.
+  /// Indicates the kind of entity type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "KIND_UNSPECIFIED" : Not specified. This value should be never used.
   /// - "KIND_MAP" : Map entity types allow mapping of a group of synonyms to a
@@ -6056,9 +6293,11 @@ class GoogleCloudDialogflowV2EntityType {
   /// in entries values.
   core.String kind;
 
-  /// The unique identifier of the entity type. Required for
-  /// EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes
-  /// methods. Format: `projects//agent/entityTypes/`.
+  /// The unique identifier of the entity type.
+  ///
+  /// Required for EntityTypes.UpdateEntityType and
+  /// EntityTypes.BatchUpdateEntityTypes methods. Format:
+  /// `projects//agent/entityTypes/`.
   core.String name;
 
   GoogleCloudDialogflowV2EntityType();
@@ -6141,17 +6380,24 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
 
 /// An **entity entry** for an associated entity type.
 class GoogleCloudDialogflowV2EntityTypeEntity {
-  /// Required. A collection of value synonyms. For example, if the entity type
-  /// is *vegetable*, and `value` is *scallions*, a synonym could be *green
-  /// onions*. For `KIND_LIST` entity types: * This collection must contain
-  /// exactly one synonym equal to `value`.
+  /// A collection of value synonyms.
+  ///
+  /// For example, if the entity type is *vegetable*, and `value` is
+  /// *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity
+  /// types: * This collection must contain exactly one synonym equal to
+  /// `value`.
+  ///
+  /// Required.
   core.List<core.String> synonyms;
 
-  /// Required. The primary value associated with this entity entry. For
-  /// example, if the entity type is *vegetable*, the value could be
+  /// The primary value associated with this entity entry.
+  ///
+  /// For example, if the entity type is *vegetable*, the value could be
   /// *scallions*. For `KIND_MAP` entity types: * A reference value to be used
   /// in place of synonyms. For `KIND_LIST` entity types: * A string that can
   /// contain references to other entity types (with or without aliases).
+  ///
+  /// Required.
   core.String value;
 
   GoogleCloudDialogflowV2EntityTypeEntity();
@@ -6180,30 +6426,46 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
 }
 
 /// You can create multiple versions of your agent and publish them to separate
-/// environments. When you edit an agent, you are editing the draft agent. At
-/// any point, you can save the draft agent as an agent version, which is an
-/// immutable snapshot of your agent. When you save the draft agent, it is
-/// published to the default environment. When you create agent versions, you
-/// can publish them to custom environments. You can create a variety of custom
-/// environments for: - testing - development - production - etc. For more
-/// information, see the [versions and environments
+/// environments.
+///
+/// When you edit an agent, you are editing the draft agent. At any point, you
+/// can save the draft agent as an agent version, which is an immutable snapshot
+/// of your agent. When you save the draft agent, it is published to the default
+/// environment. When you create agent versions, you can publish them to custom
+/// environments. You can create a variety of custom environments for: - testing
+/// - development - production - etc. For more information, see the [versions
+/// and environments
 /// guide](https://cloud.google.com/dialogflow/docs/agents-versions).
 class GoogleCloudDialogflowV2Environment {
-  /// Optional. The agent version loaded into this environment. Format:
-  /// `projects//agent/versions/`.
+  /// The agent version loaded into this environment.
+  ///
+  /// Format: `projects//agent/versions/`.
+  ///
+  /// Optional.
   core.String agentVersion;
 
-  /// Optional. The developer-provided description for this environment. The
-  /// maximum length is 500 characters. If exceeded, the request is rejected.
+  /// The developer-provided description for this environment.
+  ///
+  /// The maximum length is 500 characters. If exceeded, the request is
+  /// rejected.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Output only. The unique identifier of this agent environment. Format:
-  /// `projects//agent/environments/`. For Environment ID, "-" is reserved for
-  /// 'draft' environment.
+  /// The unique identifier of this agent environment.
+  ///
+  /// Format: `projects//agent/environments/`. For Environment ID, "-" is
+  /// reserved for 'draft' environment.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. The state of this environment. This field is read-only, i.e.,
-  /// it cannot be set by create and update methods.
+  /// The state of this environment.
+  ///
+  /// This field is read-only, i.e., it cannot be set by create and update
+  /// methods.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Not specified. This value is not used.
   /// - "STOPPED" : Stopped.
@@ -6211,8 +6473,12 @@ class GoogleCloudDialogflowV2Environment {
   /// - "RUNNING" : Running.
   core.String state;
 
-  /// Output only. The last update time of this environment. This field is
-  /// read-only, i.e., it cannot be set by create and update methods.
+  /// The last update time of this environment.
+  ///
+  /// This field is read-only, i.e., it cannot be set by create and update
+  /// methods.
+  ///
+  /// Output only.
   core.String updateTime;
 
   GoogleCloudDialogflowV2Environment();
@@ -6257,27 +6523,37 @@ class GoogleCloudDialogflowV2Environment {
 }
 
 /// Events allow for matching intents by event name instead of the natural
-/// language input. For instance, input `` can trigger a personalized welcome
-/// response. The parameter `name` may be used by the agent in the response:
-/// `"Hello #welcome_event.name! What can I do for you today?"`.
+/// language input.
+///
+/// For instance, input `` can trigger a personalized welcome response. The
+/// parameter `name` may be used by the agent in the response: `"Hello
+/// #welcome_event.name! What can I do for you today?"`.
 class GoogleCloudDialogflowV2EventInput {
-  /// Required. The language of this query. See [Language
+  /// The language of this query.
+  ///
+  /// See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes. Note that queries in the
   /// same session do not necessarily need to specify the same language.
+  ///
+  /// Required.
   core.String languageCode;
 
-  /// Required. The unique identifier of the event.
+  /// The unique identifier of the event.
+  ///
+  /// Required.
   core.String name;
 
-  /// The collection of parameters associated with the event. Depending on your
-  /// protocol or client library language, this is a map, associative array,
-  /// symbol table, dictionary, or JSON object composed of a collection of
-  /// (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter
-  /// name - MapValue type: - If parameter's entity type is a composite entity:
-  /// map - Else: string or number, depending on parameter value type - MapValue
-  /// value: - If parameter's entity type is a composite entity: map from
-  /// composite entity property names to property values - Else: parameter value
+  /// The collection of parameters associated with the event.
+  ///
+  /// Depending on your protocol or client library language, this is a map,
+  /// associative array, symbol table, dictionary, or JSON object composed of a
+  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
+  /// value: parameter name - MapValue type: - If parameter's entity type is a
+  /// composite entity: map - Else: string or number, depending on parameter
+  /// value type - MapValue value: - If parameter's entity type is a composite
+  /// entity: map from composite entity property names to property values -
+  /// Else: parameter value
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6321,10 +6597,13 @@ class GoogleCloudDialogflowV2EventInput {
 
 /// The request message for Agents.ExportAgent.
 class GoogleCloudDialogflowV2ExportAgentRequest {
-  /// Required. The [Google Cloud
-  /// Storage](https://cloud.google.com/storage/docs/) URI to export the agent
-  /// to. The format of this URI must be `gs:///`. If left unspecified, the
+  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+  /// export the agent to.
+  ///
+  /// The format of this URI must be `gs:///`. If left unspecified, the
   /// serialized agent is returned inline.
+  ///
+  /// Required.
   core.String agentUri;
 
   GoogleCloudDialogflowV2ExportAgentRequest();
@@ -6356,8 +6635,10 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The URI to a file containing the exported agent. This field is populated
-  /// only if `agent_uri` is specified in `ExportAgentRequest`.
+  /// The URI to a file containing the exported agent.
+  ///
+  /// This field is populated only if `agent_uri` is specified in
+  /// `ExportAgentRequest`.
   core.String agentUri;
 
   GoogleCloudDialogflowV2ExportAgentResponse();
@@ -6384,6 +6665,7 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
 }
 
 /// By default, your agent responds to a matched intent with a static response.
+///
 /// As an alternative, you can provide a more dynamic response by using
 /// fulfillment. When you enable fulfillment for an intent, Dialogflow responds
 /// to that intent by calling a service that you define. For example, if an
@@ -6392,22 +6674,29 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
 /// Friday. For more information, see the [fulfillment
 /// guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 class GoogleCloudDialogflowV2Fulfillment {
-  /// Optional. The human-readable name of the fulfillment, unique within the
-  /// agent.
+  /// The human-readable name of the fulfillment, unique within the agent.
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// Optional. Whether fulfillment is enabled.
+  /// Whether fulfillment is enabled.
+  ///
+  /// Optional.
   core.bool enabled;
 
-  /// Optional. The field defines whether the fulfillment is enabled for certain
-  /// features.
+  /// The field defines whether the fulfillment is enabled for certain features.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2FulfillmentFeature> features;
 
   /// Configuration for a generic web service.
   GoogleCloudDialogflowV2FulfillmentGenericWebService genericWebService;
 
-  /// Required. The unique identifier of the fulfillment. Format:
-  /// `projects//agent/fulfillment`.
+  /// The unique identifier of the fulfillment.
+  ///
+  /// Format: `projects//agent/fulfillment`.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudDialogflowV2Fulfillment();
@@ -6483,28 +6772,41 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
   }
 }
 
-/// Represents configuration for a generic web service. Dialogflow supports two
-/// mechanisms for authentications: - Basic authentication with username and
-/// password. - Authentication with additional authentication headers. More
-/// information could be found at:
+/// Represents configuration for a generic web service.
+///
+/// Dialogflow supports two mechanisms for authentications: - Basic
+/// authentication with username and password. - Authentication with additional
+/// authentication headers. More information could be found at:
 /// https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 class GoogleCloudDialogflowV2FulfillmentGenericWebService {
-  /// Optional. Indicates if generic web service is created through Cloud
-  /// Functions integration. Defaults to false.
+  /// Indicates if generic web service is created through Cloud Functions
+  /// integration.
+  ///
+  /// Defaults to false.
+  ///
+  /// Optional.
   core.bool isCloudFunction;
 
-  /// Optional. The password for HTTP Basic authentication.
+  /// The password for HTTP Basic authentication.
+  ///
+  /// Optional.
   core.String password;
 
-  /// Optional. The HTTP request headers to send together with fulfillment
-  /// requests.
+  /// The HTTP request headers to send together with fulfillment requests.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> requestHeaders;
 
-  /// Required. The fulfillment URI for receiving POST requests. It must use
-  /// https protocol.
+  /// The fulfillment URI for receiving POST requests.
+  ///
+  /// It must use https protocol.
+  ///
+  /// Required.
   core.String uri;
 
-  /// Optional. The user name for HTTP Basic authentication.
+  /// The user name for HTTP Basic authentication.
+  ///
+  /// Optional.
   core.String username;
 
   GoogleCloudDialogflowV2FulfillmentGenericWebService();
@@ -6568,6 +6870,7 @@ class GoogleCloudDialogflowV2ImportAgentRequest {
   }
 
   /// The URI to a Google Cloud Storage file containing the agent to import.
+  ///
   /// Note: The URI must start with "gs://".
   core.String agentUri;
 
@@ -6621,7 +6924,9 @@ class GoogleCloudDialogflowV2ImportDocumentsResponse {
 
 /// Instructs the speech recognizer how to process the audio content.
 class GoogleCloudDialogflowV2InputAudioConfig {
-  /// Required. Audio encoding of the audio content to process.
+  /// Audio encoding of the audio content to process.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified.
   /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
@@ -6658,24 +6963,29 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
   /// with information about the recognized speech words, e.g. start and end
-  /// time offsets. If false or unspecified, Speech doesn't return any
-  /// word-level information.
+  /// time offsets.
+  ///
+  /// If false or unspecified, Speech doesn't return any word-level information.
   core.bool enableWordInfo;
 
-  /// Required. The language of the supplied audio. Dialogflow does not do
-  /// translations. See [Language
+  /// The language of the supplied audio.
+  ///
+  /// Dialogflow does not do translations. See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes. Note that queries in the
   /// same session do not necessarily need to specify the same language.
+  ///
+  /// Required.
   core.String languageCode;
 
-  /// Which Speech model to select for the given request. Select the model best
-  /// suited to your domain to get best results. If a model is not explicitly
-  /// specified, then we auto-select a model based on the parameters in the
-  /// InputAudioConfig. If enhanced speech model is enabled for the agent and an
-  /// enhanced version of the specified model for the language does not exist,
-  /// then the speech is recognized using the standard version of the specified
-  /// model. Refer to [Cloud Speech API
+  /// Which Speech model to select for the given request.
+  ///
+  /// Select the model best suited to your domain to get best results. If a
+  /// model is not explicitly specified, then we auto-select a model based on
+  /// the parameters in the InputAudioConfig. If enhanced speech model is
+  /// enabled for the agent and an enhanced version of the specified model for
+  /// the language does not exist, then the speech is recognized using the
+  /// standard version of the specified model. Refer to [Cloud Speech API
   /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
   /// for more details.
   core.String model;
@@ -6703,7 +7013,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   core.String modelVariant;
 
   /// A list of strings containing words and phrases that the speech recognizer
-  /// should recognize with higher likelihood. See [the Cloud Speech
+  /// should recognize with higher likelihood.
+  ///
+  /// See [the Cloud Speech
   /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
   /// for more details. This field is deprecated. Please use [speech_contexts]()
   /// instead. If you specify both [phrase_hints]() and [speech_contexts](),
@@ -6711,23 +7023,30 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// [SpeechContext]().
   core.List<core.String> phraseHints;
 
-  /// Required. Sample rate (in Hertz) of the audio content sent in the query.
+  /// Sample rate (in Hertz) of the audio content sent in the query.
+  ///
   /// Refer to [Cloud Speech API
   /// documentation](https://cloud.google.com/speech-to-text/docs/basics) for
   /// more details.
+  ///
+  /// Required.
   core.int sampleRateHertz;
 
   /// If `false` (default), recognition does not cease until the client closes
-  /// the stream. If `true`, the recognizer will detect a single spoken
-  /// utterance in input audio. Recognition ceases when it detects the audio's
-  /// voice has stopped or paused. In this case, once a detected intent is
-  /// received, the client should close the stream and start a new request with
-  /// a new stream as needed. Note: This setting is relevant only for streaming
-  /// methods. Note: When specified, InputAudioConfig.single_utterance takes
-  /// precedence over StreamingDetectIntentRequest.single_utterance.
+  /// the stream.
+  ///
+  /// If `true`, the recognizer will detect a single spoken utterance in input
+  /// audio. Recognition ceases when it detects the audio's voice has stopped or
+  /// paused. In this case, once a detected intent is received, the client
+  /// should close the stream and start a new request with a new stream as
+  /// needed. Note: This setting is relevant only for streaming methods. Note:
+  /// When specified, InputAudioConfig.single_utterance takes precedence over
+  /// StreamingDetectIntentRequest.single_utterance.
   core.bool singleUtterance;
 
-  /// Context information to assist speech recognition. See [the Cloud Speech
+  /// Context information to assist speech recognition.
+  ///
+  /// See [the Cloud Speech
   /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
   /// for more details.
   core.List<GoogleCloudDialogflowV2SpeechContext> speechContexts;
@@ -6804,94 +7123,139 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   }
 }
 
-/// An intent categorizes an end-user's intention for one conversation turn. For
-/// each agent, you define many intents, where your combined intents can handle
-/// a complete conversation. When an end-user writes or says something, referred
-/// to as an end-user expression or end-user input, Dialogflow matches the
-/// end-user input to the best intent in your agent. Matching an intent is also
-/// known as intent classification. For more information, see the [intent
+/// An intent categorizes an end-user's intention for one conversation turn.
+///
+/// For each agent, you define many intents, where your combined intents can
+/// handle a complete conversation. When an end-user writes or says something,
+/// referred to as an end-user expression or end-user input, Dialogflow matches
+/// the end-user input to the best intent in your agent. Matching an intent is
+/// also known as intent classification. For more information, see the [intent
 /// guide](https://cloud.google.com/dialogflow/docs/intents-overview).
 class GoogleCloudDialogflowV2Intent {
-  /// Optional. The name of the action associated with the intent. Note: The
-  /// action name must not contain whitespaces.
+  /// The name of the action associated with the intent.
+  ///
+  /// Note: The action name must not contain whitespaces.
+  ///
+  /// Optional.
   core.String action;
 
-  /// Optional. The list of platforms for which the first responses will be
-  /// copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+  /// The list of platforms for which the first responses will be copied from
+  /// the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+  ///
+  /// Optional.
   core.List<core.String> defaultResponsePlatforms;
 
-  /// Required. The name of this intent.
+  /// The name of this intent.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. The collection of event names that trigger the intent. If the
-  /// collection of input contexts is not empty, all of the contexts must be
-  /// present in the active user session for an event to trigger this intent.
+  /// The collection of event names that trigger the intent.
+  ///
+  /// If the collection of input contexts is not empty, all of the contexts must
+  /// be present in the active user session for an event to trigger this intent.
   /// Event names are limited to 150 characters.
+  ///
+  /// Optional.
   core.List<core.String> events;
 
-  /// Read-only. Information about all followup intents that have this intent as
-  /// a direct or indirect parent. We populate this field only in the output.
+  /// Read-only.
+  ///
+  /// Information about all followup intents that have this intent as a direct
+  /// or indirect parent. We populate this field only in the output.
   core.List<GoogleCloudDialogflowV2IntentFollowupIntentInfo> followupIntentInfo;
 
-  /// Optional. The list of context names required for this intent to be
-  /// triggered. Format: `projects//agent/sessions/-/contexts/`.
+  /// The list of context names required for this intent to be triggered.
+  ///
+  /// Format: `projects//agent/sessions/-/contexts/`.
+  ///
+  /// Optional.
   core.List<core.String> inputContextNames;
 
-  /// Optional. Indicates whether this is a fallback intent.
+  /// Indicates whether this is a fallback intent.
+  ///
+  /// Optional.
   core.bool isFallback;
 
-  /// Optional. The collection of rich messages corresponding to the `Response`
-  /// field in the Dialogflow console.
+  /// The collection of rich messages corresponding to the `Response` field in
+  /// the Dialogflow console.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessage> messages;
 
-  /// Optional. Indicates whether Machine Learning is disabled for the intent.
+  /// Indicates whether Machine Learning is disabled for the intent.
+  ///
   /// Note: If `ml_disabled` setting is set to true, then this intent is not
   /// taken into account during inference in `ML ONLY` match mode. Also,
   /// auto-markup in the UI is turned off.
+  ///
+  /// Optional.
   core.bool mlDisabled;
 
-  /// Optional. The unique identifier of this intent. Required for
-  /// Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Format:
-  /// `projects//agent/intents/`.
+  /// The unique identifier of this intent.
+  ///
+  /// Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods.
+  /// Format: `projects//agent/intents/`.
+  ///
+  /// Optional.
   core.String name;
 
-  /// Optional. The collection of contexts that are activated when the intent is
-  /// matched. Context messages in this collection should not set the parameters
-  /// field. Setting the `lifespan_count` to 0 will reset the context when the
-  /// intent is matched. Format: `projects//agent/sessions/-/contexts/`.
+  /// The collection of contexts that are activated when the intent is matched.
+  ///
+  /// Context messages in this collection should not set the parameters field.
+  /// Setting the `lifespan_count` to 0 will reset the context when the intent
+  /// is matched. Format: `projects//agent/sessions/-/contexts/`.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2Context> outputContexts;
 
-  /// Optional. The collection of parameters associated with the intent.
+  /// The collection of parameters associated with the intent.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentParameter> parameters;
 
-  /// Read-only after creation. The unique identifier of the parent intent in
-  /// the chain of followup intents. You can set this field when creating an
-  /// intent, for example with CreateIntent or BatchUpdateIntents, in order to
-  /// make this intent a followup intent. It identifies the parent followup
-  /// intent. Format: `projects//agent/intents/`.
+  /// Read-only after creation.
+  ///
+  /// The unique identifier of the parent intent in the chain of followup
+  /// intents. You can set this field when creating an intent, for example with
+  /// CreateIntent or BatchUpdateIntents, in order to make this intent a
+  /// followup intent. It identifies the parent followup intent. Format:
+  /// `projects//agent/intents/`.
   core.String parentFollowupIntentName;
 
-  /// Optional. The priority of this intent. Higher numbers represent higher
-  /// priorities. - If the supplied value is unspecified or 0, the service
-  /// translates the value to 500,000, which corresponds to the `Normal`
-  /// priority in the console. - If the supplied value is negative, the intent
-  /// is ignored in runtime detect intent requests.
+  /// The priority of this intent.
+  ///
+  /// Higher numbers represent higher priorities. - If the supplied value is
+  /// unspecified or 0, the service translates the value to 500,000, which
+  /// corresponds to the `Normal` priority in the console. - If the supplied
+  /// value is negative, the intent is ignored in runtime detect intent
+  /// requests.
+  ///
+  /// Optional.
   core.int priority;
 
-  /// Optional. Indicates whether to delete all contexts in the current session
-  /// when this intent is matched.
+  /// Indicates whether to delete all contexts in the current session when this
+  /// intent is matched.
+  ///
+  /// Optional.
   core.bool resetContexts;
 
-  /// Read-only. The unique identifier of the root intent in the chain of
-  /// followup intents. It identifies the correct followup intents chain for
-  /// this intent. We populate this field only in the output. Format:
+  /// Read-only.
+  ///
+  /// The unique identifier of the root intent in the chain of followup intents.
+  /// It identifies the correct followup intents chain for this intent. We
+  /// populate this field only in the output. Format:
   /// `projects//agent/intents/`.
   core.String rootFollowupIntentName;
 
-  /// Optional. The collection of examples that the agent is trained on.
+  /// The collection of examples that the agent is trained on.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentTrainingPhrase> trainingPhrases;
 
-  /// Optional. Indicates whether webhooks are enabled for the intent.
+  /// Indicates whether webhooks are enabled for the intent.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WEBHOOK_STATE_UNSPECIFIED" : Webhook is disabled in the agent and in
   /// the intent.
@@ -7080,12 +7444,14 @@ class GoogleCloudDialogflowV2IntentBatch {
 
 /// Represents a single followup intent in the chain.
 class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
-  /// The unique identifier of the followup intent. Format:
-  /// `projects//agent/intents/`.
+  /// The unique identifier of the followup intent.
+  ///
+  /// Format: `projects//agent/intents/`.
   core.String followupIntentName;
 
-  /// The unique identifier of the followup intent's parent. Format:
-  /// `projects//agent/intents/`.
+  /// The unique identifier of the followup intent's parent.
+  ///
+  /// Format: `projects//agent/intents/`.
   core.String parentFollowupIntentName;
 
   GoogleCloudDialogflowV2IntentFollowupIntentInfo();
@@ -7112,8 +7478,10 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
   }
 }
 
-/// A rich response message. Corresponds to the intent `Response` field in the
-/// Dialogflow console. For more information, see [Rich response
+/// A rich response message.
+///
+/// Corresponds to the intent `Response` field in the Dialogflow console. For
+/// more information, see [Rich response
 /// messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
 class GoogleCloudDialogflowV2IntentMessage {
   /// The basic card response for Actions on Google.
@@ -7146,7 +7514,9 @@ class GoogleCloudDialogflowV2IntentMessage {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// Optional. The platform that this message is intended for.
+  /// The platform that this message is intended for.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PLATFORM_UNSPECIFIED" : Default platform.
   /// - "FACEBOOK" : Facebook.
@@ -7302,21 +7672,33 @@ class GoogleCloudDialogflowV2IntentMessage {
   }
 }
 
-/// The basic card message. Useful for displaying information.
+/// The basic card message.
+///
+/// Useful for displaying information.
 class GoogleCloudDialogflowV2IntentMessageBasicCard {
-  /// Optional. The collection of card buttons.
+  /// The collection of card buttons.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageBasicCardButton> buttons;
 
-  /// Required, unless image is present. The body text of the card.
+  /// Required, unless image is present.
+  ///
+  /// The body text of the card.
   core.String formattedText;
 
-  /// Optional. The image for the card.
+  /// The image for the card.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage image;
 
-  /// Optional. The subtitle of the card.
+  /// The subtitle of the card.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Optional. The title of the card.
+  /// The title of the card.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageBasicCard();
@@ -7367,11 +7749,15 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
 
 /// The button object that appears at the bottom of a card.
 class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
-  /// Required. Action to take when a user taps on the button.
+  /// Action to take when a user taps on the button.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
       openUriAction;
 
-  /// Required. The title of the button.
+  /// The title of the button.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageBasicCardButton();
@@ -7402,7 +7788,9 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
 
 /// Opens the given URI.
 class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
-  /// Required. The HTTP or HTTPS scheme URI.
+  /// The HTTP or HTTPS scheme URI.
+  ///
+  /// Required.
   core.String uri;
 
   GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction();
@@ -7424,10 +7812,14 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
 }
 
 /// Browse Carousel Card for Actions on Google.
+///
 /// https://developers.google.com/actions/assistant/responses#browsing_carousel
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
-  /// Optional. Settings for displaying the image. Applies to every image in
-  /// items.
+  /// Settings for displaying the image.
+  ///
+  /// Applies to every image in items.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" : Fill the gaps between the image
   /// and the image container with gray bars.
@@ -7445,8 +7837,11 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   /// blurred copy of the same image.
   core.String imageDisplayOptions;
 
-  /// Required. List of items in the Browse Carousel Card. Minimum of two items,
-  /// maximum of ten.
+  /// List of items in the Browse Carousel Card.
+  ///
+  /// Minimum of two items, maximum of ten.
+  ///
+  /// Required.
   core.List<
           GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
       items;
@@ -7482,21 +7877,36 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
 
 /// Browsing carousel tile
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
-  /// Optional. Description of the carousel item. Maximum of four lines of text.
+  /// Description of the carousel item.
+  ///
+  /// Maximum of four lines of text.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Text that appears at the bottom of the Browse Carousel Card.
+  /// Text that appears at the bottom of the Browse Carousel Card.
+  ///
   /// Maximum of one line of text.
+  ///
+  /// Optional.
   core.String footer;
 
-  /// Optional. Hero image for the carousel item.
+  /// Hero image for the carousel item.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage image;
 
-  /// Required. Action to present to the user.
+  /// Action to present to the user.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
       openUriAction;
 
-  /// Required. Title of the carousel item. Maximum of two lines of text.
+  /// Title of the carousel item.
+  ///
+  /// Maximum of two lines of text.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
@@ -7547,11 +7957,16 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
 
 /// Actions on Google action to open a given url.
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
-  /// Required. URL
+  /// URL
+  ///
+  /// Required.
   core.String url;
 
-  /// Optional. Specifies the type of viewer that is used when opening the URL.
+  /// Specifies the type of viewer that is used when opening the URL.
+  ///
   /// Defaults to opening via web browser.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "URL_TYPE_HINT_UNSPECIFIED" : Unspecified
   /// - "AMP_ACTION" : Url would be an amp action
@@ -7585,16 +8000,24 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
 
 /// The card response message.
 class GoogleCloudDialogflowV2IntentMessageCard {
-  /// Optional. The collection of card buttons.
+  /// The collection of card buttons.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageCardButton> buttons;
 
-  /// Optional. The public URI to an image file for the card.
+  /// The public URI to an image file for the card.
+  ///
+  /// Optional.
   core.String imageUri;
 
-  /// Optional. The subtitle of the card.
+  /// The subtitle of the card.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Optional. The title of the card.
+  /// The title of the card.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageCard();
@@ -7638,10 +8061,14 @@ class GoogleCloudDialogflowV2IntentMessageCard {
 
 /// Contains information about a button.
 class GoogleCloudDialogflowV2IntentMessageCardButton {
-  /// Optional. The text to send back to the Dialogflow API or a URI to open.
+  /// The text to send back to the Dialogflow API or a URI to open.
+  ///
+  /// Optional.
   core.String postback;
 
-  /// Optional. The text to show on the button.
+  /// The text to show on the button.
+  ///
+  /// Optional.
   core.String text;
 
   GoogleCloudDialogflowV2IntentMessageCardButton();
@@ -7669,7 +8096,9 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
 
 /// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
-  /// Required. Carousel items.
+  /// Carousel items.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem> items;
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelect();
@@ -7695,16 +8124,24 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
 
 /// An item in the carousel.
 class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
-  /// Optional. The body text of the card.
+  /// The body text of the card.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. The image to display.
+  /// The image to display.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage image;
 
-  /// Required. Additional info about the option item.
+  /// Additional info about the option item.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo info;
 
-  /// Required. Title of the carousel item.
+  /// Title of the carousel item.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelectItem();
@@ -7747,10 +8184,14 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
 
 /// Column properties for TableCard.
 class GoogleCloudDialogflowV2IntentMessageColumnProperties {
-  /// Required. Column heading.
+  /// Column heading.
+  ///
+  /// Required.
   core.String header;
 
-  /// Optional. Defines text alignment for all cells in this column.
+  /// Defines text alignment for all cells in this column.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Text is aligned to the leading edge
   /// of the column.
@@ -7785,11 +8226,15 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
 
 /// The image response message.
 class GoogleCloudDialogflowV2IntentMessageImage {
-  /// Optional. A text description of the image to be used for accessibility,
-  /// e.g., screen readers.
+  /// A text description of the image to be used for accessibility, e.g., screen
+  /// readers.
+  ///
+  /// Optional.
   core.String accessibilityText;
 
-  /// Optional. The public URI to an image file.
+  /// The public URI to an image file.
+  ///
+  /// Optional.
   core.String imageUri;
 
   GoogleCloudDialogflowV2IntentMessageImage();
@@ -7818,11 +8263,14 @@ class GoogleCloudDialogflowV2IntentMessageImage {
 /// The suggestion chip message that allows the user to jump out to the app or
 /// website associated with this agent.
 class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
-  /// Required. The name of the app or site this chip is linking to.
+  /// The name of the app or site this chip is linking to.
+  ///
+  /// Required.
   core.String destinationName;
 
-  /// Required. The URI of the app or site to open when the user taps the
-  /// suggestion chip.
+  /// The URI of the app or site to open when the user taps the suggestion chip.
+  ///
+  /// Required.
   core.String uri;
 
   GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion();
@@ -7851,13 +8299,19 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
 
 /// The card for presenting a list of options to select from.
 class GoogleCloudDialogflowV2IntentMessageListSelect {
-  /// Required. List items.
+  /// List items.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageListSelectItem> items;
 
-  /// Optional. Subtitle of the list.
+  /// Subtitle of the list.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Optional. The overall title of the list.
+  /// The overall title of the list.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageListSelect();
@@ -7895,16 +8349,24 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
 
 /// An item in the list.
 class GoogleCloudDialogflowV2IntentMessageListSelectItem {
-  /// Optional. The main text describing the item.
+  /// The main text describing the item.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. The image to display.
+  /// The image to display.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage image;
 
-  /// Required. Additional information about this option.
+  /// Additional information about this option.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo info;
 
-  /// Required. The title of the list item.
+  /// The title of the list item.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageListSelectItem();
@@ -7946,11 +8408,15 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
 
 /// The media content card for Actions on Google.
 class GoogleCloudDialogflowV2IntentMessageMediaContent {
-  /// Required. List of media objects.
+  /// List of media objects.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>
       mediaObjects;
 
-  /// Optional. What type of media is the content (ie "audio").
+  /// What type of media is the content (ie "audio").
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "RESPONSE_MEDIA_TYPE_UNSPECIFIED" : Unspecified.
   /// - "AUDIO" : Response media type is audio.
@@ -7987,19 +8453,29 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
 
 /// Response media object for media content card.
 class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
-  /// Required. Url where the media is stored.
+  /// Url where the media is stored.
+  ///
+  /// Required.
   core.String contentUrl;
 
-  /// Optional. Description of media card.
+  /// Description of media card.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Icon to display above media content.
+  /// Icon to display above media content.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage icon;
 
-  /// Optional. Image to display above media content.
+  /// Image to display above media content.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage largeImage;
 
-  /// Required. Name of media card.
+  /// Name of media card.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject();
@@ -8048,10 +8524,14 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
 
 /// The quick replies response message.
 class GoogleCloudDialogflowV2IntentMessageQuickReplies {
-  /// Optional. The collection of quick replies.
+  /// The collection of quick replies.
+  ///
+  /// Optional.
   core.List<core.String> quickReplies;
 
-  /// Optional. The title of the collection of quick replies.
+  /// The title of the collection of quick replies.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageQuickReplies();
@@ -8081,12 +8561,15 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
 
 /// Additional info about the select item for when it is triggered in a dialog.
 class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
-  /// Required. A unique key that will be sent back to the agent if this
-  /// response is given.
+  /// A unique key that will be sent back to the agent if this response is
+  /// given.
+  ///
+  /// Required.
   core.String key;
 
-  /// Optional. A list of synonyms that can also be used to trigger this item in
-  /// dialog.
+  /// A list of synonyms that can also be used to trigger this item in dialog.
+  ///
+  /// Optional.
   core.List<core.String> synonyms;
 
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo();
@@ -8116,15 +8599,20 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
 
 /// The simple response message containing speech or text.
 class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
-  /// Optional. The text to display.
+  /// The text to display.
+  ///
+  /// Optional.
   core.String displayText;
 
-  /// One of text_to_speech or ssml must be provided. Structured spoken response
-  /// to the user in the SSML format. Mutually exclusive with text_to_speech.
+  /// One of text_to_speech or ssml must be provided.
+  ///
+  /// Structured spoken response to the user in the SSML format. Mutually
+  /// exclusive with text_to_speech.
   core.String ssml;
 
-  /// One of text_to_speech or ssml must be provided. The plain text of the
-  /// speech output. Mutually exclusive with ssml.
+  /// One of text_to_speech or ssml must be provided.
+  ///
+  /// The plain text of the speech output. Mutually exclusive with ssml.
   core.String textToSpeech;
 
   GoogleCloudDialogflowV2IntentMessageSimpleResponse();
@@ -8156,12 +8644,15 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
   }
 }
 
-/// The collection of simple response candidates. This message in
-/// `QueryResult.fulfillment_messages` and
+/// The collection of simple response candidates.
+///
+/// This message in `QueryResult.fulfillment_messages` and
 /// `WebhookResponse.fulfillment_messages` should contain only one
 /// `SimpleResponse`.
 class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
-  /// Required. The list of simple responses.
+  /// The list of simple responses.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageSimpleResponse> simpleResponses;
 
   GoogleCloudDialogflowV2IntentMessageSimpleResponses();
@@ -8189,7 +8680,9 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
 /// The suggestion chip message that the user can tap to quickly post a reply to
 /// the conversation.
 class GoogleCloudDialogflowV2IntentMessageSuggestion {
-  /// Required. The text shown the in the suggestion chip.
+  /// The text shown the in the suggestion chip.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageSuggestion();
@@ -8211,7 +8704,9 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
 
 /// The collection of suggestions.
 class GoogleCloudDialogflowV2IntentMessageSuggestions {
-  /// Required. The list of suggested replies.
+  /// The list of suggested replies.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageSuggestion> suggestions;
 
   GoogleCloudDialogflowV2IntentMessageSuggestions();
@@ -8238,23 +8733,35 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
 
 /// Table card for Actions on Google.
 class GoogleCloudDialogflowV2IntentMessageTableCard {
-  /// Optional. List of buttons for the card.
+  /// List of buttons for the card.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageBasicCardButton> buttons;
 
-  /// Optional. Display properties for the columns in this table.
+  /// Display properties for the columns in this table.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageColumnProperties>
       columnProperties;
 
-  /// Optional. Image which should be displayed on the card.
+  /// Image which should be displayed on the card.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage image;
 
-  /// Optional. Rows in this table of data.
+  /// Rows in this table of data.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardRow> rows;
 
-  /// Optional. Subtitle to the title.
+  /// Subtitle to the title.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Required. Title of the card.
+  /// Title of the card.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2IntentMessageTableCard();
@@ -8320,7 +8827,9 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
 
 /// Cell of TableCardRow.
 class GoogleCloudDialogflowV2IntentMessageTableCardCell {
-  /// Required. Text in this cell.
+  /// Text in this cell.
+  ///
+  /// Required.
   core.String text;
 
   GoogleCloudDialogflowV2IntentMessageTableCardCell();
@@ -8342,10 +8851,14 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
 
 /// Row of TableCard.
 class GoogleCloudDialogflowV2IntentMessageTableCardRow {
-  /// Optional. List of cells that make up this row.
+  /// List of cells that make up this row.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardCell> cells;
 
-  /// Optional. Whether to add a visual divider after this row.
+  /// Whether to add a visual divider after this row.
+  ///
+  /// Optional.
   core.bool dividerAfter;
 
   GoogleCloudDialogflowV2IntentMessageTableCardRow();
@@ -8377,7 +8890,9 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
 
 /// The text response message.
 class GoogleCloudDialogflowV2IntentMessageText {
-  /// Optional. The collection of the agent's responses.
+  /// The collection of the agent's responses.
+  ///
+  /// Optional.
   core.List<core.String> text;
 
   GoogleCloudDialogflowV2IntentMessageText();
@@ -8401,37 +8916,57 @@ class GoogleCloudDialogflowV2IntentMessageText {
 
 /// Represents intent parameters.
 class GoogleCloudDialogflowV2IntentParameter {
-  /// Optional. The default value to use when the `value` yields an empty
-  /// result. Default values can be extracted from contexts by using the
-  /// following syntax: `#context_name.parameter_name`.
+  /// The default value to use when the `value` yields an empty result.
+  ///
+  /// Default values can be extracted from contexts by using the following
+  /// syntax: `#context_name.parameter_name`.
+  ///
+  /// Optional.
   core.String defaultValue;
 
-  /// Required. The name of the parameter.
+  /// The name of the parameter.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. The name of the entity type, prefixed with `@`, that describes
-  /// values of the parameter. If the parameter is required, this must be
-  /// provided.
+  /// The name of the entity type, prefixed with `@`, that describes values of
+  /// the parameter.
+  ///
+  /// If the parameter is required, this must be provided.
+  ///
+  /// Optional.
   core.String entityTypeDisplayName;
 
-  /// Optional. Indicates whether the parameter represents a list of values.
+  /// Indicates whether the parameter represents a list of values.
+  ///
+  /// Optional.
   core.bool isList;
 
-  /// Optional. Indicates whether the parameter is required. That is, whether
-  /// the intent cannot be completed without collecting the parameter value.
+  /// Indicates whether the parameter is required.
+  ///
+  /// That is, whether the intent cannot be completed without collecting the
+  /// parameter value.
+  ///
+  /// Optional.
   core.bool mandatory;
 
   /// The unique identifier of this parameter.
   core.String name;
 
-  /// Optional. The collection of prompts that the agent can present to the user
-  /// in order to collect a value for the parameter.
+  /// The collection of prompts that the agent can present to the user in order
+  /// to collect a value for the parameter.
+  ///
+  /// Optional.
   core.List<core.String> prompts;
 
-  /// Optional. The definition of the parameter value. It can be: - a constant
-  /// string, - a parameter value defined as `$parameter_name`, - an original
-  /// parameter value defined as `$parameter_name.original`, - a parameter value
-  /// from some context defined as `#context_name.parameter_name`.
+  /// The definition of the parameter value.
+  ///
+  /// It can be: - a constant string, - a parameter value defined as
+  /// `$parameter_name`, - an original parameter value defined as
+  /// `$parameter_name.original`, - a parameter value from some context defined
+  /// as `#context_name.parameter_name`.
+  ///
+  /// Optional.
   core.String value;
 
   GoogleCloudDialogflowV2IntentParameter();
@@ -8497,29 +9032,39 @@ class GoogleCloudDialogflowV2IntentParameter {
 
 /// Represents an example that the agent is trained on.
 class GoogleCloudDialogflowV2IntentTrainingPhrase {
-  /// Output only. The unique identifier of this training phrase.
+  /// The unique identifier of this training phrase.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. The ordered list of training phrase parts. The parts are
-  /// concatenated in order to form the training phrase. Note: The API does not
-  /// automatically annotate training phrases like the Dialogflow Console does.
-  /// Note: Do not forget to include whitespace at part boundaries, so the
-  /// training phrase is well formatted when the parts are concatenated. If the
-  /// training phrase does not need to be annotated with parameters, you just
-  /// need a single part with only the Part.text field set. If you want to
-  /// annotate the training phrase, you must create multiple parts, where the
-  /// fields of each part are populated in one of two ways: - `Part.text` is set
-  /// to a part of the phrase that has no parameters. - `Part.text` is set to a
-  /// part of the phrase that you want to annotate, and the `entity_type`,
-  /// `alias`, and `user_defined` fields are all set.
+  /// The ordered list of training phrase parts.
+  ///
+  /// The parts are concatenated in order to form the training phrase. Note: The
+  /// API does not automatically annotate training phrases like the Dialogflow
+  /// Console does. Note: Do not forget to include whitespace at part
+  /// boundaries, so the training phrase is well formatted when the parts are
+  /// concatenated. If the training phrase does not need to be annotated with
+  /// parameters, you just need a single part with only the Part.text field set.
+  /// If you want to annotate the training phrase, you must create multiple
+  /// parts, where the fields of each part are populated in one of two ways: -
+  /// `Part.text` is set to a part of the phrase that has no parameters. -
+  /// `Part.text` is set to a part of the phrase that you want to annotate, and
+  /// the `entity_type`, `alias`, and `user_defined` fields are all set.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2IntentTrainingPhrasePart> parts;
 
-  /// Optional. Indicates how many times this example was added to the intent.
+  /// Indicates how many times this example was added to the intent.
+  ///
   /// Each time a developer adds an existing sample by editing an intent or
   /// training, this counter is increased.
+  ///
+  /// Optional.
   core.int timesAddedCount;
 
-  /// Required. The type of the training phrase.
+  /// The type of the training phrase.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Not specified. This value should never be used.
   /// - "EXAMPLE" : Examples do not contain @-prefixed entity type names, but
@@ -8572,22 +9117,33 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
 
 /// Represents a part of a training phrase.
 class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
-  /// Optional. The parameter name for the value extracted from the annotated
-  /// part of the example. This field is required for annotated parts of the
-  /// training phrase.
+  /// The parameter name for the value extracted from the annotated part of the
+  /// example.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  ///
+  /// Optional.
   core.String alias;
 
-  /// Optional. The entity type name prefixed with `@`. This field is required
-  /// for annotated parts of the training phrase.
+  /// The entity type name prefixed with `@`.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  ///
+  /// Optional.
   core.String entityType;
 
-  /// Required. The text for this part.
+  /// The text for this part.
+  ///
+  /// Required.
   core.String text;
 
-  /// Optional. Indicates whether the text was manually annotated. This field is
-  /// set to true when the Dialogflow Console is used to manually annotate the
-  /// part. When creating an annotated part with the API, you must set this to
-  /// true.
+  /// Indicates whether the text was manually annotated.
+  ///
+  /// This field is set to true when the Dialogflow Console is used to manually
+  /// annotate the part. When creating an annotated part with the API, you must
+  /// set this to true.
+  ///
+  /// Optional.
   core.bool userDefined;
 
   GoogleCloudDialogflowV2IntentTrainingPhrasePart();
@@ -8627,8 +9183,10 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
 
 /// The response message for Contexts.ListContexts.
 class GoogleCloudDialogflowV2ListContextsResponse {
-  /// The list of contexts. There will be a maximum number of items returned
-  /// based on the page_size field in the request.
+  /// The list of contexts.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
   core.List<GoogleCloudDialogflowV2Context> contexts;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -8664,8 +9222,10 @@ class GoogleCloudDialogflowV2ListContextsResponse {
 
 /// The response message for EntityTypes.ListEntityTypes.
 class GoogleCloudDialogflowV2ListEntityTypesResponse {
-  /// The list of agent entity types. There will be a maximum number of items
-  /// returned based on the page_size field in the request.
+  /// The list of agent entity types.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
   core.List<GoogleCloudDialogflowV2EntityType> entityTypes;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -8702,8 +9262,10 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
 
 /// The response message for Environments.ListEnvironments.
 class GoogleCloudDialogflowV2ListEnvironmentsResponse {
-  /// The list of agent environments. There will be a maximum number of items
-  /// returned based on the page_size field in the request.
+  /// The list of agent environments.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
   core.List<GoogleCloudDialogflowV2Environment> environments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -8740,8 +9302,10 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
 
 /// The response message for Intents.ListIntents.
 class GoogleCloudDialogflowV2ListIntentsResponse {
-  /// The list of agent intents. There will be a maximum number of items
-  /// returned based on the page_size field in the request.
+  /// The list of agent intents.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
   core.List<GoogleCloudDialogflowV2Intent> intents;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -8781,8 +9345,10 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
   /// results in the list.
   core.String nextPageToken;
 
-  /// The list of session entity types. There will be a maximum number of items
-  /// returned based on the page_size field in the request.
+  /// The list of session entity types.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
   core.List<GoogleCloudDialogflowV2SessionEntityType> sessionEntityTypes;
 
   GoogleCloudDialogflowV2ListSessionEntityTypesResponse();
@@ -8816,28 +9382,42 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
 
 /// Represents a message posted into a conversation.
 class GoogleCloudDialogflowV2Message {
-  /// Required. The message content.
+  /// The message content.
+  ///
+  /// Required.
   core.String content;
 
-  /// Output only. The time when the message was created.
+  /// The time when the message was created.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Optional. The message language. This should be a
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
-  /// Example: "en-US".
+  /// The message language.
+  ///
+  /// This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag. Example: "en-US".
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Output only. The annotation for the message.
+  /// The annotation for the message.
+  ///
+  /// Output only.
   GoogleCloudDialogflowV2MessageAnnotation messageAnnotation;
 
-  /// The unique identifier of the message. Format:
-  /// `projects//conversations//messages/`.
+  /// The unique identifier of the message.
+  ///
+  /// Format: `projects//conversations//messages/`.
   core.String name;
 
-  /// Output only. The participant that sends this message.
+  /// The participant that sends this message.
+  ///
+  /// Output only.
   core.String participant;
 
-  /// Output only. The role of the participant.
+  /// The role of the participant.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : Participant role not set.
   /// - "HUMAN_AGENT" : Participant is a human agent.
@@ -8907,7 +9487,9 @@ class GoogleCloudDialogflowV2MessageAnnotation {
   core.bool containEntities;
 
   /// The collection of annotated message parts ordered by their position in the
-  /// message. You can recover the annotated message by concatenating
+  /// message.
+  ///
+  /// You can recover the annotated message by concatenating
   /// [AnnotatedMessagePart.text].
   core.List<GoogleCloudDialogflowV2AnnotatedMessagePart> parts;
 
@@ -8941,25 +9523,33 @@ class GoogleCloudDialogflowV2MessageAnnotation {
 /// Represents the contents of the original request that was passed to the
 /// `[Streaming]DetectIntent` call.
 class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
-  /// Optional. This field is set to the value of the `QueryParameters.payload`
-  /// field passed in the request. Some integrations that query a Dialogflow
-  /// agent may provide additional information in the payload. In particular,
-  /// for the Dialogflow Phone Gateway integration, this field has the form: {
-  /// "telephony": { "caller_id": "+18558363987" } } Note: The caller ID field
-  /// (`caller_id`) will be redacted for Trial Edition agents and populated with
-  /// the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
-  /// Essentials Edition agents.
+  /// This field is set to the value of the `QueryParameters.payload` field
+  /// passed in the request.
+  ///
+  /// Some integrations that query a Dialogflow agent may provide additional
+  /// information in the payload. In particular, for the Dialogflow Phone
+  /// Gateway integration, this field has the form: { "telephony": {
+  /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`)
+  /// will be redacted for Trial Edition agents and populated with the caller ID
+  /// in [E.164 format](https://en.wikipedia.org/wiki/E.164) for Essentials
+  /// Edition agents.
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// The source of this request, e.g., `google`, `facebook`, `slack`. It is set
-  /// by Dialogflow-owned servers.
+  /// The source of this request, e.g., `google`, `facebook`, `slack`.
+  ///
+  /// It is set by Dialogflow-owned servers.
   core.String source;
 
-  /// Optional. The version of the protocol used for this request. This field is
-  /// AoG-specific.
+  /// The version of the protocol used for this request.
+  ///
+  /// This field is AoG-specific.
+  ///
+  /// Optional.
   core.String version;
 
   GoogleCloudDialogflowV2OriginalDetectIntentRequest();
@@ -8998,10 +9588,14 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
 }
 
 /// Instructs the speech synthesizer on how to generate the output audio
-/// content. If this audio config is supplied in a request, it overrides all
-/// existing text-to-speech settings applied to the agent.
+/// content.
+///
+/// If this audio config is supplied in a request, it overrides all existing
+/// text-to-speech settings applied to the agent.
 class GoogleCloudDialogflowV2OutputAudioConfig {
-  /// Required. Audio encoding of the synthesized audio content.
+  /// Audio encoding of the synthesized audio content.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" : Not specified.
   /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed
@@ -9015,11 +9609,12 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
   /// same bitrate.
   core.String audioEncoding;
 
-  /// The synthesis sample rate (in hertz) for this audio. If not provided, then
-  /// the synthesizer will use the default sample rate based on the audio
-  /// encoding. If this is different from the voice's natural sample rate, then
-  /// the synthesizer will honor this request by converting to the desired
-  /// sample rate (which might result in worse audio quality).
+  /// The synthesis sample rate (in hertz) for this audio.
+  ///
+  /// If not provided, then the synthesizer will use the default sample rate
+  /// based on the audio encoding. If this is different from the voice's natural
+  /// sample rate, then the synthesizer will honor this request by converting to
+  /// the desired sample rate (which might result in worse audio quality).
   core.int sampleRateHertz;
 
   /// Configuration of how speech should be synthesized.
@@ -9057,10 +9652,11 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
   }
 }
 
-/// Represents the query input. It can contain either: 1. An audio config which
-/// instructs the speech recognizer how to process the speech audio. 2. A
-/// conversational query in the form of text,. 3. An event that specifies which
-/// intent to trigger.
+/// Represents the query input.
+///
+/// It can contain either: 1. An audio config which instructs the speech
+/// recognizer how to process the speech audio. 2. A conversational query in the
+/// form of text,. 3. An event that specifies which intent to trigger.
 class GoogleCloudDialogflowV2QueryInput {
   /// Instructs the speech recognizer how to process the speech audio.
   GoogleCloudDialogflowV2InputAudioConfig audioConfig;
@@ -9111,10 +9707,11 @@ class GoogleCloudDialogflowV2QueryParameters {
   /// The geo location of this conversational query.
   GoogleTypeLatLng geoLocation;
 
-  /// This field can be used to pass custom data to your webhook. Arbitrary JSON
-  /// objects are supported. If supplied, the value is used to populate the
-  /// `WebhookRequest.original_detect_intent_request.payload` field sent to your
-  /// webhook.
+  /// This field can be used to pass custom data to your webhook.
+  ///
+  /// Arbitrary JSON objects are supported. If supplied, the value is used to
+  /// populate the `WebhookRequest.original_detect_intent_request.payload` field
+  /// sent to your webhook.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -9124,20 +9721,24 @@ class GoogleCloudDialogflowV2QueryParameters {
   /// new ones are activated.
   core.bool resetContexts;
 
-  /// Configures the type of sentiment analysis to perform. If not provided,
-  /// sentiment analysis is not performed.
+  /// Configures the type of sentiment analysis to perform.
+  ///
+  /// If not provided, sentiment analysis is not performed.
   GoogleCloudDialogflowV2SentimentAnalysisRequestConfig
       sentimentAnalysisRequestConfig;
 
   /// Additional session entity types to replace or extend developer entity
-  /// types with. The entity synonyms apply to all languages and persist for the
-  /// session of this query.
+  /// types with.
+  ///
+  /// The entity synonyms apply to all languages and persist for the session of
+  /// this query.
   core.List<GoogleCloudDialogflowV2SessionEntityType> sessionEntityTypes;
 
   /// The time zone of this conversational query from the [time zone
   /// database](https://www.iana.org/time-zones), e.g., America/New_York,
-  /// Europe/Paris. If not provided, the time zone specified in agent settings
-  /// is used.
+  /// Europe/Paris.
+  ///
+  /// If not provided, the time zone specified in agent settings is used.
   core.String timeZone;
 
   GoogleCloudDialogflowV2QueryParameters();
@@ -9220,11 +9821,14 @@ class GoogleCloudDialogflowV2QueryResult {
 
   /// This field is set to: - `false` if the matched intent has required
   /// parameters and not all of the required parameter values have been
-  /// collected. - `true` if all required parameter values have been collected,
-  /// or if the matched intent doesn't contain any required parameters.
+  /// collected.
+  ///
+  /// - `true` if all required parameter values have been collected, or if the
+  /// matched intent doesn't contain any required parameters.
   core.bool allRequiredParamsPresent;
 
   /// Free-form diagnostic information for the associated detect intent request.
+  ///
   /// The fields of this data can change without notice, so you should not write
   /// code that depends on its structure. The data may contain: - webhook call
   /// latency - webhook errors
@@ -9236,67 +9840,77 @@ class GoogleCloudDialogflowV2QueryResult {
   /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2IntentMessage> fulfillmentMessages;
 
-  /// The text to be pronounced to the user or shown on the screen. Note: This
-  /// is a legacy field, `fulfillment_messages` should be preferred.
+  /// The text to be pronounced to the user or shown on the screen.
+  ///
+  /// Note: This is a legacy field, `fulfillment_messages` should be preferred.
   core.String fulfillmentText;
 
-  /// The intent that matched the conversational query. Some, not all fields are
-  /// filled in this message, including but not limited to: `name`,
-  /// `display_name`, `end_interaction` and `is_fallback`.
+  /// The intent that matched the conversational query.
+  ///
+  /// Some, not all fields are filled in this message, including but not limited
+  /// to: `name`, `display_name`, `end_interaction` and `is_fallback`.
   GoogleCloudDialogflowV2Intent intent;
 
-  /// The intent detection confidence. Values range from 0.0 (completely
-  /// uncertain) to 1.0 (completely certain). This value is for informational
-  /// purpose only and is only used to help match the best intent within the
-  /// classification threshold. This value may change for the same end-user
-  /// expression at any time due to a model retraining or change in
-  /// implementation. If there are `multiple knowledge_answers` messages, this
-  /// value is set to the greatest `knowledgeAnswers.match_confidence` value in
-  /// the list.
+  /// The intent detection confidence.
+  ///
+  /// Values range from 0.0 (completely uncertain) to 1.0 (completely certain).
+  /// This value is for informational purpose only and is only used to help
+  /// match the best intent within the classification threshold. This value may
+  /// change for the same end-user expression at any time due to a model
+  /// retraining or change in implementation. If there are `multiple
+  /// knowledge_answers` messages, this value is set to the greatest
+  /// `knowledgeAnswers.match_confidence` value in the list.
   core.double intentDetectionConfidence;
 
-  /// The language that was triggered during intent detection. See [Language
+  /// The language that was triggered during intent detection.
+  ///
+  /// See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes.
   core.String languageCode;
 
-  /// The collection of output contexts. If applicable,
-  /// `output_contexts.parameters` contains entries with name `.original`
-  /// containing the original parameter values before the query.
+  /// The collection of output contexts.
+  ///
+  /// If applicable, `output_contexts.parameters` contains entries with name
+  /// `.original` containing the original parameter values before the query.
   core.List<GoogleCloudDialogflowV2Context> outputContexts;
 
-  /// The collection of extracted parameters. Depending on your protocol or
-  /// client library language, this is a map, associative array, symbol table,
-  /// dictionary, or JSON object composed of a collection of (MapKey, MapValue)
-  /// pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-  /// type: - If parameter's entity type is a composite entity: map - Else:
-  /// string or number, depending on parameter value type - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
+  /// The collection of extracted parameters.
+  ///
+  /// Depending on your protocol or client library language, this is a map,
+  /// associative array, symbol table, dictionary, or JSON object composed of a
+  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
+  /// value: parameter name - MapValue type: - If parameter's entity type is a
+  /// composite entity: map - Else: string or number, depending on parameter
+  /// value type - MapValue value: - If parameter's entity type is a composite
+  /// entity: map from composite entity property names to property values -
+  /// Else: parameter value
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> parameters;
 
   /// The original conversational query text: - If natural language text was
-  /// provided as input, `query_text` contains a copy of the input. - If natural
-  /// language speech audio was provided as input, `query_text` contains the
-  /// speech recognition result. If speech recognizer produced multiple
-  /// alternatives, a particular one is picked. - If automatic spell correction
-  /// is enabled, `query_text` will contain the corrected user input.
+  /// provided as input, `query_text` contains a copy of the input.
+  ///
+  /// - If natural language speech audio was provided as input, `query_text`
+  /// contains the speech recognition result. If speech recognizer produced
+  /// multiple alternatives, a particular one is picked. - If automatic spell
+  /// correction is enabled, `query_text` will contain the corrected user input.
   core.String queryText;
 
   /// The sentiment analysis result, which depends on the
   /// `sentiment_analysis_request_config` specified in the request.
   GoogleCloudDialogflowV2SentimentAnalysisResult sentimentAnalysisResult;
 
-  /// The Speech recognition confidence between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. The default of 0.0 is a sentinel value indicating that confidence
-  /// was not set. This field is not guaranteed to be accurate or set. In
-  /// particular this field isn't set for StreamingDetectIntent since the
-  /// streaming endpoint has separate confidence estimates per portion of the
-  /// audio in StreamingRecognitionResult.
+  /// The Speech recognition confidence between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. The default of 0.0 is a sentinel value
+  /// indicating that confidence was not set. This field is not guaranteed to be
+  /// accurate or set. In particular this field isn't set for
+  /// StreamingDetectIntent since the streaming endpoint has separate confidence
+  /// estimates per portion of the audio in StreamingRecognitionResult.
   core.double speechRecognitionConfidence;
 
   /// If the query was fulfilled by a webhook call, this field is set to the
@@ -9461,6 +10075,7 @@ class GoogleCloudDialogflowV2RestoreAgentRequest {
   }
 
   /// The URI to a Google Cloud Storage file containing the agent to restore.
+  ///
   /// Note: The URI must start with "gs://".
   core.String agentUri;
 
@@ -9489,8 +10104,10 @@ class GoogleCloudDialogflowV2RestoreAgentRequest {
 
 /// The response message for Agents.SearchAgents.
 class GoogleCloudDialogflowV2SearchAgentsResponse {
-  /// The list of agents. There will be a maximum number of items returned based
-  /// on the page_size field in the request.
+  /// The list of agents.
+  ///
+  /// There will be a maximum number of items returned based on the page_size
+  /// field in the request.
   core.List<GoogleCloudDialogflowV2Agent> agents;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -9561,8 +10178,9 @@ class GoogleCloudDialogflowV2Sentiment {
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
-  /// Instructs the service to perform sentiment analysis on `query_text`. If
-  /// not provided, sentiment analysis is not performed on `query_text`.
+  /// Instructs the service to perform sentiment analysis on `query_text`.
+  ///
+  /// If not provided, sentiment analysis is not performed on `query_text`.
   core.bool analyzeQueryTextSentiment;
 
   GoogleCloudDialogflowV2SentimentAnalysisRequestConfig();
@@ -9584,12 +10202,14 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
   }
 }
 
-/// The result of sentiment analysis. Sentiment analysis inspects user input and
-/// identifies the prevailing subjective opinion, especially to determine a
-/// user's attitude as positive, negative, or neutral. For
-/// Participants.DetectIntent, it needs to be configured in
-/// DetectIntentRequest.query_params. For Participants.StreamingDetectIntent, it
-/// needs to be configured in StreamingDetectIntentRequest.query_params. And for
+/// The result of sentiment analysis.
+///
+/// Sentiment analysis inspects user input and identifies the prevailing
+/// subjective opinion, especially to determine a user's attitude as positive,
+/// negative, or neutral. For Participants.DetectIntent, it needs to be
+/// configured in DetectIntentRequest.query_params. For
+/// Participants.StreamingDetectIntent, it needs to be configured in
+/// StreamingDetectIntentRequest.query_params. And for
 /// Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it
 /// needs to be configured in ConversationProfile.human_agent_assistant_config
 class GoogleCloudDialogflowV2SentimentAnalysisResult {
@@ -9615,19 +10235,24 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
 }
 
 /// A session represents a conversation between a Dialogflow agent and an
-/// end-user. You can create special entities, called session entities, during a
-/// session. Session entities can extend or replace custom entity types and only
-/// exist during the session that they were created for. All session data,
-/// including session entities, is stored by Dialogflow for 20 minutes. For more
+/// end-user.
+///
+/// You can create special entities, called session entities, during a session.
+/// Session entities can extend or replace custom entity types and only exist
+/// during the session that they were created for. All session data, including
+/// session entities, is stored by Dialogflow for 20 minutes. For more
 /// information, see the [session entity
 /// guide](https://cloud.google.com/dialogflow/docs/entities-session).
 class GoogleCloudDialogflowV2SessionEntityType {
-  /// Required. The collection of entities associated with this session entity
-  /// type.
+  /// The collection of entities associated with this session entity type.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity> entities;
 
-  /// Required. Indicates whether the additional data should override or
-  /// supplement the custom entity type definition.
+  /// Indicates whether the additional data should override or supplement the
+  /// custom entity type definition.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ENTITY_OVERRIDE_MODE_UNSPECIFIED" : Not specified. This value should be
   /// never used.
@@ -9643,13 +10268,16 @@ class GoogleCloudDialogflowV2SessionEntityType {
   /// call EntityTypes.GetEntityType on the custom entity type and merge.
   core.String entityOverrideMode;
 
-  /// Required. The unique identifier of this session entity type. Format:
-  /// `projects//agent/sessions//entityTypes/`, or
+  /// The unique identifier of this session entity type.
+  ///
+  /// Format: `projects//agent/sessions//entityTypes/`, or
   /// `projects//agent/environments//users//sessions//entityTypes/`. If
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user. `` must be the
   /// display name of an existing entity type in the same agent that will be
   /// overridden or supplemented.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudDialogflowV2SessionEntityType();
@@ -9688,21 +10316,28 @@ class GoogleCloudDialogflowV2SessionEntityType {
 /// Hints for the speech recognizer to help with recognition in a specific
 /// conversation state.
 class GoogleCloudDialogflowV2SpeechContext {
-  /// Optional. Boost for this context compared to other contexts: * If the
-  /// boost is positive, Dialogflow will increase the probability that the
-  /// phrases in this context are recognized over similar sounding phrases. * If
-  /// the boost is unspecified or non-positive, Dialogflow will not apply any
-  /// boost. Dialogflow recommends that you use boosts in the range (0, 20] and
-  /// that you find a value that fits your use case with binary search.
+  /// Boost for this context compared to other contexts: * If the boost is
+  /// positive, Dialogflow will increase the probability that the phrases in
+  /// this context are recognized over similar sounding phrases.
+  ///
+  /// * If the boost is unspecified or non-positive, Dialogflow will not apply
+  /// any boost. Dialogflow recommends that you use boosts in the range (0, 20]
+  /// and that you find a value that fits your use case with binary search.
+  ///
+  /// Optional.
   core.double boost;
 
-  /// Optional. A list of strings containing words and phrases that the speech
-  /// recognizer should recognize with higher likelihood. This list can be used
-  /// to: * improve accuracy for words and phrases you expect the user to say,
-  /// e.g. typical commands for your Dialogflow agent * add additional words to
-  /// the speech recognizer vocabulary * ... See the [Cloud Speech
+  /// A list of strings containing words and phrases that the speech recognizer
+  /// should recognize with higher likelihood.
+  ///
+  /// This list can be used to: * improve accuracy for words and phrases you
+  /// expect the user to say, e.g. typical commands for your Dialogflow agent *
+  /// add additional words to the speech recognizer vocabulary * ... See the
+  /// [Cloud Speech
   /// documentation](https://cloud.google.com/speech-to-text/quotas) for usage
   /// limits.
+  ///
+  /// Optional.
   core.List<core.String> phrases;
 
   GoogleCloudDialogflowV2SpeechContext();
@@ -9732,33 +10367,47 @@ class GoogleCloudDialogflowV2SpeechContext {
 
 /// Configuration of how speech should be synthesized.
 class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
-  /// Optional. An identifier which selects 'audio effects' profiles that are
-  /// applied on (post synthesized) text to speech. Effects are applied on top
-  /// of each other in the order they are given.
+  /// An identifier which selects 'audio effects' profiles that are applied on
+  /// (post synthesized) text to speech.
+  ///
+  /// Effects are applied on top of each other in the order they are given.
+  ///
+  /// Optional.
   core.List<core.String> effectsProfileId;
 
-  /// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
-  /// semitones from the original pitch. -20 means decrease 20 semitones from
-  /// the original pitch.
+  /// Speaking pitch, in the range [-20.0, 20.0].
+  ///
+  /// 20 means increase 20 semitones from the original pitch. -20 means decrease
+  /// 20 semitones from the original pitch.
+  ///
+  /// Optional.
   core.double pitch;
 
-  /// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
-  /// native speed supported by the specific voice. 2.0 is twice as fast, and
-  /// 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any
-  /// other values < 0.25 or > 4.0 will return an error.
+  /// Speaking rate/speed, in the range [0.25, 4.0].
+  ///
+  /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
+  /// twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the
+  /// native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+  ///
+  /// Optional.
   core.double speakingRate;
 
-  /// Optional. The desired voice of the synthesized audio.
+  /// The desired voice of the synthesized audio.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2VoiceSelectionParams voice;
 
-  /// Optional. Volume gain (in dB) of the normal native volume supported by the
-  /// specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of
-  /// 0.0 (dB), will play at normal native signal amplitude. A value of -6.0
-  /// (dB) will play at approximately half the amplitude of the normal native
-  /// signal amplitude. A value of +6.0 (dB) will play at approximately twice
-  /// the amplitude of the normal native signal amplitude. We strongly recommend
-  /// not to exceed +10 (dB) as there's usually no effective increase in
-  /// loudness for any value greater than that.
+  /// Volume gain (in dB) of the normal native volume supported by the specific
+  /// voice, in the range [-96.0, 16.0].
+  ///
+  /// If unset, or set to a value of 0.0 (dB), will play at normal native signal
+  /// amplitude. A value of -6.0 (dB) will play at approximately half the
+  /// amplitude of the normal native signal amplitude. A value of +6.0 (dB) will
+  /// play at approximately twice the amplitude of the normal native signal
+  /// amplitude. We strongly recommend not to exceed +10 (dB) as there's usually
+  /// no effective increase in loudness for any value greater than that.
+  ///
+  /// Optional.
   core.double volumeGainDb;
 
   GoogleCloudDialogflowV2SynthesizeSpeechConfig();
@@ -9807,14 +10456,21 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
 
 /// Represents the natural language text to be processed.
 class GoogleCloudDialogflowV2TextInput {
-  /// Required. The language of this conversational query. See [Language
+  /// The language of this conversational query.
+  ///
+  /// See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes. Note that queries in the
   /// same session do not necessarily need to specify the same language.
+  ///
+  /// Required.
   core.String languageCode;
 
-  /// Required. The UTF-8 encoded natural language text to be processed. Text
-  /// length must not exceed 256 characters.
+  /// The UTF-8 encoded natural language text to be processed.
+  ///
+  /// Text length must not exceed 256 characters.
+  ///
+  /// Required.
   core.String text;
 
   GoogleCloudDialogflowV2TextInput();
@@ -9856,11 +10512,12 @@ class GoogleCloudDialogflowV2TrainAgentRequest {
 
 /// Represents a single validation error.
 class GoogleCloudDialogflowV2ValidationError {
-  /// The names of the entries that the error is associated with. Format: -
-  /// "projects//agent", if the error is associated with the entire agent. -
-  /// "projects//agent/intents/", if the error is associated with certain
-  /// intents. - "projects//agent/intents//trainingPhrases/", if the error is
-  /// associated with certain intent training phrases. -
+  /// The names of the entries that the error is associated with.
+  ///
+  /// Format: - "projects//agent", if the error is associated with the entire
+  /// agent. - "projects//agent/intents/", if the error is associated with
+  /// certain intents. - "projects//agent/intents//trainingPhrases/", if the
+  /// error is associated with certain intent training phrases. -
   /// "projects//agent/intents//parameters/", if the error is associated with
   /// certain intent parameters. - "projects//agent/entities/", if the error is
   /// associated with certain entities.
@@ -9938,15 +10595,23 @@ class GoogleCloudDialogflowV2ValidationResult {
 
 /// Description of which voice to use for speech synthesis.
 class GoogleCloudDialogflowV2VoiceSelectionParams {
-  /// Optional. The name of the voice. If not set, the service will choose a
-  /// voice based on the other parameters such as language_code and ssml_gender.
+  /// The name of the voice.
+  ///
+  /// If not set, the service will choose a voice based on the other parameters
+  /// such as language_code and ssml_gender.
+  ///
+  /// Optional.
   core.String name;
 
-  /// Optional. The preferred gender of the voice. If not set, the service will
-  /// choose a voice based on the other parameters such as language_code and
-  /// name. Note that this is only a preference, not requirement. If a voice of
-  /// the appropriate gender is not available, the synthesizer should substitute
-  /// a voice with a different gender rather than failing the request.
+  /// The preferred gender of the voice.
+  ///
+  /// If not set, the service will choose a voice based on the other parameters
+  /// such as language_code and name. Note that this is only a preference, not
+  /// requirement. If a voice of the appropriate gender is not available, the
+  /// synthesizer should substitute a voice with a different gender rather than
+  /// failing the request.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender, which means
   /// that the client doesn't care which gender the selected voice will have.
@@ -9980,21 +10645,26 @@ class GoogleCloudDialogflowV2VoiceSelectionParams {
 
 /// The request message for a webhook call.
 class GoogleCloudDialogflowV2WebhookRequest {
-  /// Optional. The contents of the original request that was passed to
+  /// The contents of the original request that was passed to
   /// `[Streaming]DetectIntent` call.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2OriginalDetectIntentRequest
       originalDetectIntentRequest;
 
-  /// The result of the conversational query or event processing. Contains the
-  /// same value as `[Streaming]DetectIntentResponse.query_result`.
+  /// The result of the conversational query or event processing.
+  ///
+  /// Contains the same value as `[Streaming]DetectIntentResponse.query_result`.
   GoogleCloudDialogflowV2QueryResult queryResult;
 
-  /// The unique identifier of the response. Contains the same value as
-  /// `[Streaming]DetectIntentResponse.response_id`.
+  /// The unique identifier of the response.
+  ///
+  /// Contains the same value as `[Streaming]DetectIntentResponse.response_id`.
   core.String responseId;
 
-  /// The unique identifier of detectIntent request session. Can be used to
-  /// identify end-user inside webhook implementation. Format:
+  /// The unique identifier of detectIntent request session.
+  ///
+  /// Can be used to identify end-user inside webhook implementation. Format:
   /// `projects//agent/sessions/`, or
   /// `projects//agent/environments//users//sessions/`.
   core.String session;
@@ -10039,60 +10709,85 @@ class GoogleCloudDialogflowV2WebhookRequest {
   }
 }
 
-/// The response message for a webhook call. This response is validated by the
-/// Dialogflow server. If validation fails, an error will be returned in the
-/// QueryResult.diagnostic_info field. Setting JSON fields to an empty value
-/// with the wrong type is a common error. To avoid this error: - Use `""` for
-/// empty strings - Use `{}` or `null` for empty objects - Use `[]` or `null`
-/// for empty arrays For more information, see the [Protocol Buffers Language
+/// The response message for a webhook call.
+///
+/// This response is validated by the Dialogflow server. If validation fails, an
+/// error will be returned in the QueryResult.diagnostic_info field. Setting
+/// JSON fields to an empty value with the wrong type is a common error. To
+/// avoid this error: - Use `""` for empty strings - Use `{}` or `null` for
+/// empty objects - Use `[]` or `null` for empty arrays For more information,
+/// see the [Protocol Buffers Language
 /// Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
 class GoogleCloudDialogflowV2WebhookResponse {
-  /// Optional. Invokes the supplied events. When this field is set, Dialogflow
-  /// ignores the `fulfillment_text`, `fulfillment_messages`, and `payload`
-  /// fields.
+  /// Invokes the supplied events.
+  ///
+  /// When this field is set, Dialogflow ignores the `fulfillment_text`,
+  /// `fulfillment_messages`, and `payload` fields.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2EventInput followupEventInput;
 
-  /// Optional. The rich response messages intended for the end-user. When
-  /// provided, Dialogflow uses this field to populate
+  /// The rich response messages intended for the end-user.
+  ///
+  /// When provided, Dialogflow uses this field to populate
   /// QueryResult.fulfillment_messages sent to the integration or API caller.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessage> fulfillmentMessages;
 
-  /// Optional. The text response message intended for the end-user. It is
-  /// recommended to use `fulfillment_messages.text.text[0]` instead. When
+  /// The text response message intended for the end-user.
+  ///
+  /// It is recommended to use `fulfillment_messages.text.text[0]` instead. When
   /// provided, Dialogflow uses this field to populate
   /// QueryResult.fulfillment_text sent to the integration or API caller.
+  ///
+  /// Optional.
   core.String fulfillmentText;
 
-  /// Optional. The collection of output contexts that will overwrite currently
-  /// active contexts for the session and reset their lifespans. When provided,
-  /// Dialogflow uses this field to populate QueryResult.output_contexts sent to
-  /// the integration or API caller.
+  /// The collection of output contexts that will overwrite currently active
+  /// contexts for the session and reset their lifespans.
+  ///
+  /// When provided, Dialogflow uses this field to populate
+  /// QueryResult.output_contexts sent to the integration or API caller.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2Context> outputContexts;
 
-  /// Optional. This field can be used to pass custom data from your webhook to
-  /// the integration or API caller. Arbitrary JSON objects are supported. When
-  /// provided, Dialogflow uses this field to populate
-  /// QueryResult.webhook_payload sent to the integration or API caller. This
-  /// field is also used by the [Google Assistant
+  /// This field can be used to pass custom data from your webhook to the
+  /// integration or API caller.
+  ///
+  /// Arbitrary JSON objects are supported. When provided, Dialogflow uses this
+  /// field to populate QueryResult.webhook_payload sent to the integration or
+  /// API caller. This field is also used by the [Google Assistant
   /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
   /// for rich response messages. See the format definition at [Google Assistant
   /// Dialogflow webhook
   /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
   ///
+  /// Optional.
+  ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// Optional. Additional session entity types to replace or extend developer
-  /// entity types with. The entity synonyms apply to all languages and persist
-  /// for the session. Setting this data from a webhook overwrites the session
-  /// entity types that have been set using `detectIntent`,
-  /// `streamingDetectIntent` or SessionEntityType management methods.
+  /// Additional session entity types to replace or extend developer entity
+  /// types with.
+  ///
+  /// The entity synonyms apply to all languages and persist for the session.
+  /// Setting this data from a webhook overwrites the session entity types that
+  /// have been set using `detectIntent`, `streamingDetectIntent` or
+  /// SessionEntityType management methods.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2SessionEntityType> sessionEntityTypes;
 
-  /// Optional. A custom field used to identify the webhook source. Arbitrary
-  /// strings are supported. When provided, Dialogflow uses this field to
-  /// populate QueryResult.webhook_source sent to the integration or API caller.
+  /// A custom field used to identify the webhook source.
+  ///
+  /// Arbitrary strings are supported. When provided, Dialogflow uses this field
+  /// to populate QueryResult.webhook_source sent to the integration or API
+  /// caller.
+  ///
+  /// Optional.
   core.String source;
 
   GoogleCloudDialogflowV2WebhookResponse();
@@ -10170,37 +10865,57 @@ class GoogleCloudDialogflowV2WebhookResponse {
   }
 }
 
-/// Represents an annotated conversation dataset. ConversationDataset can have
-/// multiple AnnotatedConversationDataset, each of them represents one result
-/// from one annotation task. AnnotatedConversationDataset can only be generated
-/// from annotation task, which will be triggered by LabelConversation.
+/// Represents an annotated conversation dataset.
+///
+/// ConversationDataset can have multiple AnnotatedConversationDataset, each of
+/// them represents one result from one annotation task.
+/// AnnotatedConversationDataset can only be generated from annotation task,
+/// which will be triggered by LabelConversation.
 class GoogleCloudDialogflowV2beta1AnnotatedConversationDataset {
-  /// Output only. Number of examples that have annotations in the annotated
-  /// conversation dataset.
+  /// Number of examples that have annotations in the annotated conversation
+  /// dataset.
+  ///
+  /// Output only.
   core.String completedExampleCount;
 
-  /// Output only. Creation time of this annotated conversation dataset.
+  /// Creation time of this annotated conversation dataset.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Optional. The description of the annotated conversation dataset. Maximum
-  /// of 10000 bytes.
+  /// The description of the annotated conversation dataset.
+  ///
+  /// Maximum of 10000 bytes.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. The display name of the annotated conversation dataset. It's
-  /// specified when user starts an annotation task. Maximum of 64 bytes.
+  /// The display name of the annotated conversation dataset.
+  ///
+  /// It's specified when user starts an annotation task. Maximum of 64 bytes.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Output only. Number of examples in the annotated conversation dataset.
+  /// Number of examples in the annotated conversation dataset.
+  ///
+  /// Output only.
   core.String exampleCount;
 
-  /// Output only. AnnotatedConversationDataset resource name. Format:
-  /// `projects//conversationDatasets//annotatedConversationDatasets/`
+  /// AnnotatedConversationDataset resource name.
+  ///
+  /// Format: `projects//conversationDatasets//annotatedConversationDatasets/`
+  ///
+  /// Output only.
   core.String name;
 
-  /// Output only. Question type name that identifies a labeling task. A
-  /// question is a single task that a worker answers. A question type is set of
-  /// related questions. Each question belongs to a particular question type. It
-  /// can be used in CrowdCompute UI to filter and manage labeling tasks.
+  /// Question type name that identifies a labeling task.
+  ///
+  /// A question is a single task that a worker answers. A question type is set
+  /// of related questions. Each question belongs to a particular question type.
+  /// It can be used in CrowdCompute UI to filter and manage labeling tasks.
+  ///
+  /// Output only.
   core.String questionTypeName;
 
   GoogleCloudDialogflowV2beta1AnnotatedConversationDataset();
@@ -10382,27 +11097,33 @@ class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse {
   }
 }
 
-/// Dialogflow contexts are similar to natural language context. If a person
-/// says to you "they are orange", you need context in order to understand what
-/// "they" is referring to. Similarly, for Dialogflow to handle an end-user
-/// expression like that, it needs to be provided with context in order to
-/// correctly match an intent. Using contexts, you can control the flow of a
-/// conversation. You can configure contexts for an intent by setting input and
-/// output contexts, which are identified by string names. When an intent is
+/// Dialogflow contexts are similar to natural language context.
+///
+/// If a person says to you "they are orange", you need context in order to
+/// understand what "they" is referring to. Similarly, for Dialogflow to handle
+/// an end-user expression like that, it needs to be provided with context in
+/// order to correctly match an intent. Using contexts, you can control the flow
+/// of a conversation. You can configure contexts for an intent by setting input
+/// and output contexts, which are identified by string names. When an intent is
 /// matched, any configured output contexts for that intent become active. While
 /// any contexts are active, Dialogflow is more likely to match intents that are
 /// configured with input contexts that correspond to the currently active
 /// contexts. For more information about context, see the [Contexts
 /// guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class GoogleCloudDialogflowV2beta1Context {
-  /// Optional. The number of conversational query requests after which the
-  /// context expires. The default is `0`. If set to `0`, the context expires
-  /// immediately. Contexts expire automatically after 20 minutes if there are
-  /// no matching queries.
+  /// The number of conversational query requests after which the context
+  /// expires.
+  ///
+  /// The default is `0`. If set to `0`, the context expires immediately.
+  /// Contexts expire automatically after 20 minutes if there are no matching
+  /// queries.
+  ///
+  /// Optional.
   core.int lifespanCount;
 
-  /// Required. The unique identifier of the context. Supported formats: -
-  /// `projects//agent/sessions//contexts/`, -
+  /// The unique identifier of the context.
+  ///
+  /// Supported formats: - `projects//agent/sessions//contexts/`, -
   /// `projects//locations//agent/sessions//contexts/`, -
   /// `projects//agent/environments//users//sessions//contexts/`, -
   /// `projects//locations//agent/environments//users//sessions//contexts/`, The
@@ -10413,9 +11134,12 @@ class GoogleCloudDialogflowV2beta1Context {
   /// reserved for internal use by Dialogflow. You should not use these contexts
   /// or create contexts with these names: * `__system_counters__` *
   /// `*_id_dialog_context` * `*_dialog_params_size`
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. The collection of parameters associated with this context.
+  /// The collection of parameters associated with this context.
+  ///
   /// Depending on your protocol or client library language, this is a map,
   /// associative array, symbol table, dictionary, or JSON object composed of a
   /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
@@ -10424,6 +11148,8 @@ class GoogleCloudDialogflowV2beta1Context {
   /// value type - MapValue value: - If parameter's entity type is a composite
   /// entity: map from composite entity property names to property values -
   /// Else: parameter value
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10466,16 +11192,19 @@ class GoogleCloudDialogflowV2beta1Context {
 }
 
 /// Each intent parameter has a type, called the entity type, which dictates
-/// exactly how data from an end-user expression is extracted. Dialogflow
-/// provides predefined system entities that can match many common types of
-/// data. For example, there are system entities for matching dates, times,
-/// colors, email addresses, and so on. You can also create your own custom
-/// entities for matching custom data. For example, you could define a vegetable
-/// entity that can match the types of vegetables available for purchase with a
-/// grocery store agent. For more information, see the [Entity
+/// exactly how data from an end-user expression is extracted.
+///
+/// Dialogflow provides predefined system entities that can match many common
+/// types of data. For example, there are system entities for matching dates,
+/// times, colors, email addresses, and so on. You can also create your own
+/// custom entities for matching custom data. For example, you could define a
+/// vegetable entity that can match the types of vegetables available for
+/// purchase with a grocery store agent. For more information, see the [Entity
 /// guide](https://cloud.google.com/dialogflow/docs/entities-overview).
 class GoogleCloudDialogflowV2beta1EntityType {
-  /// Optional. Indicates whether the entity type can be automatically expanded.
+  /// Indicates whether the entity type can be automatically expanded.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "AUTO_EXPANSION_MODE_UNSPECIFIED" : Auto expansion disabled for the
   /// entity.
@@ -10483,17 +11212,24 @@ class GoogleCloudDialogflowV2beta1EntityType {
   /// have not been explicitly listed in the entity.
   core.String autoExpansionMode;
 
-  /// Required. The name of the entity type.
+  /// The name of the entity type.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. Enables fuzzy entity extraction during classification.
+  /// Enables fuzzy entity extraction during classification.
+  ///
+  /// Optional.
   core.bool enableFuzzyExtraction;
 
-  /// Optional. The collection of entity entries associated with the entity
-  /// type.
+  /// The collection of entity entries associated with the entity type.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1EntityTypeEntity> entities;
 
-  /// Required. Indicates the kind of entity type.
+  /// Indicates the kind of entity type.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "KIND_UNSPECIFIED" : Not specified. This value should be never used.
   /// - "KIND_MAP" : Map entity types allow mapping of a group of synonyms to a
@@ -10505,10 +11241,11 @@ class GoogleCloudDialogflowV2beta1EntityType {
   /// in entries values.
   core.String kind;
 
-  /// The unique identifier of the entity type. Required for
-  /// EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes
-  /// methods. Supported formats: - `projects//agent/entityTypes/` -
-  /// `projects//locations//agent/entityTypes/`
+  /// The unique identifier of the entity type.
+  ///
+  /// Required for EntityTypes.UpdateEntityType and
+  /// EntityTypes.BatchUpdateEntityTypes methods. Supported formats: -
+  /// `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
   core.String name;
 
   GoogleCloudDialogflowV2beta1EntityType();
@@ -10564,17 +11301,24 @@ class GoogleCloudDialogflowV2beta1EntityType {
 
 /// An **entity entry** for an associated entity type.
 class GoogleCloudDialogflowV2beta1EntityTypeEntity {
-  /// Required. A collection of value synonyms. For example, if the entity type
-  /// is *vegetable*, and `value` is *scallions*, a synonym could be *green
-  /// onions*. For `KIND_LIST` entity types: * This collection must contain
-  /// exactly one synonym equal to `value`.
+  /// A collection of value synonyms.
+  ///
+  /// For example, if the entity type is *vegetable*, and `value` is
+  /// *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity
+  /// types: * This collection must contain exactly one synonym equal to
+  /// `value`.
+  ///
+  /// Required.
   core.List<core.String> synonyms;
 
-  /// Required. The primary value associated with this entity entry. For
-  /// example, if the entity type is *vegetable*, the value could be
+  /// The primary value associated with this entity entry.
+  ///
+  /// For example, if the entity type is *vegetable*, the value could be
   /// *scallions*. For `KIND_MAP` entity types: * A reference value to be used
   /// in place of synonyms. For `KIND_LIST` entity types: * A string that can
   /// contain references to other entity types (with or without aliases).
+  ///
+  /// Required.
   core.String value;
 
   GoogleCloudDialogflowV2beta1EntityTypeEntity();
@@ -10603,27 +11347,37 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
 }
 
 /// Events allow for matching intents by event name instead of the natural
-/// language input. For instance, input `` can trigger a personalized welcome
-/// response. The parameter `name` may be used by the agent in the response:
-/// `"Hello #welcome_event.name! What can I do for you today?"`.
+/// language input.
+///
+/// For instance, input `` can trigger a personalized welcome response. The
+/// parameter `name` may be used by the agent in the response: `"Hello
+/// #welcome_event.name! What can I do for you today?"`.
 class GoogleCloudDialogflowV2beta1EventInput {
-  /// Required. The language of this query. See [Language
+  /// The language of this query.
+  ///
+  /// See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes. Note that queries in the
   /// same session do not necessarily need to specify the same language.
+  ///
+  /// Required.
   core.String languageCode;
 
-  /// Required. The unique identifier of the event.
+  /// The unique identifier of the event.
+  ///
+  /// Required.
   core.String name;
 
-  /// The collection of parameters associated with the event. Depending on your
-  /// protocol or client library language, this is a map, associative array,
-  /// symbol table, dictionary, or JSON object composed of a collection of
-  /// (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter
-  /// name - MapValue type: - If parameter's entity type is a composite entity:
-  /// map - Else: string or number, depending on parameter value type - MapValue
-  /// value: - If parameter's entity type is a composite entity: map from
-  /// composite entity property names to property values - Else: parameter value
+  /// The collection of parameters associated with the event.
+  ///
+  /// Depending on your protocol or client library language, this is a map,
+  /// associative array, symbol table, dictionary, or JSON object composed of a
+  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
+  /// value: parameter name - MapValue type: - If parameter's entity type is a
+  /// composite entity: map - Else: string or number, depending on parameter
+  /// value type - MapValue value: - If parameter's entity type is a composite
+  /// entity: map from composite entity property names to property values -
+  /// Else: parameter value
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10677,8 +11431,10 @@ class GoogleCloudDialogflowV2beta1ExportAgentResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The URI to a file containing the exported agent. This field is populated
-  /// only if `agent_uri` is specified in `ExportAgentRequest`.
+  /// The URI to a file containing the exported agent.
+  ///
+  /// This field is populated only if `agent_uri` is specified in
+  /// `ExportAgentRequest`.
   core.String agentUri;
 
   GoogleCloudDialogflowV2beta1ExportAgentResponse();
@@ -10729,60 +11485,90 @@ class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
   }
 }
 
-/// An intent categorizes an end-user's intention for one conversation turn. For
-/// each agent, you define many intents, where your combined intents can handle
-/// a complete conversation. When an end-user writes or says something, referred
-/// to as an end-user expression or end-user input, Dialogflow matches the
-/// end-user input to the best intent in your agent. Matching an intent is also
-/// known as intent classification. For more information, see the [intent
+/// An intent categorizes an end-user's intention for one conversation turn.
+///
+/// For each agent, you define many intents, where your combined intents can
+/// handle a complete conversation. When an end-user writes or says something,
+/// referred to as an end-user expression or end-user input, Dialogflow matches
+/// the end-user input to the best intent in your agent. Matching an intent is
+/// also known as intent classification. For more information, see the [intent
 /// guide](https://cloud.google.com/dialogflow/docs/intents-overview).
 class GoogleCloudDialogflowV2beta1Intent {
-  /// Optional. The name of the action associated with the intent. Note: The
-  /// action name must not contain whitespaces.
+  /// The name of the action associated with the intent.
+  ///
+  /// Note: The action name must not contain whitespaces.
+  ///
+  /// Optional.
   core.String action;
 
-  /// Optional. The list of platforms for which the first responses will be
-  /// copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+  /// The list of platforms for which the first responses will be copied from
+  /// the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+  ///
+  /// Optional.
   core.List<core.String> defaultResponsePlatforms;
 
-  /// Required. The name of this intent.
+  /// The name of this intent.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. Indicates that this intent ends an interaction. Some
-  /// integrations (e.g., Actions on Google or Dialogflow phone gateway) use
-  /// this information to close interaction with an end user. Default is false.
+  /// Indicates that this intent ends an interaction.
+  ///
+  /// Some integrations (e.g., Actions on Google or Dialogflow phone gateway)
+  /// use this information to close interaction with an end user. Default is
+  /// false.
+  ///
+  /// Optional.
   core.bool endInteraction;
 
-  /// Optional. The collection of event names that trigger the intent. If the
-  /// collection of input contexts is not empty, all of the contexts must be
-  /// present in the active user session for an event to trigger this intent.
+  /// The collection of event names that trigger the intent.
+  ///
+  /// If the collection of input contexts is not empty, all of the contexts must
+  /// be present in the active user session for an event to trigger this intent.
   /// Event names are limited to 150 characters.
+  ///
+  /// Optional.
   core.List<core.String> events;
 
-  /// Output only. Information about all followup intents that have this intent
-  /// as a direct or indirect parent. We populate this field only in the output.
+  /// Information about all followup intents that have this intent as a direct
+  /// or indirect parent.
+  ///
+  /// We populate this field only in the output.
+  ///
+  /// Output only.
   core.List<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>
       followupIntentInfo;
 
-  /// Optional. The list of context names required for this intent to be
-  /// triggered. Formats: - `projects//agent/sessions/-/contexts/` -
+  /// The list of context names required for this intent to be triggered.
+  ///
+  /// Formats: - `projects//agent/sessions/-/contexts/` -
   /// `projects//locations//agent/sessions/-/contexts/`
+  ///
+  /// Optional.
   core.List<core.String> inputContextNames;
 
-  /// Optional. Indicates whether this is a fallback intent.
+  /// Indicates whether this is a fallback intent.
+  ///
+  /// Optional.
   core.bool isFallback;
 
-  /// Optional. The collection of rich messages corresponding to the `Response`
-  /// field in the Dialogflow console.
+  /// The collection of rich messages corresponding to the `Response` field in
+  /// the Dialogflow console.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessage> messages;
 
-  /// Optional. Indicates whether Machine Learning is disabled for the intent.
+  /// Indicates whether Machine Learning is disabled for the intent.
+  ///
   /// Note: If `ml_disabled` setting is set to true, then this intent is not
   /// taken into account during inference in `ML ONLY` match mode. Also,
   /// auto-markup in the UI is turned off.
+  ///
+  /// Optional.
   core.bool mlDisabled;
 
-  /// Optional. Indicates whether Machine Learning is enabled for the intent.
+  /// Indicates whether Machine Learning is enabled for the intent.
+  ///
   /// Note: If `ml_enabled` setting is set to false, then this intent is not
   /// taken into account during inference in `ML ONLY` match mode. Also,
   /// auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled`
@@ -10791,50 +11577,77 @@ class GoogleCloudDialogflowV2beta1Intent {
   /// April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true.
   /// - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled =
   /// false.
+  ///
+  /// Optional.
   core.bool mlEnabled;
 
-  /// Optional. The unique identifier of this intent. Required for
-  /// Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported
-  /// formats: - `projects//agent/intents/` -
+  /// The unique identifier of this intent.
+  ///
+  /// Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods.
+  /// Supported formats: - `projects//agent/intents/` -
   /// `projects//locations//agent/intents/`
+  ///
+  /// Optional.
   core.String name;
 
-  /// Optional. The collection of contexts that are activated when the intent is
-  /// matched. Context messages in this collection should not set the parameters
-  /// field. Setting the `lifespan_count` to 0 will reset the context when the
-  /// intent is matched. Format: `projects//agent/sessions/-/contexts/`.
+  /// The collection of contexts that are activated when the intent is matched.
+  ///
+  /// Context messages in this collection should not set the parameters field.
+  /// Setting the `lifespan_count` to 0 will reset the context when the intent
+  /// is matched. Format: `projects//agent/sessions/-/contexts/`.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1Context> outputContexts;
 
-  /// Optional. The collection of parameters associated with the intent.
+  /// The collection of parameters associated with the intent.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentParameter> parameters;
 
-  /// Optional. The unique identifier of the parent intent in the chain of
-  /// followup intents. You can set this field when creating an intent, for
-  /// example with CreateIntent or BatchUpdateIntents, in order to make this
-  /// intent a followup intent. It identifies the parent followup intent.
-  /// Format: `projects//agent/intents/`.
+  /// The unique identifier of the parent intent in the chain of followup
+  /// intents.
+  ///
+  /// You can set this field when creating an intent, for example with
+  /// CreateIntent or BatchUpdateIntents, in order to make this intent a
+  /// followup intent. It identifies the parent followup intent. Format:
+  /// `projects//agent/intents/`.
+  ///
+  /// Optional.
   core.String parentFollowupIntentName;
 
-  /// Optional. The priority of this intent. Higher numbers represent higher
-  /// priorities. - If the supplied value is unspecified or 0, the service
-  /// translates the value to 500,000, which corresponds to the `Normal`
-  /// priority in the console. - If the supplied value is negative, the intent
-  /// is ignored in runtime detect intent requests.
+  /// The priority of this intent.
+  ///
+  /// Higher numbers represent higher priorities. - If the supplied value is
+  /// unspecified or 0, the service translates the value to 500,000, which
+  /// corresponds to the `Normal` priority in the console. - If the supplied
+  /// value is negative, the intent is ignored in runtime detect intent
+  /// requests.
+  ///
+  /// Optional.
   core.int priority;
 
-  /// Optional. Indicates whether to delete all contexts in the current session
-  /// when this intent is matched.
+  /// Indicates whether to delete all contexts in the current session when this
+  /// intent is matched.
+  ///
+  /// Optional.
   core.bool resetContexts;
 
-  /// Output only. The unique identifier of the root intent in the chain of
-  /// followup intents. It identifies the correct followup intents chain for
-  /// this intent. Format: `projects//agent/intents/`.
+  /// The unique identifier of the root intent in the chain of followup intents.
+  ///
+  /// It identifies the correct followup intents chain for this intent. Format:
+  /// `projects//agent/intents/`.
+  ///
+  /// Output only.
   core.String rootFollowupIntentName;
 
-  /// Optional. The collection of examples that the agent is trained on.
+  /// The collection of examples that the agent is trained on.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentTrainingPhrase> trainingPhrases;
 
-  /// Optional. Indicates whether webhooks are enabled for the intent.
+  /// Indicates whether webhooks are enabled for the intent.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WEBHOOK_STATE_UNSPECIFIED" : Webhook is disabled in the agent and in
   /// the intent.
@@ -11009,12 +11822,14 @@ class GoogleCloudDialogflowV2beta1Intent {
 
 /// Represents a single followup intent in the chain.
 class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo {
-  /// The unique identifier of the followup intent. Format:
-  /// `projects//agent/intents/`.
+  /// The unique identifier of the followup intent.
+  ///
+  /// Format: `projects//agent/intents/`.
   core.String followupIntentName;
 
-  /// The unique identifier of the followup intent's parent. Format:
-  /// `projects//agent/intents/`.
+  /// The unique identifier of the followup intent's parent.
+  ///
+  /// Format: `projects//agent/intents/`.
   core.String parentFollowupIntentName;
 
   GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo();
@@ -11075,7 +11890,9 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// Optional. The platform that this message is intended for.
+  /// The platform that this message is intended for.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "PLATFORM_UNSPECIFIED" : Not specified.
   /// - "FACEBOOK" : Facebook.
@@ -11101,8 +11918,9 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard
       rbmStandaloneRichCard;
 
-  /// Rich Business Messaging (RBM) text response. RBM allows businesses to send
-  /// enriched and branded versions of SMS. See
+  /// Rich Business Messaging (RBM) text response.
+  ///
+  /// RBM allows businesses to send enriched and branded versions of SMS. See
   /// https://jibe.google.com/business-messaging.
   GoogleCloudDialogflowV2beta1IntentMessageRbmText rbmText;
 
@@ -11311,21 +12129,33 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   }
 }
 
-/// The basic card message. Useful for displaying information.
+/// The basic card message.
+///
+/// Useful for displaying information.
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
-  /// Optional. The collection of card buttons.
+  /// The collection of card buttons.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> buttons;
 
-  /// Required, unless image is present. The body text of the card.
+  /// Required, unless image is present.
+  ///
+  /// The body text of the card.
   core.String formattedText;
 
-  /// Optional. The image for the card.
+  /// The image for the card.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage image;
 
-  /// Optional. The subtitle of the card.
+  /// The subtitle of the card.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Optional. The title of the card.
+  /// The title of the card.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageBasicCard();
@@ -11377,11 +12207,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
 
 /// The button object that appears at the bottom of a card.
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
-  /// Required. Action to take when a user taps on the button.
+  /// Action to take when a user taps on the button.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction
       openUriAction;
 
-  /// Required. The title of the button.
+  /// The title of the button.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton();
@@ -11413,7 +12247,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
 
 /// Opens the given URI.
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
-  /// Required. The HTTP or HTTPS scheme URI.
+  /// The HTTP or HTTPS scheme URI.
+  ///
+  /// Required.
   core.String uri;
 
   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction();
@@ -11435,10 +12271,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
 }
 
 /// Browse Carousel Card for Actions on Google.
+///
 /// https://developers.google.com/actions/assistant/responses#browsing_carousel
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
-  /// Optional. Settings for displaying the image. Applies to every image in
-  /// items.
+  /// Settings for displaying the image.
+  ///
+  /// Applies to every image in items.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" : Fill the gaps between the image
   /// and the image container with gray bars.
@@ -11456,8 +12296,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
   /// blurred copy of the same image.
   core.String imageDisplayOptions;
 
-  /// Required. List of items in the Browse Carousel Card. Minimum of two items,
-  /// maximum of ten.
+  /// List of items in the Browse Carousel Card.
+  ///
+  /// Minimum of two items, maximum of ten.
+  ///
+  /// Required.
   core.List<
           GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
       items;
@@ -11493,21 +12336,36 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
 
 /// Browsing carousel tile
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
-  /// Optional. Description of the carousel item. Maximum of four lines of text.
+  /// Description of the carousel item.
+  ///
+  /// Maximum of four lines of text.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Text that appears at the bottom of the Browse Carousel Card.
+  /// Text that appears at the bottom of the Browse Carousel Card.
+  ///
   /// Maximum of one line of text.
+  ///
+  /// Optional.
   core.String footer;
 
-  /// Optional. Hero image for the carousel item.
+  /// Hero image for the carousel item.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage image;
 
-  /// Required. Action to present to the user.
+  /// Action to present to the user.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
       openUriAction;
 
-  /// Required. Title of the carousel item. Maximum of two lines of text.
+  /// Title of the carousel item.
+  ///
+  /// Maximum of two lines of text.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
@@ -11558,11 +12416,16 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
 
 /// Actions on Google action to open a given url.
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
-  /// Required. URL
+  /// URL
+  ///
+  /// Required.
   core.String url;
 
-  /// Optional. Specifies the type of viewer that is used when opening the URL.
+  /// Specifies the type of viewer that is used when opening the URL.
+  ///
   /// Defaults to opening via web browser.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "URL_TYPE_HINT_UNSPECIFIED" : Unspecified
   /// - "AMP_ACTION" : Url would be an amp action
@@ -11596,16 +12459,24 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
 
 /// The card response message.
 class GoogleCloudDialogflowV2beta1IntentMessageCard {
-  /// Optional. The collection of card buttons.
+  /// The collection of card buttons.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageCardButton> buttons;
 
-  /// Optional. The public URI to an image file for the card.
+  /// The public URI to an image file for the card.
+  ///
+  /// Optional.
   core.String imageUri;
 
-  /// Optional. The subtitle of the card.
+  /// The subtitle of the card.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Optional. The title of the card.
+  /// The title of the card.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageCard();
@@ -11647,12 +12518,18 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
   }
 }
 
-/// Optional. Contains information about a button.
+/// Contains information about a button.
+///
+/// Optional.
 class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
-  /// Optional. The text to send back to the Dialogflow API or a URI to open.
+  /// The text to send back to the Dialogflow API or a URI to open.
+  ///
+  /// Optional.
   core.String postback;
 
-  /// Optional. The text to show on the button.
+  /// The text to show on the button.
+  ///
+  /// Optional.
   core.String text;
 
   GoogleCloudDialogflowV2beta1IntentMessageCardButton();
@@ -11680,7 +12557,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
 
 /// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
-  /// Required. Carousel items.
+  /// Carousel items.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem> items;
 
   GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect();
@@ -11708,16 +12587,24 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
 
 /// An item in the carousel.
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
-  /// Optional. The body text of the card.
+  /// The body text of the card.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. The image to display.
+  /// The image to display.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage image;
 
-  /// Required. Additional info about the option item.
+  /// Additional info about the option item.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo info;
 
-  /// Required. Title of the carousel item.
+  /// Title of the carousel item.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem();
@@ -11760,10 +12647,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
 
 /// Column properties for TableCard.
 class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
-  /// Required. Column heading.
+  /// Column heading.
+  ///
+  /// Required.
   core.String header;
 
-  /// Optional. Defines text alignment for all cells in this column.
+  /// Defines text alignment for all cells in this column.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Text is aligned to the leading edge
   /// of the column.
@@ -11799,10 +12690,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
 /// The image response message.
 class GoogleCloudDialogflowV2beta1IntentMessageImage {
   /// A text description of the image to be used for accessibility, e.g., screen
-  /// readers. Required if image_uri is set for CarouselSelect.
+  /// readers.
+  ///
+  /// Required if image_uri is set for CarouselSelect.
   core.String accessibilityText;
 
-  /// Optional. The public URI to an image file.
+  /// The public URI to an image file.
+  ///
+  /// Optional.
   core.String imageUri;
 
   GoogleCloudDialogflowV2beta1IntentMessageImage();
@@ -11831,11 +12726,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageImage {
 /// The suggestion chip message that allows the user to jump out to the app or
 /// website associated with this agent.
 class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
-  /// Required. The name of the app or site this chip is linking to.
+  /// The name of the app or site this chip is linking to.
+  ///
+  /// Required.
   core.String destinationName;
 
-  /// Required. The URI of the app or site to open when the user taps the
-  /// suggestion chip.
+  /// The URI of the app or site to open when the user taps the suggestion chip.
+  ///
+  /// Required.
   core.String uri;
 
   GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion();
@@ -11864,13 +12762,19 @@ class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
 
 /// The card for presenting a list of options to select from.
 class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
-  /// Required. List items.
+  /// List items.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem> items;
 
-  /// Optional. Subtitle of the list.
+  /// Subtitle of the list.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Optional. The overall title of the list.
+  /// The overall title of the list.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageListSelect();
@@ -11908,16 +12812,24 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
 
 /// An item in the list.
 class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
-  /// Optional. The main text describing the item.
+  /// The main text describing the item.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. The image to display.
+  /// The image to display.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage image;
 
-  /// Required. Additional information about this option.
+  /// Additional information about this option.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo info;
 
-  /// Required. The title of the list item.
+  /// The title of the list item.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageListSelectItem();
@@ -11960,12 +12872,16 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
 
 /// The media content card for Actions on Google.
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
-  /// Required. List of media objects.
+  /// List of media objects.
+  ///
+  /// Required.
   core.List<
           GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>
       mediaObjects;
 
-  /// Optional. What type of media is the content (ie "audio").
+  /// What type of media is the content (ie "audio").
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "RESPONSE_MEDIA_TYPE_UNSPECIFIED" : Unspecified.
   /// - "AUDIO" : Response media type is audio.
@@ -12003,19 +12919,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
 
 /// Response media object for media content card.
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
-  /// Required. Url where the media is stored.
+  /// Url where the media is stored.
+  ///
+  /// Required.
   core.String contentUrl;
 
-  /// Optional. Description of media card.
+  /// Description of media card.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Icon to display above media content.
+  /// Icon to display above media content.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage icon;
 
-  /// Optional. Image to display above media content.
+  /// Image to display above media content.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage largeImage;
 
-  /// Required. Name of media card.
+  /// Name of media card.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject();
@@ -12064,10 +12990,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
 
 /// The quick replies response message.
 class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
-  /// Optional. The collection of quick replies.
+  /// The collection of quick replies.
+  ///
+  /// Optional.
   core.List<core.String> quickReplies;
 
-  /// Optional. The title of the collection of quick replies.
+  /// The title of the collection of quick replies.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageQuickReplies();
@@ -12098,19 +13028,30 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
 
 /// Rich Business Messaging (RBM) Card content
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
-  /// Optional. Description of the card (at most 2000 bytes). At least one of
-  /// the title, description or media must be set.
+  /// Description of the card (at most 2000 bytes).
+  ///
+  /// At least one of the title, description or media must be set.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. However at least one of the title, description or media must be
-  /// set. Media (image, GIF or a video) to include in the card.
+  /// However at least one of the title, description or media must be set.
+  ///
+  /// Media (image, GIF or a video) to include in the card.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia media;
 
-  /// Optional. List of suggestions to include in the card.
+  /// List of suggestions to include in the card.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> suggestions;
 
-  /// Optional. Title of the card (at most 200 bytes). At least one of the
-  /// title, description or media must be set.
+  /// Title of the card (at most 200 bytes).
+  ///
+  /// At least one of the title, description or media must be set.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent();
@@ -12160,15 +13101,21 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
 /// image/gif * image/png Video Types * video/h263 * video/m4v * video/mp4 *
 /// video/mpeg * video/mpeg4 * video/webm
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
-  /// Required. Publicly reachable URI of the file. The RBM platform determines
-  /// the MIME type of the file from the content-type field in the HTTP headers
-  /// when the platform fetches the file. The content-type field must be present
-  /// and accurate in the HTTP response from the URL.
+  /// Publicly reachable URI of the file.
+  ///
+  /// The RBM platform determines the MIME type of the file from the
+  /// content-type field in the HTTP headers when the platform fetches the file.
+  /// The content-type field must be present and accurate in the HTTP response
+  /// from the URL.
+  ///
+  /// Required.
   core.String fileUri;
 
-  /// Required for cards with vertical orientation. The height of the media
-  /// within a rich card with a vertical layout. For a standalone card with
-  /// horizontal layout, height is not customizable, and this field is ignored.
+  /// Required for cards with vertical orientation.
+  ///
+  /// The height of the media within a rich card with a vertical layout. For a
+  /// standalone card with horizontal layout, height is not customizable, and
+  /// this field is ignored.
   /// Possible string values are:
   /// - "HEIGHT_UNSPECIFIED" : Not specified.
   /// - "SHORT" : 112 DP.
@@ -12177,11 +13124,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   /// width is set to small.
   core.String height;
 
-  /// Optional. Publicly reachable URI of the thumbnail.If you don't provide a
-  /// thumbnail URI, the RBM platform displays a blank placeholder thumbnail
-  /// until the user's device downloads the file. Depending on the user's
-  /// setting, the file may not download automatically and may require the user
-  /// to tap a download button.
+  /// Publicly reachable URI of the thumbnail.If you don't provide a thumbnail
+  /// URI, the RBM platform displays a blank placeholder thumbnail until the
+  /// user's device downloads the file.
+  ///
+  /// Depending on the user's setting, the file may not download automatically
+  /// and may require the user to tap a download button.
+  ///
+  /// Optional.
   core.String thumbnailUri;
 
   GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia();
@@ -12214,17 +13164,23 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   }
 }
 
-/// Carousel Rich Business Messaging (RBM) rich card. Rich cards allow you to
-/// respond to users with more vivid content, e.g. with media and suggestions.
-/// If you want to show a single card with more control over the layout, please
-/// use RbmStandaloneCard instead.
+/// Carousel Rich Business Messaging (RBM) rich card.
+///
+/// Rich cards allow you to respond to users with more vivid content, e.g. with
+/// media and suggestions. If you want to show a single card with more control
+/// over the layout, please use RbmStandaloneCard instead.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
-  /// Required. The cards in the carousel. A carousel must have at least 2 cards
-  /// and at most 10.
+  /// The cards in the carousel.
+  ///
+  /// A carousel must have at least 2 cards and at most 10.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>
       cardContents;
 
-  /// Required. The width of the cards in the carousel.
+  /// The width of the cards in the carousel.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "CARD_WIDTH_UNSPECIFIED" : Not specified.
   /// - "SMALL" : 120 DP. Note that tall media cannot be used.
@@ -12260,23 +13216,30 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
   }
 }
 
-/// Standalone Rich Business Messaging (RBM) rich card. Rich cards allow you to
-/// respond to users with more vivid content, e.g. with media and suggestions.
-/// You can group multiple rich cards into one using RbmCarouselCard but
-/// carousel cards will give you less control over the card layout.
+/// Standalone Rich Business Messaging (RBM) rich card.
+///
+/// Rich cards allow you to respond to users with more vivid content, e.g. with
+/// media and suggestions. You can group multiple rich cards into one using
+/// RbmCarouselCard but carousel cards will give you less control over the card
+/// layout.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
-  /// Required. Card content.
+  /// Card content.
+  ///
+  /// Required.
   GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent cardContent;
 
-  /// Required. Orientation of the card.
+  /// Orientation of the card.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "CARD_ORIENTATION_UNSPECIFIED" : Not specified.
   /// - "HORIZONTAL" : Horizontal layout.
   /// - "VERTICAL" : Vertical layout.
   core.String cardOrientation;
 
-  /// Required if orientation is horizontal. Image preview alignment for
-  /// standalone cards with horizontal layout.
+  /// Required if orientation is horizontal.
+  ///
+  /// Image preview alignment for standalone cards with horizontal layout.
   /// Possible string values are:
   /// - "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED" : Not specified.
   /// - "LEFT" : Thumbnail preview is left-aligned.
@@ -12327,8 +13290,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
       openUrl;
 
   /// Opaque payload that the Dialogflow receives in a user event when the user
-  /// taps the suggested action. This data will be also forwarded to webhook to
-  /// allow performing custom business logic.
+  /// taps the suggested action.
+  ///
+  /// This data will be also forwarded to webhook to allow performing custom
+  /// business logic.
   core.String postbackData;
 
   /// Suggested client side action: Share user location
@@ -12391,9 +13356,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
 /// Opens the user's default dialer app with the specified phone number but does
 /// not dial automatically.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial {
-  /// Required. The phone number to fill in the default dialer app. This field
-  /// should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An
-  /// example of a correctly formatted phone number: +15556767888.
+  /// The phone number to fill in the default dialer app.
+  ///
+  /// This field should be in [E.164](https://en.wikipedia.org/wiki/E.164)
+  /// format. An example of a correctly formatted phone number: +15556767888.
+  ///
+  /// Required.
   core.String phoneNumber;
 
   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial();
@@ -12419,7 +13387,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
 /// then this app will be opened instead, and its icon will be used in the
 /// suggested action UI.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri {
-  /// Required. The uri to open on the user device
+  /// The uri to open on the user device
+  ///
+  /// Required.
   core.String uri;
 
   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri();
@@ -12459,8 +13429,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
 /// instead of typing in their own response.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   /// Opaque payload that the Dialogflow receives in a user event when the user
-  /// taps the suggested reply. This data will be also forwarded to webhook to
-  /// allow performing custom business logic.
+  /// taps the suggested reply.
+  ///
+  /// This data will be also forwarded to webhook to allow performing custom
+  /// business logic.
   core.String postbackData;
 
   /// Suggested reply text.
@@ -12490,9 +13462,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   }
 }
 
-/// Rich Business Messaging (RBM) suggestion. Suggestions allow user to easily
-/// select/click a predefined response or perform an action (like opening a web
-/// uri).
+/// Rich Business Messaging (RBM) suggestion.
+///
+/// Suggestions allow user to easily select/click a predefined response or
+/// perform an action (like opening a web uri).
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
   /// Predefined client side actions that user can choose
   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction action;
@@ -12530,11 +13503,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
 
 /// Rich Business Messaging (RBM) text response with suggestions.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
-  /// Optional. One or more suggestions to show to the user.
+  /// One or more suggestions to show to the user.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>
       rbmSuggestion;
 
-  /// Required. Text sent and displayed to the user.
+  /// Text sent and displayed to the user.
+  ///
+  /// Required.
   core.String text;
 
   GoogleCloudDialogflowV2beta1IntentMessageRbmText();
@@ -12567,12 +13544,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
 
 /// Additional info about the select item for when it is triggered in a dialog.
 class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
-  /// Required. A unique key that will be sent back to the agent if this
-  /// response is given.
+  /// A unique key that will be sent back to the agent if this response is
+  /// given.
+  ///
+  /// Required.
   core.String key;
 
-  /// Optional. A list of synonyms that can also be used to trigger this item in
-  /// dialog.
+  /// A list of synonyms that can also be used to trigger this item in dialog.
+  ///
+  /// Optional.
   core.List<core.String> synonyms;
 
   GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo();
@@ -12603,15 +13583,20 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
 
 /// The simple response message containing speech or text.
 class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
-  /// Optional. The text to display.
+  /// The text to display.
+  ///
+  /// Optional.
   core.String displayText;
 
-  /// One of text_to_speech or ssml must be provided. Structured spoken response
-  /// to the user in the SSML format. Mutually exclusive with text_to_speech.
+  /// One of text_to_speech or ssml must be provided.
+  ///
+  /// Structured spoken response to the user in the SSML format. Mutually
+  /// exclusive with text_to_speech.
   core.String ssml;
 
-  /// One of text_to_speech or ssml must be provided. The plain text of the
-  /// speech output. Mutually exclusive with ssml.
+  /// One of text_to_speech or ssml must be provided.
+  ///
+  /// The plain text of the speech output. Mutually exclusive with ssml.
   core.String textToSpeech;
 
   GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse();
@@ -12644,12 +13629,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
   }
 }
 
-/// The collection of simple response candidates. This message in
-/// `QueryResult.fulfillment_messages` and
+/// The collection of simple response candidates.
+///
+/// This message in `QueryResult.fulfillment_messages` and
 /// `WebhookResponse.fulfillment_messages` should contain only one
 /// `SimpleResponse`.
 class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
-  /// Required. The list of simple responses.
+  /// The list of simple responses.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>
       simpleResponses;
 
@@ -12679,7 +13667,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
 /// The suggestion chip message that the user can tap to quickly post a reply to
 /// the conversation.
 class GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
-  /// Required. The text shown the in the suggestion chip.
+  /// The text shown the in the suggestion chip.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageSuggestion();
@@ -12701,7 +13691,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
 
 /// The collection of suggestions.
 class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
-  /// Required. The list of suggested replies.
+  /// The list of suggested replies.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageSuggestion> suggestions;
 
   GoogleCloudDialogflowV2beta1IntentMessageSuggestions();
@@ -12729,23 +13721,35 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
 
 /// Table card for Actions on Google.
 class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
-  /// Optional. List of buttons for the card.
+  /// List of buttons for the card.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> buttons;
 
-  /// Optional. Display properties for the columns in this table.
+  /// Display properties for the columns in this table.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>
       columnProperties;
 
-  /// Optional. Image which should be displayed on the card.
+  /// Image which should be displayed on the card.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1IntentMessageImage image;
 
-  /// Optional. Rows in this table of data.
+  /// Rows in this table of data.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow> rows;
 
-  /// Optional. Subtitle to the title.
+  /// Subtitle to the title.
+  ///
+  /// Optional.
   core.String subtitle;
 
-  /// Required. Title of the card.
+  /// Title of the card.
+  ///
+  /// Required.
   core.String title;
 
   GoogleCloudDialogflowV2beta1IntentMessageTableCard();
@@ -12813,7 +13817,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
 
 /// Cell of TableCardRow.
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
-  /// Required. Text in this cell.
+  /// Text in this cell.
+  ///
+  /// Required.
   core.String text;
 
   GoogleCloudDialogflowV2beta1IntentMessageTableCardCell();
@@ -12836,10 +13842,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
 
 /// Row of TableCard.
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
-  /// Optional. List of cells that make up this row.
+  /// List of cells that make up this row.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell> cells;
 
-  /// Optional. Whether to add a visual divider after this row.
+  /// Whether to add a visual divider after this row.
+  ///
+  /// Optional.
   core.bool dividerAfter;
 
   GoogleCloudDialogflowV2beta1IntentMessageTableCardRow();
@@ -12872,15 +13882,19 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
 
 /// Plays audio from a file in Telephony Gateway.
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
-  /// Required. URI to a Google Cloud Storage object containing the audio to
-  /// play, e.g., "gs://bucket/object". The object must contain a single channel
-  /// (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be
-  /// readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`
-  /// service account where is the number of the Telephony Gateway project
-  /// (usually the same as the Dialogflow agent project). If the Google Cloud
-  /// Storage bucket is in the Telephony Gateway project, this permission is
-  /// added by default when enabling the Dialogflow V2 API. For audio from other
-  /// sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
+  /// URI to a Google Cloud Storage object containing the audio to play, e.g.,
+  /// "gs://bucket/object".
+  ///
+  /// The object must contain a single channel (mono) of linear PCM audio (2
+  /// bytes / sample) at 8kHz. This object must be readable by the
+  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where
+  /// is the number of the Telephony Gateway project (usually the same as the
+  /// Dialogflow agent project). If the Google Cloud Storage bucket is in the
+  /// Telephony Gateway project, this permission is added by default when
+  /// enabling the Dialogflow V2 API. For audio from other sources, consider
+  /// using the `TelephonySynthesizeSpeech` message with SSML.
+  ///
+  /// Required.
   core.String audioUri;
 
   GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio();
@@ -12902,11 +13916,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
 }
 
 /// Synthesizes speech and plays back the synthesized audio to the caller in
-/// Telephony Gateway. Telephony Gateway takes the synthesizer settings from
+/// Telephony Gateway.
+///
+/// Telephony Gateway takes the synthesizer settings from
 /// `DetectIntentResponse.output_audio_config` which can either be set at
 /// request-level or can come from the agent-level synthesizer config.
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
-  /// The SSML to be synthesized. For more information, see
+  /// The SSML to be synthesized.
+  ///
+  /// For more information, see
   /// [SSML](https://developers.google.com/actions/reference/ssml).
   core.String ssml;
 
@@ -12939,9 +13957,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
 
 /// Transfers the call in Telephony Gateway.
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
-  /// Required. The phone number to transfer the call to in [E.164
-  /// format](https://en.wikipedia.org/wiki/E.164). We currently only allow
-  /// transferring to US numbers (+1xxxyyyzzzz).
+  /// The phone number to transfer the call to in [E.164
+  /// format](https://en.wikipedia.org/wiki/E.164).
+  ///
+  /// We currently only allow transferring to US numbers (+1xxxyyyzzzz).
+  ///
+  /// Required.
   core.String phoneNumber;
 
   GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall();
@@ -12964,7 +13985,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
 
 /// The text response message.
 class GoogleCloudDialogflowV2beta1IntentMessageText {
-  /// Optional. The collection of the agent's responses.
+  /// The collection of the agent's responses.
+  ///
+  /// Optional.
   core.List<core.String> text;
 
   GoogleCloudDialogflowV2beta1IntentMessageText();
@@ -12988,37 +14011,57 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
 
 /// Represents intent parameters.
 class GoogleCloudDialogflowV2beta1IntentParameter {
-  /// Optional. The default value to use when the `value` yields an empty
-  /// result. Default values can be extracted from contexts by using the
-  /// following syntax: `#context_name.parameter_name`.
+  /// The default value to use when the `value` yields an empty result.
+  ///
+  /// Default values can be extracted from contexts by using the following
+  /// syntax: `#context_name.parameter_name`.
+  ///
+  /// Optional.
   core.String defaultValue;
 
-  /// Required. The name of the parameter.
+  /// The name of the parameter.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Optional. The name of the entity type, prefixed with `@`, that describes
-  /// values of the parameter. If the parameter is required, this must be
-  /// provided.
+  /// The name of the entity type, prefixed with `@`, that describes values of
+  /// the parameter.
+  ///
+  /// If the parameter is required, this must be provided.
+  ///
+  /// Optional.
   core.String entityTypeDisplayName;
 
-  /// Optional. Indicates whether the parameter represents a list of values.
+  /// Indicates whether the parameter represents a list of values.
+  ///
+  /// Optional.
   core.bool isList;
 
-  /// Optional. Indicates whether the parameter is required. That is, whether
-  /// the intent cannot be completed without collecting the parameter value.
+  /// Indicates whether the parameter is required.
+  ///
+  /// That is, whether the intent cannot be completed without collecting the
+  /// parameter value.
+  ///
+  /// Optional.
   core.bool mandatory;
 
   /// The unique identifier of this parameter.
   core.String name;
 
-  /// Optional. The collection of prompts that the agent can present to the user
-  /// in order to collect a value for the parameter.
+  /// The collection of prompts that the agent can present to the user in order
+  /// to collect a value for the parameter.
+  ///
+  /// Optional.
   core.List<core.String> prompts;
 
-  /// Optional. The definition of the parameter value. It can be: - a constant
-  /// string, - a parameter value defined as `$parameter_name`, - an original
-  /// parameter value defined as `$parameter_name.original`, - a parameter value
-  /// from some context defined as `#context_name.parameter_name`.
+  /// The definition of the parameter value.
+  ///
+  /// It can be: - a constant string, - a parameter value defined as
+  /// `$parameter_name`, - an original parameter value defined as
+  /// `$parameter_name.original`, - a parameter value from some context defined
+  /// as `#context_name.parameter_name`.
+  ///
+  /// Optional.
   core.String value;
 
   GoogleCloudDialogflowV2beta1IntentParameter();
@@ -13084,29 +14127,39 @@ class GoogleCloudDialogflowV2beta1IntentParameter {
 
 /// Represents an example that the agent is trained on.
 class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
-  /// Output only. The unique identifier of this training phrase.
+  /// The unique identifier of this training phrase.
+  ///
+  /// Output only.
   core.String name;
 
-  /// Required. The ordered list of training phrase parts. The parts are
-  /// concatenated in order to form the training phrase. Note: The API does not
-  /// automatically annotate training phrases like the Dialogflow Console does.
-  /// Note: Do not forget to include whitespace at part boundaries, so the
-  /// training phrase is well formatted when the parts are concatenated. If the
-  /// training phrase does not need to be annotated with parameters, you just
-  /// need a single part with only the Part.text field set. If you want to
-  /// annotate the training phrase, you must create multiple parts, where the
-  /// fields of each part are populated in one of two ways: - `Part.text` is set
-  /// to a part of the phrase that has no parameters. - `Part.text` is set to a
-  /// part of the phrase that you want to annotate, and the `entity_type`,
-  /// `alias`, and `user_defined` fields are all set.
+  /// The ordered list of training phrase parts.
+  ///
+  /// The parts are concatenated in order to form the training phrase. Note: The
+  /// API does not automatically annotate training phrases like the Dialogflow
+  /// Console does. Note: Do not forget to include whitespace at part
+  /// boundaries, so the training phrase is well formatted when the parts are
+  /// concatenated. If the training phrase does not need to be annotated with
+  /// parameters, you just need a single part with only the Part.text field set.
+  /// If you want to annotate the training phrase, you must create multiple
+  /// parts, where the fields of each part are populated in one of two ways: -
+  /// `Part.text` is set to a part of the phrase that has no parameters. -
+  /// `Part.text` is set to a part of the phrase that you want to annotate, and
+  /// the `entity_type`, `alias`, and `user_defined` fields are all set.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> parts;
 
-  /// Optional. Indicates how many times this example was added to the intent.
+  /// Indicates how many times this example was added to the intent.
+  ///
   /// Each time a developer adds an existing sample by editing an intent or
   /// training, this counter is increased.
+  ///
+  /// Optional.
   core.int timesAddedCount;
 
-  /// Required. The type of the training phrase.
+  /// The type of the training phrase.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Not specified. This value should never be used.
   /// - "EXAMPLE" : Examples do not contain @-prefixed entity type names, but
@@ -13159,22 +14212,33 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
 
 /// Represents a part of a training phrase.
 class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
-  /// Optional. The parameter name for the value extracted from the annotated
-  /// part of the example. This field is required for annotated parts of the
-  /// training phrase.
+  /// The parameter name for the value extracted from the annotated part of the
+  /// example.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  ///
+  /// Optional.
   core.String alias;
 
-  /// Optional. The entity type name prefixed with `@`. This field is required
-  /// for annotated parts of the training phrase.
+  /// The entity type name prefixed with `@`.
+  ///
+  /// This field is required for annotated parts of the training phrase.
+  ///
+  /// Optional.
   core.String entityType;
 
-  /// Required. The text for this part.
+  /// The text for this part.
+  ///
+  /// Required.
   core.String text;
 
-  /// Optional. Indicates whether the text was manually annotated. This field is
-  /// set to true when the Dialogflow Console is used to manually annotate the
-  /// part. When creating an annotated part with the API, you must set this to
-  /// true.
+  /// Indicates whether the text was manually annotated.
+  ///
+  /// This field is set to true when the Dialogflow Console is used to manually
+  /// annotate the part. When creating an annotated part with the API, you must
+  /// set this to true.
+  ///
+  /// Optional.
   core.bool userDefined;
 
   GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart();
@@ -13250,20 +14314,22 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
   core.String faqQuestion;
 
   /// The system's confidence score that this Knowledge answer is a good match
-  /// for this conversational query. The range is from 0.0 (completely
-  /// uncertain) to 1.0 (completely certain). Note: The confidence score is
-  /// likely to vary somewhat (possibly even for identical requests), as the
-  /// underlying model is under constant improvement. It may be deprecated in
-  /// the future. We recommend using `match_confidence_level` which should be
-  /// generally more stable.
+  /// for this conversational query.
+  ///
+  /// The range is from 0.0 (completely uncertain) to 1.0 (completely certain).
+  /// Note: The confidence score is likely to vary somewhat (possibly even for
+  /// identical requests), as the underlying model is under constant
+  /// improvement. It may be deprecated in the future. We recommend using
+  /// `match_confidence_level` which should be generally more stable.
   core.double matchConfidence;
 
   /// The system's confidence level that this knowledge answer is a good match
-  /// for this conversational query. NOTE: The confidence level for a given ``
-  /// pair may change without notice, as it depends on models that are
-  /// constantly being improved. However, it will change less frequently than
-  /// the confidence score below, and should be preferred for referencing the
-  /// quality of an answer.
+  /// for this conversational query.
+  ///
+  /// NOTE: The confidence level for a given `` pair may change without notice,
+  /// as it depends on models that are constantly being improved. However, it
+  /// will change less frequently than the confidence score below, and should be
+  /// preferred for referencing the quality of an answer.
   /// Possible string values are:
   /// - "MATCH_CONFIDENCE_LEVEL_UNSPECIFIED" : Not specified.
   /// - "LOW" : Indicates that the confidence is low.
@@ -13271,8 +14337,9 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
   /// - "HIGH" : Indicates our confidence is high.
   core.String matchConfidenceLevel;
 
-  /// Indicates which Knowledge Document this answer was extracted from. Format:
-  /// `projects//knowledgeBases//documents/`.
+  /// Indicates which Knowledge Document this answer was extracted from.
+  ///
+  /// Format: `projects//knowledgeBases//documents/`.
   core.String source;
 
   GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer();
@@ -13318,7 +14385,9 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
 
 /// Metadata in google::longrunning::Operation for Knowledge operations.
 class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
-  /// Required. Output only. The current state of this operation.
+  /// The current state of this operation.
+  ///
+  /// Required. Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
   /// - "PENDING" : The operation has been created.
@@ -13375,25 +14444,33 @@ class GoogleCloudDialogflowV2beta1LabelConversationResponse {
 /// Represents the contents of the original request that was passed to the
 /// `[Streaming]DetectIntent` call.
 class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
-  /// Optional. This field is set to the value of the `QueryParameters.payload`
-  /// field passed in the request. Some integrations that query a Dialogflow
-  /// agent may provide additional information in the payload. In particular,
-  /// for the Dialogflow Phone Gateway integration, this field has the form: {
-  /// "telephony": { "caller_id": "+18558363987" } } Note: The caller ID field
-  /// (`caller_id`) will be redacted for Trial Edition agents and populated with
-  /// the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
-  /// Essentials Edition agents.
+  /// This field is set to the value of the `QueryParameters.payload` field
+  /// passed in the request.
+  ///
+  /// Some integrations that query a Dialogflow agent may provide additional
+  /// information in the payload. In particular, for the Dialogflow Phone
+  /// Gateway integration, this field has the form: { "telephony": {
+  /// "caller_id": "+18558363987" } } Note: The caller ID field (`caller_id`)
+  /// will be redacted for Trial Edition agents and populated with the caller ID
+  /// in [E.164 format](https://en.wikipedia.org/wiki/E.164) for Essentials
+  /// Edition agents.
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// The source of this request, e.g., `google`, `facebook`, `slack`. It is set
-  /// by Dialogflow-owned servers.
+  /// The source of this request, e.g., `google`, `facebook`, `slack`.
+  ///
+  /// It is set by Dialogflow-owned servers.
   core.String source;
 
-  /// Optional. The version of the protocol used for this request. This field is
-  /// AoG-specific.
+  /// The version of the protocol used for this request.
+  ///
+  /// This field is AoG-specific.
+  ///
+  /// Optional.
   core.String version;
 
   GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest();
@@ -13439,11 +14516,14 @@ class GoogleCloudDialogflowV2beta1QueryResult {
 
   /// This field is set to: - `false` if the matched intent has required
   /// parameters and not all of the required parameter values have been
-  /// collected. - `true` if all required parameter values have been collected,
-  /// or if the matched intent doesn't contain any required parameters.
+  /// collected.
+  ///
+  /// - `true` if all required parameter values have been collected, or if the
+  /// matched intent doesn't contain any required parameters.
   core.bool allRequiredParamsPresent;
 
   /// Free-form diagnostic information for the associated detect intent request.
+  ///
   /// The fields of this data can change without notice, so you should not write
   /// code that depends on its structure. The data may contain: - webhook call
   /// latency - webhook errors
@@ -13455,71 +14535,81 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2beta1IntentMessage> fulfillmentMessages;
 
-  /// The text to be pronounced to the user or shown on the screen. Note: This
-  /// is a legacy field, `fulfillment_messages` should be preferred.
+  /// The text to be pronounced to the user or shown on the screen.
+  ///
+  /// Note: This is a legacy field, `fulfillment_messages` should be preferred.
   core.String fulfillmentText;
 
-  /// The intent that matched the conversational query. Some, not all fields are
-  /// filled in this message, including but not limited to: `name`,
-  /// `display_name`, `end_interaction` and `is_fallback`.
+  /// The intent that matched the conversational query.
+  ///
+  /// Some, not all fields are filled in this message, including but not limited
+  /// to: `name`, `display_name`, `end_interaction` and `is_fallback`.
   GoogleCloudDialogflowV2beta1Intent intent;
 
-  /// The intent detection confidence. Values range from 0.0 (completely
-  /// uncertain) to 1.0 (completely certain). This value is for informational
-  /// purpose only and is only used to help match the best intent within the
-  /// classification threshold. This value may change for the same end-user
-  /// expression at any time due to a model retraining or change in
-  /// implementation. If there are `multiple knowledge_answers` messages, this
-  /// value is set to the greatest `knowledgeAnswers.match_confidence` value in
-  /// the list.
+  /// The intent detection confidence.
+  ///
+  /// Values range from 0.0 (completely uncertain) to 1.0 (completely certain).
+  /// This value is for informational purpose only and is only used to help
+  /// match the best intent within the classification threshold. This value may
+  /// change for the same end-user expression at any time due to a model
+  /// retraining or change in implementation. If there are `multiple
+  /// knowledge_answers` messages, this value is set to the greatest
+  /// `knowledgeAnswers.match_confidence` value in the list.
   core.double intentDetectionConfidence;
 
   /// The result from Knowledge Connector (if any), ordered by decreasing
   /// `KnowledgeAnswers.match_confidence`.
   GoogleCloudDialogflowV2beta1KnowledgeAnswers knowledgeAnswers;
 
-  /// The language that was triggered during intent detection. See [Language
+  /// The language that was triggered during intent detection.
+  ///
+  /// See [Language
   /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
   /// a list of the currently supported language codes.
   core.String languageCode;
 
-  /// The collection of output contexts. If applicable,
-  /// `output_contexts.parameters` contains entries with name `.original`
-  /// containing the original parameter values before the query.
+  /// The collection of output contexts.
+  ///
+  /// If applicable, `output_contexts.parameters` contains entries with name
+  /// `.original` containing the original parameter values before the query.
   core.List<GoogleCloudDialogflowV2beta1Context> outputContexts;
 
-  /// The collection of extracted parameters. Depending on your protocol or
-  /// client library language, this is a map, associative array, symbol table,
-  /// dictionary, or JSON object composed of a collection of (MapKey, MapValue)
-  /// pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-  /// type: - If parameter's entity type is a composite entity: map - Else:
-  /// string or number, depending on parameter value type - MapValue value: - If
-  /// parameter's entity type is a composite entity: map from composite entity
-  /// property names to property values - Else: parameter value
+  /// The collection of extracted parameters.
+  ///
+  /// Depending on your protocol or client library language, this is a map,
+  /// associative array, symbol table, dictionary, or JSON object composed of a
+  /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey
+  /// value: parameter name - MapValue type: - If parameter's entity type is a
+  /// composite entity: map - Else: string or number, depending on parameter
+  /// value type - MapValue value: - If parameter's entity type is a composite
+  /// entity: map from composite entity property names to property values -
+  /// Else: parameter value
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> parameters;
 
   /// The original conversational query text: - If natural language text was
-  /// provided as input, `query_text` contains a copy of the input. - If natural
-  /// language speech audio was provided as input, `query_text` contains the
-  /// speech recognition result. If speech recognizer produced multiple
-  /// alternatives, a particular one is picked. - If automatic spell correction
-  /// is enabled, `query_text` will contain the corrected user input.
+  /// provided as input, `query_text` contains a copy of the input.
+  ///
+  /// - If natural language speech audio was provided as input, `query_text`
+  /// contains the speech recognition result. If speech recognizer produced
+  /// multiple alternatives, a particular one is picked. - If automatic spell
+  /// correction is enabled, `query_text` will contain the corrected user input.
   core.String queryText;
 
   /// The sentiment analysis result, which depends on the
   /// `sentiment_analysis_request_config` specified in the request.
   GoogleCloudDialogflowV2beta1SentimentAnalysisResult sentimentAnalysisResult;
 
-  /// The Speech recognition confidence between 0.0 and 1.0. A higher number
-  /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. The default of 0.0 is a sentinel value indicating that confidence
-  /// was not set. This field is not guaranteed to be accurate or set. In
-  /// particular this field isn't set for StreamingDetectIntent since the
-  /// streaming endpoint has separate confidence estimates per portion of the
-  /// audio in StreamingRecognitionResult.
+  /// The Speech recognition confidence between 0.0 and 1.0.
+  ///
+  /// A higher number indicates an estimated greater likelihood that the
+  /// recognized words are correct. The default of 0.0 is a sentinel value
+  /// indicating that confidence was not set. This field is not guaranteed to be
+  /// accurate or set. In particular this field isn't set for
+  /// StreamingDetectIntent since the streaming endpoint has separate confidence
+  /// estimates per portion of the audio in StreamingRecognitionResult.
   core.double speechRecognitionConfidence;
 
   /// If the query was fulfilled by a webhook call, this field is set to the
@@ -13713,12 +14803,14 @@ class GoogleCloudDialogflowV2beta1Sentiment {
   }
 }
 
-/// The result of sentiment analysis. Sentiment analysis inspects user input and
-/// identifies the prevailing subjective opinion, especially to determine a
-/// user's attitude as positive, negative, or neutral. For
-/// Participants.DetectIntent, it needs to be configured in
-/// DetectIntentRequest.query_params. For Participants.StreamingDetectIntent, it
-/// needs to be configured in StreamingDetectIntentRequest.query_params. And for
+/// The result of sentiment analysis.
+///
+/// Sentiment analysis inspects user input and identifies the prevailing
+/// subjective opinion, especially to determine a user's attitude as positive,
+/// negative, or neutral. For Participants.DetectIntent, it needs to be
+/// configured in DetectIntentRequest.query_params. For
+/// Participants.StreamingDetectIntent, it needs to be configured in
+/// StreamingDetectIntentRequest.query_params. And for
 /// Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it
 /// needs to be configured in ConversationProfile.human_agent_assistant_config
 class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
@@ -13744,19 +14836,24 @@ class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
 }
 
 /// A session represents a conversation between a Dialogflow agent and an
-/// end-user. You can create special entities, called session entities, during a
-/// session. Session entities can extend or replace custom entity types and only
-/// exist during the session that they were created for. All session data,
-/// including session entities, is stored by Dialogflow for 20 minutes. For more
+/// end-user.
+///
+/// You can create special entities, called session entities, during a session.
+/// Session entities can extend or replace custom entity types and only exist
+/// during the session that they were created for. All session data, including
+/// session entities, is stored by Dialogflow for 20 minutes. For more
 /// information, see the [session entity
 /// guide](https://cloud.google.com/dialogflow/docs/entities-session).
 class GoogleCloudDialogflowV2beta1SessionEntityType {
-  /// Required. The collection of entities associated with this session entity
-  /// type.
+  /// The collection of entities associated with this session entity type.
+  ///
+  /// Required.
   core.List<GoogleCloudDialogflowV2beta1EntityTypeEntity> entities;
 
-  /// Required. Indicates whether the additional data should override or
-  /// supplement the custom entity type definition.
+  /// Indicates whether the additional data should override or supplement the
+  /// custom entity type definition.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ENTITY_OVERRIDE_MODE_UNSPECIFIED" : Not specified. This value should be
   /// never used.
@@ -13772,8 +14869,9 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
   /// call EntityTypes.GetEntityType on the custom entity type and merge.
   core.String entityOverrideMode;
 
-  /// Required. The unique identifier of this session entity type. Supported
-  /// formats: - `projects//agent/sessions//entityTypes/` -
+  /// The unique identifier of this session entity type.
+  ///
+  /// Supported formats: - `projects//agent/sessions//entityTypes/` -
   /// `projects//locations//agent/sessions//entityTypes/` -
   /// `projects//agent/environments//users//sessions//entityTypes/` -
   /// `projects//locations//agent/environments/ /users//sessions//entityTypes/`
@@ -13782,6 +14880,8 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
   /// If `User ID` is not specified, we assume default '-' user. `` must be the
   /// display name of an existing entity type in the same agent that will be
   /// overridden or supplemented.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudDialogflowV2beta1SessionEntityType();
@@ -13819,20 +14919,28 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
 
 /// Smart Messaging Entry resource.
 class GoogleCloudDialogflowV2beta1SmartMessagingEntry {
-  /// Output only. Metadata of the message entry
+  /// Metadata of the message entry
+  ///
+  /// Output only.
   GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo messageInfo;
 
-  /// The unique identifier of this message entry. Required for
-  /// [Documents.GetSmartMessagingEntry], [Documents.CreateSmartMessagingEntry],
+  /// The unique identifier of this message entry.
+  ///
+  /// Required for [Documents.GetSmartMessagingEntry],
+  /// [Documents.CreateSmartMessagingEntry],
   /// [Documents.UpdateSmartMessagingEntry], and
   /// [Documents.DeleteSmartMessagingEntry]. Format:
   /// `projects//knowledgeBases//documents//smartMessagingEntries/`
   core.String name;
 
-  /// Required. The raw text of the message.
+  /// The raw text of the message.
+  ///
+  /// Required.
   core.String rawText;
 
-  /// Required. Smart Messaging Entry's enabled/disabled state.
+  /// Smart Messaging Entry's enabled/disabled state.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "SMART_MESSAGING_ENTRY_STATE_UNSPECIFIED" : State unspecified.
   /// - "ENABLED" : This smart reply message is enabled and used when generating
@@ -13880,10 +14988,13 @@ class GoogleCloudDialogflowV2beta1SmartMessagingEntry {
 
 /// Smart messaging entry info.
 class GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo {
-  /// Output only. Method of how the smart messaging entry was created. When the
-  /// smart messaging entry was generated from GenerateDocument, the value is
-  /// AUTOMATIC; when the entry was manually added through
+  /// Method of how the smart messaging entry was created.
+  ///
+  /// When the smart messaging entry was generated from GenerateDocument, the
+  /// value is AUTOMATIC; when the entry was manually added through
   /// CreateSmartMessagingEntry, the value is MANUAL.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CREATION_METHOD_UNSPECIFIED" : The creation method of the smart
   /// messaging entry is unspecified. The value is unused.
@@ -13923,22 +15034,28 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
   /// Alternative query results from KnowledgeService.
   core.List<GoogleCloudDialogflowV2beta1QueryResult> alternativeQueryResults;
 
-  /// Optional. The contents of the original request that was passed to
+  /// The contents of the original request that was passed to
   /// `[Streaming]DetectIntent` call.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
       originalDetectIntentRequest;
 
-  /// The result of the conversational query or event processing. Contains the
-  /// same value as `[Streaming]DetectIntentResponse.query_result`.
+  /// The result of the conversational query or event processing.
+  ///
+  /// Contains the same value as `[Streaming]DetectIntentResponse.query_result`.
   GoogleCloudDialogflowV2beta1QueryResult queryResult;
 
-  /// The unique identifier of the response. Contains the same value as
-  /// `[Streaming]DetectIntentResponse.response_id`.
+  /// The unique identifier of the response.
+  ///
+  /// Contains the same value as `[Streaming]DetectIntentResponse.response_id`.
   core.String responseId;
 
-  /// The unique identifier of detectIntent request session. Can be used to
-  /// identify end-user inside webhook implementation. Supported formats: -
-  /// `projects//agent/sessions/, - `projects//locations//agent/sessions/`, -
+  /// The unique identifier of detectIntent request session.
+  ///
+  /// Can be used to identify end-user inside webhook implementation. Supported
+  /// formats: - `projects//agent/sessions/, -
+  /// `projects//locations//agent/sessions/`, -
   /// `projects//agent/environments//users//sessions/`, -
   /// `projects//locations//agent/environments//users//sessions/`,
   core.String session;
@@ -13994,65 +15111,94 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
   }
 }
 
-/// The response message for a webhook call. This response is validated by the
-/// Dialogflow server. If validation fails, an error will be returned in the
-/// QueryResult.diagnostic_info field. Setting JSON fields to an empty value
-/// with the wrong type is a common error. To avoid this error: - Use `""` for
-/// empty strings - Use `{}` or `null` for empty objects - Use `[]` or `null`
-/// for empty arrays For more information, see the [Protocol Buffers Language
+/// The response message for a webhook call.
+///
+/// This response is validated by the Dialogflow server. If validation fails, an
+/// error will be returned in the QueryResult.diagnostic_info field. Setting
+/// JSON fields to an empty value with the wrong type is a common error. To
+/// avoid this error: - Use `""` for empty strings - Use `{}` or `null` for
+/// empty objects - Use `[]` or `null` for empty arrays For more information,
+/// see the [Protocol Buffers Language
 /// Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
 class GoogleCloudDialogflowV2beta1WebhookResponse {
-  /// Optional. Indicates that this intent ends an interaction. Some
-  /// integrations (e.g., Actions on Google or Dialogflow phone gateway) use
-  /// this information to close interaction with an end user. Default is false.
+  /// Indicates that this intent ends an interaction.
+  ///
+  /// Some integrations (e.g., Actions on Google or Dialogflow phone gateway)
+  /// use this information to close interaction with an end user. Default is
+  /// false.
+  ///
+  /// Optional.
   core.bool endInteraction;
 
-  /// Optional. Invokes the supplied events. When this field is set, Dialogflow
-  /// ignores the `fulfillment_text`, `fulfillment_messages`, and `payload`
-  /// fields.
+  /// Invokes the supplied events.
+  ///
+  /// When this field is set, Dialogflow ignores the `fulfillment_text`,
+  /// `fulfillment_messages`, and `payload` fields.
+  ///
+  /// Optional.
   GoogleCloudDialogflowV2beta1EventInput followupEventInput;
 
-  /// Optional. The rich response messages intended for the end-user. When
-  /// provided, Dialogflow uses this field to populate
+  /// The rich response messages intended for the end-user.
+  ///
+  /// When provided, Dialogflow uses this field to populate
   /// QueryResult.fulfillment_messages sent to the integration or API caller.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1IntentMessage> fulfillmentMessages;
 
-  /// Optional. The text response message intended for the end-user. It is
-  /// recommended to use `fulfillment_messages.text.text[0]` instead. When
+  /// The text response message intended for the end-user.
+  ///
+  /// It is recommended to use `fulfillment_messages.text.text[0]` instead. When
   /// provided, Dialogflow uses this field to populate
   /// QueryResult.fulfillment_text sent to the integration or API caller.
+  ///
+  /// Optional.
   core.String fulfillmentText;
 
-  /// Optional. The collection of output contexts that will overwrite currently
-  /// active contexts for the session and reset their lifespans. When provided,
-  /// Dialogflow uses this field to populate QueryResult.output_contexts sent to
-  /// the integration or API caller.
+  /// The collection of output contexts that will overwrite currently active
+  /// contexts for the session and reset their lifespans.
+  ///
+  /// When provided, Dialogflow uses this field to populate
+  /// QueryResult.output_contexts sent to the integration or API caller.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1Context> outputContexts;
 
-  /// Optional. This field can be used to pass custom data from your webhook to
-  /// the integration or API caller. Arbitrary JSON objects are supported. When
-  /// provided, Dialogflow uses this field to populate
-  /// QueryResult.webhook_payload sent to the integration or API caller. This
-  /// field is also used by the [Google Assistant
+  /// This field can be used to pass custom data from your webhook to the
+  /// integration or API caller.
+  ///
+  /// Arbitrary JSON objects are supported. When provided, Dialogflow uses this
+  /// field to populate QueryResult.webhook_payload sent to the integration or
+  /// API caller. This field is also used by the [Google Assistant
   /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
   /// for rich response messages. See the format definition at [Google Assistant
   /// Dialogflow webhook
   /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
   ///
+  /// Optional.
+  ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> payload;
 
-  /// Optional. Additional session entity types to replace or extend developer
-  /// entity types with. The entity synonyms apply to all languages and persist
-  /// for the session. Setting this data from a webhook overwrites the session
-  /// entity types that have been set using `detectIntent`,
-  /// `streamingDetectIntent` or SessionEntityType management methods.
+  /// Additional session entity types to replace or extend developer entity
+  /// types with.
+  ///
+  /// The entity synonyms apply to all languages and persist for the session.
+  /// Setting this data from a webhook overwrites the session entity types that
+  /// have been set using `detectIntent`, `streamingDetectIntent` or
+  /// SessionEntityType management methods.
+  ///
+  /// Optional.
   core.List<GoogleCloudDialogflowV2beta1SessionEntityType> sessionEntityTypes;
 
-  /// Optional. A custom field used to identify the webhook source. Arbitrary
-  /// strings are supported. When provided, Dialogflow uses this field to
-  /// populate QueryResult.webhook_source sent to the integration or API caller.
+  /// A custom field used to identify the webhook source.
+  ///
+  /// Arbitrary strings are supported. When provided, Dialogflow uses this field
+  /// to populate QueryResult.webhook_source sent to the integration or API
+  /// caller.
+  ///
+  /// Optional.
   core.String source;
 
   GoogleCloudDialogflowV2beta1WebhookResponse();
@@ -14148,8 +15294,10 @@ class GoogleCloudDialogflowV3alpha1ExportAgentResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The URI to a file containing the exported agent. This field is populated
-  /// only if `agent_uri` is specified in ExportAgentRequest.
+  /// The URI to a file containing the exported agent.
+  ///
+  /// This field is populated only if `agent_uri` is specified in
+  /// ExportAgentRequest.
   core.String agentUri;
 
   GoogleCloudDialogflowV3alpha1ExportAgentResponse();
@@ -14200,8 +15348,10 @@ class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The URI to a file containing the exported test cases. This field is
-  /// populated only if `gcs_uri` is specified in ExportTestCasesRequest.
+  /// The URI to a file containing the exported test cases.
+  ///
+  /// This field is populated only if `gcs_uri` is specified in
+  /// ExportTestCasesRequest.
   core.String gcsUri;
 
   GoogleCloudDialogflowV3alpha1ExportTestCasesResponse();
@@ -14230,8 +15380,9 @@ class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse {
 
 /// The response message for Agents.ImportAgent.
 class GoogleCloudDialogflowV3alpha1ImportAgentResponse {
-  /// The unique identifier of the new agent. Format:
-  /// `projects//locations//agents/`.
+  /// The unique identifier of the new agent.
+  ///
+  /// Format: `projects//locations//agents/`.
   core.String agent;
 
   GoogleCloudDialogflowV3alpha1ImportAgentResponse();
@@ -14267,8 +15418,9 @@ class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata {
 
 /// The response message for TestCases.ImportTestCases.
 class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse {
-  /// The unique identifiers of the new test cases. Format:
-  /// `projects//locations//agents//testCases/`.
+  /// The unique identifiers of the new test cases.
+  ///
+  /// Format: `projects//locations//agents//testCases/`.
   core.List<core.String> names;
 
   GoogleCloudDialogflowV3alpha1ImportTestCasesResponse();
@@ -14329,31 +15481,37 @@ class GoogleLongrunningListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -14418,10 +15576,12 @@ class GoogleLongrunningOperation {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
@@ -14436,24 +15596,27 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -14494,15 +15657,20 @@ class GoogleRpcStatus {
   }
 }
 
-/// An object representing a latitude/longitude pair. This is expressed as a
-/// pair of doubles representing degrees latitude and degrees longitude. Unless
-/// specified otherwise, this must conform to the WGS84 standard. Values must be
-/// within normalized ranges.
+/// An object representing a latitude/longitude pair.
+///
+/// This is expressed as a pair of doubles representing degrees latitude and
+/// degrees longitude. Unless specified otherwise, this must conform to the
+/// WGS84 standard. Values must be within normalized ranges.
 class GoogleTypeLatLng {
-  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
+  /// The latitude in degrees.
+  ///
+  /// It must be in the range [-90.0, +90.0].
   core.double latitude;
 
-  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
+  /// The longitude in degrees.
+  ///
+  /// It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   GoogleTypeLatLng();

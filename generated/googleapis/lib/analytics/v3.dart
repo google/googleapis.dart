@@ -1324,8 +1324,9 @@ class ManagementCustomDimensionsResource {
     );
   }
 
-  /// Updates an existing custom dimension. This method supports patch
-  /// semantics.
+  /// Updates an existing custom dimension.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1712,7 +1713,9 @@ class ManagementCustomMetricsResource {
     );
   }
 
-  /// Updates an existing custom metric. This method supports patch semantics.
+  /// Updates an existing custom metric.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2199,7 +2202,9 @@ class ManagementExperimentsResource {
     );
   }
 
-  /// Update an existing experiment. This method supports patch semantics.
+  /// Update an existing experiment.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2611,7 +2616,9 @@ class ManagementFiltersResource {
     );
   }
 
-  /// Updates an existing filter. This method supports patch semantics.
+  /// Updates an existing filter.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2983,7 +2990,9 @@ class ManagementGoalsResource {
     );
   }
 
-  /// Updates an existing goal. This method supports patch semantics.
+  /// Updates an existing goal.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3478,8 +3487,9 @@ class ManagementProfileFilterLinksResource {
     );
   }
 
-  /// Update an existing profile filter link. This method supports patch
-  /// semantics.
+  /// Update an existing profile filter link.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4265,7 +4275,9 @@ class ManagementProfilesResource {
     );
   }
 
-  /// Updates an existing view (profile). This method supports patch semantics.
+  /// Updates an existing view (profile).
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4705,8 +4717,9 @@ class ManagementRemarketingAudienceResource {
     );
   }
 
-  /// Updates an existing remarketing audience. This method supports patch
-  /// semantics.
+  /// Updates an existing remarketing audience.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5874,8 +5887,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     );
   }
 
-  /// Updates an existing webProperty-Google Ads link. This method supports
-  /// patch semantics.
+  /// Updates an existing webProperty-Google Ads link.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6094,9 +6108,10 @@ class ManagementWebpropertiesResource {
     );
   }
 
-  /// Create a new property if the account has fewer than 20 properties. Web
-  /// properties are visible in the Google Analytics interface only if they have
-  /// at least one profile.
+  /// Create a new property if the account has fewer than 20 properties.
+  ///
+  /// Web properties are visible in the Google Analytics interface only if they
+  /// have at least one profile.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6224,7 +6239,9 @@ class ManagementWebpropertiesResource {
     );
   }
 
-  /// Updates an existing web property. This method supports patch semantics.
+  /// Updates an existing web property.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6892,13 +6909,16 @@ class UserDeletionUserDeletionRequestResource {
   }
 }
 
-/// Child link for an account entry. Points to the list of web properties for
-/// this account.
+/// Child link for an account entry.
+///
+/// Points to the list of web properties for this account.
 class AccountChildLink {
   /// Link to the list of web properties for this account.
   core.String href;
 
-  /// Type of the child link. Its value is "analytics#webproperties".
+  /// Type of the child link.
+  ///
+  /// Its value is "analytics#webproperties".
   core.String type;
 
   AccountChildLink();
@@ -6926,8 +6946,9 @@ class AccountChildLink {
 
 /// Permissions the user has for this account.
 class AccountPermissions {
-  /// All the permissions that the user has for this account. These include any
-  /// implied permissions (e.g., EDIT implies VIEW).
+  /// All the permissions that the user has for this account.
+  ///
+  /// These include any implied permissions (e.g., EDIT implies VIEW).
   core.List<core.String> effective;
 
   AccountPermissions();
@@ -6951,8 +6972,9 @@ class AccountPermissions {
 
 /// JSON template for Analytics account entry.
 class Account {
-  /// Child link for an account entry. Points to the list of web properties for
-  /// this account.
+  /// Child link for an account entry.
+  ///
+  /// Points to the list of web properties for this account.
   AccountChildLink childLink;
 
   /// Time the account was created.
@@ -7096,16 +7118,18 @@ class AccountRef {
 }
 
 /// An AccountSummary collection lists a summary of accounts, properties and
-/// views (profiles) to which the user has access. Each resource in the
-/// collection corresponds to a single AccountSummary.
+/// views (profiles) to which the user has access.
+///
+/// Each resource in the collection corresponds to a single AccountSummary.
 class AccountSummaries {
   /// A list of AccountSummaries.
   core.List<AccountSummary> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -7190,8 +7214,9 @@ class AccountSummaries {
   }
 }
 
-/// JSON template for an Analytics AccountSummary. An AccountSummary is a
-/// lightweight tree comprised of properties/profiles.
+/// JSON template for an Analytics AccountSummary.
+///
+/// An AccountSummary is a lightweight tree comprised of properties/profiles.
 class AccountSummary {
   /// Account ID.
   core.String id;
@@ -7253,9 +7278,10 @@ class AccountSummary {
   }
 }
 
-/// JSON template for an Analytics account ticket. The account ticket consists
-/// of the ticket ID and the basic information for the account, property and
-/// profile.
+/// JSON template for an Analytics account ticket.
+///
+/// The account ticket consists of the ticket ID and the basic information for
+/// the account, property and profile.
 class AccountTicket {
   /// Account for this ticket.
   Account account;
@@ -7270,6 +7296,7 @@ class AccountTicket {
   Profile profile;
 
   /// Redirect URI where the user will be sent after accepting Terms of Service.
+  ///
   /// Must be configured in APIs console as a callback URL.
   core.String redirectUri;
 
@@ -7326,10 +7353,11 @@ class AccountTicket {
   }
 }
 
-/// JSON template for an Analytics account tree requests. The account tree
-/// request is used in the provisioning api to create an account, property, and
-/// view (profile). It contains the basic information required to make these
-/// fields.
+/// JSON template for an Analytics account tree requests.
+///
+/// The account tree request is used in the provisioning api to create an
+/// account, property, and view (profile). It contains the basic information
+/// required to make these fields.
 class AccountTreeRequest {
   core.String accountName;
 
@@ -7387,9 +7415,10 @@ class AccountTreeRequest {
   }
 }
 
-/// JSON template for an Analytics account tree response. The account tree
-/// response is used in the provisioning api to return the result of creating an
-/// account, property, and view (profile).
+/// JSON template for an Analytics account tree response.
+///
+/// The account tree response is used in the provisioning api to return the
+/// result of creating an account, property, and view (profile).
 class AccountTreeResponse {
   /// The account created.
   Account account;
@@ -7442,17 +7471,19 @@ class AccountTreeResponse {
 }
 
 /// An account collection provides a list of Analytics accounts to which a user
-/// has access. The account collection is the entry point to all management
-/// information. Each resource in the collection corresponds to a single
-/// Analytics account.
+/// has access.
+///
+/// The account collection is the entry point to all management information.
+/// Each resource in the collection corresponds to a single Analytics account.
 class Accounts {
   /// A list of accounts.
   core.List<Account> items;
 
   /// The maximum number of entries the response can contain, regardless of the
-  /// actual number of entries returned. Its value ranges from 1 to 1000 with a
-  /// value of 1000 by default, or otherwise specified by the max-results query
-  /// parameter.
+  /// actual number of entries returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -7539,11 +7570,14 @@ class Accounts {
 
 /// JSON template for an Google Ads account.
 class AdWordsAccount {
-  /// True if auto-tagging is enabled on the Google Ads account. Read-only after
-  /// the insert operation.
+  /// True if auto-tagging is enabled on the Google Ads account.
+  ///
+  /// Read-only after the insert operation.
   core.bool autoTaggingEnabled;
 
-  /// Customer ID. This field is required when creating a Google Ads link.
+  /// Customer ID.
+  ///
+  /// This field is required when creating a Google Ads link.
   core.String customerId;
 
   /// Resource type for Google Ads account.
@@ -7654,8 +7688,10 @@ class Columns {
   /// List of attributes names returned by columns.
   core.List<core.String> attributeNames;
 
-  /// Etag of collection. This etag can be compared with the last response etag
-  /// to check if response has changed.
+  /// Etag of collection.
+  ///
+  /// This etag can be compared with the last response etag to check if response
+  /// has changed.
   core.String etag;
 
   /// List of columns for a report type.
@@ -7714,11 +7750,14 @@ class Columns {
 }
 
 class CustomDataSourceChildLink {
-  /// Link to the list of daily uploads for this custom data source. Link to the
-  /// list of uploads for this custom data source.
+  /// Link to the list of daily uploads for this custom data source.
+  ///
+  /// Link to the list of uploads for this custom data source.
   core.String href;
 
-  /// Value is "analytics#dailyUploads". Value is "analytics#uploads".
+  /// Value is "analytics#dailyUploads".
+  ///
+  /// Value is "analytics#uploads".
   core.String type;
 
   CustomDataSourceChildLink();
@@ -7744,8 +7783,9 @@ class CustomDataSourceChildLink {
   }
 }
 
-/// Parent link for this custom data source. Points to the web property to which
-/// this custom data source belongs.
+/// Parent link for this custom data source.
+///
+/// Points to the web property to which this custom data source belongs.
 class CustomDataSourceParentLink {
   /// Link to the web property to which this custom data source belongs.
   core.String href;
@@ -7798,8 +7838,9 @@ class CustomDataSource {
   /// Name of this custom data source.
   core.String name;
 
-  /// Parent link for this custom data source. Points to the web property to
-  /// which this custom data source belongs.
+  /// Parent link for this custom data source.
+  ///
+  /// Points to the web property to which this custom data source belongs.
   CustomDataSourceParentLink parentLink;
 
   /// IDs of views (profiles) linked to the custom data source.
@@ -7937,17 +7978,19 @@ class CustomDataSource {
   }
 }
 
-/// Lists Analytics custom data sources to which the user has access. Each
-/// resource in the collection corresponds to a single Analytics custom data
-/// source.
+/// Lists Analytics custom data sources to which the user has access.
+///
+/// Each resource in the collection corresponds to a single Analytics custom
+/// data source.
 class CustomDataSources {
   /// Collection of custom data sources.
   core.List<CustomDataSource> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -8032,13 +8075,16 @@ class CustomDataSources {
   }
 }
 
-/// Parent link for the custom dimension. Points to the property to which the
-/// custom dimension belongs.
+/// Parent link for the custom dimension.
+///
+/// Points to the property to which the custom dimension belongs.
 class CustomDimensionParentLink {
   /// Link to the property to which the custom dimension belongs.
   core.String href;
 
-  /// Type of the parent link. Set to "analytics#webproperty".
+  /// Type of the parent link.
+  ///
+  /// Set to "analytics#webproperty".
   core.String type;
 
   CustomDimensionParentLink();
@@ -8081,15 +8127,17 @@ class CustomDimension {
   /// Index of the custom dimension.
   core.int index;
 
-  /// Kind value for a custom dimension. Set to "analytics#customDimension". It
-  /// is a read-only field.
+  /// Kind value for a custom dimension.
+  ///
+  /// Set to "analytics#customDimension". It is a read-only field.
   core.String kind;
 
   /// Name of the custom dimension.
   core.String name;
 
-  /// Parent link for the custom dimension. Points to the property to which the
-  /// custom dimension belongs.
+  /// Parent link for the custom dimension.
+  ///
+  /// Points to the property to which the custom dimension belongs.
   CustomDimensionParentLink parentLink;
 
   /// Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.
@@ -8189,16 +8237,19 @@ class CustomDimension {
 }
 
 /// A custom dimension collection lists Analytics custom dimensions to which the
-/// user has access. Each resource in the collection corresponds to a single
-/// Analytics custom dimension.
+/// user has access.
+///
+/// Each resource in the collection corresponds to a single Analytics custom
+/// dimension.
 class CustomDimensions {
   /// Collection of custom dimensions.
   core.List<CustomDimension> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -8283,13 +8334,16 @@ class CustomDimensions {
   }
 }
 
-/// Parent link for the custom metric. Points to the property to which the
-/// custom metric belongs.
+/// Parent link for the custom metric.
+///
+/// Points to the property to which the custom metric belongs.
 class CustomMetricParentLink {
   /// Link to the property to which the custom metric belongs.
   core.String href;
 
-  /// Type of the parent link. Set to "analytics#webproperty".
+  /// Type of the parent link.
+  ///
+  /// Set to "analytics#webproperty".
   core.String type;
 
   CustomMetricParentLink();
@@ -8332,8 +8386,9 @@ class CustomMetric {
   /// Index of the custom metric.
   core.int index;
 
-  /// Kind value for a custom metric. Set to "analytics#customMetric". It is a
-  /// read-only field.
+  /// Kind value for a custom metric.
+  ///
+  /// Set to "analytics#customMetric". It is a read-only field.
   core.String kind;
 
   /// Max value of custom metric.
@@ -8345,8 +8400,9 @@ class CustomMetric {
   /// Name of the custom metric.
   core.String name;
 
-  /// Parent link for the custom metric. Points to the property to which the
-  /// custom metric belongs.
+  /// Parent link for the custom metric.
+  ///
+  /// Points to the property to which the custom metric belongs.
   CustomMetricParentLink parentLink;
 
   /// Scope of the custom metric: HIT or PRODUCT.
@@ -8467,16 +8523,19 @@ class CustomMetric {
 }
 
 /// A custom metric collection lists Analytics custom metrics to which the user
-/// has access. Each resource in the collection corresponds to a single
-/// Analytics custom metric.
+/// has access.
+///
+/// Each resource in the collection corresponds to a single Analytics custom
+/// metric.
 class CustomMetrics {
   /// Collection of custom metrics.
   core.List<CustomMetric> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -8585,8 +8644,10 @@ class EntityAdWordsLinkEntity {
 
 /// JSON template for Analytics Entity Google Ads Link.
 class EntityAdWordsLink {
-  /// A list of Google Ads client accounts. These cannot be MCC accounts. This
-  /// field is required when creating a Google Ads link. It cannot be empty.
+  /// A list of Google Ads client accounts.
+  ///
+  /// These cannot be MCC accounts. This field is required when creating a
+  /// Google Ads link. It cannot be empty.
   core.List<AdWordsAccount> adWordsAccounts;
 
   /// Web property being linked.
@@ -8598,7 +8659,9 @@ class EntityAdWordsLink {
   /// Resource type for entity Google Ads link.
   core.String kind;
 
-  /// Name of the link. This field is required when creating a Google Ads link.
+  /// Name of the link.
+  ///
+  /// This field is required when creating a Google Ads link.
   core.String name;
 
   /// IDs of linked Views (Profiles) represented as strings.
@@ -8674,9 +8737,10 @@ class EntityAdWordsLinks {
   core.List<EntityAdWordsLink> items;
 
   /// The maximum number of entries the response can contain, regardless of the
-  /// actual number of entries returned. Its value ranges from 1 to 1000 with a
-  /// value of 1000 by default, or otherwise specified by the max-results query
-  /// parameter.
+  /// actual number of entries returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -8752,8 +8816,9 @@ class EntityAdWordsLinks {
   }
 }
 
-/// Entity for this link. It can be an account, a web property, or a view
-/// (profile).
+/// Entity for this link.
+///
+/// It can be an account, a web property, or a view (profile).
 class EntityUserLinkEntity {
   /// Account for this link.
   AccountRef accountRef;
@@ -8799,14 +8864,17 @@ class EntityUserLinkEntity {
 /// Permissions the user has for this entity.
 class EntityUserLinkPermissions {
   /// Effective permissions represent all the permissions that a user has for
-  /// this entity. These include any implied permissions (e.g., EDIT implies
-  /// VIEW) or inherited permissions from the parent entity. Effective
-  /// permissions are read-only.
+  /// this entity.
+  ///
+  /// These include any implied permissions (e.g., EDIT implies VIEW) or
+  /// inherited permissions from the parent entity. Effective permissions are
+  /// read-only.
   core.List<core.String> effective;
 
-  /// Permissions that a user has been assigned at this very level. Does not
-  /// include any implied or inherited permissions. Local permissions are
-  /// modifiable.
+  /// Permissions that a user has been assigned at this very level.
+  ///
+  /// Does not include any implied or inherited permissions. Local permissions
+  /// are modifiable.
   core.List<core.String> local;
 
   EntityUserLinkPermissions();
@@ -8836,11 +8904,13 @@ class EntityUserLinkPermissions {
   }
 }
 
-/// JSON template for an Analytics Entity-User Link. Returns permissions that a
-/// user has for an entity.
+/// JSON template for an Analytics Entity-User Link.
+///
+/// Returns permissions that a user has for an entity.
 class EntityUserLink {
-  /// Entity for this link. It can be an account, a web property, or a view
-  /// (profile).
+  /// Entity for this link.
+  ///
+  /// It can be an account, a web property, or a view (profile).
   EntityUserLinkEntity entity;
 
   /// Entity user link ID
@@ -8915,9 +8985,10 @@ class EntityUserLinks {
   core.List<EntityUserLink> items;
 
   /// The maximum number of entries the response can contain, regardless of the
-  /// actual number of entries returned. Its value ranges from 1 to 1000 with a
-  /// value of 1000 by default, or otherwise specified by the max-results query
-  /// parameter.
+  /// actual number of entries returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -8993,14 +9064,18 @@ class EntityUserLinks {
   }
 }
 
-/// Parent link for an experiment. Points to the view (profile) to which this
-/// experiment belongs.
+/// Parent link for an experiment.
+///
+/// Points to the view (profile) to which this experiment belongs.
 class ExperimentParentLink {
-  /// Link to the view (profile) to which this experiment belongs. This field is
-  /// read-only.
+  /// Link to the view (profile) to which this experiment belongs.
+  ///
+  /// This field is read-only.
   core.String href;
 
-  /// Value is "analytics#profile". This field is read-only.
+  /// Value is "analytics#profile".
+  ///
+  /// This field is read-only.
   core.String type;
 
   ExperimentParentLink();
@@ -9027,27 +9102,33 @@ class ExperimentParentLink {
 }
 
 class ExperimentVariations {
-  /// The name of the variation. This field is required when creating an
-  /// experiment. This field may not be changed for an experiment whose status
-  /// is ENDED.
+  /// The name of the variation.
+  ///
+  /// This field is required when creating an experiment. This field may not be
+  /// changed for an experiment whose status is ENDED.
   core.String name;
 
-  /// Status of the variation. Possible values: "ACTIVE", "INACTIVE". INACTIVE
-  /// variations are not served. This field may not be changed for an experiment
-  /// whose status is ENDED.
+  /// Status of the variation.
+  ///
+  /// Possible values: "ACTIVE", "INACTIVE". INACTIVE variations are not served.
+  /// This field may not be changed for an experiment whose status is ENDED.
   core.String status;
 
-  /// The URL of the variation. This field may not be changed for an experiment
-  /// whose status is RUNNING or ENDED.
+  /// The URL of the variation.
+  ///
+  /// This field may not be changed for an experiment whose status is RUNNING or
+  /// ENDED.
   core.String url;
 
-  /// Weight that this variation should receive. Only present if the experiment
-  /// is running. This field is read-only.
+  /// Weight that this variation should receive.
+  ///
+  /// Only present if the experiment is running. This field is read-only.
   core.double weight;
 
   /// True if the experiment has ended and this variation performed
-  /// (statistically) significantly better than the original. This field is
-  /// read-only.
+  /// (statistically) significantly better than the original.
+  ///
+  /// This field is read-only.
   core.bool won;
 
   ExperimentVariations();
@@ -9093,10 +9174,14 @@ class ExperimentVariations {
 
 /// JSON template for Analytics experiment resource.
 class Experiment {
-  /// Account ID to which this experiment belongs. This field is read-only.
+  /// Account ID to which this experiment belongs.
+  ///
+  /// This field is read-only.
   core.String accountId;
 
-  /// Time the experiment was created. This field is read-only.
+  /// Time the experiment was created.
+  ///
+  /// This field is read-only.
   core.DateTime created;
 
   /// Notes about this experiment.
@@ -9107,75 +9192,99 @@ class Experiment {
   core.bool editableInGaUi;
 
   /// The ending time of the experiment (the time the status changed from
-  /// RUNNING to ENDED). This field is present only if the experiment has ended.
-  /// This field is read-only.
+  /// RUNNING to ENDED).
+  ///
+  /// This field is present only if the experiment has ended. This field is
+  /// read-only.
   core.DateTime endTime;
 
   /// Boolean specifying whether to distribute traffic evenly across all
-  /// variations. If the value is False, content experiments follows the default
-  /// behavior of adjusting traffic dynamically based on variation performance.
-  /// Optional -- defaults to False. This field may not be changed for an
-  /// experiment whose status is ENDED.
+  /// variations.
+  ///
+  /// If the value is False, content experiments follows the default behavior of
+  /// adjusting traffic dynamically based on variation performance. Optional --
+  /// defaults to False. This field may not be changed for an experiment whose
+  /// status is ENDED.
   core.bool equalWeighting;
 
-  /// Experiment ID. Required for patch and update. Disallowed for create.
+  /// Experiment ID.
+  ///
+  /// Required for patch and update. Disallowed for create.
   core.String id;
 
-  /// Internal ID for the web property to which this experiment belongs. This
-  /// field is read-only.
+  /// Internal ID for the web property to which this experiment belongs.
+  ///
+  /// This field is read-only.
   core.String internalWebPropertyId;
 
-  /// Resource type for an Analytics experiment. This field is read-only.
+  /// Resource type for an Analytics experiment.
+  ///
+  /// This field is read-only.
   core.String kind;
 
-  /// An integer number in [3, 90]. Specifies the minimum length of the
-  /// experiment. Can be changed for a running experiment. This field may not be
-  /// changed for an experiments whose status is ENDED.
+  /// An integer number in [3, 90].
+  ///
+  /// Specifies the minimum length of the experiment. Can be changed for a
+  /// running experiment. This field may not be changed for an experiments whose
+  /// status is ENDED.
   core.int minimumExperimentLengthInDays;
 
-  /// Experiment name. This field may not be changed for an experiment whose
-  /// status is ENDED. This field is required when creating an experiment.
+  /// Experiment name.
+  ///
+  /// This field may not be changed for an experiment whose status is ENDED.
+  /// This field is required when creating an experiment.
   core.String name;
 
-  /// The metric that the experiment is optimizing. Valid values:
-  /// "ga:goal(n)Completions", "ga:adsenseAdsClicks", "ga:adsenseAdsViewed",
-  /// "ga:adsenseRevenue", "ga:bounces", "ga:pageviews", "ga:sessionDuration",
-  /// "ga:transactions", "ga:transactionRevenue". This field is required if
-  /// status is "RUNNING" and servingFramework is one of "REDIRECT" or "API".
+  /// The metric that the experiment is optimizing.
+  ///
+  /// Valid values: "ga:goal(n)Completions", "ga:adsenseAdsClicks",
+  /// "ga:adsenseAdsViewed", "ga:adsenseRevenue", "ga:bounces", "ga:pageviews",
+  /// "ga:sessionDuration", "ga:transactions", "ga:transactionRevenue". This
+  /// field is required if status is "RUNNING" and servingFramework is one of
+  /// "REDIRECT" or "API".
   core.String objectiveMetric;
 
-  /// Whether the objectiveMetric should be minimized or maximized. Possible
-  /// values: "MAXIMUM", "MINIMUM". Optional--defaults to "MAXIMUM". Cannot be
-  /// specified without objectiveMetric. Cannot be modified when status is
-  /// "RUNNING" or "ENDED".
+  /// Whether the objectiveMetric should be minimized or maximized.
+  ///
+  /// Possible values: "MAXIMUM", "MINIMUM". Optional--defaults to "MAXIMUM".
+  /// Cannot be specified without objectiveMetric. Cannot be modified when
+  /// status is "RUNNING" or "ENDED".
   core.String optimizationType;
 
-  /// Parent link for an experiment. Points to the view (profile) to which this
-  /// experiment belongs.
+  /// Parent link for an experiment.
+  ///
+  /// Points to the view (profile) to which this experiment belongs.
   ExperimentParentLink parentLink;
 
-  /// View (Profile) ID to which this experiment belongs. This field is
-  /// read-only.
+  /// View (Profile) ID to which this experiment belongs.
+  ///
+  /// This field is read-only.
   core.String profileId;
 
-  /// Why the experiment ended. Possible values: "STOPPED_BY_USER",
-  /// "WINNER_FOUND", "EXPERIMENT_EXPIRED", "ENDED_WITH_NO_WINNER",
-  /// "GOAL_OBJECTIVE_CHANGED". "ENDED_WITH_NO_WINNER" means that the experiment
-  /// didn't expire but no winner was projected to be found. If the experiment
-  /// status is changed via the API to ENDED this field is set to
-  /// STOPPED_BY_USER. This field is read-only.
+  /// Why the experiment ended.
+  ///
+  /// Possible values: "STOPPED_BY_USER", "WINNER_FOUND", "EXPERIMENT_EXPIRED",
+  /// "ENDED_WITH_NO_WINNER", "GOAL_OBJECTIVE_CHANGED". "ENDED_WITH_NO_WINNER"
+  /// means that the experiment didn't expire but no winner was projected to be
+  /// found. If the experiment status is changed via the API to ENDED this field
+  /// is set to STOPPED_BY_USER. This field is read-only.
   core.String reasonExperimentEnded;
 
   /// Boolean specifying whether variations URLS are rewritten to match those of
-  /// the original. This field may not be changed for an experiments whose
-  /// status is ENDED.
+  /// the original.
+  ///
+  /// This field may not be changed for an experiments whose status is ENDED.
   core.bool rewriteVariationUrlsAsOriginal;
 
-  /// Link for this experiment. This field is read-only.
+  /// Link for this experiment.
+  ///
+  /// This field is read-only.
   core.String selfLink;
 
   /// The framework used to serve the experiment variations and evaluate the
-  /// results. One of:
+  /// results.
+  ///
+  /// One of:
   /// - REDIRECT: Google Analytics redirects traffic to different variation
   /// pages, reports the chosen variation and evaluates the results.
   /// - API: Google Analytics chooses and reports the variation to serve and
@@ -9186,45 +9295,57 @@ class Experiment {
   /// serving the selected variation and evaluating the results.
   core.String servingFramework;
 
-  /// The snippet of code to include on the control page(s). This field is
-  /// read-only.
+  /// The snippet of code to include on the control page(s).
+  ///
+  /// This field is read-only.
   core.String snippet;
 
   /// The starting time of the experiment (the time the status changed from
-  /// READY_TO_RUN to RUNNING). This field is present only if the experiment has
-  /// started. This field is read-only.
+  /// READY_TO_RUN to RUNNING).
+  ///
+  /// This field is present only if the experiment has started. This field is
+  /// read-only.
   core.DateTime startTime;
 
-  /// Experiment status. Possible values: "DRAFT", "READY_TO_RUN", "RUNNING",
-  /// "ENDED". Experiments can be created in the "DRAFT", "READY_TO_RUN" or
-  /// "RUNNING" state. This field is required when creating an experiment.
+  /// Experiment status.
+  ///
+  /// Possible values: "DRAFT", "READY_TO_RUN", "RUNNING", "ENDED". Experiments
+  /// can be created in the "DRAFT", "READY_TO_RUN" or "RUNNING" state. This
+  /// field is required when creating an experiment.
   core.String status;
 
-  /// A floating-point number in (0, 1]. Specifies the fraction of the traffic
-  /// that participates in the experiment. Can be changed for a running
-  /// experiment. This field may not be changed for an experiments whose status
-  /// is ENDED.
+  /// A floating-point number in (0, 1].
+  ///
+  /// Specifies the fraction of the traffic that participates in the experiment.
+  /// Can be changed for a running experiment. This field may not be changed for
+  /// an experiments whose status is ENDED.
   core.double trafficCoverage;
 
-  /// Time the experiment was last modified. This field is read-only.
+  /// Time the experiment was last modified.
+  ///
+  /// This field is read-only.
   core.DateTime updated;
 
-  /// Array of variations. The first variation in the array is the original. The
-  /// number of variations may not change once an experiment is in the RUNNING
-  /// state. At least two variations are required before status can be set to
-  /// RUNNING.
+  /// Array of variations.
+  ///
+  /// The first variation in the array is the original. The number of variations
+  /// may not change once an experiment is in the RUNNING state. At least two
+  /// variations are required before status can be set to RUNNING.
   core.List<ExperimentVariations> variations;
 
-  /// Web property ID to which this experiment belongs. The web property ID is
-  /// of the form UA-XXXXX-YY. This field is read-only.
+  /// Web property ID to which this experiment belongs.
+  ///
+  /// The web property ID is of the form UA-XXXXX-YY. This field is read-only.
   core.String webPropertyId;
 
-  /// A floating-point number in (0, 1). Specifies the necessary confidence
-  /// level to choose a winner. This field may not be changed for an experiments
-  /// whose status is ENDED.
+  /// A floating-point number in (0, 1).
+  ///
+  /// Specifies the necessary confidence level to choose a winner. This field
+  /// may not be changed for an experiments whose status is ENDED.
   core.double winnerConfidenceLevel;
 
   /// Boolean specifying whether a winner has been found for this experiment.
+  ///
   /// This field is read-only.
   core.bool winnerFound;
 
@@ -9415,16 +9536,19 @@ class Experiment {
 }
 
 /// An experiment collection lists Analytics experiments to which the user has
-/// access. Each view (profile) can have a set of experiments. Each resource in
-/// the Experiment collection corresponds to a single Analytics experiment.
+/// access.
+///
+/// Each view (profile) can have a set of experiments. Each resource in the
+/// Experiment collection corresponds to a single Analytics experiment.
 class Experiments {
   /// A list of experiments.
   core.List<Experiment> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -9523,8 +9647,9 @@ class FilterAdvancedDetails {
   /// Field A.
   core.String fieldA;
 
-  /// The Index of the custom dimension. Required if field is a
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Required if field is a CUSTOM_DIMENSION.
   core.int fieldAIndex;
 
   /// Indicates if field A is required to match.
@@ -9533,8 +9658,9 @@ class FilterAdvancedDetails {
   /// Field B.
   core.String fieldB;
 
-  /// The Index of the custom dimension. Required if field is a
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Required if field is a CUSTOM_DIMENSION.
   core.int fieldBIndex;
 
   /// Indicates if field B is required to match.
@@ -9546,8 +9672,9 @@ class FilterAdvancedDetails {
   /// Output field.
   core.String outputToField;
 
-  /// The Index of the custom dimension. Required if field is a
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Required if field is a CUSTOM_DIMENSION.
   core.int outputToFieldIndex;
 
   /// Indicates if the existing value of the output field, if any, should be
@@ -9648,8 +9775,9 @@ class FilterLowercaseDetails {
   /// Field to use in the filter.
   core.String field;
 
-  /// The Index of the custom dimension. Required if field is a
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Required if field is a CUSTOM_DIMENSION.
   core.int fieldIndex;
 
   FilterLowercaseDetails();
@@ -9675,8 +9803,9 @@ class FilterLowercaseDetails {
   }
 }
 
-/// Parent link for this filter. Points to the account to which this filter
-/// belongs.
+/// Parent link for this filter.
+///
+/// Points to the account to which this filter belongs.
 class FilterParentLink {
   /// Link to the account to which this filter belongs.
   core.String href;
@@ -9715,8 +9844,9 @@ class FilterSearchAndReplaceDetails {
   /// Field to use in the filter.
   core.String field;
 
-  /// The Index of the custom dimension. Required if field is a
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Required if field is a CUSTOM_DIMENSION.
   core.int fieldIndex;
 
   /// Term to replace the search term with.
@@ -9771,8 +9901,9 @@ class FilterUppercaseDetails {
   /// Field to use in the filter.
   core.String field;
 
-  /// The Index of the custom dimension. Required if field is a
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Required if field is a CUSTOM_DIMENSION.
   core.int fieldIndex;
 
   FilterUppercaseDetails();
@@ -9827,8 +9958,9 @@ class Filter {
   /// Name of this filter.
   core.String name;
 
-  /// Parent link for this filter. Points to the account to which this filter
-  /// belongs.
+  /// Parent link for this filter.
+  ///
+  /// Points to the account to which this filter belongs.
   FilterParentLink parentLink;
 
   /// Details for the filter of the type SEARCH_AND_REPLACE.
@@ -9837,8 +9969,10 @@ class Filter {
   /// Link for this filter.
   core.String selfLink;
 
-  /// Type of this filter. Possible values are INCLUDE, EXCLUDE, LOWERCASE,
-  /// UPPERCASE, SEARCH_AND_REPLACE and ADVANCED.
+  /// Type of this filter.
+  ///
+  /// Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE,
+  /// SEARCH_AND_REPLACE and ADVANCED.
   core.String type;
 
   /// Time this filter was last modified.
@@ -9964,7 +10098,9 @@ class FilterExpression {
   /// Filter expression value
   core.String expressionValue;
 
-  /// Field to filter. Possible values:
+  /// Field to filter.
+  ///
+  /// Possible values:
   /// - Content and Traffic
   /// - PAGE_REQUEST_URI,
   /// - PAGE_HOSTNAME,
@@ -10053,17 +10189,19 @@ class FilterExpression {
   /// - CUSTOM_DIMENSION (See accompanying field index),
   core.String field;
 
-  /// The Index of the custom dimension. Set only if the field is a is
-  /// CUSTOM_DIMENSION.
+  /// The Index of the custom dimension.
+  ///
+  /// Set only if the field is a is CUSTOM_DIMENSION.
   core.int fieldIndex;
 
   /// Kind value for filter expression
   core.String kind;
 
-  /// Match type for this filter. Possible values are BEGINS_WITH, EQUAL,
-  /// ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS,
-  /// PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all
-  /// other filters must use MATCHES.
+  /// Match type for this filter.
+  ///
+  /// Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES.
+  /// GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can
+  /// use any match type; all other filters must use MATCHES.
   core.String matchType;
 
   FilterExpression();
@@ -10172,15 +10310,17 @@ class FilterRef {
 }
 
 /// A filter collection lists filters created by users in an Analytics account.
+///
 /// Each resource in the collection corresponds to a filter.
 class Filters {
   /// A list of filters.
   core.List<Filter> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1,000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1,000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -10266,12 +10406,16 @@ class Filters {
 }
 
 class GaDataColumnHeaders {
-  /// Column Type. Either DIMENSION or METRIC.
+  /// Column Type.
+  ///
+  /// Either DIMENSION or METRIC.
   core.String columnType;
 
-  /// Data type. Dimension column headers have only STRING as the data type.
-  /// Metric column headers have data types for metric values such as INTEGER,
-  /// DOUBLE, CURRENCY etc.
+  /// Data type.
+  ///
+  /// Dimension column headers have only STRING as the data type. Metric column
+  /// headers have data types for metric values such as INTEGER, DOUBLE,
+  /// CURRENCY etc.
   core.String dataType;
 
   /// Column name.
@@ -10602,8 +10746,9 @@ class GaDataQuery {
 
 /// Analytics data for a given view (profile).
 class GaData {
-  /// Column headers that list dimension names followed by the metric names. The
-  /// order of dimensions and metrics is same as specified in the request.
+  /// Column headers that list dimension names followed by the metric names.
+  ///
+  /// The order of dimensions and metrics is same as specified in the request.
   core.List<GaDataColumnHeaders> columnHeaders;
 
   /// Determines if Analytics data contains samples.
@@ -10617,9 +10762,10 @@ class GaData {
   core.String id;
 
   /// The maximum number of rows the response can contain, regardless of the
-  /// actual number of rows returned. Its value ranges from 1 to 10,000 with a
-  /// value of 1000 by default, or otherwise specified by the max-results query
-  /// parameter.
+  /// actual number of rows returned.
+  ///
+  /// Its value ranges from 1 to 10,000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Resource type.
@@ -10639,8 +10785,9 @@ class GaData {
   GaDataQuery query;
 
   /// Analytics data rows, where each row contains a list of dimension values
-  /// followed by the metric values. The order of dimensions and metrics is same
-  /// as specified in the request.
+  /// followed by the metric values.
+  ///
+  /// The order of dimensions and metrics is same as specified in the request.
   core.List<core.List<core.String>> rows;
 
   /// The number of samples used to calculate the result.
@@ -10657,8 +10804,10 @@ class GaData {
   core.int totalResults;
 
   /// Total values for the requested metrics over all the results, not just the
-  /// results returned in this response. The order of the metric totals is same
-  /// as the metric order specified in the request.
+  /// results returned in this response.
+  ///
+  /// The order of the metric totals is same as the metric order specified in
+  /// the request.
   core.Map<core.String, core.String> totalsForAllResults;
 
   GaData();
@@ -10793,7 +10942,9 @@ class GaData {
 }
 
 class GoalEventDetailsEventConditions {
-  /// Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
+  /// Type of comparison.
+  ///
+  /// Possible values are LESS_THAN, GREATER_THAN or EQUAL.
   core.String comparisonType;
 
   /// Value used for this comparison.
@@ -10802,12 +10953,14 @@ class GoalEventDetailsEventConditions {
   /// Expression used for this match.
   core.String expression;
 
-  /// Type of the match to be performed. Possible values are REGEXP,
-  /// BEGINS_WITH, or EXACT.
+  /// Type of the match to be performed.
+  ///
+  /// Possible values are REGEXP, BEGINS_WITH, or EXACT.
   core.String matchType;
 
-  /// Type of this event condition. Possible values are CATEGORY, ACTION, LABEL,
-  /// or VALUE.
+  /// Type of this event condition.
+  ///
+  /// Possible values are CATEGORY, ACTION, LABEL, or VALUE.
   core.String type;
 
   GoalEventDetailsEventConditions();
@@ -10887,8 +11040,9 @@ class GoalEventDetails {
   }
 }
 
-/// Parent link for a goal. Points to the view (profile) to which this goal
-/// belongs.
+/// Parent link for a goal.
+///
+/// Points to the view (profile) to which this goal belongs.
 class GoalParentLink {
   /// Link to the view (profile) to which this goal belongs.
   core.String href;
@@ -10967,7 +11121,9 @@ class GoalUrlDestinationDetails {
   /// Determines if the first step in this goal is required.
   core.bool firstStepRequired;
 
-  /// Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.
+  /// Match type for the goal URL.
+  ///
+  /// Possible values are HEAD, EXACT, or REGEX.
   core.String matchType;
 
   /// List of steps configured for this goal funnel.
@@ -11023,7 +11179,9 @@ class GoalUrlDestinationDetails {
 
 /// Details for the goal of the type VISIT_NUM_PAGES.
 class GoalVisitNumPagesDetails {
-  /// Type of comparison. Possible values are LESS_THAN, GREATER_THAN, or EQUAL.
+  /// Type of comparison.
+  ///
+  /// Possible values are LESS_THAN, GREATER_THAN, or EQUAL.
   core.String comparisonType;
 
   /// Value used for this comparison.
@@ -11054,7 +11212,9 @@ class GoalVisitNumPagesDetails {
 
 /// Details for the goal of the type VISIT_TIME_ON_SITE.
 class GoalVisitTimeOnSiteDetails {
-  /// Type of comparison. Possible values are LESS_THAN or GREATER_THAN.
+  /// Type of comparison.
+  ///
+  /// Possible values are LESS_THAN or GREATER_THAN.
   core.String comparisonType;
 
   /// Value used for this comparison.
@@ -11109,8 +11269,9 @@ class Goal {
   /// Goal name.
   core.String name;
 
-  /// Parent link for a goal. Points to the view (profile) to which this goal
-  /// belongs.
+  /// Parent link for a goal.
+  ///
+  /// Points to the view (profile) to which this goal belongs.
   GoalParentLink parentLink;
 
   /// View (Profile) ID to which this goal belongs.
@@ -11119,8 +11280,10 @@ class Goal {
   /// Link for this goal.
   core.String selfLink;
 
-  /// Goal type. Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE,
-  /// VISIT_NUM_PAGES, AND EVENT.
+  /// Goal type.
+  ///
+  /// Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE, VISIT_NUM_PAGES,
+  /// AND EVENT.
   core.String type;
 
   /// Time this goal was last modified.
@@ -11138,8 +11301,9 @@ class Goal {
   /// Details for the goal of the type VISIT_TIME_ON_SITE.
   GoalVisitTimeOnSiteDetails visitTimeOnSiteDetails;
 
-  /// Web property ID to which this goal belongs. The web property ID is of the
-  /// form UA-XXXXX-YY.
+  /// Web property ID to which this goal belongs.
+  ///
+  /// The web property ID is of the form UA-XXXXX-YY.
   core.String webPropertyId;
 
   Goal();
@@ -11268,17 +11432,19 @@ class Goal {
   }
 }
 
-/// A goal collection lists Analytics goals to which the user has access. Each
-/// view (profile) can have a set of goals. Each resource in the Goal collection
-/// corresponds to a single Analytics goal.
+/// A goal collection lists Analytics goals to which the user has access.
+///
+/// Each view (profile) can have a set of goals. Each resource in the Goal
+/// collection corresponds to a single Analytics goal.
 class Goals {
   /// A list of goals.
   core.List<Goal> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -11443,14 +11609,16 @@ class HashClientIdResponse {
 /// JSON template for an Analytics Remarketing Include Conditions.
 class IncludeConditions {
   /// The look-back window lets you specify a time frame for evaluating the
-  /// behavior that qualifies users for your audience. For example, if your
-  /// filters include users from Central Asia, and Transactions Greater than 2,
-  /// and you set the look-back window to 14 days, then any user from Central
-  /// Asia whose cumulative transactions exceed 2 during the last 14 days is
-  /// added to the audience.
+  /// behavior that qualifies users for your audience.
+  ///
+  /// For example, if your filters include users from Central Asia, and
+  /// Transactions Greater than 2, and you set the look-back window to 14 days,
+  /// then any user from Central Asia whose cumulative transactions exceed 2
+  /// during the last 14 days is added to the audience.
   core.int daysToLookBack;
 
   /// Boolean indicating whether this segment is a smart list.
+  ///
   /// https://support.google.com/analytics/answer/4628577
   core.bool isSmartList;
 
@@ -11522,8 +11690,10 @@ class LinkedForeignAccount {
   /// Resource type for linked foreign account.
   core.String kind;
 
-  /// The foreign account ID. For example the an Google Ads `linkedAccountId`
-  /// has the following format XXX-XXX-XXXX.
+  /// The foreign account ID.
+  ///
+  /// For example the an Google Ads `linkedAccountId` has the following format
+  /// XXX-XXX-XXXX.
   core.String linkedAccountId;
 
   /// Remarketing audience ID to which this linked foreign account belongs.
@@ -11532,8 +11702,9 @@ class LinkedForeignAccount {
   /// The status of this foreign account link.
   core.String status;
 
-  /// The type of the foreign account. For example, `ADWORDS_LINKS`,
-  /// `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`.
+  /// The type of the foreign account.
+  ///
+  /// For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`.
   core.String type;
 
   /// Web property ID of the form UA-XXXXX-YY to which this linked foreign
@@ -11612,11 +11783,15 @@ class LinkedForeignAccount {
 }
 
 class McfDataColumnHeaders {
-  /// Column Type. Either DIMENSION or METRIC.
+  /// Column Type.
+  ///
+  /// Either DIMENSION or METRIC.
   core.String columnType;
 
-  /// Data type. Dimension and metric values data types such as INTEGER, DOUBLE,
-  /// CURRENCY, MCF_SEQUENCE etc.
+  /// Data type.
+  ///
+  /// Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY,
+  /// MCF_SEQUENCE etc.
   core.String dataType;
 
   /// Column name.
@@ -11836,11 +12011,14 @@ class McfDataQuery {
 }
 
 class McfDataRowsConversionPathValue {
-  /// Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
+  /// Type of an interaction on conversion path.
+  ///
+  /// Such as CLICK, IMPRESSION etc.
   core.String interactionType;
 
-  /// Node value of an interaction on conversion path. Such as source, medium
-  /// etc.
+  /// Node value of an interaction on conversion path.
+  ///
+  /// Such as source, medium etc.
   core.String nodeValue;
 
   McfDataRowsConversionPathValue();
@@ -11866,14 +12044,18 @@ class McfDataRowsConversionPathValue {
   }
 }
 
-/// A union object representing a dimension or metric value. Only one of
-/// "primitiveValue" or "conversionPathValue" attribute will be populated.
+/// A union object representing a dimension or metric value.
+///
+/// Only one of "primitiveValue" or "conversionPathValue" attribute will be
+/// populated.
 class McfDataRows {
   /// A conversion path dimension value, containing a list of interactions with
   /// their attributes.
   core.List<McfDataRowsConversionPathValue> conversionPathValue;
 
-  /// A primitive dimension value. A primitive metric value.
+  /// A primitive dimension value.
+  ///
+  /// A primitive metric value.
   core.String primitiveValue;
 
   McfDataRows();
@@ -11906,8 +12088,9 @@ class McfDataRows {
 
 /// Multi-Channel Funnels data for a given view (profile).
 class McfData {
-  /// Column headers that list dimension names followed by the metric names. The
-  /// order of dimensions and metrics is same as specified in the request.
+  /// Column headers that list dimension names followed by the metric names.
+  ///
+  /// The order of dimensions and metrics is same as specified in the request.
   core.List<McfDataColumnHeaders> columnHeaders;
 
   /// Determines if the Analytics data contains sampled data.
@@ -11917,9 +12100,10 @@ class McfData {
   core.String id;
 
   /// The maximum number of rows the response can contain, regardless of the
-  /// actual number of rows returned. Its value ranges from 1 to 10,000 with a
-  /// value of 1000 by default, or otherwise specified by the max-results query
-  /// parameter.
+  /// actual number of rows returned.
+  ///
+  /// Its value ranges from 1 to 10,000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Resource type.
@@ -11939,8 +12123,9 @@ class McfData {
   McfDataQuery query;
 
   /// Analytics data rows, where each row contains a list of dimension values
-  /// followed by the metric values. The order of dimensions and metrics is same
-  /// as specified in the request.
+  /// followed by the metric values.
+  ///
+  /// The order of dimensions and metrics is same as specified in the request.
   core.List<core.List<McfDataRows>> rows;
 
   /// The number of samples used to calculate the result.
@@ -11957,8 +12142,10 @@ class McfData {
   core.int totalResults;
 
   /// Total values for the requested metrics over all the results, not just the
-  /// results returned in this response. The order of the metric totals is same
-  /// as the metric order specified in the request.
+  /// results returned in this response.
+  ///
+  /// The order of the metric totals is same as the metric order specified in
+  /// the request.
   core.Map<core.String, core.String> totalsForAllResults;
 
   McfData();
@@ -12082,8 +12269,9 @@ class McfData {
   }
 }
 
-/// Child link for this view (profile). Points to the list of goals for this
-/// view (profile).
+/// Child link for this view (profile).
+///
+/// Points to the list of goals for this view (profile).
 class ProfileChildLink {
   /// Link to the list of goals for this view (profile).
   core.String href;
@@ -12114,8 +12302,9 @@ class ProfileChildLink {
   }
 }
 
-/// Parent link for this view (profile). Points to the web property to which
-/// this view (profile) belongs.
+/// Parent link for this view (profile).
+///
+/// Points to the web property to which this view (profile) belongs.
 class ProfileParentLink {
   /// Link to the web property to which this view (profile) belongs.
   core.String href;
@@ -12148,9 +12337,10 @@ class ProfileParentLink {
 
 /// Permissions the user has for this view (profile).
 class ProfilePermissions {
-  /// All the permissions that the user has for this view (profile). These
-  /// include any implied permissions (e.g., EDIT implies VIEW) or inherited
-  /// permissions from the parent web property.
+  /// All the permissions that the user has for this view (profile).
+  ///
+  /// These include any implied permissions (e.g., EDIT implies VIEW) or
+  /// inherited permissions from the parent web property.
   core.List<core.String> effective;
 
   ProfilePermissions();
@@ -12180,14 +12370,16 @@ class Profile {
   /// Indicates whether bot filtering is enabled for this view (profile).
   core.bool botFilteringEnabled;
 
-  /// Child link for this view (profile). Points to the list of goals for this
-  /// view (profile).
+  /// Child link for this view (profile).
+  ///
+  /// Points to the list of goals for this view (profile).
   ProfileChildLink childLink;
 
   /// Time this view (profile) was created.
   core.DateTime created;
 
   /// The currency type associated with this view (profile), defaults to USD.
+  ///
   /// The supported values are:
   /// USD, JPY, EUR, GBP, AUD, KRW, BRL, CNY, DKK, RUB, SEK, NOK, PLN, TRY, TWD,
   /// HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL,
@@ -12202,8 +12394,9 @@ class Profile {
   core.bool eCommerceTracking;
 
   /// Indicates whether enhanced ecommerce tracking is enabled for this view
-  /// (profile). This property can only be enabled if ecommerce tracking is
-  /// enabled.
+  /// (profile).
+  ///
+  /// This property can only be enabled if ecommerce tracking is enabled.
   core.bool enhancedECommerceTracking;
 
   /// The query parameters that are excluded from this view (profile).
@@ -12221,8 +12414,9 @@ class Profile {
   /// Name of this view (profile).
   core.String name;
 
-  /// Parent link for this view (profile). Points to the web property to which
-  /// this view (profile) belongs.
+  /// Parent link for this view (profile).
+  ///
+  /// Points to the web property to which this view (profile) belongs.
   ProfileParentLink parentLink;
 
   /// Permissions the user has for this view (profile).
@@ -12248,11 +12442,14 @@ class Profile {
   /// in your reports.
   core.bool stripSiteSearchQueryParameters;
 
-  /// Time zone for which this view (profile) has been configured. Time zones
-  /// are identified by strings from the TZ database.
+  /// Time zone for which this view (profile) has been configured.
+  ///
+  /// Time zones are identified by strings from the TZ database.
   core.String timezone;
 
-  /// View (Profile) type. Supported types: WEB or APP.
+  /// View (Profile) type.
+  ///
+  /// Supported types: WEB or APP.
   core.String type;
 
   /// Time this view (profile) was last modified.
@@ -12459,13 +12656,15 @@ class ProfileFilterLink {
   /// to the same profile.
   /// For readonly (i.e., list and get) operations, the rank always starts at 1.
   /// For write (i.e., create, update, or delete) operations, you may specify a
-  /// value between 0 and 255 inclusively, [0, 255]. In order to insert a link
-  /// at the end of the list, either don't specify a rank or set a rank to a
-  /// number greater than the largest rank in the list. In order to insert a
-  /// link to the beginning of the list specify a rank that is less than or
-  /// equal to 1. The new link will move all existing filters with the same or
-  /// lower rank down the list. After the link is inserted/updated/deleted all
-  /// profile filter links will be renumbered starting at 1.
+  /// value between 0 and 255 inclusively, [0, 255].
+  ///
+  /// In order to insert a link at the end of the list, either don't specify a
+  /// rank or set a rank to a number greater than the largest rank in the list.
+  /// In order to insert a link to the beginning of the list specify a rank that
+  /// is less than or equal to 1. The new link will move all existing filters
+  /// with the same or lower rank down the list. After the link is
+  /// inserted/updated/deleted all profile filter links will be renumbered
+  /// starting at 1.
   core.int rank;
 
   /// Link for this profile filter link.
@@ -12521,16 +12720,18 @@ class ProfileFilterLink {
 }
 
 /// A profile filter link collection lists profile filter links between profiles
-/// and filters. Each resource in the collection corresponds to a profile filter
-/// link.
+/// and filters.
+///
+/// Each resource in the collection corresponds to a profile filter link.
 class ProfileFilterLinks {
   /// A list of profile filter links.
   core.List<ProfileFilterLink> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1,000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1,000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -12692,8 +12893,9 @@ class ProfileRef {
   }
 }
 
-/// JSON template for an Analytics ProfileSummary. ProfileSummary returns basic
-/// information (i.e., summary) for a profile.
+/// JSON template for an Analytics ProfileSummary.
+///
+/// ProfileSummary returns basic information (i.e., summary) for a profile.
 class ProfileSummary {
   /// View (profile) ID.
   core.String id;
@@ -12707,7 +12909,9 @@ class ProfileSummary {
   /// Indicates whether this view (profile) is starred or not.
   core.bool starred;
 
-  /// View (Profile) type. Supported types: WEB or APP.
+  /// View (Profile) type.
+  ///
+  /// Supported types: WEB or APP.
   core.String type;
 
   ProfileSummary();
@@ -12752,16 +12956,19 @@ class ProfileSummary {
 }
 
 /// A view (profile) collection lists Analytics views (profiles) to which the
-/// user has access. Each resource in the collection corresponds to a single
-/// Analytics view (profile).
+/// user has access.
+///
+/// Each resource in the collection corresponds to a single Analytics view
+/// (profile).
 class Profiles {
   /// A list of views (profiles).
   core.List<Profile> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -12847,12 +13054,16 @@ class Profiles {
 }
 
 class RealtimeDataColumnHeaders {
-  /// Column Type. Either DIMENSION or METRIC.
+  /// Column Type.
+  ///
+  /// Either DIMENSION or METRIC.
   core.String columnType;
 
-  /// Data type. Dimension column headers have only STRING as the data type.
-  /// Metric column headers have data types for metric values such as INTEGER,
-  /// DOUBLE, CURRENCY etc.
+  /// Data type.
+  ///
+  /// Dimension column headers have only STRING as the data type. Metric column
+  /// headers have data types for metric values such as INTEGER, DOUBLE,
+  /// CURRENCY etc.
   core.String dataType;
 
   /// Column name.
@@ -13028,8 +13239,9 @@ class RealtimeDataQuery {
 
 /// Real time data for a given view (profile).
 class RealtimeData {
-  /// Column headers that list dimension names followed by the metric names. The
-  /// order of dimensions and metrics is same as specified in the request.
+  /// Column headers that list dimension names followed by the metric names.
+  ///
+  /// The order of dimensions and metrics is same as specified in the request.
   core.List<RealtimeDataColumnHeaders> columnHeaders;
 
   /// Unique ID for this data response.
@@ -13046,8 +13258,9 @@ class RealtimeData {
   RealtimeDataQuery query;
 
   /// Real time data rows, where each row contains a list of dimension values
-  /// followed by the metric values. The order of dimensions and metrics is same
-  /// as specified in the request.
+  /// followed by the metric values.
+  ///
+  /// The order of dimensions and metrics is same as specified in the request.
   core.List<core.List<core.String>> rows;
 
   /// Link to this page.
@@ -13058,8 +13271,10 @@ class RealtimeData {
   core.int totalResults;
 
   /// Total values for the requested metrics over all the results, not just the
-  /// results returned in this response. The order of the metric totals is same
-  /// as the metric order specified in the request.
+  /// results returned in this response.
+  ///
+  /// The order of the metric totals is same as the metric order specified in
+  /// the request.
   core.Map<core.String, core.String> totalsForAllResults;
 
   RealtimeData();
@@ -13267,8 +13482,9 @@ class RemarketingAudience {
   /// Collection type.
   core.String kind;
 
-  /// The linked ad accounts associated with this remarketing audience. A
-  /// remarketing audience can have only one linkedAdAccount currently.
+  /// The linked ad accounts associated with this remarketing audience.
+  ///
+  /// A remarketing audience can have only one linkedAdAccount currently.
   core.List<LinkedForeignAccount> linkedAdAccounts;
 
   /// The views (profiles) that this remarketing audience is linked to.
@@ -13395,16 +13611,19 @@ class RemarketingAudience {
 }
 
 /// A remarketing audience collection lists Analytics remarketing audiences to
-/// which the user has access. Each resource in the collection corresponds to a
-/// single Analytics remarketing audience.
+/// which the user has access.
+///
+/// Each resource in the collection corresponds to a single Analytics
+/// remarketing audience.
 class RemarketingAudiences {
   /// A list of remarketing audiences.
   core.List<RemarketingAudience> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -13506,14 +13725,17 @@ class Segment {
   /// Segment name.
   core.String name;
 
-  /// Segment ID. Can be used with the 'segment' parameter in Core Reporting
-  /// API.
+  /// Segment ID.
+  ///
+  /// Can be used with the 'segment' parameter in Core Reporting API.
   core.String segmentId;
 
   /// Link for this segment.
   core.String selfLink;
 
-  /// Type for a segment. Possible values are "BUILT_IN" or "CUSTOM".
+  /// Type for a segment.
+  ///
+  /// Possible values are "BUILT_IN" or "CUSTOM".
   core.String type;
 
   /// Time the segment was last modified.
@@ -13585,15 +13807,17 @@ class Segment {
 }
 
 /// An segment collection lists Analytics segments that the user has access to.
+///
 /// Each resource in the collection corresponds to a single Analytics segment.
 class Segments {
   /// A list of segments.
   core.List<Segment> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type for segments.
@@ -13745,10 +13969,12 @@ class UnsampledReport {
   /// The dimensions for the unsampled report.
   core.String dimensions;
 
-  /// The type of download you need to use for the report data file. Possible
-  /// values include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is
-  /// `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the value is
-  /// `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field.
+  /// The type of download you need to use for the report data file.
+  ///
+  /// Possible values include `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the
+  /// value is `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the
+  /// value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails`
+  /// field.
   core.String downloadType;
 
   /// Download details for a file stored in Google Drive.
@@ -13781,8 +14007,9 @@ class UnsampledReport {
   /// The start date for the unsampled report.
   core.String startDate;
 
-  /// Status of this unsampled report. Possible values are PENDING, COMPLETED,
-  /// or FAILED.
+  /// Status of this unsampled report.
+  ///
+  /// Possible values are PENDING, COMPLETED, or FAILED.
   core.String status;
 
   /// Title of the unsampled report.
@@ -13791,8 +14018,9 @@ class UnsampledReport {
   /// Time this unsampled report was last modified.
   core.DateTime updated;
 
-  /// Web property ID to which this unsampled report belongs. The web property
-  /// ID is of the form UA-XXXXX-YY.
+  /// Web property ID to which this unsampled report belongs.
+  ///
+  /// The web property ID is of the form UA-XXXXX-YY.
   core.String webPropertyId;
 
   UnsampledReport();
@@ -13926,17 +14154,20 @@ class UnsampledReport {
 }
 
 /// An unsampled report collection lists Analytics unsampled reports to which
-/// the user has access. Each view (profile) can have a set of unsampled
-/// reports. Each resource in the unsampled report collection corresponds to a
-/// single Analytics unsampled report.
+/// the user has access.
+///
+/// Each view (profile) can have a set of unsampled reports. Each resource in
+/// the unsampled report collection corresponds to a single Analytics unsampled
+/// report.
 class UnsampledReports {
   /// A list of unsampled reports.
   core.List<UnsampledReport> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -14038,8 +14269,9 @@ class Upload {
   /// Resource type for Analytics upload.
   core.String kind;
 
-  /// Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING,
-  /// DELETED.
+  /// Upload status.
+  ///
+  /// Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.
   core.String status;
 
   /// Time this file is uploaded.
@@ -14100,17 +14332,19 @@ class Upload {
   }
 }
 
-/// Upload collection lists Analytics uploads to which the user has access. Each
-/// custom data source can have a set of uploads. Each resource in the upload
-/// collection corresponds to a single Analytics data upload.
+/// Upload collection lists Analytics uploads to which the user has access.
+///
+/// Each custom data source can have a set of uploads. Each resource in the
+/// upload collection corresponds to a single Analytics data upload.
 class Uploads {
   /// A list of uploads.
   core.List<Upload> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -14392,8 +14626,10 @@ class WebPropertyRef {
   }
 }
 
-/// JSON template for an Analytics WebPropertySummary. WebPropertySummary
-/// returns basic information (i.e., summary) for a web property.
+/// JSON template for an Analytics WebPropertySummary.
+///
+/// WebPropertySummary returns basic information (i.e., summary) for a web
+/// property.
 class WebPropertySummary {
   /// Web property ID of the form UA-XXXXX-YY.
   core.String id;
@@ -14404,7 +14640,9 @@ class WebPropertySummary {
   /// Resource type for Analytics WebPropertySummary.
   core.String kind;
 
-  /// Level for this web property. Possible values are STANDARD or PREMIUM.
+  /// Level for this web property.
+  ///
+  /// Possible values are STANDARD or PREMIUM.
   core.String level;
 
   /// Web property name.
@@ -14482,16 +14720,19 @@ class WebPropertySummary {
 }
 
 /// A web property collection lists Analytics web properties to which the user
-/// has access. Each resource in the collection corresponds to a single
-/// Analytics web property.
+/// has access.
+///
+/// Each resource in the collection corresponds to a single Analytics web
+/// property.
 class Webproperties {
   /// A list of web properties.
   core.List<Webproperty> items;
 
   /// The maximum number of resources the response can contain, regardless of
-  /// the actual number of resources returned. Its value ranges from 1 to 1000
-  /// with a value of 1000 by default, or otherwise specified by the max-results
-  /// query parameter.
+  /// the actual number of resources returned.
+  ///
+  /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
+  /// otherwise specified by the max-results query parameter.
   core.int itemsPerPage;
 
   /// Collection type.
@@ -14576,13 +14817,16 @@ class Webproperties {
   }
 }
 
-/// Child link for this web property. Points to the list of views (profiles) for
-/// this web property.
+/// Child link for this web property.
+///
+/// Points to the list of views (profiles) for this web property.
 class WebpropertyChildLink {
   /// Link to the list of views (profiles) for this web property.
   core.String href;
 
-  /// Type of the parent link. Its value is "analytics#profiles".
+  /// Type of the parent link.
+  ///
+  /// Its value is "analytics#profiles".
   core.String type;
 
   WebpropertyChildLink();
@@ -14608,13 +14852,16 @@ class WebpropertyChildLink {
   }
 }
 
-/// Parent link for this web property. Points to the account to which this web
-/// property belongs.
+/// Parent link for this web property.
+///
+/// Points to the account to which this web property belongs.
 class WebpropertyParentLink {
   /// Link to the account for this web property.
   core.String href;
 
-  /// Type of the parent link. Its value is "analytics#account".
+  /// Type of the parent link.
+  ///
+  /// Its value is "analytics#account".
   core.String type;
 
   WebpropertyParentLink();
@@ -14642,9 +14889,10 @@ class WebpropertyParentLink {
 
 /// Permissions the user has for this web property.
 class WebpropertyPermissions {
-  /// All the permissions that the user has for this web property. These include
-  /// any implied permissions (e.g., EDIT implies VIEW) or inherited permissions
-  /// from the parent account.
+  /// All the permissions that the user has for this web property.
+  ///
+  /// These include any implied permissions (e.g., EDIT implies VIEW) or
+  /// inherited permissions from the parent account.
   core.List<core.String> effective;
 
   WebpropertyPermissions();
@@ -14671,8 +14919,9 @@ class Webproperty {
   /// Account ID to which this web property belongs.
   core.String accountId;
 
-  /// Child link for this web property. Points to the list of views (profiles)
-  /// for this web property.
+  /// Child link for this web property.
+  ///
+  /// Points to the list of views (profiles) for this web property.
   WebpropertyChildLink childLink;
 
   /// Time this web property was created.
@@ -14705,14 +14954,17 @@ class Webproperty {
   /// Resource type for Analytics WebProperty.
   core.String kind;
 
-  /// Level for this web property. Possible values are STANDARD or PREMIUM.
+  /// Level for this web property.
+  ///
+  /// Possible values are STANDARD or PREMIUM.
   core.String level;
 
   /// Name of this web property.
   core.String name;
 
-  /// Parent link for this web property. Points to the account to which this web
-  /// property belongs.
+  /// Parent link for this web property.
+  ///
+  /// Points to the account to which this web property belongs.
   WebpropertyParentLink parentLink;
 
   /// Permissions the user has for this web property.

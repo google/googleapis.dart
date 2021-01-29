@@ -55,9 +55,10 @@ class EntitiesResource {
 
   EntitiesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Searches Knowledge Graph for entities that match the constraints. A list
-  /// of matched entities will be returned in response, which will be in JSON-LD
-  /// format and compatible with http://schema.org
+  /// Searches Knowledge Graph for entities that match the constraints.
+  ///
+  /// A list of matched entities will be returned in response, which will be in
+  /// JSON-LD format and compatible with http://schema.org
   ///
   /// Request parameters:
   ///
@@ -153,8 +154,9 @@ class EntitiesResource {
 /// Response message includes the context and a list of matching results which
 /// contain the detail of associated entities.
 class SearchResponse {
-  /// The local context applicable for the response. See more details at
-  /// http://www.w3.org/TR/json-ld/#context-definitions.
+  /// The local context applicable for the response.
+  ///
+  /// See more details at http://www.w3.org/TR/json-ld/#context-definitions.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

@@ -114,26 +114,35 @@ class IamResource {
 
 /// Information about the member, resource, and permission to check.
 class GoogleCloudPolicytroubleshooterV1AccessTuple {
-  /// Required. The full resource name that identifies the resource. For
-  /// example,
+  /// The full resource name that identifies the resource.
+  ///
+  /// For example,
   /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
   /// For examples of full resource names for Google Cloud services, see
   /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+  ///
+  /// Required.
   core.String fullResourceName;
 
-  /// Required. The IAM permission to check for the specified member and
-  /// resource. For a complete list of IAM permissions, see
+  /// The IAM permission to check for the specified member and resource.
+  ///
+  /// For a complete list of IAM permissions, see
   /// https://cloud.google.com/iam/help/permissions/reference. For a complete
   /// list of predefined IAM roles and the permissions in each role, see
   /// https://cloud.google.com/iam/help/roles/reference.
+  ///
+  /// Required.
   core.String permission;
 
-  /// Required. The member, or principal, whose access you want to check, in the
-  /// form of the email address that represents that member. For example,
-  /// `alice@example.com` or
+  /// The member, or principal, whose access you want to check, in the form of
+  /// the email address that represents that member.
+  ///
+  /// For example, `alice@example.com` or
   /// `my-service-account@my-project.iam.gserviceaccount.com`. The member must
   /// be a Google Account or a service account. Other types of members are not
   /// supported.
+  ///
+  /// Required.
   core.String principal;
 
   GoogleCloudPolicytroubleshooterV1AccessTuple();
@@ -168,12 +177,15 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
 /// Details about how a binding in a policy affects a member's ability to use a
 /// permission.
 class GoogleCloudPolicytroubleshooterV1BindingExplanation {
-  /// Required. Indicates whether _this binding_ provides the specified
-  /// permission to the specified member for the specified resource. This field
-  /// does _not_ indicate whether the member actually has the permission for the
-  /// resource. There might be another binding that overrides this binding. To
-  /// determine whether the member actually has the permission, use the `access`
-  /// field in the TroubleshootIamPolicyResponse.
+  /// Indicates whether _this binding_ provides the specified permission to the
+  /// specified member for the specified resource.
+  ///
+  /// This field does _not_ indicate whether the member actually has the
+  /// permission for the resource. There might be another binding that overrides
+  /// this binding. To determine whether the member actually has the permission,
+  /// use the `access` field in the TroubleshootIamPolicyResponse.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ACCESS_STATE_UNSPECIFIED" : Reserved for future use.
   /// - "GRANTED" : The member has the permission.
@@ -185,22 +197,25 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   core.String access;
 
   /// A condition expression that prevents access unless the expression
-  /// evaluates to `true`. To learn about IAM Conditions, see
+  /// evaluates to `true`.
+  ///
+  /// To learn about IAM Conditions, see
   /// http://cloud.google.com/iam/help/conditions/overview.
   GoogleTypeExpr condition;
 
   /// Indicates whether each member in the binding includes the member specified
-  /// in the request, either directly or indirectly. Each key identifies a
-  /// member in the binding, and each value indicates whether the member in the
-  /// binding includes the member in the request. For example, suppose that a
-  /// binding includes the following members: * `user:alice@example.com` *
-  /// `group:product-eng@example.com` You want to troubleshoot access for
-  /// `user:bob@example.com`. This user is a member of the group
-  /// `group:product-eng@example.com`. For the first member in the binding, the
-  /// key is `user:alice@example.com`, and the `membership` field in the value
-  /// is set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in the binding,
-  /// the key is `group:product-eng@example.com`, and the `membership` field in
-  /// the value is set to `MEMBERSHIP_INCLUDED`.
+  /// in the request, either directly or indirectly.
+  ///
+  /// Each key identifies a member in the binding, and each value indicates
+  /// whether the member in the binding includes the member in the request. For
+  /// example, suppose that a binding includes the following members: *
+  /// `user:alice@example.com` * `group:product-eng@example.com` You want to
+  /// troubleshoot access for `user:bob@example.com`. This user is a member of
+  /// the group `group:product-eng@example.com`. For the first member in the
+  /// binding, the key is `user:alice@example.com`, and the `membership` field
+  /// in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in
+  /// the binding, the key is `group:product-eng@example.com`, and the
+  /// `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
   core.Map<core.String,
           GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
       memberships;
@@ -215,9 +230,10 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// data point is likely to affect the overall determination.
   core.String relevance;
 
-  /// The role that this binding grants. For example,
-  /// `roles/compute.serviceAgent`. For a complete list of predefined IAM roles,
-  /// as well as the permissions in each role, see
+  /// The role that this binding grants.
+  ///
+  /// For example, `roles/compute.serviceAgent`. For a complete list of
+  /// predefined IAM roles, as well as the permissions in each role, see
   /// https://cloud.google.com/iam/help/roles/reference.
   core.String role;
 
@@ -358,11 +374,12 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
 /// Details about how a specific IAM Policy contributed to the access check.
 class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /// Indicates whether _this policy_ provides the specified permission to the
-  /// specified member for the specified resource. This field does _not_
-  /// indicate whether the member actually has the permission for the resource.
-  /// There might be another policy that overrides this policy. To determine
-  /// whether the member actually has the permission, use the `access` field in
-  /// the TroubleshootIamPolicyResponse.
+  /// specified member for the specified resource.
+  ///
+  /// This field does _not_ indicate whether the member actually has the
+  /// permission for the resource. There might be another policy that overrides
+  /// this policy. To determine whether the member actually has the permission,
+  /// use the `access` field in the TroubleshootIamPolicyResponse.
   /// Possible string values are:
   /// - "ACCESS_STATE_UNSPECIFIED" : Reserved for future use.
   /// - "GRANTED" : The member has the permission.
@@ -374,12 +391,16 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   core.String access;
 
   /// Details about how each binding in the policy affects the member's ability,
-  /// or inability, to use the permission for the resource. If the sender of the
-  /// request does not have access to the policy, this field is omitted.
+  /// or inability, to use the permission for the resource.
+  ///
+  /// If the sender of the request does not have access to the policy, this
+  /// field is omitted.
   core.List<GoogleCloudPolicytroubleshooterV1BindingExplanation>
       bindingExplanations;
 
-  /// The full resource name that identifies the resource. For example,
+  /// The full resource name that identifies the resource.
+  ///
+  /// For example,
   /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
   /// If the sender of the request does not have access to the policy, this
   /// field is omitted. For examples of full resource names for Google Cloud
@@ -387,13 +408,17 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
   core.String fullResourceName;
 
-  /// The IAM policy attached to the resource. If the sender of the request does
-  /// not have access to the policy, this field is empty.
+  /// The IAM policy attached to the resource.
+  ///
+  /// If the sender of the request does not have access to the policy, this
+  /// field is empty.
   GoogleIamV1Policy policy;
 
   /// The relevance of this policy to the overall determination in the
-  /// TroubleshootIamPolicyResponse. If the sender of the request does not have
-  /// access to the policy, this field is omitted.
+  /// TroubleshootIamPolicyResponse.
+  ///
+  /// If the sender of the request does not have access to the policy, this
+  /// field is omitted.
   /// Possible string values are:
   /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Reserved for future use.
   /// - "NORMAL" : The data point has a limited effect on the result. Changing
@@ -491,10 +516,12 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
 
   /// List of IAM policies that were evaluated to check the member's
   /// permissions, with annotations to indicate how each policy contributed to
-  /// the final result. The list of policies can include the policy for the
-  /// resource itself. It can also include policies that are inherited from
-  /// higher levels of the resource hierarchy, including the organization, the
-  /// folder, and the project. To learn more about the resource hierarchy, see
+  /// the final result.
+  ///
+  /// The list of policies can include the policy for the resource itself. It
+  /// can also include policies that are inherited from higher levels of the
+  /// resource hierarchy, including the organization, the folder, and the
+  /// project. To learn more about the resource hierarchy, see
   /// https://cloud.google.com/iam/help/resource-hierarchy.
   core.List<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> explainedPolicies;
 
@@ -527,11 +554,12 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -547,9 +575,10 @@ class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   GoogleIamV1AuditConfig();
@@ -580,14 +609,17 @@ class GoogleIamV1AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -625,16 +657,19 @@ class GoogleIamV1AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -665,8 +700,9 @@ class GoogleIamV1Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   GoogleIamV1Binding();
@@ -702,16 +738,18 @@ class GoogleIamV1Binding {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -734,14 +772,17 @@ class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<GoogleIamV1Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -758,20 +799,22 @@ class GoogleIamV1Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -819,8 +862,10 @@ class GoogleIamV1Policy {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -835,20 +880,29 @@ class GoogleIamV1Policy {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class GoogleTypeExpr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleTypeExpr();

@@ -1140,8 +1140,10 @@ class AccountsReportsResource {
   AccountsReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
-  /// parameters. Returns the result as JSON; to retrieve output in CSV format
-  /// specify "alt=csv" as a query parameter.
+  /// parameters.
+  ///
+  /// Returns the result as JSON; to retrieve output in CSV format specify
+  /// "alt=csv" as a query parameter.
   ///
   /// Request parameters:
   ///
@@ -2535,8 +2537,10 @@ class ReportsResource {
   ReportsResource(commons.ApiRequester client) : _requester = client;
 
   /// Generate an AdSense report based on the report request sent in the query
-  /// parameters. Returns the result as JSON; to retrieve output in CSV format
-  /// specify "alt=csv" as a query parameter.
+  /// parameters.
+  ///
+  /// Returns the result as JSON; to retrieve output in CSV format specify
+  /// "alt=csv" as a query parameter.
   ///
   /// Request parameters:
   ///
@@ -3115,8 +3119,10 @@ class Accounts {
   /// Kind of list this is, in this case adsense#accounts.
   core.String kind;
 
-  /// Continuation token used to page through accounts. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through accounts.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   Accounts();
@@ -3225,8 +3231,10 @@ class AdClients {
   /// Kind of list this is, in this case adsense#adClients.
   core.String kind;
 
-  /// Continuation token used to page through ad clients. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through ad clients.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   AdClients();
@@ -3268,7 +3276,9 @@ class AdClients {
 }
 
 class AdCode {
-  /// The Auto ad code snippet. The ad code snippet.
+  /// The Auto ad code snippet.
+  ///
+  /// The ad code snippet.
   core.String adCode;
 
   /// The AMP Auto ad code snippet that goes in the body of an AMP page.
@@ -3315,9 +3325,10 @@ class AdCode {
   }
 }
 
-/// The colors which are included in the style. These are represented as six
-/// hexadecimal characters, similar to HTML color codes, but without the leading
-/// hash.
+/// The colors which are included in the style.
+///
+/// These are represented as six hexadecimal characters, similar to HTML color
+/// codes, but without the leading hash.
 class AdStyleColors {
   /// The color of the ad background.
   core.String background;
@@ -3407,9 +3418,10 @@ class AdStyleFont {
 }
 
 class AdStyle {
-  /// The colors which are included in the style. These are represented as six
-  /// hexadecimal characters, similar to HTML color codes, but without the
-  /// leading hash.
+  /// The colors which are included in the style.
+  ///
+  /// These are represented as six hexadecimal characters, similar to HTML color
+  /// codes, but without the leading hash.
   AdStyleColors colors;
 
   /// The style of the corners in the ad (deprecated: never populated, ignored).
@@ -3463,7 +3475,9 @@ class AdUnitContentAdsSettingsBackupOption {
   /// Color to use when type is set to COLOR.
   core.String color;
 
-  /// Type of the backup option. Possible values are BLANK, COLOR and URL.
+  /// Type of the backup option.
+  ///
+  /// Possible values are BLANK, COLOR and URL.
   core.String type;
 
   /// URL to use when type is set to URL.
@@ -3653,8 +3667,10 @@ class AdUnit {
   /// Settings specific to feed ads (AFF) - deprecated.
   AdUnitFeedAdsSettings feedAdsSettings;
 
-  /// Unique identifier of this ad unit. This should be considered an opaque
-  /// identifier; it is not safe to rely on it being in any particular format.
+  /// Unique identifier of this ad unit.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsense#adUnit.
@@ -3669,7 +3685,9 @@ class AdUnit {
   /// ID of the saved ad style which holds this ad unit's style information.
   core.String savedStyleId;
 
-  /// Status of this ad unit. Possible values are:
+  /// Status of this ad unit.
+  ///
+  /// Possible values are:
   /// NEW: Indicates that the ad unit was created within the last seven days and
   /// does not yet have any activity associated with it.
   ///
@@ -3766,8 +3784,10 @@ class AdUnits {
   /// Kind of list this is, in this case adsense#adUnits.
   core.String kind;
 
-  /// Continuation token used to page through ad units. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through ad units.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   AdUnits();
@@ -3809,8 +3829,9 @@ class AdUnits {
 }
 
 class AdsenseReportsGenerateResponseHeaders {
-  /// The currency of this column. Only present if the header type is
-  /// METRIC_CURRENCY.
+  /// The currency of this column.
+  ///
+  /// Only present if the header type is METRIC_CURRENCY.
   core.String currency;
 
   /// The name of the header.
@@ -3850,36 +3871,44 @@ class AdsenseReportsGenerateResponseHeaders {
 }
 
 class AdsenseReportsGenerateResponse {
-  /// The averages of the report. This is the same length as any other row in
-  /// the report; cells corresponding to dimension columns are empty.
+  /// The averages of the report.
+  ///
+  /// This is the same length as any other row in the report; cells
+  /// corresponding to dimension columns are empty.
   core.List<core.String> averages;
 
   /// The requested end date in yyyy-mm-dd format.
   core.String endDate;
 
-  /// The header information of the columns requested in the report. This is a
-  /// list of headers; one for each dimension in the request, followed by one
-  /// for each metric in the request.
+  /// The header information of the columns requested in the report.
+  ///
+  /// This is a list of headers; one for each dimension in the request, followed
+  /// by one for each metric in the request.
   core.List<AdsenseReportsGenerateResponseHeaders> headers;
 
   /// Kind this is, in this case adsense#report.
   core.String kind;
 
-  /// The output rows of the report. Each row is a list of cells; one for each
-  /// dimension in the request, followed by one for each metric in the request.
-  /// The dimension cells contain strings, and the metric cells contain numbers.
+  /// The output rows of the report.
+  ///
+  /// Each row is a list of cells; one for each dimension in the request,
+  /// followed by one for each metric in the request. The dimension cells
+  /// contain strings, and the metric cells contain numbers.
   core.List<core.List<core.String>> rows;
 
   /// The requested start date in yyyy-mm-dd format.
   core.String startDate;
 
-  /// The total number of rows matched by the report request. Fewer rows may be
-  /// returned in the response due to being limited by the row count requested
-  /// or the report row limit.
+  /// The total number of rows matched by the report request.
+  ///
+  /// Fewer rows may be returned in the response due to being limited by the row
+  /// count requested or the report row limit.
   core.String totalMatchedRows;
 
-  /// The totals of the report. This is the same length as any other row in the
-  /// report; cells corresponding to dimension columns are empty.
+  /// The totals of the report.
+  ///
+  /// This is the same length as any other row in the report; cells
+  /// corresponding to dimension columns are empty.
   core.List<core.String> totals;
 
   /// Any warnings associated with generation of the report.
@@ -3965,8 +3994,10 @@ class AdsenseReportsGenerateResponse {
 }
 
 class Alert {
-  /// Unique identifier of this alert. This should be considered an opaque
-  /// identifier; it is not safe to rely on it being in any particular format.
+  /// Unique identifier of this alert.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Whether this alert can be dismissed.
@@ -3978,10 +4009,14 @@ class Alert {
   /// The localized alert message.
   core.String message;
 
-  /// Severity of this alert. Possible values: INFO, WARNING, SEVERE.
+  /// Severity of this alert.
+  ///
+  /// Possible values: INFO, WARNING, SEVERE.
   core.String severity;
 
-  /// Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3,
+  /// Type of this alert.
+  ///
+  /// Possible values: SELF_HOLD, MIGRATED_TO_BILLING3,
   /// ADDRESS_PIN_VERIFICATION, PHONE_PIN_VERIFICATION, CORPORATE_ENTITY,
   /// GRAYLISTED_PUBLISHER, API_HOLD.
   core.String type;
@@ -4074,12 +4109,13 @@ class CustomChannelTargetingInfo {
   /// The external description of the channel.
   core.String description;
 
-  /// The locations in which ads appear. (Only valid for content and mobile
-  /// content ads (deprecated)). Acceptable values for content ads are:
-  /// TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT,
-  /// BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable
-  /// values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM,
-  /// MULTIPLE_LOCATIONS.
+  /// The locations in which ads appear.
+  ///
+  /// (Only valid for content and mobile content ads (deprecated)). Acceptable
+  /// values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT,
+  /// MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT,
+  /// MULTIPLE_LOCATIONS. Acceptable values for mobile content ads (deprecated)
+  /// are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.
   core.String location;
 
   /// The language of the sites ads will be displayed on.
@@ -4124,9 +4160,10 @@ class CustomChannel {
   /// Code of this custom channel, not necessarily unique across ad clients.
   core.String code;
 
-  /// Unique identifier of this custom channel. This should be considered an
-  /// opaque identifier; it is not safe to rely on it being in any particular
-  /// format.
+  /// Unique identifier of this custom channel.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsense#customChannel.
@@ -4190,8 +4227,10 @@ class CustomChannels {
   /// Kind of list this is, in this case adsense#customChannels.
   core.String kind;
 
-  /// Continuation token used to page through custom channels. To retrieve the
-  /// next page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through custom channels.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   CustomChannels();
@@ -4325,8 +4364,10 @@ class Payment {
 }
 
 class Payments {
-  /// The list of Payments for the account. One or both of a) the account's most
-  /// recent payment; and b) the account's upcoming payment.
+  /// The list of Payments for the account.
+  ///
+  /// One or both of a) the account's most recent payment; and b) the account's
+  /// upcoming payment.
   core.List<Payment> items;
 
   /// Kind of list this is, in this case adsense#payments.
@@ -4377,14 +4418,18 @@ class ReportingMetadataEntry {
 
   /// The names of the dimensions which the dimension or metric this reporting
   /// metadata entry describes requires to also be present in order for the
-  /// report to be valid. Omitting these will not cause an error or warning, but
-  /// may result in data which cannot be correctly interpreted.
+  /// report to be valid.
+  ///
+  /// Omitting these will not cause an error or warning, but may result in data
+  /// which cannot be correctly interpreted.
   core.List<core.String> requiredDimensions;
 
   /// The names of the metrics which the dimension or metric this reporting
   /// metadata entry describes requires to also be present in order for the
-  /// report to be valid. Omitting these will not cause an error or warning, but
-  /// may result in data which cannot be correctly interpreted.
+  /// report to be valid.
+  ///
+  /// Omitting these will not cause an error or warning, but may result in data
+  /// which cannot be correctly interpreted.
   core.List<core.String> requiredMetrics;
 
   /// The codes of the projects supported by the dimension or metric this
@@ -4458,9 +4503,10 @@ class SavedAdStyle {
   /// The AdStyle itself.
   AdStyle adStyle;
 
-  /// Unique identifier of this saved ad style. This should be considered an
-  /// opaque identifier; it is not safe to rely on it being in any particular
-  /// format.
+  /// Unique identifier of this saved ad style.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsense#savedAdStyle.
@@ -4515,8 +4561,10 @@ class SavedAdStyles {
   /// Kind of list this is, in this case adsense#savedAdStyles.
   core.String kind;
 
-  /// Continuation token used to page through ad units. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through ad units.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   SavedAdStyles();
@@ -4606,8 +4654,10 @@ class SavedReports {
   /// Kind of list this is, in this case adsense#savedReports.
   core.String kind;
 
-  /// Continuation token used to page through saved reports. To retrieve the
-  /// next page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through saved reports.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   SavedReports();
@@ -4649,15 +4699,18 @@ class SavedReports {
 }
 
 class UrlChannel {
-  /// Unique identifier of this URL channel. This should be considered an opaque
-  /// identifier; it is not safe to rely on it being in any particular format.
+  /// Unique identifier of this URL channel.
+  ///
+  /// This should be considered an opaque identifier; it is not safe to rely on
+  /// it being in any particular format.
   core.String id;
 
   /// Kind of resource this is, in this case adsense#urlChannel.
   core.String kind;
 
-  /// URL Pattern of this URL channel. Does not include "http://" or "https://".
-  /// Example: www.example.com/home
+  /// URL Pattern of this URL channel.
+  ///
+  /// Does not include "http://" or "https://". Example: www.example.com/home
   core.String urlPattern;
 
   UrlChannel();
@@ -4699,8 +4752,10 @@ class UrlChannels {
   /// Kind of list this is, in this case adsense#urlChannels.
   core.String kind;
 
-  /// Continuation token used to page through URL channels. To retrieve the next
-  /// page of results, set the next request's "pageToken" value to this.
+  /// Continuation token used to page through URL channels.
+  ///
+  /// To retrieve the next page of results, set the next request's "pageToken"
+  /// value to this.
   core.String nextPageToken;
 
   UrlChannels();

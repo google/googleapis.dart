@@ -42,9 +42,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// The PageSpeed Insights API lets you analyze the performance of your website
-/// with a simple API. It offers tailored suggestions for how you can optimize
-/// your site, and lets you easily integrate PageSpeed Insights analysis into
-/// your development tools and workflow.
+/// with a simple API.
+///
+/// It offers tailored suggestions for how you can optimize your site, and lets
+/// you easily integrate PageSpeed Insights analysis into your development tools
+/// and workflow.
 class PagespeedInsightsApi {
   /// Associate you with your personal info on Google
   static const openidScope = 'openid';
@@ -203,8 +205,9 @@ class AuditRefs {
 }
 
 /// A proportion of data in the total distribution, bucketed by a min/max
-/// percentage. Each bucket's range is bounded by min <= x < max, In
-/// millisecond.
+/// percentage.
+///
+/// Each bucket's range is bounded by min <= x < max, In millisecond.
 class Bucket {
   /// Upper bound for a bucket's range.
   core.int max;
@@ -481,8 +484,9 @@ class LighthouseAuditResultV5 {
   core.String id;
 
   /// A numeric value that has a meaning specific to the audit, e.g. the number
-  /// of nodes in the DOM or the timestamp of a specific load event. More
-  /// information can be found in the audit details, if present.
+  /// of nodes in the DOM or the timestamp of a specific load event.
+  ///
+  /// More information can be found in the audit details, if present.
   core.double numericValue;
 
   /// The score of the audit, can be null.
@@ -601,6 +605,7 @@ class LighthouseCategoryV5 {
   core.String manualDescription;
 
   /// The overall score of the category, the weighted average of all its audits.
+  ///
   /// (The category's score, can be null.)
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -692,7 +697,9 @@ class LighthouseResultV5 {
   /// The original requested url.
   core.String requestedUrl;
 
-  /// List of all run warnings in the LHR. Will always output to at least `[]`.
+  /// List of all run warnings in the LHR.
+  ///
+  /// Will always output to at least `[]`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1306,7 +1313,9 @@ class UserPageLoadMetricV5 {
   /// The category of the specific time metric.
   core.String category;
 
-  /// Metric distributions. Proportions should sum up to 1.
+  /// Metric distributions.
+  ///
+  /// Proportions should sum up to 1.
   core.List<Bucket> distributions;
 
   /// Identifies the form factor of the metric being collected.
@@ -1318,8 +1327,9 @@ class UserPageLoadMetricV5 {
   /// Identifies the type of the metric.
   core.String metricId;
 
-  /// We use this field to store certain percentile value for this metric. For
-  /// v4, this field contains pc50. For v5, this field contains pc90.
+  /// We use this field to store certain percentile value for this metric.
+  ///
+  /// For v4, this field contains pc50. For v5, this field contains pc90.
   core.int percentile;
 
   UserPageLoadMetricV5();

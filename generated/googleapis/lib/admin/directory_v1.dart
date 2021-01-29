@@ -66,8 +66,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Admin SDK lets administrators of enterprise domains to view and manage
-/// resources like user, groups etc. It also provides audit and usage reports of
-/// domain.
+/// resources like user, groups etc.
+///
+/// It also provides audit and usage reports of domain.
 class DirectoryApi {
   /// View and manage customer related information
   static const adminDirectoryCustomerScope =
@@ -2254,8 +2255,9 @@ class MembersResource {
     );
   }
 
-  /// Checks whether the given user is a member of the group. Membership can be
-  /// direct or nested.
+  /// Checks whether the given user is a member of the group.
+  ///
+  /// Membership can be direct or nested.
   ///
   /// Request parameters:
   ///
@@ -4146,9 +4148,11 @@ class ResourcesCalendarsResource {
     );
   }
 
-  /// Updates a calendar resource. This method supports patch semantics, meaning
-  /// you only need to include the fields you wish to update. Fields that are
-  /// not present in the request will be preserved.
+  /// Updates a calendar resource.
+  ///
+  /// This method supports patch semantics, meaning you only need to include the
+  /// fields you wish to update. Fields that are not present in the request will
+  /// be preserved.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6364,7 +6368,9 @@ class UsersResource {
   }
 
   /// Sign a user out of all web and device sessions and reset their sign-in
-  /// cookies. User will have to sign in by authenticating again.
+  /// cookies.
+  ///
+  /// User will have to sign in by authenticating again.
   ///
   /// Request parameters:
   ///
@@ -7415,24 +7421,31 @@ class Aliases {
   }
 }
 
-/// The template that returns individual ASP (Access Code) data. STEPLADDER:
-/// Generated unstable field number for field 'kind'. (See
+/// The template that returns individual ASP (Access Code) data.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Asp {
   /// The unique ID of the ASP.
   core.int codeId;
 
-  /// The time when the ASP was created. Expressed in Unix time format.
+  /// The time when the ASP was created.
+  ///
+  /// Expressed in Unix time format.
   core.String creationTime;
 
   /// ETag of the ASP.
   core.String etag;
 
-  /// The type of the API resource. This is always admin#directory#asp.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#asp.
   core.String kind;
 
-  /// The time when the ASP was last used. Expressed in Unix time format.
+  /// The time when the ASP was last used.
+  ///
+  /// Expressed in Unix time format.
   core.String lastTimeUsed;
 
   /// The name of the application that the user, represented by their userId,
@@ -7495,9 +7508,10 @@ class Asp {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Asps {
   /// ETag of the resource.
   core.String etag;
@@ -7505,7 +7519,9 @@ class Asps {
   /// A list of ASP resources.
   core.List<Asp> items;
 
-  /// The type of the API resource. This is always admin#directory#aspList.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#aspList.
   core.String kind;
 
   Asps();
@@ -7542,31 +7558,40 @@ class Asps {
 
 /// Public API: Resources.buildings
 class Building {
-  /// The postal address of the building. See PostalAddress for details. Note
-  /// that only a single address line and region code are required.
+  /// The postal address of the building.
+  ///
+  /// See PostalAddress for details. Note that only a single address line and
+  /// region code are required.
   BuildingAddress address;
 
-  /// Unique identifier for the building. The maximum length is 100 characters.
+  /// Unique identifier for the building.
+  ///
+  /// The maximum length is 100 characters.
   core.String buildingId;
 
-  /// The building name as seen by users in Calendar. Must be unique for the
-  /// customer. For example, "NYC-CHEL". The maximum length is 100 characters.
+  /// The building name as seen by users in Calendar.
+  ///
+  /// Must be unique for the customer. For example, "NYC-CHEL". The maximum
+  /// length is 100 characters.
   core.String buildingName;
 
   /// The geographic coordinates of the center of the building, expressed as
   /// latitude and longitude in decimal degrees.
   BuildingCoordinates coordinates;
 
-  /// A brief description of the building. For example, "Chelsea Market".
+  /// A brief description of the building.
+  ///
+  /// For example, "Chelsea Market".
   core.String description;
 
   /// ETag of the resource.
   core.String etags;
 
-  /// The display names for all floors in this building. The floors are expected
-  /// to be sorted in ascending order, from lowest floor to highest floor. For
-  /// example, ["B2", "B1", "L", "1", "2", "2M", "3", "PH"] Must contain at
-  /// least one entry.
+  /// The display names for all floors in this building.
+  ///
+  /// The floors are expected to be sorted in ascending order, from lowest floor
+  /// to highest floor. For example, ["B2", "B1", "L", "1", "2", "2M", "3",
+  /// "PH"] Must contain at least one entry.
   core.List<core.String> floorNames;
 
   /// Kind of resource this is.
@@ -7640,26 +7665,39 @@ class BuildingAddress {
   /// Unstructured address lines describing the lower levels of an address.
   core.List<core.String> addressLines;
 
-  /// Optional. Highest administrative subdivision which is used for postal
-  /// addresses of a country or region.
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// Optional.
   core.String administrativeArea;
 
-  /// Optional. BCP-47 language code of the contents of this address (if known).
+  /// BCP-47 language code of the contents of this address (if known).
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. Generally refers to the city/town portion of the address.
+  /// Generally refers to the city/town portion of the address.
+  ///
   /// Examples: US city, IT comune, UK post town. In regions of the world where
   /// localities are not well defined or do not fit into this structure well,
   /// leave locality empty and use addressLines.
+  ///
+  /// Optional.
   core.String locality;
 
-  /// Optional. Postal code of the address.
+  /// Postal code of the address.
+  ///
+  /// Optional.
   core.String postalCode;
 
-  /// Required. CLDR region code of the country/region of the address.
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// Required.
   core.String regionCode;
 
-  /// Optional. Sublocality of the address.
+  /// Sublocality of the address.
+  ///
+  /// Optional.
   core.String sublocality;
 
   BuildingAddress();
@@ -7759,8 +7797,10 @@ class Buildings {
   /// Kind of resource this is.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   Buildings();
@@ -7826,28 +7866,35 @@ class CalendarResource {
 
   /// The read-only auto-generated name of the calendar resource which includes
   /// metadata about the resource such as building name, floor, capacity, etc.
+  ///
   /// For example, "NYC-2-Training Room 1A (16)".
   core.String generatedResourceName;
 
-  /// The type of the resource. For calendar resources, the value is
+  /// The type of the resource.
+  ///
+  /// For calendar resources, the value is
   /// admin#directory#resources#calendars#CalendarResource.
   core.String kind;
 
-  /// The category of the calendar resource. Either CONFERENCE_ROOM or OTHER.
-  /// Legacy data is set to CATEGORY_UNKNOWN.
+  /// The category of the calendar resource.
+  ///
+  /// Either CONFERENCE_ROOM or OTHER. Legacy data is set to CATEGORY_UNKNOWN.
   core.String resourceCategory;
 
   /// Description of the resource, visible only to admins.
   core.String resourceDescription;
 
-  /// The read-only email for the calendar resource. Generated as part of
-  /// creating a new calendar resource.
+  /// The read-only email for the calendar resource.
+  ///
+  /// Generated as part of creating a new calendar resource.
   core.String resourceEmail;
 
   /// The unique ID for the calendar resource.
   core.String resourceId;
 
-  /// The name of the calendar resource. For example, "Training Room 1A".
+  /// The name of the calendar resource.
+  ///
+  /// For example, "Training Room 1A".
   core.String resourceName;
 
   /// The type of the calendar resource, intended for non-room resources.
@@ -7965,12 +8012,15 @@ class CalendarResources {
   /// The CalendarResources in this page of results.
   core.List<CalendarResource> items;
 
-  /// Identifies this as a collection of CalendarResources. This is always
-  /// admin#directory#resources#calendars#calendarResourcesList.
+  /// Identifies this as a collection of CalendarResources.
+  ///
+  /// This is always admin#directory#resources#calendars#calendarResourcesList.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   CalendarResources();
@@ -8017,7 +8067,9 @@ class Channel {
   core.String address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds. Optional.
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
   core.String expiration;
 
   /// A UUID or similar unique string that identifies this channel.
@@ -8027,13 +8079,18 @@ class Channel {
   /// resource, which is "api#channel".
   core.String kind;
 
-  /// Additional parameters controlling delivery channel behavior. Optional.
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> params;
 
-  /// A Boolean value to indicate whether payload is wanted. Optional.
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
   core.bool payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
+  ///
   /// Stable across different API versions.
   core.String resourceId;
 
@@ -8041,7 +8098,9 @@ class Channel {
   core.String resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel. Optional.
+  /// delivered over this channel.
+  ///
+  /// Optional.
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
@@ -8375,7 +8434,9 @@ class ChromeOsDeviceLastKnownNetwork {
 }
 
 class ChromeOsDeviceRecentUsers {
-  /// Email address of the user. Present only if the user type is managed
+  /// Email address of the user.
+  ///
+  /// Present only if the user type is managed
   core.String email;
 
   /// The type of the user
@@ -8501,9 +8562,10 @@ class ChromeOsDeviceTpmVersionInfo {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ChromeOsDevice {
   /// List of active time ranges (Read-only)
   core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
@@ -8537,11 +8599,12 @@ class ChromeOsDevice {
   core.List<ChromeOsDeviceDiskVolumeReports> diskVolumeReports;
 
   /// (Read-only) Built-in MAC address for the docking station that the device
-  /// connected to. Factory sets Media access control address (MAC address)
-  /// assigned for use by a dock. It is reserved specifically for MAC pass
-  /// through device policy. The format is twelve (12) hexadecimal digits
-  /// without any delimiter (uppercase letters). This is only relevant for some
-  /// devices.
+  /// connected to.
+  ///
+  /// Factory sets Media access control address (MAC address) assigned for use
+  /// by a dock. It is reserved specifically for MAC pass through device policy.
+  /// The format is twelve (12) hexadecimal digits without any delimiter
+  /// (uppercase letters). This is only relevant for some devices.
   core.String dockMacAddress;
 
   /// ETag of the resource.
@@ -8551,9 +8614,10 @@ class ChromeOsDevice {
   core.String ethernetMacAddress;
 
   /// (Read-only) MAC address used by the Chromebook’s internal ethernet port,
-  /// and for onboard network (ethernet) interface. The format is twelve (12)
-  /// hexadecimal digits without any delimiter (uppercase letters). This is only
-  /// relevant for some devices.
+  /// and for onboard network (ethernet) interface.
+  ///
+  /// The format is twelve (12) hexadecimal digits without any delimiter
+  /// (uppercase letters). This is only relevant for some devices.
   core.String ethernetMacAddress0;
 
   /// Chromebook firmware version (Read-only)
@@ -8919,9 +8983,10 @@ class ChromeOsDeviceAction {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ChromeOsDevices {
   /// List of Chrome OS Device objects.
   core.List<ChromeOsDevice> chromeosdevices;
@@ -8997,31 +9062,40 @@ class ChromeOsMoveDevicesToOu {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Customer {
-  /// The customer's secondary contact email address. This email address cannot
-  /// be on the same domain as the customerDomain
+  /// The customer's secondary contact email address.
+  ///
+  /// This email address cannot be on the same domain as the customerDomain
   core.String alternateEmail;
 
   /// The customer's creation time (Readonly)
   core.DateTime customerCreationTime;
 
-  /// The customer's primary domain name string. Do not include the www prefix
-  /// when creating a new customer.
+  /// The customer's primary domain name string.
+  ///
+  /// Do not include the www prefix when creating a new customer.
   core.String customerDomain;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// The unique ID for the customer's G Suite account. (Readonly)
+  /// The unique ID for the customer's G Suite account.
+  ///
+  /// (Readonly)
   core.String id;
 
-  /// Identifies the resource as a customer. Value: admin#directory#customer
+  /// Identifies the resource as a customer.
+  ///
+  /// Value: admin#directory#customer
   core.String kind;
 
-  /// The customer's ISO 639-2 language code. The default value is en-US
+  /// The customer's ISO 639-2 language code.
+  ///
+  /// The default value is en-US
   core.String language;
 
   /// The customer's contact phone number in E.164 format.
@@ -9098,12 +9172,15 @@ class Customer {
 }
 
 /// STEPLADDER: Generated unstable field number for field 'address_line2' to
-/// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
-/// Generated unstable field number for field 'address_line3' to avoid
-/// collision. (See http://go/stepladder-help#fieldNumber)
+/// avoid collision.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'address_line3' to avoid collision. (See
+/// http://go/stepladder-help#fieldNumber)
 class CustomerPostalAddress {
-  /// A customer's physical address. The address can be composed of one to three
-  /// lines.
+  /// A customer's physical address.
+  ///
+  /// The address can be composed of one to three lines.
   core.String addressLine1;
 
   /// Address line 2 of the address.
@@ -9115,24 +9192,29 @@ class CustomerPostalAddress {
   /// The customer contact's name.
   core.String contactName;
 
-  /// This is a required property. For countryCode information see the ISO 3166
-  /// country code elements.
+  /// This is a required property.
+  ///
+  /// For countryCode information see the ISO 3166 country code elements.
   core.String countryCode;
 
-  /// Name of the locality. An example of a locality value is the city of San
-  /// Francisco.
+  /// Name of the locality.
+  ///
+  /// An example of a locality value is the city of San Francisco.
   core.String locality;
 
   /// The company or company division name.
   core.String organizationName;
 
-  /// The postal code. A postalCode example is a postal zip code such as 10009.
-  /// This is in accordance with - http:
+  /// The postal code.
+  ///
+  /// A postalCode example is a postal zip code such as 10009. This is in
+  /// accordance with - http:
   /// //portablecontacts.net/draft-spec.html#address_element.
   core.String postalCode;
 
-  /// Name of the region. An example of a region value is NY for the state of
-  /// New York.
+  /// Name of the region.
+  ///
+  /// An example of a region value is NY for the state of New York.
   core.String region;
 
   CustomerPostalAddress();
@@ -9201,7 +9283,9 @@ class CustomerPostalAddress {
 }
 
 class DomainAlias {
-  /// The creation time of the domain alias. (Read-only).
+  /// The creation time of the domain alias.
+  ///
+  /// (Read-only).
   core.String creationTime;
 
   /// The domain alias name.
@@ -9213,11 +9297,14 @@ class DomainAlias {
   /// Kind of resource this is.
   core.String kind;
 
-  /// The parent domain name that the domain alias is associated with. This can
-  /// either be a primary or secondary domain name within a customer.
+  /// The parent domain name that the domain alias is associated with.
+  ///
+  /// This can either be a primary or secondary domain name within a customer.
   core.String parentDomainName;
 
-  /// Indicates the verification state of a domain alias. (Read-only)
+  /// Indicates the verification state of a domain alias.
+  ///
+  /// (Read-only)
   core.bool verified;
 
   DomainAlias();
@@ -9311,10 +9398,14 @@ class DomainAliases {
 }
 
 class Domains {
-  /// Creation time of the domain. (Read-only).
+  /// Creation time of the domain.
+  ///
+  /// (Read-only).
   core.String creationTime;
 
-  /// List of domain alias objects. (Read-only)
+  /// List of domain alias objects.
+  ///
+  /// (Read-only)
   core.List<DomainAlias> domainAliases;
 
   /// The domain name of the customer.
@@ -9329,7 +9420,9 @@ class Domains {
   /// Kind of resource this is.
   core.String kind;
 
-  /// Indicates the verification state of a domain. (Read-only).
+  /// Indicates the verification state of a domain.
+  ///
+  /// (Read-only).
   core.bool verified;
 
   Domains();
@@ -9473,8 +9566,9 @@ class Feature {
 
 /// JSON template for a feature instance.
 class FeatureInstance {
-  /// The feature that this is an instance of. A calendar resource may have
-  /// multiple instances of a feature.
+  /// The feature that this is an instance of.
+  ///
+  /// A calendar resource may have multiple instances of a feature.
   Feature feature;
 
   FeatureInstance();
@@ -9527,8 +9621,10 @@ class Features {
   /// Kind of resource this is.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
 
   Features();
@@ -9569,9 +9665,10 @@ class Features {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Group {
   /// Is the group created by admin (Read-only) *
   core.bool adminCreated;
@@ -9678,9 +9775,10 @@ class Group {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Groups {
   /// ETag of the resource.
   core.String etag;
@@ -9743,8 +9841,9 @@ class Member {
   core.String etag;
 
   /// Unique identifier of group (Read-only) Unique identifier of member
-  /// (Read-only) The unique ID of the group member. A member id can be used as
-  /// a member request URI's memberKey.
+  /// (Read-only) The unique ID of the group member.
+  ///
+  /// A member id can be used as a member request URI's memberKey.
   core.String id;
 
   /// Kind of resource this is.
@@ -9871,8 +9970,11 @@ class Members {
 
 /// JSON template for Has Member response in Directory API.
 class MembersHasMember {
-  /// Output only. Identifies whether the given user is a member of the group.
+  /// Identifies whether the given user is a member of the group.
+  ///
   /// Membership can be direct or nested.
+  ///
+  /// Output only.
   core.bool isMember;
 
   MembersHasMember();
@@ -10411,8 +10513,9 @@ class MobileDevices {
   }
 }
 
-/// JSON template for Org Unit resource in Directory API. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// JSON template for Org Unit resource in Directory API.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class OrgUnit {
@@ -10509,7 +10612,9 @@ class OrgUnit {
 }
 
 /// JSON response template for List Organization Units operation in Directory
-/// API. STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// API.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class OrgUnits {
@@ -10556,9 +10661,10 @@ class OrgUnits {
 }
 
 class Privilege {
-  /// A list of child privileges. Privileges for a service form a tree. Each
-  /// privilege can have a list of child privileges; this list is empty for a
-  /// leaf privilege.
+  /// A list of child privileges.
+  ///
+  /// Privileges for a service form a tree. Each privilege can have a list of
+  /// child privileges; this list is empty for a leaf privilege.
   core.List<Privilege> childPrivileges;
 
   /// ETag of the resource.
@@ -10567,14 +10673,17 @@ class Privilege {
   /// If the privilege can be restricted to an organization unit.
   core.bool isOuScopable;
 
-  /// The type of the API resource. This is always admin#directory#privilege.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#privilege.
   core.String kind;
 
   /// The name of the privilege.
   core.String privilegeName;
 
-  /// The obfuscated ID of the service this privilege is for. This value is
-  /// returned with Privileges.list().
+  /// The obfuscated ID of the service this privilege is for.
+  ///
+  /// This value is returned with Privileges.list().
   core.String serviceId;
 
   /// The name of the service this privilege is for.
@@ -10644,7 +10753,9 @@ class Privileges {
   /// A list of Privilege resources.
   core.List<Privilege> items;
 
-  /// The type of the API resource. This is always admin#directory#privileges.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#privileges.
   core.String kind;
 
   Privileges();
@@ -10683,8 +10794,9 @@ class RoleRolePrivileges {
   /// The name of the privilege.
   core.String privilegeName;
 
-  /// The obfuscated ID of the service this privilege is for. This value is
-  /// returned with Privileges.list().
+  /// The obfuscated ID of the service this privilege is for.
+  ///
+  /// This value is returned with Privileges.list().
   core.String serviceId;
 
   RoleRolePrivileges();
@@ -10720,7 +10832,9 @@ class Role {
   /// Returns true if this is a pre-defined system role.
   core.bool isSystemRole;
 
-  /// The type of the API resource. This is always admin#directory#role.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#role.
   core.String kind;
 
   /// A short description of the role.
@@ -10805,8 +10919,9 @@ class RoleAssignment {
   /// ETag of the resource.
   core.String etag;
 
-  /// The type of the API resource. This is always
-  /// admin#directory#roleAssignment.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#roleAssignment.
   core.String kind;
 
   /// If the role is restricted to an organization unit, this contains the ID
@@ -10819,8 +10934,9 @@ class RoleAssignment {
   /// The ID of the role that is assigned.
   core.String roleId;
 
-  /// The scope in which this role is assigned. Possible values are: - CUSTOMER
-  /// - ORG_UNIT
+  /// The scope in which this role is assigned.
+  ///
+  /// Possible values are: - CUSTOMER - ORG_UNIT
   core.String scopeType;
 
   RoleAssignment();
@@ -10883,8 +10999,9 @@ class RoleAssignments {
   /// A list of RoleAssignment resources.
   core.List<RoleAssignment> items;
 
-  /// The type of the API resource. This is always
-  /// admin#directory#roleAssignments .
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#roleAssignments .
   core.String kind;
   core.String nextPageToken;
 
@@ -10933,7 +11050,9 @@ class Roles {
   /// A list of Role resources.
   core.List<Role> items;
 
-  /// The type of the API resource. This is always admin#directory#roles.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#roles.
   core.String kind;
   core.String nextPageToken;
 
@@ -10975,8 +11094,9 @@ class Roles {
   }
 }
 
-/// JSON template for Schema resource in Directory API. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// JSON template for Schema resource in Directory API.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Schema {
@@ -11048,18 +11168,21 @@ class Schema {
   }
 }
 
-/// Indexing spec for a numeric field. By default, only exact match queries will
-/// be supported for numeric fields. Setting the numericIndexingSpec allows
-/// range queries to be supported.
+/// Indexing spec for a numeric field.
+///
+/// By default, only exact match queries will be supported for numeric fields.
+/// Setting the numericIndexingSpec allows range queries to be supported.
 class SchemaFieldSpecNumericIndexingSpec {
-  /// Maximum value of this field. This is meant to be indicative rather than
-  /// enforced. Values outside this range will still be indexed, but search may
-  /// not be as performant.
+  /// Maximum value of this field.
+  ///
+  /// This is meant to be indicative rather than enforced. Values outside this
+  /// range will still be indexed, but search may not be as performant.
   core.double maxValue;
 
-  /// Minimum value of this field. This is meant to be indicative rather than
-  /// enforced. Values outside this range will still be indexed, but search may
-  /// not be as performant.
+  /// Minimum value of this field.
+  ///
+  /// This is meant to be indicative rather than enforced. Values outside this
+  /// range will still be indexed, but search may not be as performant.
   core.double minValue;
 
   SchemaFieldSpecNumericIndexingSpec();
@@ -11086,6 +11209,7 @@ class SchemaFieldSpecNumericIndexingSpec {
 }
 
 /// JSON template for FieldSpec resource for Schemas in Directory API.
+///
 /// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
@@ -11114,13 +11238,15 @@ class SchemaFieldSpec {
   /// Boolean specifying whether this is a multi-valued field or not.
   core.bool multiValued;
 
-  /// Indexing spec for a numeric field. By default, only exact match queries
-  /// will be supported for numeric fields. Setting the numericIndexingSpec
-  /// allows range queries to be supported.
+  /// Indexing spec for a numeric field.
+  ///
+  /// By default, only exact match queries will be supported for numeric fields.
+  /// Setting the numericIndexingSpec allows range queries to be supported.
   SchemaFieldSpecNumericIndexingSpec numericIndexingSpec;
 
-  /// Read ACLs on the field specifying who can view values of this field. Valid
-  /// values are "ALL_DOMAIN_USERS" and "ADMINS_AND_SELF".
+  /// Read ACLs on the field specifying who can view values of this field.
+  ///
+  /// Valid values are "ALL_DOMAIN_USERS" and "ADMINS_AND_SELF".
   core.String readAccessType;
 
   SchemaFieldSpec();
@@ -11196,6 +11322,7 @@ class SchemaFieldSpec {
 }
 
 /// JSON response template for List Schema operation in Directory API.
+///
 /// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
@@ -11241,13 +11368,15 @@ class Schemas {
   }
 }
 
-/// JSON template for token resource in Directory API. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// JSON template for token resource in Directory API.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Token {
-  /// Whether the application is registered with Google. The value is true if
-  /// the application has an anonymous Client ID.
+  /// Whether the application is registered with Google.
+  ///
+  /// The value is true if the application has an anonymous Client ID.
   core.bool anonymous;
 
   /// The Client ID of the application the token is issued to.
@@ -11259,11 +11388,15 @@ class Token {
   /// ETag of the resource.
   core.String etag;
 
-  /// The type of the API resource. This is always admin#directory#token.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#token.
   core.String kind;
 
-  /// Whether the token is issued to an installed application. The value is true
-  /// if the application is installed to a desktop or mobile device.
+  /// Whether the token is issued to an installed application.
+  ///
+  /// The value is true if the application is installed to a desktop or mobile
+  /// device.
   core.bool nativeApp;
 
   /// A list of authorization scopes the application is granted.
@@ -11334,6 +11467,7 @@ class Token {
 }
 
 /// JSON response template for List tokens operation in Directory API.
+///
 /// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
@@ -11344,7 +11478,9 @@ class Tokens {
   /// A list of Token resources.
   core.List<Token> items;
 
-  /// The type of the API resource. This is always admin#directory#tokenList.
+  /// The type of the API resource.
+  ///
+  /// This is always admin#directory#tokenList.
   core.String kind;
 
   Tokens();
@@ -11379,9 +11515,10 @@ class Tokens {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 /// STEPLADDER: Generated unstable field number for field 'external_ids' to
 /// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
 /// Generated unstable field number for field 'relations' to avoid collision.
@@ -11417,10 +11554,14 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object addresses;
 
-  /// Output only. Indicates if user has agreed to terms (Read-only)
+  /// Indicates if user has agreed to terms (Read-only)
+  ///
+  /// Output only.
   core.bool agreedToTerms;
 
-  /// Output only. List of aliases (Read-only)
+  /// List of aliases (Read-only)
+  ///
+  /// Output only.
   core.List<core.String> aliases;
 
   /// Indicates if user is archived.
@@ -11429,13 +11570,17 @@ class User {
   /// Boolean indicating if the user should change password in next login
   core.bool changePasswordAtNextLogin;
 
-  /// User's G Suite account creation time. (Read-only)
+  /// User's G Suite account creation time.
+  ///
+  /// (Read-only)
   core.DateTime creationTime;
 
   /// Custom fields of the user.
   core.Map<core.String, UserCustomProperties> customSchemas;
 
-  /// Output only. CustomerId of User (Read-only)
+  /// CustomerId of User (Read-only)
+  ///
+  /// Output only.
   core.String customerId;
   core.DateTime deletionTime;
 
@@ -11445,7 +11590,9 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object emails;
 
-  /// Output only. ETag of the resource.
+  /// ETag of the resource.
+  ///
+  /// Output only.
   core.String etag;
 
   /// The external Ids of User *
@@ -11460,7 +11607,9 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object gender;
 
-  /// Hash function name for password. Supported are MD5, SHA-1 and crypt
+  /// Hash function name for password.
+  ///
+  /// Supported are MD5, SHA-1 and crypt
   core.String hashFunction;
 
   /// Unique identifier of User (Read-only)
@@ -11478,19 +11627,29 @@ class User {
   /// Boolean indicating if ip is whitelisted
   core.bool ipWhitelisted;
 
-  /// Output only. Boolean indicating if the user is admin (Read-only)
+  /// Boolean indicating if the user is admin (Read-only)
+  ///
+  /// Output only.
   core.bool isAdmin;
 
-  /// Output only. Boolean indicating if the user is delegated admin (Read-only)
+  /// Boolean indicating if the user is delegated admin (Read-only)
+  ///
+  /// Output only.
   core.bool isDelegatedAdmin;
 
-  /// Output only. Is 2-step verification enforced (Read-only)
+  /// Is 2-step verification enforced (Read-only)
+  ///
+  /// Output only.
   core.bool isEnforcedIn2Sv;
 
-  /// Output only. Is enrolled in 2-step verification (Read-only)
+  /// Is enrolled in 2-step verification (Read-only)
+  ///
+  /// Output only.
   core.bool isEnrolledIn2Sv;
 
-  /// Output only. Is mailbox setup (Read-only)
+  /// Is mailbox setup (Read-only)
+  ///
+  /// Output only.
   core.bool isMailboxSetup;
 
   /// Keywords of User
@@ -11499,7 +11658,9 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object keywords;
 
-  /// Output only. Kind of resource this is.
+  /// Kind of resource this is.
+  ///
+  /// Output only.
   core.String kind;
 
   /// Languages of User
@@ -11508,7 +11669,9 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object languages;
 
-  /// User's last login time. (Read-only)
+  /// User's last login time.
+  ///
+  /// (Read-only)
   core.DateTime lastLoginTime;
 
   /// Locations of User
@@ -11520,7 +11683,9 @@ class User {
   /// User's name
   UserName name;
 
-  /// Output only. List of non editable aliases (Read-only)
+  /// List of non editable aliases (Read-only)
+  ///
+  /// Output only.
   core.List<core.String> nonEditableAliases;
 
   /// Notes of User
@@ -11559,8 +11724,10 @@ class User {
   /// Recovery email of the user.
   core.String recoveryEmail;
 
-  /// Recovery phone of the user. The phone number must be in the E.164 format,
-  /// starting with the plus sign (+). Example: *+16506661212*.
+  /// Recovery phone of the user.
+  ///
+  /// The phone number must be in the E.164 format, starting with the plus sign
+  /// (+). Example: *+16506661212*.
   core.String recoveryPhone;
 
   /// The Relations of User *
@@ -11578,13 +11745,19 @@ class User {
   /// Indicates if user is suspended.
   core.bool suspended;
 
-  /// Output only. Suspension reason if user is suspended (Read-only)
+  /// Suspension reason if user is suspended (Read-only)
+  ///
+  /// Output only.
   core.String suspensionReason;
 
-  /// Output only. ETag of the user's photo (Read-only)
+  /// ETag of the user's photo (Read-only)
+  ///
+  /// Output only.
   core.String thumbnailPhotoEtag;
 
-  /// Output only. Photo Url of the user (Read-only)
+  /// Photo Url of the user (Read-only)
+  ///
+  /// Output only.
   core.String thumbnailPhotoUrl;
 
   /// Websites of User
@@ -11898,9 +12071,10 @@ class User {
 
 /// JSON template for About (notes) of a user in Directory API.
 class UserAbout {
-  /// About entry can have a type which indicates the content type. It can
-  /// either be plain or html. By default, notes contents are assumed to contain
-  /// plain text.
+  /// About entry can have a type which indicates the content type.
+  ///
+  /// It can either be plain or html. By default, notes contents are assumed to
+  /// contain plain text.
   core.String contentType;
 
   /// Actual value of notes.
@@ -11955,22 +12129,25 @@ class UserAddress {
   /// Postal code.
   core.String postalCode;
 
-  /// If this is user's primary address. Only one entry could be marked as
-  /// primary.
+  /// If this is user's primary address.
+  ///
+  /// Only one entry could be marked as primary.
   core.bool primary;
 
   /// Region.
   core.String region;
 
-  /// User supplied address was structured. Structured addresses are NOT
-  /// supported at this time. You might be able to write structured addresses
-  /// but any values will eventually be clobbered.
+  /// User supplied address was structured.
+  ///
+  /// Structured addresses are NOT supported at this time. You might be able to
+  /// write structured addresses but any values will eventually be clobbered.
   core.bool sourceIsStructured;
 
   /// Street.
   core.String streetAddress;
 
   /// Each entry can have a type which indicates standard values of that entry.
+  ///
   /// For example address could be of home work etc. In addition to the standard
   /// type an entry can have a custom type and can take any value. Such type
   /// should have the CUSTOM value as type and also have a customType value.
@@ -12110,11 +12287,13 @@ class UserEmail {
   /// Custom Type.
   core.String customType;
 
-  /// If this is user's primary email. Only one entry could be marked as
-  /// primary.
+  /// If this is user's primary email.
+  ///
+  /// Only one entry could be marked as primary.
   core.bool primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
+  ///
   /// For example email could be of home, work etc. In addition to the standard
   /// type, an entry can have a custom type and can take any value Such types
   /// should have the CUSTOM value as type and also have a customType value.
@@ -12196,8 +12375,10 @@ class UserExternalId {
 }
 
 class UserGender {
-  /// AddressMeAs. A human-readable string containing the proper way to refer to
-  /// the profile owner by humans for example he/him/his or they/them/their.
+  /// AddressMeAs.
+  ///
+  /// A human-readable string containing the proper way to refer to the profile
+  /// owner by humans for example he/him/his or they/them/their.
   core.String addressMeAs;
 
   /// Custom gender.
@@ -12246,15 +12427,20 @@ class UserIm {
   /// Instant messenger id.
   core.String im;
 
-  /// If this is user's primary im. Only one entry could be marked as primary.
+  /// If this is user's primary im.
+  ///
+  /// Only one entry could be marked as primary.
   core.bool primary;
 
-  /// Protocol used in the instant messenger. It should be one of the values
-  /// from ImProtocolTypes map. Similar to type it can take a CUSTOM value and
-  /// specify the custom name in customProtocol field.
+  /// Protocol used in the instant messenger.
+  ///
+  /// It should be one of the values from ImProtocolTypes map. Similar to type
+  /// it can take a CUSTOM value and specify the custom name in customProtocol
+  /// field.
   core.String protocol;
 
   /// Each entry can have a type which indicates standard types of that entry.
+  ///
   /// For example instant messengers could be of home work etc. In addition to
   /// the standard type an entry can have a custom type and can take any value.
   /// Such types should have the CUSTOM value as type and also have a customType
@@ -12314,6 +12500,7 @@ class UserKeyword {
   core.String customType;
 
   /// Each entry can have a type which indicates standard type of that entry.
+  ///
   /// For example keyword could be of type occupation or outlook. In addition to
   /// the standard type an entry can have a custom type and can give it any
   /// name. Such types should have the CUSTOM value as type and also have a
@@ -12354,13 +12541,16 @@ class UserKeyword {
 
 /// JSON template for a language entry.
 class UserLanguage {
-  /// Other language. User can provide own language name if there is no
-  /// corresponding Google III language code. If this is set LanguageCode can't
-  /// be set
+  /// Other language.
+  ///
+  /// User can provide own language name if there is no corresponding Google III
+  /// language code. If this is set LanguageCode can't be set
   core.String customLanguage;
 
-  /// Language Code. Should be used for storing Google III LanguageCode string
-  /// representation for language. Illegal values cause SchemaException.
+  /// Language Code.
+  ///
+  /// Should be used for storing Google III LanguageCode string representation
+  /// for language. Illegal values cause SchemaException.
   core.String languageCode;
 
   UserLanguage();
@@ -12388,9 +12578,11 @@ class UserLanguage {
 
 /// JSON template for a location entry.
 class UserLocation {
-  /// Textual location. This is most useful for display purposes to concisely
-  /// describe the location. For example 'Mountain View, CA', 'Near Seattle',
-  /// 'US-NYC-9TH 9A209A.''
+  /// Textual location.
+  ///
+  /// This is most useful for display purposes to concisely describe the
+  /// location. For example 'Mountain View, CA', 'Near Seattle', 'US-NYC-9TH
+  /// 9A209A.''
   core.String area;
 
   /// Building Identifier.
@@ -12405,12 +12597,15 @@ class UserLocation {
   /// Floor name/number.
   core.String floorName;
 
-  /// Floor section. More specific location within the floor. For example if a
-  /// floor is divided into sections 'A', 'B' and 'C' this field would identify
-  /// one of those values.
+  /// Floor section.
+  ///
+  /// More specific location within the floor. For example if a floor is divided
+  /// into sections 'A', 'B' and 'C' this field would identify one of those
+  /// values.
   core.String floorSection;
 
   /// Each entry can have a type which indicates standard types of that entry.
+  ///
   /// For example location could be of types default and desk. In addition to
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have 'custom' as type and also have a customType value.
@@ -12550,7 +12745,9 @@ class UserOrganization {
   /// 100%).
   core.int fullTimeEquivalent;
 
-  /// Location of the organization. This need not be fully qualified address.
+  /// Location of the organization.
+  ///
+  /// This need not be fully qualified address.
   core.String location;
 
   /// Name of the organization
@@ -12566,6 +12763,7 @@ class UserOrganization {
   core.String title;
 
   /// Each entry can have a type which indicates standard types of that entry.
+  ///
   /// For example organization could be of school work etc. In addition to the
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a CustomType
@@ -12664,6 +12862,7 @@ class UserPhone {
   core.bool primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
+  ///
   /// For example phone could be of home_fax work mobile etc. In addition to the
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a customType
@@ -12708,9 +12907,10 @@ class UserPhone {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class UserPhoto {
   /// ETag of the resource.
   core.String etag;
@@ -12801,8 +13001,9 @@ class UserPhoto {
   }
 }
 
-/// JSON template for a POSIX account entry. Description of the field family:
-/// go/fbs-posix.
+/// JSON template for a POSIX account entry.
+///
+/// Description of the field family: go/fbs-posix.
 class UserPosixAccount {
   /// A POSIX account field identifier.
   core.String accountId;
@@ -12910,8 +13111,10 @@ class UserRelation {
   /// Custom Type.
   core.String customType;
 
-  /// The relation of the user. Some of the possible values are mother father
-  /// sister brother manager assistant partner.
+  /// The relation of the user.
+  ///
+  /// Some of the possible values are mother father sister brother manager
+  /// assistant partner.
   core.String type;
 
   /// The name of the relation.
@@ -12951,7 +13154,9 @@ class UserSshPublicKey {
   /// An expiration time in microseconds since epoch.
   core.String expirationTimeUsec;
 
-  /// A SHA-256 fingerprint of the SSH public key. (Read-only)
+  /// A SHA-256 fingerprint of the SSH public key.
+  ///
+  /// (Read-only)
   core.String fingerprint;
 
   /// An SSH public key.
@@ -13016,6 +13221,7 @@ class UserWebsite {
   core.bool primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
+  ///
   /// For example website could be of home work blog etc. In addition to the
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a customType
@@ -13060,9 +13266,10 @@ class UserWebsite {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// STEPLADDER: Generated unstable field number for field 'kind'.
+///
+/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Users {
   /// ETag of the resource.
   core.String etag;
@@ -13123,22 +13330,27 @@ class Users {
   }
 }
 
-/// JSON template for verification codes in Directory API. STEPLADDER: Generated
-/// unstable field number for field 'kind'. (See
+/// JSON template for verification codes in Directory API.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class VerificationCode {
   /// ETag of the resource.
   core.String etag;
 
-  /// The type of the resource. This is always admin#directory#verificationCode.
+  /// The type of the resource.
+  ///
+  /// This is always admin#directory#verificationCode.
   core.String kind;
 
   /// The obfuscated unique ID of the user.
   core.String userId;
 
-  /// A current verification code for the user. Invalidated or used verification
-  /// codes are not returned as part of the result.
+  /// A current verification code for the user.
+  ///
+  /// Invalidated or used verification codes are not returned as part of the
+  /// result.
   core.String verificationCode;
 
   VerificationCode();
@@ -13177,7 +13389,9 @@ class VerificationCode {
 }
 
 /// JSON response template for List verification codes operation in Directory
-/// API. STEPLADDER: Generated unstable field number for field 'kind'. (See
+/// API.
+///
+/// STEPLADDER: Generated unstable field number for field 'kind'. (See
 /// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
 /// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class VerificationCodes {
@@ -13187,8 +13401,9 @@ class VerificationCodes {
   /// A list of verification code resources.
   core.List<VerificationCode> items;
 
-  /// The type of the resource. This is always
-  /// admin#directory#verificationCodesList.
+  /// The type of the resource.
+  ///
+  /// This is always admin#directory#verificationCodesList.
   core.String kind;
 
   VerificationCodes();

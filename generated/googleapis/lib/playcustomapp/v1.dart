@@ -155,8 +155,11 @@ class CustomApp {
   /// Default listing language in BCP 47 format.
   core.String languageCode;
 
-  /// Output only. Package name of the created Android app. Only present in the
-  /// API response.
+  /// Package name of the created Android app.
+  ///
+  /// Only present in the API response.
+  ///
+  /// Output only.
   core.String packageName;
 
   /// Title for the Android app.

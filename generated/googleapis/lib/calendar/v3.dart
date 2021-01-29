@@ -367,7 +367,9 @@ class AclResource {
     );
   }
 
-  /// Updates an access control rule. This method supports patch semantics.
+  /// Updates an access control rule.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -891,8 +893,9 @@ class CalendarListResource {
     );
   }
 
-  /// Updates an existing calendar on the user's calendar list. This method
-  /// supports patch semantics.
+  /// Updates an existing calendar on the user's calendar list.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1145,8 +1148,10 @@ class CalendarsResource {
 
   CalendarsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Clears a primary calendar. This operation deletes all events associated
-  /// with the primary calendar of an account.
+  /// Clears a primary calendar.
+  ///
+  /// This operation deletes all events associated with the primary calendar of
+  /// an account.
   ///
   /// Request parameters:
   ///
@@ -1199,8 +1204,9 @@ class CalendarsResource {
     );
   }
 
-  /// Deletes a secondary calendar. Use calendars.clear for clearing all events
-  /// on primary calendars.
+  /// Deletes a secondary calendar.
+  ///
+  /// Use calendars.clear for clearing all events on primary calendars.
   ///
   /// Request parameters:
   ///
@@ -1354,7 +1360,9 @@ class CalendarsResource {
     );
   }
 
-  /// Updates metadata for a calendar. This method supports patch semantics.
+  /// Updates metadata for a calendar.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1752,8 +1760,10 @@ class EventsResource {
     );
   }
 
-  /// Imports an event. This operation is used to add a private copy of an
-  /// existing event to a calendar.
+  /// Imports an event.
+  ///
+  /// This operation is used to add a private copy of an existing event to a
+  /// calendar.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2388,7 +2398,9 @@ class EventsResource {
     );
   }
 
-  /// Updates an event. This method supports patch semantics.
+  /// Updates an event.
+  ///
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3226,13 +3238,17 @@ class Acl {
   /// Type of the collection ("calendar#acl").
   core.String kind;
 
-  /// Token used to access the next page of this result. Omitted if no further
-  /// results are available, in which case nextSyncToken is provided.
+  /// Token used to access the next page of this result.
+  ///
+  /// Omitted if no further results are available, in which case nextSyncToken
+  /// is provided.
   core.String nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
-  /// changed since this result was returned. Omitted if further results are
-  /// available, in which case nextPageToken is provided.
+  /// changed since this result was returned.
+  ///
+  /// Omitted if further results are available, in which case nextPageToken is
+  /// provided.
   core.String nextSyncToken;
 
   Acl();
@@ -3281,7 +3297,9 @@ class Acl {
 
 /// The scope of the rule.
 class AclRuleScope {
-  /// The type of the scope. Possible values are:
+  /// The type of the scope.
+  ///
+  /// Possible values are:
   /// - "default" - The public scope. This is the default value.
   /// - "user" - Limits the scope to a single user.
   /// - "group" - Limits the scope to a group.
@@ -3291,7 +3309,9 @@ class AclRuleScope {
   core.String type;
 
   /// The email address of a user or group, or the name of a domain, depending
-  /// on the scope type. Omitted for type "default".
+  /// on the scope type.
+  ///
+  /// Omitted for type "default".
   core.String value;
 
   AclRuleScope();
@@ -3327,7 +3347,9 @@ class AclRule {
   /// Type of the resource ("calendar#aclRule").
   core.String kind;
 
-  /// The role assigned to the scope. Possible values are:
+  /// The role assigned to the scope.
+  ///
+  /// Possible values are:
   /// - "none" - Provides no access.
   /// - "freeBusyReader" - Provides read access to free/busy information.
   /// - "reader" - Provides read access to the calendar. Private events will
@@ -3390,27 +3412,34 @@ class Calendar {
   /// conferences are allowed.
   ConferenceProperties conferenceProperties;
 
-  /// Description of the calendar. Optional.
+  /// Description of the calendar.
+  ///
+  /// Optional.
   core.String description;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// Identifier of the calendar. To retrieve IDs call the calendarList.list()
-  /// method.
+  /// Identifier of the calendar.
+  ///
+  /// To retrieve IDs call the calendarList.list() method.
   core.String id;
 
   /// Type of the resource ("calendar#calendar").
   core.String kind;
 
-  /// Geographic location of the calendar as free-form text. Optional.
+  /// Geographic location of the calendar as free-form text.
+  ///
+  /// Optional.
   core.String location;
 
   /// Title of the calendar.
   core.String summary;
 
-  /// The time zone of the calendar. (Formatted as an IANA Time Zone Database
-  /// name, e.g. "Europe/Zurich".) Optional.
+  /// The time zone of the calendar.
+  ///
+  /// (Formatted as an IANA Time Zone Database name, e.g. "Europe/Zurich".)
+  /// Optional.
   core.String timeZone;
 
   Calendar();
@@ -3483,13 +3512,17 @@ class CalendarList {
   /// Type of the collection ("calendar#calendarList").
   core.String kind;
 
-  /// Token used to access the next page of this result. Omitted if no further
-  /// results are available, in which case nextSyncToken is provided.
+  /// Token used to access the next page of this result.
+  ///
+  /// Omitted if no further results are available, in which case nextSyncToken
+  /// is provided.
   core.String nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
-  /// changed since this result was returned. Omitted if further results are
-  /// available, in which case nextPageToken is provided.
+  /// changed since this result was returned.
+  ///
+  /// Omitted if further results are available, in which case nextPageToken is
+  /// provided.
   core.String nextSyncToken;
 
   CalendarList();
@@ -3565,6 +3598,7 @@ class CalendarListEntryNotificationSettings {
 
 class CalendarListEntry {
   /// The effective access role that the authenticated user has on the calendar.
+  ///
   /// Read-only. Possible values are:
   /// - "freeBusyReader" - Provides read access to free/busy information.
   /// - "reader" - Provides read access to the calendar. Private events will
@@ -3577,16 +3611,19 @@ class CalendarListEntry {
   /// manipulate ACLs.
   core.String accessRole;
 
-  /// The main color of the calendar in the hexadecimal format "#0088aa". This
-  /// property supersedes the index-based colorId property. To set or change
-  /// this property, you need to specify colorRgbFormat=true in the parameters
-  /// of the insert, update and patch methods. Optional.
+  /// The main color of the calendar in the hexadecimal format "#0088aa".
+  ///
+  /// This property supersedes the index-based colorId property. To set or
+  /// change this property, you need to specify colorRgbFormat=true in the
+  /// parameters of the insert, update and patch methods. Optional.
   core.String backgroundColor;
 
-  /// The color of the calendar. This is an ID referring to an entry in the
-  /// calendar section of the colors definition (see the colors endpoint). This
-  /// property is superseded by the backgroundColor and foregroundColor
-  /// properties and can be ignored when using these properties. Optional.
+  /// The color of the calendar.
+  ///
+  /// This is an ID referring to an entry in the calendar section of the colors
+  /// definition (see the colors endpoint). This property is superseded by the
+  /// backgroundColor and foregroundColor properties and can be ignored when
+  /// using these properties. Optional.
   core.String colorId;
 
   /// Conferencing properties for this calendar, for example what types of
@@ -3597,24 +3634,29 @@ class CalendarListEntry {
   core.List<EventReminder> defaultReminders;
 
   /// Whether this calendar list entry has been deleted from the calendar list.
+  ///
   /// Read-only. Optional. The default is False.
   core.bool deleted;
 
-  /// Description of the calendar. Optional. Read-only.
+  /// Description of the calendar.
+  ///
+  /// Optional. Read-only.
   core.String description;
 
   /// ETag of the resource.
   core.String etag;
 
   /// The foreground color of the calendar in the hexadecimal format "#ffffff".
+  ///
   /// This property supersedes the index-based colorId property. To set or
   /// change this property, you need to specify colorRgbFormat=true in the
   /// parameters of the insert, update and patch methods. Optional.
   core.String foregroundColor;
 
-  /// Whether the calendar has been hidden from the list. Optional. The
-  /// attribute is only returned when the calendar is hidden, in which case the
-  /// value is true.
+  /// Whether the calendar has been hidden from the list.
+  ///
+  /// Optional. The attribute is only returned when the calendar is hidden, in
+  /// which case the value is true.
   core.bool hidden;
 
   /// Identifier of the calendar.
@@ -3623,8 +3665,9 @@ class CalendarListEntry {
   /// Type of the resource ("calendar#calendarListEntry").
   core.String kind;
 
-  /// Geographic location of the calendar as free-form text. Optional.
-  /// Read-only.
+  /// Geographic location of the calendar as free-form text.
+  ///
+  /// Optional. Read-only.
   core.String location;
 
   /// The notifications that the authenticated user is receiving for this
@@ -3632,21 +3675,28 @@ class CalendarListEntry {
   CalendarListEntryNotificationSettings notificationSettings;
 
   /// Whether the calendar is the primary calendar of the authenticated user.
+  ///
   /// Read-only. Optional. The default is False.
   core.bool primary;
 
-  /// Whether the calendar content shows up in the calendar UI. Optional. The
-  /// default is False.
+  /// Whether the calendar content shows up in the calendar UI.
+  ///
+  /// Optional. The default is False.
   core.bool selected;
 
-  /// Title of the calendar. Read-only.
+  /// Title of the calendar.
+  ///
+  /// Read-only.
   core.String summary;
 
   /// The summary that the authenticated user has set for this calendar.
+  ///
   /// Optional.
   core.String summaryOverride;
 
-  /// The time zone of the calendar. Optional. Read-only.
+  /// The time zone of the calendar.
+  ///
+  /// Optional. Read-only.
   core.String timeZone;
 
   CalendarListEntry();
@@ -3781,12 +3831,16 @@ class CalendarListEntry {
 }
 
 class CalendarNotification {
-  /// The method used to deliver the notification. The possible value is:
+  /// The method used to deliver the notification.
+  ///
+  /// The possible value is:
   /// - "email" - Notifications are sent via email.
   /// Required when adding a notification.
   core.String method;
 
-  /// The type of notification. Possible values are:
+  /// The type of notification.
+  ///
+  /// Possible values are:
   /// - "eventCreation" - Notification sent when a new event is put on the
   /// calendar.
   /// - "eventChange" - Notification sent when an event is changed.
@@ -3826,7 +3880,9 @@ class Channel {
   core.String address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
-  /// timestamp, in milliseconds. Optional.
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
   core.String expiration;
 
   /// A UUID or similar unique string that identifies this channel.
@@ -3836,13 +3892,18 @@ class Channel {
   /// resource, which is "api#channel".
   core.String kind;
 
-  /// Additional parameters controlling delivery channel behavior. Optional.
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> params;
 
-  /// A Boolean value to indicate whether payload is wanted. Optional.
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
   core.bool payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
+  ///
   /// Stable across different API versions.
   core.String resourceId;
 
@@ -3850,7 +3911,9 @@ class Channel {
   core.String resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
-  /// delivered over this channel. Optional.
+  /// delivered over this channel.
+  ///
+  /// Optional.
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
@@ -3966,19 +4029,24 @@ class ColorDefinition {
 
 class Colors {
   /// A global palette of calendar colors, mapping from the color ID to its
-  /// definition. A calendarListEntry resource refers to one of these color IDs
-  /// in its color field. Read-only.
+  /// definition.
+  ///
+  /// A calendarListEntry resource refers to one of these color IDs in its color
+  /// field. Read-only.
   core.Map<core.String, ColorDefinition> calendar;
 
   /// A global palette of event colors, mapping from the color ID to its
-  /// definition. An event resource may refer to one of these color IDs in its
-  /// color field. Read-only.
+  /// definition.
+  ///
+  /// An event resource may refer to one of these color IDs in its color field.
+  /// Read-only.
   core.Map<core.String, ColorDefinition> event;
 
   /// Type of the resource ("calendar#colors").
   core.String kind;
 
   /// Last modification time of the color palette (as a RFC3339 timestamp).
+  ///
   /// Read-only.
   core.DateTime updated;
 
@@ -4040,7 +4108,9 @@ class ConferenceData {
   /// - "eventHangout": unset.
   /// - "eventNamedHangout": the name of the Hangout.
   /// - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
-  /// - "addOn": defined by 3P conference provider.  Optional.
+  /// - "addOn": defined by 3P conference provider.
+  ///
+  ///  Optional.
   core.String conferenceId;
 
   /// The conference solution, such as Hangouts or Google Meet.
@@ -4049,9 +4119,10 @@ class ConferenceData {
   /// required.
   ConferenceSolution conferenceSolution;
 
-  /// A request to generate a new conference and attach it to the event. The
-  /// data is generated asynchronously. To see whether the data is present check
-  /// the status field.
+  /// A request to generate a new conference and attach it to the event.
+  ///
+  /// The data is generated asynchronously. To see whether the data is present
+  /// check the status field.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
   CreateConferenceRequest createRequest;
@@ -4064,17 +4135,22 @@ class ConferenceData {
   core.List<EntryPoint> entryPoints;
 
   /// Additional notes (such as instructions from the domain administrator,
-  /// legal notices) to display to the user. Can contain HTML. The maximum
-  /// length is 2048 characters. Optional.
+  /// legal notices) to display to the user.
+  ///
+  /// Can contain HTML. The maximum length is 2048 characters. Optional.
   core.String notes;
 
-  /// Additional properties related to a conference. An example would be a
-  /// solution-specific setting for enabling video streaming.
+  /// Additional properties related to a conference.
+  ///
+  /// An example would be a solution-specific setting for enabling video
+  /// streaming.
   ConferenceParameters parameters;
 
   /// The signature of the conference data.
-  /// Generated on server side. Must be preserved while copying the conference
-  /// data between events, otherwise the conference data will not be copied.
+  /// Generated on server side.
+  ///
+  /// Must be preserved while copying the conference data between events,
+  /// otherwise the conference data will not be copied.
   /// Unset for a conference with a failed create request.
   /// Optional for a conference with a pending create request.
   core.String signature;
@@ -4217,7 +4293,9 @@ class ConferenceProperties {
 }
 
 class ConferenceRequestStatus {
-  /// The current status of the conference create request. Read-only.
+  /// The current status of the conference create request.
+  ///
+  /// Read-only.
   /// The possible values are:
   /// - "pending": the conference create request is still being processed.
   /// - "success": the conference create request succeeded, the entry points are
@@ -4251,7 +4329,9 @@ class ConferenceSolution {
   /// event.
   ConferenceSolutionKey key;
 
-  /// The user-visible name of this solution. Not localized.
+  /// The user-visible name of this solution.
+  ///
+  /// Not localized.
   core.String name;
 
   ConferenceSolution();
@@ -4287,8 +4367,9 @@ class ConferenceSolution {
 class ConferenceSolutionKey {
   /// The conference solution type.
   /// If a client encounters an unfamiliar or empty type, it should still be
-  /// able to display the entry points. However, it should disallow
-  /// modifications.
+  /// able to display the entry points.
+  ///
+  /// However, it should disallow modifications.
   /// The possible values are:
   /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
   /// - "eventNamedHangout" for classic Hangouts for G Suite users
@@ -4319,8 +4400,10 @@ class CreateConferenceRequest {
   ConferenceSolutionKey conferenceSolutionKey;
 
   /// The client-generated unique ID for this request.
-  /// Clients should regenerate this ID for every new request. If an ID provided
-  /// is the same as for the previous request, the request is ignored.
+  /// Clients should regenerate this ID for every new request.
+  ///
+  /// If an ID provided is the same as for the previous request, the request is
+  /// ignored.
   core.String requestId;
 
   /// The status of the conference create request.
@@ -4359,8 +4442,9 @@ class CreateConferenceRequest {
 }
 
 class EntryPoint {
-  /// The access code to access the conference. The maximum length is 128
-  /// characters.
+  /// The access code to access the conference.
+  ///
+  /// The maximum length is 128 characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
   /// terminology that the conference provider uses. Only the populated fields
@@ -4368,15 +4452,17 @@ class EntryPoint {
   /// Optional.
   core.String accessCode;
 
-  /// Features of the entry point, such as being toll or toll-free. One entry
-  /// point can have multiple features. However, toll and toll-free cannot be
-  /// both set on the same entry point.
+  /// Features of the entry point, such as being toll or toll-free.
+  ///
+  /// One entry point can have multiple features. However, toll and toll-free
+  /// cannot be both set on the same entry point.
   core.List<core.String> entryPointFeatures;
 
   /// The type of the conference entry point.
   /// Possible values are:
-  /// - "video" - joining a conference over HTTP. A conference can have zero or
-  /// one video entry point.
+  /// - "video" - joining a conference over HTTP.
+  ///
+  /// A conference can have zero or one video entry point.
   /// - "phone" - joining a conference by dialing a phone number. A conference
   /// can have zero or more phone entry points.
   /// - "sip" - joining a conference over SIP. A conference can have zero or one
@@ -4386,8 +4472,9 @@ class EntryPoint {
   /// conference with only a more entry point is not a valid conference.
   core.String entryPointType;
 
-  /// The label for the URI. Visible to end users. Not localized. The maximum
-  /// length is 512 characters.
+  /// The label for the URI.
+  ///
+  /// Visible to end users. Not localized. The maximum length is 512 characters.
   /// Examples:
   /// - for video: meet.google.com/aaa-bbbb-ccc
   /// - for phone: +1 123 268 2601
@@ -4396,8 +4483,9 @@ class EntryPoint {
   /// Optional.
   core.String label;
 
-  /// The meeting code to access the conference. The maximum length is 128
-  /// characters.
+  /// The meeting code to access the conference.
+  ///
+  /// The maximum length is 128 characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
   /// terminology that the conference provider uses. Only the populated fields
@@ -4405,16 +4493,18 @@ class EntryPoint {
   /// Optional.
   core.String meetingCode;
 
-  /// The passcode to access the conference. The maximum length is 128
-  /// characters.
+  /// The passcode to access the conference.
+  ///
+  /// The maximum length is 128 characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
   /// terminology that the conference provider uses. Only the populated fields
   /// should be displayed.
   core.String passcode;
 
-  /// The password to access the conference. The maximum length is 128
-  /// characters.
+  /// The password to access the conference.
+  ///
+  /// The maximum length is 128 characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
   /// terminology that the conference provider uses. Only the populated fields
@@ -4422,7 +4512,9 @@ class EntryPoint {
   /// Optional.
   core.String password;
 
-  /// The PIN to access the conference. The maximum length is 128 characters.
+  /// The PIN to access the conference.
+  ///
+  /// The maximum length is 128 characters.
   /// When creating new conference data, populate only the subset of
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
   /// terminology that the conference provider uses. Only the populated fields
@@ -4431,11 +4523,15 @@ class EntryPoint {
   core.String pin;
 
   /// The CLDR/ISO 3166 region code for the country associated with this phone
-  /// access. Example: "SE" for Sweden.
+  /// access.
+  ///
+  /// Example: "SE" for Sweden.
   /// Calendar backend will populate this field only for EntryPointType.PHONE.
   core.String regionCode;
 
-  /// The URI of the entry point. The maximum length is 1300 characters.
+  /// The URI of the entry point.
+  ///
+  /// The maximum length is 1300 characters.
   /// Format:
   /// - for video, http: or https: schema is required.
   /// - for phone, tel: schema is required. The URI should include the entire
@@ -4521,7 +4617,9 @@ class Error {
   /// Domain, or broad category, of the error.
   core.String domain;
 
-  /// Specific reason for the error. Some of the possible values are:
+  /// Specific reason for the error.
+  ///
+  /// Some of the possible values are:
   /// - "groupTooBig" - The group of users requested is too large for a single
   /// query.
   /// - "tooManyCalendarsRequested" - The number of calendars requested is too
@@ -4555,7 +4653,9 @@ class Error {
   }
 }
 
-/// The creator of the event. Read-only.
+/// The creator of the event.
+///
+/// Read-only.
 class EventCreator {
   /// The creator's name, if available.
   core.String displayName;
@@ -4563,12 +4663,15 @@ class EventCreator {
   /// The creator's email address, if available.
   core.String email;
 
-  /// The creator's Profile ID, if available. It corresponds to the id field in
-  /// the People collection of the Google+ API
+  /// The creator's Profile ID, if available.
+  ///
+  /// It corresponds to the id field in the People collection of the Google+ API
   core.String id;
 
   /// Whether the creator corresponds to the calendar on which this copy of the
-  /// event appears. Read-only. The default is False.
+  /// event appears.
+  ///
+  /// Read-only. The default is False.
   core.bool self;
 
   EventCreator();
@@ -4651,36 +4754,50 @@ class EventExtendedProperties {
   }
 }
 
-/// A gadget that extends this event. Gadgets are deprecated; this structure is
-/// instead only used for returning birthday calendar metadata.
+/// A gadget that extends this event.
+///
+/// Gadgets are deprecated; this structure is instead only used for returning
+/// birthday calendar metadata.
 class EventGadget {
-  /// The gadget's display mode. Deprecated. Possible values are:
+  /// The gadget's display mode.
+  ///
+  /// Deprecated. Possible values are:
   /// - "icon" - The gadget displays next to the event's title in the calendar
   /// view.
   /// - "chip" - The gadget displays when the event is clicked.
   core.String display;
 
-  /// The gadget's height in pixels. The height must be an integer greater than
-  /// 0. Optional. Deprecated.
+  /// The gadget's height in pixels.
+  ///
+  /// The height must be an integer greater than 0. Optional. Deprecated.
   core.int height;
 
-  /// The gadget's icon URL. The URL scheme must be HTTPS. Deprecated.
+  /// The gadget's icon URL.
+  ///
+  /// The URL scheme must be HTTPS. Deprecated.
   core.String iconLink;
 
-  /// The gadget's URL. The URL scheme must be HTTPS. Deprecated.
+  /// The gadget's URL.
+  ///
+  /// The URL scheme must be HTTPS. Deprecated.
   core.String link;
 
   /// Preferences.
   core.Map<core.String, core.String> preferences;
 
-  /// The gadget's title. Deprecated.
+  /// The gadget's title.
+  ///
+  /// Deprecated.
   core.String title;
 
-  /// The gadget's type. Deprecated.
+  /// The gadget's type.
+  ///
+  /// Deprecated.
   core.String type;
 
-  /// The gadget's width in pixels. The width must be an integer greater than 0.
-  /// Optional. Deprecated.
+  /// The gadget's width in pixels.
+  ///
+  /// The width must be an integer greater than 0. Optional. Deprecated.
   core.int width;
 
   EventGadget();
@@ -4749,24 +4866,30 @@ class EventGadget {
   }
 }
 
-/// The organizer of the event. If the organizer is also an attendee, this is
-/// indicated with a separate entry in attendees with the organizer field set to
-/// True. To change the organizer, use the move operation. Read-only, except
-/// when importing an event.
+/// The organizer of the event.
+///
+/// If the organizer is also an attendee, this is indicated with a separate
+/// entry in attendees with the organizer field set to True. To change the
+/// organizer, use the move operation. Read-only, except when importing an
+/// event.
 class EventOrganizer {
   /// The organizer's name, if available.
   core.String displayName;
 
-  /// The organizer's email address, if available. It must be a valid email
-  /// address as per RFC5322.
+  /// The organizer's email address, if available.
+  ///
+  /// It must be a valid email address as per RFC5322.
   core.String email;
 
-  /// The organizer's Profile ID, if available. It corresponds to the id field
-  /// in the People collection of the Google+ API
+  /// The organizer's Profile ID, if available.
+  ///
+  /// It corresponds to the id field in the People collection of the Google+ API
   core.String id;
 
   /// Whether the organizer corresponds to the calendar on which this copy of
-  /// the event appears. Read-only. The default is False.
+  /// the event appears.
+  ///
+  /// Read-only. The default is False.
   core.bool self;
 
   EventOrganizer();
@@ -4808,7 +4931,9 @@ class EventOrganizer {
 class EventReminders {
   /// If the event doesn't use the default reminders, this lists the reminders
   /// specific to the event, or, if not set, indicates that no reminders are set
-  /// for this event. The maximum number of override reminders is 5.
+  /// for this event.
+  ///
+  /// The maximum number of override reminders is 5.
   core.List<EventReminder> overrides;
 
   /// Whether the default reminders of the calendar apply to the event.
@@ -4840,16 +4965,19 @@ class EventReminders {
   }
 }
 
-/// Source from which the event was created. For example, a web page, an email
-/// message or any document identifiable by an URL with HTTP or HTTPS scheme.
-/// Can only be seen or modified by the creator of the event.
+/// Source from which the event was created.
+///
+/// For example, a web page, an email message or any document identifiable by an
+/// URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator
+/// of the event.
 class EventSource {
   /// Title of the source; for example a title of a web page or an email
   /// subject.
   core.String title;
 
-  /// URL of the source pointing to a resource. The URL scheme must be HTTP or
-  /// HTTPS.
+  /// URL of the source pointing to a resource.
+  ///
+  /// The URL scheme must be HTTP or HTTPS.
   core.String url;
 
   EventSource();
@@ -4877,54 +5005,71 @@ class EventSource {
 
 class Event {
   /// Whether anyone can invite themselves to the event (currently works for
-  /// Google+ events only). Optional. The default is False.
+  /// Google+ events only).
+  ///
+  /// Optional. The default is False.
   core.bool anyoneCanAddSelf;
 
-  /// File attachments for the event. Currently only Google Drive attachments
-  /// are supported.
+  /// File attachments for the event.
+  ///
+  /// Currently only Google Drive attachments are supported.
   /// In order to modify attachments the supportsAttachments request parameter
   /// should be set to true.
   /// There can be at most 25 attachments per event,
   core.List<EventAttachment> attachments;
 
-  /// The attendees of the event. See the Events with attendees guide for more
-  /// information on scheduling events with other calendar users. Service
-  /// accounts need to use domain-wide delegation of authority to populate the
-  /// attendee list.
+  /// The attendees of the event.
+  ///
+  /// See the Events with attendees guide for more information on scheduling
+  /// events with other calendar users. Service accounts need to use domain-wide
+  /// delegation of authority to populate the attendee list.
   core.List<EventAttendee> attendees;
 
   /// Whether attendees may have been omitted from the event's representation.
+  ///
   /// When retrieving an event, this may be due to a restriction specified by
   /// the maxAttendee query parameter. When updating an event, this can be used
   /// to only update the participant's response. Optional. The default is False.
   core.bool attendeesOmitted;
 
-  /// The color of the event. This is an ID referring to an entry in the event
-  /// section of the colors definition (see the  colors endpoint). Optional.
+  /// The color of the event.
+  ///
+  /// This is an ID referring to an entry in the event section of the colors
+  /// definition (see the  colors endpoint). Optional.
   core.String colorId;
 
   /// The conference-related information, such as details of a Google Meet
-  /// conference. To create new conference details use the createRequest field.
-  /// To persist your changes, remember to set the conferenceDataVersion request
-  /// parameter to 1 for all event modification requests.
+  /// conference.
+  ///
+  /// To create new conference details use the createRequest field. To persist
+  /// your changes, remember to set the conferenceDataVersion request parameter
+  /// to 1 for all event modification requests.
   ConferenceData conferenceData;
 
-  /// Creation time of the event (as a RFC3339 timestamp). Read-only.
+  /// Creation time of the event (as a RFC3339 timestamp).
+  ///
+  /// Read-only.
   core.DateTime created;
 
-  /// The creator of the event. Read-only.
+  /// The creator of the event.
+  ///
+  /// Read-only.
   EventCreator creator;
 
-  /// Description of the event. Can contain HTML. Optional.
+  /// Description of the event.
+  ///
+  /// Can contain HTML. Optional.
   core.String description;
 
-  /// The (exclusive) end time of the event. For a recurring event, this is the
-  /// end time of the first instance.
+  /// The (exclusive) end time of the event.
+  ///
+  /// For a recurring event, this is the end time of the first instance.
   EventDateTime end;
 
-  /// Whether the end time is actually unspecified. An end time is still
-  /// provided for compatibility reasons, even if this attribute is set to True.
-  /// The default is False.
+  /// Whether the end time is actually unspecified.
+  ///
+  /// An end time is still provided for compatibility reasons, even if this
+  /// attribute is set to True. The default is False.
   core.bool endTimeUnspecified;
 
   /// ETag of the resource.
@@ -4933,40 +5078,52 @@ class Event {
   /// Extended properties of the event.
   EventExtendedProperties extendedProperties;
 
-  /// A gadget that extends this event. Gadgets are deprecated; this structure
-  /// is instead only used for returning birthday calendar metadata.
+  /// A gadget that extends this event.
+  ///
+  /// Gadgets are deprecated; this structure is instead only used for returning
+  /// birthday calendar metadata.
   EventGadget gadget;
 
   /// Whether attendees other than the organizer can invite others to the event.
+  ///
   /// Optional. The default is True.
   core.bool guestsCanInviteOthers;
 
-  /// Whether attendees other than the organizer can modify the event. Optional.
-  /// The default is False.
+  /// Whether attendees other than the organizer can modify the event.
+  ///
+  /// Optional. The default is False.
   core.bool guestsCanModify;
 
   /// Whether attendees other than the organizer can see who the event's
-  /// attendees are. Optional. The default is True.
+  /// attendees are.
+  ///
+  /// Optional. The default is True.
   core.bool guestsCanSeeOtherGuests;
 
   /// An absolute link to the Google+ hangout associated with this event.
+  ///
   /// Read-only.
   core.String hangoutLink;
 
-  /// An absolute link to this event in the Google Calendar Web UI. Read-only.
+  /// An absolute link to this event in the Google Calendar Web UI.
+  ///
+  /// Read-only.
   core.String htmlLink;
 
-  /// Event unique identifier as defined in RFC5545. It is used to uniquely
-  /// identify events accross calendaring systems and must be supplied when
-  /// importing events via the import method.
+  /// Event unique identifier as defined in RFC5545.
+  ///
+  /// It is used to uniquely identify events accross calendaring systems and
+  /// must be supplied when importing events via the import method.
   /// Note that the icalUID and the id are not identical and only one of them
   /// should be supplied at event creation time. One difference in their
   /// semantics is that in recurring events, all occurrences of one event have
   /// different ids while they all share the same icalUIDs.
   core.String iCalUID;
 
-  /// Opaque identifier of the event. When creating new single or recurring
-  /// events, you can specify their IDs. Provided IDs must follow these rules:
+  /// Opaque identifier of the event.
+  ///
+  /// When creating new single or recurring events, you can specify their IDs.
+  /// Provided IDs must follow these rules:
   /// - characters allowed in the ID are those used in base32hex encoding, i.e.
   /// lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938
   /// - the length of the ID must be between 5 and 1024 characters
@@ -4986,41 +5143,52 @@ class Event {
   /// Type of the resource ("calendar#event").
   core.String kind;
 
-  /// Geographic location of the event as free-form text. Optional.
+  /// Geographic location of the event as free-form text.
+  ///
+  /// Optional.
   core.String location;
 
   /// Whether this is a locked event copy where no changes can be made to the
   /// main event fields "summary", "description", "location", "start", "end" or
-  /// "recurrence". The default is False. Read-Only.
+  /// "recurrence".
+  ///
+  /// The default is False. Read-Only.
   core.bool locked;
 
-  /// The organizer of the event. If the organizer is also an attendee, this is
-  /// indicated with a separate entry in attendees with the organizer field set
-  /// to True. To change the organizer, use the move operation. Read-only,
-  /// except when importing an event.
+  /// The organizer of the event.
+  ///
+  /// If the organizer is also an attendee, this is indicated with a separate
+  /// entry in attendees with the organizer field set to True. To change the
+  /// organizer, use the move operation. Read-only, except when importing an
+  /// event.
   EventOrganizer organizer;
 
   /// For an instance of a recurring event, this is the time at which this event
   /// would start according to the recurrence data in the recurring event
-  /// identified by recurringEventId. It uniquely identifies the instance within
-  /// the recurring event series even if the instance was moved to a different
-  /// time. Immutable.
+  /// identified by recurringEventId.
+  ///
+  /// It uniquely identifies the instance within the recurring event series even
+  /// if the instance was moved to a different time. Immutable.
   EventDateTime originalStartTime;
 
-  /// If set to True, Event propagation is disabled. Note that it is not the
-  /// same thing as Private event properties. Optional. Immutable. The default
-  /// is False.
+  /// If set to True, Event propagation is disabled.
+  ///
+  /// Note that it is not the same thing as Private event properties. Optional.
+  /// Immutable. The default is False.
   core.bool privateCopy;
 
   /// List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
-  /// specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in
-  /// this field; event start and end times are specified in the start and end
-  /// fields. This field is omitted for single events or instances of recurring
-  /// events.
+  /// specified in RFC5545.
+  ///
+  /// Note that DTSTART and DTEND lines are not allowed in this field; event
+  /// start and end times are specified in the start and end fields. This field
+  /// is omitted for single events or instances of recurring events.
   core.List<core.String> recurrence;
 
   /// For an instance of a recurring event, this is the id of the recurring
-  /// event to which this instance belongs. Immutable.
+  /// event to which this instance belongs.
+  ///
+  /// Immutable.
   core.String recurringEventId;
 
   /// Information about the event's reminders for the authenticated user.
@@ -5029,16 +5197,21 @@ class Event {
   /// Sequence number as per iCalendar.
   core.int sequence;
 
-  /// Source from which the event was created. For example, a web page, an email
-  /// message or any document identifiable by an URL with HTTP or HTTPS scheme.
-  /// Can only be seen or modified by the creator of the event.
+  /// Source from which the event was created.
+  ///
+  /// For example, a web page, an email message or any document identifiable by
+  /// an URL with HTTP or HTTPS scheme. Can only be seen or modified by the
+  /// creator of the event.
   EventSource source;
 
-  /// The (inclusive) start time of the event. For a recurring event, this is
-  /// the start time of the first instance.
+  /// The (inclusive) start time of the event.
+  ///
+  /// For a recurring event, this is the start time of the first instance.
   EventDateTime start;
 
-  /// Status of the event. Optional. Possible values are:
+  /// Status of the event.
+  ///
+  /// Optional. Possible values are:
   /// - "confirmed" - The event is confirmed. This is the default status.
   /// - "tentative" - The event is tentatively confirmed.
   /// - "cancelled" - The event is cancelled (deleted). The list method returns
@@ -5070,18 +5243,23 @@ class Event {
   /// Title of the event.
   core.String summary;
 
-  /// Whether the event blocks time on the calendar. Optional. Possible values
-  /// are:
+  /// Whether the event blocks time on the calendar.
+  ///
+  /// Optional. Possible values are:
   /// - "opaque" - Default value. The event does block time on the calendar.
   /// This is equivalent to setting Show me as to Busy in the Calendar UI.
   /// - "transparent" - The event does not block time on the calendar. This is
   /// equivalent to setting Show me as to Available in the Calendar UI.
   core.String transparency;
 
-  /// Last modification time of the event (as a RFC3339 timestamp). Read-only.
+  /// Last modification time of the event (as a RFC3339 timestamp).
+  ///
+  /// Read-only.
   core.DateTime updated;
 
-  /// Visibility of the event. Optional. Possible values are:
+  /// Visibility of the event.
+  ///
+  /// Optional. Possible values are:
   /// - "default" - Uses the default visibility for events on the calendar. This
   /// is the default value.
   /// - "public" - The event is public and event details are visible to all
@@ -5351,7 +5529,9 @@ class Event {
 }
 
 class EventAttachment {
-  /// ID of the attached file. Read-only.
+  /// ID of the attached file.
+  ///
+  /// Read-only.
   /// For Google Drive files, this is the ID of the corresponding Files resource
   /// entry in the Drive API.
   core.String fileId;
@@ -5362,7 +5542,9 @@ class EventAttachment {
   /// Required when adding an attachment.
   core.String fileUrl;
 
-  /// URL link to the attachment's icon. Read-only.
+  /// URL link to the attachment's icon.
+  ///
+  /// Read-only.
   core.String iconLink;
 
   /// Internet media type (MIME type) of the attachment.
@@ -5413,37 +5595,53 @@ class EventAttachment {
 }
 
 class EventAttendee {
-  /// Number of additional guests. Optional. The default is 0.
+  /// Number of additional guests.
+  ///
+  /// Optional. The default is 0.
   core.int additionalGuests;
 
-  /// The attendee's response comment. Optional.
+  /// The attendee's response comment.
+  ///
+  /// Optional.
   core.String comment;
 
-  /// The attendee's name, if available. Optional.
+  /// The attendee's name, if available.
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// The attendee's email address, if available. This field must be present
-  /// when adding an attendee. It must be a valid email address as per RFC5322.
+  /// The attendee's email address, if available.
+  ///
+  /// This field must be present when adding an attendee. It must be a valid
+  /// email address as per RFC5322.
   /// Required when adding an attendee.
   core.String email;
 
-  /// The attendee's Profile ID, if available. It corresponds to the id field in
-  /// the People collection of the Google+ API
+  /// The attendee's Profile ID, if available.
+  ///
+  /// It corresponds to the id field in the People collection of the Google+ API
   core.String id;
 
-  /// Whether this is an optional attendee. Optional. The default is False.
+  /// Whether this is an optional attendee.
+  ///
+  /// Optional. The default is False.
   core.bool optional;
 
-  /// Whether the attendee is the organizer of the event. Read-only. The default
-  /// is False.
+  /// Whether the attendee is the organizer of the event.
+  ///
+  /// Read-only. The default is False.
   core.bool organizer;
 
-  /// Whether the attendee is a resource. Can only be set when the attendee is
-  /// added to the event for the first time. Subsequent modifications are
-  /// ignored. Optional. The default is False.
+  /// Whether the attendee is a resource.
+  ///
+  /// Can only be set when the attendee is added to the event for the first
+  /// time. Subsequent modifications are ignored. Optional. The default is
+  /// False.
   core.bool resource;
 
-  /// The attendee's response status. Possible values are:
+  /// The attendee's response status.
+  ///
+  /// Possible values are:
   /// - "needsAction" - The attendee has not responded to the invitation.
   /// - "declined" - The attendee has declined the invitation.
   /// - "tentative" - The attendee has tentatively accepted the invitation.
@@ -5451,7 +5649,9 @@ class EventAttendee {
   core.String responseStatus;
 
   /// Whether this entry represents the calendar on which this copy of the event
-  /// appears. Read-only. The default is False.
+  /// appears.
+  ///
+  /// Read-only. The default is False.
   core.bool self;
 
   EventAttendee();
@@ -5530,15 +5730,17 @@ class EventDateTime {
   core.DateTime date;
 
   /// The time, as a combined date-time value (formatted according to RFC3339).
+  ///
   /// A time zone offset is required unless a time zone is explicitly specified
   /// in timeZone.
   core.DateTime dateTime;
 
-  /// The time zone in which the time is specified. (Formatted as an IANA Time
-  /// Zone Database name, e.g. "Europe/Zurich".) For recurring events this field
-  /// is required and specifies the time zone in which the recurrence is
-  /// expanded. For single events this field is optional and indicates a custom
-  /// time zone for the event start/end.
+  /// The time zone in which the time is specified.
+  ///
+  /// (Formatted as an IANA Time Zone Database name, e.g. "Europe/Zurich".) For
+  /// recurring events this field is required and specifies the time zone in
+  /// which the recurrence is expanded. For single events this field is optional
+  /// and indicates a custom time zone for the event start/end.
   core.String timeZone;
 
   EventDateTime();
@@ -5572,14 +5774,18 @@ class EventDateTime {
 }
 
 class EventReminder {
-  /// The method used by this reminder. Possible values are:
+  /// The method used by this reminder.
+  ///
+  /// Possible values are:
   /// - "email" - Reminders are sent via email.
   /// - "popup" - Reminders are sent via a UI popup.
   /// Required when adding a reminder.
   core.String method;
 
   /// Number of minutes before the start of the event when the reminder should
-  /// trigger. Valid values are between 0 and 40320 (4 weeks in minutes).
+  /// trigger.
+  ///
+  /// Valid values are between 0 and 40320 (4 weeks in minutes).
   /// Required when adding a reminder.
   core.int minutes;
 
@@ -5607,7 +5813,9 @@ class EventReminder {
 }
 
 class Events {
-  /// The user's access role for this calendar. Read-only. Possible values are:
+  /// The user's access role for this calendar.
+  ///
+  /// Read-only. Possible values are:
   /// - "none" - The user has no access.
   /// - "freeBusyReader" - The user has read access to free/busy information.
   /// - "reader" - The user has read access to the calendar. Private events will
@@ -5620,12 +5828,16 @@ class Events {
   /// manipulate ACLs.
   core.String accessRole;
 
-  /// The default reminders on the calendar for the authenticated user. These
-  /// reminders apply to all events on this calendar that do not explicitly
-  /// override them (i.e. do not have reminders.useDefault set to True).
+  /// The default reminders on the calendar for the authenticated user.
+  ///
+  /// These reminders apply to all events on this calendar that do not
+  /// explicitly override them (i.e. do not have reminders.useDefault set to
+  /// True).
   core.List<EventReminder> defaultReminders;
 
-  /// Description of the calendar. Read-only.
+  /// Description of the calendar.
+  ///
+  /// Read-only.
   core.String description;
 
   /// ETag of the collection.
@@ -5637,22 +5849,31 @@ class Events {
   /// Type of the collection ("calendar#events").
   core.String kind;
 
-  /// Token used to access the next page of this result. Omitted if no further
-  /// results are available, in which case nextSyncToken is provided.
+  /// Token used to access the next page of this result.
+  ///
+  /// Omitted if no further results are available, in which case nextSyncToken
+  /// is provided.
   core.String nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
-  /// changed since this result was returned. Omitted if further results are
-  /// available, in which case nextPageToken is provided.
+  /// changed since this result was returned.
+  ///
+  /// Omitted if further results are available, in which case nextPageToken is
+  /// provided.
   core.String nextSyncToken;
 
-  /// Title of the calendar. Read-only.
+  /// Title of the calendar.
+  ///
+  /// Read-only.
   core.String summary;
 
-  /// The time zone of the calendar. Read-only.
+  /// The time zone of the calendar.
+  ///
+  /// Read-only.
   core.String timeZone;
 
   /// Last modification time of the calendar (as a RFC3339 timestamp).
+  ///
   /// Read-only.
   core.DateTime updated;
 
@@ -5813,10 +6034,13 @@ class FreeBusyGroup {
 
 class FreeBusyRequest {
   /// Maximal number of calendars for which FreeBusy information is to be
-  /// provided. Optional. Maximum value is 50.
+  /// provided.
+  ///
+  /// Optional. Maximum value is 50.
   core.int calendarExpansionMax;
 
   /// Maximal number of calendar identifiers to be provided for a single group.
+  ///
   /// Optional. An error is returned for a group with more members than this
   /// value. Maximum value is 100.
   core.int groupExpansionMax;
@@ -5830,7 +6054,9 @@ class FreeBusyRequest {
   /// The start of the interval for the query formatted as per RFC3339.
   core.DateTime timeMin;
 
-  /// Time zone used in the response. Optional. The default is UTC.
+  /// Time zone used in the response.
+  ///
+  /// Optional. The default is UTC.
   core.String timeZone;
 
   FreeBusyRequest();
@@ -5986,9 +6212,10 @@ class Setting {
   /// Type of the resource ("calendar#setting").
   core.String kind;
 
-  /// Value of the user setting. The format of the value depends on the ID of
-  /// the setting. It must always be a UTF-8 string of length up to 1024
-  /// characters.
+  /// Value of the user setting.
+  ///
+  /// The format of the value depends on the ID of the setting. It must always
+  /// be a UTF-8 string of length up to 1024 characters.
   core.String value;
 
   Setting();
@@ -6036,13 +6263,17 @@ class Settings {
   /// Type of the collection ("calendar#settings").
   core.String kind;
 
-  /// Token used to access the next page of this result. Omitted if no further
-  /// results are available, in which case nextSyncToken is provided.
+  /// Token used to access the next page of this result.
+  ///
+  /// Omitted if no further results are available, in which case nextSyncToken
+  /// is provided.
   core.String nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
-  /// changed since this result was returned. Omitted if further results are
-  /// available, in which case nextPageToken is provided.
+  /// changed since this result was returned.
+  ///
+  /// Omitted if further results are available, in which case nextPageToken is
+  /// provided.
   core.String nextSyncToken;
 
   Settings();

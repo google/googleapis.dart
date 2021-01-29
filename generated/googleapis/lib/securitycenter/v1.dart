@@ -431,10 +431,11 @@ class OrganizationsAssetsResource {
     );
   }
 
-  /// Runs asset discovery. The discovery is tracked with a long-running
-  /// operation. This API can only be called with limited frequency for an
-  /// organization. If it is called too frequently the caller will receive a
-  /// TOO_MANY_REQUESTS error.
+  /// Runs asset discovery.
+  ///
+  /// The discovery is tracked with a long-running operation. This API can only
+  /// be called with limited frequency for an organization. If it is called too
+  /// frequently the caller will receive a TOO_MANY_REQUESTS error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -826,8 +827,10 @@ class OrganizationsNotificationConfigsResource {
     );
   }
 
-  /// Updates a notification config. The following update fields are allowed:
-  /// description, pubsub_topic, streaming_config.filter
+  ///  Updates a notification config.
+  ///
+  /// The following update fields are allowed: description, pubsub_topic,
+  /// streaming_config.filter
   ///
   /// [request] - The metadata request object.
   ///
@@ -902,8 +905,9 @@ class OrganizationsOperationsResource {
   OrganizationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -961,10 +965,11 @@ class OrganizationsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -1015,9 +1020,10 @@ class OrganizationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1068,10 +1074,11 @@ class OrganizationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1593,8 +1600,9 @@ class OrganizationsSourcesFindingsResource {
   OrganizationsSourcesFindingsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a finding. The corresponding source must exist for finding
-  /// creation to succeed.
+  /// Creates a finding.
+  ///
+  /// The corresponding source must exist for finding creation to succeed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1662,8 +1670,10 @@ class OrganizationsSourcesFindingsResource {
   }
 
   /// Filters an organization or source's findings and groups them by their
-  /// specified properties. To group across all sources provide a `-` as the
-  /// source id. Example: /v1/organizations/{organization_id}/sources/-/findings
+  /// specified properties.
+  ///
+  /// To group across all sources provide a `-` as the source id. Example:
+  /// /v1/organizations/{organization_id}/sources/-/findings
   ///
   /// [request] - The metadata request object.
   ///
@@ -1726,8 +1736,9 @@ class OrganizationsSourcesFindingsResource {
     );
   }
 
-  /// Lists an organization or source's findings. To list across all sources
-  /// provide a `-` as the source id. Example:
+  /// Lists an organization or source's findings.
+  ///
+  /// To list across all sources provide a `-` as the source id. Example:
   /// /v1/organizations/{organization_id}/sources/-/findings
   ///
   /// Request parameters:
@@ -1883,8 +1894,9 @@ class OrganizationsSourcesFindingsResource {
     );
   }
 
-  /// Creates or updates a finding. The corresponding source must exist for a
-  /// finding creation to succeed.
+  /// Creates or updates a finding.
+  ///
+  /// The corresponding source must exist for a finding creation to succeed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2097,39 +2109,49 @@ class OrganizationsSourcesFindingsResource {
   }
 }
 
-/// Security Command Center representation of a Google Cloud resource. The Asset
-/// is a Security Command Center resource that captures information about a
-/// single Google Cloud resource. All modifications to an Asset are only within
-/// the context of Security Command Center and don't affect the referenced
-/// Google Cloud resource.
+/// Security Command Center representation of a Google Cloud resource.
+///
+/// The Asset is a Security Command Center resource that captures information
+/// about a single Google Cloud resource. All modifications to an Asset are only
+/// within the context of Security Command Center and don't affect the
+/// referenced Google Cloud resource.
 class Asset {
   /// The time at which the asset was created in Security Command Center.
   core.String createTime;
 
   /// Cloud IAM Policy information associated with the Google Cloud resource
-  /// described by the Security Command Center asset. This information is
-  /// managed and defined by the Google Cloud resource and cannot be modified by
-  /// the user.
+  /// described by the Security Command Center asset.
+  ///
+  /// This information is managed and defined by the Google Cloud resource and
+  /// cannot be modified by the user.
   IamPolicy iamPolicy;
 
-  /// The relative resource name of this asset. See:
+  /// The relative resource name of this asset.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/assets/{asset_id}".
   core.String name;
 
-  /// Resource managed properties. These properties are managed and defined by
-  /// the Google Cloud resource and cannot be modified by the user.
+  /// Resource managed properties.
+  ///
+  /// These properties are managed and defined by the Google Cloud resource and
+  /// cannot be modified by the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> resourceProperties;
 
-  /// Security Command Center managed properties. These properties are managed
-  /// by Security Command Center and cannot be modified by the user.
+  /// Security Command Center managed properties.
+  ///
+  /// These properties are managed by Security Command Center and cannot be
+  /// modified by the user.
   SecurityCenterProperties securityCenterProperties;
 
-  /// User specified security marks. These marks are entirely managed by the
-  /// user and come from the SecurityMarks resource that belongs to the asset.
+  /// User specified security marks.
+  ///
+  /// These marks are entirely managed by the user and come from the
+  /// SecurityMarks resource that belongs to the asset.
   SecurityMarks securityMarks;
 
   /// The time at which the asset was last updated, added, or deleted in
@@ -2240,11 +2262,12 @@ class AssetDiscoveryConfig {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -2260,9 +2283,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -2292,14 +2316,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -2337,16 +2364,19 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -2377,8 +2407,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -2414,10 +2445,12 @@ class Binding {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2432,8 +2465,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -2448,20 +2483,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -2499,60 +2543,79 @@ class Expr {
   }
 }
 
-/// Security Command Center finding. A finding is a record of assessment data
-/// like security, risk, health, or privacy, that is ingested into Security
-/// Command Center for presentation, notification, analysis, policy testing, and
-/// enforcement. For example, a cross-site scripting (XSS) vulnerability in an
-/// App Engine application is a finding.
+/// Security Command Center finding.
+///
+/// A finding is a record of assessment data like security, risk, health, or
+/// privacy, that is ingested into Security Command Center for presentation,
+/// notification, analysis, policy testing, and enforcement. For example, a
+/// cross-site scripting (XSS) vulnerability in an App Engine application is a
+/// finding.
 class Finding {
-  /// The additional taxonomy group within findings from a given source. This
-  /// field is immutable after creation time. Example: "XSS_FLASH_INJECTION"
+  /// The additional taxonomy group within findings from a given source.
+  ///
+  /// This field is immutable after creation time. Example:
+  /// "XSS_FLASH_INJECTION"
   core.String category;
 
   /// The time at which the finding was created in Security Command Center.
   core.String createTime;
 
   /// The time at which the event took place, or when an update to the finding
-  /// occurred. For example, if the finding represents an open firewall it would
-  /// capture the time the detector believes the firewall became open. The
-  /// accuracy is determined by the detector. If the finding were to be resolved
-  /// afterward, this time would reflect when the finding was resolved.
+  /// occurred.
+  ///
+  /// For example, if the finding represents an open firewall it would capture
+  /// the time the detector believes the firewall became open. The accuracy is
+  /// determined by the detector. If the finding were to be resolved afterward,
+  /// this time would reflect when the finding was resolved.
   core.String eventTime;
 
   /// The URI that, if available, points to a web page outside of Security
   /// Command Center where additional information about the finding can be
-  /// found. This field is guaranteed to be either empty or a well formed URL.
+  /// found.
+  ///
+  /// This field is guaranteed to be either empty or a well formed URL.
   core.String externalUri;
 
-  /// The relative resource name of this finding. See:
+  /// The relative resource name of this finding.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
   core.String name;
 
-  /// The relative resource name of the source the finding belongs to. See:
+  /// The relative resource name of the source the finding belongs to.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// This field is immutable after creation time. For example:
   /// "organizations/{organization_id}/sources/{source_id}"
   core.String parent;
 
   /// For findings on Google Cloud resources, the full resource name of the
-  /// Google Cloud resource this finding is for. See:
+  /// Google Cloud resource this finding is for.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   /// When the finding is for a non-Google Cloud resource, the resourceName can
   /// be a customer or partner defined string. This field is immutable after
   /// creation time.
   core.String resourceName;
 
-  /// Output only. User specified security marks. These marks are entirely
-  /// managed by the user and come from the SecurityMarks resource that belongs
-  /// to the finding.
+  /// User specified security marks.
+  ///
+  /// These marks are entirely managed by the user and come from the
+  /// SecurityMarks resource that belongs to the finding.
+  ///
+  /// Output only.
   SecurityMarks securityMarks;
 
-  /// Source specific properties. These properties are managed by the source
-  /// that writes the finding. The key names in the source_properties map must
-  /// be between 1 and 255 characters, and must start with a letter and contain
-  /// alphanumeric characters or underscores only.
+  /// Source specific properties.
+  ///
+  /// These properties are managed by the source that writes the finding. The
+  /// key names in the source_properties map must be between 1 and 255
+  /// characters, and must start with a letter and contain alphanumeric
+  /// characters or underscores only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2672,13 +2735,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -2742,7 +2808,9 @@ class GoogleCloudSecuritycenterV1NotificationMessage {
 
 /// Information related to the Google Cloud resource.
 class GoogleCloudSecuritycenterV1Resource {
-  /// The full resource name of the resource. See:
+  /// The full resource name of the resource.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String name;
 
@@ -2877,57 +2945,75 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
   }
 }
 
-/// Security Command Center finding. A finding is a record of assessment data
-/// (security, risk, health or privacy) ingested into Security Command Center
-/// for presentation, notification, analysis, policy testing, and enforcement.
-/// For example, an XSS vulnerability in an App Engine application is a finding.
+/// Security Command Center finding.
+///
+/// A finding is a record of assessment data (security, risk, health or privacy)
+/// ingested into Security Command Center for presentation, notification,
+/// analysis, policy testing, and enforcement. For example, an XSS vulnerability
+/// in an App Engine application is a finding.
 class GoogleCloudSecuritycenterV1p1beta1Finding {
-  /// The additional taxonomy group within findings from a given source. This
-  /// field is immutable after creation time. Example: "XSS_FLASH_INJECTION"
+  /// The additional taxonomy group within findings from a given source.
+  ///
+  /// This field is immutable after creation time. Example:
+  /// "XSS_FLASH_INJECTION"
   core.String category;
 
   /// The time at which the finding was created in Security Command Center.
   core.String createTime;
 
   /// The time at which the event took place, or when an update to the finding
-  /// occurred. For example, if the finding represents an open firewall it would
-  /// capture the time the detector believes the firewall became open. The
-  /// accuracy is determined by the detector. If the finding were to be resolved
-  /// afterward, this time would reflect when the finding was resolved.
+  /// occurred.
+  ///
+  /// For example, if the finding represents an open firewall it would capture
+  /// the time the detector believes the firewall became open. The accuracy is
+  /// determined by the detector. If the finding were to be resolved afterward,
+  /// this time would reflect when the finding was resolved.
   core.String eventTime;
 
   /// The URI that, if available, points to a web page outside of Security
   /// Command Center where additional information about the finding can be
-  /// found. This field is guaranteed to be either empty or a well formed URL.
+  /// found.
+  ///
+  /// This field is guaranteed to be either empty or a well formed URL.
   core.String externalUri;
 
-  /// The relative resource name of this finding. See:
+  /// The relative resource name of this finding.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
   core.String name;
 
-  /// The relative resource name of the source the finding belongs to. See:
+  /// The relative resource name of the source the finding belongs to.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// This field is immutable after creation time. For example:
   /// "organizations/{organization_id}/sources/{source_id}"
   core.String parent;
 
   /// For findings on Google Cloud resources, the full resource name of the
-  /// Google Cloud resource this finding is for. See:
+  /// Google Cloud resource this finding is for.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   /// When the finding is for a non-Google Cloud resource, the resourceName can
   /// be a customer or partner defined string. This field is immutable after
   /// creation time.
   core.String resourceName;
 
-  /// Output only. User specified security marks. These marks are entirely
-  /// managed by the user and come from the SecurityMarks resource that belongs
-  /// to the finding.
+  /// User specified security marks.
+  ///
+  /// These marks are entirely managed by the user and come from the
+  /// SecurityMarks resource that belongs to the finding.
+  ///
+  /// Output only.
   GoogleCloudSecuritycenterV1p1beta1SecurityMarks securityMarks;
 
-  /// The severity of the finding. This field is managed by the source that
-  /// writes the finding.
+  /// The severity of the finding.
+  ///
+  /// This field is managed by the source that writes the finding.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : No severity specified. The default value.
   /// - "CRITICAL" : Critical severity.
@@ -2936,10 +3022,12 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// - "LOW" : Low severity.
   core.String severity;
 
-  /// Source specific properties. These properties are managed by the source
-  /// that writes the finding. The key names in the source_properties map must
-  /// be between 1 and 255 characters, and must start with a letter and contain
-  /// alphanumeric characters or underscores only.
+  /// Source specific properties.
+  ///
+  /// These properties are managed by the source that writes the finding. The
+  /// key names in the source_properties map must be between 1 and 255
+  /// characters, and must start with a letter and contain alphanumeric
+  /// characters or underscores only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3084,7 +3172,9 @@ class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
 
 /// Information related to the Google Cloud resource.
 class GoogleCloudSecuritycenterV1p1beta1Resource {
-  /// The full resource name of the resource. See:
+  /// The full resource name of the resource.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String name;
 
@@ -3181,11 +3271,14 @@ class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
 }
 
 /// User specified security marks that are attached to the parent Security
-/// Command Center resource. Security marks are scoped within a Security Command
-/// Center organization -- they can be modified and viewed by all users who have
-/// proper permissions on the organization.
+/// Command Center resource.
+///
+/// Security marks are scoped within a Security Command Center organization --
+/// they can be modified and viewed by all users who have proper permissions on
+/// the organization.
 class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   /// Mutable user specified security marks belonging to the parent resource.
+  ///
   /// Constraints are as follows: * Keys and values are treated as case
   /// insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys
   /// must be letters, numbers, underscores, or dashes * Values have leading and
@@ -3193,7 +3286,9 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   /// characters (inclusive)
   core.Map<core.String, core.String> marks;
 
-  /// The relative resource name of the SecurityMarks. See:
+  /// The relative resource name of the SecurityMarks.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Examples:
   /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
@@ -3233,29 +3328,31 @@ class GroupAssetsRequest {
   /// When compare_duration is set, the GroupResult's "state_change" property is
   /// updated to indicate whether the asset was added, removed, or remained
   /// present during the compare_duration period of time that precedes the
-  /// read_time. This is the time between (read_time - compare_duration) and
-  /// read_time. The state change value is derived based on the presence of the
-  /// asset at the two points in time. Intermediate state changes between the
-  /// two times don't affect the result. For example, the results aren't
-  /// affected if the asset is removed and re-created again. Possible
-  /// "state_change" values when compare_duration is specified: * "ADDED":
-  /// indicates that the asset was not present at the start of compare_duration,
-  /// but present at reference_time. * "REMOVED": indicates that the asset was
-  /// present at the start of compare_duration, but not present at
-  /// reference_time. * "ACTIVE": indicates that the asset was present at both
-  /// the start and the end of the time period defined by compare_duration and
-  /// reference_time. If compare_duration is not specified, then the only
-  /// possible state_change is "UNUSED", which will be the state_change set for
-  /// all assets present at read_time. If this field is set then `state_change`
-  /// must be a specified field in `group_by`.
+  /// read_time.
+  ///
+  /// This is the time between (read_time - compare_duration) and read_time. The
+  /// state change value is derived based on the presence of the asset at the
+  /// two points in time. Intermediate state changes between the two times don't
+  /// affect the result. For example, the results aren't affected if the asset
+  /// is removed and re-created again. Possible "state_change" values when
+  /// compare_duration is specified: * "ADDED": indicates that the asset was not
+  /// present at the start of compare_duration, but present at reference_time. *
+  /// "REMOVED": indicates that the asset was present at the start of
+  /// compare_duration, but not present at reference_time. * "ACTIVE": indicates
+  /// that the asset was present at both the start and the end of the time
+  /// period defined by compare_duration and reference_time. If compare_duration
+  /// is not specified, then the only possible state_change is "UNUSED", which
+  /// will be the state_change set for all assets present at read_time. If this
+  /// field is set then `state_change` must be a specified field in `group_by`.
   core.String compareDuration;
 
-  /// Expression that defines the filter to apply across assets. The expression
-  /// is a list of zero or more restrictions combined via logical operators
-  /// `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence
-  /// than `AND`. Restrictions have the form ` ` and may have a `-` character in
-  /// front of them to indicate negation. The fields map to those defined in the
-  /// Asset resource. Examples include: * name *
+  /// Expression that defines the filter to apply across assets.
+  ///
+  /// The expression is a list of zero or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. The fields map to those
+  /// defined in the Asset resource. Examples include: * name *
   /// security_center_properties.resource_name * resource_properties.a_property
   /// * security_marks.marks.marka The supported operators are: * `=` for all
   /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
@@ -3285,7 +3382,8 @@ class GroupAssetsRequest {
   /// `-resource_properties.my_property : ""`
   core.String filter;
 
-  /// Required. Expression that defines what assets fields to use for grouping.
+  /// Expression that defines what assets fields to use for grouping.
+  ///
   /// The string value should follow SQL syntax: comma separated list of fields.
   /// For example:
   /// "security_center_properties.resource_project,security_center_properties.project".
@@ -3299,10 +3397,13 @@ class GroupAssetsRequest {
   /// security_center_properties.resource_type *
   /// security_center_properties.resource_project_display_name *
   /// security_center_properties.resource_parent_display_name
+  ///
+  /// Required.
   core.String groupBy;
 
-  /// The maximum number of results to return in a single response. Default is
-  /// 10, minimum is 1, maximum is 1000.
+  /// The maximum number of results to return in a single response.
+  ///
+  /// Default is 10, minimum is 1, maximum is 1000.
   core.int pageSize;
 
   /// The value returned by the last `GroupAssetsResponse`; indicates that this
@@ -3310,10 +3411,11 @@ class GroupAssetsRequest {
   /// should return the next page of data.
   core.String pageToken;
 
-  /// Time used as a reference point when filtering assets. The filter is
-  /// limited to assets existing at the supplied time and their values are those
-  /// at that specific time. Absence of this field will default to the API's
-  /// version of NOW.
+  /// Time used as a reference point when filtering assets.
+  ///
+  /// The filter is limited to assets existing at the supplied time and their
+  /// values are those at that specific time. Absence of this field will default
+  /// to the API's version of NOW.
   core.String readTime;
 
   GroupAssetsRequest();
@@ -3365,9 +3467,11 @@ class GroupAssetsRequest {
 
 /// Response message for grouping by assets.
 class GroupAssetsResponse {
-  /// Group results. There exists an element for each existing unique
-  /// combination of property/values. The element contains a count for the
-  /// number of times those specific property/values appear.
+  /// Group results.
+  ///
+  /// There exists an element for each existing unique combination of
+  /// property/values. The element contains a count for the number of times
+  /// those specific property/values appear.
   core.List<GroupResult> groupByResults;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -3424,8 +3528,9 @@ class GroupFindingsRequest {
   /// When compare_duration is set, the GroupResult's "state_change" attribute
   /// is updated to indicate whether the finding had its state changed, the
   /// finding's state remained unchanged, or if the finding was added during the
-  /// compare_duration period of time that precedes the read_time. This is the
-  /// time between (read_time - compare_duration) and read_time. The
+  /// compare_duration period of time that precedes the read_time.
+  ///
+  /// This is the time between (read_time - compare_duration) and read_time. The
   /// state_change value is derived based on the presence and state of the
   /// finding at the two points in time. Intermediate state changes between the
   /// two times don't affect the result. For example, the results aren't
@@ -3445,8 +3550,9 @@ class GroupFindingsRequest {
   /// `state_change` must be a specified field in `group_by`.
   core.String compareDuration;
 
-  /// Expression that defines the filter to apply across findings. The
-  /// expression is a list of one or more restrictions combined via logical
+  /// Expression that defines the filter to apply across findings.
+  ///
+  /// The expression is a list of one or more restrictions combined via logical
   /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
   /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
   /// character in front of them to indicate negation. Examples include: * name
@@ -3468,16 +3574,20 @@ class GroupFindingsRequest {
   /// not existing: `-source_properties.my_property : ""`
   core.String filter;
 
-  /// Required. Expression that defines what assets fields to use for grouping
-  /// (including `state_change`). The string value should follow SQL syntax:
-  /// comma separated list of fields. For example: "parent,resource_name". The
-  /// following fields are supported: * resource_name * category * state *
-  /// parent The following fields are supported when compare_duration is set: *
-  /// state_change
+  /// Expression that defines what assets fields to use for grouping (including
+  /// `state_change`).
+  ///
+  /// The string value should follow SQL syntax: comma separated list of fields.
+  /// For example: "parent,resource_name". The following fields are supported: *
+  /// resource_name * category * state * parent The following fields are
+  /// supported when compare_duration is set: * state_change
+  ///
+  /// Required.
   core.String groupBy;
 
-  /// The maximum number of results to return in a single response. Default is
-  /// 10, minimum is 1, maximum is 1000.
+  /// The maximum number of results to return in a single response.
+  ///
+  /// Default is 10, minimum is 1, maximum is 1000.
   core.int pageSize;
 
   /// The value returned by the last `GroupFindingsResponse`; indicates that
@@ -3485,10 +3595,11 @@ class GroupFindingsRequest {
   /// system should return the next page of data.
   core.String pageToken;
 
-  /// Time used as a reference point when filtering findings. The filter is
-  /// limited to findings existing at the supplied time and their values are
-  /// those at that specific time. Absence of this field will default to the
-  /// API's version of NOW.
+  /// Time used as a reference point when filtering findings.
+  ///
+  /// The filter is limited to findings existing at the supplied time and their
+  /// values are those at that specific time. Absence of this field will default
+  /// to the API's version of NOW.
   core.String readTime;
 
   GroupFindingsRequest();
@@ -3540,9 +3651,11 @@ class GroupFindingsRequest {
 
 /// Response message for group by findings.
 class GroupFindingsResponse {
-  /// Group results. There exists an element for each existing unique
-  /// combination of property/values. The element contains a count for the
-  /// number of times those specific property/values appear.
+  /// Group results.
+  ///
+  /// There exists an element for each existing unique combination of
+  /// property/values. The element contains a count for the number of times
+  /// those specific property/values appear.
   core.List<GroupResult> groupByResults;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -3636,11 +3749,15 @@ class GroupResult {
 }
 
 /// Cloud IAM Policy information associated with the Google Cloud resource
-/// described by the Security Command Center asset. This information is managed
-/// and defined by the Google Cloud resource and cannot be modified by the user.
+/// described by the Security Command Center asset.
+///
+/// This information is managed and defined by the Google Cloud resource and
+/// cannot be modified by the user.
 class IamPolicy {
-  /// The JSON representation of the Policy associated with the asset. See
-  /// https://cloud.google.com/iam/reference/rest/v1/Policy for format details.
+  /// The JSON representation of the Policy associated with the asset.
+  ///
+  /// See https://cloud.google.com/iam/reference/rest/v1/Policy for format
+  /// details.
   core.String policyBlob;
 
   IamPolicy();
@@ -3811,7 +3928,9 @@ class ListFindingsResult {
   /// Finding matching the search request.
   Finding finding;
 
-  /// Output only. Resource that is associated with this finding.
+  /// Resource that is associated with this finding.
+  ///
+  /// Output only.
   Resource resource;
 
   /// State change of the finding between the points in time.
@@ -3963,25 +4082,32 @@ class ListSourcesResponse {
   }
 }
 
-/// Cloud Security Command Center (Cloud SCC) notification configs. A
-/// notification config is a Cloud SCC resource that contains the configuration
-/// to send notifications for create/update events of findings, assets and etc.
+/// Cloud Security Command Center (Cloud SCC) notification configs.
+///
+/// A notification config is a Cloud SCC resource that contains the
+/// configuration to send notifications for create/update events of findings,
+/// assets and etc.
 class NotificationConfig {
   /// The description of the notification config (max of 1024 characters).
   core.String description;
 
-  /// The relative resource name of this notification config. See:
+  /// The relative resource name of this notification config.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
   core.String name;
 
-  /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/[project_id]/topics/[topic]".
+  /// The Pub/Sub topic to send notifications to.
+  ///
+  /// Its format is "projects/[project_id]/topics/[topic]".
   core.String pubsubTopic;
 
-  /// Output only. The service account that needs "pubsub.topics.publish"
-  /// permission to publish to the Pub/Sub topic.
+  /// The service account that needs "pubsub.topics.publish" permission to
+  /// publish to the Pub/Sub topic.
+  ///
+  /// Output only.
   core.String serviceAccount;
 
   /// The config for triggering streaming-based notifications.
@@ -4032,31 +4158,37 @@ class NotificationConfig {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -4126,13 +4258,16 @@ class OrganizationSettings {
   /// The configuration used for Asset Discovery runs.
   AssetDiscoveryConfig assetDiscoveryConfig;
 
-  /// A flag that indicates if Asset Discovery should be enabled. If the flag is
-  /// set to `true`, then discovery of assets will occur. If it is set to
-  /// `false, all historical assets will remain, but discovery of future assets
-  /// will not occur.
+  /// A flag that indicates if Asset Discovery should be enabled.
+  ///
+  /// If the flag is set to `true`, then discovery of assets will occur. If it
+  /// is set to `false, all historical assets will remain, but discovery of
+  /// future assets will not occur.
   core.bool enableAssetDiscovery;
 
-  /// The relative resource name of the settings. See:
+  /// The relative resource name of the settings.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/organizationSettings".
   core.String name;
@@ -4168,16 +4303,18 @@ class OrganizationSettings {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -4200,14 +4337,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -4224,20 +4364,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -4284,9 +4426,13 @@ class Policy {
 }
 
 /// Information related to the Google Cloud resource that is associated with
-/// this finding. LINT.IfChange
+/// this finding.
+///
+/// LINT.IfChange
 class Resource {
-  /// The full resource name of the resource. See:
+  /// The full resource name of the resource.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String name;
 
@@ -4357,13 +4503,16 @@ class RunAssetDiscoveryRequest {
   }
 }
 
-/// Security Command Center managed properties. These properties are managed by
-/// Security Command Center and cannot be modified by the user.
+/// Security Command Center managed properties.
+///
+/// These properties are managed by Security Command Center and cannot be
+/// modified by the user.
 class SecurityCenterProperties {
   /// The user defined display name for this resource.
   core.String resourceDisplayName;
 
   /// The full resource name of the Google Cloud resource this asset represents.
+  ///
   /// This field is immutable after create time. See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String resourceName;
@@ -4371,24 +4520,29 @@ class SecurityCenterProperties {
   /// Owners of the Google Cloud resource.
   core.List<core.String> resourceOwners;
 
-  /// The full resource name of the immediate parent of the resource. See:
+  /// The full resource name of the immediate parent of the resource.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String resourceParent;
 
   /// The user defined display name for the parent of this resource.
   core.String resourceParentDisplayName;
 
-  /// The full resource name of the project the resource belongs to. See:
+  /// The full resource name of the project the resource belongs to.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String resourceProject;
 
   /// The user defined display name for the project of this resource.
   core.String resourceProjectDisplayName;
 
-  /// The type of the Google Cloud resource. Examples include: APPLICATION,
-  /// PROJECT, and ORGANIZATION. This is a case insensitive field defined by
-  /// Security Command Center and/or the producer of the resource and is
-  /// immutable after create time.
+  /// The type of the Google Cloud resource.
+  ///
+  /// Examples include: APPLICATION, PROJECT, and ORGANIZATION. This is a case
+  /// insensitive field defined by Security Command Center and/or the producer
+  /// of the resource and is immutable after create time.
   core.String resourceType;
 
   SecurityCenterProperties();
@@ -4455,11 +4609,14 @@ class SecurityCenterProperties {
 }
 
 /// User specified security marks that are attached to the parent Security
-/// Command Center resource. Security marks are scoped within a Security Command
-/// Center organization -- they can be modified and viewed by all users who have
-/// proper permissions on the organization.
+/// Command Center resource.
+///
+/// Security marks are scoped within a Security Command Center organization --
+/// they can be modified and viewed by all users who have proper permissions on
+/// the organization.
 class SecurityMarks {
   /// Mutable user specified security marks belonging to the parent resource.
+  ///
   /// Constraints are as follows: * Keys and values are treated as case
   /// insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys
   /// must be letters, numbers, underscores, or dashes * Values have leading and
@@ -4467,7 +4624,9 @@ class SecurityMarks {
   /// characters (inclusive)
   core.Map<core.String, core.String> marks;
 
-  /// The relative resource name of the SecurityMarks. See:
+  /// The relative resource name of the SecurityMarks.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Examples:
   /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
@@ -4504,10 +4663,14 @@ class SecurityMarks {
 
 /// Request message for updating a finding's state.
 class SetFindingStateRequest {
-  /// Required. The time at which the updated state takes effect.
+  /// The time at which the updated state takes effect.
+  ///
+  /// Required.
   core.String startTime;
 
-  /// Required. The desired State of the finding.
+  /// The desired State of the finding.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The finding requires attention and has not been addressed
@@ -4541,13 +4704,15 @@ class SetFindingStateRequest {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -4576,24 +4741,31 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Security Command Center finding source. A finding source is an entity or a
-/// mechanism that can produce a finding. A source is like a container of
-/// findings that come from the same scanner, logger, monitor, and other tools.
+/// Security Command Center finding source.
+///
+/// A finding source is an entity or a mechanism that can produce a finding. A
+/// source is like a container of findings that come from the same scanner,
+/// logger, monitor, and other tools.
 class Source {
-  /// The description of the source (max of 1024 characters). Example: "Web
-  /// Security Scanner is a web security scanner for common vulnerabilities in
-  /// App Engine applications. It can automatically scan and detect four common
-  /// vulnerabilities, including cross-site-scripting (XSS), Flash injection,
-  /// mixed content (HTTP in HTTPS), and outdated or insecure libraries."
+  /// The description of the source (max of 1024 characters).
+  ///
+  /// Example: "Web Security Scanner is a web security scanner for common
+  /// vulnerabilities in App Engine applications. It can automatically scan and
+  /// detect four common vulnerabilities, including cross-site-scripting (XSS),
+  /// Flash injection, mixed content (HTTP in HTTPS), and outdated or insecure
+  /// libraries."
   core.String description;
 
-  /// The source's display name. A source's display name must be unique amongst
-  /// its siblings, for example, two sources with the same parent can't share
-  /// the same display name. The display name must have a length between 1 and
-  /// 64 characters (inclusive).
+  /// The source's display name.
+  ///
+  /// A source's display name must be unique amongst its siblings, for example,
+  /// two sources with the same parent can't share the same display name. The
+  /// display name must have a length between 1 and 64 characters (inclusive).
   core.String displayName;
 
-  /// The relative resource name of this source. See:
+  /// The relative resource name of this source.
+  ///
+  /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/sources/{source_id}"
   core.String name;
@@ -4628,24 +4800,27 @@ class Source {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -4690,16 +4865,17 @@ class Status {
 /// as it is detected.
 class StreamingConfig {
   /// Expression that defines the filter to apply across create/update events of
-  /// assets or findings as specified by the event type. The expression is a
-  /// list of zero or more restrictions combined via logical operators `AND` and
-  /// `OR`. Parentheses are supported, and `OR` has higher precedence than
-  /// `AND`. Restrictions have the form ` ` and may have a `-` character in
-  /// front of them to indicate negation. The fields map to those defined in the
-  /// corresponding resource. The supported operators are: * `=` for all value
-  /// types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-  /// matching, for strings. The supported value types are: * string literals in
-  /// quotes. * integer literals without quotes. * boolean literals `true` and
-  /// `false` without quotes.
+  /// assets or findings as specified by the event type.
+  ///
+  /// The expression is a list of zero or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. The fields map to those
+  /// defined in the corresponding resource. The supported operators are: * `=`
+  /// for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`,
+  /// meaning substring matching, for strings. The supported value types are: *
+  /// string literals in quotes. * integer literals without quotes. * boolean
+  /// literals `true` and `false` without quotes.
   core.String filter;
 
   StreamingConfig();
@@ -4721,9 +4897,10 @@ class StreamingConfig {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 

@@ -424,9 +424,11 @@ class PagesResource {
   }
 
   /// Update for all `ClaimReview` markup on a page Note that this is a full
-  /// update. To retain the existing `ClaimReview` markup on a page, first
-  /// perform a Get operation, then modify the returned markup, and finally call
-  /// Update with the entire `ClaimReview` markup as the body.
+  /// update.
+  ///
+  /// To retain the existing `ClaimReview` markup on a page, first perform a Get
+  /// operation, then modify the returned markup, and finally call Update with
+  /// the entire `ClaimReview` markup as the body.
   ///
   /// [request] - The metadata request object.
   ///
@@ -497,10 +499,14 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /// One or more reviews of this claim (namely, a fact-checking article).
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> claimReview;
 
-  /// A person or organization stating the claim. For instance, "John Doe".
+  /// A person or organization stating the claim.
+  ///
+  /// For instance, "John Doe".
   core.String claimant;
 
-  /// The claim text. For instance, "Crime has doubled in the last 2 years."
+  /// The claim text.
+  ///
+  /// For instance, "Crime has doubled in the last 2 years."
   core.String text;
 
   GoogleFactcheckingFactchecktoolsV1alpha1Claim();
@@ -551,8 +557,10 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /// Corresponds to `ClaimReview.itemReviewed.author.jobTitle`.
   core.String jobTitle;
 
-  /// A person or organization stating the claim. For instance, "John Doe".
-  /// Corresponds to `ClaimReview.itemReviewed.author.name`.
+  /// A person or organization stating the claim.
+  ///
+  /// For instance, "John Doe". Corresponds to
+  /// `ClaimReview.itemReviewed.author.name`.
   core.String name;
 
   /// Corresponds to `ClaimReview.itemReviewed.author.sameAs`.
@@ -596,7 +604,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
 /// Information about the claim rating.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /// For numeric ratings, the best value possible in the scale from worst to
-  /// best. Corresponds to `ClaimReview.reviewRating.bestRating`.
+  /// best.
+  ///
+  /// Corresponds to `ClaimReview.reviewRating.bestRating`.
   core.int bestRating;
 
   /// Corresponds to `ClaimReview.reviewRating.image`.
@@ -606,15 +616,20 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   core.String ratingExplanation;
 
   /// A numeric rating of this claim, in the range worstRating — bestRating
-  /// inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`.
+  /// inclusive.
+  ///
+  /// Corresponds to `ClaimReview.reviewRating.ratingValue`.
   core.int ratingValue;
 
   /// The truthfulness rating as a human-readible short word or phrase.
+  ///
   /// Corresponds to `ClaimReview.reviewRating.alternateName`.
   core.String textualRating;
 
   /// For numeric ratings, the worst value possible in the scale from worst to
-  /// best. Corresponds to `ClaimReview.reviewRating.worstRating`.
+  /// best.
+  ///
+  /// Corresponds to `ClaimReview.reviewRating.worstRating`.
   core.int worstRating;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
@@ -666,7 +681,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
 
 /// Information about a claim review.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
-  /// The language this review was written in. For instance, "en" or "de".
+  /// The language this review was written in.
+  ///
+  /// For instance, "en" or "de".
   core.String languageCode;
 
   /// The publisher of this claim review.
@@ -675,7 +692,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   /// The date the claim was reviewed.
   core.String reviewDate;
 
-  /// Textual rating. For instance, "Mostly false".
+  /// Textual rating.
+  ///
+  /// For instance, "Mostly false".
   core.String textualRating;
 
   /// The title of this claim review, if it can be determined.
@@ -737,8 +756,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /// Corresponds to `ClaimReview.author.image`.
   core.String imageUrl;
 
-  /// Name of the organization that is publishing the fact check. Corresponds to
-  /// `ClaimReview.author.name`.
+  /// Name of the organization that is publishing the fact check.
+  ///
+  /// Corresponds to `ClaimReview.author.name`.
   core.String name;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
@@ -765,41 +785,50 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   }
 }
 
-/// Fields for an individual `ClaimReview` element. Except for sub-messages that
-/// group fields together, each of these fields correspond those in
-/// https://schema.org/ClaimReview. We list the precise mapping for each field.
+/// Fields for an individual `ClaimReview` element.
+///
+/// Except for sub-messages that group fields together, each of these fields
+/// correspond those in https://schema.org/ClaimReview. We list the precise
+/// mapping for each field.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /// A list of links to works in which this claim appears, aside from the one
-  /// specified in `claim_first_appearance`. Corresponds to
-  /// `ClaimReview.itemReviewed[@type=Claim].appearance.url`.
+  /// specified in `claim_first_appearance`.
+  ///
+  /// Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`.
   core.List<core.String> claimAppearances;
 
   /// Info about the author of this claim.
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor claimAuthor;
 
-  /// The date when the claim was made or entered public discourse. Corresponds
-  /// to `ClaimReview.itemReviewed.datePublished`.
+  /// The date when the claim was made or entered public discourse.
+  ///
+  /// Corresponds to `ClaimReview.itemReviewed.datePublished`.
   core.String claimDate;
 
-  /// A link to a work in which this claim first appears. Corresponds to
+  /// A link to a work in which this claim first appears.
+  ///
+  /// Corresponds to
   /// `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`.
   core.String claimFirstAppearance;
 
-  /// The location where this claim was made. Corresponds to
-  /// `ClaimReview.itemReviewed.name`.
+  /// The location where this claim was made.
+  ///
+  /// Corresponds to `ClaimReview.itemReviewed.name`.
   core.String claimLocation;
 
-  /// A short summary of the claim being evaluated. Corresponds to
-  /// `ClaimReview.claimReviewed`.
+  /// A short summary of the claim being evaluated.
+  ///
+  /// Corresponds to `ClaimReview.claimReviewed`.
   core.String claimReviewed;
 
   /// Info about the rating of this claim review.
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating rating;
 
-  /// This field is optional, and will default to the page URL. We provide this
-  /// field to allow you the override the default value, but the only permitted
-  /// override is the page URL plus an optional anchor link ("page jump").
-  /// Corresponds to `ClaimReview.url`
+  /// This field is optional, and will default to the page URL.
+  ///
+  /// We provide this field to allow you the override the default value, but the
+  /// only permitted override is the page URL plus an optional anchor link
+  /// ("page jump"). Corresponds to `ClaimReview.url`
   core.String url;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
@@ -869,35 +898,44 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
 
 /// Holds one or more instances of `ClaimReview` markup for a webpage.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
-  /// Info about the author of this claim review. Similar to the above,
-  /// semantically these are page-level fields, and each `ClaimReview` on this
-  /// page will contain the same values.
+  /// Info about the author of this claim review.
+  ///
+  /// Similar to the above, semantically these are page-level fields, and each
+  /// `ClaimReview` on this page will contain the same values.
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor claimReviewAuthor;
 
-  /// A list of individual claim reviews for this page. Each item in the list
-  /// corresponds to one `ClaimReview` element.
+  /// A list of individual claim reviews for this page.
+  ///
+  /// Each item in the list corresponds to one `ClaimReview` element.
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
       claimReviewMarkups;
 
   /// The name of this `ClaimReview` markup page resource, in the form of
-  /// `pages/{page_id}`. Except for update requests, this field is output-only
-  /// and should not be set by the user.
+  /// `pages/{page_id}`.
+  ///
+  /// Except for update requests, this field is output-only and should not be
+  /// set by the user.
   core.String name;
 
-  /// The URL of the page associated with this `ClaimReview` markup. While every
-  /// individual `ClaimReview` has its own URL field, semantically this is a
-  /// page-level field, and each `ClaimReview` on this page will use this value
-  /// unless individually overridden. Corresponds to `ClaimReview.url`
+  /// The URL of the page associated with this `ClaimReview` markup.
+  ///
+  /// While every individual `ClaimReview` has its own URL field, semantically
+  /// this is a page-level field, and each `ClaimReview` on this page will use
+  /// this value unless individually overridden. Corresponds to
+  /// `ClaimReview.url`
   core.String pageUrl;
 
-  /// The date when the fact check was published. Similar to the URL,
-  /// semantically this is a page-level field, and each `ClaimReview` on this
-  /// page will contain the same value. Corresponds to
+  /// The date when the fact check was published.
+  ///
+  /// Similar to the URL, semantically this is a page-level field, and each
+  /// `ClaimReview` on this page will contain the same value. Corresponds to
   /// `ClaimReview.datePublished`
   core.String publishDate;
 
-  /// The version ID for this markup. Except for update requests, this field is
-  /// output-only and should not be set by the user.
+  /// The version ID for this markup.
+  ///
+  /// Except for update requests, this field is output-only and should not be
+  /// set by the user.
   core.String versionId;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
@@ -962,9 +1000,10 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   /// The list of claims and all of their associated information.
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1Claim> claims;
 
-  /// The next pagination token in the Search response. It should be used as the
-  /// `page_token` for the following request. An empty value means no more
-  /// results.
+  /// The next pagination token in the Search response.
+  ///
+  /// It should be used as the `page_token` for the following request. An empty
+  /// value means no more results.
   core.String nextPageToken;
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
@@ -1001,9 +1040,10 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
   core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
       claimReviewMarkupPages;
 
-  /// The next pagination token in the Search response. It should be used as the
-  /// `page_token` for the following request. An empty value means no more
-  /// results.
+  /// The next pagination token in the Search response.
+  ///
+  /// It should be used as the `page_token` for the following request. An empty
+  /// value means no more results.
   core.String nextPageToken;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
@@ -1038,12 +1078,15 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
 
 /// Information about the publisher.
 class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
-  /// The name of this publisher. For instance, "Awesome Fact Checks".
+  /// The name of this publisher.
+  ///
+  /// For instance, "Awesome Fact Checks".
   core.String name;
 
-  /// Host-level site name, without the protocol or "www" prefix. For instance,
-  /// "awesomefactchecks.com". This value of this field is based purely on the
-  /// claim review URL.
+  /// Host-level site name, without the protocol or "www" prefix.
+  ///
+  /// For instance, "awesomefactchecks.com". This value of this field is based
+  /// purely on the claim review URL.
   core.String site;
 
   GoogleFactcheckingFactchecktoolsV1alpha1Publisher();
@@ -1070,10 +1113,12 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 

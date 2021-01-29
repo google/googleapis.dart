@@ -6,6 +6,17 @@ library discoveryapis_generator.dart_comments;
 
 import 'utils.dart';
 
+final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
+
+const _docPrefixes = {
+  'Required',
+  'Optional',
+  'Output only',
+  'Deprecated',
+  'Immutable',
+  'Unimplemented',
+};
+
 /// Represents a comment of a dart element (e.g. class, method, ...)
 class Comment {
   static final empty = Comment('');
@@ -13,6 +24,69 @@ class Comment {
 
   Comment(String raw)
       : rawComment = (raw != null && raw.isNotEmpty) ? raw.trimRight() : '';
+
+  factory Comment.header(String raw) {
+    if (raw == null) return Comment(raw);
+
+    final prefixes = <String>{};
+    Match match;
+    do {
+      for (var prefix in _docPrefixes) {
+        // prefixes usually show up as `Prefix. Rest of thing...`
+        // but sometimes they show up as `[Prefix] Rest of thing...`
+        // So we cover both cases, but normalize to the first.
+        match = '$prefix. '.toLowerCase().matchAsPrefix(raw.toLowerCase()) ??
+            '[$prefix] '.toLowerCase().matchAsPrefix(raw.toLowerCase());
+        if (match != null) {
+          prefixes.add('$prefix. ');
+          raw = raw.substring(match.group(0).length);
+          break;
+        }
+      }
+    } while (match != null);
+
+    // Very annoying. Sometimes we have first sentences like
+    //
+    //   "Something (e.g. like this)."
+    //
+    // Where we don't want to break in the middle of the `(e.g.`.
+    var start = 0;
+    int endOfFirstSentence;
+    for (;;) {
+      endOfFirstSentence = raw.indexOf(
+        '. ',
+        start,
+      );
+      if (endOfFirstSentence < 0) {
+        // No sentence end!
+        break;
+      }
+      final falseEndIndex = raw.indexOf(_notEndOfSentence, start);
+      if (falseEndIndex < 0 || falseEndIndex > endOfFirstSentence) {
+        // No false end to worry about
+        break;
+      }
+
+      start = endOfFirstSentence + 1;
+    }
+
+    final lines = <String>[];
+
+    if (endOfFirstSentence < 1) {
+      lines.add(raw);
+    } else {
+      lines.addAll([
+        raw.substring(0, endOfFirstSentence + 1),
+        raw.substring(endOfFirstSentence + 2),
+      ]);
+    }
+
+    if (prefixes.isNotEmpty) {
+      lines.add(prefixes.join('').trim());
+    }
+
+    return Comment(lines.join('\n\n'));
+  }
 
   /// Returns a block string which has [indentationLevel] spaces in front of it.
   ///

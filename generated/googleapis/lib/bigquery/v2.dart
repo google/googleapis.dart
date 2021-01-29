@@ -108,10 +108,11 @@ class DatasetsResource {
 
   DatasetsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes the dataset specified by the datasetId value. Before you can
-  /// delete a dataset, you must delete all its tables, either manually or by
-  /// specifying deleteContents. Immediately after deletion, you can create
-  /// another dataset with the same name.
+  /// Deletes the dataset specified by the datasetId value.
+  ///
+  /// Before you can delete a dataset, you must delete all its tables, either
+  /// manually or by specifying deleteContents. Immediately after deletion, you
+  /// can create another dataset with the same name.
   ///
   /// Request parameters:
   ///
@@ -375,10 +376,11 @@ class DatasetsResource {
     );
   }
 
-  /// Updates information in an existing dataset. The update method replaces the
-  /// entire dataset resource, whereas the patch method only replaces fields
-  /// that are provided in the submitted dataset resource. This method supports
-  /// patch semantics.
+  /// Updates information in an existing dataset.
+  ///
+  /// The update method replaces the entire dataset resource, whereas the patch
+  /// method only replaces fields that are provided in the submitted dataset
+  /// resource. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -443,9 +445,11 @@ class DatasetsResource {
     );
   }
 
-  /// Updates information in an existing dataset. The update method replaces the
-  /// entire dataset resource, whereas the patch method only replaces fields
-  /// that are provided in the submitted dataset resource.
+  /// Updates information in an existing dataset.
+  ///
+  /// The update method replaces the entire dataset resource, whereas the patch
+  /// method only replaces fields that are provided in the submitted dataset
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -516,9 +520,11 @@ class JobsResource {
 
   JobsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Requests that a job be cancelled. This call will return immediately, and
-  /// the client will need to poll for the job status to see if the cancel
-  /// completed successfully. Cancelled jobs may still incur costs.
+  /// Requests that a job be cancelled.
+  ///
+  /// This call will return immediately, and the client will need to poll for
+  /// the job status to see if the cancel completed successfully. Cancelled jobs
+  /// may still incur costs.
   ///
   /// Request parameters:
   ///
@@ -587,9 +593,11 @@ class JobsResource {
     );
   }
 
-  /// Returns information about a specific job. Job information is available for
-  /// a six month period after creation. Requires that you're the person who ran
-  /// the job, or have the Is Owner project role.
+  /// Returns information about a specific job.
+  ///
+  /// Job information is available for a six month period after creation.
+  /// Requires that you're the person who ran the job, or have the Is Owner
+  /// project role.
   ///
   /// Request parameters:
   ///
@@ -751,7 +759,9 @@ class JobsResource {
     );
   }
 
-  /// Starts a new asynchronous job. Requires the Can View project role.
+  /// Starts a new asynchronous job.
+  ///
+  /// Requires the Can View project role.
   ///
   /// [request] - The metadata request object.
   ///
@@ -829,11 +839,12 @@ class JobsResource {
     );
   }
 
-  /// Lists all jobs that you started in the specified project. Job information
-  /// is available for a six month period after creation. The job list is sorted
-  /// in reverse chronological order, by job creation time. Requires the Can
-  /// View project role, or the Is Owner project role if you set the allUsers
-  /// property.
+  /// Lists all jobs that you started in the specified project.
+  ///
+  /// Job information is available for a six month period after creation. The
+  /// job list is sorted in reverse chronological order, by job creation time.
+  /// Requires the Can View project role, or the Is Owner project role if you
+  /// set the allUsers property.
   ///
   /// Request parameters:
   ///
@@ -1146,8 +1157,9 @@ class ModelsResource {
     );
   }
 
-  /// Lists all models in the specified dataset. Requires the READER dataset
-  /// role.
+  /// Lists all models in the specified dataset.
+  ///
+  /// Requires the READER dataset role.
   ///
   /// Request parameters:
   ///
@@ -1640,8 +1652,9 @@ class RoutinesResource {
     );
   }
 
-  /// Lists all routines in the specified dataset. Requires the READER dataset
-  /// role.
+  /// Lists all routines in the specified dataset.
+  ///
+  /// Requires the READER dataset role.
   ///
   /// Request parameters:
   ///
@@ -1738,8 +1751,9 @@ class RoutinesResource {
     );
   }
 
-  /// Updates information in an existing routine. The update method replaces the
-  /// entire Routine resource.
+  /// Updates information in an existing routine.
+  ///
+  /// The update method replaces the entire Routine resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1822,7 +1836,9 @@ class TabledataResource {
   TabledataResource(commons.ApiRequester client) : _requester = client;
 
   /// Streams data into BigQuery one record at a time without needing to run a
-  /// load job. Requires the WRITER dataset role.
+  /// load job.
+  ///
+  /// Requires the WRITER dataset role.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1897,8 +1913,9 @@ class TabledataResource {
     );
   }
 
-  /// Retrieves table data from a specified set of rows. Requires the READER
-  /// dataset role.
+  /// Retrieves table data from a specified set of rows.
+  ///
+  /// Requires the READER dataset role.
   ///
   /// Request parameters:
   ///
@@ -1999,8 +2016,9 @@ class TablesResource {
 
   TablesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes the table specified by tableId from the dataset. If the table
-  /// contains data, all the data will be deleted.
+  /// Deletes the table specified by tableId from the dataset.
+  ///
+  /// If the table contains data, all the data will be deleted.
   ///
   /// Request parameters:
   ///
@@ -2067,9 +2085,10 @@ class TablesResource {
     );
   }
 
-  /// Gets the specified table resource by table ID. This method does not return
-  /// the data in the table, it only returns the table resource, which describes
-  /// the structure of this table.
+  /// Gets the specified table resource by table ID.
+  ///
+  /// This method does not return the data in the table, it only returns the
+  /// table resource, which describes the structure of this table.
   ///
   /// Request parameters:
   ///
@@ -2143,8 +2162,10 @@ class TablesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2269,8 +2290,9 @@ class TablesResource {
     );
   }
 
-  /// Lists all tables in the specified dataset. Requires the READER dataset
-  /// role.
+  /// Lists all tables in the specified dataset.
+  ///
+  /// Requires the READER dataset role.
   ///
   /// Request parameters:
   ///
@@ -2343,10 +2365,11 @@ class TablesResource {
     );
   }
 
-  /// Updates information in an existing table. The update method replaces the
-  /// entire table resource, whereas the patch method only replaces fields that
-  /// are provided in the submitted table resource. This method supports patch
-  /// semantics.
+  /// Updates information in an existing table.
+  ///
+  /// The update method replaces the entire table resource, whereas the patch
+  /// method only replaces fields that are provided in the submitted table
+  /// resource. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2419,9 +2442,10 @@ class TablesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and
-  /// `PERMISSION_DENIED` errors.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2480,10 +2504,11 @@ class TablesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a `NOT_FOUND` error. Note: This operation is designed to be used for
-  /// building permission-aware UIs and command-line tools, not for
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -2545,9 +2570,11 @@ class TablesResource {
     );
   }
 
-  /// Updates information in an existing table. The update method replaces the
-  /// entire table resource, whereas the patch method only replaces fields that
-  /// are provided in the submitted table resource.
+  /// Updates information in an existing table.
+  ///
+  /// The update method replaces the entire table resource, whereas the patch
+  /// method only replaces fields that are provided in the submitted table
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2621,39 +2648,51 @@ class TablesResource {
   }
 }
 
-/// Aggregate metrics for classification/classifier models. For multi-class
-/// models, the metrics are either macro-averaged or micro-averaged. When
-/// macro-averaged, the metrics are calculated for each label and then an
-/// unweighted average is taken of those values. When micro-averaged, the metric
-/// is calculated globally by counting the total number of correctly predicted
-/// rows.
+/// Aggregate metrics for classification/classifier models.
+///
+/// For multi-class models, the metrics are either macro-averaged or
+/// micro-averaged. When macro-averaged, the metrics are calculated for each
+/// label and then an unweighted average is taken of those values. When
+/// micro-averaged, the metric is calculated globally by counting the total
+/// number of correctly predicted rows.
 class AggregateClassificationMetrics {
-  /// Accuracy is the fraction of predictions given the correct label. For
-  /// multiclass this is a micro-averaged metric.
+  /// Accuracy is the fraction of predictions given the correct label.
+  ///
+  /// For multiclass this is a micro-averaged metric.
   core.double accuracy;
 
-  /// The F1 score is an average of recall and precision. For multiclass this is
-  /// a macro-averaged metric.
+  /// The F1 score is an average of recall and precision.
+  ///
+  /// For multiclass this is a macro-averaged metric.
   core.double f1Score;
 
-  /// Logarithmic Loss. For multiclass this is a macro-averaged metric.
+  /// Logarithmic Loss.
+  ///
+  /// For multiclass this is a macro-averaged metric.
   core.double logLoss;
 
   /// Precision is the fraction of actual positive predictions that had positive
-  /// actual labels. For multiclass this is a macro-averaged metric treating
-  /// each class as a binary classifier.
+  /// actual labels.
+  ///
+  /// For multiclass this is a macro-averaged metric treating each class as a
+  /// binary classifier.
   core.double precision;
 
   /// Recall is the fraction of actual positive labels that were given a
-  /// positive prediction. For multiclass this is a macro-averaged metric.
+  /// positive prediction.
+  ///
+  /// For multiclass this is a macro-averaged metric.
   core.double recall;
 
-  /// Area Under a ROC Curve. For multiclass this is a macro-averaged metric.
+  /// Area Under a ROC Curve.
+  ///
+  /// For multiclass this is a macro-averaged metric.
   core.double rocAuc;
 
-  /// Threshold at which the metrics are computed. For binary classification
-  /// models this is the positive class threshold. For multi-class classfication
-  /// models this is the confidence threshold.
+  /// Threshold at which the metrics are computed.
+  ///
+  /// For binary classification models this is the positive class threshold. For
+  /// multi-class classfication models this is the confidence threshold.
   core.double threshold;
 
   AggregateClassificationMetrics();
@@ -2711,7 +2750,9 @@ class AggregateClassificationMetrics {
 
 /// Input/output argument of a function or a stored procedure.
 class Argument {
-  /// Optional. Defaults to FIXED_TYPE.
+  /// Defaults to FIXED_TYPE.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "ARGUMENT_KIND_UNSPECIFIED"
   /// - "FIXED_TYPE" : The argument is a variable with fully specified type,
@@ -2723,8 +2764,11 @@ class Argument {
   /// Required unless argument_kind = ANY_TYPE.
   StandardSqlDataType dataType;
 
-  /// Optional. Specifies whether the argument is input or output. Can be set
-  /// for procedures only.
+  /// Specifies whether the argument is input or output.
+  ///
+  /// Can be set for procedures only.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED"
   /// - "IN" : The argument is input-only.
@@ -2732,8 +2776,11 @@ class Argument {
   /// - "INOUT" : The argument is both an input and an output.
   core.String mode;
 
-  /// Optional. The name of this argument. Can be absent for function return
-  /// argument.
+  /// The name of this argument.
+  ///
+  /// Can be absent for function return argument.
+  ///
+  /// Optional.
   core.String name;
 
   Argument();
@@ -2869,15 +2916,17 @@ class ArimaForecastingMetrics {
   core.List<ArimaSingleModelForecastingMetrics>
       arimaSingleModelForecastingMetrics;
 
-  /// Whether Arima model fitted with drift or not. It is always false when d is
-  /// not 1.
+  /// Whether Arima model fitted with drift or not.
+  ///
+  /// It is always false when d is not 1.
   core.List<core.bool> hasDrift;
 
   /// Non-seasonal order.
   core.List<ArimaOrder> nonSeasonalOrder;
 
-  /// Seasonal periods. Repeated because multiple periods are supported for one
-  /// time series.
+  /// Seasonal periods.
+  ///
+  /// Repeated because multiple periods are supported for one time series.
   core.List<core.String> seasonalPeriods;
 
   /// Id to differentiate different time series for the large-scale case.
@@ -2960,15 +3009,17 @@ class ArimaModelInfo {
   /// Arima fitting metrics.
   ArimaFittingMetrics arimaFittingMetrics;
 
-  /// Whether Arima model fitted with drift or not. It is always false when d is
-  /// not 1.
+  /// Whether Arima model fitted with drift or not.
+  ///
+  /// It is always false when d is not 1.
   core.bool hasDrift;
 
   /// Non-seasonal order.
   ArimaOrder nonSeasonalOrder;
 
-  /// Seasonal periods. Repeated because multiple periods are supported for one
-  /// time series.
+  /// Seasonal periods.
+  ///
+  /// Repeated because multiple periods are supported for one time series.
   core.List<core.String> seasonalPeriods;
 
   /// The id to indicate different time series.
@@ -3066,15 +3117,20 @@ class ArimaOrder {
   }
 }
 
-/// (Auto-)arima fitting result. Wrap everything in ArimaResult for easier
-/// refactoring if we want to use model-specific iteration results.
+/// (Auto-)arima fitting result.
+///
+/// Wrap everything in ArimaResult for easier refactoring if we want to use
+/// model-specific iteration results.
 class ArimaResult {
   /// This message is repeated because there are multiple arima models fitted in
-  /// auto-arima. For non-auto-arima model, its size is one.
+  /// auto-arima.
+  ///
+  /// For non-auto-arima model, its size is one.
   core.List<ArimaModelInfo> arimaModelInfo;
 
-  /// Seasonal periods. Repeated because multiple periods are supported for one
-  /// time series.
+  /// Seasonal periods.
+  ///
+  /// Repeated because multiple periods are supported for one time series.
   core.List<core.String> seasonalPeriods;
 
   ArimaResult();
@@ -3111,15 +3167,17 @@ class ArimaSingleModelForecastingMetrics {
   /// Arima fitting metrics.
   ArimaFittingMetrics arimaFittingMetrics;
 
-  /// Is arima model fitted with drift or not. It is always false when d is not
-  /// 1.
+  /// Is arima model fitted with drift or not.
+  ///
+  /// It is always false when d is not 1.
   core.bool hasDrift;
 
   /// Non-seasonal order.
   ArimaOrder nonSeasonalOrder;
 
-  /// Seasonal periods. Repeated because multiple periods are supported for one
-  /// time series.
+  /// Seasonal periods.
+  ///
+  /// Repeated because multiple periods are supported for one time series.
   core.List<core.String> seasonalPeriods;
 
   /// The id to indicate different time series.
@@ -3170,11 +3228,12 @@ class ArimaSingleModelForecastingMetrics {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -3190,9 +3249,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -3222,14 +3282,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -3266,13 +3329,16 @@ class AuditLogConfig {
 }
 
 class BigQueryModelTraining {
-  /// [Output-only, Beta] Index of current ML training iteration. Updated during
-  /// create model query job to show job progress.
+  /// [Output-only, Beta] Index of current ML training iteration.
+  ///
+  /// Updated during create model query job to show job progress.
   core.int currentIteration;
 
   /// [Output-only, Beta] Expected number of iterations for the create model
-  /// query job specified as num_iterations in the input query. The actual total
-  /// number of iterations may be less than this number due to early stop.
+  /// query job specified as num_iterations in the input query.
+  ///
+  /// The actual total number of iterations may be less than this number due to
+  /// early stop.
   core.String expectedTotalIterations;
 
   BigQueryModelTraining();
@@ -3299,32 +3365,45 @@ class BigQueryModelTraining {
 }
 
 class BigtableColumn {
-  /// [Optional] The encoding of the values when the type is not STRING.
+  /// The encoding of the values when the type is not STRING.
+  ///
   /// Acceptable encoding values are: TEXT - indicates values are alphanumeric
   /// text strings. BINARY - indicates values are encoded using HBase
   /// Bytes.toBytes family of functions. 'encoding' can also be set at the
   /// column family level. However, the setting at this level takes precedence
   /// if 'encoding' is set at both levels.
+  ///
+  /// Optional.
   core.String encoding;
 
-  /// [Optional] If the qualifier is not a valid BigQuery field identifier i.e.
-  /// does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided
-  /// as the column field name and is used as field name in queries.
+  /// If the qualifier is not a valid BigQuery field identifier i.e. does not
+  /// match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the
+  /// column field name and is used as field name in queries.
+  ///
+  /// Optional.
   core.String fieldName;
 
-  /// [Optional] If this is set, only the latest version of value in this column
-  /// are exposed. 'onlyReadLatest' can also be set at the column family level.
-  /// However, the setting at this level takes precedence if 'onlyReadLatest' is
-  /// set at both levels.
+  /// If this is set, only the latest version of value in this column are
+  /// exposed.
+  ///
+  /// 'onlyReadLatest' can also be set at the column family level. However, the
+  /// setting at this level takes precedence if 'onlyReadLatest' is set at both
+  /// levels.
+  ///
+  /// Optional.
   core.bool onlyReadLatest;
 
-  /// [Required] Qualifier of the column. Columns in the parent column family
-  /// that has this exact qualifier are exposed as . field. If the qualifier is
-  /// valid UTF-8 string, it can be specified in the qualifier_string field.
-  /// Otherwise, a base-64 encoded value must be set to qualifier_encoded. The
-  /// column field name is the same as the column qualifier. However, if the
-  /// qualifier is not a valid BigQuery field identifier i.e. does not match
-  /// [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as field_name.
+  /// Qualifier of the column.
+  ///
+  /// Columns in the parent column family that has this exact qualifier are
+  /// exposed as . field. If the qualifier is valid UTF-8 string, it can be
+  /// specified in the qualifier_string field. Otherwise, a base-64 encoded
+  /// value must be set to qualifier_encoded. The column field name is the same
+  /// as the column qualifier. However, if the qualifier is not a valid BigQuery
+  /// field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid
+  /// identifier must be provided as field_name.
+  ///
+  /// Required.
   core.String qualifierEncoded;
   core.List<core.int> get qualifierEncodedAsBytes =>
       convert.base64.decode(qualifierEncoded);
@@ -3336,12 +3415,15 @@ class BigtableColumn {
 
   core.String qualifierString;
 
-  /// [Optional] The type to convert the value in cells of this column. The
-  /// values are expected to be encoded using HBase Bytes.toBytes function when
-  /// using the BINARY encoding value. Following BigQuery types are allowed
+  /// The type to convert the value in cells of this column.
+  ///
+  /// The values are expected to be encoded using HBase Bytes.toBytes function
+  /// when using the BINARY encoding value. Following BigQuery types are allowed
   /// (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is
   /// BYTES. 'type' can also be set at the column family level. However, the
   /// setting at this level takes precedence if 'type' is set at both levels.
+  ///
+  /// Optional.
   core.String type;
 
   BigtableColumn();
@@ -3392,35 +3474,48 @@ class BigtableColumn {
 }
 
 class BigtableColumnFamily {
-  /// [Optional] Lists of columns that should be exposed as individual fields as
-  /// opposed to a list of (column name, value) pairs. All columns whose
-  /// qualifier matches a qualifier in this list can be accessed as .. Other
-  /// columns can be accessed as a list through .Column field.
+  /// Lists of columns that should be exposed as individual fields as opposed to
+  /// a list of (column name, value) pairs.
+  ///
+  /// All columns whose qualifier matches a qualifier in this list can be
+  /// accessed as .. Other columns can be accessed as a list through .Column
+  /// field.
+  ///
+  /// Optional.
   core.List<BigtableColumn> columns;
 
-  /// [Optional] The encoding of the values when the type is not STRING.
+  /// The encoding of the values when the type is not STRING.
+  ///
   /// Acceptable encoding values are: TEXT - indicates values are alphanumeric
   /// text strings. BINARY - indicates values are encoded using HBase
   /// Bytes.toBytes family of functions. This can be overridden for a specific
   /// column by listing that column in 'columns' and specifying an encoding for
   /// it.
+  ///
+  /// Optional.
   core.String encoding;
 
   /// Identifier of the column family.
   core.String familyId;
 
-  /// [Optional] If this is set only the latest version of value are exposed for
-  /// all columns in this column family. This can be overridden for a specific
-  /// column by listing that column in 'columns' and specifying a different
-  /// setting for that column.
+  /// If this is set only the latest version of value are exposed for all
+  /// columns in this column family.
+  ///
+  /// This can be overridden for a specific column by listing that column in
+  /// 'columns' and specifying a different setting for that column.
+  ///
+  /// Optional.
   core.bool onlyReadLatest;
 
-  /// [Optional] The type to convert the value in cells of this column family.
+  /// The type to convert the value in cells of this column family.
+  ///
   /// The values are expected to be encoded using HBase Bytes.toBytes function
   /// when using the BINARY encoding value. Following BigQuery types are allowed
   /// (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is
   /// BYTES. This can be overridden for a specific column by listing that column
   /// in 'columns' and specifying a type for it.
+  ///
+  /// Optional.
   core.String type;
 
   BigtableColumnFamily();
@@ -3468,25 +3563,35 @@ class BigtableColumnFamily {
 }
 
 class BigtableOptions {
-  /// [Optional] List of column families to expose in the table schema along
-  /// with their types. This list restricts the column families that can be
-  /// referenced in queries and specifies their value types. You can use this
-  /// list to do type conversions - see the 'type' field for more details. If
-  /// you leave this list empty, all column families are present in the table
-  /// schema and their values are read as BYTES. During a query only the column
-  /// families referenced in that query are read from Bigtable.
+  /// List of column families to expose in the table schema along with their
+  /// types.
+  ///
+  /// This list restricts the column families that can be referenced in queries
+  /// and specifies their value types. You can use this list to do type
+  /// conversions - see the 'type' field for more details. If you leave this
+  /// list empty, all column families are present in the table schema and their
+  /// values are read as BYTES. During a query only the column families
+  /// referenced in that query are read from Bigtable.
+  ///
+  /// Optional.
   core.List<BigtableColumnFamily> columnFamilies;
 
-  /// [Optional] If field is true, then the column families that are not
-  /// specified in columnFamilies list are not exposed in the table schema.
+  /// If field is true, then the column families that are not specified in
+  /// columnFamilies list are not exposed in the table schema.
+  ///
   /// Otherwise, they are read with BYTES type values. The default value is
   /// false.
+  ///
+  /// Optional.
   core.bool ignoreUnspecifiedColumnFamilies;
 
-  /// [Optional] If field is true, then the rowkey column families will be read
-  /// and converted to string. Otherwise they are read with BYTES type values
-  /// and users need to manually cast them with CAST if necessary. The default
-  /// value is false.
+  /// If field is true, then the rowkey column families will be read and
+  /// converted to string.
+  ///
+  /// Otherwise they are read with BYTES type values and users need to manually
+  /// cast them with CAST if necessary. The default value is false.
+  ///
+  /// Optional.
   core.bool readRowkeyAsString;
 
   BigtableOptions();
@@ -3680,16 +3785,19 @@ class BinaryConfusionMatrix {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -3720,8 +3828,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -3762,9 +3871,11 @@ class BqmlIterationResult {
   core.String durationMs;
 
   /// [Output-only, Beta] Eval loss computed on the eval data at the end of the
-  /// iteration. The eval loss is used for early stopping to avoid overfitting.
-  /// No eval loss if eval_split_method option is specified as no_split or
-  /// auto_split with input data size less than 500 rows.
+  /// iteration.
+  ///
+  /// The eval loss is used for early stopping to avoid overfitting. No eval
+  /// loss if eval_split_method option is specified as no_split or auto_split
+  /// with input data size less than 500 rows.
   core.double evalLoss;
 
   /// [Output-only, Beta] Index of the ML training iteration, starting from zero
@@ -3777,7 +3888,9 @@ class BqmlIterationResult {
   core.double learnRate;
 
   /// [Output-only, Beta] Training loss computed on the training data at the end
-  /// of the iteration. The training loss function is defined by model type.
+  /// of the iteration.
+  ///
+  /// The training loss function is defined by model type.
   core.double trainingLoss;
 
   BqmlIterationResult();
@@ -3821,8 +3934,9 @@ class BqmlIterationResult {
   }
 }
 
-/// [Output-only, Beta] Training options used by this training run. These
-/// options are mutable for subsequent training runs. Default values are
+/// [Output-only, Beta] Training options used by this training run.
+///
+/// These options are mutable for subsequent training runs. Default values are
 /// explicitly stored for options not specified in the input query of the first
 /// training run. For subsequent training runs, any option not explicitly
 /// specified in the input query will be copied from the previous training run.
@@ -3911,14 +4025,16 @@ class BqmlTrainingRun {
   /// epoch.
   core.DateTime startTime;
 
-  /// [Output-only, Beta] Different state applicable for a training run. IN
-  /// PROGRESS: Training run is in progress. FAILED: Training run ended due to a
-  /// non-retryable failure. SUCCEEDED: Training run successfully completed.
-  /// CANCELLED: Training run cancelled by the user.
+  /// [Output-only, Beta] Different state applicable for a training run.
+  ///
+  /// IN PROGRESS: Training run is in progress. FAILED: Training run ended due
+  /// to a non-retryable failure. SUCCEEDED: Training run successfully
+  /// completed. CANCELLED: Training run cancelled by the user.
   core.String state;
 
-  /// [Output-only, Beta] Training options used by this training run. These
-  /// options are mutable for subsequent training runs. Default values are
+  /// [Output-only, Beta] Training options used by this training run.
+  ///
+  /// These options are mutable for subsequent training runs. Default values are
   /// explicitly stored for options not specified in the input query of the
   /// first training run. For subsequent training runs, any option not
   /// explicitly specified in the input query will be copied from the previous
@@ -3967,10 +4083,11 @@ class BqmlTrainingRun {
 
 /// Representative value of a categorical feature.
 class CategoricalValue {
-  /// Counts of all categories for the categorical feature. If there are more
-  /// than ten categories, we return top ten (by count) and return one more
-  /// CategoryCount with category "_OTHER_" and count as aggregate counts of
-  /// remaining categories.
+  /// Counts of all categories for the categorical feature.
+  ///
+  /// If there are more than ten categories, we return top ten (by count) and
+  /// return one more CategoryCount with category "_OTHER_" and count as
+  /// aggregate counts of remaining categories.
   core.List<CategoryCount> categoryCounts;
 
   CategoricalValue();
@@ -4111,8 +4228,9 @@ class ClusterInfo {
 }
 
 class Clustering {
-  /// [Repeated] One or more fields on which data should be clustered. Only
-  /// top-level, non-repeated, simple-type fields are supported. When you
+  /// [Repeated] One or more fields on which data should be clustered.
+  ///
+  /// Only top-level, non-repeated, simple-type fields are supported. When you
   /// cluster a table using multiple columns, the order of columns you specify
   /// is important. The order of the specified columns determines the sort order
   /// of the data.
@@ -4218,10 +4336,14 @@ class ConfusionMatrix {
 }
 
 class ConnectionProperty {
-  /// [Required] Name of the connection property to set.
+  /// Name of the connection property to set.
+  ///
+  /// Required.
   core.String key;
 
-  /// [Required] Value of the connection property.
+  /// Value of the connection property.
+  ///
+  /// Required.
   core.String value;
 
   ConnectionProperty();
@@ -4248,50 +4370,71 @@ class ConnectionProperty {
 }
 
 class CsvOptions {
-  /// [Optional] Indicates if BigQuery should accept rows that are missing
-  /// trailing optional columns. If true, BigQuery treats missing trailing
-  /// columns as null values. If false, records with missing trailing columns
-  /// are treated as bad records, and if there are too many bad records, an
-  /// invalid error is returned in the job result. The default value is false.
+  /// Indicates if BigQuery should accept rows that are missing trailing
+  /// optional columns.
+  ///
+  /// If true, BigQuery treats missing trailing columns as null values. If
+  /// false, records with missing trailing columns are treated as bad records,
+  /// and if there are too many bad records, an invalid error is returned in the
+  /// job result. The default value is false.
+  ///
+  /// Optional.
   core.bool allowJaggedRows;
 
-  /// [Optional] Indicates if BigQuery should allow quoted data sections that
-  /// contain newline characters in a CSV file. The default value is false.
+  /// Indicates if BigQuery should allow quoted data sections that contain
+  /// newline characters in a CSV file.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
   core.bool allowQuotedNewlines;
 
-  /// [Optional] The character encoding of the data. The supported values are
-  /// UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data
-  /// after the raw, binary data has been split using the values of the quote
-  /// and fieldDelimiter properties.
+  /// The character encoding of the data.
+  ///
+  /// The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8.
+  /// BigQuery decodes the data after the raw, binary data has been split using
+  /// the values of the quote and fieldDelimiter properties.
+  ///
+  /// Optional.
   core.String encoding;
 
-  /// [Optional] The separator for fields in a CSV file. BigQuery converts the
-  /// string to ISO-8859-1 encoding, and then uses the first byte of the encoded
-  /// string to split the data in its raw, binary state. BigQuery also supports
-  /// the escape sequence "\t" to specify a tab separator. The default value is
-  /// a comma (',').
+  /// The separator for fields in a CSV file.
+  ///
+  /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
+  /// first byte of the encoded string to split the data in its raw, binary
+  /// state. BigQuery also supports the escape sequence "\t" to specify a tab
+  /// separator. The default value is a comma (',').
+  ///
+  /// Optional.
   core.String fieldDelimiter;
 
-  /// [Optional] The value that is used to quote data sections in a CSV file.
+  /// The value that is used to quote data sections in a CSV file.
+  ///
   /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
   /// first byte of the encoded string to split the data in its raw, binary
   /// state. The default value is a double-quote ('"'). If your data does not
   /// contain quoted sections, set the property value to an empty string. If
   /// your data contains quoted newline characters, you must also set the
   /// allowQuotedNewlines property to true.
+  ///
+  /// Optional.
   core.String quote;
 
-  /// [Optional] The number of rows at the top of a CSV file that BigQuery will
-  /// skip when reading the data. The default value is 0. This property is
-  /// useful if you have header rows in the file that should be skipped. When
-  /// autodetect is on, the behavior is the following: * skipLeadingRows
-  /// unspecified - Autodetect tries to detect headers in the first row. If they
-  /// are not detected, the row is read as data. Otherwise data is read starting
-  /// from the second row. * skipLeadingRows is 0 - Instructs autodetect that
-  /// there are no headers and data should be read starting from the first row.
-  /// * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect
-  /// headers in row N. If headers are not detected, row N is just skipped.
-  /// Otherwise row N is used to extract column names for the detected schema.
+  /// The number of rows at the top of a CSV file that BigQuery will skip when
+  /// reading the data.
+  ///
+  /// The default value is 0. This property is useful if you have header rows in
+  /// the file that should be skipped. When autodetect is on, the behavior is
+  /// the following: * skipLeadingRows unspecified - Autodetect tries to detect
+  /// headers in the first row. If they are not detected, the row is read as
+  /// data. Otherwise data is read starting from the second row. *
+  /// skipLeadingRows is 0 - Instructs autodetect that there are no headers and
+  /// data should be read starting from the first row. * skipLeadingRows = N > 0
+  /// - Autodetect skips N-1 rows and tries to detect headers in row N. If
+  /// headers are not detected, row N is just skipped. Otherwise row N is used
+  /// to extract column names for the detected schema.
+  ///
+  /// Optional.
   core.String skipLeadingRows;
 
   CsvOptions();
@@ -4341,8 +4484,10 @@ class CsvOptions {
   }
 }
 
-/// Data split result. This contains references to the training and evaluation
-/// data tables that were used to train the model.
+/// Data split result.
+///
+/// This contains references to the training and evaluation data tables that
+/// were used to train the model.
 class DataSplitResult {
   /// Table reference of the evaluation data after split.
   TableReference evaluationTable;
@@ -4376,42 +4521,51 @@ class DataSplitResult {
 }
 
 class DatasetAccess {
-  /// [Pick one] A domain to grant access to. Any users signed in with the
-  /// domain specified will be granted the specified access. Example:
-  /// "example.com". Maps to IAM policy member "domain:DOMAIN".
+  /// [Pick one] A domain to grant access to.
+  ///
+  /// Any users signed in with the domain specified will be granted the
+  /// specified access. Example: "example.com". Maps to IAM policy member
+  /// "domain:DOMAIN".
   core.String domain;
 
-  /// [Pick one] An email address of a Google Group to grant access to. Maps to
-  /// IAM policy member "group:GROUP".
+  /// [Pick one] An email address of a Google Group to grant access to.
+  ///
+  /// Maps to IAM policy member "group:GROUP".
   core.String groupByEmail;
 
   /// [Pick one] Some other type of member that appears in the IAM Policy but
   /// isn't a user, group, domain, or special group.
   core.String iamMember;
 
-  /// [Required] An IAM role ID that should be granted to the user, group, or
-  /// domain specified in this access entry. The following legacy mappings will
-  /// be applied: OWNER  roles/bigquery.dataOwner WRITER
-  /// roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field
-  /// will accept any of the above formats, but will return only the legacy
-  /// format. For example, if you set this field to "roles/bigquery.dataOwner",
-  /// it will be returned back as "OWNER".
+  /// An IAM role ID that should be granted to the user, group, or domain
+  /// specified in this access entry.
+  ///
+  /// The following legacy mappings will be applied: OWNER
+  /// roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER
+  /// roles/bigquery.dataViewer This field will accept any of the above formats,
+  /// but will return only the legacy format. For example, if you set this field
+  /// to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+  ///
+  /// Required.
   core.String role;
 
-  /// [Pick one] A special group to grant access to. Possible values include:
-  /// projectOwners: Owners of the enclosing project. projectReaders: Readers of
-  /// the enclosing project. projectWriters: Writers of the enclosing project.
-  /// allAuthenticatedUsers: All authenticated BigQuery users. Maps to
-  /// similarly-named IAM members.
+  /// [Pick one] A special group to grant access to.
+  ///
+  /// Possible values include: projectOwners: Owners of the enclosing project.
+  /// projectReaders: Readers of the enclosing project. projectWriters: Writers
+  /// of the enclosing project. allAuthenticatedUsers: All authenticated
+  /// BigQuery users. Maps to similarly-named IAM members.
   core.String specialGroup;
 
-  /// [Pick one] An email address of a user to grant access to. For example:
-  /// fred@example.com. Maps to IAM policy member "user:EMAIL" or
+  /// [Pick one] An email address of a user to grant access to.
+  ///
+  /// For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or
   /// "serviceAccount:EMAIL".
   core.String userByEmail;
 
-  /// [Pick one] A view from a different dataset to grant access to. Queries
-  /// executed against that view will have read access to tables in this
+  /// [Pick one] A view from a different dataset to grant access to.
+  ///
+  /// Queries executed against that view will have read access to tables in this
   /// dataset. The role field is not required when this field is set. If that
   /// view is updated by any user, access to the view needs to be granted again
   /// via an update operation.
@@ -4472,41 +4626,51 @@ class DatasetAccess {
 }
 
 class Dataset {
-  /// [Optional] An array of objects that define dataset access for one or more
-  /// entities. You can set this property when inserting or updating a dataset
-  /// in order to control who is allowed to access the data. If unspecified at
-  /// dataset creation time, BigQuery adds default dataset access for the
-  /// following entities: access.specialGroup: projectReaders; access.role:
-  /// READER; access.specialGroup: projectWriters; access.role: WRITER;
+  /// An array of objects that define dataset access for one or more entities.
+  ///
+  /// You can set this property when inserting or updating a dataset in order to
+  /// control who is allowed to access the data. If unspecified at dataset
+  /// creation time, BigQuery adds default dataset access for the following
+  /// entities: access.specialGroup: projectReaders; access.role: READER;
+  /// access.specialGroup: projectWriters; access.role: WRITER;
   /// access.specialGroup: projectOwners; access.role: OWNER;
   /// access.userByEmail: [dataset creator email]; access.role: OWNER;
+  ///
+  /// Optional.
   core.List<DatasetAccess> access;
 
   /// [Output-only] The time when this dataset was created, in milliseconds
   /// since the epoch.
   core.String creationTime;
 
-  /// [Required] A reference that identifies the dataset.
+  /// A reference that identifies the dataset.
+  ///
+  /// Required.
   DatasetReference datasetReference;
   EncryptionConfiguration defaultEncryptionConfiguration;
 
-  /// [Optional] The default partition expiration for all partitioned tables in
-  /// the dataset, in milliseconds. Once this property is set, all newly-created
-  /// partitioned tables in the dataset will have an expirationMs property in
-  /// the timePartitioning settings set to this value, and changing the value
-  /// will only affect new tables, not existing ones. The storage in a partition
-  /// will have an expiration time of its partition time plus this value.
-  /// Setting this property overrides the use of defaultTableExpirationMs for
-  /// partitioned tables: only one of defaultTableExpirationMs and
+  /// The default partition expiration for all partitioned tables in the
+  /// dataset, in milliseconds.
+  ///
+  /// Once this property is set, all newly-created partitioned tables in the
+  /// dataset will have an expirationMs property in the timePartitioning
+  /// settings set to this value, and changing the value will only affect new
+  /// tables, not existing ones. The storage in a partition will have an
+  /// expiration time of its partition time plus this value. Setting this
+  /// property overrides the use of defaultTableExpirationMs for partitioned
+  /// tables: only one of defaultTableExpirationMs and
   /// defaultPartitionExpirationMs will be used for any new partitioned table.
   /// If you provide an explicit timePartitioning.expirationMs when creating or
   /// updating a partitioned table, that value takes precedence over the default
   /// partition expiration time indicated by this property.
+  ///
+  /// Optional.
   core.String defaultPartitionExpirationMs;
 
-  /// [Optional] The default lifetime of all tables in the dataset, in
-  /// milliseconds. The minimum value is 3600000 milliseconds (one hour). Once
-  /// this property is set, all newly-created tables in the dataset will have an
+  /// The default lifetime of all tables in the dataset, in milliseconds.
+  ///
+  /// The minimum value is 3600000 milliseconds (one hour). Once this property
+  /// is set, all newly-created tables in the dataset will have an
   /// expirationTime property set to the creation time plus the value in this
   /// property, and changing the value will only affect new tables, not existing
   /// ones. When the expirationTime for a given table is reached, that table
@@ -4514,44 +4678,57 @@ class Dataset {
   /// removed before the table expires, or if you provide an explicit
   /// expirationTime when creating a table, that value takes precedence over the
   /// default expiration time indicated by this property.
+  ///
+  /// Optional.
   core.String defaultTableExpirationMs;
 
-  /// [Optional] A user-friendly description of the dataset.
+  /// A user-friendly description of the dataset.
+  ///
+  /// Optional.
   core.String description;
 
   /// [Output-only] A hash of the resource.
   core.String etag;
 
-  /// [Optional] A descriptive name for the dataset.
+  /// A descriptive name for the dataset.
+  ///
+  /// Optional.
   core.String friendlyName;
 
   /// [Output-only] The fully-qualified unique name of the dataset in the format
-  /// projectId:datasetId. The dataset name without the project name is given in
-  /// the datasetId field. When creating a new dataset, leave this field blank,
-  /// and instead specify the datasetId field.
+  /// projectId:datasetId.
+  ///
+  /// The dataset name without the project name is given in the datasetId field.
+  /// When creating a new dataset, leave this field blank, and instead specify
+  /// the datasetId field.
   core.String id;
 
   /// [Output-only] The resource type.
   core.String kind;
 
-  /// The labels associated with this dataset. You can use these to organize and
-  /// group your datasets. You can set this property when inserting or updating
-  /// a dataset. See Creating and Updating Dataset Labels for more information.
+  /// The labels associated with this dataset.
+  ///
+  /// You can use these to organize and group your datasets. You can set this
+  /// property when inserting or updating a dataset. See Creating and Updating
+  /// Dataset Labels for more information.
   core.Map<core.String, core.String> labels;
 
   /// [Output-only] The date when this dataset or any of its tables was last
   /// modified, in milliseconds since the epoch.
   core.String lastModifiedTime;
 
-  /// The geographic location where the dataset should reside. The default value
-  /// is US. See details at https://cloud.google.com/bigquery/docs/locations.
+  /// The geographic location where the dataset should reside.
+  ///
+  /// The default value is US. See details at
+  /// https://cloud.google.com/bigquery/docs/locations.
   core.String location;
 
   /// [Output-only] Reserved for future use.
   core.bool satisfiesPZS;
 
-  /// [Output-only] A URL that can be used to access the resource again. You can
-  /// use this URL in Get or Update requests to the resource.
+  /// [Output-only] A URL that can be used to access the resource again.
+  ///
+  /// You can use this URL in Get or Update requests to the resource.
   core.String selfLink;
 
   Dataset();
@@ -4677,8 +4854,10 @@ class Dataset {
 }
 
 class DatasetListDatasets {
-  /// The dataset reference. Use this property to access specific parts of the
-  /// dataset's ID, such as project ID or dataset ID.
+  /// The dataset reference.
+  ///
+  /// Use this property to access specific parts of the dataset's ID, such as
+  /// project ID or dataset ID.
   DatasetReference datasetReference;
 
   /// A descriptive name for the dataset, if one exists.
@@ -4687,12 +4866,14 @@ class DatasetListDatasets {
   /// The fully-qualified, unique, opaque ID of the dataset.
   core.String id;
 
-  /// The resource type. This property always returns the value
-  /// "bigquery#dataset".
+  /// The resource type.
+  ///
+  /// This property always returns the value "bigquery#dataset".
   core.String kind;
 
-  /// The labels associated with this dataset. You can use these to organize and
-  /// group your datasets.
+  /// The labels associated with this dataset.
+  ///
+  /// You can use these to organize and group your datasets.
   core.Map<core.String, core.String> labels;
 
   /// The geographic location where the data resides.
@@ -4753,22 +4934,27 @@ class DatasetListDatasets {
 }
 
 class DatasetList {
-  /// An array of the dataset resources in the project. Each resource contains
-  /// basic information. For full information about a particular dataset
-  /// resource, use the Datasets: get method. This property is omitted when
-  /// there are no datasets in the project.
+  /// An array of the dataset resources in the project.
+  ///
+  /// Each resource contains basic information. For full information about a
+  /// particular dataset resource, use the Datasets: get method. This property
+  /// is omitted when there are no datasets in the project.
   core.List<DatasetListDatasets> datasets;
 
-  /// A hash value of the results page. You can use this property to determine
-  /// if the page has changed since the last request.
+  /// A hash value of the results page.
+  ///
+  /// You can use this property to determine if the page has changed since the
+  /// last request.
   core.String etag;
 
-  /// The list type. This property always returns the value
-  /// "bigquery#datasetList".
+  /// The list type.
+  ///
+  /// This property always returns the value "bigquery#datasetList".
   core.String kind;
 
-  /// A token that can be used to request the next results page. This property
-  /// is omitted on the final results page.
+  /// A token that can be used to request the next results page.
+  ///
+  /// This property is omitted on the final results page.
   core.String nextPageToken;
 
   DatasetList();
@@ -4810,12 +4996,17 @@ class DatasetList {
 }
 
 class DatasetReference {
-  /// [Required] A unique ID for this dataset, without the project name. The ID
-  /// must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
-  /// The maximum length is 1,024 characters.
+  /// A unique ID for this dataset, without the project name.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+  /// (_). The maximum length is 1,024 characters.
+  ///
+  /// Required.
   core.String datasetId;
 
-  /// [Optional] The ID of the project containing this dataset.
+  /// The ID of the project containing this dataset.
+  ///
+  /// Optional.
   core.String projectId;
 
   DatasetReference();
@@ -4842,22 +5033,32 @@ class DatasetReference {
 }
 
 class DestinationTableProperties {
-  /// [Optional] The description for the destination table. This will only be
-  /// used if the destination table is newly created. If the table already
-  /// exists and a value different than the current description is provided, the
-  /// job will fail.
+  /// The description for the destination table.
+  ///
+  /// This will only be used if the destination table is newly created. If the
+  /// table already exists and a value different than the current description is
+  /// provided, the job will fail.
+  ///
+  /// Optional.
   core.String description;
 
-  /// [Optional] The friendly name for the destination table. This will only be
-  /// used if the destination table is newly created. If the table already
-  /// exists and a value different than the current friendly name is provided,
-  /// the job will fail.
+  /// The friendly name for the destination table.
+  ///
+  /// This will only be used if the destination table is newly created. If the
+  /// table already exists and a value different than the current friendly name
+  /// is provided, the job will fail.
+  ///
+  /// Optional.
   core.String friendlyName;
 
-  /// [Optional] The labels associated with this table. You can use these to
-  /// organize and group your tables. This will only be used if the destination
-  /// table is newly created. If the table already exists and labels are
-  /// different than the current labels are provided, the job will fail.
+  /// The labels associated with this table.
+  ///
+  /// You can use these to organize and group your tables. This will only be
+  /// used if the destination table is newly created. If the table already
+  /// exists and labels are different than the current labels are provided, the
+  /// job will fail.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
   DestinationTableProperties();
@@ -4896,9 +5097,13 @@ class DestinationTableProperties {
 }
 
 class EncryptionConfiguration {
-  /// [Optional] Describes the Cloud KMS encryption key that will be used to
-  /// protect destination BigQuery table. The BigQuery Service Account
-  /// associated with your project requires access to this encryption key.
+  /// Describes the Cloud KMS encryption key that will be used to protect
+  /// destination BigQuery table.
+  ///
+  /// The BigQuery Service Account associated with your project requires access
+  /// to this encryption key.
+  ///
+  /// Optional.
   core.String kmsKeyName;
 
   EncryptionConfiguration();
@@ -4923,8 +5128,10 @@ class Entry {
   /// Number of items being predicted as this label.
   core.String itemCount;
 
-  /// The predicted label. For confidence_threshold > 0, we will also add an
-  /// entry indicating the number of items under the confidence threshold.
+  /// The predicted label.
+  ///
+  /// For confidence_threshold > 0, we will also add an entry indicating the
+  /// number of items under the confidence threshold.
   core.String predictedLabel;
 
   Entry();
@@ -4951,8 +5158,9 @@ class Entry {
 }
 
 class ErrorProto {
-  /// Debugging information. This property is internal to Google and should not
-  /// be used.
+  /// Debugging information.
+  ///
+  /// This property is internal to Google and should not be used.
   core.String debugInfo;
 
   /// Specifies where the error occurred, if present.
@@ -4999,9 +5207,11 @@ class ErrorProto {
   }
 }
 
-/// Evaluation metrics of a model. These are either computed on all training
-/// data or just the eval data based on whether eval data was used during
-/// training. These are not present for imported models.
+/// Evaluation metrics of a model.
+///
+/// These are either computed on all training data or just the eval data based
+/// on whether eval data was used during training. These are not present for
+/// imported models.
 class EvaluationMetrics {
   /// Populated for ARIMA models.
   ArimaForecastingMetrics arimaForecastingMetrics;
@@ -5403,8 +5613,10 @@ class ExplainQueryStep {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -5419,20 +5631,29 @@ class ExplainQueryStep {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -5471,17 +5692,23 @@ class Expr {
 }
 
 class ExternalDataConfiguration {
-  /// Try to detect schema and format options automatically. Any option
-  /// specified explicitly will be honored.
+  /// Try to detect schema and format options automatically.
+  ///
+  /// Any option specified explicitly will be honored.
   core.bool autodetect;
 
-  /// [Optional] Additional options if sourceFormat is set to BIGTABLE.
+  /// Additional options if sourceFormat is set to BIGTABLE.
+  ///
+  /// Optional.
   BigtableOptions bigtableOptions;
 
-  /// [Optional] The compression type of the data source. Possible values
-  /// include GZIP and NONE. The default value is NONE. This setting is ignored
-  /// for Google Cloud Bigtable, Google Cloud Datastore backups and Avro
-  /// formats.
+  /// The compression type of the data source.
+  ///
+  /// Possible values include GZIP and NONE. The default value is NONE. This
+  /// setting is ignored for Google Cloud Bigtable, Google Cloud Datastore
+  /// backups and Avro formats.
+  ///
+  /// Optional.
   core.String compression;
 
   /// [Optional, Trusted Tester] Connection for external data source.
@@ -5490,51 +5717,69 @@ class ExternalDataConfiguration {
   /// Additional properties to set if sourceFormat is set to CSV.
   CsvOptions csvOptions;
 
-  /// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
+  /// Additional options if sourceFormat is set to GOOGLE_SHEETS.
+  ///
+  /// Optional.
   GoogleSheetsOptions googleSheetsOptions;
 
   /// [Optional, Trusted Tester] Options to configure hive partitioning support.
   HivePartitioningOptions hivePartitioningOptions;
 
-  /// [Optional] Indicates if BigQuery should allow extra values that are not
-  /// represented in the table schema. If true, the extra values are ignored. If
-  /// false, records with extra columns are treated as bad records, and if there
-  /// are too many bad records, an invalid error is returned in the job result.
-  /// The default value is false. The sourceFormat property determines what
-  /// BigQuery treats as an extra value: CSV: Trailing columns JSON: Named
-  /// values that don't match any column names Google Cloud Bigtable: This
-  /// setting is ignored. Google Cloud Datastore backups: This setting is
-  /// ignored. Avro: This setting is ignored.
+  /// Indicates if BigQuery should allow extra values that are not represented
+  /// in the table schema.
+  ///
+  /// If true, the extra values are ignored. If false, records with extra
+  /// columns are treated as bad records, and if there are too many bad records,
+  /// an invalid error is returned in the job result. The default value is
+  /// false. The sourceFormat property determines what BigQuery treats as an
+  /// extra value: CSV: Trailing columns JSON: Named values that don't match any
+  /// column names Google Cloud Bigtable: This setting is ignored. Google Cloud
+  /// Datastore backups: This setting is ignored. Avro: This setting is ignored.
+  ///
+  /// Optional.
   core.bool ignoreUnknownValues;
 
-  /// [Optional] The maximum number of bad records that BigQuery can ignore when
-  /// reading data. If the number of bad records exceeds this value, an invalid
-  /// error is returned in the job result. This is only valid for CSV, JSON, and
-  /// Google Sheets. The default value is 0, which requires that all records are
-  /// valid. This setting is ignored for Google Cloud Bigtable, Google Cloud
-  /// Datastore backups and Avro formats.
+  /// The maximum number of bad records that BigQuery can ignore when reading
+  /// data.
+  ///
+  /// If the number of bad records exceeds this value, an invalid error is
+  /// returned in the job result. This is only valid for CSV, JSON, and Google
+  /// Sheets. The default value is 0, which requires that all records are valid.
+  /// This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore
+  /// backups and Avro formats.
+  ///
+  /// Optional.
   core.int maxBadRecords;
 
-  /// [Optional] The schema for the data. Schema is required for CSV and JSON
-  /// formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore
-  /// backups, and Avro formats.
+  /// The schema for the data.
+  ///
+  /// Schema is required for CSV and JSON formats. Schema is disallowed for
+  /// Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
+  ///
+  /// Optional.
   TableSchema schema;
 
-  /// [Required] The data format. For CSV files, specify "CSV". For Google
-  /// sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify
-  /// "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
-  /// Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud
-  /// Bigtable, specify "BIGTABLE".
+  /// The data format.
+  ///
+  /// For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS".
+  /// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro
+  /// files, specify "AVRO". For Google Cloud Datastore backups, specify
+  /// "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
+  ///
+  /// Required.
   core.String sourceFormat;
 
-  /// [Required] The fully-qualified URIs that point to your data in Google
-  /// Cloud. For Google Cloud Storage URIs: Each URI can contain one '*'
-  /// wildcard character and it must come after the 'bucket' name. Size limits
-  /// related to load jobs apply to external data sources. For Google Cloud
-  /// Bigtable URIs: Exactly one URI can be specified and it has be a fully
-  /// specified and valid HTTPS URL for a Google Cloud Bigtable table. For
-  /// Google Cloud Datastore backups, exactly one URI can be specified. Also,
-  /// the '*' wildcard character is not allowed.
+  /// The fully-qualified URIs that point to your data in Google Cloud.
+  ///
+  /// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard
+  /// character and it must come after the 'bucket' name. Size limits related to
+  /// load jobs apply to external data sources. For Google Cloud Bigtable URIs:
+  /// Exactly one URI can be specified and it has be a fully specified and valid
+  /// HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
+  /// backups, exactly one URI can be specified. Also, the '*' wildcard
+  /// character is not allowed.
+  ///
+  /// Required.
   core.List<core.String> sourceUris;
 
   ExternalDataConfiguration();
@@ -5636,7 +5881,9 @@ class FeatureValue {
   /// The feature column name.
   core.String featureColumn;
 
-  /// The numerical feature value. This is the centroid value for this feature.
+  /// The numerical feature value.
+  ///
+  /// This is the centroid value for this feature.
   core.double numericalValue;
 
   FeatureValue();
@@ -5695,13 +5942,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -5726,52 +5976,61 @@ class GetQueryResultsResponse {
   core.bool cacheHit;
 
   /// [Output-only] The first errors or warnings encountered during the running
-  /// of the job. The final message includes the number of errors that caused
-  /// the process to stop. Errors here do not necessarily mean that the job has
-  /// completed or was unsuccessful.
+  /// of the job.
+  ///
+  /// The final message includes the number of errors that caused the process to
+  /// stop. Errors here do not necessarily mean that the job has completed or
+  /// was unsuccessful.
   core.List<ErrorProto> errors;
 
   /// A hash of this response.
   core.String etag;
 
-  /// Whether the query has completed or not. If rows or totalRows are present,
-  /// this will always be true. If this is false, totalRows will not be
-  /// available.
+  /// Whether the query has completed or not.
+  ///
+  /// If rows or totalRows are present, this will always be true. If this is
+  /// false, totalRows will not be available.
   core.bool jobComplete;
 
-  /// Reference to the BigQuery Job that was created to run the query. This
-  /// field will be present even if the original request timed out, in which
-  /// case GetQueryResults can be used to read the results once the query has
-  /// completed. Since this API only returns the first page of results,
+  /// Reference to the BigQuery Job that was created to run the query.
+  ///
+  /// This field will be present even if the original request timed out, in
+  /// which case GetQueryResults can be used to read the results once the query
+  /// has completed. Since this API only returns the first page of results,
   /// subsequent pages can be fetched via the same mechanism (GetQueryResults).
   JobReference jobReference;
 
   /// The resource type of the response.
   core.String kind;
 
-  /// [Output-only] The number of rows affected by a DML statement. Present only
-  /// for DML statements INSERT, UPDATE or DELETE.
+  /// [Output-only] The number of rows affected by a DML statement.
+  ///
+  /// Present only for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
 
   /// A token used for paging results.
   core.String pageToken;
 
   /// An object with as many results as can be contained within the maximum
-  /// permitted reply size. To get any additional rows, you can call
-  /// GetQueryResults and specify the jobReference returned above. Present only
-  /// when the query completes successfully.
+  /// permitted reply size.
+  ///
+  /// To get any additional rows, you can call GetQueryResults and specify the
+  /// jobReference returned above. Present only when the query completes
+  /// successfully.
   core.List<TableRow> rows;
 
-  /// The schema of the results. Present only when the query completes
-  /// successfully.
+  /// The schema of the results.
+  ///
+  /// Present only when the query completes successfully.
   TableSchema schema;
 
   /// The total number of bytes processed for this query.
   core.String totalBytesProcessed;
 
   /// The total number of rows in the complete query result set, which can be
-  /// more than the number of rows in this single page of results. Present only
-  /// when the query completes successfully.
+  /// more than the number of rows in this single page of results.
+  ///
+  /// Present only when the query completes successfully.
   core.String totalRows;
 
   GetQueryResultsResponse();
@@ -5896,22 +6155,30 @@ class GetServiceAccountResponse {
 }
 
 class GoogleSheetsOptions {
-  /// [Optional] Range of a sheet to query from. Only used when non-empty.
-  /// Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For
-  /// example: sheet1!A1:B20
+  /// Range of a sheet to query from.
+  ///
+  /// Only used when non-empty. Typical format:
+  /// sheet_name!top_left_cell_id:bottom_right_cell_id For example:
+  /// sheet1!A1:B20
+  ///
+  /// Optional.
   core.String range;
 
-  /// [Optional] The number of rows at the top of a sheet that BigQuery will
-  /// skip when reading the data. The default value is 0. This property is
-  /// useful if you have header rows that should be skipped. When autodetect is
-  /// on, behavior is the following: * skipLeadingRows unspecified - Autodetect
-  /// tries to detect headers in the first row. If they are not detected, the
-  /// row is read as data. Otherwise data is read starting from the second row.
-  /// * skipLeadingRows is 0 - Instructs autodetect that there are no headers
-  /// and data should be read starting from the first row. * skipLeadingRows = N
-  /// > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If
-  /// headers are not detected, row N is just skipped. Otherwise row N is used
-  /// to extract column names for the detected schema.
+  /// The number of rows at the top of a sheet that BigQuery will skip when
+  /// reading the data.
+  ///
+  /// The default value is 0. This property is useful if you have header rows
+  /// that should be skipped. When autodetect is on, behavior is the following:
+  /// * skipLeadingRows unspecified - Autodetect tries to detect headers in the
+  /// first row. If they are not detected, the row is read as data. Otherwise
+  /// data is read starting from the second row. * skipLeadingRows is 0 -
+  /// Instructs autodetect that there are no headers and data should be read
+  /// starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips
+  /// N-1 rows and tries to detect headers in row N. If headers are not
+  /// detected, row N is just skipped. Otherwise row N is used to extract column
+  /// names for the detected schema.
+  ///
+  /// Optional.
   core.String skipLeadingRows;
 
   GoogleSheetsOptions();
@@ -5938,32 +6205,41 @@ class GoogleSheetsOptions {
 }
 
 class HivePartitioningOptions {
-  /// [Optional] When set, what mode of hive partitioning to use when reading
-  /// data. The following modes are supported. (1) AUTO: automatically infer
-  /// partition key name(s) and type(s). (2) STRINGS: automatically infer
-  /// partition key name(s). All types are interpreted as strings. (3) CUSTOM:
-  /// partition key schema is encoded in the source URI prefix. Not all storage
-  /// formats support hive partitioning. Requesting hive partitioning on an
-  /// unsupported format will lead to an error. Currently supported types
-  /// include: AVRO, CSV, JSON, ORC and Parquet.
+  /// When set, what mode of hive partitioning to use when reading data.
+  ///
+  /// The following modes are supported. (1) AUTO: automatically infer partition
+  /// key name(s) and type(s). (2) STRINGS: automatically infer partition key
+  /// name(s). All types are interpreted as strings. (3) CUSTOM: partition key
+  /// schema is encoded in the source URI prefix. Not all storage formats
+  /// support hive partitioning. Requesting hive partitioning on an unsupported
+  /// format will lead to an error. Currently supported types include: AVRO,
+  /// CSV, JSON, ORC and Parquet.
+  ///
+  /// Optional.
   core.String mode;
 
-  /// [Optional] If set to true, queries over this table require a partition
-  /// filter that can be used for partition elimination to be specified. Note
-  /// that this field should only be true when creating a permanent external
-  /// table or querying a temporary external table. Hive-partitioned loads with
-  /// requirePartitionFilter explicitly set to true will fail.
+  /// If set to true, queries over this table require a partition filter that
+  /// can be used for partition elimination to be specified.
+  ///
+  /// Note that this field should only be true when creating a permanent
+  /// external table or querying a temporary external table. Hive-partitioned
+  /// loads with requirePartitionFilter explicitly set to true will fail.
+  ///
+  /// Optional.
   core.bool requirePartitionFilter;
 
-  /// [Optional] When hive partition detection is requested, a common prefix for
-  /// all source uris should be supplied. The prefix must end immediately before
-  /// the partition key encoding begins. For example, consider files following
-  /// this data layout.
+  /// When hive partition detection is requested, a common prefix for all source
+  /// uris should be supplied.
+  ///
+  /// The prefix must end immediately before the partition key encoding begins.
+  /// For example, consider files following this data layout.
   /// gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
   /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When
   /// hive partitioning is requested with either AUTO or STRINGS detection, the
   /// common prefix can be either of gs://bucket/path_to_table or
   /// gs://bucket/path_to_table/ (trailing slash does not matter).
+  ///
+  /// Optional.
   core.String sourceUriPrefix;
 
   HivePartitioningOptions();
@@ -6076,7 +6352,9 @@ class IterationResult {
 }
 
 class Job {
-  /// [Required] Describes the job configuration.
+  /// Describes the job configuration.
+  ///
+  /// Required.
   JobConfiguration configuration;
 
   /// [Output-only] A hash of this resource.
@@ -6085,7 +6363,9 @@ class Job {
   /// [Output-only] Opaque ID field of the job
   core.String id;
 
-  /// [Optional] Reference describing the unique-per-user name of the job.
+  /// Reference describing the unique-per-user name of the job.
+  ///
+  /// Optional.
   JobReference jobReference;
 
   /// [Output-only] The type of the resource.
@@ -6098,8 +6378,10 @@ class Job {
   /// ending time of the job.
   JobStatistics statistics;
 
-  /// [Output-only] The status of this job. Examine this value when polling an
-  /// asynchronous job to see if the job is complete.
+  /// [Output-only] The status of this job.
+  ///
+  /// Examine this value when polling an asynchronous job to see if the job is
+  /// complete.
   JobStatus status;
 
   /// [Output-only] Email address of the user who ran the job.
@@ -6208,29 +6490,37 @@ class JobConfiguration {
   /// [Pick one] Copies a table.
   JobConfigurationTableCopy copy;
 
-  /// [Optional] If set, don't actually run this job. A valid query will return
-  /// a mostly empty response with some processing statistics, while an invalid
-  /// query will return the same error it would if it wasn't a dry run. Behavior
-  /// of non-query jobs is undefined.
+  /// If set, don't actually run this job.
+  ///
+  /// A valid query will return a mostly empty response with some processing
+  /// statistics, while an invalid query will return the same error it would if
+  /// it wasn't a dry run. Behavior of non-query jobs is undefined.
+  ///
+  /// Optional.
   core.bool dryRun;
 
   /// [Pick one] Configures an extract job.
   JobConfigurationExtract extract;
 
-  /// [Optional] Job timeout in milliseconds. If this time limit is exceeded,
-  /// BigQuery may attempt to terminate the job.
+  /// Job timeout in milliseconds.
+  ///
+  /// If this time limit is exceeded, BigQuery may attempt to terminate the job.
+  ///
+  /// Optional.
   core.String jobTimeoutMs;
 
-  /// [Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or
-  /// UNKNOWN.
+  /// [Output-only] The type of the job.
+  ///
+  /// Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
   core.String jobType;
 
-  /// The labels associated with this job. You can use these to organize and
-  /// group your jobs. Label keys and values can be no longer than 63
-  /// characters, can only contain lowercase letters, numeric characters,
-  /// underscores and dashes. International characters are allowed. Label values
-  /// are optional. Label keys must start with a letter and each label in the
-  /// list must have a different key.
+  /// The labels associated with this job.
+  ///
+  /// You can use these to organize and group your jobs. Label keys and values
+  /// can be no longer than 63 characters, can only contain lowercase letters,
+  /// numeric characters, underscores and dashes. International characters are
+  /// allowed. Label values are optional. Label keys must start with a letter
+  /// and each label in the list must have a different key.
   core.Map<core.String, core.String> labels;
 
   /// [Pick one] Configures a load job.
@@ -6309,34 +6599,48 @@ class JobConfiguration {
 }
 
 class JobConfigurationExtract {
-  /// [Optional] The compression type to use for exported files. Possible values
-  /// include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE.
-  /// DEFLATE and SNAPPY are only supported for Avro. Not applicable when
-  /// extracting models.
+  /// The compression type to use for exported files.
+  ///
+  /// Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value
+  /// is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable
+  /// when extracting models.
+  ///
+  /// Optional.
   core.String compression;
 
-  /// [Optional] The exported file format. Possible values include CSV,
-  /// NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL
-  /// or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV.
-  /// Tables with nested or repeated fields cannot be exported as CSV. The
-  /// default value for models is ML_TF_SAVED_MODEL.
+  /// The exported file format.
+  ///
+  /// Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for
+  /// tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default
+  /// value for tables is CSV. Tables with nested or repeated fields cannot be
+  /// exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
+  ///
+  /// Optional.
   core.String destinationFormat;
 
   /// [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI
-  /// as necessary. The fully-qualified Google Cloud Storage URI where the
-  /// extracted table should be written.
+  /// as necessary.
+  ///
+  /// The fully-qualified Google Cloud Storage URI where the extracted table
+  /// should be written.
   core.String destinationUri;
 
   /// [Pick one] A list of fully-qualified Google Cloud Storage URIs where the
   /// extracted table should be written.
   core.List<core.String> destinationUris;
 
-  /// [Optional] Delimiter to use between fields in the exported data. Default
-  /// is ','. Not applicable when extracting models.
+  /// Delimiter to use between fields in the exported data.
+  ///
+  /// Default is ','. Not applicable when extracting models.
+  ///
+  /// Optional.
   core.String fieldDelimiter;
 
-  /// [Optional] Whether to print out a header row in the results. Default is
-  /// true. Not applicable when extracting models.
+  /// Whether to print out a header row in the results.
+  ///
+  /// Default is true. Not applicable when extracting models.
+  ///
+  /// Optional.
   core.bool printHeader;
 
   /// A reference to the model being exported.
@@ -6345,11 +6649,14 @@ class JobConfigurationExtract {
   /// A reference to the table being exported.
   TableReference sourceTable;
 
-  /// [Optional] If destinationFormat is set to "AVRO", this flag indicates
-  /// whether to enable extracting applicable column types (such as TIMESTAMP)
-  /// to their corresponding AVRO logical types (timestamp-micros), instead of
-  /// only using their raw types (avro-long). Not applicable when extracting
-  /// models.
+  /// If destinationFormat is set to "AVRO", this flag indicates whether to
+  /// enable extracting applicable column types (such as TIMESTAMP) to their
+  /// corresponding AVRO logical types (timestamp-micros), instead of only using
+  /// their raw types (avro-long).
+  ///
+  /// Not applicable when extracting models.
+  ///
+  /// Optional.
   core.bool useAvroLogicalTypes;
 
   JobConfigurationExtract();
@@ -6422,192 +6729,254 @@ class JobConfigurationExtract {
 }
 
 class JobConfigurationLoad {
-  /// [Optional] Accept rows that are missing trailing optional columns. The
-  /// missing values are treated as nulls. If false, records with missing
+  /// Accept rows that are missing trailing optional columns.
+  ///
+  /// The missing values are treated as nulls. If false, records with missing
   /// trailing columns are treated as bad records, and if there are too many bad
   /// records, an invalid error is returned in the job result. The default value
   /// is false. Only applicable to CSV, ignored for other formats.
+  ///
+  /// Optional.
   core.bool allowJaggedRows;
 
   /// Indicates if BigQuery should allow quoted data sections that contain
-  /// newline characters in a CSV file. The default value is false.
+  /// newline characters in a CSV file.
+  ///
+  /// The default value is false.
   core.bool allowQuotedNewlines;
 
-  /// [Optional] Indicates if we should automatically infer the options and
-  /// schema for CSV and JSON sources.
+  /// Indicates if we should automatically infer the options and schema for CSV
+  /// and JSON sources.
+  ///
+  /// Optional.
   core.bool autodetect;
 
-  /// [Beta] Clustering specification for the destination table. Must be
-  /// specified with time-based partitioning, data in the table will be first
-  /// partitioned and subsequently clustered.
+  /// [Beta] Clustering specification for the destination table.
+  ///
+  /// Must be specified with time-based partitioning, data in the table will be
+  /// first partitioned and subsequently clustered.
   Clustering clustering;
 
-  /// [Optional] Specifies whether the job is allowed to create new tables. The
-  /// following values are supported: CREATE_IF_NEEDED: If the table does not
-  /// exist, BigQuery creates the table. CREATE_NEVER: The table must already
-  /// exist. If it does not, a 'notFound' error is returned in the job result.
-  /// The default value is CREATE_IF_NEEDED. Creation, truncation and append
-  /// actions occur as one atomic update upon job completion.
+  /// Specifies whether the job is allowed to create new tables.
+  ///
+  /// The following values are supported: CREATE_IF_NEEDED: If the table does
+  /// not exist, BigQuery creates the table. CREATE_NEVER: The table must
+  /// already exist. If it does not, a 'notFound' error is returned in the job
+  /// result. The default value is CREATE_IF_NEEDED. Creation, truncation and
+  /// append actions occur as one atomic update upon job completion.
+  ///
+  /// Optional.
   core.String createDisposition;
 
   /// [Trusted Tester] Defines the list of possible SQL data types to which the
-  /// source decimal values are converted. This list and the precision and the
-  /// scale parameters of the decimal field determine the target type. In the
-  /// order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the
-  /// specified list and if it supports the precision and the scale. STRING
-  /// supports all precision and scale values. If none of the listed types
-  /// supports the precision and the scale, the type supporting the widest range
-  /// in the specified list is picked, and if a value exceeds the supported
-  /// range when reading the data, an error will be thrown. For example: suppose
-  /// decimal_target_type = ["NUMERIC", "BIGNUMERIC"]. Then if (precision,scale)
-  /// is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30
-  /// integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10
-  /// fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC
-  /// (error if value exeeds supported range). For duplicated types in this
-  /// field, only one will be considered and the rest will be ignored. The order
-  /// of the types in this field is ignored. For example, ["BIGNUMERIC",
-  /// "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always
-  /// takes precedence over BIGNUMERIC.
+  /// source decimal values are converted.
+  ///
+  /// This list and the precision and the scale parameters of the decimal field
+  /// determine the target type. In the order of NUMERIC, BIGNUMERIC, and
+  /// STRING, a type is picked if it is in the specified list and if it supports
+  /// the precision and the scale. STRING supports all precision and scale
+  /// values. If none of the listed types supports the precision and the scale,
+  /// the type supporting the widest range in the specified list is picked, and
+  /// if a value exceeds the supported range when reading the data, an error
+  /// will be thrown. For example: suppose decimal_target_type = ["NUMERIC",
+  /// "BIGNUMERIC"]. Then if (precision,scale) is: * (38,9) -> NUMERIC; * (39,9)
+  /// -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) ->
+  /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) ->
+  /// BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported
+  /// range). For duplicated types in this field, only one will be considered
+  /// and the rest will be ignored. The order of the types in this field is
+  /// ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC",
+  /// "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
   core.List<core.String> decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration destinationEncryptionConfiguration;
 
-  /// [Required] The destination table to load the data into.
+  /// The destination table to load the data into.
+  ///
+  /// Required.
   TableReference destinationTable;
 
   /// [Beta] [Optional] Properties with which to create the destination table if
   /// it is new.
   DestinationTableProperties destinationTableProperties;
 
-  /// [Optional] The character encoding of the data. The supported values are
-  /// UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data
-  /// after the raw, binary data has been split using the values of the quote
-  /// and fieldDelimiter properties.
+  /// The character encoding of the data.
+  ///
+  /// The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8.
+  /// BigQuery decodes the data after the raw, binary data has been split using
+  /// the values of the quote and fieldDelimiter properties.
+  ///
+  /// Optional.
   core.String encoding;
 
-  /// [Optional] The separator for fields in a CSV file. The separator can be
-  /// any ISO-8859-1 single-byte character. To use a character in the range
-  /// 128-255, you must encode the character as UTF8. BigQuery converts the
-  /// string to ISO-8859-1 encoding, and then uses the first byte of the encoded
-  /// string to split the data in its raw, binary state. BigQuery also supports
-  /// the escape sequence "\t" to specify a tab separator. The default value is
-  /// a comma (',').
+  /// The separator for fields in a CSV file.
+  ///
+  /// The separator can be any ISO-8859-1 single-byte character. To use a
+  /// character in the range 128-255, you must encode the character as UTF8.
+  /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
+  /// first byte of the encoded string to split the data in its raw, binary
+  /// state. BigQuery also supports the escape sequence "\t" to specify a tab
+  /// separator. The default value is a comma (',').
+  ///
+  /// Optional.
   core.String fieldDelimiter;
 
   /// [Optional, Trusted Tester] Options to configure hive partitioning support.
   HivePartitioningOptions hivePartitioningOptions;
 
-  /// [Optional] Indicates if BigQuery should allow extra values that are not
-  /// represented in the table schema. If true, the extra values are ignored. If
-  /// false, records with extra columns are treated as bad records, and if there
-  /// are too many bad records, an invalid error is returned in the job result.
-  /// The default value is false. The sourceFormat property determines what
-  /// BigQuery treats as an extra value: CSV: Trailing columns JSON: Named
-  /// values that don't match any column names
+  /// Indicates if BigQuery should allow extra values that are not represented
+  /// in the table schema.
+  ///
+  /// If true, the extra values are ignored. If false, records with extra
+  /// columns are treated as bad records, and if there are too many bad records,
+  /// an invalid error is returned in the job result. The default value is
+  /// false. The sourceFormat property determines what BigQuery treats as an
+  /// extra value: CSV: Trailing columns JSON: Named values that don't match any
+  /// column names
+  ///
+  /// Optional.
   core.bool ignoreUnknownValues;
 
-  /// [Optional] The maximum number of bad records that BigQuery can ignore when
-  /// running the job. If the number of bad records exceeds this value, an
-  /// invalid error is returned in the job result. This is only valid for CSV
-  /// and JSON. The default value is 0, which requires that all records are
-  /// valid.
+  /// The maximum number of bad records that BigQuery can ignore when running
+  /// the job.
+  ///
+  /// If the number of bad records exceeds this value, an invalid error is
+  /// returned in the job result. This is only valid for CSV and JSON. The
+  /// default value is 0, which requires that all records are valid.
+  ///
+  /// Optional.
   core.int maxBadRecords;
 
-  /// [Optional] Specifies a string that represents a null value in a CSV file.
+  /// Specifies a string that represents a null value in a CSV file.
+  ///
   /// For example, if you specify "\N", BigQuery interprets "\N" as a null value
   /// when loading a CSV file. The default value is the empty string. If you set
   /// this property to a custom value, BigQuery throws an error if an empty
   /// string is present for all data types except for STRING and BYTE. For
   /// STRING and BYTE columns, BigQuery interprets the empty string as an empty
   /// value.
+  ///
+  /// Optional.
   core.String nullMarker;
 
   /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
-  /// properties to load into BigQuery from a Cloud Datastore backup. Property
-  /// names are case sensitive and must be top-level properties. If no
+  /// properties to load into BigQuery from a Cloud Datastore backup.
+  ///
+  /// Property names are case sensitive and must be top-level properties. If no
   /// properties are specified, BigQuery loads all properties. If any named
   /// property isn't found in the Cloud Datastore backup, an invalid error is
   /// returned in the job result.
   core.List<core.String> projectionFields;
 
-  /// [Optional] The value that is used to quote data sections in a CSV file.
+  /// The value that is used to quote data sections in a CSV file.
+  ///
   /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
   /// first byte of the encoded string to split the data in its raw, binary
   /// state. The default value is a double-quote ('"'). If your data does not
   /// contain quoted sections, set the property value to an empty string. If
   /// your data contains quoted newline characters, you must also set the
   /// allowQuotedNewlines property to true.
+  ///
+  /// Optional.
   core.String quote;
 
-  /// [TrustedTester] Range partitioning specification for this table. Only one
-  /// of timePartitioning and rangePartitioning should be specified.
+  /// [TrustedTester] Range partitioning specification for this table.
+  ///
+  /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning rangePartitioning;
 
-  /// [Optional] The schema for the destination table. The schema can be omitted
-  /// if the destination table already exists, or if you're loading data from
-  /// Google Cloud Datastore.
+  /// The schema for the destination table.
+  ///
+  /// The schema can be omitted if the destination table already exists, or if
+  /// you're loading data from Google Cloud Datastore.
+  ///
+  /// Optional.
   TableSchema schema;
 
-  /// [Deprecated] The inline schema. For CSV schemas, specify as
-  /// "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER,
-  /// baz:FLOAT".
+  /// The inline schema.
+  ///
+  /// For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example,
+  /// "foo:STRING, bar:INTEGER, baz:FLOAT".
+  ///
+  /// Deprecated.
   core.String schemaInline;
 
-  /// [Deprecated] The format of the schemaInline property.
+  /// The format of the schemaInline property.
+  ///
+  /// Deprecated.
   core.String schemaInlineFormat;
 
   /// Allows the schema of the destination table to be updated as a side effect
   /// of the load job if a schema is autodetected or supplied in the job
-  /// configuration. Schema update options are supported in two cases: when
-  /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
-  /// and the destination table is a partition of a table, specified by
-  /// partition decorators. For normal tables, WRITE_TRUNCATE will always
-  /// overwrite the schema. One or more of the following values are specified:
-  /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-  /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original
-  /// schema to nullable.
+  /// configuration.
+  ///
+  /// Schema update options are supported in two cases: when writeDisposition is
+  /// WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
+  /// table is a partition of a table, specified by partition decorators. For
+  /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or
+  /// more of the following values are specified: ALLOW_FIELD_ADDITION: allow
+  /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+  /// relaxing a required field in the original schema to nullable.
   core.List<core.String> schemaUpdateOptions;
 
-  /// [Optional] The number of rows at the top of a CSV file that BigQuery will
-  /// skip when loading the data. The default value is 0. This property is
-  /// useful if you have header rows in the file that should be skipped.
+  /// The number of rows at the top of a CSV file that BigQuery will skip when
+  /// loading the data.
+  ///
+  /// The default value is 0. This property is useful if you have header rows in
+  /// the file that should be skipped.
+  ///
+  /// Optional.
   core.int skipLeadingRows;
 
-  /// [Optional] The format of the data files. For CSV files, specify "CSV". For
-  /// datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON,
-  /// specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet,
-  /// specify "PARQUET". For orc, specify "ORC". The default value is CSV.
+  /// The format of the data files.
+  ///
+  /// For CSV files, specify "CSV". For datastore backups, specify
+  /// "DATASTORE_BACKUP". For newline-delimited JSON, specify
+  /// "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify
+  /// "PARQUET". For orc, specify "ORC". The default value is CSV.
+  ///
+  /// Optional.
   core.String sourceFormat;
 
-  /// [Required] The fully-qualified URIs that point to your data in Google
-  /// Cloud. For Google Cloud Storage URIs: Each URI can contain one '*'
-  /// wildcard character and it must come after the 'bucket' name. Size limits
-  /// related to load jobs apply to external data sources. For Google Cloud
-  /// Bigtable URIs: Exactly one URI can be specified and it has be a fully
-  /// specified and valid HTTPS URL for a Google Cloud Bigtable table. For
-  /// Google Cloud Datastore backups: Exactly one URI can be specified. Also,
-  /// the '*' wildcard character is not allowed.
+  /// The fully-qualified URIs that point to your data in Google Cloud.
+  ///
+  /// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard
+  /// character and it must come after the 'bucket' name. Size limits related to
+  /// load jobs apply to external data sources. For Google Cloud Bigtable URIs:
+  /// Exactly one URI can be specified and it has be a fully specified and valid
+  /// HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore
+  /// backups: Exactly one URI can be specified. Also, the '*' wildcard
+  /// character is not allowed.
+  ///
+  /// Required.
   core.List<core.String> sourceUris;
 
-  /// Time-based partitioning specification for the destination table. Only one
-  /// of timePartitioning and rangePartitioning should be specified.
+  /// Time-based partitioning specification for the destination table.
+  ///
+  /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
 
-  /// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable
-  /// interpreting logical types into their corresponding types (ie. TIMESTAMP),
-  /// instead of only using their raw types (ie. INTEGER).
+  /// If sourceFormat is set to "AVRO", indicates whether to enable interpreting
+  /// logical types into their corresponding types (ie.
+  ///
+  /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+  ///
+  /// Optional.
   core.bool useAvroLogicalTypes;
 
-  /// [Optional] Specifies the action that occurs if the destination table
-  /// already exists. The following values are supported: WRITE_TRUNCATE: If the
-  /// table already exists, BigQuery overwrites the table data. WRITE_APPEND: If
-  /// the table already exists, BigQuery appends the data to the table.
-  /// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
-  /// error is returned in the job result. The default value is WRITE_APPEND.
-  /// Each action is atomic and only occurs if BigQuery is able to complete the
-  /// job successfully. Creation, truncation and append actions occur as one
-  /// atomic update upon job completion.
+  /// Specifies the action that occurs if the destination table already exists.
+  ///
+  /// The following values are supported: WRITE_TRUNCATE: If the table already
+  /// exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
+  /// already exists, BigQuery appends the data to the table. WRITE_EMPTY: If
+  /// the table already exists and contains data, a 'duplicate' error is
+  /// returned in the job result. The default value is WRITE_APPEND. Each action
+  /// is atomic and only occurs if BigQuery is able to complete the job
+  /// successfully. Creation, truncation and append actions occur as one atomic
+  /// update upon job completion.
+  ///
+  /// Optional.
   core.String writeDisposition;
 
   JobConfigurationLoad();
@@ -6810,131 +7179,178 @@ class JobConfigurationLoad {
 }
 
 class JobConfigurationQuery {
-  /// [Optional] If true and query uses legacy SQL dialect, allows the query to
-  /// produce arbitrarily large result tables at a slight cost in performance.
+  /// If true and query uses legacy SQL dialect, allows the query to produce
+  /// arbitrarily large result tables at a slight cost in performance.
+  ///
   /// Requires destinationTable to be set. For standard SQL queries, this flag
   /// is ignored and large results are always allowed. However, you must still
   /// set destinationTable when result size exceeds the allowed maximum response
   /// size.
+  ///
+  /// Optional.
   core.bool allowLargeResults;
 
-  /// [Beta] Clustering specification for the destination table. Must be
-  /// specified with time-based partitioning, data in the table will be first
-  /// partitioned and subsequently clustered.
+  /// [Beta] Clustering specification for the destination table.
+  ///
+  /// Must be specified with time-based partitioning, data in the table will be
+  /// first partitioned and subsequently clustered.
   Clustering clustering;
 
   /// Connection properties.
   core.List<ConnectionProperty> connectionProperties;
 
-  /// [Optional] Specifies whether the job is allowed to create new tables. The
-  /// following values are supported: CREATE_IF_NEEDED: If the table does not
-  /// exist, BigQuery creates the table. CREATE_NEVER: The table must already
-  /// exist. If it does not, a 'notFound' error is returned in the job result.
-  /// The default value is CREATE_IF_NEEDED. Creation, truncation and append
-  /// actions occur as one atomic update upon job completion.
+  /// Specifies whether the job is allowed to create new tables.
+  ///
+  /// The following values are supported: CREATE_IF_NEEDED: If the table does
+  /// not exist, BigQuery creates the table. CREATE_NEVER: The table must
+  /// already exist. If it does not, a 'notFound' error is returned in the job
+  /// result. The default value is CREATE_IF_NEEDED. Creation, truncation and
+  /// append actions occur as one atomic update upon job completion.
+  ///
+  /// Optional.
   core.String createDisposition;
 
-  /// [Optional] Specifies the default dataset to use for unqualified table
-  /// names in the query. Note that this does not alter behavior of unqualified
-  /// dataset names.
+  /// Specifies the default dataset to use for unqualified table names in the
+  /// query.
+  ///
+  /// Note that this does not alter behavior of unqualified dataset names.
+  ///
+  /// Optional.
   DatasetReference defaultDataset;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration destinationEncryptionConfiguration;
 
-  /// [Optional] Describes the table where the query results should be stored.
+  /// Describes the table where the query results should be stored.
+  ///
   /// If not present, a new table will be created to store the results. This
   /// property must be set for large results that exceed the maximum response
   /// size.
+  ///
+  /// Optional.
   TableReference destinationTable;
 
-  /// [Optional] If true and query uses legacy SQL dialect, flattens all nested
-  /// and repeated fields in the query results. allowLargeResults must be true
-  /// if this is set to false. For standard SQL queries, this flag is ignored
-  /// and results are never flattened.
+  /// If true and query uses legacy SQL dialect, flattens all nested and
+  /// repeated fields in the query results.
+  ///
+  /// allowLargeResults must be true if this is set to false. For standard SQL
+  /// queries, this flag is ignored and results are never flattened.
+  ///
+  /// Optional.
   core.bool flattenResults;
 
-  /// [Optional] Limits the billing tier for this job. Queries that have
-  /// resource usage beyond this tier will fail (without incurring a charge). If
-  /// unspecified, this will be set to your project default.
+  /// Limits the billing tier for this job.
+  ///
+  /// Queries that have resource usage beyond this tier will fail (without
+  /// incurring a charge). If unspecified, this will be set to your project
+  /// default.
+  ///
+  /// Optional.
   core.int maximumBillingTier;
 
-  /// [Optional] Limits the bytes billed for this job. Queries that will have
-  /// bytes billed beyond this limit will fail (without incurring a charge). If
-  /// unspecified, this will be set to your project default.
+  /// Limits the bytes billed for this job.
+  ///
+  /// Queries that will have bytes billed beyond this limit will fail (without
+  /// incurring a charge). If unspecified, this will be set to your project
+  /// default.
+  ///
+  /// Optional.
   core.String maximumBytesBilled;
 
-  /// Standard SQL only. Set to POSITIONAL to use positional (?) query
-  /// parameters or to NAMED to use named (@myparam) query parameters in this
-  /// query.
+  /// Standard SQL only.
+  ///
+  /// Set to POSITIONAL to use positional (?) query parameters or to NAMED to
+  /// use named (@myparam) query parameters in this query.
   core.String parameterMode;
 
-  /// [Deprecated] This property is deprecated.
+  /// This property is deprecated.
+  ///
+  /// Deprecated.
   core.bool preserveNulls;
 
-  /// [Optional] Specifies a priority for the query. Possible values include
-  /// INTERACTIVE and BATCH. The default value is INTERACTIVE.
+  /// Specifies a priority for the query.
+  ///
+  /// Possible values include INTERACTIVE and BATCH. The default value is
+  /// INTERACTIVE.
+  ///
+  /// Optional.
   core.String priority;
 
-  /// [Required] SQL query text to execute. The useLegacySql field can be used
-  /// to indicate whether the query uses legacy SQL or standard SQL.
+  /// SQL query text to execute.
+  ///
+  /// The useLegacySql field can be used to indicate whether the query uses
+  /// legacy SQL or standard SQL.
+  ///
+  /// Required.
   core.String query;
 
   /// Query parameters for standard SQL queries.
   core.List<QueryParameter> queryParameters;
 
-  /// [TrustedTester] Range partitioning specification for this table. Only one
-  /// of timePartitioning and rangePartitioning should be specified.
+  /// [TrustedTester] Range partitioning specification for this table.
+  ///
+  /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning rangePartitioning;
 
   /// Allows the schema of the destination table to be updated as a side effect
-  /// of the query job. Schema update options are supported in two cases: when
-  /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
-  /// and the destination table is a partition of a table, specified by
-  /// partition decorators. For normal tables, WRITE_TRUNCATE will always
-  /// overwrite the schema. One or more of the following values are specified:
-  /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-  /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original
-  /// schema to nullable.
+  /// of the query job.
+  ///
+  /// Schema update options are supported in two cases: when writeDisposition is
+  /// WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
+  /// table is a partition of a table, specified by partition decorators. For
+  /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or
+  /// more of the following values are specified: ALLOW_FIELD_ADDITION: allow
+  /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+  /// relaxing a required field in the original schema to nullable.
   core.List<core.String> schemaUpdateOptions;
 
-  /// [Optional] If querying an external data source outside of BigQuery,
-  /// describes the data format, location and other properties of the data
-  /// source. By defining these properties, the data source can then be queried
-  /// as if it were a standard BigQuery table.
+  /// If querying an external data source outside of BigQuery, describes the
+  /// data format, location and other properties of the data source.
+  ///
+  /// By defining these properties, the data source can then be queried as if it
+  /// were a standard BigQuery table.
+  ///
+  /// Optional.
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
 
-  /// Time-based partitioning specification for the destination table. Only one
-  /// of timePartitioning and rangePartitioning should be specified.
+  /// Time-based partitioning specification for the destination table.
+  ///
+  /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
 
-  /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The
-  /// default value is true. If set to false, the query will use BigQuery's
+  /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
+  ///
+  /// The default value is true. If set to false, the query will use BigQuery's
   /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
   /// useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
   core.bool useLegacySql;
 
-  /// [Optional] Whether to look for the result in the query cache. The query
-  /// cache is a best-effort cache that will be flushed whenever tables in the
-  /// query are modified. Moreover, the query cache is only available when a
-  /// query does not have a destination table specified. The default value is
-  /// true.
+  /// Whether to look for the result in the query cache.
+  ///
+  /// The query cache is a best-effort cache that will be flushed whenever
+  /// tables in the query are modified. Moreover, the query cache is only
+  /// available when a query does not have a destination table specified. The
+  /// default value is true.
+  ///
+  /// Optional.
   core.bool useQueryCache;
 
   /// Describes user-defined function resources used in the query.
   core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
 
-  /// [Optional] Specifies the action that occurs if the destination table
-  /// already exists. The following values are supported: WRITE_TRUNCATE: If the
-  /// table already exists, BigQuery overwrites the table data and uses the
-  /// schema from the query result. WRITE_APPEND: If the table already exists,
-  /// BigQuery appends the data to the table. WRITE_EMPTY: If the table already
-  /// exists and contains data, a 'duplicate' error is returned in the job
-  /// result. The default value is WRITE_EMPTY. Each action is atomic and only
-  /// occurs if BigQuery is able to complete the job successfully. Creation,
-  /// truncation and append actions occur as one atomic update upon job
-  /// completion.
+  /// Specifies the action that occurs if the destination table already exists.
+  ///
+  /// The following values are supported: WRITE_TRUNCATE: If the table already
+  /// exists, BigQuery overwrites the table data and uses the schema from the
+  /// query result. WRITE_APPEND: If the table already exists, BigQuery appends
+  /// the data to the table. WRITE_EMPTY: If the table already exists and
+  /// contains data, a 'duplicate' error is returned in the job result. The
+  /// default value is WRITE_EMPTY. Each action is atomic and only occurs if
+  /// BigQuery is able to complete the job successfully. Creation, truncation
+  /// and append actions occur as one atomic update upon job completion.
+  ///
+  /// Optional.
   core.String writeDisposition;
 
   JobConfigurationQuery();
@@ -7120,28 +7536,38 @@ class JobConfigurationQuery {
 }
 
 class JobConfigurationTableCopy {
-  /// [Optional] Specifies whether the job is allowed to create new tables. The
-  /// following values are supported: CREATE_IF_NEEDED: If the table does not
-  /// exist, BigQuery creates the table. CREATE_NEVER: The table must already
-  /// exist. If it does not, a 'notFound' error is returned in the job result.
-  /// The default value is CREATE_IF_NEEDED. Creation, truncation and append
-  /// actions occur as one atomic update upon job completion.
+  /// Specifies whether the job is allowed to create new tables.
+  ///
+  /// The following values are supported: CREATE_IF_NEEDED: If the table does
+  /// not exist, BigQuery creates the table. CREATE_NEVER: The table must
+  /// already exist. If it does not, a 'notFound' error is returned in the job
+  /// result. The default value is CREATE_IF_NEEDED. Creation, truncation and
+  /// append actions occur as one atomic update upon job completion.
+  ///
+  /// Optional.
   core.String createDisposition;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration destinationEncryptionConfiguration;
 
-  /// [Optional] The time when the destination table expires. Expired tables
-  /// will be deleted and their storage reclaimed.
+  /// The time when the destination table expires.
+  ///
+  /// Expired tables will be deleted and their storage reclaimed.
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object destinationExpirationTime;
 
-  /// [Required] The destination table
+  /// The destination table
+  ///
+  /// Required.
   TableReference destinationTable;
 
-  /// [Optional] Supported operation types in table copy job.
+  /// Supported operation types in table copy job.
+  ///
+  /// Optional.
   core.String operationType;
 
   /// [Pick one] Source table to copy.
@@ -7150,15 +7576,18 @@ class JobConfigurationTableCopy {
   /// [Pick one] Source tables to copy.
   core.List<TableReference> sourceTables;
 
-  /// [Optional] Specifies the action that occurs if the destination table
-  /// already exists. The following values are supported: WRITE_TRUNCATE: If the
-  /// table already exists, BigQuery overwrites the table data. WRITE_APPEND: If
-  /// the table already exists, BigQuery appends the data to the table.
-  /// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
-  /// error is returned in the job result. The default value is WRITE_EMPTY.
-  /// Each action is atomic and only occurs if BigQuery is able to complete the
-  /// job successfully. Creation, truncation and append actions occur as one
-  /// atomic update upon job completion.
+  /// Specifies the action that occurs if the destination table already exists.
+  ///
+  /// The following values are supported: WRITE_TRUNCATE: If the table already
+  /// exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
+  /// already exists, BigQuery appends the data to the table. WRITE_EMPTY: If
+  /// the table already exists and contains data, a 'duplicate' error is
+  /// returned in the job result. The default value is WRITE_EMPTY. Each action
+  /// is atomic and only occurs if BigQuery is able to complete the job
+  /// successfully. Creation, truncation and append actions occur as one atomic
+  /// update upon job completion.
+  ///
+  /// Optional.
   core.String writeDisposition;
 
   JobConfigurationTableCopy();
@@ -7246,8 +7675,10 @@ class JobListJobs {
   /// The resource type.
   core.String kind;
 
-  /// Running state of the job. When the state is DONE, errorResult can be
-  /// checked to determine whether the job succeeded or failed.
+  /// Running state of the job.
+  ///
+  /// When the state is DONE, errorResult can be checked to determine whether
+  /// the job succeeded or failed.
   core.String state;
 
   /// [Output-only] Information about the job, including starting time and
@@ -7382,16 +7813,23 @@ class JobList {
 }
 
 class JobReference {
-  /// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z),
-  /// numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024
-  /// characters.
+  /// The ID of the job.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores
+  /// (_), or dashes (-). The maximum length is 1,024 characters.
+  ///
+  /// Required.
   core.String jobId;
 
-  /// The geographic location of the job. See details at
+  /// The geographic location of the job.
+  ///
+  /// See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   core.String location;
 
-  /// [Required] The ID of the project containing this job.
+  /// The ID of the project containing this job.
+  ///
+  /// Required.
   core.String projectId;
 
   JobReference();
@@ -7460,11 +7898,13 @@ class JobStatistics {
   core.double completionRatio;
 
   /// [Output-only] Creation time of this job, in milliseconds since the epoch.
+  ///
   /// This field will be present on all jobs.
   core.String creationTime;
 
-  /// [Output-only] End time of this job, in milliseconds since the epoch. This
-  /// field will be present whenever a job is in the DONE state.
+  /// [Output-only] End time of this job, in milliseconds since the epoch.
+  ///
+  /// This field will be present whenever a job is in the DONE state.
   core.String endTime;
 
   /// [Output-only] Statistics for an extract job.
@@ -7488,19 +7928,23 @@ class JobStatistics {
   /// [Output-only] Job resource usage breakdown by reservation.
   core.List<JobStatisticsReservationUsage> reservationUsage;
 
-  /// [Output-only] Name of the primary reservation assigned to this job. Note
-  /// that this could be different than reservations reported in the reservation
-  /// usage field if parent reservations were used to execute this job.
+  /// [Output-only] Name of the primary reservation assigned to this job.
+  ///
+  /// Note that this could be different than reservations reported in the
+  /// reservation usage field if parent reservations were used to execute this
+  /// job.
   core.String reservationId;
 
-  /// [Output-only] [Preview] Statistics for row-level security. Present only
-  /// for query and extract jobs.
+  /// [Output-only] [Preview] Statistics for row-level security.
+  ///
+  /// Present only for query and extract jobs.
   RowLevelSecurityStatistics rowLevelSecurityStatistics;
 
   /// [Output-only] Statistics for a child job of a script.
   ScriptStatistics scriptStatistics;
 
   /// [Output-only] Start time of this job, in milliseconds since the epoch.
+  ///
   /// This field will be present when the job transitions from the PENDING state
   /// to either RUNNING or DONE.
   core.String startTime;
@@ -7683,29 +8127,37 @@ class JobStatistics2 {
   core.bool cacheHit;
 
   /// [Output-only] [Preview] The number of row access policies affected by a
-  /// DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+  /// DDL statement.
+  ///
+  /// Present only for DROP ALL ROW ACCESS POLICIES queries.
   core.String ddlAffectedRowAccessPolicyCount;
 
   /// The DDL operation performed, possibly dependent on the pre-existence of
-  /// the DDL target. Possible values (new values might be added in the future):
-  /// "CREATE": The query created the DDL target. "SKIP": No-op. Example cases:
-  /// the query is CREATE TABLE IF NOT EXISTS while the table already exists, or
-  /// the query is DROP TABLE IF EXISTS while the table does not exist.
-  /// "REPLACE": The query replaced the DDL target. Example case: the query is
-  /// CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query
-  /// deleted the DDL target.
+  /// the DDL target.
+  ///
+  /// Possible values (new values might be added in the future): "CREATE": The
+  /// query created the DDL target. "SKIP": No-op. Example cases: the query is
+  /// CREATE TABLE IF NOT EXISTS while the table already exists, or the query is
+  /// DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query
+  /// replaced the DDL target. Example case: the query is CREATE OR REPLACE
+  /// TABLE, and the table already exists. "DROP": The query deleted the DDL
+  /// target.
   core.String ddlOperationPerformed;
 
-  /// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE
-  /// queries.
+  /// The DDL target routine.
+  ///
+  /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
   RoutineReference ddlTargetRoutine;
 
-  /// [Output-only] [Preview] The DDL target row access policy. Present only for
-  /// CREATE/DROP ROW ACCESS POLICY queries.
+  /// [Output-only] [Preview] The DDL target row access policy.
+  ///
+  /// Present only for CREATE/DROP ROW ACCESS POLICY queries.
   RowAccessPolicyReference ddlTargetRowAccessPolicy;
 
-  /// [Output-only] The DDL target table. Present only for CREATE/DROP
-  /// TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+  /// [Output-only] The DDL target table.
+  ///
+  /// Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
+  /// queries.
   TableReference ddlTargetTable;
 
   /// [Output-only] The original estimate of bytes processed for the job.
@@ -7720,8 +8172,9 @@ class JobStatistics2 {
   /// [Output-only, Beta] Deprecated; do not use.
   core.String modelTrainingExpectedTotalIteration;
 
-  /// [Output-only] The number of rows affected by a DML statement. Present only
-  /// for DML statements INSERT, UPDATE or DELETE.
+  /// [Output-only] The number of rows affected by a DML statement.
+  ///
+  /// Present only for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
 
   /// [Output-only] Describes execution plan for the query.
@@ -7731,20 +8184,23 @@ class JobStatistics2 {
   /// stored procedures) for the job.
   core.List<RoutineReference> referencedRoutines;
 
-  /// [Output-only] Referenced tables for the job. Queries that reference more
-  /// than 50 tables will not have a complete list.
+  /// [Output-only] Referenced tables for the job.
+  ///
+  /// Queries that reference more than 50 tables will not have a complete list.
   core.List<TableReference> referencedTables;
 
   /// [Output-only] Job resource usage breakdown by reservation.
   core.List<JobStatistics2ReservationUsage> reservationUsage;
 
-  /// [Output-only] The schema of the results. Present only for successful dry
-  /// run of non-legacy SQL queries.
+  /// [Output-only] The schema of the results.
+  ///
+  /// Present only for successful dry run of non-legacy SQL queries.
   TableSchema schema;
 
-  /// The type of query statement, if valid. Possible values (new values might
-  /// be added in the future): "SELECT": SELECT query. "INSERT": INSERT query;
-  /// see
+  /// The type of query statement, if valid.
+  ///
+  /// Possible values (new values might be added in the future): "SELECT":
+  /// SELECT query. "INSERT": INSERT query; see
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "UPDATE": UPDATE query; see
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
@@ -7773,10 +8229,12 @@ class JobStatistics2 {
   core.String totalBytesProcessed;
 
   /// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and
-  /// this field specifies the accuracy of the estimate. Possible values can be:
-  /// UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is
-  /// precise. LOWER_BOUND: estimate is lower bound of what the query would
-  /// cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+  /// this field specifies the accuracy of the estimate.
+  ///
+  /// Possible values can be: UNKNOWN: accuracy of the estimate is unknown.
+  /// PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what
+  /// the query would cost. UPPER_BOUND: estimate is upper bound of what the
+  /// query would cost.
   core.String totalBytesProcessedAccuracy;
 
   /// [Output-only] Total number of partitions processed from all partitioned
@@ -7989,10 +8447,12 @@ class JobStatistics2 {
 }
 
 class JobStatistics3 {
-  /// [Output-only] The number of bad records encountered. Note that if the job
-  /// has failed because of more bad records encountered than the maximum
-  /// allowed in the load job configuration, then this number can be less than
-  /// the total number of bad records present in the input data.
+  /// [Output-only] The number of bad records encountered.
+  ///
+  /// Note that if the job has failed because of more bad records encountered
+  /// than the maximum allowed in the load job configuration, then this number
+  /// can be less than the total number of bad records present in the input
+  /// data.
   core.String badRecords;
 
   /// [Output-only] Number of bytes of source data in a load job.
@@ -8001,12 +8461,15 @@ class JobStatistics3 {
   /// [Output-only] Number of source files in a load job.
   core.String inputFiles;
 
-  /// [Output-only] Size of the loaded data in bytes. Note that while a load job
-  /// is in the running state, this value may change.
+  /// [Output-only] Size of the loaded data in bytes.
+  ///
+  /// Note that while a load job is in the running state, this value may change.
   core.String outputBytes;
 
-  /// [Output-only] Number of rows imported in a load job. Note that while an
-  /// import job is in the running state, this value may change.
+  /// [Output-only] Number of rows imported in a load job.
+  ///
+  /// Note that while an import job is in the running state, this value may
+  /// change.
   core.String outputRows;
 
   JobStatistics3();
@@ -8052,12 +8515,15 @@ class JobStatistics3 {
 
 class JobStatistics4 {
   /// [Output-only] Number of files per destination URI or URI pattern specified
-  /// in the extract configuration. These values will be in the same order as
-  /// the URIs specified in the 'destinationUris' field.
+  /// in the extract configuration.
+  ///
+  /// These values will be in the same order as the URIs specified in the
+  /// 'destinationUris' field.
   core.List<core.String> destinationUriFileCounts;
 
-  /// [Output-only] Number of user bytes extracted into the result. This is the
-  /// byte count as computed by BigQuery for billing purposes.
+  /// [Output-only] Number of user bytes extracted into the result.
+  ///
+  /// This is the byte count as computed by BigQuery for billing purposes.
   core.String inputBytes;
 
   JobStatistics4();
@@ -8087,11 +8553,13 @@ class JobStatistics4 {
 }
 
 class JobStatus {
-  /// [Output-only] Final error result of the job. If present, indicates that
-  /// the job has completed and was unsuccessful.
+  /// [Output-only] Final error result of the job.
+  ///
+  /// If present, indicates that the job has completed and was unsuccessful.
   ErrorProto errorResult;
 
   /// [Output-only] The first errors encountered during the running of the job.
+  ///
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
   /// was unsuccessful.
@@ -8169,8 +8637,10 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
 }
 
 class ListModelsResponse {
-  /// Models in the requested dataset. Only the following fields are populated:
-  /// model_reference, model_type, creation_time, last_modified_time and labels.
+  /// Models in the requested dataset.
+  ///
+  /// Only the following fields are populated: model_reference, model_type,
+  /// creation_time, last_modified_time and labels.
   core.List<Model> models;
 
   /// A token to request the next page of results.
@@ -8206,9 +8676,11 @@ class ListRoutinesResponse {
   /// A token to request the next page of results.
   core.String nextPageToken;
 
-  /// Routines in the requested dataset. Unless read_mask is set in the request,
-  /// only the following fields are populated: etag, project_id, dataset_id,
-  /// routine_id, routine_type, creation_time, last_modified_time, and language.
+  /// Routines in the requested dataset.
+  ///
+  /// Unless read_mask is set in the request, only the following fields are
+  /// populated: etag, project_id, dataset_id, routine_id, routine_type,
+  /// creation_time, last_modified_time, and language.
   core.List<Routine> routines;
 
   ListRoutinesResponse();
@@ -8237,11 +8709,15 @@ class ListRoutinesResponse {
   }
 }
 
-/// BigQuery-specific metadata about a location. This will be set on
-/// google.cloud.location.Location.metadata in Cloud Location API responses.
+/// BigQuery-specific metadata about a location.
+///
+/// This will be set on google.cloud.location.Location.metadata in Cloud
+/// Location API responses.
 class LocationMetadata {
-  /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This
-  /// is for any API consumers that need the legacy “US” and “EU” locations.
+  /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
+  ///
+  /// This is for any API consumers that need the legacy “US” and “EU”
+  /// locations.
   core.String legacyLocationId;
 
   LocationMetadata();
@@ -8262,20 +8738,29 @@ class LocationMetadata {
 }
 
 class MaterializedViewDefinition {
-  /// [Optional] [TrustedTester] Enable automatic refresh of the materialized
-  /// view when the base table is updated. The default value is "true".
+  /// [TrustedTester] Enable automatic refresh of the materialized view when the
+  /// base table is updated.
+  ///
+  /// The default value is "true".
+  ///
+  /// Optional.
   core.bool enableRefresh;
 
   /// [Output-only] [TrustedTester] The time when this materialized view was
   /// last modified, in milliseconds since the epoch.
   core.String lastRefreshTime;
 
-  /// [Required] A query whose result is persisted.
+  /// A query whose result is persisted.
+  ///
+  /// Required.
   core.String query;
 
-  /// [Optional] [TrustedTester] The maximum frequency at which this
-  /// materialized view will be refreshed. The default value is "1800000" (30
-  /// minutes).
+  /// [TrustedTester] The maximum frequency at which this materialized view will
+  /// be refreshed.
+  ///
+  /// The default value is "1800000" (30 minutes).
+  ///
+  /// Optional.
   core.String refreshIntervalMs;
 
   MaterializedViewDefinition();
@@ -8314,59 +8799,84 @@ class MaterializedViewDefinition {
 }
 
 class Model {
-  /// Output only. The time when this model was created, in millisecs since the
-  /// epoch.
+  /// The time when this model was created, in millisecs since the epoch.
+  ///
+  /// Output only.
   core.String creationTime;
 
-  /// Optional. A user-friendly description of this model.
+  /// A user-friendly description of this model.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Custom encryption configuration (e.g., Cloud KMS keys). This shows the
-  /// encryption configuration of the model data while stored in BigQuery
-  /// storage. This field can be used with PatchModel to update encryption key
-  /// for an already encrypted model.
+  /// Custom encryption configuration (e.g., Cloud KMS keys).
+  ///
+  /// This shows the encryption configuration of the model data while stored in
+  /// BigQuery storage. This field can be used with PatchModel to update
+  /// encryption key for an already encrypted model.
   EncryptionConfiguration encryptionConfiguration;
 
-  /// Output only. A hash of this resource.
+  /// A hash of this resource.
+  ///
+  /// Output only.
   core.String etag;
 
-  /// Optional. The time when this model expires, in milliseconds since the
-  /// epoch. If not present, the model will persist indefinitely. Expired models
-  /// will be deleted and their storage reclaimed. The defaultTableExpirationMs
+  /// The time when this model expires, in milliseconds since the epoch.
+  ///
+  /// If not present, the model will persist indefinitely. Expired models will
+  /// be deleted and their storage reclaimed. The defaultTableExpirationMs
   /// property of the encapsulating dataset can be used to set a default
   /// expirationTime on newly created models.
+  ///
+  /// Optional.
   core.String expirationTime;
 
-  /// Output only. Input feature columns that were used to train this model.
+  /// Input feature columns that were used to train this model.
+  ///
+  /// Output only.
   core.List<StandardSqlField> featureColumns;
 
-  /// Optional. A descriptive name for this model.
+  /// A descriptive name for this model.
+  ///
+  /// Optional.
   core.String friendlyName;
 
-  /// Output only. Label columns that were used to train this model. The output
-  /// of the model will have a "predicted_" prefix to these columns.
+  /// Label columns that were used to train this model.
+  ///
+  /// The output of the model will have a "predicted_" prefix to these columns.
+  ///
+  /// Output only.
   core.List<StandardSqlField> labelColumns;
 
-  /// The labels associated with this model. You can use these to organize and
-  /// group your models. Label keys and values can be no longer than 63
-  /// characters, can only contain lowercase letters, numeric characters,
-  /// underscores and dashes. International characters are allowed. Label values
-  /// are optional. Label keys must start with a letter and each label in the
-  /// list must have a different key.
+  /// The labels associated with this model.
+  ///
+  /// You can use these to organize and group your models. Label keys and values
+  /// can be no longer than 63 characters, can only contain lowercase letters,
+  /// numeric characters, underscores and dashes. International characters are
+  /// allowed. Label values are optional. Label keys must start with a letter
+  /// and each label in the list must have a different key.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The time when this model was last modified, in millisecs
-  /// since the epoch.
+  /// The time when this model was last modified, in millisecs since the epoch.
+  ///
+  /// Output only.
   core.String lastModifiedTime;
 
-  /// Output only. The geographic location where the model resides. This value
-  /// is inherited from the dataset.
+  /// The geographic location where the model resides.
+  ///
+  /// This value is inherited from the dataset.
+  ///
+  /// Output only.
   core.String location;
 
-  /// Required. Unique identifier for this model.
+  /// Unique identifier for this model.
+  ///
+  /// Required.
   ModelReference modelReference;
 
-  /// Output only. Type of the model resource.
+  /// Type of the model resource.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "MODEL_TYPE_UNSPECIFIED"
   /// - "LINEAR_REGRESSION" : Linear regression model.
@@ -8383,8 +8893,9 @@ class Model {
   /// - "AUTOML_CLASSIFIER" : [Beta] AutoML Tables classification model.
   core.String modelType;
 
-  /// Output only. Information for all training runs in increasing order of
-  /// start_time.
+  /// Information for all training runs in increasing order of start_time.
+  ///
+  /// Output only.
   core.List<TrainingRun> trainingRuns;
 
   Model();
@@ -8503,9 +9014,10 @@ class Model {
   }
 }
 
-/// [Output-only, Beta] Model options used for the first training run. These
-/// options are immutable for subsequent training runs. Default values are used
-/// for any options not specified in the input query.
+/// [Output-only, Beta] Model options used for the first training run.
+///
+/// These options are immutable for subsequent training runs. Default values are
+/// used for any options not specified in the input query.
 class ModelDefinitionModelOptions {
   core.List<core.String> labels;
   core.String lossType;
@@ -8543,9 +9055,10 @@ class ModelDefinitionModelOptions {
 }
 
 class ModelDefinition {
-  /// [Output-only, Beta] Model options used for the first training run. These
-  /// options are immutable for subsequent training runs. Default values are
-  /// used for any options not specified in the input query.
+  /// [Output-only, Beta] Model options used for the first training run.
+  ///
+  /// These options are immutable for subsequent training runs. Default values
+  /// are used for any options not specified in the input query.
   ModelDefinitionModelOptions modelOptions;
 
   /// [Output-only, Beta] Information about ml training runs, each training run
@@ -8583,15 +9096,22 @@ class ModelDefinition {
 }
 
 class ModelReference {
-  /// [Required] The ID of the dataset containing this model.
+  /// The ID of the dataset containing this model.
+  ///
+  /// Required.
   core.String datasetId;
 
-  /// [Required] The ID of the model. The ID must contain only letters (a-z,
-  /// A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024
-  /// characters.
+  /// The ID of the model.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+  /// (_). The maximum length is 1,024 characters.
+  ///
+  /// Required.
   core.String modelId;
 
-  /// [Required] The ID of the project containing this model.
+  /// The ID of the project containing this model.
+  ///
+  /// Required.
   core.String projectId;
 
   ModelReference();
@@ -8662,16 +9182,18 @@ class MultiClassClassificationMetrics {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -8694,14 +9216,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -8718,20 +9243,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -8896,8 +9423,11 @@ class ProjectList {
 }
 
 class ProjectReference {
-  /// [Required] ID of the project. Can be either the numeric ID or the assigned
   /// ID of the project.
+  ///
+  /// Can be either the numeric ID or the assigned ID of the project.
+  ///
+  /// Required.
   core.String projectId;
 
   ProjectReference();
@@ -8918,14 +9448,21 @@ class ProjectReference {
 }
 
 class QueryParameter {
-  /// [Optional] If unset, this is a positional parameter. Otherwise, should be
-  /// unique within a query.
+  /// If unset, this is a positional parameter.
+  ///
+  /// Otherwise, should be unique within a query.
+  ///
+  /// Optional.
   core.String name;
 
-  /// [Required] The type of this parameter.
+  /// The type of this parameter.
+  ///
+  /// Required.
   QueryParameterType parameterType;
 
-  /// [Required] The value of this parameter.
+  /// The value of this parameter.
+  ///
+  /// Required.
   QueryParameterValue parameterValue;
 
   QueryParameter();
@@ -8960,13 +9497,19 @@ class QueryParameter {
 }
 
 class QueryParameterTypeStructTypes {
-  /// [Optional] Human-oriented description of the field.
+  /// Human-oriented description of the field.
+  ///
+  /// Optional.
   core.String description;
 
-  /// [Optional] The name of this field.
+  /// The name of this field.
+  ///
+  /// Optional.
   core.String name;
 
-  /// [Required] The type of this field.
+  /// The type of this field.
+  ///
+  /// Required.
   QueryParameterType type;
 
   QueryParameterTypeStructTypes();
@@ -9000,14 +9543,19 @@ class QueryParameterTypeStructTypes {
 }
 
 class QueryParameterType {
-  /// [Optional] The type of the array's elements, if this is an array.
+  /// The type of the array's elements, if this is an array.
+  ///
+  /// Optional.
   QueryParameterType arrayType;
 
-  /// [Optional] The types of the fields of this struct, in order, if this is a
-  /// struct.
+  /// The types of the fields of this struct, in order, if this is a struct.
+  ///
+  /// Optional.
   core.List<QueryParameterTypeStructTypes> structTypes;
 
-  /// [Required] The top level type of this field.
+  /// The top level type of this field.
+  ///
+  /// Required.
   core.String type;
 
   QueryParameterType();
@@ -9046,14 +9594,19 @@ class QueryParameterType {
 }
 
 class QueryParameterValue {
-  /// [Optional] The array values, if this is an array type.
+  /// The array values, if this is an array type.
+  ///
+  /// Optional.
   core.List<QueryParameterValue> arrayValues;
 
-  /// [Optional] The struct field values, in order of the struct type's
-  /// declaration.
+  /// The struct field values, in order of the struct type's declaration.
+  ///
+  /// Optional.
   core.Map<core.String, QueryParameterValue> structValues;
 
-  /// [Optional] The value of this value, if a simple scalar type.
+  /// The value of this value, if a simple scalar type.
+  ///
+  /// Optional.
   core.String value;
 
   QueryParameterValue();
@@ -9101,62 +9654,87 @@ class QueryRequest {
   /// Connection properties.
   core.List<ConnectionProperty> connectionProperties;
 
-  /// [Optional] Specifies the default datasetId and projectId to assume for any
-  /// unqualified table names in the query. If not set, all table names in the
-  /// query string must be qualified in the format 'datasetId.tableId'.
+  /// Specifies the default datasetId and projectId to assume for any
+  /// unqualified table names in the query.
+  ///
+  /// If not set, all table names in the query string must be qualified in the
+  /// format 'datasetId.tableId'.
+  ///
+  /// Optional.
   DatasetReference defaultDataset;
 
-  /// [Optional] If set to true, BigQuery doesn't run the job. Instead, if the
-  /// query is valid, BigQuery returns statistics about the job such as how many
-  /// bytes would be processed. If the query is invalid, an error returns. The
-  /// default value is false.
+  /// If set to true, BigQuery doesn't run the job.
+  ///
+  /// Instead, if the query is valid, BigQuery returns statistics about the job
+  /// such as how many bytes would be processed. If the query is invalid, an
+  /// error returns. The default value is false.
+  ///
+  /// Optional.
   core.bool dryRun;
 
   /// The resource type of the request.
   core.String kind;
 
-  /// The labels associated with this job. You can use these to organize and
-  /// group your jobs. Label keys and values can be no longer than 63
-  /// characters, can only contain lowercase letters, numeric characters,
-  /// underscores and dashes. International characters are allowed. Label values
-  /// are optional. Label keys must start with a letter and each label in the
-  /// list must have a different key.
+  /// The labels associated with this job.
+  ///
+  /// You can use these to organize and group your jobs. Label keys and values
+  /// can be no longer than 63 characters, can only contain lowercase letters,
+  /// numeric characters, underscores and dashes. International characters are
+  /// allowed. Label values are optional. Label keys must start with a letter
+  /// and each label in the list must have a different key.
   core.Map<core.String, core.String> labels;
 
-  /// The geographic location where the job should run. See details at
+  /// The geographic location where the job should run.
+  ///
+  /// See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   core.String location;
 
-  /// [Optional] The maximum number of rows of data to return per page of
-  /// results. Setting this flag to a small value such as 1000 and then paging
-  /// through results might improve reliability when the query result set is
-  /// large. In addition to this limit, responses are also limited to 10 MB. By
-  /// default, there is no maximum row count, and only the byte limit applies.
+  /// The maximum number of rows of data to return per page of results.
+  ///
+  /// Setting this flag to a small value such as 1000 and then paging through
+  /// results might improve reliability when the query result set is large. In
+  /// addition to this limit, responses are also limited to 10 MB. By default,
+  /// there is no maximum row count, and only the byte limit applies.
+  ///
+  /// Optional.
   core.int maxResults;
 
-  /// [Optional] Limits the bytes billed for this job. Queries that will have
-  /// bytes billed beyond this limit will fail (without incurring a charge). If
-  /// unspecified, this will be set to your project default.
+  /// Limits the bytes billed for this job.
+  ///
+  /// Queries that will have bytes billed beyond this limit will fail (without
+  /// incurring a charge). If unspecified, this will be set to your project
+  /// default.
+  ///
+  /// Optional.
   core.String maximumBytesBilled;
 
-  /// Standard SQL only. Set to POSITIONAL to use positional (?) query
-  /// parameters or to NAMED to use named (@myparam) query parameters in this
-  /// query.
+  /// Standard SQL only.
+  ///
+  /// Set to POSITIONAL to use positional (?) query parameters or to NAMED to
+  /// use named (@myparam) query parameters in this query.
   core.String parameterMode;
 
-  /// [Deprecated] This property is deprecated.
+  /// This property is deprecated.
+  ///
+  /// Deprecated.
   core.bool preserveNulls;
 
-  /// [Required] A query string, following the BigQuery query syntax, of the
-  /// query to execute. Example: "SELECT count(f1) FROM
-  /// [myProjectId:myDatasetId.myTableId]".
+  /// A query string, following the BigQuery query syntax, of the query to
+  /// execute.
+  ///
+  /// Example: "SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]".
+  ///
+  /// Required.
   core.String query;
 
   /// Query parameters for Standard SQL queries.
   core.List<QueryParameter> queryParameters;
 
   /// A unique user provided identifier to ensure idempotent behavior for
-  /// queries. Note that this is different from the job_id. It has the following
+  /// queries.
+  ///
+  /// Note that this is different from the job_id. It has the following
   /// properties: 1. It is case-sensitive, limited to up to 36 ASCII characters.
   /// A UUID is recommended. 2. Read only queries can ignore this token since
   /// they are nullipotent by definition. 3. For the purposes of idempotency
@@ -9177,25 +9755,32 @@ class QueryRequest {
   /// is not guaranteed.
   core.String requestId;
 
-  /// [Optional] How long to wait for the query to complete, in milliseconds,
-  /// before the request times out and returns. Note that this is only a timeout
-  /// for the request, not the query. If the query takes longer to run than the
-  /// timeout value, the call returns without any results and with the
-  /// 'jobComplete' flag set to false. You can call GetQueryResults() to wait
-  /// for the query to complete and read the results. The default value is 10000
-  /// milliseconds (10 seconds).
+  /// How long to wait for the query to complete, in milliseconds, before the
+  /// request times out and returns.
+  ///
+  /// Note that this is only a timeout for the request, not the query. If the
+  /// query takes longer to run than the timeout value, the call returns without
+  /// any results and with the 'jobComplete' flag set to false. You can call
+  /// GetQueryResults() to wait for the query to complete and read the results.
+  /// The default value is 10000 milliseconds (10 seconds).
+  ///
+  /// Optional.
   core.int timeoutMs;
 
-  /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The
-  /// default value is true. If set to false, the query will use BigQuery's
+  /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
+  ///
+  /// The default value is true. If set to false, the query will use BigQuery's
   /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
   /// useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
   core.bool useLegacySql;
 
-  /// [Optional] Whether to look for the result in the query cache. The query
-  /// cache is a best-effort cache that will be flushed whenever tables in the
-  /// query are modified. The default value is true.
+  /// Whether to look for the result in the query cache.
+  ///
+  /// The query cache is a best-effort cache that will be flushed whenever
+  /// tables in the query are modified. The default value is true.
+  ///
+  /// Optional.
   core.bool useQueryCache;
 
   QueryRequest();
@@ -9325,45 +9910,54 @@ class QueryResponse {
   core.bool cacheHit;
 
   /// [Output-only] The first errors or warnings encountered during the running
-  /// of the job. The final message includes the number of errors that caused
-  /// the process to stop. Errors here do not necessarily mean that the job has
-  /// completed or was unsuccessful.
+  /// of the job.
+  ///
+  /// The final message includes the number of errors that caused the process to
+  /// stop. Errors here do not necessarily mean that the job has completed or
+  /// was unsuccessful.
   core.List<ErrorProto> errors;
 
-  /// Whether the query has completed or not. If rows or totalRows are present,
-  /// this will always be true. If this is false, totalRows will not be
-  /// available.
+  /// Whether the query has completed or not.
+  ///
+  /// If rows or totalRows are present, this will always be true. If this is
+  /// false, totalRows will not be available.
   core.bool jobComplete;
 
-  /// Reference to the Job that was created to run the query. This field will be
-  /// present even if the original request timed out, in which case
-  /// GetQueryResults can be used to read the results once the query has
-  /// completed. Since this API only returns the first page of results,
+  /// Reference to the Job that was created to run the query.
+  ///
+  /// This field will be present even if the original request timed out, in
+  /// which case GetQueryResults can be used to read the results once the query
+  /// has completed. Since this API only returns the first page of results,
   /// subsequent pages can be fetched via the same mechanism (GetQueryResults).
   JobReference jobReference;
 
   /// The resource type.
   core.String kind;
 
-  /// [Output-only] The number of rows affected by a DML statement. Present only
-  /// for DML statements INSERT, UPDATE or DELETE.
+  /// [Output-only] The number of rows affected by a DML statement.
+  ///
+  /// Present only for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
 
   /// A token used for paging results.
   core.String pageToken;
 
   /// An object with as many results as can be contained within the maximum
-  /// permitted reply size. To get any additional rows, you can call
-  /// GetQueryResults and specify the jobReference returned above.
+  /// permitted reply size.
+  ///
+  /// To get any additional rows, you can call GetQueryResults and specify the
+  /// jobReference returned above.
   core.List<TableRow> rows;
 
-  /// The schema of the results. Present only when the query completes
-  /// successfully.
+  /// The schema of the results.
+  ///
+  /// Present only when the query completes successfully.
   TableSchema schema;
 
-  /// The total number of bytes processed for this query. If this query was a
-  /// dry run, this is the number of bytes that would be processed if the query
-  /// were run.
+  /// The total number of bytes processed for this query.
+  ///
+  /// If this query was a dry run, this is the number of bytes that would be
+  /// processed if the query were run.
   core.String totalBytesProcessed;
 
   /// The total number of rows in the complete query result set, which can be
@@ -9456,9 +10050,10 @@ class QueryResponse {
 }
 
 class QueryTimelineSample {
-  /// Total number of units currently being processed by workers. This does not
-  /// correspond directly to slot usage. This is the largest value observed
-  /// since the last sample.
+  /// Total number of units currently being processed by workers.
+  ///
+  /// This does not correspond directly to slot usage. This is the largest value
+  /// observed since the last sample.
   core.String activeUnits;
 
   /// Total parallel units of work completed by this query.
@@ -9555,9 +10150,10 @@ class RangePartitioningRange {
 }
 
 class RangePartitioning {
-  /// [TrustedTester] [Required] The table is partitioned by this field. The
-  /// field must be a top-level NULLABLE/REQUIRED field. The only supported type
-  /// is INTEGER/INT64.
+  /// [TrustedTester] [Required] The table is partitioned by this field.
+  ///
+  /// The field must be a top-level NULLABLE/REQUIRED field. The only supported
+  /// type is INTEGER/INT64.
   core.String field;
 
   /// [TrustedTester] [Required] Defines the ranges for range partitioning.
@@ -9713,27 +10309,35 @@ class Routine {
   /// Optional.
   core.List<Argument> arguments;
 
-  /// Output only. The time when this routine was created, in milliseconds since
-  /// the epoch.
+  /// The time when this routine was created, in milliseconds since the epoch.
+  ///
+  /// Output only.
   core.String creationTime;
 
-  /// Required. The body of the routine. For functions, this is the expression
-  /// in the AS clause. If language=SQL, it is the substring inside (but
-  /// excluding) the parentheses. For example, for the function created with the
-  /// following statement: `CREATE FUNCTION JoinLines(x string, y string) as
-  /// (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is
-  /// not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated
-  /// string in the AS clause. For example, for the function created with the
-  /// following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS
-  /// 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both
-  /// \n are replaced with linebreaks.
+  /// The body of the routine.
+  ///
+  /// For functions, this is the expression in the AS clause. If language=SQL,
+  /// it is the substring inside (but excluding) the parentheses. For example,
+  /// for the function created with the following statement: `CREATE FUNCTION
+  /// JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body
+  /// is `concat(x, "\n", y)` (\n is not replaced with linebreak). If
+  /// language=JAVASCRIPT, it is the evaluated string in the AS clause. For
+  /// example, for the function created with the following statement: `CREATE
+  /// FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
+  /// definition_body is `return "\n";\n` Note that both \n are replaced with
+  /// linebreaks.
+  ///
+  /// Required.
   core.String definitionBody;
 
-  /// Optional. [Experimental] The description of the routine if defined.
+  /// [Experimental] The description of the routine if defined.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. [Experimental] The determinism level of the JavaScript UDF if
-  /// defined.
+  /// [Experimental] The determinism level of the JavaScript UDF if defined.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DETERMINISM_LEVEL_UNSPECIFIED" : The determinism of the UDF is
   /// unspecified.
@@ -9743,43 +10347,57 @@ class Routine {
   /// - "NOT_DETERMINISTIC" : The UDF is not deterministic.
   core.String determinismLevel;
 
-  /// Output only. A hash of this resource.
+  /// A hash of this resource.
+  ///
+  /// Output only.
   core.String etag;
 
-  /// Optional. If language = "JAVASCRIPT", this field stores the path of the
-  /// imported JAVASCRIPT libraries.
+  /// If language = "JAVASCRIPT", this field stores the path of the imported
+  /// JAVASCRIPT libraries.
+  ///
+  /// Optional.
   core.List<core.String> importedLibraries;
 
-  /// Optional. Defaults to "SQL".
+  /// Defaults to "SQL".
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LANGUAGE_UNSPECIFIED"
   /// - "SQL" : SQL language.
   /// - "JAVASCRIPT" : JavaScript language.
   core.String language;
 
-  /// Output only. The time when this routine was last modified, in milliseconds
-  /// since the epoch.
+  /// The time when this routine was last modified, in milliseconds since the
+  /// epoch.
+  ///
+  /// Output only.
   core.String lastModifiedTime;
 
-  /// Optional if language = "SQL"; required otherwise. If absent, the return
-  /// type is inferred from definition_body at query time in each query that
-  /// references this routine. If present, then the evaluated result will be
-  /// cast to the specified returned type at query time. For example, for the
-  /// functions created with the following statements: * `CREATE FUNCTION Add(x
-  /// FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION
-  /// Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x
-  /// FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind:
-  /// "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment`
-  /// (inferred as FLOAT64 at query time). Suppose the function `Add` is
-  /// replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`
-  /// Then the inferred return type of `Increment` is automatically changed to
-  /// INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+  /// Optional if language = "SQL"; required otherwise.
+  ///
+  /// If absent, the return type is inferred from definition_body at query time
+  /// in each query that references this routine. If present, then the evaluated
+  /// result will be cast to the specified returned type at query time. For
+  /// example, for the functions created with the following statements: *
+  /// `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` *
+  /// `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION
+  /// Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is
+  /// `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for
+  /// `Increment` (inferred as FLOAT64 at query time). Suppose the function
+  /// `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS
+  /// (x + y);` Then the inferred return type of `Increment` is automatically
+  /// changed to INT64 at query time, while the return type of `Decrement`
+  /// remains FLOAT64.
   StandardSqlDataType returnType;
 
-  /// Required. Reference describing the ID of this routine.
+  /// Reference describing the ID of this routine.
+  ///
+  /// Required.
   RoutineReference routineReference;
 
-  /// Required. The type of routine.
+  /// The type of routine.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ROUTINE_TYPE_UNSPECIFIED"
   /// - "SCALAR_FUNCTION" : Non-builtin permanent scalar function.
@@ -9877,15 +10495,22 @@ class Routine {
 }
 
 class RoutineReference {
-  /// [Required] The ID of the dataset containing this routine.
+  /// The ID of the dataset containing this routine.
+  ///
+  /// Required.
   core.String datasetId;
 
-  /// [Required] The ID of the project containing this routine.
+  /// The ID of the project containing this routine.
+  ///
+  /// Required.
   core.String projectId;
 
-  /// [Required] The ID of the routine. The ID must contain only letters (a-z,
-  /// A-Z), numbers (0-9), or underscores (_). The maximum length is 256
-  /// characters.
+  /// The ID of the routine.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+  /// (_). The maximum length is 256 characters.
+  ///
+  /// Required.
   core.String routineId;
 
   RoutineReference();
@@ -9952,18 +10577,27 @@ class Row {
 }
 
 class RowAccessPolicyReference {
-  /// [Required] The ID of the dataset containing this row access policy.
+  /// The ID of the dataset containing this row access policy.
+  ///
+  /// Required.
   core.String datasetId;
 
-  /// [Required] The ID of the row access policy. The ID must contain only
-  /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length
-  /// is 256 characters.
+  /// The ID of the row access policy.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+  /// (_). The maximum length is 256 characters.
+  ///
+  /// Required.
   core.String policyId;
 
-  /// [Required] The ID of the project containing this row access policy.
+  /// The ID of the project containing this row access policy.
+  ///
+  /// Required.
   core.String projectId;
 
-  /// [Required] The ID of the table containing this row access policy.
+  /// The ID of the table containing this row access policy.
+  ///
+  /// Required.
   core.String tableId;
 
   RowAccessPolicyReference();
@@ -10095,8 +10729,9 @@ class ScriptStatistics {
   core.String evaluationKind;
 
   /// Stack trace showing the line/column/procedure name of each frame on the
-  /// stack at the point where the current evaluation happened. The leaf frame
-  /// is first, the primary script is last. Never empty.
+  /// stack at the point where the current evaluation happened.
+  ///
+  /// The leaf frame is first, the primary script is last. Never empty.
   core.List<ScriptStackFrame> stackFrames;
 
   ScriptStatistics();
@@ -10128,13 +10763,15 @@ class ScriptStatistics {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -10164,10 +10801,14 @@ class SetIamPolicyRequest {
 }
 
 class SnapshotDefinition {
-  /// [Required] Reference describing the ID of the table that is snapshotted.
+  /// Reference describing the ID of the table that is snapshotted.
+  ///
+  /// Required.
   TableReference baseTableReference;
 
-  /// [Required] The time at which the base table was snapshot.
+  /// The time at which the base table was snapshot.
+  ///
+  /// Required.
   core.DateTime snapshotTime;
 
   SnapshotDefinition();
@@ -10194,11 +10835,12 @@ class SnapshotDefinition {
   }
 }
 
-/// The type of a variable, e.g., a function argument. Examples: INT64:
-/// {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"}
-/// STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x",
-/// type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY",
-/// array_element_type="DATE"}} ]}}
+/// The type of a variable, e.g., a function argument.
+///
+/// Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY",
+/// array_element_type="STRING"} STRUCT>: {type_kind="STRUCT",
+/// struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y",
+/// type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType arrayElementType;
@@ -10206,8 +10848,11 @@ class StandardSqlDataType {
   /// The fields of this struct, in order, if type_kind = "STRUCT".
   StandardSqlStructType structType;
 
-  /// Required. The top level type of this field. Can be any standard SQL data
-  /// type (e.g., "INT64", "DATE", "ARRAY").
+  /// The top level type of this field.
+  ///
+  /// Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "TYPE_KIND_UNSPECIFIED" : Invalid type.
   /// - "INT64" : Encoded as a string in decimal format.
@@ -10263,12 +10908,20 @@ class StandardSqlDataType {
 
 /// A field or a column.
 class StandardSqlField {
-  /// Optional. The name of this field. Can be absent for struct fields.
+  /// The name of this field.
+  ///
+  /// Can be absent for struct fields.
+  ///
+  /// Optional.
   core.String name;
 
-  /// Optional. The type of this parameter. Absent if not explicitly specified
-  /// (e.g., CREATE FUNCTION statement can omit the return type; in this case
-  /// the output parameter does not have this "type" field).
+  /// The type of this parameter.
+  ///
+  /// Absent if not explicitly specified (e.g., CREATE FUNCTION statement can
+  /// omit the return type; in this case the output parameter does not have this
+  /// "type" field).
+  ///
+  /// Optional.
   StandardSqlDataType type;
 
   StandardSqlField();
@@ -10362,40 +11015,53 @@ class Streamingbuffer {
 }
 
 class Table {
-  /// [Beta] Clustering specification for the table. Must be specified with
-  /// partitioning, data in the table will be first partitioned and subsequently
-  /// clustered.
+  /// [Beta] Clustering specification for the table.
+  ///
+  /// Must be specified with partitioning, data in the table will be first
+  /// partitioned and subsequently clustered.
   Clustering clustering;
 
   /// [Output-only] The time when this table was created, in milliseconds since
   /// the epoch.
   core.String creationTime;
 
-  /// [Optional] A user-friendly description of this table.
+  /// A user-friendly description of this table.
+  ///
+  /// Optional.
   core.String description;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration encryptionConfiguration;
 
-  /// [Output-only] A hash of the table metadata. Used to ensure there were no
-  /// concurrent modifications to the resource when attempting an update. Not
-  /// guaranteed to change when the table contents or the fields numRows,
-  /// numBytes, numLongTermBytes or lastModifiedTime change.
+  /// [Output-only] A hash of the table metadata.
+  ///
+  /// Used to ensure there were no concurrent modifications to the resource when
+  /// attempting an update. Not guaranteed to change when the table contents or
+  /// the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
   core.String etag;
 
-  /// [Optional] The time when this table expires, in milliseconds since the
-  /// epoch. If not present, the table will persist indefinitely. Expired tables
-  /// will be deleted and their storage reclaimed. The defaultTableExpirationMs
+  /// The time when this table expires, in milliseconds since the epoch.
+  ///
+  /// If not present, the table will persist indefinitely. Expired tables will
+  /// be deleted and their storage reclaimed. The defaultTableExpirationMs
   /// property of the encapsulating dataset can be used to set a default
   /// expirationTime on newly created tables.
+  ///
+  /// Optional.
   core.String expirationTime;
 
-  /// [Optional] Describes the data format, location, and other properties of a
-  /// table stored outside of BigQuery. By defining these properties, the data
-  /// source can then be queried as if it were a standard BigQuery table.
+  /// Describes the data format, location, and other properties of a table
+  /// stored outside of BigQuery.
+  ///
+  /// By defining these properties, the data source can then be queried as if it
+  /// were a standard BigQuery table.
+  ///
+  /// Optional.
   ExternalDataConfiguration externalDataConfiguration;
 
-  /// [Optional] A descriptive name for this table.
+  /// A descriptive name for this table.
+  ///
+  /// Optional.
   core.String friendlyName;
 
   /// [Output-only] An opaque ID uniquely identifying the table.
@@ -10404,26 +11070,31 @@ class Table {
   /// [Output-only] The type of the resource.
   core.String kind;
 
-  /// The labels associated with this table. You can use these to organize and
-  /// group your tables. Label keys and values can be no longer than 63
-  /// characters, can only contain lowercase letters, numeric characters,
-  /// underscores and dashes. International characters are allowed. Label values
-  /// are optional. Label keys must start with a letter and each label in the
-  /// list must have a different key.
+  /// The labels associated with this table.
+  ///
+  /// You can use these to organize and group your tables. Label keys and values
+  /// can be no longer than 63 characters, can only contain lowercase letters,
+  /// numeric characters, underscores and dashes. International characters are
+  /// allowed. Label values are optional. Label keys must start with a letter
+  /// and each label in the list must have a different key.
   core.Map<core.String, core.String> labels;
 
   /// [Output-only] The time when this table was last modified, in milliseconds
   /// since the epoch.
   core.String lastModifiedTime;
 
-  /// [Output-only] The geographic location where the table resides. This value
-  /// is inherited from the dataset.
+  /// [Output-only] The geographic location where the table resides.
+  ///
+  /// This value is inherited from the dataset.
   core.String location;
 
-  /// [Optional] Materialized view definition.
+  /// Materialized view definition.
+  ///
+  /// Optional.
   MaterializedViewDefinition materializedView;
 
   /// [Output-only, Beta] Present iff this table represents a ML model.
+  ///
   /// Describes the training information for the model, and it is required to
   /// run 'PREDICT' queries.
   ModelDefinition model;
@@ -10437,23 +11108,29 @@ class Table {
   core.String numLongTermBytes;
 
   /// [Output-only] [TrustedTester] The physical size of this table in bytes,
-  /// excluding any data in the streaming buffer. This includes compression and
-  /// storage used for time travel.
+  /// excluding any data in the streaming buffer.
+  ///
+  /// This includes compression and storage used for time travel.
   core.String numPhysicalBytes;
 
   /// [Output-only] The number of rows of data in this table, excluding any data
   /// in the streaming buffer.
   core.String numRows;
 
-  /// [TrustedTester] Range partitioning specification for this table. Only one
-  /// of timePartitioning and rangePartitioning should be specified.
+  /// [TrustedTester] Range partitioning specification for this table.
+  ///
+  /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning rangePartitioning;
 
-  /// [Optional] If set to true, queries over this table require a partition
-  /// filter that can be used for partition elimination to be specified.
+  /// If set to true, queries over this table require a partition filter that
+  /// can be used for partition elimination to be specified.
+  ///
+  /// Optional.
   core.bool requirePartitionFilter;
 
-  /// [Optional] Describes the schema of this table.
+  /// Describes the schema of this table.
+  ///
+  /// Optional.
   TableSchema schema;
 
   /// [Output-only] A URL that can be used to access this resource again.
@@ -10463,27 +11140,35 @@ class Table {
   SnapshotDefinition snapshotDefinition;
 
   /// [Output-only] Contains information regarding this table's streaming
-  /// buffer, if one is present. This field will be absent if the table is not
-  /// being streamed to or if there is no data in the streaming buffer.
+  /// buffer, if one is present.
+  ///
+  /// This field will be absent if the table is not being streamed to or if
+  /// there is no data in the streaming buffer.
   Streamingbuffer streamingBuffer;
 
-  /// [Required] Reference describing the ID of this table.
+  /// Reference describing the ID of this table.
+  ///
+  /// Required.
   TableReference tableReference;
 
-  /// Time-based partitioning specification for this table. Only one of
-  /// timePartitioning and rangePartitioning should be specified.
+  /// Time-based partitioning specification for this table.
+  ///
+  /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
 
-  /// [Output-only] Describes the table type. The following values are
-  /// supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined
-  /// by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-only table
-  /// that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL
-  /// query whose result is persisted. EXTERNAL: A table that references data
-  /// stored in an external storage system, such as Google Cloud Storage. The
-  /// default value is TABLE.
+  /// [Output-only] Describes the table type.
+  ///
+  /// The following values are supported: TABLE: A normal BigQuery table. VIEW:
+  /// A virtual table defined by a SQL query. [TrustedTester] SNAPSHOT: An
+  /// immutable, read-only table that is a copy of another table.
+  /// [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
+  /// EXTERNAL: A table that references data stored in an external storage
+  /// system, such as Google Cloud Storage. The default value is TABLE.
   core.String type;
 
-  /// [Optional] The view definition.
+  /// The view definition.
+  ///
+  /// Optional.
   ViewDefinition view;
 
   Table();
@@ -10716,12 +11401,20 @@ class TableCell {
 }
 
 class TableDataInsertAllRequestRows {
-  /// [Optional] A unique ID for each row. BigQuery uses this property to detect
-  /// duplicate insertion requests on a best-effort basis.
+  /// A unique ID for each row.
+  ///
+  /// BigQuery uses this property to detect duplicate insertion requests on a
+  /// best-effort basis.
+  ///
+  /// Optional.
   core.String insertId;
 
-  /// [Required] A JSON object that contains a row of data. The object's
-  /// properties and values must match the destination table's schema.
+  /// A JSON object that contains a row of data.
+  ///
+  /// The object's properties and values must match the destination table's
+  /// schema.
+  ///
+  /// Required.
   JsonObject json;
 
   TableDataInsertAllRequestRows();
@@ -10749,9 +11442,12 @@ class TableDataInsertAllRequestRows {
 }
 
 class TableDataInsertAllRequest {
-  /// [Optional] Accept rows that contain values that do not match the schema.
+  /// Accept rows that contain values that do not match the schema.
+  ///
   /// The unknown values are ignored. Default is false, which treats unknown
   /// values as errors.
+  ///
+  /// Optional.
   core.bool ignoreUnknownValues;
 
   /// The resource type of the response.
@@ -10760,13 +11456,17 @@ class TableDataInsertAllRequest {
   /// The rows to insert.
   core.List<TableDataInsertAllRequestRows> rows;
 
-  /// [Optional] Insert all valid rows of a request, even if invalid rows exist.
+  /// Insert all valid rows of a request, even if invalid rows exist.
+  ///
   /// The default value is false, which causes the entire request to fail if any
   /// invalid rows exist.
+  ///
+  /// Optional.
   core.bool skipInvalidRows;
 
   /// If specified, treats the destination table as a base template, and inserts
   /// the rows into an instance table named "{destination}{templateSuffix}".
+  ///
   /// BigQuery will manage creation of the instance table, using the schema of
   /// the base template table. See
   /// https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables
@@ -10893,9 +11593,10 @@ class TableDataList {
   /// The resource type of the response.
   core.String kind;
 
-  /// A token used for paging results. Providing this token instead of the
-  /// startIndex parameter can help you retrieve stable results when an
-  /// underlying table is changing.
+  /// A token used for paging results.
+  ///
+  /// Providing this token instead of the startIndex parameter can help you
+  /// retrieve stable results when an underlying table is changing.
   core.String pageToken;
 
   /// Rows of results.
@@ -10948,11 +11649,14 @@ class TableDataList {
   }
 }
 
-/// [Optional] The categories attached to this field, used for field-level
-/// access control.
+/// The categories attached to this field, used for field-level access control.
+///
+/// Optional.
 class TableFieldSchemaCategories {
-  /// A list of category resource names. For example,
-  /// "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+  /// A list of category resource names.
+  ///
+  /// For example, "projects/1/taxonomies/2/categories/3". At most 5 categories
+  /// are allowed.
   core.List<core.String> names;
 
   TableFieldSchemaCategories();
@@ -10975,9 +11679,10 @@ class TableFieldSchemaCategories {
 }
 
 class TableFieldSchemaPolicyTags {
-  /// A list of category resource names. For example,
-  /// "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag
-  /// is allowed.
+  /// A list of category resource names.
+  ///
+  /// For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1
+  /// policy tag is allowed.
   core.List<core.String> names;
 
   TableFieldSchemaPolicyTags();
@@ -11000,32 +11705,50 @@ class TableFieldSchemaPolicyTags {
 }
 
 class TableFieldSchema {
-  /// [Optional] The categories attached to this field, used for field-level
-  /// access control.
+  /// The categories attached to this field, used for field-level access
+  /// control.
+  ///
+  /// Optional.
   TableFieldSchemaCategories categories;
 
-  /// [Optional] The field description. The maximum length is 1,024 characters.
+  /// The field description.
+  ///
+  /// The maximum length is 1,024 characters.
+  ///
+  /// Optional.
   core.String description;
 
-  /// [Optional] Describes the nested schema fields if the type property is set
-  /// to RECORD.
+  /// Describes the nested schema fields if the type property is set to RECORD.
+  ///
+  /// Optional.
   core.List<TableFieldSchema> fields;
 
-  /// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and
-  /// REPEATED. The default value is NULLABLE.
+  /// The field mode.
+  ///
+  /// Possible values include NULLABLE, REQUIRED and REPEATED. The default value
+  /// is NULLABLE.
+  ///
+  /// Optional.
   core.String mode;
 
-  /// [Required] The field name. The name must contain only letters (a-z, A-Z),
-  /// numbers (0-9), or underscores (_), and must start with a letter or
-  /// underscore. The maximum length is 128 characters.
+  /// The field name.
+  ///
+  /// The name must contain only letters (a-z, A-Z), numbers (0-9), or
+  /// underscores (_), and must start with a letter or underscore. The maximum
+  /// length is 128 characters.
+  ///
+  /// Required.
   core.String name;
   TableFieldSchemaPolicyTags policyTags;
 
-  /// [Required] The field data type. Possible values include STRING, BYTES,
-  /// INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN,
-  /// BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where
-  /// RECORD indicates that the field contains a nested schema) or STRUCT (same
-  /// as RECORD).
+  /// The field data type.
+  ///
+  /// Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
+  /// FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN),
+  /// TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the
+  /// field contains a nested schema) or STRUCT (same as RECORD).
+  ///
+  /// Required.
   core.String type;
 
   TableFieldSchema();
@@ -11115,9 +11838,12 @@ class TableListTables {
   /// The time when this table was created, in milliseconds since the epoch.
   core.String creationTime;
 
-  /// [Optional] The time when this table expires, in milliseconds since the
-  /// epoch. If not present, the table will persist indefinitely. Expired tables
-  /// will be deleted and their storage reclaimed.
+  /// The time when this table expires, in milliseconds since the epoch.
+  ///
+  /// If not present, the table will persist indefinitely. Expired tables will
+  /// be deleted and their storage reclaimed.
+  ///
+  /// Optional.
   core.String expirationTime;
 
   /// The user-friendly name for this table.
@@ -11129,8 +11855,9 @@ class TableListTables {
   /// The resource type.
   core.String kind;
 
-  /// The labels associated with this table. You can use these to organize and
-  /// group your tables.
+  /// The labels associated with this table.
+  ///
+  /// You can use these to organize and group your tables.
   core.Map<core.String, core.String> labels;
 
   /// The range partitioning specification for this table, if configured.
@@ -11142,7 +11869,9 @@ class TableListTables {
   /// The time-based partitioning specification for this table, if configured.
   TimePartitioning timePartitioning;
 
-  /// The type of table. Possible values are: TABLE, VIEW.
+  /// The type of table.
+  ///
+  /// Possible values are: TABLE, VIEW.
   core.String type;
 
   /// Additional details for a view.
@@ -11303,15 +12032,22 @@ class TableList {
 }
 
 class TableReference {
-  /// [Required] The ID of the dataset containing this table.
+  /// The ID of the dataset containing this table.
+  ///
+  /// Required.
   core.String datasetId;
 
-  /// [Required] The ID of the project containing this table.
+  /// The ID of the project containing this table.
+  ///
+  /// Required.
   core.String projectId;
 
-  /// [Required] The ID of the table. The ID must contain only letters (a-z,
-  /// A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024
-  /// characters.
+  /// The ID of the table.
+  ///
+  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+  /// (_). The maximum length is 1,024 characters.
+  ///
+  /// Required.
   core.String tableId;
 
   TableReference();
@@ -11394,9 +12130,10 @@ class TableSchema {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -11445,22 +12182,31 @@ class TestIamPermissionsResponse {
 }
 
 class TimePartitioning {
-  /// [Optional] Number of milliseconds for which to keep the storage for
-  /// partitions in the table. The storage in a partition will have an
-  /// expiration time of its partition time plus this value.
+  /// Number of milliseconds for which to keep the storage for partitions in the
+  /// table.
+  ///
+  /// The storage in a partition will have an expiration time of its partition
+  /// time plus this value.
+  ///
+  /// Optional.
   core.String expirationMs;
 
   /// [Beta] [Optional] If not set, the table is partitioned by pseudo column,
   /// referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
-  /// '_PARTITIONDATE' as DATE type. If field is specified, the table is instead
-  /// partitioned by this field. The field must be a top-level TIMESTAMP or DATE
-  /// field. Its mode must be NULLABLE or REQUIRED.
+  /// '_PARTITIONDATE' as DATE type.
+  ///
+  /// If field is specified, the table is instead partitioned by this field. The
+  /// field must be a top-level TIMESTAMP or DATE field. Its mode must be
+  /// NULLABLE or REQUIRED.
   core.String field;
   core.bool requirePartitionFilter;
 
-  /// [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will
-  /// generate one partition per day, hour, month, and year, respectively. When
-  /// the type is not specified, the default behavior is DAY.
+  /// The supported types are DAY, HOUR, MONTH, and YEAR, which will generate
+  /// one partition per day, hour, month, and year, respectively.
+  ///
+  /// When the type is not specified, the default behavior is DAY.
+  ///
+  /// Required.
   core.String type;
 
   TimePartitioning();
@@ -11520,19 +12266,22 @@ class TrainingOptions {
   /// - "HOURLY" : Hourly data.
   core.String dataFrequency;
 
-  /// The column to split data with. This column won't be used as a feature. 1.
-  /// When data_split_method is CUSTOM, the corresponding column should be
-  /// boolean. The rows with true value tag are eval data, and the false are
-  /// training data. 2. When data_split_method is SEQ, the first
-  /// DATA_SPLIT_EVAL_FRACTION rows (from smallest to largest) in the
-  /// corresponding column are used as training data, and the rest are eval
-  /// data. It respects the order in Orderable data types:
+  /// The column to split data with.
+  ///
+  /// This column won't be used as a feature. 1. When data_split_method is
+  /// CUSTOM, the corresponding column should be boolean. The rows with true
+  /// value tag are eval data, and the false are training data. 2. When
+  /// data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from
+  /// smallest to largest) in the corresponding column are used as training
+  /// data, and the rest are eval data. It respects the order in Orderable data
+  /// types:
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
   core.String dataSplitColumn;
 
-  /// The fraction of evaluation data over the whole input data. The rest of
-  /// data will be used as training data. The format should be double. Accurate
-  /// to two decimal places. Default value is 0.2.
+  /// The fraction of evaluation data over the whole input data.
+  ///
+  /// The rest of data will be used as training data. The format should be
+  /// double. Accurate to two decimal places. Default value is 0.2.
   core.double dataSplitEvalFraction;
 
   /// The data split type for training and evaluation, e.g. RANDOM.
@@ -11557,8 +12306,9 @@ class TrainingOptions {
   core.double dropout;
 
   /// Whether to stop early when the loss doesn't improve significantly any more
-  /// (compared to min_relative_progress). Used only for iterative training
-  /// algorithms.
+  /// (compared to min_relative_progress).
+  ///
+  /// Used only for iterative training algorithms.
   core.bool earlyStop;
 
   /// Feedback type that specifies which algorithm to run for matrix
@@ -11573,8 +12323,9 @@ class TrainingOptions {
   core.List<core.String> hiddenUnits;
 
   /// The geographical region based on which the holidays are considered in time
-  /// series modeling. If a valid value is specified, then holiday effects
-  /// modeling is enabled.
+  /// series modeling.
+  ///
+  /// If a valid value is specified, then holiday effects modeling is enabled.
   /// Possible string values are:
   /// - "HOLIDAY_REGION_UNSPECIFIED" : Holiday region unspecified.
   /// - "GLOBAL" : Global.
@@ -11684,10 +12435,14 @@ class TrainingOptions {
   core.double l2Regularization;
 
   /// Weights associated with each label class, for rebalancing the training
-  /// data. Only applicable for classification models.
+  /// data.
+  ///
+  /// Only applicable for classification models.
   core.Map<core.String, core.double> labelClassWeights;
 
-  /// Learning rate in training. Used only for iterative training algorithms.
+  /// Learning rate in training.
+  ///
+  /// Used only for iterative training algorithms.
   core.double learnRate;
 
   /// The strategy to determine learn rate for the current iteration.
@@ -11704,22 +12459,26 @@ class TrainingOptions {
   /// - "MEAN_LOG_LOSS" : Mean log loss, used for logistic regression.
   core.String lossType;
 
-  /// The maximum number of iterations in training. Used only for iterative
-  /// training algorithms.
+  /// The maximum number of iterations in training.
+  ///
+  /// Used only for iterative training algorithms.
   core.String maxIterations;
 
   /// Maximum depth of a tree for boosted tree models.
   core.String maxTreeDepth;
 
   /// When early_stop is true, stops training when accuracy improvement is less
-  /// than 'min_relative_progress'. Used only for iterative training algorithms.
+  /// than 'min_relative_progress'.
+  ///
+  /// Used only for iterative training algorithms.
   core.double minRelativeProgress;
 
   /// Minimum split loss for boosted tree models.
   core.double minSplitLoss;
 
-  /// [Beta] Google Cloud Storage URI from which the model was imported. Only
-  /// applicable for imported models.
+  /// [Beta] Google Cloud Storage URI from which the model was imported.
+  ///
+  /// Only applicable for imported models.
   core.String modelUri;
 
   /// A specification of the non-seasonal part of the ARIMA model: the three
@@ -11742,9 +12501,10 @@ class TrainingOptions {
   /// problem.
   core.String optimizationStrategy;
 
-  /// Whether to preserve the input structs in output feature names. Suppose
-  /// there is a struct A with field b. When false (default), the output feature
-  /// name is A_b. When true, the output feature name is A.b.
+  /// Whether to preserve the input structs in output feature names.
+  ///
+  /// Suppose there is a struct A with field b. When false (default), the output
+  /// feature name is A_b. When true, the output feature name is A.b.
   core.bool preserveInputStructs;
 
   /// Subsample fraction of the training data to grow tree to prevent
@@ -12059,8 +12819,9 @@ class TrainingOptions {
 
 /// Information about a single training query run for the model.
 class TrainingRun {
-  /// Data split result of the training run. Only set when the input data is
-  /// actually split.
+  /// Data split result of the training run.
+  ///
+  /// Only set when the input data is actually split.
   DataSplitResult dataSplitResult;
 
   /// The evaluation metrics over training/eval data that were computed at the
@@ -12146,14 +12907,18 @@ class TransactionInfo {
 }
 
 /// This is used for defining User Defined Function (UDF) resources only when
-/// using legacy SQL. Users of Standard SQL should leverage either DDL (e.g.
-/// CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF
-/// resources. For additional information on migrating, see:
+/// using legacy SQL.
+///
+/// Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY]
+/// FUNCTION ... ) or the Routines API to define UDF resources. For additional
+/// information on migrating, see:
 /// https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
 class UserDefinedFunctionResource {
   /// [Pick one] An inline resource that contains code for a user-defined
-  /// function (UDF). Providing a inline code resource is equivalent to
-  /// providing a URI for a file containing the same code.
+  /// function (UDF).
+  ///
+  /// Providing a inline code resource is equivalent to providing a URI for a
+  /// file containing the same code.
   core.String inlineCode;
 
   /// [Pick one] A code resource to load from a Google Cloud Storage URI
@@ -12184,13 +12949,16 @@ class UserDefinedFunctionResource {
 }
 
 class ViewDefinition {
-  /// [Required] A query that BigQuery executes when the view is referenced.
+  /// A query that BigQuery executes when the view is referenced.
+  ///
+  /// Required.
   core.String query;
 
-  /// Specifies whether to use BigQuery's legacy SQL for this view. The default
-  /// value is true. If set to false, the view will use BigQuery's standard SQL:
-  /// https://cloud.google.com/bigquery/sql-reference/ Queries and views that
-  /// reference this view must use the same flag value.
+  /// Specifies whether to use BigQuery's legacy SQL for this view.
+  ///
+  /// The default value is true. If set to false, the view will use BigQuery's
+  /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
+  /// views that reference this view must use the same flag value.
   core.bool useLegacySql;
 
   /// Describes user-defined function resources used in the query.

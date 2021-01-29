@@ -407,8 +407,9 @@ class JobsReportsResource {
     );
   }
 
-  /// Lists reports created by a specific job. Returns NOT_FOUND if the job does
-  /// not exist.
+  /// Lists reports created by a specific job.
+  ///
+  /// Returns NOT_FOUND if the job does not exist.
   ///
   /// Request parameters:
   ///
@@ -510,8 +511,9 @@ class MediaResource {
 
   MediaResource(commons.ApiRequester client) : _requester = client;
 
-  /// Method for media download. Download is supported on the URI
-  /// `/v1/media/{+name}?alt=media`.
+  /// Method for media download.
+  ///
+  /// Download is supported on the URI `/v1/media/{+name}?alt=media`.
   ///
   /// Request parameters:
   ///
@@ -664,10 +666,12 @@ class ReportTypesResource {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1588,18 +1592,24 @@ class Job {
   /// The creation date/time of the job.
   core.String createTime;
 
-  /// The date/time when this job will expire/expired. After a job expired, no
-  /// new reports are generated.
+  /// The date/time when this job will expire/expired.
+  ///
+  /// After a job expired, no new reports are generated.
   core.String expireTime;
 
-  /// The server-generated ID of the job (max. 40 characters).
+  /// The server-generated ID of the job (max.
+  ///
+  /// 40 characters).
   core.String id;
 
-  /// The name of the job (max. 100 characters).
+  /// The name of the job (max.
+  ///
+  /// 100 characters).
   core.String name;
 
-  /// The type of reports this job creates. Corresponds to the ID of a
-  /// ReportType.
+  /// The type of reports this job creates.
+  ///
+  /// Corresponds to the ID of a ReportType.
   core.String reportTypeId;
 
   /// True if this a system-managed job that cannot be modified by the user;
@@ -1658,9 +1668,10 @@ class ListJobsResponse {
   /// The list of jobs.
   core.List<Job> jobs;
 
-  /// A token to retrieve next page of results. Pass this value in the
-  /// ListJobsRequest.page_token field in the subsequent call to `ListJobs`
-  /// method to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in the ListJobsRequest.page_token field in the subsequent
+  /// call to `ListJobs` method to retrieve the next page of results.
   core.String nextPageToken;
 
   ListJobsResponse();
@@ -1691,9 +1702,11 @@ class ListJobsResponse {
 
 /// Response message for ReportingService.ListReportTypes.
 class ListReportTypesResponse {
-  /// A token to retrieve next page of results. Pass this value in the
-  /// ListReportTypesRequest.page_token field in the subsequent call to
-  /// `ListReportTypes` method to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in the ListReportTypesRequest.page_token field in the
+  /// subsequent call to `ListReportTypes` method to retrieve the next page of
+  /// results.
   core.String nextPageToken;
 
   /// The list of report types.
@@ -1728,9 +1741,11 @@ class ListReportTypesResponse {
 
 /// Response message for ReportingService.ListReports.
 class ListReportsResponse {
-  /// A token to retrieve next page of results. Pass this value in the
-  /// ListReportsRequest.page_token field in the subsequent call to
-  /// `ListReports` method to retrieve the next page of results.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in the ListReportsRequest.page_token field in the
+  /// subsequent call to `ListReports` method to retrieve the next page of
+  /// results.
   core.String nextPageToken;
 
   /// The list of report types.
@@ -1768,11 +1783,14 @@ class Report {
   /// The date/time when this report was created.
   core.String createTime;
 
-  /// The URL from which the report can be downloaded (max. 1000 characters).
+  /// The URL from which the report can be downloaded (max.
+  ///
+  /// 1000 characters).
   core.String downloadUrl;
 
-  /// The end of the time period that the report instance covers. The value is
-  /// exclusive.
+  /// The end of the time period that the report instance covers.
+  ///
+  /// The value is exclusive.
   core.String endTime;
 
   /// The server-generated ID of the report.
@@ -1784,8 +1802,9 @@ class Report {
   /// The ID of the job that created this report.
   core.String jobId;
 
-  /// The start of the time period that the report instance covers. The value is
-  /// inclusive.
+  /// The start of the time period that the report instance covers.
+  ///
+  /// The value is inclusive.
   core.String startTime;
 
   Report();
@@ -1846,15 +1865,20 @@ class ReportType {
   /// The date/time when this report type was/will be deprecated.
   core.String deprecateTime;
 
-  /// The ID of the report type (max. 100 characters).
+  /// The ID of the report type (max.
+  ///
+  /// 100 characters).
   core.String id;
 
-  /// The name of the report type (max. 100 characters).
+  /// The name of the report type (max.
+  ///
+  /// 100 characters).
   core.String name;
 
-  /// True if this a system-managed report type; otherwise false. Reporting jobs
-  /// for system-managed report types are created automatically and can thus not
-  /// be used in the `CreateJob` method.
+  /// True if this a system-managed report type; otherwise false.
+  ///
+  /// Reporting jobs for system-managed report types are created automatically
+  /// and can thus not be used in the `CreateJob` method.
   core.bool systemManaged;
 
   ReportType();

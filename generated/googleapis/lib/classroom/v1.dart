@@ -174,12 +174,14 @@ class CoursesResource {
 
   CoursesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a course. The user specified in `ownerId` is the owner of the
-  /// created course and added as a teacher. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-  /// to create courses or for access errors. * `NOT_FOUND` if the primary
-  /// teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's
-  /// account is disabled or for the following request errors: *
+  /// Creates a course.
+  ///
+  /// The user specified in `ownerId` is the owner of the created course and
+  /// added as a teacher. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` if the requesting user is not permitted to create
+  /// courses or for access errors. * `NOT_FOUND` if the primary teacher is not
+  /// a valid user. * `FAILED_PRECONDITION` if the course owner's account is
+  /// disabled or for the following request errors: *
   /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was
   /// specified in the `id` and already exists.
   ///
@@ -231,10 +233,11 @@ class CoursesResource {
     );
   }
 
-  /// Deletes a course. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to delete the
-  /// requested course or for access errors. * `NOT_FOUND` if no course exists
-  /// with the requested ID.
+  /// Deletes a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to delete the requested course or for
+  /// access errors. * `NOT_FOUND` if no course exists with the requested ID.
   ///
   /// Request parameters:
   ///
@@ -285,10 +288,11 @@ class CoursesResource {
     );
   }
 
-  /// Returns a course. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course or for access errors. * `NOT_FOUND` if no course exists
-  /// with the requested ID.
+  /// Returns a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course or for
+  /// access errors. * `NOT_FOUND` if no course exists with the requested ID.
   ///
   /// Request parameters:
   ///
@@ -340,11 +344,13 @@ class CoursesResource {
   }
 
   /// Returns a list of courses that the requesting user is permitted to view,
-  /// restricted to those that match the request. Returned courses are ordered
-  /// by creation time, with the most recently created coming first. This method
-  /// returns the following error codes: * `PERMISSION_DENIED` for access
-  /// errors. * `INVALID_ARGUMENT` if the query argument is malformed. *
-  /// `NOT_FOUND` if any users specified in the query arguments do not exist.
+  /// restricted to those that match the request.
+  ///
+  /// Returned courses are ordered by creation time, with the most recently
+  /// created coming first. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the query
+  /// argument is malformed. * `NOT_FOUND` if any users specified in the query
+  /// arguments do not exist.
   ///
   /// Request parameters:
   ///
@@ -432,13 +438,14 @@ class CoursesResource {
     );
   }
 
-  /// Updates one or more fields in a course. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-  /// to modify the requested course or for access errors. * `NOT_FOUND` if no
-  /// course exists with the requested ID. * `INVALID_ARGUMENT` if invalid
-  /// fields are specified in the update mask or if no update mask is supplied.
-  /// * `FAILED_PRECONDITION` for the following request errors: *
-  /// CourseNotModifiable
+  /// Updates one or more fields in a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to modify the requested course or for
+  /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
+  /// `INVALID_ARGUMENT` if invalid fields are specified in the update mask or
+  /// if no update mask is supplied. * `FAILED_PRECONDITION` for the following
+  /// request errors: * CourseNotModifiable
   ///
   /// [request] - The metadata request object.
   ///
@@ -508,11 +515,13 @@ class CoursesResource {
     );
   }
 
-  /// Updates a course. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to modify the
-  /// requested course or for access errors. * `NOT_FOUND` if no course exists
-  /// with the requested ID. * `FAILED_PRECONDITION` for the following request
-  /// errors: * CourseNotModifiable
+  /// Updates a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to modify the requested course or for
+  /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
+  /// `FAILED_PRECONDITION` for the following request errors: *
+  /// CourseNotModifiable
   ///
   /// [request] - The metadata request object.
   ///
@@ -575,13 +584,14 @@ class CoursesAliasesResource {
 
   CoursesAliasesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates an alias for a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// create the alias or for access errors. * `NOT_FOUND` if the course does
-  /// not exist. * `ALREADY_EXISTS` if the alias already exists. *
-  /// `FAILED_PRECONDITION` if the alias requested does not make sense for the
-  /// requesting user or course (for example, if a user not in a domain attempts
-  /// to access a domain-scoped alias).
+  /// Creates an alias for a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to create the alias or for access
+  /// errors. * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if
+  /// the alias already exists. * `FAILED_PRECONDITION` if the alias requested
+  /// does not make sense for the requesting user or course (for example, if a
+  /// user not in a domain attempts to access a domain-scoped alias).
   ///
   /// [request] - The metadata request object.
   ///
@@ -640,12 +650,14 @@ class CoursesAliasesResource {
     );
   }
 
-  /// Deletes an alias of a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// remove the alias or for access errors. * `NOT_FOUND` if the alias does not
-  /// exist. * `FAILED_PRECONDITION` if the alias requested does not make sense
-  /// for the requesting user or course (for example, if a user not in a domain
-  /// attempts to delete a domain-scoped alias).
+  /// Deletes an alias of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to remove the alias or for access
+  /// errors. * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION`
+  /// if the alias requested does not make sense for the requesting user or
+  /// course (for example, if a user not in a domain attempts to delete a
+  /// domain-scoped alias).
   ///
   /// Request parameters:
   ///
@@ -706,10 +718,11 @@ class CoursesAliasesResource {
     );
   }
 
-  /// Returns a list of aliases for a course. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-  /// to access the course or for access errors. * `NOT_FOUND` if the course
-  /// does not exist.
+  /// Returns a list of aliases for a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the course or for access
+  /// errors. * `NOT_FOUND` if the course does not exist.
   ///
   /// Request parameters:
   ///
@@ -786,12 +799,14 @@ class CoursesAnnouncementsResource {
   CoursesAnnouncementsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an announcement. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course, create announcements in the requested course, share a
-  /// Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the
-  /// request is malformed. * `NOT_FOUND` if the requested course does not
-  /// exist. * `FAILED_PRECONDITION` for the following request error: *
+  /// Creates an announcement.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course,
+  /// create announcements in the requested course, share a Drive attachment, or
+  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if the requested course does not exist. *
+  /// `FAILED_PRECONDITION` for the following request error: *
   /// AttachmentNotVisible
   ///
   /// [request] - The metadata request object.
@@ -852,12 +867,13 @@ class CoursesAnnouncementsResource {
     );
   }
 
-  /// Deletes an announcement. This request must be made by the Developer
-  /// Console project of the [OAuth client
-  /// ID](https://support.google.com/cloud/answer/6158849) used to create the
-  /// corresponding announcement item. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting developer project did not
-  /// create the corresponding announcement, if the requesting user is not
+  /// Deletes an announcement.
+  ///
+  /// This request must be made by the Developer Console project of the [OAuth
+  /// client ID](https://support.google.com/cloud/answer/6158849) used to create
+  /// the corresponding announcement item. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting developer project did
+  /// not create the corresponding announcement, if the requesting user is not
   /// permitted to delete the requested course or for access errors. *
   /// `FAILED_PRECONDITION` if the requested announcement has already been
   /// deleted. * `NOT_FOUND` if no course exists with the requested ID.
@@ -921,11 +937,13 @@ class CoursesAnnouncementsResource {
     );
   }
 
-  /// Returns an announcement. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course or announcement, or for access errors. *
-  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-  /// requested course or announcement does not exist.
+  /// Returns an announcement.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course or
+  /// announcement, or for access errors. * `INVALID_ARGUMENT` if the request is
+  /// malformed. * `NOT_FOUND` if the requested course or announcement does not
+  /// exist.
   ///
   /// Request parameters:
   ///
@@ -987,6 +1005,7 @@ class CoursesAnnouncementsResource {
   }
 
   /// Returns a list of announcements that the requester is permitted to view.
+  ///
   /// Course students may only view `PUBLISHED` announcements. Course teachers
   /// and domain administrators may view all announcements. This method returns
   /// the following error codes: * `PERMISSION_DENIED` if the requesting user is
@@ -1081,13 +1100,14 @@ class CoursesAnnouncementsResource {
     );
   }
 
-  /// Modifies assignee mode and options of an announcement. Only a teacher of
-  /// the course that contains the announcement may call this method. This
-  /// method returns the following error codes: * `PERMISSION_DENIED` if the
-  /// requesting user is not permitted to access the requested course or course
-  /// work or for access errors. * `INVALID_ARGUMENT` if the request is
-  /// malformed. * `NOT_FOUND` if the requested course or course work does not
-  /// exist.
+  /// Modifies assignee mode and options of an announcement.
+  ///
+  /// Only a teacher of the course that contains the announcement may call this
+  /// method. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
+  /// requested course or course work or for access errors. * `INVALID_ARGUMENT`
+  /// if the request is malformed. * `NOT_FOUND` if the requested course or
+  /// course work does not exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1155,13 +1175,14 @@ class CoursesAnnouncementsResource {
     );
   }
 
-  /// Updates one or more fields of an announcement. This method returns the
-  /// following error codes: * `PERMISSION_DENIED` if the requesting developer
-  /// project did not create the corresponding announcement or for access
-  /// errors. * `INVALID_ARGUMENT` if the request is malformed. *
-  /// `FAILED_PRECONDITION` if the requested announcement has already been
-  /// deleted. * `NOT_FOUND` if the requested course or announcement does not
-  /// exist
+  /// Updates one or more fields of an announcement.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting developer project did not create the corresponding
+  /// announcement or for access errors. * `INVALID_ARGUMENT` if the request is
+  /// malformed. * `FAILED_PRECONDITION` if the requested announcement has
+  /// already been deleted. * `NOT_FOUND` if the requested course or
+  /// announcement does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1250,10 +1271,12 @@ class CoursesCourseWorkResource {
 
   CoursesCourseWorkResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates course work. The resulting course work (and corresponding student
-  /// submissions) are associated with the Developer Console project of the
-  /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
-  /// make the request. Classroom API requests to modify course work and student
+  /// Creates course work.
+  ///
+  /// The resulting course work (and corresponding student submissions) are
+  /// associated with the Developer Console project of the [OAuth client
+  /// ID](https://support.google.com/cloud/answer/6158849) used to make the
+  /// request. Classroom API requests to modify course work and student
   /// submissions must be made with an OAuth client ID from the associated
   /// Developer Console project. This method returns the following error codes:
   /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
@@ -1321,12 +1344,13 @@ class CoursesCourseWorkResource {
     );
   }
 
-  /// Deletes a course work. This request must be made by the Developer Console
-  /// project of the [OAuth client
-  /// ID](https://support.google.com/cloud/answer/6158849) used to create the
-  /// corresponding course work item. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting developer project did not
-  /// create the corresponding course work, if the requesting user is not
+  /// Deletes a course work.
+  ///
+  /// This request must be made by the Developer Console project of the [OAuth
+  /// client ID](https://support.google.com/cloud/answer/6158849) used to create
+  /// the corresponding course work item. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting developer project did
+  /// not create the corresponding course work, if the requesting user is not
   /// permitted to delete the requested course or for access errors. *
   /// `FAILED_PRECONDITION` if the requested course work has already been
   /// deleted. * `NOT_FOUND` if no course exists with the requested ID.
@@ -1390,11 +1414,13 @@ class CoursesCourseWorkResource {
     );
   }
 
-  /// Returns course work. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course or course work, or for access errors. *
-  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-  /// requested course or course work does not exist.
+  /// Returns course work.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course or
+  /// course work, or for access errors. * `INVALID_ARGUMENT` if the request is
+  /// malformed. * `NOT_FOUND` if the requested course or course work does not
+  /// exist.
   ///
   /// Request parameters:
   ///
@@ -1456,6 +1482,7 @@ class CoursesCourseWorkResource {
   }
 
   /// Returns a list of course work that the requester is permitted to view.
+  ///
   /// Course students may only view `PUBLISHED` course work. Course teachers and
   /// domain administrators may view all course work. This method returns the
   /// following error codes: * `PERMISSION_DENIED` if the requesting user is not
@@ -1550,12 +1577,14 @@ class CoursesCourseWorkResource {
     );
   }
 
-  /// Modifies assignee mode and options of a coursework. Only a teacher of the
-  /// course that contains the coursework may call this method. This method
-  /// returns the following error codes: * `PERMISSION_DENIED` if the requesting
-  /// user is not permitted to access the requested course or course work or for
-  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
-  /// `NOT_FOUND` if the requested course or course work does not exist.
+  /// Modifies assignee mode and options of a coursework.
+  ///
+  /// Only a teacher of the course that contains the coursework may call this
+  /// method. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
+  /// requested course or course work or for access errors. * `INVALID_ARGUMENT`
+  /// if the request is malformed. * `NOT_FOUND` if the requested course or
+  /// course work does not exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1623,10 +1652,11 @@ class CoursesCourseWorkResource {
     );
   }
 
-  /// Updates one or more fields of a course work. See
-  /// google.classroom.v1.CourseWork for details of which fields may be updated
-  /// and who may change them. This request must be made by the Developer
-  /// Console project of the [OAuth client
+  /// Updates one or more fields of a course work.
+  ///
+  /// See google.classroom.v1.CourseWork for details of which fields may be
+  /// updated and who may change them. This request must be made by the
+  /// Developer Console project of the [OAuth client
   /// ID](https://support.google.com/cloud/answer/6158849) used to create the
   /// corresponding course work item. This method returns the following error
   /// codes: * `PERMISSION_DENIED` if the requesting developer project did not
@@ -1723,11 +1753,12 @@ class CoursesCourseWorkStudentSubmissionsResource {
   CoursesCourseWorkStudentSubmissionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Returns a student submission. * `PERMISSION_DENIED` if the requesting user
-  /// is not permitted to access the requested course, course work, or student
-  /// submission or for access errors. * `INVALID_ARGUMENT` if the request is
-  /// malformed. * `NOT_FOUND` if the requested course, course work, or student
-  /// submission does not exist.
+  /// Returns a student submission.
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the requested course, course work, or student submission or for access
+  /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+  /// the requested course, course work, or student submission does not exist.
   ///
   /// Request parameters:
   ///
@@ -1797,14 +1828,16 @@ class CoursesCourseWorkStudentSubmissionsResource {
   }
 
   /// Returns a list of student submissions that the requester is permitted to
-  /// view, factoring in the OAuth scopes of the request. `-` may be specified
-  /// as the `course_work_id` to include student submissions for multiple course
-  /// work items. Course students may only view their own work. Course teachers
-  /// and domain administrators may view all student submissions. This method
-  /// returns the following error codes: * `PERMISSION_DENIED` if the requesting
-  /// user is not permitted to access the requested course or course work, or
-  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
-  /// `NOT_FOUND` if the requested course does not exist.
+  /// view, factoring in the OAuth scopes of the request.
+  ///
+  /// `-` may be specified as the `course_work_id` to include student
+  /// submissions for multiple course work items. Course students may only view
+  /// their own work. Course teachers and domain administrators may view all
+  /// student submissions. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
+  /// requested course or course work, or for access errors. *
+  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
+  /// requested course does not exist.
   ///
   /// Request parameters:
   ///
@@ -1915,10 +1948,11 @@ class CoursesCourseWorkStudentSubmissionsResource {
     );
   }
 
-  /// Modifies attachments of student submission. Attachments may only be added
-  /// to student submissions belonging to course work objects with a `workType`
-  /// of `ASSIGNMENT`. This request must be made by the Developer Console
-  /// project of the [OAuth client
+  /// Modifies attachments of student submission.
+  ///
+  /// Attachments may only be added to student submissions belonging to course
+  /// work objects with a `workType` of `ASSIGNMENT`. This request must be made
+  /// by the Developer Console project of the [OAuth client
   /// ID](https://support.google.com/cloud/answer/6158849) used to create the
   /// corresponding course work item. This method returns the following error
   /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
@@ -2001,9 +2035,10 @@ class CoursesCourseWorkStudentSubmissionsResource {
     );
   }
 
-  /// Updates one or more fields of a student submission. See
-  /// google.classroom.v1.StudentSubmission for details of which fields may be
-  /// updated and who may change them. This request must be made by the
+  /// Updates one or more fields of a student submission.
+  ///
+  /// See google.classroom.v1.StudentSubmission for details of which fields may
+  /// be updated and who may change them. This request must be made by the
   /// Developer Console project of the [OAuth client
   /// ID](https://support.google.com/cloud/answer/6158849) used to create the
   /// corresponding course work item. This method returns the following error
@@ -2096,6 +2131,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
   }
 
   /// Reclaims a student submission on behalf of the student that owns it.
+  ///
   /// Reclaiming a student submission transfers ownership of attached Drive
   /// files to the student and updates the submission state. Only the student
   /// that owns the requested student submission may call this method, and only
@@ -2183,13 +2219,14 @@ class CoursesCourseWorkStudentSubmissionsResource {
     );
   }
 
-  /// Returns a student submission. Returning a student submission transfers
-  /// ownership of attached Drive files to the student and may also update the
-  /// submission state. Unlike the Classroom application, returning a student
-  /// submission does not set assignedGrade to the draftGrade value. Only a
-  /// teacher of the course that contains the requested student submission may
-  /// call this method. This request must be made by the Developer Console
-  /// project of the [OAuth client
+  /// Returns a student submission.
+  ///
+  /// Returning a student submission transfers ownership of attached Drive files
+  /// to the student and may also update the submission state. Unlike the
+  /// Classroom application, returning a student submission does not set
+  /// assignedGrade to the draftGrade value. Only a teacher of the course that
+  /// contains the requested student submission may call this method. This
+  /// request must be made by the Developer Console project of the [OAuth client
   /// ID](https://support.google.com/cloud/answer/6158849) used to create the
   /// corresponding course work item. This method returns the following error
   /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
@@ -2271,18 +2308,19 @@ class CoursesCourseWorkStudentSubmissionsResource {
     );
   }
 
-  /// Turns in a student submission. Turning in a student submission transfers
-  /// ownership of attached Drive files to the teacher and may also update the
-  /// submission state. This may only be called by the student that owns the
-  /// specified student submission. This request must be made by the Developer
-  /// Console project of the [OAuth client
-  /// ID](https://support.google.com/cloud/answer/6158849) used to create the
-  /// corresponding course work item. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// access the requested course or course work, turn in the requested student
-  /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is
-  /// malformed. * `NOT_FOUND` if the requested course, course work, or student
-  /// submission does not exist.
+  /// Turns in a student submission.
+  ///
+  /// Turning in a student submission transfers ownership of attached Drive
+  /// files to the teacher and may also update the submission state. This may
+  /// only be called by the student that owns the specified student submission.
+  /// This request must be made by the Developer Console project of the [OAuth
+  /// client ID](https://support.google.com/cloud/answer/6158849) used to create
+  /// the corresponding course work item. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+  /// to access the requested course or course work, turn in the requested
+  /// student submission, or for access errors. * `INVALID_ARGUMENT` if the
+  /// request is malformed. * `NOT_FOUND` if the requested course, course work,
+  /// or student submission does not exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2364,14 +2402,15 @@ class CoursesCourseWorkMaterialsResource {
   CoursesCourseWorkMaterialsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a course work material. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// access the requested course, create course work material in the requested
-  /// course, share a Drive attachment, or for access errors. *
-  /// `INVALID_ARGUMENT` if the request is malformed or if more than 20 *
-  /// materials are provided. * `NOT_FOUND` if the requested course does not
-  /// exist. * `FAILED_PRECONDITION` for the following request error: *
-  /// AttachmentNotVisible
+  /// Creates a course work material.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course,
+  /// create course work material in the requested course, share a Drive
+  /// attachment, or for access errors. * `INVALID_ARGUMENT` if the request is
+  /// malformed or if more than 20 * materials are provided. * `NOT_FOUND` if
+  /// the requested course does not exist. * `FAILED_PRECONDITION` for the
+  /// following request error: * AttachmentNotVisible
   ///
   /// [request] - The metadata request object.
   ///
@@ -2431,15 +2470,17 @@ class CoursesCourseWorkMaterialsResource {
     );
   }
 
-  /// Deletes a course work material. This request must be made by the Developer
-  /// Console project of the [OAuth client
-  /// ID](https://support.google.com/cloud/answer/6158849) used to create the
-  /// corresponding course work material item. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting developer project did
-  /// not create the corresponding course work material, if the requesting user
-  /// is not permitted to delete the requested course or for access errors. *
-  /// `FAILED_PRECONDITION` if the requested course work material has already
-  /// been deleted. * `NOT_FOUND` if no course exists with the requested ID.
+  /// Deletes a course work material.
+  ///
+  /// This request must be made by the Developer Console project of the [OAuth
+  /// client ID](https://support.google.com/cloud/answer/6158849) used to create
+  /// the corresponding course work material item. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` if the requesting developer
+  /// project did not create the corresponding course work material, if the
+  /// requesting user is not permitted to delete the requested course or for
+  /// access errors. * `FAILED_PRECONDITION` if the requested course work
+  /// material has already been deleted. * `NOT_FOUND` if no course exists with
+  /// the requested ID.
   ///
   /// Request parameters:
   ///
@@ -2500,11 +2541,13 @@ class CoursesCourseWorkMaterialsResource {
     );
   }
 
-  /// Returns a course work material. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// access the requested course or course work material, or for access errors.
-  /// * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-  /// requested course or course work material does not exist.
+  /// Returns a course work material.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course or
+  /// course work material, or for access errors. * `INVALID_ARGUMENT` if the
+  /// request is malformed. * `NOT_FOUND` if the requested course or course work
+  /// material does not exist.
   ///
   /// Request parameters:
   ///
@@ -2566,12 +2609,14 @@ class CoursesCourseWorkMaterialsResource {
   }
 
   /// Returns a list of course work material that the requester is permitted to
-  /// view. Course students may only view `PUBLISHED` course work material.
-  /// Course teachers and domain administrators may view all course work
-  /// material. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course or for access errors. * `INVALID_ARGUMENT` if the request
-  /// is malformed. * `NOT_FOUND` if the requested course does not exist.
+  /// view.
+  ///
+  /// Course students may only view `PUBLISHED` course work material. Course
+  /// teachers and domain administrators may view all course work material. This
+  /// method returns the following error codes: * `PERMISSION_DENIED` if the
+  /// requesting user is not permitted to access the requested course or for
+  /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if the requested course does not exist.
   ///
   /// Request parameters:
   ///
@@ -2676,12 +2721,13 @@ class CoursesCourseWorkMaterialsResource {
     );
   }
 
-  /// Updates one or more fields of a course work material. This method returns
-  /// the following error codes: * `PERMISSION_DENIED` if the requesting
-  /// developer project for access errors. * `INVALID_ARGUMENT` if the request
-  /// is malformed. * `FAILED_PRECONDITION` if the requested course work
-  /// material has already been deleted. * `NOT_FOUND` if the requested course
-  /// or course work material does not exist
+  /// Updates one or more fields of a course work material.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting developer project for access errors. * `INVALID_ARGUMENT`
+  /// if the request is malformed. * `FAILED_PRECONDITION` if the requested
+  /// course work material has already been deleted. * `NOT_FOUND` if the
+  /// requested course or course work material does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -2768,14 +2814,15 @@ class CoursesStudentsResource {
 
   CoursesStudentsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Adds a user as a student of a course. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-  /// to create students in this course or for access errors. * `NOT_FOUND` if
-  /// the requested course ID does not exist. * `FAILED_PRECONDITION` if the
-  /// requested user's account is disabled, for the following request errors: *
-  /// CourseMemberLimitReached * CourseNotModifiable *
-  /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already
-  /// a student or teacher in the course.
+  /// Adds a user as a student of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to create students in this course or
+  /// for access errors. * `NOT_FOUND` if the requested course ID does not
+  /// exist. * `FAILED_PRECONDITION` if the requested user's account is
+  /// disabled, for the following request errors: * CourseMemberLimitReached *
+  /// CourseNotModifiable * UserGroupsMembershipLimitReached * `ALREADY_EXISTS`
+  /// if the user is already a student or teacher in the course.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2843,11 +2890,12 @@ class CoursesStudentsResource {
     );
   }
 
-  /// Deletes a student of a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// delete students of this course or for access errors. * `NOT_FOUND` if no
-  /// student of this course has the requested ID or if the course does not
-  /// exist.
+  /// Deletes a student of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to delete students of this course or
+  /// for access errors. * `NOT_FOUND` if no student of this course has the
+  /// requested ID or if the course does not exist.
   ///
   /// Request parameters:
   ///
@@ -2910,11 +2958,12 @@ class CoursesStudentsResource {
     );
   }
 
-  /// Returns a student of a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// view students of this course or for access errors. * `NOT_FOUND` if no
-  /// student of this course has the requested ID or if the course does not
-  /// exist.
+  /// Returns a student of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to view students of this course or
+  /// for access errors. * `NOT_FOUND` if no student of this course has the
+  /// requested ID or if the course does not exist.
   ///
   /// Request parameters:
   ///
@@ -2978,8 +3027,10 @@ class CoursesStudentsResource {
   }
 
   /// Returns a list of students of this course that the requester is permitted
-  /// to view. This method returns the following error codes: * `NOT_FOUND` if
-  /// the course does not exist. * `PERMISSION_DENIED` for access errors.
+  /// to view.
+  ///
+  /// This method returns the following error codes: * `NOT_FOUND` if the course
+  /// does not exist. * `PERMISSION_DENIED` for access errors.
   ///
   /// Request parameters:
   ///
@@ -3056,14 +3107,16 @@ class CoursesTeachersResource {
 
   CoursesTeachersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a teacher of a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// create teachers in this course or for access errors. * `NOT_FOUND` if the
-  /// requested course ID does not exist. * `FAILED_PRECONDITION` if the
-  /// requested user's account is disabled, for the following request errors: *
-  /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached
-  /// * UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is
-  /// already a teacher or student in the course.
+  /// Creates a teacher of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to create teachers in this course or
+  /// for access errors. * `NOT_FOUND` if the requested course ID does not
+  /// exist. * `FAILED_PRECONDITION` if the requested user's account is
+  /// disabled, for the following request errors: * CourseMemberLimitReached *
+  /// CourseNotModifiable * CourseTeacherLimitReached *
+  /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already
+  /// a teacher or student in the course.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3122,12 +3175,13 @@ class CoursesTeachersResource {
     );
   }
 
-  /// Deletes a teacher of a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// delete teachers of this course or for access errors. * `NOT_FOUND` if no
-  /// teacher of this course has the requested ID or if the course does not
-  /// exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary
-  /// teacher of this course.
+  /// Deletes a teacher of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to delete teachers of this course or
+  /// for access errors. * `NOT_FOUND` if no teacher of this course has the
+  /// requested ID or if the course does not exist. * `FAILED_PRECONDITION` if
+  /// the requested ID belongs to the primary teacher of this course.
   ///
   /// Request parameters:
   ///
@@ -3190,11 +3244,12 @@ class CoursesTeachersResource {
     );
   }
 
-  /// Returns a teacher of a course. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
-  /// view teachers of this course or for access errors. * `NOT_FOUND` if no
-  /// teacher of this course has the requested ID or if the course does not
-  /// exist.
+  /// Returns a teacher of a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to view teachers of this course or
+  /// for access errors. * `NOT_FOUND` if no teacher of this course has the
+  /// requested ID or if the course does not exist.
   ///
   /// Request parameters:
   ///
@@ -3258,8 +3313,10 @@ class CoursesTeachersResource {
   }
 
   /// Returns a list of teachers of this course that the requester is permitted
-  /// to view. This method returns the following error codes: * `NOT_FOUND` if
-  /// the course does not exist. * `PERMISSION_DENIED` for access errors.
+  /// to view.
+  ///
+  /// This method returns the following error codes: * `NOT_FOUND` if the course
+  /// does not exist. * `PERMISSION_DENIED` for access errors.
   ///
   /// Request parameters:
   ///
@@ -3336,11 +3393,13 @@ class CoursesTopicsResource {
 
   CoursesTopicsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a topic. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course, create a topic in the requested course, or for access
-  /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-  /// the requested course does not exist.
+  /// Creates a topic.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course,
+  /// create a topic in the requested course, or for access errors. *
+  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
+  /// requested course does not exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3398,11 +3457,13 @@ class CoursesTopicsResource {
     );
   }
 
-  /// Deletes a topic. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not allowed to delete the
-  /// requested topic or for access errors. * `FAILED_PRECONDITION` if the
-  /// requested topic has already been deleted. * `NOT_FOUND` if no course or
-  /// topic exists with the requested ID.
+  /// Deletes a topic.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not allowed to delete the requested topic or for
+  /// access errors. * `FAILED_PRECONDITION` if the requested topic has already
+  /// been deleted. * `NOT_FOUND` if no course or topic exists with the
+  /// requested ID.
   ///
   /// Request parameters:
   ///
@@ -3462,11 +3523,12 @@ class CoursesTopicsResource {
     );
   }
 
-  /// Returns a topic. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
-  /// requested course or topic, or for access errors. * `INVALID_ARGUMENT` if
-  /// the request is malformed. * `NOT_FOUND` if the requested course or topic
-  /// does not exist.
+  /// Returns a topic.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course or
+  /// topic, or for access errors. * `INVALID_ARGUMENT` if the request is
+  /// malformed. * `NOT_FOUND` if the requested course or topic does not exist.
   ///
   /// Request parameters:
   ///
@@ -3525,9 +3587,10 @@ class CoursesTopicsResource {
     );
   }
 
-  /// Returns the list of topics that the requester is permitted to view. This
-  /// method returns the following error codes: * `PERMISSION_DENIED` if the
-  /// requesting user is not permitted to access the requested course or for
+  /// Returns the list of topics that the requester is permitted to view.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access the requested course or for
   /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
   /// `NOT_FOUND` if the requested course does not exist.
   ///
@@ -3599,11 +3662,12 @@ class CoursesTopicsResource {
     );
   }
 
-  /// Updates one or more fields of a topic. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting developer project did
-  /// not create the corresponding topic or for access errors. *
-  /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
-  /// requested course or topic does not exist
+  /// Updates one or more fields of a topic.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting developer project did not create the corresponding topic or
+  /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+  /// `NOT_FOUND` if the requested course or topic does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -3688,10 +3752,11 @@ class InvitationsResource {
   InvitationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Accepts an invitation, removing it and adding the invited user to the
-  /// teachers or students (as appropriate) of the specified course. Only the
-  /// invited user may accept an invitation. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-  /// to accept the requested invitation or for access errors. *
+  /// teachers or students (as appropriate) of the specified course.
+  ///
+  /// Only the invited user may accept an invitation. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` if the requesting user is not
+  /// permitted to accept the requested invitation or for access errors. *
   /// `FAILED_PRECONDITION` for the following request errors: *
   /// CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached
   /// * UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists
@@ -3745,15 +3810,16 @@ class InvitationsResource {
     );
   }
 
-  /// Creates an invitation. Only one invitation for a user and course may exist
-  /// at a time. Delete and re-create an invitation to make changes. This method
-  /// returns the following error codes: * `PERMISSION_DENIED` if the requesting
-  /// user is not permitted to create invitations for this course or for access
-  /// errors. * `NOT_FOUND` if the course or the user does not exist. *
-  /// `FAILED_PRECONDITION` if the requested user's account is disabled or if
-  /// the user already has this role or a role with greater permissions. *
-  /// `ALREADY_EXISTS` if an invitation for the specified user and course
-  /// already exists.
+  /// Creates an invitation.
+  ///
+  /// Only one invitation for a user and course may exist at a time. Delete and
+  /// re-create an invitation to make changes. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+  /// to create invitations for this course or for access errors. * `NOT_FOUND`
+  /// if the course or the user does not exist. * `FAILED_PRECONDITION` if the
+  /// requested user's account is disabled or if the user already has this role
+  /// or a role with greater permissions. * `ALREADY_EXISTS` if an invitation
+  /// for the specified user and course already exists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3804,10 +3870,12 @@ class InvitationsResource {
     );
   }
 
-  /// Deletes an invitation. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to delete the
-  /// requested invitation or for access errors. * `NOT_FOUND` if no invitation
-  /// exists with the requested ID.
+  /// Deletes an invitation.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to delete the requested invitation or
+  /// for access errors. * `NOT_FOUND` if no invitation exists with the
+  /// requested ID.
   ///
   /// Request parameters:
   ///
@@ -3857,10 +3925,12 @@ class InvitationsResource {
     );
   }
 
-  /// Returns an invitation. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to view the
-  /// requested invitation or for access errors. * `NOT_FOUND` if no invitation
-  /// exists with the requested ID.
+  /// Returns an invitation.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to view the requested invitation or
+  /// for access errors. * `NOT_FOUND` if no invitation exists with the
+  /// requested ID.
   ///
   /// Request parameters:
   ///
@@ -3912,9 +3982,10 @@ class InvitationsResource {
   }
 
   /// Returns a list of invitations that the requesting user is permitted to
-  /// view, restricted to those that match the list request. *Note:* At least
-  /// one of `user_id` or `course_id` must be supplied. Both fields can be
-  /// supplied. This method returns the following error codes: *
+  /// view, restricted to those that match the list request.
+  ///
+  /// *Note:* At least one of `user_id` or `course_id` must be supplied. Both
+  /// fields can be supplied. This method returns the following error codes: *
   /// `PERMISSION_DENIED` for access errors.
   ///
   /// Request parameters:
@@ -4001,11 +4072,13 @@ class RegistrationsResource {
 
   /// Creates a `Registration`, causing Classroom to start sending notifications
   /// from the provided `feed` to the destination provided in
-  /// `cloudPubSubTopic`. Returns the created `Registration`. Currently, this
-  /// will be the same as the argument, but with server-assigned fields such as
-  /// `expiry_time` and `id` filled in. Note that any value specified for the
-  /// `expiry_time` or `id` fields will be ignored. While Classroom may validate
-  /// the `cloudPubSubTopic` and return errors on a best effort basis, it is the
+  /// `cloudPubSubTopic`.
+  ///
+  /// Returns the created `Registration`. Currently, this will be the same as
+  /// the argument, but with server-assigned fields such as `expiry_time` and
+  /// `id` filled in. Note that any value specified for the `expiry_time` or
+  /// `id` fields will be ignored. While Classroom may validate the
+  /// `cloudPubSubTopic` and return errors on a best effort basis, it is the
   /// caller's responsibility to ensure that it exists and that Classroom has
   /// permission to publish to it. This method may return the following error
   /// codes: * `PERMISSION_DENIED` if: * the authenticated user does not have
@@ -4135,10 +4208,11 @@ class UserProfilesResource {
 
   UserProfilesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns a user profile. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the requesting user is not permitted to access this
-  /// user profile, if no profile exists with the requested ID, or for access
-  /// errors.
+  /// Returns a user profile.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to access this user profile, if no
+  /// profile exists with the requested ID, or for access errors.
   ///
   /// Request parameters:
   ///
@@ -4200,23 +4274,24 @@ class UserProfilesGuardianInvitationsResource {
       : _requester = client;
 
   /// Creates a guardian invitation, and sends an email to the guardian asking
-  /// them to confirm that they are the student's guardian. Once the guardian
-  /// accepts the invitation, their `state` will change to `COMPLETED` and they
-  /// will start receiving guardian notifications. A `Guardian` resource will
-  /// also be created to represent the active guardian. The request object must
-  /// have the `student_id` and `invited_email_address` fields set. Failing to
-  /// set these fields, or setting any other fields in the request, will result
-  /// in an error. This method returns the following error codes: *
-  /// `PERMISSION_DENIED` if the current user does not have permission to manage
-  /// guardians, if the guardian in question has already rejected too many
-  /// requests for that student, if guardians are not enabled for the domain in
-  /// question, or for other access errors. * `RESOURCE_EXHAUSTED` if the
-  /// student or guardian has exceeded the guardian link limit. *
-  /// `INVALID_ARGUMENT` if the guardian email address is not valid (for
-  /// example, if it is too long), or if the format of the student ID provided
-  /// cannot be recognized (it is not an email address, nor a `user_id` from
-  /// this API). This error will also be returned if read-only fields are set,
-  /// or if the `state` field is set to to a value other than `PENDING`. *
+  /// them to confirm that they are the student's guardian.
+  ///
+  /// Once the guardian accepts the invitation, their `state` will change to
+  /// `COMPLETED` and they will start receiving guardian notifications. A
+  /// `Guardian` resource will also be created to represent the active guardian.
+  /// The request object must have the `student_id` and `invited_email_address`
+  /// fields set. Failing to set these fields, or setting any other fields in
+  /// the request, will result in an error. This method returns the following
+  /// error codes: * `PERMISSION_DENIED` if the current user does not have
+  /// permission to manage guardians, if the guardian in question has already
+  /// rejected too many requests for that student, if guardians are not enabled
+  /// for the domain in question, or for other access errors. *
+  /// `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian
+  /// link limit. * `INVALID_ARGUMENT` if the guardian email address is not
+  /// valid (for example, if it is too long), or if the format of the student ID
+  /// provided cannot be recognized (it is not an email address, nor a `user_id`
+  /// from this API). This error will also be returned if read-only fields are
+  /// set, or if the `state` field is set to to a value other than `PENDING`. *
   /// `NOT_FOUND` if the student ID provided is a valid student ID, but
   /// Classroom has no record of that student. * `ALREADY_EXISTS` if there is
   /// already a pending guardian invitation for the student and
@@ -4281,16 +4356,17 @@ class UserProfilesGuardianInvitationsResource {
     );
   }
 
-  /// Returns a specific guardian invitation. This method returns the following
-  /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
-  /// to view guardian invitations for the student identified by the
-  /// `student_id`, if guardians are not enabled for the domain in question, or
-  /// for other access errors. * `INVALID_ARGUMENT` if a `student_id` is
-  /// specified, but its format cannot be recognized (it is not an email
-  /// address, nor a `student_id` from the API, nor the literal string `me`). *
-  /// `NOT_FOUND` if Classroom cannot find any record of the given student or
-  /// `invitation_id`. May also be returned if the student exists, but the
-  /// requesting user does not have access to see that student.
+  /// Returns a specific guardian invitation.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to view guardian invitations for the
+  /// student identified by the `student_id`, if guardians are not enabled for
+  /// the domain in question, or for other access errors. * `INVALID_ARGUMENT`
+  /// if a `student_id` is specified, but its format cannot be recognized (it is
+  /// not an email address, nor a `student_id` from the API, nor the literal
+  /// string `me`). * `NOT_FOUND` if Classroom cannot find any record of the
+  /// given student or `invitation_id`. May also be returned if the student
+  /// exists, but the requesting user does not have access to see that student.
   ///
   /// Request parameters:
   ///
@@ -4353,12 +4429,13 @@ class UserProfilesGuardianInvitationsResource {
   }
 
   /// Returns a list of guardian invitations that the requesting user is
-  /// permitted to view, filtered by the parameters provided. This method
-  /// returns the following error codes: * `PERMISSION_DENIED` if a `student_id`
-  /// is specified, and the requesting user is not permitted to view guardian
-  /// invitations for that student, if `"-"` is specified as the `student_id`
-  /// and the user is not a domain administrator, if guardians are not enabled
-  /// for the domain in question, or for other access errors. *
+  /// permitted to view, filtered by the parameters provided.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if a
+  /// `student_id` is specified, and the requesting user is not permitted to
+  /// view guardian invitations for that student, if `"-"` is specified as the
+  /// `student_id` and the user is not a domain administrator, if guardians are
+  /// not enabled for the domain in question, or for other access errors. *
   /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot
   /// be recognized (it is not an email address, nor a `student_id` from the
   /// API, nor the literal string `me`). May also be returned if an invalid
@@ -4453,15 +4530,17 @@ class UserProfilesGuardianInvitationsResource {
     );
   }
 
-  /// Modifies a guardian invitation. Currently, the only valid modification is
-  /// to change the `state` from `PENDING` to `COMPLETE`. This has the effect of
-  /// withdrawing the invitation. This method returns the following error codes:
-  /// * `PERMISSION_DENIED` if the current user does not have permission to
-  /// manage guardians, if guardians are not enabled for the domain in question
-  /// or for other access errors. * `FAILED_PRECONDITION` if the guardian link
-  /// is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the
-  /// student ID provided cannot be recognized (it is not an email address, nor
-  /// a `user_id` from this API), or if the passed `GuardianInvitation` has a
+  /// Modifies a guardian invitation.
+  ///
+  /// Currently, the only valid modification is to change the `state` from
+  /// `PENDING` to `COMPLETE`. This has the effect of withdrawing the
+  /// invitation. This method returns the following error codes: *
+  /// `PERMISSION_DENIED` if the current user does not have permission to manage
+  /// guardians, if guardians are not enabled for the domain in question or for
+  /// other access errors. * `FAILED_PRECONDITION` if the guardian link is not
+  /// in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student
+  /// ID provided cannot be recognized (it is not an email address, nor a
+  /// `user_id` from this API), or if the passed `GuardianInvitation` has a
   /// `state` other than `COMPLETE`, or if it modifies fields other than
   /// `state`. * `NOT_FOUND` if the student ID provided is a valid student ID,
   /// but Classroom has no record of that student, or if the `id` field does not
@@ -4549,18 +4628,20 @@ class UserProfilesGuardiansResource {
   UserProfilesGuardiansResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes a guardian. The guardian will no longer receive guardian
-  /// notifications and the guardian will no longer be accessible via the API.
-  /// This method returns the following error codes: * `PERMISSION_DENIED` if no
-  /// user that matches the provided `student_id` is visible to the requesting
-  /// user, if the requesting user is not permitted to manage guardians for the
-  /// student identified by the `student_id`, if guardians are not enabled for
-  /// the domain in question, or for other access errors. * `INVALID_ARGUMENT`
-  /// if a `student_id` is specified, but its format cannot be recognized (it is
-  /// not an email address, nor a `student_id` from the API). * `NOT_FOUND` if
-  /// the requesting user is permitted to modify guardians for the requested
-  /// `student_id`, but no `Guardian` record exists for that student with the
-  /// provided `guardian_id`.
+  /// Deletes a guardian.
+  ///
+  /// The guardian will no longer receive guardian notifications and the
+  /// guardian will no longer be accessible via the API. This method returns the
+  /// following error codes: * `PERMISSION_DENIED` if no user that matches the
+  /// provided `student_id` is visible to the requesting user, if the requesting
+  /// user is not permitted to manage guardians for the student identified by
+  /// the `student_id`, if guardians are not enabled for the domain in question,
+  /// or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is
+  /// specified, but its format cannot be recognized (it is not an email
+  /// address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting
+  /// user is permitted to modify guardians for the requested `student_id`, but
+  /// no `Guardian` record exists for that student with the provided
+  /// `guardian_id`.
   ///
   /// Request parameters:
   ///
@@ -4621,17 +4702,19 @@ class UserProfilesGuardiansResource {
     );
   }
 
-  /// Returns a specific guardian. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if no user that matches the provided
-  /// `student_id` is visible to the requesting user, if the requesting user is
-  /// not permitted to view guardian information for the student identified by
-  /// the `student_id`, if guardians are not enabled for the domain in question,
-  /// or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is
-  /// specified, but its format cannot be recognized (it is not an email
-  /// address, nor a `student_id` from the API, nor the literal string `me`). *
-  /// `NOT_FOUND` if the requesting user is permitted to view guardians for the
-  /// requested `student_id`, but no `Guardian` record exists for that student
-  /// that matches the provided `guardian_id`.
+  /// Returns a specific guardian.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if no
+  /// user that matches the provided `student_id` is visible to the requesting
+  /// user, if the requesting user is not permitted to view guardian information
+  /// for the student identified by the `student_id`, if guardians are not
+  /// enabled for the domain in question, or for other access errors. *
+  /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot
+  /// be recognized (it is not an email address, nor a `student_id` from the
+  /// API, nor the literal string `me`). * `NOT_FOUND` if the requesting user is
+  /// permitted to view guardians for the requested `student_id`, but no
+  /// `Guardian` record exists for that student that matches the provided
+  /// `guardian_id`.
   ///
   /// Request parameters:
   ///
@@ -4693,21 +4776,22 @@ class UserProfilesGuardiansResource {
   }
 
   /// Returns a list of guardians that the requesting user is permitted to view,
-  /// restricted to those that match the request. To list guardians for any
-  /// student that the requesting user may view guardians for, use the literal
-  /// character `-` for the student ID. This method returns the following error
-  /// codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the
-  /// requesting user is not permitted to view guardian information for that
-  /// student, if `"-"` is specified as the `student_id` and the user is not a
-  /// domain administrator, if guardians are not enabled for the domain in
-  /// question, if the `invited_email_address` filter is set by a user who is
-  /// not a domain administrator, or for other access errors. *
-  /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot
-  /// be recognized (it is not an email address, nor a `student_id` from the
-  /// API, nor the literal string `me`). May also be returned if an invalid
-  /// `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified,
-  /// and its format can be recognized, but Classroom has no record of that
-  /// student.
+  /// restricted to those that match the request.
+  ///
+  /// To list guardians for any student that the requesting user may view
+  /// guardians for, use the literal character `-` for the student ID. This
+  /// method returns the following error codes: * `PERMISSION_DENIED` if a
+  /// `student_id` is specified, and the requesting user is not permitted to
+  /// view guardian information for that student, if `"-"` is specified as the
+  /// `student_id` and the user is not a domain administrator, if guardians are
+  /// not enabled for the domain in question, if the `invited_email_address`
+  /// filter is set by a user who is not a domain administrator, or for other
+  /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but
+  /// its format cannot be recognized (it is not an email address, nor a
+  /// `student_id` from the API, nor the literal string `me`). May also be
+  /// returned if an invalid `page_token` is provided. * `NOT_FOUND` if a
+  /// `student_id` is specified, and its format can be recognized, but Classroom
+  /// has no record of that student.
   ///
   /// Request parameters:
   ///
@@ -4793,12 +4877,14 @@ class UserProfilesGuardiansResource {
 
 /// Announcement created by a teacher for students of the course
 class Announcement {
-  /// Absolute link to this announcement in the Classroom web UI. This is only
-  /// populated if `state` is `PUBLISHED`. Read-only.
+  /// Absolute link to this announcement in the Classroom web UI.
+  ///
+  /// This is only populated if `state` is `PUBLISHED`. Read-only.
   core.String alternateLink;
 
-  /// Assignee mode of the announcement. If unspecified, the default value is
-  /// `ALL_STUDENTS`.
+  /// Assignee mode of the announcement.
+  ///
+  /// If unspecified, the default value is `ALL_STUDENTS`.
   /// Possible string values are:
   /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
@@ -4806,33 +4892,44 @@ class Announcement {
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
   core.String assigneeMode;
 
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// Timestamp when this announcement was created. Read-only.
+  /// Timestamp when this announcement was created.
+  ///
+  /// Read-only.
   core.String creationTime;
 
-  /// Identifier for the user that created the announcement. Read-only.
+  /// Identifier for the user that created the announcement.
+  ///
+  /// Read-only.
   core.String creatorUserId;
 
   /// Classroom-assigned identifier of this announcement, unique per course.
+  ///
   /// Read-only.
   core.String id;
 
-  /// Identifiers of students with access to the announcement. This field is set
-  /// only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is
-  /// `INDIVIDUAL_STUDENTS`, then only students specified in this field can see
-  /// the announcement.
+  /// Identifiers of students with access to the announcement.
+  ///
+  /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
+  /// `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
+  /// this field can see the announcement.
   IndividualStudentsOptions individualStudentsOptions;
 
-  /// Additional materials. Announcements must have no more than 20 material
-  /// items.
+  /// Additional materials.
+  ///
+  /// Announcements must have no more than 20 material items.
   core.List<Material> materials;
 
   /// Optional timestamp when this announcement is scheduled to be published.
   core.String scheduledTime;
 
-  /// Status of this announcement. If unspecified, the default state is `DRAFT`.
+  /// Status of this announcement.
+  ///
+  /// If unspecified, the default state is `DRAFT`.
   /// Possible string values are:
   /// - "ANNOUNCEMENT_STATE_UNSPECIFIED" : No state specified. This is never
   /// returned.
@@ -4847,11 +4944,15 @@ class Announcement {
   /// time.
   core.String state;
 
-  /// Description of this announcement. The text must be a valid UTF-8 string
-  /// containing no more than 30,000 characters.
+  /// Description of this announcement.
+  ///
+  /// The text must be a valid UTF-8 string containing no more than 30,000
+  /// characters.
   core.String text;
 
-  /// Timestamp of the most recent change to this announcement. Read-only.
+  /// Timestamp of the most recent change to this announcement.
+  ///
+  /// Read-only.
   core.String updateTime;
 
   Announcement();
@@ -4944,8 +5045,9 @@ class Announcement {
 
 /// Additional details for assignments.
 class Assignment {
-  /// Drive folder where attachments from student submissions are placed. This
-  /// is only populated for course teachers and administrators.
+  /// Drive folder where attachments from student submissions are placed.
+  ///
+  /// This is only populated for course teachers and administrators.
   DriveFolder studentWorkFolder;
 
   Assignment();
@@ -4968,12 +5070,13 @@ class Assignment {
 
 /// Student work for an assignment.
 class AssignmentSubmission {
-  /// Attachments added by the student. Drive files that correspond to materials
-  /// with a share mode of STUDENT_COPY may not exist yet if the student has not
-  /// accessed the assignment in Classroom. Some attachment metadata is only
-  /// populated if the requesting user has permission to access it. Identifier
-  /// and alternate_link fields are always available, but others (for example,
-  /// title) may not be.
+  /// Attachments added by the student.
+  ///
+  /// Drive files that correspond to materials with a share mode of STUDENT_COPY
+  /// may not exist yet if the student has not accessed the assignment in
+  /// Classroom. Some attachment metadata is only populated if the requesting
+  /// user has permission to access it. Identifier and alternate_link fields are
+  /// always available, but others (for example, title) may not be.
   core.List<Attachment> attachments;
 
   AssignmentSubmission();
@@ -4997,8 +5100,9 @@ class AssignmentSubmission {
   }
 }
 
-/// Attachment added to student assignment work. When creating attachments,
-/// setting the `form` field is not supported.
+/// Attachment added to student assignment work.
+///
+/// When creating attachments, setting the `form` field is not supported.
 class Attachment {
   /// Google Drive file attachment.
   DriveFile driveFile;
@@ -5051,8 +5155,9 @@ class Attachment {
   }
 }
 
-/// A reference to a Cloud Pub/Sub topic. To register for notifications, the
-/// owner of the topic must grant
+/// A reference to a Cloud Pub/Sub topic.
+///
+/// To register for notifications, the owner of the topic must grant
 /// `classroom-notifications@system.gserviceaccount.com` the
 /// `projects.topics.publish` permission.
 class CloudPubsubTopic {
@@ -5079,24 +5184,31 @@ class CloudPubsubTopic {
 
 /// A Course in Classroom.
 class Course {
-  /// Absolute link to this course in the Classroom web UI. Read-only.
+  /// Absolute link to this course in the Classroom web UI.
+  ///
+  /// Read-only.
   core.String alternateLink;
 
   /// The Calendar ID for a calendar that all course members can see, to which
   /// Classroom adds events for course work and announcements in the course.
+  ///
   /// Read-only.
   core.String calendarId;
 
   /// The email address of a Google group containing all members of the course.
+  ///
   /// This group does not accept email and can only be used for permissions.
   /// Read-only.
   core.String courseGroupEmail;
 
   /// Sets of materials that appear on the "about" page of this course.
+  ///
   /// Read-only.
   core.List<CourseMaterialSet> courseMaterialSets;
 
-  /// State of the course. If unspecified, the default state is `PROVISIONED`.
+  /// State of the course.
+  ///
+  /// If unspecified, the default state is `PROVISIONED`.
   /// Possible string values are:
   /// - "COURSE_STATE_UNSPECIFIED" : No course state. No returned Course message
   /// will use this value.
@@ -5118,70 +5230,90 @@ class Course {
   /// the Terms of Service.
   core.String courseState;
 
-  /// Creation time of the course. Specifying this field in a course update mask
-  /// results in an error. Read-only.
+  /// Creation time of the course.
+  ///
+  /// Specifying this field in a course update mask results in an error.
+  /// Read-only.
   core.String creationTime;
 
-  /// Optional description. For example, "We'll be learning about the structure
-  /// of living creatures from a combination of textbooks, guest lectures, and
-  /// lab work. Expect to be excited!" If set, this field must be a valid UTF-8
-  /// string and no longer than 30,000 characters.
+  /// Optional description.
+  ///
+  /// For example, "We'll be learning about the structure of living creatures
+  /// from a combination of textbooks, guest lectures, and lab work. Expect to
+  /// be excited!" If set, this field must be a valid UTF-8 string and no longer
+  /// than 30,000 characters.
   core.String description;
 
-  /// Optional heading for the description. For example, "Welcome to 10th Grade
-  /// Biology." If set, this field must be a valid UTF-8 string and no longer
-  /// than 3600 characters.
+  /// Optional heading for the description.
+  ///
+  /// For example, "Welcome to 10th Grade Biology." If set, this field must be a
+  /// valid UTF-8 string and no longer than 3600 characters.
   core.String descriptionHeading;
 
-  /// Enrollment code to use when joining this course. Specifying this field in
-  /// a course update mask results in an error. Read-only.
+  /// Enrollment code to use when joining this course.
+  ///
+  /// Specifying this field in a course update mask results in an error.
+  /// Read-only.
   core.String enrollmentCode;
 
   /// Whether or not guardian notifications are enabled for this course.
+  ///
   /// Read-only.
   core.bool guardiansEnabled;
 
-  /// Identifier for this course assigned by Classroom. When creating a course,
-  /// you may optionally set this identifier to an alias string in the request
-  /// to create a corresponding alias. The `id` is still assigned by Classroom
-  /// and cannot be updated after the course is created. Specifying this field
-  /// in a course update mask results in an error.
+  /// Identifier for this course assigned by Classroom.
+  ///
+  /// When creating a course, you may optionally set this identifier to an alias
+  /// string in the request to create a corresponding alias. The `id` is still
+  /// assigned by Classroom and cannot be updated after the course is created.
+  /// Specifying this field in a course update mask results in an error.
   core.String id;
 
-  /// Name of the course. For example, "10th Grade Biology". The name is
-  /// required. It must be between 1 and 750 characters and a valid UTF-8
-  /// string.
+  /// Name of the course.
+  ///
+  /// For example, "10th Grade Biology". The name is required. It must be
+  /// between 1 and 750 characters and a valid UTF-8 string.
   core.String name;
 
-  /// The identifier of the owner of a course. When specified as a parameter of
-  /// a create course request, this field is required. The identifier can be one
-  /// of the following: * the numeric identifier for the user * the email
-  /// address of the user * the string literal `"me"`, indicating the requesting
-  /// user This must be set in a create request. Admins can also specify this
-  /// field in a patch course request to transfer ownership. In other contexts,
-  /// it is read-only.
+  /// The identifier of the owner of a course.
+  ///
+  /// When specified as a parameter of a create course request, this field is
+  /// required. The identifier can be one of the following: * the numeric
+  /// identifier for the user * the email address of the user * the string
+  /// literal `"me"`, indicating the requesting user This must be set in a
+  /// create request. Admins can also specify this field in a patch course
+  /// request to transfer ownership. In other contexts, it is read-only.
   core.String ownerId;
 
-  /// Optional room location. For example, "301". If set, this field must be a
-  /// valid UTF-8 string and no longer than 650 characters.
+  /// Optional room location.
+  ///
+  /// For example, "301". If set, this field must be a valid UTF-8 string and no
+  /// longer than 650 characters.
   core.String room;
 
-  /// Section of the course. For example, "Period 2". If set, this field must be
-  /// a valid UTF-8 string and no longer than 2800 characters.
+  /// Section of the course.
+  ///
+  /// For example, "Period 2". If set, this field must be a valid UTF-8 string
+  /// and no longer than 2800 characters.
   core.String section;
 
   /// Information about a Drive Folder that is shared with all teachers of the
-  /// course. This field will only be set for teachers of the course and domain
+  /// course.
+  ///
+  /// This field will only be set for teachers of the course and domain
   /// administrators. Read-only.
   DriveFolder teacherFolder;
 
   /// The email address of a Google group containing all teachers of the course.
+  ///
   /// This group does not accept email and can only be used for permissions.
   /// Read-only.
   core.String teacherGroupEmail;
 
-  /// Time of the most recent update to this course. Specifying this field in a
-  /// course update mask results in an error. Read-only.
+  /// Time of the most recent update to this course.
+  ///
+  /// Specifying this field in a course update mask results in an error.
+  /// Read-only.
   core.String updateTime;
 
   Course();
@@ -5308,22 +5440,26 @@ class Course {
   }
 }
 
-/// Alternative identifier for a course. An alias uniquely identifies a course.
-/// It must be unique within one of the following scopes: * domain: A
-/// domain-scoped alias is visible to all users within the alias creator's
-/// domain and can be created only by a domain admin. A domain-scoped alias is
-/// often used when a course has an identifier external to Classroom. * project:
-/// A project-scoped alias is visible to any request from an application using
-/// the Developer Console project ID that created the alias and can be created
-/// by any project. A project-scoped alias is often used when an application has
-/// alternative identifiers. A random value can also be used to avoid duplicate
-/// courses in the event of transmission failures, as retrying a request will
-/// return `ALREADY_EXISTS` if a previous one has succeeded.
+/// Alternative identifier for a course.
+///
+/// An alias uniquely identifies a course. It must be unique within one of the
+/// following scopes: * domain: A domain-scoped alias is visible to all users
+/// within the alias creator's domain and can be created only by a domain admin.
+/// A domain-scoped alias is often used when a course has an identifier external
+/// to Classroom. * project: A project-scoped alias is visible to any request
+/// from an application using the Developer Console project ID that created the
+/// alias and can be created by any project. A project-scoped alias is often
+/// used when an application has alternative identifiers. A random value can
+/// also be used to avoid duplicate courses in the event of transmission
+/// failures, as retrying a request will return `ALREADY_EXISTS` if a previous
+/// one has succeeded.
 class CourseAlias {
-  /// Alias string. The format of the string indicates the desired alias
-  /// scoping. * `d:` indicates a domain-scoped alias. Example: `d:math_101` *
-  /// `p:` indicates a project-scoped alias. Example: `p:abc123` This field has
-  /// a maximum length of 256 characters.
+  /// Alias string.
+  ///
+  /// The format of the string indicates the desired alias scoping. * `d:`
+  /// indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a
+  /// project-scoped alias. Example: `p:abc123` This field has a maximum length
+  /// of 256 characters.
   core.String alias;
 
   CourseAlias();
@@ -5396,8 +5532,9 @@ class CourseMaterial {
   }
 }
 
-/// A set of materials that appears on the "About" page of the course. These
-/// materials might include a syllabus, schedule, or other background
+/// A set of materials that appears on the "About" page of the course.
+///
+/// These materials might include a syllabus, schedule, or other background
 /// information relating to the course as a whole.
 class CourseMaterialSet {
   /// Materials attached to this set.
@@ -5456,12 +5593,14 @@ class CourseRosterChangesInfo {
 
 /// Course work created by a teacher for students of the course.
 class CourseWork {
-  /// Absolute link to this course work in the Classroom web UI. This is only
-  /// populated if `state` is `PUBLISHED`. Read-only.
+  /// Absolute link to this course work in the Classroom web UI.
+  ///
+  /// This is only populated if `state` is `PUBLISHED`. Read-only.
   core.String alternateLink;
 
-  /// Assignee mode of the coursework. If unspecified, the default value is
-  /// `ALL_STUDENTS`.
+  /// Assignee mode of the coursework.
+  ///
+  /// If unspecified, the default value is `ALL_STUDENTS`.
   /// Possible string values are:
   /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
@@ -5469,65 +5608,86 @@ class CourseWork {
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
   core.String assigneeMode;
 
-  /// Assignment details. This is populated only when `work_type` is
-  /// `ASSIGNMENT`. Read-only.
+  /// Assignment details.
+  ///
+  /// This is populated only when `work_type` is `ASSIGNMENT`. Read-only.
   Assignment assignment;
 
   /// Whether this course work item is associated with the Developer Console
-  /// project making the request. See CreateCourseWork for more details.
-  /// Read-only.
+  /// project making the request.
+  ///
+  /// See CreateCourseWork for more details. Read-only.
   core.bool associatedWithDeveloper;
 
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// Timestamp when this course work was created. Read-only.
+  /// Timestamp when this course work was created.
+  ///
+  /// Read-only.
   core.String creationTime;
 
-  /// Identifier for the user that created the coursework. Read-only.
+  /// Identifier for the user that created the coursework.
+  ///
+  /// Read-only.
   core.String creatorUserId;
 
-  /// Optional description of this course work. If set, the description must be
-  /// a valid UTF-8 string containing no more than 30,000 characters.
+  /// Optional description of this course work.
+  ///
+  /// If set, the description must be a valid UTF-8 string containing no more
+  /// than 30,000 characters.
   core.String description;
 
-  /// Optional date, in UTC, that submissions for this course work are due. This
-  /// must be specified if `due_time` is specified.
+  /// Optional date, in UTC, that submissions for this course work are due.
+  ///
+  /// This must be specified if `due_time` is specified.
   Date dueDate;
 
   /// Optional time of day, in UTC, that submissions for this course work are
-  /// due. This must be specified if `due_date` is specified.
+  /// due.
+  ///
+  /// This must be specified if `due_date` is specified.
   TimeOfDay dueTime;
 
   /// Classroom-assigned identifier of this course work, unique per course.
+  ///
   /// Read-only.
   core.String id;
 
-  /// Identifiers of students with access to the coursework. This field is set
-  /// only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is
-  /// `INDIVIDUAL_STUDENTS`, then only students specified in this field are
-  /// assigned the coursework.
+  /// Identifiers of students with access to the coursework.
+  ///
+  /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
+  /// `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
+  /// this field are assigned the coursework.
   IndividualStudentsOptions individualStudentsOptions;
 
-  /// Additional materials. CourseWork must have no more than 20 material items.
+  /// Additional materials.
+  ///
+  /// CourseWork must have no more than 20 material items.
   core.List<Material> materials;
 
-  /// Maximum grade for this course work. If zero or unspecified, this
-  /// assignment is considered ungraded. This must be a non-negative integer
-  /// value.
+  /// Maximum grade for this course work.
+  ///
+  /// If zero or unspecified, this assignment is considered ungraded. This must
+  /// be a non-negative integer value.
   core.double maxPoints;
 
-  /// Multiple choice question details. For read operations, this field is
-  /// populated only when `work_type` is `MULTIPLE_CHOICE_QUESTION`. For write
-  /// operations, this field must be specified when creating course work with a
-  /// `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be set
-  /// otherwise.
+  /// Multiple choice question details.
+  ///
+  /// For read operations, this field is populated only when `work_type` is
+  /// `MULTIPLE_CHOICE_QUESTION`. For write operations, this field must be
+  /// specified when creating course work with a `work_type` of
+  /// `MULTIPLE_CHOICE_QUESTION`, and it must not be set otherwise.
   MultipleChoiceQuestion multipleChoiceQuestion;
 
   /// Optional timestamp when this course work is scheduled to be published.
   core.String scheduledTime;
 
-  /// Status of this course work. If unspecified, the default state is `DRAFT`.
+  /// Status of this course work.
+  ///
+  /// If unspecified, the default state is `DRAFT`.
   /// Possible string values are:
   /// - "COURSE_WORK_STATE_UNSPECIFIED" : No state specified. This is never
   /// returned.
@@ -5540,8 +5700,9 @@ class CourseWork {
   /// administrators. Work in this state is deleted after some time.
   core.String state;
 
-  /// Setting to determine when students are allowed to modify submissions. If
-  /// unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`.
+  /// Setting to determine when students are allowed to modify submissions.
+  ///
+  /// If unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`.
   /// Possible string values are:
   /// - "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED" : No modification mode
   /// specified. This is never returned.
@@ -5550,19 +5711,25 @@ class CourseWork {
   /// - "MODIFIABLE" : Submissions can be modified at any time.
   core.String submissionModificationMode;
 
-  /// Title of this course work. The title must be a valid UTF-8 string
-  /// containing between 1 and 3000 characters.
+  /// Title of this course work.
+  ///
+  /// The title must be a valid UTF-8 string containing between 1 and 3000
+  /// characters.
   core.String title;
 
-  /// Identifier for the topic that this coursework is associated with. Must
-  /// match an existing topic in the course.
+  /// Identifier for the topic that this coursework is associated with.
+  ///
+  /// Must match an existing topic in the course.
   core.String topicId;
 
-  /// Timestamp of the most recent change to this course work. Read-only.
+  /// Timestamp of the most recent change to this course work.
+  ///
+  /// Read-only.
   core.String updateTime;
 
-  /// Type of this course work. The type is set when the course work is created
-  /// and cannot be changed.
+  /// Type of this course work.
+  ///
+  /// The type is set when the course work is created and cannot be changed.
   /// Possible string values are:
   /// - "COURSE_WORK_TYPE_UNSPECIFIED" : No work type specified. This is never
   /// returned.
@@ -5749,12 +5916,14 @@ class CourseWorkChangesInfo {
 
 /// Course work material created by a teacher for students of the course
 class CourseWorkMaterial {
-  /// Absolute link to this course work material in the Classroom web UI. This
-  /// is only populated if `state` is `PUBLISHED`. Read-only.
+  /// Absolute link to this course work material in the Classroom web UI.
+  ///
+  /// This is only populated if `state` is `PUBLISHED`. Read-only.
   core.String alternateLink;
 
-  /// Assignee mode of the course work material. If unspecified, the default
-  /// value is `ALL_STUDENTS`.
+  /// Assignee mode of the course work material.
+  ///
+  /// If unspecified, the default value is `ALL_STUDENTS`.
   /// Possible string values are:
   /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
@@ -5762,39 +5931,52 @@ class CourseWorkMaterial {
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
   core.String assigneeMode;
 
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// Timestamp when this course work material was created. Read-only.
+  /// Timestamp when this course work material was created.
+  ///
+  /// Read-only.
   core.String creationTime;
 
-  /// Identifier for the user that created the course work material. Read-only.
+  /// Identifier for the user that created the course work material.
+  ///
+  /// Read-only.
   core.String creatorUserId;
 
-  /// Optional description of this course work material. The text must be a
-  /// valid UTF-8 string containing no more than 30,000 characters.
+  /// Optional description of this course work material.
+  ///
+  /// The text must be a valid UTF-8 string containing no more than 30,000
+  /// characters.
   core.String description;
 
   /// Classroom-assigned identifier of this course work material, unique per
-  /// course. Read-only.
+  /// course.
+  ///
+  /// Read-only.
   core.String id;
 
-  /// Identifiers of students with access to the course work material. This
-  /// field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
+  /// Identifiers of students with access to the course work material.
+  ///
+  /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
   /// `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
   /// this field can see the course work material.
   IndividualStudentsOptions individualStudentsOptions;
 
-  /// Additional materials. A course work material must have no more than 20
-  /// material items.
+  /// Additional materials.
+  ///
+  /// A course work material must have no more than 20 material items.
   core.List<Material> materials;
 
   /// Optional timestamp when this course work material is scheduled to be
   /// published.
   core.String scheduledTime;
 
-  /// Status of this course work material. If unspecified, the default state is
-  /// `DRAFT`.
+  /// Status of this course work material.
+  ///
+  /// If unspecified, the default state is `DRAFT`.
   /// Possible string values are:
   /// - "COURSEWORK_MATERIAL_STATE_UNSPECIFIED" : No state specified. This is
   /// never returned.
@@ -5809,15 +5991,20 @@ class CourseWorkMaterial {
   /// deleted after some time.
   core.String state;
 
-  /// Title of this course work material. The title must be a valid UTF-8 string
-  /// containing between 1 and 3000 characters.
+  /// Title of this course work material.
+  ///
+  /// The title must be a valid UTF-8 string containing between 1 and 3000
+  /// characters.
   core.String title;
 
   /// Identifier for the topic that this course work material is associated
-  /// with. Must match an existing topic in the course.
+  /// with.
+  ///
+  /// Must match an existing topic in the course.
   core.String topicId;
 
   /// Timestamp of the most recent change to this course work material.
+  ///
   /// Read-only.
   core.String updateTime;
 
@@ -5921,26 +6108,30 @@ class CourseWorkMaterial {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
-/// A full date, with non-zero year, month and day values * A month and day
-/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
-/// month and day values * A year and month value, with a zero day, e.g. a
-/// credit card expiration date Related types are google.type.TimeOfDay and
-/// `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are not
+/// significant. The date is relative to the Proleptic Gregorian Calendar. This
+/// can represent: * A full date, with non-zero year, month and day values * A
+/// month and day value, with a zero year, e.g. an anniversary * A year on its
+/// own, with zero month and day values * A year and month value, with a zero
+/// day, e.g. a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
-  /// significant.
+  /// Day of month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
+  /// a year by itself or a year and month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-  /// month and day.
+  /// Month of year.
+  ///
+  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
-  /// year.
+  /// Year of date.
+  ///
+  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
   core.int year;
 
   Date();
@@ -5974,16 +6165,22 @@ class Date {
 
 /// Representation of a Google Drive file.
 class DriveFile {
-  /// URL that can be used to access the Drive item. Read-only.
+  /// URL that can be used to access the Drive item.
+  ///
+  /// Read-only.
   core.String alternateLink;
 
   /// Drive API resource ID.
   core.String id;
 
-  /// URL of a thumbnail image of the Drive item. Read-only.
+  /// URL of a thumbnail image of the Drive item.
+  ///
+  /// Read-only.
   core.String thumbnailUrl;
 
-  /// Title of the Drive item. Read-only.
+  /// Title of the Drive item.
+  ///
+  /// Read-only.
   core.String title;
 
   DriveFile();
@@ -6023,13 +6220,17 @@ class DriveFile {
 
 /// Representation of a Google Drive folder.
 class DriveFolder {
-  /// URL that can be used to access the Drive folder. Read-only.
+  /// URL that can be used to access the Drive folder.
+  ///
+  /// Read-only.
   core.String alternateLink;
 
   /// Drive API resource ID.
   core.String id;
 
-  /// Title of the Drive folder. Read-only.
+  /// Title of the Drive folder.
+  ///
+  /// Read-only.
   core.String title;
 
   DriveFolder();
@@ -6062,10 +6263,12 @@ class DriveFolder {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -6079,14 +6282,17 @@ class Empty {
   }
 }
 
-/// A class of notifications that an application can register to receive. For
-/// example: "all roster changes for a domain".
+/// A class of notifications that an application can register to receive.
+///
+/// For example: "all roster changes for a domain".
 class Feed {
   /// Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
+  ///
   /// This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`.
   CourseRosterChangesInfo courseRosterChangesInfo;
 
   /// Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
+  ///
   /// This field must be specified if `feed_type` is `COURSE_WORK_CHANGES`.
   CourseWorkChangesInfo courseWorkChangesInfo;
 
@@ -6150,15 +6356,20 @@ class Form {
   /// URL of the form.
   core.String formUrl;
 
-  /// URL of the form responses document. Only set if respsonses have been
-  /// recorded and only when the requesting user is an editor of the form.
-  /// Read-only.
+  /// URL of the form responses document.
+  ///
+  /// Only set if respsonses have been recorded and only when the requesting
+  /// user is an editor of the form. Read-only.
   core.String responseUrl;
 
-  /// URL of a thumbnail image of the Form. Read-only.
+  /// URL of a thumbnail image of the Form.
+  ///
+  /// Read-only.
   core.String thumbnailUrl;
 
-  /// Title of the Form. Read-only.
+  /// Title of the Form.
+  ///
+  /// Read-only.
   core.String title;
 
   Form();
@@ -6288,8 +6499,9 @@ class GradeHistory {
   }
 }
 
-/// Association between a student and a guardian of that student. The guardian
-/// may receive information about the student's course work.
+/// Association between a student and a guardian of that student.
+///
+/// The guardian may receive information about the student's course work.
 class Guardian {
   /// Identifier for the guardian.
   core.String guardianId;
@@ -6297,8 +6509,9 @@ class Guardian {
   /// User profile for the guardian.
   UserProfile guardianProfile;
 
-  /// The email address to which the initial guardian invitation was sent. This
-  /// field is only visible to domain administrators.
+  /// The email address to which the initial guardian invitation was sent.
+  ///
+  /// This field is only visible to domain administrators.
   core.String invitedEmailAddress;
 
   /// Identifier for the student to whom the guardian relationship applies.
@@ -6343,14 +6556,19 @@ class Guardian {
 /// An invitation to become the guardian of a specified user, sent to a
 /// specified email address.
 class GuardianInvitation {
-  /// The time that this invitation was created. Read-only.
+  /// The time that this invitation was created.
+  ///
+  /// Read-only.
   core.String creationTime;
 
-  /// Unique identifier for this invitation. Read-only.
+  /// Unique identifier for this invitation.
+  ///
+  /// Read-only.
   core.String invitationId;
 
-  /// Email address that the invitation was sent to. This field is only visible
-  /// to domain administrators.
+  /// Email address that the invitation was sent to.
+  ///
+  /// This field is only visible to domain administrators.
   core.String invitedEmailAddress;
 
   /// The state that this invitation is in.
@@ -6405,8 +6623,9 @@ class GuardianInvitation {
   }
 }
 
-/// Assignee details about a coursework/announcement. This field is set if and
-/// only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+/// Assignee details about a coursework/announcement.
+///
+/// This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
 class IndividualStudentsOptions {
   /// Identifiers for the students that have access to the
   /// coursework/announcement.
@@ -6436,10 +6655,14 @@ class Invitation {
   /// Identifier of the course to invite the user to.
   core.String courseId;
 
-  /// Identifier assigned by Classroom. Read-only.
+  /// Identifier assigned by Classroom.
+  ///
+  /// Read-only.
   core.String id;
 
-  /// Role to invite the user to have. Must not be `COURSE_ROLE_UNSPECIFIED`.
+  /// Role to invite the user to have.
+  ///
+  /// Must not be `COURSE_ROLE_UNSPECIFIED`.
   /// Possible string values are:
   /// - "COURSE_ROLE_UNSPECIFIED" : No course role.
   /// - "STUDENT" : Student in the course.
@@ -6447,10 +6670,12 @@ class Invitation {
   /// - "OWNER" : Owner of the course.
   core.String role;
 
-  /// Identifier of the invited user. When specified as a parameter of a
-  /// request, this identifier can be set to one of the following: * the numeric
-  /// identifier for the user * the email address of the user * the string
-  /// literal `"me"`, indicating the requesting user
+  /// Identifier of the invited user.
+  ///
+  /// When specified as a parameter of a request, this identifier can be set to
+  /// one of the following: * the numeric identifier for the user * the email
+  /// address of the user * the string literal `"me"`, indicating the requesting
+  /// user
   core.String userId;
 
   Invitation();
@@ -6490,14 +6715,20 @@ class Invitation {
 
 /// URL item.
 class Link {
-  /// URL of a thumbnail image of the target URL. Read-only.
+  /// URL of a thumbnail image of the target URL.
+  ///
+  /// Read-only.
   core.String thumbnailUrl;
 
-  /// Title of the target of the URL. Read-only.
+  /// Title of the target of the URL.
+  ///
+  /// Read-only.
   core.String title;
 
-  /// URL to link to. This must be a valid UTF-8 string containing between 1 and
-  /// 2024 characters.
+  /// URL to link to.
+  ///
+  /// This must be a valid UTF-8 string containing between 1 and 2024
+  /// characters.
   core.String url;
 
   Link();
@@ -6534,8 +6765,9 @@ class ListAnnouncementsResponse {
   /// Announcement items that match the request.
   core.List<Announcement> announcements;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListAnnouncementsResponse();
@@ -6570,8 +6802,9 @@ class ListCourseAliasesResponse {
   /// The course aliases.
   core.List<CourseAlias> aliases;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListCourseAliasesResponse();
@@ -6605,8 +6838,9 @@ class ListCourseWorkMaterialResponse {
   /// Course work material items that match the request.
   core.List<CourseWorkMaterial> courseWorkMaterial;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListCourseWorkMaterialResponse();
@@ -6641,8 +6875,9 @@ class ListCourseWorkResponse {
   /// Course work items that match the request.
   core.List<CourseWork> courseWork;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListCourseWorkResponse();
@@ -6676,8 +6911,9 @@ class ListCoursesResponse {
   /// Courses that match the list request.
   core.List<Course> courses;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListCoursesResponse();
@@ -6711,8 +6947,9 @@ class ListGuardianInvitationsResponse {
   /// Guardian invitations that matched the list request.
   core.List<GuardianInvitation> guardianInvitations;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListGuardianInvitationsResponse();
@@ -6748,8 +6985,9 @@ class ListGuardiansResponse {
   /// request.
   core.List<Guardian> guardians;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListGuardiansResponse();
@@ -6783,8 +7021,9 @@ class ListInvitationsResponse {
   /// Invitations that match the list request.
   core.List<Invitation> invitations;
 
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   ListInvitationsResponse();
@@ -6816,8 +7055,9 @@ class ListInvitationsResponse {
 
 /// Response when listing student submissions.
 class ListStudentSubmissionsResponse {
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   /// Student work that matches the request.
@@ -6852,8 +7092,9 @@ class ListStudentSubmissionsResponse {
 
 /// Response when listing students.
 class ListStudentsResponse {
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   /// Students who match the list request.
@@ -6887,8 +7128,9 @@ class ListStudentsResponse {
 
 /// Response when listing teachers.
 class ListTeachersResponse {
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   /// Teachers who match the list request.
@@ -6922,8 +7164,9 @@ class ListTeachersResponse {
 
 /// Response when listing topics.
 class ListTopicResponse {
-  /// Token identifying the next page of results to return. If empty, no further
-  /// results are available.
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
   core.String nextPageToken;
 
   /// Topic items that match the request.
@@ -6955,8 +7198,9 @@ class ListTopicResponse {
   }
 }
 
-/// Material attached to course work. When creating attachments, setting the
-/// `form` field is not supported.
+/// Material attached to course work.
+///
+/// When creating attachments, setting the `form` field is not supported.
 class Material {
   /// Google Drive file material.
   SharedDriveFile driveFile;
@@ -6964,8 +7208,10 @@ class Material {
   /// Google Forms material.
   Form form;
 
-  /// Link material. On creation, this is upgraded to a more appropriate type if
-  /// possible, and this is reflected in the response.
+  /// Link material.
+  ///
+  /// On creation, this is upgraded to a more appropriate type if possible, and
+  /// this is reflected in the response.
   Link link;
 
   /// YouTube video material.
@@ -7021,8 +7267,9 @@ class ModifyAnnouncementAssigneesRequest {
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
   core.String assigneeMode;
 
-  /// Set which students can view or cannot view the announcement. Must be
-  /// specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+  /// Set which students can view or cannot view the announcement.
+  ///
+  /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
   ModifyIndividualStudentsOptions modifyIndividualStudentsOptions;
 
   ModifyAnnouncementAssigneesRequest();
@@ -7054,8 +7301,10 @@ class ModifyAnnouncementAssigneesRequest {
 
 /// Request to modify the attachments of a student submission.
 class ModifyAttachmentsRequest {
-  /// Attachments to add. A student submission may not have more than 20
-  /// attachments. Form attachments are not supported.
+  /// Attachments to add.
+  ///
+  /// A student submission may not have more than 20 attachments. Form
+  /// attachments are not supported.
   core.List<Attachment> addAttachments;
 
   ModifyAttachmentsRequest();
@@ -7090,8 +7339,9 @@ class ModifyCourseWorkAssigneesRequest {
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
   core.String assigneeMode;
 
-  /// Set which students are assigned or not assigned to the coursework. Must be
-  /// specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+  /// Set which students are assigned or not assigned to the coursework.
+  ///
+  /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
   ModifyIndividualStudentsOptions modifyIndividualStudentsOptions;
 
   ModifyCourseWorkAssigneesRequest();
@@ -7207,14 +7457,20 @@ class MultipleChoiceSubmission {
 
 /// Details of the user's name.
 class Name {
-  /// The user's last name. Read-only.
+  /// The user's last name.
+  ///
+  /// Read-only.
   core.String familyName;
 
   /// The user's full name formed by concatenating the first and last name
-  /// values. Read-only.
+  /// values.
+  ///
+  /// Read-only.
   core.String fullName;
 
-  /// The user's first name. Read-only.
+  /// The user's first name.
+  ///
+  /// Read-only.
   core.String givenName;
 
   Name();
@@ -7266,15 +7522,18 @@ class Registration {
   /// The Cloud Pub/Sub topic that notifications are to be sent to.
   CloudPubsubTopic cloudPubsubTopic;
 
-  /// The time until which the `Registration` is effective. This is a read-only
-  /// field assigned by the server.
+  /// The time until which the `Registration` is effective.
+  ///
+  /// This is a read-only field assigned by the server.
   core.String expiryTime;
 
   /// Specification for the class of notifications that Classroom should deliver
   /// to the destination.
   Feed feed;
 
-  /// A server-generated unique identifier for this `Registration`. Read-only.
+  /// A server-generated unique identifier for this `Registration`.
+  ///
+  /// Read-only.
   core.String registrationId;
 
   Registration();
@@ -7443,20 +7702,26 @@ class StateHistory {
 
 /// Student in a course.
 class Student {
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// Global user information for the student. Read-only.
+  /// Global user information for the student.
+  ///
+  /// Read-only.
   UserProfile profile;
 
   /// Information about a Drive Folder for this student's work in this course.
+  ///
   /// Only visible to the student and domain administrators. Read-only.
   DriveFolder studentWorkFolder;
 
-  /// Identifier of the user. When specified as a parameter of a request, this
-  /// identifier can be one of the following: * the numeric identifier for the
-  /// user * the email address of the user * the string literal `"me"`,
-  /// indicating the requesting user
+  /// Identifier of the user.
+  ///
+  /// When specified as a parameter of a request, this identifier can be one of
+  /// the following: * the numeric identifier for the user * the email address
+  /// of the user * the string literal `"me"`, indicating the requesting user
   core.String userId;
 
   Student();
@@ -7496,36 +7761,48 @@ class Student {
   }
 }
 
-/// Student submission for course work. StudentSubmission items are generated
-/// when a CourseWork item is created. StudentSubmissions that have never been
-/// accessed (i.e. with `state` = NEW) may not have a creation time or update
-/// time.
+/// Student submission for course work.
+///
+/// StudentSubmission items are generated when a CourseWork item is created.
+/// StudentSubmissions that have never been accessed (i.e. with `state` = NEW)
+/// may not have a creation time or update time.
 class StudentSubmission {
-  /// Absolute link to the submission in the Classroom web UI. Read-only.
+  /// Absolute link to the submission in the Classroom web UI.
+  ///
+  /// Read-only.
   core.String alternateLink;
 
-  /// Optional grade. If unset, no grade was set. This value must be
-  /// non-negative. Decimal (that is, non-integer) values are allowed, but are
-  /// rounded to two decimal places. This may be modified only by course
-  /// teachers.
+  /// Optional grade.
+  ///
+  /// If unset, no grade was set. This value must be non-negative. Decimal (that
+  /// is, non-integer) values are allowed, but are rounded to two decimal
+  /// places. This may be modified only by course teachers.
   core.double assignedGrade;
 
-  /// Submission content when course_work_type is ASSIGNMENT. Students can
-  /// modify this content using ModifyAttachments.
+  /// Submission content when course_work_type is ASSIGNMENT.
+  ///
+  /// Students can modify this content using ModifyAttachments.
   AssignmentSubmission assignmentSubmission;
 
   /// Whether this student submission is associated with the Developer Console
-  /// project making the request. See CreateCourseWork for more details.
-  /// Read-only.
+  /// project making the request.
+  ///
+  /// See CreateCourseWork for more details. Read-only.
   core.bool associatedWithDeveloper;
 
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// Identifier for the course work this corresponds to. Read-only.
+  /// Identifier for the course work this corresponds to.
+  ///
+  /// Read-only.
   core.String courseWorkId;
 
-  /// Type of course work this submission is for. Read-only.
+  /// Type of course work this submission is for.
+  ///
+  /// Read-only.
   /// Possible string values are:
   /// - "COURSE_WORK_TYPE_UNSPECIFIED" : No work type specified. This is never
   /// returned.
@@ -7534,21 +7811,26 @@ class StudentSubmission {
   /// - "MULTIPLE_CHOICE_QUESTION" : A multiple-choice question.
   core.String courseWorkType;
 
-  /// Creation time of this submission. This may be unset if the student has not
-  /// accessed this item. Read-only.
+  /// Creation time of this submission.
+  ///
+  /// This may be unset if the student has not accessed this item. Read-only.
   core.String creationTime;
 
-  /// Optional pending grade. If unset, no grade was set. This value must be
-  /// non-negative. Decimal (that is, non-integer) values are allowed, but are
-  /// rounded to two decimal places. This is only visible to and modifiable by
-  /// course teachers.
+  /// Optional pending grade.
+  ///
+  /// If unset, no grade was set. This value must be non-negative. Decimal (that
+  /// is, non-integer) values are allowed, but are rounded to two decimal
+  /// places. This is only visible to and modifiable by course teachers.
   core.double draftGrade;
 
-  /// Classroom-assigned Identifier for the student submission. This is unique
-  /// among submissions for the relevant course work. Read-only.
+  /// Classroom-assigned Identifier for the student submission.
+  ///
+  /// This is unique among submissions for the relevant course work. Read-only.
   core.String id;
 
-  /// Whether this submission is late. Read-only.
+  /// Whether this submission is late.
+  ///
+  /// Read-only.
   core.bool late;
 
   /// Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION.
@@ -7557,7 +7839,9 @@ class StudentSubmission {
   /// Submission content when course_work_type is SHORT_ANSWER_QUESTION.
   ShortAnswerSubmission shortAnswerSubmission;
 
-  /// State of this submission. Read-only.
+  /// State of this submission.
+  ///
+  /// Read-only.
   /// Possible string values are:
   /// - "SUBMISSION_STATE_UNSPECIFIED" : No state specified. This should never
   /// be returned.
@@ -7570,14 +7854,18 @@ class StudentSubmission {
   core.String state;
 
   /// The history of the submission (includes state and grade histories).
+  ///
   /// Read-only.
   core.List<SubmissionHistory> submissionHistory;
 
-  /// Last update time of this submission. This may be unset if the student has
-  /// not accessed this item. Read-only.
+  /// Last update time of this submission.
+  ///
+  /// This may be unset if the student has not accessed this item. Read-only.
   core.String updateTime;
 
-  /// Identifier for the student that owns this submission. Read-only.
+  /// Identifier for the student that owns this submission.
+  ///
+  /// Read-only.
   core.String userId;
 
   StudentSubmission();
@@ -7702,8 +7990,9 @@ class StudentSubmission {
   }
 }
 
-/// The history of the submission. This currently includes state and grade
-/// histories.
+/// The history of the submission.
+///
+/// This currently includes state and grade histories.
 class SubmissionHistory {
   /// The grade history information of the submission, if present.
   GradeHistory gradeHistory;
@@ -7738,16 +8027,21 @@ class SubmissionHistory {
 
 /// Teacher of a course.
 class Teacher {
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// Global user information for the teacher. Read-only.
+  /// Global user information for the teacher.
+  ///
+  /// Read-only.
   UserProfile profile;
 
-  /// Identifier of the user. When specified as a parameter of a request, this
-  /// identifier can be one of the following: * the numeric identifier for the
-  /// user * the email address of the user * the string literal `"me"`,
-  /// indicating the requesting user
+  /// Identifier of the user.
+  ///
+  /// When specified as a parameter of a request, this identifier can be one of
+  /// the following: * the numeric identifier for the user * the email address
+  /// of the user * the string literal `"me"`, indicating the requesting user
   core.String userId;
 
   Teacher();
@@ -7780,22 +8074,32 @@ class Teacher {
   }
 }
 
-/// Represents a time of day. The date and time zone are either not significant
-/// or are specified elsewhere. An API may choose to allow leap seconds. Related
-/// types are google.type.Date and `google.protobuf.Timestamp`.
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
 class TimeOfDay {
-  /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-  /// to allow the value "24:00:00" for scenarios like business closing time.
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
+  /// for scenarios like business closing time.
   core.int hours;
 
-  /// Minutes of hour of day. Must be from 0 to 59.
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59.
   core.int minutes;
 
-  /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to 999,999,999.
   core.int nanos;
 
-  /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-  /// allow the value 60 if it allows leap-seconds.
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
+  /// leap-seconds.
   core.int seconds;
 
   TimeOfDay();
@@ -7835,20 +8139,27 @@ class TimeOfDay {
 
 /// Topic created by a teacher for the course
 class Topic {
-  /// Identifier of the course. Read-only.
+  /// Identifier of the course.
+  ///
+  /// Read-only.
   core.String courseId;
 
-  /// The name of the topic, generated by the user. Leading and trailing
-  /// whitespaces, if any, are trimmed. Also, multiple consecutive whitespaces
-  /// are collapsed into one inside the name. The result must be a non-empty
-  /// string. Topic names are case sensitive, and must be no longer than 100
-  /// characters.
+  /// The name of the topic, generated by the user.
+  ///
+  /// Leading and trailing whitespaces, if any, are trimmed. Also, multiple
+  /// consecutive whitespaces are collapsed into one inside the name. The result
+  /// must be a non-empty string. Topic names are case sensitive, and must be no
+  /// longer than 100 characters.
   core.String name;
 
-  /// Unique identifier for the topic. Read-only.
+  /// Unique identifier for the topic.
+  ///
+  /// Read-only.
   core.String topicId;
 
-  /// The time the topic was last updated by the system. Read-only.
+  /// The time the topic was last updated by the system.
+  ///
+  /// Read-only.
   core.String updateTime;
 
   Topic();
@@ -7902,25 +8213,36 @@ class TurnInStudentSubmissionRequest {
 
 /// Global information for a user.
 class UserProfile {
-  /// Email address of the user. Read-only.
+  /// Email address of the user.
+  ///
+  /// Read-only.
   core.String emailAddress;
 
-  /// Identifier of the user. Read-only.
+  /// Identifier of the user.
+  ///
+  /// Read-only.
   core.String id;
 
-  /// Name of the user. Read-only.
+  /// Name of the user.
+  ///
+  /// Read-only.
   Name name;
 
-  /// Global permissions of the user. Read-only.
+  /// Global permissions of the user.
+  ///
+  /// Read-only.
   core.List<GlobalPermission> permissions;
 
-  /// URL of user's profile photo. Read-only.
+  /// URL of user's profile photo.
+  ///
+  /// Read-only.
   core.String photoUrl;
 
   /// Represents whether a G Suite for Education user's domain administrator has
-  /// explicitly verified them as being a teacher. If the user is not a member
-  /// of a G Suite for Education domain, than this field is always false.
-  /// Read-only
+  /// explicitly verified them as being a teacher.
+  ///
+  /// If the user is not a member of a G Suite for Education domain, than this
+  /// field is always false. Read-only
   core.bool verifiedTeacher;
 
   UserProfile();
@@ -7977,16 +8299,22 @@ class UserProfile {
 
 /// YouTube video item.
 class YouTubeVideo {
-  /// URL that can be used to view the YouTube video. Read-only.
+  /// URL that can be used to view the YouTube video.
+  ///
+  /// Read-only.
   core.String alternateLink;
 
   /// YouTube API resource ID.
   core.String id;
 
-  /// URL of a thumbnail image of the YouTube video. Read-only.
+  /// URL of a thumbnail image of the YouTube video.
+  ///
+  /// Read-only.
   core.String thumbnailUrl;
 
-  /// Title of the YouTube video. Read-only.
+  /// Title of the YouTube video.
+  ///
+  /// Read-only.
   core.String title;
 
   YouTubeVideo();

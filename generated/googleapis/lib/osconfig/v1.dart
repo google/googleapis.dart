@@ -332,8 +332,9 @@ class ProjectsPatchJobsResource {
 
   ProjectsPatchJobsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Cancel a patch job. The patch job must be active. Canceled patch jobs
-  /// cannot be restarted.
+  /// Cancel a patch job.
+  ///
+  /// The patch job must be active. Canceled patch jobs cannot be restarted.
   ///
   /// [request] - The metadata request object.
   ///
@@ -451,8 +452,10 @@ class ProjectsPatchJobsResource {
     );
   }
 
-  /// Get the patch job. This can be used to track the progress of an ongoing
-  /// patch job or review the details of completed jobs.
+  /// Get the patch job.
+  ///
+  /// This can be used to track the progress of an ongoing patch job or review
+  /// the details of completed jobs.
   ///
   /// Request parameters:
   ///
@@ -664,15 +667,19 @@ class ProjectsPatchJobsInstanceDetailsResource {
 }
 
 /// Apt patching is completed by executing `apt-get update && apt-get upgrade`.
+///
 /// Additional options can be set to control how this is executed.
 class AptSettings {
-  /// List of packages to exclude from update. These packages will be excluded
+  /// List of packages to exclude from update.
+  ///
+  /// These packages will be excluded
   core.List<core.String> excludes;
 
-  /// An exclusive list of packages to be updated. These are the only packages
-  /// that will be updated. If these packages are not installed, they will be
-  /// ignored. This field cannot be specified with any other patch configuration
-  /// fields.
+  /// An exclusive list of packages to be updated.
+  ///
+  /// These are the only packages that will be updated. If these packages are
+  /// not installed, they will be ignored. This field cannot be specified with
+  /// any other patch configuration fields.
   core.List<core.String> exclusivePackages;
 
   /// By changing the type to DIST, the patching is performed using `apt-get
@@ -731,10 +738,12 @@ class CancelPatchJobRequest {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -784,16 +793,19 @@ class ExecStep {
 
 /// Common configurations for an ExecStep.
 class ExecStepConfig {
-  /// Defaults to [0]. A list of possible return values that the execution can
-  /// return to indicate a success.
+  /// Defaults to [0].
+  ///
+  /// A list of possible return values that the execution can return to indicate
+  /// a success.
   core.List<core.int> allowedSuccessCodes;
 
   /// A Cloud Storage object containing the executable.
   GcsObject gcsObject;
 
-  /// The script interpreter to use to run the script. If no interpreter is
-  /// specified the script will be executed directly, which will likely only
-  /// succeed for scripts with [shebang lines]
+  /// The script interpreter to use to run the script.
+  ///
+  /// If no interpreter is specified the script will be executed directly, which
+  /// will likely only succeed for scripts with [shebang lines]
   /// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   /// Possible string values are:
   /// - "INTERPRETER_UNSPECIFIED" : Invalid for a Windows ExecStepConfig. For a
@@ -848,27 +860,34 @@ class ExecStepConfig {
 
 /// A request message to initiate patching across Compute Engine instances.
 class ExecutePatchJobRequest {
-  /// Description of the patch job. Length of the description is limited to 1024
-  /// characters.
+  /// Description of the patch job.
+  ///
+  /// Length of the description is limited to 1024 characters.
   core.String description;
 
-  /// Display name for this patch job. This does not have to be unique.
+  /// Display name for this patch job.
+  ///
+  /// This does not have to be unique.
   core.String displayName;
 
   /// If this patch is a dry-run only, instances are contacted but will do
   /// nothing.
   core.bool dryRun;
 
-  /// Duration of the patch job. After the duration ends, the patch job times
-  /// out.
+  /// Duration of the patch job.
+  ///
+  /// After the duration ends, the patch job times out.
   core.String duration;
 
-  /// Required. Instances to patch, either explicitly or filtered by some
-  /// criteria such as zone or labels.
+  /// Instances to patch, either explicitly or filtered by some criteria such as
+  /// zone or labels.
+  ///
+  /// Required.
   PatchInstanceFilter instanceFilter;
 
-  /// Patch configuration being applied. If omitted, instances are patched using
-  /// the default configurations.
+  /// Patch configuration being applied.
+  ///
+  /// If omitted, instances are patched using the default configurations.
   PatchConfig patchConfig;
 
   /// Rollout strategy of the patch job.
@@ -965,14 +984,22 @@ class FixedOrPercent {
 
 /// Cloud Storage object representation.
 class GcsObject {
-  /// Required. Bucket of the Cloud Storage object.
+  /// Bucket of the Cloud Storage object.
+  ///
+  /// Required.
   core.String bucket;
 
-  /// Required. Generation number of the Cloud Storage object. This is used to
-  /// ensure that the ExecStep specified by this PatchJob does not change.
+  /// Generation number of the Cloud Storage object.
+  ///
+  /// This is used to ensure that the ExecStep specified by this PatchJob does
+  /// not change.
+  ///
+  /// Required.
   core.String generationNumber;
 
-  /// Required. Name of the Cloud Storage object.
+  /// Name of the Cloud Storage object.
+  ///
+  /// Required.
   core.String object;
 
   GcsObject();
@@ -1124,16 +1151,24 @@ class ListPatchJobsResponse {
   }
 }
 
-/// Represents a monthly schedule. An example of a valid monthly schedule is "on
-/// the third Tuesday of the month" or "on the 15th of the month".
+/// Represents a monthly schedule.
+///
+/// An example of a valid monthly schedule is "on the third Tuesday of the
+/// month" or "on the 15th of the month".
 class MonthlySchedule {
-  /// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1
-  /// indicates the last day of the month. Months without the target day will be
-  /// skipped. For example, a schedule to run "every month on the 31st" will not
-  /// run in February, April, June, etc.
+  /// One day of the month.
+  ///
+  /// 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the
+  /// month. Months without the target day will be skipped. For example, a
+  /// schedule to run "every month on the 31st" will not run in February, April,
+  /// June, etc.
+  ///
+  /// Required.
   core.int monthDay;
 
-  /// Required. Week day in a month.
+  /// Week day in a month.
+  ///
+  /// Required.
   WeekDayOfMonth weekDayOfMonth;
 
   MonthlySchedule();
@@ -1160,10 +1195,13 @@ class MonthlySchedule {
   }
 }
 
-/// Sets the time for a one time patch deployment. Timestamp is in
-/// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+/// Sets the time for a one time patch deployment.
+///
+/// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 class OneTimeSchedule {
-  /// Required. The desired patch job execution time.
+  /// The desired patch job execution time.
+  ///
+  /// Required.
   core.String executeTime;
 
   OneTimeSchedule();
@@ -1183,15 +1221,18 @@ class OneTimeSchedule {
   }
 }
 
-/// Patch configuration specifications. Contains details on how to apply the
-/// patch(es) to a VM instance.
+/// Patch configuration specifications.
+///
+/// Contains details on how to apply the patch(es) to a VM instance.
 class PatchConfig {
-  /// Apt update settings. Use this setting to override the default `apt` patch
-  /// rules.
+  /// Apt update settings.
+  ///
+  /// Use this setting to override the default `apt` patch rules.
   AptSettings apt;
 
-  /// Goo update settings. Use this setting to override the default `goo` patch
-  /// rules.
+  /// Goo update settings.
+  ///
+  /// Use this setting to override the default `goo` patch rules.
   GooSettings goo;
 
   /// The `ExecStep` to run after the patch update.
@@ -1211,16 +1252,19 @@ class PatchConfig {
   /// - "NEVER" : Never reboot the machine after the update completes.
   core.String rebootConfig;
 
-  /// Windows update settings. Use this override the default windows patch
-  /// rules.
+  /// Windows update settings.
+  ///
+  /// Use this override the default windows patch rules.
   WindowsUpdateSettings windowsUpdate;
 
-  /// Yum update settings. Use this setting to override the default `yum` patch
-  /// rules.
+  /// Yum update settings.
+  ///
+  /// Use this setting to override the default `yum` patch rules.
   YumSettings yum;
 
-  /// Zypper update settings. Use this setting to override the default `zypper`
-  /// patch rules.
+  /// Zypper update settings.
+  ///
+  /// Use this setting to override the default `zypper` patch rules.
   ZypperSettings zypper;
 
   PatchConfig();
@@ -1290,51 +1334,81 @@ class PatchConfig {
 }
 
 /// Patch deployments are configurations that individual patch jobs use to
-/// complete a patch. These configurations include instance filter, package
-/// repository settings, and a schedule. For more information about creating and
-/// managing patch deployments, see [Scheduling patch
+/// complete a patch.
+///
+/// These configurations include instance filter, package repository settings,
+/// and a schedule. For more information about creating and managing patch
+/// deployments, see [Scheduling patch
 /// jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs).
 class PatchDeployment {
-  /// Output only. Time the patch deployment was created. Timestamp is in
-  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  core.String createTime;
-
-  /// Optional. Description of the patch deployment. Length of the description
-  /// is limited to 1024 characters.
-  core.String description;
-
-  /// Optional. Duration of the patch. After the duration ends, the patch times
-  /// out.
-  core.String duration;
-
-  /// Required. VM instances to patch.
-  PatchInstanceFilter instanceFilter;
-
-  /// Output only. The last time a patch job was started by this deployment.
+  /// Time the patch deployment was created.
+  ///
   /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
   /// format.
+  ///
+  /// Output only.
+  core.String createTime;
+
+  /// Description of the patch deployment.
+  ///
+  /// Length of the description is limited to 1024 characters.
+  ///
+  /// Optional.
+  core.String description;
+
+  /// Duration of the patch.
+  ///
+  /// After the duration ends, the patch times out.
+  ///
+  /// Optional.
+  core.String duration;
+
+  /// VM instances to patch.
+  ///
+  /// Required.
+  PatchInstanceFilter instanceFilter;
+
+  /// The last time a patch job was started by this deployment.
+  ///
+  /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
+  /// format.
+  ///
+  /// Output only.
   core.String lastExecuteTime;
 
-  /// Unique name for the patch deployment resource in a project. The patch
-  /// deployment name is in the form:
+  /// Unique name for the patch deployment resource in a project.
+  ///
+  /// The patch deployment name is in the form:
   /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field
   /// is ignored when you create a new patch deployment.
   core.String name;
 
-  /// Required. Schedule a one-time execution.
+  /// Schedule a one-time execution.
+  ///
+  /// Required.
   OneTimeSchedule oneTimeSchedule;
 
-  /// Optional. Patch configuration that is applied.
+  /// Patch configuration that is applied.
+  ///
+  /// Optional.
   PatchConfig patchConfig;
 
-  /// Required. Schedule recurring executions.
+  /// Schedule recurring executions.
+  ///
+  /// Required.
   RecurringSchedule recurringSchedule;
 
-  /// Optional. Rollout strategy of the patch job.
+  /// Rollout strategy of the patch job.
+  ///
+  /// Optional.
   PatchRollout rollout;
 
-  /// Output only. Time the patch deployment was last updated. Timestamp is in
-  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+  /// Time the patch deployment was last updated.
+  ///
+  /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
+  /// format.
+  ///
+  /// Output only.
   core.String updateTime;
 
   PatchDeployment();
@@ -1419,31 +1493,39 @@ class PatchDeployment {
   }
 }
 
-/// A filter to target VM instances for patching. The targeted VMs must meet all
-/// criteria specified. So if both labels and zones are specified, the patch job
-/// targets only VMs with those labels and in those zones.
+/// A filter to target VM instances for patching.
+///
+/// The targeted VMs must meet all criteria specified. So if both labels and
+/// zones are specified, the patch job targets only VMs with those labels and in
+/// those zones.
 class PatchInstanceFilter {
-  /// Target all VM instances in the project. If true, no other criteria is
-  /// permitted.
+  /// Target all VM instances in the project.
+  ///
+  /// If true, no other criteria is permitted.
   core.bool all;
 
-  /// Targets VM instances matching ANY of these GroupLabels. This allows
-  /// targeting of disparate groups of VM instances.
+  /// Targets VM instances matching ANY of these GroupLabels.
+  ///
+  /// This allows targeting of disparate groups of VM instances.
   core.List<PatchInstanceFilterGroupLabel> groupLabels;
 
-  /// Targets VMs whose name starts with one of these prefixes. Similar to
-  /// labels, this is another way to group VMs when targeting configs, for
-  /// example prefix="prod-".
+  /// Targets VMs whose name starts with one of these prefixes.
+  ///
+  /// Similar to labels, this is another way to group VMs when targeting
+  /// configs, for example prefix="prod-".
   core.List<core.String> instanceNamePrefixes;
 
-  /// Targets any of the VM instances specified. Instances are specified by
-  /// their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`,
+  /// Targets any of the VM instances specified.
+  ///
+  /// Instances are specified by their URI in the form
+  /// `zones/[ZONE]/instances/[INSTANCE_NAME]`,
   /// `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
   /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
   core.List<core.String> instances;
 
-  /// Targets VM instances in ANY of these zones. Leave empty to target VM
-  /// instances in any zone.
+  /// Targets VM instances in ANY of these zones.
+  ///
+  /// Leave empty to target VM instances in any zone.
   core.List<core.String> zones;
 
   PatchInstanceFilter();
@@ -1499,12 +1581,13 @@ class PatchInstanceFilter {
 }
 
 /// Targets a group of VM instances by using their [assigned
-/// labels](https://cloud.google.com/compute/docs/labeling-resources). Labels
-/// are key-value pairs. A `GroupLabel` is a combination of labels that is used
-/// to target VMs for a patch job. For example, a patch job can target VMs that
-/// have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means
-/// that the patch job is applied to VMs that have both the labels `env=test`
-/// and `app=web`.
+/// labels](https://cloud.google.com/compute/docs/labeling-resources).
+///
+/// Labels are key-value pairs. A `GroupLabel` is a combination of labels that
+/// is used to target VMs for a patch job. For example, a patch job can target
+/// VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`.
+/// This means that the patch job is applied to VMs that have both the labels
+/// `env=test` and `app=web`.
 class PatchInstanceFilterGroupLabel {
   /// Compute Engine instance labels that must be present for a VM instance to
   /// be targeted by this filter.
@@ -1534,27 +1617,33 @@ class PatchInstanceFilterGroupLabel {
 }
 
 /// A high level representation of a patch job that is either in progress or has
-/// completed. Instance details are not included in the job. To paginate through
-/// instance details, use ListPatchJobInstanceDetails. For more information
-/// about patch jobs, see [Creating patch
+/// completed.
+///
+/// Instance details are not included in the job. To paginate through instance
+/// details, use ListPatchJobInstanceDetails. For more information about patch
+/// jobs, see [Creating patch
 /// jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 class PatchJob {
   /// Time this patch job was created.
   core.String createTime;
 
-  /// Description of the patch job. Length of the description is limited to 1024
-  /// characters.
+  /// Description of the patch job.
+  ///
+  /// Length of the description is limited to 1024 characters.
   core.String description;
 
-  /// Display name for this patch job. This is not a unique identifier.
+  /// Display name for this patch job.
+  ///
+  /// This is not a unique identifier.
   core.String displayName;
 
   /// If this patch job is a dry run, the agent reports that it has finished
   /// without running any updates on the VM instance.
   core.bool dryRun;
 
-  /// Duration of the patch job. After the duration ends, the patch job times
-  /// out.
+  /// Duration of the patch job.
+  ///
+  /// After the duration ends, the patch job times out.
   core.String duration;
 
   /// If this patch job failed, this message provides information about the
@@ -1574,7 +1663,9 @@ class PatchJob {
   /// Patch configuration being applied.
   PatchConfig patchConfig;
 
-  /// Output only. Name of the patch deployment that created this patch job.
+  /// Name of the patch deployment that created this patch job.
+  ///
+  /// Output only.
   core.String patchDeployment;
 
   /// Reflects the overall progress of the patch job in the range of 0.0 being
@@ -1706,8 +1797,10 @@ class PatchJob {
   }
 }
 
-/// Patch details for a VM instance. For more information about reviewing VM
-/// instance details, see [Listing all VM instance details for a specific patch
+/// Patch details for a VM instance.
+///
+/// For more information about reviewing VM instance details, see [Listing all
+/// VM instance details for a specific patch
 /// job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
 class PatchJobInstanceDetails {
   /// The number of times the agent that the agent attempts to apply the patch.
@@ -1716,8 +1809,9 @@ class PatchJobInstanceDetails {
   /// If the patch fails, this field provides the reason.
   core.String failureReason;
 
-  /// The unique identifier for the instance. This identifier is defined by the
-  /// server.
+  /// The unique identifier for the instance.
+  ///
+  /// This identifier is defined by the server.
   core.String instanceSystemId;
 
   /// The instance name in the form `projects / * /zones / * /instances / * `
@@ -1789,9 +1883,11 @@ class PatchJobInstanceDetails {
 }
 
 /// A summary of the current patch state across all instances that this patch
-/// job affects. Contains counts of instances in different states. These states
-/// map to `InstancePatchState`. List patch job instance details to see the
-/// specific states of each instance.
+/// job affects.
+///
+/// Contains counts of instances in different states. These states map to
+/// `InstancePatchState`. List patch job instance details to see the specific
+/// states of each instance.
 class PatchJobInstanceDetailsSummary {
   /// Number of instances that have acked and will start shortly.
   core.String ackedInstanceCount;
@@ -1808,9 +1904,10 @@ class PatchJobInstanceDetailsSummary {
   /// Number of instances that are inactive.
   core.String inactiveInstanceCount;
 
-  /// Number of instances that do not appear to be running the agent. Check to
-  /// ensure that the agent is installed, running, and able to communicate with
-  /// the service.
+  /// Number of instances that do not appear to be running the agent.
+  ///
+  /// Check to ensure that the agent is installed, running, and able to
+  /// communicate with the service.
   core.String noAgentDetectedInstanceCount;
 
   /// Number of instances notified about patch job.
@@ -1949,27 +2046,31 @@ class PatchJobInstanceDetailsSummary {
   }
 }
 
-/// Patch rollout configuration specifications. Contains details on the
-/// concurrency control when applying patch(es) to all targeted VMs.
+/// Patch rollout configuration specifications.
+///
+/// Contains details on the concurrency control when applying patch(es) to all
+/// targeted VMs.
 class PatchRollout {
   /// The maximum number (or percentage) of VMs per zone to disrupt at any given
-  /// moment. The number of VMs calculated from multiplying the percentage by
-  /// the total number of VMs in a zone is rounded up. During patching, a VM is
-  /// considered disrupted from the time the agent is notified to begin until
-  /// patching has completed. This disruption time includes the time to complete
-  /// reboot and any post-patch steps. A VM contributes to the disruption budget
-  /// if its patching operation fails either when applying the patches, running
-  /// pre or post patch steps, or if it fails to respond with a success
-  /// notification before timing out. VMs that are not running or do not have an
-  /// active agent do not count toward this disruption budget. For zone-by-zone
-  /// rollouts, if the disruption budget in a zone is exceeded, the patch job
-  /// stops, because continuing to the next zone requires completion of the
-  /// patch process in the previous zone. For example, if the disruption budget
-  /// has a fixed value of `10`, and 8 VMs fail to patch in the current zone,
-  /// the patch job continues to patch 2 VMs at a time until the zone is
-  /// completed. When that zone is completed successfully, patching begins with
-  /// 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to
-  /// patch, the patch job stops.
+  /// moment.
+  ///
+  /// The number of VMs calculated from multiplying the percentage by the total
+  /// number of VMs in a zone is rounded up. During patching, a VM is considered
+  /// disrupted from the time the agent is notified to begin until patching has
+  /// completed. This disruption time includes the time to complete reboot and
+  /// any post-patch steps. A VM contributes to the disruption budget if its
+  /// patching operation fails either when applying the patches, running pre or
+  /// post patch steps, or if it fails to respond with a success notification
+  /// before timing out. VMs that are not running or do not have an active agent
+  /// do not count toward this disruption budget. For zone-by-zone rollouts, if
+  /// the disruption budget in a zone is exceeded, the patch job stops, because
+  /// continuing to the next zone requires completion of the patch process in
+  /// the previous zone. For example, if the disruption budget has a fixed value
+  /// of `10`, and 8 VMs fail to patch in the current zone, the patch job
+  /// continues to patch 2 VMs at a time until the zone is completed. When that
+  /// zone is completed successfully, patching begins with 10 VMs at a time in
+  /// the next zone. If 10 VMs in the next zone fail to patch, the patch job
+  /// stops.
   FixedOrPercent disruptionBudget;
 
   /// Mode of the patch rollout.
@@ -2011,11 +2112,15 @@ class PatchRollout {
 
 /// Sets the time for recurring patch deployments.
 class RecurringSchedule {
-  /// Optional. The end time at which a recurring patch deployment schedule is
-  /// no longer active.
+  /// The end time at which a recurring patch deployment schedule is no longer
+  /// active.
+  ///
+  /// Optional.
   core.String endTime;
 
-  /// Required. The frequency unit of this recurring schedule.
+  /// The frequency unit of this recurring schedule.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "FREQUENCY_UNSPECIFIED" : Invalid. A frequency must be specified.
   /// - "WEEKLY" : Indicates that the frequency should be expressed in terms of
@@ -2024,27 +2129,43 @@ class RecurringSchedule {
   /// months.
   core.String frequency;
 
-  /// Output only. The time the last patch job ran successfully.
+  /// The time the last patch job ran successfully.
+  ///
+  /// Output only.
   core.String lastExecuteTime;
 
-  /// Required. Schedule with monthly executions.
+  /// Schedule with monthly executions.
+  ///
+  /// Required.
   MonthlySchedule monthly;
 
-  /// Output only. The time the next patch job is scheduled to run.
+  /// The time the next patch job is scheduled to run.
+  ///
+  /// Output only.
   core.String nextExecuteTime;
 
-  /// Optional. The time that the recurring schedule becomes effective. Defaults
-  /// to `create_time` of the patch deployment.
+  /// The time that the recurring schedule becomes effective.
+  ///
+  /// Defaults to `create_time` of the patch deployment.
+  ///
+  /// Optional.
   core.String startTime;
 
-  /// Required. Time of the day to run a recurring deployment.
+  /// Time of the day to run a recurring deployment.
+  ///
+  /// Required.
   TimeOfDay timeOfDay;
 
-  /// Required. Defines the time zone that `time_of_day` is relative to. The
-  /// rules for daylight saving time are determined by the chosen time zone.
+  /// Defines the time zone that `time_of_day` is relative to.
+  ///
+  /// The rules for daylight saving time are determined by the chosen time zone.
+  ///
+  /// Required.
   TimeZone timeZone;
 
-  /// Required. Schedule with weekly executions.
+  /// Schedule with weekly executions.
+  ///
+  /// Required.
   WeeklySchedule weekly;
 
   RecurringSchedule();
@@ -2116,22 +2237,32 @@ class RecurringSchedule {
   }
 }
 
-/// Represents a time of day. The date and time zone are either not significant
-/// or are specified elsewhere. An API may choose to allow leap seconds. Related
-/// types are google.type.Date and `google.protobuf.Timestamp`.
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
 class TimeOfDay {
-  /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-  /// to allow the value "24:00:00" for scenarios like business closing time.
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
+  /// for scenarios like business closing time.
   core.int hours;
 
-  /// Minutes of hour of day. Must be from 0 to 59.
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59.
   core.int minutes;
 
-  /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to 999,999,999.
   core.int nanos;
 
-  /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
-  /// allow the value 60 if it allows leap-seconds.
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
+  /// leap-seconds.
   core.int seconds;
 
   TimeOfDay();
@@ -2175,7 +2306,9 @@ class TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String id;
 
-  /// Optional. IANA Time Zone Database version number, e.g. "2019a".
+  /// IANA Time Zone Database version number, e.g. "2019a".
+  ///
+  /// Optional.
   core.String version;
 
   TimeZone();
@@ -2201,9 +2334,13 @@ class TimeZone {
   }
 }
 
-/// Represents one week day in a month. An example is "the 4th Sunday".
+/// Represents one week day in a month.
+///
+/// An example is "the 4th Sunday".
 class WeekDayOfMonth {
-  /// Required. A day of the week.
+  /// A day of the week.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
   /// - "MONDAY" : Monday
@@ -2215,8 +2352,12 @@ class WeekDayOfMonth {
   /// - "SUNDAY" : Sunday
   core.String dayOfWeek;
 
-  /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the
-  /// month. -1 indicates the last week of the month.
+  /// Week number in a month.
+  ///
+  /// 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week
+  /// of the month.
+  ///
+  /// Required.
   core.int weekOrdinal;
 
   WeekDayOfMonth();
@@ -2244,7 +2385,9 @@ class WeekDayOfMonth {
 
 /// Represents a weekly schedule.
 class WeeklySchedule {
-  /// Required. Day of the week.
+  /// Day of the week.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
   /// - "MONDAY" : Monday
@@ -2275,16 +2418,18 @@ class WeeklySchedule {
 
 /// Windows patching is performed using the Windows Update Agent.
 class WindowsUpdateSettings {
-  /// Only apply updates of these windows update classifications. If empty, all
-  /// updates are applied.
+  /// Only apply updates of these windows update classifications.
+  ///
+  /// If empty, all updates are applied.
   core.List<core.String> classifications;
 
   /// List of KBs to exclude from update.
   core.List<core.String> excludes;
 
-  /// An exclusive list of kbs to be updated. These are the only patches that
-  /// will be updated. This field must not be used with other patch
-  /// configurations.
+  /// An exclusive list of kbs to be updated.
+  ///
+  /// These are the only patches that will be updated. This field must not be
+  /// used with other patch configurations.
   core.List<core.String> exclusivePatches;
 
   WindowsUpdateSettings();
@@ -2322,25 +2467,29 @@ class WindowsUpdateSettings {
   }
 }
 
-/// Yum patching is performed by executing `yum update`. Additional options can
-/// be set to control how this is executed. Note that not all settings are
-/// supported on all platforms.
+/// Yum patching is performed by executing `yum update`.
+///
+/// Additional options can be set to control how this is executed. Note that not
+/// all settings are supported on all platforms.
 class YumSettings {
-  /// List of packages to exclude from update. These packages are excluded by
-  /// using the yum `--exclude` flag.
+  /// List of packages to exclude from update.
+  ///
+  /// These packages are excluded by using the yum `--exclude` flag.
   core.List<core.String> excludes;
 
-  /// An exclusive list of packages to be updated. These are the only packages
-  /// that will be updated. If these packages are not installed, they will be
-  /// ignored. This field must not be specified with any other patch
-  /// configuration fields.
+  /// An exclusive list of packages to be updated.
+  ///
+  /// These are the only packages that will be updated. If these packages are
+  /// not installed, they will be ignored. This field must not be specified with
+  /// any other patch configuration fields.
   core.List<core.String> exclusivePackages;
 
   /// Will cause patch to run `yum update-minimal` instead.
   core.bool minimal;
 
-  /// Adds the `--security` flag to `yum update`. Not supported on all
-  /// platforms.
+  /// Adds the `--security` flag to `yum update`.
+  ///
+  /// Not supported on all platforms.
   core.bool security;
 
   YumSettings();
@@ -2382,23 +2531,28 @@ class YumSettings {
   }
 }
 
-/// Zypper patching is performed by running `zypper patch`. See also
-/// https://en.opensuse.org/SDB:Zypper_manual.
+/// Zypper patching is performed by running `zypper patch`.
+///
+/// See also https://en.opensuse.org/SDB:Zypper_manual.
 class ZypperSettings {
-  /// Install only patches with these categories. Common categories include
-  /// security, recommended, and feature.
+  /// Install only patches with these categories.
+  ///
+  /// Common categories include security, recommended, and feature.
   core.List<core.String> categories;
 
   /// List of patches to exclude from update.
   core.List<core.String> excludes;
 
-  /// An exclusive list of patches to be updated. These are the only patches
-  /// that will be installed using 'zypper patch patch:' command. This field
-  /// must not be used with any other patch configuration fields.
+  /// An exclusive list of patches to be updated.
+  ///
+  /// These are the only patches that will be installed using 'zypper patch
+  /// patch:' command. This field must not be used with any other patch
+  /// configuration fields.
   core.List<core.String> exclusivePatches;
 
-  /// Install only patches with these severities. Common severities include
-  /// critical, important, moderate, and low.
+  /// Install only patches with these severities.
+  ///
+  /// Common severities include critical, important, moderate, and low.
   core.List<core.String> severities;
 
   /// Adds the `--with-optional` flag to `zypper patch`.

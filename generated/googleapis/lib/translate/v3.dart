@@ -297,12 +297,13 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Translates a large volume of text in asynchronous batch mode. This
-  /// function provides real-time output as the inputs are being processed. If
-  /// caller cancels a request, the partial results (for an input file, it's all
-  /// or nothing) may still be available on the specified output location. This
-  /// call returns immediately and you can use google.longrunning.Operation.name
-  /// to poll the status of the call.
+  /// Translates a large volume of text in asynchronous batch mode.
+  ///
+  /// This function provides real-time output as the inputs are being processed.
+  /// If caller cancels a request, the partial results (for an input file, it's
+  /// all or nothing) may still be available on the specified output location.
+  /// This call returns immediately and you can use
+  /// google.longrunning.Operation.name to poll the status of the call.
   ///
   /// [request] - The metadata request object.
   ///
@@ -710,8 +711,9 @@ class ProjectsLocationsGlossariesResource {
   ProjectsLocationsGlossariesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a glossary and returns the long-running operation. Returns
-  /// NOT_FOUND, if the project doesn't exist.
+  /// Creates a glossary and returns the long-running operation.
+  ///
+  /// Returns NOT_FOUND, if the project doesn't exist.
   ///
   /// [request] - The metadata request object.
   ///
@@ -771,7 +773,9 @@ class ProjectsLocationsGlossariesResource {
   }
 
   /// Deletes a glossary, or cancels glossary construction if the glossary isn't
-  /// created yet. Returns NOT_FOUND, if the glossary doesn't exist.
+  /// created yet.
+  ///
+  /// Returns NOT_FOUND, if the glossary doesn't exist.
   ///
   /// Request parameters:
   ///
@@ -823,7 +827,9 @@ class ProjectsLocationsGlossariesResource {
     );
   }
 
-  /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
+  /// Gets a glossary.
+  ///
+  /// Returns NOT_FOUND, if the glossary doesn't exist.
   ///
   /// Request parameters:
   ///
@@ -875,8 +881,9 @@ class ProjectsLocationsGlossariesResource {
     );
   }
 
-  /// Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't
-  /// exist.
+  /// Lists glossaries in a project.
+  ///
+  /// Returns NOT_FOUND, if the project doesn't exist.
   ///
   /// Request parameters:
   ///
@@ -976,8 +983,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -1042,10 +1050,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -1097,9 +1106,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1151,10 +1161,11 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1231,14 +1242,15 @@ class ProjectsLocationsOperationsResource {
   }
 
   /// Waits for the specified long-running operation until it is done or reaches
-  /// at most a specified timeout, returning the latest state. If the operation
-  /// is already done, the latest state is immediately returned. If the timeout
-  /// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
-  /// timeout is used. If the server does not support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort
-  /// basis. It may return the latest state before the specified timeout
-  /// (including immediately), meaning even an immediate response is no
-  /// guarantee that the operation is done.
+  /// at most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1299,44 +1311,65 @@ class ProjectsLocationsOperationsResource {
 
 /// The batch translation request.
 class BatchTranslateTextRequest {
-  /// Optional. Glossaries to be applied for translation. It's keyed by target
-  /// language code.
+  /// Glossaries to be applied for translation.
+  ///
+  /// It's keyed by target language code.
+  ///
+  /// Optional.
   core.Map<core.String, TranslateTextGlossaryConfig> glossaries;
 
-  /// Required. Input configurations. The total number of files matched should
-  /// be <= 1000. The total content size should be <= 100M Unicode codepoints.
-  /// The files must use UTF-8 encoding.
+  /// Input configurations.
+  ///
+  /// The total number of files matched should be <= 1000. The total content
+  /// size should be <= 100M Unicode codepoints. The files must use UTF-8
+  /// encoding.
+  ///
+  /// Required.
   core.List<InputConfig> inputConfigs;
 
-  /// Optional. The labels with user-defined metadata for the request. Label
-  /// keys and values can be no longer than 63 characters (Unicode codepoints),
-  /// can only contain lowercase letters, numeric characters, underscores and
-  /// dashes. International characters are allowed. Label values are optional.
-  /// Label keys must start with a letter. See
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter. See
   /// https://cloud.google.com/translate/docs/advanced/labels for more
   /// information.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Optional. The models to use for translation. Map's key is target language
-  /// code. Map's value is model name. Value can be a built-in general model, or
-  /// an AutoML Translation model. The value format depends on model type: -
-  /// AutoML Translation models:
+  /// The models to use for translation.
+  ///
+  /// Map's key is target language code. Map's value is model name. Value can be
+  /// a built-in general model, or an AutoML Translation model. The value format
+  /// depends on model type: - AutoML Translation models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
   /// If the map is empty or a specific model is not requested for a language
   /// pair, then default google model (nmt) is used.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> models;
 
-  /// Required. Output configuration. If 2 input configs match to the same file
-  /// (that is, same input path), we don't generate output for duplicate inputs.
+  /// Output configuration.
+  ///
+  /// If 2 input configs match to the same file (that is, same input path), we
+  /// don't generate output for duplicate inputs.
+  ///
+  /// Required.
   OutputConfig outputConfig;
 
-  /// Required. Source language code.
+  /// Source language code.
+  ///
+  /// Required.
   core.String sourceLanguageCode;
 
-  /// Required. Specify up to 10 language codes here.
+  /// Specify up to 10 language codes here.
+  ///
+  /// Required.
   core.List<core.String> targetLanguageCodes;
 
   BatchTranslateTextRequest();
@@ -1438,24 +1471,34 @@ class DetectLanguageRequest {
   /// The content of the input stored as a string.
   core.String content;
 
-  /// Optional. The labels with user-defined metadata for the request. Label
-  /// keys and values can be no longer than 63 characters (Unicode codepoints),
-  /// can only contain lowercase letters, numeric characters, underscores and
-  /// dashes. International characters are allowed. Label values are optional.
-  /// Label keys must start with a letter. See
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter. See
   /// https://cloud.google.com/translate/docs/advanced/labels for more
   /// information.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Optional. The format of the source text, for example, "text/html",
-  /// "text/plain". If left blank, the MIME type defaults to "text/html".
+  /// The format of the source text, for example, "text/html", "text/plain".
+  ///
+  /// If left blank, the MIME type defaults to "text/html".
+  ///
+  /// Optional.
   core.String mimeType;
 
-  /// Optional. The language detection model to be used. Format:
+  /// The language detection model to be used.
+  ///
+  /// Format:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/language-detection/{model-id}`
   /// Only one language detection model is currently supported:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/language-detection/default`.
   /// If not specified, the default model is used.
+  ///
+  /// Optional.
   core.String model;
 
   DetectLanguageRequest();
@@ -1501,8 +1544,9 @@ class DetectLanguageRequest {
 
 /// The response message for language detection.
 class DetectLanguageResponse {
-  /// The most probable language detected by the Translation API. For each
-  /// request, the Translation API will always return only one result.
+  /// The most probable language detected by the Translation API.
+  ///
+  /// For each request, the Translation API will always return only one result.
   core.List<DetectedLanguage> languages;
 
   DetectLanguageResponse();
@@ -1558,10 +1602,12 @@ class DetectedLanguage {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1577,11 +1623,14 @@ class Empty {
 
 /// The Google Cloud Storage location for the output content.
 class GcsDestination {
-  /// Required. The bucket used in 'output_uri_prefix' must exist and there must
-  /// be no files under 'output_uri_prefix'. 'output_uri_prefix' must end with
-  /// "/" and start with "gs://". One 'output_uri_prefix' can only be used by
-  /// one batch translation job at a time. Otherwise an INVALID_ARGUMENT (400)
-  /// error is returned.
+  /// The bucket used in 'output_uri_prefix' must exist and there must be no
+  /// files under 'output_uri_prefix'.
+  ///
+  /// 'output_uri_prefix' must end with "/" and start with "gs://". One
+  /// 'output_uri_prefix' can only be used by one batch translation job at a
+  /// time. Otherwise an INVALID_ARGUMENT (400) error is returned.
+  ///
+  /// Required.
   core.String outputUriPrefix;
 
   GcsDestination();
@@ -1603,7 +1652,11 @@ class GcsDestination {
 
 /// The Google Cloud Storage location for the input content.
 class GcsSource {
-  /// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+  /// Source data URI.
+  ///
+  /// For example, `gs://my_bucket/my_object`.
+  ///
+  /// Required.
   core.String inputUri;
 
   GcsSource();
@@ -1625,14 +1678,21 @@ class GcsSource {
 
 /// Represents a glossary built from user provided data.
 class Glossary {
-  /// Output only. When the glossary creation was finished.
+  /// When the glossary creation was finished.
+  ///
+  /// Output only.
   core.String endTime;
 
-  /// Output only. The number of entries defined in the glossary.
+  /// The number of entries defined in the glossary.
+  ///
+  /// Output only.
   core.int entryCount;
 
-  /// Required. Provides examples to build the glossary from. Total glossary
-  /// must not exceed 10M Unicode codepoints.
+  /// Provides examples to build the glossary from.
+  ///
+  /// Total glossary must not exceed 10M Unicode codepoints.
+  ///
+  /// Required.
   GlossaryInputConfig inputConfig;
 
   /// Used with equivalent term set glossaries.
@@ -1641,11 +1701,17 @@ class Glossary {
   /// Used with unidirectional glossaries.
   LanguageCodePair languagePair;
 
-  /// Required. The resource name of the glossary. Glossary names have the form
+  /// The resource name of the glossary.
+  ///
+  /// Glossary names have the form
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+  ///
+  /// Required.
   core.String name;
 
-  /// Output only. When CreateGlossary was called.
+  /// When CreateGlossary was called.
+  ///
+  /// Output only.
   core.String submitTime;
 
   Glossary();
@@ -1706,8 +1772,9 @@ class Glossary {
 
 /// Input configuration for glossaries.
 class GlossaryInputConfig {
-  /// Required. Google Cloud Storage location of glossary data. File format is
-  /// determined based on the filename extension. API returns
+  /// Google Cloud Storage location of glossary data.
+  ///
+  /// File format is determined based on the filename extension. API returns
   /// [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats.
   /// Wildcards are not allowed. This must be a single file in one of the
   /// following formats: For unidirectional glossaries: - TSV/CSV
@@ -1719,6 +1786,8 @@ class GlossaryInputConfig {
   /// defining equivalent glossary terms in multiple languages. See
   /// documentation for more information -
   /// [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+  ///
+  /// Required.
   GcsSource gcsSource;
 
   GlossaryInputConfig();
@@ -1741,24 +1810,31 @@ class GlossaryInputConfig {
 
 /// Input configuration for BatchTranslateText request.
 class InputConfig {
-  /// Required. Google Cloud Storage location for the source input. This can be
-  /// a single file (for example, `gs://translation-test/input.tsv`) or a
-  /// wildcard (for example, `gs://translation-test / * `). If a file extension
-  /// is `.tsv`, it can contain either one or two columns. The first column
-  /// (optional) is the id of the text request. If the first column is missing,
-  /// we use the row number (0-based) from the input file as the ID in the
-  /// output file. The second column is the actual text to be translated. We
+  /// Google Cloud Storage location for the source input.
+  ///
+  /// This can be a single file (for example, `gs://translation-test/input.tsv`)
+  /// or a wildcard (for example, `gs://translation-test / * `). If a file
+  /// extension is `.tsv`, it can contain either one or two columns. The first
+  /// column (optional) is the id of the text request. If the first column is
+  /// missing, we use the row number (0-based) from the input file as the ID in
+  /// the output file. The second column is the actual text to be translated. We
   /// recommend each row be <= 10K Unicode codepoints, otherwise an error might
   /// be returned. Note that the input tsv must be RFC 4180 compliant. You could
   /// use https://github.com/Clever/csvlint to check potential formatting errors
   /// in your tsv file. csvlint --delimiter='\t' your_input_file.tsv The other
   /// supported file extensions are `.txt` or `.html`, which is treated as a
   /// single large chunk of text.
+  ///
+  /// Required.
   GcsSource gcsSource;
 
-  /// Optional. Can be "text/plain" or "text/html". For `.tsv`, "text/html" is
-  /// used if mime_type is missing. For `.html`, this field must be "text/html"
-  /// or empty. For `.txt`, this field must be "text/plain" or empty.
+  /// Can be "text/plain" or "text/html".
+  ///
+  /// For `.tsv`, "text/html" is used if mime_type is missing. For `.html`, this
+  /// field must be "text/html" or empty. For `.txt`, this field must be
+  /// "text/plain" or empty.
+  ///
+  /// Optional.
   core.String mimeType;
 
   InputConfig();
@@ -1787,12 +1863,18 @@ class InputConfig {
 
 /// Used with unidirectional glossaries.
 class LanguageCodePair {
-  /// Required. The BCP-47 language code of the input text, for example,
-  /// "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+  /// The BCP-47 language code of the input text, for example, "en-US".
+  ///
+  /// Expected to be an exact match for GlossaryTerm.language_code.
+  ///
+  /// Required.
   core.String sourceLanguageCode;
 
-  /// Required. The BCP-47 language code for translation output, for example,
-  /// "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+  /// The BCP-47 language code for translation output, for example, "zh-CN".
+  ///
+  /// Expected to be an exact match for GlossaryTerm.language_code.
+  ///
+  /// Required.
   core.String targetLanguageCode;
 
   LanguageCodePair();
@@ -1820,9 +1902,10 @@ class LanguageCodePair {
 
 /// Used with equivalent term set glossaries.
 class LanguageCodesSet {
-  /// The BCP-47 language code(s) for terms defined in the glossary. All entries
-  /// are unique. The list contains at least two entries. Expected to be an
-  /// exact match for GlossaryTerm.language_code.
+  /// The BCP-47 language code(s) for terms defined in the glossary.
+  ///
+  /// All entries are unique. The list contains at least two entries. Expected
+  /// to be an exact match for GlossaryTerm.language_code.
   core.List<core.String> languageCodes;
 
   LanguageCodesSet();
@@ -1849,9 +1932,11 @@ class ListGlossariesResponse {
   /// The list of glossaries for a project.
   core.List<Glossary> glossaries;
 
-  /// A token to retrieve a page of results. Pass this value in the
-  /// [ListGlossariesRequest.page_token] field in the subsequent call to
-  /// `ListGlossaries` method to retrieve the next page of results.
+  /// A token to retrieve a page of results.
+  ///
+  /// Pass this value in the [ListGlossariesRequest.page_token] field in the
+  /// subsequent call to `ListGlossaries` method to retrieve the next page of
+  /// results.
   core.String nextPageToken;
 
   ListGlossariesResponse();
@@ -1950,25 +2035,31 @@ class ListOperationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -2028,31 +2119,37 @@ class Location {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2118,15 +2215,16 @@ class Operation {
 
 /// Output configuration for BatchTranslateText request.
 class OutputConfig {
-  /// Google Cloud Storage destination for output content. For every single
-  /// input file (for example, gs://a/b/c.[extension]), we generate at most 2 *
-  /// n output files. (n is the # of target_language_codes in the
-  /// BatchTranslateTextRequest). Output files (tsv) generated are compliant
-  /// with RFC 4180 except that record delimiters are '\n' instead of '\r\n'. We
-  /// don't provide any way to change record delimiters. While the input files
-  /// are being processed, we write/update an index file 'index.csv' under
-  /// 'output_uri_prefix' (for example, gs://translation-test/index.csv) The
-  /// index file is generated/updated as new files are being translated. The
+  /// Google Cloud Storage destination for output content.
+  ///
+  /// For every single input file (for example, gs://a/b/c.[extension]), we
+  /// generate at most 2 * n output files. (n is the # of target_language_codes
+  /// in the BatchTranslateTextRequest). Output files (tsv) generated are
+  /// compliant with RFC 4180 except that record delimiters are '\n' instead of
+  /// '\r\n'. We don't provide any way to change record delimiters. While the
+  /// input files are being processed, we write/update an index file 'index.csv'
+  /// under 'output_uri_prefix' (for example, gs://translation-test/index.csv)
+  /// The index file is generated/updated as new files are being translated. The
   /// format is: input_file,target_language_code,translations_file,errors_file,
   /// glossary_translations_file,glossary_errors_file input_file is one file we
   /// matched using gcs_source.input_uri. target_language_code is provided in
@@ -2183,24 +2281,27 @@ class OutputConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -2249,8 +2350,10 @@ class SupportedLanguage {
   core.String displayName;
 
   /// Supported language code, generally consisting of its ISO 639-1 identifier,
-  /// for example, 'en', 'ja'. In certain cases, BCP-47 codes including language
-  /// and region identifiers are returned (for example, 'zh-TW' and 'zh-CN')
+  /// for example, 'en', 'ja'.
+  ///
+  /// In certain cases, BCP-47 codes including language and region identifiers
+  /// are returned (for example, 'zh-TW' and 'zh-CN')
   core.String languageCode;
 
   /// Can be used as source language.
@@ -2296,8 +2399,10 @@ class SupportedLanguage {
 
 /// The response message for discovering supported languages.
 class SupportedLanguages {
-  /// A list of supported language responses. This list contains an entry for
-  /// each language the Translation API supports.
+  /// A list of supported language responses.
+  ///
+  /// This list contains an entry for each language the Translation API
+  /// supports.
   core.List<SupportedLanguage> languages;
 
   SupportedLanguages();
@@ -2323,13 +2428,19 @@ class SupportedLanguages {
 /// Configures which glossary should be used for a specific target language, and
 /// defines options for applying that glossary.
 class TranslateTextGlossaryConfig {
-  /// Required. The `glossary` to be applied for this translation. The format
-  /// depends on glossary: - User provided custom glossary:
+  /// The `glossary` to be applied for this translation.
+  ///
+  /// The format depends on glossary: - User provided custom glossary:
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+  ///
+  /// Required.
   core.String glossary;
 
-  /// Optional. Indicates match is case-insensitive. Default value is false if
-  /// missing.
+  /// Indicates match is case-insensitive.
+  ///
+  /// Default value is false if missing.
+  ///
+  /// Optional.
   core.bool ignoreCase;
 
   TranslateTextGlossaryConfig();
@@ -2357,31 +2468,44 @@ class TranslateTextGlossaryConfig {
 
 /// The request message for synchronous translation.
 class TranslateTextRequest {
-  /// Required. The content of the input in string format. We recommend the
-  /// total content be less than 30k codepoints. Use BatchTranslateText for
-  /// larger text.
+  /// The content of the input in string format.
+  ///
+  /// We recommend the total content be less than 30k codepoints. Use
+  /// BatchTranslateText for larger text.
+  ///
+  /// Required.
   core.List<core.String> contents;
 
-  /// Optional. Glossary to be applied. The glossary must be within the same
-  /// region (have the same location-id) as the model, otherwise an
-  /// INVALID_ARGUMENT (400) error is returned.
+  /// Glossary to be applied.
+  ///
+  /// The glossary must be within the same region (have the same location-id) as
+  /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
+  ///
+  /// Optional.
   TranslateTextGlossaryConfig glossaryConfig;
 
-  /// Optional. The labels with user-defined metadata for the request. Label
-  /// keys and values can be no longer than 63 characters (Unicode codepoints),
-  /// can only contain lowercase letters, numeric characters, underscores and
-  /// dashes. International characters are allowed. Label values are optional.
-  /// Label keys must start with a letter. See
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter. See
   /// https://cloud.google.com/translate/docs/advanced/labels for more
   /// information.
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
-  /// Optional. The format of the source text, for example, "text/html",
-  /// "text/plain". If left blank, the MIME type defaults to "text/html".
+  /// The format of the source text, for example, "text/html", "text/plain".
+  ///
+  /// If left blank, the MIME type defaults to "text/html".
+  ///
+  /// Optional.
   core.String mimeType;
 
-  /// Optional. The `model` type requested for this translation. The format
-  /// depends on model type: - AutoML Translation models:
+  /// The `model` type requested for this translation.
+  ///
+  /// The format depends on model type: - AutoML Translation models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
   /// - General (built-in) models:
   /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
@@ -2390,17 +2514,24 @@ class TranslateTextRequest {
   /// example,
   /// `projects/{project-number-or-id}/locations/global/models/general/nmt`. If
   /// missing, the system decides which google base model to use.
+  ///
+  /// Optional.
   core.String model;
 
-  /// Optional. The BCP-47 language code of the input text if known, for
-  /// example, "en-US" or "sr-Latn". Supported language codes are listed in
-  /// Language Support. If the source language isn't specified, the API attempts
-  /// to identify the source language automatically and returns the source
-  /// language within the response.
+  /// The BCP-47 language code of the input text if known, for example, "en-US"
+  /// or "sr-Latn".
+  ///
+  /// Supported language codes are listed in Language Support. If the source
+  /// language isn't specified, the API attempts to identify the source language
+  /// automatically and returns the source language within the response.
+  ///
+  /// Optional.
   core.String sourceLanguageCode;
 
-  /// Required. The BCP-47 language code to use for translation of the input
-  /// text, set to one of the language codes listed in Language Support.
+  /// The BCP-47 language code to use for translation of the input text, set to
+  /// one of the language codes listed in Language Support.
+  ///
+  /// Required.
   core.String targetLanguageCode;
 
   TranslateTextRequest();
@@ -2466,13 +2597,15 @@ class TranslateTextRequest {
 }
 
 class TranslateTextResponse {
-  /// Text translation responses if a glossary is provided in the request. This
-  /// can be the same as `translations` if no terms apply. This field has the
-  /// same length as `contents`.
+  /// Text translation responses if a glossary is provided in the request.
+  ///
+  /// This can be the same as `translations` if no terms apply. This field has
+  /// the same length as `contents`.
   core.List<Translation> glossaryTranslations;
 
-  /// Text translation responses with no glossary applied. This field has the
-  /// same length as `contents`.
+  /// Text translation responses with no glossary applied.
+  ///
+  /// This field has the same length as `contents`.
   core.List<Translation> translations;
 
   TranslateTextResponse();
@@ -2510,16 +2643,19 @@ class TranslateTextResponse {
 class Translation {
   /// The BCP-47 language code of source text in the initial request, detected
   /// automatically, if no source language was passed within the initial
-  /// request. If the source language was passed, auto-detection of the language
-  /// does not occur and this field is empty.
+  /// request.
+  ///
+  /// If the source language was passed, auto-detection of the language does not
+  /// occur and this field is empty.
   core.String detectedLanguageCode;
 
   /// The `glossary_config` used for this translation.
   TranslateTextGlossaryConfig glossaryConfig;
 
-  /// Only present when `model` is present in the request. `model` here is
-  /// normalized to have project number. For example: If the `model` requested
-  /// in TranslationTextRequest is
+  /// Only present when `model` is present in the request.
+  ///
+  /// `model` here is normalized to have project number. For example: If the
+  /// `model` requested in TranslationTextRequest is
   /// `projects/{project-id}/locations/{location-id}/models/general/nmt` then
   /// `model` here would be normalized to
   /// `projects/{project-number}/locations/{location-id}/models/general/nmt`.
@@ -2566,9 +2702,11 @@ class Translation {
 
 /// The request message for Operations.WaitOperation.
 class WaitOperationRequest {
-  /// The maximum duration to wait before timing out. If left blank, the wait
-  /// will be at most the time permitted by the underlying HTTP/RPC protocol. If
-  /// RPC context deadline is also specified, the shorter one will be used.
+  /// The maximum duration to wait before timing out.
+  ///
+  /// If left blank, the wait will be at most the time permitted by the
+  /// underlying HTTP/RPC protocol. If RPC context deadline is also specified,
+  /// the shorter one will be used.
   core.String timeout;
 
   WaitOperationRequest();

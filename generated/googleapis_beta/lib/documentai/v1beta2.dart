@@ -82,8 +82,9 @@ class ProjectsDocumentsResource {
 
   ProjectsDocumentsResource(commons.ApiRequester client) : _requester = client;
 
-  /// LRO endpoint to batch process many documents. The output is written to
-  /// Cloud Storage as JSON in the [Document] format.
+  /// LRO endpoint to batch process many documents.
+  ///
+  /// The output is written to Cloud Storage as JSON in the [Document] format.
   ///
   /// [request] - The metadata request object.
   ///
@@ -226,8 +227,9 @@ class ProjectsLocationsDocumentsResource {
   ProjectsLocationsDocumentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// LRO endpoint to batch process many documents. The output is written to
-  /// Cloud Storage as JSON in the [Document] format.
+  /// LRO endpoint to batch process many documents.
+  ///
+  /// The output is written to Cloud Storage as JSON in the [Document] format.
   ///
   /// [request] - The metadata request object.
   ///
@@ -359,9 +361,10 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -420,9 +423,10 @@ class ProjectsOperationsResource {
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -491,6 +495,7 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -603,6 +608,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -661,6 +667,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -721,6 +728,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -763,8 +771,9 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
   }
 }
 
-/// Response message for the disable processor method. Intentionally empty proto
-/// for adding fields in future.
+/// Response message for the disable processor method.
+///
+/// Intentionally empty proto for adding fields in future.
 class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
   GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse();
 
@@ -796,6 +805,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -838,8 +848,9 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
   }
 }
 
-/// Response message for the enable processor method. Intentionally empty proto
-/// for adding fields in future.
+/// Response message for the enable processor method.
+///
+/// Intentionally empty proto for adding fields in future.
 class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
   GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse();
 
@@ -869,6 +880,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -911,8 +923,9 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
   }
 }
 
-/// Response to an batch document processing request. This is returned in the
-/// LRO Operation after the operation is complete.
+/// Response to an batch document processing request.
+///
+/// This is returned in the LRO Operation after the operation is complete.
 class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
   /// Responses for each individual document.
   core.List<GoogleCloudDocumentaiV1beta1ProcessDocumentResponse> responses;
@@ -980,13 +993,16 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
 }
 
 /// Document represents the canonical document resource in Document
-/// Understanding AI. It is an interchange format that provides insights into
-/// documents and allows for collaboration between users and Document
-/// Understanding AI to iterate and optimize for quality.
+/// Understanding AI.
+///
+/// It is an interchange format that provides insights into documents and allows
+/// for collaboration between users and Document Understanding AI to iterate and
+/// optimize for quality.
 class GoogleCloudDocumentaiV1beta1Document {
-  /// Inline document content, represented as a stream of bytes. Note: As with
-  /// all `bytes` fields, protobuffers use a pure binary representation, whereas
-  /// JSON representations use base64.
+  /// Inline document content, represented as a stream of bytes.
+  ///
+  /// Note: As with all `bytes` fields, protobuffers use a pure binary
+  /// representation, whereas JSON representations use base64.
   core.String content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
@@ -995,8 +1011,9 @@ class GoogleCloudDocumentaiV1beta1Document {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// A list of entities detected on Document.text. For document shards,
-  /// entities in this list may cross shard boundaries.
+  /// A list of entities detected on Document.text.
+  ///
+  /// For document shards, entities in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1beta1DocumentEntity> entities;
 
   /// Relationship among Document.entities.
@@ -1005,8 +1022,9 @@ class GoogleCloudDocumentaiV1beta1Document {
   /// Any error that occurred while processing this document.
   GoogleRpcStatus error;
 
-  /// An IANA published MIME type (also referred to as media type). For more
-  /// information, see
+  /// An IANA published MIME type (also referred to as media type).
+  ///
+  /// For more information, see
   /// https://www.iana.org/assignments/media-types/media-types.xhtml.
   core.String mimeType;
 
@@ -1017,28 +1035,32 @@ class GoogleCloudDocumentaiV1beta1Document {
   core.List<GoogleCloudDocumentaiV1beta1DocumentRevision> revisions;
 
   /// Information about the sharding if this document is sharded part of a
-  /// larger document. If the document is not sharded, this message is not
-  /// specified.
+  /// larger document.
+  ///
+  /// If the document is not sharded, this message is not specified.
   GoogleCloudDocumentaiV1beta1DocumentShardInfo shardInfo;
 
   /// UTF-8 encoded text in reading order from the document.
   core.String text;
 
-  /// A list of text corrections made to [Document.text]. This is usually used
-  /// for annotating corrections to OCR mistakes. Text changes for a given
-  /// revision may not overlap with each other.
+  /// A list of text corrections made to [Document.text].
+  ///
+  /// This is usually used for annotating corrections to OCR mistakes. Text
+  /// changes for a given revision may not overlap with each other.
   core.List<GoogleCloudDocumentaiV1beta1DocumentTextChange> textChanges;
 
   /// Styles for the Document.text.
   core.List<GoogleCloudDocumentaiV1beta1DocumentStyle> textStyles;
 
-  /// A list of translations on Document.text. For document shards, translations
-  /// in this list may cross shard boundaries.
+  /// A list of translations on Document.text.
+  ///
+  /// For document shards, translations in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1beta1DocumentTranslation> translations;
 
   /// Currently supports Google Cloud Storage URI of the form
-  /// `gs://bucket_name/object_name`. Object versioning is not supported. See
-  /// [Google Cloud Storage Request
+  /// `gs://bucket_name/object_name`.
+  ///
+  /// Object versioning is not supported. See [Google Cloud Storage Request
   /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
   core.String uri;
 
@@ -1167,41 +1189,63 @@ class GoogleCloudDocumentaiV1beta1Document {
 /// A phrase in the text that is a known entity type, such as a person, an
 /// organization, or location.
 class GoogleCloudDocumentaiV1beta1DocumentEntity {
-  /// Optional. Confidence of detected Schema entity. Range [0, 1].
+  /// Confidence of detected Schema entity.
+  ///
+  /// Range [0, 1].
+  ///
+  /// Optional.
   core.double confidence;
 
-  /// Optional. Canonical id. This will be a unique value in the entity list for
-  /// this document.
+  /// Canonical id.
+  ///
+  /// This will be a unique value in the entity list for this document.
+  ///
+  /// Optional.
   core.String id;
 
-  /// Deprecated. Use `id` field instead.
+  /// Use `id` field instead.
+  ///
+  /// Deprecated.
   core.String mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
   core.String mentionText;
 
-  /// Optional. Normalized entity value. Absent if the extracted value could not
-  /// be converted or the type (e.g. address) is not supported for certain
-  /// parsers. This field is also only populated for certain supported document
-  /// types.
+  /// Normalized entity value.
+  ///
+  /// Absent if the extracted value could not be converted or the type (e.g.
+  /// address) is not supported for certain parsers. This field is also only
+  /// populated for certain supported document types.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue normalizedValue;
 
-  /// Optional. Represents the provenance of this entity wrt. the location on
-  /// the page where it was found.
+  /// Represents the provenance of this entity wrt.
+  ///
+  /// the location on the page where it was found.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta1DocumentPageAnchor pageAnchor;
 
-  /// Optional. Entities can be nested to form a hierarchical data structure
-  /// representing the content in the document.
+  /// Entities can be nested to form a hierarchical data structure representing
+  /// the content in the document.
+  ///
+  /// Optional.
   core.List<GoogleCloudDocumentaiV1beta1DocumentEntity> properties;
 
-  /// Optional. The history of this annotation.
+  /// The history of this annotation.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta1DocumentProvenance provenance;
 
-  /// Optional. Whether the entity will be redacted for de-identification
-  /// purposes.
+  /// Whether the entity will be redacted for de-identification purposes.
+  ///
+  /// Optional.
   core.bool redacted;
 
-  /// Provenance of the entity. Text anchor indexing into the Document.text.
+  /// Provenance of the entity.
+  ///
+  /// Text anchor indexing into the Document.text.
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
@@ -1295,29 +1339,40 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
 
 /// Parsed and normalized entity value.
 class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
-  /// Postal address. See also: https: //github.com/googleapis/googleapis/blob/
-  /// // master/google/type/postal_address.proto
+  /// Postal address.
+  ///
+  /// See also: https: //github.com/googleapis/googleapis/blob/ //
+  /// master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
-  /// Date value. Includes year, month, day. See also: https:
+  /// Date value.
+  ///
+  /// Includes year, month, day. See also: https:
   /// //github.com/googleapis/googleapis/blob/master/google/type/date.proto
   GoogleTypeDate dateValue;
 
-  /// DateTime value. Includes date, time, and timezone. See also: https:
+  /// DateTime value.
+  ///
+  /// Includes date, time, and timezone. See also: https:
   /// //github.com/googleapis/googleapis/blob/ //
   /// master/google/type/datetime.proto
   GoogleTypeDateTime datetimeValue;
 
-  /// Money value. See also: https: //github.com/googleapis/googleapis/blob/ //
+  /// Money value.
+  ///
+  /// See also: https: //github.com/googleapis/googleapis/blob/ //
   /// master/google/type/money.proto
   GoogleTypeMoney moneyValue;
 
-  /// Required. Normalized entity value stored as a string. This field is
-  /// populated for supported document type (e.g. Invoice). For some entity
-  /// types, one of respective 'structured_value' fields may also be populated.
-  /// - Money/Currency type (`money_value`) is in the ISO 4217 text format. -
-  /// Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
-  /// (`datetime_value`) is in the ISO 8601 text format.
+  /// Normalized entity value stored as a string.
+  ///
+  /// This field is populated for supported document type (e.g. Invoice). For
+  /// some entity types, one of respective 'structured_value' fields may also be
+  /// populated. - Money/Currency type (`money_value`) is in the ISO 4217 text
+  /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
+  /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
+  ///
+  /// Required.
   core.String text;
 
   GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue();
@@ -1408,9 +1463,10 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
 
 /// A page in a Document.
 class GoogleCloudDocumentaiV1beta1DocumentPage {
-  /// A list of visually detected text blocks on the page. A block has a set of
-  /// lines (collected into paragraphs) that have a common line-spacing and
-  /// orientation.
+  /// A list of visually detected text blocks on the page.
+  ///
+  /// A block has a set of lines (collected into paragraphs) that have a common
+  /// line-spacing and orientation.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageBlock> blocks;
 
   /// A list of detected languages together with confidence.
@@ -1423,24 +1479,28 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   /// A list of visually detected form fields on the page.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageFormField> formFields;
 
-  /// Rendered image for this page. This image is preprocessed to remove any
-  /// skew, rotation, and distortions such that the annotation bounding boxes
-  /// can be upright and axis-aligned.
+  /// Rendered image for this page.
+  ///
+  /// This image is preprocessed to remove any skew, rotation, and distortions
+  /// such that the annotation bounding boxes can be upright and axis-aligned.
   GoogleCloudDocumentaiV1beta1DocumentPageImage image;
 
   /// Layout for the page.
   GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
 
-  /// A list of visually detected text lines on the page. A collection of tokens
-  /// that a human would perceive as a line.
+  /// A list of visually detected text lines on the page.
+  ///
+  /// A collection of tokens that a human would perceive as a line.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageLine> lines;
 
-  /// 1-based index for current Page in a parent Document. Useful when a page is
-  /// taken out of a Document for individual processing.
+  /// 1-based index for current Page in a parent Document.
+  ///
+  /// Useful when a page is taken out of a Document for individual processing.
   core.int pageNumber;
 
-  /// A list of visually detected text paragraphs on the page. A collection of
-  /// lines that a human would perceive as a paragraph.
+  /// A list of visually detected text paragraphs on the page.
+  ///
+  /// A collection of lines that a human would perceive as a paragraph.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageParagraph> paragraphs;
 
   /// A list of visually detected tables on the page.
@@ -1454,6 +1514,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageMatrix> transforms;
 
   /// A list of detected non-text visual elements e.g. checkbox, signature etc.
+  ///
   /// on the page.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageVisualElement>
       visualElements;
@@ -1589,8 +1650,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   }
 }
 
-/// Referencing the visual context of the entity in the Document.pages. Page
-/// anchors can be cross-page, consist of multiple bounding polygons and
+/// Referencing the visual context of the entity in the Document.pages.
+///
+/// Page anchors can be cross-page, consist of multiple bounding polygons and
 /// optionally reference specific layout element types.
 class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
   /// One or more references to visual page elements
@@ -1619,13 +1681,19 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
 
 /// Represents a weak reference to a page element within a document.
 class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
-  /// Optional. Identifies the bounding polygon of a layout element on the page.
+  /// Identifies the bounding polygon of a layout element on the page.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta1BoundingPoly boundingPoly;
 
-  /// Optional. Deprecated. Use PageRef.bounding_poly instead.
+  /// Use PageRef.bounding_poly instead.
+  ///
+  /// Optional. Deprecated.
   core.String layoutId;
 
-  /// Optional. The type of the layout element that is being referenced if any.
+  /// The type of the layout element that is being referenced if any.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAYOUT_TYPE_UNSPECIFIED" : Layout Unspecified.
   /// - "BLOCK" : References a Page.blocks element.
@@ -1637,7 +1705,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
   /// - "FORM_FIELD" : References a Page.form_fields element.
   core.String layoutType;
 
-  /// Required. Index into the Document.pages element
+  /// Index into the Document.pages element
+  ///
+  /// Required.
   core.String page;
 
   GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef();
@@ -1729,11 +1799,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
 
 /// Detected language for a structural component.
 class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
-  /// Confidence of detected language. Range [0, 1].
+  /// Confidence of detected language.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-  /// information, see
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   core.String languageCode;
 
@@ -1803,8 +1876,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
-  /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`,
-  /// `Phone number`, etc.
+  /// Layout for the FormField name.
+  ///
+  /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
   GoogleCloudDocumentaiV1beta1DocumentPageLayout fieldName;
 
   /// Layout for the FormField value.
@@ -1818,9 +1892,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
       valueDetectedLanguages;
 
-  /// If the value is non-textual, this field represents the type. Current valid
-  /// values are: - blank (this indicates the field_value is normal text) -
-  /// "unfilled_checkbox" - "filled_checkbox"
+  /// If the value is non-textual, this field represents the type.
+  ///
+  /// Current valid values are: - blank (this indicates the field_value is
+  /// normal text) - "unfilled_checkbox" - "filled_checkbox"
   core.String valueType;
 
   GoogleCloudDocumentaiV1beta1DocumentPageFormField();
@@ -1939,8 +2014,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   GoogleCloudDocumentaiV1beta1BoundingPoly boundingPoly;
 
   /// Confidence of the current Layout within context of the object this layout
-  /// is for. e.g. confidence can be for a single token, a table, a visual
-  /// element, etc. depending on context. Range [0, 1].
+  /// is for.
+  ///
+  /// e.g. confidence can be for a single token, a table, a visual element, etc.
+  /// depending on context. Range [0, 1].
   core.double confidence;
 
   /// Detected orientation for the Layout.
@@ -1995,8 +2072,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   }
 }
 
-/// A collection of tokens that a human would perceive as a line. Does not cross
-/// column boundaries, can be horizontal, vertical, etc.
+/// A collection of tokens that a human would perceive as a line.
+///
+/// Does not cross column boundaries, can be horizontal, vertical, etc.
 class GoogleCloudDocumentaiV1beta1DocumentPageLine {
   /// A list of detected languages together with confidence.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
@@ -2063,9 +2141,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
   /// Number of rows in the matrix.
   core.int rows;
 
-  /// This encodes information about what data type the matrix uses. For
-  /// example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV
-  /// primitive data types, please refer to
+  /// This encodes information about what data type the matrix uses.
+  ///
+  /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
+  /// OpenCV primitive data types, please refer to
   /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
   core.int type;
 
@@ -2392,7 +2471,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
   }
 }
 
-/// Detected non-text visual elements e.g. checkbox, signature etc. on the page.
+/// Detected non-text visual elements e.g. checkbox, signature etc.
+///
+/// on the page.
 class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
   /// A list of detected languages together with confidence.
   core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
@@ -2444,8 +2525,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
 /// Structure to identify provenance relationships between annotations in
 /// different revisions.
 class GoogleCloudDocumentaiV1beta1DocumentProvenance {
-  /// The Id of this operation. Needs to be unique within the scope of the
-  /// revision.
+  /// The Id of this operation.
+  ///
+  /// Needs to be unique within the scope of the revision.
   core.int id;
 
   /// References to the original elements that are replaced.
@@ -2505,9 +2587,10 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
   }
 }
 
-/// Structure for referencing parent provenances. When an element replaces one
-/// of more other elements parent references identify the elements that are
-/// replaced.
+/// Structure for referencing parent provenances.
+///
+/// When an element replaces one of more other elements parent references
+/// identify the elements that are replaced.
 class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int id;
@@ -2550,12 +2633,15 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
   /// Human Review information of this revision.
   GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview humanReview;
 
-  /// Id of the revision. Unique within the context of the document.
+  /// Id of the revision.
+  ///
+  /// Unique within the context of the document.
   core.String id;
 
-  /// The revisions that this revision is based on. This can include one or more
-  /// parent (when documents are merged.) This field represents the index into
-  /// the `revisions` field.
+  /// The revisions that this revision is based on.
+  ///
+  /// This can include one or more parent (when documents are merged.) This
+  /// field represents the index into the `revisions` field.
   core.List<core.int> parent;
 
   /// If the annotation was made by processor identify the processor by its
@@ -2615,10 +2701,13 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
 
 /// Human Review information of the document.
 class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
-  /// Human review state. e.g. `requested`, `succeeded`, `rejected`.
+  /// Human review state.
+  ///
+  /// e.g. `requested`, `succeeded`, `rejected`.
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the rejection reason when the state is `rejected`.
   core.String stateMessage;
 
@@ -2647,7 +2736,9 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
 }
 
 /// For a large document, sharding may be performed to produce several document
-/// shards. Each document shard contains this field to detail which shard it is.
+/// shards.
+///
+/// Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
   /// Total number of shards.
   core.String shardCount;
@@ -2688,8 +2779,9 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
   }
 }
 
-/// Annotation for common text style attributes. This adheres to CSS conventions
-/// as much as possible.
+/// Annotation for common text style attributes.
+///
+/// This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1beta1DocumentStyle {
   /// Text background color.
   GoogleTypeColor backgroundColor;
@@ -2700,18 +2792,24 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
   /// Font size.
   GoogleCloudDocumentaiV1beta1DocumentStyleFontSize fontSize;
 
-  /// Font weight. Possible values are normal, bold, bolder, and lighter.
+  /// Font weight.
+  ///
+  /// Possible values are normal, bold, bolder, and lighter.
   /// https://www.w3schools.com/cssref/pr_font_weight.asp
   core.String fontWeight;
 
   /// Text anchor indexing into the Document.text.
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
 
-  /// Text decoration. Follows CSS standard.
+  /// Text decoration.
+  ///
+  /// Follows CSS standard.
   /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
   core.String textDecoration;
 
-  /// Text style. Possible values are normal, italic, and oblique.
+  /// Text style.
+  ///
+  /// Possible values are normal, italic, and oblique.
   /// https://www.w3schools.com/cssref/pr_font_font-style.asp
   core.String textStyle;
 
@@ -2777,7 +2875,9 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
   /// Font size for the text.
   core.double size;
 
-  /// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+  /// Unit for the font size.
+  ///
+  /// Follows CSS naming (in, px, pt, etc.).
   core.String unit;
 
   GoogleCloudDocumentaiV1beta1DocumentStyleFontSize();
@@ -2842,9 +2942,11 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
   }
 }
 
-/// A text segment in the Document.text. The indices may be out of bounds which
-/// indicate that the text extends into another document shard for large sharded
-/// documents. See ShardInfo.text_offset
+/// A text segment in the Document.text.
+///
+/// The indices may be out of bounds which indicate that the text extends into
+/// another document shard for large sharded documents. See
+/// ShardInfo.text_offset
 class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
   core.String endIndex;
@@ -2876,7 +2978,9 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
   }
 }
 
-/// This message is used for text changes aka. OCR corrections.
+/// This message is used for text changes aka.
+///
+/// OCR corrections.
 class GoogleCloudDocumentaiV1beta1DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
   core.String changedText;
@@ -2884,10 +2988,11 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
   /// The history of this annotation.
   core.List<GoogleCloudDocumentaiV1beta1DocumentProvenance> provenance;
 
-  /// Provenance of the correction. Text anchor indexing into the Document.text.
-  /// There can only be a single `TextAnchor.text_segments` element. If the
-  /// start and end index of the text segment are the same, the text change is
-  /// inserted before that index.
+  /// Provenance of the correction.
+  ///
+  /// Text anchor indexing into the Document.text. There can only be a single
+  /// `TextAnchor.text_segments` element. If the start and end index of the text
+  /// segment are the same, the text change is inserted before that index.
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
 
   GoogleCloudDocumentaiV1beta1DocumentTextChange();
@@ -2926,18 +3031,20 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
 
 /// A translation of the text segment.
 class GoogleCloudDocumentaiV1beta1DocumentTranslation {
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-  /// information, see
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   core.String languageCode;
 
   /// The history of this annotation.
   core.List<GoogleCloudDocumentaiV1beta1DocumentProvenance> provenance;
 
-  /// Provenance of the translation. Text anchor indexing into the
-  /// Document.text. There can only be a single `TextAnchor.text_segments`
-  /// element. If the start and end index of the text segment are the same, the
-  /// text change is inserted before that index.
+  /// Provenance of the translation.
+  ///
+  /// Text anchor indexing into the Document.text. There can only be a single
+  /// `TextAnchor.text_segments` element. If the start and end index of the text
+  /// segment are the same, the text change is inserted before that index.
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
 
   /// Text translated into the target language.
@@ -3027,14 +3134,19 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta1InputConfig {
-  /// The Google Cloud Storage location to read the input from. This must be a
-  /// single file.
+  /// The Google Cloud Storage location to read the input from.
+  ///
+  /// This must be a single file.
   GoogleCloudDocumentaiV1beta1GcsSource gcsSource;
 
-  /// Required. Mimetype of the input. Current supported mimetypes are
-  /// application/pdf, image/tiff, and image/gif. In addition, application/json
-  /// type is supported for requests with ProcessDocumentRequest.automl_params
-  /// field set. The JSON file needs to be in Document format.
+  /// Mimetype of the input.
+  ///
+  /// Current supported mimetypes are application/pdf, image/tiff, and
+  /// image/gif. In addition, application/json type is supported for requests
+  /// with ProcessDocumentRequest.automl_params field set. The JSON file needs
+  /// to be in Document format.
+  ///
+  /// Required.
   core.String mimeType;
 
   GoogleCloudDocumentaiV1beta1InputConfig();
@@ -3061,8 +3173,10 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudDocumentaiV1beta1NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -3157,12 +3271,14 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
   GoogleCloudDocumentaiV1beta1GcsDestination gcsDestination;
 
   /// The max number of pages to include into each output Document shard JSON on
-  /// Google Cloud Storage. The valid range is [1, 100]. If not specified, the
-  /// default value is 20. For example, for one pdf file with 100 pages, 100
-  /// parsed pages will be produced. If `pages_per_shard` = 20, then 5 Document
-  /// shard JSON files each containing 20 parsed pages will be written under the
-  /// prefix OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where
-  /// x and y are 1-indexed page numbers. Example GCS outputs with 157 pages and
+  /// Google Cloud Storage.
+  ///
+  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// For example, for one pdf file with 100 pages, 100 parsed pages will be
+  /// produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each
+  /// containing 20 parsed pages will be written under the prefix
+  /// OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where x and
+  /// y are 1-indexed page numbers. Example GCS outputs with 157 pages and
   /// pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json
   /// pages-101-to-150.json pages-151-to-157.json
   core.int pagesPerShard;
@@ -3193,12 +3309,15 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
 
 /// Response to a single document processing request.
 class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
-  /// Information about the input file. This is the same as the corresponding
-  /// input config in the request.
+  /// Information about the input file.
+  ///
+  /// This is the same as the corresponding input config in the request.
   GoogleCloudDocumentaiV1beta1InputConfig inputConfig;
 
-  /// The output location of the parsed responses. The responses are written to
-  /// this location as JSON-serialized `Document` objects.
+  /// The output location of the parsed responses.
+  ///
+  /// The responses are written to this location as JSON-serialized `Document`
+  /// objects.
   GoogleCloudDocumentaiV1beta1OutputConfig outputConfig;
 
   GoogleCloudDocumentaiV1beta1ProcessDocumentResponse();
@@ -3226,8 +3345,9 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the vertex coordinates
-/// are in the same scale as the original image.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the vertex coordinates are in the same scale as the original image.
 class GoogleCloudDocumentaiV1beta1Vertex {
   /// X coordinate.
   core.int x;
@@ -3260,8 +3380,9 @@ class GoogleCloudDocumentaiV1beta1Vertex {
 
 /// Parameters to control AutoML model prediction behavior.
 class GoogleCloudDocumentaiV1beta2AutoMlParams {
-  /// Resource name of the AutoML model. Format:
-  /// `projects/{project-id}/locations/{location-id}/models/{model-id}`.
+  /// Resource name of the AutoML model.
+  ///
+  /// Format: `projects/{project-id}/locations/{location-id}/models/{model-id}`.
   core.String model;
 
   GoogleCloudDocumentaiV1beta2AutoMlParams();
@@ -3281,10 +3402,13 @@ class GoogleCloudDocumentaiV1beta2AutoMlParams {
   }
 }
 
-/// Request to batch process documents as an asynchronous operation. The output
-/// is written to Cloud Storage as JSON in the [Document] format.
+/// Request to batch process documents as an asynchronous operation.
+///
+/// The output is written to Cloud Storage as JSON in the [Document] format.
 class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest {
-  /// Required. Individual requests for each document.
+  /// Individual requests for each document.
+  ///
+  /// Required.
   core.List<GoogleCloudDocumentaiV1beta2ProcessDocumentRequest> requests;
 
   GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest();
@@ -3309,8 +3433,9 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest {
   }
 }
 
-/// Response to an batch document processing request. This is returned in the
-/// LRO Operation after the operation is complete.
+/// Response to an batch document processing request.
+///
+/// This is returned in the LRO Operation after the operation is complete.
 class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
   /// Responses for each individual document.
   core.List<GoogleCloudDocumentaiV1beta2ProcessDocumentResponse> responses;
@@ -3378,13 +3503,16 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
 }
 
 /// Document represents the canonical document resource in Document
-/// Understanding AI. It is an interchange format that provides insights into
-/// documents and allows for collaboration between users and Document
-/// Understanding AI to iterate and optimize for quality.
+/// Understanding AI.
+///
+/// It is an interchange format that provides insights into documents and allows
+/// for collaboration between users and Document Understanding AI to iterate and
+/// optimize for quality.
 class GoogleCloudDocumentaiV1beta2Document {
-  /// Inline document content, represented as a stream of bytes. Note: As with
-  /// all `bytes` fields, protobuffers use a pure binary representation, whereas
-  /// JSON representations use base64.
+  /// Inline document content, represented as a stream of bytes.
+  ///
+  /// Note: As with all `bytes` fields, protobuffers use a pure binary
+  /// representation, whereas JSON representations use base64.
   core.String content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content);
 
@@ -3393,8 +3521,9 @@ class GoogleCloudDocumentaiV1beta2Document {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// A list of entities detected on Document.text. For document shards,
-  /// entities in this list may cross shard boundaries.
+  /// A list of entities detected on Document.text.
+  ///
+  /// For document shards, entities in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1beta2DocumentEntity> entities;
 
   /// Relationship among Document.entities.
@@ -3406,8 +3535,9 @@ class GoogleCloudDocumentaiV1beta2Document {
   /// Labels for this document.
   core.List<GoogleCloudDocumentaiV1beta2DocumentLabel> labels;
 
-  /// An IANA published MIME type (also referred to as media type). For more
-  /// information, see
+  /// An IANA published MIME type (also referred to as media type).
+  ///
+  /// For more information, see
   /// https://www.iana.org/assignments/media-types/media-types.xhtml.
   core.String mimeType;
 
@@ -3418,28 +3548,32 @@ class GoogleCloudDocumentaiV1beta2Document {
   core.List<GoogleCloudDocumentaiV1beta2DocumentRevision> revisions;
 
   /// Information about the sharding if this document is sharded part of a
-  /// larger document. If the document is not sharded, this message is not
-  /// specified.
+  /// larger document.
+  ///
+  /// If the document is not sharded, this message is not specified.
   GoogleCloudDocumentaiV1beta2DocumentShardInfo shardInfo;
 
   /// UTF-8 encoded text in reading order from the document.
   core.String text;
 
-  /// A list of text corrections made to [Document.text]. This is usually used
-  /// for annotating corrections to OCR mistakes. Text changes for a given
-  /// revision may not overlap with each other.
+  /// A list of text corrections made to [Document.text].
+  ///
+  /// This is usually used for annotating corrections to OCR mistakes. Text
+  /// changes for a given revision may not overlap with each other.
   core.List<GoogleCloudDocumentaiV1beta2DocumentTextChange> textChanges;
 
   /// Styles for the Document.text.
   core.List<GoogleCloudDocumentaiV1beta2DocumentStyle> textStyles;
 
-  /// A list of translations on Document.text. For document shards, translations
-  /// in this list may cross shard boundaries.
+  /// A list of translations on Document.text.
+  ///
+  /// For document shards, translations in this list may cross shard boundaries.
   core.List<GoogleCloudDocumentaiV1beta2DocumentTranslation> translations;
 
   /// Currently supports Google Cloud Storage URI of the form
-  /// `gs://bucket_name/object_name`. Object versioning is not supported. See
-  /// [Google Cloud Storage Request
+  /// `gs://bucket_name/object_name`.
+  ///
+  /// Object versioning is not supported. See [Google Cloud Storage Request
   /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
   core.String uri;
 
@@ -3578,41 +3712,63 @@ class GoogleCloudDocumentaiV1beta2Document {
 /// A phrase in the text that is a known entity type, such as a person, an
 /// organization, or location.
 class GoogleCloudDocumentaiV1beta2DocumentEntity {
-  /// Optional. Confidence of detected Schema entity. Range [0, 1].
+  /// Confidence of detected Schema entity.
+  ///
+  /// Range [0, 1].
+  ///
+  /// Optional.
   core.double confidence;
 
-  /// Optional. Canonical id. This will be a unique value in the entity list for
-  /// this document.
+  /// Canonical id.
+  ///
+  /// This will be a unique value in the entity list for this document.
+  ///
+  /// Optional.
   core.String id;
 
-  /// Deprecated. Use `id` field instead.
+  /// Use `id` field instead.
+  ///
+  /// Deprecated.
   core.String mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
   core.String mentionText;
 
-  /// Optional. Normalized entity value. Absent if the extracted value could not
-  /// be converted or the type (e.g. address) is not supported for certain
-  /// parsers. This field is also only populated for certain supported document
-  /// types.
+  /// Normalized entity value.
+  ///
+  /// Absent if the extracted value could not be converted or the type (e.g.
+  /// address) is not supported for certain parsers. This field is also only
+  /// populated for certain supported document types.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue normalizedValue;
 
-  /// Optional. Represents the provenance of this entity wrt. the location on
-  /// the page where it was found.
+  /// Represents the provenance of this entity wrt.
+  ///
+  /// the location on the page where it was found.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta2DocumentPageAnchor pageAnchor;
 
-  /// Optional. Entities can be nested to form a hierarchical data structure
-  /// representing the content in the document.
+  /// Entities can be nested to form a hierarchical data structure representing
+  /// the content in the document.
+  ///
+  /// Optional.
   core.List<GoogleCloudDocumentaiV1beta2DocumentEntity> properties;
 
-  /// Optional. The history of this annotation.
+  /// The history of this annotation.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta2DocumentProvenance provenance;
 
-  /// Optional. Whether the entity will be redacted for de-identification
-  /// purposes.
+  /// Whether the entity will be redacted for de-identification purposes.
+  ///
+  /// Optional.
   core.bool redacted;
 
-  /// Provenance of the entity. Text anchor indexing into the Document.text.
+  /// Provenance of the entity.
+  ///
+  /// Text anchor indexing into the Document.text.
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
@@ -3706,29 +3862,40 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
 
 /// Parsed and normalized entity value.
 class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
-  /// Postal address. See also: https: //github.com/googleapis/googleapis/blob/
-  /// // master/google/type/postal_address.proto
+  /// Postal address.
+  ///
+  /// See also: https: //github.com/googleapis/googleapis/blob/ //
+  /// master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
-  /// Date value. Includes year, month, day. See also: https:
+  /// Date value.
+  ///
+  /// Includes year, month, day. See also: https:
   /// //github.com/googleapis/googleapis/blob/master/google/type/date.proto
   GoogleTypeDate dateValue;
 
-  /// DateTime value. Includes date, time, and timezone. See also: https:
+  /// DateTime value.
+  ///
+  /// Includes date, time, and timezone. See also: https:
   /// //github.com/googleapis/googleapis/blob/ //
   /// master/google/type/datetime.proto
   GoogleTypeDateTime datetimeValue;
 
-  /// Money value. See also: https: //github.com/googleapis/googleapis/blob/ //
+  /// Money value.
+  ///
+  /// See also: https: //github.com/googleapis/googleapis/blob/ //
   /// master/google/type/money.proto
   GoogleTypeMoney moneyValue;
 
-  /// Required. Normalized entity value stored as a string. This field is
-  /// populated for supported document type (e.g. Invoice). For some entity
-  /// types, one of respective 'structured_value' fields may also be populated.
-  /// - Money/Currency type (`money_value`) is in the ISO 4217 text format. -
-  /// Date type (`date_value`) is in the ISO 8601 text format. - Datetime type
-  /// (`datetime_value`) is in the ISO 8601 text format.
+  /// Normalized entity value stored as a string.
+  ///
+  /// This field is populated for supported document type (e.g. Invoice). For
+  /// some entity types, one of respective 'structured_value' fields may also be
+  /// populated. - Money/Currency type (`money_value`) is in the ISO 4217 text
+  /// format. - Date type (`date_value`) is in the ISO 8601 text format. -
+  /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
+  ///
+  /// Required.
   core.String text;
 
   GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue();
@@ -3818,20 +3985,25 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
 }
 
 /// Label attaches schema information and/or other metadata to segments within a
-/// Document. Multiple Labels on a single field can denote either different
-/// labels, different instances of the same label created at different times, or
-/// some combination of both.
+/// Document.
+///
+/// Multiple Labels on a single field can denote either different labels,
+/// different instances of the same label created at different times, or some
+/// combination of both.
 class GoogleCloudDocumentaiV1beta2DocumentLabel {
-  /// Label is generated AutoML model. This field stores the full resource name
-  /// of the AutoML model. Format:
+  /// Label is generated AutoML model.
+  ///
+  /// This field stores the full resource name of the AutoML model. Format:
   /// `projects/{project-id}/locations/{location-id}/models/{model-id}`
   core.String automlModel;
 
   /// Confidence score between 0 and 1 for label assignment.
   core.double confidence;
 
-  /// Name of the label. When the label is generated from AutoML Text
-  /// Classification model, this field represents the name of the category.
+  /// Name of the label.
+  ///
+  /// When the label is generated from AutoML Text Classification model, this
+  /// field represents the name of the category.
   core.String name;
 
   GoogleCloudDocumentaiV1beta2DocumentLabel();
@@ -3865,9 +4037,10 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
 
 /// A page in a Document.
 class GoogleCloudDocumentaiV1beta2DocumentPage {
-  /// A list of visually detected text blocks on the page. A block has a set of
-  /// lines (collected into paragraphs) that have a common line-spacing and
-  /// orientation.
+  /// A list of visually detected text blocks on the page.
+  ///
+  /// A block has a set of lines (collected into paragraphs) that have a common
+  /// line-spacing and orientation.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageBlock> blocks;
 
   /// A list of detected languages together with confidence.
@@ -3880,24 +4053,28 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   /// A list of visually detected form fields on the page.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageFormField> formFields;
 
-  /// Rendered image for this page. This image is preprocessed to remove any
-  /// skew, rotation, and distortions such that the annotation bounding boxes
-  /// can be upright and axis-aligned.
+  /// Rendered image for this page.
+  ///
+  /// This image is preprocessed to remove any skew, rotation, and distortions
+  /// such that the annotation bounding boxes can be upright and axis-aligned.
   GoogleCloudDocumentaiV1beta2DocumentPageImage image;
 
   /// Layout for the page.
   GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
 
-  /// A list of visually detected text lines on the page. A collection of tokens
-  /// that a human would perceive as a line.
+  /// A list of visually detected text lines on the page.
+  ///
+  /// A collection of tokens that a human would perceive as a line.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageLine> lines;
 
-  /// 1-based index for current Page in a parent Document. Useful when a page is
-  /// taken out of a Document for individual processing.
+  /// 1-based index for current Page in a parent Document.
+  ///
+  /// Useful when a page is taken out of a Document for individual processing.
   core.int pageNumber;
 
-  /// A list of visually detected text paragraphs on the page. A collection of
-  /// lines that a human would perceive as a paragraph.
+  /// A list of visually detected text paragraphs on the page.
+  ///
+  /// A collection of lines that a human would perceive as a paragraph.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageParagraph> paragraphs;
 
   /// A list of visually detected tables on the page.
@@ -3911,6 +4088,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageMatrix> transforms;
 
   /// A list of detected non-text visual elements e.g. checkbox, signature etc.
+  ///
   /// on the page.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageVisualElement>
       visualElements;
@@ -4046,8 +4224,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   }
 }
 
-/// Referencing the visual context of the entity in the Document.pages. Page
-/// anchors can be cross-page, consist of multiple bounding polygons and
+/// Referencing the visual context of the entity in the Document.pages.
+///
+/// Page anchors can be cross-page, consist of multiple bounding polygons and
 /// optionally reference specific layout element types.
 class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
   /// One or more references to visual page elements
@@ -4076,13 +4255,19 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
 
 /// Represents a weak reference to a page element within a document.
 class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
-  /// Optional. Identifies the bounding polygon of a layout element on the page.
+  /// Identifies the bounding polygon of a layout element on the page.
+  ///
+  /// Optional.
   GoogleCloudDocumentaiV1beta2BoundingPoly boundingPoly;
 
-  /// Optional. Deprecated. Use PageRef.bounding_poly instead.
+  /// Use PageRef.bounding_poly instead.
+  ///
+  /// Optional. Deprecated.
   core.String layoutId;
 
-  /// Optional. The type of the layout element that is being referenced if any.
+  /// The type of the layout element that is being referenced if any.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "LAYOUT_TYPE_UNSPECIFIED" : Layout Unspecified.
   /// - "BLOCK" : References a Page.blocks element.
@@ -4094,7 +4279,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
   /// - "FORM_FIELD" : References a Page.form_fields element.
   core.String layoutType;
 
-  /// Required. Index into the Document.pages element
+  /// Index into the Document.pages element
+  ///
+  /// Required.
   core.String page;
 
   GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef();
@@ -4186,11 +4373,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
 
 /// Detected language for a structural component.
 class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
-  /// Confidence of detected language. Range [0, 1].
+  /// Confidence of detected language.
+  ///
+  /// Range [0, 1].
   core.double confidence;
 
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-  /// information, see
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   core.String languageCode;
 
@@ -4260,8 +4450,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
-  /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`,
-  /// `Phone number`, etc.
+  /// Layout for the FormField name.
+  ///
+  /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
   GoogleCloudDocumentaiV1beta2DocumentPageLayout fieldName;
 
   /// Layout for the FormField value.
@@ -4275,9 +4466,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
       valueDetectedLanguages;
 
-  /// If the value is non-textual, this field represents the type. Current valid
-  /// values are: - blank (this indicates the field_value is normal text) -
-  /// "unfilled_checkbox" - "filled_checkbox"
+  /// If the value is non-textual, this field represents the type.
+  ///
+  /// Current valid values are: - blank (this indicates the field_value is
+  /// normal text) - "unfilled_checkbox" - "filled_checkbox"
   core.String valueType;
 
   GoogleCloudDocumentaiV1beta2DocumentPageFormField();
@@ -4396,8 +4588,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   GoogleCloudDocumentaiV1beta2BoundingPoly boundingPoly;
 
   /// Confidence of the current Layout within context of the object this layout
-  /// is for. e.g. confidence can be for a single token, a table, a visual
-  /// element, etc. depending on context. Range [0, 1].
+  /// is for.
+  ///
+  /// e.g. confidence can be for a single token, a table, a visual element, etc.
+  /// depending on context. Range [0, 1].
   core.double confidence;
 
   /// Detected orientation for the Layout.
@@ -4452,8 +4646,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   }
 }
 
-/// A collection of tokens that a human would perceive as a line. Does not cross
-/// column boundaries, can be horizontal, vertical, etc.
+/// A collection of tokens that a human would perceive as a line.
+///
+/// Does not cross column boundaries, can be horizontal, vertical, etc.
 class GoogleCloudDocumentaiV1beta2DocumentPageLine {
   /// A list of detected languages together with confidence.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
@@ -4520,9 +4715,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
   /// Number of rows in the matrix.
   core.int rows;
 
-  /// This encodes information about what data type the matrix uses. For
-  /// example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of OpenCV
-  /// primitive data types, please refer to
+  /// This encodes information about what data type the matrix uses.
+  ///
+  /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
+  /// OpenCV primitive data types, please refer to
   /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
   core.int type;
 
@@ -4849,7 +5045,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
   }
 }
 
-/// Detected non-text visual elements e.g. checkbox, signature etc. on the page.
+/// Detected non-text visual elements e.g. checkbox, signature etc.
+///
+/// on the page.
 class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
   /// A list of detected languages together with confidence.
   core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
@@ -4901,8 +5099,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
 /// Structure to identify provenance relationships between annotations in
 /// different revisions.
 class GoogleCloudDocumentaiV1beta2DocumentProvenance {
-  /// The Id of this operation. Needs to be unique within the scope of the
-  /// revision.
+  /// The Id of this operation.
+  ///
+  /// Needs to be unique within the scope of the revision.
   core.int id;
 
   /// References to the original elements that are replaced.
@@ -4962,9 +5161,10 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
   }
 }
 
-/// Structure for referencing parent provenances. When an element replaces one
-/// of more other elements parent references identify the elements that are
-/// replaced.
+/// Structure for referencing parent provenances.
+///
+/// When an element replaces one of more other elements parent references
+/// identify the elements that are replaced.
 class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
   /// The id of the parent provenance.
   core.int id;
@@ -5007,12 +5207,15 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
   /// Human Review information of this revision.
   GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview humanReview;
 
-  /// Id of the revision. Unique within the context of the document.
+  /// Id of the revision.
+  ///
+  /// Unique within the context of the document.
   core.String id;
 
-  /// The revisions that this revision is based on. This can include one or more
-  /// parent (when documents are merged.) This field represents the index into
-  /// the `revisions` field.
+  /// The revisions that this revision is based on.
+  ///
+  /// This can include one or more parent (when documents are merged.) This
+  /// field represents the index into the `revisions` field.
   core.List<core.int> parent;
 
   /// If the annotation was made by processor identify the processor by its
@@ -5072,10 +5275,13 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
 
 /// Human Review information of the document.
 class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
-  /// Human review state. e.g. `requested`, `succeeded`, `rejected`.
+  /// Human review state.
+  ///
+  /// e.g. `requested`, `succeeded`, `rejected`.
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the rejection reason when the state is `rejected`.
   core.String stateMessage;
 
@@ -5104,7 +5310,9 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
 }
 
 /// For a large document, sharding may be performed to produce several document
-/// shards. Each document shard contains this field to detail which shard it is.
+/// shards.
+///
+/// Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
   /// Total number of shards.
   core.String shardCount;
@@ -5145,8 +5353,9 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
   }
 }
 
-/// Annotation for common text style attributes. This adheres to CSS conventions
-/// as much as possible.
+/// Annotation for common text style attributes.
+///
+/// This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1beta2DocumentStyle {
   /// Text background color.
   GoogleTypeColor backgroundColor;
@@ -5157,18 +5366,24 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
   /// Font size.
   GoogleCloudDocumentaiV1beta2DocumentStyleFontSize fontSize;
 
-  /// Font weight. Possible values are normal, bold, bolder, and lighter.
+  /// Font weight.
+  ///
+  /// Possible values are normal, bold, bolder, and lighter.
   /// https://www.w3schools.com/cssref/pr_font_weight.asp
   core.String fontWeight;
 
   /// Text anchor indexing into the Document.text.
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
 
-  /// Text decoration. Follows CSS standard.
+  /// Text decoration.
+  ///
+  /// Follows CSS standard.
   /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
   core.String textDecoration;
 
-  /// Text style. Possible values are normal, italic, and oblique.
+  /// Text style.
+  ///
+  /// Possible values are normal, italic, and oblique.
   /// https://www.w3schools.com/cssref/pr_font_font-style.asp
   core.String textStyle;
 
@@ -5234,7 +5449,9 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
   /// Font size for the text.
   core.double size;
 
-  /// Unit for the font size. Follows CSS naming (in, px, pt, etc.).
+  /// Unit for the font size.
+  ///
+  /// Follows CSS naming (in, px, pt, etc.).
   core.String unit;
 
   GoogleCloudDocumentaiV1beta2DocumentStyleFontSize();
@@ -5299,9 +5516,11 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
   }
 }
 
-/// A text segment in the Document.text. The indices may be out of bounds which
-/// indicate that the text extends into another document shard for large sharded
-/// documents. See ShardInfo.text_offset
+/// A text segment in the Document.text.
+///
+/// The indices may be out of bounds which indicate that the text extends into
+/// another document shard for large sharded documents. See
+/// ShardInfo.text_offset
 class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
   core.String endIndex;
@@ -5333,7 +5552,9 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
   }
 }
 
-/// This message is used for text changes aka. OCR corrections.
+/// This message is used for text changes aka.
+///
+/// OCR corrections.
 class GoogleCloudDocumentaiV1beta2DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
   core.String changedText;
@@ -5341,10 +5562,11 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
   /// The history of this annotation.
   core.List<GoogleCloudDocumentaiV1beta2DocumentProvenance> provenance;
 
-  /// Provenance of the correction. Text anchor indexing into the Document.text.
-  /// There can only be a single `TextAnchor.text_segments` element. If the
-  /// start and end index of the text segment are the same, the text change is
-  /// inserted before that index.
+  /// Provenance of the correction.
+  ///
+  /// Text anchor indexing into the Document.text. There can only be a single
+  /// `TextAnchor.text_segments` element. If the start and end index of the text
+  /// segment are the same, the text change is inserted before that index.
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
 
   GoogleCloudDocumentaiV1beta2DocumentTextChange();
@@ -5383,18 +5605,20 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
 
 /// A translation of the text segment.
 class GoogleCloudDocumentaiV1beta2DocumentTranslation {
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-  /// information, see
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   core.String languageCode;
 
   /// The history of this annotation.
   core.List<GoogleCloudDocumentaiV1beta2DocumentProvenance> provenance;
 
-  /// Provenance of the translation. Text anchor indexing into the
-  /// Document.text. There can only be a single `TextAnchor.text_segments`
-  /// element. If the start and end index of the text segment are the same, the
-  /// text change is inserted before that index.
+  /// Provenance of the translation.
+  ///
+  /// Text anchor indexing into the Document.text. There can only be a single
+  /// `TextAnchor.text_segments` element. If the start and end index of the text
+  /// segment are the same, the text change is inserted before that index.
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
 
   /// Text translated into the target language.
@@ -5445,8 +5669,10 @@ class GoogleCloudDocumentaiV1beta2EntityExtractionParams {
   /// Whether to enable entity extraction.
   core.bool enabled;
 
-  /// Model version of the entity extraction. Default is "builtin/stable".
-  /// Specify "builtin/latest" for the latest model.
+  /// Model version of the entity extraction.
+  ///
+  /// Default is "builtin/stable". Specify "builtin/latest" for the latest
+  /// model.
   core.String modelVersion;
 
   GoogleCloudDocumentaiV1beta2EntityExtractionParams();
@@ -5480,10 +5706,11 @@ class GoogleCloudDocumentaiV1beta2FormExtractionParams {
   /// Reserved for future use.
   core.List<GoogleCloudDocumentaiV1beta2KeyValuePairHint> keyValuePairHints;
 
-  /// Model version of the form extraction system. Default is "builtin/stable".
-  /// Specify "builtin/latest" for the latest model. For custom form models,
-  /// specify: “custom/{model_name}". Model name format is
-  /// "bucket_name/path/to/modeldir" corresponding to
+  /// Model version of the form extraction system.
+  ///
+  /// Default is "builtin/stable". Specify "builtin/latest" for the latest
+  /// model. For custom form models, specify: “custom/{model_name}". Model name
+  /// format is "bucket_name/path/to/modeldir" corresponding to
   /// "gs://bucket_name/path/to/modeldir" where annotated examples are stored.
   core.String modelVersion;
 
@@ -5565,10 +5792,11 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
 
 /// The desired input location and metadata.
 class GoogleCloudDocumentaiV1beta2InputConfig {
-  /// Content in bytes, represented as a stream of bytes. Note: As with all
-  /// `bytes` fields, proto buffer messages use a pure binary representation,
-  /// whereas JSON representations use base64. This field only works for
-  /// synchronous ProcessDocument method.
+  /// Content in bytes, represented as a stream of bytes.
+  ///
+  /// Note: As with all `bytes` fields, proto buffer messages use a pure binary
+  /// representation, whereas JSON representations use base64. This field only
+  /// works for synchronous ProcessDocument method.
   core.String contents;
   core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
 
@@ -5577,14 +5805,19 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The Google Cloud Storage location to read the input from. This must be a
-  /// single file.
+  /// The Google Cloud Storage location to read the input from.
+  ///
+  /// This must be a single file.
   GoogleCloudDocumentaiV1beta2GcsSource gcsSource;
 
-  /// Required. Mimetype of the input. Current supported mimetypes are
-  /// application/pdf, image/tiff, and image/gif. In addition, application/json
-  /// type is supported for requests with ProcessDocumentRequest.automl_params
-  /// field set. The JSON file needs to be in Document format.
+  /// Mimetype of the input.
+  ///
+  /// Current supported mimetypes are application/pdf, image/tiff, and
+  /// image/gif. In addition, application/json type is supported for requests
+  /// with ProcessDocumentRequest.automl_params field set. The JSON file needs
+  /// to be in Document format.
+  ///
+  /// Required.
   core.String mimeType;
 
   GoogleCloudDocumentaiV1beta2InputConfig();
@@ -5622,9 +5855,11 @@ class GoogleCloudDocumentaiV1beta2KeyValuePairHint {
   /// The key text for the hint.
   core.String key;
 
-  /// Type of the value. This is case-insensitive, and could be one of: ADDRESS,
-  /// LOCATION, ORGANIZATION, PERSON, PHONE_NUMBER, ID, NUMBER, EMAIL, PRICE,
-  /// TERMS, DATE, NAME. Types not in this list will be ignored.
+  /// Type of the value.
+  ///
+  /// This is case-insensitive, and could be one of: ADDRESS, LOCATION,
+  /// ORGANIZATION, PERSON, PHONE_NUMBER, ID, NUMBER, EMAIL, PRICE, TERMS, DATE,
+  /// NAME. Types not in this list will be ignored.
   core.List<core.String> valueTypes;
 
   GoogleCloudDocumentaiV1beta2KeyValuePairHint();
@@ -5652,8 +5887,10 @@ class GoogleCloudDocumentaiV1beta2KeyValuePairHint {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the normalized vertex
-/// coordinates are relative to the original image and range from 0 to 1.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
 class GoogleCloudDocumentaiV1beta2NormalizedVertex {
   /// X coordinate.
   core.double x;
@@ -5686,14 +5923,15 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
 
 /// Parameters to control Optical Character Recognition (OCR) behavior.
 class GoogleCloudDocumentaiV1beta2OcrParams {
-  /// List of languages to use for OCR. In most cases, an empty value yields the
-  /// best results since it enables automatic language detection. For languages
-  /// based on the Latin alphabet, setting `language_hints` is not needed. In
-  /// rare cases, when the language of the text in the image is known, setting a
-  /// hint will help get better results (although it will be a significant
-  /// hindrance if the hint is wrong). Document processing returns an error if
-  /// one or more of the specified languages is not one of the supported
-  /// languages.
+  /// List of languages to use for OCR.
+  ///
+  /// In most cases, an empty value yields the best results since it enables
+  /// automatic language detection. For languages based on the Latin alphabet,
+  /// setting `language_hints` is not needed. In rare cases, when the language
+  /// of the text in the image is known, setting a hint will help get better
+  /// results (although it will be a significant hindrance if the hint is
+  /// wrong). Document processing returns an error if one or more of the
+  /// specified languages is not one of the supported languages.
   core.List<core.String> languageHints;
 
   GoogleCloudDocumentaiV1beta2OcrParams();
@@ -5779,12 +6017,14 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
   GoogleCloudDocumentaiV1beta2GcsDestination gcsDestination;
 
   /// The max number of pages to include into each output Document shard JSON on
-  /// Google Cloud Storage. The valid range is [1, 100]. If not specified, the
-  /// default value is 20. For example, for one pdf file with 100 pages, 100
-  /// parsed pages will be produced. If `pages_per_shard` = 20, then 5 Document
-  /// shard JSON files each containing 20 parsed pages will be written under the
-  /// prefix OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where
-  /// x and y are 1-indexed page numbers. Example GCS outputs with 157 pages and
+  /// Google Cloud Storage.
+  ///
+  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// For example, for one pdf file with 100 pages, 100 parsed pages will be
+  /// produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each
+  /// containing 20 parsed pages will be written under the prefix
+  /// OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where x and
+  /// y are 1-indexed page numbers. Example GCS outputs with 157 pages and
   /// pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json
   /// pages-101-to-150.json pages-151-to-157.json
   core.int pagesPerShard;
@@ -5815,42 +6055,53 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
 
 /// Request to process one document.
 class GoogleCloudDocumentaiV1beta2ProcessDocumentRequest {
-  /// Controls AutoML model prediction behavior. AutoMlParams cannot be used
-  /// together with other Params.
+  /// Controls AutoML model prediction behavior.
+  ///
+  /// AutoMlParams cannot be used together with other Params.
   GoogleCloudDocumentaiV1beta2AutoMlParams automlParams;
 
-  /// Specifies a known document type for deeper structure detection. Valid
-  /// values are currently "general" and "invoice". If not provided, "general"\
-  /// is used as default. If any other value is given, the request is rejected.
+  /// Specifies a known document type for deeper structure detection.
+  ///
+  /// Valid values are currently "general" and "invoice". If not provided,
+  /// "general"\ is used as default. If any other value is given, the request is
+  /// rejected.
   core.String documentType;
 
-  /// Controls entity extraction behavior. If not specified, the system will
-  /// decide reasonable defaults.
+  /// Controls entity extraction behavior.
+  ///
+  /// If not specified, the system will decide reasonable defaults.
   GoogleCloudDocumentaiV1beta2EntityExtractionParams entityExtractionParams;
 
-  /// Controls form extraction behavior. If not specified, the system will
-  /// decide reasonable defaults.
+  /// Controls form extraction behavior.
+  ///
+  /// If not specified, the system will decide reasonable defaults.
   GoogleCloudDocumentaiV1beta2FormExtractionParams formExtractionParams;
 
-  /// Required. Information about the input file.
+  /// Information about the input file.
+  ///
+  /// Required.
   GoogleCloudDocumentaiV1beta2InputConfig inputConfig;
 
-  /// Controls OCR behavior. If not specified, the system will decide reasonable
-  /// defaults.
+  /// Controls OCR behavior.
+  ///
+  /// If not specified, the system will decide reasonable defaults.
   GoogleCloudDocumentaiV1beta2OcrParams ocrParams;
 
-  /// The desired output location. This field is only needed in
-  /// BatchProcessDocumentsRequest.
+  /// The desired output location.
+  ///
+  /// This field is only needed in BatchProcessDocumentsRequest.
   GoogleCloudDocumentaiV1beta2OutputConfig outputConfig;
 
-  /// Target project and location to make a call. Format:
-  /// `projects/{project-id}/locations/{location-id}`. If no location is
+  /// Target project and location to make a call.
+  ///
+  /// Format: `projects/{project-id}/locations/{location-id}`. If no location is
   /// specified, a region will be chosen automatically. This field is only
   /// populated when used in ProcessDocument method.
   core.String parent;
 
-  /// Controls table extraction behavior. If not specified, the system will
-  /// decide reasonable defaults.
+  /// Controls table extraction behavior.
+  ///
+  /// If not specified, the system will decide reasonable defaults.
   GoogleCloudDocumentaiV1beta2TableExtractionParams tableExtractionParams;
 
   GoogleCloudDocumentaiV1beta2ProcessDocumentRequest();
@@ -5933,12 +6184,15 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentRequest {
 
 /// Response to a single document processing request.
 class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
-  /// Information about the input file. This is the same as the corresponding
-  /// input config in the request.
+  /// Information about the input file.
+  ///
+  /// This is the same as the corresponding input config in the request.
   GoogleCloudDocumentaiV1beta2InputConfig inputConfig;
 
-  /// The output location of the parsed responses. The responses are written to
-  /// this location as JSON-serialized `Document` objects.
+  /// The output location of the parsed responses.
+  ///
+  /// The responses are written to this location as JSON-serialized `Document`
+  /// objects.
   GoogleCloudDocumentaiV1beta2OutputConfig outputConfig;
 
   GoogleCloudDocumentaiV1beta2ProcessDocumentResponse();
@@ -5968,14 +6222,18 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
 
 /// A hint for a table bounding box on the page for table parsing.
 class GoogleCloudDocumentaiV1beta2TableBoundHint {
-  /// Bounding box hint for a table on this page. The coordinates must be
-  /// normalized to [0,1] and the bounding box must be an axis-aligned
-  /// rectangle.
+  /// Bounding box hint for a table on this page.
+  ///
+  /// The coordinates must be normalized to [0,1] and the bounding box must be
+  /// an axis-aligned rectangle.
   GoogleCloudDocumentaiV1beta2BoundingPoly boundingBox;
 
-  /// Optional. Page number for multi-paged inputs this hint applies to. If not
-  /// provided, this hint will apply to all pages by default. This value is
-  /// 1-based.
+  /// Page number for multi-paged inputs this hint applies to.
+  ///
+  /// If not provided, this hint will apply to all pages by default. This value
+  /// is 1-based.
+  ///
+  /// Optional.
   core.int pageNumber;
 
   GoogleCloudDocumentaiV1beta2TableBoundHint();
@@ -6007,15 +6265,21 @@ class GoogleCloudDocumentaiV1beta2TableExtractionParams {
   /// Whether to enable table extraction.
   core.bool enabled;
 
-  /// Optional. Reserved for future use.
+  /// Reserved for future use.
+  ///
+  /// Optional.
   core.List<core.String> headerHints;
 
-  /// Model version of the table extraction system. Default is "builtin/stable".
-  /// Specify "builtin/latest" for the latest model.
+  /// Model version of the table extraction system.
+  ///
+  /// Default is "builtin/stable". Specify "builtin/latest" for the latest
+  /// model.
   core.String modelVersion;
 
-  /// Optional. Table bounding box hints that can be provided to complex cases
-  /// which our algorithm cannot locate the table(s) in.
+  /// Table bounding box hints that can be provided to complex cases which our
+  /// algorithm cannot locate the table(s) in.
+  ///
+  /// Optional.
   core.List<GoogleCloudDocumentaiV1beta2TableBoundHint> tableBoundHints;
 
   GoogleCloudDocumentaiV1beta2TableExtractionParams();
@@ -6060,8 +6324,9 @@ class GoogleCloudDocumentaiV1beta2TableExtractionParams {
   }
 }
 
-/// A vertex represents a 2D point in the image. NOTE: the vertex coordinates
-/// are in the same scale as the original image.
+/// A vertex represents a 2D point in the image.
+///
+/// NOTE: the vertex coordinates are in the same scale as the original image.
 class GoogleCloudDocumentaiV1beta2Vertex {
   /// X coordinate.
   core.int x;
@@ -6115,6 +6380,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -6171,16 +6437,18 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
 
 /// The status of a each individual document in the batch process.
 class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
-  /// The name of the operation triggered by the processed document. If the
-  /// human review process is not triggered, this field will be empty. It has
-  /// the same response type and metadata as the long running operation returned
-  /// by ReviewDocument method.
+  /// The name of the operation triggered by the processed document.
+  ///
+  /// If the human review process is not triggered, this field will be empty. It
+  /// has the same response type and metadata as the long running operation
+  /// returned by ReviewDocument method.
   core.String humanReviewOperation;
 
   /// The source of the document, same as the [input_gcs_source] field in the
-  /// request when the batch process started. The batch process is started by
-  /// take snapshot of that document, since a user can move or change that
-  /// document during the process.
+  /// request when the batch process started.
+  ///
+  /// The batch process is started by take snapshot of that document, since a
+  /// user can move or change that document during the process.
   core.String inputGcsSource;
 
   /// The output_gcs_destination (in the request as 'output_gcs_destination') of
@@ -6257,6 +6525,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
   core.String state;
 
   /// A message providing more details about the current state of processing.
+  ///
   /// For example, the error message if the operation is failed.
   core.String stateMessage;
 
@@ -6324,31 +6593,37 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -6413,10 +6688,12 @@ class GoogleLongrunningOperation {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
@@ -6431,24 +6708,27 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -6489,21 +6769,22 @@ class GoogleRpcStatus {
   }
 }
 
-/// Represents a color in the RGBA color space. This representation is designed
-/// for simplicity of conversion to/from color representations in various
-/// languages over compactness; for example, the fields of this representation
-/// can be trivially provided to the constructor of "java.awt.Color" in Java; it
-/// can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-/// method in iOS; and, with just a little work, it can be easily formatted into
-/// a CSS "rgba()" string in JavaScript, as well. Note: this proto does not
-/// carry information about the absolute color space that should be used to
-/// interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By
-/// default, applications SHOULD assume the sRGB color space. Note: when color
-/// equality needs to be decided, implementations, unless documented otherwise,
-/// will treat two colors to be equal if all their red, green, blue and alpha
-/// values each differ by at most 1e-5. Example (Java): import
-/// com.google.type.Color; // ... public static java.awt.Color fromProto(Color
-/// protocolor) { float alpha = protocolor.hasAlpha() ?
+/// Represents a color in the RGBA color space.
+///
+/// This representation is designed for simplicity of conversion to/from color
+/// representations in various languages over compactness; for example, the
+/// fields of this representation can be trivially provided to the constructor
+/// of "java.awt.Color" in Java; it can also be trivially provided to UIColor's
+/// "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little
+/// work, it can be easily formatted into a CSS "rgba()" string in JavaScript,
+/// as well. Note: this proto does not carry information about the absolute
+/// color space that should be used to interpret the RGB value (e.g. sRGB, Adobe
+/// RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB
+/// color space. Note: when color equality needs to be decided, implementations,
+/// unless documented otherwise, will treat two colors to be equal if all their
+/// red, green, blue and alpha values each differ by at most 1e-5. Example
+/// (Java): import com.google.type.Color; // ... public static java.awt.Color
+/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
 /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
 /// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
 /// public static Color toProto(java.awt.Color color) { float red = (float)
@@ -6538,15 +6819,16 @@ class GoogleRpcStatus {
 /// resultBuilder.push('0'); } resultBuilder.push(hexString); return
 /// resultBuilder.join(''); }; // ...
 class GoogleTypeColor {
-  /// The fraction of this color that should be applied to the pixel. That is,
-  /// the final pixel color is defined by the equation: pixel color = alpha *
-  /// (this color) + (1.0 - alpha) * (background color) This means that a value
-  /// of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to
-  /// a completely transparent color. This uses a wrapper message rather than a
-  /// simple float scalar so that it is possible to distinguish between a
-  /// default value and the value being unset. If omitted, this color object is
-  /// to be rendered as a solid color (as if the alpha value had been explicitly
-  /// given with a value of 1.0).
+  /// The fraction of this color that should be applied to the pixel.
+  ///
+  /// That is, the final pixel color is defined by the equation: pixel color =
+  /// alpha * (this color) + (1.0 - alpha) * (background color) This means that
+  /// a value of 1.0 corresponds to a solid color, whereas a value of 0.0
+  /// corresponds to a completely transparent color. This uses a wrapper message
+  /// rather than a simple float scalar so that it is possible to distinguish
+  /// between a default value and the value being unset. If omitted, this color
+  /// object is to be rendered as a solid color (as if the alpha value had been
+  /// explicitly given with a value of 1.0).
   core.double alpha;
 
   /// The amount of blue in the color as a value in the interval [0, 1].
@@ -6593,26 +6875,30 @@ class GoogleTypeColor {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday. The time of
-/// day and time zone are either specified elsewhere or are not significant. The
-/// date is relative to the Proleptic Gregorian Calendar. This can represent: *
-/// A full date, with non-zero year, month and day values * A month and day
-/// value, with a zero year, e.g. an anniversary * A year on its own, with zero
-/// month and day values * A year and month value, with a zero day, e.g. a
-/// credit card expiration date Related types are google.type.TimeOfDay and
-/// `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are not
+/// significant. The date is relative to the Proleptic Gregorian Calendar. This
+/// can represent: * A full date, with non-zero year, month and day values * A
+/// month and day value, with a zero year, e.g. an anniversary * A year on its
+/// own, with zero month and day values * A year and month value, with a zero
+/// day, e.g. a credit card expiration date Related types are
+/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class GoogleTypeDate {
-  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year by itself or a year and month where the day is not
-  /// significant.
+  /// Day of month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
+  /// a year by itself or a year and month where the day is not significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-  /// month and day.
+  /// Month of year.
+  ///
+  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
   core.int month;
 
-  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
-  /// year.
+  /// Year of date.
+  ///
+  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
   core.int year;
 
   GoogleTypeDate();
@@ -6646,47 +6932,74 @@ class GoogleTypeDate {
 
 /// Represents civil time in one of a few possible ways: * When utc_offset is
 /// set and time_zone is unset: a civil time on a calendar day with a particular
-/// offset from UTC. * When time_zone is set and utc_offset is unset: a civil
-/// time on a calendar day in a particular time zone. * When neither time_zone
-/// nor utc_offset is set: a civil time on a calendar day in local time. The
-/// date is relative to the Proleptic Gregorian Calendar. If year is 0, the
-/// DateTime is considered not to have a specific year. month and day must have
-/// valid, non-zero values. This type is more flexible than some applications
-/// may want. Make sure to document and validate your application's limitations.
+/// offset from UTC.
+///
+/// * When time_zone is set and utc_offset is unset: a civil time on a calendar
+/// day in a particular time zone. * When neither time_zone nor utc_offset is
+/// set: a civil time on a calendar day in local time. The date is relative to
+/// the Proleptic Gregorian Calendar. If year is 0, the DateTime is considered
+/// not to have a specific year. month and day must have valid, non-zero values.
+/// This type is more flexible than some applications may want. Make sure to
+/// document and validate your application's limitations.
 class GoogleTypeDateTime {
-  /// Required. Day of month. Must be from 1 to 31 and valid for the year and
-  /// month.
+  /// Day of month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month.
+  ///
+  /// Required.
   core.int day;
 
-  /// Required. Hours of day in 24 hour format. Should be from 0 to 23. An API
-  /// may choose to allow the value "24:00:00" for scenarios like business
-  /// closing time.
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
+  /// for scenarios like business closing time.
+  ///
+  /// Required.
   core.int hours;
 
-  /// Required. Minutes of hour of day. Must be from 0 to 59.
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59.
+  ///
+  /// Required.
   core.int minutes;
 
-  /// Required. Month of year. Must be from 1 to 12.
+  /// Month of year.
+  ///
+  /// Must be from 1 to 12.
+  ///
+  /// Required.
   core.int month;
 
-  /// Required. Fractions of seconds in nanoseconds. Must be from 0 to
-  /// 999,999,999.
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to 999,999,999.
+  ///
+  /// Required.
   core.int nanos;
 
-  /// Required. Seconds of minutes of the time. Must normally be from 0 to 59.
-  /// An API may allow the value 60 if it allows leap-seconds.
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
+  /// leap-seconds.
+  ///
+  /// Required.
   core.int seconds;
 
   /// Time zone.
   GoogleTypeTimeZone timeZone;
 
-  /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
-  /// example, a UTC offset of -4:00 would be represented as { seconds: -14400
-  /// }.
+  /// UTC offset.
+  ///
+  /// Must be whole seconds, between -18 hours and +18 hours. For example, a UTC
+  /// offset of -4:00 would be represented as { seconds: -14400 }.
   core.String utcOffset;
 
-  /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a
-  /// datetime without a year.
+  /// Year of date.
+  ///
+  /// Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+  ///
+  /// Optional.
   core.int year;
 
   GoogleTypeDateTime();
@@ -6760,16 +7073,18 @@ class GoogleTypeMoney {
   /// The 3-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
-  /// Number of nano (10^-9) units of the amount. The value must be between
-  /// -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos`
-  /// must be positive or zero. If `units` is zero, `nanos` can be positive,
-  /// zero, or negative. If `units` is negative, `nanos` must be negative or
-  /// zero. For example $-1.75 is represented as `units`=-1 and
-  /// `nanos`=-750,000,000.
+  /// Number of nano (10^-9) units of the amount.
+  ///
+  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
+  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
+  /// `nanos` can be positive, zero, or negative. If `units` is negative,
+  /// `nanos` must be negative or zero. For example $-1.75 is represented as
+  /// `units`=-1 and `nanos`=-750,000,000.
   core.int nanos;
 
-  /// The whole units of the amount. For example if `currencyCode` is `"USD"`,
-  /// then 1 unit is one US dollar.
+  /// The whole units of the amount.
+  ///
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String units;
 
   GoogleTypeMoney();
@@ -6802,6 +7117,7 @@ class GoogleTypeMoney {
 }
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
+///
 /// Given a postal address, a postal service can deliver items to a premise,
 /// P.O. Box or similar. It is not intended to model geographical locations
 /// (roads, towns, mountains). In typical usage an address would be created via
@@ -6813,6 +7129,7 @@ class GoogleTypeMoney {
 /// schema, please see: https://support.google.com/business/answer/6397478
 class GoogleTypePostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
+  ///
   /// Because values in address_lines do not have type information and may
   /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
   /// it is important that the line order is clear. The order of address lines
@@ -6831,15 +7148,20 @@ class GoogleTypePostalAddress {
   /// parts of the address should be localities or administrative areas).
   core.List<core.String> addressLines;
 
-  /// Optional. Highest administrative subdivision which is used for postal
-  /// addresses of a country or region. For example, this can be a state, a
-  /// province, an oblast, or a prefecture. Specifically, for Spain this is the
-  /// province and not the autonomous community (e.g. "Barcelona" and not
-  /// "Catalonia"). Many countries don't use an administrative area in postal
-  /// addresses. E.g. in Switzerland this should be left unpopulated.
+  /// Highest administrative subdivision which is used for postal addresses of a
+  /// country or region.
+  ///
+  /// For example, this can be a state, a province, an oblast, or a prefecture.
+  /// Specifically, for Spain this is the province and not the autonomous
+  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
+  /// an administrative area in postal addresses. E.g. in Switzerland this
+  /// should be left unpopulated.
+  ///
+  /// Optional.
   core.String administrativeArea;
 
-  /// Optional. BCP-47 language code of the contents of this address (if known).
+  /// BCP-47 language code of the contents of this address (if known).
+  ///
   /// This is often the UI language of the input form or is expected to match
   /// one of the languages used in the address' country/region, or their
   /// transliterated equivalents. This can affect formatting in certain
@@ -6847,49 +7169,72 @@ class GoogleTypePostalAddress {
   /// never affect any validation or other non-formatting related operations. If
   /// this value is not known, it should be omitted (rather than specifying a
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+  ///
+  /// Optional.
   core.String languageCode;
 
-  /// Optional. Generally refers to the city/town portion of the address.
+  /// Generally refers to the city/town portion of the address.
+  ///
   /// Examples: US city, IT comune, UK post town. In regions of the world where
   /// localities are not well defined or do not fit into this structure well,
   /// leave locality empty and use address_lines.
+  ///
+  /// Optional.
   core.String locality;
 
-  /// Optional. The name of the organization at the address.
+  /// The name of the organization at the address.
+  ///
+  /// Optional.
   core.String organization;
 
-  /// Optional. Postal code of the address. Not all countries use or require
-  /// postal codes to be present, but where they are used, they may trigger
-  /// additional validation with other parts of the address (e.g. state/zip
-  /// validation in the U.S.A.).
+  /// Postal code of the address.
+  ///
+  /// Not all countries use or require postal codes to be present, but where
+  /// they are used, they may trigger additional validation with other parts of
+  /// the address (e.g. state/zip validation in the U.S.A.).
+  ///
+  /// Optional.
   core.String postalCode;
 
-  /// Optional. The recipient at the address. This field may, under certain
-  /// circumstances, contain multiline information. For example, it might
-  /// contain "care of" information.
+  /// The recipient at the address.
+  ///
+  /// This field may, under certain circumstances, contain multiline
+  /// information. For example, it might contain "care of" information.
+  ///
+  /// Optional.
   core.List<core.String> recipients;
 
-  /// Required. CLDR region code of the country/region of the address. This is
-  /// never inferred and it is up to the user to ensure the value is correct.
-  /// See http://cldr.unicode.org/ and
+  /// CLDR region code of the country/region of the address.
+  ///
+  /// This is never inferred and it is up to the user to ensure the value is
+  /// correct. See http://cldr.unicode.org/ and
   /// http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
+  ///
+  /// Required.
   core.String regionCode;
 
-  /// The schema revision of the `PostalAddress`. This must be set to 0, which
-  /// is the latest revision. All new revisions **must** be backward compatible
-  /// with old revisions.
+  /// The schema revision of the `PostalAddress`.
+  ///
+  /// This must be set to 0, which is the latest revision. All new revisions
+  /// **must** be backward compatible with old revisions.
   core.int revision;
 
-  /// Optional. Additional, country-specific, sorting code. This is not used in
-  /// most regions. Where it is used, the value is either a string like "CEDEX",
-  /// optionally followed by a number (e.g. "CEDEX 7"), or just a number alone,
-  /// representing the "sector code" (Jamaica), "delivery area indicator"
-  /// (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+  /// Additional, country-specific, sorting code.
+  ///
+  /// This is not used in most regions. Where it is used, the value is either a
+  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
+  /// just a number alone, representing the "sector code" (Jamaica), "delivery
+  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+  ///
+  /// Optional.
   core.String sortingCode;
 
-  /// Optional. Sublocality of the address. For example, this can be
-  /// neighborhoods, boroughs, districts.
+  /// Sublocality of the address.
+  ///
+  /// For example, this can be neighborhoods, boroughs, districts.
+  ///
+  /// Optional.
   core.String sublocality;
 
   GoogleTypePostalAddress();
@@ -6979,7 +7324,9 @@ class GoogleTypeTimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String id;
 
-  /// Optional. IANA Time Zone Database version number, e.g. "2019a".
+  /// IANA Time Zone Database version number, e.g. "2019a".
+  ///
+  /// Optional.
   core.String version;
 
   GoogleTypeTimeZone();

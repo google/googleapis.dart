@@ -88,8 +88,9 @@ class AvailableProjectsResource {
 
   /// Lists each [Google Cloud Platform (GCP) `Project`]
   /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-  /// that can have Firebase resources added to it. A Project will only be
-  /// listed if: - The caller has sufficient [Google
+  /// that can have Firebase resources added to it.
+  ///
+  /// A Project will only be listed if: - The caller has sufficient [Google
   /// IAM](https://cloud.google.com/iam) permissions to call AddFirebase. - The
   /// Project is not already a FirebaseProject. - The Project is not in an
   /// Organization which has policies that prevent Firebase resources from being
@@ -161,9 +162,10 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -232,6 +234,7 @@ class ProjectsResource {
   /// Adds Firebase resources to the specified existing [Google Cloud Platform
   /// (GCP) `Project`]
   /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects).
+  ///
   /// Since a FirebaseProject is actually also a GCP `Project`, a
   /// `FirebaseProject` has the same underlying GCP identifiers (`projectNumber`
   /// and `projectId`). This allows for easy interop with Google APIs. The
@@ -319,11 +322,12 @@ class ProjectsResource {
   }
 
   /// Links the specified FirebaseProject with an existing [Google Analytics
-  /// account](http://www.google.com/analytics/). Using this call, you can
-  /// either: - Specify an `analyticsAccountId` to provision a new Google
-  /// Analytics property within the specified account and associate the new
-  /// property with the `FirebaseProject`. - Specify an existing
-  /// `analyticsPropertyId` to associate the property with the
+  /// account](http://www.google.com/analytics/).
+  ///
+  /// Using this call, you can either: - Specify an `analyticsAccountId` to
+  /// provision a new Google Analytics property within the specified account and
+  /// associate the new property with the `FirebaseProject`. - Specify an
+  /// existing `analyticsPropertyId` to associate the property with the
   /// `FirebaseProject`. Note that when you call `AddGoogleAnalytics`: 1. The
   /// first check determines if any existing data streams in the Google
   /// Analytics property correspond to any existing Firebase Apps in the
@@ -472,6 +476,7 @@ class ProjectsResource {
 
   /// Gets the configuration artifact associated with the specified
   /// FirebaseProject, which can be used by servers to simplify initialization.
+  ///
   /// Typically, this configuration is used with the Firebase Admin SDK
   /// [initializeApp](https://firebase.google.com/docs/admin/setup#initialize_the_sdk)
   /// command.
@@ -530,8 +535,10 @@ class ProjectsResource {
   }
 
   /// Gets the Google Analytics details currently associated with the specified
-  /// FirebaseProject. If the `FirebaseProject` is not yet linked to Google
-  /// Analytics, then the response to `GetAnalyticsDetails` is `NOT_FOUND`.
+  /// FirebaseProject.
+  ///
+  /// If the `FirebaseProject` is not yet linked to Google Analytics, then the
+  /// response to `GetAnalyticsDetails` is `NOT_FOUND`.
   ///
   /// Request parameters:
   ///
@@ -586,14 +593,15 @@ class ProjectsResource {
     );
   }
 
-  /// Lists each FirebaseProject accessible to the caller. The elements are
-  /// returned in no particular order, but they will be a consistent view of the
-  /// Projects when additional requests are made with a `pageToken`. This method
-  /// is eventually consistent with Project mutations, which means newly
-  /// provisioned Projects and recent modifications to existing Projects might
-  /// not be reflected in the set of Projects. The list will include only ACTIVE
-  /// Projects. Use GetFirebaseProject for consistent reads as well as for
-  /// additional Project details.
+  /// Lists each FirebaseProject accessible to the caller.
+  ///
+  /// The elements are returned in no particular order, but they will be a
+  /// consistent view of the Projects when additional requests are made with a
+  /// `pageToken`. This method is eventually consistent with Project mutations,
+  /// which means newly provisioned Projects and recent modifications to
+  /// existing Projects might not be reflected in the set of Projects. The list
+  /// will include only ACTIVE Projects. Use GetFirebaseProject for consistent
+  /// reads as well as for additional Project details.
   ///
   /// Request parameters:
   ///
@@ -655,8 +663,9 @@ class ProjectsResource {
     );
   }
 
-  /// Updates the attributes of the specified FirebaseProject. All [query
-  /// parameters](#query-parameters) are required.
+  /// Updates the attributes of the specified FirebaseProject.
+  ///
+  /// All [query parameters](#query-parameters) are required.
   ///
   /// [request] - The metadata request object.
   ///
@@ -730,6 +739,7 @@ class ProjectsResource {
   }
 
   /// Unlinks the specified FirebaseProject from its Google Analytics account.
+  ///
   /// This call removes the association of the specified `FirebaseProject` with
   /// its current Google Analytics property. However, this call does not delete
   /// the Google Analytics resources, such as the Google Analytics property or
@@ -802,10 +812,11 @@ class ProjectsResource {
     );
   }
 
-  /// Lists all available Apps for the specified FirebaseProject. This is a
-  /// convenience method. Typically, interaction with an App should be done
-  /// using the platform-specific service, but some tool use-cases require a
-  /// summary of all known Apps (such as for App selector interfaces).
+  /// Lists all available Apps for the specified FirebaseProject.
+  ///
+  /// This is a convenience method. Typically, interaction with an App should be
+  /// done using the platform-specific service, but some tool use-cases require
+  /// a summary of all known Apps (such as for App selector interfaces).
   ///
   /// Request parameters:
   ///
@@ -900,9 +911,11 @@ class ProjectsAndroidAppsResource {
       : _requester = client;
 
   /// Requests the creation of a new AndroidApp in the specified
-  /// FirebaseProject. The result of this call is an `Operation` which can be
-  /// used to track the provisioning process. The `Operation` is automatically
-  /// deleted after completion, so there is no need to call `DeleteOperation`.
+  /// FirebaseProject.
+  ///
+  /// The result of this call is an `Operation` which can be used to track the
+  /// provisioning process. The `Operation` is automatically deleted after
+  /// completion, so there is no need to call `DeleteOperation`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1080,8 +1093,9 @@ class ProjectsAndroidAppsResource {
     );
   }
 
-  /// Lists each AndroidApp associated with the specified FirebaseProject. The
-  /// elements are returned in no particular order, but will be a consistent
+  /// Lists each AndroidApp associated with the specified FirebaseProject.
+  ///
+  /// The elements are returned in no particular order, but will be a consistent
   /// view of the Apps when additional requests are made with a `pageToken`.
   ///
   /// Request parameters:
@@ -1428,13 +1442,14 @@ class ProjectsAvailableLocationsResource {
       : _requester = client;
 
   /// Lists the valid Google Cloud Platform (GCP) resource locations for the
-  /// specified Project (including a FirebaseProject). One of these locations
-  /// can be selected as the Project's [_default_ GCP resource
-  /// location](https://firebase.google.com/docs/projects/locations), which is
-  /// the geographical location where the Project's resources, such as Cloud
-  /// Firestore, will be provisioned by default. However, if the default GCP
-  /// resource location has already been set for the Project, then this setting
-  /// cannot be changed. This call checks for any possible [location
+  /// specified Project (including a FirebaseProject).
+  ///
+  /// One of these locations can be selected as the Project's [_default_ GCP
+  /// resource location](https://firebase.google.com/docs/projects/locations),
+  /// which is the geographical location where the Project's resources, such as
+  /// Cloud Firestore, will be provisioned by default. However, if the default
+  /// GCP resource location has already been set for the Project, then this
+  /// setting cannot be changed. This call checks for any possible [location
   /// restrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)
   /// for the specified Project and, thus, might return a subset of all possible
   /// GCP resource locations. To list all GCP resource locations (regardless of
@@ -1527,8 +1542,10 @@ class ProjectsDefaultLocationResource {
       : _requester = client;
 
   /// Sets the default Google Cloud Platform (GCP) resource location for the
-  /// specified FirebaseProject. This method creates an App Engine application
-  /// with a [default Cloud Storage
+  /// specified FirebaseProject.
+  ///
+  /// This method creates an App Engine application with a [default Cloud
+  /// Storage
   /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
   /// located in the specified
   /// [`locationId`](#body.request_body.FIELDS.location_id). This location must
@@ -1623,6 +1640,7 @@ class ProjectsIosAppsResource {
   ProjectsIosAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Requests the creation of a new IosApp in the specified FirebaseProject.
+  ///
   /// The result of this call is an `Operation` which can be used to track the
   /// provisioning process. The `Operation` is automatically deleted after
   /// completion, so there is no need to call `DeleteOperation`.
@@ -1800,8 +1818,9 @@ class ProjectsIosAppsResource {
     );
   }
 
-  /// Lists each IosApp associated with the specified FirebaseProject. The
-  /// elements are returned in no particular order, but will be a consistent
+  /// Lists each IosApp associated with the specified FirebaseProject.
+  ///
+  /// The elements are returned in no particular order, but will be a consistent
   /// view of the Apps when additional requests are made with a `pageToken`.
   ///
   /// Request parameters:
@@ -1957,6 +1976,7 @@ class ProjectsWebAppsResource {
   ProjectsWebAppsResource(commons.ApiRequester client) : _requester = client;
 
   /// Requests the creation of a new WebApp in the specified FirebaseProject.
+  ///
   /// The result of this call is an `Operation` which can be used to track the
   /// provisioning process. The `Operation` is automatically deleted after
   /// completion, so there is no need to call `DeleteOperation`.
@@ -2134,8 +2154,9 @@ class ProjectsWebAppsResource {
     );
   }
 
-  /// Lists each WebApp associated with the specified FirebaseProject. The
-  /// elements are returned in no particular order, but will be a consistent
+  /// Lists each WebApp associated with the specified FirebaseProject.
+  ///
+  /// The elements are returned in no particular order, but will be a consistent
   /// view of the Apps when additional requests are made with a `pageToken`.
   ///
   /// Request parameters:
@@ -2287,26 +2308,36 @@ class ProjectsWebAppsResource {
 
 /// All fields are required.
 class AddFirebaseRequest {
-  /// Deprecated. Instead, to set a Project's default GCP resource location,
-  /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-  /// after you add Firebase resources to the GCP `Project`. The ID of the
-  /// Project's default GCP resource location. The location must be one of the
-  /// available [GCP resource
+  /// Instead, to set a Project's default GCP resource location, call
+  /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
+  /// you add Firebase resources to the GCP `Project`.
+  ///
+  /// The ID of the Project's default GCP resource location. The location must
+  /// be one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations).
+  ///
+  /// Deprecated.
   core.String locationId;
 
-  /// Deprecated. Instead, to link a Project with a Google Analytics account,
-  /// call [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
-  /// after you add Firebase resources to the GCP `Project`. The region code
-  /// (CLDR) that the account will use for Google Analytics data For example:
-  /// US, GB, or DE In Java, use `com.google.i18n.identifiers.RegionCode`.
+  /// Instead, to link a Project with a Google Analytics account, call
+  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after
+  /// you add Firebase resources to the GCP `Project`.
+  ///
+  /// The region code (CLDR) that the account will use for Google Analytics data
+  /// For example: US, GB, or DE In Java, use
+  /// `com.google.i18n.identifiers.RegionCode`.
+  ///
+  /// Deprecated.
   core.String regionCode;
 
-  /// Deprecated. Instead, to link a Project with a Google Analytics account,
-  /// call [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
-  /// after you add Firebase resources to the GCP `Project`. The time zone that
-  /// the account will use for Google Analytics data. For example:
-  /// America/Los_Angeles or Africa/Abidjan
+  /// Instead, to link a Project with a Google Analytics account, call
+  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after
+  /// you add Firebase resources to the GCP `Project`.
+  ///
+  /// The time zone that the account will use for Google Analytics data. For
+  /// example: America/Los_Angeles or Africa/Abidjan
+  ///
+  /// Deprecated.
   core.String timeZone;
 
   AddFirebaseRequest();
@@ -2341,9 +2372,11 @@ class AddFirebaseRequest {
 class AddGoogleAnalyticsRequest {
   /// The ID for the existing [Google Analytics
   /// account](http://www.google.com/analytics/) that you want to link with the
-  /// `FirebaseProject`. Specifying this field will provision a new Google
-  /// Analytics property in your Google Analytics account and associate the new
-  /// property with the `FirebaseProject`.
+  /// `FirebaseProject`.
+  ///
+  /// Specifying this field will provision a new Google Analytics property in
+  /// your Google Analytics account and associate the new property with the
+  /// `FirebaseProject`.
   core.String analyticsAccountId;
 
   /// The ID for the existing Google Analytics property that you want to
@@ -2377,8 +2410,9 @@ class AdminSdkConfig {
   /// The default Firebase Realtime Database URL.
   core.String databaseURL;
 
-  /// The ID of the Project's default GCP resource location. The location is one
-  /// of the available [GCP resource
+  /// The ID of the Project's default GCP resource location.
+  ///
+  /// The location is one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations). This
   /// field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
@@ -2386,10 +2420,13 @@ class AdminSdkConfig {
   /// you add Firebase resources to the Project.
   core.String locationId;
 
-  /// Immutable. A user-assigned unique identifier for the `FirebaseProject`.
+  /// A user-assigned unique identifier for the `FirebaseProject`.
+  ///
   /// This identifier may appear in URLs or names for some Firebase resources
   /// associated with the Project, but it should generally be treated as a
   /// convenience alias to reference the Project.
+  ///
+  /// Immutable.
   core.String projectId;
 
   /// The default Cloud Storage for Firebase storage bucket name.
@@ -2432,15 +2469,19 @@ class AdminSdkConfig {
 
 class AnalyticsDetails {
   /// The Analytics Property object associated with the specified
-  /// `FirebaseProject`. This object contains the details of the Google
-  /// Analytics property associated with the Project.
+  /// `FirebaseProject`.
+  ///
+  /// This object contains the details of the Google Analytics property
+  /// associated with the Project.
   AnalyticsProperty analyticsProperty;
 
   /// - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each
-  /// Firebase App in the specified `FirebaseProject`. Each `app` and `streamId`
-  /// appears only once. - For `WebApps`: a map of `app` to `streamId` and
-  /// `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each
-  /// `app`, `streamId`, and `measurementId` appears only once.
+  /// Firebase App in the specified `FirebaseProject`.
+  ///
+  /// Each `app` and `streamId` appears only once. - For `WebApps`: a map of
+  /// `app` to `streamId` and `measurementId` for each `WebApp` in the specified
+  /// `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears
+  /// only once.
   core.List<StreamMapping> streamMappings;
 
   AnalyticsDetails();
@@ -2478,7 +2519,9 @@ class AnalyticsProperty {
   core.String displayName;
 
   /// The globally unique, Google-assigned identifier of the Google Analytics
-  /// property associated with the specified `FirebaseProject`. If you called
+  /// property associated with the specified `FirebaseProject`.
+  ///
+  /// If you called
   /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link
   /// the `FirebaseProject` with a Google Analytics account, the value in this
   /// `id` field is the same as the ID of the property either specified or
@@ -2510,9 +2553,12 @@ class AnalyticsProperty {
 
 /// Details of a Firebase App for Android.
 class AndroidApp {
-  /// Immutable. The globally unique, Firebase-assigned identifier for the
-  /// `AndroidApp`. This identifier should be treated as an opaque token, as the
-  /// data format is not specified.
+  /// The globally unique, Firebase-assigned identifier for the `AndroidApp`.
+  ///
+  /// This identifier should be treated as an opaque token, as the data format
+  /// is not specified.
+  ///
+  /// Immutable.
   core.String appId;
 
   /// The user-assigned display name for the `AndroidApp`.
@@ -2523,20 +2569,25 @@ class AndroidApp {
   /// Project's
   /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
+  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  ///
+  /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
   /// [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
   core.String name;
 
-  /// Immutable. The canonical package name of the Android app as would appear
-  /// in the Google Play Developer Console.
+  /// The canonical package name of the Android app as would appear in the
+  /// Google Play Developer Console.
+  ///
+  /// Immutable.
   core.String packageName;
 
-  /// Immutable. A user-assigned unique identifier of the parent FirebaseProject
-  /// for the `AndroidApp`.
+  /// A user-assigned unique identifier of the parent FirebaseProject for the
+  /// `AndroidApp`.
+  ///
+  /// Immutable.
   core.String projectId;
 
   AndroidApp();
@@ -2593,7 +2644,9 @@ class AndroidAppConfig {
   }
 
   /// The filename that the configuration artifact for the `AndroidApp` is
-  /// typically saved as. For example: `google-services.json`
+  /// typically saved as.
+  ///
+  /// For example: `google-services.json`
   core.String configFilename;
 
   AndroidAppConfig();
@@ -2625,14 +2678,16 @@ class DefaultResources {
   /// rare, your `projectId` might already be used as the name for an existing
   /// Hosting site in another project (learn more about creating non-default,
   /// [additional sites](https://firebase.google.com/docs/hosting/multisites)).
+  ///
   /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Hosting site name. For
   /// example, if your `projectId` is `myproject123`, your default Hosting site
   /// name might be: `myproject123-a5c16`
   core.String hostingSite;
 
-  /// The ID of the Project's default GCP resource location. The location is one
-  /// of the available [GCP resource
+  /// The ID of the Project's default GCP resource location.
+  ///
+  /// The location is one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations). This
   /// field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
@@ -2644,8 +2699,9 @@ class DefaultResources {
   /// PROJECT_ID Though rare, your `projectId` might already be used as the name
   /// for an existing Realtime Database instance in another project (learn more
   /// about [database
-  /// sharding](https://firebase.google.com/docs/database/usage/sharding)). In
-  /// these cases, your `projectId` is appended with a hyphen then five
+  /// sharding](https://firebase.google.com/docs/database/usage/sharding)).
+  ///
+  /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Realtime Database instance
   /// name. For example, if your `projectId` is `myproject123`, your default
   /// database instance name might be: `myproject123-a5c16`
@@ -2692,10 +2748,12 @@ class DefaultResources {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2710,8 +2768,9 @@ class Empty {
 }
 
 class FinalizeDefaultLocationRequest {
-  /// The ID of the Project's default GCP resource location. The location must
-  /// be one of the available [GCP resource
+  /// The ID of the Project's default GCP resource location.
+  ///
+  /// The location must be one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations).
   core.String locationId;
 
@@ -2734,9 +2793,12 @@ class FinalizeDefaultLocationRequest {
 
 /// A high-level summary of an App.
 class FirebaseAppInfo {
-  /// Output only. Immutable. The globally unique, Firebase-assigned identifier
-  /// for the `WebApp`. This identifier should be treated as an opaque token, as
-  /// the data format is not specified.
+  /// The globally unique, Firebase-assigned identifier for the `WebApp`.
+  ///
+  /// This identifier should be treated as an opaque token, as the data format
+  /// is not specified.
+  ///
+  /// Output only. Immutable.
   core.String appId;
 
   /// The user-assigned display name of the Firebase App.
@@ -2747,7 +2809,8 @@ class FirebaseAppInfo {
   /// PROJECT_ID/webApps/APP_ID
   core.String name;
 
-  /// Output only. Immutable. The platform-specific identifier of the App.
+  /// The platform-specific identifier of the App.
+  ///
   /// *Note:* For most use cases, use `appId`, which is the canonical, globally
   /// unique identifier for referencing an App. This string is derived from a
   /// native identifier for each platform: `packageName` for an `AndroidApp`,
@@ -2755,6 +2818,8 @@ class FirebaseAppInfo {
   /// should be treated as opaque, as the native identifier format may change as
   /// platforms evolve. This string is only unique within a `FirebaseProject`
   /// and its associated Apps.
+  ///
+  /// Output only. Immutable.
   core.String namespace;
 
   /// The platform of the Firebase App.
@@ -2807,11 +2872,13 @@ class FirebaseAppInfo {
   }
 }
 
-/// A `FirebaseProject` is the top-level Firebase entity. It is the container
-/// for Firebase Apps, Firebase Hosting sites, storage systems (Firebase
-/// Realtime Database, Cloud Firestore, Cloud Storage buckets), and other
-/// Firebase and Google Cloud Platform (GCP) resources. You create a
-/// `FirebaseProject` by calling AddFirebase and specifying an *existing* [GCP
+/// A `FirebaseProject` is the top-level Firebase entity.
+///
+/// It is the container for Firebase Apps, Firebase Hosting sites, storage
+/// systems (Firebase Realtime Database, Cloud Firestore, Cloud Storage
+/// buckets), and other Firebase and Google Cloud Platform (GCP) resources. You
+/// create a `FirebaseProject` by calling AddFirebase and specifying an
+/// *existing* [GCP
 /// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
 /// This adds Firebase resources to the existing GCP `Project`. Since a
 /// FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` has
@@ -2825,29 +2892,40 @@ class FirebaseProject {
   /// projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's
   /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
+  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  ///
+  /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   core.String name;
 
-  /// Immutable. A user-assigned unique identifier for the Project. This
-  /// identifier may appear in URLs or names for some Firebase resources
+  /// A user-assigned unique identifier for the Project.
+  ///
+  /// This identifier may appear in URLs or names for some Firebase resources
   /// associated with the Project, but it should generally be treated as a
   /// convenience alias to reference the Project.
+  ///
+  /// Immutable.
   core.String projectId;
 
-  /// Immutable. The globally unique, Google-assigned canonical identifier for
-  /// the Project. Use this identifier when configuring integrations and/or
-  /// making API calls to Firebase or third-party services.
+  /// The globally unique, Google-assigned canonical identifier for the Project.
+  ///
+  /// Use this identifier when configuring integrations and/or making API calls
+  /// to Firebase or third-party services.
+  ///
+  /// Immutable.
   core.String projectNumber;
 
   /// The default Firebase resources associated with the Project.
   DefaultResources resources;
 
-  /// Output only. The lifecycle state of the Project. Updates to the state must
-  /// be performed via com.google.cloudresourcemanager.v1.Projects.DeleteProject
-  /// and com.google.cloudresourcemanager.v1.Projects.UndeleteProject
+  /// The lifecycle state of the Project.
+  ///
+  /// Updates to the state must be performed via
+  /// com.google.cloudresourcemanager.v1.Projects.DeleteProject and
+  /// com.google.cloudresourcemanager.v1.Projects.UndeleteProject
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The normal and active state.
@@ -2904,17 +2982,22 @@ class FirebaseProject {
 
 /// Details of a Firebase App for iOS.
 class IosApp {
-  /// Immutable. The globally unique, Firebase-assigned identifier for the
-  /// `IosApp`. This identifier should be treated as an opaque token, as the
-  /// data format is not specified.
+  /// The globally unique, Firebase-assigned identifier for the `IosApp`.
+  ///
+  /// This identifier should be treated as an opaque token, as the data format
+  /// is not specified.
+  ///
+  /// Immutable.
   core.String appId;
 
   /// The automatically generated Apple ID assigned to the iOS app by Apple in
   /// the iOS App Store.
   core.String appStoreId;
 
-  /// Immutable. The canonical bundle ID of the iOS app as it would appear in
-  /// the iOS AppStore.
+  /// The canonical bundle ID of the iOS app as it would appear in the iOS
+  /// AppStore.
+  ///
+  /// Immutable.
   core.String bundleId;
 
   /// The user-assigned display name for the `IosApp`.
@@ -2925,16 +3008,19 @@ class IosApp {
   /// parent Project's
   /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
+  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  ///
+  /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
   /// [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
   core.String name;
 
-  /// Immutable. A user-assigned unique identifier of the parent FirebaseProject
-  /// for the `IosApp`.
+  /// A user-assigned unique identifier of the parent FirebaseProject for the
+  /// `IosApp`.
+  ///
+  /// Immutable.
   core.String projectId;
 
   IosApp();
@@ -2997,7 +3083,9 @@ class IosAppConfig {
   }
 
   /// The filename that the configuration artifact for the `IosApp` is typically
-  /// saved as. For example: `GoogleService-Info.plist`
+  /// saved as.
+  ///
+  /// For example: `GoogleService-Info.plist`
   core.String configFilename;
 
   IosAppConfig();
@@ -3028,10 +3116,12 @@ class ListAndroidAppsResponse {
   core.List<AndroidApp> apps;
 
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. If the string is empty, then this response is the last page
-  /// of results. This token can be used in a subsequent call to
-  /// `ListAndroidApps` to find the next group of Apps. Page tokens are
-  /// short-lived and should not be persisted.
+  /// is returned.
+  ///
+  /// If the string is empty, then this response is the last page of results.
+  /// This token can be used in a subsequent call to `ListAndroidApps` to find
+  /// the next group of Apps. Page tokens are short-lived and should not be
+  /// persisted.
   core.String nextPageToken;
 
   ListAndroidAppsResponse();
@@ -3065,10 +3155,12 @@ class ListAvailableLocationsResponse {
   core.List<Location> locations;
 
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. If the string is empty, then this response is the last page
-  /// of results and all available locations have been listed. This token can be
-  /// used in a subsequent call to `ListAvailableLocations` to find more
-  /// locations. Page tokens are short-lived and should not be persisted.
+  /// is returned.
+  ///
+  /// If the string is empty, then this response is the last page of results and
+  /// all available locations have been listed. This token can be used in a
+  /// subsequent call to `ListAvailableLocations` to find more locations. Page
+  /// tokens are short-lived and should not be persisted.
   core.String nextPageToken;
 
   ListAvailableLocationsResponse();
@@ -3099,10 +3191,12 @@ class ListAvailableLocationsResponse {
 
 class ListAvailableProjectsResponse {
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. If the string is empty, then this response is the last page
-  /// of results. This token can be used in a subsequent calls to
-  /// `ListAvailableProjects` to find the next group of Projects. Page tokens
-  /// are short-lived and should not be persisted.
+  /// is returned.
+  ///
+  /// If the string is empty, then this response is the last page of results.
+  /// This token can be used in a subsequent calls to `ListAvailableProjects` to
+  /// find the next group of Projects. Page tokens are short-lived and should
+  /// not be persisted.
   core.String nextPageToken;
 
   /// The list of GCP `Projects` which can have Firebase resources added to
@@ -3138,10 +3232,12 @@ class ListAvailableProjectsResponse {
 
 class ListFirebaseProjectsResponse {
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. If the string is empty, then this response is the last page
-  /// of results. This token can be used in a subsequent calls to
-  /// `ListFirebaseProjects` to find the next group of Projects. Page tokens are
-  /// short-lived and should not be persisted.
+  /// is returned.
+  ///
+  /// If the string is empty, then this response is the last page of results.
+  /// This token can be used in a subsequent calls to `ListFirebaseProjects` to
+  /// find the next group of Projects. Page tokens are short-lived and should
+  /// not be persisted.
   core.String nextPageToken;
 
   /// One page of the list of Projects that are accessible to the caller.
@@ -3178,10 +3274,12 @@ class ListIosAppsResponse {
   core.List<IosApp> apps;
 
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. If the string is empty, then this response is the last page
-  /// of results. This token can be used in a subsequent call to `ListIosApps`
-  /// to find the next group of Apps. Page tokens are short-lived and should not
-  /// be persisted.
+  /// is returned.
+  ///
+  /// If the string is empty, then this response is the last page of results.
+  /// This token can be used in a subsequent call to `ListIosApps` to find the
+  /// next group of Apps. Page tokens are short-lived and should not be
+  /// persisted.
   core.String nextPageToken;
 
   ListIosAppsResponse();
@@ -3240,10 +3338,12 @@ class ListWebAppsResponse {
   core.List<WebApp> apps;
 
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. If the string is empty, then this response is the last page
-  /// of results. This token can be used in a subsequent call to `ListWebApps`
-  /// to find the next group of Apps. Page tokens are short-lived and should not
-  /// be persisted.
+  /// is returned.
+  ///
+  /// If the string is empty, then this response is the last page of results.
+  /// This token can be used in a subsequent call to `ListWebApps` to find the
+  /// next group of Apps. Page tokens are short-lived and should not be
+  /// persisted.
   core.String nextPageToken;
 
   ListWebAppsResponse();
@@ -3277,8 +3377,9 @@ class Location {
   /// Products and services that are available in the GCP resource location.
   core.List<core.String> features;
 
-  /// The ID of the GCP resource location. It will be one of the available [GCP
-  /// resource
+  /// The ID of the GCP resource location.
+  ///
+  /// It will be one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations#types).
   core.String locationId;
 
@@ -3344,31 +3445,37 @@ class MessageSet {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -3437,8 +3544,9 @@ class ProjectInfo {
   /// The user-assigned display name of the GCP `Project`, for example: `My App`
   core.String displayName;
 
-  /// The ID of the Project's default GCP resource location. The location is one
-  /// of the available [GCP resource
+  /// The ID of the Project's default GCP resource location.
+  ///
+  /// The location is one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations). Not all
   /// Projects will have this field populated. If it is not populated, it means
   /// that the Project does not yet have a default GCP resource location. To set
@@ -3483,12 +3591,16 @@ class ProjectInfo {
 }
 
 class RemoveAnalyticsRequest {
-  /// Optional. The ID of the Google Analytics property associated with the
-  /// specified `FirebaseProject`. - If not set, then the Google Analytics
-  /// property that is currently associated with the specified `FirebaseProject`
-  /// is removed. - If set, and the specified `FirebaseProject` is currently
-  /// associated with a *different* Google Analytics property, then the response
-  /// is a `412 Precondition Failed` error.
+  /// The ID of the Google Analytics property associated with the specified
+  /// `FirebaseProject`.
+  ///
+  /// - If not set, then the Google Analytics property that is currently
+  /// associated with the specified `FirebaseProject` is removed. - If set, and
+  /// the specified `FirebaseProject` is currently associated with a *different*
+  /// Google Analytics property, then the response is a `412 Precondition
+  /// Failed` error.
+  ///
+  /// Optional.
   core.String analyticsPropertyId;
 
   RemoveAnalyticsRequest();
@@ -3513,9 +3625,11 @@ class SearchFirebaseAppsResponse {
   core.List<FirebaseAppInfo> apps;
 
   /// If the result list is too large to fit in a single response, then a token
-  /// is returned. This token can be used in a subsequent calls to
-  /// `SearchFirebaseApps` to find the next group of Apps. Page tokens are
-  /// short-lived and should not be persisted.
+  /// is returned.
+  ///
+  /// This token can be used in a subsequent calls to `SearchFirebaseApps` to
+  /// find the next group of Apps. Page tokens are short-lived and should not be
+  /// persisted.
   core.String nextPageToken;
 
   SearchFirebaseAppsResponse();
@@ -3559,8 +3673,9 @@ class ShaCertificate {
   /// PROJECT_IDENTIFIER: the parent Project's
   /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
+  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  ///
+  /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
@@ -3602,24 +3717,27 @@ class ShaCertificate {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3663,11 +3781,14 @@ class Status {
 /// Wire-format for a Status object
 class StatusProto {
   /// The canonical error code (see codes.proto) that most closely corresponds
-  /// to this status. May be missing.
+  /// to this status.
+  ///
+  /// May be missing.
   core.int canonicalCode;
 
-  /// Numeric code drawn from the space specified below. Often, this is the
-  /// canonical error space, and code is drawn from
+  /// Numeric code drawn from the space specified below.
+  ///
+  /// Often, this is the canonical error space, and code is drawn from
   /// google3/util/task/codes.proto
   core.int code;
 
@@ -3733,17 +3854,19 @@ class StreamMapping {
   /// PROJECT_IDENTIFIER values.
   core.String app;
 
-  /// Applicable for Firebase Web Apps only. The unique Google-assigned
-  /// identifier of the Google Analytics web stream associated with the Firebase
-  /// Web App. Firebase SDKs use this ID to interact with Google Analytics APIs.
-  /// Learn more about this ID and Google Analytics web streams in the
-  /// [Analytics
+  /// Applicable for Firebase Web Apps only.
+  ///
+  /// The unique Google-assigned identifier of the Google Analytics web stream
+  /// associated with the Firebase Web App. Firebase SDKs use this ID to
+  /// interact with Google Analytics APIs. Learn more about this ID and Google
+  /// Analytics web streams in the [Analytics
   /// documentation](https://support.google.com/analytics/topic/9303475).
   core.String measurementId;
 
   /// The unique Google-assigned identifier of the Google Analytics data stream
-  /// associated with the Firebase App. Learn more about Google Analytics data
-  /// streams in the [Analytics
+  /// associated with the Firebase App.
+  ///
+  /// Learn more about Google Analytics data streams in the [Analytics
   /// documentation](https://support.google.com/analytics/answer/9303323).
   core.String streamId;
 
@@ -3778,9 +3901,12 @@ class StreamMapping {
 
 /// Details of a Firebase App for the web.
 class WebApp {
-  /// Immutable. The globally unique, Firebase-assigned identifier for the
-  /// `WebApp`. This identifier should be treated as an opaque token, as the
-  /// data format is not specified.
+  /// The globally unique, Firebase-assigned identifier for the `WebApp`.
+  ///
+  /// This identifier should be treated as an opaque token, as the data format
+  /// is not specified.
+  ///
+  /// Immutable.
   core.String appId;
 
   /// The URLs where the `WebApp` is hosted.
@@ -3794,23 +3920,29 @@ class WebApp {
   /// parent Project's
   /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
+  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  ///
+  /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
   /// [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
   core.String name;
 
-  /// Immutable. A user-assigned unique identifier of the parent FirebaseProject
-  /// for the `WebApp`.
+  /// A user-assigned unique identifier of the parent FirebaseProject for the
+  /// `WebApp`.
+  ///
+  /// Immutable.
   core.String projectId;
 
-  /// Output only. Immutable. A unique, Firebase-assigned identifier for the
-  /// `WebApp`. This identifier is only used to populate the `namespace` value
-  /// for the `WebApp`. For most use cases, use `appId` to identify or reference
-  /// the App. The `webId` value is only unique within a `FirebaseProject` and
-  /// its associated Apps.
+  /// A unique, Firebase-assigned identifier for the `WebApp`.
+  ///
+  /// This identifier is only used to populate the `namespace` value for the
+  /// `WebApp`. For most use cases, use `appId` to identify or reference the
+  /// App. The `webId` value is only unique within a `FirebaseProject` and its
+  /// associated Apps.
+  ///
+  /// Output only. Immutable.
   core.String webId;
 
   WebApp();
@@ -3867,8 +3999,9 @@ class WebAppConfig {
   /// The API key associated with the `WebApp`.
   core.String apiKey;
 
-  /// Immutable. The globally unique, Firebase-assigned identifier for the
-  /// `WebApp`.
+  /// The globally unique, Firebase-assigned identifier for the `WebApp`.
+  ///
+  /// Immutable.
   core.String appId;
 
   /// The domain Firebase Auth configures for OAuth redirects, in the format:
@@ -3878,8 +4011,9 @@ class WebAppConfig {
   /// The default Firebase Realtime Database URL.
   core.String databaseURL;
 
-  /// The ID of the Project's default GCP resource location. The location is one
-  /// of the available [GCP resource
+  /// The ID of the Project's default GCP resource location.
+  ///
+  /// The location is one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations). This
   /// field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
@@ -3888,10 +4022,12 @@ class WebAppConfig {
   core.String locationId;
 
   /// The unique Google-assigned identifier of the Google Analytics web stream
-  /// associated with the `WebApp`. Firebase SDKs use this ID to interact with
-  /// Google Analytics APIs. This field is only present if the `WebApp` is
-  /// linked to a web stream in a Google Analytics App + Web property. Learn
-  /// more about this ID and Google Analytics web streams in the [Analytics
+  /// associated with the `WebApp`.
+  ///
+  /// Firebase SDKs use this ID to interact with Google Analytics APIs. This
+  /// field is only present if the `WebApp` is linked to a web stream in a
+  /// Google Analytics App + Web property. Learn more about this ID and Google
+  /// Analytics web streams in the [Analytics
   /// documentation](https://support.google.com/analytics/topic/9303475). To
   /// generate a `measurementId` and link the `WebApp` with a Google Analytics
   /// web stream, call
@@ -3905,7 +4041,9 @@ class WebAppConfig {
   /// The sender ID for use with Firebase Cloud Messaging.
   core.String messagingSenderId;
 
-  /// Immutable. A user-assigned unique identifier for the `FirebaseProject`.
+  /// A user-assigned unique identifier for the `FirebaseProject`.
+  ///
+  /// Immutable.
   core.String projectId;
 
   /// The default Cloud Storage for Firebase storage bucket name.

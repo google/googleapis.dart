@@ -67,8 +67,9 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -132,9 +133,10 @@ class OperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -268,10 +270,11 @@ class ProjectsBuildsResource {
     );
   }
 
-  /// Starts a build with the specified configuration. This method returns a
-  /// long-running `Operation`, which includes the build ID. Pass the build ID
-  /// to `GetBuild` to determine the build status (such as `SUCCESS` or
-  /// `FAILURE`).
+  /// Starts a build with the specified configuration.
+  ///
+  /// This method returns a long-running `Operation`, which includes the build
+  /// ID. Pass the build ID to `GetBuild` to determine the build status (such as
+  /// `SUCCESS` or `FAILURE`).
   ///
   /// [request] - The metadata request object.
   ///
@@ -336,9 +339,10 @@ class ProjectsBuildsResource {
     );
   }
 
-  /// Returns information about a previously requested build. The `Build` that
-  /// is returned includes its status (such as `SUCCESS`, `FAILURE`, or
-  /// `WORKING`), and timing information.
+  /// Returns information about a previously requested build.
+  ///
+  /// The `Build` that is returned includes its status (such as `SUCCESS`,
+  /// `FAILURE`, or `WORKING`), and timing information.
   ///
   /// Request parameters:
   ///
@@ -404,8 +408,10 @@ class ProjectsBuildsResource {
     );
   }
 
-  /// Lists previously requested builds. Previously requested builds may still
-  /// be in-progress, or may have finished successfully or unsuccessfully.
+  /// Lists previously requested builds.
+  ///
+  /// Previously requested builds may still be in-progress, or may have finished
+  /// successfully or unsuccessfully.
   ///
   /// Request parameters:
   ///
@@ -483,22 +489,24 @@ class ProjectsBuildsResource {
     );
   }
 
-  /// Creates a new build based on the specified build. This method creates a
-  /// new build using the original build request, which may or may not result in
-  /// an identical build. For triggered builds: * Triggered builds resolve to a
-  /// precise revision; therefore a retry of a triggered build will result in a
-  /// build that uses the same revision. For non-triggered builds that specify
-  /// `RepoSource`: * If the original build built from the tip of a branch, the
-  /// retried build will build from the tip of that branch, which may not be the
-  /// same revision as the original build. * If the original build specified a
-  /// commit sha or revision ID, the retried build will use the identical
-  /// source. For builds that specify `StorageSource`: * If the original build
-  /// pulled source from Google Cloud Storage without specifying the generation
-  /// of the object, the new build will use the current object, which may be
-  /// different from the original build source. * If the original build pulled
-  /// source from Cloud Storage and specified the generation of the object, the
-  /// new build will attempt to use the same object, which may or may not be
-  /// available depending on the bucket's lifecycle management settings.
+  /// Creates a new build based on the specified build.
+  ///
+  /// This method creates a new build using the original build request, which
+  /// may or may not result in an identical build. For triggered builds: *
+  /// Triggered builds resolve to a precise revision; therefore a retry of a
+  /// triggered build will result in a build that uses the same revision. For
+  /// non-triggered builds that specify `RepoSource`: * If the original build
+  /// built from the tip of a branch, the retried build will build from the tip
+  /// of that branch, which may not be the same revision as the original build.
+  /// * If the original build specified a commit sha or revision ID, the retried
+  /// build will use the identical source. For builds that specify
+  /// `StorageSource`: * If the original build pulled source from Google Cloud
+  /// Storage without specifying the generation of the object, the new build
+  /// will use the current object, which may be different from the original
+  /// build source. * If the original build pulled source from Cloud Storage and
+  /// specified the generation of the object, the new build will attempt to use
+  /// the same object, which may or may not be available depending on the
+  /// bucket's lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -640,10 +648,11 @@ class ProjectsLocationsBuildsResource {
     );
   }
 
-  /// Starts a build with the specified configuration. This method returns a
-  /// long-running `Operation`, which includes the build ID. Pass the build ID
-  /// to `GetBuild` to determine the build status (such as `SUCCESS` or
-  /// `FAILURE`).
+  /// Starts a build with the specified configuration.
+  ///
+  /// This method returns a long-running `Operation`, which includes the build
+  /// ID. Pass the build ID to `GetBuild` to determine the build status (such as
+  /// `SUCCESS` or `FAILURE`).
   ///
   /// [request] - The metadata request object.
   ///
@@ -707,9 +716,10 @@ class ProjectsLocationsBuildsResource {
     );
   }
 
-  /// Returns information about a previously requested build. The `Build` that
-  /// is returned includes its status (such as `SUCCESS`, `FAILURE`, or
-  /// `WORKING`), and timing information.
+  /// Returns information about a previously requested build.
+  ///
+  /// The `Build` that is returned includes its status (such as `SUCCESS`,
+  /// `FAILURE`, or `WORKING`), and timing information.
   ///
   /// Request parameters:
   ///
@@ -773,8 +783,10 @@ class ProjectsLocationsBuildsResource {
     );
   }
 
-  /// Lists previously requested builds. Previously requested builds may still
-  /// be in-progress, or may have finished successfully or unsuccessfully.
+  /// Lists previously requested builds.
+  ///
+  /// Previously requested builds may still be in-progress, or may have finished
+  /// successfully or unsuccessfully.
   ///
   /// Request parameters:
   ///
@@ -851,22 +863,24 @@ class ProjectsLocationsBuildsResource {
     );
   }
 
-  /// Creates a new build based on the specified build. This method creates a
-  /// new build using the original build request, which may or may not result in
-  /// an identical build. For triggered builds: * Triggered builds resolve to a
-  /// precise revision; therefore a retry of a triggered build will result in a
-  /// build that uses the same revision. For non-triggered builds that specify
-  /// `RepoSource`: * If the original build built from the tip of a branch, the
-  /// retried build will build from the tip of that branch, which may not be the
-  /// same revision as the original build. * If the original build specified a
-  /// commit sha or revision ID, the retried build will use the identical
-  /// source. For builds that specify `StorageSource`: * If the original build
-  /// pulled source from Google Cloud Storage without specifying the generation
-  /// of the object, the new build will use the current object, which may be
-  /// different from the original build source. * If the original build pulled
-  /// source from Cloud Storage and specified the generation of the object, the
-  /// new build will attempt to use the same object, which may or may not be
-  /// available depending on the bucket's lifecycle management settings.
+  /// Creates a new build based on the specified build.
+  ///
+  /// This method creates a new build using the original build request, which
+  /// may or may not result in an identical build. For triggered builds: *
+  /// Triggered builds resolve to a precise revision; therefore a retry of a
+  /// triggered build will result in a build that uses the same revision. For
+  /// non-triggered builds that specify `RepoSource`: * If the original build
+  /// built from the tip of a branch, the retried build will build from the tip
+  /// of that branch, which may not be the same revision as the original build.
+  /// * If the original build specified a commit sha or revision ID, the retried
+  /// build will use the identical source. For builds that specify
+  /// `StorageSource`: * If the original build pulled source from Google Cloud
+  /// Storage without specifying the generation of the object, the new build
+  /// will use the current object, which may be different from the original
+  /// build source. * If the original build pulled source from Cloud Storage and
+  /// specified the generation of the object, the new build will attempt to use
+  /// the same object, which may or may not be available depending on the
+  /// bucket's lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -931,8 +945,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -997,9 +1012,10 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1057,7 +1073,9 @@ class ProjectsTriggersResource {
 
   ProjectsTriggersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new `BuildTrigger`. This API is experimental.
+  /// Creates a new `BuildTrigger`.
+  ///
+  /// This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1117,8 +1135,9 @@ class ProjectsTriggersResource {
     );
   }
 
-  /// Deletes a `BuildTrigger` by its project ID and trigger ID. This API is
-  /// experimental.
+  /// Deletes a `BuildTrigger` by its project ID and trigger ID.
+  ///
+  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -1177,7 +1196,9 @@ class ProjectsTriggersResource {
     );
   }
 
-  /// Returns information about a `BuildTrigger`. This API is experimental.
+  /// Returns information about a `BuildTrigger`.
+  ///
+  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -1238,7 +1259,9 @@ class ProjectsTriggersResource {
     );
   }
 
-  /// Lists existing `BuildTrigger`s. This API is experimental.
+  /// Lists existing `BuildTrigger`s.
+  ///
+  /// This API is experimental.
   ///
   /// Request parameters:
   ///
@@ -1303,8 +1326,9 @@ class ProjectsTriggersResource {
     );
   }
 
-  /// Updates a `BuildTrigger` by its project ID and trigger ID. This API is
-  /// experimental.
+  /// Updates a `BuildTrigger` by its project ID and trigger ID.
+  ///
+  /// This API is experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1441,7 +1465,9 @@ class ProjectsTriggersResource {
 /// of all build steps.
 class ArtifactObjects {
   /// Cloud Storage bucket and optional object path, in the form
-  /// "gs://bucket/path/to/somewhere/". (see [Bucket Name
+  /// "gs://bucket/path/to/somewhere/".
+  ///
+  /// (see [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// Files in the workspace matching any path pattern will be uploaded to Cloud
   /// Storage with this location as a prefix.
@@ -1450,7 +1476,9 @@ class ArtifactObjects {
   /// Path globs used to match files in the build's workspace.
   core.List<core.String> paths;
 
-  /// Output only. Stores timing information for pushing all artifact objects.
+  /// Stores timing information for pushing all artifact objects.
+  ///
+  /// Output only.
   TimeSpan timing;
 
   ArtifactObjects();
@@ -1485,15 +1513,17 @@ class ArtifactObjects {
   }
 }
 
-/// An artifact that was uploaded during a build. This is a single record in the
-/// artifact manifest JSON file.
+/// An artifact that was uploaded during a build.
+///
+/// This is a single record in the artifact manifest JSON file.
 class ArtifactResult {
   /// The file hash of the artifact.
   core.List<FileHashes> fileHash;
 
   /// The path of an artifact in a Google Cloud Storage bucket, with the
-  /// generation number. For example,
-  /// `gs://mybucket/path/to/output.jar#generation`.
+  /// generation number.
+  ///
+  /// For example, `gs://mybucket/path/to/output.jar#generation`.
   core.String location;
 
   ArtifactResult();
@@ -1526,18 +1556,22 @@ class ArtifactResult {
 /// completion of all build steps.
 class Artifacts {
   /// A list of images to be pushed upon the successful completion of all build
-  /// steps. The images will be pushed using the builder service account's
-  /// credentials. The digests of the pushed images will be stored in the Build
-  /// resource's results field. If any of the images fail to be pushed, the
-  /// build is marked FAILURE.
+  /// steps.
+  ///
+  /// The images will be pushed using the builder service account's credentials.
+  /// The digests of the pushed images will be stored in the Build resource's
+  /// results field. If any of the images fail to be pushed, the build is marked
+  /// FAILURE.
   core.List<core.String> images;
 
   /// A list of objects to be uploaded to Cloud Storage upon successful
-  /// completion of all build steps. Files in the workspace matching specified
-  /// paths globs will be uploaded to the specified Cloud Storage location using
-  /// the builder service account's credentials. The location and generation of
-  /// the uploaded objects will be stored in the Build resource's results field.
-  /// If any objects fail to be pushed, the build is marked FAILURE.
+  /// completion of all build steps.
+  ///
+  /// Files in the workspace matching specified paths globs will be uploaded to
+  /// the specified Cloud Storage location using the builder service account's
+  /// credentials. The location and generation of the uploaded objects will be
+  /// stored in the Build resource's results field. If any objects fail to be
+  /// pushed, the build is marked FAILURE.
   ArtifactObjects objects;
 
   Artifacts();
@@ -1566,77 +1600,101 @@ class Artifacts {
   }
 }
 
-/// A build resource in the Cloud Build API. At a high level, a `Build`
-/// describes where to find source code, how to build it (for example, the
-/// builder image to run on the source), and where to store the built artifacts.
-/// Fields can include the following variables, which will be expanded when the
-/// build is created: - $PROJECT_ID: the project ID of the build. - $BUILD_ID:
-/// the autogenerated ID of the build. - $REPO_NAME: the source repository name
-/// specified by RepoSource. - $BRANCH_NAME: the branch name specified by
-/// RepoSource. - $TAG_NAME: the tag name specified by RepoSource. -
-/// $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
-/// resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters
-/// of $REVISION_ID or $COMMIT_SHA.
+/// A build resource in the Cloud Build API.
+///
+/// At a high level, a `Build` describes where to find source code, how to build
+/// it (for example, the builder image to run on the source), and where to store
+/// the built artifacts. Fields can include the following variables, which will
+/// be expanded when the build is created: - $PROJECT_ID: the project ID of the
+/// build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the
+/// source repository name specified by RepoSource. - $BRANCH_NAME: the branch
+/// name specified by RepoSource. - $TAG_NAME: the tag name specified by
+/// RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by
+/// RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first
+/// 7 characters of $REVISION_ID or $COMMIT_SHA.
 class Build {
   /// Artifacts produced by the build that should be uploaded upon successful
   /// completion of all build steps.
   Artifacts artifacts;
 
-  /// Output only. The ID of the `BuildTrigger` that triggered this build, if it
-  /// was triggered automatically.
+  /// The ID of the `BuildTrigger` that triggered this build, if it was
+  /// triggered automatically.
+  ///
+  /// Output only.
   core.String buildTriggerId;
 
-  /// Output only. Time at which the request to create the build was received.
+  /// Time at which the request to create the build was received.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Output only. Time at which execution of the build was finished. The
-  /// difference between finish_time and start_time is the duration of the
+  /// Time at which execution of the build was finished.
+  ///
+  /// The difference between finish_time and start_time is the duration of the
   /// build's execution.
+  ///
+  /// Output only.
   core.String finishTime;
 
-  /// Output only. Unique identifier of the build.
+  /// Unique identifier of the build.
+  ///
+  /// Output only.
   core.String id;
 
   /// A list of images to be pushed upon the successful completion of all build
-  /// steps. The images are pushed using the builder service account's
-  /// credentials. The digests of the pushed images will be stored in the
-  /// `Build` resource's results field. If any of the images fail to be pushed,
-  /// the build status is marked `FAILURE`.
+  /// steps.
+  ///
+  /// The images are pushed using the builder service account's credentials. The
+  /// digests of the pushed images will be stored in the `Build` resource's
+  /// results field. If any of the images fail to be pushed, the build status is
+  /// marked `FAILURE`.
   core.List<core.String> images;
 
-  /// Output only. URL to logs for this build in Google Cloud Console.
+  /// URL to logs for this build in Google Cloud Console.
+  ///
+  /// Output only.
   core.String logUrl;
 
   /// Google Cloud Storage bucket where logs should be written (see [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  ///
   /// Logs file names will be of the format
   /// `${logs_bucket}/log-${build_id}.txt`.
   core.String logsBucket;
 
-  /// Output only. The 'Build' name with format:
+  /// The 'Build' name with format:
   /// `projects/{project}/locations/{location}/builds/{build}`, where {build} is
   /// a unique identifier generated by the service.
+  ///
+  /// Output only.
   core.String name;
 
   /// Special options for this build.
   BuildOptions options;
 
-  /// Output only. ID of the project.
+  /// ID of the project.
+  ///
+  /// Output only.
   core.String projectId;
 
-  /// TTL in queue for this build. If provided and the build is enqueued longer
-  /// than this value, the build will expire and the build status will be
-  /// `EXPIRED`. The TTL starts ticking from create_time.
+  /// TTL in queue for this build.
+  ///
+  /// If provided and the build is enqueued longer than this value, the build
+  /// will expire and the build status will be `EXPIRED`. The TTL starts ticking
+  /// from create_time.
   core.String queueTtl;
 
-  /// Output only. Results of the build.
+  /// Results of the build.
+  ///
+  /// Output only.
   Results results;
 
   /// Secrets to decrypt using Cloud Key Management Service.
   core.List<Secret> secrets;
 
-  /// IAM service account whose credentials will be used at build runtime. Must
-  /// be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// IAM service account whose credentials will be used at build runtime.
+  ///
+  /// Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   /// ACCOUNT can be email address or uniqueId of the service account. This
   /// field is in alpha and is not publicly available.
   core.String serviceAccount;
@@ -1644,13 +1702,19 @@ class Build {
   /// The location of the source files to build.
   Source source;
 
-  /// Output only. A permanent fixed identifier for source.
+  /// A permanent fixed identifier for source.
+  ///
+  /// Output only.
   SourceProvenance sourceProvenance;
 
-  /// Output only. Time at which execution of the build was started.
+  /// Time at which execution of the build was started.
+  ///
+  /// Output only.
   core.String startTime;
 
-  /// Output only. Status of the build.
+  /// Status of the build.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
   /// - "QUEUED" : Build or step is queued; work has not yet begun.
@@ -1663,28 +1727,39 @@ class Build {
   /// - "EXPIRED" : Build was enqueued for longer than the value of `queue_ttl`.
   core.String status;
 
-  /// Output only. Customer-readable message about the current status.
+  /// Customer-readable message about the current status.
+  ///
+  /// Output only.
   core.String statusDetail;
 
-  /// Required. The operations to be performed on the workspace.
+  /// The operations to be performed on the workspace.
+  ///
+  /// Required.
   core.List<BuildStep> steps;
 
   /// Substitutions data for `Build` resource.
   core.Map<core.String, core.String> substitutions;
 
-  /// Tags for annotation of a `Build`. These are not docker tags.
+  /// Tags for annotation of a `Build`.
+  ///
+  /// These are not docker tags.
   core.List<core.String> tags;
 
   /// Amount of time that this build should be allowed to run, to second
-  /// granularity. If this amount of time elapses, work on the build will cease
-  /// and the build status will be `TIMEOUT`. `timeout` starts ticking from
-  /// `startTime`. Default time is ten minutes.
+  /// granularity.
+  ///
+  /// If this amount of time elapses, work on the build will cease and the build
+  /// status will be `TIMEOUT`. `timeout` starts ticking from `startTime`.
+  /// Default time is ten minutes.
   core.String timeout;
 
-  /// Output only. Stores timing information for phases of the build. Valid keys
-  /// are: * BUILD: time to execute all build steps * PUSH: time to push all
-  /// specified images. * FETCHSOURCE: time to fetch source. If the build does
-  /// not specify source or images, these keys will not be included.
+  /// Stores timing information for phases of the build.
+  ///
+  /// Valid keys are: * BUILD: time to execute all build steps * PUSH: time to
+  /// push all specified images. * FETCHSOURCE: time to fetch source. If the
+  /// build does not specify source or images, these keys will not be included.
+  ///
+  /// Output only.
   core.Map<core.String, TimeSpan> timing;
 
   Build();
@@ -1901,24 +1976,29 @@ class BuildOperationMetadata {
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
-  /// Requested disk size for the VM that runs the build. Note that this is
-  /// *NOT* "disk free"; some of the space will be used by the operating system
-  /// and build utilities. Also note that this is the minimum disk size that
-  /// will be allocated for the build -- the build may run with a larger disk
-  /// than requested. At present, the maximum disk size is 1000GB; builds that
-  /// request more than the maximum are rejected with an error.
+  /// Requested disk size for the VM that runs the build.
+  ///
+  /// Note that this is *NOT* "disk free"; some of the space will be used by the
+  /// operating system and build utilities. Also note that this is the minimum
+  /// disk size that will be allocated for the build -- the build may run with a
+  /// larger disk than requested. At present, the maximum disk size is 1000GB;
+  /// builds that request more than the maximum are rejected with an error.
   core.String diskSizeGb;
 
   /// Option to specify whether or not to apply bash style string operations to
-  /// the substitutions. NOTE: this is always enabled for triggered builds and
-  /// cannot be overridden in the build configuration file.
+  /// the substitutions.
+  ///
+  /// NOTE: this is always enabled for triggered builds and cannot be overridden
+  /// in the build configuration file.
   core.bool dynamicSubstitutions;
 
   /// A list of global environment variable definitions that will exist for all
-  /// build steps in this build. If a variable is defined in both globally and
-  /// in a build step, the variable will use the build step value. The elements
-  /// are of the form "KEY=VALUE" for the environment variable "KEY" being given
-  /// the value "VALUE".
+  /// build steps in this build.
+  ///
+  /// If a variable is defined in both globally and in a build step, the
+  /// variable will use the build step value. The elements are of the form
+  /// "KEY=VALUE" for the environment variable "KEY" being given the value
+  /// "VALUE".
   core.List<core.String> env;
 
   /// Option to define build log streaming behavior to Google Cloud Storage.
@@ -1960,17 +2040,20 @@ class BuildOptions {
   core.String requestedVerifyOption;
 
   /// A list of global environment variables, which are encrypted using a Cloud
-  /// Key Management Service crypto key. These values must be specified in the
-  /// build's `Secret`. These variables will be available to all build steps in
-  /// this build.
+  /// Key Management Service crypto key.
+  ///
+  /// These values must be specified in the build's `Secret`. These variables
+  /// will be available to all build steps in this build.
   core.List<core.String> secretEnv;
 
   /// Requested hash for SourceProvenance.
   core.List<core.String> sourceProvenanceHash;
 
   /// Option to specify behavior when there is an error in the substitution
-  /// checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and
-  /// cannot be overridden in the build configuration file.
+  /// checks.
+  ///
+  /// NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be
+  /// overridden in the build configuration file.
   /// Possible string values are:
   /// - "MUST_MATCH" : Fails the build if error in substitutions checks, like
   /// missing a substitution in the template or in the map.
@@ -1978,16 +2061,19 @@ class BuildOptions {
   core.String substitutionOption;
 
   /// Global list of volumes to mount for ALL build steps Each volume is created
-  /// as an empty volume prior to starting the build process. Upon completion of
-  /// the build, volumes and their contents are discarded. Global volume names
-  /// and paths cannot conflict with the volumes defined a build step. Using a
-  /// global volume in a build with only one step is not valid as it is
-  /// indicative of a build request with an incorrect configuration.
+  /// as an empty volume prior to starting the build process.
+  ///
+  /// Upon completion of the build, volumes and their contents are discarded.
+  /// Global volume names and paths cannot conflict with the volumes defined a
+  /// build step. Using a global volume in a build with only one step is not
+  /// valid as it is indicative of a build request with an incorrect
+  /// configuration.
   core.List<Volume> volumes;
 
-  /// Option to specify a `WorkerPool` for the build. Format:
-  /// projects/{project}/locations/{location}/workerPools/{workerPool} This
-  /// field is experimental.
+  /// Option to specify a `WorkerPool` for the build.
+  ///
+  /// Format: projects/{project}/locations/{location}/workerPools/{workerPool}
+  /// This field is experimental.
   core.String workerPool;
 
   BuildOptions();
@@ -2085,27 +2171,32 @@ class BuildOptions {
 /// A step in the build pipeline.
 class BuildStep {
   /// A list of arguments that will be presented to the step when it is started.
+  ///
   /// If the image used to run the step's container has an entrypoint, the
   /// `args` are used as arguments to that entrypoint. If the image does not
   /// define an entrypoint, the first element in args is used as the entrypoint,
   /// and the remainder will be used as arguments.
   core.List<core.String> args;
 
-  /// Working directory to use when running this step's container. If this value
-  /// is a relative path, it is relative to the build's working directory. If
-  /// this value is absolute, it may be outside the build's working directory,
-  /// in which case the contents of the path may not be persisted across build
-  /// step executions, unless a `volume` for that path is specified. If the
-  /// build specifies a `RepoSource` with `dir` and a step with a `dir`, which
-  /// specifies an absolute path, the `RepoSource` `dir` is ignored for the
-  /// step's execution.
+  /// Working directory to use when running this step's container.
+  ///
+  /// If this value is a relative path, it is relative to the build's working
+  /// directory. If this value is absolute, it may be outside the build's
+  /// working directory, in which case the contents of the path may not be
+  /// persisted across build step executions, unless a `volume` for that path is
+  /// specified. If the build specifies a `RepoSource` with `dir` and a step
+  /// with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is
+  /// ignored for the step's execution.
   core.String dir;
 
   /// Entrypoint to be used instead of the build step image's default
-  /// entrypoint. If unset, the image's default entrypoint is used.
+  /// entrypoint.
+  ///
+  /// If unset, the image's default entrypoint is used.
   core.String entrypoint;
 
   /// A list of environment variable definitions to be used when running a step.
+  ///
   /// The elements are of the form "KEY=VALUE" for the environment variable
   /// "KEY" being given the value "VALUE".
   core.List<core.String> env;
@@ -2114,11 +2205,12 @@ class BuildStep {
   /// this build step as a dependency.
   core.String id;
 
-  /// Required. The name of the container image that will run this particular
-  /// build step. If the image is available in the host's Docker daemon's cache,
-  /// it will be run directly. If not, the host will attempt to pull the image
-  /// first, using the builder service account's credentials if necessary. The
-  /// Docker daemon's cache will already have the latest versions of all of the
+  /// The name of the container image that will run this particular build step.
+  ///
+  /// If the image is available in the host's Docker daemon's cache, it will be
+  /// run directly. If not, the host will attempt to pull the image first, using
+  /// the builder service account's credentials if necessary. The Docker
+  /// daemon's cache will already have the latest versions of all of the
   /// officially supported build steps
   /// ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).
   /// The Docker daemon will also have cached many of the layers for some
@@ -2126,20 +2218,28 @@ class BuildStep {
   /// time you attempt to use them. If you built an image in a previous build
   /// step, it will be stored in the host's Docker daemon's cache and is
   /// available to use as the name for a later build step.
+  ///
+  /// Required.
   core.String name;
 
-  /// Output only. Stores timing information for pulling this build step's
-  /// builder image only.
+  /// Stores timing information for pulling this build step's builder image
+  /// only.
+  ///
+  /// Output only.
   TimeSpan pullTiming;
 
   /// A list of environment variables which are encrypted using a Cloud Key
-  /// Management Service crypto key. These values must be specified in the
-  /// build's `Secret`.
+  /// Management Service crypto key.
+  ///
+  /// These values must be specified in the build's `Secret`.
   core.List<core.String> secretEnv;
 
-  /// Output only. Status of the build step. At this time, build step status is
-  /// only updated on build completion; step status is not updated in real-time
-  /// as the build progresses.
+  /// Status of the build step.
+  ///
+  /// At this time, build step status is only updated on build completion; step
+  /// status is not updated in real-time as the build progresses.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATUS_UNKNOWN" : Status of the build is unknown.
   /// - "QUEUED" : Build or step is queued; work has not yet begun.
@@ -2152,26 +2252,31 @@ class BuildStep {
   /// - "EXPIRED" : Build was enqueued for longer than the value of `queue_ttl`.
   core.String status;
 
-  /// Time limit for executing this build step. If not defined, the step has no
-  /// time limit and will be allowed to continue to run until either it
-  /// completes or the build itself times out.
+  /// Time limit for executing this build step.
+  ///
+  /// If not defined, the step has no time limit and will be allowed to continue
+  /// to run until either it completes or the build itself times out.
   core.String timeout;
 
-  /// Output only. Stores timing information for executing this build step.
+  /// Stores timing information for executing this build step.
+  ///
+  /// Output only.
   TimeSpan timing;
 
-  /// List of volumes to mount into the build step. Each volume is created as an
-  /// empty volume prior to execution of the build step. Upon completion of the
-  /// build, volumes and their contents are discarded. Using a named volume in
-  /// only one step is not valid as it is indicative of a build request with an
-  /// incorrect configuration.
+  /// List of volumes to mount into the build step.
+  ///
+  /// Each volume is created as an empty volume prior to execution of the build
+  /// step. Upon completion of the build, volumes and their contents are
+  /// discarded. Using a named volume in only one step is not valid as it is
+  /// indicative of a build request with an incorrect configuration.
   core.List<Volume> volumes;
 
-  /// The ID(s) of the step(s) that this build step depends on. This build step
-  /// will not start until all the build steps in `wait_for` have completed
-  /// successfully. If `wait_for` is empty, this build step will start when all
-  /// previous build steps in the `Build.Steps` list have completed
-  /// successfully.
+  /// The ID(s) of the step(s) that this build step depends on.
+  ///
+  /// This build step will not start until all the build steps in `wait_for`
+  /// have completed successfully. If `wait_for` is empty, this build step will
+  /// start when all previous build steps in the `Build.Steps` list have
+  /// completed successfully.
   core.List<core.String> waitFor;
 
   BuildStep();
@@ -2282,7 +2387,9 @@ class BuildTrigger {
   /// Contents of the build template.
   Build build;
 
-  /// Output only. Time when the trigger was created.
+  /// Time when the trigger was created.
+  ///
+  /// Output only.
   core.String createTime;
 
   /// Human-readable description of this trigger.
@@ -2296,47 +2403,58 @@ class BuildTrigger {
   core.String filename;
 
   /// GitHubEventsConfig describes the configuration of a trigger that creates a
-  /// build whenever a GitHub event is received. Mutually exclusive with
-  /// `trigger_template`.
+  /// build whenever a GitHub event is received.
+  ///
+  /// Mutually exclusive with `trigger_template`.
   GitHubEventsConfig github;
 
-  /// Output only. Unique identifier of the trigger.
+  /// Unique identifier of the trigger.
+  ///
+  /// Output only.
   core.String id;
 
   /// ignored_files and included_files are file glob matches using
   /// https://golang.org/pkg/path/filepath/#Match extended with support for
-  /// "**". If ignored_files and changed files are both empty, then they are not
-  /// used to determine whether or not to trigger a build. If ignored_files is
-  /// not empty, then we ignore any files that match any of the ignored_file
-  /// globs. If the change has no files that are outside of the ignored_files
-  /// globs, then we do not trigger a build.
+  /// "**".
+  ///
+  /// If ignored_files and changed files are both empty, then they are not used
+  /// to determine whether or not to trigger a build. If ignored_files is not
+  /// empty, then we ignore any files that match any of the ignored_file globs.
+  /// If the change has no files that are outside of the ignored_files globs,
+  /// then we do not trigger a build.
   core.List<core.String> ignoredFiles;
 
   /// If any of the files altered in the commit pass the ignored_files filter
   /// and included_files is empty, then as far as this filter is concerned, we
-  /// should trigger the build. If any of the files altered in the commit pass
-  /// the ignored_files filter and included_files is not empty, then we make
-  /// sure that at least one of those files matches a included_files glob. If
-  /// not, then we do not trigger a build.
+  /// should trigger the build.
+  ///
+  /// If any of the files altered in the commit pass the ignored_files filter
+  /// and included_files is not empty, then we make sure that at least one of
+  /// those files matches a included_files glob. If not, then we do not trigger
+  /// a build.
   core.List<core.String> includedFiles;
 
-  /// User-assigned name of the trigger. Must be unique within the project.
-  /// Trigger names must meet the following requirements: + They must contain
-  /// only alphanumeric characters and dashes. + They can be 1-64 characters
-  /// long. + They must begin and end with an alphanumeric character.
+  /// User-assigned name of the trigger.
+  ///
+  /// Must be unique within the project. Trigger names must meet the following
+  /// requirements: + They must contain only alphanumeric characters and dashes.
+  /// + They can be 1-64 characters long. + They must begin and end with an
+  /// alphanumeric character.
   core.String name;
 
-  /// Substitutions for Build resource. The keys must match the following
-  /// regular expression: `^_[A-Z0-9_]+$`.
+  /// Substitutions for Build resource.
+  ///
+  /// The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
   core.Map<core.String, core.String> substitutions;
 
   /// Tags for annotation of a `BuildTrigger`
   core.List<core.String> tags;
 
-  /// Template describing the types of source changes to trigger a build. Branch
-  /// and tag names in trigger templates are interpreted as regular expressions.
-  /// Any branch or tag change that matches that regular expression will trigger
-  /// a build. Mutually exclusive with `github`.
+  /// Template describing the types of source changes to trigger a build.
+  ///
+  /// Branch and tag names in trigger templates are interpreted as regular
+  /// expressions. Any branch or tag change that matches that regular expression
+  /// will trigger a build. Mutually exclusive with `github`.
   RepoSource triggerTemplate;
 
   BuildTrigger();
@@ -2453,7 +2571,9 @@ class BuiltImage {
   /// presented to `docker push`.
   core.String name;
 
-  /// Output only. Stores timing information for pushing the specified image.
+  /// Stores timing information for pushing the specified image.
+  ///
+  /// Output only.
   TimeSpan pushTiming;
 
   BuiltImage();
@@ -2488,14 +2608,19 @@ class BuiltImage {
 
 /// Request to cancel an ongoing build.
 class CancelBuildRequest {
-  /// Required. ID of the build.
+  /// ID of the build.
+  ///
+  /// Required.
   core.String id;
 
-  /// The name of the `Build` to retrieve. Format:
-  /// `projects/{project}/locations/{location}/builds/{build}`
+  /// The name of the `Build` to retrieve.
+  ///
+  /// Format: `projects/{project}/locations/{location}/builds/{build}`
   core.String name;
 
-  /// Required. ID of the project.
+  /// ID of the project.
+  ///
+  /// Required.
   core.String projectId;
 
   CancelBuildRequest();
@@ -2542,10 +2667,12 @@ class CancelOperationRequest {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2586,16 +2713,22 @@ class FileHashes {
 }
 
 /// GitHubEventsConfig describes the configuration of a trigger that creates a
-/// build whenever a GitHub event is received. This message is experimental.
+/// build whenever a GitHub event is received.
+///
+/// This message is experimental.
 class GitHubEventsConfig {
   /// The installationID that emits the GitHub event.
   core.String installationId;
 
-  /// Name of the repository. For example: The name for
+  /// Name of the repository.
+  ///
+  /// For example: The name for
   /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
   core.String name;
 
-  /// Owner of the repository. For example: The owner for
+  /// Owner of the repository.
+  ///
+  /// For example: The owner for
   /// https://github.com/googlecloudplatform/cloud-builders is
   /// "googlecloudplatform".
   core.String owner;
@@ -2783,9 +2916,10 @@ class ListBuildsResponse {
 /// Notification is the container which holds the data that is relevant to this
 /// particular notification.
 class Notification {
-  /// The filter string to use for notification filtering. Currently, this is
-  /// assumed to be a CEL program. See https://opensource.google/projects/cel
-  /// for more.
+  /// The filter string to use for notification filtering.
+  ///
+  /// Currently, this is assumed to be a CEL program. See
+  /// https://opensource.google/projects/cel for more.
   core.String filter;
 
   /// Configuration for HTTP delivery.
@@ -2908,11 +3042,13 @@ class NotifierConfig {
 /// NotifierMetadata contains the data which can be used to reference or
 /// describe this notifier.
 class NotifierMetadata {
-  /// The human-readable and user-given name for the notifier. For example:
-  /// "repo-merge-email-notifier".
+  /// The human-readable and user-given name for the notifier.
+  ///
+  /// For example: "repo-merge-email-notifier".
   core.String name;
 
   /// The string representing the name and version of notifier to deploy.
+  ///
   /// Expected to be of the form of "/:". For example:
   /// "gcr.io/my-project/notifiers/smtp:1.2.34".
   core.String notifier;
@@ -2948,8 +3084,10 @@ class NotifierSecret {
   core.String name;
 
   /// Value is interpreted to be a resource path for fetching the actual
-  /// (versioned) secret data for this secret. For example, this would be a
-  /// Google Cloud Secret Manager secret version resource path like:
+  /// (versioned) secret data for this secret.
+  ///
+  /// For example, this would be a Google Cloud Secret Manager secret version
+  /// resource path like:
   /// "projects/my-project/secrets/my-secret/versions/latest".
   core.String value;
 
@@ -3038,31 +3176,37 @@ class NotifierSpec {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -3129,9 +3273,10 @@ class Operation {
 /// PullRequestFilter contains filter properties for matching GitHub Pull
 /// Requests.
 class PullRequestFilter {
-  /// Regex of branches to match. The syntax of the regular expressions accepted
-  /// is the syntax accepted by RE2 and described at
-  /// https://github.com/google/re2/wiki/Syntax
+  /// Regex of branches to match.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String branch;
 
   /// Configure builds to run whether a repository owner or collaborator need to
@@ -3180,18 +3325,20 @@ class PullRequestFilter {
 
 /// Push contains filter properties for matching GitHub git pushes.
 class PushFilter {
-  /// Regexes matching branches to build. The syntax of the regular expressions
-  /// accepted is the syntax accepted by RE2 and described at
-  /// https://github.com/google/re2/wiki/Syntax
+  /// Regexes matching branches to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String branch;
 
   /// When true, only trigger a build if the revision regex does NOT match the
   /// git_ref regex.
   core.bool invertRegex;
 
-  /// Regexes matching tags to build. The syntax of the regular expressions
-  /// accepted is the syntax accepted by RE2 and described at
-  /// https://github.com/google/re2/wiki/Syntax
+  /// Regexes matching tags to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String tag;
 
   PushFilter();
@@ -3225,37 +3372,44 @@ class PushFilter {
 
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
-  /// Regex matching branches to build. The syntax of the regular expressions
-  /// accepted is the syntax accepted by RE2 and described at
-  /// https://github.com/google/re2/wiki/Syntax
+  /// Regex matching branches to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String branchName;
 
   /// Explicit commit SHA to build.
   core.String commitSha;
 
-  /// Directory, relative to the source root, in which to run the build. This
-  /// must be a relative path. If a step's `dir` is specified and is an absolute
-  /// path, this value is ignored for that step's execution.
+  /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// This must be a relative path. If a step's `dir` is specified and is an
+  /// absolute path, this value is ignored for that step's execution.
   core.String dir;
 
   /// Only trigger a build if the revision regex does NOT match the revision
   /// regex.
   core.bool invertRegex;
 
-  /// ID of the project that owns the Cloud Source Repository. If omitted, the
-  /// project ID requesting the build is assumed.
+  /// ID of the project that owns the Cloud Source Repository.
+  ///
+  /// If omitted, the project ID requesting the build is assumed.
   core.String projectId;
 
-  /// Required. Name of the Cloud Source Repository.
+  /// Name of the Cloud Source Repository.
+  ///
+  /// Required.
   core.String repoName;
 
-  /// Substitutions to use in a triggered build. Should only be used with
-  /// RunBuildTrigger
+  /// Substitutions to use in a triggered build.
+  ///
+  /// Should only be used with RunBuildTrigger
   core.Map<core.String, core.String> substitutions;
 
-  /// Regex matching tags to build. The syntax of the regular expressions
-  /// accepted is the syntax accepted by RE2 and described at
-  /// https://github.com/google/re2/wiki/Syntax
+  /// Regex matching tags to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String tagName;
 
   RepoSource();
@@ -3326,7 +3480,9 @@ class RepoSource {
 
 /// Artifacts created by the build pipeline.
 class Results {
-  /// Path to the artifact manifest. Only populated when artifacts are uploaded.
+  /// Path to the artifact manifest.
+  ///
+  /// Only populated when artifacts are uploaded.
   core.String artifactManifest;
 
   /// Time to push all non-container artifacts.
@@ -3337,16 +3493,19 @@ class Results {
   core.List<core.String> buildStepImages;
 
   /// List of build step outputs, produced by builder images, in the order
-  /// corresponding to build step indices. [Cloud
-  /// Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can
-  /// produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first
-  /// 4KB of data is stored.
+  /// corresponding to build step indices.
+  ///
+  /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)
+  /// can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the
+  /// first 4KB of data is stored.
   core.List<core.String> buildStepOutputs;
 
   /// Container images that were built as a part of the build.
   core.List<BuiltImage> images;
 
-  /// Number of artifacts uploaded. Only populated when artifacts are uploaded.
+  /// Number of artifacts uploaded.
+  ///
+  /// Only populated when artifacts are uploaded.
   core.String numArtifacts;
 
   Results();
@@ -3406,14 +3565,19 @@ class Results {
 
 /// Specifies a build to retry.
 class RetryBuildRequest {
-  /// Required. Build ID of the original build.
+  /// Build ID of the original build.
+  ///
+  /// Required.
   core.String id;
 
-  /// The name of the `Build` to retry. Format:
-  /// `projects/{project}/locations/{location}/builds/{build}`
+  /// The name of the `Build` to retry.
+  ///
+  /// Format: `projects/{project}/locations/{location}/builds/{build}`
   core.String name;
 
-  /// Required. ID of the project.
+  /// ID of the project.
+  ///
+  /// Required.
   core.String projectId;
 
   RetryBuildRequest();
@@ -3448,6 +3612,7 @@ class RetryBuildRequest {
 /// SMTPDelivery is the delivery configuration for an SMTP (email) notification.
 class SMTPDelivery {
   /// This is the SMTP account/email that appears in the `From:` of the email.
+  ///
   /// If empty, it is assumed to be sender.
   core.String fromAddress;
 
@@ -3523,11 +3688,12 @@ class Secret {
   /// Cloud KMS key name to use to decrypt these envs.
   core.String kmsKeyName;
 
-  /// Map of environment variable name to its encrypted value. Secret
-  /// environment variables must be unique across all of a build's secrets, and
-  /// must be used by at least one build step. Values can be at most 64 KB in
-  /// size. There can be at most 100 secret values across all of a build's
-  /// secrets.
+  /// Map of environment variable name to its encrypted value.
+  ///
+  /// Secret environment variables must be unique across all of a build's
+  /// secrets, and must be used by at least one build step. Values can be at
+  /// most 64 KB in size. There can be at most 100 secret values across all of a
+  /// build's secrets.
   core.Map<core.String, core.String> secretEnv;
 
   Secret();
@@ -3560,7 +3726,9 @@ class Secret {
 }
 
 /// SlackDelivery is the delivery configuration for delivering Slack messages
-/// via webhooks. See Slack webhook documentation at:
+/// via webhooks.
+///
+/// See Slack webhook documentation at:
 /// https://api.slack.com/messaging/webhooks.
 class SlackDelivery {
   /// The secret reference for the Slack webhook URI for sending messages to a
@@ -3619,16 +3787,22 @@ class Source {
   }
 }
 
-/// Provenance of the source. Ways to find the original source, or verify that
-/// some source was used for this build.
+/// Provenance of the source.
+///
+/// Ways to find the original source, or verify that some source was used for
+/// this build.
 class SourceProvenance {
-  /// Output only. Hash(es) of the build source, which can be used to verify
-  /// that the original source integrity was maintained in the build. Note that
-  /// `FileHashes` will only be populated if `BuildOptions` has requested a
-  /// `SourceProvenanceHash`. The keys to this map are file paths used as build
-  /// source and the values contain the hash values for those files. If the
-  /// build source came in a single package such as a gzipped tarfile
-  /// (`.tar.gz`), the `FileHash` will be for the single path to that file.
+  /// Hash(es) of the build source, which can be used to verify that the
+  /// original source integrity was maintained in the build.
+  ///
+  /// Note that `FileHashes` will only be populated if `BuildOptions` has
+  /// requested a `SourceProvenanceHash`. The keys to this map are file paths
+  /// used as build source and the values contain the hash values for those
+  /// files. If the build source came in a single package such as a gzipped
+  /// tarfile (`.tar.gz`), the `FileHash` will be for the single path to that
+  /// file.
+  ///
+  /// Output only.
   core.Map<core.String, FileHashes> fileHashes;
 
   /// A copy of the build's `source.repo_source`, if exists, with any revisions
@@ -3680,24 +3854,27 @@ class SourceProvenance {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3744,12 +3921,15 @@ class StorageSource {
   /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String bucket;
 
-  /// Google Cloud Storage generation for the object. If the generation is
-  /// omitted, the latest generation will be used.
+  /// Google Cloud Storage generation for the object.
+  ///
+  /// If the generation is omitted, the latest generation will be used.
   core.String generation;
 
-  /// Google Cloud Storage object containing the source. This object must be a
-  /// gzipped archive file (`.tar.gz`) containing source to build.
+  /// Google Cloud Storage object containing the source.
+  ///
+  /// This object must be a gzipped archive file (`.tar.gz`) containing source
+  /// to build.
   core.String object;
 
   StorageSource();
@@ -3815,14 +3995,17 @@ class TimeSpan {
 /// Volume describes a Docker container volume which is mounted into build steps
 /// in order to persist files across build step execution.
 class Volume {
-  /// Name of the volume to mount. Volume names must be unique per build step
-  /// and must be valid names for Docker volumes. Each named volume must be used
-  /// by at least two build steps.
+  /// Name of the volume to mount.
+  ///
+  /// Volume names must be unique per build step and must be valid names for
+  /// Docker volumes. Each named volume must be used by at least two build
+  /// steps.
   core.String name;
 
-  /// Path at which to mount the volume. Paths must be absolute and cannot
-  /// conflict with other volume paths on the same build step or with certain
-  /// reserved volume paths.
+  /// Path at which to mount the volume.
+  ///
+  /// Paths must be absolute and cannot conflict with other volume paths on the
+  /// same build step or with certain reserved volume paths.
   core.String path;
 
   Volume();

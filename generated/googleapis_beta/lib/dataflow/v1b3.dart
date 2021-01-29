@@ -239,7 +239,9 @@ class ProjectsCatalogTemplatesResource {
       : _requester = client;
 
   /// Creates a new TemplateVersion (Important: not new Template) entry in the
-  /// spanner table. Requires project_id and display_name (template).
+  /// spanner table.
+  ///
+  /// Requires project_id and display_name (template).
   ///
   /// [request] - The metadata request object.
   ///
@@ -299,7 +301,9 @@ class ProjectsCatalogTemplatesResource {
     );
   }
 
-  /// Deletes an existing Template. Do nothing if Template does not exist.
+  /// Deletes an existing Template.
+  ///
+  /// Do nothing if Template does not exist.
   ///
   /// Request parameters:
   ///
@@ -353,8 +357,9 @@ class ProjectsCatalogTemplatesResource {
   }
 
   /// Get TemplateVersion using project_id and display_name with an optional
-  /// version_id field. Get latest (has tag "latest") TemplateVersion if
-  /// version_id not set.
+  /// version_id field.
+  ///
+  /// Get latest (has tag "latest") TemplateVersion if version_id not set.
   ///
   /// Request parameters:
   ///
@@ -411,8 +416,10 @@ class ProjectsCatalogTemplatesResource {
     );
   }
 
-  /// Updates the label of the TemplateVersion. Label can be duplicated in
-  /// Template, so either add or remove the label in the TemplateVersion.
+  /// Updates the label of the TemplateVersion.
+  ///
+  /// Label can be duplicated in Template, so either add or remove the label in
+  /// the TemplateVersion.
   ///
   /// [request] - The metadata request object.
   ///
@@ -472,10 +479,11 @@ class ProjectsCatalogTemplatesResource {
     );
   }
 
-  /// Updates the tag of the TemplateVersion, and tag is unique in Template. If
-  /// tag exists in another TemplateVersion in the Template, updates the tag to
-  /// this TemplateVersion will remove it from the old TemplateVersion and add
-  /// it to this TemplateVersion. If request is remove_only (remove_only =
+  /// Updates the tag of the TemplateVersion, and tag is unique in Template.
+  ///
+  /// If tag exists in another TemplateVersion in the Template, updates the tag
+  /// to this TemplateVersion will remove it from the old TemplateVersion and
+  /// add it to this TemplateVersion. If request is remove_only (remove_only =
   /// true), remove the tag from this TemplateVersion.
   ///
   /// [request] - The metadata request object.
@@ -543,9 +551,10 @@ class ProjectsCatalogTemplatesTemplateVersionsResource {
   ProjectsCatalogTemplatesTemplateVersionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Template with TemplateVersion. Requires project_id(projects)
-  /// and template display_name(catalogTemplates). The template display_name is
-  /// set by the user.
+  /// Creates a new Template with TemplateVersion.
+  ///
+  /// Requires project_id(projects) and template display_name(catalogTemplates).
+  /// The template display_name is set by the user.
   ///
   /// [request] - The metadata request object.
   ///
@@ -728,8 +737,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Creates a Cloud Dataflow job. To create a job, we recommend using
-  /// `projects.locations.jobs.create` with a [regional endpoint]
+  /// Creates a Cloud Dataflow job.
+  ///
+  /// To create a job, we recommend using `projects.locations.jobs.create` with
+  /// a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`.
@@ -821,9 +832,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Gets the state of the specified Cloud Dataflow job. To get the state of a
-  /// job, we recommend using `projects.locations.jobs.get` with a [regional
-  /// endpoint]
+  /// Gets the state of the specified Cloud Dataflow job.
+  ///
+  /// To get the state of a job, we recommend using
+  /// `projects.locations.jobs.get` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.get` is not recommended, as you can only get the
   /// state of jobs that are running in `us-central1`.
@@ -910,7 +922,9 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Request the job status. To request the status of a job, we recommend using
+  /// Request the job status.
+  ///
+  /// To request the status of a job, we recommend using
   /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.getMetrics` is not recommended, as you can only
@@ -990,8 +1004,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// List the jobs of a project. To list the jobs of a project in a region, we
-  /// recommend using `projects.locations.jobs.list` with a [regional endpoint]
+  /// List the jobs of a project.
+  ///
+  /// To list the jobs of a project in a region, we recommend using
+  /// `projects.locations.jobs.list` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
   /// list the all jobs across all regions, use `projects.jobs.aggregated`.
   /// Using `projects.jobs.list` is not recommended, as you can only get the
@@ -1170,9 +1186,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// Updates the state of an existing Cloud Dataflow job. To update the state
-  /// of an existing job, we recommend using `projects.locations.jobs.update`
-  /// with a [regional endpoint]
+  /// Updates the state of an existing Cloud Dataflow job.
+  ///
+  /// To update the state of an existing job, we recommend using
+  /// `projects.locations.jobs.update` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.update` is not recommended, as you can only update
   /// the state of jobs that are running in `us-central1`.
@@ -1255,7 +1272,9 @@ class ProjectsJobsDebugResource {
 
   ProjectsJobsDebugResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get encoded debug configuration for component. Not cacheable.
+  /// Get encoded debug configuration for component.
+  ///
+  /// Not cacheable.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1396,7 +1415,9 @@ class ProjectsJobsMessagesResource {
   ProjectsJobsMessagesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Request the job status. To request the status of a job, we recommend using
+  /// Request the job status.
+  ///
+  /// To request the status of a job, we recommend using
   /// `projects.locations.jobs.messages.list` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.messages.list` is not recommended, as you can only
@@ -1852,8 +1873,10 @@ class ProjectsLocationsJobsResource {
   ProjectsLocationsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a Cloud Dataflow job. To create a job, we recommend using
-  /// `projects.locations.jobs.create` with a [regional endpoint]
+  /// Creates a Cloud Dataflow job.
+  ///
+  /// To create a job, we recommend using `projects.locations.jobs.create` with
+  /// a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`.
@@ -1947,9 +1970,10 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Gets the state of the specified Cloud Dataflow job. To get the state of a
-  /// job, we recommend using `projects.locations.jobs.get` with a [regional
-  /// endpoint]
+  /// Gets the state of the specified Cloud Dataflow job.
+  ///
+  /// To get the state of a job, we recommend using
+  /// `projects.locations.jobs.get` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.get` is not recommended, as you can only get the
   /// state of jobs that are running in `us-central1`.
@@ -2039,6 +2063,7 @@ class ProjectsLocationsJobsResource {
   }
 
   /// Request detailed information about the execution status of the job.
+  ///
   /// EXPERIMENTAL. This API is subject to change or removal without notice.
   ///
   /// Request parameters:
@@ -2126,7 +2151,9 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Request the job status. To request the status of a job, we recommend using
+  /// Request the job status.
+  ///
+  /// To request the status of a job, we recommend using
   /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.getMetrics` is not recommended, as you can only
@@ -2208,8 +2235,10 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// List the jobs of a project. To list the jobs of a project in a region, we
-  /// recommend using `projects.locations.jobs.list` with a [regional endpoint]
+  /// List the jobs of a project.
+  ///
+  /// To list the jobs of a project in a region, we recommend using
+  /// `projects.locations.jobs.list` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
   /// list the all jobs across all regions, use `projects.jobs.aggregated`.
   /// Using `projects.jobs.list` is not recommended, as you can only get the
@@ -2398,9 +2427,10 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Updates the state of an existing Cloud Dataflow job. To update the state
-  /// of an existing job, we recommend using `projects.locations.jobs.update`
-  /// with a [regional endpoint]
+  /// Updates the state of an existing Cloud Dataflow job.
+  ///
+  /// To update the state of an existing job, we recommend using
+  /// `projects.locations.jobs.update` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.update` is not recommended, as you can only update
   /// the state of jobs that are running in `us-central1`.
@@ -2486,7 +2516,9 @@ class ProjectsLocationsJobsDebugResource {
   ProjectsLocationsJobsDebugResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get encoded debug configuration for component. Not cacheable.
+  /// Get encoded debug configuration for component.
+  ///
+  /// Not cacheable.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2647,7 +2679,9 @@ class ProjectsLocationsJobsMessagesResource {
   ProjectsLocationsJobsMessagesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Request the job status. To request the status of a job, we recommend using
+  /// Request the job status.
+  ///
+  /// To request the status of a job, we recommend using
   /// `projects.locations.jobs.messages.list` with a [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.messages.list` is not recommended, as you can only
@@ -2867,8 +2901,9 @@ class ProjectsLocationsJobsStagesResource {
       : _requester = client;
 
   /// Request detailed information about the execution status of a stage of the
-  /// job. EXPERIMENTAL. This API is subject to change or removal without
-  /// notice.
+  /// job.
+  ///
+  /// EXPERIMENTAL. This API is subject to change or removal without notice.
   ///
   /// Request parameters:
   ///
@@ -3354,10 +3389,11 @@ class ProjectsLocationsSqlResource {
   ProjectsLocationsSqlResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm
-  /// the given query parses correctly, and if able to look up schema
-  /// information from DataCatalog, will validate that the query analyzes
-  /// properly as well.
+  /// Validates a GoogleSQL query for Cloud Dataflow syntax.
+  ///
+  /// Will always confirm the given query parses correctly, and if able to look
+  /// up schema information from DataCatalog, will validate that the query
+  /// analyzes properly as well.
   ///
   /// Request parameters:
   ///
@@ -3828,6 +3864,7 @@ class ProjectsTemplateVersionsResource {
       : _requester = client;
 
   /// List TemplateVersions using project_id and an optional display_name field.
+  ///
   /// List all the TemplateVersions in the Template if display set. List all the
   /// TemplateVersions in the Project if display_name not set.
   ///
@@ -4186,11 +4223,12 @@ class ApproximateProgress {
 /// A progress measurement of a WorkItem by a worker.
 class ApproximateReportedProgress {
   /// Total amount of parallelism in the portion of input of this task that has
-  /// already been consumed and is no longer active. In the first two examples
-  /// above (see remaining_parallelism), the value should be 29 or 2
-  /// respectively. The sum of remaining_parallelism and consumed_parallelism
-  /// should equal the total amount of parallelism in this work item. If
-  /// specified, must be finite.
+  /// already been consumed and is no longer active.
+  ///
+  /// In the first two examples above (see remaining_parallelism), the value
+  /// should be 29 or 2 respectively. The sum of remaining_parallelism and
+  /// consumed_parallelism should equal the total amount of parallelism in this
+  /// work item. If specified, must be finite.
   ReportedParallelism consumedParallelism;
 
   /// Completion as fraction of the input consumed, from 0.0 (beginning, nothing
@@ -4202,6 +4240,7 @@ class ApproximateReportedProgress {
 
   /// Total amount of parallelism in the input of this task that remains, (i.e.
   /// can be delegated to this task and any new tasks via dynamic splitting).
+  ///
   /// Always at least 1 for non-finished work items and 0 for finished. "Amount
   /// of parallelism" refers to how many non-empty parts of the input can be
   /// read in parallel. This does not necessarily equal number of records. An
@@ -4791,8 +4830,10 @@ class ComputationTopology {
 }
 
 /// A position that encapsulates an inner position and an index for the inner
-/// position. A ConcatPosition can be used by a reader of a source that
-/// encapsulates a set of other sources.
+/// position.
+///
+/// A ConcatPosition can be used by a reader of a source that encapsulates a set
+/// of other sources.
 class ConcatPosition {
   /// Index of the inner source.
   core.int index;
@@ -4826,13 +4867,17 @@ class ConcatPosition {
 
 /// Container Spec.
 class ContainerSpec {
-  /// Name of the docker container image. E.g., gcr.io/project/some-image
+  /// Name of the docker container image.
+  ///
+  /// E.g., gcr.io/project/some-image
   core.String image;
 
   /// Metadata describing a template including description and validation rules.
   TemplateMetadata metadata;
 
-  /// Required. SDK info of the Flex Template.
+  /// SDK info of the Flex Template.
+  ///
+  /// Required.
   SDKInfo sdkInfo;
 
   ContainerSpec();
@@ -4938,24 +4983,32 @@ class CounterMetadata {
   }
 }
 
-/// Identifies a counter within a per-job namespace. Counters whose structured
-/// names are the same get merged into a single value for the job.
+/// Identifies a counter within a per-job namespace.
+///
+/// Counters whose structured names are the same get merged into a single value
+/// for the job.
 class CounterStructuredName {
   /// Name of the optimized step being executed by the workers.
   core.String componentStepName;
 
-  /// Name of the stage. An execution step contains multiple component steps.
+  /// Name of the stage.
+  ///
+  /// An execution step contains multiple component steps.
   core.String executionStepName;
 
   /// Index of an input collection that's being read from/written to as a side
-  /// input. The index identifies a step's side inputs starting by 1 (e.g. the
-  /// first side input has input_index 1, the third has input_index 3). Side
-  /// inputs are identified by a pair of (original_step_name, input_index). This
-  /// field helps uniquely identify them.
+  /// input.
+  ///
+  /// The index identifies a step's side inputs starting by 1 (e.g. the first
+  /// side input has input_index 1, the third has input_index 3). Side inputs
+  /// are identified by a pair of (original_step_name, input_index). This field
+  /// helps uniquely identify them.
   core.int inputIndex;
 
-  /// Counter name. Not necessarily globally-unique, but unique within the
-  /// context of the other fields. Required.
+  /// Counter name.
+  ///
+  /// Not necessarily globally-unique, but unique within the context of the
+  /// other fields. Required.
   core.String name;
 
   /// One of the standard Origins defined above.
@@ -4967,8 +5020,10 @@ class CounterStructuredName {
   /// A string containing a more specific namespace of the counter's origin.
   core.String originNamespace;
 
-  /// The step name requesting an operation, such as GBK. I.e. the ParDo causing
-  /// a read/write from shuffle to occur, or a read from side inputs.
+  /// The step name requesting an operation, such as GBK.
+  ///
+  /// I.e. the ParDo causing a read/write from shuffle to occur, or a read from
+  /// side inputs.
   core.String originalRequestingStepName;
 
   /// System generated name of the original step in the user's graph, before
@@ -5097,8 +5152,10 @@ class CounterUpdate {
   core.bool boolean;
 
   /// True if this counter is reported as the total cumulative aggregate value
-  /// accumulated since the worker started working on this WorkItem. By default
-  /// this is false, indicating that this counter is reported as a delta.
+  /// accumulated since the worker started working on this WorkItem.
+  ///
+  /// By default this is false, indicating that this counter is reported as a
+  /// delta.
   core.bool cumulative;
 
   /// Distribution data
@@ -5134,8 +5191,10 @@ class CounterUpdate {
   /// Counter name and aggregation type.
   NameAndKind nameAndKind;
 
-  /// The service-generated short identifier for this counter. The short_id ->
-  /// (name, metadata) mapping is constant for the lifetime of a job.
+  /// The service-generated short identifier for this counter.
+  ///
+  /// The short_id -> (name, metadata) mapping is constant for the lifetime of a
+  /// job.
   core.String shortId;
 
   /// List of strings, for Set.
@@ -5261,11 +5320,16 @@ class CreateJobFromTemplateRequest {
   /// The runtime environment for the job.
   RuntimeEnvironment environment;
 
-  /// Required. A Cloud Storage path to the template from which to create the
-  /// job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+  /// A Cloud Storage path to the template from which to create the job.
+  ///
+  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
+  ///
+  /// Required.
   core.String gcsPath;
 
-  /// Required. The job name to use for the created job.
+  /// The job name to use for the created job.
+  ///
+  /// Required.
   core.String jobName;
 
   /// The [regional endpoint]
@@ -5372,9 +5436,11 @@ class CustomSourceLocation {
 
 /// Data disk assignment for a given VM instance.
 class DataDiskAssignment {
-  /// Mounted data disks. The order is important a data disk's 0-based index in
-  /// this list defines which persistent directory the disk is mounted to, for
-  /// example the list of { "myproject-1014-104817-4c2-harness-0-disk-0" }, {
+  /// Mounted data disks.
+  ///
+  /// The order is important a data disk's 0-based index in this list defines
+  /// which persistent directory the disk is mounted to, for example the list of
+  /// { "myproject-1014-104817-4c2-harness-0-disk-0" }, {
   /// "myproject-1014-104817-4c2-harness-0-disk-1" }.
   core.List<core.String> dataDisks;
 
@@ -5498,26 +5564,29 @@ class DerivedSource {
 
 /// Describes the data disk used by a workflow job.
 class Disk {
-  /// Disk storage type, as defined by Google Compute Engine. This must be a
-  /// disk type appropriate to the project and zone in which the workers will
-  /// run. If unknown or unspecified, the service will attempt to choose a
-  /// reasonable default. For example, the standard persistent disk type is a
-  /// resource name typically ending in "pd-standard". If SSD persistent disks
-  /// are available, the resource name typically ends with "pd-ssd". The actual
-  /// valid values are defined the Google Compute Engine API, not by the Cloud
-  /// Dataflow API; consult the Google Compute Engine documentation for more
-  /// information about determining the set of available disk types for a
-  /// particular project and zone. Google Compute Engine Disk types are local to
-  /// a particular project in a particular zone, and so the resource name will
-  /// typically look something like this:
+  /// Disk storage type, as defined by Google Compute Engine.
+  ///
+  /// This must be a disk type appropriate to the project and zone in which the
+  /// workers will run. If unknown or unspecified, the service will attempt to
+  /// choose a reasonable default. For example, the standard persistent disk
+  /// type is a resource name typically ending in "pd-standard". If SSD
+  /// persistent disks are available, the resource name typically ends with
+  /// "pd-ssd". The actual valid values are defined the Google Compute Engine
+  /// API, not by the Cloud Dataflow API; consult the Google Compute Engine
+  /// documentation for more information about determining the set of available
+  /// disk types for a particular project and zone. Google Compute Engine Disk
+  /// types are local to a particular project in a particular zone, and so the
+  /// resource name will typically look something like this:
   /// compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
   core.String diskType;
 
   /// Directory in a VM where disk is mounted.
   core.String mountPoint;
 
-  /// Size of disk in GB. If zero or unspecified, the service will attempt to
-  /// choose a reasonable default.
+  /// Size of disk in GB.
+  ///
+  /// If zero or unspecified, the service will attempt to choose a reasonable
+  /// default.
   core.int sizeGb;
 
   Disk();
@@ -5566,24 +5635,29 @@ class DisplayData {
   /// Contains value if the data is of java class type.
   core.String javaClassValue;
 
-  /// The key identifying the display data. This is intended to be used as a
-  /// label for the display data when viewed in a dax monitoring system.
+  /// The key identifying the display data.
+  ///
+  /// This is intended to be used as a label for the display data when viewed in
+  /// a dax monitoring system.
   core.String key;
 
   /// An optional label to display in a dax UI for the element.
   core.String label;
 
-  /// The namespace for the key. This is usually a class name or programming
-  /// language namespace (i.e. python module) which defines the display data.
-  /// This allows a dax monitoring system to specially handle the data and
-  /// perform custom rendering.
+  /// The namespace for the key.
+  ///
+  /// This is usually a class name or programming language namespace (i.e.
+  /// python module) which defines the display data. This allows a dax
+  /// monitoring system to specially handle the data and perform custom
+  /// rendering.
   core.String namespace;
 
-  /// A possible additional shorter value to display. For example a
-  /// java_class_name_value of com.mypackage.MyDoFn will be stored with MyDoFn
-  /// as the short_str_value and com.mypackage.MyDoFn as the java_class_name
-  /// value. short_str_value can be displayed and java_class_name_value will be
-  /// displayed as a tooltip.
+  /// A possible additional shorter value to display.
+  ///
+  /// For example a java_class_name_value of com.mypackage.MyDoFn will be stored
+  /// with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the
+  /// java_class_name value. short_str_value can be displayed and
+  /// java_class_name_value will be displayed as a tooltip.
   core.String shortStrValue;
 
   /// Contains value if the data is of string type.
@@ -5692,8 +5766,10 @@ class DistributionUpdate {
   /// The minimum value present in the distribution.
   SplitInt64 min;
 
-  /// Use an int64 since we'd prefer the added precision. If overflow is a
-  /// common problem we can detect it and use an additional int64 or a double.
+  /// Use an int64 since we'd prefer the added precision.
+  ///
+  /// If overflow is a common problem we can detect it and use an additional
+  /// int64 or a double.
   SplitInt64 sum;
 
   /// Use a double since the sum of squares is likely to overflow int64.
@@ -5755,12 +5831,14 @@ class DistributionUpdate {
 /// describes the two parts of the split relative to the description of the
 /// current task's input.
 class DynamicSourceSplit {
-  /// Primary part (continued to be processed by worker). Specified relative to
-  /// the previously-current source. Becomes current.
+  /// Primary part (continued to be processed by worker).
+  ///
+  /// Specified relative to the previously-current source. Becomes current.
   DerivedSource primary;
 
-  /// Residual part (returned to the pool of work). Specified relative to the
-  /// previously-current source.
+  /// Residual part (returned to the pool of work).
+  ///
+  /// Specified relative to the previously-current source.
   DerivedSource residual;
 
   DynamicSourceSplit();
@@ -5789,10 +5867,12 @@ class DynamicSourceSplit {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -5808,13 +5888,17 @@ class Empty {
 
 /// Describes the environment in which a Dataflow Job runs.
 class Environment {
-  /// The type of cluster manager API to use. If unknown or unspecified, the
-  /// service will attempt to choose a reasonable default. This should be in the
-  /// form of the API service name, e.g. "compute.googleapis.com".
+  /// The type of cluster manager API to use.
+  ///
+  /// If unknown or unspecified, the service will attempt to choose a reasonable
+  /// default. This should be in the form of the API service name, e.g.
+  /// "compute.googleapis.com".
   core.String clusterManagerApiService;
 
   /// The dataset for the current project where various workflow related tables
-  /// are stored. The supported resource type is: Google BigQuery:
+  /// are stored.
+  ///
+  /// The supported resource type is: Google BigQuery:
   /// bigquery.googleapis.com/{dataset}
   core.String dataset;
 
@@ -5834,24 +5918,30 @@ class Environment {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> internalExperiments;
 
-  /// The Cloud Dataflow SDK pipeline options specified by the user. These
-  /// options are passed through the service and are used to recreate the SDK
-  /// pipeline options on the worker in a language agnostic and platform
+  /// The Cloud Dataflow SDK pipeline options specified by the user.
+  ///
+  /// These options are passed through the service and are used to recreate the
+  /// SDK pipeline options on the worker in a language agnostic and platform
   /// independent way.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> sdkPipelineOptions;
 
-  /// Identity to run virtual machines as. Defaults to the default account.
+  /// Identity to run virtual machines as.
+  ///
+  /// Defaults to the default account.
   core.String serviceAccountEmail;
 
   /// If set, contains the Cloud KMS key identifier used to encrypt data at
-  /// rest, AKA a Customer Managed Encryption Key (CMEK). Format:
+  /// rest, AKA a Customer Managed Encryption Key (CMEK).
+  ///
+  /// Format:
   /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
   core.String serviceKmsKeyName;
 
   /// The prefix of the resources the system should use for temporary storage.
+  ///
   /// The system will append the suffix "/temp-{JOBNAME} to this resource
   /// prefix, where {JOBNAME} is the value of the job_name field. The resulting
   /// bucket and object prefix is used as the prefix of the resources used to
@@ -5874,23 +5964,27 @@ class Environment {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> version;
 
-  /// The worker pools. At least one "harness" worker pool must be specified in
-  /// order for the job to have workers.
+  /// The worker pools.
+  ///
+  /// At least one "harness" worker pool must be specified in order for the job
+  /// to have workers.
   core.List<WorkerPool> workerPools;
 
   /// The Compute Engine region
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
-  /// with worker_zone. If neither worker_region nor worker_zone is specified,
-  /// default to the control plane's region.
+  /// which worker processing should occur, e.g. "us-west1".
+  ///
+  /// Mutually exclusive with worker_zone. If neither worker_region nor
+  /// worker_zone is specified, default to the control plane's region.
   core.String workerRegion;
 
   /// The Compute Engine zone
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-  /// which worker processing should occur, e.g. "us-west1-a". Mutually
-  /// exclusive with worker_region. If neither worker_region nor worker_zone is
-  /// specified, a zone in the control plane's region is chosen based on
-  /// available capacity.
+  /// which worker processing should occur, e.g. "us-west1-a".
+  ///
+  /// Mutually exclusive with worker_region. If neither worker_region nor
+  /// worker_zone is specified, a zone in the control plane's region is chosen
+  /// based on available capacity.
   core.String workerZone;
 
   Environment();
@@ -6107,8 +6201,10 @@ class ExecutionStageState {
 }
 
 /// Description of the composing transforms, names/ids, and input/outputs of a
-/// stage of execution. Some composing transforms and sources may have been
-/// generated by the Dataflow service during execution planning.
+/// stage of execution.
+///
+/// Some composing transforms and sources may have been generated by the
+/// Dataflow service during execution planning.
 class ExecutionStageSummary {
   /// Collections produced and consumed by component transforms of this stage.
   core.List<ComponentSource> componentSource;
@@ -6290,8 +6386,9 @@ class FlexTemplateRuntimeEnvironment {
   /// Additional experiment flags for the job.
   core.List<core.String> additionalExperiments;
 
-  /// Additional user labels to be specified for the job. Keys and values must
-  /// follow the restrictions specified in the [labeling
+  /// Additional user labels to be specified for the job.
+  ///
+  /// Keys and values must follow the restrictions specified in the [labeling
   /// restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
@@ -6307,20 +6404,23 @@ class FlexTemplateRuntimeEnvironment {
   /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
   core.String ipConfiguration;
 
-  /// Name for the Cloud KMS key for the job. Key format is:
-  /// projects//locations//keyRings//cryptoKeys/
+  /// Name for the Cloud KMS key for the job.
+  ///
+  /// Key format is: projects//locations//keyRings//cryptoKeys/
   core.String kmsKeyName;
 
-  /// The machine type to use for the job. Defaults to the value from the
-  /// template if not specified.
+  /// The machine type to use for the job.
+  ///
+  /// Defaults to the value from the template if not specified.
   core.String machineType;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
   core.int maxWorkers;
 
-  /// Network to which VMs will be assigned. If empty or unspecified, the
-  /// service will use the network "default".
+  /// Network to which VMs will be assigned.
+  ///
+  /// If empty or unspecified, the service will use the network "default".
   core.String network;
 
   /// The initial number of Google Compute Engine instances for the job.
@@ -6329,38 +6429,43 @@ class FlexTemplateRuntimeEnvironment {
   /// The email address of the service account to run the job as.
   core.String serviceAccountEmail;
 
-  /// Subnetwork to which VMs will be assigned, if desired. You can specify a
-  /// subnetwork using either a complete URL or an abbreviated path. Expected to
-  /// be of the form
+  /// Subnetwork to which VMs will be assigned, if desired.
+  ///
+  /// You can specify a subnetwork using either a complete URL or an abbreviated
+  /// path. Expected to be of the form
   /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK"
   /// or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located
   /// in a Shared VPC network, you must use the complete URL.
   core.String subnetwork;
 
-  /// The Cloud Storage path to use for temporary files. Must be a valid Cloud
-  /// Storage URL, beginning with `gs://`.
+  /// The Cloud Storage path to use for temporary files.
+  ///
+  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   core.String tempLocation;
 
   /// The Compute Engine region
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
-  /// with worker_zone. If neither worker_region nor worker_zone is specified,
-  /// default to the control plane's region.
+  /// which worker processing should occur, e.g. "us-west1".
+  ///
+  /// Mutually exclusive with worker_zone. If neither worker_region nor
+  /// worker_zone is specified, default to the control plane's region.
   core.String workerRegion;
 
   /// The Compute Engine zone
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-  /// which worker processing should occur, e.g. "us-west1-a". Mutually
-  /// exclusive with worker_region. If neither worker_region nor worker_zone is
-  /// specified, a zone in the control plane's region is chosen based on
-  /// available capacity. If both `worker_zone` and `zone` are set,
+  /// which worker processing should occur, e.g. "us-west1-a".
+  ///
+  /// Mutually exclusive with worker_region. If neither worker_region nor
+  /// worker_zone is specified, a zone in the control plane's region is chosen
+  /// based on available capacity. If both `worker_zone` and `zone` are set,
   /// `worker_zone` takes precedence.
   core.String workerZone;
 
   /// The Compute Engine [availability
   /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
-  /// for launching worker instances to run your pipeline. In the future,
-  /// worker_zone will take precedence.
+  /// for launching worker instances to run your pipeline.
+  ///
+  /// In the future, worker_zone will take precedence.
   core.String zone;
 
   FlexTemplateRuntimeEnvironment();
@@ -6602,8 +6707,9 @@ class GetTemplateResponse {
   /// Describes the runtime metadata with SDKInfo and available parameters.
   RuntimeMetadata runtimeMetadata;
 
-  /// The status of the get template request. Any problems with the request will
-  /// be indicated in the error_details.
+  /// The status of the get template request.
+  ///
+  /// Any problems with the request will be indicated in the error_details.
   Status status;
 
   /// Template Type.
@@ -6651,21 +6757,25 @@ class GetTemplateResponse {
   }
 }
 
-/// Histogram of value counts for a distribution. Buckets have an inclusive
-/// lower bound and exclusive upper bound and use "1,2,5 bucketing": The first
-/// bucket range is from [0,1) and all subsequent bucket boundaries are powers
-/// of ten multiplied by 1, 2, or 5. Thus, bucket boundaries are 0, 1, 2, 5, 10,
-/// 20, 50, 100, 200, 500, 1000, ... Negative values are not supported.
+/// Histogram of value counts for a distribution.
+///
+/// Buckets have an inclusive lower bound and exclusive upper bound and use
+/// "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
+/// bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
+/// boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ... Negative
+/// values are not supported.
 class Histogram {
-  /// Counts of values in each bucket. For efficiency, prefix and trailing
-  /// buckets with count = 0 are elided. Buckets can store the full range of
-  /// values of an unsigned long, with ULLONG_MAX falling into the 59th bucket
-  /// with range [1e19, 2e19).
+  /// Counts of values in each bucket.
+  ///
+  /// For efficiency, prefix and trailing buckets with count = 0 are elided.
+  /// Buckets can store the full range of values of an unsigned long, with
+  /// ULLONG_MAX falling into the 59th bucket with range [1e19, 2e19).
   core.List<core.String> bucketCounts;
 
-  /// Starting index of first stored bucket. The non-inclusive upper-bound of
-  /// the ith bucket is given by: pow(10,(i-first_bucket_offset)/3) *
-  /// (1,2,5)[(i-first_bucket_offset)%3]
+  /// Starting index of first stored bucket.
+  ///
+  /// The non-inclusive upper-bound of the ith bucket is given by:
+  /// pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]
   core.int firstBucketOffset;
 
   Histogram();
@@ -6698,8 +6808,9 @@ class HotKeyDetection {
   /// The age of the hot key measured from when it was first detected.
   core.String hotKeyAge;
 
-  /// System-defined name of the step containing this hot key. Unique across the
-  /// workflow.
+  /// System-defined name of the step containing this hot key.
+  ///
+  /// Unique across the workflow.
   core.String systemName;
 
   /// User-provided name of the step that contains this hot key.
@@ -6741,8 +6852,10 @@ class InstructionInput {
   core.int outputNum;
 
   /// The index (origin zero) of the parallel instruction that produces the
-  /// output to be consumed by this input. This index is relative to the list of
-  /// instructions in this input's instruction's containing MapTask.
+  /// output to be consumed by this input.
+  ///
+  /// This index is relative to the list of instructions in this input's
+  /// instruction's containing MapTask.
   core.int producerInstructionIndex;
 
   InstructionInput();
@@ -6788,10 +6901,13 @@ class InstructionOutput {
   core.bool onlyCountValueBytes;
 
   /// System-defined name for this output in the original workflow graph.
+  ///
   /// Outputs that do not contribute to an original instruction do not set this.
   core.String originalName;
 
-  /// System-defined name of this output. Unique across the workflow.
+  /// System-defined name of this output.
+  ///
+  /// Unique across the workflow.
   core.String systemName;
 
   InstructionOutput();
@@ -6848,7 +6964,9 @@ class InstructionOutput {
 
 /// A metric value representing temporal values of a variable.
 class IntegerGauge {
-  /// The time at which this value was measured. Measured as msecs from epoch.
+  /// The time at which this value was measured.
+  ///
+  /// Measured as msecs from epoch.
   core.String timestamp;
 
   /// The value of the variable represented by this gauge.
@@ -6939,27 +7057,32 @@ class IntegerMean {
 /// Defines a job to be run by the Cloud Dataflow service.
 class Job {
   /// The client's unique identifier of the job, re-used across retried
-  /// attempts. If this field is set, the service will ensure its uniqueness.
-  /// The request to create a job will fail if the service has knowledge of a
-  /// previously submitted job with the same client's ID and job name. The
-  /// caller may use this field to ensure idempotence of job creation across
-  /// retried attempts to create a job. By default, the field is empty and, in
-  /// that case, the service ignores it.
+  /// attempts.
+  ///
+  /// If this field is set, the service will ensure its uniqueness. The request
+  /// to create a job will fail if the service has knowledge of a previously
+  /// submitted job with the same client's ID and job name. The caller may use
+  /// this field to ensure idempotence of job creation across retried attempts
+  /// to create a job. By default, the field is empty and, in that case, the
+  /// service ignores it.
   core.String clientRequestId;
 
-  /// The timestamp when the job was initially created. Immutable and set by the
-  /// Cloud Dataflow service.
+  /// The timestamp when the job was initially created.
+  ///
+  /// Immutable and set by the Cloud Dataflow service.
   core.String createTime;
 
   /// If this is specified, the job's initial state is populated from the given
   /// snapshot.
   core.String createdFromSnapshotId;
 
-  /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED`
-  /// state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state
-  /// may asynchronously enter a terminal state. After a job has reached a
-  /// terminal state, no further state updates may be made. This field may be
-  /// mutated by the Cloud Dataflow service; callers cannot mutate it.
+  /// The current state of the job.
+  ///
+  /// Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise
+  /// specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter
+  /// a terminal state. After a job has reached a terminal state, no further
+  /// state updates may be made. This field may be mutated by the Cloud Dataflow
+  /// service; callers cannot mutate it.
   /// Possible string values are:
   /// - "JOB_STATE_UNKNOWN" : The job's run state isn't specified.
   /// - "JOB_STATE_STOPPED" : `JOB_STATE_STOPPED` indicates that the job has not
@@ -7015,21 +7138,25 @@ class Job {
   /// Deprecated.
   JobExecutionInfo executionInfo;
 
-  /// The unique ID of this job. This field is set by the Cloud Dataflow service
-  /// when the Job is created, and is immutable for the life of the job.
+  /// The unique ID of this job.
+  ///
+  /// This field is set by the Cloud Dataflow service when the Job is created,
+  /// and is immutable for the life of the job.
   core.String id;
 
   /// This field is populated by the Dataflow service to support filtering jobs
-  /// by the metadata values provided here. Populated for ListJobs and all
-  /// GetJob views SUMMARY and higher.
+  /// by the metadata values provided here.
+  ///
+  /// Populated for ListJobs and all GetJob views SUMMARY and higher.
   JobMetadata jobMetadata;
 
-  /// User-defined labels for this job. The labels map can contain no more than
-  /// 64 entries. Entries of the labels map are UTF8 strings that comply with
-  /// the following restrictions: * Keys must conform to regexp:
-  /// \p{Ll}\p{Lo}{0,62} * Values must conform to regexp:
-  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally
-  /// constrained to be <= 128 bytes in size.
+  /// User-defined labels for this job.
+  ///
+  /// The labels map can contain no more than 64 entries. Entries of the labels
+  /// map are UTF8 strings that comply with the following restrictions: * Keys
+  /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
+  /// regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are
+  /// additionally constrained to be <= 128 bytes in size.
   core.Map<core.String, core.String> labels;
 
   /// The [regional endpoint]
@@ -7037,16 +7164,18 @@ class Job {
   /// contains this job.
   core.String location;
 
-  /// The user-specified Cloud Dataflow job name. Only one Job with a given name
-  /// may exist in a project at any given time. If a caller attempts to create a
-  /// Job with the same name as an already-existing Job, the attempt returns the
-  /// existing Job. The name must match the regular expression
-  /// `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+  /// The user-specified Cloud Dataflow job name.
+  ///
+  /// Only one Job with a given name may exist in a project at any given time.
+  /// If a caller attempts to create a Job with the same name as an
+  /// already-existing Job, the attempt returns the existing Job. The name must
+  /// match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
   core.String name;
 
-  /// Preliminary field: The format of this data may change at any time. A
-  /// description of the user pipeline and stages through which it is executed.
-  /// Created by Cloud Dataflow service. Only retrieved with
+  /// Preliminary field: The format of this data may change at any time.
+  ///
+  /// A description of the user pipeline and stages through which it is
+  /// executed. Created by Cloud Dataflow service. Only retrieved with
   /// JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
   PipelineDescription pipelineDescription;
 
@@ -7054,20 +7183,24 @@ class Job {
   core.String projectId;
 
   /// If this job is an update of an existing job, this field is the job ID of
-  /// the job it replaced. When sending a `CreateJobRequest`, you can update a
-  /// job by specifying it here. The job named here is stopped, and its
-  /// intermediate state is transferred to this job.
+  /// the job it replaced.
+  ///
+  /// When sending a `CreateJobRequest`, you can update a job by specifying it
+  /// here. The job named here is stopped, and its intermediate state is
+  /// transferred to this job.
   core.String replaceJobId;
 
   /// If another job is an update of this job (and thus, this job is in
   /// `JOB_STATE_UPDATED`), this field contains the ID of that job.
   core.String replacedByJobId;
 
-  /// The job's requested state. `UpdateJob` may be used to switch between the
-  /// `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting
-  /// requested_state. `UpdateJob` may also be used to directly set a job's
-  /// requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably
-  /// terminating the job if it has not already reached a terminal state.
+  /// The job's requested state.
+  ///
+  /// `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and
+  /// `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may
+  /// also be used to directly set a job's requested state to
+  /// `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job
+  /// if it has not already reached a terminal state.
   /// Possible string values are:
   /// - "JOB_STATE_UNKNOWN" : The job's run state isn't specified.
   /// - "JOB_STATE_STOPPED" : `JOB_STATE_STOPPED` indicates that the job has not
@@ -7119,24 +7252,30 @@ class Job {
   core.List<ExecutionStageState> stageStates;
 
   /// The timestamp when the job was started (transitioned to
-  /// JOB_STATE_PENDING). Flexible resource scheduling jobs are started with
-  /// some delay after job creation, so start_time is unset before start and is
-  /// updated when the job is started by the Cloud Dataflow service. For other
-  /// jobs, start_time always equals to create_time and is immutable and set by
-  /// the Cloud Dataflow service.
+  /// JOB_STATE_PENDING).
+  ///
+  /// Flexible resource scheduling jobs are started with some delay after job
+  /// creation, so start_time is unset before start and is updated when the job
+  /// is started by the Cloud Dataflow service. For other jobs, start_time
+  /// always equals to create_time and is immutable and set by the Cloud
+  /// Dataflow service.
   core.String startTime;
 
-  /// Exactly one of step or steps_location should be specified. The top-level
-  /// steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
+  /// Exactly one of step or steps_location should be specified.
+  ///
+  /// The top-level steps that constitute the entire job. Only retrieved with
+  /// JOB_VIEW_ALL.
   core.List<Step> steps;
 
   /// The GCS location where the steps are stored.
   core.String stepsLocation;
 
   /// A set of files the system should be aware of that are used for temporary
-  /// storage. These temporary files will be removed on job completion. No
-  /// duplicates are allowed. No file patterns are supported. The supported
-  /// files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
+  /// storage.
+  ///
+  /// These temporary files will be removed on job completion. No duplicates are
+  /// allowed. No file patterns are supported. The supported files are: Google
+  /// Cloud Storage: storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
   core.List<core.String> tempFiles;
 
@@ -7336,9 +7475,10 @@ class Job {
 
 /// Information about the execution of a job.
 class JobExecutionDetails {
-  /// If present, this response does not contain all requested tasks. To obtain
-  /// the next page of results, repeat the request with page_token set to this
-  /// value.
+  /// If present, this response does not contain all requested tasks.
+  ///
+  /// To obtain the next page of results, repeat the request with page_token set
+  /// to this value.
   core.String nextPageToken;
 
   /// The stages of the job execution.
@@ -7403,8 +7543,10 @@ class JobExecutionInfo {
 /// Contains information about how a particular google.dataflow.v1beta3.Step
 /// will be executed.
 class JobExecutionStageInfo {
-  /// The steps associated with the execution stage. Note that stages may have
-  /// several steps, and that a given step might be run by more than one stage.
+  /// The steps associated with the execution stage.
+  ///
+  /// Note that stages may have several steps, and that a given step might be
+  /// run by more than one stage.
   core.List<core.String> stepName;
 
   JobExecutionStageInfo();
@@ -7499,8 +7641,9 @@ class JobMessage {
   }
 }
 
-/// Metadata available primarily for filtering jobs. Will be included in the
-/// ListJob response and Job SUMMARY view.
+/// Metadata available primarily for filtering jobs.
+///
+/// Will be included in the ListJob response and Job SUMMARY view.
 class JobMetadata {
   /// Identification of a BigTable source used in the Dataflow job.
   core.List<BigTableIODetails> bigTableDetails;
@@ -7602,10 +7745,12 @@ class JobMetadata {
 }
 
 /// JobMetrics contains a collection of metrics describing the detailed progress
-/// of a Dataflow job. Metrics correspond to user-defined and system-defined
-/// metrics in the job. This resource captures only the most recent values of
-/// each metric; time-series data can be queried for them (under the same metric
-/// names) from Cloud Monitoring.
+/// of a Dataflow job.
+///
+/// Metrics correspond to user-defined and system-defined metrics in the job.
+/// This resource captures only the most recent values of each metric;
+/// time-series data can be queried for them (under the same metric names) from
+/// Cloud Monitoring.
 class JobMetrics {
   /// Timestamp as of which metric values are current.
   core.String metricTime;
@@ -7640,12 +7785,15 @@ class JobMetrics {
 }
 
 /// Data disk assignment information for a specific key-range of a sharded
-/// computation. Currently we only support UTF-8 character splits to simplify
-/// encoding into JSON.
+/// computation.
+///
+/// Currently we only support UTF-8 character splits to simplify encoding into
+/// JSON.
 class KeyRangeDataDiskAssignment {
-  /// The name of the data disk where data for this range is stored. This name
-  /// is local to the Google Cloud Platform project and uniquely identifies the
-  /// disk within that project, for example
+  /// The name of the data disk where data for this range is stored.
+  ///
+  /// This name is local to the Google Cloud Platform project and uniquely
+  /// identifies the disk within that project, for example
   /// "myproject-1014-104817-4c2-harness-0-disk-1".
   core.String dataDisk;
 
@@ -7685,12 +7833,14 @@ class KeyRangeDataDiskAssignment {
 }
 
 /// Location information for a specific key-range of a sharded computation.
+///
 /// Currently we only support UTF-8 character splits to simplify encoding into
 /// JSON.
 class KeyRangeLocation {
-  /// The name of the data disk where data for this range is stored. This name
-  /// is local to the Google Cloud Platform project and uniquely identifies the
-  /// disk within that project, for example
+  /// The name of the data disk where data for this range is stored.
+  ///
+  /// This name is local to the Google Cloud Platform project and uniquely
+  /// identifies the disk within that project, for example
   /// "myproject-1014-104817-4c2-harness-0-disk-1".
   core.String dataDisk;
 
@@ -7698,8 +7848,10 @@ class KeyRangeLocation {
   /// computation cross-worker message delivery.
   core.String deliveryEndpoint;
 
-  /// DEPRECATED. The location of the persistent state for this range, as a
-  /// persistent directory in the worker local filesystem.
+  /// The location of the persistent state for this range, as a persistent
+  /// directory in the worker local filesystem.
+  ///
+  /// Deprecated.
   core.String deprecatedPersistentDirectory;
 
   /// The end (exclusive) of the key range.
@@ -7761,15 +7913,20 @@ class LaunchFlexTemplateParameter {
   /// The runtime environment for the FlexTemplate job
   FlexTemplateRuntimeEnvironment environment;
 
-  /// Required. The job name to use for the created job.
+  /// The job name to use for the created job.
+  ///
+  /// Required.
   core.String jobName;
 
-  /// Launch options for this flex template job. This is a common set of options
-  /// across languages and templates. This should not be used to pass job
-  /// parameters.
+  /// Launch options for this flex template job.
+  ///
+  /// This is a common set of options across languages and templates. This
+  /// should not be used to pass job parameters.
   core.Map<core.String, core.String> launchOptions;
 
-  /// The parameters for FlexTemplate. Ex. {"num_workers":"5"}
+  /// The parameters for FlexTemplate.
+  ///
+  /// Ex. {"num_workers":"5"}
   core.Map<core.String, core.String> parameters;
 
   LaunchFlexTemplateParameter();
@@ -7837,11 +7994,14 @@ class LaunchFlexTemplateParameter {
 
 /// A request to launch a Cloud Dataflow job from a FlexTemplate.
 class LaunchFlexTemplateRequest {
-  /// Required. Parameter to launch a job form Flex Template.
+  /// Parameter to launch a job form Flex Template.
+  ///
+  /// Required.
   LaunchFlexTemplateParameter launchParameter;
 
-  /// If true, the request is validated but not actually executed. Defaults to
-  /// false.
+  /// If true, the request is validated but not actually executed.
+  ///
+  /// Defaults to false.
   core.bool validateOnly;
 
   LaunchFlexTemplateRequest();
@@ -7896,15 +8056,18 @@ class LaunchTemplateParameters {
   /// The runtime environment for the job.
   RuntimeEnvironment environment;
 
-  /// Required. The job name to use for the created job.
+  /// The job name to use for the created job.
+  ///
+  /// Required.
   core.String jobName;
 
   /// The runtime parameters to pass to the job.
   core.Map<core.String, core.String> parameters;
 
-  /// Only applicable when updating a pipeline. Map of transform name prefixes
-  /// of the job to be replaced to the corresponding name prefixes of the new
-  /// job.
+  /// Only applicable when updating a pipeline.
+  ///
+  /// Map of transform name prefixes of the job to be replaced to the
+  /// corresponding name prefixes of the new job.
   core.Map<core.String, core.String> transformNameMapping;
 
   /// If set, replace the existing pipeline with the name specified by jobName
@@ -8012,8 +8175,9 @@ class LeaseWorkItemRequest {
   /// Filter for WorkItem type.
   core.List<core.String> workItemTypes;
 
-  /// Worker capabilities. WorkItems might be limited to workers with specific
-  /// capabilities.
+  /// Worker capabilities.
+  ///
+  /// WorkItems might be limited to workers with specific capabilities.
   core.List<core.String> workerCapabilities;
 
   /// Identifies the worker leasing work -- typically the ID of the virtual
@@ -8176,11 +8340,12 @@ class ListJobMessagesResponse {
   }
 }
 
-/// Response to a request to list Cloud Dataflow jobs in a project. This might
-/// be a partial response, depending on the page size in the ListJobsRequest.
-/// However, if the project does not have any jobs, an instance of
-/// ListJobsResponse is not returned and the requests's response body is empty
-/// {}.
+/// Response to a request to list Cloud Dataflow jobs in a project.
+///
+/// This might be a partial response, depending on the page size in the
+/// ListJobsRequest. However, if the project does not have any jobs, an instance
+/// of ListJobsResponse is not returned and the requests's response body is
+/// empty {}.
 class ListJobsResponse {
   /// Zero or more messages describing the [regional endpoints]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
@@ -8256,8 +8421,9 @@ class ListSnapshotsResponse {
 
 /// Respond a list of TemplateVersions.
 class ListTemplateVersionsResponse {
-  /// A token that can be sent as `page_token` to retrieve the next page. If
-  /// this field is omitted, there are no subsequent pages.
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
   core.String nextPageToken;
 
   /// A list of TemplateVersions.
@@ -8292,21 +8458,27 @@ class ListTemplateVersionsResponse {
 
 /// MapTask consists of an ordered set of instructions, each of which describes
 /// one particular low-level operation for the worker to perform in order to
-/// accomplish the MapTask's WorkItem. Each instruction must appear in the list
-/// before any instructions which depends on its output.
+/// accomplish the MapTask's WorkItem.
+///
+/// Each instruction must appear in the list before any instructions which
+/// depends on its output.
 class MapTask {
-  /// Counter prefix that can be used to prefix counters. Not currently used in
-  /// Dataflow.
+  /// Counter prefix that can be used to prefix counters.
+  ///
+  /// Not currently used in Dataflow.
   core.String counterPrefix;
 
   /// The instructions in the MapTask.
   core.List<ParallelInstruction> instructions;
 
-  /// System-defined name of the stage containing this MapTask. Unique across
-  /// the workflow.
+  /// System-defined name of the stage containing this MapTask.
+  ///
+  /// Unique across the workflow.
   core.String stageName;
 
-  /// System-defined name of this MapTask. Unique across the workflow.
+  /// System-defined name of this MapTask.
+  ///
+  /// Unique across the workflow.
   core.String systemName;
 
   MapTask();
@@ -8402,6 +8574,7 @@ class MemInfo {
 /// ReportWorkItemStatusRequest
 class MetricShortId {
   /// The index of the corresponding metric in the ReportWorkItemStatusRequest.
+  ///
   /// Required.
   core.int metricIndex;
 
@@ -8434,17 +8607,20 @@ class MetricShortId {
 /// Identifies a metric, by describing the source which generated the metric.
 class MetricStructuredName {
   /// Zero or more labeled fields which identify the part of the job this metric
-  /// is associated with, such as the name of a step or collection. For example,
-  /// built-in counters associated with steps will have context['step'] = .
-  /// Counters associated with PCollections in the SDK will have
-  /// context['pcollection'] = .
+  /// is associated with, such as the name of a step or collection.
+  ///
+  /// For example, built-in counters associated with steps will have
+  /// context['step'] = . Counters associated with PCollections in the SDK will
+  /// have context['pcollection'] = .
   core.Map<core.String, core.String> context;
 
   /// Worker-defined metric name.
   core.String name;
 
-  /// Origin (namespace) of metric name. May be blank for user-define metrics;
-  /// will be "dataflow" for metrics defined by the Dataflow service or SDK.
+  /// Origin (namespace) of metric name.
+  ///
+  /// May be blank for user-define metrics; will be "dataflow" for metrics
+  /// defined by the Dataflow service or SDK.
   core.String origin;
 
   MetricStructuredName();
@@ -8485,9 +8661,10 @@ class MetricStructuredName {
 /// Describes the state of a metric.
 class MetricUpdate {
   /// True if this metric is reported as the total cumulative aggregate value
-  /// accumulated since the worker started working on this WorkItem. By default
-  /// this is false, indicating that this metric is reported as a delta that is
-  /// not associated with any WorkItem.
+  /// accumulated since the worker started working on this WorkItem.
+  ///
+  /// By default this is false, indicating that this metric is reported as a
+  /// delta that is not associated with any WorkItem.
   core.bool cumulative;
 
   /// A struct value describing properties of a distribution of numeric values.
@@ -8496,9 +8673,10 @@ class MetricUpdate {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object distribution;
 
-  /// A struct value describing properties of a Gauge. Metrics of gauge type
-  /// show the value of a metric across time, and is aggregated based on the
-  /// newest value.
+  /// A struct value describing properties of a Gauge.
+  ///
+  /// Metrics of gauge type show the value of a metric across time, and is
+  /// aggregated based on the newest value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -8510,24 +8688,28 @@ class MetricUpdate {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object internal;
 
-  /// Metric aggregation kind. The possible metric aggregation kinds are "Sum",
-  /// "Max", "Min", "Mean", "Set", "And", "Or", and "Distribution". The
-  /// specified aggregation kind is case-insensitive. If omitted, this is not an
-  /// aggregated value but instead a single metric sample value.
+  /// Metric aggregation kind.
+  ///
+  /// The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean",
+  /// "Set", "And", "Or", and "Distribution". The specified aggregation kind is
+  /// case-insensitive. If omitted, this is not an aggregated value but instead
+  /// a single metric sample value.
   core.String kind;
 
-  /// Worker-computed aggregate value for the "Mean" aggregation kind. This
-  /// holds the count of the aggregated values and is used in combination with
-  /// mean_sum above to obtain the actual mean aggregate value. The only
+  /// Worker-computed aggregate value for the "Mean" aggregation kind.
+  ///
+  /// This holds the count of the aggregated values and is used in combination
+  /// with mean_sum above to obtain the actual mean aggregate value. The only
   /// possible value type is Long.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object meanCount;
 
-  /// Worker-computed aggregate value for the "Mean" aggregation kind. This
-  /// holds the sum of the aggregated values and is used in combination with
-  /// mean_count below to obtain the actual mean aggregate value. The only
+  /// Worker-computed aggregate value for the "Mean" aggregation kind.
+  ///
+  /// This holds the sum of the aggregated values and is used in combination
+  /// with mean_count below to obtain the actual mean aggregate value. The only
   /// possible value types are Long and Double.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -8538,24 +8720,28 @@ class MetricUpdate {
   MetricStructuredName name;
 
   /// Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min",
-  /// "And", and "Or". The possible value types are Long, Double, and Boolean.
+  /// "And", and "Or".
+  ///
+  /// The possible value types are Long, Double, and Boolean.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object scalar;
 
-  /// Worker-computed aggregate value for the "Set" aggregation kind. The only
-  /// possible value type is a list of Values whose type can be Long, Double, or
-  /// String, according to the metric's type. All Values in the list must be of
-  /// the same type.
+  /// Worker-computed aggregate value for the "Set" aggregation kind.
+  ///
+  /// The only possible value type is a list of Values whose type can be Long,
+  /// Double, or String, according to the metric's type. All Values in the list
+  /// must be of the same type.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object set;
 
-  /// Timestamp associated with the metric value. Optional when workers are
-  /// reporting work progress; it will be filled in responses from the metrics
-  /// API.
+  /// Timestamp associated with the metric value.
+  ///
+  /// Optional when workers are reporting work progress; it will be filled in
+  /// responses from the metrics API.
   core.String updateTime;
 
   MetricUpdate();
@@ -8710,10 +8896,11 @@ class ModifyTemplateVersionLabelResponse {
   }
 }
 
-/// Add a tag to the current TemplateVersion. If tag exist in another
-/// TemplateVersion in the Template, remove the tag before add it to the current
-/// TemplateVersion. If remove_only set, remove the tag from the current
-/// TemplateVersion.
+/// Add a tag to the current TemplateVersion.
+///
+/// If tag exist in another TemplateVersion in the Template, remove the tag
+/// before add it to the current TemplateVersion. If remove_only set, remove the
+/// tag from the current TemplateVersion.
 class ModifyTemplateVersionTagRequest {
   /// The flag that indicates if the request is only for remove tag from
   /// TemplateVersion.
@@ -8771,8 +8958,10 @@ class ModifyTemplateVersionTagResponse {
 
 /// Describes mounted data disk.
 class MountedDataDisk {
-  /// The name of the data disk. This name is local to the Google Cloud Platform
-  /// project and uniquely identifies the disk within that project, for example
+  /// The name of the data disk.
+  ///
+  /// This name is local to the Google Cloud Platform project and uniquely
+  /// identifies the disk within that project, for example
   /// "myproject-1014-104817-4c2-harness-0-disk-1".
   core.String dataDisk;
 
@@ -8862,15 +9051,18 @@ class NameAndKind {
 }
 
 /// The packages that must be installed in order for a worker to run the steps
-/// of the Cloud Dataflow job that will be assigned to its worker pool. This is
-/// the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto
-/// the workers. For example, the Cloud Dataflow Java SDK might use this to
-/// install jars containing the user's code and all of the various dependencies
-/// (libraries, data files, etc.) required in order for that code to run.
+/// of the Cloud Dataflow job that will be assigned to its worker pool.
+///
+/// This is the mechanism by which the Cloud Dataflow SDK causes code to be
+/// loaded onto the workers. For example, the Cloud Dataflow Java SDK might use
+/// this to install jars containing the user's code and all of the various
+/// dependencies (libraries, data files, etc.) required in order for that code
+/// to run.
 class Package {
-  /// The resource to read the package from. The supported resource type is:
-  /// Google Cloud Storage: storage.googleapis.com/{bucket}
-  /// bucket.storage.googleapis.com/
+  /// The resource to read the package from.
+  ///
+  /// The supported resource type is: Google Cloud Storage:
+  /// storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
   core.String location;
 
   /// The name of the package.
@@ -8899,8 +9091,10 @@ class Package {
   }
 }
 
-/// An instruction that does a ParDo operation. Takes one main input and zero or
-/// more side inputs, and produces zero or more outputs. Runs user code.
+/// An instruction that does a ParDo operation.
+///
+/// Takes one main input and zero or more side inputs, and produces zero or more
+/// outputs. Runs user code.
 class ParDoInstruction {
   /// The input.
   InstructionInput input;
@@ -8998,7 +9192,9 @@ class ParallelInstruction {
   /// Additional information for Read instructions.
   ReadInstruction read;
 
-  /// System-defined name of this operation. Unique across the workflow.
+  /// System-defined name of this operation.
+  ///
+  /// Unique across the workflow.
   core.String systemName;
 
   /// Additional information for Write instructions.
@@ -9113,19 +9309,33 @@ class Parameter {
 
 /// Metadata for a specific parameter.
 class ParameterMetadata {
-  /// Required. The help text to display for the parameter.
+  /// The help text to display for the parameter.
+  ///
+  /// Required.
   core.String helpText;
 
-  /// Optional. Whether the parameter is optional. Defaults to false.
+  /// Whether the parameter is optional.
+  ///
+  /// Defaults to false.
+  ///
+  /// Optional.
   core.bool isOptional;
 
-  /// Required. The label to display for the parameter.
+  /// The label to display for the parameter.
+  ///
+  /// Required.
   core.String label;
 
-  /// Required. The name of the parameter.
+  /// The name of the parameter.
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. The type of the parameter. Used for selecting input picker.
+  /// The type of the parameter.
+  ///
+  /// Used for selecting input picker.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DEFAULT" : Default input type.
   /// - "TEXT" : The parameter specifies generic text input.
@@ -9140,7 +9350,9 @@ class ParameterMetadata {
   /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
   core.String paramType;
 
-  /// Optional. Regexes that the parameter must match.
+  /// Regexes that the parameter must match.
+  ///
+  /// Optional.
   core.List<core.String> regexes;
 
   ParameterMetadata();
@@ -9192,7 +9404,9 @@ class ParameterMetadata {
   }
 }
 
-/// An instruction that does a partial group-by-key. One input and one output.
+/// An instruction that does a partial group-by-key.
+///
+/// One input and one output.
 class PartialGroupByKeyInstruction {
   /// Describes the input to the partial group-by-key instruction.
   InstructionInput input;
@@ -9289,8 +9503,10 @@ class PartialGroupByKeyInstruction {
 }
 
 /// A descriptive representation of submitted pipeline as well as the executed
-/// form. This data is provided by the Dataflow service for ease of visualizing
-/// the pipeline and interpreting Dataflow provided metrics.
+/// form.
+///
+/// This data is provided by the Dataflow service for ease of visualizing the
+/// pipeline and interpreting Dataflow provided metrics.
 class PipelineDescription {
   /// Pipeline level display data.
   core.List<DisplayData> displayData;
@@ -9375,9 +9591,10 @@ class Point {
   }
 }
 
-/// Position defines a position within a collection of data. The value can be
-/// either the end position, a key (used with ordered collections), a byte
-/// offset, or a record index.
+/// Position defines a position within a collection of data.
+///
+/// The value can be either the end position, a key (used with ordered
+/// collections), a byte offset, or a record index.
 class Position {
   /// Position is a byte offset.
   core.String byteOffset;
@@ -9385,8 +9602,9 @@ class Position {
   /// CloudPosition is a concat position.
   ConcatPosition concatPosition;
 
-  /// Position is past all other positions. Also useful for the end position of
-  /// an unbounded range.
+  /// Position is past all other positions.
+  ///
+  /// Also useful for the end position of an unbounded range.
   core.bool end;
 
   /// Position is a string key, ordered lexicographically.
@@ -9452,7 +9670,9 @@ class ProgressTimeseries {
   /// The current progress of the component, in the range [0,1].
   core.double currentProgress;
 
-  /// History of progress for the component. Points are sorted by time.
+  /// History of progress for the component.
+  ///
+  /// Points are sorted by time.
   core.List<Point> dataPoints;
 
   ProgressTimeseries();
@@ -9518,8 +9738,9 @@ class PubsubLocation {
   /// Indicates whether the pipeline allows late-arriving data.
   core.bool dropLateData;
 
-  /// If set, contains a pubsub label from which to extract record ids. If left
-  /// empty, record deduplication will be strictly best effort.
+  /// If set, contains a pubsub label from which to extract record ids.
+  ///
+  /// If left empty, record deduplication will be strictly best effort.
   core.String idLabel;
 
   /// A pubsub subscription, in the form of
@@ -9527,6 +9748,7 @@ class PubsubLocation {
   core.String subscription;
 
   /// If set, contains a pubsub label from which to extract record timestamps.
+  ///
   /// If left empty, record timestamps will be generated upon arrival.
   core.String timestampLabel;
 
@@ -9657,7 +9879,9 @@ class QueryInfo {
   }
 }
 
-/// An instruction that reads records. Takes no inputs, produces one output.
+/// An instruction that reads records.
+///
+/// Takes no inputs, produces one output.
 class ReadInstruction {
   /// The source to read from.
   Source source;
@@ -9701,10 +9925,11 @@ class ReportWorkItemStatusRequest {
   /// corresponds to the order of WorkItemStatus messages here.
   core.List<WorkItemStatus> workItemStatuses;
 
-  /// The ID of the worker reporting the WorkItem status. If this does not match
-  /// the ID of the worker which the Dataflow service believes currently has the
-  /// lease on the WorkItem, the report will be dropped (with an error
-  /// response).
+  /// The ID of the worker reporting the WorkItem status.
+  ///
+  /// If this does not match the ID of the worker which the Dataflow service
+  /// believes currently has the lease on the WorkItem, the report will be
+  /// dropped (with an error response).
   core.String workerId;
 
   ReportWorkItemStatusRequest();
@@ -9810,11 +10035,12 @@ class ReportWorkItemStatusResponse {
 /// Represents the level of parallelism in a WorkItem's input, reported by the
 /// worker.
 class ReportedParallelism {
-  /// Specifies whether the parallelism is infinite. If true, "value" is
-  /// ignored. Infinite parallelism means the service will assume that the work
-  /// item can always be split into more non-empty work items by dynamic
-  /// splitting. This is a work-around for lack of support for infinity by the
-  /// current JSON-based Java RPC stack.
+  /// Specifies whether the parallelism is infinite.
+  ///
+  /// If true, "value" is ignored. Infinite parallelism means the service will
+  /// assume that the work item can always be split into more non-empty work
+  /// items by dynamic splitting. This is a work-around for lack of support for
+  /// infinity by the current JSON-based Java RPC stack.
   core.bool isInfinite;
 
   /// Specifies the level of parallelism in case it is finite.
@@ -9843,11 +10069,14 @@ class ReportedParallelism {
   }
 }
 
-/// Worker metrics exported from workers. This contains resource utilization
-/// metrics accumulated from a variety of sources. For more information, see
-/// go/df-resource-signals.
+/// Worker metrics exported from workers.
+///
+/// This contains resource utilization metrics accumulated from a variety of
+/// sources. For more information, see go/df-resource-signals.
 class ResourceUtilizationReport {
-  /// Per container information. Key: container name.
+  /// Per container information.
+  ///
+  /// Key: container name.
   core.Map<core.String, ResourceUtilizationReport> containers;
 
   /// CPU utilization samples.
@@ -9918,15 +10147,17 @@ class RuntimeEnvironment {
   /// Additional experiment flags for the job.
   core.List<core.String> additionalExperiments;
 
-  /// Additional user labels to be specified for the job. Keys and values should
-  /// follow the restrictions specified in the [labeling
+  /// Additional user labels to be specified for the job.
+  ///
+  /// Keys and values should follow the restrictions specified in the [labeling
   /// restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
   core.Map<core.String, core.String> additionalUserLabels;
 
-  /// Whether to bypass the safety checks for the job's temporary directory. Use
-  /// with caution.
+  /// Whether to bypass the safety checks for the job's temporary directory.
+  ///
+  /// Use with caution.
   core.bool bypassTempDirValidation;
 
   /// Whether to enable Streaming Engine for the job.
@@ -9939,20 +10170,23 @@ class RuntimeEnvironment {
   /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
   core.String ipConfiguration;
 
-  /// Name for the Cloud KMS key for the job. Key format is:
-  /// projects//locations//keyRings//cryptoKeys/
+  /// Name for the Cloud KMS key for the job.
+  ///
+  /// Key format is: projects//locations//keyRings//cryptoKeys/
   core.String kmsKeyName;
 
-  /// The machine type to use for the job. Defaults to the value from the
-  /// template if not specified.
+  /// The machine type to use for the job.
+  ///
+  /// Defaults to the value from the template if not specified.
   core.String machineType;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
   core.int maxWorkers;
 
-  /// Network to which VMs will be assigned. If empty or unspecified, the
-  /// service will use the network "default".
+  /// Network to which VMs will be assigned.
+  ///
+  /// If empty or unspecified, the service will use the network "default".
   core.String network;
 
   /// The initial number of Google Compute Engine instnaces for the job.
@@ -9961,38 +10195,43 @@ class RuntimeEnvironment {
   /// The email address of the service account to run the job as.
   core.String serviceAccountEmail;
 
-  /// Subnetwork to which VMs will be assigned, if desired. You can specify a
-  /// subnetwork using either a complete URL or an abbreviated path. Expected to
-  /// be of the form
+  /// Subnetwork to which VMs will be assigned, if desired.
+  ///
+  /// You can specify a subnetwork using either a complete URL or an abbreviated
+  /// path. Expected to be of the form
   /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK"
   /// or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located
   /// in a Shared VPC network, you must use the complete URL.
   core.String subnetwork;
 
-  /// The Cloud Storage path to use for temporary files. Must be a valid Cloud
-  /// Storage URL, beginning with `gs://`.
+  /// The Cloud Storage path to use for temporary files.
+  ///
+  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   core.String tempLocation;
 
   /// The Compute Engine region
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
-  /// with worker_zone. If neither worker_region nor worker_zone is specified,
-  /// default to the control plane's region.
+  /// which worker processing should occur, e.g. "us-west1".
+  ///
+  /// Mutually exclusive with worker_zone. If neither worker_region nor
+  /// worker_zone is specified, default to the control plane's region.
   core.String workerRegion;
 
   /// The Compute Engine zone
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-  /// which worker processing should occur, e.g. "us-west1-a". Mutually
-  /// exclusive with worker_region. If neither worker_region nor worker_zone is
-  /// specified, a zone in the control plane's region is chosen based on
-  /// available capacity. If both `worker_zone` and `zone` are set,
+  /// which worker processing should occur, e.g. "us-west1-a".
+  ///
+  /// Mutually exclusive with worker_region. If neither worker_region nor
+  /// worker_zone is specified, a zone in the control plane's region is chosen
+  /// based on available capacity. If both `worker_zone` and `zone` are set,
   /// `worker_zone` takes precedence.
   core.String workerZone;
 
   /// The Compute Engine [availability
   /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
-  /// for launching worker instances to run your pipeline. In the future,
-  /// worker_zone will take precedence.
+  /// for launching worker instances to run your pipeline.
+  ///
+  /// In the future, worker_zone will take precedence.
   core.String zone;
 
   RuntimeEnvironment();
@@ -10148,14 +10387,18 @@ class RuntimeMetadata {
 
 /// SDK Information.
 class SDKInfo {
-  /// Required. The SDK Language.
+  /// The SDK Language.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "UNKNOWN" : UNKNOWN Language.
   /// - "JAVA" : Java.
   /// - "PYTHON" : Python.
   core.String language;
 
-  /// Optional. The SDK version.
+  /// The SDK version.
+  ///
+  /// Optional.
   core.String version;
 
   SDKInfo();
@@ -10187,10 +10430,11 @@ class SdkHarnessContainerImage {
   core.String containerImage;
 
   /// If true, recommends the Dataflow service to use only one core per SDK
-  /// container instance with this image. If false (or unset) recommends using
-  /// more than one core per SDK container instance with this image for
-  /// efficiency. Note that Dataflow service may choose to override this
-  /// property if needed.
+  /// container instance with this image.
+  ///
+  /// If false (or unset) recommends using more than one core per SDK container
+  /// instance with this image for efficiency. Note that Dataflow service may
+  /// choose to override this property if needed.
   core.bool useSingleCorePerContainer;
 
   SdkHarnessContainerImage();
@@ -10317,7 +10561,9 @@ class SendDebugCaptureRequest {
   }
 }
 
-/// Response to a send capture request. nothing
+/// Response to a send capture request.
+///
+/// nothing
 class SendDebugCaptureResponse {
   SendDebugCaptureResponse();
 
@@ -10405,11 +10651,14 @@ class SeqMapTask {
   /// Information about each of the outputs.
   core.List<SeqMapTaskOutputInfo> outputInfos;
 
-  /// System-defined name of the stage containing the SeqDo operation. Unique
-  /// across the workflow.
+  /// System-defined name of the stage containing the SeqDo operation.
+  ///
+  /// Unique across the workflow.
   core.String stageName;
 
-  /// System-defined name of the SeqDo operation. Unique across the workflow.
+  /// System-defined name of the SeqDo operation.
+  ///
+  /// Unique across the workflow.
   core.String systemName;
 
   /// The user function to invoke.
@@ -10550,6 +10799,7 @@ class SideInputInfo {
   core.Map<core.String, core.Object> kind;
 
   /// The source(s) to read element(s) from to get the value of this side input.
+  ///
   /// If more than one source, then the elements are taken from the sources, in
   /// the specified order if order matters. At least one source is required.
   core.List<Source> sources;
@@ -10647,11 +10897,14 @@ class Snapshot {
   /// The time this snapshot was created.
   core.String creationTime;
 
-  /// User specified description of the snapshot. Maybe empty.
+  /// User specified description of the snapshot.
+  ///
+  /// Maybe empty.
   core.String description;
 
-  /// The disk byte size of the snapshot. Only available for snapshots in READY
-  /// state.
+  /// The disk byte size of the snapshot.
+  ///
+  /// Only available for snapshots in READY state.
   core.String diskSizeBytes;
 
   /// The unique ID of this snapshot.
@@ -10752,7 +11005,9 @@ class Snapshot {
 
 /// Request to create a snapshot of a job.
 class SnapshotJobRequest {
-  /// User specified description of the snapshot. Maybe empty.
+  /// User specified description of the snapshot.
+  ///
+  /// Maybe empty.
   core.String description;
 
   /// The location that contains this job.
@@ -10803,11 +11058,12 @@ class SnapshotJobRequest {
 class Source {
   /// While splitting, sources may specify the produced bundles as differences
   /// against another source, in order to save backend-side memory and allow
-  /// bigger jobs. For details, see SourceSplitRequest. To support this use
-  /// case, the full set of parameters of the source is logically obtained by
-  /// taking the latest explicitly specified value of each parameter in the
-  /// order: base_specs (later items win), spec (overrides anything in
-  /// base_specs).
+  /// bigger jobs.
+  ///
+  /// For details, see SourceSplitRequest. To support this use case, the full
+  /// set of parameters of the source is logically obtained by taking the latest
+  /// explicitly specified value of each parameter in the order: base_specs
+  /// (later items win), spec (overrides anything in base_specs).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10821,22 +11077,25 @@ class Source {
 
   /// Setting this value to true hints to the framework that the source doesn't
   /// need splitting, and using SourceSplitRequest on it would yield
-  /// SOURCE_SPLIT_OUTCOME_USE_CURRENT. E.g. a file splitter may set this to
-  /// true when splitting a single file into a set of byte ranges of appropriate
-  /// size, and set this to false when splitting a filepattern into individual
-  /// files. However, for efficiency, a file splitter may decide to produce file
-  /// subranges directly from the filepattern to avoid a splitting round-trip.
-  /// See SourceSplitRequest for an overview of the splitting process. This
-  /// field is meaningful only in the Source objects populated by the user (e.g.
-  /// when filling in a DerivedSource). Source objects supplied by the framework
-  /// to the user don't have this field populated.
+  /// SOURCE_SPLIT_OUTCOME_USE_CURRENT.
+  ///
+  /// E.g. a file splitter may set this to true when splitting a single file
+  /// into a set of byte ranges of appropriate size, and set this to false when
+  /// splitting a filepattern into individual files. However, for efficiency, a
+  /// file splitter may decide to produce file subranges directly from the
+  /// filepattern to avoid a splitting round-trip. See SourceSplitRequest for an
+  /// overview of the splitting process. This field is meaningful only in the
+  /// Source objects populated by the user (e.g. when filling in a
+  /// DerivedSource). Source objects supplied by the framework to the user don't
+  /// have this field populated.
   core.bool doesNotNeedSplitting;
 
   /// Optionally, metadata for this source can be supplied right away, avoiding
-  /// a SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This
-  /// field is meaningful only in the Source objects populated by the user (e.g.
-  /// when filling in a DerivedSource). Source objects supplied by the framework
-  /// to the user don't have this field populated.
+  /// a SourceGetMetadataOperation roundtrip (see SourceOperationRequest).
+  ///
+  /// This field is meaningful only in the Source objects populated by the user
+  /// (e.g. when filling in a DerivedSource). Source objects supplied by the
+  /// framework to the user don't have this field populated.
   SourceMetadata metadata;
 
   /// The source to read from, plus its parameters.
@@ -11008,8 +11267,10 @@ class SourceGetMetadataResponse {
 /// pipeline, etc.
 class SourceMetadata {
   /// An estimate of the total size (in bytes) of the data that would be read
-  /// from this source. This estimate is in terms of external storage size,
-  /// before any decompression or other processing done by the reader.
+  /// from this source.
+  ///
+  /// This estimate is in terms of external storage size, before any
+  /// decompression or other processing done by the reader.
   core.String estimatedSizeBytes;
 
   /// Specifies that the size of this source is known to be infinite (this is a
@@ -11065,12 +11326,14 @@ class SourceOperationRequest {
   /// Information about a request to split a source.
   SourceSplitRequest split;
 
-  /// System-defined name of the stage containing the source operation. Unique
-  /// across the workflow.
+  /// System-defined name of the stage containing the source operation.
+  ///
+  /// Unique across the workflow.
   core.String stageName;
 
-  /// System-defined name of the Read instruction for this source. Unique across
-  /// the workflow.
+  /// System-defined name of the Read instruction for this source.
+  ///
+  /// Unique across the workflow.
   core.String systemName;
 
   SourceOperationRequest();
@@ -11191,15 +11454,17 @@ class SourceSplitOptions {
 }
 
 /// Represents the operation to split a high-level Source specification into
-/// bundles (parts for parallel processing). At a high level, splitting of a
-/// source into bundles happens as follows: SourceSplitRequest is applied to the
-/// source. If it returns SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting
-/// happens and the source is used "as is". Otherwise, splitting is applied
-/// recursively to each produced DerivedSource. As an optimization, for any
-/// Source, if its does_not_need_splitting is true, the framework assumes that
-/// splitting this source would return SOURCE_SPLIT_OUTCOME_USE_CURRENT, and
-/// doesn't initiate a SourceSplitRequest. This applies both to the initial
-/// source being split and to bundles produced from it.
+/// bundles (parts for parallel processing).
+///
+/// At a high level, splitting of a source into bundles happens as follows:
+/// SourceSplitRequest is applied to the source. If it returns
+/// SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting happens and the
+/// source is used "as is". Otherwise, splitting is applied recursively to each
+/// produced DerivedSource. As an optimization, for any Source, if its
+/// does_not_need_splitting is true, the framework assumes that splitting this
+/// source would return SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't initiate a
+/// SourceSplitRequest. This applies both to the initial source being split and
+/// to bundles produced from it.
 class SourceSplitRequest {
   /// Hints for tuning the splitting process.
   SourceSplitOptions options;
@@ -11235,15 +11500,18 @@ class SourceSplitRequest {
 /// The response to a SourceSplitRequest.
 class SourceSplitResponse {
   /// If outcome is SPLITTING_HAPPENED, then this is a list of bundles into
-  /// which the source was split. Otherwise this field is ignored. This list can
-  /// be empty, which means the source represents an empty input.
+  /// which the source was split.
+  ///
+  /// Otherwise this field is ignored. This list can be empty, which means the
+  /// source represents an empty input.
   core.List<DerivedSource> bundles;
 
-  /// Indicates whether splitting happened and produced a list of bundles. If
-  /// this is USE_CURRENT_SOURCE_AS_IS, the current source should be processed
-  /// "as is" without splitting. "bundles" is ignored in this case. If this is
-  /// SPLITTING_HAPPENED, then "bundles" contains a list of bundles into which
-  /// the source was split.
+  /// Indicates whether splitting happened and produced a list of bundles.
+  ///
+  /// If this is USE_CURRENT_SOURCE_AS_IS, the current source should be
+  /// processed "as is" without splitting. "bundles" is ignored in this case. If
+  /// this is SPLITTING_HAPPENED, then "bundles" contains a list of bundles into
+  /// which the source was split.
   /// Possible string values are:
   /// - "SOURCE_SPLIT_OUTCOME_UNKNOWN" : The source split outcome is unknown, or
   /// unspecified.
@@ -11406,9 +11674,10 @@ class SplitInt64 {
 
 /// Information about the workers and work items within a stage.
 class StageExecutionDetails {
-  /// If present, this response does not contain all requested tasks. To obtain
-  /// the next page of results, repeat the request with page_token set to this
-  /// value.
+  /// If present, this response does not contain all requested tasks.
+  ///
+  /// To obtain the next page of results, repeat the request with page_token set
+  /// to this value.
   core.String nextPageToken;
 
   /// Workers that have done work on the stage.
@@ -11493,14 +11762,18 @@ class StageSource {
 
 /// Information about a particular execution stage of a job.
 class StageSummary {
-  /// End time of this stage. If the work item is completed, this is the actual
-  /// end time of the stage. Otherwise, it is the predicted end time.
+  /// End time of this stage.
+  ///
+  /// If the work item is completed, this is the actual end time of the stage.
+  /// Otherwise, it is the predicted end time.
   core.String endTime;
 
   /// Metrics for this stage.
   core.List<MetricUpdate> metrics;
 
-  /// Progress for this stage. Only applicable to Batch jobs.
+  /// Progress for this stage.
+  ///
+  /// Only applicable to Batch jobs.
   ProgressTimeseries progress;
 
   /// ID of this stage
@@ -11603,24 +11876,27 @@ class StateFamilyConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -11661,29 +11937,33 @@ class Status {
   }
 }
 
-/// Defines a particular step within a Cloud Dataflow job. A job consists of
-/// multiple steps, each of which performs some specific operation as part of
-/// the overall job. Data is typically passed from one step to another as part
-/// of the job. Here's an example of a sequence of steps which together
-/// implement a Map-Reduce job: * Read a collection of data from some source,
-/// parsing the collection's elements. * Validate the elements. * Apply a
-/// user-defined function to map each element to some value and extract an
-/// element-specific key value. * Group elements with the same key into a single
-/// element with that key, transforming a multiply-keyed collection into a
-/// uniquely-keyed collection. * Write the elements out to some data sink. Note
-/// that the Cloud Dataflow service may be used to run many different types of
-/// jobs, not just Map-Reduce.
+/// Defines a particular step within a Cloud Dataflow job.
+///
+/// A job consists of multiple steps, each of which performs some specific
+/// operation as part of the overall job. Data is typically passed from one step
+/// to another as part of the job. Here's an example of a sequence of steps
+/// which together implement a Map-Reduce job: * Read a collection of data from
+/// some source, parsing the collection's elements. * Validate the elements. *
+/// Apply a user-defined function to map each element to some value and extract
+/// an element-specific key value. * Group elements with the same key into a
+/// single element with that key, transforming a multiply-keyed collection into
+/// a uniquely-keyed collection. * Write the elements out to some data sink.
+/// Note that the Cloud Dataflow service may be used to run many different types
+/// of jobs, not just Map-Reduce.
 class Step {
   /// The kind of step in the Cloud Dataflow job.
   core.String kind;
 
-  /// The name that identifies the step. This must be unique for each step with
-  /// respect to all other steps in the Cloud Dataflow job.
+  /// The name that identifies the step.
+  ///
+  /// This must be unique for each step with respect to all other steps in the
+  /// Cloud Dataflow job.
   core.String name;
 
-  /// Named properties associated with the step. Each kind of predefined step
-  /// has its own required set of properties. Must be provided on Create. Only
-  /// retrieved with JOB_VIEW_ALL.
+  /// Named properties associated with the step.
+  ///
+  /// Each kind of predefined step has its own required set of properties. Must
+  /// be provided on Create. Only retrieved with JOB_VIEW_ALL.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11999,8 +12279,9 @@ class StreamingConfigTask {
   core.String windmillServiceEndpoint;
 
   /// If present, the worker must use this port to communicate with Windmill
-  /// Service dispatchers. Only applicable when windmill_service_endpoint is
-  /// specified.
+  /// Service dispatchers.
+  ///
+  /// Only applicable when windmill_service_endpoint is specified.
   core.String windmillServicePort;
 
   StreamingConfigTask();
@@ -12218,8 +12499,9 @@ class StringList {
 /// identifying the message, and structured data associated with the message for
 /// programmatic consumption.
 class StructuredMessage {
-  /// Identifier for this message type. Used by external systems to
-  /// internationalize or personalize message.
+  /// Identifier for this message type.
+  ///
+  /// Used by external systems to internationalize or personalize message.
   core.String messageKey;
 
   /// Human-readable version of message.
@@ -12269,6 +12551,7 @@ class TaskRunnerSettings {
   core.String baseTaskDir;
 
   /// The base URL for the taskrunner to use when accessing Google Cloud APIs.
+  ///
   /// When workers access Google Cloud APIs, they logically do so via relative
   /// URLs. If this field is specified, it supplies the base URL to use for
   /// resolving these relative URLs. The normative algorithm used is defined by
@@ -12298,8 +12581,10 @@ class TaskRunnerSettings {
   /// console.
   core.bool logToSerialconsole;
 
-  /// Indicates where to put logs. If this is not specified, the logs will not
-  /// be uploaded. The supported resource type is: Google Cloud Storage:
+  /// Indicates where to put logs.
+  ///
+  /// If this is not specified, the logs will not be uploaded. The supported
+  /// resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
   core.String logUploadLocation;
@@ -12323,7 +12608,9 @@ class TaskRunnerSettings {
   core.String taskUser;
 
   /// The prefix of the resources the taskrunner should use for temporary
-  /// storage. The supported resource type is: Google Cloud Storage:
+  /// storage.
+  ///
+  /// The supported resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
   core.String tempStoragePrefix;
@@ -12466,10 +12753,14 @@ class TaskRunnerSettings {
 
 /// Metadata describing a template.
 class TemplateMetadata {
-  /// Optional. A description of the template.
+  /// A description of the template.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. The name of the template.
+  /// The name of the template.
+  ///
+  /// Required.
   core.String name;
 
   /// The parameters for the template.
@@ -12508,16 +12799,19 @@ class TemplateMetadata {
 }
 
 /// /////////////////////////////////////////////////////////////////////////////
-/// //// Template Catalog is used to organize user TemplateVersions. ////
-/// TemplateVersions that have the same project_id and display_name are ////
-/// belong to the same Template. //// Templates with the same project_id belong
-/// to the same Project. //// TemplateVersion may have labels and multiple
-/// labels are allowed. //// Duplicated labels in the same `TemplateVersion` are
-/// not allowed. //// TemplateVersion may have tags and multiple tags are
-/// allowed. Duplicated //// tags in the same `Template` are not allowed!
+/// //// Template Catalog is used to organize user TemplateVersions.
+///
+/// //// TemplateVersions that have the same project_id and display_name are
+/// //// belong to the same Template. //// Templates with the same project_id
+/// belong to the same Project. //// TemplateVersion may have labels and
+/// multiple labels are allowed. //// Duplicated labels in the same
+/// `TemplateVersion` are not allowed. //// TemplateVersion may have tags and
+/// multiple tags are allowed. Duplicated //// tags in the same `Template` are
+/// not allowed!
 class TemplateVersion {
-  /// Job graph and metadata if it is a legacy Template. Container image path
-  /// and metadata if it is flex Template.
+  /// Job graph and metadata if it is a legacy Template.
+  ///
+  /// Container image path and metadata if it is flex Template.
   Artifact artifact;
 
   /// Creation time of this TemplateVersion.
@@ -12526,19 +12820,27 @@ class TemplateVersion {
   /// Template description from the user.
   core.String description;
 
-  /// A customized name for Template. Multiple TemplateVersions per Template.
+  /// A customized name for Template.
+  ///
+  /// Multiple TemplateVersions per Template.
   core.String displayName;
 
-  /// Labels for the Template Version. Labels can be duplicate within Template.
+  /// Labels for the Template Version.
+  ///
+  /// Labels can be duplicate within Template.
   core.Map<core.String, core.String> labels;
 
-  /// A unique project_id. Multiple Templates per Project.
+  /// A unique project_id.
+  ///
+  /// Multiple Templates per Project.
   core.String projectId;
 
   /// Alias for version_id, helps locate a TemplateVersion.
   core.List<core.String> tags;
 
-  /// Either LEGACY or FLEX. This should match with the type of artifact.
+  /// Either LEGACY or FLEX.
+  ///
+  /// This should match with the type of artifact.
   /// Possible string values are:
   /// - "TEMPLATE_TYPE_UNSPECIFIED" : Default value. Not a useful zero case.
   /// - "LEGACY" : Legacy Template.
@@ -12789,7 +13091,9 @@ class ValidateResponse {
   /// Will be empty if validation succeeds.
   core.String errorMessage;
 
-  /// Information about the validated query. Not defined if validation fails.
+  /// Information about the validated query.
+  ///
+  /// Not defined if validation fails.
   QueryInfo queryInfo;
 
   ValidateResponse();
@@ -12982,9 +13286,10 @@ class WorkItemDetails {
   /// Attempt ID of this work item
   core.String attemptId;
 
-  /// End time of this work item attempt. If the work item is completed, this is
-  /// the actual end time of the work item. Otherwise, it is the predicted end
-  /// time.
+  /// End time of this work item attempt.
+  ///
+  /// If the work item is completed, this is the actual end time of the work
+  /// item. Otherwise, it is the predicted end time.
   core.String endTime;
 
   /// Metrics for this work item.
@@ -13070,10 +13375,11 @@ class WorkItemDetails {
 /// The Dataflow service's idea of the current state of a WorkItem being
 /// processed by a worker.
 class WorkItemServiceState {
-  /// If set, a request to complete the work item with the given status. This
-  /// will not be set to OK, unless supported by the specific kind of WorkItem.
-  /// It can be used for the backend to indicate a WorkItem must terminate,
-  /// e.g., for aborting work.
+  /// If set, a request to complete the work item with the given status.
+  ///
+  /// This will not be set to OK, unless supported by the specific kind of
+  /// WorkItem. It can be used for the backend to indicate a WorkItem must
+  /// terminate, e.g., for aborting work.
   Status completeWorkStatus;
 
   /// Other data returned by the service, specific to the particular worker
@@ -13084,23 +13390,26 @@ class WorkItemServiceState {
   core.Map<core.String, core.Object> harnessData;
 
   /// A hot key is a symptom of poor data distribution in which there are enough
-  /// elements mapped to a single key to impact pipeline performance. When
-  /// present, this field includes metadata associated with any hot key.
+  /// elements mapped to a single key to impact pipeline performance.
+  ///
+  /// When present, this field includes metadata associated with any hot key.
   HotKeyDetection hotKeyDetection;
 
   /// Time at which the current lease will expire.
   core.String leaseExpireTime;
 
   /// The short ids that workers should use in subsequent metric updates.
+  ///
   /// Workers should strive to use short ids whenever possible, but it is ok to
   /// request the short_id again if a worker lost track of it (e.g. if the
   /// worker is recovering from a crash). NOTE: it is possible that the response
   /// may have short ids for a subset of the metrics.
   core.List<MetricShortId> metricShortId;
 
-  /// The index value to use for the next report sent by the worker. Note: If
-  /// the report call fails for whatever reason, the worker should reuse this
-  /// index for subsequent report attempts.
+  /// The index value to use for the next report sent by the worker.
+  ///
+  /// Note: If the report call fails for whatever reason, the worker should
+  /// reuse this index for subsequent report attempts.
   core.String nextReportIndex;
 
   /// New recommended reporting interval.
@@ -13214,8 +13523,10 @@ class WorkItemStatus {
   /// See documentation of stop_position.
   DynamicSourceSplit dynamicSourceSplit;
 
-  /// Specifies errors which occurred during processing. If errors are provided,
-  /// and completed = true, then the WorkItem is considered to have failed.
+  /// Specifies errors which occurred during processing.
+  ///
+  /// If errors are provided, and completed = true, then the WorkItem is
+  /// considered to have failed.
   core.List<Status> errors;
 
   /// DEPRECATED in favor of counter_updates.
@@ -13224,16 +13535,17 @@ class WorkItemStatus {
   /// DEPRECATED in favor of reported_progress.
   ApproximateProgress progress;
 
-  /// The report index. When a WorkItem is leased, the lease will contain an
-  /// initial report index. When a WorkItem's status is reported to the system,
-  /// the report should be sent with that report index, and the response will
-  /// contain the index the worker should use for the next report. Reports
-  /// received with unexpected index values will be rejected by the service. In
-  /// order to preserve idempotency, the worker should not alter the contents of
-  /// a report, even if the worker must submit the same report multiple times
-  /// before getting back a response. The worker should not submit a subsequent
-  /// report until the response for the previous report had been received from
-  /// the service.
+  /// The report index.
+  ///
+  /// When a WorkItem is leased, the lease will contain an initial report index.
+  /// When a WorkItem's status is reported to the system, the report should be
+  /// sent with that report index, and the response will contain the index the
+  /// worker should use for the next report. Reports received with unexpected
+  /// index values will be rejected by the service. In order to preserve
+  /// idempotency, the worker should not alter the contents of a report, even if
+  /// the worker must submit the same report multiple times before getting back
+  /// a response. The worker should not submit a subsequent report until the
+  /// response for the previous report had been received from the service.
   core.String reportIndex;
 
   /// The worker's progress through this WorkItem.
@@ -13251,14 +13563,15 @@ class WorkItemStatus {
 
   /// A worker may split an active map task in two parts, "primary" and
   /// "residual", continuing to process the primary part and returning the
-  /// residual part into the pool of available work. This event is called a
-  /// "dynamic split" and is critical to the dynamic work rebalancing feature.
-  /// The two obtained sub-tasks are called "parts" of the split. The parts, if
-  /// concatenated, must represent the same input as would be read by the
-  /// current task if the split did not happen. The exact way in which the
-  /// original task is decomposed into the two parts is specified either as a
-  /// position demarcating them (stop_position), or explicitly as two
-  /// DerivedSources, if this task consumes a user-defined source type
+  /// residual part into the pool of available work.
+  ///
+  /// This event is called a "dynamic split" and is critical to the dynamic work
+  /// rebalancing feature. The two obtained sub-tasks are called "parts" of the
+  /// split. The parts, if concatenated, must represent the same input as would
+  /// be read by the current task if the split did not happen. The exact way in
+  /// which the original task is decomposed into the two parts is specified
+  /// either as a position demarcating them (stop_position), or explicitly as
+  /// two DerivedSources, if this task consumes a user-defined source type
   /// (dynamic_source_split). The "current" task is adjusted as a result of the
   /// split: after a task with range [A, B) sends a stop_position update at C,
   /// its range is considered to be [A, C), e.g.: * Progress should be
@@ -13429,14 +13742,17 @@ class WorkerDetails {
   }
 }
 
-/// WorkerHealthReport contains information about the health of a worker. The VM
-/// should be identified by the labels attached to the WorkerMessage that this
-/// health ping belongs to.
+/// WorkerHealthReport contains information about the health of a worker.
+///
+/// The VM should be identified by the labels attached to the WorkerMessage that
+/// this health ping belongs to.
 class WorkerHealthReport {
   /// A message describing any unusual health reports.
   core.String msg;
 
-  /// The pods running on the worker. See:
+  /// The pods running on the worker.
+  ///
+  /// See:
   /// http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod
   /// This field is used by the worker to send the status of the indvidual
   /// containers running on each worker.
@@ -13445,13 +13761,16 @@ class WorkerHealthReport {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> pods;
 
-  /// The interval at which the worker is sending health reports. The default
-  /// value of 0 should be interpreted as the field is not being explicitly set
-  /// by the worker.
+  /// The interval at which the worker is sending health reports.
+  ///
+  /// The default value of 0 should be interpreted as the field is not being
+  /// explicitly set by the worker.
   core.String reportInterval;
 
-  /// Whether the VM is in a permanently broken state. Broken VMs should be
-  /// abandoned or deleted ASAP to avoid assigning or completing any work.
+  /// Whether the VM is in a permanently broken state.
+  ///
+  /// Broken VMs should be abandoned or deleted ASAP to avoid assigning or
+  /// completing any work.
   core.bool vmIsBroken;
 
   /// Whether the VM is currently healthy.
@@ -13519,8 +13838,10 @@ class WorkerHealthReport {
 /// response to a health ping.
 class WorkerHealthReportResponse {
   /// A positive value indicates the worker should change its reporting interval
-  /// to the specified value. The default value of zero means no change in
-  /// report rate is requested by the server.
+  /// to the specified value.
+  ///
+  /// The default value of zero means no change in report rate is requested by
+  /// the server.
   core.String reportInterval;
 
   WorkerHealthReportResponse();
@@ -13540,14 +13861,18 @@ class WorkerHealthReportResponse {
   }
 }
 
-/// A report of an event in a worker's lifecycle. The proto contains one event,
-/// because the worker is expected to asynchronously send each message
-/// immediately after the event. Due to this asynchrony, messages may arrive out
-/// of order (or missing), and it is up to the consumer to interpret. The
-/// timestamp of the event is in the enclosing WorkerMessage proto.
+/// A report of an event in a worker's lifecycle.
+///
+/// The proto contains one event, because the worker is expected to
+/// asynchronously send each message immediately after the event. Due to this
+/// asynchrony, messages may arrive out of order (or missing), and it is up to
+/// the consumer to interpret. The timestamp of the event is in the enclosing
+/// WorkerMessage proto.
 class WorkerLifecycleEvent {
-  /// The start time of this container. All events will report this so that
-  /// events can be grouped together across container/VM restarts.
+  /// The start time of this container.
+  ///
+  /// All events will report this so that events can be grouped together across
+  /// container/VM restarts.
   core.String containerStartTime;
 
   /// The event being reported.
@@ -13565,8 +13890,9 @@ class WorkerLifecycleEvent {
   /// - "SDK_INSTALL_FINISH" : Finished installing SDK.
   core.String event;
 
-  /// Other stats that can accompany an event. E.g. { "downloaded_bytes" :
-  /// "123456" }
+  /// Other stats that can accompany an event.
+  ///
+  /// E.g. { "downloaded_bytes" : "123456" }
   core.Map<core.String, core.String> metadata;
 
   WorkerLifecycleEvent();
@@ -13606,12 +13932,14 @@ class WorkerLifecycleEvent {
 
 /// WorkerMessage provides information to the backend about a worker.
 class WorkerMessage {
-  /// Labels are used to group WorkerMessages. For example, a worker_message
-  /// about a particular container might have the labels: { "JOB_ID":
-  /// "2015-04-22", "WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE":
-  /// "worker", "CONTAINER_ID": "ac1234def"} Label tags typically correspond to
-  /// Label enum values. However, for ease of development other strings can be
-  /// used as tags. LABEL_UNSPECIFIED should not be used here.
+  /// Labels are used to group WorkerMessages.
+  ///
+  /// For example, a worker_message about a particular container might have the
+  /// labels: { "JOB_ID": "2015-04-22", "WORKER_ID": "wordcount-vm-2015…"
+  /// "CONTAINER_TYPE": "worker", "CONTAINER_ID": "ac1234def"} Label tags
+  /// typically correspond to Label enum values. However, for ease of
+  /// development other strings can be used as tags. LABEL_UNSPECIFIED should
+  /// not be used here.
   core.Map<core.String, core.String> labels;
 
   /// The timestamp of the worker_message.
@@ -13697,31 +14025,35 @@ class WorkerMessage {
 }
 
 /// A message code is used to report status and error messages to the service.
+///
 /// The message codes are intended to be machine readable. The service will take
 /// care of translating these into user understandable messages if necessary.
 /// Example use cases: 1. Worker processes reporting successful startup. 2.
 /// Worker processes reporting specific errors (e.g. package staging failure).
 class WorkerMessageCode {
   /// The code is a string intended for consumption by a machine that identifies
-  /// the type of message being sent. Examples: 1. "HARNESS_STARTED" might be
-  /// used to indicate the worker harness has started. 2. "GCS_DOWNLOAD_ERROR"
-  /// might be used to indicate an error downloading a GCS file as part of the
-  /// boot process of one of the worker containers. This is a string and not an
-  /// enum to make it easy to add new codes without waiting for an API change.
+  /// the type of message being sent.
+  ///
+  /// Examples: 1. "HARNESS_STARTED" might be used to indicate the worker
+  /// harness has started. 2. "GCS_DOWNLOAD_ERROR" might be used to indicate an
+  /// error downloading a GCS file as part of the boot process of one of the
+  /// worker containers. This is a string and not an enum to make it easy to add
+  /// new codes without waiting for an API change.
   core.String code;
 
-  /// Parameters contains specific information about the code. This is a struct
-  /// to allow parameters of different types. Examples: 1. For a
-  /// "HARNESS_STARTED" message parameters might provide the name of the worker
-  /// and additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR"
-  /// parameters might contain fields listing the GCS objects being downloaded
-  /// and fields containing errors. In general complex data structures should be
-  /// avoided. If a worker needs to send a specific and complicated data
-  /// structure then please consider defining a new proto and adding it to the
-  /// data oneof in WorkerMessageResponse. Conventions: Parameters should only
-  /// be used for information that isn't typically passed as a label. hostname
-  /// and other worker identifiers should almost always be passed as labels
-  /// since they will be included on most messages.
+  /// Parameters contains specific information about the code.
+  ///
+  /// This is a struct to allow parameters of different types. Examples: 1. For
+  /// a "HARNESS_STARTED" message parameters might provide the name of the
+  /// worker and additional data like timing information. 2. For a
+  /// "GCS_DOWNLOAD_ERROR" parameters might contain fields listing the GCS
+  /// objects being downloaded and fields containing errors. In general complex
+  /// data structures should be avoided. If a worker needs to send a specific
+  /// and complicated data structure then please consider defining a new proto
+  /// and adding it to the data oneof in WorkerMessageResponse. Conventions:
+  /// Parameters should only be used for information that isn't typically passed
+  /// as a label. hostname and other worker identifiers should almost always be
+  /// passed as labels since they will be included on most messages.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -13807,8 +14139,10 @@ class WorkerMessageResponse {
 
 /// Describes one particular pool of Cloud Dataflow workers to be instantiated
 /// by the Cloud Dataflow service in order to perform the computations required
-/// by a job. Note that a workflow job may use multiple pools, in order to match
-/// the various computational requirements of the various stages of the job.
+/// by a job.
+///
+/// Note that a workflow job may use multiple pools, in order to match the
+/// various computational requirements of the various stages of the job.
 class WorkerPool {
   /// Settings for autoscaling of this WorkerPool.
   AutoscalingSettings autoscalingSettings;
@@ -13816,9 +14150,10 @@ class WorkerPool {
   /// Data disks that are used by a VM in this workflow.
   core.List<Disk> dataDisks;
 
-  /// The default package set to install. This allows the service to select a
-  /// default set of packages which are useful to worker harnesses written in a
-  /// particular language.
+  /// The default package set to install.
+  ///
+  /// This allows the service to select a default set of packages which are
+  /// useful to worker harnesses written in a particular language.
   /// Possible string values are:
   /// - "DEFAULT_PACKAGE_SET_UNKNOWN" : The default set of packages to stage is
   /// unknown, or unspecified.
@@ -13830,15 +14165,19 @@ class WorkerPool {
   /// workers written in Python.
   core.String defaultPackageSet;
 
-  /// Size of root disk for VMs, in GB. If zero or unspecified, the service will
-  /// attempt to choose a reasonable default.
+  /// Size of root disk for VMs, in GB.
+  ///
+  /// If zero or unspecified, the service will attempt to choose a reasonable
+  /// default.
   core.int diskSizeGb;
 
   /// Fully qualified source image for disks.
   core.String diskSourceImage;
 
-  /// Type of root disk for VMs. If empty or unspecified, the service will
-  /// attempt to choose a reasonable default.
+  /// Type of root disk for VMs.
+  ///
+  /// If empty or unspecified, the service will attempt to choose a reasonable
+  /// default.
   core.String diskType;
 
   /// Configuration for VM IPs.
@@ -13852,25 +14191,32 @@ class WorkerPool {
   /// supported.
   core.String kind;
 
-  /// Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service
-  /// will attempt to choose a reasonable default.
+  /// Machine type (e.g. "n1-standard-1").
+  ///
+  /// If empty or unspecified, the service will attempt to choose a reasonable
+  /// default.
   core.String machineType;
 
   /// Metadata to set on the Google Compute Engine VMs.
   core.Map<core.String, core.String> metadata;
 
-  /// Network to which VMs will be assigned. If empty or unspecified, the
-  /// service will use the network "default".
+  /// Network to which VMs will be assigned.
+  ///
+  /// If empty or unspecified, the service will use the network "default".
   core.String network;
 
-  /// The number of threads per worker harness. If empty or unspecified, the
-  /// service will choose a number of threads (according to the number of cores
-  /// on the selected machine type for batch, or 1 by convention for streaming).
+  /// The number of threads per worker harness.
+  ///
+  /// If empty or unspecified, the service will choose a number of threads
+  /// (according to the number of cores on the selected machine type for batch,
+  /// or 1 by convention for streaming).
   core.int numThreadsPerWorker;
 
   /// Number of Google Compute Engine workers in this pool needed to execute the
-  /// job. If zero or unspecified, the service will attempt to choose a
-  /// reasonable default.
+  /// job.
+  ///
+  /// If zero or unspecified, the service will attempt to choose a reasonable
+  /// default.
   core.int numWorkers;
 
   /// The action to take on host maintenance, as defined by the Google Compute
@@ -13886,22 +14232,27 @@ class WorkerPool {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> poolArgs;
 
-  /// Set of SDK harness containers needed to execute this pipeline. This will
-  /// only be set in the Fn API path. For non-cross-language pipelines this
-  /// should have only one entry. Cross-language pipelines will have two or more
-  /// entries.
+  /// Set of SDK harness containers needed to execute this pipeline.
+  ///
+  /// This will only be set in the Fn API path. For non-cross-language pipelines
+  /// this should have only one entry. Cross-language pipelines will have two or
+  /// more entries.
   core.List<SdkHarnessContainerImage> sdkHarnessContainerImages;
 
-  /// Subnetwork to which VMs will be assigned, if desired. Expected to be of
-  /// the form "regions/REGION/subnetworks/SUBNETWORK".
+  /// Subnetwork to which VMs will be assigned, if desired.
+  ///
+  /// Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
   core.String subnetwork;
 
   /// Settings passed through to Google Compute Engine workers when using the
-  /// standard Dataflow task runner. Users should ignore this field.
+  /// standard Dataflow task runner.
+  ///
+  /// Users should ignore this field.
   TaskRunnerSettings taskrunnerSettings;
 
-  /// Sets the policy for determining when to turndown worker pool. Allowed
-  /// values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and
+  /// Sets the policy for determining when to turndown worker pool.
+  ///
+  /// Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and
   /// `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down
   /// regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means
   /// workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the
@@ -13921,13 +14272,18 @@ class WorkerPool {
   /// debugging and development.
   core.String teardownPolicy;
 
-  /// Required. Docker container image that executes the Cloud Dataflow worker
-  /// harness, residing in Google Container Registry. Deprecated for the Fn API
-  /// path. Use sdk_harness_container_images instead.
+  /// Docker container image that executes the Cloud Dataflow worker harness,
+  /// residing in Google Container Registry.
+  ///
+  /// Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+  ///
+  /// Required.
   core.String workerHarnessContainerImage;
 
-  /// Zone to run the worker pools in. If empty or unspecified, the service will
-  /// attempt to choose a reasonable default.
+  /// Zone to run the worker pools in.
+  ///
+  /// If empty or unspecified, the service will attempt to choose a reasonable
+  /// default.
   core.String zone;
 
   WorkerPool();
@@ -14102,12 +14458,13 @@ class WorkerPool {
 
 /// Provides data to pass through to the worker harness.
 class WorkerSettings {
-  /// The base URL for accessing Google Cloud APIs. When workers access Google
-  /// Cloud APIs, they logically do so via relative URLs. If this field is
-  /// specified, it supplies the base URL to use for resolving these relative
-  /// URLs. The normative algorithm used is defined by RFC 1808, "Relative
-  /// Uniform Resource Locators". If not specified, the default value is
-  /// "http://www.googleapis.com/"
+  /// The base URL for accessing Google Cloud APIs.
+  ///
+  /// When workers access Google Cloud APIs, they logically do so via relative
+  /// URLs. If this field is specified, it supplies the base URL to use for
+  /// resolving these relative URLs. The normative algorithm used is defined by
+  /// RFC 1808, "Relative Uniform Resource Locators". If not specified, the
+  /// default value is "http://www.googleapis.com/"
   core.String baseUrl;
 
   /// Whether to send work progress updates to the service.
@@ -14122,6 +14479,7 @@ class WorkerSettings {
   core.String shuffleServicePath;
 
   /// The prefix of the resources the system should use for temporary storage.
+  ///
   /// The supported resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
@@ -14177,13 +14535,16 @@ class WorkerSettings {
   }
 }
 
-/// Shutdown notification from workers. This is to be sent by the shutdown
-/// script of the worker VM so that the backend knows that the VM is being shut
-/// down.
+/// Shutdown notification from workers.
+///
+/// This is to be sent by the shutdown script of the worker VM so that the
+/// backend knows that the VM is being shut down.
 class WorkerShutdownNotice {
-  /// The reason for the worker shutdown. Current possible values are:
-  /// "UNKNOWN": shutdown reason is unknown. "PREEMPTION": shutdown reason is
-  /// preemption. Other possible reasons may be added in the future.
+  /// The reason for the worker shutdown.
+  ///
+  /// Current possible values are: "UNKNOWN": shutdown reason is unknown.
+  /// "PREEMPTION": shutdown reason is preemption. Other possible reasons may be
+  /// added in the future.
   core.String reason;
 
   WorkerShutdownNotice();
@@ -14217,7 +14578,9 @@ class WorkerShutdownNoticeResponse {
   }
 }
 
-/// An instruction that writes records. Takes one input, produces no outputs.
+/// An instruction that writes records.
+///
+/// Takes one input, produces no outputs.
 class WriteInstruction {
   /// The input.
   InstructionInput input;

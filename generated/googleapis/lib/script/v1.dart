@@ -638,11 +638,12 @@ class ProjectsResource {
     );
   }
 
-  /// Updates the content of the specified script project. This content is
-  /// stored as the HEAD version, and is used when the script is executed as a
-  /// trigger, in the script editor, in add-on preview mode, or as a web app or
-  /// Apps Script API in development mode. This clears all the existing files in
-  /// the project.
+  /// Updates the content of the specified script project.
+  ///
+  /// This content is stored as the HEAD version, and is used when the script is
+  /// executed as a trigger, in the script editor, in add-on preview mode, or as
+  /// a web app or Apps Script API in development mode. This clears all the
+  /// existing files in the project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1217,18 +1218,19 @@ class ScriptsResource {
 
   ScriptsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Runs a function in an Apps Script project. The script project must be
-  /// deployed for use with the Apps Script API and the calling application must
-  /// share the same Cloud Platform project. This method requires authorization
-  /// with an OAuth 2.0 token that includes at least one of the scopes listed in
-  /// the [Authorization](#authorization-scopes) section; script projects that
-  /// do not require authorization cannot be executed through this API. To find
-  /// the correct scopes to include in the authentication token, open the
-  /// project in the script editor, then select **File > Project properties**
-  /// and click the **Scopes** tab. The error `403, PERMISSION_DENIED: The
-  /// caller does not have permission` indicates that the Cloud Platform project
-  /// used to authorize the request is not the same as the one used by the
-  /// script.
+  /// Runs a function in an Apps Script project.
+  ///
+  /// The script project must be deployed for use with the Apps Script API and
+  /// the calling application must share the same Cloud Platform project. This
+  /// method requires authorization with an OAuth 2.0 token that includes at
+  /// least one of the scopes listed in the
+  /// [Authorization](#authorization-scopes) section; script projects that do
+  /// not require authorization cannot be executed through this API. To find the
+  /// correct scopes to include in the authentication token, open the project in
+  /// the script editor, then select **File > Project properties** and click the
+  /// **Scopes** tab. The error `403, PERMISSION_DENIED: The caller does not
+  /// have permission` indicates that the Cloud Platform project used to
+  /// authorize the request is not the same as the one used by the script.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1289,9 +1291,11 @@ class ScriptsResource {
 
 /// The Content resource.
 class Content {
-  /// The list of script project files. One of the files is a script manifest;
-  /// it must be named "appsscript", must have type of JSON, and include the
-  /// manifest configurations for the project.
+  /// The list of script project files.
+  ///
+  /// One of the files is a script manifest; it must be named "appsscript", must
+  /// have type of JSON, and include the manifest configurations for the
+  /// project.
   core.List<File> files;
 
   /// The script project's Drive ID.
@@ -1326,6 +1330,7 @@ class Content {
 /// Request to create a script project.
 class CreateProjectRequest {
   /// The Drive ID of a parent file that the created script project is bound to.
+  ///
   /// This is usually the ID of a Google Doc, Google Sheet, Google Form, or
   /// Google Slides file. If not set, a standalone script project is created.
   core.String parentId;
@@ -1460,10 +1465,12 @@ class DeploymentConfig {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1560,6 +1567,7 @@ class ExecuteStreamResponse {
 
 /// An object that provides information about the nature of an error resulting
 /// from an attempted execution of a script function using the Apps Script API.
+///
 /// If a run call succeeds but the script function (or Apps Script itself)
 /// throws an exception, the response body's error field contains a Status
 /// object. The `Status` object's `details` field contains an array with a
@@ -1569,8 +1577,9 @@ class ExecutionError {
   /// language.
   core.String errorMessage;
 
-  /// The error type, for example `TypeError` or `ReferenceError`. If the error
-  /// type is unavailable, this field is not included.
+  /// The error type, for example `TypeError` or `ReferenceError`.
+  ///
+  /// If the error type is unavailable, this field is not included.
   core.String errorType;
 
   /// An array of objects that provide a stack trace through the script to show
@@ -1612,23 +1621,28 @@ class ExecutionError {
   }
 }
 
-/// A request to run the function in a script. The script is identified by the
-/// specified `script_id`. Executing a function on a script returns results
-/// based on the implementation of the script.
+/// A request to run the function in a script.
+///
+/// The script is identified by the specified `script_id`. Executing a function
+/// on a script returns results based on the implementation of the script.
 class ExecutionRequest {
   /// If `true` and the user is an owner of the script, the script runs at the
   /// most recently saved version rather than the version deployed for use with
-  /// the Apps Script API. Optional; default is `false`.
+  /// the Apps Script API.
+  ///
+  /// Optional; default is `false`.
   core.bool devMode;
 
-  /// The name of the function to execute in the given script. The name does not
-  /// include parentheses or parameters. It can reference a function in an
-  /// included library such as `Library.libFunction1`.
+  /// The name of the function to execute in the given script.
+  ///
+  /// The name does not include parentheses or parameters. It can reference a
+  /// function in an included library such as `Library.libFunction1`.
   core.String function;
 
-  /// The parameters to be passed to the function being executed. The object
-  /// type for each parameter should match the expected type in Apps Script.
-  /// Parameters cannot be Apps Script-specific object types (such as a
+  /// The parameters to be passed to the function being executed.
+  ///
+  /// The object type for each parameter should match the expected type in Apps
+  /// Script. Parameters cannot be Apps Script-specific object types (such as a
   /// `Document` or a `Calendar`); they can only be primitive types such as
   /// `string`, `number`, `array`, `object`, or `boolean`. Optional.
   ///
@@ -1636,9 +1650,11 @@ class ExecutionRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> parameters;
 
-  /// *Deprecated*. For use with Android add-ons only. An ID that represents the
-  /// user's current session in the Android app for Google Docs or Sheets,
-  /// included as extra data in the
+  /// *Deprecated*.
+  ///
+  /// For use with Android add-ons only. An ID that represents the user's
+  /// current session in the Android app for Google Docs or Sheets, included as
+  /// extra data in the
   /// [Intent](https://developer.android.com/guide/components/intents-filters.html)
   /// that launches the add-on. When an Android add-on is run with a session
   /// state, it gains the privileges of a
@@ -1688,14 +1704,17 @@ class ExecutionRequest {
 }
 
 /// An object that provides the return value of a function executed using the
-/// Apps Script API. If the script function returns successfully, the response
-/// body's response field contains this `ExecutionResponse` object.
+/// Apps Script API.
+///
+/// If the script function returns successfully, the response body's response
+/// field contains this `ExecutionResponse` object.
 class ExecutionResponse {
-  /// The return value of the script function. The type matches the object type
-  /// returned in Apps Script. Functions called using the Apps Script API cannot
-  /// return Apps Script-specific objects (such as a `Document` or a
-  /// `Calendar`); they can only return primitive types such as a `string`,
-  /// `number`, `array`, `object`, or `boolean`.
+  /// The return value of the script function.
+  ///
+  /// The type matches the object type returned in Apps Script. Functions called
+  /// using the Apps Script API cannot return Apps Script-specific objects (such
+  /// as a `Document` or a `Calendar`); they can only return primitive types
+  /// such as a `string`, `number`, `array`, `object`, or `boolean`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -1718,24 +1737,31 @@ class ExecutionResponse {
   }
 }
 
-/// An individual file within a script project. A file is a third-party source
-/// code created by one or more developers. It can be a server-side JS code,
-/// HTML, or a configuration file. Each script project can contain multiple
-/// files.
+/// An individual file within a script project.
+///
+/// A file is a third-party source code created by one or more developers. It
+/// can be a server-side JS code, HTML, or a configuration file. Each script
+/// project can contain multiple files.
 class File {
-  /// Creation date timestamp. This read-only field is only visible to users who
-  /// have WRITER permission for the script project.
+  /// Creation date timestamp.
+  ///
+  /// This read-only field is only visible to users who have WRITER permission
+  /// for the script project.
   core.String createTime;
 
   /// The defined set of functions in the script file, if any.
   GoogleAppsScriptTypeFunctionSet functionSet;
 
-  /// The user who modified the file most recently. This read-only field is only
-  /// visible to users who have WRITER permission for the script project.
+  /// The user who modified the file most recently.
+  ///
+  /// This read-only field is only visible to users who have WRITER permission
+  /// for the script project.
   GoogleAppsScriptTypeUser lastModifyUser;
 
-  /// The name of the file. The file extension is not part of the file name,
-  /// which can be identified from the type field.
+  /// The name of the file.
+  ///
+  /// The file extension is not part of the file name, which can be identified
+  /// from the type field.
   core.String name;
 
   /// The file content.
@@ -1751,8 +1777,10 @@ class File {
   /// a valid [ScriptManifest](/apps-script/concepts/manifests)
   core.String type;
 
-  /// Last modified date timestamp. This read-only field is only visible to
-  /// users who have WRITER permission for the script project.
+  /// Last modified date timestamp.
+  ///
+  /// This read-only field is only visible to users who have WRITER permission
+  /// for the script project.
   core.String updateTime;
 
   File();
@@ -1958,7 +1986,9 @@ class GoogleAppsScriptTypeFunction {
   }
 }
 
-/// A set of functions. No duplicates are permitted.
+/// A set of functions.
+///
+/// No duplicates are permitted.
 class GoogleAppsScriptTypeFunctionSet {
   /// A list of functions composing the set.
   core.List<GoogleAppsScriptTypeFunction> values;
@@ -1986,6 +2016,7 @@ class GoogleAppsScriptTypeFunctionSet {
 
 /// Representation of a single script process execution that was started from
 /// the script editor, a trigger, an application, or using the Apps Script API.
+///
 /// This is distinct from the `Operation` resource, which only represents
 /// executions started via the Apps Script API.
 class GoogleAppsScriptTypeProcess {
@@ -2256,8 +2287,9 @@ class ListDeploymentsResponse {
 
 /// Response with the list of Process resources.
 class ListScriptProcessesResponse {
-  /// Token for the next page of results. If empty, there are no more pages
-  /// remaining.
+  /// Token for the next page of results.
+  ///
+  /// If empty, there are no more pages remaining.
   core.String nextPageToken;
 
   /// List of processes matching request parameters.
@@ -2292,8 +2324,9 @@ class ListScriptProcessesResponse {
 
 /// Response with the list of Process resources.
 class ListUserProcessesResponse {
-  /// Token for the next page of results. If empty, there are no more pages
-  /// remaining.
+  /// Token for the next page of results.
+  ///
+  /// If empty, there are no more pages remaining.
   core.String nextPageToken;
 
   /// List of processes matching request parameters.
@@ -2353,8 +2386,9 @@ class ListValue {
 
 /// Response with the list of the versions for the specified script project.
 class ListVersionsResponse {
-  /// The token use to fetch the next page of records. if not exist in the
-  /// response, that means no more versions to list.
+  /// The token use to fetch the next page of records.
+  ///
+  /// if not exist in the response, that means no more versions to list.
   core.String nextPageToken;
 
   /// The list of versions.
@@ -2480,7 +2514,9 @@ class MetricsValue {
 }
 
 /// A representation of an execution of an Apps Script function started with
-/// run. The execution response does not arrive until the function finishes
+/// run.
+///
+/// The execution response does not arrive until the function finishes
 /// executing. The maximum execution runtime is listed in the [Apps Script
 /// quotas guide](/apps-script/guides/services/quotas#current_limitations).
 /// After execution has started, it can have one of four outcomes: - If the
@@ -2497,15 +2533,18 @@ class MetricsValue {
 /// format for the response body. Client libraries automatically convert a 4XX
 /// response into an exception class.
 class Operation {
-  /// This field indicates whether the script execution has completed. A
-  /// completed execution has a populated `response` field containing the
+  /// This field indicates whether the script execution has completed.
+  ///
+  /// A completed execution has a populated `response` field containing the
   /// ExecutionResponse from function that was executed.
   core.bool done;
 
   /// If a `run` call succeeds but the script function (or Apps Script itself)
-  /// throws an exception, this field contains a Status object. The `Status`
-  /// object's `details` field contains an array with a single ExecutionError
-  /// object that provides information about the nature of the error.
+  /// throws an exception, this field contains a Status object.
+  ///
+  /// The `Status` object's `details` field contains an array with a single
+  /// ExecutionError object that provides information about the nature of the
+  /// error.
   Status error;
 
   /// If the script function returns successfully, this field contains an
@@ -2562,9 +2601,10 @@ class Project {
   /// User who last modified the script.
   GoogleAppsScriptTypeUser lastModifyUser;
 
-  /// The parent's Drive ID that the script will be attached to. This is usually
-  /// the ID of a Google Document or Google Sheet. This filed is optional, and
-  /// if not set, a stand-alone script will be created.
+  /// The parent's Drive ID that the script will be attached to.
+  ///
+  /// This is usually the ID of a Google Document or Google Sheet. This filed is
+  /// optional, and if not set, a stand-alone script will be created.
   core.String parentId;
 
   /// The script project's Drive ID.
@@ -2689,9 +2729,11 @@ class ScriptStackTraceElement {
 /// throws an exception, the response body's error field contains this `Status`
 /// object.
 class Status {
-  /// The status code. For this API, this value either: - 10, indicating a
-  /// `SCRIPT_TIMEOUT` error, - 3, indicating an `INVALID_ARGUMENT` error, or -
-  /// 1, indicating a `CANCELLED` execution.
+  /// The status code.
+  ///
+  /// For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT`
+  /// error, - 3, indicating an `INVALID_ARGUMENT` error, or - 1, indicating a
+  /// `CANCELLED` execution.
   core.int code;
 
   /// An array that contains a single ExecutionError object that provides
@@ -2701,9 +2743,10 @@ class Status {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which is in English. Any user-facing
-  /// error message is localized and sent in the details field, or localized by
-  /// the client.
+  /// A developer-facing error message, which is in English.
+  ///
+  /// Any user-facing error message is localized and sent in the details field,
+  /// or localized by the client.
   core.String message;
 
   Status();
@@ -2911,9 +2954,11 @@ class Value {
   }
 }
 
-/// A resource representing a script project version. A version is a "snapshot"
-/// of a script project and is similar to a read-only branched release. When
-/// creating deployments, the version to use must be specified.
+/// A resource representing a script project version.
+///
+/// A version is a "snapshot" of a script project and is similar to a read-only
+/// branched release. When creating deployments, the version to use must be
+/// specified.
 class Version {
   /// When the version was created.
   core.String createTime;
@@ -2925,7 +2970,9 @@ class Version {
   core.String scriptId;
 
   /// The incremental ID that is created by Apps Script when a version is
-  /// created. This is system assigned number and is immutable once created.
+  /// created.
+  ///
+  /// This is system assigned number and is immutable once created.
   core.int versionNumber;
 
   Version();

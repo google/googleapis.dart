@@ -74,4 +74,31 @@ void main() {
 '''));
     });
   });
+
+  group('header', () {
+    for (var entry in {
+      'Bob is nice. Bob is kind.': '''
+/// Bob is nice.
+///
+/// Bob is kind.
+''',
+      'Bob is nice (e.g. Kritis implementations). Bob is kind.': '''
+/// Bob is nice (e.g. Kritis implementations).
+///
+/// Bob is kind.
+''',
+      'Bob is nice. Bob is kind (e.g. Kritis implementations).': '''
+/// Bob is nice.
+///
+/// Bob is kind (e.g. Kritis implementations).
+''',
+    }.entries) {
+      test(entry.key, () {
+        expect(
+          Comment.header(entry.key).asDartDoc(0),
+          entry.value,
+        );
+      });
+    }
+  });
 }

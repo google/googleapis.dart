@@ -254,13 +254,14 @@ class ProjectsResource {
   }
 
   /// Exports a copy of all or a subset of entities from Google Cloud Datastore
-  /// to another storage system, such as Google Cloud Storage. Recent updates to
-  /// entities may not be reflected in the export. The export occurs in the
-  /// background and its progress can be monitored and managed via the Operation
-  /// resource that is created. The output of an export may only be used once
-  /// the associated operation is done. If an export operation is cancelled
-  /// before completion it may leave partial data behind in Google Cloud
-  /// Storage.
+  /// to another storage system, such as Google Cloud Storage.
+  ///
+  /// Recent updates to entities may not be reflected in the export. The export
+  /// occurs in the background and its progress can be monitored and managed via
+  /// the Operation resource that is created. The output of an export may only
+  /// be used once the associated operation is done. If an export operation is
+  /// cancelled before completion it may leave partial data behind in Google
+  /// Cloud Storage.
   ///
   /// [request] - The metadata request object.
   ///
@@ -319,11 +320,13 @@ class ProjectsResource {
     );
   }
 
-  /// Imports entities into Google Cloud Datastore. Existing entities with the
-  /// same key are overwritten. The import occurs in the background and its
-  /// progress can be monitored and managed via the Operation resource that is
-  /// created. If an ImportEntities operation is cancelled, it is possible that
-  /// a subset of the data has already been imported to Cloud Datastore.
+  /// Imports entities into Google Cloud Datastore.
+  ///
+  /// Existing entities with the same key are overwritten. The import occurs in
+  /// the background and its progress can be monitored and managed via the
+  /// Operation resource that is created. If an ImportEntities operation is
+  /// cancelled, it is possible that a subset of the data has already been
+  /// imported to Cloud Datastore.
   ///
   /// [request] - The metadata request object.
   ///
@@ -629,14 +632,16 @@ class ProjectsIndexesResource {
 
   ProjectsIndexesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates the specified index. A newly created index's initial state is
-  /// `CREATING`. On completion of the returned google.longrunning.Operation,
-  /// the state will be `READY`. If the index already exists, the call will
-  /// return an `ALREADY_EXISTS` status. During index creation, the process
-  /// could result in an error, in which case the index will move to the `ERROR`
-  /// state. The process can be recovered by fixing the data that caused the
-  /// error, removing the index with delete, then re-creating the index with
-  /// create. Indexes with a single property cannot be created.
+  /// Creates the specified index.
+  ///
+  /// A newly created index's initial state is `CREATING`. On completion of the
+  /// returned google.longrunning.Operation, the state will be `READY`. If the
+  /// index already exists, the call will return an `ALREADY_EXISTS` status.
+  /// During index creation, the process could result in an error, in which case
+  /// the index will move to the `ERROR` state. The process can be recovered by
+  /// fixing the data that caused the error, removing the index with delete,
+  /// then re-creating the index with create. Indexes with a single property
+  /// cannot be created.
   ///
   /// [request] - The metadata request object.
   ///
@@ -695,13 +700,15 @@ class ProjectsIndexesResource {
     );
   }
 
-  /// Deletes an existing index. An index can only be deleted if it is in a
-  /// `READY` or `ERROR` state. On successful execution of the request, the
-  /// index will be in a `DELETING` state. And on completion of the returned
-  /// google.longrunning.Operation, the index will be removed. During index
-  /// deletion, the process could result in an error, in which case the index
-  /// will move to the `ERROR` state. The process can be recovered by fixing the
-  /// data that caused the error, followed by calling delete again.
+  /// Deletes an existing index.
+  ///
+  /// An index can only be deleted if it is in a `READY` or `ERROR` state. On
+  /// successful execution of the request, the index will be in a `DELETING`
+  /// state. And on completion of the returned google.longrunning.Operation, the
+  /// index will be removed. During index deletion, the process could result in
+  /// an error, in which case the index will move to the `ERROR` state. The
+  /// process can be recovered by fixing the data that caused the error,
+  /// followed by calling delete again.
   ///
   /// Request parameters:
   ///
@@ -821,9 +828,10 @@ class ProjectsIndexesResource {
     );
   }
 
-  /// Lists the indexes that match the specified filters. Datastore uses an
-  /// eventually consistent query to fetch the list of indexes and may
-  /// occasionally return stale results.
+  /// Lists the indexes that match the specified filters.
+  ///
+  /// Datastore uses an eventually consistent query to fetch the list of indexes
+  /// and may occasionally return stale results.
   ///
   /// Request parameters:
   ///
@@ -902,8 +910,9 @@ class ProjectsOperationsResource {
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
   /// guaranteed. If the server doesn't support this method, it returns
   /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
   /// or other methods to check whether the cancellation succeeded or whether
@@ -961,10 +970,11 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
   ///
   /// Request parameters:
   ///
@@ -1015,9 +1025,10 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -1069,10 +1080,11 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -1151,8 +1163,11 @@ class ProjectsOperationsResource {
 
 /// The request for Datastore.AllocateIds.
 class AllocateIdsRequest {
-  /// Required. A list of keys with incomplete key paths for which to allocate
-  /// IDs. No key may be reserved/read-only.
+  /// A list of keys with incomplete key paths for which to allocate IDs.
+  ///
+  /// No key may be reserved/read-only.
+  ///
+  /// Required.
   core.List<Key> keys;
 
   AllocateIdsRequest();
@@ -1203,8 +1218,10 @@ class AllocateIdsResponse {
 
 /// An array value.
 class ArrayValue {
-  /// Values in the array. The order of values in an array is preserved as long
-  /// as all values have identical settings for 'exclude_from_indexes'.
+  /// Values in the array.
+  ///
+  /// The order of values in an array is preserved as long as all values have
+  /// identical settings for 'exclude_from_indexes'.
   core.List<Value> values;
 
   ArrayValue();
@@ -1281,7 +1298,9 @@ class BeginTransactionResponse {
 
 /// The request for Datastore.Commit.
 class CommitRequest {
-  /// The type of commit to perform. Defaults to `TRANSACTIONAL`.
+  /// The type of commit to perform.
+  ///
+  /// Defaults to `TRANSACTIONAL`.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "TRANSACTIONAL" : Transactional: The mutations are either all applied,
@@ -1291,16 +1310,19 @@ class CommitRequest {
   /// all or none.
   core.String mode;
 
-  /// The mutations to perform. When mode is `TRANSACTIONAL`, mutations
-  /// affecting a single entity are applied in order. The following sequences of
-  /// mutations affecting a single entity are not permitted in a single `Commit`
-  /// request: - `insert` followed by `insert` - `update` followed by `insert` -
-  /// `upsert` followed by `insert` - `delete` followed by `update` When mode is
-  /// `NON_TRANSACTIONAL`, no two mutations may affect a single entity.
+  /// The mutations to perform.
+  ///
+  /// When mode is `TRANSACTIONAL`, mutations affecting a single entity are
+  /// applied in order. The following sequences of mutations affecting a single
+  /// entity are not permitted in a single `Commit` request: - `insert` followed
+  /// by `insert` - `update` followed by `insert` - `upsert` followed by
+  /// `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`,
+  /// no two mutations may affect a single entity.
   core.List<Mutation> mutations;
 
-  /// The identifier of the transaction associated with the commit. A
-  /// transaction identifier is returned by a call to
+  /// The identifier of the transaction associated with the commit.
+  ///
+  /// A transaction identifier is returned by a call to
   /// Datastore.BeginTransaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes =>
@@ -1349,8 +1371,9 @@ class CommitResponse {
   /// were updated.
   core.int indexUpdates;
 
-  /// The result of performing the mutations. The i-th mutation result
-  /// corresponds to the i-th mutation in the request.
+  /// The result of performing the mutations.
+  ///
+  /// The i-th mutation result corresponds to the i-th mutation in the request.
   core.List<MutationResult> mutationResults;
 
   CommitResponse();
@@ -1382,7 +1405,9 @@ class CommitResponse {
 
 /// A filter that merges multiple other filters using the given operator.
 class CompositeFilter {
-  /// The list of filters to combine. Must contain at least one filter.
+  /// The list of filters to combine.
+  ///
+  /// Must contain at least one filter.
   core.List<Filter> filters;
 
   /// The operator for combining multiple filters.
@@ -1419,10 +1444,12 @@ class CompositeFilter {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -1436,20 +1463,24 @@ class Empty {
   }
 }
 
-/// A Datastore data object. An entity is limited to 1 megabyte when stored.
-/// That _roughly_ corresponds to a limit of 1 megabyte for the serialized form
-/// of this message.
+/// A Datastore data object.
+///
+/// An entity is limited to 1 megabyte when stored. That _roughly_ corresponds
+/// to a limit of 1 megabyte for the serialized form of this message.
 class Entity {
-  /// The entity's key. An entity must have a key, unless otherwise documented
-  /// (for example, an entity in `Value.entity_value` may have no key). An
-  /// entity's kind is its key path's last element's kind, or null if it has no
-  /// key.
+  /// The entity's key.
+  ///
+  /// An entity must have a key, unless otherwise documented (for example, an
+  /// entity in `Value.entity_value` may have no key). An entity's kind is its
+  /// key path's last element's kind, or null if it has no key.
   Key key;
 
-  /// The entity's properties. The map's keys are property names. A property
-  /// name matching regex `__.*__` is reserved. A reserved property name is
-  /// forbidden in certain documented contexts. The name must not contain more
-  /// than 500 characters. The name cannot be `""`.
+  /// The entity's properties.
+  ///
+  /// The map's keys are property names. A property name matching regex `__.*__`
+  /// is reserved. A reserved property name is forbidden in certain documented
+  /// contexts. The name must not contain more than 500 characters. The name
+  /// cannot be `""`.
   core.Map<core.String, Value> properties;
 
   Entity();
@@ -1484,8 +1515,9 @@ class Entity {
 
 /// The result of fetching an entity from Datastore.
 class EntityResult {
-  /// A cursor that points to the position after the result entity. Set only
-  /// when the `EntityResult` is part of a `QueryResultBatch` message.
+  /// A cursor that points to the position after the result entity.
+  ///
+  /// Set only when the `EntityResult` is part of a `QueryResultBatch` message.
   core.String cursor;
   core.List<core.int> get cursorAsBytes => convert.base64.decode(cursor);
 
@@ -1498,10 +1530,12 @@ class EntityResult {
   Entity entity;
 
   /// The version of the entity, a strictly positive number that monotonically
-  /// increases with changes to the entity. This field is set for `FULL` entity
-  /// results. For missing entities in `LookupResponse`, this is the version of
-  /// the snapshot that was used to look up the entity, and it is always set
-  /// except for eventually consistent reads.
+  /// increases with changes to the entity.
+  ///
+  /// This field is set for `FULL` entity results. For missing entities in
+  /// `LookupResponse`, this is the version of the snapshot that was used to
+  /// look up the entity, and it is always set except for eventually consistent
+  /// reads.
   core.String version;
 
   EntityResult();
@@ -1573,11 +1607,14 @@ class GoogleDatastoreAdminV1CommonMetadata {
   core.String endTime;
 
   /// The client-assigned labels which were provided when the operation was
-  /// created. May also include additional labels.
+  /// created.
+  ///
+  /// May also include additional labels.
   core.Map<core.String, core.String> labels;
 
-  /// The type of the operation. Can be used as a filter in
-  /// ListOperationsRequest.
+  /// The type of the operation.
+  ///
+  /// Can be used as a filter in ListOperationsRequest.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
   /// - "EXPORT_ENTITIES" : ExportEntities.
@@ -1652,24 +1689,26 @@ class GoogleDatastoreAdminV1CommonMetadata {
   }
 }
 
-/// Identifies a subset of entities in a project. This is specified as
-/// combinations of kinds and namespaces (either or both of which may be all, as
-/// described in the following examples). Example usage: Entire project:
-/// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces:
-/// kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default
-/// namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in
-/// both the default and Baz namespaces: kinds=['Foo', 'Bar'],
+/// Identifies a subset of entities in a project.
+///
+/// This is specified as combinations of kinds and namespaces (either or both of
+/// which may be all, as described in the following examples). Example usage:
+/// Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all
+/// namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in
+/// the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo
+/// and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'],
 /// namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
 /// namespace_ids=['Baz']
 class GoogleDatastoreAdminV1EntityFilter {
   /// If empty, then this represents all kinds.
   core.List<core.String> kinds;
 
-  /// An empty list represents all namespaces. This is the preferred usage for
-  /// projects that don't use namespaces. An empty string element represents the
-  /// default namespace. This should be used if the project has data in
-  /// non-default namespaces, but doesn't want to include them. Each namespace
-  /// in this list must be unique.
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for projects that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the project has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
   core.List<core.String> namespaceIds;
 
   GoogleDatastoreAdminV1EntityFilter();
@@ -1707,8 +1746,9 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
   /// Description of which entities are being exported.
   GoogleDatastoreAdminV1EntityFilter entityFilter;
 
-  /// Location for the export metadata and data files. This will be the same
-  /// value as the
+  /// Location for the export metadata and data files.
+  ///
+  /// This will be the same value as the
   /// google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field.
   /// The final output location is provided in
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
@@ -1773,12 +1813,13 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   /// Client-assigned labels.
   core.Map<core.String, core.String> labels;
 
-  /// Required. Location for the export metadata and data files. The full
-  /// resource URL of the external storage location. Currently, only Google
-  /// Cloud Storage is supported. So output_url_prefix should be of the form:
-  /// `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of
-  /// the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage
-  /// namespace path (this is not a Cloud Datastore namespace). For more
+  /// Location for the export metadata and data files.
+  ///
+  /// The full resource URL of the external storage location. Currently, only
+  /// Google Cloud Storage is supported. So output_url_prefix should be of the
+  /// form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name
+  /// of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud
+  /// Storage namespace path (this is not a Cloud Datastore namespace). For more
   /// information about Cloud Storage namespace paths, see [Object name
   /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
   /// The resulting files will be nested deeper than the specified URL prefix.
@@ -1787,6 +1828,8 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   /// value should be used for subsequent ImportEntities operations. By nesting
   /// the data files deeper, the same Cloud Storage bucket can be used in
   /// multiple ExportEntities operations without conflict.
+  ///
+  /// Required.
   core.String outputUrlPrefix;
 
   GoogleDatastoreAdminV1ExportEntitiesRequest();
@@ -1827,8 +1870,10 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
 
 /// The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
 class GoogleDatastoreAdminV1ExportEntitiesResponse {
-  /// Location of the output metadata file. This can be used to begin an import
-  /// into Cloud Datastore (this project or another project). See
+  /// Location of the output metadata file.
+  ///
+  /// This can be used to begin an import into Cloud Datastore (this project or
+  /// another project). See
   /// google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only present if
   /// the operation completed successfully.
   core.String outputUrl;
@@ -1858,8 +1903,10 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
   /// Description of which entities are being imported.
   GoogleDatastoreAdminV1EntityFilter entityFilter;
 
-  /// The location of the import metadata file. This will be the same value as
-  /// the google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
+  /// The location of the import metadata file.
+  ///
+  /// This will be the same value as the
+  /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
   core.String inputUrl;
 
   /// An estimate of the number of bytes processed.
@@ -1915,13 +1962,16 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
 
 /// The request for google.datastore.admin.v1.DatastoreAdmin.ImportEntities.
 class GoogleDatastoreAdminV1ImportEntitiesRequest {
-  /// Optionally specify which kinds/namespaces are to be imported. If provided,
-  /// the list must be a subset of the EntityFilter used in creating the export,
-  /// otherwise a FAILED_PRECONDITION error will be returned. If no filter is
-  /// specified then all entities from the export are imported.
+  /// Optionally specify which kinds/namespaces are to be imported.
+  ///
+  /// If provided, the list must be a subset of the EntityFilter used in
+  /// creating the export, otherwise a FAILED_PRECONDITION error will be
+  /// returned. If no filter is specified then all entities from the export are
+  /// imported.
   GoogleDatastoreAdminV1EntityFilter entityFilter;
 
-  /// Required. The full resource URL of the external storage location.
+  /// The full resource URL of the external storage location.
+  ///
   /// Currently, only Google Cloud Storage is supported. So input_url should be
   /// of the form:
   /// `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
@@ -1933,6 +1983,8 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
   /// For more information, see
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
+  ///
+  /// Required.
   core.String inputUrl;
 
   /// Client-assigned labels.
@@ -1976,28 +2028,40 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
 
 /// Datastore composite index definition.
 class GoogleDatastoreAdminV1Index {
-  /// Required. The index's ancestor mode. Must not be
-  /// ANCESTOR_MODE_UNSPECIFIED.
+  /// The index's ancestor mode.
+  ///
+  /// Must not be ANCESTOR_MODE_UNSPECIFIED.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "ANCESTOR_MODE_UNSPECIFIED" : The ancestor mode is unspecified.
   /// - "NONE" : Do not include the entity's ancestors in the index.
   /// - "ALL_ANCESTORS" : Include all the entity's ancestors in the index.
   core.String ancestor;
 
-  /// Output only. The resource ID of the index.
+  /// The resource ID of the index.
+  ///
+  /// Output only.
   core.String indexId;
 
-  /// Required. The entity kind to which this index applies.
+  /// The entity kind to which this index applies.
+  ///
+  /// Required.
   core.String kind;
 
-  /// Output only. Project ID.
+  /// Project ID.
+  ///
+  /// Output only.
   core.String projectId;
 
-  /// Required. An ordered sequence of property names and their index
-  /// attributes.
+  /// An ordered sequence of property names and their index attributes.
+  ///
+  /// Required.
   core.List<GoogleDatastoreAdminV1IndexedProperty> properties;
 
-  /// Output only. The state of the index.
+  /// The state of the index.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state is unspecified.
   /// - "CREATING" : The index is being created, and cannot be used by queries.
@@ -2111,8 +2175,11 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
 
 /// A property of an index.
 class GoogleDatastoreAdminV1IndexedProperty {
-  /// Required. The indexed property's direction. Must not be
-  /// DIRECTION_UNSPECIFIED.
+  /// The indexed property's direction.
+  ///
+  /// Must not be DIRECTION_UNSPECIFIED.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "DIRECTION_UNSPECIFIED" : The direction is unspecified.
   /// - "ASCENDING" : The property's values are indexed so as to support
@@ -2121,7 +2188,9 @@ class GoogleDatastoreAdminV1IndexedProperty {
   /// sequencing in descending order and also query by <, >, <=, >=, and =.
   core.String direction;
 
-  /// Required. The property name to index.
+  /// The property name to index.
+  ///
+  /// Required.
   core.String name;
 
   GoogleDatastoreAdminV1IndexedProperty();
@@ -2184,12 +2253,14 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
 
 /// Measures the progress of a particular metric.
 class GoogleDatastoreAdminV1Progress {
-  /// The amount of work that has been completed. Note that this may be greater
-  /// than work_estimated.
+  /// The amount of work that has been completed.
+  ///
+  /// Note that this may be greater than work_estimated.
   core.String workCompleted;
 
-  /// An estimate of how much work needs to be performed. May be zero if the
-  /// work estimate is unavailable.
+  /// An estimate of how much work needs to be performed.
+  ///
+  /// May be zero if the work estimate is unavailable.
   core.String workEstimated;
 
   GoogleDatastoreAdminV1Progress();
@@ -2221,11 +2292,14 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   core.String endTime;
 
   /// The client-assigned labels which were provided when the operation was
-  /// created. May also include additional labels.
+  /// created.
+  ///
+  /// May also include additional labels.
   core.Map<core.String, core.String> labels;
 
-  /// The type of the operation. Can be used as a filter in
-  /// ListOperationsRequest.
+  /// The type of the operation.
+  ///
+  /// Can be used as a filter in ListOperationsRequest.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
   /// - "EXPORT_ENTITIES" : ExportEntities.
@@ -2298,24 +2372,26 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   }
 }
 
-/// Identifies a subset of entities in a project. This is specified as
-/// combinations of kinds and namespaces (either or both of which may be all, as
-/// described in the following examples). Example usage: Entire project:
-/// kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces:
-/// kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default
-/// namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in
-/// both the default and Baz namespaces: kinds=['Foo', 'Bar'],
+/// Identifies a subset of entities in a project.
+///
+/// This is specified as combinations of kinds and namespaces (either or both of
+/// which may be all, as described in the following examples). Example usage:
+/// Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all
+/// namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in
+/// the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo
+/// and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'],
 /// namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
 /// namespace_ids=['Baz']
 class GoogleDatastoreAdminV1beta1EntityFilter {
   /// If empty, then this represents all kinds.
   core.List<core.String> kinds;
 
-  /// An empty list represents all namespaces. This is the preferred usage for
-  /// projects that don't use namespaces. An empty string element represents the
-  /// default namespace. This should be used if the project has data in
-  /// non-default namespaces, but doesn't want to include them. Each namespace
-  /// in this list must be unique.
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for projects that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the project has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
   core.List<core.String> namespaceIds;
 
   GoogleDatastoreAdminV1beta1EntityFilter();
@@ -2353,8 +2429,9 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
   /// Description of which entities are being exported.
   GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
 
-  /// Location for the export metadata and data files. This will be the same
-  /// value as the
+  /// Location for the export metadata and data files.
+  ///
+  /// This will be the same value as the
   /// google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
   /// field. The final output location is provided in
   /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
@@ -2414,8 +2491,10 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
 /// The response for
 /// google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
 class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
-  /// Location of the output metadata file. This can be used to begin an import
-  /// into Cloud Datastore (this project or another project). See
+  /// Location of the output metadata file.
+  ///
+  /// This can be used to begin an import into Cloud Datastore (this project or
+  /// another project). See
   /// google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url. Only
   /// present if the operation completed successfully.
   core.String outputUrl;
@@ -2445,9 +2524,10 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
   /// Description of which entities are being imported.
   GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
 
-  /// The location of the import metadata file. This will be the same value as
-  /// the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
-  /// field.
+  /// The location of the import metadata file.
+  ///
+  /// This will be the same value as the
+  /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field.
   core.String inputUrl;
 
   /// An estimate of the number of bytes processed.
@@ -2503,12 +2583,14 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
 
 /// Measures the progress of a particular metric.
 class GoogleDatastoreAdminV1beta1Progress {
-  /// The amount of work that has been completed. Note that this may be greater
-  /// than work_estimated.
+  /// The amount of work that has been completed.
+  ///
+  /// Note that this may be greater than work_estimated.
   core.String workCompleted;
 
-  /// An estimate of how much work needs to be performed. May be zero if the
-  /// work estimate is unavailable.
+  /// An estimate of how much work needs to be performed.
+  ///
+  /// May be zero if the work estimate is unavailable.
   core.String workEstimated;
 
   GoogleDatastoreAdminV1beta1Progress();
@@ -2572,31 +2654,37 @@ class GoogleLongrunningListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -2664,20 +2752,24 @@ class GoogleLongrunningOperation {
 /// query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
 class GqlQuery {
   /// When false, the query string must not contain any literals and instead
-  /// must bind all values. For example, `SELECT * FROM Kind WHERE a = 'string
-  /// literal'` is not allowed, while `SELECT * FROM Kind WHERE a = @value` is.
+  /// must bind all values.
+  ///
+  /// For example, `SELECT * FROM Kind WHERE a = 'string literal'` is not
+  /// allowed, while `SELECT * FROM Kind WHERE a = @value` is.
   core.bool allowLiterals;
 
   /// For each non-reserved named binding site in the query string, there must
-  /// be a named parameter with that name, but not necessarily the inverse. Key
-  /// must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not
-  /// be `""`.
+  /// be a named parameter with that name, but not necessarily the inverse.
+  ///
+  /// Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must
+  /// not be `""`.
   core.Map<core.String, GqlQueryParameter> namedBindings;
 
   /// Numbered binding site @1 references the first numbered parameter,
-  /// effectively using 1-based indexing, rather than the usual 0. For each
-  /// binding site numbered i in `query_string`, there must be an i-th numbered
-  /// parameter. The inverse must also be true.
+  /// effectively using 1-based indexing, rather than the usual 0.
+  ///
+  /// For each binding site numbered i in `query_string`, there must be an i-th
+  /// numbered parameter. The inverse must also be true.
   core.List<GqlQueryParameter> positionalBindings;
 
   /// A string of the format described
@@ -2734,7 +2826,9 @@ class GqlQuery {
 
 /// A binding parameter for a GQL query.
 class GqlQueryParameter {
-  /// A query cursor. Query cursors are returned in query result batches.
+  /// A query cursor.
+  ///
+  /// Query cursors are returned in query result batches.
   core.String cursor;
   core.List<core.int> get cursorAsBytes => convert.base64.decode(cursor);
 
@@ -2770,26 +2864,32 @@ class GqlQueryParameter {
   }
 }
 
-/// A unique identifier for an entity. If a key's partition ID or any of its
-/// path kinds or names are reserved/read-only, the key is reserved/read-only. A
-/// reserved/read-only key is forbidden in certain documented contexts.
+/// A unique identifier for an entity.
+///
+/// If a key's partition ID or any of its path kinds or names are
+/// reserved/read-only, the key is reserved/read-only. A reserved/read-only key
+/// is forbidden in certain documented contexts.
 class Key {
   /// Entities are partitioned into subsets, currently identified by a project
-  /// ID and namespace ID. Queries are scoped to a single partition.
+  /// ID and namespace ID.
+  ///
+  /// Queries are scoped to a single partition.
   PartitionId partitionId;
 
-  /// The entity path. An entity path consists of one or more elements composed
-  /// of a kind and a string or numerical identifier, which identify entities.
-  /// The first element identifies a _root entity_, the second element
-  /// identifies a _child_ of the root entity, the third element identifies a
-  /// child of the second entity, and so forth. The entities identified by all
-  /// prefixes of the path are called the element's _ancestors_. An entity path
-  /// is always fully complete: *all* of the entity's ancestors are required to
-  /// be in the path along with the entity identifier itself. The only exception
-  /// is that in some documented cases, the identifier in the last path element
-  /// (for the entity) itself may be omitted. For example, the last path element
-  /// of the key of `Mutation.insert` may have no identifier. A path can never
-  /// be empty, and a path can have at most 100 elements.
+  /// The entity path.
+  ///
+  /// An entity path consists of one or more elements composed of a kind and a
+  /// string or numerical identifier, which identify entities. The first element
+  /// identifies a _root entity_, the second element identifies a _child_ of the
+  /// root entity, the third element identifies a child of the second entity,
+  /// and so forth. The entities identified by all prefixes of the path are
+  /// called the element's _ancestors_. An entity path is always fully complete:
+  /// *all* of the entity's ancestors are required to be in the path along with
+  /// the entity identifier itself. The only exception is that in some
+  /// documented cases, the identifier in the last path element (for the entity)
+  /// itself may be omitted. For example, the last path element of the key of
+  /// `Mutation.insert` may have no identifier. A path can never be empty, and a
+  /// path can have at most 100 elements.
   core.List<PathElement> path;
 
   Key();
@@ -2841,15 +2941,20 @@ class KindExpression {
   }
 }
 
-/// An object representing a latitude/longitude pair. This is expressed as a
-/// pair of doubles representing degrees latitude and degrees longitude. Unless
-/// specified otherwise, this must conform to the WGS84 standard. Values must be
-/// within normalized ranges.
+/// An object representing a latitude/longitude pair.
+///
+/// This is expressed as a pair of doubles representing degrees latitude and
+/// degrees longitude. Unless specified otherwise, this must conform to the
+/// WGS84 standard. Values must be within normalized ranges.
 class LatLng {
-  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
+  /// The latitude in degrees.
+  ///
+  /// It must be in the range [-90.0, +90.0].
   core.double latitude;
 
-  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
+  /// The longitude in degrees.
+  ///
+  /// It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   LatLng();
@@ -2877,7 +2982,9 @@ class LatLng {
 
 /// The request for Datastore.Lookup.
 class LookupRequest {
-  /// Required. Keys of entities to look up.
+  /// Keys of entities to look up.
+  ///
+  /// Required.
   core.List<Key> keys;
 
   /// The options for this lookup request.
@@ -2912,19 +3019,22 @@ class LookupRequest {
 
 /// The response for Datastore.Lookup.
 class LookupResponse {
-  /// A list of keys that were not looked up due to resource constraints. The
-  /// order of results in this field is undefined and has no relation to the
+  /// A list of keys that were not looked up due to resource constraints.
+  ///
+  /// The order of results in this field is undefined and has no relation to the
   /// order of the keys in the input.
   core.List<Key> deferred;
 
-  /// Entities found as `ResultType.FULL` entities. The order of results in this
-  /// field is undefined and has no relation to the order of the keys in the
-  /// input.
+  /// Entities found as `ResultType.FULL` entities.
+  ///
+  /// The order of results in this field is undefined and has no relation to the
+  /// order of the keys in the input.
   core.List<EntityResult> found;
 
-  /// Entities not found as `ResultType.KEY_ONLY` entities. The order of results
-  /// in this field is undefined and has no relation to the order of the keys in
-  /// the input.
+  /// Entities not found as `ResultType.KEY_ONLY` entities.
+  ///
+  /// The order of results in this field is undefined and has no relation to the
+  /// order of the keys in the input.
   core.List<EntityResult> missing;
 
   LookupResponse();
@@ -2967,24 +3077,33 @@ class LookupResponse {
 
 /// A mutation to apply to an entity.
 class Mutation {
-  /// The version of the entity that this mutation is being applied to. If this
-  /// does not match the current version on the server, the mutation conflicts.
+  /// The version of the entity that this mutation is being applied to.
+  ///
+  /// If this does not match the current version on the server, the mutation
+  /// conflicts.
   core.String baseVersion;
 
-  /// The key of the entity to delete. The entity may or may not already exist.
-  /// Must have a complete key path and must not be reserved/read-only.
+  /// The key of the entity to delete.
+  ///
+  /// The entity may or may not already exist. Must have a complete key path and
+  /// must not be reserved/read-only.
   Key delete;
 
-  /// The entity to insert. The entity must not already exist. The entity key's
-  /// final path element may be incomplete.
+  /// The entity to insert.
+  ///
+  /// The entity must not already exist. The entity key's final path element may
+  /// be incomplete.
   Entity insert;
 
-  /// The entity to update. The entity must already exist. Must have a complete
-  /// key path.
+  /// The entity to update.
+  ///
+  /// The entity must already exist. Must have a complete key path.
   Entity update;
 
-  /// The entity to upsert. The entity may or may not already exist. The entity
-  /// key's final path element may be incomplete.
+  /// The entity to upsert.
+  ///
+  /// The entity may or may not already exist. The entity key's final path
+  /// element may be incomplete.
   Entity upsert;
 
   Mutation();
@@ -3034,17 +3153,21 @@ class Mutation {
 
 /// The result of applying a mutation.
 class MutationResult {
-  /// Whether a conflict was detected for this mutation. Always false when a
-  /// conflict detection strategy field is not set in the mutation.
+  /// Whether a conflict was detected for this mutation.
+  ///
+  /// Always false when a conflict detection strategy field is not set in the
+  /// mutation.
   core.bool conflictDetected;
 
-  /// The automatically allocated key. Set only when the mutation allocated a
-  /// key.
+  /// The automatically allocated key.
+  ///
+  /// Set only when the mutation allocated a key.
   Key key;
 
-  /// The version of the entity on the server after processing the mutation. If
-  /// the mutation doesn't change anything on the server, then the version will
-  /// be the version of the current entity or, if no entity is present, a
+  /// The version of the entity on the server after processing the mutation.
+  ///
+  /// If the mutation doesn't change anything on the server, then the version
+  /// will be the version of the current entity or, if no entity is present, a
   /// version that is strictly greater than the version of any previous entity
   /// and less than the version of any possible future entity.
   core.String version;
@@ -3078,16 +3201,17 @@ class MutationResult {
   }
 }
 
-/// A partition ID identifies a grouping of entities. The grouping is always by
-/// project and namespace, however the namespace ID may be empty. A partition ID
-/// contains several dimensions: project ID and namespace ID. Partition
-/// dimensions: - May be `""`. - Must be valid UTF-8 bytes. - Must have values
-/// that match regex `[A-Za-z\d\.\-_]{1,100}` If the value of any dimension
-/// matches regex `__.*__`, the partition is reserved/read-only. A
-/// reserved/read-only partition ID is forbidden in certain documented contexts.
-/// Foreign partition IDs (in which the project ID does not match the context
-/// project ID ) are discouraged. Reads and writes of foreign partition IDs may
-/// fail if the project is not in an active state.
+/// A partition ID identifies a grouping of entities.
+///
+/// The grouping is always by project and namespace, however the namespace ID
+/// may be empty. A partition ID contains several dimensions: project ID and
+/// namespace ID. Partition dimensions: - May be `""`. - Must be valid UTF-8
+/// bytes. - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}` If the
+/// value of any dimension matches regex `__.*__`, the partition is
+/// reserved/read-only. A reserved/read-only partition ID is forbidden in
+/// certain documented contexts. Foreign partition IDs (in which the project ID
+/// does not match the context project ID ) are discouraged. Reads and writes of
+/// foreign partition IDs may fail if the project is not in an active state.
 class PartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
   core.String namespaceId;
@@ -3118,21 +3242,27 @@ class PartitionId {
   }
 }
 
-/// A (kind, ID/name) pair used to construct a key path. If either name or ID is
-/// set, the element is complete. If neither is set, the element is incomplete.
+/// A (kind, ID/name) pair used to construct a key path.
+///
+/// If either name or ID is set, the element is complete. If neither is set, the
+/// element is incomplete.
 class PathElement {
-  /// The auto-allocated ID of the entity. Never equal to zero. Values less than
-  /// zero are discouraged and may not be supported in the future.
+  /// The auto-allocated ID of the entity.
+  ///
+  /// Never equal to zero. Values less than zero are discouraged and may not be
+  /// supported in the future.
   core.String id;
 
-  /// The kind of the entity. A kind matching regex `__.*__` is
-  /// reserved/read-only. A kind must not contain more than 1500 bytes when
-  /// UTF-8 encoded. Cannot be `""`.
+  /// The kind of the entity.
+  ///
+  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
+  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
   core.String kind;
 
-  /// The name of the entity. A name matching regex `__.*__` is
-  /// reserved/read-only. A name must not be more than 1500 bytes when UTF-8
-  /// encoded. Cannot be `""`.
+  /// The name of the entity.
+  ///
+  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
+  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
   core.String name;
 
   PathElement();
@@ -3239,7 +3369,9 @@ class PropertyFilter {
 
 /// The desired order for a specific property.
 class PropertyOrder {
-  /// The direction to order by. Defaults to `ASCENDING`.
+  /// The direction to order by.
+  ///
+  /// Defaults to `ASCENDING`.
   /// Possible string values are:
   /// - "DIRECTION_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "ASCENDING" : Ascending.
@@ -3275,8 +3407,9 @@ class PropertyOrder {
 
 /// A reference to a property relative to the kind expressions.
 class PropertyReference {
-  /// The name of the property. If name includes "."s, it may be interpreted as
-  /// a property name path.
+  /// The name of the property.
+  ///
+  /// If name includes "."s, it may be interpreted as a property name path.
   core.String name;
 
   PropertyReference();
@@ -3298,13 +3431,17 @@ class PropertyReference {
 
 /// A query for entities.
 class Query {
-  /// The properties to make distinct. The query results will contain the first
-  /// result for each distinct combination of values for the given properties
-  /// (if empty, all results are returned).
+  /// The properties to make distinct.
+  ///
+  /// The query results will contain the first result for each distinct
+  /// combination of values for the given properties (if empty, all results are
+  /// returned).
   core.List<PropertyReference> distinctOn;
 
-  /// An ending point for the query results. Query cursors are returned in query
-  /// result batches and [can only be used to limit the same
+  /// An ending point for the query results.
+  ///
+  /// Query cursors are returned in query result batches and [can only be used
+  /// to limit the same
   /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
   core.String endCursor;
   core.List<core.int> get endCursorAsBytes => convert.base64.decode(endCursor);
@@ -3317,27 +3454,35 @@ class Query {
   /// The filter to apply.
   Filter filter;
 
-  /// The kinds to query (if empty, returns entities of all kinds). Currently at
-  /// most 1 kind may be specified.
+  /// The kinds to query (if empty, returns entities of all kinds).
+  ///
+  /// Currently at most 1 kind may be specified.
   core.List<KindExpression> kind;
 
-  /// The maximum number of results to return. Applies after all other
-  /// constraints. Optional. Unspecified is interpreted as no limit. Must be >=
-  /// 0 if specified.
+  /// The maximum number of results to return.
+  ///
+  /// Applies after all other constraints. Optional. Unspecified is interpreted
+  /// as no limit. Must be >= 0 if specified.
   core.int limit;
 
-  /// The number of results to skip. Applies before limit, but after all other
-  /// constraints. Optional. Must be >= 0 if specified.
+  /// The number of results to skip.
+  ///
+  /// Applies before limit, but after all other constraints. Optional. Must be
+  /// >= 0 if specified.
   core.int offset;
 
   /// The order to apply to the query results (if empty, order is unspecified).
   core.List<PropertyOrder> order;
 
-  /// The projection to return. Defaults to returning all properties.
+  /// The projection to return.
+  ///
+  /// Defaults to returning all properties.
   core.List<Projection> projection;
 
-  /// A starting point for the query results. Query cursors are returned in
-  /// query result batches and [can only be used to continue the same
+  /// A starting point for the query results.
+  ///
+  /// Query cursors are returned in query result batches and [can only be used
+  /// to continue the same
   /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
   core.String startCursor;
   core.List<core.int> get startCursorAsBytes =>
@@ -3462,8 +3607,9 @@ class QueryResultBatch {
   /// results.
   core.String moreResults;
 
-  /// A cursor that points to the position after the last skipped result. Will
-  /// be set when `skipped_results` != 0.
+  /// A cursor that points to the position after the last skipped result.
+  ///
+  /// Will be set when `skipped_results` != 0.
   core.String skippedCursor;
   core.List<core.int> get skippedCursorAsBytes =>
       convert.base64.decode(skippedCursor);
@@ -3476,9 +3622,10 @@ class QueryResultBatch {
   /// The number of results skipped, typically because of an offset.
   core.int skippedResults;
 
-  /// The version number of the snapshot this batch was returned from. This
-  /// applies to the range of results from the query's `start_cursor` (or the
-  /// beginning of the query if no cursor was given) to this batch's
+  /// The version number of the snapshot this batch was returned from.
+  ///
+  /// This applies to the range of results from the query's `start_cursor` (or
+  /// the beginning of the query if no cursor was given) to this batch's
   /// `end_cursor` (not the query's `end_cursor`). In a single transaction,
   /// subsequent query result batches for the same query can have a greater
   /// snapshot version number. Each batch's snapshot version is valid for all
@@ -3559,8 +3706,9 @@ class ReadOnly {
 
 /// The options shared by read requests.
 class ReadOptions {
-  /// The non-transactional read consistency to use. Cannot be set to `STRONG`
-  /// for global queries.
+  /// The non-transactional read consistency to use.
+  ///
+  /// Cannot be set to `STRONG` for global queries.
   /// Possible string values are:
   /// - "READ_CONSISTENCY_UNSPECIFIED" : Unspecified. This value must not be
   /// used.
@@ -3568,8 +3716,10 @@ class ReadOptions {
   /// - "EVENTUAL" : Eventual consistency.
   core.String readConsistency;
 
-  /// The identifier of the transaction in which to read. A transaction
-  /// identifier is returned by a call to Datastore.BeginTransaction.
+  /// The identifier of the transaction in which to read.
+  ///
+  /// A transaction identifier is returned by a call to
+  /// Datastore.BeginTransaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction);
@@ -3636,8 +3786,10 @@ class ReserveIdsRequest {
   /// If not empty, the ID of the database against which to make the request.
   core.String databaseId;
 
-  /// Required. A list of keys with complete key paths whose numeric IDs should
-  /// not be auto-allocated.
+  /// A list of keys with complete key paths whose numeric IDs should not be
+  /// auto-allocated.
+  ///
+  /// Required.
   core.List<Key> keys;
 
   ReserveIdsRequest();
@@ -3682,8 +3834,10 @@ class ReserveIdsResponse {
 
 /// The request for Datastore.Rollback.
 class RollbackRequest {
-  /// Required. The transaction identifier, returned by a call to
+  /// The transaction identifier, returned by a call to
   /// Datastore.BeginTransaction.
+  ///
+  /// Required.
   core.String transaction;
   core.List<core.int> get transactionAsBytes =>
       convert.base64.decode(transaction);
@@ -3710,7 +3864,9 @@ class RollbackRequest {
   }
 }
 
-/// The response for Datastore.Rollback. (an empty message).
+/// The response for Datastore.Rollback.
+///
+/// (an empty message).
 class RollbackResponse {
   RollbackResponse();
 
@@ -3730,6 +3886,7 @@ class RunQueryRequest {
   GqlQuery gqlQuery;
 
   /// Entities are partitioned into subsets, identified by a partition ID.
+  ///
   /// Queries are scoped to a single partition. This partition ID is normalized
   /// with the standard default context partition ID.
   PartitionId partitionId;
@@ -3813,24 +3970,27 @@ class RunQueryResponse {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3871,8 +4031,10 @@ class Status {
   }
 }
 
-/// Options for beginning a new transaction. Transactions can be created
-/// explicitly with calls to Datastore.BeginTransaction or implicitly by setting
+/// Options for beginning a new transaction.
+///
+/// Transactions can be created explicitly with calls to
+/// Datastore.BeginTransaction or implicitly by setting
 /// ReadOptions.new_transaction in read requests.
 class TransactionOptions {
   /// The transaction should only allow reads.
@@ -3909,14 +4071,16 @@ class TransactionOptions {
 /// A message that can hold any of the supported value types and associated
 /// metadata.
 class Value {
-  /// An array value. Cannot contain another array value. A `Value` instance
-  /// that sets field `array_value` must not set fields `meaning` or
-  /// `exclude_from_indexes`.
+  /// An array value.
+  ///
+  /// Cannot contain another array value. A `Value` instance that sets field
+  /// `array_value` must not set fields `meaning` or `exclude_from_indexes`.
   ArrayValue arrayValue;
 
-  /// A blob value. May have at most 1,000,000 bytes. When
-  /// `exclude_from_indexes` is false, may have at most 1500 bytes. In JSON
-  /// requests, must be base64-encoded.
+  /// A blob value.
+  ///
+  /// May have at most 1,000,000 bytes. When `exclude_from_indexes` is false,
+  /// may have at most 1500 bytes. In JSON requests, must be base64-encoded.
   core.String blobValue;
   core.List<core.int> get blobValueAsBytes => convert.base64.decode(blobValue);
 
@@ -3931,8 +4095,10 @@ class Value {
   /// A double value.
   core.double doubleValue;
 
-  /// An entity value. - May have no key. - May have a key with an incomplete
-  /// key path. - May have a reserved/read-only key.
+  /// An entity value.
+  ///
+  /// - May have no key. - May have a key with an incomplete key path. - May
+  /// have a reserved/read-only key.
   Entity entityValue;
 
   /// If the value should be excluded from all indexes including those defined
@@ -3956,13 +4122,16 @@ class Value {
   /// - "NULL_VALUE" : Null value.
   core.String nullValue;
 
-  /// A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is
-  /// indexed) , may have at most 1500 bytes. Otherwise, may be set to at most
-  /// 1,000,000 bytes.
+  /// A UTF-8 encoded string value.
+  ///
+  /// When `exclude_from_indexes` is false (it is indexed) , may have at most
+  /// 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.
   core.String stringValue;
 
-  /// A timestamp value. When stored in the Datastore, precise only to
-  /// microseconds; any additional precision is rounded down.
+  /// A timestamp value.
+  ///
+  /// When stored in the Datastore, precise only to microseconds; any additional
+  /// precision is rounded down.
   core.String timestampValue;
 
   Value();

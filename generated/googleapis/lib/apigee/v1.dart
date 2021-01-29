@@ -102,10 +102,12 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Use the Apigee API to programmatically develop and manage APIs with a set of
-/// RESTful operations. Develop and secure API proxies, deploy and undeploy API
-/// proxy revisions, monitor APIs, configure environments, manage users, and
-/// more. Get started using the APIs. *Note:* This product is available as a
-/// free trial for a time period of 60 days.
+/// RESTful operations.
+///
+/// Develop and secure API proxies, deploy and undeploy API proxy revisions,
+/// monitor APIs, configure environments, manage users, and more. Get started
+/// using the APIs. *Note:* This product is available as a free trial for a time
+/// period of 60 days.
 class ApigeeApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -137,9 +139,10 @@ class HybridIssuersResource {
 
   HybridIssuersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists hybrid services and its trusted issuers service account ids. This
-  /// api is authenticated and unauthorized(allow all the users) and used by
-  /// runtime authn-authz service to query control plane's issuer service
+  /// Lists hybrid services and its trusted issuers service account ids.
+  ///
+  /// This api is authenticated and unauthorized(allow all the users) and used
+  /// by runtime authn-authz service to query control plane's issuer service
   /// account ids.
   ///
   /// Request parameters:
@@ -225,7 +228,9 @@ class OrganizationsResource {
 
   OrganizationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates an Apigee organization. See [Create an Apigee
+  /// Creates an Apigee organization.
+  ///
+  /// See [Create an Apigee
   /// organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
   ///
   /// [request] - The metadata request object.
@@ -285,7 +290,9 @@ class OrganizationsResource {
     );
   }
 
-  /// Gets the profile for an Apigee organization. See [Understanding
+  /// Gets the profile for an Apigee organization.
+  ///
+  /// See [Understanding
   /// organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
   ///
   /// Request parameters:
@@ -410,12 +417,13 @@ class OrganizationsResource {
   }
 
   /// Lists the service accounts with the permissions required to allow the
-  /// Synchronizer to download environment data from the control plane. An ETag
-  /// is returned in the response to `getSyncAuthorization`. Pass that ETag when
-  /// calling [setSyncAuthorization](setSyncAuthorization) to ensure that you
-  /// are updating the correct version. If you don't pass the ETag in the call
-  /// to `setSyncAuthorization`, then the existing authorization is overwritten
-  /// indiscriminately. For more information, see [Configure the
+  /// Synchronizer to download environment data from the control plane.
+  ///
+  /// An ETag is returned in the response to `getSyncAuthorization`. Pass that
+  /// ETag when calling [setSyncAuthorization](setSyncAuthorization) to ensure
+  /// that you are updating the correct version. If you don't pass the ETag in
+  /// the call to `setSyncAuthorization`, then the existing authorization is
+  /// overwritten indiscriminately. For more information, see [Configure the
   /// Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
   /// **Note**: Available to Apigee hybrid only.
   ///
@@ -479,7 +487,9 @@ class OrganizationsResource {
   }
 
   /// Lists the Apigee organizations and associated GCP projects that you have
-  /// permission to access. See [Understanding
+  /// permission to access.
+  ///
+  /// See [Understanding
   /// organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
   ///
   /// Request parameters:
@@ -534,10 +544,11 @@ class OrganizationsResource {
   }
 
   /// Sets the permissions required to allow the Synchronizer to download
-  /// environment data from the control plane. You must call this API to enable
-  /// proper functioning of hybrid. Pass the ETag when calling
-  /// `setSyncAuthorization` to ensure that you are updating the correct
-  /// version. To get an ETag, call
+  /// environment data from the control plane.
+  ///
+  /// You must call this API to enable proper functioning of hybrid. Pass the
+  /// ETag when calling `setSyncAuthorization` to ensure that you are updating
+  /// the correct version. To get an ETag, call
   /// [getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag
   /// in the call to `setSyncAuthorization`, then the existing authorization is
   /// overwritten indiscriminately. For more information, see [Configure the
@@ -603,8 +614,9 @@ class OrganizationsResource {
     );
   }
 
-  /// Updates the properties for an Apigee organization. No other fields in the
-  /// organization profile will be updated.
+  /// Updates the properties for an Apigee organization.
+  ///
+  /// No other fields in the organization profile will be updated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -911,9 +923,10 @@ class OrganizationsAnalyticsDatastoresResource {
     );
   }
 
-  /// Test if Datastore configuration is correct. This includes checking if
-  /// credentials provided by customer have required permissions in target
-  /// destination storage
+  /// Test if Datastore configuration is correct.
+  ///
+  /// This includes checking if credentials provided by customer have required
+  /// permissions in target destination storage
   ///
   /// [request] - The metadata request object.
   ///
@@ -1044,16 +1057,17 @@ class OrganizationsApiproductsResource {
   OrganizationsApiproductsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Updates or creates API product attributes. This API **replaces** the
-  /// current list of attributes with the attributes specified in the request
-  /// body. In this way, you can update existing attributes, add new attributes,
-  /// or delete existing attributes by omitting them from the request body.
-  /// OAuth access tokens and Key Management Service (KMS) entities (apps,
-  /// developers, and API products) are cached for 180 seconds (current
-  /// default). Any custom attributes associated with entities also get cached
-  /// for at least 180 seconds after entity is accessed during runtime. In this
-  /// case, the `ExpiresIn` element on the OAuthV2 policy won't be able to
-  /// expire an access token in less than 180 seconds.
+  /// Updates or creates API product attributes.
+  ///
+  /// This API **replaces** the current list of attributes with the attributes
+  /// specified in the request body. In this way, you can update existing
+  /// attributes, add new attributes, or delete existing attributes by omitting
+  /// them from the request body. OAuth access tokens and Key Management Service
+  /// (KMS) entities (apps, developers, and API products) are cached for 180
+  /// seconds (current default). Any custom attributes associated with entities
+  /// also get cached for at least 180 seconds after entity is accessed during
+  /// runtime. In this case, the `ExpiresIn` element on the OAuthV2 policy won't
+  /// be able to expire an access token in less than 180 seconds.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1113,23 +1127,24 @@ class OrganizationsApiproductsResource {
     );
   }
 
-  /// Creates an API product in an organization. You create API products after
-  /// you have proxied backend services using API proxies. An API product is a
-  /// collection of API resources combined with quota settings and metadata that
-  /// you can use to deliver customized and productized API bundles to your
-  /// developer community. This metadata can include: - Scope - Environments -
-  /// API proxies - Extensible profile API products enable you repackage APIs
-  /// on-the-fly, without having to do any additional coding or configuration.
-  /// Apigee recommends that you start with a simple API product including only
-  /// required elements. You then provision credentials to apps to enable them
-  /// to start testing your APIs. After you have authentication and
-  /// authorization working against a simple API product, you can iterate to
-  /// create finer grained API products, defining different sets of API
-  /// resources for each API product. *WARNING:* - If you don't specify an API
-  /// proxy in the request body, *any* app associated with the product can make
-  /// calls to *any* API in your entire organization. - If you don't specify an
-  /// environment in the request body, the product allows access to all
-  /// environments. For more information, see {{what_api_product}}
+  /// Creates an API product in an organization.
+  ///
+  /// You create API products after you have proxied backend services using API
+  /// proxies. An API product is a collection of API resources combined with
+  /// quota settings and metadata that you can use to deliver customized and
+  /// productized API bundles to your developer community. This metadata can
+  /// include: - Scope - Environments - API proxies - Extensible profile API
+  /// products enable you repackage APIs on-the-fly, without having to do any
+  /// additional coding or configuration. Apigee recommends that you start with
+  /// a simple API product including only required elements. You then provision
+  /// credentials to apps to enable them to start testing your APIs. After you
+  /// have authentication and authorization working against a simple API
+  /// product, you can iterate to create finer grained API products, defining
+  /// different sets of API resources for each API product. *WARNING:* - If you
+  /// don't specify an API proxy in the request body, *any* app associated with
+  /// the product can make calls to *any* API in your entire organization. - If
+  /// you don't specify an environment in the request body, the product allows
+  /// access to all environments. For more information, see {{what_api_product}}
   ///
   /// [request] - The metadata request object.
   ///
@@ -1191,14 +1206,16 @@ class OrganizationsApiproductsResource {
     );
   }
 
-  /// Deletes an API product from an organization. Deleting an API product
-  /// causes app requests to the resource URIs defined in the API product to
-  /// fail. Ensure that you create a new API product to serve existing apps,
-  /// unless your intention is to disable access to the resources defined in the
-  /// API product. The API product name required in the request URL is the
-  /// internal name of the product, not the display name. While they may be the
-  /// same, it depends on whether the API product was created via the UI or the
-  /// API. View the list of API products to verify the internal name.
+  /// Deletes an API product from an organization.
+  ///
+  /// Deleting an API product causes app requests to the resource URIs defined
+  /// in the API product to fail. Ensure that you create a new API product to
+  /// serve existing apps, unless your intention is to disable access to the
+  /// resources defined in the API product. The API product name required in the
+  /// request URL is the internal name of the product, not the display name.
+  /// While they may be the same, it depends on whether the API product was
+  /// created via the UI or the API. View the list of API products to verify the
+  /// internal name.
   ///
   /// Request parameters:
   ///
@@ -1251,11 +1268,12 @@ class OrganizationsApiproductsResource {
     );
   }
 
-  /// Gets configuration details for an API product. The API product name
-  /// required in the request URL is the internal name of the product, not the
-  /// display name. While they may be the same, it depends on whether the API
-  /// product was created via the UI or the API. View the list of API products
-  /// to verify the internal name.
+  /// Gets configuration details for an API product.
+  ///
+  /// The API product name required in the request URL is the internal name of
+  /// the product, not the display name. While they may be the same, it depends
+  /// on whether the API product was created via the UI or the API. View the
+  /// list of API products to verify the internal name.
   ///
   /// Request parameters:
   ///
@@ -1308,10 +1326,12 @@ class OrganizationsApiproductsResource {
     );
   }
 
-  /// Lists all API product names for an organization. Filter the list by
-  /// passing an `attributename` and `attibutevalue`. The limit on the number of
-  /// API products returned by the API is 1000. You can paginate the list of API
-  /// products returned using the `startKey` and `count` query parameters.
+  /// Lists all API product names for an organization.
+  ///
+  /// Filter the list by passing an `attributename` and `attibutevalue`. The
+  /// limit on the number of API products returned by the API is 1000. You can
+  /// paginate the list of API products returned using the `startKey` and
+  /// `count` query parameters.
   ///
   /// Request parameters:
   ///
@@ -1401,12 +1421,14 @@ class OrganizationsApiproductsResource {
     );
   }
 
-  /// Updates an existing API product. You must include all required values,
-  /// whether or not you are updating them, as well as any optional values that
-  /// you are updating. The API product name required in the request URL is the
-  /// internal name of the product, not the Display Name. While they may be the
-  /// same, it depends on whether the API product was created via UI or API.
-  /// View the list of API products to identify their internal names.
+  /// Updates an existing API product.
+  ///
+  /// You must include all required values, whether or not you are updating
+  /// them, as well as any optional values that you are updating. The API
+  /// product name required in the request URL is the internal name of the
+  /// product, not the Display Name. While they may be the same, it depends on
+  /// whether the API product was created via UI or API. View the list of API
+  /// products to identify their internal names.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1635,13 +1657,14 @@ class OrganizationsApiproductsAttributesResource {
     );
   }
 
-  /// Updates the value of an API product attribute. Limitations are: OAuth
-  /// access tokens and Key Management Service (KMS) entities (apps, developers,
-  /// and API products) are cached for 180 seconds (current default). Any custom
-  /// attributes associated with entities also get cached for at least 180
-  /// seconds after entity is accessed during runtime. In this case, the
-  /// `ExpiresIn` element on the OAuthV2 policy won't be able to expire an
-  /// access token in less than 180 seconds.
+  /// Updates the value of an API product attribute.
+  ///
+  /// Limitations are: OAuth access tokens and Key Management Service (KMS)
+  /// entities (apps, developers, and API products) are cached for 180 seconds
+  /// (current default). Any custom attributes associated with entities also get
+  /// cached for at least 180 seconds after entity is accessed during runtime.
+  /// In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able
+  /// to expire an access token in less than 180 seconds.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1714,19 +1737,21 @@ class OrganizationsApisResource {
 
   OrganizationsApisResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates an API proxy. The API proxy created will not be accessible at
-  /// runtime until it is deployed to an environment. Create a new API proxy by
-  /// setting the `name` query parameter to the name of the API proxy. Import an
-  /// API proxy configuration bundle stored in zip format on your local machine
-  /// to your organization by doing the following: * Set the `name` query
-  /// parameter to the name of the API proxy. * Set the `action` query parameter
-  /// to `import`. * Set the `Content-Type` header to `multipart/form-data`. *
-  /// Pass as a file the name of API proxy configuration bundle stored in zip
-  /// format on your local machine using the `file` form field. **Note**: To
-  /// validate the API proxy configuration bundle only without importing it, set
-  /// the `action` query parameter to `validate`. When importing an API proxy
-  /// configuration bundle, if the API proxy does not exist, it will be created.
-  /// If the API proxy exists, then a new revision is created. Invalid API proxy
+  /// Creates an API proxy.
+  ///
+  /// The API proxy created will not be accessible at runtime until it is
+  /// deployed to an environment. Create a new API proxy by setting the `name`
+  /// query parameter to the name of the API proxy. Import an API proxy
+  /// configuration bundle stored in zip format on your local machine to your
+  /// organization by doing the following: * Set the `name` query parameter to
+  /// the name of the API proxy. * Set the `action` query parameter to `import`.
+  /// * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file
+  /// the name of API proxy configuration bundle stored in zip format on your
+  /// local machine using the `file` form field. **Note**: To validate the API
+  /// proxy configuration bundle only without importing it, set the `action`
+  /// query parameter to `validate`. When importing an API proxy configuration
+  /// bundle, if the API proxy does not exist, it will be created. If the API
+  /// proxy exists, then a new revision is created. Invalid API proxy
   /// configurations are rejected, and a list of validation errors is returned
   /// to the client.
   ///
@@ -1811,7 +1836,9 @@ class OrganizationsApisResource {
   }
 
   /// Deletes an API proxy and all associated endpoints, policies, resources,
-  /// and revisions. The API proxy must be undeployed before you can delete it.
+  /// and revisions.
+  ///
+  /// The API proxy must be undeployed before you can delete it.
   ///
   /// Request parameters:
   ///
@@ -1917,9 +1944,10 @@ class OrganizationsApisResource {
     );
   }
 
-  /// Lists the names of all API proxies in an organization. The names returned
-  /// correspond to the names defined in the configuration files for each API
-  /// proxy.
+  /// Lists the names of all API proxies in an organization.
+  ///
+  /// The names returned correspond to the names defined in the configuration
+  /// files for each API proxy.
   ///
   /// Request parameters:
   ///
@@ -2182,8 +2210,9 @@ class OrganizationsApisRevisionsResource {
       : _requester = client;
 
   /// Deletes an API proxy revision and all policies, resources, endpoints, and
-  /// revisions associated with it. The API proxy revision must be undeployed
-  /// before you can delete it.
+  /// revisions associated with it.
+  ///
+  /// The API proxy revision must be undeployed before you can delete it.
   ///
   /// Request parameters:
   ///
@@ -2237,13 +2266,14 @@ class OrganizationsApisRevisionsResource {
     );
   }
 
-  /// Gets an API proxy revision. To download the API proxy configuration bundle
-  /// for the specified revision as a zip file, do the following: * Set the
-  /// `format` query parameter to `bundle`. * Set the `Accept` header to
-  /// `application/zip`. If you are using curl, specify `-o filename.zip` to
-  /// save the output to a file; otherwise, it displays to `stdout`. Then,
-  /// develop the API proxy configuration locally and upload the updated API
-  /// proxy configuration revision, as described in
+  /// Gets an API proxy revision.
+  ///
+  /// To download the API proxy configuration bundle for the specified revision
+  /// as a zip file, do the following: * Set the `format` query parameter to
+  /// `bundle`. * Set the `Accept` header to `application/zip`. If you are using
+  /// curl, specify `-o filename.zip` to save the output to a file; otherwise,
+  /// it displays to `stdout`. Then, develop the API proxy configuration locally
+  /// and upload the updated API proxy configuration revision, as described in
   /// [updateApiProxyRevision](updateApiProxyRevision).
   ///
   /// Request parameters:
@@ -2307,11 +2337,12 @@ class OrganizationsApisRevisionsResource {
   }
 
   /// Updates an existing API proxy revision by uploading the API proxy
-  /// configuration bundle as a zip file from your local machine. You can update
-  /// only API proxy revisions that have never been deployed. After deployment,
-  /// an API proxy revision becomes immutable, even if it is undeployed. Set the
-  /// `Content-Type` header to either `multipart/form-data` or
-  /// `application/octet-stream`.
+  /// configuration bundle as a zip file from your local machine.
+  ///
+  /// You can update only API proxy revisions that have never been deployed.
+  /// After deployment, an API proxy revision becomes immutable, even if it is
+  /// undeployed. Set the `Content-Type` header to either `multipart/form-data`
+  /// or `application/octet-stream`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2698,16 +2729,17 @@ class OrganizationsDevelopersResource {
   OrganizationsDevelopersResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Updates developer attributes. This API replaces the existing attributes
-  /// with those specified in the request. Add new attributes, and include or
-  /// exclude any existing attributes that you want to retain or remove,
-  /// respectively. The custom attribute limit is 18. **Note**: OAuth access
-  /// tokens and Key Management Service (KMS) entities (apps, developers, and
-  /// API products) are cached for 180 seconds (default). Any custom attributes
-  /// associated with these entities are cached for at least 180 seconds after
-  /// the entity is accessed at runtime. Therefore, an `ExpiresIn` element on
-  /// the OAuthV2 policy won't be able to expire an access token in less than
-  /// 180 seconds.
+  /// Updates developer attributes.
+  ///
+  /// This API replaces the existing attributes with those specified in the
+  /// request. Add new attributes, and include or exclude any existing
+  /// attributes that you want to retain or remove, respectively. The custom
+  /// attribute limit is 18. **Note**: OAuth access tokens and Key Management
+  /// Service (KMS) entities (apps, developers, and API products) are cached for
+  /// 180 seconds (default). Any custom attributes associated with these
+  /// entities are cached for at least 180 seconds after the entity is accessed
+  /// at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't
+  /// be able to expire an access token in less than 180 seconds.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2769,9 +2801,11 @@ class OrganizationsDevelopersResource {
     );
   }
 
-  /// Creates a developer. Once created, the developer can register an app and
-  /// obtain an API key. At creation time, a developer is set as `active`. To
-  /// change the developer status, use the SetDeveloperStatus API.
+  /// Creates a developer.
+  ///
+  /// Once created, the developer can register an app and obtain an API key. At
+  /// creation time, a developer is set as `active`. To change the developer
+  /// status, use the SetDeveloperStatus API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2833,14 +2867,15 @@ class OrganizationsDevelopersResource {
     );
   }
 
-  /// Deletes a developer. All apps and API keys associated with the developer
-  /// are also removed. **Warning**: This API will permanently delete the
-  /// developer and related artifacts. To avoid permanently deleting developers
-  /// and their artifacts, set the developer status to `inactive` using the
-  /// SetDeveloperStatus API. **Note**: The delete operation is asynchronous.
-  /// The developer app is deleted immediately, but its associated resources,
-  /// such as apps and API keys, may take anywhere from a few seconds to a few
-  /// minutes to be deleted.
+  /// Deletes a developer.
+  ///
+  /// All apps and API keys associated with the developer are also removed.
+  /// **Warning**: This API will permanently delete the developer and related
+  /// artifacts. To avoid permanently deleting developers and their artifacts,
+  /// set the developer status to `inactive` using the SetDeveloperStatus API.
+  /// **Note**: The delete operation is asynchronous. The developer app is
+  /// deleted immediately, but its associated resources, such as apps and API
+  /// keys, may take anywhere from a few seconds to a few minutes to be deleted.
   ///
   /// Request parameters:
   ///
@@ -2895,8 +2930,9 @@ class OrganizationsDevelopersResource {
   }
 
   /// Returns the developer details, including the developer's name, email
-  /// address, apps, and other information. **Note**: The response includes only
-  /// the first 100 developer apps.
+  /// address, apps, and other information.
+  ///
+  /// **Note**: The response includes only the first 100 developer apps.
   ///
   /// Request parameters:
   ///
@@ -2957,12 +2993,13 @@ class OrganizationsDevelopersResource {
     );
   }
 
-  /// Lists all developers in an organization by email address. By default, the
-  /// response does not include company developers. Set the `includeCompany`
-  /// query parameter to `true` to include company developers. **Note**: A
-  /// maximum of 1000 developers are returned in the response. You paginate the
-  /// list of developers returned using the `startKey` and `count` query
-  /// parameters.
+  /// Lists all developers in an organization by email address.
+  ///
+  /// By default, the response does not include company developers. Set the
+  /// `includeCompany` query parameter to `true` to include company developers.
+  /// **Note**: A maximum of 1000 developers are returned in the response. You
+  /// paginate the list of developers returned using the `startKey` and `count`
+  /// query parameters.
   ///
   /// Request parameters:
   ///
@@ -3057,13 +3094,15 @@ class OrganizationsDevelopersResource {
     );
   }
 
-  /// Sets the status of a developer. Valid values are `active` or `inactive`. A
-  /// developer is `active` by default. If you set a developer's status to
-  /// `inactive`, the API keys assigned to the developer apps are no longer
-  /// valid even though the API keys are set to `approved`. Inactive developers
-  /// can still sign in to the developer portal and create apps; however, any
-  /// new API keys generated during app creation won't work. If successful, the
-  /// API call returns the following HTTP status code: `204 No Content`
+  /// Sets the status of a developer.
+  ///
+  /// Valid values are `active` or `inactive`. A developer is `active` by
+  /// default. If you set a developer's status to `inactive`, the API keys
+  /// assigned to the developer apps are no longer valid even though the API
+  /// keys are set to `approved`. Inactive developers can still sign in to the
+  /// developer portal and create apps; however, any new API keys generated
+  /// during app creation won't work. If successful, the API call returns the
+  /// following HTTP status code: `204 No Content`
   ///
   /// Request parameters:
   ///
@@ -3124,15 +3163,17 @@ class OrganizationsDevelopersResource {
     );
   }
 
-  /// Updates a developer. This API replaces the existing developer details with
-  /// those specified in the request. Include or exclude any existing details
-  /// that you want to retain or delete, respectively. The custom attribute
-  /// limit is 18. **Note**: OAuth access tokens and Key Management Service
-  /// (KMS) entities (apps, developers, and API products) are cached for 180
-  /// seconds (current default). Any custom attributes associated with these
-  /// entities are cached for at least 180 seconds after the entity is accessed
-  /// at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't
-  /// be able to expire an access token in less than 180 seconds.
+  /// Updates a developer.
+  ///
+  /// This API replaces the existing developer details with those specified in
+  /// the request. Include or exclude any existing details that you want to
+  /// retain or delete, respectively. The custom attribute limit is 18.
+  /// **Note**: OAuth access tokens and Key Management Service (KMS) entities
+  /// (apps, developers, and API products) are cached for 180 seconds (current
+  /// default). Any custom attributes associated with these entities are cached
+  /// for at least 180 seconds after the entity is accessed at runtime.
+  /// Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to
+  /// expire an access token in less than 180 seconds.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3204,8 +3245,10 @@ class OrganizationsDevelopersAppsResource {
   OrganizationsDevelopersAppsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Updates attributes for a developer app. This API replaces the current
-  /// attributes with those specified in the request.
+  /// Updates attributes for a developer app.
+  ///
+  /// This API replaces the current attributes with those specified in the
+  /// request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3267,12 +3310,14 @@ class OrganizationsDevelopersAppsResource {
     );
   }
 
-  /// Creates an app associated with a developer. This API associates the
-  /// developer app with the specified API product and auto-generates an API key
-  /// for the app to use in calls to API proxies inside that API product. The
-  /// `name` is the unique ID of the app that you can use in API calls. The
-  /// `DisplayName` (set as an attribute) appears in the UI. If you don't set
-  /// the `DisplayName` attribute, the `name` appears in the UI.
+  /// Creates an app associated with a developer.
+  ///
+  /// This API associates the developer app with the specified API product and
+  /// auto-generates an API key for the app to use in calls to API proxies
+  /// inside that API product. The `name` is the unique ID of the app that you
+  /// can use in API calls. The `DisplayName` (set as an attribute) appears in
+  /// the UI. If you don't set the `DisplayName` attribute, the `name` appears
+  /// in the UI.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3331,10 +3376,12 @@ class OrganizationsDevelopersAppsResource {
     );
   }
 
-  /// Deletes a developer app. **Note**: The delete operation is asynchronous.
-  /// The developer app is deleted immediately, but its associated resources,
-  /// such as app keys or access tokens, may take anywhere from a few seconds to
-  /// a few minutes to be deleted.
+  /// Deletes a developer app.
+  ///
+  /// **Note**: The delete operation is asynchronous. The developer app is
+  /// deleted immediately, but its associated resources, such as app keys or
+  /// access tokens, may take anywhere from a few seconds to a few minutes to be
+  /// deleted.
   ///
   /// Request parameters:
   ///
@@ -3393,26 +3440,27 @@ class OrganizationsDevelopersAppsResource {
   /// a developer app * Generate a new consumer key and secret for a developer
   /// app To approve or revoke a developer app, set the `action` query parameter
   /// to `approved` or `revoked`, respectively, and the `Content-Type` header to
-  /// `application/octet-stream`. If a developer app is revoked, none of its API
-  /// keys are valid for API calls even though the keys are still `approved`. If
-  /// successful, the API call returns the following HTTP status code: `204 No
-  /// Content` To generate a new consumer key and secret for a developer app,
-  /// pass the new key/secret details. Rather than replace an existing key, this
-  /// API generates a new key. In this case, multiple key pairs may be
-  /// associated with a single developer app. Each key pair has an independent
-  /// status (`approved` or `revoked`) and expiration time. Any approved,
-  /// non-expired key can be used in an API call. For example, if you're using
-  /// API key rotation, you can generate new keys with expiration times that
-  /// overlap keys that are going to expire. You might also generate a new
-  /// consumer key/secret if the security of the original key/secret is
-  /// compromised. The `keyExpiresIn` property defines the expiration time for
-  /// the API key in milliseconds. If you don't set this property or set it to
-  /// `-1`, the API key never expires. **Notes**: * When generating a new
-  /// key/secret, this API replaces the existing attributes, notes, and callback
-  /// URLs with those specified in the request. Include or exclude any existing
-  /// information that you want to retain or delete, respectively. * To migrate
-  /// existing consumer keys and secrets to hybrid from another system, see the
-  /// CreateDeveloperAppKey API.
+  /// `application/octet-stream`.
+  ///
+  /// If a developer app is revoked, none of its API keys are valid for API
+  /// calls even though the keys are still `approved`. If successful, the API
+  /// call returns the following HTTP status code: `204 No Content` To generate
+  /// a new consumer key and secret for a developer app, pass the new key/secret
+  /// details. Rather than replace an existing key, this API generates a new
+  /// key. In this case, multiple key pairs may be associated with a single
+  /// developer app. Each key pair has an independent status (`approved` or
+  /// `revoked`) and expiration time. Any approved, non-expired key can be used
+  /// in an API call. For example, if you're using API key rotation, you can
+  /// generate new keys with expiration times that overlap keys that are going
+  /// to expire. You might also generate a new consumer key/secret if the
+  /// security of the original key/secret is compromised. The `keyExpiresIn`
+  /// property defines the expiration time for the API key in milliseconds. If
+  /// you don't set this property or set it to `-1`, the API key never expires.
+  /// **Notes**: * When generating a new key/secret, this API replaces the
+  /// existing attributes, notes, and callback URLs with those specified in the
+  /// request. Include or exclude any existing information that you want to
+  /// retain or delete, respectively. * To migrate existing consumer keys and
+  /// secrets to hybrid from another system, see the CreateDeveloperAppKey API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3554,6 +3602,7 @@ class OrganizationsDevelopersAppsResource {
   }
 
   /// Lists all apps created by a developer in an Apigee organization.
+  ///
   /// Optionally, you can request an expanded view of the developer apps. A
   /// maximum of 100 developer apps are returned per API call. You can paginate
   /// the list of deveoper apps returned using the `startKey` and `count` query
@@ -3644,11 +3693,13 @@ class OrganizationsDevelopersAppsResource {
     );
   }
 
-  /// Updates the details for a developer app. In addition, you can add an API
-  /// product to a developer app and automatically generate an API key for the
-  /// app to use when calling APIs in the API product. If you want to use an
-  /// existing API key for the API product, add the API product to the API key
-  /// using the UpdateDeveloperAppKey API. Using this API, you cannot update the
+  /// Updates the details for a developer app.
+  ///
+  /// In addition, you can add an API product to a developer app and
+  /// automatically generate an API key for the app to use when calling APIs in
+  /// the API product. If you want to use an existing API key for the API
+  /// product, add the API product to the API key using the
+  /// UpdateDeveloperAppKey API. Using this API, you cannot update the
   /// following: * App name as it is the primary key used to identify the app
   /// and cannot be changed. * Scopes associated with the app. Instead, use the
   /// ReplaceDeveloperAppKey API. This API replaces the existing attributes with
@@ -3888,12 +3939,14 @@ class OrganizationsDevelopersAppsAttributesResource {
     );
   }
 
-  /// Updates a developer app attribute. **Note**: OAuth access tokens and Key
-  /// Management Service (KMS) entities (apps, developers, and API products) are
-  /// cached for 180 seconds (current default). Any custom attributes associated
-  /// with these entities are cached for at least 180 seconds after the entity
-  /// is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2
-  /// policy won't be able to expire an access token in less than 180 seconds.
+  /// Updates a developer app attribute.
+  ///
+  /// **Note**: OAuth access tokens and Key Management Service (KMS) entities
+  /// (apps, developers, and API products) are cached for 180 seconds (current
+  /// default). Any custom attributes associated with these entities are cached
+  /// for at least 180 seconds after the entity is accessed at runtime.
+  /// Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to
+  /// expire an access token in less than 180 seconds.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3966,13 +4019,14 @@ class OrganizationsDevelopersAppsKeysResource {
   OrganizationsDevelopersAppsKeysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a custom consumer key and secret for a developer app. This is
-  /// particularly useful if you want to migrate existing consumer keys and
-  /// secrets to Apigee hybrid from another system. Consumer keys and secrets
-  /// can contain letters, numbers, underscores, and hyphens. No other special
-  /// characters are allowed. To avoid service disruptions, a consumer key and
-  /// secret should not exceed 2 KBs each. **Note**: When creating the consumer
-  /// key and secret, an association to API products will not be made.
+  /// Creates a custom consumer key and secret for a developer app.
+  ///
+  /// This is particularly useful if you want to migrate existing consumer keys
+  /// and secrets to Apigee hybrid from another system. Consumer keys and
+  /// secrets can contain letters, numbers, underscores, and hyphens. No other
+  /// special characters are allowed. To avoid service disruptions, a consumer
+  /// key and secret should not exceed 2 KBs each. **Note**: When creating the
+  /// consumer key and secret, an association to API products will not be made.
   /// Therefore, you should not specify the associated API products in your
   /// request. Instead, use the UpdateDeveloperAppKey API to make the
   /// association after the consumer key and secret are created. If a consumer
@@ -4038,9 +4092,11 @@ class OrganizationsDevelopersAppsKeysResource {
   }
 
   /// Deletes an app's consumer key and removes all API products associated with
-  /// the app. After the consumer key is deleted, it cannot be used to access
-  /// any APIs. **Note**: After you delete a consumer key, you may want to: 1.
-  /// Create a new consumer key and secret for the developer app using the
+  /// the app.
+  ///
+  /// After the consumer key is deleted, it cannot be used to access any APIs.
+  /// **Note**: After you delete a consumer key, you may want to: 1. Create a
+  /// new consumer key and secret for the developer app using the
   /// CreateDeveloperAppKey API, and subsequently add an API product to the key
   /// using the UpdateDeveloperAppKey API. 2. Delete the developer app, if it is
   /// no longer required.
@@ -4154,12 +4210,13 @@ class OrganizationsDevelopersAppsKeysResource {
     );
   }
 
-  /// Updates the scope of an app. This API replaces the existing scopes with
-  /// those specified in the request. Include or exclude any existing scopes
-  /// that you want to retain or delete, respectively. The specified scopes must
-  /// already be defined for the API products associated with the app. This API
-  /// sets the `scopes` element under the `apiProducts` element in the
-  /// attributes of the app.
+  /// Updates the scope of an app.
+  ///
+  /// This API replaces the existing scopes with those specified in the request.
+  /// Include or exclude any existing scopes that you want to retain or delete,
+  /// respectively. The specified scopes must already be defined for the API
+  /// products associated with the app. This API sets the `scopes` element under
+  /// the `apiProducts` element in the attributes of the app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4221,11 +4278,12 @@ class OrganizationsDevelopersAppsKeysResource {
   }
 
   /// Adds an API product to a developer app key, enabling the app that holds
-  /// the key to access the API resources bundled in the API product. In
-  /// addition, you can add attributes to a developer app key. This API replaces
-  /// the existing attributes with those specified in the request. Include or
-  /// exclude any existing attributes that you want to retain or delete,
-  /// respectively. You can use the same key to access all API products
+  /// the key to access the API resources bundled in the API product.
+  ///
+  /// In addition, you can add attributes to a developer app key. This API
+  /// replaces the existing attributes with those specified in the request.
+  /// Include or exclude any existing attributes that you want to retain or
+  /// delete, respectively. You can use the same key to access all API products
   /// associated with the app.
   ///
   /// [request] - The metadata request object.
@@ -4302,10 +4360,11 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Removes an API product from an app's consumer key. After the API product
-  /// is removed, the app cannot access the API resources defined in that API
-  /// product. **Note**: The consumer key is not removed, only its association
-  /// with the API product.
+  /// Removes an API product from an app's consumer key.
+  ///
+  /// After the API product is removed, the app cannot access the API resources
+  /// defined in that API product. **Note**: The consumer key is not removed,
+  /// only its association with the API product.
   ///
   /// Request parameters:
   ///
@@ -4360,12 +4419,13 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
     );
   }
 
-  /// Approve or revoke an app's consumer key. After a consumer key is approved,
-  /// the app can use it to access APIs. A consumer key that is revoked or
-  /// pending cannot be used to access an API. Any access tokens associated with
-  /// a revoked consumer key will remain active. However, Apigee hybrid checks
-  /// the status of the consumer key and if set to `revoked` will not allow
-  /// access to the API.
+  /// Approve or revoke an app's consumer key.
+  ///
+  /// After a consumer key is approved, the app can use it to access APIs. A
+  /// consumer key that is revoked or pending cannot be used to access an API.
+  /// Any access tokens associated with a revoked consumer key will remain
+  /// active. However, Apigee hybrid checks the status of the consumer key and
+  /// if set to `revoked` will not allow access to the API.
   ///
   /// Request parameters:
   ///
@@ -4434,13 +4494,14 @@ class OrganizationsDevelopersAppsKeysCreateResource {
   OrganizationsDevelopersAppsKeysCreateResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a custom consumer key and secret for a developer app. This is
-  /// particularly useful if you want to migrate existing consumer keys and
-  /// secrets to Apigee hybrid from another system. Consumer keys and secrets
-  /// can contain letters, numbers, underscores, and hyphens. No other special
-  /// characters are allowed. To avoid service disruptions, a consumer key and
-  /// secret should not exceed 2 KBs each. **Note**: When creating the consumer
-  /// key and secret, an association to API products will not be made.
+  /// Creates a custom consumer key and secret for a developer app.
+  ///
+  /// This is particularly useful if you want to migrate existing consumer keys
+  /// and secrets to Apigee hybrid from another system. Consumer keys and
+  /// secrets can contain letters, numbers, underscores, and hyphens. No other
+  /// special characters are allowed. To avoid service disruptions, a consumer
+  /// key and secret should not exceed 2 KBs each. **Note**: When creating the
+  /// consumer key and secret, an association to API products will not be made.
   /// Therefore, you should not specify the associated API products in your
   /// request. Instead, use the UpdateDeveloperAppKey API to make the
   /// association after the consumer key and secret are created. If a consumer
@@ -4680,12 +4741,14 @@ class OrganizationsDevelopersAttributesResource {
     );
   }
 
-  /// Updates a developer attribute. **Note**: OAuth access tokens and Key
-  /// Management Service (KMS) entities (apps, developers, and API products) are
-  /// cached for 180 seconds (default). Any custom attributes associated with
-  /// these entities are cached for at least 180 seconds after the entity is
-  /// accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2
-  /// policy won't be able to expire an access token in less than 180 seconds.
+  /// Updates a developer attribute.
+  ///
+  /// **Note**: OAuth access tokens and Key Management Service (KMS) entities
+  /// (apps, developers, and API products) are cached for 180 seconds (default).
+  /// Any custom attributes associated with these entities are cached for at
+  /// least 180 seconds after the entity is accessed at runtime. Therefore, an
+  /// `ExpiresIn` element on the OAuthV2 policy won't be able to expire an
+  /// access token in less than 180 seconds.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5632,8 +5695,9 @@ class OrganizationsEnvironmentsResource {
     );
   }
 
-  /// Gets the IAM policy on an environment. For more information, see [Manage
-  /// users, roles, and permissions using the
+  /// Gets the IAM policy on an environment.
+  ///
+  /// For more information, see [Manage users, roles, and permissions using the
   /// API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
   /// You must have the `apigee.environments.getIamPolicy` permission to call
   /// this API.
@@ -5707,8 +5771,9 @@ class OrganizationsEnvironmentsResource {
   }
 
   /// Sets the IAM policy on an environment, if the policy already exists it
-  /// will be replaced. For more information, see [Manage users, roles, and
-  /// permissions using the
+  /// will be replaced.
+  ///
+  /// For more information, see [Manage users, roles, and permissions using the
   /// API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
   /// You must have the `apigee.environments.setIamPolicy` permission to call
   /// this API.
@@ -5773,8 +5838,9 @@ class OrganizationsEnvironmentsResource {
     );
   }
 
-  /// Creates a subscription for the environment's Pub/Sub topic. The server
-  /// will assign a random name for this subscription. The "name" and
+  /// Creates a subscription for the environment's Pub/Sub topic.
+  ///
+  /// The server will assign a random name for this subscription. The "name" and
   /// "push_config" must *not* be specified.
   ///
   /// Request parameters:
@@ -5830,9 +5896,10 @@ class OrganizationsEnvironmentsResource {
   }
 
   /// Tests the permissions of a user on an environment, and returns a subset of
-  /// permissions that the user has on the environment. If the environment does
-  /// not exist, an empty permission set is returned (a NOT_FOUND error is not
-  /// returned).
+  /// permissions that the user has on the environment.
+  ///
+  /// If the environment does not exist, an empty permission set is returned (a
+  /// NOT_FOUND error is not returned).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5955,11 +6022,12 @@ class OrganizationsEnvironmentsResource {
     );
   }
 
-  /// Updates an existing environment. When updating properties, you must pass
-  /// all existing properties to the API, even if they are not being changed. If
-  /// you omit properties from the payload, the properties are removed. To get
-  /// the current list of properties for the environment, use the [Get
-  /// Environment API](get).
+  /// Updates an existing environment.
+  ///
+  /// When updating properties, you must pass all existing properties to the
+  /// API, even if they are not being changed. If you omit properties from the
+  /// payload, the properties are removed. To get the current list of properties
+  /// for the environment, use the [Get Environment API](get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6092,11 +6160,12 @@ class OrganizationsEnvironmentsResource {
     );
   }
 
-  /// Updates an existing environment. When updating properties, you must pass
-  /// all existing properties to the API, even if they are not being changed. If
-  /// you omit properties from the payload, the properties are removed. To get
-  /// the current list of properties for the environment, use the [Get
-  /// Environment API](get).
+  /// Updates an existing environment.
+  ///
+  /// When updating properties, you must pass all existing properties to the
+  /// API, even if they are not being changed. If you omit properties from the
+  /// payload, the properties are removed. To get the current list of properties
+  /// for the environment, use the [Get Environment API](get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6175,9 +6244,10 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
       : _requester = client;
 
   /// Get a list of metrics and dimensions which can be used for creating
-  /// analytics queries and reports. Each schema element contains the name of
-  /// the field with its associated type and if it is either custom field or
-  /// standard field.
+  /// analytics queries and reports.
+  ///
+  /// Each schema element contains the name of the field with its associated
+  /// type and if it is either custom field or standard field.
   ///
   /// Request parameters:
   ///
@@ -6246,9 +6316,10 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   OrganizationsEnvironmentsAnalyticsExportsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Submit a data export job to be processed in the background. If the request
-  /// is successful, the API returns a 201 status, a URI that can be used to
-  /// retrieve the status of the export job, and the `state` value of
+  /// Submit a data export job to be processed in the background.
+  ///
+  /// If the request is successful, the API returns a 201 status, a URI that can
+  /// be used to retrieve the status of the export job, and the `state` value of
   /// "enqueued".
   ///
   /// [request] - The metadata request object.
@@ -6310,10 +6381,11 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
     );
   }
 
-  /// Gets the details and status of an analytics export job. If the export job
-  /// is still in progress, its `state` is set to "running". After the export
-  /// job has completed successfully, its `state` is set to "completed". If the
-  /// export job fails, its `state` is set to `failed`.
+  /// Gets the details and status of an analytics export job.
+  ///
+  /// If the export job is still in progress, its `state` is set to "running".
+  /// After the export job has completed successfully, its `state` is set to
+  /// "completed". If the export job fails, its `state` is set to `failed`.
   ///
   /// Request parameters:
   ///
@@ -6511,12 +6583,14 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   OrganizationsEnvironmentsApisRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deploys a revision of an API proxy. If another revision of the same API
-  /// proxy revision is currently deployed, set the `override` parameter to
-  /// `true` to have this revision replace the currently deployed revision. You
-  /// cannot invoke an API proxy until it has been deployed to an environment.
-  /// After you deploy an API proxy revision, you cannot edit it. To edit the
-  /// API proxy, you must create and deploy a new revision. For a request path
+  /// Deploys a revision of an API proxy.
+  ///
+  /// If another revision of the same API proxy revision is currently deployed,
+  /// set the `override` parameter to `true` to have this revision replace the
+  /// currently deployed revision. You cannot invoke an API proxy until it has
+  /// been deployed to an environment. After you deploy an API proxy revision,
+  /// you cannot edit it. To edit the API proxy, you must create and deploy a
+  /// new revision. For a request path
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`,
   /// two permissions are required: * `apigee.deployments.create` on the
   /// resource `organizations/{org}/environments/{env}` *
@@ -6660,7 +6734,9 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     );
   }
 
-  /// Undeploys an API proxy revision from an environment. For a request path
+  /// Undeploys an API proxy revision from an environment.
+  ///
+  /// For a request path
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`,
   /// two permissions are required: * `apigee.deployments.delete` on the
   /// resource `organizations/{org}/environments/{env}` *
@@ -6817,9 +6893,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     );
   }
 
-  /// Deletes the data from a debug session. This does not cancel the debug
-  /// session or prevent further data from being collected if the session is
-  /// still active in runtime pods.
+  /// Deletes the data from a debug session.
+  ///
+  /// This does not cancel the debug session or prevent further data from being
+  /// collected if the session is still active in runtime pods.
   ///
   /// Request parameters:
   ///
@@ -7073,12 +7150,14 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       : _requester = client;
 
   /// Generates a report for a dry run analysis of a DeployApiProxy request
-  /// without committing the deployment. In addition to the standard validations
-  /// performed when adding deployments, additional analysis will be done to
-  /// detect possible traffic routing changes that would result from this
-  /// deployment being created. Any potential routing conflicts or unsafe
-  /// changes will be reported in the response. This routing analysis is not
-  /// performed for a non-dry-run DeployApiProxy request. For a request path
+  /// without committing the deployment.
+  ///
+  /// In addition to the standard validations performed when adding deployments,
+  /// additional analysis will be done to detect possible traffic routing
+  /// changes that would result from this deployment being created. Any
+  /// potential routing conflicts or unsafe changes will be reported in the
+  /// response. This routing analysis is not performed for a non-dry-run
+  /// DeployApiProxy request. For a request path
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`,
   /// two permissions are required: * `apigee.deployments.create` on the
   /// resource `organizations/{org}/environments/{env}` *
@@ -7150,12 +7229,14 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   }
 
   /// Generates a report for a dry run analysis of an UndeployApiProxy request
-  /// without committing the undeploy. In addition to the standard validations
-  /// performed when removing deployments, additional analysis will be done to
-  /// detect possible traffic routing changes that would result from this
-  /// deployment being removed. Any potential routing conflicts or unsafe
-  /// changes will be reported in the response. This routing analysis is not
-  /// performed for a non-dry-run UndeployApiProxy request. For a request path
+  /// without committing the undeploy.
+  ///
+  /// In addition to the standard validations performed when removing
+  /// deployments, additional analysis will be done to detect possible traffic
+  /// routing changes that would result from this deployment being removed. Any
+  /// potential routing conflicts or unsafe changes will be reported in the
+  /// response. This routing analysis is not performed for a non-dry-run
+  /// UndeployApiProxy request. For a request path
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`,
   /// two permissions are required: * `apigee.deployments.delete` on the
   /// resource `organizations/{org}/environments/{env}` *
@@ -7474,6 +7555,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
   }
 
   /// Returns the name of the shared flow attached to the specified flow hook.
+  ///
   /// If there's no shared flow attached to the flow hook, the API does not
   /// return an error; it simply does not return a name in the response.
   ///
@@ -7540,10 +7622,11 @@ class OrganizationsEnvironmentsKeystoresResource {
       : _requester = client;
 
   /// Creates a keystore or truststore: * Keystore: Contains certificates and
-  /// their associated keys. * Truststore: Contains trusted certificates used to
-  /// validate a server's certificate. These certificates are typically
-  /// self-signed certificates or certificates that are not signed by a trusted
-  /// CA.
+  /// their associated keys.
+  ///
+  /// * Truststore: Contains trusted certificates used to validate a server's
+  /// certificate. These certificates are typically self-signed certificates or
+  /// certificates that are not signed by a trusted CA.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7725,16 +7808,17 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   OrganizationsEnvironmentsKeystoresAliasesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an alias from a key, certificate pair. The structure of the
-  /// request is controlled by the `format` query parameter: * `keycertfile` -
-  /// Separate PEM-encoded key and certificate files are uploaded. The request
-  /// must have `Content-Type: multipart/form-data` and include fields `keyFile`
-  /// and `certFile`. If uploading to a truststore, omit `keyFile`. * `pkcs12` -
-  /// A PKCS12 file is uploaded. The request must have `Content-Type:
-  /// multipart/form-data` with the file provided in the only field. *
-  /// `selfsignedcert` - A new private key and certificate are generated. The
-  /// request must have `Content-Type: application/json` and a body of
-  /// CertificateGenerationSpec.
+  /// Creates an alias from a key, certificate pair.
+  ///
+  /// The structure of the request is controlled by the `format` query
+  /// parameter: * `keycertfile` - Separate PEM-encoded key and certificate
+  /// files are uploaded. The request must have `Content-Type:
+  /// multipart/form-data` and include fields `keyFile` and `certFile`. If
+  /// uploading to a truststore, omit `keyFile`. * `pkcs12` - A PKCS12 file is
+  /// uploaded. The request must have `Content-Type: multipart/form-data` with
+  /// the file provided in the only field. * `selfsignedcert` - A new private
+  /// key and certificate are generated. The request must have `Content-Type:
+  /// application/json` and a body of CertificateGenerationSpec.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8256,6 +8340,7 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
       : _requester = client;
 
   /// This api is similar to GetStats except that the response is less verbose.
+  ///
   /// In the current scheme, a query parameter _optimized instructs Edge
   /// Analytics to change the response but since this behavior is not possible
   /// with protocol buffer and since this parameter is predominantly used by
@@ -8428,10 +8513,11 @@ class OrganizationsEnvironmentsQueriesResource {
   OrganizationsEnvironmentsQueriesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Submit a query to be processed in the background. If the submission of the
-  /// query succeeds, the API returns a 201 status and an ID that refer to the
-  /// query. In addition to the HTTP status 201, the `state` of "enqueued" means
-  /// that the request succeeded.
+  /// Submit a query to be processed in the background.
+  ///
+  /// If the submission of the query succeeds, the API returns a 201 status and
+  /// an ID that refer to the query. In addition to the HTTP status 201, the
+  /// `state` of "enqueued" means that the request succeeded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8547,8 +8633,9 @@ class OrganizationsEnvironmentsQueriesResource {
     );
   }
 
-  /// After the query is completed, use this API to retrieve the results. If the
-  /// request succeeds, and there is a non-zero result set, the result is
+  /// After the query is completed, use this API to retrieve the results.
+  ///
+  /// If the request succeeds, and there is a non-zero result set, the result is
   /// downloaded to the client as a zipped JSON file. The name of the downloaded
   /// file will be: OfflineQueryResult-.zip Example:
   /// `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
@@ -8770,8 +8857,9 @@ class OrganizationsEnvironmentsReferencesResource {
     );
   }
 
-  /// Deletes a Reference from an environment. Returns the deleted Reference
-  /// resource.
+  /// Deletes a Reference from an environment.
+  ///
+  /// Returns the deleted Reference resource.
   ///
   /// Request parameters:
   ///
@@ -8879,9 +8967,10 @@ class OrganizationsEnvironmentsReferencesResource {
     );
   }
 
-  /// Updates an existing Reference. Note that this operation has PUT semantics;
-  /// it will replace the entirety of the existing Reference with the resource
-  /// in the request body.
+  /// Updates an existing Reference.
+  ///
+  /// Note that this operation has PUT semantics; it will replace the entirety
+  /// of the existing Reference with the resource in the request body.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8948,10 +9037,11 @@ class OrganizationsEnvironmentsResourcefilesResource {
   OrganizationsEnvironmentsResourcefilesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a resource file. Specify the `Content-Type` as
-  /// `application/octet-stream` or `multipart/form-data`. For more information
-  /// about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// Creates a resource file.
+  ///
+  /// Specify the `Content-Type` as `application/octet-stream` or
+  /// `multipart/form-data`. For more information about resource files, see
+  /// [Resource files](/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9026,8 +9116,10 @@ class OrganizationsEnvironmentsResourcefilesResource {
     );
   }
 
-  /// Deletes a resource file. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// Deletes a resource file.
+  ///
+  /// For more information about resource files, see [Resource
+  /// files](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9098,8 +9190,10 @@ class OrganizationsEnvironmentsResourcefilesResource {
     );
   }
 
-  /// Gets the contents of a resource file. For more information about resource
-  /// files, see [Resource files](/api-platform/develop/resource-files).
+  /// Gets the contents of a resource file.
+  ///
+  /// For more information about resource files, see [Resource
+  /// files](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9170,8 +9264,10 @@ class OrganizationsEnvironmentsResourcefilesResource {
     );
   }
 
-  /// Lists all resource files. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// Lists all resource files.
+  ///
+  /// For more information about resource files, see [Resource
+  /// files](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9233,8 +9329,10 @@ class OrganizationsEnvironmentsResourcefilesResource {
     );
   }
 
-  /// Lists all resource files. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// Lists all resource files.
+  ///
+  /// For more information about resource files, see [Resource
+  /// files](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9298,10 +9396,11 @@ class OrganizationsEnvironmentsResourcefilesResource {
     );
   }
 
-  /// Updates a resource file. Specify the `Content-Type` as
-  /// `application/octet-stream` or `multipart/form-data`. For more information
-  /// about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// Updates a resource file.
+  ///
+  /// Specify the `Content-Type` as `application/octet-stream` or
+  /// `multipart/form-data`. For more information about resource files, see
+  /// [Resource files](/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9463,11 +9562,12 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Deploys a revision of a shared flow. If another revision of the same
-  /// shared flow is currently deployed, set the `override` parameter to `true`
-  /// to have this revision replace the currently deployed revision. You cannot
-  /// use a shared flow until it has been deployed to an environment. For a
-  /// request path
+  /// Deploys a revision of a shared flow.
+  ///
+  /// If another revision of the same shared flow is currently deployed, set the
+  /// `override` parameter to `true` to have this revision replace the currently
+  /// deployed revision. You cannot use a shared flow until it has been deployed
+  /// to an environment. For a request path
   /// `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`,
   /// two permissions are required: * `apigee.deployments.create` on the
   /// resource `organizations/{org}/environments/{env}` *
@@ -9597,7 +9697,9 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     );
   }
 
-  /// Undeploys a shared flow revision from an environment. For a request path
+  /// Undeploys a shared flow revision from an environment.
+  ///
+  /// For a request path
   /// `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`,
   /// two permissions are required: * `apigee.deployments.delete` on the
   /// resource `organizations/{org}/environments/{env}` *
@@ -9665,12 +9767,13 @@ class OrganizationsEnvironmentsStatsResource {
   OrganizationsEnvironmentsStatsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Retrieve metrics grouped by dimensions. The types of metrics you can
-  /// retrieve include traffic, message counts, API call latency, response size,
-  /// and cache hits and counts. Dimensions let you view metrics in meaningful
-  /// groups. The stats api does accept dimensions as path params. The
-  /// dimensions are optional in which case the metrics are computed on the
-  /// entire data for the given timerange.
+  /// Retrieve metrics grouped by dimensions.
+  ///
+  /// The types of metrics you can retrieve include traffic, message counts, API
+  /// call latency, response size, and cache hits and counts. Dimensions let you
+  /// view metrics in meaningful groups. The stats api does accept dimensions as
+  /// path params. The dimensions are optional in which case the metrics are
+  /// computed on the entire data for the given timerange.
   ///
   /// Request parameters:
   ///
@@ -9909,8 +10012,9 @@ class OrganizationsEnvironmentsTargetserversResource {
     );
   }
 
-  /// Deletes a TargetServer from an environment. Returns the deleted
-  /// TargetServer resource.
+  /// Deletes a TargetServer from an environment.
+  ///
+  /// Returns the deleted TargetServer resource.
   ///
   /// Request parameters:
   ///
@@ -10020,9 +10124,10 @@ class OrganizationsEnvironmentsTargetserversResource {
     );
   }
 
-  /// Updates an existing TargetServer. Note that this operation has PUT
-  /// semantics; it will replace the entirety of the existing TargetServer with
-  /// the resource in the request body.
+  /// Updates an existing TargetServer.
+  ///
+  /// Note that this operation has PUT semantics; it will replace the entirety
+  /// of the existing TargetServer with the resource in the request body.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10093,9 +10198,10 @@ class OrganizationsInstancesResource {
   OrganizationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an Apigee runtime instance. The instance is accessible from the
-  /// authorized network configured on the organization. **Note:** Not supported
-  /// for Apigee hybrid.
+  /// Creates an Apigee runtime instance.
+  ///
+  /// The instance is accessible from the authorized network configured on the
+  /// organization. **Note:** Not supported for Apigee hybrid.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10155,9 +10261,10 @@ class OrganizationsInstancesResource {
     );
   }
 
-  /// Deletes an Apigee runtime instance. The instance stops serving requests
-  /// and the runtime data is deleted. **Note:** Not supported for Apigee
-  /// hybrid.
+  /// Deletes an Apigee runtime instance.
+  ///
+  /// The instance stops serving requests and the runtime data is deleted.
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// Request parameters:
   ///
@@ -10210,8 +10317,9 @@ class OrganizationsInstancesResource {
     );
   }
 
-  /// Gets the details for an Apigee runtime instance. **Note:** Not supported
-  /// for Apigee hybrid.
+  /// Gets the details for an Apigee runtime instance.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// Request parameters:
   ///
@@ -10264,8 +10372,9 @@ class OrganizationsInstancesResource {
     );
   }
 
-  /// Lists all Apigee runtime instances for the organization. **Note:** Not
-  /// supported for Apigee hybrid.
+  /// Lists all Apigee runtime instances for the organization.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// Request parameters:
   ///
@@ -10401,8 +10510,9 @@ class OrganizationsInstancesAttachmentsResource {
   OrganizationsInstancesAttachmentsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new attachment of an environment to an instance. **Note:** Not
-  /// supported for Apigee hybrid.
+  /// Creates a new attachment of an environment to an instance.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10463,7 +10573,9 @@ class OrganizationsInstancesAttachmentsResource {
     );
   }
 
-  /// Deletes an attachment. **Note:** Not supported for Apigee hybrid.
+  /// Deletes an attachment.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// Request parameters:
   ///
@@ -10518,7 +10630,9 @@ class OrganizationsInstancesAttachmentsResource {
     );
   }
 
-  /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
+  /// Gets an attachment.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// Request parameters:
   ///
@@ -10573,8 +10687,9 @@ class OrganizationsInstancesAttachmentsResource {
     );
   }
 
-  /// Lists all attachments to an instance. **Note:** Not supported for Apigee
-  /// hybrid.
+  /// Lists all attachments to an instance.
+  ///
+  /// **Note:** Not supported for Apigee hybrid.
   ///
   /// Request parameters:
   ///
@@ -10771,9 +10886,10 @@ class OrganizationsOperationsResource {
   OrganizationsOperationsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -10825,10 +10941,11 @@ class OrganizationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the
-  /// `name` binding allows API services to override the binding to use
-  /// different resource name schemes, such as `users / * /operations`. To
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  /// NOTE: the `name` binding allows API services to override the binding to
+  /// use different resource name schemes, such as `users / * /operations`. To
   /// override the binding, API services can add a binding such as
   /// `"/v1/{name=users / * }/operations"` to their service configuration. For
   /// backwards compatibility, the default name includes the operations
@@ -10911,13 +11028,14 @@ class OrganizationsReportsResource {
   OrganizationsReportsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a Custom Report for an Organization. A Custom Report provides
-  /// Apigee Customers to create custom dashboards in addition to the standard
-  /// dashboards which are provided. The Custom Report in its simplest form
-  /// contains specifications about metrics, dimensions and filters. It is
-  /// important to note that the custom report by itself does not provide an
-  /// executable entity. The Edge UI converts the custom report definition into
-  /// an analytics query and displays the result in a chart.
+  /// Creates a Custom Report for an Organization.
+  ///
+  /// A Custom Report provides Apigee Customers to create custom dashboards in
+  /// addition to the standard dashboards which are provided. The Custom Report
+  /// in its simplest form contains specifications about metrics, dimensions and
+  /// filters. It is important to note that the custom report by itself does not
+  /// provide an executable entity. The Edge UI converts the custom report
+  /// definition into an analytics query and displays the result in a chart.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11216,10 +11334,12 @@ class OrganizationsSharedflowsResource {
       : _requester = client;
 
   /// Uploads a ZIP-formatted shared flow configuration bundle to an
-  /// organization. If the shared flow already exists, this creates a new
-  /// revision of it. If the shared flow does not exist, this creates it. Once
-  /// imported, the shared flow revision must be deployed before it can be
-  /// accessed at runtime. The size limit of a shared flow bundle is 15 MB.
+  /// organization.
+  ///
+  /// If the shared flow already exists, this creates a new revision of it. If
+  /// the shared flow does not exist, this creates it. Once imported, the shared
+  /// flow revision must be deployed before it can be accessed at runtime. The
+  /// size limit of a shared flow bundle is 15 MB.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11293,8 +11413,9 @@ class OrganizationsSharedflowsResource {
     );
   }
 
-  /// Deletes a shared flow and all it's revisions. The shared flow must be
-  /// undeployed before you can delete it.
+  /// Deletes a shared flow and all it's revisions.
+  ///
+  /// The shared flow must be undeployed before you can delete it.
   ///
   /// Request parameters:
   ///
@@ -11543,7 +11664,9 @@ class OrganizationsSharedflowsRevisionsResource {
       : _requester = client;
 
   /// Deletes a shared flow and all associated policies, resources, and
-  /// revisions. You must undeploy the shared flow before deleting it.
+  /// revisions.
+  ///
+  /// You must undeploy the shared flow before deleting it.
   ///
   /// Request parameters:
   ///
@@ -11598,9 +11721,10 @@ class OrganizationsSharedflowsRevisionsResource {
     );
   }
 
-  /// Gets a revision of a shared flow. If `format=bundle` is passed, it instead
-  /// outputs a shared flow revision as a ZIP-formatted bundle of code and
-  /// config files.
+  /// Gets a revision of a shared flow.
+  ///
+  /// If `format=bundle` is passed, it instead outputs a shared flow revision as
+  /// a ZIP-formatted bundle of code and config files.
   ///
   /// Request parameters:
   ///
@@ -11662,11 +11786,12 @@ class OrganizationsSharedflowsRevisionsResource {
     );
   }
 
-  /// Updates a shared flow revision. This operation is only allowed on
-  /// revisions which have never been deployed. After deployment a revision
-  /// becomes immutable, even if it becomes undeployed. The payload is a
-  /// ZIP-formatted shared flow. Content type must be either multipart/form-data
-  /// or application/octet-stream.
+  /// Updates a shared flow revision.
+  ///
+  /// This operation is only allowed on revisions which have never been
+  /// deployed. After deployment a revision becomes immutable, even if it
+  /// becomes undeployed. The payload is a ZIP-formatted shared flow. Content
+  /// type must be either multipart/form-data or application/octet-stream.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12109,8 +12234,10 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Provisions a new Apigee organization with a functioning runtime. This is
-  /// the standard way to create trial organizations for a free Apigee trial.
+  /// Provisions a new Apigee organization with a functioning runtime.
+  ///
+  /// This is the standard way to create trial organizations for a free Apigee
+  /// trial.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12172,19 +12299,20 @@ class ProjectsResource {
   }
 }
 
-/// Message that represents an arbitrary HTTP body. It should only be used for
-/// payload formats that can't be represented as JSON, such as raw binary or an
-/// HTML page. This message can be used both in streaming and non-streaming API
-/// methods in the request as well as the response. It can be used as a
-/// top-level request field, which is convenient if one wants to extract
-/// parameters from either the URL or HTTP template into the request fields and
-/// also want access to the raw HTTP body. Example: message GetResourceRequest {
-/// // A unique request id. string request_id = 1; // The raw HTTP body is bound
-/// to this field. google.api.HttpBody http_body = 2; } service ResourceService
-/// { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
-/// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
-/// Example with streaming methods: service CaldavService { rpc
-/// GetCalendar(stream google.api.HttpBody) returns (stream
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
 /// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
 /// (stream google.api.HttpBody); } Use of this type only changes how the
 /// request and response bodies are handled, all other features will continue to
@@ -12203,8 +12331,9 @@ class GoogleApiHttpBody {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Application specific response metadata. Must be set in the first response
-  /// for streaming APIs.
+  /// Application specific response metadata.
+  ///
+  /// Must be set in the first response for streaming APIs.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -12284,8 +12413,9 @@ class GoogleCloudApigeeV1Access {
   }
 }
 
-/// Get action. For example, "Get" : { "name" : "target.name", "value" :
-/// "default" }
+/// Get action.
+///
+/// For example, "Get" : { "name" : "target.name", "value" : "default" }
 class GoogleCloudApigeeV1AccessGet {
   core.String name;
   core.String value;
@@ -12313,8 +12443,9 @@ class GoogleCloudApigeeV1AccessGet {
   }
 }
 
-/// Remove action. For example, "Remove" : { "name" : "target.name", "success" :
-/// true }
+/// Remove action.
+///
+/// For example, "Remove" : { "name" : "target.name", "success" : true }
 class GoogleCloudApigeeV1AccessRemove {
   core.String name;
   core.bool success;
@@ -12342,8 +12473,10 @@ class GoogleCloudApigeeV1AccessRemove {
   }
 }
 
-/// Set action. For example, "Set" : { "name" : "target.name", "success" : true,
-/// "value" : "default" }
+/// Set action.
+///
+/// For example, "Set" : { "name" : "target.name", "success" : true, "value" :
+/// "default" }
 class GoogleCloudApigeeV1AccessSet {
   core.String name;
   core.bool success;
@@ -12380,8 +12513,9 @@ class GoogleCloudApigeeV1AccessSet {
 
 /// A reference to a certificate or key, certificate pair.
 class GoogleCloudApigeeV1Alias {
-  /// The resource ID for this alias. Values must match regular expression
-  /// `[^/]{1,255}`.
+  /// The resource ID for this alias.
+  ///
+  /// Values must match regular expression `[^/]{1,255}`.
   core.String alias;
 
   /// The chain of certificates under this alias.
@@ -12425,7 +12559,9 @@ class GoogleCloudApigeeV1Alias {
 }
 
 class GoogleCloudApigeeV1AliasRevisionConfig {
-  /// Location of the alias file. For example, a Google Cloud Storage URI.
+  /// Location of the alias file.
+  ///
+  /// For example, a Google Cloud Storage URI.
   core.String location;
 
   /// Name of the alias revision included in the keystore in the following
@@ -12578,8 +12714,9 @@ class GoogleCloudApigeeV1ApiCategoryData {
 }
 
 class GoogleCloudApigeeV1ApiProduct {
-  /// Comma-separated list of API resources to be bundled in the API Product. By
-  /// default, the resource paths are mapped from the `proxy.pathsuffix`
+  /// Comma-separated list of API resources to be bundled in the API Product.
+  ///
+  /// By default, the resource paths are mapped from the `proxy.pathsuffix`
   /// variable. The proxy path suffix is defined as the URI fragment following
   /// the ProxyEndpoint base path. For example, if the `apiResources` element is
   /// defined to be `/forecastrss` and the base path defined for the API proxy
@@ -12597,7 +12734,9 @@ class GoogleCloudApigeeV1ApiProduct {
   core.List<core.String> apiResources;
 
   /// Specifies how API keys are approved to access the APIs defined by the API
-  /// product. If set to `manual`, the consumer key is generated and returned in
+  /// product.
+  ///
+  /// If set to `manual`, the consumer key is generated and returned in
   /// "pending" state. In this case, the API keys won't work until they have
   /// been explicitly approved. If set to `auto`, the consumer key is generated
   /// and returned in "approved" state and can be used immediately. *NOTE:*
@@ -12606,24 +12745,29 @@ class GoogleCloudApigeeV1ApiProduct {
   core.String approvalType;
 
   /// Array of attributes that may be used to extend the default API product
-  /// profile with customer-specific metadata. You can specify a maximum of 18
-  /// attributes. Use this property to specify the access level of the API
-  /// product as either `public`, `private`, or `internal`. Only products marked
-  /// `public` are available to developers in the Apigee developer portal. For
-  /// example, you can set a product to `internal` while it is in development
-  /// and then change access to `public` when it is ready to release on the
-  /// portal. API products marked as `private` do not appear on the portal but
-  /// can be accessed by external developers. For monetization, you can use the
-  /// attributes field to: - Specify transaction success criteria - Specify
-  /// custom attributes on which you base rate plan charges.
+  /// profile with customer-specific metadata.
+  ///
+  /// You can specify a maximum of 18 attributes. Use this property to specify
+  /// the access level of the API product as either `public`, `private`, or
+  /// `internal`. Only products marked `public` are available to developers in
+  /// the Apigee developer portal. For example, you can set a product to
+  /// `internal` while it is in development and then change access to `public`
+  /// when it is ready to release on the portal. API products marked as
+  /// `private` do not appear on the portal but can be accessed by external
+  /// developers. For monetization, you can use the attributes field to: -
+  /// Specify transaction success criteria - Specify custom attributes on which
+  /// you base rate plan charges.
   core.List<GoogleCloudApigeeV1Attribute> attributes;
 
-  /// Response only. Creation time of this environment as milliseconds since
-  /// epoch.
+  /// Response only.
+  ///
+  /// Creation time of this environment as milliseconds since epoch.
   core.String createdAt;
 
-  /// An overview of the API product. Include key information about the API
-  /// product that is not captured by other fields.
+  /// An overview of the API product.
+  ///
+  /// Include key information about the API product that is not captured by
+  /// other fields.
   core.String description;
 
   /// The name to be displayed in the UI or developer portal to developers
@@ -12631,60 +12775,68 @@ class GoogleCloudApigeeV1ApiProduct {
   core.String displayName;
 
   /// A comma-separated list of environment names to which the API product is
-  /// bound. Requests to environments that are not listed are rejected. By
-  /// specifying one or more environments, you can bind the resources listed in
-  /// the API product to a specific environment, preventing developers from
-  /// accessing those resources through API proxies deployed in another
-  /// environment. This setting is used, for example, to prevent resources
-  /// associated with API proxies in 'prod' from being accessed by API proxies
-  /// deployed in 'test'.
+  /// bound.
+  ///
+  /// Requests to environments that are not listed are rejected. By specifying
+  /// one or more environments, you can bind the resources listed in the API
+  /// product to a specific environment, preventing developers from accessing
+  /// those resources through API proxies deployed in another environment. This
+  /// setting is used, for example, to prevent resources associated with API
+  /// proxies in 'prod' from being accessed by API proxies deployed in 'test'.
   core.List<core.String> environments;
 
-  /// Response only. Modified time of this environment as milliseconds since
-  /// epoch.
+  /// Response only.
+  ///
+  /// Modified time of this environment as milliseconds since epoch.
   core.String lastModifiedAt;
 
-  /// The internal name of the API Product. Characters you can use in the name
-  /// are restricted to: A-Z0-9._\-$ %. *NOTE:* The internal name cannot be
-  /// edited when updating the API product.
+  /// The internal name of the API Product.
+  ///
+  /// Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
+  /// *NOTE:* The internal name cannot be edited when updating the API product.
   core.String name;
 
   /// The operation_group enables api product creators to group Apigee proxies
-  /// or remote services with resources, method types and quotas. The resource
-  /// refers to the resource URI(excluding the base path). With this grouping,
-  /// API product creator is able to finetune and give precise control over
-  /// which REST methods have access to which resources, and how many such calls
-  /// can be made (via Quota). Note that api_resources cannot be specified at
-  /// both the API product level as well as within the operation_group. If
-  /// configured that way, the call will fail. Please refer
+  /// or remote services with resources, method types and quotas.
+  ///
+  /// The resource refers to the resource URI(excluding the base path). With
+  /// this grouping, API product creator is able to finetune and give precise
+  /// control over which REST methods have access to which resources, and how
+  /// many such calls can be made (via Quota). Note that api_resources cannot be
+  /// specified at both the API product level as well as within the
+  /// operation_group. If configured that way, the call will fail. Please refer
   /// go/api-product-with-methods for additional details.
   GoogleCloudApigeeV1OperationGroup operationGroup;
 
   /// A comma-separated list of API proxy names to which this API product is
-  /// bound. By specifying API proxies, you can associate resources in the API
-  /// product with specific API proxies, preventing developers from accessing
-  /// those resources through other API proxies. Edge rejects requests to API
-  /// proxies that are not listed. *NOTE:* The API proxy names must already
-  /// exist in the specified environment as they will be validated upon
-  /// creation.
+  /// bound.
+  ///
+  /// By specifying API proxies, you can associate resources in the API product
+  /// with specific API proxies, preventing developers from accessing those
+  /// resources through other API proxies. Edge rejects requests to API proxies
+  /// that are not listed. *NOTE:* The API proxy names must already exist in the
+  /// specified environment as they will be validated upon creation.
   core.List<core.String> proxies;
 
   /// The number of request messages permitted per app by this API product for
-  /// the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota`
-  /// of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50
-  /// requests are allowed every 12 hours.
+  /// the specified `quotaInterval` and `quotaTimeUnit`.
+  ///
+  /// For example, a `quota` of 50, for a `quotaInterval` of 12 and a
+  /// `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
   core.String quota;
 
   /// The time interval over which the number of request messages is calculated.
   core.String quotaInterval;
 
-  /// The time unit defined for the `quotaInterval`. Valid values include
-  /// minute, hour, day, or month.
+  /// The time unit defined for the `quotaInterval`.
+  ///
+  /// Valid values include minute, hour, day, or month.
   core.String quotaTimeUnit;
 
-  /// A comma-separated list of OAuth scopes that are validated at runtime. Edge
-  /// validates that the scopes in any access token presented match the scopes
-  /// defined in the OAuth policy assoicated with the API product.
+  /// A comma-separated list of OAuth scopes that are validated at runtime.
+  ///
+  /// Edge validates that the scopes in any access token presented match the
+  /// scopes defined in the OAuth policy assoicated with the API product.
   core.List<core.String> scopes;
 
   GoogleCloudApigeeV1ApiProduct();
@@ -12889,9 +13041,11 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   core.List<core.String> basepaths;
 
   /// Version of the API proxy configuration schema to which the API proxy
-  /// conforms. Currently, the only supported value is 4.0
-  /// (`majorVersion.minorVersion`). This setting may be used in the future to
-  /// track the evolution of the API proxy format.
+  /// conforms.
+  ///
+  /// Currently, the only supported value is 4.0 (`majorVersion.minorVersion`).
+  /// This setting may be used in the future to track the evolution of the API
+  /// proxy format.
   GoogleCloudApigeeV1ConfigVersion configurationVersion;
 
   /// Revision number, app name, and organization for the API proxy.
@@ -12923,6 +13077,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   core.List<core.String> proxies;
 
   /// List of ProxyEndpoints in the `/proxies` directory of the API proxy.
+  ///
   /// Typically, this element is included only when the API proxy was created
   /// using the Edge UI. This is a 'manifest' setting designed to provide
   /// visibility into the contents of the API proxy.
@@ -12941,17 +13096,20 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// List of the shared flows included in the API proxy revision.
   core.List<core.String> sharedFlows;
 
-  /// OpenAPI Specification that is associated with the API proxy. The value is
-  /// set to a URL or to a path in the specification store.
+  /// OpenAPI Specification that is associated with the API proxy.
+  ///
+  /// The value is set to a URL or to a path in the specification store.
   core.String spec;
 
   /// List of TargetEndpoints in the `/targets` directory of the API proxy.
+  ///
   /// Typically, this element is included only when the API proxy was created
   /// using the Edge UI. This is a 'manifest' setting designed to provide
   /// visibility into the contents of the API proxy.
   core.List<core.String> targetEndpoints;
 
   /// List of TargetServers referenced in any TargetEndpoint in the API proxy.
+  ///
   /// Typically, you will see this element only when the API proxy was created
   /// using the Edge UI. This is a 'manifest' setting designed to provide
   /// visibility into the contents of the API proxy.
@@ -12963,8 +13121,10 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// List of the teams included in the API proxy revision.
   core.List<core.String> teams;
 
-  /// Type. Set to `Application`. Maintained for compatibility with the Apigee
-  /// Edge API.
+  /// Type.
+  ///
+  /// Set to `Application`. Maintained for compatibility with the Apigee Edge
+  /// API.
   core.String type;
 
   GoogleCloudApigeeV1ApiProxyRevision();
@@ -13205,29 +13365,40 @@ class GoogleCloudApigeeV1App {
   /// Name of the company that owns the app.
   core.String companyName;
 
-  /// Output only. Unix time when the app was created.
+  /// Unix time when the app was created.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// Output only. Set of credentials for the app. Credentials are API
-  /// key/secret pairs associated with API products.
+  /// Set of credentials for the app.
+  ///
+  /// Credentials are API key/secret pairs associated with API products.
+  ///
+  /// Output only.
   core.List<GoogleCloudApigeeV1Credential> credentials;
 
   /// ID of the developer.
   core.String developerId;
 
   /// Duration, in milliseconds, of the consumer key that will be generated for
-  /// the app. The default value, -1, indicates an infinite validity period.
-  /// Once set, the expiration can't be updated. json key: keyExpiresIn
+  /// the app.
+  ///
+  /// The default value, -1, indicates an infinite validity period. Once set,
+  /// the expiration can't be updated. json key: keyExpiresIn
   core.String keyExpiresIn;
 
-  /// Output only. Last modified time as milliseconds since epoch.
+  /// Last modified time as milliseconds since epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
   /// Name of the app.
   core.String name;
 
-  /// Scopes to apply to the app. The specified scope names must already exist
-  /// on the API product that you associate with the app.
+  /// Scopes to apply to the app.
+  ///
+  /// The specified scope names must already exist on the API product that you
+  /// associate with the app.
   core.List<core.String> scopes;
 
   /// Status of the credential.
@@ -13366,7 +13537,9 @@ class GoogleCloudApigeeV1AsyncQuery {
   /// ResultRows is available only after the query is completed.
   core.String resultRows;
 
-  /// Self link of the query. Example:
+  /// Self link of the query.
+  ///
+  /// Example:
   /// `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   core.String self;
 
@@ -13465,7 +13638,9 @@ class GoogleCloudApigeeV1AsyncQueryResult {
   /// Query result will be unaccessable after this time.
   core.String expires;
 
-  /// Self link of the query results. Example:
+  /// Self link of the query results.
+  ///
+  /// Example:
   /// `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
   core.String self;
 
@@ -13715,8 +13890,9 @@ class GoogleCloudApigeeV1CommonNameConfig {
   }
 }
 
-/// Version of the API proxy configuration schema. Currently, only 4.0 is
-/// supported.
+/// Version of the API proxy configuration schema.
+///
+/// Currently, only 4.0 is supported.
 class GoogleCloudApigeeV1ConfigVersion {
   /// Major version of the API proxy configuration schema.
   core.int majorVersion;
@@ -13766,8 +13942,10 @@ class GoogleCloudApigeeV1Credential {
   /// Time the credential was issued in milliseconds since epoch.
   core.String issuedAt;
 
-  /// List of scopes to apply to the app. Specified scopes must already exist on
-  /// the API product that you associate with the app.
+  /// List of scopes to apply to the app.
+  ///
+  /// Specified scopes must already exist on the API product that you associate
+  /// with the app.
   core.List<core.String> scopes;
 
   /// Status of the credential.
@@ -13847,11 +14025,14 @@ class GoogleCloudApigeeV1CustomReport {
   /// This field contains the chart type for the report
   core.String chartType;
 
-  /// Legacy field: not used. This field contains a list of comments associated
-  /// with custom report
+  /// Legacy field: not used.
+  ///
+  /// This field contains a list of comments associated with custom report
   core.List<core.String> comments;
 
-  /// Output only. Unix time when the app was created json key: createdAt
+  /// Unix time when the app was created json key: createdAt
+  ///
+  /// Output only.
   core.String createdAt;
 
   /// This contains the list of dimensions for the report
@@ -13860,60 +14041,85 @@ class GoogleCloudApigeeV1CustomReport {
   /// This is the display name for the report
   core.String displayName;
 
-  /// Output only. Environment name
+  /// Environment name
+  ///
+  /// Output only.
   core.String environment;
 
   /// This field contains the filter expression
   core.String filter;
 
-  /// Legacy field: not used. Contains the from time for the report
+  /// Legacy field: not used.
+  ///
+  /// Contains the from time for the report
   core.String fromTime;
 
-  /// Output only. Modified time of this entity as milliseconds since epoch.
+  /// Modified time of this entity as milliseconds since epoch.
+  ///
   /// json key: lastModifiedAt
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
-  /// Output only. Last viewed time of this entity as milliseconds since epoch
+  /// Last viewed time of this entity as milliseconds since epoch
+  ///
+  /// Output only.
   core.String lastViewedAt;
 
   /// Legacy field: not used This field contains the limit for the result
   /// retrieved
   core.String limit;
 
-  /// Required. This contains the list of metrics
+  /// This contains the list of metrics
+  ///
+  /// Required.
   core.List<GoogleCloudApigeeV1CustomReportMetric> metrics;
 
-  /// Required. Unique identifier for the report T his is a legacy field used to
-  /// encode custom report unique id
+  /// Unique identifier for the report T his is a legacy field used to encode
+  /// custom report unique id
+  ///
+  /// Required.
   core.String name;
 
-  /// Legacy field: not used. This field contains the offset for the data
+  /// Legacy field: not used.
+  ///
+  /// This field contains the offset for the data
   core.String offset;
 
-  /// Output only. Organization name
+  /// Organization name
+  ///
+  /// Output only.
   core.String organization;
 
   /// This field contains report properties such as ui metadata etc.
   core.List<GoogleCloudApigeeV1ReportProperty> properties;
 
-  /// Legacy field: not used much. Contains the list of sort by columns
+  /// Legacy field: not used much.
+  ///
+  /// Contains the list of sort by columns
   core.List<core.String> sortByCols;
 
-  /// Legacy field: not used much. Contains the sort order for the sort columns
+  /// Legacy field: not used much.
+  ///
+  /// Contains the sort order for the sort columns
   core.String sortOrder;
 
-  /// Legacy field: not used. This field contains a list of tags associated with
-  /// custom report
+  /// Legacy field: not used.
+  ///
+  /// This field contains a list of tags associated with custom report
   core.List<core.String> tags;
 
   /// This field contains the time unit of aggregation for the report
   core.String timeUnit;
 
-  /// Legacy field: not used. Contains the end time for the report
+  /// Legacy field: not used.
+  ///
+  /// Contains the end time for the report
   core.String toTime;
 
-  /// Legacy field: not used. This field contains the top k parameter value for
-  /// restricting the result
+  /// Legacy field: not used.
+  ///
+  /// This field contains the top k parameter value for restricting the result
   core.String topk;
 
   GoogleCloudApigeeV1CustomReport();
@@ -14150,28 +14356,41 @@ class GoogleCloudApigeeV1DataCollectorConfig {
 /// Storage, BigQuery), including the credentials used to access the data
 /// repository.
 class GoogleCloudApigeeV1Datastore {
-  /// Output only. Datastore create time, in milliseconds since the epoch of
+  /// Datastore create time, in milliseconds since the epoch of
   /// 1970-01-01T00:00:00Z
+  ///
+  /// Output only.
   core.String createTime;
 
   /// Datastore Configurations.
   GoogleCloudApigeeV1DatastoreConfig datastoreConfig;
 
-  /// Required. Display name in UI
+  /// Display name in UI
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Output only. Datastore last update time, in milliseconds since the epoch
-  /// of 1970-01-01T00:00:00Z
+  /// Datastore last update time, in milliseconds since the epoch of
+  /// 1970-01-01T00:00:00Z
+  ///
+  /// Output only.
   core.String lastUpdateTime;
 
-  /// Output only. Organization that the datastore belongs to
+  /// Organization that the datastore belongs to
+  ///
+  /// Output only.
   core.String org;
 
-  /// Output only. Resource link of Datastore. Example:
-  /// `/organizations/{org}/analytics/datastores/{uuid}`
+  /// Resource link of Datastore.
+  ///
+  /// Example: `/organizations/{org}/analytics/datastores/{uuid}`
+  ///
+  /// Output only.
   core.String self;
 
-  /// Destination storage type. Supported types `gcs` or `bigquery`.
+  /// Destination storage type.
+  ///
+  /// Supported types `gcs` or `bigquery`.
   core.String targetType;
 
   GoogleCloudApigeeV1Datastore();
@@ -14230,7 +14449,9 @@ class GoogleCloudApigeeV1Datastore {
 
 /// Configuration detail for datastore
 class GoogleCloudApigeeV1DatastoreConfig {
-  /// Name of the Cloud Storage bucket. Required for `gcs` target_type.
+  /// Name of the Cloud Storage bucket.
+  ///
+  /// Required for `gcs` target_type.
   core.String bucketName;
 
   /// BigQuery dataset name Required for `bigquery` target_type.
@@ -14239,7 +14460,9 @@ class GoogleCloudApigeeV1DatastoreConfig {
   /// Path of Cloud Storage bucket Required for `gcs` target_type.
   core.String path;
 
-  /// Required. GCP project in which the datastore exists
+  /// GCP project in which the datastore exists
+  ///
+  /// Required.
   core.String projectId;
 
   /// Prefix of BigQuery table Required for `bigquery` target_type.
@@ -14288,13 +14511,19 @@ class GoogleCloudApigeeV1DatastoreConfig {
 
 /// Date range of the data to export.
 class GoogleCloudApigeeV1DateRange {
-  /// Required. End date (exclusive) of the data to export in the format
-  /// `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which
-  /// will not be in the output.
+  /// End date (exclusive) of the data to export in the format `yyyy-mm-dd`.
+  ///
+  /// The date range ends at 00:00:00 UTC on the end date- which will not be in
+  /// the output.
+  ///
+  /// Required.
   core.String end;
 
-  /// Required. Start date of the data to export in the format `yyyy-mm-dd`. The
-  /// date range begins at 00:00:00 UTC on the start date.
+  /// Start date of the data to export in the format `yyyy-mm-dd`.
+  ///
+  /// The date range begins at 00:00:00 UTC on the start date.
+  ///
+  /// Required.
   core.String start;
 
   GoogleCloudApigeeV1DateRange();
@@ -14441,29 +14670,44 @@ class GoogleCloudApigeeV1DebugMask {
 }
 
 class GoogleCloudApigeeV1DebugSession {
-  /// Optional. The number of request to be traced. Min = 1, Max = 15, Default =
-  /// 10.
+  /// The number of request to be traced.
+  ///
+  /// Min = 1, Max = 15, Default = 10.
+  ///
+  /// Optional.
   core.int count;
 
-  /// Optional. A conditional statement which is evaluated against the request
-  /// message to determine if it should be traced. Syntax matches that of on API
-  /// Proxy bundle flow Condition.
+  /// A conditional statement which is evaluated against the request message to
+  /// determine if it should be traced.
+  ///
+  /// Syntax matches that of on API Proxy bundle flow Condition.
+  ///
+  /// Optional.
   core.String filter;
 
   /// A unique ID for this DebugSession.
   core.String name;
 
-  /// Optional. The time in seconds after which this DebugSession should end.
+  /// The time in seconds after which this DebugSession should end.
+  ///
   /// This value will override the value in query param, if both are provided.
+  ///
+  /// Optional.
   core.String timeout;
 
-  /// Optional. The maximum number of bytes captured from the response payload.
+  /// The maximum number of bytes captured from the response payload.
+  ///
   /// Min = 0, Max = 5120, Default = 5120.
+  ///
+  /// Optional.
   core.int tracesize;
 
-  /// Optional. The length of time, in seconds, that this debug session is
-  /// valid, starting from when it's received in the control plane. Min = 1, Max
-  /// = 15, Default = 10.
+  /// The length of time, in seconds, that this debug session is valid, starting
+  /// from when it's received in the control plane.
+  ///
+  /// Min = 1, Max = 15, Default = 10.
+  ///
+  /// Optional.
   core.int validity;
 
   GoogleCloudApigeeV1DebugSession();
@@ -14514,9 +14758,10 @@ class GoogleCloudApigeeV1DebugSession {
 }
 
 /// A transaction contains all of the debug information of the entire message
-/// flow of an API call processed by the runtime plane. The information is
-/// collected and recorded at critical points of the message flow in the runtime
-/// apiproxy.
+/// flow of an API call processed by the runtime plane.
+///
+/// The information is collected and recorded at critical points of the message
+/// flow in the runtime apiproxy.
 class GoogleCloudApigeeV1DebugSessionTransaction {
   /// Flag indicating whether a transaction is completed or not
   core.bool completed;
@@ -14584,31 +14829,38 @@ class GoogleCloudApigeeV1Deployment {
   /// Environment.
   core.String environment;
 
-  /// Errors reported for this deployment. Populated only when state == ERROR.
-  /// This field is not populated in List APIs.
+  /// Errors reported for this deployment.
+  ///
+  /// Populated only when state == ERROR. This field is not populated in List
+  /// APIs.
   core.List<GoogleRpcStatus> errors;
 
-  /// Status reported by each runtime instance. This field is not populated in
-  /// List APIs.
+  /// Status reported by each runtime instance.
+  ///
+  /// This field is not populated in List APIs.
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatus> instances;
 
-  /// Status reported by runtime pods. This field is not populated for List
-  /// APIs.
+  /// Status reported by runtime pods.
+  ///
+  /// This field is not populated for List APIs.
   core.List<GoogleCloudApigeeV1PodStatus> pods;
 
   /// API proxy revision.
   core.String revision;
 
-  /// Conflicts in the desired state routing configuration. The presence of
-  /// conflicts does not cause the state to be ERROR, but it will mean that some
-  /// of the deployments basepaths are not routed to its environment. If the
-  /// conflicts change, the state will transition to PROGRESSING until the
-  /// latest configuration is rolled out to all instances. This field is not
-  /// populated in List APIs.
+  /// Conflicts in the desired state routing configuration.
+  ///
+  /// The presence of conflicts does not cause the state to be ERROR, but it
+  /// will mean that some of the deployments basepaths are not routed to its
+  /// environment. If the conflicts change, the state will transition to
+  /// PROGRESSING until the latest configuration is rolled out to all instances.
+  /// This field is not populated in List APIs.
   core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
       routeConflicts;
 
-  /// Current state of the deployment. This field is not populated in List APIs.
+  /// Current state of the deployment.
+  ///
+  /// This field is not populated in List APIs.
   /// Possible string values are:
   /// - "RUNTIME_STATE_UNSPECIFIED" : This value should never be returned.
   /// - "READY" : The runtime has loaded the deployment.
@@ -14700,6 +14952,7 @@ class GoogleCloudApigeeV1Deployment {
 }
 
 /// Response for GenerateDeployChangeReport and GenerateUndeployChangeReport.
+///
 /// This report contains any validation failures that would cause the deployment
 /// to be rejected, as well changes and conflicts in routing that may occur due
 /// to the new deployment. The existence of a routing warning does not
@@ -14778,12 +15031,14 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment fromDeployment;
 
   /// True if using sequenced rollout would make this routing change safer.
+  ///
   /// Note: this does not necessarily imply that automated sequenced rollout
   /// mode is supported for the operation.
   core.bool shouldSequenceRollout;
 
-  /// The basepath/deployment that may start receiving that traffic. May be null
-  /// if no deployment is able to receive the traffic.
+  /// The basepath/deployment that may start receiving that traffic.
+  ///
+  /// May be null if no deployment is able to receive the traffic.
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment toDeployment;
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
@@ -14932,7 +15187,9 @@ class GoogleCloudApigeeV1DeploymentConfig {
   /// Additional key-value metadata for the deployment.
   core.Map<core.String, core.String> attributes;
 
-  /// Base path where the application will be hosted. Defaults to "/".
+  /// Base path where the application will be hosted.
+  ///
+  /// Defaults to "/".
   core.String basePath;
 
   /// Location of the API proxy bundle as a URI.
@@ -14946,8 +15203,9 @@ class GoogleCloudApigeeV1DeploymentConfig {
   /// Unique ID of the API proxy revision.
   core.String proxyUid;
 
-  /// Unique ID. The ID will only change if the deployment is deleted and
-  /// recreated.
+  /// Unique ID.
+  ///
+  /// The ID will only change if the deployment is deleted and recreated.
   core.String uid;
 
   GoogleCloudApigeeV1DeploymentConfig();
@@ -15014,44 +15272,66 @@ class GoogleCloudApigeeV1Developer {
   /// List of apps associated with the developer.
   core.List<core.String> apps;
 
-  /// Optional. Developer attributes (name/value pairs). The custom attribute
-  /// limit is 18.
+  /// Developer attributes (name/value pairs).
+  ///
+  /// The custom attribute limit is 18.
+  ///
+  /// Optional.
   core.List<GoogleCloudApigeeV1Attribute> attributes;
 
   /// List of companies associated with the developer.
   core.List<core.String> companies;
 
-  /// Output only. Time at which the developer was created in milliseconds since
-  /// epoch.
+  /// Time at which the developer was created in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// ID of the developer. **Note**: IDs are generated internally by Apigee and
-  /// are not guaranteed to stay the same over time.
+  /// ID of the developer.
+  ///
+  /// **Note**: IDs are generated internally by Apigee and are not guaranteed to
+  /// stay the same over time.
   core.String developerId;
 
-  /// Required. Email address of the developer. This value is used to uniquely
-  /// identify the developer in Apigee hybrid.
+  /// Email address of the developer.
+  ///
+  /// This value is used to uniquely identify the developer in Apigee hybrid.
+  ///
+  /// Required.
   core.String email;
 
-  /// Required. First name of the developer.
+  /// First name of the developer.
+  ///
+  /// Required.
   core.String firstName;
 
-  /// Output only. Time at which the developer was last modified in milliseconds
-  /// since epoch.
+  /// Time at which the developer was last modified in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
-  /// Required. Last name of the developer.
+  /// Last name of the developer.
+  ///
+  /// Required.
   core.String lastName;
 
-  /// Output only. Name of the Apigee organization in which the developer
-  /// resides.
+  /// Name of the Apigee organization in which the developer resides.
+  ///
+  /// Output only.
   core.String organizationName;
 
-  /// Output only. Status of the developer. Valid values are `active` and
-  /// `inactive`.
+  /// Status of the developer.
+  ///
+  /// Valid values are `active` and `inactive`.
+  ///
+  /// Output only.
   core.String status;
 
-  /// Required. User name of the developer. Not used by Apigee hybrid.
+  /// User name of the developer.
+  ///
+  /// Not used by Apigee hybrid.
+  ///
+  /// Required.
   core.String userName;
 
   GoogleCloudApigeeV1Developer();
@@ -15174,35 +15454,44 @@ class GoogleCloudApigeeV1DeveloperApp {
   /// authorization codes back to developer apps.
   core.String callbackUrl;
 
-  /// Output only. Time the developer app was created in milliseconds since
-  /// epoch.
+  /// Time the developer app was created in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// Output only. Set of credentials for the developer app consisting of the
-  /// consumer key/secret pairs associated with the API products.
+  /// Set of credentials for the developer app consisting of the consumer
+  /// key/secret pairs associated with the API products.
+  ///
+  /// Output only.
   core.List<GoogleCloudApigeeV1Credential> credentials;
 
   /// ID of the developer.
   core.String developerId;
 
   /// Expiration time, in milliseconds, for the consumer key that is generated
-  /// for the developer app. If not set or left to the default value of `-1`,
-  /// the API key never expires. The expiration time can't be updated after it
-  /// is set.
+  /// for the developer app.
+  ///
+  /// If not set or left to the default value of `-1`, the API key never
+  /// expires. The expiration time can't be updated after it is set.
   core.String keyExpiresIn;
 
-  /// Output only. Time the developer app was modified in milliseconds since
-  /// epoch.
+  /// Time the developer app was modified in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
   /// Name of the developer app.
   core.String name;
 
-  /// Scopes to apply to the developer app. The specified scopes must already
-  /// exist for the API product that you associate with the developer app.
+  /// Scopes to apply to the developer app.
+  ///
+  /// The specified scopes must already exist for the API product that you
+  /// associate with the developer app.
   core.List<core.String> scopes;
 
-  /// Status of the credential. Valid values include `approved` or `revoked`.
+  /// Status of the credential.
+  ///
+  /// Valid values include `approved` or `revoked`.
   core.String status;
 
   GoogleCloudApigeeV1DeveloperApp();
@@ -15308,10 +15597,11 @@ class GoogleCloudApigeeV1DeveloperApp {
 }
 
 class GoogleCloudApigeeV1DeveloperAppKey {
-  /// List of API products for which the credential can be used. **Note**: Do
-  /// not specify the list of API products when creating a consumer key and
-  /// secret for a developer app. Instead, use the UpdateDeveloperAppKey API to
-  /// make the association after the consumer key and secret are created.
+  /// List of API products for which the credential can be used.
+  ///
+  /// **Note**: Do not specify the list of API products when creating a consumer
+  /// key and secret for a developer app. Instead, use the UpdateDeveloperAppKey
+  /// API to make the association after the consumer key and secret are created.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -15332,11 +15622,15 @@ class GoogleCloudApigeeV1DeveloperAppKey {
   /// Time the developer app was created in milliseconds since epoch.
   core.String issuedAt;
 
-  /// Scopes to apply to the app. The specified scope names must already be
-  /// defined for the API product that you associate with the app.
+  /// Scopes to apply to the app.
+  ///
+  /// The specified scope names must already be defined for the API product that
+  /// you associate with the app.
   core.List<core.String> scopes;
 
-  /// Status of the credential. Valid values include `approved` or `revoked`.
+  /// Status of the credential.
+  ///
+  /// Valid values include `approved` or `revoked`.
   core.String status;
 
   GoogleCloudApigeeV1DeveloperAppKey();
@@ -15483,26 +15777,36 @@ class GoogleCloudApigeeV1EntityMetadata {
 }
 
 class GoogleCloudApigeeV1Environment {
-  /// Output only. Creation time of this environment as milliseconds since
-  /// epoch.
+  /// Creation time of this environment as milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// Optional. Description of the environment.
+  /// Description of the environment.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Display name for this environment.
+  /// Display name for this environment.
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// Output only. Last modification time of this environment as milliseconds
-  /// since epoch.
+  /// Last modification time of this environment as milliseconds since epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
-  /// Required. Name of the environment. Values must match the regular
-  /// expression `^[.\\p{Alnum}-_]{1,255}$`
+  /// Name of the environment.
+  ///
+  /// Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. Key-value pairs that may be used for customizing the
-  /// environment.
+  /// Key-value pairs that may be used for customizing the environment.
+  ///
+  /// Optional.
   GoogleCloudApigeeV1Properties properties;
 
   GoogleCloudApigeeV1Environment();
@@ -15592,23 +15896,28 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   /// List of resource versions in the environment.
   core.List<GoogleCloudApigeeV1ResourceConfig> resources;
 
-  /// Revision ID of the environment configuration. The higher the value, the
-  /// more recently the configuration was deployed.
+  /// Revision ID of the environment configuration.
+  ///
+  /// The higher the value, the more recently the configuration was deployed.
   core.String revisionId;
 
   /// DEPRECATED: Use revision_id.
   core.String sequenceNumber;
 
-  /// List of target servers in the environment. Disabled target servers are not
-  /// displayed.
+  /// List of target servers in the environment.
+  ///
+  /// Disabled target servers are not displayed.
   core.List<GoogleCloudApigeeV1TargetServerConfig> targets;
 
-  /// Trace configurations. Contains config for the environment and config
-  /// overrides for specific API proxies.
+  /// Trace configurations.
+  ///
+  /// Contains config for the environment and config overrides for specific API
+  /// proxies.
   GoogleCloudApigeeV1RuntimeTraceConfig traceConfig;
 
-  /// Unique ID for the environment configuration. The ID will only change if
-  /// the environment is deleted and recreated.
+  /// Unique ID for the environment configuration.
+  ///
+  /// The ID will only change if the environment is deleted and recreated.
   core.String uid;
 
   GoogleCloudApigeeV1EnvironmentConfig();
@@ -15764,18 +16073,26 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   }
 }
 
-/// EnvironmentGroup configuration. An environment group is used to group one or
-/// more Apigee environments under a single host name.
+/// EnvironmentGroup configuration.
+///
+/// An environment group is used to group one or more Apigee environments under
+/// a single host name.
 class GoogleCloudApigeeV1EnvironmentGroup {
-  /// Output only. The time at which the environment group was created as
-  /// milliseconds since epoch.
+  /// The time at which the environment group was created as milliseconds since
+  /// epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// Required. Host names for this environment group.
+  /// Host names for this environment group.
+  ///
+  /// Required.
   core.List<core.String> hostnames;
 
-  /// Output only. The time at which the environment group was last updated as
-  /// milliseconds since epoch.
+  /// The time at which the environment group was last updated as milliseconds
+  /// since epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
   /// ID of the environment group.
@@ -15821,11 +16138,15 @@ class GoogleCloudApigeeV1EnvironmentGroup {
 /// EnvironmentGroupAttachment is a resource which defines an attachment of an
 /// environment to an environment group.
 class GoogleCloudApigeeV1EnvironmentGroupAttachment {
-  /// Output only. The time at which the environment group attachment was
-  /// created as milliseconds since epoch.
+  /// The time at which the environment group attachment was created as
+  /// milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// Required. ID of the attached environment.
+  /// ID of the attached environment.
+  ///
+  /// Required.
   core.String environment;
 
   /// ID of the environment group attachment.
@@ -15871,8 +16192,9 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
   core.String name;
 
   /// Revision id that defines the ordering of the EnvironmentGroupConfig
-  /// resource. The higher the revision, the more recently the configuration was
-  /// deployed.
+  /// resource.
+  ///
+  /// The higher the revision, the more recently the configuration was deployed.
   core.String revisionId;
 
   /// Ordered list of routing rules defining how traffic to this environment
@@ -15933,7 +16255,9 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
 
 /// Details of an export job.
 class GoogleCloudApigeeV1Export {
-  /// Output only. Time the export job was created.
+  /// Time the export job was created.
+  ///
+  /// Output only.
   core.String created;
 
   /// Name of the datastore that is the destination of the export job
@@ -15943,28 +16267,41 @@ class GoogleCloudApigeeV1Export {
   /// Description of the export job.
   core.String description;
 
-  /// Output only. Error is set when export fails
+  /// Error is set when export fails
+  ///
+  /// Output only.
   core.String error;
 
-  /// Output only. Execution time for this export job. If the job is still in
-  /// progress, it will be set to the amount of time that has elapsed
-  /// since`created`, in seconds. Else, it will set to (`updated` - `created`),
-  /// in seconds.
+  /// Execution time for this export job.
+  ///
+  /// If the job is still in progress, it will be set to the amount of time that
+  /// has elapsed since`created`, in seconds. Else, it will set to (`updated` -
+  /// `created`), in seconds.
+  ///
+  /// Output only.
   core.String executionTime;
 
   /// Display name of the export job.
   core.String name;
 
-  /// Output only. Self link of the export job. A URI that can be used to
-  /// retrieve the status of an export job. Example:
+  /// Self link of the export job.
+  ///
+  /// A URI that can be used to retrieve the status of an export job. Example:
   /// `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+  ///
+  /// Output only.
   core.String self;
 
-  /// Output only. Status of the export job. Valid values include `enqueued`,
-  /// `running`, `completed`, and `failed`.
+  /// Status of the export job.
+  ///
+  /// Valid values include `enqueued`, `running`, `completed`, and `failed`.
+  ///
+  /// Output only.
   core.String state;
 
-  /// Output only. Time the export job was last updated.
+  /// Time the export job was last updated.
+  ///
+  /// Output only.
   core.String updated;
 
   GoogleCloudApigeeV1Export();
@@ -16034,26 +16371,40 @@ class GoogleCloudApigeeV1Export {
 
 /// Request body for [CreateExportRequest]
 class GoogleCloudApigeeV1ExportRequest {
-  /// Optional. Delimiter used in the CSV file, if `outputFormat` is set to
-  /// `csv`. Defaults to the `,` (comma) character. Supported delimiter
-  /// characters include comma (`,`), pipe (`|`), and tab (`\t`).
+  /// Delimiter used in the CSV file, if `outputFormat` is set to `csv`.
+  ///
+  /// Defaults to the `,` (comma) character. Supported delimiter characters
+  /// include comma (`,`), pipe (`|`), and tab (`\t`).
+  ///
+  /// Optional.
   core.String csvDelimiter;
 
-  /// Required. Name of the preconfigured datastore.
+  /// Name of the preconfigured datastore.
+  ///
+  /// Required.
   core.String datastoreName;
 
-  /// Required. Date range of the data to export.
+  /// Date range of the data to export.
+  ///
+  /// Required.
   GoogleCloudApigeeV1DateRange dateRange;
 
-  /// Optional. Description of the export job.
+  /// Description of the export job.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. Display name of the export job.
+  /// Display name of the export job.
+  ///
+  /// Required.
   core.String name;
 
-  /// Optional. Output format of the export. Valid values include: `csv` or
-  /// `json`. Defaults to `json`. Note: Configure the delimiter for CSV output
-  /// using the `csvDelimiter` property.
+  /// Output format of the export.
+  ///
+  /// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure
+  /// the delimiter for CSV output using the `csvDelimiter` property.
+  ///
+  /// Optional.
   core.String outputFormat;
 
   GoogleCloudApigeeV1ExportRequest();
@@ -16105,18 +16456,24 @@ class GoogleCloudApigeeV1ExportRequest {
 }
 
 class GoogleCloudApigeeV1FlowHook {
-  /// Optional. Flag that specifies whether execution should continue if the
-  /// flow hook throws an exception. Set to `true` to continue execution. Set to
-  /// `false` to stop execution if the flow hook throws an exception.Defaults to
-  /// `true`.
+  /// Flag that specifies whether execution should continue if the flow hook
+  /// throws an exception.
+  ///
+  /// Set to `true` to continue execution. Set to `false` to stop execution if
+  /// the flow hook throws an exception.Defaults to `true`.
+  ///
+  /// Optional.
   core.bool continueOnError;
 
   /// Description of the flow hook.
   core.String description;
 
-  /// Output only. Where in the API call flow the flow hook is invoked. Must be
-  /// one of `PreProxyFlowHook`, `PostProxyFlowHook`, `PreTargetFlowHook`, or
-  /// `PostTargetFlowHook`.
+  /// Where in the API call flow the flow hook is invoked.
+  ///
+  /// Must be one of `PreProxyFlowHook`, `PostProxyFlowHook`,
+  /// `PreTargetFlowHook`, or `PostTargetFlowHook`.
+  ///
+  /// Output only.
   core.String flowHookPoint;
 
   /// Shared flow attached to this flow hook, or empty if there is none
@@ -16160,12 +16517,15 @@ class GoogleCloudApigeeV1FlowHook {
 
 class GoogleCloudApigeeV1FlowHookConfig {
   /// Flag that specifies whether the flow should abort after an error in the
-  /// flow hook. Defaults to `true` (continue on error).
+  /// flow hook.
+  ///
+  /// Defaults to `true` (continue on error).
   core.bool continueOnError;
 
   /// Name of the flow hook in the following format:
-  /// `organizations/{org}/environments/{env}/flowhooks/{point}`. Valid `point`
-  /// values include: `PreProxyFlowHook`, `PostProxyFlowHook`,
+  /// `organizations/{org}/environments/{env}/flowhooks/{point}`.
+  ///
+  /// Valid `point` values include: `PreProxyFlowHook`, `PostProxyFlowHook`,
   /// `PreTargetFlowHook`, and `PostTargetFlowHook`
   core.String name;
 
@@ -16227,8 +16587,9 @@ class GoogleCloudApigeeV1IngressConfig {
   /// Time at which the IngressConfig revision was created.
   core.String revisionCreateTime;
 
-  /// Revision id that defines the ordering on IngressConfig resources. The
-  /// higher the revision, the more recently the configuration was deployed.
+  /// Revision id that defines the ordering on IngressConfig resources.
+  ///
+  /// The higher the revision, the more recently the configuration was deployed.
   core.String revisionId;
 
   /// A unique id for the ingress config that will only change if the
@@ -16283,39 +16644,59 @@ class GoogleCloudApigeeV1IngressConfig {
 
 /// Apigee runtime instance.
 class GoogleCloudApigeeV1Instance {
-  /// Output only. Time the instance was created in milliseconds since epoch.
+  /// Time the instance was created in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
-  /// Optional. Description of the instance.
+  /// Description of the instance.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Optional. Customer Managed Encryption Key (CMEK) used for disk & volume
-  /// encryption.
+  /// Customer Managed Encryption Key (CMEK) used for disk & volume encryption.
+  ///
+  /// Optional.
   core.String diskEncryptionKeyName;
 
-  /// Optional. Display name for the instance.
+  /// Display name for the instance.
+  ///
+  /// Optional.
   core.String displayName;
 
-  /// Output only. Hostname or IP address of the exposed Apigee endpoint used by
-  /// clients to connect to the service.
+  /// Hostname or IP address of the exposed Apigee endpoint used by clients to
+  /// connect to the service.
+  ///
+  /// Output only.
   core.String host;
 
-  /// Output only. Time the instance was last modified in milliseconds since
-  /// epoch.
+  /// Time the instance was last modified in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
-  /// Required. Compute Engine location where the instance resides.
+  /// Compute Engine location where the instance resides.
+  ///
+  /// Required.
   core.String location;
 
-  /// Required. Resource ID of the instance. Values must match the regular
-  /// expression `^a-z{0,30}[a-z\d]$`.
+  /// Resource ID of the instance.
+  ///
+  /// Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+  ///
+  /// Required.
   core.String name;
 
-  /// Output only. Port number of the exposed Apigee endpoint.
+  /// Port number of the exposed Apigee endpoint.
+  ///
+  /// Output only.
   core.String port;
 
-  /// Output only. State of the instance. Values other than ACTIVE means the
-  /// resource is not ready to use.
+  /// State of the instance.
+  ///
+  /// Values other than ACTIVE means the resource is not ready to use.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
   /// - "CREATING" : Resource is being created.
@@ -16397,13 +16778,17 @@ class GoogleCloudApigeeV1Instance {
 /// InstanceAttachment represents the installation of an environment onto an
 /// instance.
 class GoogleCloudApigeeV1InstanceAttachment {
-  /// Output only. Time the attachment was created in milliseconds since epoch.
+  /// Time the attachment was created in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
   /// ID of the attached environment.
   core.String environment;
 
-  /// Output only. ID of the attachment.
+  /// ID of the attachment.
+  ///
+  /// Output only.
   core.String name;
 
   GoogleCloudApigeeV1InstanceAttachment();
@@ -16441,8 +16826,9 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>
       deployedRevisions;
 
-  /// The current routes deployed in the ingress routing table. A route which is
-  /// missing will be shown with no destination environment.
+  /// The current routes deployed in the ingress routing table.
+  ///
+  /// A route which is missing will be shown with no destination environment.
   core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>
       deployedRoutes;
 
@@ -16530,8 +16916,9 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   /// The envgroup where this route is installed.
   core.String envgroup;
 
-  /// The destination environment. This will be empty if the route is not yet
-  /// reported.
+  /// The destination environment.
+  ///
+  /// This will be empty if the route is not yet reported.
   core.String environment;
 
   /// The percentage of ingress replicas reporting this route.
@@ -16574,7 +16961,9 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
 }
 
 class GoogleCloudApigeeV1KeyAliasReference {
-  /// Alias ID. Must exist in the keystore referred to by the reference.
+  /// Alias ID.
+  ///
+  /// Must exist in the keystore referred to by the reference.
   core.String aliasId;
 
   /// Reference name in the following format:
@@ -16606,10 +16995,14 @@ class GoogleCloudApigeeV1KeyAliasReference {
 
 /// A collection of key, value string pairs
 class GoogleCloudApigeeV1KeyValueMap {
-  /// Optional. If `true` entry values will be encrypted.
+  /// If `true` entry values will be encrypted.
+  ///
+  /// Optional.
   core.bool encrypted;
 
-  /// Required. The id of the key value map.
+  /// The id of the key value map.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudApigeeV1KeyValueMap();
@@ -16637,11 +17030,16 @@ class GoogleCloudApigeeV1KeyValueMap {
 
 /// A datastore for Certificates and Aliases
 class GoogleCloudApigeeV1Keystore {
-  /// Output only. The aliases in this keystore.
+  /// The aliases in this keystore.
+  ///
+  /// Output only.
   core.List<core.String> aliases;
 
-  /// Required. The resource ID for this keystore. Values must match the regular
-  /// expression `[\w[:space:]-.]{1,255}`.
+  /// The resource ID for this keystore.
+  ///
+  /// Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+  ///
+  /// Required.
   core.String name;
 
   GoogleCloudApigeeV1Keystore();
@@ -16918,7 +17316,9 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
 
 class GoogleCloudApigeeV1ListDebugSessionsResponse {
   /// Page token that you can include in a ListDebugSessionsRequest to retrieve
-  /// the next page. If omitted, no subsequent pages exist.
+  /// the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
   core.String nextPageToken;
 
   /// Session info that includes debug session ID and the first transaction
@@ -17010,7 +17410,9 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
       environmentGroupAttachments;
 
   /// Page token that you can include in a ListEnvironmentGroupAttachments
-  /// request to retrieve the next page. If omitted, no subsequent pages exist.
+  /// request to retrieve the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
   core.String nextPageToken;
 
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
@@ -17049,7 +17451,9 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   core.List<GoogleCloudApigeeV1EnvironmentGroup> environmentGroups;
 
   /// Page token that you can include in a ListEnvironmentGroups request to
-  /// retrieve the next page. If omitted, no subsequent pages exist.
+  /// retrieve the next page.
+  ///
+  /// If omitted, no subsequent pages exist.
   core.String nextPageToken;
 
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse();
@@ -17164,7 +17568,9 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   core.List<GoogleCloudApigeeV1InstanceAttachment> attachments;
 
   /// Page token that you can include in a ListInstanceAttachments request to
-  /// retrieve the next page of content. If omitted, no subsequent pages exist.
+  /// retrieve the next page of content.
+  ///
+  /// If omitted, no subsequent pages exist.
   core.String nextPageToken;
 
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse();
@@ -17201,7 +17607,9 @@ class GoogleCloudApigeeV1ListInstancesResponse {
   core.List<GoogleCloudApigeeV1Instance> instances;
 
   /// Page token that you can include in a ListInstance request to retrieve the
-  /// next page of content. If omitted, no subsequent pages exist.
+  /// next page of content.
+  ///
+  /// If omitted, no subsequent pages exist.
   core.String nextPageToken;
 
   GoogleCloudApigeeV1ListInstancesResponse();
@@ -17313,9 +17721,10 @@ class GoogleCloudApigeeV1Metadata {
   core.List<core.String> errors;
 
   /// List of additional information such as data source, if result was
-  /// truncated etc. E.g "notices": [ "Source:Postgres", "PG
-  /// Host:uappg0rw.e2e.apigeeks.net", "query served
-  /// by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table used:
+  /// truncated etc.
+  ///
+  /// E.g "notices": [ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net",
+  /// "query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table used:
   /// edge.api.uapgroup2.agg_api" ]
   core.List<core.String> notices;
 
@@ -17346,16 +17755,19 @@ class GoogleCloudApigeeV1Metadata {
   }
 }
 
-/// This message type encapsulates the metric data point. Example: { "name":
-/// "sum(message_count)", "values" : [ { "timestamp": 1549004400000, "value":
-/// "39.0" }, { "timestamp" : 1548997200000, "value" : "0.0" } ] } or { "name":
-/// "sum(message_count)", "values" : ["39.0"] }
+/// This message type encapsulates the metric data point.
+///
+/// Example: { "name": "sum(message_count)", "values" : [ { "timestamp":
+/// 1549004400000, "value": "39.0" }, { "timestamp" : 1548997200000, "value" :
+/// "0.0" } ] } or { "name": "sum(message_count)", "values" : ["39.0"] }
 class GoogleCloudApigeeV1Metric {
   /// This field contains the metric name.
   core.String name;
 
-  /// List of metric values. Possible value format: "values":["39.0"] or
-  /// "values":[ { "value": "39.0", "timestamp": 1232434354} ]
+  /// List of metric values.
+  ///
+  /// Possible value format: "values":["39.0"] or "values":[ { "value": "39.0",
+  /// "timestamp": 1232434354} ]
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -17390,12 +17802,15 @@ class GoogleCloudApigeeV1Metric {
 /// (verbs) allowed on the resource path.
 class GoogleCloudApigeeV1Operation {
   /// methods refers to the REST verbs as in
-  /// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none
-  /// specified, all verb types are allowed.
+  /// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html.
+  ///
+  /// When none specified, all verb types are allowed.
   core.List<core.String> methods;
 
-  /// Required. resource represents REST resource path associated with the
-  /// proxy/remote service.
+  /// resource represents REST resource path associated with the proxy/remote
+  /// service.
+  ///
+  /// Required.
   core.String resource;
 
   GoogleCloudApigeeV1Operation();
@@ -17426,20 +17841,26 @@ class GoogleCloudApigeeV1Operation {
 /// OperationConfig binds the resources in a proxy or remote service with the
 /// allowed REST methods and its associated quota enforcement.
 class GoogleCloudApigeeV1OperationConfig {
-  /// Required. api_source represents either a proxy or remote service name for
-  /// which the resources, methods and quota are associated with.
+  /// api_source represents either a proxy or remote service name for which the
+  /// resources, methods and quota are associated with.
+  ///
+  /// Required.
   core.String apiSource;
 
   /// custom attribute associated with the operation.
   core.List<GoogleCloudApigeeV1Attribute> attributes;
 
   /// operations is the list of resource/methods pair, belonging to proxy/remote
-  /// service, upon which quota will applied on. Note that currently we allow
-  /// only a single operation. The call will fail if more than one is provided.
+  /// service, upon which quota will applied on.
+  ///
+  /// Note that currently we allow only a single operation. The call will fail
+  /// if more than one is provided.
   core.List<GoogleCloudApigeeV1Operation> operations;
 
   /// Quota parameters to be enforced for the resources, methods, api_source
-  /// combination. If none specified, quota enforcement will not be done.
+  /// combination.
+  ///
+  /// If none specified, quota enforcement will not be done.
   GoogleCloudApigeeV1Quota quota;
 
   GoogleCloudApigeeV1OperationConfig();
@@ -17487,18 +17908,23 @@ class GoogleCloudApigeeV1OperationConfig {
 }
 
 /// The OperationGroup contains a list of configuration details associated with
-/// Apigee proxies or Remote services. Remote services are non-Apigee Edge
-/// proxies. eg, Istio-Envoy.
+/// Apigee proxies or Remote services.
+///
+/// Remote services are non-Apigee Edge proxies. eg, Istio-Envoy.
 class GoogleCloudApigeeV1OperationGroup {
   /// Identfies whether the configuration is for Apigee proxy or a remote
-  /// service. Possible values are "proxy" and "remoteservice". If none
-  /// specified, the default is "proxy". "proxy" is used when Apigee proxies are
-  /// associated with the API product. "remoteservice" is used when non-Apigee
-  /// proxy like Envoy is used, and is associated with the API product.
+  /// service.
+  ///
+  /// Possible values are "proxy" and "remoteservice". If none specified, the
+  /// default is "proxy". "proxy" is used when Apigee proxies are associated
+  /// with the API product. "remoteservice" is used when non-Apigee proxy like
+  /// Envoy is used, and is associated with the API product.
   core.String operationConfigType;
 
-  /// Required. A list of OperationConfig for either Apigee proxies or other
-  /// other remote services, that are associated with this API product.
+  /// A list of OperationConfig for either Apigee proxies or other other remote
+  /// services, that are associated with this API product.
+  ///
+  /// Required.
   core.List<GoogleCloudApigeeV1OperationConfig> operationConfigs;
 
   GoogleCloudApigeeV1OperationGroup();
@@ -17581,8 +18007,10 @@ class GoogleCloudApigeeV1OperationMetadata {
 
 class GoogleCloudApigeeV1OptimizedStats {
   /// This field wraps the stats response for Js Optimized Scenario with a
-  /// Response key. E.g. { "Response": { "TimeUnit": [], "metaData": { "errors":
-  /// [], "notices": [ "Source:Postgres", "Table used:
+  /// Response key.
+  ///
+  /// E.g. { "Response": { "TimeUnit": [], "metaData": { "errors": [],
+  /// "notices": [ "Source:Postgres", "Table used:
   /// edge.api.aaxgroup001.agg_api", "PG
   /// Host:ruappg08-ro.production.apigeeks.net", "query served
   /// by:80c4ebca-6a10-4a2e-8faf-c60c1ee306ca" ] }, "resultTruncated": false,
@@ -17645,8 +18073,9 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
 
 /// This message type encapsulates a response format for Js Optimized Scenario.
 class GoogleCloudApigeeV1OptimizedStatsResponse {
-  /// This field contains a list of time unit values. Time unit refers to an
-  /// epoch timestamp value.
+  /// This field contains a list of time unit values.
+  ///
+  /// Time unit refers to an epoch timestamp value.
   core.List<core.String> TimeUnit;
 
   /// This field contains metadata information about the query executed
@@ -17699,24 +18128,33 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
 }
 
 class GoogleCloudApigeeV1Organization {
-  /// Required. Primary GCP region for analytics data storage. For valid values,
-  /// see [Create an Apigee
+  /// Primary GCP region for analytics data storage.
+  ///
+  /// For valid values, see [Create an Apigee
   /// organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+  ///
+  /// Required.
   core.String analyticsRegion;
 
   /// Not used by Apigee.
   core.List<core.String> attributes;
 
   /// Compute Engine network used for Service Networking to be peered with
-  /// Apigee runtime instances. See [Getting started with the Service Networking
+  /// Apigee runtime instances.
+  ///
+  /// See [Getting started with the Service Networking
   /// API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
   /// Valid only when [RuntimeType] is set to CLOUD. The value can be updated
   /// only when there are no runtime instances. For example: "default".
   /// **Note:** Not supported for Apigee hybrid.
   core.String authorizedNetwork;
 
-  /// Output only. Base64-encoded public certificate for the root CA of the
-  /// Apigee organization. Valid only when [RuntimeType] is CLOUD.
+  /// Base64-encoded public certificate for the root CA of the Apigee
+  /// organization.
+  ///
+  /// Valid only when [RuntimeType] is CLOUD.
+  ///
+  /// Output only.
   core.String caCertificate;
   core.List<core.int> get caCertificateAsBytes =>
       convert.base64.decode(caCertificate);
@@ -17726,8 +18164,9 @@ class GoogleCloudApigeeV1Organization {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Output only. Time that the Apigee organization was created in milliseconds
-  /// since epoch.
+  /// Time that the Apigee organization was created in milliseconds since epoch.
+  ///
+  /// Output only.
   core.String createdAt;
 
   /// Not used by Apigee.
@@ -17737,14 +18176,20 @@ class GoogleCloudApigeeV1Organization {
   core.String description;
   core.String displayName;
 
-  /// Output only. List of environments in the Apigee organization.
+  /// List of environments in the Apigee organization.
+  ///
+  /// Output only.
   core.List<core.String> environments;
 
-  /// Output only. Time that the Apigee organization was last modified in
-  /// milliseconds since epoch.
+  /// Time that the Apigee organization was last modified in milliseconds since
+  /// epoch.
+  ///
+  /// Output only.
   core.String lastModifiedAt;
 
-  /// Output only. Name of the Apigee organization.
+  /// Name of the Apigee organization.
+  ///
+  /// Output only.
   core.String name;
 
   /// The project ID associated with the Apigee organization.
@@ -17753,18 +18198,23 @@ class GoogleCloudApigeeV1Organization {
   /// Properties defined in the Apigee organization profile.
   GoogleCloudApigeeV1Properties properties;
 
-  /// Required. Runtime type of the Apigee organization based on the Apigee
-  /// subscription purchased.
+  /// Runtime type of the Apigee organization based on the Apigee subscription
+  /// purchased.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "RUNTIME_TYPE_UNSPECIFIED" : Runtime type not specified.
   /// - "CLOUD" : Google-managed Apigee runtime.
   /// - "HYBRID" : User-managed Apigee hybrid runtime.
   core.String runtimeType_;
 
-  /// Output only. Subscription type of the Apigee organization. Valid values
-  /// include trial (free, limited, and for evaluation purposes only) or paid
-  /// (full subscription has been purchased). See [Apigee
+  /// Subscription type of the Apigee organization.
+  ///
+  /// Valid values include trial (free, limited, and for evaluation purposes
+  /// only) or paid (full subscription has been purchased). See [Apigee
   /// pricing](https://cloud.google.com/apigee/pricing/).
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : Subscription type not specified.
   /// - "PAID" : Full subscription to Apigee has been purchased.
@@ -17930,9 +18380,10 @@ class GoogleCloudApigeeV1PodStatus {
   /// Version of the application running in the pod.
   core.String appVersion;
 
-  /// Status of the deployment. Valid values include: - `deployed`: Successful.
-  /// - `error` : Failed. - `pending` : Pod has not yet reported on the
-  /// deployment.
+  /// Status of the deployment.
+  ///
+  /// Valid values include: - `deployed`: Successful. - `error` : Failed. -
+  /// `pending` : Pod has not yet reported on the deployment.
   core.String deploymentStatus;
 
   /// Time the deployment status was reported in milliseconds since epoch.
@@ -17944,9 +18395,11 @@ class GoogleCloudApigeeV1PodStatus {
   /// Name of the pod which is reporting the status.
   core.String podName;
 
-  /// Overall status of the pod (not this specific deployment). Valid values
-  /// include: - `active`: Up to date. - `stale` : Recently out of date. Pods
-  /// that have not reported status in a long time are excluded from the output.
+  /// Overall status of the pod (not this specific deployment).
+  ///
+  /// Valid values include: - `active`: Up to date. - `stale` : Recently out of
+  /// date. Pods that have not reported status in a long time are excluded from
+  /// the output.
   core.String podStatus;
 
   /// Time the pod status was reported in milliseconds since epoch.
@@ -18024,12 +18477,13 @@ class GoogleCloudApigeeV1PodStatus {
 }
 
 /// Point is a group of information collected by runtime plane at critical
-/// points of the message flow of the processed API request. This is a list of
-/// supported point IDs, categorized to three major buckets. For each category,
-/// debug points that we are currently supporting are listed below: - Flow
-/// status debug points: StateChange FlowInfo Condition Execution DebugMask
-/// Error - Flow control debug points: FlowCallout Paused Resumed FlowReturn
-/// BreakFlow Error - Runtime debug points: ScriptExecutor
+/// points of the message flow of the processed API request.
+///
+/// This is a list of supported point IDs, categorized to three major buckets.
+/// For each category, debug points that we are currently supporting are listed
+/// below: - Flow status debug points: StateChange FlowInfo Condition Execution
+/// DebugMask Error - Flow control debug points: FlowCallout Paused Resumed
+/// FlowReturn BreakFlow Error - Runtime debug points: ScriptExecutor
 /// FlowCalloutStepDefinition CustomTarget StepDefinition Oauth2ServicePoint
 /// RaiseFault NodeJS The detail information of the given debug point is stored
 /// in a list of results.
@@ -18127,18 +18581,23 @@ class GoogleCloudApigeeV1Property {
 
 /// Request for ProvisionOrganization.
 class GoogleCloudApigeeV1ProvisionOrganizationRequest {
-  /// Primary Cloud Platform region for analytics data storage. For valid
-  /// values, see [Create an
+  /// Primary Cloud Platform region for analytics data storage.
+  ///
+  /// For valid values, see [Create an
   /// organization](https://docs.apigee.com/hybrid/latest/precog-provision).
   /// Defaults to us-west1.
   core.String analyticsRegion;
 
-  /// Name of the customer project's VPC network. If provided, the network needs
-  /// to be peered through Service Networking. If none is provided, the
-  /// organization will have access only to the public internet.
+  /// Name of the customer project's VPC network.
+  ///
+  /// If provided, the network needs to be peered through Service Networking. If
+  /// none is provided, the organization will have access only to the public
+  /// internet.
   core.String authorizedNetwork;
 
-  /// Cloud Platform location for the runtime instance. Defaults to us-west1-a.
+  /// Cloud Platform location for the runtime instance.
+  ///
+  /// Defaults to us-west1-a.
   core.String runtimeLocation;
 
   GoogleCloudApigeeV1ProvisionOrganizationRequest();
@@ -18172,17 +18631,21 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
 
 class GoogleCloudApigeeV1Query {
   /// Delimiter used in the CSV file, if `outputFormat` is set to `csv`.
+  ///
   /// Defaults to the `,` (comma) character. Supported delimiter characters
   /// include comma (`,`), pipe (`|`), and tab (`\t`).
   core.String csvDelimiter;
 
   /// A list of dimensions.
+  ///
   /// https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
   core.List<core.String> dimensions;
 
-  /// Boolean expression that can be used to filter data. Filter expressions can
-  /// be combined using AND/OR terms and should be fully parenthesized to avoid
-  /// ambiguity. See Analytics metrics, dimensions, and filters reference
+  /// Boolean expression that can be used to filter data.
+  ///
+  /// Filter expressions can be combined using AND/OR terms and should be fully
+  /// parenthesized to avoid ambiguity. See Analytics metrics, dimensions, and
+  /// filters reference
   /// https://docs.apigee.com/api-platform/analytics/analytics-reference for
   /// more information on the fields available to filter on. For more
   /// information on the tokens that you use to build filter expressions, see
@@ -18190,12 +18653,13 @@ class GoogleCloudApigeeV1Query {
   /// https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax
   core.String filter;
 
-  /// Time unit used to group the result set. Valid values include: second,
-  /// minute, hour, day, week, or month. If a query includes groupByTimeUnit,
-  /// then the result is an aggregation based on the specified time unit and the
-  /// resultant timestamp does not include milliseconds precision. If a query
-  /// omits groupByTimeUnit, then the resultant timestamp includes milliseconds
-  /// precision.
+  /// Time unit used to group the result set.
+  ///
+  /// Valid values include: second, minute, hour, day, week, or month. If a
+  /// query includes groupByTimeUnit, then the result is an aggregation based on
+  /// the specified time unit and the resultant timestamp does not include
+  /// milliseconds precision. If a query omits groupByTimeUnit, then the
+  /// resultant timestamp includes milliseconds precision.
   core.String groupByTimeUnit;
 
   /// Maximum number of rows that can be returned in the result.
@@ -18207,19 +18671,24 @@ class GoogleCloudApigeeV1Query {
   /// Asynchronous Query Name.
   core.String name;
 
-  /// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure
-  /// the delimiter for CSV output using the csvDelimiter property.
+  /// Valid values include: `csv` or `json`.
+  ///
+  /// Defaults to `json`. Note: Configure the delimiter for CSV output using the
+  /// csvDelimiter property.
   core.String outputFormat;
 
   /// Asynchronous Report ID.
   core.String reportDefinitionId;
 
-  /// Required. Time range for the query. Can use the following predefined
-  /// strings to specify the time range: `last60minutes` `last24hours`
-  /// `last7days` Or, specify the timeRange as a structure describing start and
-  /// end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example:
-  /// "timeRange": { "start": "2018-07-29T00:13:00Z", "end":
-  /// "2018-08-01T00:18:00Z" }
+  /// Time range for the query.
+  ///
+  /// Can use the following predefined strings to specify the time range:
+  /// `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a
+  /// structure describing start and end timestamps in the ISO format:
+  /// yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start":
+  /// "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
+  ///
+  /// Required.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -18309,8 +18778,9 @@ class GoogleCloudApigeeV1QueryMetadata {
   /// End timestamp of the query range.
   core.String endTimestamp;
 
-  /// Metrics of the AsyncQuery. Example:
-  /// ["name:message_count,func:sum,alias:sum_message_count"]
+  /// Metrics of the AsyncQuery.
+  ///
+  /// Example: ["name:message_count,func:sum,alias:sum_message_count"]
   core.List<core.String> metrics;
 
   /// Output format.
@@ -18376,14 +18846,17 @@ class GoogleCloudApigeeV1QueryMetadata {
 /// More info about Metric:
 /// https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
 class GoogleCloudApigeeV1QueryMetric {
-  /// Alias for the metric. Alias will be used to replace metric name in query
-  /// results.
+  /// Alias for the metric.
+  ///
+  /// Alias will be used to replace metric name in query results.
   core.String alias;
 
   /// Aggregation function: avg, min, max, or sum.
   core.String function;
 
-  /// Required. Metric name.
+  /// Metric name.
+  ///
+  /// Required.
   core.String name;
 
   /// One of `+`, `-`, `/`, `%`, `*`.
@@ -18435,21 +18908,28 @@ class GoogleCloudApigeeV1QueryMetric {
 
 /// Quota contains the essential parameters needed that can be applied on a
 /// proxy/remote service, resources and methods combination associated with this
-/// API product. While setting of Quota is optional, setting it prevents
-/// requests from exceeding the provisioned parameters.
+/// API product.
+///
+/// While setting of Quota is optional, setting it prevents requests from
+/// exceeding the provisioned parameters.
 class GoogleCloudApigeeV1Quota {
-  /// Required. The time interval over which the number of request messages is
-  /// calculated.
+  /// The time interval over which the number of request messages is calculated.
+  ///
+  /// Required.
   core.String interval;
 
-  /// Required. Limit represents the upper bound count allowed for the time
-  /// interval and time unit specified. Requests exceeding this limit will get
-  /// rejected.
+  /// Limit represents the upper bound count allowed for the time interval and
+  /// time unit specified.
+  ///
+  /// Requests exceeding this limit will get rejected.
+  ///
+  /// Required.
   core.String limit;
 
-  /// The time unit defined for the `interval`. Valid values include minute,
-  /// hour, day, or month. The default value is empty. If limit and interval are
-  /// valid, the default value is "hour".
+  /// The time unit defined for the `interval`.
+  ///
+  /// Valid values include minute, hour, day, or month. The default value is
+  /// empty. If limit and interval are valid, the default value is "hour".
   core.String timeUnit;
 
   GoogleCloudApigeeV1Quota();
@@ -18481,23 +18961,34 @@ class GoogleCloudApigeeV1Quota {
   }
 }
 
-/// A Reference configuration. References must refer to a keystore that also
-/// exists in the parent environment.
+/// A Reference configuration.
+///
+/// References must refer to a keystore that also exists in the parent
+/// environment.
 class GoogleCloudApigeeV1Reference {
-  /// Optional. A human-readable description of this reference.
+  /// A human-readable description of this reference.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. The resource id of this reference. Values must match the regular
-  /// expression [\w\s\-.]+.
+  /// The resource id of this reference.
+  ///
+  /// Values must match the regular expression [\w\s\-.]+.
+  ///
+  /// Required.
   core.String name;
 
-  /// Required. The id of the resource to which this reference refers. Must be
-  /// the id of a resource that exists in the parent environment and is of the
-  /// given resource_type.
+  /// The id of the resource to which this reference refers.
+  ///
+  /// Must be the id of a resource that exists in the parent environment and is
+  /// of the given resource_type.
+  ///
+  /// Required.
   core.String refers;
 
-  /// The type of resource referred to by this reference. Valid values are
-  /// 'KeyStore' or 'TrustStore'.
+  /// The type of resource referred to by this reference.
+  ///
+  /// Valid values are 'KeyStore' or 'TrustStore'.
   core.String resourceType;
 
   GoogleCloudApigeeV1Reference();
@@ -18574,9 +19065,11 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
   /// user installs multiple hybrid runtimes with the same instance ID.
   core.String instanceUid;
 
-  /// The time the report was generated in the runtime. Used to prevent an old
-  /// status from overwriting a newer one. An instance should space out it's
-  /// status reports so that clock skew does not play a factor.
+  /// The time the report was generated in the runtime.
+  ///
+  /// Used to prevent an old status from overwriting a newer one. An instance
+  /// should space out it's status reports so that clock skew does not play a
+  /// factor.
   core.String reportTime;
 
   /// Status for config resources
@@ -18700,7 +19193,9 @@ class GoogleCloudApigeeV1ResourceFile {
   /// ID of the resource file.
   core.String name;
 
-  /// Resource file type. {{ resource_file_type }}
+  /// Resource file type.
+  ///
+  /// {{ resource_file_type }}
   core.String type;
 
   GoogleCloudApigeeV1ResourceFile();
@@ -18755,9 +19250,10 @@ class GoogleCloudApigeeV1ResourceFiles {
 
 /// The status of a resource loaded in the runtime.
 class GoogleCloudApigeeV1ResourceStatus {
-  /// The resource name. Currently only two resources are supported:
-  /// EnvironmentGroup - organizations/{org}/envgroups/{envgroup}
-  /// EnvironmentConfig -
+  /// The resource name.
+  ///
+  /// Currently only two resources are supported: EnvironmentGroup -
+  /// organizations/{org}/envgroups/{envgroup} EnvironmentConfig -
   /// organizations/{org}/environments/{environment}/deployedConfig
   core.String resource;
 
@@ -18767,9 +19263,10 @@ class GoogleCloudApigeeV1ResourceStatus {
   /// The total number of replicas that should have this resource.
   core.int totalReplicas;
 
-  /// The uid of the resource. In the unexpected case that the instance has
-  /// multiple uids for the same name, they should be reported under separate
-  /// ResourceStatuses.
+  /// The uid of the resource.
+  ///
+  /// In the unexpected case that the instance has multiple uids for the same
+  /// name, they should be reported under separate ResourceStatuses.
   core.String uid;
 
   GoogleCloudApigeeV1ResourceStatus();
@@ -18812,35 +19309,42 @@ class GoogleCloudApigeeV1ResourceStatus {
 }
 
 /// Result is short for "action result", could be different types identified by
-/// "action_result" field. Supported types: 1. DebugInfo : generic debug info
-/// collected by runtime recorded as a list of properties. For example, the
-/// contents could be virtual host info, state change result, or execution
-/// metadata. Required fields : properties, timestamp 2. RequestMessage:
-/// information of a http request. Contains headers, request URI and http
-/// methods type.Required fields : headers, uri, verb 3. ResponseMessage:
-/// information of a http response. Contains headers, reason phrase and http
-/// status code. Required fields : headers, reasonPhrase, statusCode 4.
-/// ErrorMessage: information of a http error message. Contains detail error
-/// message, reason phrase and status code. Required fields : content, headers,
-/// reasonPhrase, statusCode 5. VariableAccess: a list of variable access
-/// actions, can be Get, Set and Remove. Required fields : accessList
+/// "action_result" field.
+///
+/// Supported types: 1. DebugInfo : generic debug info collected by runtime
+/// recorded as a list of properties. For example, the contents could be virtual
+/// host info, state change result, or execution metadata. Required fields :
+/// properties, timestamp 2. RequestMessage: information of a http request.
+/// Contains headers, request URI and http methods type.Required fields :
+/// headers, uri, verb 3. ResponseMessage: information of a http response.
+/// Contains headers, reason phrase and http status code. Required fields :
+/// headers, reasonPhrase, statusCode 4. ErrorMessage: information of a http
+/// error message. Contains detail error message, reason phrase and status code.
+/// Required fields : content, headers, reasonPhrase, statusCode 5.
+/// VariableAccess: a list of variable access actions, can be Get, Set and
+/// Remove. Required fields : accessList
 class GoogleCloudApigeeV1Result {
-  /// Type of the action result. Can be one of the five: DebugInfo,
-  /// RequestMessage, ResponseMessage, ErrorMessage, VariableAccess
+  /// Type of the action result.
+  ///
+  /// Can be one of the five: DebugInfo, RequestMessage, ResponseMessage,
+  /// ErrorMessage, VariableAccess
   core.String ActionResult;
 
-  /// A list of variable access actions agaist the api proxy. Supported values:
-  /// Get, Set, Remove.
+  /// A list of variable access actions agaist the api proxy.
+  ///
+  /// Supported values: Get, Set, Remove.
   core.List<GoogleCloudApigeeV1Access> accessList;
 
-  /// Error message content. for example, "content" :
-  /// "{\"fault\":{\"faultstring\":\"API timed
+  /// Error message content.
+  ///
+  /// for example, "content" : "{\"fault\":{\"faultstring\":\"API timed
   /// out\",\"detail\":{\"errorcode\":\"flow.APITimedOut\"}}}"
   core.String content;
 
-  /// A list of HTTP headers. for example, '"headers" : [ { "name" :
-  /// "Content-Length", "value" : "83" }, { "name" : "Content-Type", "value" :
-  /// "application/json" } ]'
+  /// A list of HTTP headers.
+  ///
+  /// for example, '"headers" : [ { "name" : "Content-Length", "value" : "83" },
+  /// { "name" : "Content-Type", "value" : "application/json" } ]'
   core.List<GoogleCloudApigeeV1Property> headers;
 
   /// Name value pairs used for DebugInfo ActionResult.
@@ -18852,11 +19356,15 @@ class GoogleCloudApigeeV1Result {
   /// HTTP response code
   core.String statusCode;
 
-  /// Timestamp of when the result is recorded. Its format is dd-mm-yy
-  /// hh:mm:ss:xxx. For example, `"timestamp" : "12-08-19 00:31:59:960"`
+  /// Timestamp of when the result is recorded.
+  ///
+  /// Its format is dd-mm-yy hh:mm:ss:xxx. For example, `"timestamp" : "12-08-19
+  /// 00:31:59:960"`
   core.String timestamp;
 
-  /// The relative path of the api proxy. for example, `"uRI" : "/iloveapis"`
+  /// The relative path of the api proxy.
+  ///
+  /// for example, `"uRI" : "/iloveapis"`
   core.String uRI;
 
   /// HTTP method verb
@@ -18996,12 +19504,14 @@ class GoogleCloudApigeeV1RevisionStatus {
 }
 
 class GoogleCloudApigeeV1RoutingRule {
-  /// URI path prefix used to route to the specified environment. May contain
-  /// one or more wildcards. For example, path segments consisting of a single
-  /// `*` character will match any string.
+  /// URI path prefix used to route to the specified environment.
+  ///
+  /// May contain one or more wildcards. For example, path segments consisting
+  /// of a single `*` character will match any string.
   core.String basepath;
 
   /// The env group config revision_id when this rule was added or last updated.
+  ///
   /// This value is set when the rule is created and will only update if the the
   /// environment_id changes. It is used to determine if the runtime is up to
   /// date with respect to this rule. This field is omitted from the
@@ -19015,14 +19525,16 @@ class GoogleCloudApigeeV1RoutingRule {
 
   /// The resource name of the proxy revision that is receiving this basepath in
   /// the following format: `organizations/{org}/apis/{api}/revisions/{rev}`.
+  ///
   /// This field is omitted from the IngressConfig unless the
   /// GetDeployedIngressConfig API is called with debug=true.
   core.String receiver;
 
-  /// The unix timestamp when this rule was updated. This is updated whenever
-  /// env_group_revision is updated. This field is omitted from the
-  /// IngressConfig unless the GetDeployedIngressConfig API is called with
-  /// debug=true.
+  /// The unix timestamp when this rule was updated.
+  ///
+  /// This is updated whenever env_group_revision is updated. This field is
+  /// omitted from the IngressConfig unless the GetDeployedIngressConfig API is
+  /// called with debug=true.
   core.String updateTime;
 
   GoogleCloudApigeeV1RoutingRule();
@@ -19073,8 +19585,10 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   core.String endpoint;
 
   /// Exporter that is used to view the distributed trace captured using
-  /// OpenCensus. An exporter sends traces to any backend that is capable of
-  /// consuming them. Recorded spans can be exported by registered exporters.
+  /// OpenCensus.
+  ///
+  /// An exporter sends traces to any backend that is capable of consuming them.
+  /// Recorded spans can be exported by registered exporters.
   /// Possible string values are:
   /// - "EXPORTER_UNSPECIFIED" : Exporter unspecified
   /// - "JAEGER" : Jaeger exporter
@@ -19177,8 +19691,9 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Trace configuration override for a specific API proxy in an environment.
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig samplingConfig;
 
-  /// Unique ID for the configuration override. The ID will only change if the
-  /// override is deleted and recreated.
+  /// Unique ID for the configuration override.
+  ///
+  /// The ID will only change if the override is deleted and recreated.
   core.String uid;
 
   GoogleCloudApigeeV1RuntimeTraceConfigOverride();
@@ -19230,12 +19745,14 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
 }
 
 /// NEXT ID: 6 RuntimeTraceSamplingConfig represents the detail settings of
-/// distributed tracing. Only the fields that are defined in the distributed
-/// trace configuration can be overridden using the distribute trace
-/// configuration override APIs.
+/// distributed tracing.
+///
+/// Only the fields that are defined in the distributed trace configuration can
+/// be overridden using the distribute trace configuration override APIs.
 class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
-  /// Error sources from which to capture errors. If none are specified, error
-  /// codes are captured from all sources.
+  /// Error sources from which to capture errors.
+  ///
+  /// If none are specified, error codes are captured from all sources.
   core.List<core.String> errorSources;
 
   /// List of response code ranges.
@@ -19245,7 +19762,9 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   /// List of single response codes.
   core.List<core.int> responseCodes;
 
-  /// Sampler of distributed tracing. OFF is the default value.
+  /// Sampler of distributed tracing.
+  ///
+  /// OFF is the default value.
   /// Possible string values are:
   /// - "SAMPLER_UNSPECIFIED" : Sampler unspecified.
   /// - "OFF" : OFF means distributed trace is disabled, or the sampling
@@ -19257,9 +19776,10 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   /// when this is set.
   core.String sampler;
 
-  /// Field sampling rate. This value is only valid when is only applicable when
-  /// sampling value is probabilistic(PROBABILITY). The supported values are > 0
-  /// and <= 0.5.
+  /// Field sampling rate.
+  ///
+  /// This value is only valid when is only applicable when sampling value is
+  /// probabilistic(PROBABILITY). The supported values are > 0 and <= 0.5.
   core.double samplingRate;
 
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig();
@@ -19314,9 +19834,10 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
 }
 
 /// ResponseCodeRange represents a group of response codes to capture, from the
-/// first response code to the last response code. Each range is a close
-/// interval. For example, if an interval is [400, 403], then that means 400,
-/// 401, 402, 403 will be all captured.
+/// first response code to the last response code.
+///
+/// Each range is a close interval. For example, if an interval is [400, 403],
+/// then that means 400, 401, 402, 403 will be all captured.
 class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
   /// The first response code to capture.
   core.int firstResponseCode;
@@ -19353,12 +19874,15 @@ class GoogleCloudApigeeV1Schema {
   /// List of schema fiels grouped as dimensions.
   core.List<GoogleCloudApigeeV1SchemaSchemaElement> dimensions;
 
-  /// Additional metadata associated with schema. This is a legacy field and
-  /// usually consists of an empty array of strings.
+  /// Additional metadata associated with schema.
+  ///
+  /// This is a legacy field and usually consists of an empty array of strings.
   core.List<core.String> meta;
 
-  /// List of schema fields grouped as dimensions. These are fields that can be
-  /// used with an aggregate function such as sum, avg, min, max.
+  /// List of schema fields grouped as dimensions.
+  ///
+  /// These are fields that can be used with an aggregate function such as sum,
+  /// avg, min, max.
   core.List<GoogleCloudApigeeV1SchemaSchemaElement> metrics;
 
   GoogleCloudApigeeV1Schema();
@@ -19592,9 +20116,11 @@ class GoogleCloudApigeeV1SharedFlow {
 /// The metadata describing a shared flow revision.
 class GoogleCloudApigeeV1SharedFlowRevision {
   /// The version of the configuration schema to which this shared flow
-  /// conforms. The only supported value currently is majorVersion 4 and
-  /// minorVersion 0. This setting may be used in the future to enable evolution
-  /// of the shared flow format.
+  /// conforms.
+  ///
+  /// The only supported value currently is majorVersion 4 and minorVersion 0.
+  /// This setting may be used in the future to enable evolution of the shared
+  /// flow format.
   GoogleCloudApigeeV1ConfigVersion configurationVersion;
 
   /// A textual description of the shared flow revision.
@@ -19795,15 +20321,16 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   core.List<GoogleCloudApigeeV1DimensionMetric> dimensions;
 
   /// In the final response, only one of the following fields will be present
-  /// based on the dimensions provided. If no dimensions are provided, then only
-  /// a top level metrics is provided. If dimensions are included, then there
-  /// will be a top level dimensions field under environments which will contain
-  /// metrics values and the dimension name. Example: "environments": [ {
-  /// "dimensions": [ { "metrics": [ { "name": "sum(message_count)", "values": [
-  /// "2.14049521E8" ] } ], "name": "nit_proxy" } ], "name": "prod" } ] OR
-  /// "environments": [ { "metrics": [ { "name": "sum(message_count)", "values":
-  /// [ "2.19026331E8" ] } ], "name": "prod" } ] This field contains the list of
-  /// metric values.
+  /// based on the dimensions provided.
+  ///
+  /// If no dimensions are provided, then only a top level metrics is provided.
+  /// If dimensions are included, then there will be a top level dimensions
+  /// field under environments which will contain metrics values and the
+  /// dimension name. Example: "environments": [ { "dimensions": [ { "metrics":
+  /// [ { "name": "sum(message_count)", "values": [ "2.14049521E8" ] } ],
+  /// "name": "nit_proxy" } ], "name": "prod" } ] OR "environments": [ {
+  /// "metrics": [ { "name": "sum(message_count)", "values": [ "2.19026331E8" ]
+  /// } ], "name": "prod" } ] This field contains the list of metric values.
   core.List<GoogleCloudApigeeV1Metric> metrics;
   core.String name;
 
@@ -19846,8 +20373,10 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
 
 /// Pub/Sub subscription of an environment.
 class GoogleCloudApigeeV1Subscription {
-  /// Full name of the Pub/Sub subcription. Use the following structure in your
-  /// request: `subscription "projects/foo/subscription/bar"`
+  /// Full name of the Pub/Sub subcription.
+  ///
+  /// Use the following structure in your request: `subscription
+  /// "projects/foo/subscription/bar"`
   core.String name;
 
   GoogleCloudApigeeV1Subscription();
@@ -19869,9 +20398,10 @@ class GoogleCloudApigeeV1Subscription {
 
 class GoogleCloudApigeeV1SyncAuthorization {
   /// Entity tag (ETag) used for optimistic concurrency control as a way to help
-  /// prevent simultaneous updates from overwriting each other. For example,
-  /// when you call [getSyncAuthorization](getSyncAuthorization) an ETag is
-  /// returned in the response. Pass that ETag when calling the
+  /// prevent simultaneous updates from overwriting each other.
+  ///
+  /// For example, when you call [getSyncAuthorization](getSyncAuthorization) an
+  /// ETag is returned in the response. Pass that ETag when calling the
   /// [setSyncAuthorization](setSyncAuthorization) to ensure that you are
   /// updating the correct version. If you don't pass the ETag in the call to
   /// `setSyncAuthorization`, then the existing authorization is overwritten
@@ -19885,16 +20415,19 @@ class GoogleCloudApigeeV1SyncAuthorization {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Required. Array of service accounts to grant access to control plane
-  /// resources, each specified using the following format: `serviceAccount:`
-  /// service-account-name. The service-account-name is formatted like an email
-  /// address. For example:
+  /// Array of service accounts to grant access to control plane resources, each
+  /// specified using the following format: `serviceAccount:`
+  /// service-account-name.
+  ///
+  /// The service-account-name is formatted like an email address. For example:
   /// `my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com`
   /// You might specify multiple service accounts, for example, if you have
   /// multiple environments and wish to assign a unique service account to each
   /// one. The service accounts must have **Apigee Synchronizer Manager** role.
   /// See also [Create service
   /// accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-about#create-the-service-accounts).
+  ///
+  /// Required.
   core.List<core.String> identities;
 
   GoogleCloudApigeeV1SyncAuthorization();
@@ -19922,34 +20455,53 @@ class GoogleCloudApigeeV1SyncAuthorization {
   }
 }
 
-/// TargetServer configuration. TargetServers are used to decouple a proxy's
-/// TargetEndpoint HTTPTargetConnections from concrete URLs for backend
-/// services.
+/// TargetServer configuration.
+///
+/// TargetServers are used to decouple a proxy's TargetEndpoint
+/// HTTPTargetConnections from concrete URLs for backend services.
 class GoogleCloudApigeeV1TargetServer {
-  /// Optional. A human-readable description of this TargetServer.
+  /// A human-readable description of this TargetServer.
+  ///
+  /// Optional.
   core.String description;
 
-  /// Required. The host name this target connects to. Value must be a valid
-  /// hostname as described by RFC-1123.
+  /// The host name this target connects to.
+  ///
+  /// Value must be a valid hostname as described by RFC-1123.
+  ///
+  /// Required.
   core.String host;
 
-  /// Optional. Enabling/disabling a TargetServer is useful when TargetServers
-  /// are used in load balancing configurations, and one or more TargetServers
-  /// need to taken out of rotation periodically. Defaults to true.
+  /// Enabling/disabling a TargetServer is useful when TargetServers are used in
+  /// load balancing configurations, and one or more TargetServers need to taken
+  /// out of rotation periodically.
+  ///
+  /// Defaults to true.
+  ///
+  /// Optional.
   core.bool isEnabled;
 
-  /// Required. The resource id of this target server. Values must match the
-  /// regular expression
+  /// The resource id of this target server.
+  ///
+  /// Values must match the regular expression
+  ///
+  /// Required.
   core.String name;
 
-  /// Required. The port number this target connects to on the given host. Value
-  /// must be between 1 and 65535, inclusive.
+  /// The port number this target connects to on the given host.
+  ///
+  /// Value must be between 1 and 65535, inclusive.
+  ///
+  /// Required.
   core.int port;
 
-  /// Optional. Specifies TLS configuration info for this TargetServer. The JSON
-  /// name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge
-  /// originally supported SSL, and the name is still used for TLS
+  /// Specifies TLS configuration info for this TargetServer.
+  ///
+  /// The JSON name is `sSLInfo` for legacy/backwards compatibility reasons --
+  /// Edge originally supported SSL, and the name is still used for TLS
   /// configuration.
+  ///
+  /// Optional.
   GoogleCloudApigeeV1TlsInfo sSLInfo;
 
   GoogleCloudApigeeV1TargetServer();
@@ -20052,10 +20604,14 @@ class GoogleCloudApigeeV1TargetServerConfig {
 
 /// The response for TestDatastore
 class GoogleCloudApigeeV1TestDatastoreResponse {
-  /// Output only. Error message of test connection failure
+  /// Error message of test connection failure
+  ///
+  /// Output only.
   core.String error;
 
-  /// Output only. It could be `completed` or `failed`
+  /// It could be `completed` or `failed`
+  ///
+  /// Output only.
   core.String state;
 
   GoogleCloudApigeeV1TestDatastoreResponse();
@@ -20083,41 +20639,52 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
 
 /// TLS configuration information for VirtualHosts and TargetServers.
 class GoogleCloudApigeeV1TlsInfo {
-  /// The SSL/TLS cipher suites to be used. Must be one of the cipher suite
-  /// names listed in:
+  /// The SSL/TLS cipher suites to be used.
+  ///
+  /// Must be one of the cipher suite names listed in:
   /// http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
   core.List<core.String> ciphers;
 
-  /// Optional. Enables two-way TLS.
+  /// Enables two-way TLS.
+  ///
+  /// Optional.
   core.bool clientAuthEnabled;
 
   /// The TLS Common Name of the certificate.
   GoogleCloudApigeeV1TlsInfoCommonName commonName;
 
-  /// Required. Enables TLS. If false, neither one-way nor two-way TLS will be
-  /// enabled.
+  /// Enables TLS.
+  ///
+  /// If false, neither one-way nor two-way TLS will be enabled.
+  ///
+  /// Required.
   core.bool enabled;
 
-  /// If true, Edge ignores TLS certificate errors. Valid when configuring TLS
-  /// for target servers and target endpoints, and when configuring virtual
-  /// hosts that use 2-way TLS. When used with a target endpoint/target server,
-  /// if the backend system uses SNI and returns a cert with a subject
-  /// Distinguished Name (DN) that does not match the hostname, there is no way
-  /// to ignore the error and the connection fails.
+  /// If true, Edge ignores TLS certificate errors.
+  ///
+  /// Valid when configuring TLS for target servers and target endpoints, and
+  /// when configuring virtual hosts that use 2-way TLS. When used with a target
+  /// endpoint/target server, if the backend system uses SNI and returns a cert
+  /// with a subject Distinguished Name (DN) that does not match the hostname,
+  /// there is no way to ignore the error and the connection fails.
   core.bool ignoreValidationErrors;
 
-  /// Required if `client_auth_enabled` is true. The resource ID for the alias
-  /// containing the private key and cert.
+  /// Required if `client_auth_enabled` is true.
+  ///
+  /// The resource ID for the alias containing the private key and cert.
   core.String keyAlias;
 
-  /// Required if `client_auth_enabled` is true. The resource ID of the
-  /// keystore. References not yet supported.
+  /// Required if `client_auth_enabled` is true.
+  ///
+  /// The resource ID of the keystore. References not yet supported.
   core.String keyStore;
 
   /// The TLS versioins to be used.
   core.List<core.String> protocols;
 
-  /// The resource ID of the truststore. References not yet supported.
+  /// The resource ID of the truststore.
+  ///
+  /// References not yet supported.
   core.String trustStore;
 
   GoogleCloudApigeeV1TlsInfo();
@@ -20225,17 +20792,21 @@ class GoogleCloudApigeeV1TlsInfoConfig {
   core.List<core.String> ciphers;
 
   /// Flag that specifies whether client-side authentication is enabled for the
-  /// target server. Enables two-way TLS.
+  /// target server.
+  ///
+  /// Enables two-way TLS.
   core.bool clientAuthEnabled;
 
   /// Common name to validate the target server against.
   GoogleCloudApigeeV1CommonNameConfig commonName;
 
-  /// Flag that specifies whether one-way TLS is enabled. Set to `true` to
-  /// enable one-way TLS.
+  /// Flag that specifies whether one-way TLS is enabled.
+  ///
+  /// Set to `true` to enable one-way TLS.
   core.bool enabled;
 
   /// Flag that specifies whether to ignore TLS certificate validation errors.
+  ///
   /// Set to `true` to ignore errors.
   core.bool ignoreValidationErrors;
 
@@ -20416,11 +20987,15 @@ class GoogleCloudApigeeV1UpdateError {
   core.String message;
 
   /// The sub resource specific to this error (e.g. a proxy deployed within the
-  /// EnvironmentConfig). If empty the error refers to the top level resource.
+  /// EnvironmentConfig).
+  ///
+  /// If empty the error refers to the top level resource.
   core.String resource;
 
-  /// A string that uniquely identifies the type of error. This provides a more
-  /// reliable means to deduplicate errors across revisions and instances.
+  /// A string that uniquely identifies the type of error.
+  ///
+  /// This provides a more reliable means to deduplicate errors across revisions
+  /// and instances.
   core.String type;
 
   GoogleCloudApigeeV1UpdateError();
@@ -20458,11 +21033,12 @@ class GoogleCloudApigeeV1UpdateError {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -20478,9 +21054,10 @@ class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   GoogleIamV1AuditConfig();
@@ -20511,14 +21088,17 @@ class GoogleIamV1AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -20556,16 +21136,19 @@ class GoogleIamV1AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -20596,8 +21179,9 @@ class GoogleIamV1Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   GoogleIamV1Binding();
@@ -20633,16 +21217,18 @@ class GoogleIamV1Binding {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -20665,14 +21251,17 @@ class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<GoogleIamV1Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -20689,20 +21278,22 @@ class GoogleIamV1Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -20751,13 +21342,15 @@ class GoogleIamV1Policy {
 
 /// Request message for `SetIamPolicy` method.
 class GoogleIamV1SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   GoogleIamV1Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -20788,9 +21381,10 @@ class GoogleIamV1SetIamPolicyRequest {
 
 /// Request message for `TestIamPermissions` method.
 class GoogleIamV1TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -20876,31 +21470,37 @@ class GoogleLongrunningListOperationsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -20965,10 +21565,12 @@ class GoogleLongrunningOperation {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class GoogleProtobufEmpty {
   GoogleProtobufEmpty();
 
@@ -20982,9 +21584,11 @@ class GoogleProtobufEmpty {
   }
 }
 
-/// Describes what preconditions have failed. For example, if an RPC failed
-/// because it required the Terms of Service to be acknowledged, it could list
-/// the terms of service violation in the PreconditionFailure message.
+/// Describes what preconditions have failed.
+///
+/// For example, if an RPC failed because it required the Terms of Service to be
+/// acknowledged, it could list the terms of service violation in the
+/// PreconditionFailure message.
 class GoogleRpcPreconditionFailure {
   /// Describes all precondition violations.
   core.List<GoogleRpcPreconditionFailureViolation> violations;
@@ -21012,19 +21616,23 @@ class GoogleRpcPreconditionFailure {
 
 /// A message type used to describe a single precondition failure.
 class GoogleRpcPreconditionFailureViolation {
-  /// A description of how the precondition failed. Developers can use this
-  /// description to understand how to fix the failure. For example: "Terms of
-  /// service not accepted".
+  /// A description of how the precondition failed.
+  ///
+  /// Developers can use this description to understand how to fix the failure.
+  /// For example: "Terms of service not accepted".
   core.String description;
 
-  /// The subject, relative to the type, that failed. For example,
-  /// "google.com/cloud" relative to the "TOS" type would indicate which terms
-  /// of service is being referenced.
+  /// The subject, relative to the type, that failed.
+  ///
+  /// For example, "google.com/cloud" relative to the "TOS" type would indicate
+  /// which terms of service is being referenced.
   core.String subject;
 
-  /// The type of PreconditionFailure. We recommend using a service-specific
-  /// enum type to define the supported precondition violation subjects. For
-  /// example, "TOS" for "Terms of Service violation".
+  /// The type of PreconditionFailure.
+  ///
+  /// We recommend using a service-specific enum type to define the supported
+  /// precondition violation subjects. For example, "TOS" for "Terms of Service
+  /// violation".
   core.String type;
 
   GoogleRpcPreconditionFailureViolation();
@@ -21057,24 +21665,27 @@ class GoogleRpcPreconditionFailureViolation {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -21116,8 +21727,10 @@ class GoogleRpcStatus {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -21132,20 +21745,29 @@ class GoogleRpcStatus {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class GoogleTypeExpr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   GoogleTypeExpr();

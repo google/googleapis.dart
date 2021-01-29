@@ -438,11 +438,13 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Updates a job. If successful, the updated Job is returned. If the job does
-  /// not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully
-  /// return, it is possible for the job to be in an Job.State.UPDATE_FAILED
-  /// state. A job in this state may not be executed. If this happens, retry the
-  /// UpdateJob request until a successful response is received.
+  /// Updates a job.
+  ///
+  /// If successful, the updated Job is returned. If the job does not exist,
+  /// `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is
+  /// possible for the job to be in an Job.State.UPDATE_FAILED state. A job in
+  /// this state may not be executed. If this happens, retry the UpdateJob
+  /// request until a successful response is received.
   ///
   /// [request] - The metadata request object.
   ///
@@ -516,9 +518,11 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Pauses a job. If a job is paused then the system will stop executing the
-  /// job until it is re-enabled via ResumeJob. The state of the job is stored
-  /// in state; if paused it will be set to Job.State.PAUSED. A job must be in
+  /// Pauses a job.
+  ///
+  /// If a job is paused then the system will stop executing the job until it is
+  /// re-enabled via ResumeJob. The state of the job is stored in state; if
+  /// paused it will be set to Job.State.PAUSED. A job must be in
   /// Job.State.ENABLED to be paused.
   ///
   /// [request] - The metadata request object.
@@ -577,10 +581,11 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Resume a job. This method reenables a job after it has been
-  /// Job.State.PAUSED. The state of a job is stored in Job.state; after calling
-  /// this method it will be set to Job.State.ENABLED. A job must be in
-  /// Job.State.PAUSED to be resumed.
+  /// Resume a job.
+  ///
+  /// This method reenables a job after it has been Job.State.PAUSED. The state
+  /// of a job is stored in Job.state; after calling this method it will be set
+  /// to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -638,8 +643,10 @@ class ProjectsLocationsJobsResource {
     );
   }
 
-  /// Forces a job to run now. When this method is called, Cloud Scheduler will
-  /// dispatch the job, even if the job is already running.
+  /// Forces a job to run now.
+  ///
+  /// When this method is called, Cloud Scheduler will dispatch the job, even if
+  /// the job is already running.
   ///
   /// [request] - The metadata request object.
   ///
@@ -698,11 +705,13 @@ class ProjectsLocationsJobsResource {
   }
 }
 
-/// App Engine target. The job will be pushed to a job handler by means of an
-/// HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is
-/// acknowledged by means of an HTTP response code in the range [200 - 299].
-/// Error 503 is considered an App Engine system error instead of an application
-/// error. Requests returning error 503 will be retried regardless of retry
+/// App Engine target.
+///
+/// The job will be pushed to a job handler by means of an HTTP request via an
+/// http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by
+/// means of an HTTP response code in the range [200 - 299]. Error 503 is
+/// considered an App Engine system error instead of an application error.
+/// Requests returning error 503 will be retried regardless of retry
 /// configuration and not counted against retry counts. Any other response code,
 /// or a failure to receive a response before the deadline, constitutes a failed
 /// attempt.
@@ -710,9 +719,11 @@ class AppEngineHttpTarget {
   /// App Engine Routing setting for the job.
   AppEngineRouting appEngineRouting;
 
-  /// Body. HTTP request body. A request body is allowed only if the HTTP method
-  /// is POST or PUT. It will result in invalid argument error to set a body on
-  /// a job with an incompatible HttpMethod.
+  /// Body.
+  ///
+  /// HTTP request body. A request body is allowed only if the HTTP method is
+  /// POST or PUT. It will result in invalid argument error to set a body on a
+  /// job with an incompatible HttpMethod.
   core.String body;
   core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
@@ -721,11 +732,13 @@ class AppEngineHttpTarget {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// HTTP request headers. This map contains the header field names and values.
-  /// Headers can be set when the job is created. Cloud Scheduler sets some
-  /// headers to default values: * `User-Agent`: By default, this header is
-  /// `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can
-  /// be modified, but Cloud Scheduler will append `"AppEngine-Google;
+  /// HTTP request headers.
+  ///
+  /// This map contains the header field names and values. Headers can be set
+  /// when the job is created. Cloud Scheduler sets some headers to default
+  /// values: * `User-Agent`: By default, this header is `"AppEngine-Google;
+  /// (+http://code.google.com/appengine)"`. This header can be modified, but
+  /// Cloud Scheduler will append `"AppEngine-Google;
   /// (+http://code.google.com/appengine)"` to the modified `User-Agent`. *
   /// `X-CloudScheduler`: This header will be set to true. If the job has an
   /// body, Cloud Scheduler sets the following headers: * `Content-Type`: By
@@ -740,8 +753,9 @@ class AppEngineHttpTarget {
   /// job-specific information, are also be sent to the job handler.
   core.Map<core.String, core.String> headers;
 
-  /// The HTTP method to use for the request. PATCH and OPTIONS are not
-  /// permitted.
+  /// The HTTP method to use for the request.
+  ///
+  /// PATCH and OPTIONS are not permitted.
   /// Possible string values are:
   /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified. Defaults to POST.
   /// - "POST" : HTTP POST
@@ -753,11 +767,12 @@ class AppEngineHttpTarget {
   /// - "OPTIONS" : HTTP OPTIONS
   core.String httpMethod;
 
-  /// The relative URI. The relative URL must begin with "/" and must be a valid
-  /// HTTP relative URL. It can contain a path, query string arguments, and `#`
-  /// fragments. If the relative URL is empty, then the root path "/" will be
-  /// used. No spaces are allowed, and the maximum length allowed is 2083
-  /// characters.
+  /// The relative URI.
+  ///
+  /// The relative URL must begin with "/" and must be a valid HTTP relative
+  /// URL. It can contain a path, query string arguments, and `#` fragments. If
+  /// the relative URL is empty, then the root path "/" will be used. No spaces
+  /// are allowed, and the maximum length allowed is 2083 characters.
   core.String relativeUri;
 
   AppEngineHttpTarget();
@@ -808,8 +823,10 @@ class AppEngineHttpTarget {
   }
 }
 
-/// App Engine Routing. For more information about services, versions, and
-/// instances see [An Overview of App
+/// App Engine Routing.
+///
+/// For more information about services, versions, and instances see [An
+/// Overview of App
 /// Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),
 /// [Microservices Architecture on Google App
 /// Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),
@@ -818,8 +835,9 @@ class AppEngineHttpTarget {
 /// and [App Engine Flex request
 /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 class AppEngineRouting {
-  /// Output only. The host that the job is sent to. For more information about
-  /// how App Engine requests are routed, see
+  /// The host that the job is sent to.
+  ///
+  /// For more information about how App Engine requests are routed, see
   /// [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
   /// The host is constructed as: * `host = [application_domain_name]` `|
   /// [service] + '.' + [application_domain_name]` `| [version] + '.' +
@@ -842,11 +860,15 @@ class AppEngineRouting {
   /// be sent to an instance which is available when the job is attempted. If
   /// service, version, or instance is invalid, then the job will be sent to the
   /// default version of the default service when the job is attempted.
+  ///
+  /// Output only.
   core.String host;
 
-  /// App instance. By default, the job is sent to an instance which is
-  /// available when the job is attempted. Requests can only be sent to a
-  /// specific instance if [manual scaling is used in App Engine
+  /// App instance.
+  ///
+  /// By default, the job is sent to an instance which is available when the job
+  /// is attempted. Requests can only be sent to a specific instance if [manual
+  /// scaling is used in App Engine
   /// Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
   /// App Engine Flex does not support instances. For more information, see [App
   /// Engine Standard request
@@ -855,12 +877,16 @@ class AppEngineRouting {
   /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
   core.String instance;
 
-  /// App service. By default, the job is sent to the service which is the
-  /// default service when the job is attempted.
+  /// App service.
+  ///
+  /// By default, the job is sent to the service which is the default service
+  /// when the job is attempted.
   core.String service;
 
-  /// App version. By default, the job is sent to the version which is the
-  /// default version when the job is attempted.
+  /// App version.
+  ///
+  /// By default, the job is sent to the version which is the default version
+  /// when the job is attempted.
   core.String version;
 
   AppEngineRouting();
@@ -899,10 +925,12 @@ class AppEngineRouting {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -916,16 +944,18 @@ class Empty {
   }
 }
 
-/// Http target. The job will be pushed to the job handler by means of an HTTP
-/// request via an http_method such as HTTP POST, HTTP GET, etc. The job is
-/// acknowledged by means of an HTTP response code in the range [200 - 299]. A
-/// failure to receive a response constitutes a failed execution. For a
-/// redirected request, the response returned by the redirected request is
-/// considered.
+/// Http target.
+///
+/// The job will be pushed to the job handler by means of an HTTP request via an
+/// http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by
+/// means of an HTTP response code in the range [200 - 299]. A failure to
+/// receive a response constitutes a failed execution. For a redirected request,
+/// the response returned by the redirected request is considered.
 class HttpTarget {
-  /// HTTP request body. A request body is allowed only if the HTTP method is
-  /// POST, PUT, or PATCH. It is an error to set body on a job with an
-  /// incompatible HttpMethod.
+  /// HTTP request body.
+  ///
+  /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
+  /// It is an error to set body on a job with an incompatible HttpMethod.
   core.String body;
   core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
 
@@ -935,12 +965,14 @@ class HttpTarget {
   }
 
   /// The user can specify HTTP request headers to send with the job's HTTP
-  /// request. This map contains the header field names and values. Repeated
-  /// headers are not supported, but a header value can contain commas. These
-  /// headers represent a subset of the headers that will accompany the job's
-  /// HTTP request. Some HTTP request headers will be ignored or replaced. A
-  /// partial list of headers that will be ignored or replaced is below: - Host:
-  /// This will be computed by Cloud Scheduler and derived from uri. *
+  /// request.
+  ///
+  /// This map contains the header field names and values. Repeated headers are
+  /// not supported, but a header value can contain commas. These headers
+  /// represent a subset of the headers that will accompany the job's HTTP
+  /// request. Some HTTP request headers will be ignored or replaced. A partial
+  /// list of headers that will be ignored or replaced is below: - Host: This
+  /// will be computed by Cloud Scheduler and derived from uri. *
   /// `Content-Length`: This will be computed by Cloud Scheduler. *
   /// `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. *
   /// `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal
@@ -962,6 +994,7 @@ class HttpTarget {
   /// If specified, an [OAuth
   /// token](https://developers.google.com/identity/protocols/OAuth2) will be
   /// generated and attached as an `Authorization` header in the HTTP request.
+  ///
   /// This type of authorization should generally only be used when calling
   /// Google APIs hosted on *.googleapis.com.
   OAuthToken oauthToken;
@@ -969,16 +1002,22 @@ class HttpTarget {
   /// If specified, an
   /// [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
   /// token will be generated and attached as an `Authorization` header in the
-  /// HTTP request. This type of authorization can be used for many scenarios,
-  /// including calling Cloud Run, or endpoints where you intend to validate the
-  /// token yourself.
+  /// HTTP request.
+  ///
+  /// This type of authorization can be used for many scenarios, including
+  /// calling Cloud Run, or endpoints where you intend to validate the token
+  /// yourself.
   OidcToken oidcToken;
 
-  /// Required. The full URI path that the request will be sent to. This string
-  /// must begin with either "http://" or "https://". Some examples of valid
-  /// values for uri are: `http://acme.com` and `https://acme.com/sales:8080`.
-  /// Cloud Scheduler will encode some characters for safety and compatibility.
-  /// The maximum allowed URL length is 2083 characters after encoding.
+  /// The full URI path that the request will be sent to.
+  ///
+  /// This string must begin with either "http://" or "https://". Some examples
+  /// of valid values for uri are: `http://acme.com` and
+  /// `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters
+  /// for safety and compatibility. The maximum allowed URL length is 2083
+  /// characters after encoding.
+  ///
+  /// Required.
   core.String uri;
 
   HttpTarget();
@@ -1036,33 +1075,41 @@ class HttpTarget {
   }
 }
 
-/// Configuration for a job. The maximum allowed size for a job is 100KB.
+/// Configuration for a job.
+///
+/// The maximum allowed size for a job is 100KB.
 class Job {
   /// App Engine HTTP target.
   AppEngineHttpTarget appEngineHttpTarget;
 
-  /// The deadline for job attempts. If the request handler does not respond by
-  /// this deadline then the request is cancelled and the attempt is marked as a
-  /// `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution
-  /// logs. Cloud Scheduler will retry the job according to the RetryConfig. The
-  /// allowed duration for this deadline is: * For HTTP targets, between 15
-  /// seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds
-  /// and 24 hours.
+  /// The deadline for job attempts.
+  ///
+  /// If the request handler does not respond by this deadline then the request
+  /// is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure.
+  /// The failed attempt can be viewed in execution logs. Cloud Scheduler will
+  /// retry the job according to the RetryConfig. The allowed duration for this
+  /// deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For
+  /// App Engine HTTP targets, between 15 seconds and 24 hours.
   core.String attemptDeadline;
 
-  /// Optionally caller-specified in CreateJob or UpdateJob. A human-readable
-  /// description for the job. This string must not contain more than 500
-  /// characters.
+  /// Optionally caller-specified in CreateJob or UpdateJob.
+  ///
+  /// A human-readable description for the job. This string must not contain
+  /// more than 500 characters.
   core.String description;
 
   /// HTTP target.
   HttpTarget httpTarget;
 
-  /// Output only. The time the last job attempt started.
+  /// The time the last job attempt started.
+  ///
+  /// Output only.
   core.String lastAttemptTime;
 
   /// Optionally caller-specified in CreateJob, after which it becomes output
-  /// only. The job name. For example:
+  /// only.
+  ///
+  /// The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
   /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
   /// or periods (.). For more information, see [Identifying
@@ -1080,10 +1127,11 @@ class Job {
   /// Settings that determine the retry behavior.
   RetryConfig retryConfig;
 
-  /// Required, except when used with UpdateJob. Describes the schedule on which
-  /// the job will be executed. The schedule can be either of the following
-  /// types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) *
-  /// English-like
+  /// Required, except when used with UpdateJob.
+  ///
+  /// Describes the schedule on which the job will be executed. The schedule can
+  /// be either of the following types: *
+  /// [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like
   /// [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules)
   /// As a general rule, execution `n + 1` of a job will not begin until
   /// execution `n` has finished. Cloud Scheduler will never allow two
@@ -1096,12 +1144,17 @@ class Job {
   /// exponential backoff, until the next scheduled start time.
   core.String schedule;
 
-  /// Output only. The next time the job is scheduled. Note that this may be a
-  /// retry of a previously failed attempt or the next execution time according
-  /// to the schedule.
+  /// The next time the job is scheduled.
+  ///
+  /// Note that this may be a retry of a previously failed attempt or the next
+  /// execution time according to the schedule.
+  ///
+  /// Output only.
   core.String scheduleTime;
 
-  /// Output only. State of the job.
+  /// State of the job.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ENABLED" : The job is executing normally.
@@ -1114,12 +1167,14 @@ class Job {
   /// retry CloudScheduler.UpdateJob until a successful response is received.
   core.String state;
 
-  /// Output only. The response from the target for the last attempted
-  /// execution.
+  /// The response from the target for the last attempted execution.
+  ///
+  /// Output only.
   Status status;
 
-  /// Specifies the time zone to be used in interpreting schedule. The value of
-  /// this field must be a time zone name from the [tz
+  /// Specifies the time zone to be used in interpreting schedule.
+  ///
+  /// The value of this field must be a time zone name from the [tz
   /// database](http://en.wikipedia.org/wiki/Tz_database). Note that some time
   /// zones include a provision for daylight savings time. The rules for
   /// daylight saving time are determined by the chosen tz. For UTC use the
@@ -1127,7 +1182,9 @@ class Job {
   /// (also known as GMT).
   core.String timeZone;
 
-  /// Output only. The creation time of the job.
+  /// The creation time of the job.
+  ///
+  /// Output only.
   core.String userUpdateTime;
 
   Job();
@@ -1235,11 +1292,12 @@ class ListJobsResponse {
   /// The list of jobs.
   core.List<Job> jobs;
 
-  /// A token to retrieve next page of results. Pass this value in the
-  /// page_token field in the subsequent call to ListJobs to retrieve the next
-  /// page of results. If this is empty it indicates that there are no more
-  /// results through which to paginate. The page token is valid for only 2
-  /// hours.
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to ListJobs
+  /// to retrieve the next page of results. If this is empty it indicates that
+  /// there are no more results through which to paginate. The page token is
+  /// valid for only 2 hours.
   core.String nextPageToken;
 
   ListJobsResponse();
@@ -1304,25 +1362,31 @@ class ListLocationsResponse {
 
 /// A resource that represents Google Cloud Platform location.
 class Location {
-  /// The friendly name for this location, typically a nearby city name. For
-  /// example, "Tokyo".
+  /// The friendly name for this location, typically a nearby city name.
+  ///
+  /// For example, "Tokyo".
   core.String displayName;
 
-  /// Cross-service attributes for the location. For example
-  /// {"cloud.googleapis.com/region": "us-east1"}
+  /// Cross-service attributes for the location.
+  ///
+  /// For example {"cloud.googleapis.com/region": "us-east1"}
   core.Map<core.String, core.String> labels;
 
-  /// The canonical id for this location. For example: `"us-east1"`.
+  /// The canonical id for this location.
+  ///
+  /// For example: `"us-east1"`.
   core.String locationId;
 
-  /// Service-specific metadata. For example the available capacity at the given
-  /// location.
+  /// Service-specific metadata.
+  ///
+  /// For example the available capacity at the given location.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// Resource name for the location, which may vary between implementations.
+  ///
   /// For example: `"projects/example-project/locations/us-east1"`
   core.String name;
 
@@ -1380,19 +1444,23 @@ class Location {
 }
 
 /// Contains information needed for generating an [OAuth
-/// token](https://developers.google.com/identity/protocols/OAuth2). This type
-/// of authorization should generally only be used when calling Google APIs
-/// hosted on *.googleapis.com.
+/// token](https://developers.google.com/identity/protocols/OAuth2).
+///
+/// This type of authorization should generally only be used when calling Google
+/// APIs hosted on *.googleapis.com.
 class OAuthToken {
-  /// OAuth scope to be used for generating OAuth access token. If not
-  /// specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+  /// OAuth scope to be used for generating OAuth access token.
+  ///
+  /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be
+  /// used.
   core.String scope;
 
   /// [Service account
   /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating OAuth token. The service account must be within the same
-  /// project as the job. The caller must have iam.serviceAccounts.actAs
-  /// permission for the service account.
+  /// generating OAuth token.
+  ///
+  /// The service account must be within the same project as the job. The caller
+  /// must have iam.serviceAccounts.actAs permission for the service account.
   core.String serviceAccountEmail;
 
   OAuthToken();
@@ -1419,19 +1487,22 @@ class OAuthToken {
 }
 
 /// Contains information needed for generating an [OpenID Connect
-/// token](https://developers.google.com/identity/protocols/OpenIDConnect). This
-/// type of authorization can be used for many scenarios, including calling
+/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+///
+/// This type of authorization can be used for many scenarios, including calling
 /// Cloud Run, or endpoints where you intend to validate the token yourself.
 class OidcToken {
-  /// Audience to be used when generating OIDC token. If not specified, the URI
-  /// specified in target will be used.
+  /// Audience to be used when generating OIDC token.
+  ///
+  /// If not specified, the URI specified in target will be used.
   core.String audience;
 
   /// [Service account
   /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating OIDC token. The service account must be within the same project
-  /// as the job. The caller must have iam.serviceAccounts.actAs permission for
-  /// the service account.
+  /// generating OIDC token.
+  ///
+  /// The service account must be within the same project as the job. The caller
+  /// must have iam.serviceAccounts.actAs permission for the service account.
   core.String serviceAccountEmail;
 
   OidcToken();
@@ -1471,8 +1542,9 @@ class PauseJobRequest {
   }
 }
 
-/// A message that is published by publishers and consumed by subscribers. The
-/// message must contain either a non-empty data field or at least one
+/// A message that is published by publishers and consumed by subscribers.
+///
+/// The message must contain either a non-empty data field or at least one
 /// attribute. Note that client libraries represent this object differently
 /// depending on the language. See the corresponding [client library
 /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
@@ -1480,13 +1552,15 @@ class PauseJobRequest {
 /// (https://cloud.google.com/pubsub/quotas) for more information about message
 /// limits.
 class PubsubMessage {
-  /// Attributes for this message. If this field is empty, the message must
-  /// contain non-empty data. This can be used to filter messages on the
-  /// subscription.
+  /// Attributes for this message.
+  ///
+  /// If this field is empty, the message must contain non-empty data. This can
+  /// be used to filter messages on the subscription.
   core.Map<core.String, core.String> attributes;
 
-  /// The message data field. If this field is empty, the message must contain
-  /// at least one attribute.
+  /// The message data field.
+  ///
+  /// If this field is empty, the message must contain at least one attribute.
   core.String data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
@@ -1496,22 +1570,26 @@ class PubsubMessage {
   }
 
   /// ID of this message, assigned by the server when the message is published.
+  ///
   /// Guaranteed to be unique within the topic. This value may be read by a
   /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
   /// delivery. It must not be populated by the publisher in a `Publish` call.
   core.String messageId;
 
   /// If non-empty, identifies related messages for which publish order should
-  /// be respected. If a `Subscription` has `enable_message_ordering` set to
-  /// `true`, messages published with the same non-empty `ordering_key` value
-  /// will be delivered to subscribers in the order in which they are received
-  /// by the Pub/Sub system. All `PubsubMessage`s published in a given
-  /// `PublishRequest` must specify the same `ordering_key` value.
+  /// be respected.
+  ///
+  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
+  /// published with the same non-empty `ordering_key` value will be delivered
+  /// to subscribers in the order in which they are received by the Pub/Sub
+  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
+  /// specify the same `ordering_key` value.
   core.String orderingKey;
 
   /// The time at which the message was published, populated by the server when
-  /// it receives the `Publish` call. It must not be populated by the publisher
-  /// in a `Publish` call.
+  /// it receives the `Publish` call.
+  ///
+  /// It must not be populated by the publisher in a `Publish` call.
   core.String publishTime;
 
   PubsubMessage();
@@ -1562,15 +1640,21 @@ class PubsubMessage {
   }
 }
 
-/// Pub/Sub target. The job will be delivered by publishing a message to the
-/// given Pub/Sub topic.
+/// Pub/Sub target.
+///
+/// The job will be delivered by publishing a message to the given Pub/Sub
+/// topic.
 class PubsubTarget {
-  /// Attributes for PubsubMessage. Pubsub message must contain either non-empty
-  /// data, or at least one attribute.
+  /// Attributes for PubsubMessage.
+  ///
+  /// Pubsub message must contain either non-empty data, or at least one
+  /// attribute.
   core.Map<core.String, core.String> attributes;
 
-  /// The message payload for PubsubMessage. Pubsub message must contain either
-  /// non-empty data, or at least one attribute.
+  /// The message payload for PubsubMessage.
+  ///
+  /// Pubsub message must contain either non-empty data, or at least one
+  /// attribute.
   core.String data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
@@ -1579,12 +1663,15 @@ class PubsubTarget {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Required. The name of the Cloud Pub/Sub topic to which messages will be
-  /// published when a job is delivered. The topic name must be in the same
-  /// format as required by PubSub's
+  /// The name of the Cloud Pub/Sub topic to which messages will be published
+  /// when a job is delivered.
+  ///
+  /// The topic name must be in the same format as required by PubSub's
   /// [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest),
   /// for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in
   /// the same project as the Cloud Scheduler job.
+  ///
+  /// Required.
   core.String topicName;
 
   PubsubTarget();
@@ -1637,19 +1724,22 @@ class ResumeJobRequest {
   }
 }
 
-/// Settings that determine the retry behavior. By default, if a job does not
-/// complete successfully (meaning that an acknowledgement is not received from
-/// the handler, then it will be retried with exponential backoff according to
-/// the settings in RetryConfig.
+/// Settings that determine the retry behavior.
+///
+/// By default, if a job does not complete successfully (meaning that an
+/// acknowledgement is not received from the handler, then it will be retried
+/// with exponential backoff according to the settings in RetryConfig.
 class RetryConfig {
   /// The maximum amount of time to wait before retrying a job after it fails.
+  ///
   /// The default value of this field is 1 hour.
   core.String maxBackoffDuration;
 
-  /// The time between retries will double `max_doublings` times. A job's retry
-  /// interval starts at min_backoff_duration, then doubles `max_doublings`
-  /// times, then increases linearly, and finally retries at intervals of
-  /// max_backoff_duration up to retry_count times. For example, if
+  /// The time between retries will double `max_doublings` times.
+  ///
+  /// A job's retry interval starts at min_backoff_duration, then doubles
+  /// `max_doublings` times, then increases linearly, and finally retries at
+  /// intervals of max_backoff_duration up to retry_count times. For example, if
   /// min_backoff_duration is 10s, max_backoff_duration is 300s, and
   /// `max_doublings` is 3, then the a job will first be retried in 10s. The
   /// retry interval will double three times, and then increase linearly by 2^3
@@ -1660,24 +1750,28 @@ class RetryConfig {
   core.int maxDoublings;
 
   /// The time limit for retrying a failed job, measured from time when an
-  /// execution was first attempted. If specified with retry_count, the job will
-  /// be retried until both limits are reached. The default value for
-  /// max_retry_duration is zero, which means retry duration is unlimited.
+  /// execution was first attempted.
+  ///
+  /// If specified with retry_count, the job will be retried until both limits
+  /// are reached. The default value for max_retry_duration is zero, which means
+  /// retry duration is unlimited.
   core.String maxRetryDuration;
 
   /// The minimum amount of time to wait before retrying a job after it fails.
+  ///
   /// The default value of this field is 5 seconds.
   core.String minBackoffDuration;
 
   /// The number of attempts that the system will make to run a job using the
-  /// exponential backoff procedure described by max_doublings. The default
-  /// value of retry_count is zero. If retry_count is zero, a job attempt will
-  /// *not* be retried if it fails. Instead the Cloud Scheduler system will wait
-  /// for the next scheduled execution time. If retry_count is set to a non-zero
-  /// number then Cloud Scheduler will retry failed attempts, using exponential
-  /// backoff, retry_count times, or until the next scheduled execution time,
-  /// whichever comes first. Values greater than 5 and negative values are not
-  /// allowed.
+  /// exponential backoff procedure described by max_doublings.
+  ///
+  /// The default value of retry_count is zero. If retry_count is zero, a job
+  /// attempt will *not* be retried if it fails. Instead the Cloud Scheduler
+  /// system will wait for the next scheduled execution time. If retry_count is
+  /// set to a non-zero number then Cloud Scheduler will retry failed attempts,
+  /// using exponential backoff, retry_count times, or until the next scheduled
+  /// execution time, whichever comes first. Values greater than 5 and negative
+  /// values are not allowed.
   core.int retryCount;
 
   RetryConfig();
@@ -1736,24 +1830,27 @@ class RunJobRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 

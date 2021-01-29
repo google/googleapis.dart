@@ -72,8 +72,9 @@ class ProjectsModelsResource {
 
   ProjectsModelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a model in Firebase ML. The longrunning operation will eventually
-  /// return a Model
+  /// Creates a model in Firebase ML.
+  ///
+  /// The longrunning operation will eventually return a Model
   ///
   /// [request] - The metadata request object.
   ///
@@ -312,7 +313,9 @@ class ProjectsModelsResource {
     );
   }
 
-  /// Updates a model. The longrunning operation will eventually return a Model.
+  /// Updates a model.
+  ///
+  /// The longrunning operation will eventually return a Model.
   ///
   /// [request] - The metadata request object.
   ///
@@ -383,9 +386,10 @@ class ProjectsOperationsResource {
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -438,10 +442,12 @@ class ProjectsOperationsResource {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -492,32 +498,44 @@ class ListModelsResponse {
 
 /// An ML model hosted in Firebase ML
 class Model {
-  /// Output only. Lists operation ids associated with this model whose status
-  /// is NOT done.
+  /// Lists operation ids associated with this model whose status is NOT done.
+  ///
+  /// Output only.
   core.List<Operation> activeOperations;
 
-  /// Output only. Timestamp when this model was created in Firebase ML.
+  /// Timestamp when this model was created in Firebase ML.
+  ///
+  /// Output only.
   core.String createTime;
 
-  /// Required. The name of the model to create. The name can be up to 32
-  /// characters long and can consist only of ASCII Latin letters A-Z and a-z,
-  /// underscores(_) and ASCII digits 0-9. It must start with a letter.
+  /// The name of the model to create.
+  ///
+  /// The name can be up to 32 characters long and can consist only of ASCII
+  /// Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must
+  /// start with a letter.
+  ///
+  /// Required.
   core.String displayName;
 
-  /// Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+  /// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+  ///
+  /// Output only.
   core.String etag;
 
-  /// Output only. The model_hash will change if a new file is available for
-  /// download.
+  /// The model_hash will change if a new file is available for download.
+  ///
+  /// Output only.
   core.String modelHash;
 
-  /// The resource name of the Model. Model names have the form
-  /// `projects/{project_id}/models/{model_id}` The name is ignored when
-  /// creating a model.
+  /// The resource name of the Model.
+  ///
+  /// Model names have the form `projects/{project_id}/models/{model_id}` The
+  /// name is ignored when creating a model.
   core.String name;
 
-  /// State common to all model types. Includes publishing and validation
-  /// information.
+  /// State common to all model types.
+  ///
+  /// Includes publishing and validation information.
   ModelState state;
 
   /// User defined tags which can be used to group/filter models during listing
@@ -526,7 +544,9 @@ class Model {
   /// A TFLite Model
   TfLiteModel tfliteModel;
 
-  /// Output only. Timestamp when this model was updated in Firebase ML.
+  /// Timestamp when this model was updated in Firebase ML.
+  ///
+  /// Output only.
   core.String updateTime;
 
   Model();
@@ -644,17 +664,21 @@ class ModelOperationMetadata {
   }
 }
 
-/// State common to all model types. Includes publishing and validation
-/// information.
+/// State common to all model types.
+///
+/// Includes publishing and validation information.
 class ModelState {
   /// Indicates if this model has been published.
   core.bool published;
 
-  /// Output only. Indicates the latest validation error on the model if any. A
-  /// model may have validation errors if there were problems during the model
+  /// Indicates the latest validation error on the model if any.
+  ///
+  /// A model may have validation errors if there were problems during the model
   /// creation/update. e.g. in the case of a TfLiteModel, if a tflite model file
   /// was missing or in the wrong format. This field will be empty for valid
   /// models.
+  ///
+  /// Output only.
   Status validationError;
 
   ModelState();
@@ -684,31 +708,37 @@ class ModelState {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -773,24 +803,27 @@ class Operation {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -834,17 +867,22 @@ class Status {
 /// Information that is specific to TfLite models.
 class TfLiteModel {
   /// The AutoML model id referencing a model you created with the AutoML API.
+  ///
   /// The name should have format 'projects//locations//models/' (This is the
   /// model resource name returned from the AutoML API)
   core.String automlModel;
 
-  /// The TfLite file containing the model. (Stored in Google Cloud). The
-  /// gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note:
-  /// If you update the file in the original location, it is necessary to call
-  /// UpdateModel for ML to pick up and validate the updated file.
+  /// The TfLite file containing the model.
+  ///
+  /// (Stored in Google Cloud). The gcs_tflite_uri should have form:
+  /// gs://some-bucket/some-model.tflite Note: If you update the file in the
+  /// original location, it is necessary to call UpdateModel for ML to pick up
+  /// and validate the updated file.
   core.String gcsTfliteUri;
 
-  /// Output only. The size of the TFLite model
+  /// The size of the TFLite model
+  ///
+  /// Output only.
   core.String sizeBytes;
 
   TfLiteModel();

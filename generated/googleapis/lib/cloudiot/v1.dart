@@ -327,8 +327,10 @@ class ProjectsLocationsRegistriesResource {
     );
   }
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -533,8 +535,9 @@ class ProjectsLocationsRegistriesResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -596,9 +599,10 @@ class ProjectsLocationsRegistriesResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1048,8 +1052,9 @@ class ProjectsLocationsRegistriesDevicesResource {
   }
 
   /// Modifies the configuration for the device, which is eventually sent from
-  /// the Cloud IoT Core servers. Returns the modified configuration version and
-  /// its metadata.
+  /// the Cloud IoT Core servers.
+  ///
+  /// Returns the modified configuration version and its metadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1184,18 +1189,20 @@ class ProjectsLocationsRegistriesDevicesResource {
     );
   }
 
-  /// Sends a command to the specified device. In order for a device to be able
-  /// to receive commands, it must: 1) be connected to Cloud IoT Core using the
-  /// MQTT protocol, and 2) be subscribed to the group of MQTT topics specified
-  /// by /devices/{device-id}/commands/#. This subscription will receive
-  /// commands at the top-level topic /devices/{device-id}/commands as well as
-  /// commands for subfolders, like /devices/{device-id}/commands/subfolder.
-  /// Note that subscribing to specific subfolders is not supported. If the
-  /// command could not be delivered to the device, this method will return an
-  /// error; in particular, if the device is not subscribed, this method will
-  /// return FAILED_PRECONDITION. Otherwise, this method will return OK. If the
-  /// subscription is QoS 1, at least once delivery will be guaranteed; for QoS
-  /// 0, no acknowledgment will be expected from the device.
+  /// Sends a command to the specified device.
+  ///
+  /// In order for a device to be able to receive commands, it must: 1) be
+  /// connected to Cloud IoT Core using the MQTT protocol, and 2) be subscribed
+  /// to the group of MQTT topics specified by /devices/{device-id}/commands/#.
+  /// This subscription will receive commands at the top-level topic
+  /// /devices/{device-id}/commands as well as commands for subfolders, like
+  /// /devices/{device-id}/commands/subfolder. Note that subscribing to specific
+  /// subfolders is not supported. If the command could not be delivered to the
+  /// device, this method will return an error; in particular, if the device is
+  /// not subscribed, this method will return FAILED_PRECONDITION. Otherwise,
+  /// this method will return OK. If the subscription is QoS 1, at least once
+  /// delivery will be guaranteed; for QoS 0, no acknowledgment will be expected
+  /// from the device.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1417,8 +1424,10 @@ class ProjectsLocationsRegistriesGroupsResource {
   ProjectsLocationsRegistriesGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the access control policy for a resource. Returns an empty policy if
-  /// the resource exists and does not have a policy set.
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1480,8 +1489,9 @@ class ProjectsLocationsRegistriesGroupsResource {
     );
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1543,9 +1553,10 @@ class ProjectsLocationsRegistriesGroupsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified resource. If the
-  /// resource does not exist, this will return an empty set of permissions, not
-  /// a NOT_FOUND error.
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1752,13 +1763,18 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
 
 /// Request for `BindDeviceToGateway`.
 class BindDeviceToGatewayRequest {
-  /// Required. The device to associate with the specified gateway. The value of
-  /// `device_id` can be either the device numeric ID or the user-defined device
-  /// identifier.
+  /// The device to associate with the specified gateway.
+  ///
+  /// The value of `device_id` can be either the device numeric ID or the
+  /// user-defined device identifier.
+  ///
+  /// Required.
   core.String deviceId;
 
-  /// Required. The value of `gateway_id` can be either the device numeric ID or
-  /// the user-defined device identifier.
+  /// The value of `gateway_id` can be either the device numeric ID or the
+  /// user-defined device identifier.
+  ///
+  /// Required.
   core.String gatewayId;
 
   BindDeviceToGatewayRequest();
@@ -1800,20 +1816,24 @@ class BindDeviceToGatewayResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -1844,8 +1864,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -1889,72 +1910,97 @@ class Binding {
 /// The device resource.
 class Device {
   /// If a device is blocked, connections or requests from this device will
-  /// fail. Can be used to temporarily prevent the device from connecting if,
-  /// for example, the sensor is generating bad data and needs maintenance.
+  /// fail.
+  ///
+  /// Can be used to temporarily prevent the device from connecting if, for
+  /// example, the sensor is generating bad data and needs maintenance.
   core.bool blocked;
 
   /// The most recent device configuration, which is eventually sent from Cloud
-  /// IoT Core to the device. If not present on creation, the configuration will
-  /// be initialized with an empty payload and version value of `1`. To update
-  /// this field after creation, use the
-  /// `DeviceManager.ModifyCloudToDeviceConfig` method.
+  /// IoT Core to the device.
+  ///
+  /// If not present on creation, the configuration will be initialized with an
+  /// empty payload and version value of `1`. To update this field after
+  /// creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
   DeviceConfig config;
 
-  /// The credentials used to authenticate this device. To allow credential
-  /// rotation without interruption, multiple device credentials can be bound to
-  /// this device. No more than 3 credentials can be bound to a single device at
-  /// a time. When new credentials are added to a device, they are verified
-  /// against the registry credentials. For details, see the description of the
-  /// `DeviceRegistry.credentials` field.
+  /// The credentials used to authenticate this device.
+  ///
+  /// To allow credential rotation without interruption, multiple device
+  /// credentials can be bound to this device. No more than 3 credentials can be
+  /// bound to a single device at a time. When new credentials are added to a
+  /// device, they are verified against the registry credentials. For details,
+  /// see the description of the `DeviceRegistry.credentials` field.
   core.List<DeviceCredential> credentials;
 
   /// Gateway-related configuration and state.
   GatewayConfig gatewayConfig;
 
-  /// The user-defined device identifier. The device ID must be unique within a
-  /// device registry.
+  /// The user-defined device identifier.
+  ///
+  /// The device ID must be unique within a device registry.
   core.String id;
 
-  /// [Output only] The last time a cloud-to-device config version
-  /// acknowledgment was received from the device. This field is only for
-  /// configurations sent through MQTT.
+  /// The last time a cloud-to-device config version acknowledgment was received
+  /// from the device.
+  ///
+  /// This field is only for configurations sent through MQTT.
+  ///
+  /// Output only.
   core.String lastConfigAckTime;
 
-  /// [Output only] The last time a cloud-to-device config version was sent to
-  /// the device.
+  /// The last time a cloud-to-device config version was sent to the device.
+  ///
+  /// Output only.
   core.String lastConfigSendTime;
 
-  /// [Output only] The error message of the most recent error, such as a
-  /// failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of
-  /// this field. If no errors have occurred, this field has an empty message
-  /// and the status code 0 == OK. Otherwise, this field is expected to have a
-  /// status code other than OK.
+  /// The error message of the most recent error, such as a failure to publish
+  /// to Cloud Pub/Sub.
+  ///
+  /// 'last_error_time' is the timestamp of this field. If no errors have
+  /// occurred, this field has an empty message and the status code 0 == OK.
+  /// Otherwise, this field is expected to have a status code other than OK.
+  ///
+  /// Output only.
   Status lastErrorStatus;
 
-  /// [Output only] The time the most recent error occurred, such as a failure
-  /// to publish to Cloud Pub/Sub. This field is the timestamp of
-  /// 'last_error_status'.
+  /// The time the most recent error occurred, such as a failure to publish to
+  /// Cloud Pub/Sub.
+  ///
+  /// This field is the timestamp of 'last_error_status'.
+  ///
+  /// Output only.
   core.String lastErrorTime;
 
-  /// [Output only] The last time a telemetry event was received. Timestamps are
-  /// periodically collected and written to storage; they may be stale by a few
-  /// minutes.
+  /// The last time a telemetry event was received.
+  ///
+  /// Timestamps are periodically collected and written to storage; they may be
+  /// stale by a few minutes.
+  ///
+  /// Output only.
   core.String lastEventTime;
 
-  /// [Output only] The last time an MQTT `PINGREQ` was received. This field
-  /// applies only to devices connecting through MQTT. MQTT clients usually only
-  /// send `PINGREQ` messages if the connection is idle, and no other messages
-  /// have been sent. Timestamps are periodically collected and written to
-  /// storage; they may be stale by a few minutes.
+  /// The last time an MQTT `PINGREQ` was received.
+  ///
+  /// This field applies only to devices connecting through MQTT. MQTT clients
+  /// usually only send `PINGREQ` messages if the connection is idle, and no
+  /// other messages have been sent. Timestamps are periodically collected and
+  /// written to storage; they may be stale by a few minutes.
+  ///
+  /// Output only.
   core.String lastHeartbeatTime;
 
-  /// [Output only] The last time a state event was received. Timestamps are
-  /// periodically collected and written to storage; they may be stale by a few
-  /// minutes.
+  /// The last time a state event was received.
+  ///
+  /// Timestamps are periodically collected and written to storage; they may be
+  /// stale by a few minutes.
+  ///
+  /// Output only.
   core.String lastStateTime;
 
-  /// **Beta Feature** The logging verbosity for device activity. If
-  /// unspecified, DeviceRegistry.log_level will be used.
+  /// **Beta Feature** The logging verbosity for device activity.
+  ///
+  /// If unspecified, DeviceRegistry.log_level will be used.
   /// Possible string values are:
   /// - "LOG_LEVEL_UNSPECIFIED" : No logging specified. If not specified,
   /// logging will be disabled.
@@ -1965,28 +2011,37 @@ class Device {
   /// - "DEBUG" : All events will be logged.
   core.String logLevel;
 
-  /// The metadata key-value pairs assigned to the device. This metadata is not
-  /// interpreted or indexed by Cloud IoT Core. It can be used to add contextual
-  /// information for the device. Keys must conform to the regular expression
-  /// a-zA-Z+ and be less than 128 bytes in length. Values are free-form
-  /// strings. Each value must be less than or equal to 32 KB in size. The total
-  /// size of all keys and values must be less than 256 KB, and the maximum
-  /// number of key-value pairs is 500.
+  /// The metadata key-value pairs assigned to the device.
+  ///
+  /// This metadata is not interpreted or indexed by Cloud IoT Core. It can be
+  /// used to add contextual information for the device. Keys must conform to
+  /// the regular expression a-zA-Z+ and be less than 128 bytes in length.
+  /// Values are free-form strings. Each value must be less than or equal to 32
+  /// KB in size. The total size of all keys and values must be less than 256
+  /// KB, and the maximum number of key-value pairs is 500.
   core.Map<core.String, core.String> metadata;
 
-  /// The resource path name. For example,
+  /// The resource path name.
+  ///
+  /// For example,
   /// `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or
   /// `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// When `name` is populated as a response from the service, it always ends in
   /// the device numeric ID.
   core.String name;
 
-  /// [Output only] A server-defined unique numeric ID for the device. This is a
-  /// more compact way to identify devices, and it is globally unique.
+  /// A server-defined unique numeric ID for the device.
+  ///
+  /// This is a more compact way to identify devices, and it is globally unique.
+  ///
+  /// Output only.
   core.String numId;
 
-  /// [Output only] The state most recently received from the device. If no
-  /// state has been reported, this field is not present.
+  /// The state most recently received from the device.
+  ///
+  /// If no state has been reported, this field is not present.
+  ///
+  /// Output only.
   DeviceState state;
 
   Device();
@@ -2116,7 +2171,9 @@ class Device {
   }
 }
 
-/// The device configuration. Eventually delivered to devices.
+/// The device configuration.
+///
+/// Eventually delivered to devices.
 class DeviceConfig {
   /// The device configuration data.
   core.String binaryData;
@@ -2128,25 +2185,36 @@ class DeviceConfig {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// [Output only] The time at which this configuration version was updated in
-  /// Cloud IoT Core. This timestamp is set by the server.
+  /// The time at which this configuration version was updated in Cloud IoT
+  /// Core.
+  ///
+  /// This timestamp is set by the server.
+  ///
+  /// Output only.
   core.String cloudUpdateTime;
 
-  /// [Output only] The time at which Cloud IoT Core received the acknowledgment
-  /// from the device, indicating that the device has received this
-  /// configuration version. If this field is not present, the device has not
-  /// yet acknowledged that it received this version. Note that when the config
-  /// was sent to the device, many config versions may have been available in
-  /// Cloud IoT Core while the device was disconnected, and on connection, only
-  /// the latest version is sent to the device. Some versions may never be sent
-  /// to the device, and therefore are never acknowledged. This timestamp is set
-  /// by Cloud IoT Core.
+  /// The time at which Cloud IoT Core received the acknowledgment from the
+  /// device, indicating that the device has received this configuration
+  /// version.
+  ///
+  /// If this field is not present, the device has not yet acknowledged that it
+  /// received this version. Note that when the config was sent to the device,
+  /// many config versions may have been available in Cloud IoT Core while the
+  /// device was disconnected, and on connection, only the latest version is
+  /// sent to the device. Some versions may never be sent to the device, and
+  /// therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
+  ///
+  /// Output only.
   core.String deviceAckTime;
 
-  /// [Output only] The version of this update. The version number is assigned
-  /// by the server, and is always greater than 0 after device creation. The
-  /// version must be 0 on the `CreateDevice` request if a `config` is
-  /// specified; the response of `CreateDevice` will always have a value of 1.
+  /// The version of this update.
+  ///
+  /// The version number is assigned by the server, and is always greater than 0
+  /// after device creation. The version must be 0 on the `CreateDevice` request
+  /// if a `config` is specified; the response of `CreateDevice` will always
+  /// have a value of 1.
+  ///
+  /// Output only.
   core.String version;
 
   DeviceConfig();
@@ -2186,13 +2254,17 @@ class DeviceConfig {
 
 /// A server-stored device credential used for authentication.
 class DeviceCredential {
-  /// [Optional] The time at which this credential becomes invalid. This
-  /// credential will be ignored for new client authentication requests after
-  /// this timestamp; however, it will not be automatically deleted.
+  /// The time at which this credential becomes invalid.
+  ///
+  /// This credential will be ignored for new client authentication requests
+  /// after this timestamp; however, it will not be automatically deleted.
+  ///
+  /// Optional.
   core.String expirationTime;
 
-  /// A public key used to verify the signature of JSON Web Tokens (JWTs). When
-  /// adding a new device credential, either via device creation or via
+  /// A public key used to verify the signature of JSON Web Tokens (JWTs).
+  ///
+  /// When adding a new device credential, either via device creation or via
   /// modifications, this public key credential may be required to be signed by
   /// one of the registry level certificates. More specifically, if the registry
   /// contains at least one certificate, any new device credential must be
@@ -2229,38 +2301,44 @@ class DeviceCredential {
 
 /// A container for a group of devices.
 class DeviceRegistry {
-  /// The credentials used to verify the device credentials. No more than 10
-  /// credentials can be bound to a single registry at a time. The verification
-  /// process occurs at the time of device creation or update. If this field is
-  /// empty, no verification is performed. Otherwise, the credentials of a newly
-  /// created device or added credentials of an updated device should be signed
-  /// with one of these registry credentials. Note, however, that existing
-  /// devices will never be affected by modifications to this list of
-  /// credentials: after a device has been successfully created in a registry,
-  /// it should be able to connect even if its registry credentials are revoked,
-  /// deleted, or modified.
+  /// The credentials used to verify the device credentials.
+  ///
+  /// No more than 10 credentials can be bound to a single registry at a time.
+  /// The verification process occurs at the time of device creation or update.
+  /// If this field is empty, no verification is performed. Otherwise, the
+  /// credentials of a newly created device or added credentials of an updated
+  /// device should be signed with one of these registry credentials. Note,
+  /// however, that existing devices will never be affected by modifications to
+  /// this list of credentials: after a device has been successfully created in
+  /// a registry, it should be able to connect even if its registry credentials
+  /// are revoked, deleted, or modified.
   core.List<RegistryCredential> credentials;
 
   /// The configuration for notification of telemetry events received from the
-  /// device. All telemetry events that were successfully published by the
-  /// device and acknowledged by Cloud IoT Core are guaranteed to be delivered
-  /// to Cloud Pub/Sub. If multiple configurations match a message, only the
-  /// first matching configuration is used. If you try to publish a device
-  /// telemetry event using MQTT without specifying a Cloud Pub/Sub topic for
-  /// the device's registry, the connection closes automatically. If you try to
-  /// do so using an HTTP connection, an error is returned. Up to 10
-  /// configurations may be provided.
+  /// device.
+  ///
+  /// All telemetry events that were successfully published by the device and
+  /// acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud
+  /// Pub/Sub. If multiple configurations match a message, only the first
+  /// matching configuration is used. If you try to publish a device telemetry
+  /// event using MQTT without specifying a Cloud Pub/Sub topic for the device's
+  /// registry, the connection closes automatically. If you try to do so using
+  /// an HTTP connection, an error is returned. Up to 10 configurations may be
+  /// provided.
   core.List<EventNotificationConfig> eventNotificationConfigs;
 
   /// The DeviceService (HTTP) configuration for this device registry.
   HttpConfig httpConfig;
 
-  /// The identifier of this device registry. For example, `myRegistry`.
+  /// The identifier of this device registry.
+  ///
+  /// For example, `myRegistry`.
   core.String id;
 
   /// **Beta Feature** The default logging verbosity for activity from devices
-  /// in this registry. The verbosity level can be overridden by
-  /// Device.log_level.
+  /// in this registry.
+  ///
+  /// The verbosity level can be overridden by Device.log_level.
   /// Possible string values are:
   /// - "LOG_LEVEL_UNSPECIFIED" : No logging specified. If not specified,
   /// logging will be disabled.
@@ -2274,11 +2352,14 @@ class DeviceRegistry {
   /// The MQTT configuration for this device registry.
   MqttConfig mqttConfig;
 
-  /// The resource path name. For example,
+  /// The resource path name.
+  ///
+  /// For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   core.String name;
 
   /// The configuration for notification of new states received from the device.
+  ///
   /// State updates are guaranteed to be stored in the state history, but
   /// notifications to Cloud Pub/Sub are not guaranteed. For example, if
   /// permissions are misconfigured or the specified topic doesn't exist, no
@@ -2371,8 +2452,9 @@ class DeviceState {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// [Output only] The time at which this state version was updated in Cloud
-  /// IoT Core.
+  /// The time at which this state version was updated in Cloud IoT Core.
+  ///
+  /// Output only.
   core.String updateTime;
 
   DeviceState();
@@ -2399,10 +2481,12 @@ class DeviceState {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2418,13 +2502,16 @@ class Empty {
 
 /// The configuration for forwarding telemetry events.
 class EventNotificationConfig {
-  /// A Cloud Pub/Sub topic name. For example,
-  /// `projects/myProject/topics/deviceEvents`.
+  /// A Cloud Pub/Sub topic name.
+  ///
+  /// For example, `projects/myProject/topics/deviceEvents`.
   core.String pubsubTopicName;
 
   /// If the subfolder name matches this string exactly, this configuration will
-  /// be used. The string must not include the leading '/' character. If empty,
-  /// all strings are matched. This field is used only for telemetry events;
+  /// be used.
+  ///
+  /// The string must not include the leading '/' character. If empty, all
+  /// strings are matched. This field is used only for telemetry events;
   /// subfolders are not supported for state changes.
   core.String subfolderMatches;
 
@@ -2452,8 +2539,10 @@ class EventNotificationConfig {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -2468,20 +2557,29 @@ class EventNotificationConfig {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -2543,11 +2641,15 @@ class GatewayConfig {
   /// - "NON_GATEWAY" : The device is not a gateway.
   core.String gatewayType;
 
-  /// [Output only] The ID of the gateway the device accessed most recently.
+  /// The ID of the gateway the device accessed most recently.
+  ///
+  /// Output only.
   core.String lastAccessedGatewayId;
 
-  /// [Output only] The most recent time at which the device accessed the
-  /// gateway specified in `last_accessed_gateway`.
+  /// The most recent time at which the device accessed the gateway specified in
+  /// `last_accessed_gateway`.
+  ///
+  /// Output only.
   core.String lastAccessedGatewayTime;
 
   GatewayConfig();
@@ -2611,13 +2713,16 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -2640,6 +2745,7 @@ class GetPolicyOptions {
 /// The configuration of the HTTP bridge for a device registry.
 class HttpConfig {
   /// If enabled, allows devices to use DeviceService via the HTTP protocol.
+  ///
   /// Otherwise, any requests to DeviceService will fail for this registry.
   /// Possible string values are:
   /// - "HTTP_STATE_UNSPECIFIED" : No HTTP state specified. If not specified,
@@ -2668,8 +2774,10 @@ class HttpConfig {
 
 /// Response for `ListDeviceConfigVersions`.
 class ListDeviceConfigVersionsResponse {
-  /// The device configuration for the last few versions. Versions are listed in
-  /// decreasing order, starting from the most recent one.
+  /// The device configuration for the last few versions.
+  ///
+  /// Versions are listed in decreasing order, starting from the most recent
+  /// one.
   core.List<DeviceConfig> deviceConfigs;
 
   ListDeviceConfigVersionsResponse();
@@ -2732,8 +2840,10 @@ class ListDeviceRegistriesResponse {
 
 /// Response for `ListDeviceStates`.
 class ListDeviceStatesResponse {
-  /// The last few device states. States are listed in descending order of
-  /// server update time, starting from the most recent one.
+  /// The last few device states.
+  ///
+  /// States are listed in descending order of server update time, starting from
+  /// the most recent one.
   core.List<DeviceState> deviceStates;
 
   ListDeviceStatesResponse();
@@ -2794,7 +2904,9 @@ class ListDevicesResponse {
 
 /// Request for `ModifyCloudToDeviceConfig`.
 class ModifyCloudToDeviceConfigRequest {
-  /// Required. The configuration data for the device.
+  /// The configuration data for the device.
+  ///
+  /// Required.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes =>
       convert.base64.decode(binaryData);
@@ -2804,11 +2916,13 @@ class ModifyCloudToDeviceConfigRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The version number to update. If this value is zero, it will not check the
-  /// version number of the server and will always update the current version;
-  /// otherwise, this update will fail if the version number found on the server
-  /// does not match this version number. This is used to support multiple
-  /// simultaneous updates without losing data.
+  /// The version number to update.
+  ///
+  /// If this value is zero, it will not check the version number of the server
+  /// and will always update the current version; otherwise, this update will
+  /// fail if the version number found on the server does not match this version
+  /// number. This is used to support multiple simultaneous updates without
+  /// losing data.
   core.String versionToUpdate;
 
   ModifyCloudToDeviceConfigRequest();
@@ -2836,8 +2950,9 @@ class ModifyCloudToDeviceConfigRequest {
 
 /// The configuration of MQTT for a device registry.
 class MqttConfig {
-  /// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT
-  /// connections to this registry will fail.
+  /// If enabled, allows connections using the MQTT protocol.
+  ///
+  /// Otherwise, MQTT connections to this registry will fail.
   /// Possible string values are:
   /// - "MQTT_STATE_UNSPECIFIED" : No MQTT state specified. If not specified,
   /// MQTT will be enabled by default.
@@ -2863,16 +2978,18 @@ class MqttConfig {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -2892,14 +3009,17 @@ class MqttConfig {
 /// version: 3 For a description of IAM and its features, see the [IAM
 /// documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -2916,20 +3036,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -2979,7 +3101,11 @@ class PublicKeyCertificate {
   /// wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
   core.String format;
 
-  /// [Output only] The certificate details. Used only for X.509 certificates.
+  /// The certificate details.
+  ///
+  /// Used only for X.509 certificates.
+  ///
+  /// Output only.
   X509CertificateDetails x509Details;
 
   PublicKeyCertificate();
@@ -3087,7 +3213,9 @@ class RegistryCredential {
 
 /// Request for `SendCommandToDevice`.
 class SendCommandToDeviceRequest {
-  /// Required. The command data to send to the device.
+  /// The command data to send to the device.
+  ///
+  /// Required.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes =>
       convert.base64.decode(binaryData);
@@ -3097,12 +3225,13 @@ class SendCommandToDeviceRequest {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional subfolder for the command. If empty, the command will be
-  /// delivered to the /devices/{device-id}/commands topic, otherwise it will be
-  /// delivered to the /devices/{device-id}/commands/{subfolder} topic.
-  /// Multi-level subfolders are allowed. This field must not have more than 256
-  /// characters, and must not contain any MQTT wildcards ("+" or "#") or null
-  /// characters.
+  /// Optional subfolder for the command.
+  ///
+  /// If empty, the command will be delivered to the
+  /// /devices/{device-id}/commands topic, otherwise it will be delivered to the
+  /// /devices/{device-id}/commands/{subfolder} topic. Multi-level subfolders
+  /// are allowed. This field must not have more than 256 characters, and must
+  /// not contain any MQTT wildcards ("+" or "#") or null characters.
   core.String subfolder;
 
   SendCommandToDeviceRequest();
@@ -3144,10 +3273,11 @@ class SendCommandToDeviceResponse {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   SetIamPolicyRequest();
@@ -3170,8 +3300,9 @@ class SetIamPolicyRequest {
 
 /// The configuration for notification of new states received from the device.
 class StateNotificationConfig {
-  /// A Cloud Pub/Sub topic name. For example,
-  /// `projects/myProject/topics/deviceEvents`.
+  /// A Cloud Pub/Sub topic name.
+  ///
+  /// For example, `projects/myProject/topics/deviceEvents`.
   core.String pubsubTopicName;
 
   StateNotificationConfig();
@@ -3192,24 +3323,27 @@ class StateNotificationConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -3252,9 +3386,10 @@ class Status {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
@@ -3304,13 +3439,18 @@ class TestIamPermissionsResponse {
 
 /// Request for `UnbindDeviceFromGateway`.
 class UnbindDeviceFromGatewayRequest {
-  /// Required. The device to disassociate from the specified gateway. The value
-  /// of `device_id` can be either the device numeric ID or the user-defined
-  /// device identifier.
+  /// The device to disassociate from the specified gateway.
+  ///
+  /// The value of `device_id` can be either the device numeric ID or the
+  /// user-defined device identifier.
+  ///
+  /// Required.
   core.String deviceId;
 
-  /// Required. The value of `gateway_id` can be either the device numeric ID or
-  /// the user-defined device identifier.
+  /// The value of `gateway_id` can be either the device numeric ID or the
+  /// user-defined device identifier.
+  ///
+  /// Required.
   core.String gatewayId;
 
   UnbindDeviceFromGatewayRequest();
@@ -3350,7 +3490,9 @@ class UnbindDeviceFromGatewayResponse {
   }
 }
 
-/// Details of an X.509 certificate. For informational purposes only.
+/// Details of an X.509 certificate.
+///
+/// For informational purposes only.
 class X509CertificateDetails {
   /// The time the certificate becomes invalid.
   core.String expiryTime;

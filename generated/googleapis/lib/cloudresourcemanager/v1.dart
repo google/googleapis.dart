@@ -133,11 +133,12 @@ class FoldersResource {
     );
   }
 
-  /// Gets the effective `Policy` on a resource. This is the result of merging
-  /// `Policies` in the resource hierarchy. The returned `Policy` will not have
-  /// an `etag`set because it is a computed `Policy` across multiple resources.
-  /// Subtrees of Resource Manager resource hierarchy with 'under:' prefix will
-  /// not be expanded.
+  /// Gets the effective `Policy` on a resource.
+  ///
+  /// This is the result of merging `Policies` in the resource hierarchy. The
+  /// returned `Policy` will not have an `etag`set because it is a computed
+  /// `Policy` across multiple resources. Subtrees of Resource Manager resource
+  /// hierarchy with 'under:' prefix will not be expanded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -197,10 +198,12 @@ class FoldersResource {
     );
   }
 
-  /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, a
-  /// `Policy` is returned with default values including `POLICY_TYPE_NOT_SET`
-  /// for the `policy_type oneof`. The `etag` value can be used with
-  /// `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.
+  /// Gets a `Policy` on a resource.
+  ///
+  /// If no `Policy` is set on the resource, a `Policy` is returned with default
+  /// values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The
+  /// `etag` value can be used with `SetOrgPolicy()` to create or update a
+  /// `Policy` during read-modify-write.
   ///
   /// [request] - The metadata request object.
   ///
@@ -380,10 +383,11 @@ class FoldersResource {
     );
   }
 
-  /// Updates the specified `Policy` on the resource. Creates a new `Policy` for
-  /// that `Constraint` on the resource if one does not exist. Not supplying an
-  /// `etag` on the request `Policy` results in an unconditional write of the
-  /// `Policy`.
+  /// Updates the specified `Policy` on the resource.
+  ///
+  /// Creates a new `Policy` for that `Constraint` on the resource if one does
+  /// not exist. Not supplying an `etag` on the request `Policy` results in an
+  /// unconditional write of the `Policy`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -449,6 +453,7 @@ class LiensResource {
   LiensResource(commons.ApiRequester client) : _requester = client;
 
   /// Create a Lien which applies to the resource denoted by the `parent` field.
+  ///
   /// Callers of this method will require permission on the `parent` resource.
   /// For example, applying to `projects/1234` requires permission
   /// `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the
@@ -502,9 +507,10 @@ class LiensResource {
     );
   }
 
-  /// Delete a Lien by `name`. Callers of this method will require permission on
-  /// the `parent` resource. For example, a Lien with a `parent` of
-  /// `projects/1234` requires permission
+  /// Delete a Lien by `name`.
+  ///
+  /// Callers of this method will require permission on the `parent` resource.
+  /// For example, a Lien with a `parent` of `projects/1234` requires permission
   /// `resourcemanager.projects.updateLiens`.
   ///
   /// Request parameters:
@@ -556,10 +562,12 @@ class LiensResource {
     );
   }
 
-  /// Retrieve a Lien by `name`. Callers of this method will require permission
-  /// on the `parent` resource. For example, a Lien with a `parent` of
-  /// `projects/1234` requires permission requires permission
-  /// `resourcemanager.projects.get` or `resourcemanager.projects.updateLiens`.
+  /// Retrieve a Lien by `name`.
+  ///
+  /// Callers of this method will require permission on the `parent` resource.
+  /// For example, a Lien with a `parent` of `projects/1234` requires permission
+  /// requires permission `resourcemanager.projects.get` or
+  /// `resourcemanager.projects.updateLiens`.
   ///
   /// Request parameters:
   ///
@@ -610,9 +618,10 @@ class LiensResource {
     );
   }
 
-  /// List all Liens applied to the `parent` resource. Callers of this method
-  /// will require permission on the `parent` resource. For example, a Lien with
-  /// a `parent` of `projects/1234` requires permission
+  /// List all Liens applied to the `parent` resource.
+  ///
+  /// Callers of this method will require permission on the `parent` resource.
+  /// For example, a Lien with a `parent` of `projects/1234` requires permission
   /// `resourcemanager.projects.get`.
   ///
   /// Request parameters:
@@ -688,9 +697,10 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the latest state of a long-running operation. Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
   ///
   /// Request parameters:
   ///
@@ -861,11 +871,12 @@ class OrganizationsResource {
     );
   }
 
-  /// Gets the effective `Policy` on a resource. This is the result of merging
-  /// `Policies` in the resource hierarchy. The returned `Policy` will not have
-  /// an `etag`set because it is a computed `Policy` across multiple resources.
-  /// Subtrees of Resource Manager resource hierarchy with 'under:' prefix will
-  /// not be expanded.
+  /// Gets the effective `Policy` on a resource.
+  ///
+  /// This is the result of merging `Policies` in the resource hierarchy. The
+  /// returned `Policy` will not have an `etag`set because it is a computed
+  /// `Policy` across multiple resources. Subtrees of Resource Manager resource
+  /// hierarchy with 'under:' prefix will not be expanded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -925,10 +936,11 @@ class OrganizationsResource {
     );
   }
 
-  /// Gets the access control policy for an Organization resource. May be empty
-  /// if no such policy or resource exists. The `resource` field should be the
-  /// organization's resource name, e.g. "organizations/123". Authorization
-  /// requires the Google IAM permission
+  /// Gets the access control policy for an Organization resource.
+  ///
+  /// May be empty if no such policy or resource exists. The `resource` field
+  /// should be the organization's resource name, e.g. "organizations/123".
+  /// Authorization requires the Google IAM permission
   /// `resourcemanager.organizations.getIamPolicy` on the specified organization
   ///
   /// [request] - The metadata request object.
@@ -990,10 +1002,12 @@ class OrganizationsResource {
     );
   }
 
-  /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, a
-  /// `Policy` is returned with default values including `POLICY_TYPE_NOT_SET`
-  /// for the `policy_type oneof`. The `etag` value can be used with
-  /// `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.
+  /// Gets a `Policy` on a resource.
+  ///
+  /// If no `Policy` is set on the resource, a `Policy` is returned with default
+  /// values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The
+  /// `etag` value can be used with `SetOrgPolicy()` to create or update a
+  /// `Policy` during read-modify-write.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1174,10 +1188,12 @@ class OrganizationsResource {
   }
 
   /// Searches Organization resources that are visible to the user and satisfy
-  /// the specified filter. This method returns Organizations in an unspecified
-  /// order. New Organizations do not necessarily appear at the end of the
-  /// results. Search will only return organizations on which the user has the
-  /// permission `resourcemanager.organizations.get`
+  /// the specified filter.
+  ///
+  /// This method returns Organizations in an unspecified order. New
+  /// Organizations do not necessarily appear at the end of the results. Search
+  /// will only return organizations on which the user has the permission
+  /// `resourcemanager.organizations.get`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1228,11 +1244,12 @@ class OrganizationsResource {
     );
   }
 
-  /// Sets the access control policy on an Organization resource. Replaces any
-  /// existing policy. The `resource` field should be the organization's
-  /// resource name, e.g. "organizations/123". Authorization requires the Google
-  /// IAM permission `resourcemanager.organizations.setIamPolicy` on the
-  /// specified organization
+  /// Sets the access control policy on an Organization resource.
+  ///
+  /// Replaces any existing policy. The `resource` field should be the
+  /// organization's resource name, e.g. "organizations/123". Authorization
+  /// requires the Google IAM permission
+  /// `resourcemanager.organizations.setIamPolicy` on the specified organization
   ///
   /// [request] - The metadata request object.
   ///
@@ -1293,10 +1310,11 @@ class OrganizationsResource {
     );
   }
 
-  /// Updates the specified `Policy` on the resource. Creates a new `Policy` for
-  /// that `Constraint` on the resource if one does not exist. Not supplying an
-  /// `etag` on the request `Policy` results in an unconditional write of the
-  /// `Policy`.
+  /// Updates the specified `Policy` on the resource.
+  ///
+  /// Creates a new `Policy` for that `Constraint` on the resource if one does
+  /// not exist. Not supplying an `etag` on the request `Policy` results in an
+  /// unconditional write of the `Policy`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1355,8 +1373,9 @@ class OrganizationsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified Organization. The
-  /// `resource` field should be the organization's resource name, e.g.
+  /// Returns permissions that a caller has on the specified Organization.
+  ///
+  /// The `resource` field should be the organization's resource name, e.g.
   /// "organizations/123". There are no permissions required for making this API
   /// call.
   ///
@@ -1485,17 +1504,18 @@ class ProjectsResource {
     );
   }
 
-  /// Request that a new Project be created. The result is an Operation which
-  /// can be used to track the creation process. This process usually takes a
-  /// few seconds, but can sometimes take much longer. The tracking Operation is
-  /// automatically deleted after a few hours, so there is no need to call
-  /// DeleteOperation. Authorization requires the Google IAM permission
-  /// `resourcemanager.projects.create` on the specified parent for the new
-  /// project. The parent is identified by a specified ResourceId, which must
-  /// include both an ID and a type, such as organization. This method does not
-  /// associate the new project with a billing account. You can set or update
-  /// the billing account associated with a project using the
-  /// [`projects.updateBillingInfo`]
+  /// Request that a new Project be created.
+  ///
+  /// The result is an Operation which can be used to track the creation
+  /// process. This process usually takes a few seconds, but can sometimes take
+  /// much longer. The tracking Operation is automatically deleted after a few
+  /// hours, so there is no need to call DeleteOperation. Authorization requires
+  /// the Google IAM permission `resourcemanager.projects.create` on the
+  /// specified parent for the new project. The parent is identified by a
+  /// specified ResourceId, which must include both an ID and a type, such as
+  /// organization. This method does not associate the new project with a
+  /// billing account. You can set or update the billing account associated with
+  /// a project using the [`projects.updateBillingInfo`]
   /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.
   ///
   /// [request] - The metadata request object.
@@ -1547,16 +1567,17 @@ class ProjectsResource {
   }
 
   /// Marks the Project identified by the specified `project_id` (for example,
-  /// `my-project-123`) for deletion. This method will only affect the Project
-  /// if it has a lifecycle state of ACTIVE. This method changes the Project's
-  /// lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
-  /// unspecified time, at which point the Project is no longer accessible.
-  /// Until the deletion completes, you can check the lifecycle state checked by
-  /// retrieving the Project with GetProject, and the Project remains visible to
-  /// ListProjects. However, you cannot update the project. After the deletion
-  /// completes, the Project is not retrievable by the GetProject and
-  /// ListProjects methods. The caller must have delete permissions for this
-  /// Project.
+  /// `my-project-123`) for deletion.
+  ///
+  /// This method will only affect the Project if it has a lifecycle state of
+  /// ACTIVE. This method changes the Project's lifecycle state from ACTIVE to
+  /// DELETE_REQUESTED. The deletion starts at an unspecified time, at which
+  /// point the Project is no longer accessible. Until the deletion completes,
+  /// you can check the lifecycle state checked by retrieving the Project with
+  /// GetProject, and the Project remains visible to ListProjects. However, you
+  /// cannot update the project. After the deletion completes, the Project is
+  /// not retrievable by the GetProject and ListProjects methods. The caller
+  /// must have delete permissions for this Project.
   ///
   /// Request parameters:
   ///
@@ -1607,8 +1628,9 @@ class ProjectsResource {
   }
 
   /// Retrieves the Project identified by the specified `project_id` (for
-  /// example, `my-project-123`). The caller must have read permissions for this
-  /// Project.
+  /// example, `my-project-123`).
+  ///
+  /// The caller must have read permissions for this Project.
   ///
   /// Request parameters:
   ///
@@ -1660,6 +1682,7 @@ class ProjectsResource {
 
   /// Gets a list of ancestors in the resource hierarchy for the Project
   /// identified by the specified `project_id` (for example, `my-project-123`).
+  ///
   /// The caller must have read permissions for this Project.
   ///
   /// [request] - The metadata request object.
@@ -1719,11 +1742,12 @@ class ProjectsResource {
     );
   }
 
-  /// Gets the effective `Policy` on a resource. This is the result of merging
-  /// `Policies` in the resource hierarchy. The returned `Policy` will not have
-  /// an `etag`set because it is a computed `Policy` across multiple resources.
-  /// Subtrees of Resource Manager resource hierarchy with 'under:' prefix will
-  /// not be expanded.
+  /// Gets the effective `Policy` on a resource.
+  ///
+  /// This is the result of merging `Policies` in the resource hierarchy. The
+  /// returned `Policy` will not have an `etag`set because it is a computed
+  /// `Policy` across multiple resources. Subtrees of Resource Manager resource
+  /// hierarchy with 'under:' prefix will not be expanded.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1784,6 +1808,7 @@ class ProjectsResource {
   }
 
   /// Returns the IAM access control policy for the specified Project.
+  ///
   /// Permission is denied if the policy or the resource does not exist.
   /// Authorization requires the Google IAM permission
   /// `resourcemanager.projects.getIamPolicy` on the project. For additional
@@ -1849,10 +1874,12 @@ class ProjectsResource {
     );
   }
 
-  /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, a
-  /// `Policy` is returned with default values including `POLICY_TYPE_NOT_SET`
-  /// for the `policy_type oneof`. The `etag` value can be used with
-  /// `SetOrgPolicy()` to create or update a `Policy` during read-modify-write.
+  /// Gets a `Policy` on a resource.
+  ///
+  /// If no `Policy` is set on the resource, a `Policy` is returned with default
+  /// values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The
+  /// `etag` value can be used with `SetOrgPolicy()` to create or update a
+  /// `Policy` during read-modify-write.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1912,13 +1939,14 @@ class ProjectsResource {
   }
 
   /// Lists Projects that the caller has the `resourcemanager.projects.get`
-  /// permission on and satisfy the specified filter. This method returns
-  /// Projects in an unspecified order. This method is eventually consistent
-  /// with project mutations; this means that a newly created project may not
-  /// appear in the results or recent updates to an existing project may not be
-  /// reflected in the results. To retrieve the latest state of a project, use
-  /// the GetProject method. NOTE: If the request filter contains a
-  /// `parent.type` and `parent.id` and the caller has the
+  /// permission on and satisfy the specified filter.
+  ///
+  /// This method returns Projects in an unspecified order. This method is
+  /// eventually consistent with project mutations; this means that a newly
+  /// created project may not appear in the results or recent updates to an
+  /// existing project may not be reflected in the results. To retrieve the
+  /// latest state of a project, use the GetProject method. NOTE: If the request
+  /// filter contains a `parent.type` and `parent.id` and the caller has the
   /// `resourcemanager.projects.list` permission on the parent, the results will
   /// be drawn from an alternate index which provides more consistent results.
   /// In future versions of this API, this List method will be split into List
@@ -2131,13 +2159,14 @@ class ProjectsResource {
     );
   }
 
-  /// Sets the IAM access control policy for the specified Project. CAUTION:
-  /// This method will replace the existing policy, and cannot be used to append
-  /// additional IAM settings. NOTE: Removing service accounts from policies or
-  /// changing their roles can render services completely inoperable. It is
-  /// important to understand how the service account is being used before
-  /// removing or updating its roles. For additional information about
-  /// `resource` (e.g. my-project-id) structure and identification, see
+  /// Sets the IAM access control policy for the specified Project.
+  ///
+  /// CAUTION: This method will replace the existing policy, and cannot be used
+  /// to append additional IAM settings. NOTE: Removing service accounts from
+  /// policies or changing their roles can render services completely
+  /// inoperable. It is important to understand how the service account is being
+  /// used before removing or updating its roles. For additional information
+  /// about `resource` (e.g. my-project-id) structure and identification, see
   /// [Resource Names](https://cloud.google.com/apis/design/resource_names). The
   /// following constraints apply when using `setIamPolicy()`: + Project does
   /// not support `allUsers` and `allAuthenticatedUsers` as `members` in a
@@ -2224,10 +2253,11 @@ class ProjectsResource {
     );
   }
 
-  /// Updates the specified `Policy` on the resource. Creates a new `Policy` for
-  /// that `Constraint` on the resource if one does not exist. Not supplying an
-  /// `etag` on the request `Policy` results in an unconditional write of the
-  /// `Policy`.
+  /// Updates the specified `Policy` on the resource.
+  ///
+  /// Creates a new `Policy` for that `Constraint` on the resource if one does
+  /// not exist. Not supplying an `etag` on the request `Policy` results in an
+  /// unconditional write of the `Policy`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2286,9 +2316,10 @@ class ProjectsResource {
     );
   }
 
-  /// Returns permissions that a caller has on the specified Project. For
-  /// additional information about `resource` (e.g. my-project-id) structure and
-  /// identification, see [Resource
+  /// Returns permissions that a caller has on the specified Project.
+  ///
+  /// For additional information about `resource` (e.g. my-project-id) structure
+  /// and identification, see [Resource
   /// Names](https://cloud.google.com/apis/design/resource_names). There are no
   /// permissions required for making this API call.
   ///
@@ -2352,10 +2383,11 @@ class ProjectsResource {
   }
 
   /// Restores the Project identified by the specified `project_id` (for
-  /// example, `my-project-123`). You can only use this method for a Project
-  /// that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
-  /// Project cannot be restored. The caller must have undelete permissions for
-  /// this Project.
+  /// example, `my-project-123`).
+  ///
+  /// You can only use this method for a Project that has a lifecycle state of
+  /// DELETE_REQUESTED. After deletion starts, the Project cannot be restored.
+  /// The caller must have undelete permissions for this Project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2414,8 +2446,9 @@ class ProjectsResource {
   }
 
   /// Updates the attributes of the Project identified by the specified
-  /// `project_id` (for example, `my-project-123`). The caller must have modify
-  /// permissions for this Project.
+  /// `project_id` (for example, `my-project-123`).
+  ///
+  /// The caller must have modify permissions for this Project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2495,11 +2528,12 @@ class Ancestor {
   }
 }
 
-/// Specifies the audit configuration for a service. The configuration
-/// determines which permission types are logged, and what identities, if any,
-/// are exempted from logging. An AuditConfig must have one or more
-/// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a
-/// specific service, the union of the two AuditConfigs is used for that
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
 /// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
@@ -2515,9 +2549,10 @@ class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
 
-  /// Specifies a service that will be enabled for audit logging. For example,
-  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
-  /// special value that covers all services.
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
@@ -2547,14 +2582,17 @@ class AuditConfig {
   }
 }
 
-/// Provides the configuration for logging a type of permissions. Example: {
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
-/// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
-/// DATA_READ logging.
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
+/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
+/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
-  /// permission. Follows the same format of Binding.members.
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
 
   /// The log type that this config enables.
@@ -2592,20 +2630,24 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding. Expected to be globally unique to
-  /// support the internal bindings-by-ID API.
+  /// A client-specified ID for this binding.
+  ///
+  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
-  /// The condition that is associated with this binding. If the condition
-  /// evaluates to `true`, then this binding applies to the current request. If
-  /// the condition evaluates to `false`, then this binding does not apply to
-  /// the current request. However, a different role binding might grant the
-  /// same role to one or more of the members in this binding. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
+  ///
   /// `members` can have the following values: * `allUsers`: A special
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
@@ -2636,8 +2678,9 @@ class Binding {
   /// `example.com`.
   core.List<core.String> members;
 
-  /// Role that is assigned to `members`. For example, `roles/viewer`,
-  /// `roles/editor`, or `roles/owner`.
+  /// Role that is assigned to `members`.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
   core.String role;
 
   Binding();
@@ -2678,9 +2721,11 @@ class Binding {
   }
 }
 
-/// A `Constraint` that is either enforced or not. For example a constraint
-/// `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM
-/// instance, serial port connections will not be opened to that instance.
+/// A `Constraint` that is either enforced or not.
+///
+/// For example a constraint `constraints/compute.disableSerialPortAccess`. If
+/// it is enforced on a VM instance, serial port connections will not be opened
+/// to that instance.
 class BooleanConstraint {
   BooleanConstraint();
 
@@ -2697,23 +2742,24 @@ class BooleanConstraint {
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
 /// resource.
 class BooleanPolicy {
-  /// If `true`, then the `Policy` is enforced. If `false`, then any
-  /// configuration is acceptable. Suppose you have a `Constraint`
-  /// `constraints/compute.disableSerialPortAccess` with `constraint_default`
-  /// set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following
-  /// behavior: - If the `Policy` at this resource has enforced set to `false`,
-  /// serial port connection attempts will be allowed. - If the `Policy` at this
-  /// resource has enforced set to `true`, serial port connection attempts will
-  /// be refused. - If the `Policy` at this resource is `RestoreDefault`, serial
-  /// port connection attempts will be allowed. - If no `Policy` is set at this
-  /// resource or anywhere higher in the resource hierarchy, serial port
-  /// connection attempts will be allowed. - If no `Policy` is set at this
-  /// resource, but one exists higher in the resource hierarchy, the behavior is
-  /// as if the`Policy` were set at this resource. The following examples
-  /// demonstrate the different possible layerings: Example 1 (nearest
-  /// `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced:
-  /// false} `projects/bar` has no `Policy` set. The constraint at
-  /// `projects/bar` and `organizations/foo` will not be enforced. Example 2
+  /// If `true`, then the `Policy` is enforced.
+  ///
+  /// If `false`, then any configuration is acceptable. Suppose you have a
+  /// `Constraint` `constraints/compute.disableSerialPortAccess` with
+  /// `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint`
+  /// exhibits the following behavior: - If the `Policy` at this resource has
+  /// enforced set to `false`, serial port connection attempts will be allowed.
+  /// - If the `Policy` at this resource has enforced set to `true`, serial port
+  /// connection attempts will be refused. - If the `Policy` at this resource is
+  /// `RestoreDefault`, serial port connection attempts will be allowed. - If no
+  /// `Policy` is set at this resource or anywhere higher in the resource
+  /// hierarchy, serial port connection attempts will be allowed. - If no
+  /// `Policy` is set at this resource, but one exists higher in the resource
+  /// hierarchy, the behavior is as if the`Policy` were set at this resource.
+  /// The following examples demonstrate the different possible layerings:
+  /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy`
+  /// with: {enforced: false} `projects/bar` has no `Policy` set. The constraint
+  /// at `projects/bar` and `organizations/foo` will not be enforced. Example 2
   /// (enforcement gets replaced): `organizations/foo` has a `Policy` with:
   /// {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The
   /// constraint at `organizations/foo` is not enforced. The constraint at
@@ -2746,8 +2792,9 @@ class ClearOrgPolicyRequest {
   /// Name of the `Constraint` of the `Policy` to clear.
   core.String constraint;
 
-  /// The current version, for concurrency control. Not sending an `etag` will
-  /// cause the `Policy` to be cleared blindly.
+  /// The current version, for concurrency control.
+  ///
+  /// Not sending an `etag` will cause the `Policy` to be cleared blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
@@ -2780,9 +2827,11 @@ class ClearOrgPolicyRequest {
 }
 
 /// A `Constraint` describes a way in which a resource's configuration can be
-/// restricted. For example, it controls which cloud services can be activated
-/// across an organization, or whether a Compute Engine instance can have serial
-/// port connections established. `Constraints` can be configured by the
+/// restricted.
+///
+/// For example, it controls which cloud services can be activated across an
+/// organization, or whether a Compute Engine instance can have serial port
+/// connections established. `Constraints` can be configured by the
 /// organization's policy administrator to fit the needs of the organzation by
 /// setting Policies for `Constraints` at different locations in the
 /// organization's resource hierarchy. Policies are inherited down the resource
@@ -2807,20 +2856,27 @@ class Constraint {
   core.String constraintDefault;
 
   /// Detailed description of what this `Constraint` controls as well as how and
-  /// where it is enforced. Mutable.
+  /// where it is enforced.
+  ///
+  /// Mutable.
   core.String description;
 
-  /// The human readable name. Mutable.
+  /// The human readable name.
+  ///
+  /// Mutable.
   core.String displayName;
 
   /// Defines this constraint as being a ListConstraint.
   ListConstraint listConstraint;
 
-  /// Immutable value, required to globally be unique. For example,
-  /// `constraints/serviceuser.services`
+  /// Immutable value, required to globally be unique.
+  ///
+  /// For example, `constraints/serviceuser.services`
   core.String name;
 
-  /// Version of the `Constraint`. Default version is 0;
+  /// Version of the `Constraint`.
+  ///
+  /// Default version is 0;
   core.int version;
 
   Constraint();
@@ -2879,10 +2935,12 @@ class Constraint {
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs. A typical example is to use it as the request
-/// or the response type of an API method. For instance: service Foo { rpc
-/// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON
-/// representation for `Empty` is empty JSON object `{}`.
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+/// object `{}`.
 class Empty {
   Empty();
 
@@ -2897,8 +2955,10 @@ class Empty {
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
-/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-/// are documented at https://github.com/google/cel-spec. Example (Comparison):
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
 /// than 100 chars" expression: "document.summary.size() < 100" Example
 /// (Equality): title: "Requestor is owner" description: "Determines if
@@ -2913,20 +2973,29 @@ class Empty {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 class Expr {
-  /// Optional. Description of the expression. This is a longer text which
-  /// describes the expression, e.g. when hovered over it in a UI.
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   core.String expression;
 
-  /// Optional. String indicating the location of the expression for error
-  /// reporting, e.g. a file name and a position in the file.
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
   core.String location;
 
-  /// Optional. Title for the expression, i.e. a short string describing its
-  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
   core.String title;
 
   Expr();
@@ -2980,8 +3049,9 @@ class FolderOperation {
   /// - "MOVE" : A move folder operation.
   core.String operationType;
 
-  /// The resource name of the folder's parent. Only applicable when the
-  /// operation_type is MOVE.
+  /// The resource name of the folder's parent.
+  ///
+  /// Only applicable when the operation_type is MOVE.
   core.String sourceParent;
 
   FolderOperation();
@@ -3078,9 +3148,10 @@ class GetAncestryRequest {
 
 /// Response from the projects.getAncestry method.
 class GetAncestryResponse {
-  /// Ancestors are ordered from bottom to top of the resource hierarchy. The
-  /// first ancestor is the project itself, followed by the project's parent,
-  /// etc..
+  /// Ancestors are ordered from bottom to top of the resource hierarchy.
+  ///
+  /// The first ancestor is the project itself, followed by the project's
+  /// parent, etc..
   core.List<Ancestor> ancestor;
 
   GetAncestryResponse();
@@ -3173,13 +3244,16 @@ class GetOrgPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
-  /// Optional. The policy format version to be returned. Valid values are 0, 1,
-  /// and 3. Requests specifying an invalid value will be rejected. Requests for
-  /// policies with any conditional bindings must specify version 3. Policies
-  /// without any conditional bindings may specify any valid value or leave the
-  /// field unset. To learn which resources support conditions in their IAM
-  /// policies, see the [IAM
+  /// The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional bindings must specify
+  /// version 3. Policies without any conditional bindings may specify any valid
+  /// value or leave the field unset. To learn which resources support
+  /// conditions in their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -3205,26 +3279,31 @@ class Lien {
   /// The creation time of this Lien.
   core.String createTime;
 
-  /// A system-generated unique identifier for this Lien. Example:
-  /// `liens/1234abcd`
+  /// A system-generated unique identifier for this Lien.
+  ///
+  /// Example: `liens/1234abcd`
   core.String name;
 
   /// A stable, user-visible/meaningful string identifying the origin of the
-  /// Lien, intended to be inspected programmatically. Maximum length of 200
-  /// characters. Example: 'compute.googleapis.com'
+  /// Lien, intended to be inspected programmatically.
+  ///
+  /// Maximum length of 200 characters. Example: 'compute.googleapis.com'
   core.String origin;
 
-  /// A reference to the resource this Lien is attached to. The server will
-  /// validate the parent against those for which Liens are supported. Example:
-  /// `projects/1234`
+  /// A reference to the resource this Lien is attached to.
+  ///
+  /// The server will validate the parent against those for which Liens are
+  /// supported. Example: `projects/1234`
   core.String parent;
 
   /// Concise user-visible strings indicating why an action cannot be performed
-  /// on a resource. Maximum length of 200 characters. Example: 'Holds
-  /// production API key'
+  /// on a resource.
+  ///
+  /// Maximum length of 200 characters. Example: 'Holds production API key'
   core.String reason;
 
   /// The types of operations which should be blocked as a result of this Lien.
+  ///
   /// Each value should correspond to an IAM permission. The server will
   /// validate the permissions against those for which Liens are supported. An
   /// empty list is meaningless and will be rejected. Example:
@@ -3283,13 +3362,16 @@ class Lien {
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
 class ListAvailableOrgPolicyConstraintsRequest {
-  /// Size of the pages to be returned. This is currently unsupported and will
-  /// be ignored. The server may at any point start using this field to limit
-  /// page size.
+  /// Size of the pages to be returned.
+  ///
+  /// This is currently unsupported and will be ignored. The server may at any
+  /// point start using this field to limit page size.
   core.int pageSize;
 
-  /// Page token used to retrieve the next page. This is currently unsupported
-  /// and will be ignored. The server may at any point start using this field.
+  /// Page token used to retrieve the next page.
+  ///
+  /// This is currently unsupported and will be ignored. The server may at any
+  /// point start using this field.
   core.String pageToken;
 
   ListAvailableOrgPolicyConstraintsRequest();
@@ -3316,6 +3398,7 @@ class ListAvailableOrgPolicyConstraintsRequest {
 }
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
+///
 /// Returns all `Constraints` that could be set at this level of the hierarchy
 /// (contrast with the response from `ListPolicies`, which returns all policies
 /// which are set).
@@ -3323,7 +3406,9 @@ class ListAvailableOrgPolicyConstraintsResponse {
   /// The collection of constraints that are settable on the request resource.
   core.List<Constraint> constraints;
 
-  /// Page token used to retrieve the next page. This is currently not used.
+  /// Page token used to retrieve the next page.
+  ///
+  /// This is currently not used.
   core.String nextPageToken;
 
   ListAvailableOrgPolicyConstraintsResponse();
@@ -3356,13 +3441,16 @@ class ListAvailableOrgPolicyConstraintsResponse {
 /// A `Constraint` that allows or disallows a list of string values, which are
 /// configured by an Organization's policy administrator with a `Policy`.
 class ListConstraint {
-  /// Optional. The Google Cloud Console will try to default to a configuration
-  /// that matches the value specified in this `Constraint`.
+  /// The Google Cloud Console will try to default to a configuration that
+  /// matches the value specified in this `Constraint`.
+  ///
+  /// Optional.
   core.String suggestedValue;
 
   /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
-  /// can be used in `Policy.allowed_values` and `Policy.denied_values`. For
-  /// example, `"under:folders/123"` would match any resource under the
+  /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
+  ///
+  /// For example, `"under:folders/123"` would match any resource under the
   /// 'folders/123' folder.
   core.bool supportsUnder;
 
@@ -3426,13 +3514,16 @@ class ListLiensResponse {
 
 /// The request sent to the ListOrgPolicies method.
 class ListOrgPoliciesRequest {
-  /// Size of the pages to be returned. This is currently unsupported and will
-  /// be ignored. The server may at any point start using this field to limit
-  /// page size.
+  /// Size of the pages to be returned.
+  ///
+  /// This is currently unsupported and will be ignored. The server may at any
+  /// point start using this field to limit page size.
   core.int pageSize;
 
-  /// Page token used to retrieve the next page. This is currently unsupported
-  /// and will be ignored. The server may at any point start using this field.
+  /// Page token used to retrieve the next page.
+  ///
+  /// This is currently unsupported and will be ignored. The server may at any
+  /// point start using this field.
   core.String pageToken;
 
   ListOrgPoliciesRequest();
@@ -3458,15 +3549,19 @@ class ListOrgPoliciesRequest {
   }
 }
 
-/// The response returned from the `ListOrgPolicies` method. It will be empty if
-/// no `Policies` are set on the resource.
+/// The response returned from the `ListOrgPolicies` method.
+///
+/// It will be empty if no `Policies` are set on the resource.
 class ListOrgPoliciesResponse {
-  /// Page token used to retrieve the next page. This is currently not used, but
-  /// the server may at any point start supplying a valid token.
+  /// Page token used to retrieve the next page.
+  ///
+  /// This is currently not used, but the server may at any point start
+  /// supplying a valid token.
   core.String nextPageToken;
 
-  /// The `Policies` that are set on the resource. It will be empty if no
-  /// `Policies` are set.
+  /// The `Policies` that are set on the resource.
+  ///
+  /// It will be empty if no `Policies` are set.
   core.List<OrgPolicy> policies;
 
   ListOrgPoliciesResponse();
@@ -3496,6 +3591,7 @@ class ListOrgPoliciesResponse {
 }
 
 /// Used in `policy_type` to specify how `list_policy` behaves at this resource.
+///
 /// `ListPolicy` can define specific values and subtrees of Cloud Resource
 /// Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are
 /// allowed or denied by setting the `allowed_values` and `denied_values`
@@ -3521,26 +3617,29 @@ class ListPolicy {
   /// - "DENY" : A policy with this set denies all values.
   core.String allValues;
 
-  /// List of values allowed at this resource. Can only be set if `all_values`
-  /// is set to `ALL_VALUES_UNSPECIFIED`.
+  /// List of values allowed at this resource.
+  ///
+  /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
   core.List<core.String> allowedValues;
 
-  /// List of values denied at this resource. Can only be set if `all_values` is
-  /// set to `ALL_VALUES_UNSPECIFIED`.
+  /// List of values denied at this resource.
+  ///
+  /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
   core.List<core.String> deniedValues;
 
-  /// Determines the inheritance behavior for this `Policy`. By default, a
-  /// `ListPolicy` set at a resource supersedes any `Policy` set anywhere up the
-  /// resource hierarchy. However, if `inherit_from_parent` is set to `true`,
-  /// then the values from the effective `Policy` of the parent resource are
-  /// inherited, meaning the values set in this `Policy` are added to the values
-  /// inherited up the hierarchy. Setting `Policy` hierarchies that inherit both
-  /// allowed values and denied values isn't recommended in most circumstances
-  /// to keep the configuration simple and understandable. However, it is
-  /// possible to set a `Policy` with `allowed_values` set that inherits a
-  /// `Policy` with `denied_values` set. In this case, the values that are
-  /// allowed must be in `allowed_values` and not present in `denied_values`.
-  /// For example, suppose you have a `Constraint`
+  /// Determines the inheritance behavior for this `Policy`.
+  ///
+  /// By default, a `ListPolicy` set at a resource supersedes any `Policy` set
+  /// anywhere up the resource hierarchy. However, if `inherit_from_parent` is
+  /// set to `true`, then the values from the effective `Policy` of the parent
+  /// resource are inherited, meaning the values set in this `Policy` are added
+  /// to the values inherited up the hierarchy. Setting `Policy` hierarchies
+  /// that inherit both allowed values and denied values isn't recommended in
+  /// most circumstances to keep the configuration simple and understandable.
+  /// However, it is possible to set a `Policy` with `allowed_values` set that
+  /// inherits a `Policy` with `denied_values` set. In this case, the values
+  /// that are allowed must be in `allowed_values` and not present in
+  /// `denied_values`. For example, suppose you have a `Constraint`
   /// `constraints/serviceuser.services`, which has a `constraint_type` of
   /// `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose
   /// that at the Organization level, a `Policy` is applied that restricts the
@@ -3591,10 +3690,13 @@ class ListPolicy {
   /// `organizations/O1`, `folders/F1`, `projects/P1`.
   core.bool inheritFromParent;
 
-  /// Optional. The Google Cloud Console will try to default to a configuration
-  /// that matches the value specified in this `Policy`. If `suggested_value` is
-  /// not set, it will inherit the value specified higher in the hierarchy,
-  /// unless `inherit_from_parent` is `false`.
+  /// The Google Cloud Console will try to default to a configuration that
+  /// matches the value specified in this `Policy`.
+  ///
+  /// If `suggested_value` is not set, it will inherit the value specified
+  /// higher in the hierarchy, unless `inherit_from_parent` is `false`.
+  ///
+  /// Optional.
   core.String suggestedValue;
 
   ListPolicy();
@@ -3642,21 +3744,25 @@ class ListPolicy {
   }
 }
 
-/// A page of the response received from the ListProjects method. A paginated
-/// response where more pages are available has `next_page_token` set. This
-/// token can be used in a subsequent request to retrieve the next request page.
+/// A page of the response received from the ListProjects method.
+///
+/// A paginated response where more pages are available has `next_page_token`
+/// set. This token can be used in a subsequent request to retrieve the next
+/// request page.
 class ListProjectsResponse {
-  /// Pagination token. If the result set is too large to fit in a single
-  /// response, this token is returned. It encodes the position of the current
-  /// result cursor. Feeding this value into a new list request with the
-  /// `page_token` parameter gives the next page of the results. When
-  /// `next_page_token` is not filled in, there is no next page and the list
-  /// returned is the last page in the result set. Pagination tokens have a
-  /// limited lifetime.
+  /// Pagination token.
+  ///
+  /// If the result set is too large to fit in a single response, this token is
+  /// returned. It encodes the position of the current result cursor. Feeding
+  /// this value into a new list request with the `page_token` parameter gives
+  /// the next page of the results. When `next_page_token` is not filled in,
+  /// there is no next page and the list returned is the last page in the result
+  /// set. Pagination tokens have a limited lifetime.
   core.String nextPageToken;
 
-  /// The list of Projects that matched the list filter. This list can be
-  /// paginated.
+  /// The list of Projects that matched the list filter.
+  ///
+  /// This list can be paginated.
   core.List<Project> projects;
 
   ListProjectsResponse();
@@ -3688,31 +3794,37 @@ class ListProjectsResponse {
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
-  /// If the value is `false`, it means the operation is still in progress. If
-  /// `true`, the operation is completed, and either `error` or `response` is
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
   /// The error result of the operation in case of failure or cancellation.
   Status error;
 
-  /// Service-specific metadata associated with the operation. It typically
-  /// contains progress information and common metadata such as create time.
-  /// Some services might not provide such metadata. Any method that returns a
-  /// long-running operation should document the metadata type, if any.
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
   /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it. If you use the default HTTP mapping, the
-  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
   core.String name;
 
-  /// The normal response of the operation in case of success. If the original
-  /// method returns no data on success, such as `Delete`, the response is
-  /// `google.protobuf.Empty`. If the original method is standard
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
   /// `Get`/`Create`/`Update`, the response should be the resource. For other
   /// methods, the response should have the type `XxxResponse`, where `Xxx` is
   /// the original method name. For example, if the original method name is
@@ -3783,21 +3895,25 @@ class OrgPolicy {
   BooleanPolicy booleanPolicy;
 
   /// The name of the `Constraint` the `Policy` is configuring, for example,
-  /// `constraints/serviceuser.services`. A [list of available
+  /// `constraints/serviceuser.services`.
+  ///
+  /// A [list of available
   /// constraints](/resource-manager/docs/organization-policy/org-policy-constraints)
   /// is available. Immutable after creation.
   core.String constraint;
 
   /// An opaque tag indicating the current version of the `Policy`, used for
-  /// concurrency control. When the `Policy` is returned from either a
-  /// `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the
-  /// version of the current `Policy` to use when executing a read-modify-write
-  /// loop. When the `Policy` is returned from a `GetEffectivePolicy` request,
-  /// the `etag` will be unset. When the `Policy` is used in a `SetOrgPolicy`
-  /// method, use the `etag` value that was returned from a `GetOrgPolicy`
-  /// request as part of a read-modify-write loop for concurrency control. Not
-  /// setting the `etag`in a `SetOrgPolicy` request will result in an
-  /// unconditional write of the `Policy`.
+  /// concurrency control.
+  ///
+  /// When the `Policy` is returned from either a `GetPolicy` or a
+  /// `ListOrgPolicy` request, this `etag` indicates the version of the current
+  /// `Policy` to use when executing a read-modify-write loop. When the `Policy`
+  /// is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+  /// When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value
+  /// that was returned from a `GetOrgPolicy` request as part of a
+  /// read-modify-write loop for concurrency control. Not setting the `etag`in a
+  /// `SetOrgPolicy` request will result in an unconditional write of the
+  /// `Policy`.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
@@ -3813,13 +3929,16 @@ class OrgPolicy {
   /// `Constraint` type.
   RestoreDefault restoreDefault;
 
-  /// The time stamp the `Policy` was previously updated. This is set by the
-  /// server, not specified by the caller, and represents the last time a call
-  /// to `SetOrgPolicy` was made for that `Policy`. Any value set by the client
-  /// will be ignored.
+  /// The time stamp the `Policy` was previously updated.
+  ///
+  /// This is set by the server, not specified by the caller, and represents the
+  /// last time a call to `SetOrgPolicy` was made for that `Policy`. Any value
+  /// set by the client will be ignored.
   core.String updateTime;
 
-  /// Version of the `Policy`. Default version is 0;
+  /// Version of the `Policy`.
+  ///
+  /// Default version is 0;
   core.int version;
 
   OrgPolicy();
@@ -3881,16 +4000,22 @@ class OrgPolicy {
 /// The root node in the resource hierarchy to which a particular entity's
 /// (e.g., company) resources belong.
 class Organization {
-  /// Timestamp when the Organization was created. Assigned by the server.
+  /// Timestamp when the Organization was created.
+  ///
+  /// Assigned by the server.
   core.String creationTime;
 
   /// A human-readable string that refers to the Organization in the GCP Console
-  /// UI. This string is set by the server and cannot be changed. The string
-  /// will be set to the primary domain (for example, "google.com") of the G
-  /// Suite customer that owns the organization.
+  /// UI.
+  ///
+  /// This string is set by the server and cannot be changed. The string will be
+  /// set to the primary domain (for example, "google.com") of the G Suite
+  /// customer that owns the organization.
   core.String displayName;
 
-  /// The organization's current lifecycle state. Assigned by the server.
+  /// The organization's current lifecycle state.
+  ///
+  /// Assigned by the server.
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only useful
   /// for distinguishing unset values.
@@ -3899,13 +4024,18 @@ class Organization {
   /// the user.
   core.String lifecycleState;
 
-  /// Output only. The resource name of the organization. This is the
-  /// organization's relative path in the API. Its format is
+  /// The resource name of the organization.
+  ///
+  /// This is the organization's relative path in the API. Its format is
   /// "organizations/[organization_id]". For example, "organizations/1234".
+  ///
+  /// Output only.
   core.String name;
 
-  /// The owner of this Organization. The owner should be specified on creation.
-  /// Once set, it cannot be changed. This field is required.
+  /// The owner of this Organization.
+  ///
+  /// The owner should be specified on creation. Once set, it cannot be changed.
+  /// This field is required.
   OrganizationOwner owner;
 
   Organization();
@@ -3950,10 +4080,11 @@ class Organization {
   }
 }
 
-/// The entity that owns an Organization. The lifetime of the Organization and
-/// all of its descendants are bound to the `OrganizationOwner`. If the
-/// `OrganizationOwner` is deleted, the Organization and all its descendants
-/// will be deleted.
+/// The entity that owns an Organization.
+///
+/// The lifetime of the Organization and all of its descendants are bound to the
+/// `OrganizationOwner`. If the `OrganizationOwner` is deleted, the Organization
+/// and all its descendants will be deleted.
 class OrganizationOwner {
   /// The G Suite customer id used in the Directory API.
   core.String directoryCustomerId;
@@ -3976,16 +4107,18 @@ class OrganizationOwner {
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
-/// controls for Google Cloud resources. A `Policy` is a collection of
-/// `bindings`. A `binding` binds one or more `members` to a single `role`.
-/// Members can be user accounts, service accounts, Google groups, and domains
-/// (such as G Suite). A `role` is a named list of permissions; each `role` can
-/// be an IAM predefined role or a user-created custom role. For some types of
-/// Google Cloud resources, a `binding` can also specify a `condition`, which is
-/// a logical expression that allows access to a resource only if the expression
-/// evaluates to `true`. A condition can add constraints based on attributes of
-/// the request, the resource, or both. To learn which resources support
-/// conditions in their IAM policies, see the [IAM
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": [ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": [
@@ -4008,14 +4141,17 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`. Optionally, may specify a
-  /// `condition` that determines how and when the `bindings` are applied. Each
-  /// of the `bindings` must contain at least one member.
+  /// Associates a list of `members` to a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
-  /// simultaneous updates of a policy from overwriting each other. It is
-  /// strongly suggested that systems make use of the `etag` in the
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
@@ -4032,20 +4168,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-  /// Requests that specify an invalid value are rejected. Any operation that
-  /// affects conditional role bindings must specify version `3`. This
-  /// requirement applies to the following operations: * Getting a policy that
-  /// includes a conditional role binding * Adding a conditional role binding to
-  /// a policy * Changing a conditional role binding in a policy * Removing any
-  /// role binding, with or without a condition, from a policy that includes
-  /// conditions **Important:** If you use IAM Conditions, you must include the
-  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
-  /// then IAM allows you to overwrite a version `3` policy with a version `1`
-  /// policy, and all of the conditions in the version `3` policy are lost. If a
-  /// policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the [IAM
   /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -4091,24 +4229,30 @@ class Policy {
   }
 }
 
-/// A Project is a high-level Google Cloud Platform entity. It is a container
-/// for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform
-/// resources.
+/// A Project is a high-level Google Cloud Platform entity.
+///
+/// It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google
+/// Cloud Platform resources.
 class Project {
-  /// Creation time. Read-only.
+  /// Creation time.
+  ///
+  /// Read-only.
   core.String createTime;
 
-  /// The labels associated with this Project. Label keys must be between 1 and
-  /// 63 characters long and must conform to the following regular expression:
-  /// a-z{0,62}. Label values must be between 0 and 63 characters long and must
-  /// conform to the regular expression [a-z0-9_-]{0,63}. A label value can be
-  /// empty. No more than 256 labels can be associated with a given resource.
-  /// Clients should store labels in a representation such as JSON that does not
-  /// depend on specific characters being disallowed. Example: "environment" :
-  /// "dev" Read-write.
+  /// The labels associated with this Project.
+  ///
+  /// Label keys must be between 1 and 63 characters long and must conform to
+  /// the following regular expression: a-z{0,62}. Label values must be between
+  /// 0 and 63 characters long and must conform to the regular expression
+  /// [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can
+  /// be associated with a given resource. Clients should store labels in a
+  /// representation such as JSON that does not depend on specific characters
+  /// being disallowed. Example: "environment" : "dev" Read-write.
   core.Map<core.String, core.String> labels;
 
-  /// The Project lifecycle state. Read-only.
+  /// The Project lifecycle state.
+  ///
+  /// Read-only.
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only
   /// used/useful for distinguishing unset values.
@@ -4120,26 +4264,32 @@ class Project {
   /// returned by the API.
   core.String lifecycleState;
 
-  /// The optional user-assigned display name of the Project. When present it
-  /// must be between 4 to 30 characters. Allowed characters are: lowercase and
-  /// uppercase letters, numbers, hyphen, single-quote, double-quote, space, and
-  /// exclamation point. Example: `My Project` Read-write.
+  /// The optional user-assigned display name of the Project.
+  ///
+  /// When present it must be between 4 to 30 characters. Allowed characters
+  /// are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+  /// double-quote, space, and exclamation point. Example: `My Project`
+  /// Read-write.
   core.String name;
 
-  /// An optional reference to a parent Resource. Supported parent types include
-  /// "organization" and "folder". Once set, the parent cannot be cleared. The
-  /// `parent` can be set on creation or using the `UpdateProject` method; the
-  /// end user must have the `resourcemanager.projects.create` permission on the
-  /// parent.
+  /// An optional reference to a parent Resource.
+  ///
+  /// Supported parent types include "organization" and "folder". Once set, the
+  /// parent cannot be cleared. The `parent` can be set on creation or using the
+  /// `UpdateProject` method; the end user must have the
+  /// `resourcemanager.projects.create` permission on the parent.
   ResourceId parent;
 
-  /// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase
-  /// letters, digits, or hyphens. It must start with a letter. Trailing hyphens
-  /// are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+  /// The unique, user-assigned ID of the Project.
+  ///
+  /// It must be 6 to 30 lowercase letters, digits, or hyphens. It must start
+  /// with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+  /// Read-only after creation.
   core.String projectId;
 
-  /// The number uniquely identifying the project. Example: `415104041262`
-  /// Read-only.
+  /// The number uniquely identifying the project.
+  ///
+  /// Example: `415104041262` Read-only.
   core.String projectNumber;
 
   Project();
@@ -4203,15 +4353,18 @@ class Project {
 }
 
 /// A status object which is used as the `metadata` field for the Operation
-/// returned by CreateProject. It provides insight for when significant phases
-/// of Project creation have completed.
+/// returned by CreateProject.
+///
+/// It provides insight for when significant phases of Project creation have
+/// completed.
 class ProjectCreationStatus {
   /// Creation time of the project creation workflow.
   core.String createTime;
 
-  /// True if the project can be retrieved using GetProject. No other operations
-  /// on the project are guaranteed to work until the project creation is
-  /// complete.
+  /// True if the project can be retrieved using GetProject.
+  ///
+  /// No other operations on the project are guaranteed to work until the
+  /// project creation is complete.
   core.bool gettable;
 
   /// True if the project creation process is complete.
@@ -4246,17 +4399,21 @@ class ProjectCreationStatus {
   }
 }
 
-/// A container to reference an id for any resource type. A `resource` in Google
-/// Cloud Platform is a generic term for something you (a developer) may want to
-/// interact with through one of our API's. Some examples are an App Engine app,
-/// a Compute Engine instance, a Cloud SQL database, and so on.
+/// A container to reference an id for any resource type.
+///
+/// A `resource` in Google Cloud Platform is a generic term for something you (a
+/// developer) may want to interact with through one of our API's. Some examples
+/// are an App Engine app, a Compute Engine instance, a Cloud SQL database, and
+/// so on.
 class ResourceId {
-  /// The type-specific id. This should correspond to the id used in the
-  /// type-specific API's.
+  /// The type-specific id.
+  ///
+  /// This should correspond to the id used in the type-specific API's.
   core.String id;
 
-  /// The resource type this id is for. At present, the valid types are:
-  /// "organization", "folder", and "project".
+  /// The resource type this id is for.
+  ///
+  /// At present, the valid types are: "organization", "folder", and "project".
   core.String type;
 
   ResourceId();
@@ -4284,14 +4441,16 @@ class ResourceId {
 
 /// Ignores policies set above this resource and restores the
 /// `constraint_default` enforcement behavior of the specific `Constraint` at
-/// this resource. Suppose that `constraint_default` is set to `ALLOW` for the
-/// `Constraint` `constraints/serviceuser.services`. Suppose that organization
-/// foo.com sets a `Policy` at their Organization resource node that restricts
-/// the allowed service activations to deny all service activations. They could
-/// then set a `Policy` with the `policy_type` `restore_default` on several
-/// experimental projects, restoring the `constraint_default` enforcement of the
-/// `Constraint` for only those projects, allowing those projects to have all
-/// services activated.
+/// this resource.
+///
+/// Suppose that `constraint_default` is set to `ALLOW` for the `Constraint`
+/// `constraints/serviceuser.services`. Suppose that organization foo.com sets a
+/// `Policy` at their Organization resource node that restricts the allowed
+/// service activations to deny all service activations. They could then set a
+/// `Policy` with the `policy_type` `restore_default` on several experimental
+/// projects, restoring the `constraint_default` enforcement of the `Constraint`
+/// for only those projects, allowing those projects to have all services
+/// activated.
 class RestoreDefault {
   RestoreDefault();
 
@@ -4308,20 +4467,25 @@ class RestoreDefault {
 /// The request sent to the `SearchOrganizations` method.
 class SearchOrganizationsRequest {
   /// An optional query string used to filter the Organizations to return in the
-  /// response. Filter rules are case-insensitive. Organizations may be filtered
-  /// by `owner.directoryCustomerId` or by `domain`, where the domain is a G
-  /// Suite domain, for example: * Filter `owner.directorycustomerid:123456789`
+  /// response.
+  ///
+  /// Filter rules are case-insensitive. Organizations may be filtered by
+  /// `owner.directoryCustomerId` or by `domain`, where the domain is a G Suite
+  /// domain, for example: * Filter `owner.directorycustomerid:123456789`
   /// returns Organization resources with `owner.directory_customer_id` equal to
   /// `123456789`. * Filter `domain:google.com` returns Organization resources
   /// corresponding to the domain `google.com`. This field is optional.
   core.String filter;
 
-  /// The maximum number of Organizations to return in the response. This field
-  /// is optional.
+  /// The maximum number of Organizations to return in the response.
+  ///
+  /// This field is optional.
   core.int pageSize;
 
   /// A pagination token returned from a previous call to `SearchOrganizations`
-  /// that indicates from where listing should continue. This field is optional.
+  /// that indicates from where listing should continue.
+  ///
+  /// This field is optional.
   core.String pageToken;
 
   SearchOrganizationsRequest();
@@ -4355,11 +4519,12 @@ class SearchOrganizationsRequest {
 
 /// The response returned from the `SearchOrganizations` method.
 class SearchOrganizationsResponse {
-  /// A pagination token to be used to retrieve the next page of results. If the
-  /// result is too large to fit within the page size specified in the request,
-  /// this field will be set with a token that can be used to fetch the next
-  /// page of results. If this field is empty, it indicates that this response
-  /// contains the last page of results.
+  /// A pagination token to be used to retrieve the next page of results.
+  ///
+  /// If the result is too large to fit within the page size specified in the
+  /// request, this field will be set with a token that can be used to fetch the
+  /// next page of results. If this field is empty, it indicates that this
+  /// response contains the last page of results.
   core.String nextPageToken;
 
   /// The list of Organizations that matched the search query, possibly
@@ -4395,13 +4560,15 @@ class SearchOrganizationsResponse {
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
-  /// the policy is limited to a few 10s of KB. An empty policy is a valid
-  /// policy but certain Cloud Platform services (such as Projects) might reject
-  /// them.
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects) might
+  /// reject them.
   Policy policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
   core.String updateMask;
@@ -4454,24 +4621,27 @@ class SetOrgPolicyRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
-/// three pieces of data: error code, error message, and error details. You can
-/// find out more about this error model and how to work with it in the [API
-/// Design Guide](https://cloud.google.com/apis/design/errors).
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
-  /// message types for APIs to use.
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
 
-  /// A developer-facing error message, which should be in English. Any
-  /// user-facing error message should be localized and sent in the
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
@@ -4514,9 +4684,10 @@ class Status {
 
 /// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`. Permissions with
-  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
-  /// information see [IAM
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
+  /// For more information see [IAM
   /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 

@@ -409,9 +409,10 @@ class EditsApksResource {
   EditsApksResource(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new APK without uploading the APK itself to Google Play, instead
-  /// hosting the APK at a specified URL. This function is only available to
-  /// organizations using Managed Play whose application is configured to
-  /// restrict distribution to the organizations.
+  /// hosting the APK at a specified URL.
+  ///
+  /// This function is only available to organizations using Managed Play whose
+  /// application is configured to restrict distribution to the organizations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -691,10 +692,11 @@ class EditsBundlesResource {
     );
   }
 
-  /// Uploads a new Android App Bundle to this edit. If you are using the Google
-  /// API client libraries, please increase the timeout of the http request
-  /// before calling this endpoint (a timeout of 2 minutes is recommended). See
-  /// [Timeouts and
+  /// Uploads a new Android App Bundle to this edit.
+  ///
+  /// If you are using the Google API client libraries, please increase the
+  /// timeout of the http request before calling this endpoint (a timeout of 2
+  /// minutes is recommended). See [Timeouts and
   /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
@@ -1202,7 +1204,9 @@ class EditsExpansionfilesResource {
   }
 
   /// Patches the APK's expansion file configuration to reference another APK's
-  /// expansion file. To add a new expansion file use the Upload method.
+  /// expansion file.
+  ///
+  /// To add a new expansion file use the Upload method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1291,7 +1295,9 @@ class EditsExpansionfilesResource {
   }
 
   /// Updates the APK's expansion file configuration to reference another APK's
-  /// expansion file. To add a new expansion file use the Upload method.
+  /// expansion file.
+  ///
+  /// To add a new expansion file use the Upload method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1593,8 +1599,9 @@ class EditsImagesResource {
     );
   }
 
-  /// Deletes all images for the specified language and image type. Returns an
-  /// empty response if no images are found.
+  /// Deletes all images for the specified language and image type.
+  ///
+  /// Returns an empty response if no images are found.
   ///
   /// Request parameters:
   ///
@@ -1683,7 +1690,9 @@ class EditsImagesResource {
     );
   }
 
-  /// Lists all images. The response may be empty.
+  /// Lists all images.
+  ///
+  /// The response may be empty.
   ///
   /// Request parameters:
   ///
@@ -3229,10 +3238,11 @@ class InternalappsharingartifactsResource {
   InternalappsharingartifactsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Uploads an APK to internal app sharing. If you are using the Google API
-  /// client libraries, please increase the timeout of the http request before
-  /// calling this endpoint (a timeout of 2 minutes is recommended). See
-  /// [Timeouts and
+  /// Uploads an APK to internal app sharing.
+  ///
+  /// If you are using the Google API client libraries, please increase the
+  /// timeout of the http request before calling this endpoint (a timeout of 2
+  /// minutes is recommended). See [Timeouts and
   /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
@@ -3309,10 +3319,11 @@ class InternalappsharingartifactsResource {
     );
   }
 
-  /// Uploads an app bundle to internal app sharing. If you are using the Google
-  /// API client libraries, please increase the timeout of the http request
-  /// before calling this endpoint (a timeout of 2 minutes is recommended). See
-  /// [Timeouts and
+  /// Uploads an app bundle to internal app sharing.
+  ///
+  /// If you are using the Google API client libraries, please increase the
+  /// timeout of the http request before calling this endpoint (a timeout of 2
+  /// minutes is recommended). See [Timeouts and
   /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
@@ -3718,8 +3729,9 @@ class PurchasesSubscriptionsResource {
     );
   }
 
-  /// Cancels a user's subscription purchase. The subscription remains valid
-  /// until its expiration time.
+  /// Cancels a user's subscription purchase.
+  ///
+  /// The subscription remains valid until its expiration time.
   ///
   /// Request parameters:
   ///
@@ -4004,8 +4016,9 @@ class PurchasesSubscriptionsResource {
     );
   }
 
-  /// Refunds and immediately revokes a user's subscription purchase. Access to
-  /// the subscription will be terminated immediately and it will stop
+  /// Refunds and immediately revokes a user's subscription purchase.
+  ///
+  /// Access to the subscription will be terminated immediately and it will stop
   /// recurring.
   ///
   /// Request parameters:
@@ -4700,7 +4713,9 @@ class SystemapksVariantsResource {
   }
 }
 
-/// Information about an APK. The resource for ApksService.
+/// Information about an APK.
+///
+/// The resource for ApksService.
 class Apk {
   /// Information about the binary payload of this APK.
   ApkBinary binary;
@@ -4845,7 +4860,9 @@ class ApksListResponse {
   }
 }
 
-/// The app details. The resource for DetailsService.
+/// The app details.
+///
+/// The resource for DetailsService.
 class AppDetails {
   /// The user-visible support email for this app.
   core.String contactEmail;
@@ -4894,13 +4911,21 @@ class AppDetails {
   }
 }
 
-/// An app edit. The resource for EditsService.
+/// An app edit.
+///
+/// The resource for EditsService.
 class AppEdit {
-  /// Output only. The time (as seconds since Epoch) at which the edit will
-  /// expire and will be no longer valid for use.
+  /// The time (as seconds since Epoch) at which the edit will expire and will
+  /// be no longer valid for use.
+  ///
+  /// Output only.
   core.String expiryTimeSeconds;
 
-  /// Output only. Identifier of the edit. Can be used in subsequent API calls.
+  /// Identifier of the edit.
+  ///
+  /// Can be used in subsequent API calls.
+  ///
+  /// Output only.
   core.String id;
 
   AppEdit();
@@ -4926,7 +4951,9 @@ class AppEdit {
   }
 }
 
-/// Information about a bundle. The resource for BundlesService.
+/// Information about a bundle.
+///
+/// The resource for BundlesService.
 class Bundle {
   /// A sha1 hash of the upload payload, encoded as a hex string and matching
   /// the output of the sha1sum command.
@@ -5269,8 +5296,10 @@ class DeviceSpec {
   /// Screen dpi.
   core.int screenDensity;
 
-  /// Supported ABI architectures in the order of preference. The values should
-  /// be the string as reported by the platform, e.g. "armeabi-v7a", "x86_64".
+  /// Supported ABI architectures in the order of preference.
+  ///
+  /// The values should be the string as reported by the platform, e.g.
+  /// "armeabi-v7a", "x86_64".
   core.List<core.String> supportedAbis;
 
   /// All installed locales represented as BCP-47 strings, e.g. "en-US".
@@ -5309,14 +5338,18 @@ class DeviceSpec {
   }
 }
 
-/// An expansion file. The resource for ExpansionFilesService.
+/// An expansion file.
+///
+/// The resource for ExpansionFilesService.
 class ExpansionFile {
   /// If set, this field indicates that this APK has an expansion file uploaded
-  /// to it: this APK does not reference another APK's expansion file. The
-  /// field's value is the size of the uploaded expansion file in bytes.
+  /// to it: this APK does not reference another APK's expansion file.
+  ///
+  /// The field's value is the size of the uploaded expansion file in bytes.
   core.String fileSize;
 
   /// If set, this APK's expansion file references another APK's expansion file.
+  ///
   /// The file_size field will not be set.
   core.int referencesVersion;
 
@@ -5367,9 +5400,10 @@ class ExpansionFilesUploadResponse {
 }
 
 /// Defines an APK available for this application that is hosted externally and
-/// not uploaded to Google Play. This function is only available to
-/// organizations using Managed Play whose application is configured to restrict
-/// distribution to the organizations.
+/// not uploaded to Google Play.
+///
+/// This function is only available to organizations using Managed Play whose
+/// application is configured to restrict distribution to the organizations.
 class ExternallyHostedApk {
   /// The application label.
   core.String applicationLabel;
@@ -5378,7 +5412,9 @@ class ExternallyHostedApk {
   /// used to sign this APK, represented as a base64 encoded byte array.
   core.List<core.String> certificateBase64s;
 
-  /// The URL at which the APK is hosted. This must be an https URL.
+  /// The URL at which the APK is hosted.
+  ///
+  /// This must be an https URL.
   core.String externallyHostedUrl;
 
   /// The sha1 checksum of this APK, represented as a base64 encoded byte array.
@@ -5529,7 +5565,9 @@ class ExternallyHostedApk {
   }
 }
 
-/// An uploaded image. The resource for ImagesService.
+/// An uploaded image.
+///
+/// The resource for ImagesService.
 class Image {
   /// A unique id representing this image.
   core.String id;
@@ -5651,32 +5689,42 @@ class ImagesUploadResponse {
   }
 }
 
-/// An in-app product. The resource for InappproductsService.
+/// An in-app product.
+///
+/// The resource for InappproductsService.
 class InAppProduct {
-  /// Default language of the localized data, as defined by BCP-47. e.g.
-  /// "en-US".
+  /// Default language of the localized data, as defined by BCP-47.
+  ///
+  /// e.g. "en-US".
   core.String defaultLanguage;
 
-  /// Default price. Cannot be zero, as in-app products are never free. Always
-  /// in the developer's Checkout merchant currency.
+  /// Default price.
+  ///
+  /// Cannot be zero, as in-app products are never free. Always in the
+  /// developer's Checkout merchant currency.
   Price defaultPrice;
 
-  /// Grace period of the subscription, specified in ISO 8601 format. Allows
-  /// developers to give their subscribers a grace period when the payment for
-  /// the new recurrence period is declined. Acceptable values are P0D (zero
-  /// days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30
-  /// days).
+  /// Grace period of the subscription, specified in ISO 8601 format.
+  ///
+  /// Allows developers to give their subscribers a grace period when the
+  /// payment for the new recurrence period is declined. Acceptable values are
+  /// P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and
+  /// P30D (30 days).
   core.String gracePeriod;
 
-  /// List of localized title and description data. Map key is the language of
-  /// the localized data, as defined by BCP-47, e.g. "en-US".
+  /// List of localized title and description data.
+  ///
+  /// Map key is the language of the localized data, as defined by BCP-47, e.g.
+  /// "en-US".
   core.Map<core.String, InAppProductListing> listings;
 
   /// Package name of the parent app.
   core.String packageName;
 
-  /// Prices per buyer region. None of these can be zero, as in-app products are
-  /// never free. Map key is region code, as defined by ISO 3166-2.
+  /// Prices per buyer region.
+  ///
+  /// None of these can be zero, as in-app products are never free. Map key is
+  /// region code, as defined by ISO 3166-2.
   core.Map<core.String, Price> prices;
 
   /// The type of the product, e.g. a recurring subscription.
@@ -5697,13 +5745,16 @@ class InAppProduct {
   /// store.
   core.String status;
 
-  /// Subscription period, specified in ISO 8601 format. Acceptable values are
-  /// P1W (one week), P1M (one month), P3M (three months), P6M (six months), and
-  /// P1Y (one year).
+  /// Subscription period, specified in ISO 8601 format.
+  ///
+  /// Acceptable values are P1W (one week), P1M (one month), P3M (three months),
+  /// P6M (six months), and P1Y (one year).
   core.String subscriptionPeriod;
 
-  /// Trial period, specified in ISO 8601 format. Acceptable values are anything
-  /// between P7D (seven days) and P999D (999 days).
+  /// Trial period, specified in ISO 8601 format.
+  ///
+  /// Acceptable values are anything between P7D (seven days) and P999D (999
+  /// days).
   core.String trialPeriod;
 
   InAppProduct();
@@ -5902,9 +5953,10 @@ class InternalAppSharingArtifact {
   /// artifact.
   core.String certificateFingerprint;
 
-  /// The download URL generated for the uploaded artifact. Users that are
-  /// authorized to download can follow the link to the Play Store app to
-  /// install it.
+  /// The download URL generated for the uploaded artifact.
+  ///
+  /// Users that are authorized to download can follow the link to the Play
+  /// Store app to install it.
   core.String downloadUrl;
 
   /// The sha256 hash of the artifact represented as a lowercase hexadecimal
@@ -5942,23 +5994,27 @@ class InternalAppSharingArtifact {
 
 /// Contains the introductory price information for a subscription.
 class IntroductoryPriceInfo {
-  /// Introductory price of the subscription, not including tax. The currency is
-  /// the same as price_currency_code. Price is expressed in micro-units, where
-  /// 1,000,000 micro-units represents one unit of the currency. For example, if
-  /// the subscription price is €1.99, price_amount_micros is 1990000.
+  /// Introductory price of the subscription, not including tax.
+  ///
+  /// The currency is the same as price_currency_code. Price is expressed in
+  /// micro-units, where 1,000,000 micro-units represents one unit of the
+  /// currency. For example, if the subscription price is €1.99,
+  /// price_amount_micros is 1990000.
   core.String introductoryPriceAmountMicros;
 
-  /// ISO 4217 currency code for the introductory subscription price. For
-  /// example, if the price is specified in British pounds sterling,
+  /// ISO 4217 currency code for the introductory subscription price.
+  ///
+  /// For example, if the price is specified in British pounds sterling,
   /// price_currency_code is "GBP".
   core.String introductoryPriceCurrencyCode;
 
   /// The number of billing period to offer introductory pricing.
   core.int introductoryPriceCycles;
 
-  /// Introductory price period, specified in ISO 8601 format. Common values are
-  /// (but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three
-  /// months), "P6M" (six months), and "P1Y" (one year).
+  /// Introductory price period, specified in ISO 8601 format.
+  ///
+  /// Common values are (but not limited to) "P1W" (one week), "P1M" (one
+  /// month), "P3M" (three months), "P6M" (six months), and "P1Y" (one year).
   core.String introductoryPricePeriod;
 
   IntroductoryPriceInfo();
@@ -5998,7 +6054,9 @@ class IntroductoryPriceInfo {
   }
 }
 
-/// A localized store listing. The resource for ListingsService.
+/// A localized store listing.
+///
+/// The resource for ListingsService.
 class Listing {
   /// Full description of the app.
   core.String fullDescription;
@@ -6123,12 +6181,14 @@ class LocalizedText {
   }
 }
 
-/// Information about the current page. List operations that supports paging
-/// return only one "page" of results. This protocol buffer message describes
-/// the page that has been returned.
+/// Information about the current page.
+///
+/// List operations that supports paging return only one "page" of results. This
+/// protocol buffer message describes the page that has been returned.
 class PageInfo {
-  /// Maximum number of results returned in one page. ! The number of results
-  /// included in the API response.
+  /// Maximum number of results returned in one page.
+  ///
+  /// ! The number of results included in the API response.
   core.int resultPerPage;
 
   /// Index of the first result returned in the current page.
@@ -6169,8 +6229,9 @@ class PageInfo {
 
 /// Definition of a price, i.e. currency and units.
 class Price {
-  /// 3 letter Currency code, as defined by ISO 4217. See
-  /// java/com/google/common/money/CurrencyCode.java
+  /// 3 letter Currency code, as defined by ISO 4217.
+  ///
+  /// See java/com/google/common/money/CurrencyCode.java
   core.String currency;
 
   /// Price in 1/million of the currency base unit, represented as a string.
@@ -6202,12 +6263,14 @@ class Price {
 /// A ProductPurchase resource indicates the status of a user's inapp product
 /// purchase.
 class ProductPurchase {
-  /// The acknowledgement state of the inapp product. Possible values are: 0.
-  /// Yet to be acknowledged 1. Acknowledged
+  /// The acknowledgement state of the inapp product.
+  ///
+  /// Possible values are: 0. Yet to be acknowledged 1. Acknowledged
   core.int acknowledgementState;
 
-  /// The consumption state of the inapp product. Possible values are: 0. Yet to
-  /// be consumed 1. Consumed
+  /// The consumption state of the inapp product.
+  ///
+  /// Possible values are: 0. Yet to be consumed 1. Consumed
   core.int consumptionState;
 
   /// A developer-specified string that contains supplemental information about
@@ -6219,13 +6282,17 @@ class ProductPurchase {
   core.String kind;
 
   /// An obfuscated version of the id that is uniquely associated with the
-  /// user's account in your app. Only present if specified using
+  /// user's account in your app.
+  ///
+  /// Only present if specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
   /// when the purchase was made.
   core.String obfuscatedExternalAccountId;
 
   /// An obfuscated version of the id that is uniquely associated with the
-  /// user's profile in your app. Only present if specified using
+  /// user's profile in your app.
+  ///
+  /// Only present if specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
   /// when the purchase was made.
   core.String obfuscatedExternalProfileId;
@@ -6236,8 +6303,9 @@ class ProductPurchase {
   /// The inapp product SKU.
   core.String productId;
 
-  /// The purchase state of the order. Possible values are: 0. Purchased 1.
-  /// Canceled 2. Pending
+  /// The purchase state of the order.
+  ///
+  /// Possible values are: 0. Purchased 1. Canceled 2. Pending
   core.int purchaseState;
 
   /// The time the product was purchased, in milliseconds since the epoch (Jan
@@ -6247,11 +6315,12 @@ class ProductPurchase {
   /// The purchase token generated to identify this purchase.
   core.String purchaseToken;
 
-  /// The type of purchase of the inapp product. This field is only set if this
-  /// purchase was not made using the standard in-app billing flow. Possible
-  /// values are: 0. Test (i.e. purchased from a license testing account) 1.
-  /// Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching
-  /// a video ad instead of paying)
+  /// The type of purchase of the inapp product.
+  ///
+  /// This field is only set if this purchase was not made using the standard
+  /// in-app billing flow. Possible values are: 0. Test (i.e. purchased from a
+  /// license testing account) 1. Promo (i.e. purchased using a promo code) 2.
+  /// Rewarded (i.e. from watching a video ad instead of paying)
   core.int purchaseType;
 
   /// The quantity associated with the purchase of the inapp product.
@@ -6502,8 +6571,10 @@ class ReviewsListResponse {
 
 /// Request to reply to review or update existing reply.
 class ReviewsReplyRequest {
-  /// The text to set as the reply. Replies of more than approximately 350
-  /// characters will be rejected. HTML tags will be stripped.
+  /// The text to set as the reply.
+  ///
+  /// Replies of more than approximately 350 characters will be rejected. HTML
+  /// tags will be stripped.
   core.String replyText;
 
   ReviewsReplyRequest();
@@ -6549,13 +6620,15 @@ class ReviewsReplyResponse {
 /// Information provided by the user when they complete the subscription
 /// cancellation flow (cancellation reason survey).
 class SubscriptionCancelSurveyResult {
-  /// The cancellation reason the user chose in the survey. Possible values are:
-  /// 0. Other 1. I don't use this service enough 2. Technical issues 3.
-  /// Cost-related reasons 4. I found a better app
+  /// The cancellation reason the user chose in the survey.
+  ///
+  /// Possible values are: 0. Other 1. I don't use this service enough 2.
+  /// Technical issues 3. Cost-related reasons 4. I found a better app
   core.int cancelSurveyReason;
 
-  /// The customized input cancel reason from the user. Only present when
-  /// cancelReason is 0.
+  /// The customized input cancel reason from the user.
+  ///
+  /// Only present when cancelReason is 0.
   core.String userInputCancelReason;
 
   SubscriptionCancelSurveyResult();
@@ -6585,13 +6658,16 @@ class SubscriptionCancelSurveyResult {
 /// purchase to a future expiry time.
 class SubscriptionDeferralInfo {
   /// The desired next expiry time to assign to the subscription, in
-  /// milliseconds since the Epoch. The given time must be later/greater than
-  /// the current expiry time for the subscription.
+  /// milliseconds since the Epoch.
+  ///
+  /// The given time must be later/greater than the current expiry time for the
+  /// subscription.
   core.String desiredExpiryTimeMillis;
 
-  /// The expected expiry time for the subscription. If the current expiry time
-  /// for the subscription is not the value specified here, the deferral will
-  /// not occur.
+  /// The expected expiry time for the subscription.
+  ///
+  /// If the current expiry time for the subscription is not the value specified
+  /// here, the deferral will not occur.
   core.String expectedExpiryTimeMillis;
 
   SubscriptionDeferralInfo();
@@ -6619,21 +6695,24 @@ class SubscriptionDeferralInfo {
 }
 
 /// Contains the price change information for a subscription that can be used to
-/// control the user journey for the price change in the app. This can be in the
-/// form of seeking confirmation from the user or tailoring the experience for a
-/// successful conversion.
+/// control the user journey for the price change in the app.
+///
+/// This can be in the form of seeking confirmation from the user or tailoring
+/// the experience for a successful conversion.
 class SubscriptionPriceChange {
   /// The new price the subscription will renew with if the price change is
   /// accepted by the user.
   Price newPrice;
 
-  /// The current state of the price change. Possible values are: 0.
-  /// Outstanding: State for a pending price change waiting for the user to
-  /// agree. In this state, you can optionally seek confirmation from the user
-  /// using the In-App API. 1. Accepted: State for an accepted price change that
-  /// the subscription will renew with unless it's canceled. The price change
-  /// takes effect on a future date when the subscription renews. Note that the
-  /// change might not occur when the subscription is renewed next.
+  /// The current state of the price change.
+  ///
+  /// Possible values are: 0. Outstanding: State for a pending price change
+  /// waiting for the user to agree. In this state, you can optionally seek
+  /// confirmation from the user using the In-App API. 1. Accepted: State for an
+  /// accepted price change that the subscription will renew with unless it's
+  /// canceled. The price change takes effect on a future date when the
+  /// subscription renews. Note that the change might not occur when the
+  /// subscription is renewed next.
   core.int state;
 
   SubscriptionPriceChange();
@@ -6663,8 +6742,9 @@ class SubscriptionPriceChange {
 /// A SubscriptionPurchase resource indicates the status of a user's
 /// subscription purchase.
 class SubscriptionPurchase {
-  /// The acknowledgement state of the subscription product. Possible values
-  /// are: 0. Yet to be acknowledged 1. Acknowledged
+  /// The acknowledgement state of the subscription product.
+  ///
+  /// Possible values are: 0. Yet to be acknowledged 1. Acknowledged
   core.int acknowledgementState;
 
   /// Whether the subscription will automatically be renewed when it reaches its
@@ -6672,11 +6752,13 @@ class SubscriptionPurchase {
   core.bool autoRenewing;
 
   /// Time at which the subscription will be automatically resumed, in
-  /// milliseconds since the Epoch. Only present if the user has requested to
-  /// pause the subscription.
+  /// milliseconds since the Epoch.
+  ///
+  /// Only present if the user has requested to pause the subscription.
   core.String autoResumeTimeMillis;
 
   /// The reason why a subscription was canceled or is not auto-renewing.
+  ///
   /// Possible values are: 0. User canceled the subscription 1. Subscription was
   /// canceled by the system, for example because of a billing problem 2.
   /// Subscription was replaced with a new subscription 3. Subscription was
@@ -6695,30 +6777,36 @@ class SubscriptionPurchase {
   /// an order.
   core.String developerPayload;
 
-  /// The email address of the user when the subscription was purchased. Only
-  /// present for purchases made with 'Subscribe with Google'.
+  /// The email address of the user when the subscription was purchased.
+  ///
+  /// Only present for purchases made with 'Subscribe with Google'.
   core.String emailAddress;
 
   /// Time at which the subscription will expire, in milliseconds since the
   /// Epoch.
   core.String expiryTimeMillis;
 
-  /// User account identifier in the third-party service. Only present if
-  /// account linking happened as part of the subscription purchase flow.
+  /// User account identifier in the third-party service.
+  ///
+  /// Only present if account linking happened as part of the subscription
+  /// purchase flow.
   core.String externalAccountId;
 
-  /// The family name of the user when the subscription was purchased. Only
-  /// present for purchases made with 'Subscribe with Google'.
+  /// The family name of the user when the subscription was purchased.
+  ///
+  /// Only present for purchases made with 'Subscribe with Google'.
   core.String familyName;
 
-  /// The given name of the user when the subscription was purchased. Only
-  /// present for purchases made with 'Subscribe with Google'.
+  /// The given name of the user when the subscription was purchased.
+  ///
+  /// Only present for purchases made with 'Subscribe with Google'.
   core.String givenName;
 
-  /// Introductory price information of the subscription. This is only present
-  /// when the subscription was purchased with an introductory price. This field
-  /// does not indicate the subscription is currently in introductory price
-  /// period.
+  /// Introductory price information of the subscription.
+  ///
+  /// This is only present when the subscription was purchased with an
+  /// introductory price. This field does not indicate the subscription is
+  /// currently in introductory price period.
   IntroductoryPriceInfo introductoryPriceInfo;
 
   /// This kind represents a subscriptionPurchase object in the androidpublisher
@@ -6726,27 +6814,32 @@ class SubscriptionPurchase {
   core.String kind;
 
   /// The purchase token of the originating purchase if this subscription is one
-  /// of the following: 0. Re-signup of a canceled but non-lapsed subscription
-  /// 1. Upgrade/downgrade from a previous subscription For example, suppose a
-  /// user originally signs up and you receive purchase token X, then the user
-  /// cancels and goes through the resignup flow (before their subscription
-  /// lapses) and you receive purchase token Y, and finally the user upgrades
-  /// their subscription and you receive purchase token Z. If you call this API
-  /// with purchase token Z, this field will be set to Y. If you call this API
-  /// with purchase token Y, this field will be set to X. If you call this API
-  /// with purchase token X, this field will not be set.
+  /// of the following: 0.
+  ///
+  /// Re-signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade
+  /// from a previous subscription For example, suppose a user originally signs
+  /// up and you receive purchase token X, then the user cancels and goes
+  /// through the resignup flow (before their subscription lapses) and you
+  /// receive purchase token Y, and finally the user upgrades their subscription
+  /// and you receive purchase token Z. If you call this API with purchase token
+  /// Z, this field will be set to Y. If you call this API with purchase token
+  /// Y, this field will be set to X. If you call this API with purchase token
+  /// X, this field will not be set.
   core.String linkedPurchaseToken;
 
   /// An obfuscated version of the id that is uniquely associated with the
-  /// user's account in your app. Present for the following purchases: * If
-  /// account linking happened as part of the subscription purchase flow. * It
-  /// was specified using
+  /// user's account in your app.
+  ///
+  /// Present for the following purchases: * If account linking happened as part
+  /// of the subscription purchase flow. * It was specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
   /// when the purchase was made.
   core.String obfuscatedExternalAccountId;
 
   /// An obfuscated version of the id that is uniquely associated with the
-  /// user's profile in your app. Only present if specified using
+  /// user's profile in your app.
+  ///
+  /// Only present if specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
   /// when the purchase was made.
   core.String obfuscatedExternalProfileId;
@@ -6755,49 +6848,60 @@ class SubscriptionPurchase {
   /// the subscription.
   core.String orderId;
 
-  /// The payment state of the subscription. Possible values are: 0. Payment
-  /// pending 1. Payment received 2. Free trial 3. Pending deferred
-  /// upgrade/downgrade
+  /// The payment state of the subscription.
+  ///
+  /// Possible values are: 0. Payment pending 1. Payment received 2. Free trial
+  /// 3. Pending deferred upgrade/downgrade
   core.int paymentState;
 
-  /// Price of the subscription, not including tax. Price is expressed in
-  /// micro-units, where 1,000,000 micro-units represents one unit of the
-  /// currency. For example, if the subscription price is €1.99,
+  /// Price of the subscription, not including tax.
+  ///
+  /// Price is expressed in micro-units, where 1,000,000 micro-units represents
+  /// one unit of the currency. For example, if the subscription price is €1.99,
   /// price_amount_micros is 1990000.
   core.String priceAmountMicros;
 
-  /// The latest price change information available. This is present only when
-  /// there is an upcoming price change for the subscription yet to be applied.
-  /// Once the subscription renews with the new price or the subscription is
-  /// canceled, no price change information will be returned.
+  /// The latest price change information available.
+  ///
+  /// This is present only when there is an upcoming price change for the
+  /// subscription yet to be applied. Once the subscription renews with the new
+  /// price or the subscription is canceled, no price change information will be
+  /// returned.
   SubscriptionPriceChange priceChange;
 
-  /// ISO 4217 currency code for the subscription price. For example, if the
-  /// price is specified in British pounds sterling, price_currency_code is
-  /// "GBP".
+  /// ISO 4217 currency code for the subscription price.
+  ///
+  /// For example, if the price is specified in British pounds sterling,
+  /// price_currency_code is "GBP".
   core.String priceCurrencyCode;
 
   /// The Google profile id of the user when the subscription was purchased.
+  ///
   /// Only present for purchases made with 'Subscribe with Google'.
   core.String profileId;
 
-  /// The profile name of the user when the subscription was purchased. Only
-  /// present for purchases made with 'Subscribe with Google'.
+  /// The profile name of the user when the subscription was purchased.
+  ///
+  /// Only present for purchases made with 'Subscribe with Google'.
   core.String profileName;
 
-  /// The promotion code applied on this purchase. This field is only set if a
-  /// vanity code promotion is applied when the subscription was purchased.
+  /// The promotion code applied on this purchase.
+  ///
+  /// This field is only set if a vanity code promotion is applied when the
+  /// subscription was purchased.
   core.String promotionCode;
 
-  /// The type of promotion applied on this purchase. This field is only set if
-  /// a promotion is applied when the subscription was purchased. Possible
-  /// values are: 0. One time code 1. Vanity code
+  /// The type of promotion applied on this purchase.
+  ///
+  /// This field is only set if a promotion is applied when the subscription was
+  /// purchased. Possible values are: 0. One time code 1. Vanity code
   core.int promotionType;
 
-  /// The type of purchase of the subscription. This field is only set if this
-  /// purchase was not made using the standard in-app billing flow. Possible
-  /// values are: 0. Test (i.e. purchased from a license testing account) 1.
-  /// Promo (i.e. purchased using a promo code)
+  /// The type of purchase of the subscription.
+  ///
+  /// This field is only set if this purchase was not made using the standard
+  /// in-app billing flow. Possible values are: 0. Test (i.e. purchased from a
+  /// license testing account) 1. Promo (i.e. purchased using a promo code)
   core.int purchaseType;
 
   /// Time at which the subscription was granted, in milliseconds since the
@@ -6805,7 +6909,9 @@ class SubscriptionPurchase {
   core.String startTimeMillis;
 
   /// The time at which the subscription was canceled by the user, in
-  /// milliseconds since the epoch. Only present if cancelReason is 0.
+  /// milliseconds since the epoch.
+  ///
+  /// Only present if cancelReason is 0.
   core.String userCancellationTimeMillis;
 
   SubscriptionPurchase();
@@ -7092,7 +7198,9 @@ class SystemApksListResponse {
   }
 }
 
-/// The testers of an app. The resource for TestersService.
+/// The testers of an app.
+///
+/// The resource for TestersService.
 class Testers {
   /// All testing Google Groups, as email addresses.
   core.List<core.String> googleGroups;
@@ -7118,11 +7226,13 @@ class Testers {
 
 /// A Timestamp represents a point in time independent of any time zone or local
 /// calendar, encoded as a count of seconds and fractions of seconds at
-/// nanosecond resolution. The count is relative to an epoch at UTC midnight on
-/// January 1, 1970.
+/// nanosecond resolution.
+///
+/// The count is relative to an epoch at UTC midnight on January 1, 1970.
 class Timestamp {
-  /// Non-negative fractions of a second at nanosecond resolution. Must be from
-  /// 0 to 999,999,999 inclusive.
+  /// Non-negative fractions of a second at nanosecond resolution.
+  ///
+  /// Must be from 0 to 999,999,999 inclusive.
   core.int nanos;
 
   /// Represents seconds of UTC time since Unix epoch.
@@ -7152,16 +7262,19 @@ class Timestamp {
 }
 
 /// Pagination information returned by a List operation when token pagination is
-/// enabled. List operations that supports paging return only one "page" of
-/// results. This protocol buffer message describes the page that has been
-/// returned. When using token pagination, clients should use the next/previous
-/// token to get another page of the result. The presence or absence of
-/// next/previous token indicates whether a next/previous page is available and
-/// provides a mean of accessing this page. ListRequest.page_token should be set
-/// to either next_page_token or previous_page_token to access another page.
+/// enabled.
+///
+/// List operations that supports paging return only one "page" of results. This
+/// protocol buffer message describes the page that has been returned. When
+/// using token pagination, clients should use the next/previous token to get
+/// another page of the result. The presence or absence of next/previous token
+/// indicates whether a next/previous page is available and provides a mean of
+/// accessing this page. ListRequest.page_token should be set to either
+/// next_page_token or previous_page_token to access another page.
 class TokenPagination {
-  /// Tokens to pass to the standard list field 'page_token'. Whenever
-  /// available, tokens are preferred over manipulating start_index.
+  /// Tokens to pass to the standard list field 'page_token'.
+  ///
+  /// Whenever available, tokens are preferred over manipulating start_index.
   core.String nextPageToken;
   core.String previousPageToken;
 
@@ -7188,10 +7301,13 @@ class TokenPagination {
   }
 }
 
-/// A track configuration. The resource for TracksService.
+/// A track configuration.
+///
+/// The resource for TracksService.
 class Track {
-  /// In a read request, represents all active releases in the track. In an
-  /// update request, represents desired changes.
+  /// In a read request, represents all active releases in the track.
+  ///
+  /// In an update request, represents desired changes.
   core.List<TrackRelease> releases;
 
   /// Identifier of the track.
@@ -7228,16 +7344,19 @@ class TrackRelease {
   /// Restricts a release to a specific set of countries.
   CountryTargeting countryTargeting;
 
-  /// In-app update priority of the release. All newly added APKs in the release
-  /// will be considered at this priority. Can take values in the range [0, 5],
-  /// with 5 the highest priority. Defaults to 0. in_app_update_priority can not
-  /// be updated once the release is rolled out. See
-  /// https://developer.android.com/guide/playcore/in-app-updates.
+  /// In-app update priority of the release.
+  ///
+  /// All newly added APKs in the release will be considered at this priority.
+  /// Can take values in the range [0, 5], with 5 the highest priority. Defaults
+  /// to 0. in_app_update_priority can not be updated once the release is rolled
+  /// out. See https://developer.android.com/guide/playcore/in-app-updates.
   core.int inAppUpdatePriority;
 
-  /// The release name. Not required to be unique. If not set, the name is
-  /// generated from the APK's version_name. If the release contains multiple
-  /// APKs, the name is generated from the date.
+  /// The release name.
+  ///
+  /// Not required to be unique. If not set, the name is generated from the
+  /// APK's version_name. If the release contains multiple APKs, the name is
+  /// generated from the date.
   core.String name;
 
   /// A description of what is new in this release.
@@ -7256,12 +7375,14 @@ class TrackRelease {
   /// recent release.
   core.String status;
 
-  /// Fraction of users who are eligible for a staged release. 0 < fraction < 1.
-  /// Can only be set when status is "inProgress" or "halted".
+  /// Fraction of users who are eligible for a staged release.
+  ///
+  /// 0 < fraction < 1. Can only be set when status is "inProgress" or "halted".
   core.double userFraction;
 
-  /// Version codes of all APKs in the release. Must include version codes to
-  /// retain from previous releases.
+  /// Version codes of all APKs in the release.
+  ///
+  /// Must include version codes to retain from previous releases.
   core.List<core.String> versionCodes;
 
   TrackRelease();
@@ -7361,18 +7482,26 @@ class TracksListResponse {
 /// User entry from conversation between user and developer.
 class UserComment {
   /// Integer Android SDK version of the user's device at the time the review
-  /// was written, e.g. 23 is Marshmallow. May be absent.
+  /// was written, e.g. 23 is Marshmallow.
+  ///
+  /// May be absent.
   core.int androidOsVersion;
 
   /// Integer version code of the app as installed at the time the review was
-  /// written. May be absent.
+  /// written.
+  ///
+  /// May be absent.
   core.int appVersionCode;
 
   /// String version name of the app as installed at the time the review was
-  /// written. May be absent.
+  /// written.
+  ///
+  /// May be absent.
   core.String appVersionName;
 
-  /// Codename for the reviewer's device, e.g. klte, flounder. May be absent.
+  /// Codename for the reviewer's device, e.g. klte, flounder.
+  ///
+  /// May be absent.
   core.String device;
 
   /// Information about the characteristics of the user's device.
@@ -7381,21 +7510,25 @@ class UserComment {
   /// The last time at which this comment was updated.
   Timestamp lastModified;
 
-  /// Untranslated text of the review, where the review was translated. If the
-  /// review was not translated this is left blank.
+  /// Untranslated text of the review, where the review was translated.
+  ///
+  /// If the review was not translated this is left blank.
   core.String originalText;
 
-  /// Language code for the reviewer. This is taken from the device settings so
-  /// is not guaranteed to match the language the review is written in. May be
-  /// absent.
+  /// Language code for the reviewer.
+  ///
+  /// This is taken from the device settings so is not guaranteed to match the
+  /// language the review is written in. May be absent.
   core.String reviewerLanguage;
 
   /// The star rating associated with the review, from 1 to 5.
   core.int starRating;
 
-  /// The content of the comment, i.e. review body. In some cases users have
-  /// been able to write a review with separate title and body; in those cases
-  /// the title and body are concatenated and separated by a tab character.
+  /// The content of the comment, i.e. review body.
+  ///
+  /// In some cases users have been able to write a review with separate title
+  /// and body; in those cases the title and body are concatenated and separated
+  /// by a tab character.
   core.String text;
 
   /// Number of users who have given this review a thumbs down.
@@ -7520,13 +7653,16 @@ class UsesPermission {
   }
 }
 
-/// APK that is suitable for inclusion in a system image. The resource of
-/// SystemApksService.
+/// APK that is suitable for inclusion in a system image.
+///
+/// The resource of SystemApksService.
 class Variant {
   /// The device spec used to generate the APK.
   DeviceSpec deviceSpec;
 
-  /// Output only. The ID of a previously created system APK variant.
+  /// The ID of a previously created system APK variant.
+  ///
+  /// Output only.
   core.int variantId;
 
   Variant();
@@ -7569,17 +7705,20 @@ class VoidedPurchase {
   core.String purchaseTimeMillis;
 
   /// The token which uniquely identifies a one-time purchase or subscription.
+  ///
   /// To uniquely identify subscription renewals use order_id (available
   /// starting from version 3 of the API).
   core.String purchaseToken;
 
-  /// The reason why the purchase was voided, possible values are: 0. Other 1.
-  /// Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6.
-  /// Friendly_fraud 7. Chargeback
+  /// The reason why the purchase was voided, possible values are: 0.
+  ///
+  /// Other 1. Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5.
+  /// Fraud 6. Friendly_fraud 7. Chargeback
   core.int voidedReason;
 
-  /// The initiator of voided purchase, possible values are: 0. User 1.
-  /// Developer 2. Google
+  /// The initiator of voided purchase, possible values are: 0.
+  ///
+  /// User 1. Developer 2. Google
   core.int voidedSource;
 
   /// The time at which the purchase was canceled/refunded/charged-back, in

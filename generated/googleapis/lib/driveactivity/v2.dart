@@ -125,8 +125,10 @@ class Action {
   /// The type and detailed information about the action.
   ActionDetail detail;
 
-  /// The target this action affects (or empty if affecting all targets). This
-  /// represents the state of the target immediately after this action occurred.
+  /// The target this action affects (or empty if affecting all targets).
+  ///
+  /// This represents the state of the target immediately after this action
+  /// occurred.
   Target target;
 
   /// The action occurred over this time range.
@@ -532,11 +534,12 @@ class Comment {
   }
 }
 
-/// How the individual activities are consolidated. A set of activities may be
-/// consolidated into one combined activity if they are related in some way,
-/// such as one actor performing the same action on multiple targets, or
-/// multiple actors performing the same action on a single target. The strategy
-/// defines the rules for which activities are related.
+/// How the individual activities are consolidated.
+///
+/// A set of activities may be consolidated into one combined activity if they
+/// are related in some way, such as one actor performing the same action on
+/// multiple targets, or multiple actors performing the same action on a single
+/// target. The strategy defines the rules for which activities are related.
 class ConsolidationStrategy {
   /// The individual activities are consolidated using the legacy strategy.
   Legacy legacy;
@@ -738,9 +741,10 @@ class Domain {
 
 /// Information about a shared drive.
 class Drive {
-  /// The resource name of the shared drive. The format is
-  /// "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
-  /// ID for this resource name.
+  /// The resource name of the shared drive.
+  ///
+  /// The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+  /// specific collection ID for this resource name.
   core.String name;
 
   /// The root of this shared drive.
@@ -780,11 +784,13 @@ class Drive {
 }
 
 /// A single Drive activity comprising one or more Actions by one or more Actors
-/// on one or more Targets. Some Action groupings occur spontaneously, such as
-/// moving an item into a shared folder triggering a permission change. Other
-/// groupings of related Actions, such as multiple Actors editing one item or
-/// moving multiple files into a new folder, are controlled by the selection of
-/// a ConsolidationStrategy in the QueryDriveActivityRequest.
+/// on one or more Targets.
+///
+/// Some Action groupings occur spontaneously, such as moving an item into a
+/// shared folder triggering a permission change. Other groupings of related
+/// Actions, such as multiple Actors editing one item or moving multiple files
+/// into a new folder, are controlled by the selection of a
+/// ConsolidationStrategy in the QueryDriveActivityRequest.
 class DriveActivity {
   /// Details on all actions in this activity.
   core.List<Action> actions;
@@ -792,14 +798,17 @@ class DriveActivity {
   /// All actor(s) responsible for the activity.
   core.List<Actor> actors;
 
-  /// Key information about the primary action for this activity. This is either
-  /// representative, or the most important, of all actions in the activity,
-  /// according to the ConsolidationStrategy in the request.
+  /// Key information about the primary action for this activity.
+  ///
+  /// This is either representative, or the most important, of all actions in
+  /// the activity, according to the ConsolidationStrategy in the request.
   ActionDetail primaryActionDetail;
 
   /// All Google Drive objects this activity is about (e.g. file, folder,
-  /// drive). This represents the state of the target immediately after the
-  /// actions occurred.
+  /// drive).
+  ///
+  /// This represents the state of the target immediately after the actions
+  /// occurred.
   core.List<Target> targets;
 
   /// The activity occurred over this time range.
@@ -912,7 +921,9 @@ class DriveItem {
   /// The Drive item is a file.
   DriveFile driveFile;
 
-  /// The Drive item is a folder. Includes information about the type of folder.
+  /// The Drive item is a folder.
+  ///
+  /// Includes information about the type of folder.
   DriveFolder driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
@@ -921,11 +932,14 @@ class DriveItem {
   /// This field is deprecated; please use the `driveFolder` field instead.
   Folder folder;
 
-  /// The MIME type of the Drive item. See
-  /// https://developers.google.com/drive/v3/web/mime-types.
+  /// The MIME type of the Drive item.
+  ///
+  /// See https://developers.google.com/drive/v3/web/mime-types.
   core.String mimeType;
 
-  /// The target Drive item. The format is "items/ITEM_ID".
+  /// The target Drive item.
+  ///
+  /// The format is "items/ITEM_ID".
   core.String name;
 
   /// Information about the owner of this Drive item.
@@ -1003,7 +1017,9 @@ class DriveItemReference {
   /// The Drive item is a file.
   DriveFile driveFile;
 
-  /// The Drive item is a folder. Includes information about the type of folder.
+  /// The Drive item is a folder.
+  ///
+  /// Includes information about the type of folder.
   DriveFolder driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
@@ -1012,7 +1028,9 @@ class DriveItemReference {
   /// This field is deprecated; please use the `driveFolder` field instead.
   Folder folder;
 
-  /// The target Drive item. The format is "items/ITEM_ID".
+  /// The target Drive item.
+  ///
+  /// The format is "items/ITEM_ID".
   core.String name;
 
   /// The title of the Drive item.
@@ -1071,9 +1089,10 @@ class DriveItemReference {
 
 /// A lightweight reference to a shared drive.
 class DriveReference {
-  /// The resource name of the shared drive. The format is
-  /// "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
-  /// ID for this resource name.
+  /// The resource name of the shared drive.
+  ///
+  /// The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+  /// specific collection ID for this resource name.
   core.String name;
 
   /// The title of the shared drive.
@@ -1132,14 +1151,16 @@ class File {
 
 /// A comment on a file.
 class FileComment {
-  /// The comment in the discussion thread. This identifier is an opaque string
-  /// compatible with the Drive API; see
+  /// The comment in the discussion thread.
+  ///
+  /// This identifier is an opaque string compatible with the Drive API; see
   /// https://developers.google.com/drive/v3/reference/comments/get
   core.String legacyCommentId;
 
-  /// The discussion thread to which the comment was added. This identifier is
-  /// an opaque string compatible with the Drive API and references the first
-  /// comment in a discussion; see
+  /// The discussion thread to which the comment was added.
+  ///
+  /// This identifier is an opaque string compatible with the Drive API and
+  /// references the first comment in a discussion; see
   /// https://developers.google.com/drive/v3/reference/comments/get
   core.String legacyDiscussionId;
 
@@ -1249,7 +1270,9 @@ class Group {
 }
 
 /// Information about an impersonation, where an admin acts on behalf of an end
-/// user. Information about the acting admin is not currently available.
+/// user.
+///
+/// Information about the acting admin is not currently available.
 class Impersonation {
   /// The impersonated user.
   User impersonatedUser;
@@ -1278,7 +1301,9 @@ class KnownUser {
   core.bool isCurrentUser;
 
   /// The identifier for this user that can be used with the People API to get
-  /// more information. The format is "people/ACCOUNT_ID". See
+  /// more information.
+  ///
+  /// The format is "people/ACCOUNT_ID". See
   /// https://developers.google.com/people/.
   core.String personName;
 
@@ -1306,10 +1331,12 @@ class KnownUser {
 }
 
 /// A strategy which consolidates activities using the grouping rules from the
-/// legacy V1 Activity API. Similar actions occurring within a window of time
-/// can be grouped across multiple targets (such as moving a set of files at
-/// once) or multiple actors (such as several users editing the same item).
-/// Grouping rules for this strategy are specific to each type of action.
+/// legacy V1 Activity API.
+///
+/// Similar actions occurring within a window of time can be grouped across
+/// multiple targets (such as moving a set of files at once) or multiple actors
+/// (such as several users editing the same item). Grouping rules for this
+/// strategy are specific to each type of action.
 class Legacy {
   Legacy();
 
@@ -1458,8 +1485,9 @@ class Permission {
   /// The group to whom this permission applies.
   Group group;
 
-  /// Indicates the Google Drive permissions role. The role determines a user's
-  /// ability to read, write, and comment on items.
+  /// Indicates the Google Drive permissions role.
+  ///
+  /// The role determines a user's ability to read, write, and comment on items.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : The role is not available.
   /// - "OWNER" : A role granting full access.
@@ -1604,18 +1632,21 @@ class Post {
 /// The request message for querying Drive activity.
 class QueryDriveActivityRequest {
   /// Return activities for this Drive folder and all children and descendants.
+  ///
   /// The format is "items/ITEM_ID".
   core.String ancestorName;
 
   /// Details on how to consolidate related actions that make up the activity.
+  ///
   /// If not set, then related actions are not consolidated.
   ConsolidationStrategy consolidationStrategy;
 
-  /// The filtering for items returned from this query request. The format of
-  /// the filter string is a sequence of expressions, joined by an optional
-  /// "AND", where each expression is of the form "field operator value".
-  /// Supported fields: - time: Uses numerical operators on date values either
-  /// in terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
+  /// The filtering for items returned from this query request.
+  ///
+  /// The format of the filter string is a sequence of expressions, joined by an
+  /// optional "AND", where each expression is of the form "field operator
+  /// value". Supported fields: - time: Uses numerical operators on date values
+  /// either in terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
   /// Examples: - time > 1452409200000 AND time <= 1492812924310 - time >=
   /// "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has"
   /// operator (:) and either a singular value or a list of allowed action types
@@ -1623,19 +1654,23 @@ class QueryDriveActivityRequest {
   /// detail.action_detail_case:(CREATE EDIT) - -detail.action_detail_case:MOVE
   core.String filter;
 
-  /// Return activities for this Drive item. The format is "items/ITEM_ID".
+  /// Return activities for this Drive item.
+  ///
+  /// The format is "items/ITEM_ID".
   core.String itemName;
 
   /// The miminum number of activities desired in the response; the server will
-  /// attempt to return at least this quanitity. The server may also return
-  /// fewer activities if it has a partial response ready before the request
-  /// times out. If not set, a default value is used.
+  /// attempt to return at least this quanitity.
+  ///
+  /// The server may also return fewer activities if it has a partial response
+  /// ready before the request times out. If not set, a default value is used.
   core.int pageSize;
 
-  /// The token identifying which page of results to return. Set this to the
-  /// next_page_token value returned from a previous query to obtain the
-  /// following page of results. If not set, the first page of results will be
-  /// returned.
+  /// The token identifying which page of results to return.
+  ///
+  /// Set this to the next_page_token value returned from a previous query to
+  /// obtain the following page of results. If not set, the first page of
+  /// results will be returned.
   core.String pageToken;
 
   QueryDriveActivityRequest();

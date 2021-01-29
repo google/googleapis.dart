@@ -175,20 +175,23 @@ class UserActivityResource {
   }
 }
 
-/// An Activity represents data for an activity of a user. Note that an Activity
-/// is different from a hit. A hit might result in multiple Activity's. For
-/// example, if a hit includes a transaction and a goal completion, there will
-/// be two Activity protos for this hit, one for ECOMMERCE and one for GOAL.
-/// Conversely, multiple hits can also construct one Activity. In classic
-/// e-commerce, data for one transaction might be sent through multiple hits.
-/// These hits will be merged into one ECOMMERCE Activity.
+/// An Activity represents data for an activity of a user.
+///
+/// Note that an Activity is different from a hit. A hit might result in
+/// multiple Activity's. For example, if a hit includes a transaction and a goal
+/// completion, there will be two Activity protos for this hit, one for
+/// ECOMMERCE and one for GOAL. Conversely, multiple hits can also construct one
+/// Activity. In classic e-commerce, data for one transaction might be sent
+/// through multiple hits. These hits will be merged into one ECOMMERCE
+/// Activity.
 class Activity {
-  /// Timestamp of the activity. If activities for a visit cross midnight and
-  /// occur in two separate dates, then two sessions (one per date) share the
-  /// session identifier. For example, say session ID 113472 has activity within
-  /// 2019-08-20, and session ID 243742 has activity within 2019-08-25 and
-  /// 2019-08-26. Session ID 113472 is one session, and session ID 243742 is two
-  /// sessions.
+  /// Timestamp of the activity.
+  ///
+  /// If activities for a visit cross midnight and occur in two separate dates,
+  /// then two sessions (one per date) share the session identifier. For
+  /// example, say session ID 113472 has activity within 2019-08-20, and session
+  /// ID 243742 has activity within 2019-08-25 and 2019-08-26. Session ID 113472
+  /// is one session, and session ID 243742 is two sessions.
   core.String activityTime;
 
   /// Type of this activity.
@@ -209,9 +212,10 @@ class Activity {
   ScreenviewData appview;
 
   /// For manual campaign tracking, it is the value of the utm_campaign campaign
-  /// tracking parameter. For AdWords autotagging, it is the name(s) of the
-  /// online ad campaign(s) you use for the property. If you use neither, its
-  /// value is (not set).
+  /// tracking parameter.
+  ///
+  /// For AdWords autotagging, it is the name(s) of the online ad campaign(s)
+  /// you use for the property. If you use neither, its value is (not set).
   core.String campaign;
 
   /// The Channel Group associated with an end user's session for this View
@@ -236,34 +240,41 @@ class Activity {
   core.String hostname;
 
   /// For manual campaign tracking, it is the value of the utm_term campaign
-  /// tracking parameter. For AdWords traffic, it contains the best matching
-  /// targeting criteria. For the display network, where multiple targeting
-  /// criteria could have caused the ad to show up, it returns the best matching
-  /// targeting criteria as selected by Ads. This could be display_keyword, site
-  /// placement, boomuserlist, user_interest, age, or gender. Otherwise its
-  /// value is (not set).
+  /// tracking parameter.
+  ///
+  /// For AdWords traffic, it contains the best matching targeting criteria. For
+  /// the display network, where multiple targeting criteria could have caused
+  /// the ad to show up, it returns the best matching targeting criteria as
+  /// selected by Ads. This could be display_keyword, site placement,
+  /// boomuserlist, user_interest, age, or gender. Otherwise its value is (not
+  /// set).
   core.String keyword;
 
   /// The first page in users' sessions, or the landing page.
   core.String landingPagePath;
 
-  /// The type of referrals. For manual campaign tracking, it is the value of
-  /// the utm_medium campaign tracking parameter. For AdWords autotagging, it is
-  /// cpc. If users came from a search engine detected by Google Analytics, it
-  /// is organic. If the referrer is not a search engine, it is referral. If
-  /// users came directly to the property and document.referrer is empty, its
-  /// value is (none).
+  /// The type of referrals.
+  ///
+  /// For manual campaign tracking, it is the value of the utm_medium campaign
+  /// tracking parameter. For AdWords autotagging, it is cpc. If users came from
+  /// a search engine detected by Google Analytics, it is organic. If the
+  /// referrer is not a search engine, it is referral. If users came directly to
+  /// the property and document.referrer is empty, its value is (none).
   core.String medium;
 
-  /// This will be set if `activity_type` equals `PAGEVIEW`. This field contains
-  /// all the details about the visitor and the page that was visited.
+  /// This will be set if `activity_type` equals `PAGEVIEW`.
+  ///
+  /// This field contains all the details about the visitor and the page that
+  /// was visited.
   PageviewData pageview;
 
-  /// The source of referrals. For manual campaign tracking, it is the value of
-  /// the utm_source campaign tracking parameter. For AdWords autotagging, it is
-  /// google. If you use neither, it is the domain of the source (e.g.,
-  /// document.referrer) referring the users. It may also contain a port
-  /// address. If users arrived without a referrer, its value is (direct).
+  /// The source of referrals.
+  ///
+  /// For manual campaign tracking, it is the value of the utm_source campaign
+  /// tracking parameter. For AdWords autotagging, it is google. If you use
+  /// neither, it is the domain of the source (e.g., document.referrer)
+  /// referring the users. It may also contain a port address. If users arrived
+  /// without a referrer, its value is (direct).
   core.String source;
 
   Activity();
@@ -376,14 +387,17 @@ class Activity {
   }
 }
 
-/// Defines a cohort. A cohort is a group of users who share a common
-/// characteristic. For example, all users with the same acquisition date belong
-/// to the same cohort.
+/// Defines a cohort.
+///
+/// A cohort is a group of users who share a common characteristic. For example,
+/// all users with the same acquisition date belong to the same cohort.
 class Cohort {
   /// This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users whose
   /// first visit date is between start date and end date defined in the
-  /// DateRange. The date ranges should be aligned for cohort requests. If the
-  /// request contains `ga:cohortNthDay` it should be exactly one day long, if
+  /// DateRange.
+  ///
+  /// The date ranges should be aligned for cohort requests. If the request
+  /// contains `ga:cohortNthDay` it should be exactly one day long, if
   /// `ga:cohortNthWeek` it should be aligned to the week boundary (starting at
   /// Sunday and ending Saturday), and for `ga:cohortNthMonth` the date range
   /// should be aligned to the month (starting at the first and ending on the
@@ -392,13 +406,15 @@ class Cohort {
   /// field.
   DateRange dateRange;
 
-  /// A unique name for the cohort. If not defined name will be auto-generated
-  /// with values cohort_[1234...].
+  /// A unique name for the cohort.
+  ///
+  /// If not defined name will be auto-generated with values cohort_[1234...].
   core.String name;
 
-  /// Type of the cohort. The only supported type as of now is
-  /// `FIRST_VISIT_DATE`. If this field is unspecified the cohort is treated as
-  /// `FIRST_VISIT_DATE` type cohort.
+  /// Type of the cohort.
+  ///
+  /// The only supported type as of now is `FIRST_VISIT_DATE`. If this field is
+  /// unspecified the cohort is treated as `FIRST_VISIT_DATE` type cohort.
   /// Possible string values are:
   /// - "UNSPECIFIED_COHORT_TYPE" : If unspecified it's treated as
   /// `FIRST_VISIT_DATE`.
@@ -436,17 +452,20 @@ class Cohort {
   }
 }
 
-/// Defines a cohort group. For example: "cohortGroup": { "cohorts": [{ "name":
-/// "cohort 1", "type": "FIRST_VISIT_DATE", "dateRange": { "startDate":
-/// "2015-08-01", "endDate": "2015-08-01" } },{ "name": "cohort 2" "type":
-/// "FIRST_VISIT_DATE" "dateRange": { "startDate": "2015-07-01", "endDate":
-/// "2015-07-01" } }] }
+/// Defines a cohort group.
+///
+/// For example: "cohortGroup": { "cohorts": [{ "name": "cohort 1", "type":
+/// "FIRST_VISIT_DATE", "dateRange": { "startDate": "2015-08-01", "endDate":
+/// "2015-08-01" } },{ "name": "cohort 2" "type": "FIRST_VISIT_DATE"
+/// "dateRange": { "startDate": "2015-07-01", "endDate": "2015-07-01" } }] }
 class CohortGroup {
   /// The definition for the cohort.
   core.List<Cohort> cohorts;
 
-  /// Enable Life Time Value (LTV). LTV measures lifetime value for users
-  /// acquired through different channels. Please see: [Cohort
+  /// Enable Life Time Value (LTV).
+  ///
+  /// LTV measures lifetime value for users acquired through different channels.
+  /// Please see: [Cohort
   /// Analysis](https://support.google.com/analytics/answer/6074676) and
   /// [Lifetime Value](https://support.google.com/analytics/answer/6182550) If
   /// the value of lifetimeValue is false: - The metric values are similar to
@@ -531,8 +550,10 @@ class CustomDimension {
   /// Slot number of custom dimension.
   core.int index;
 
-  /// Value of the custom dimension. Default value (i.e. empty string) indicates
-  /// clearing sesion/visitor scope custom dimension value.
+  /// Value of the custom dimension.
+  ///
+  /// Default value (i.e. empty string) indicates clearing sesion/visitor scope
+  /// custom dimension value.
   core.String value;
 
   CustomDimension();
@@ -558,8 +579,9 @@ class CustomDimension {
   }
 }
 
-/// A contiguous set of days: startDate, startDate + 1 day, ..., endDate. The
-/// start and end dates are specified in
+/// A contiguous set of days: startDate, startDate + 1 day, ..., endDate.
+///
+/// The start and end dates are specified in
 /// [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date format `YYYY-MM-DD`.
 class DateRange {
   /// The end date for the query in the format `YYYY-MM-DD`.
@@ -630,12 +652,16 @@ class DateRangeValues {
 }
 
 /// [Dimensions](https://support.google.com/analytics/answer/1033861) are
-/// attributes of your data. For example, the dimension `ga:city` indicates the
-/// city, for example, "Paris" or "New York", from which a session originates.
+/// attributes of your data.
+///
+/// For example, the dimension `ga:city` indicates the city, for example,
+/// "Paris" or "New York", from which a session originates.
 class Dimension {
   /// If non-empty, we place dimension values into buckets after string to
-  /// int64. Dimension values that are not the string representation of an
-  /// integral value will be converted to zero. The bucket values have to be in
+  /// int64.
+  ///
+  /// Dimension values that are not the string representation of an integral
+  /// value will be converted to zero. The bucket values have to be in
   /// increasing order. Each bucket is closed on the lower end, and open on the
   /// upper end. The "first" bucket includes all values less than the first
   /// boundary, the "last" bucket includes all values up to infinity. Dimension
@@ -688,20 +714,28 @@ class DimensionFilter {
   /// Should the match be case sensitive? Default is false.
   core.bool caseSensitive;
 
-  /// The dimension to filter on. A DimensionFilter must contain a dimension.
+  /// The dimension to filter on.
+  ///
+  /// A DimensionFilter must contain a dimension.
   core.String dimensionName;
 
-  /// Strings or regular expression to match against. Only the first value of
-  /// the list is used for comparison unless the operator is `IN_LIST`. If
-  /// `IN_LIST` operator, then the entire list is used to filter the dimensions
-  /// as explained in the description of the `IN_LIST` operator.
+  /// Strings or regular expression to match against.
+  ///
+  /// Only the first value of the list is used for comparison unless the
+  /// operator is `IN_LIST`. If `IN_LIST` operator, then the entire list is used
+  /// to filter the dimensions as explained in the description of the `IN_LIST`
+  /// operator.
   core.List<core.String> expressions;
 
-  /// Logical `NOT` operator. If this boolean is set to true, then the matching
-  /// dimension values will be excluded in the report. The default is false.
+  /// Logical `NOT` operator.
+  ///
+  /// If this boolean is set to true, then the matching dimension values will be
+  /// excluded in the report. The default is false.
   core.bool not;
 
-  /// How to match the dimension to the expression. The default is REGEXP.
+  /// How to match the dimension to the expression.
+  ///
+  /// The default is REGEXP.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : If the match type is unspecified, it is treated
   /// as a `REGEXP`.
@@ -775,15 +809,18 @@ class DimensionFilter {
   }
 }
 
-/// A group of dimension filters. Set the operator value to specify how the
-/// filters are logically combined.
+/// A group of dimension filters.
+///
+/// Set the operator value to specify how the filters are logically combined.
 class DimensionFilterClause {
-  /// The repeated set of filters. They are logically combined based on the
-  /// operator specified.
+  /// The repeated set of filters.
+  ///
+  /// They are logically combined based on the operator specified.
   core.List<DimensionFilter> filters;
 
-  /// The operator for combining multiple dimension filters. If unspecified, it
-  /// is treated as an `OR`.
+  /// The operator for combining multiple dimension filters.
+  ///
+  /// If unspecified, it is treated as an `OR`.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified operator. It is treated as an `OR`.
   /// - "OR" : The logical `OR` operator.
@@ -816,8 +853,9 @@ class DimensionFilterClause {
   }
 }
 
-/// Dynamic segment definition for defining the segment within the request. A
-/// segment can select users, sessions or both.
+/// Dynamic segment definition for defining the segment within the request.
+///
+/// A segment can select users, sessions or both.
 class DynamicSegment {
   /// The name of the dynamic segment.
   core.String name;
@@ -930,10 +968,14 @@ class EcommerceData {
 
 /// Represents all the details pertaining to an event.
 class EventData {
-  /// Type of interaction with the object. Eg: 'play'.
+  /// Type of interaction with the object.
+  ///
+  /// Eg: 'play'.
   core.String eventAction;
 
-  /// The object on the page that was interacted with. Eg: 'Video'.
+  /// The object on the page that was interacted with.
+  ///
+  /// Eg: 'Video'.
   core.String eventCategory;
 
   /// Number of such events in this activity.
@@ -988,17 +1030,20 @@ class EventData {
 
 /// The batch request containing multiple report request.
 class GetReportsRequest {
-  /// Requests, each request will have a separate response. There can be a
-  /// maximum of 5 requests. All requests should have the same `dateRanges`,
-  /// `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
+  /// Requests, each request will have a separate response.
+  ///
+  /// There can be a maximum of 5 requests. All requests should have the same
+  /// `dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
   core.List<ReportRequest> reportRequests;
 
   /// Enables [resource based
   /// quotas](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),
-  /// (defaults to `False`). If this field is set to `True` the per view
-  /// (profile) quotas are governed by the computational cost of the request.
-  /// Note that using cost based quotas will higher enable sampling rates. (10
-  /// Million for `SMALL`, 100M for `LARGE`. See the [limits and quotas
+  /// (defaults to `False`).
+  ///
+  /// If this field is set to `True` the per view (profile) quotas are governed
+  /// by the computational cost of the request. Note that using cost based
+  /// quotas will higher enable sampling rates. (10 Million for `SMALL`, 100M
+  /// for `LARGE`. See the [limits and quotas
   /// documentation](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)
   /// for details.
   core.bool useResourceQuotas;
@@ -1034,6 +1079,7 @@ class GetReportsRequest {
 /// `batchGet` call.
 class GetReportsResponse {
   /// The amount of resource quota tokens deducted to execute the query.
+  ///
   /// Includes all responses.
   core.int queryCost;
 
@@ -1188,24 +1234,29 @@ class GoalSetData {
 }
 
 /// [Metrics](https://support.google.com/analytics/answer/1033861) are the
-/// quantitative measurements. For example, the metric `ga:users` indicates the
-/// total number of users for the requested time period.
+/// quantitative measurements.
+///
+/// For example, the metric `ga:users` indicates the total number of users for
+/// the requested time period.
 class Metric {
   /// An alias for the metric expression is an alternate name for the
-  /// expression. The alias can be used for filtering and sorting. This field is
-  /// optional and is useful if the expression is not a single metric but a
-  /// complex expression which cannot be used in filtering and sorting. The
-  /// alias is also used in the response column header.
+  /// expression.
+  ///
+  /// The alias can be used for filtering and sorting. This field is optional
+  /// and is useful if the expression is not a single metric but a complex
+  /// expression which cannot be used in filtering and sorting. The alias is
+  /// also used in the response column header.
   core.String alias;
 
-  /// A metric expression in the request. An expression is constructed from one
-  /// or more metrics and numbers. Accepted operators include: Plus (+), Minus
-  /// (-), Negation (Unary -), Divided by (/), Multiplied by (*), Parenthesis,
-  /// Positive cardinal numbers (0-9), can include decimals and is limited to
-  /// 1024 characters. Example `ga:totalRefunds/ga:users`, in most cases the
-  /// metric expression is just a single metric name like `ga:users`. Adding
-  /// mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics will result
-  /// in unexpected results.
+  /// A metric expression in the request.
+  ///
+  /// An expression is constructed from one or more metrics and numbers.
+  /// Accepted operators include: Plus (+), Minus (-), Negation (Unary -),
+  /// Divided by (/), Multiplied by (*), Parenthesis, Positive cardinal numbers
+  /// (0-9), can include decimals and is limited to 1024 characters. Example
+  /// `ga:totalRefunds/ga:users`, in most cases the metric expression is just a
+  /// single metric name like `ga:users`. Adding mixed `MetricType` (E.g.,
+  /// `CURRENCY` + `PERCENTAGE`) metrics will result in unexpected results.
   core.String expression;
 
   /// Specifies how the metric expression should be formatted, for example
@@ -1253,18 +1304,23 @@ class MetricFilter {
   /// The value to compare against.
   core.String comparisonValue;
 
-  /// The metric that will be filtered on. A metricFilter must contain a metric
-  /// name. A metric name can be an alias earlier defined as a metric or it can
-  /// also be a metric expression.
+  /// The metric that will be filtered on.
+  ///
+  /// A metricFilter must contain a metric name. A metric name can be an alias
+  /// earlier defined as a metric or it can also be a metric expression.
   core.String metricName;
 
-  /// Logical `NOT` operator. If this boolean is set to true, then the matching
-  /// metric values will be excluded in the report. The default is false.
+  /// Logical `NOT` operator.
+  ///
+  /// If this boolean is set to true, then the matching metric values will be
+  /// excluded in the report. The default is false.
   core.bool not;
 
   /// Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN` the comparisonValue,
-  /// the default is `EQUAL`. If the operator is `IS_MISSING`, checks if the
-  /// metric is missing and would ignore the comparisonValue.
+  /// the default is `EQUAL`.
+  ///
+  /// If the operator is `IS_MISSING`, checks if the metric is missing and would
+  /// ignore the comparisonValue.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : If the operator is not specified, it is treated
   /// as `EQUAL`.
@@ -1313,15 +1369,18 @@ class MetricFilter {
   }
 }
 
-/// Represents a group of metric filters. Set the operator value to specify how
-/// the filters are logically combined.
+/// Represents a group of metric filters.
+///
+/// Set the operator value to specify how the filters are logically combined.
 class MetricFilterClause {
-  /// The repeated set of filters. They are logically combined based on the
-  /// operator specified.
+  /// The repeated set of filters.
+  ///
+  /// They are logically combined based on the operator specified.
   core.List<MetricFilter> filters;
 
-  /// The operator for combining multiple metric filters. If unspecified, it is
-  /// treated as an `OR`.
+  /// The operator for combining multiple metric filters.
+  ///
+  /// If unspecified, it is treated as an `OR`.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified operator. It is treated as an `OR`.
   /// - "OR" : The logical `OR` operator.
@@ -1460,12 +1519,16 @@ class OrFiltersForSegment {
 
 /// Specifies the sorting options.
 class OrderBy {
-  /// The field which to sort by. The default sort order is ascending. Example:
-  /// `ga:browser`. Note, that you can only specify one field for sort here. For
-  /// example, `ga:browser, ga:city` is not valid.
+  /// The field which to sort by.
+  ///
+  /// The default sort order is ascending. Example: `ga:browser`. Note, that you
+  /// can only specify one field for sort here. For example, `ga:browser,
+  /// ga:city` is not valid.
   core.String fieldName;
 
-  /// The order type. The default orderType is `VALUE`.
+  /// The order type.
+  ///
+  /// The default orderType is `VALUE`.
   /// Possible string values are:
   /// - "ORDER_TYPE_UNSPECIFIED" : Unspecified order type will be treated as
   /// sort based on value.
@@ -1555,43 +1618,51 @@ class PageviewData {
   }
 }
 
-/// The Pivot describes the pivot section in the request. The Pivot helps
-/// rearrange the information in the table for certain reports by pivoting your
-/// data on a second dimension.
+/// The Pivot describes the pivot section in the request.
+///
+/// The Pivot helps rearrange the information in the table for certain reports
+/// by pivoting your data on a second dimension.
 class Pivot {
   /// DimensionFilterClauses are logically combined with an `AND` operator: only
   /// data that is included by all these DimensionFilterClauses contributes to
-  /// the values in this pivot region. Dimension filters can be used to restrict
-  /// the columns shown in the pivot region. For example if you have
-  /// `ga:browser` as the requested dimension in the pivot region, and you
-  /// specify key filters to restrict `ga:browser` to only "IE" or "Firefox",
-  /// then only those two browsers would show up as columns.
+  /// the values in this pivot region.
+  ///
+  /// Dimension filters can be used to restrict the columns shown in the pivot
+  /// region. For example if you have `ga:browser` as the requested dimension in
+  /// the pivot region, and you specify key filters to restrict `ga:browser` to
+  /// only "IE" or "Firefox", then only those two browsers would show up as
+  /// columns.
   core.List<DimensionFilterClause> dimensionFilterClauses;
 
-  /// A list of dimensions to show as pivot columns. A Pivot can have a maximum
-  /// of 4 dimensions. Pivot dimensions are part of the restriction on the total
-  /// number of dimensions allowed in the request.
+  /// A list of dimensions to show as pivot columns.
+  ///
+  /// A Pivot can have a maximum of 4 dimensions. Pivot dimensions are part of
+  /// the restriction on the total number of dimensions allowed in the request.
   core.List<Dimension> dimensions;
 
-  /// Specifies the maximum number of groups to return. The default value is 10,
-  /// also the maximum value is 1,000.
+  /// Specifies the maximum number of groups to return.
+  ///
+  /// The default value is 10, also the maximum value is 1,000.
   core.int maxGroupCount;
 
-  /// The pivot metrics. Pivot metrics are part of the restriction on total
-  /// number of metrics allowed in the request.
+  /// The pivot metrics.
+  ///
+  /// Pivot metrics are part of the restriction on total number of metrics
+  /// allowed in the request.
   core.List<Metric> metrics;
 
   /// If k metrics were requested, then the response will contain some
-  /// data-dependent multiple of k columns in the report. E.g., if you pivoted
-  /// on the dimension `ga:browser` then you'd get k columns for "Firefox", k
-  /// columns for "IE", k columns for "Chrome", etc. The ordering of the groups
-  /// of columns is determined by descending order of "total" for the first of
-  /// the k values. Ties are broken by lexicographic ordering of the first pivot
-  /// dimension, then lexicographic ordering of the second pivot dimension, and
-  /// so on. E.g., if the totals for the first value for Firefox, IE, and Chrome
-  /// were 8, 2, 8, respectively, the order of columns would be Chrome, Firefox,
-  /// IE. The following let you choose which of the groups of k columns are
-  /// included in the response.
+  /// data-dependent multiple of k columns in the report.
+  ///
+  /// E.g., if you pivoted on the dimension `ga:browser` then you'd get k
+  /// columns for "Firefox", k columns for "IE", k columns for "Chrome", etc.
+  /// The ordering of the groups of columns is determined by descending order of
+  /// "total" for the first of the k values. Ties are broken by lexicographic
+  /// ordering of the first pivot dimension, then lexicographic ordering of the
+  /// second pivot dimension, and so on. E.g., if the totals for the first value
+  /// for Firefox, IE, and Chrome were 8, 2, 8, respectively, the order of
+  /// columns would be Chrome, Firefox, IE. The following let you choose which
+  /// of the groups of k columns are included in the response.
   core.int startGroup;
 
   Pivot();
@@ -1844,23 +1915,28 @@ class Report {
 
 /// The data part of the report.
 class ReportData {
-  /// The last time the data in the report was refreshed. All the hits received
-  /// before this timestamp are included in the calculation of the report.
+  /// The last time the data in the report was refreshed.
+  ///
+  /// All the hits received before this timestamp are included in the
+  /// calculation of the report.
   core.String dataLastRefreshed;
 
-  /// Indicates if response to this request is golden or not. Data is golden
-  /// when the exact same request will not produce any new results if asked at a
-  /// later point in time.
+  /// Indicates if response to this request is golden or not.
+  ///
+  /// Data is golden when the exact same request will not produce any new
+  /// results if asked at a later point in time.
   core.bool isDataGolden;
 
-  /// Minimum and maximum values seen over all matching rows. These are both
-  /// empty when `hideValueRanges` in the request is false, or when rowCount is
-  /// zero.
+  /// Minimum and maximum values seen over all matching rows.
+  ///
+  /// These are both empty when `hideValueRanges` in the request is false, or
+  /// when rowCount is zero.
   core.List<DateRangeValues> maximums;
 
-  /// Minimum and maximum values seen over all matching rows. These are both
-  /// empty when `hideValueRanges` in the request is false, or when rowCount is
-  /// zero.
+  /// Minimum and maximum values seen over all matching rows.
+  ///
+  /// These are both empty when `hideValueRanges` in the request is false, or
+  /// when rowCount is zero.
   core.List<DateRangeValues> minimums;
 
   /// Total number of matching rows for this query.
@@ -1871,26 +1947,30 @@ class ReportData {
 
   /// If the results are
   /// [sampled](https://support.google.com/analytics/answer/2637192), this
-  /// returns the total number of samples read, one entry per date range. If the
-  /// results are not sampled this field will not be defined. See [developer
-  /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for
-  /// details.
+  /// returns the total number of samples read, one entry per date range.
+  ///
+  /// If the results are not sampled this field will not be defined. See
+  /// [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+  /// for details.
   core.List<core.String> samplesReadCounts;
 
   /// If the results are
   /// [sampled](https://support.google.com/analytics/answer/2637192), this
-  /// returns the total number of samples present, one entry per date range. If
-  /// the results are not sampled this field will not be defined. See [developer
-  /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for
-  /// details.
+  /// returns the total number of samples present, one entry per date range.
+  ///
+  /// If the results are not sampled this field will not be defined. See
+  /// [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+  /// for details.
   core.List<core.String> samplingSpaceSizes;
 
   /// For each requested date range, for the set of all rows that match the
-  /// query, every requested value format gets a total. The total for a value
-  /// format is computed by first totaling the metrics mentioned in the value
-  /// format and then evaluating the value format as a scalar expression. E.g.,
-  /// The "totals" for `3 / (ga:sessions + 2)` we compute `3 / ((sum of all
-  /// relevant ga:sessions) + 2)`. Totals are computed before pagination.
+  /// query, every requested value format gets a total.
+  ///
+  /// The total for a value format is computed by first totaling the metrics
+  /// mentioned in the value format and then evaluating the value format as a
+  /// scalar expression. E.g., The "totals" for `3 / (ga:sessions + 2)` we
+  /// compute `3 / ((sum of all relevant ga:sessions) + 2)`. Totals are computed
+  /// before pagination.
   core.List<DateRangeValues> totals;
 
   ReportData();
@@ -1976,71 +2056,88 @@ class ReportData {
 
 /// The main request class which specifies the Reporting API request.
 class ReportRequest {
-  /// Cohort group associated with this request. If there is a cohort group in
-  /// the request the `ga:cohort` dimension must be present. Every
-  /// [ReportRequest](#ReportRequest) within a `batchGet` method must contain
-  /// the same `cohortGroup` definition.
+  /// Cohort group associated with this request.
+  ///
+  /// If there is a cohort group in the request the `ga:cohort` dimension must
+  /// be present. Every [ReportRequest](#ReportRequest) within a `batchGet`
+  /// method must contain the same `cohortGroup` definition.
   CohortGroup cohortGroup;
 
-  /// Date ranges in the request. The request can have a maximum of 2 date
-  /// ranges. The response will contain a set of metric values for each
-  /// combination of the dimensions for each date range in the request. So, if
-  /// there are two date ranges, there will be two set of metric values, one for
-  /// the original date range and one for the second date range. The
-  /// `reportRequest.dateRanges` field should not be specified for cohorts or
-  /// Lifetime value requests. If a date range is not provided, the default date
-  /// range is (startDate: current date - 7 days, endDate: current date - 1
-  /// day). Every [ReportRequest](#ReportRequest) within a `batchGet` method
-  /// must contain the same `dateRanges` definition.
+  /// Date ranges in the request.
+  ///
+  /// The request can have a maximum of 2 date ranges. The response will contain
+  /// a set of metric values for each combination of the dimensions for each
+  /// date range in the request. So, if there are two date ranges, there will be
+  /// two set of metric values, one for the original date range and one for the
+  /// second date range. The `reportRequest.dateRanges` field should not be
+  /// specified for cohorts or Lifetime value requests. If a date range is not
+  /// provided, the default date range is (startDate: current date - 7 days,
+  /// endDate: current date - 1 day). Every [ReportRequest](#ReportRequest)
+  /// within a `batchGet` method must contain the same `dateRanges` definition.
   core.List<DateRange> dateRanges;
 
-  /// The dimension filter clauses for filtering Dimension Values. They are
-  /// logically combined with the `AND` operator. Note that filtering occurs
-  /// before any dimensions are aggregated, so that the returned metrics
+  /// The dimension filter clauses for filtering Dimension Values.
+  ///
+  /// They are logically combined with the `AND` operator. Note that filtering
+  /// occurs before any dimensions are aggregated, so that the returned metrics
   /// represent the total for only the relevant dimensions.
   core.List<DimensionFilterClause> dimensionFilterClauses;
 
-  /// The dimensions requested. Requests can have a total of 9 dimensions.
+  /// The dimensions requested.
+  ///
+  /// Requests can have a total of 9 dimensions.
   core.List<Dimension> dimensions;
 
   /// Dimension or metric filters that restrict the data returned for your
-  /// request. To use the `filtersExpression`, supply a dimension or metric on
-  /// which to filter, followed by the filter expression. For example, the
-  /// following expression selects `ga:browser` dimension which starts with
-  /// Firefox; `ga:browser=~^Firefox`. For more information on dimensions and
-  /// metric filters, see [Filters
+  /// request.
+  ///
+  /// To use the `filtersExpression`, supply a dimension or metric on which to
+  /// filter, followed by the filter expression. For example, the following
+  /// expression selects `ga:browser` dimension which starts with Firefox;
+  /// `ga:browser=~^Firefox`. For more information on dimensions and metric
+  /// filters, see [Filters
   /// reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).
   core.String filtersExpression;
 
   /// If set to true, hides the total of all metrics for all the matching rows,
-  /// for every date range. The default false and will return the totals.
+  /// for every date range.
+  ///
+  /// The default false and will return the totals.
   core.bool hideTotals;
 
   /// If set to true, hides the minimum and maximum across all matching rows.
+  ///
   /// The default is false and the value ranges are returned.
   core.bool hideValueRanges;
 
   /// If set to false, the response does not include rows if all the retrieved
-  /// metrics are equal to zero. The default is false which will exclude these
-  /// rows.
+  /// metrics are equal to zero.
+  ///
+  /// The default is false which will exclude these rows.
   core.bool includeEmptyRows;
 
-  /// The metric filter clauses. They are logically combined with the `AND`
-  /// operator. Metric filters look at only the first date range and not the
-  /// comparing date range. Note that filtering on metrics occurs after the
-  /// metrics are aggregated.
+  /// The metric filter clauses.
+  ///
+  /// They are logically combined with the `AND` operator. Metric filters look
+  /// at only the first date range and not the comparing date range. Note that
+  /// filtering on metrics occurs after the metrics are aggregated.
   core.List<MetricFilterClause> metricFilterClauses;
 
-  /// The metrics requested. Requests must specify at least one metric. Requests
-  /// can have a total of 10 metrics.
+  /// The metrics requested.
+  ///
+  /// Requests must specify at least one metric. Requests can have a total of 10
+  /// metrics.
   core.List<Metric> metrics;
 
-  /// Sort order on output rows. To compare two rows, the elements of the
-  /// following are applied in order until a difference is found. All date
-  /// ranges in the output get the same row order.
+  /// Sort order on output rows.
+  ///
+  /// To compare two rows, the elements of the following are applied in order
+  /// until a difference is found. All date ranges in the output get the same
+  /// row order.
   core.List<OrderBy> orderBys;
 
   /// Page size is for paging and specifies the maximum number of returned rows.
+  ///
   /// Page size should be >= 0. A query returns the default of 1,000 rows. The
   /// Analytics Core Reporting API returns a maximum of 100,000 rows per
   /// request, no matter how many you ask for. It can also return fewer rows
@@ -2050,20 +2147,24 @@ class ReportRequest {
   /// if you set `pageSize` to a higher value.
   core.int pageSize;
 
-  /// A continuation token to get the next page of the results. Adding this to
-  /// the request will return the rows after the pageToken. The pageToken should
-  /// be the value returned in the nextPageToken parameter in the response to
-  /// the GetReports request.
+  /// A continuation token to get the next page of the results.
+  ///
+  /// Adding this to the request will return the rows after the pageToken. The
+  /// pageToken should be the value returned in the nextPageToken parameter in
+  /// the response to the GetReports request.
   core.String pageToken;
 
-  /// The pivot definitions. Requests can have a maximum of 2 pivots.
+  /// The pivot definitions.
+  ///
+  /// Requests can have a maximum of 2 pivots.
   core.List<Pivot> pivots;
 
   /// The desired report
-  /// [sample](https://support.google.com/analytics/answer/2637192) size. If the
-  /// the `samplingLevel` field is unspecified the `DEFAULT` sampling level is
-  /// used. Every [ReportRequest](#ReportRequest) within a `batchGet` method
-  /// must contain the same `samplingLevel` definition. See [developer
+  /// [sample](https://support.google.com/analytics/answer/2637192) size.
+  ///
+  /// If the the `samplingLevel` field is unspecified the `DEFAULT` sampling
+  /// level is used. Every [ReportRequest](#ReportRequest) within a `batchGet`
+  /// method must contain the same `samplingLevel` definition. See [developer
   /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
   /// Possible string values are:
@@ -2076,17 +2177,21 @@ class ReportRequest {
   /// But this may result in response being slower.
   core.String samplingLevel;
 
-  /// Segment the data returned for the request. A segment definition helps look
-  /// at a subset of the segment request. A request can contain up to four
-  /// segments. Every [ReportRequest](#ReportRequest) within a `batchGet` method
-  /// must contain the same `segments` definition. Requests with segments must
-  /// have the `ga:segment` dimension.
+  /// Segment the data returned for the request.
+  ///
+  /// A segment definition helps look at a subset of the segment request. A
+  /// request can contain up to four segments. Every
+  /// [ReportRequest](#ReportRequest) within a `batchGet` method must contain
+  /// the same `segments` definition. Requests with segments must have the
+  /// `ga:segment` dimension.
   core.List<Segment> segments;
 
   /// The Analytics [view
   /// ID](https://support.google.com/analytics/answer/1009618) from which to
-  /// retrieve data. Every [ReportRequest](#ReportRequest) within a `batchGet`
-  /// method must contain the same `viewId`.
+  /// retrieve data.
+  ///
+  /// Every [ReportRequest](#ReportRequest) within a `batchGet` method must
+  /// contain the same `viewId`.
   core.String viewId;
 
   ReportRequest();
@@ -2303,10 +2408,14 @@ class ScreenviewData {
   /// The application name.
   core.String appName;
 
-  /// Mobile manufacturer or branded name. Eg: "Google", "Apple" etc.
+  /// Mobile manufacturer or branded name.
+  ///
+  /// Eg: "Google", "Apple" etc.
   core.String mobileDeviceBranding;
 
-  /// Mobile device model. Eg: "Pixel", "iPhone" etc.
+  /// Mobile device model.
+  ///
+  /// Eg: "Pixel", "iPhone" etc.
   core.String mobileDeviceModel;
 
   /// The name of the screen.
@@ -2349,37 +2458,48 @@ class ScreenviewData {
 
 /// The request to fetch User Report from Reporting API `userActivity:get` call.
 class SearchUserActivityRequest {
-  /// Set of all activity types being requested. Only acvities matching these
-  /// types will be returned in the response. If empty, all activies will be
-  /// returned.
+  /// Set of all activity types being requested.
+  ///
+  /// Only acvities matching these types will be returned in the response. If
+  /// empty, all activies will be returned.
   core.List<core.String> activityTypes;
 
-  /// Date range for which to retrieve the user activity. If a date range is not
-  /// provided, the default date range is (startDate: current date - 7 days,
-  /// endDate: current date - 1 day).
+  /// Date range for which to retrieve the user activity.
+  ///
+  /// If a date range is not provided, the default date range is (startDate:
+  /// current date - 7 days, endDate: current date - 1 day).
   DateRange dateRange;
 
   /// Page size is for paging and specifies the maximum number of returned rows.
+  ///
   /// Page size should be > 0. If the value is 0 or if the field isn't
   /// specified, the request returns the default of 1000 rows per page.
   core.int pageSize;
 
-  /// A continuation token to get the next page of the results. Adding this to
-  /// the request will return the rows after the pageToken. The pageToken should
-  /// be the value returned in the nextPageToken parameter in the response to
-  /// the [SearchUserActivityRequest](#SearchUserActivityRequest) request.
+  /// A continuation token to get the next page of the results.
+  ///
+  /// Adding this to the request will return the rows after the pageToken. The
+  /// pageToken should be the value returned in the nextPageToken parameter in
+  /// the response to the
+  /// [SearchUserActivityRequest](#SearchUserActivityRequest) request.
   core.String pageToken;
 
-  /// Required. Unique user Id to query for. Every
-  /// [SearchUserActivityRequest](#SearchUserActivityRequest) must contain this
-  /// field.
+  /// Unique user Id to query for.
+  ///
+  /// Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain
+  /// this field.
+  ///
+  /// Required.
   User user;
 
-  /// Required. The Analytics [view
+  /// The Analytics [view
   /// ID](https://support.google.com/analytics/answer/1009618) from which to
-  /// retrieve data. Every
-  /// [SearchUserActivityRequest](#SearchUserActivityRequest) must contain the
-  /// `viewId`.
+  /// retrieve data.
+  ///
+  /// Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain
+  /// the `viewId`.
+  ///
+  /// Required.
   core.String viewId;
 
   SearchUserActivityRequest();
@@ -2442,7 +2562,9 @@ class SearchUserActivityResponse {
 
   /// This field represents the [sampling
   /// rate](https://support.google.com/analytics/answer/2637192) for the given
-  /// request and is a number between 0.0 to 1.0. See [developer
+  /// request and is a number between 0.0 to 1.0.
+  ///
+  /// See [developer
   /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
   core.double sampleRate;
@@ -2491,9 +2613,10 @@ class SearchUserActivityResponse {
   }
 }
 
-/// The segment definition, if the report needs to be segmented. A Segment is a
-/// subset of the Analytics data. For example, of the entire set of users, one
-/// Segment might be users from a particular country or city.
+/// The segment definition, if the report needs to be segmented.
+///
+/// A Segment is a subset of the Analytics data. For example, of the entire set
+/// of users, one Segment might be users from a particular country or city.
 class Segment {
   /// A dynamic segment definition in the request.
   DynamicSegment dynamicSegment;
@@ -2650,21 +2773,25 @@ class SegmentDimensionFilter {
 }
 
 /// SegmentFilter defines the segment to be either a simple or a sequence
-/// segment. A simple segment condition contains dimension and metric conditions
-/// to select the sessions or users. A sequence segment condition can be used to
+/// segment.
+///
+/// A simple segment condition contains dimension and metric conditions to
+/// select the sessions or users. A sequence segment condition can be used to
 /// select users or sessions based on sequential conditions.
 class SegmentFilter {
-  /// If true, match the complement of simple or sequence segment. For example,
-  /// to match all visits not from "New York", we can define the segment as
-  /// follows: "sessionSegment": { "segmentFilters": [{ "simpleSegment" :{
-  /// "orFiltersForSegment": [{ "segmentFilterClauses":[{ "dimensionFilter": {
-  /// "dimensionName": "ga:city", "expressions": ["New York"] } }] }] }, "not":
-  /// "True" }] },
+  /// If true, match the complement of simple or sequence segment.
+  ///
+  /// For example, to match all visits not from "New York", we can define the
+  /// segment as follows: "sessionSegment": { "segmentFilters": [{
+  /// "simpleSegment" :{ "orFiltersForSegment": [{ "segmentFilterClauses":[{
+  /// "dimensionFilter": { "dimensionName": "ga:city", "expressions": ["New
+  /// York"] } }] }] }, "not": "True" }] },
   core.bool not;
 
   /// Sequence conditions consist of one or more steps, where each step is
-  /// defined by one or more dimension/metric conditions. Multiple steps can be
-  /// combined with special sequence operators.
+  /// defined by one or more dimension/metric conditions.
+  ///
+  /// Multiple steps can be combined with special sequence operators.
   SequenceSegment sequenceSegment;
 
   /// A Simple segment conditions consist of one or more dimension/metric
@@ -2747,19 +2874,23 @@ class SegmentFilterClause {
 
 /// Metric filter to be used in a segment filter clause.
 class SegmentMetricFilter {
-  /// The value to compare against. If the operator is `BETWEEN`, this value is
-  /// treated as minimum comparison value.
+  /// The value to compare against.
+  ///
+  /// If the operator is `BETWEEN`, this value is treated as minimum comparison
+  /// value.
   core.String comparisonValue;
 
   /// Max comparison value is only used for `BETWEEN` operator.
   core.String maxComparisonValue;
 
-  /// The metric that will be filtered on. A `metricFilter` must contain a
-  /// metric name.
+  /// The metric that will be filtered on.
+  ///
+  /// A `metricFilter` must contain a metric name.
   core.String metricName;
 
-  /// Specifies is the operation to perform to compare the metric. The default
-  /// is `EQUAL`.
+  /// Specifies is the operation to perform to compare the metric.
+  ///
+  /// The default is `EQUAL`.
   /// Possible string values are:
   /// - "UNSPECIFIED_OPERATOR" : Unspecified operator is treated as `LESS_THAN`
   /// operator.
@@ -2771,9 +2902,10 @@ class SegmentMetricFilter {
   /// exclusive. We will use `LT` and `GT` for comparison.
   core.String operator;
 
-  /// Scope for a metric defines the level at which that metric is defined. The
-  /// specified metric scope must be equal to or greater than its primary scope
-  /// as defined in the data model. The primary scope is defined by if the
+  /// Scope for a metric defines the level at which that metric is defined.
+  ///
+  /// The specified metric scope must be equal to or greater than its primary
+  /// scope as defined in the data model. The primary scope is defined by if the
   /// segment is selecting users or sessions.
   /// Possible string values are:
   /// - "UNSPECIFIED_SCOPE" : If the scope is unspecified, it defaults to the
@@ -2871,8 +3003,9 @@ class SegmentSequenceStep {
 }
 
 /// Sequence conditions consist of one or more steps, where each step is defined
-/// by one or more dimension/metric conditions. Multiple steps can be combined
-/// with special sequence operators.
+/// by one or more dimension/metric conditions.
+///
+/// Multiple steps can be combined with special sequence operators.
 class SequenceSegment {
   /// If set, first step condition must match the first hit of the visitor (in
   /// the date range).
@@ -2991,8 +3124,9 @@ class TransactionData {
 
 /// Contains information to identify a particular user uniquely.
 class User {
-  /// Type of the user in the request. The field `userId` is associated with
-  /// this type.
+  /// Type of the user in the request.
+  ///
+  /// The field `userId` is associated with this type.
   /// Possible string values are:
   /// - "USER_ID_TYPE_UNSPECIFIED" : When the User Id Type is not specified, the
   /// default type used will be CLIENT_ID.
@@ -3034,9 +3168,11 @@ class UserActivitySession {
   /// Represents a detailed view into each of the activity in this session.
   core.List<Activity> activities;
 
-  /// The data source of a hit. By default, hits sent from analytics.js are
-  /// reported as "web" and hits sent from the mobile SDKs are reported as
-  /// "app". These values can be overridden in the Measurement Protocol.
+  /// The data source of a hit.
+  ///
+  /// By default, hits sent from analytics.js are reported as "web" and hits
+  /// sent from the mobile SDKs are reported as "app". These values can be
+  /// overridden in the Measurement Protocol.
   core.String dataSource;
 
   /// The type of device used: "mobile", "tablet" etc.

@@ -75,12 +75,13 @@ class SearchanalyticsResource {
 
   SearchanalyticsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Query your data with filters and parameters that you define. Returns zero
-  /// or more rows grouped by the row keys that you define. You must define a
-  /// date range of one or more days. When date is one of the group by values,
-  /// any days without data are omitted from the result list. If you need to
-  /// know which days have data, issue a broad date range query grouped by date
-  /// for any metric, and see which day rows are returned.
+  /// Query your data with filters and parameters that you define.
+  ///
+  /// Returns zero or more rows grouped by the row keys that you define. You
+  /// must define a date range of one or more days. When date is one of the
+  /// group by values, any days without data are omitted from the result list.
+  /// If you need to know which days have data, issue a broad date range query
+  /// grouped by date for any metric, and see which day rows are returned.
   ///
   /// [request] - The metadata request object.
   ///
@@ -715,10 +716,12 @@ class ApiDataRow {
 }
 
 /// A filter test to be applied to each row in the data set, where a match can
-/// return the row. Filters are string comparisons, and values and dimension
-/// names are not case-sensitive. Individual filters are either AND'ed or OR'ed
-/// within their parent filter group, according to the group's group type. You
-/// do not need to group by a specified dimension to filter against it.
+/// return the row.
+///
+/// Filters are string comparisons, and values and dimension names are not
+/// case-sensitive. Individual filters are either AND'ed or OR'ed within their
+/// parent filter group, according to the group's group type. You do not need to
+/// group by a specified dimension to filter against it.
 class ApiDimensionFilter {
   ///
   /// Possible string values are:
@@ -767,10 +770,11 @@ class ApiDimensionFilter {
   }
 }
 
-/// A set of dimension value filters to test against each row. Only rows that
-/// pass all filter groups will be returned. All results within a filter group
-/// are either AND'ed or OR'ed together, depending on the group type selected.
-/// All filter groups are AND'ed together.
+/// A set of dimension value filters to test against each row.
+///
+/// Only rows that pass all filter groups will be returned. All results within a
+/// filter group are either AND'ed or OR'ed together, depending on the group
+/// type selected. All filter groups are AND'ed together.
 class ApiDimensionFilterGroup {
   core.List<ApiDimensionFilter> filters;
 
@@ -829,8 +833,10 @@ class BlockedResource {
 
 /// Describe image data.
 class Image {
-  /// Image data in format determined by the mime type. Currently, the format
-  /// will always be "image/png", but this might change in the future.
+  /// Image data in format determined by the mime type.
+  ///
+  /// Currently, the format will always be "image/png", but this might change in
+  /// the future.
   core.String data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 
@@ -931,7 +937,9 @@ class ResourceIssue {
 
 /// Mobile-friendly test request.
 class RunMobileFriendlyTestRequest {
-  /// Whether or not screenshot is requested. Default is false.
+  /// Whether or not screenshot is requested.
+  ///
+  /// Default is false.
   core.bool requestScreenshot;
 
   /// URL for inspection.
@@ -1035,42 +1043,54 @@ class RunMobileFriendlyTestResponse {
 }
 
 class SearchAnalyticsQueryRequest {
-  /// [Optional; Default is \"auto\"] How data is aggregated. If aggregated by
-  /// property, all data for the same property is aggregated; if aggregated by
-  /// page, all data is aggregated by canonical URI. If you filter or group by
-  /// page, choose AUTO; otherwise you can aggregate either by property or by
-  /// page, depending on how you want your data calculated; see the help
-  /// documentation to learn how data is calculated differently by site versus
-  /// by page. **Note:** If you group or filter by page, you cannot aggregate by
-  /// property. If you specify any value other than AUTO, the aggregation type
-  /// in the result will match the requested type, or if you request an invalid
-  /// type, you will get an error. The API will never change your aggregation
-  /// type if the requested type is invalid.
+  /// [Optional; Default is \"auto\"] How data is aggregated.
+  ///
+  /// If aggregated by property, all data for the same property is aggregated;
+  /// if aggregated by page, all data is aggregated by canonical URI. If you
+  /// filter or group by page, choose AUTO; otherwise you can aggregate either
+  /// by property or by page, depending on how you want your data calculated;
+  /// see the help documentation to learn how data is calculated differently by
+  /// site versus by page. **Note:** If you group or filter by page, you cannot
+  /// aggregate by property. If you specify any value other than AUTO, the
+  /// aggregation type in the result will match the requested type, or if you
+  /// request an invalid type, you will get an error. The API will never change
+  /// your aggregation type if the requested type is invalid.
   /// Possible string values are:
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
   core.String aggregationType;
 
-  /// [Optional] Zero or more filters to apply to the dimension grouping values;
-  /// for example, 'query contains \"buy\"' to see only data where the query
-  /// string contains the substring \"buy\" (not case-sensitive). You can filter
-  /// by a dimension without grouping by it.
+  /// Zero or more filters to apply to the dimension grouping values; for
+  /// example, 'query contains \"buy\"' to see only data where the query string
+  /// contains the substring \"buy\" (not case-sensitive).
+  ///
+  /// You can filter by a dimension without grouping by it.
+  ///
+  /// Optional.
   core.List<ApiDimensionFilterGroup> dimensionFilterGroups;
 
-  /// [Optional] Zero or more dimensions to group results by. Dimensions are the
-  /// group-by values in the Search Analytics page. Dimensions are combined to
-  /// create a unique row key for each row. Results are grouped in the order
-  /// that you supply these dimensions.
+  /// Zero or more dimensions to group results by.
+  ///
+  /// Dimensions are the group-by values in the Search Analytics page.
+  /// Dimensions are combined to create a unique row key for each row. Results
+  /// are grouped in the order that you supply these dimensions.
+  ///
+  /// Optional.
   core.List<core.String> dimensions;
 
-  /// [Required] End date of the requested date range, in YYYY-MM-DD format, in
-  /// PST (UTC - 8:00). Must be greater than or equal to the start date. This
-  /// value is included in the range.
+  /// End date of the requested date range, in YYYY-MM-DD format, in PST (UTC -
+  /// 8:00).
+  ///
+  /// Must be greater than or equal to the start date. This value is included in
+  /// the range.
+  ///
+  /// Required.
   core.String endDate;
 
-  /// [Optional; Default is 1000] The maximum number of rows to return. Must be
-  /// a number from 1 to 25,000 (inclusive).
+  /// [Optional; Default is 1000] The maximum number of rows to return.
+  ///
+  /// Must be a number from 1 to 25,000 (inclusive).
   core.int rowLimit;
 
   /// [Optional; Default is \"web\"] The search type to filter for.
@@ -1081,12 +1101,16 @@ class SearchAnalyticsQueryRequest {
   core.String searchType;
 
   /// [Required] Start date of the requested date range, in YYYY-MM-DD format,
-  /// in PST time (UTC - 8:00). Must be less than or equal to the end date. This
-  /// value is included in the range.
+  /// in PST time (UTC - 8:00).
+  ///
+  /// Must be less than or equal to the end date. This value is included in the
+  /// range.
   core.String startDate;
 
   /// [Optional; Default is 0] Zero-based index of the first row in the
-  /// response. Must be a non-negative number.
+  /// response.
+  ///
+  /// Must be a non-negative number.
   core.int startRow;
 
   SearchAnalyticsQueryRequest();
@@ -1155,9 +1179,10 @@ class SearchAnalyticsQueryRequest {
   }
 }
 
-/// A list of rows, one per result, grouped by key. Metrics in each row are
-/// aggregated for all data grouped by that key either by page or property, as
-/// specified by the aggregation type parameter.
+/// A list of rows, one per result, grouped by key.
+///
+/// Metrics in each row are aggregated for all data grouped by that key either
+/// by page or property, as specified by the aggregation type parameter.
 class SearchAnalyticsQueryResponse {
   /// How the results were aggregated.
   /// Possible string values are:
@@ -1223,8 +1248,9 @@ class SitemapsListResponse {
 
 /// List of sites with access level information.
 class SitesListResponse {
-  /// Contains permission level information about a Search Console site. For
-  /// more information, see [Permissions in Search
+  /// Contains permission level information about a Search Console site.
+  ///
+  /// For more information, see [Permissions in Search
   /// Console](https://support.google.com/webmasters/answer/2451999).
   core.List<WmxSite> siteEntry;
 
@@ -1290,8 +1316,9 @@ class TestStatus {
   }
 }
 
-/// Contains permission level information about a Search Console site. For more
-/// information, see [Permissions in Search
+/// Contains permission level information about a Search Console site.
+///
+/// For more information, see [Permissions in Search
 /// Console](https://support.google.com/webmasters/answer/2451999).
 class WmxSite {
   /// The user's permission level for the site.
@@ -1337,8 +1364,10 @@ class WmxSitemap {
   /// The various content types in the sitemap.
   core.List<WmxSitemapContent> contents;
 
-  /// Number of errors in the sitemap. These are issues with the sitemap itself
-  /// that need to be fixed before it can be processed correctly.
+  /// Number of errors in the sitemap.
+  ///
+  /// These are issues with the sitemap itself that need to be fixed before it
+  /// can be processed correctly.
   core.String errors;
 
   /// If true, the sitemap has not been processed.
@@ -1347,18 +1376,22 @@ class WmxSitemap {
   /// If true, the sitemap is a collection of sitemaps.
   core.bool isSitemapsIndex;
 
-  /// Date & time in which this sitemap was last downloaded. Date format is in
-  /// RFC 3339 format (yyyy-mm-dd).
+  /// Date & time in which this sitemap was last downloaded.
+  ///
+  /// Date format is in RFC 3339 format (yyyy-mm-dd).
   core.String lastDownloaded;
 
-  /// Date & time in which this sitemap was submitted. Date format is in RFC
-  /// 3339 format (yyyy-mm-dd).
+  /// Date & time in which this sitemap was submitted.
+  ///
+  /// Date format is in RFC 3339 format (yyyy-mm-dd).
   core.String lastSubmitted;
 
   /// The url of the sitemap.
   core.String path;
 
-  /// The type of the sitemap. For example: `rssFeed`.
+  /// The type of the sitemap.
+  ///
+  /// For example: `rssFeed`.
   /// Possible string values are:
   /// - "NOT_SITEMAP"
   /// - "URL_LIST"
@@ -1369,8 +1402,9 @@ class WmxSitemap {
   /// - "OCEANFRONT"
   core.String type;
 
-  /// Number of warnings for the sitemap. These are generally non-critical
-  /// issues with URLs in the sitemaps.
+  /// Number of warnings for the sitemap.
+  ///
+  /// These are generally non-critical issues with URLs in the sitemaps.
   core.String warnings;
 
   WmxSitemap();
@@ -1450,7 +1484,9 @@ class WmxSitemapContent {
   /// The number of URLs in the sitemap (of the content type).
   core.String submitted;
 
-  /// The specific type of content in this sitemap. For example: `web`.
+  /// The specific type of content in this sitemap.
+  ///
+  /// For example: `web`.
   /// Possible string values are:
   /// - "WEB"
   /// - "IMAGE"
