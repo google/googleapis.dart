@@ -71,7 +71,7 @@ class AgentUsersResource {
   /// Request parameters:
   ///
   /// [agentUserId] - Required. Third-party user ID.
-  /// Value must have pattern "^agentUsers/.*$".
+  /// Value must have pattern `^agentUsers/.*$`.
   ///
   /// [requestId] - Request ID used for debugging.
   ///

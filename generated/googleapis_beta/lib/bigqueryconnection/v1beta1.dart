@@ -93,7 +93,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// [parent] - Required. Parent resource name. Must be in the format
   /// `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [connectionId] - Optional. Connection id that should be assigned to the
   /// created connection.
@@ -160,7 +160,7 @@ class ProjectsLocationsConnectionsResource {
   /// [name] - Required. Name of the deleted connection, for example:
   /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -213,7 +213,7 @@ class ProjectsLocationsConnectionsResource {
   /// [name] - Required. Name of the requested connection, for example:
   /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -273,7 +273,7 @@ class ProjectsLocationsConnectionsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -331,7 +331,7 @@ class ProjectsLocationsConnectionsResource {
   ///
   /// [parent] - Required. Parent resource name. Must be in the form:
   /// `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [maxResults] - Required. Maximum number of results per page.
   ///
@@ -404,7 +404,7 @@ class ProjectsLocationsConnectionsResource {
   /// [name] - Required. Name of the connection to update, for example:
   /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Update mask for the connection fields to be
   /// updated.
@@ -475,7 +475,7 @@ class ProjectsLocationsConnectionsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -542,7 +542,7 @@ class ProjectsLocationsConnectionsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -604,7 +604,7 @@ class ProjectsLocationsConnectionsResource {
   /// [name] - Required. Name of the connection, for example:
   /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/connections/[^/]+/credential$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/credential$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

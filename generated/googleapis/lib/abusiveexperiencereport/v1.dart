@@ -68,7 +68,7 @@ class SitesResource {
   ///
   /// [name] - Required. The name of the site whose summary to get, e.g.
   /// `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}`
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

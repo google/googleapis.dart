@@ -74,7 +74,7 @@ class AssetsResource {
   /// Request parameters:
   ///
   /// [name] - Required. An asset's name in the form `assets/{ASSET_ID}`.
-  /// Value must have pattern "^assets/[^/]+$".
+  /// Value must have pattern `^assets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -274,7 +274,7 @@ class UsersAssetsResource {
   /// representing the
   /// currently-authenticated user is supported. To use 'me', you must pass
   /// an OAuth token with the request.
-  /// Value must have pattern "^users/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+$`.
   ///
   /// [format] - Return only assets with the matching format. Acceptable values
   /// are:
@@ -386,7 +386,7 @@ class UsersLikedassetsResource {
   /// representing the
   /// currently-authenticated user is supported. To use 'me', you must pass
   /// an OAuth token with the request.
-  /// Value must have pattern "^users/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+$`.
   ///
   /// [format] - Return only assets with the matching format. Acceptable values
   /// are:

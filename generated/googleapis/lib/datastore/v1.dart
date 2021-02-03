@@ -924,7 +924,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -979,7 +979,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1033,7 +1033,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1094,7 +1094,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///

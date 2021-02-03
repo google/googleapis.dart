@@ -87,7 +87,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -138,7 +138,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -232,7 +232,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [deploymentId] - Required. The ID of the game server delpoyment resource
   /// to be created.
@@ -299,7 +299,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -358,7 +358,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// [name] - Required. The name of the game server delpoyment. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -419,7 +419,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -477,7 +477,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -547,7 +547,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -601,7 +601,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
@@ -691,7 +691,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. For the `FieldMask` definition, see https:
@@ -764,7 +764,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   /// Defaults to the immediately after the proposed rollout completes.
@@ -846,7 +846,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -913,7 +913,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -984,7 +984,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. For the `FieldMask` definition, see https:
@@ -1065,7 +1065,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [configId] - Required. The ID of the game server config resource to be
   /// created.
@@ -1135,7 +1135,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+/configs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1189,7 +1189,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+/configs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1245,7 +1245,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs
   /// / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
@@ -1348,7 +1348,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1409,7 +1409,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1464,7 +1464,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1524,7 +1524,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1609,7 +1609,7 @@ class ProjectsLocationsRealmsResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [realmId] - Required. The ID of the realm resource to be created.
   ///
@@ -1673,7 +1673,8 @@ class ProjectsLocationsRealmsResource {
   ///
   /// [name] - Required. The name of the realm to delete. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1725,7 +1726,8 @@ class ProjectsLocationsRealmsResource {
   ///
   /// [name] - Required. The name of the realm to retrieve. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1777,7 +1779,7 @@ class ProjectsLocationsRealmsResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
@@ -1864,7 +1866,8 @@ class ProjectsLocationsRealmsResource {
   /// [name] - The resource name of the realm. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
   /// `projects/my-project/locations/{location}/realms/my-realm`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The update mask applies to the resource. For the
   /// `FieldMask` definition, see https:
@@ -1932,7 +1935,8 @@ class ProjectsLocationsRealmsResource {
   /// [name] - The resource name of the realm. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`. For example,
   /// `projects/my-project/locations/{location}/realms/my-realm`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
@@ -2015,7 +2019,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm-id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [gameServerClusterId] - Required. The ID of the game server cluster
   /// resource to be created.
@@ -2082,7 +2087,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// form:
   /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2136,7 +2141,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// the form:
   /// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2189,7 +2194,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// "projects/{project}/locations/{location}/realms/{realm}".
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to apply to list results.
   ///
@@ -2280,7 +2286,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// For example,
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. For the `FieldMask` definition, see https:
@@ -2348,7 +2354,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   ///
   /// [parent] - Required. The parent resource name. Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/realms/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+$`.
   ///
   /// [gameServerClusterId] - Required. The ID of the game server cluster
   /// resource to be created.
@@ -2422,7 +2429,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// form:
   /// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
@@ -2489,7 +2496,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// For example,
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/realms/\[^/\]+/gameServerClusters/\[^/\]+$`.
   ///
   /// [previewTime] - Optional. The target timestamp to compute the preview.
   ///
@@ -2969,15 +2976,15 @@ class Condition {
 /// in "_count". Field names should not contain an initial slash. The actual
 /// exported metric names will have "/iam/policy" prepended. Field names
 /// correspond to IAM request parameters and field values are their respective
-/// values. Supported field names: - "authority", which is "[token]" if
+/// values. Supported field names: - "authority", which is "\[token\]" if
 /// IAMContext.token is present, otherwise the value of
 /// IAMContext.authority_selector if present, and otherwise a representation of
 /// IAMContext.principal; or - "iam_principal", a representation of
 /// IAMContext.principal even if a token or authority selector is present; or -
 /// "" (empty string), resulting in a counter with no fields. Examples: counter
 /// { metric: "/debug_access_count" field: "iam_principal" } ==> increment
-/// counter /iam/policy/debug_access_count {iam_principal=[value of
-/// IAMContext.principal]}
+/// counter /iam/policy/debug_access_count {iam_principal=\[value of
+/// IAMContext.principal\]}
 class CounterOptions {
   /// Custom fields.
   core.List<CustomField> customFields;
@@ -5273,8 +5280,9 @@ class ScalingConfig {
 /// scheduled event's timespan is larger than the cron_spec + cron_job_duration,
 /// the event will be recurring. If only cron_spec + cron_job_duration are
 /// specified, the event is effective starting at the local time specified by
-/// cron_spec, and is recurring. start_time|-------[cron job]-------[cron
-/// job]-------[cron job]---|end_time cron job: cron spec start time + duration
+/// cron_spec, and is recurring. start_time|-------\[cron job\]-------\[cron
+/// job\]-------\[cron job\]---|end_time cron job: cron spec start time +
+/// duration
 class Schedule {
   /// The duration for the cron job event.
   ///

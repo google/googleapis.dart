@@ -75,8 +75,8 @@ class OrganizationsResource {
   ///
   /// [name] - The resource name of the Organization to fetch. This is the
   /// organization's relative path in the API, formatted as
-  /// "organizations/[organizationId]". For example, "organizations/1234".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// "organizations/\[organizationId\]". For example, "organizations/1234".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [organizationId] - The id of the Organization resource to fetch. This
   /// field is deprecated and will be removed in v1. Use name instead.
@@ -142,7 +142,7 @@ class OrganizationsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -283,7 +283,7 @@ class OrganizationsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -347,7 +347,7 @@ class OrganizationsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -409,8 +409,8 @@ class OrganizationsResource {
   ///
   /// [name] - Output only. The resource name of the organization. This is the
   /// organization's relative path in the API. Its format is
-  /// "organizations/[organization_id]". For example, "organizations/1234".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// "organizations/\[organization_id\]". For example, "organizations/1234".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1558,7 +1558,7 @@ class FolderOperationError {
 }
 
 /// The request sent to the
-/// [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetAncestry]
+/// \[google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetAncestry\]
 /// method.
 class GetAncestryRequest {
   GetAncestryRequest();
@@ -1773,7 +1773,7 @@ class Organization {
   /// The resource name of the organization.
   ///
   /// This is the organization's relative path in the API. Its format is
-  /// "organizations/[organization_id]". For example, "organizations/1234".
+  /// "organizations/\[organization_id\]". For example, "organizations/1234".
   ///
   /// Output only.
   core.String name;
@@ -2002,8 +2002,8 @@ class Project {
   /// Label keys must be between 1 and 63 characters long and must conform to
   /// the following regular expression: a-z{0,62}. Label values must be between
   /// 0 and 63 characters long and must conform to the regular expression
-  /// [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can
-  /// be associated with a given resource. Clients should store labels in a
+  /// \[a-z0-9_-\]{0,63}. A label value can be empty. No more than 256 labels
+  /// can be associated with a given resource. Clients should store labels in a
   /// representation such as JSON that does not depend on specific characters
   /// being disallowed. Example: `"environment" : "dev"` Read-write.
   core.Map<core.String, core.String> labels;

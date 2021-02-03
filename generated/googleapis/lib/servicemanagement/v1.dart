@@ -89,7 +89,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -605,7 +605,7 @@ class ServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -748,7 +748,7 @@ class ServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -814,7 +814,7 @@ class ServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1228,7 +1228,7 @@ class ServicesConsumersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+/consumers/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1292,7 +1292,7 @@ class ServicesConsumersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+/consumers/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1358,7 +1358,7 @@ class ServicesConsumersResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+/consumers/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1877,8 +1877,8 @@ class AuthProvider {
   ///
   /// that are allowed to access. A JWT containing any of these audiences will
   /// be accepted. When this setting is absent, JWTs with audiences: -
-  /// "https://[service.name]/[google.protobuf.Api.name]" -
-  /// "https://[service.name]/" will be accepted. For example, if no audiences
+  /// "https://\[service.name\]/\[google.protobuf.Api.name\]" -
+  /// "https://\[service.name\]/" will be accepted. For example, if no audiences
   /// are in the setting, LibraryService API will accept JWTs with the following
   /// audiences: -
   /// https://library-example.googleapis.com/google.example.library.v1.LibraryService
@@ -2545,7 +2545,7 @@ class ConfigChange {
   /// Examples: -
   /// visibility.rules[selector=="google.LibraryService.ListBooks"].restriction
   /// - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value
-  /// - logging.producer_destinations[0]
+  /// - logging.producer_destinations\[0\]
   core.String element;
 
   /// Value of the changed object in the new Service configuration, in JSON
@@ -3072,9 +3072,9 @@ class DisableServiceResponse {
 /// where documentation provided by config rules overrides IDL provided. A
 /// number of constructs specific to the API platform are supported in
 /// documentation text. In order to reference a proto element, the following
-/// notation can be used: [fully.qualified.proto.name][] To override the display
-/// text used for the link, this can be used: [display
-/// text][fully.qualified.proto.name] Text can be excluded from doc using the
+/// notation can be used: \[fully.qualified.proto.name\][] To override the
+/// display text used for the link, this can be used: \[display
+/// text\]\[fully.qualified.proto.name\] Text can be excluded from doc using the
 /// following notation: (-- internal comment --) A few directives are available
 /// in documentation. Note that directives must appear on a single line to be
 /// properly identified. The `include` directive includes a markdown file from
@@ -4002,22 +4002,22 @@ class Http {
 /// same name. 2. If HttpRule.body is "*", there is no URL query parameter, all
 /// fields are passed via URL path and HTTP request body. 3. If HttpRule.body is
 /// omitted, there is no HTTP request body, all fields are passed via URL path
-/// and URL query parameters. ### Path template syntax Template = "/" Segments [
-/// Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL
-/// | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath =
-/// IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single
-/// URL path segment. The syntax `**` matches zero or more URL path segments,
-/// which must be the last part of the URL path except the `Verb`. The syntax
-/// `Variable` matches part of the URL path as specified by its template. A
-/// variable template must not contain other variables. If a variable matches a
-/// single path segment, its template may be omitted, e.g. `{var}` is equivalent
-/// to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If
-/// the `LITERAL` contains any reserved character, such characters should be
-/// percent-encoded before the matching. If a variable contains exactly one path
-/// segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded
-/// into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]`
-/// are percent-encoded. The server side does the reverse decoding. Such
-/// variables show up in the [Discovery
+/// and URL query parameters. ### Path template syntax Template = "/" Segments
+/// \[ Verb \] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" |
+/// LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ;
+/// FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*`
+/// matches a single URL path segment. The syntax `**` matches zero or more URL
+/// path segments, which must be the last part of the URL path except the
+/// `Verb`. The syntax `Variable` matches part of the URL path as specified by
+/// its template. A variable template must not contain other variables. If a
+/// variable matches a single path segment, its template may be omitted, e.g.
+/// `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal
+/// text in the URL path. If the `LITERAL` contains any reserved character, such
+/// characters should be percent-encoded before the matching. If a variable
+/// contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when
+/// such a variable is expanded into a URL path on the client side, all
+/// characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side
+/// does the reverse decoding. Such variables show up in the [Discovery
 /// Document](https://developers.google.com/discovery/v1/reference/apis) as
 /// `{var}`. If a variable contains multiple path segments, such as `"{var=foo /
 /// * }"` or `"{var=**}"`, when such a variable is expanded into a URL path on
@@ -4460,8 +4460,9 @@ class LogDescriptor {
   /// The name of the log.
   ///
   /// It must be less than 512 characters long and can include the following
-  /// characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and
-  /// punctuation characters including slash, underscore, hyphen, period [/_-.].
+  /// characters: upper- and lower-case alphanumeric characters \[A-Za-z0-9\],
+  /// and punctuation characters including slash, underscore, hyphen, period
+  /// [/_-.].
   core.String name;
 
   LogDescriptor();
@@ -4850,7 +4851,7 @@ class MetricDescriptor {
   /// underlying cumulative or delta value). * `.` multiplication or composition
   /// (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar
   /// for a unit is as follows: Expression = Component { "." Component } { "/"
-  /// Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
+  /// Component } ; Component = ( \[ PREFIX \] UNIT | "%" ) \[ Annotation \] |
   /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is
   /// just a comment if it follows a `UNIT`. If the annotation is used alone,
   /// then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`,
@@ -6336,9 +6337,9 @@ class Service {
 
   /// A list of all proto message types included in this API service.
   ///
-  /// It serves similar purpose as [google.api.Service.types], except that these
-  /// types are not needed by user-defined APIs. Therefore, they will not show
-  /// up in the generated discovery doc. This field should only be used to
+  /// It serves similar purpose as \[google.api.Service.types\], except that
+  /// these types are not needed by user-defined APIs. Therefore, they will not
+  /// show up in the generated discovery doc. This field should only be used to
   /// define system APIs in ESF.
   core.List<Type> systemTypes;
 

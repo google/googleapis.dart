@@ -193,7 +193,7 @@ class LocationsInfoTypesResource {
   ///
   /// [parent] - The parent resource name. The format of this value is as
   /// follows: locations/ LOCATION_ID
-  /// Value must have pattern "^locations/[^/]+$".
+  /// Value must have pattern `^locations/\[^/\]+$`.
   ///
   /// [filter] - filter to only return infoTypes supported by certain parts of
   /// the API. Defaults to supported_by=INSPECT.
@@ -308,7 +308,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -372,7 +372,8 @@ class OrganizationsDeidentifyTemplatesResource {
   /// template to be deleted, for example
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
-  /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -430,7 +431,8 @@ class OrganizationsDeidentifyTemplatesResource {
   /// template to be read, for example
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
-  /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -498,7 +500,7 @@ class OrganizationsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -592,7 +594,8 @@ class OrganizationsDeidentifyTemplatesResource {
   /// to be updated, for example
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
-  /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -673,7 +676,7 @@ class OrganizationsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -736,7 +739,8 @@ class OrganizationsInspectTemplatesResource {
   /// to be deleted, for example
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
-  /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -793,7 +797,8 @@ class OrganizationsInspectTemplatesResource {
   /// to be read, for example
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
-  /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -860,7 +865,7 @@ class OrganizationsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -952,7 +957,8 @@ class OrganizationsInspectTemplatesResource {
   /// [name] - Required. Resource name of organization and inspectTemplate to be
   /// updated, for example `organizations/433245324/inspectTemplates/432452342`
   /// or projects/project-id/inspectTemplates/432452342.
-  /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1048,7 +1054,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1113,7 +1119,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1172,7 +1178,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1240,7 +1246,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -1335,7 +1341,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1416,7 +1422,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1480,7 +1486,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1538,7 +1544,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1605,7 +1611,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -1698,7 +1704,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// updated, for example `organizations/433245324/inspectTemplates/432452342`
   /// or projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1779,7 +1785,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1844,7 +1850,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1902,7 +1908,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// be read, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1970,7 +1976,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -2066,7 +2072,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// updated, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2147,7 +2153,7 @@ class OrganizationsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2211,7 +2217,7 @@ class OrganizationsStoredInfoTypesResource {
   /// be deleted, for example
   /// `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
-  /// Value must have pattern "^organizations/[^/]+/storedInfoTypes/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2268,7 +2274,7 @@ class OrganizationsStoredInfoTypesResource {
   /// [name] - Required. Resource name of the organization and storedInfoType to
   /// be read, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
-  /// Value must have pattern "^organizations/[^/]+/storedInfoTypes/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2336,7 +2342,7 @@ class OrganizationsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -2431,7 +2437,7 @@ class OrganizationsStoredInfoTypesResource {
   /// [name] - Required. Resource name of organization and storedInfoType to be
   /// updated, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
-  /// Value must have pattern "^organizations/[^/]+/storedInfoTypes/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2530,7 +2536,7 @@ class ProjectsContentResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2606,7 +2612,7 @@ class ProjectsContentResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2679,7 +2685,7 @@ class ProjectsContentResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2763,7 +2769,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2827,7 +2833,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// template to be deleted, for example
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
-  /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2885,7 +2891,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// template to be read, for example
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
-  /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2953,7 +2959,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -3047,7 +3053,7 @@ class ProjectsDeidentifyTemplatesResource {
   /// to be updated, for example
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
-  /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3115,7 +3121,7 @@ class ProjectsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3188,7 +3194,7 @@ class ProjectsDlpJobsResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3250,7 +3256,7 @@ class ProjectsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource to be deleted.
-  /// Value must have pattern "^projects/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3305,7 +3311,7 @@ class ProjectsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource.
-  /// Value must have pattern "^projects/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3369,7 +3375,7 @@ class ProjectsDlpJobsResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
@@ -3509,7 +3515,7 @@ class ProjectsImageResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3592,7 +3598,7 @@ class ProjectsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3655,7 +3661,7 @@ class ProjectsInspectTemplatesResource {
   /// to be deleted, for example
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
-  /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3712,7 +3718,7 @@ class ProjectsInspectTemplatesResource {
   /// to be read, for example
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
-  /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3779,7 +3785,7 @@ class ProjectsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -3871,7 +3877,7 @@ class ProjectsInspectTemplatesResource {
   /// [name] - Required. Resource name of organization and inspectTemplate to be
   /// updated, for example `organizations/433245324/inspectTemplates/432452342`
   /// or projects/project-id/inspectTemplates/432452342.
-  /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3940,7 +3946,7 @@ class ProjectsJobTriggersResource {
   ///
   /// [name] - Required. Resource name of the trigger to activate, for example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
-  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4010,7 +4016,7 @@ class ProjectsJobTriggersResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4071,7 +4077,7 @@ class ProjectsJobTriggersResource {
   ///
   /// [name] - Required. Resource name of the project and the triggeredJob, for
   /// example `projects/dlp-test-project/jobTriggers/53234423`.
-  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4126,7 +4132,7 @@ class ProjectsJobTriggersResource {
   ///
   /// [name] - Required. Resource name of the project and the triggeredJob, for
   /// example `projects/dlp-test-project/jobTriggers/53234423`.
-  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4189,7 +4195,7 @@ class ProjectsJobTriggersResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
@@ -4302,7 +4308,7 @@ class ProjectsJobTriggersResource {
   ///
   /// [name] - Required. Resource name of the project and the triggeredJob, for
   /// example `projects/dlp-test-project/jobTriggers/53234423`.
-  /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4403,7 +4409,7 @@ class ProjectsLocationsContentResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4479,7 +4485,7 @@ class ProjectsLocationsContentResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4552,7 +4558,7 @@ class ProjectsLocationsContentResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4636,7 +4642,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4701,7 +4707,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4760,7 +4766,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4828,7 +4834,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -4923,7 +4929,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deidentifyTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4992,7 +4998,8 @@ class ProjectsLocationsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5065,7 +5072,7 @@ class ProjectsLocationsDlpJobsResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5127,7 +5134,8 @@ class ProjectsLocationsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource to be deleted.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5186,7 +5194,8 @@ class ProjectsLocationsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5245,7 +5254,8 @@ class ProjectsLocationsDlpJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the DlpJob resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5305,7 +5315,8 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// [name] - Required. Resource name of the job to execute a hybrid inspect
   /// on, for example `projects/dlp-test-project/dlpJob/53234423`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5375,7 +5386,7 @@ class ProjectsLocationsDlpJobsResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
@@ -5516,7 +5527,7 @@ class ProjectsLocationsImageResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5599,7 +5610,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5663,7 +5674,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5721,7 +5732,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5788,7 +5799,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -5881,7 +5892,7 @@ class ProjectsLocationsInspectTemplatesResource {
   /// updated, for example `organizations/433245324/inspectTemplates/432452342`
   /// or projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/inspectTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5951,7 +5962,7 @@ class ProjectsLocationsJobTriggersResource {
   /// [name] - Required. Resource name of the trigger to activate, for example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6021,7 +6032,7 @@ class ProjectsLocationsJobTriggersResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6083,7 +6094,7 @@ class ProjectsLocationsJobTriggersResource {
   /// [name] - Required. Resource name of the project and the triggeredJob, for
   /// example `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6139,7 +6150,7 @@ class ProjectsLocationsJobTriggersResource {
   /// [name] - Required. Resource name of the project and the triggeredJob, for
   /// example `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6200,7 +6211,7 @@ class ProjectsLocationsJobTriggersResource {
   /// [name] - Required. Resource name of the trigger to execute a hybrid
   /// inspect on, for example `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6269,7 +6280,7 @@ class ProjectsLocationsJobTriggersResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
@@ -6383,7 +6394,7 @@ class ProjectsLocationsJobTriggersResource {
   /// [name] - Required. Resource name of the project and the triggeredJob, for
   /// example `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6464,7 +6475,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6529,7 +6540,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6587,7 +6598,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// be read, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6655,7 +6666,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -6751,7 +6762,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// updated, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6832,7 +6843,7 @@ class ProjectsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6896,7 +6907,7 @@ class ProjectsStoredInfoTypesResource {
   /// be deleted, for example
   /// `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
-  /// Value must have pattern "^projects/[^/]+/storedInfoTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6953,7 +6964,7 @@ class ProjectsStoredInfoTypesResource {
   /// [name] - Required. Resource name of the organization and storedInfoType to
   /// be read, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
-  /// Value must have pattern "^projects/[^/]+/storedInfoTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7021,7 +7032,7 @@ class ProjectsStoredInfoTypesResource {
   /// identifier `example-project`, and specifies the `europe-west3` location
   /// for processing data:
   /// parent=projects/example-project/locations/europe-west3
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -7116,7 +7127,7 @@ class ProjectsStoredInfoTypesResource {
   /// [name] - Required. Resource name of organization and storedInfoType to be
   /// updated, for example `organizations/433245324/storedInfoTypes/432452342`
   /// or projects/project-id/storedInfoTypes/432452342.
-  /// Value must have pattern "^projects/[^/]+/storedInfoTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/storedInfoTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8226,7 +8237,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
 class GooglePrivacyDlpV2CloudStoragePath {
   /// A url representing a file or path (no wildcards) in Cloud Storage.
   ///
-  /// Example: gs://[BUCKET_NAME]/dictionary.txt
+  /// Example: gs://\[BUCKET_NAME\]/dictionary.txt
   core.String path;
 
   GooglePrivacyDlpV2CloudStoragePath();
@@ -13524,15 +13535,15 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// Store findings in an existing table or a new table in an existing dataset.
   ///
   /// If table_id is not set a new one will be generated for you with the
-  /// following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone
-  /// will be used for generating the date details. For Inspect, each column in
-  /// an existing output table must have the same name, type, and mode of a
-  /// field in the `Finding` object. For Risk, an existing output table should
-  /// be the output of a previous Risk analysis job run on the same source
-  /// table, with the same privacy metric and quasi-identifiers. Risk jobs that
-  /// analyze the same table but compute a different privacy metric, or use
-  /// different sets of quasi-identifiers, cannot store their results in the
-  /// same table.
+  /// following format: dlp_googleapis_yyyy_mm_dd_\[dlp_job_id\]. Pacific
+  /// timezone will be used for generating the date details. For Inspect, each
+  /// column in an existing output table must have the same name, type, and mode
+  /// of a field in the `Finding` object. For Risk, an existing output table
+  /// should be the output of a previous Risk analysis job run on the same
+  /// source table, with the same privacy metric and quasi-identifiers. Risk
+  /// jobs that analyze the same table but compute a different privacy metric,
+  /// or use different sets of quasi-identifiers, cannot store their results in
+  /// the same table.
   GooglePrivacyDlpV2BigQueryTable table;
 
   GooglePrivacyDlpV2OutputStorageConfig();
@@ -16267,7 +16278,7 @@ class GooglePrivacyDlpV2WordList {
   /// Words or phrases defining the dictionary.
   ///
   /// The dictionary must contain at least one phrase and every phrase must
-  /// contain at least 2 characters that are letters or digits. [required]
+  /// contain at least 2 characters that are letters or digits. \[required\]
   core.List<core.String> words;
 
   GooglePrivacyDlpV2WordList();

@@ -275,7 +275,7 @@ class AcceleratorTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -410,14 +410,14 @@ class AcceleratorTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [acceleratorType] - Name of the accelerator type to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -483,10 +483,10 @@ class AcceleratorTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -621,7 +621,7 @@ class AddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -755,14 +755,14 @@ class AddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [address] - Name of the address resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -843,14 +843,14 @@ class AddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [address] - Name of the address resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -917,10 +917,10 @@ class AddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1000,10 +1000,10 @@ class AddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1138,7 +1138,7 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1273,14 +1273,14 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1363,14 +1363,14 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1438,10 +1438,10 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1521,10 +1521,10 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1659,14 +1659,14 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1753,14 +1753,14 @@ class AutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1853,7 +1853,7 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendBucket] - Name of the BackendBucket resource to which the Signed
   /// URL Key should be added. The name should conform to RFC1035.
@@ -1936,11 +1936,11 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendBucket] - Name of the BackendBucket resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2016,7 +2016,7 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendBucket] - Name of the BackendBucket resource to which the Signed
   /// URL Key should be added. The name should conform to RFC1035.
@@ -2104,11 +2104,11 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendBucket] - Name of the BackendBucket resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2170,7 +2170,7 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2244,7 +2244,7 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -2372,11 +2372,11 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendBucket] - Name of the BackendBucket resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2458,11 +2458,11 @@ class BackendBucketsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendBucket] - Name of the BackendBucket resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2550,7 +2550,7 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to which the Signed
   /// URL Key should be added. The name should conform to RFC1035.
@@ -2634,7 +2634,7 @@ class BackendServicesResource {
   ///
   /// [project] - Name of the project scoping this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -2769,11 +2769,11 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2849,7 +2849,7 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to which the Signed
   /// URL Key should be added. The name should conform to RFC1035.
@@ -2937,11 +2937,11 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3006,12 +3006,12 @@ class BackendServicesResource {
   ///
   /// [project] - null
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to which the
   /// queried instance belongs.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3080,7 +3080,7 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3155,7 +3155,7 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -3284,11 +3284,11 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3369,7 +3369,7 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to which the
   /// security policy should be set. The name should conform to RFC1035.
@@ -3457,11 +3457,11 @@ class BackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [backendService] - Name of the BackendService resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3546,7 +3546,7 @@ class DiskTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -3682,14 +3682,14 @@ class DiskTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [diskType] - Name of the disk type to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3753,10 +3753,10 @@ class DiskTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -3896,14 +3896,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - The disk name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3989,7 +3989,7 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -4125,16 +4125,16 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the persistent disk to snapshot.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
-  /// [guestFlush] - [Input Only] Whether to attempt an application consistent
+  /// [guestFlush] - \[Input Only\] Whether to attempt an application consistent
   /// snapshot by informing the OS to prepare for the snapshot process.
   /// Currently only supported on Windows instances using the Volume Shadow Copy
   /// Service (VSS).
@@ -4231,10 +4231,10 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the persistent disk to delete.
   ///
@@ -4319,14 +4319,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the persistent disk to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4392,14 +4392,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -4480,10 +4480,10 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4569,10 +4569,10 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -4702,14 +4702,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - The disk name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4799,14 +4799,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - The name of the persistent disk.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4896,14 +4896,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4976,14 +4976,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5071,14 +5071,14 @@ class DisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5155,10 +5155,10 @@ class ExternalVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [externalVpnGateway] - Name of the externalVpnGateways to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5235,10 +5235,10 @@ class ExternalVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [externalVpnGateway] - Name of the externalVpnGateway to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5300,7 +5300,7 @@ class ExternalVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5375,7 +5375,7 @@ class ExternalVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -5502,11 +5502,11 @@ class ExternalVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5571,11 +5571,11 @@ class ExternalVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5645,11 +5645,11 @@ class FirewallsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [firewall] - Name of the firewall rule to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5724,11 +5724,11 @@ class FirewallsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [firewall] - Name of the firewall rule to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5789,7 +5789,7 @@ class FirewallsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5862,7 +5862,7 @@ class FirewallsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -5989,11 +5989,11 @@ class FirewallsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [firewall] - Name of the firewall rule to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6077,11 +6077,11 @@ class FirewallsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [firewall] - Name of the firewall rule to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6166,7 +6166,7 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -6301,14 +6301,14 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6389,14 +6389,14 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6464,10 +6464,10 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6548,10 +6548,10 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -6687,14 +6687,14 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6783,15 +6783,15 @@ class ForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource in which target is
   /// to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6883,11 +6883,11 @@ class GlobalAddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [address] - Name of the address resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6964,11 +6964,11 @@ class GlobalAddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [address] - Name of the address resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7029,7 +7029,7 @@ class GlobalAddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7102,7 +7102,7 @@ class GlobalAddressesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -7231,11 +7231,11 @@ class GlobalForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7312,11 +7312,11 @@ class GlobalForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7378,7 +7378,7 @@ class GlobalForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7453,7 +7453,7 @@ class GlobalForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -7583,11 +7583,11 @@ class GlobalForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7670,12 +7670,12 @@ class GlobalForwardingRulesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource in which target is
   /// to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7764,7 +7764,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [networkEndpointGroup] - The name of the network endpoint group where you
   /// are attaching network endpoints to. It should comply with RFC1035.
@@ -7848,7 +7848,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [networkEndpointGroup] - The name of the network endpoint group to delete.
   /// It should comply with RFC1035.
@@ -7928,7 +7928,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [networkEndpointGroup] - The name of the network endpoint group where you
   /// are removing network endpoints. It should comply with RFC1035.
@@ -8014,7 +8014,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [networkEndpointGroup] - The name of the network endpoint group. It should
   /// comply with RFC1035.
@@ -8079,7 +8079,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -8154,7 +8154,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -8277,7 +8277,7 @@ class GlobalNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [networkEndpointGroup] - The name of the network endpoint group from which
   /// you want to generate a list of included network endpoints. It should
@@ -8416,7 +8416,7 @@ class GlobalOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -8550,11 +8550,11 @@ class GlobalOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8614,11 +8614,11 @@ class GlobalOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8677,7 +8677,7 @@ class GlobalOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -8813,11 +8813,11 @@ class GlobalOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8883,7 +8883,7 @@ class HealthChecksResource {
   ///
   /// [project] - Name of the project scoping this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -9018,11 +9018,11 @@ class HealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9099,11 +9099,11 @@ class HealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9165,7 +9165,7 @@ class HealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9239,7 +9239,7 @@ class HealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -9367,11 +9367,11 @@ class HealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9453,11 +9453,11 @@ class HealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9542,11 +9542,11 @@ class HttpHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9623,11 +9623,11 @@ class HttpHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9689,7 +9689,7 @@ class HttpHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9764,7 +9764,7 @@ class HttpHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -9893,11 +9893,11 @@ class HttpHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9979,11 +9979,11 @@ class HttpHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10068,11 +10068,11 @@ class HttpsHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10149,11 +10149,11 @@ class HttpsHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10215,7 +10215,7 @@ class HttpsHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10290,7 +10290,7 @@ class HttpsHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -10419,11 +10419,11 @@ class HttpsHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10505,11 +10505,11 @@ class HttpsHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10594,11 +10594,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [image] - Name of the image resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10677,11 +10677,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [image] - Image name.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10763,11 +10763,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [image] - Name of the image resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10826,11 +10826,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [family] - Name of the image family to search for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10890,11 +10890,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -10964,7 +10964,7 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [forceCreate] - Force image creation if true.
   ///
@@ -11049,7 +11049,7 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -11175,11 +11175,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [image] - Name of the image resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11262,11 +11262,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11333,11 +11333,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11402,11 +11402,11 @@ class ImagesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11494,7 +11494,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -11584,7 +11584,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -11723,7 +11723,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// Should conform to RFC1035.
@@ -11807,7 +11807,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// It should conform to RFC1035.
@@ -11902,7 +11902,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -12003,7 +12003,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -12095,7 +12095,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// It should conform to RFC1035.
@@ -12173,7 +12173,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -12254,7 +12254,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where you want to create the managed
   /// instance group.
@@ -12338,7 +12338,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -12472,7 +12472,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// It should conform to RFC1035.
@@ -12480,7 +12480,7 @@ class InstanceGroupManagersResource {
   /// [instanceGroupManager] - The name of the managed instance group. It must
   /// be a string that meets the requirements in RFC1035, or an unsigned long
   /// integer: must match regexp pattern:
-  /// (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)|[1-9][0-9]{0,19}.
+  /// (?:[a-z](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|\[1-9\]\[0-9\]{0,19}.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -12621,7 +12621,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -12764,7 +12764,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// It should conform to RFC1035.
@@ -12915,7 +12915,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where you want to create the managed
   /// instance group.
@@ -13010,7 +13010,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// It should conform to RFC1035.
@@ -13117,7 +13117,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -13228,7 +13228,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -13329,7 +13329,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -13428,7 +13428,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   ///
@@ -13523,7 +13523,7 @@ class InstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the managed instance group is located.
   /// It should conform to RFC1035.
@@ -13626,7 +13626,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -13717,7 +13717,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -13856,7 +13856,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -13946,7 +13946,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -14018,7 +14018,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where you want to create the instance group.
   ///
@@ -14104,7 +14104,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -14239,7 +14239,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -14390,7 +14390,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -14483,7 +14483,7 @@ class InstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the instance group is located.
   ///
@@ -14584,11 +14584,11 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [instanceTemplate] - The name of the instance template to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14665,11 +14665,11 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [instanceTemplate] - The name of the instance template.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14730,11 +14730,11 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -14808,7 +14808,7 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14883,7 +14883,7 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -15010,11 +15010,11 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15079,11 +15079,11 @@ class InstanceTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15155,14 +15155,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [networkInterface] - The name of the network interface to add to this
   /// instance.
@@ -15261,14 +15261,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15355,7 +15355,7 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -15495,14 +15495,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [forceAttach] - Whether to force attach the regional disk even if it's
   /// currently attached to another instance. If you try to force attach a zonal
@@ -15598,14 +15598,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15686,14 +15686,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [accessConfig] - The name of the access config to delete.
   ///
@@ -15789,14 +15789,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [deviceName] - The device name of the disk to detach. Make a get() request
   /// on the instance to view currently attached disks and device names.
@@ -15888,14 +15888,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15959,14 +15959,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [queryPath] - Specifies the guest attributes path to be queried.
   ///
@@ -16046,14 +16046,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -16126,14 +16126,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -16199,14 +16199,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [port] - Specifies which COM or serial port to retrieve data from.
   /// Value must be between "1" and "4".
@@ -16299,14 +16299,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name or id of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -16375,10 +16375,10 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -16472,10 +16472,10 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -16609,15 +16609,15 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the target instance scoping this request, or '-' if
   /// the request should span over all instances in the container.
   /// Value must have pattern
-  /// "-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `-|\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -16754,14 +16754,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -16850,14 +16850,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -16939,14 +16939,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [deletionProtection] - Whether the resource should be protected against
   /// deletion.
@@ -17035,21 +17035,21 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [autoDelete] - Whether to auto-delete the disk when the instance is
   /// deleted.
   ///
   /// [deviceName] - The device name of the disk to modify. Make a get() request
   /// on the instance to view currently attached disks and device names.
-  /// Value must have pattern "\w[\w.-]{0,254}".
+  /// Value must have pattern `\w\[\w.-\]{0,254}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17145,14 +17145,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17225,14 +17225,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17321,14 +17321,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17417,14 +17417,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17513,14 +17513,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17611,14 +17611,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17710,14 +17710,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17808,14 +17808,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to start.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17906,14 +17906,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name or id of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18002,14 +18002,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18095,14 +18095,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18169,14 +18169,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to start.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18262,14 +18262,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to start.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18361,14 +18361,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to stop.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18452,14 +18452,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18534,14 +18534,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [minimalAction] - Specifies the action to take when updating an instance
   /// even if the updated properties do not require it. If not specified, then
@@ -18663,14 +18663,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [networkInterface] - The name of the network interface where the access
   /// config is attached.
@@ -18770,13 +18770,13 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18866,14 +18866,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - The instance name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [networkInterface] - The name of the network interface to update.
   ///
@@ -18971,14 +18971,14 @@ class InstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [instance] - Name or id of the instance scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19071,7 +19071,7 @@ class InterconnectAttachmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -19206,14 +19206,14 @@ class InterconnectAttachmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [interconnectAttachment] - Name of the interconnect attachment to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19294,14 +19294,14 @@ class InterconnectAttachmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [interconnectAttachment] - Name of the interconnect attachment to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19369,10 +19369,10 @@ class InterconnectAttachmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19459,10 +19459,10 @@ class InterconnectAttachmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -19597,14 +19597,14 @@ class InterconnectAttachmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [interconnectAttachment] - Name of the interconnect attachment to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19699,11 +19699,11 @@ class InterconnectLocationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [interconnectLocation] - Name of the interconnect location to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19763,7 +19763,7 @@ class InterconnectLocationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -19892,11 +19892,11 @@ class InterconnectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [interconnect] - Name of the interconnect to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19973,11 +19973,11 @@ class InterconnectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [interconnect] - Name of the interconnect to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20036,11 +20036,11 @@ class InterconnectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [interconnect] - Name of the interconnect resource to query.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20103,7 +20103,7 @@ class InterconnectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -20176,7 +20176,7 @@ class InterconnectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -20303,11 +20303,11 @@ class InterconnectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [interconnect] - Name of the interconnect to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -20396,11 +20396,11 @@ class LicenseCodesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [licenseCode] - Number corresponding to the License code resource to
   /// return.
-  /// Value must have pattern "[0-9]{0,61}?".
+  /// Value must have pattern `\[0-9\]{0,61}?`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20464,11 +20464,11 @@ class LicenseCodesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20541,11 +20541,11 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [license] - Name of the license resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -20623,11 +20623,11 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [license] - Name of the License resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20689,11 +20689,11 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -20765,7 +20765,7 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -20845,7 +20845,7 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -20972,11 +20972,11 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21044,11 +21044,11 @@ class LicensesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21118,7 +21118,7 @@ class MachineTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -21255,14 +21255,14 @@ class MachineTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [machineType] - Name of the machine type to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21327,10 +21327,10 @@ class MachineTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -21466,7 +21466,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -21604,7 +21604,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the network endpoint group is located.
   /// It should comply with RFC1035.
@@ -21700,7 +21700,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the network endpoint group is located.
   /// It should comply with RFC1035.
@@ -21790,7 +21790,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the network endpoint group is located.
   /// It should comply with RFC1035.
@@ -21885,7 +21885,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the network endpoint group is located.
   /// It should comply with RFC1035.
@@ -21959,7 +21959,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where you want to create the network
   /// endpoint group. It should comply with RFC1035.
@@ -22043,7 +22043,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the network endpoint group is located.
   /// It should comply with RFC1035.
@@ -22177,7 +22177,7 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone where the network endpoint group is located.
   /// It should comply with RFC1035.
@@ -22325,14 +22325,14 @@ class NetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22410,11 +22410,11 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network resource to add peering to.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22494,11 +22494,11 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22575,11 +22575,11 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22640,7 +22640,7 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22713,7 +22713,7 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -22835,10 +22835,10 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [direction] - The direction of the exchanged routes.
   /// Possible string values are:
@@ -22994,11 +22994,11 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23079,11 +23079,11 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network resource to remove peering from.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23163,11 +23163,11 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network to be updated.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23248,12 +23248,12 @@ class NetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [network] - Name of the network resource which the updated peering is
   /// belonging to.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23341,14 +23341,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the NodeGroup resource.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23436,7 +23436,7 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -23570,14 +23570,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the NodeGroup resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23660,14 +23660,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the NodeGroup resource whose nodes will be deleted.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23756,14 +23756,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the node group to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23829,14 +23829,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -23912,10 +23912,10 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [initialNodeCount] - Initial count of nodes in the node group.
   ///
@@ -24004,10 +24004,10 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -24136,14 +24136,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the NodeGroup resource whose nodes you want to list.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -24280,14 +24280,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the NodeGroup resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24376,14 +24376,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24454,14 +24454,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeGroup] - Name of the NodeGroup resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24549,14 +24549,14 @@ class NodeGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24632,7 +24632,7 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -24767,14 +24767,14 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeTemplate] - Name of the NodeTemplate resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24857,14 +24857,14 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeTemplate] - Name of the node template to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24931,14 +24931,14 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -25014,10 +25014,10 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -25097,10 +25097,10 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -25233,14 +25233,14 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25311,14 +25311,14 @@ class NodeTemplatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25394,7 +25394,7 @@ class NodeTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -25530,14 +25530,14 @@ class NodeTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [nodeType] - Name of the node type to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25601,10 +25601,10 @@ class NodeTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -25739,7 +25739,7 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -25874,14 +25874,14 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [packetMirroring] - Name of the PacketMirroring resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -25962,14 +25962,14 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [packetMirroring] - Name of the PacketMirroring resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26037,10 +26037,10 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26121,10 +26121,10 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -26259,14 +26259,14 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [packetMirroring] - Name of the PacketMirroring resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26353,14 +26353,14 @@ class PacketMirroringsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26436,7 +26436,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26508,7 +26508,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26581,7 +26581,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26654,7 +26654,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26727,7 +26727,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26781,7 +26781,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26834,7 +26834,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -26958,7 +26958,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -27086,7 +27086,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27162,7 +27162,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27238,7 +27238,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27317,7 +27317,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27396,7 +27396,7 @@ class ProjectsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27475,14 +27475,14 @@ class RegionAutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27563,14 +27563,14 @@ class RegionAutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -27638,10 +27638,10 @@ class RegionAutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27721,10 +27721,10 @@ class RegionAutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -27859,14 +27859,14 @@ class RegionAutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27953,14 +27953,14 @@ class RegionAutoscalersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [autoscaler] - Name of the autoscaler to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28051,14 +28051,14 @@ class RegionBackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [backendService] - Name of the BackendService resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28139,14 +28139,14 @@ class RegionBackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [backendService] - Name of the BackendService resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28214,15 +28214,15 @@ class RegionBackendServicesResource {
   ///
   /// [project] - null
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [backendService] - Name of the BackendService resource for which to get
   /// health.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28297,10 +28297,10 @@ class RegionBackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28381,10 +28381,10 @@ class RegionBackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -28520,14 +28520,14 @@ class RegionBackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [backendService] - Name of the BackendService resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28617,14 +28617,14 @@ class RegionBackendServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [backendService] - Name of the BackendService resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28715,7 +28715,7 @@ class RegionCommitmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -28852,14 +28852,14 @@ class RegionCommitmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [commitment] - Name of the commitment to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28927,10 +28927,10 @@ class RegionCommitmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -29010,10 +29010,10 @@ class RegionCommitmentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -29150,14 +29150,14 @@ class RegionDiskTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [diskType] - Name of the disk type to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29222,10 +29222,10 @@ class RegionDiskTypesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -29365,14 +29365,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - The disk name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -29460,14 +29460,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the regional persistent disk to snapshot.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -29558,10 +29558,10 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the regional persistent disk to delete.
   ///
@@ -29644,14 +29644,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the regional persistent disk to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29717,14 +29717,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -29800,10 +29800,10 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -29890,10 +29890,10 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -30023,14 +30023,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - The disk name for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -30118,14 +30118,14 @@ class RegionDisksResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [disk] - Name of the regional persistent disk.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -30215,14 +30215,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30293,14 +30293,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -30388,14 +30388,14 @@ class RegionDisksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -30472,10 +30472,10 @@ class RegionHealthCheckServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheckService] - Name of the HealthCheckService to delete. The name
   /// must be 1-63 characters long, and comply with RFC1035.
@@ -30559,10 +30559,10 @@ class RegionHealthCheckServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheckService] - Name of the HealthCheckService to update. The name
   /// must be 1-63 characters long, and comply with RFC1035.
@@ -30633,10 +30633,10 @@ class RegionHealthCheckServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -30717,10 +30717,10 @@ class RegionHealthCheckServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -30855,10 +30855,10 @@ class RegionHealthCheckServicesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheckService] - Name of the HealthCheckService to update. The name
   /// must be 1-63 characters long, and comply with RFC1035.
@@ -30952,14 +30952,14 @@ class RegionHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -31042,14 +31042,14 @@ class RegionHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -31117,10 +31117,10 @@ class RegionHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -31201,10 +31201,10 @@ class RegionHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -31339,14 +31339,14 @@ class RegionHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -31434,14 +31434,14 @@ class RegionHealthChecksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [healthCheck] - Name of the HealthCheck resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -31550,7 +31550,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -31642,7 +31642,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request, should conform to
   /// RFC1035.
@@ -31726,7 +31726,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region where the managed instance group is
   /// located. It should conform to RFC1035.
@@ -31818,7 +31818,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -31919,7 +31919,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -32011,7 +32011,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request, should conform to
   /// RFC1035.
@@ -32086,7 +32086,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -32166,7 +32166,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -32249,7 +32249,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -32383,7 +32383,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request. This should conform to
   /// RFC1035.
@@ -32391,7 +32391,7 @@ class RegionInstanceGroupManagersResource {
   /// [instanceGroupManager] - The name of the managed instance group. It must
   /// be a string that meets the requirements in RFC1035, or an unsigned long
   /// integer: must match regexp pattern:
-  /// (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)|[1-9][0-9]{0,19}.
+  /// (?:[a-z](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|\[1-9\]\[0-9\]{0,19}.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -32530,7 +32530,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -32673,7 +32673,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request, should conform to
   /// RFC1035.
@@ -32824,7 +32824,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -32919,7 +32919,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request, should conform to
   /// RFC1035.
@@ -33026,7 +33026,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33129,7 +33129,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33228,7 +33228,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33323,7 +33323,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33419,7 +33419,7 @@ class RegionInstanceGroupManagersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request, should conform to
   /// RFC1035.
@@ -33518,7 +33518,7 @@ class RegionInstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33588,7 +33588,7 @@ class RegionInstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33726,7 +33726,7 @@ class RegionInstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33872,7 +33872,7 @@ class RegionInstanceGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
   ///
@@ -33973,7 +33973,7 @@ class RegionNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region where the network endpoint group is
   /// located. It should comply with RFC1035.
@@ -34063,7 +34063,7 @@ class RegionNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region where the network endpoint group is
   /// located. It should comply with RFC1035.
@@ -34137,7 +34137,7 @@ class RegionNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region where you want to create the network
   /// endpoint group. It should comply with RFC1035.
@@ -34221,7 +34221,7 @@ class RegionNetworkEndpointGroupsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region where the network endpoint group is
   /// located. It should comply with RFC1035.
@@ -34360,15 +34360,15 @@ class RegionNotificationEndpointsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [notificationEndpoint] - Name of the NotificationEndpoint resource to
   /// delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -34449,15 +34449,15 @@ class RegionNotificationEndpointsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [notificationEndpoint] - Name of the NotificationEndpoint resource to
   /// return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34525,10 +34525,10 @@ class RegionNotificationEndpointsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -34608,10 +34608,10 @@ class RegionNotificationEndpointsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -34746,14 +34746,14 @@ class RegionOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34817,14 +34817,14 @@ class RegionOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -34889,10 +34889,10 @@ class RegionOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -35035,14 +35035,14 @@ class RegionOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35114,14 +35114,14 @@ class RegionSslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [sslCertificate] - Name of the SslCertificate resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -35204,14 +35204,14 @@ class RegionSslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [sslCertificate] - Name of the SslCertificate resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35279,10 +35279,10 @@ class RegionSslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -35363,10 +35363,10 @@ class RegionSslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -35502,14 +35502,14 @@ class RegionTargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -35592,14 +35592,14 @@ class RegionTargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -35667,10 +35667,10 @@ class RegionTargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -35751,10 +35751,10 @@ class RegionTargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -35885,14 +35885,14 @@ class RegionTargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy to set a URL map for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -35985,14 +35985,14 @@ class RegionTargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -36075,14 +36075,14 @@ class RegionTargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36150,10 +36150,10 @@ class RegionTargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -36234,10 +36234,10 @@ class RegionTargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -36368,15 +36368,15 @@ class RegionTargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set an
   /// SslCertificates resource for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -36464,14 +36464,14 @@ class RegionTargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy to set a URL map for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -36563,14 +36563,14 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [urlMap] - Name of the UrlMap resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - begin_interface: MixerMutationRequestBuilder Request ID to
   /// support idempotency.
@@ -36643,14 +36643,14 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [urlMap] - Name of the UrlMap resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -36717,10 +36717,10 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - begin_interface: MixerMutationRequestBuilder Request ID to
   /// support idempotency.
@@ -36791,10 +36791,10 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -36929,14 +36929,14 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [urlMap] - Name of the UrlMap resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - begin_interface: MixerMutationRequestBuilder Request ID to
   /// support idempotency.
@@ -37014,14 +37014,14 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [urlMap] - Name of the UrlMap resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - begin_interface: MixerMutationRequestBuilder Request ID to
   /// support idempotency.
@@ -37101,14 +37101,14 @@ class RegionUrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [urlMap] - Name of the UrlMap resource to be validated as.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37186,11 +37186,11 @@ class RegionsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37248,7 +37248,7 @@ class RegionsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -37376,7 +37376,7 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -37511,14 +37511,14 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [reservation] - Name of the reservation to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -37599,14 +37599,14 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [reservation] - Name of the reservation to retrieve.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -37673,14 +37673,14 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -37757,10 +37757,10 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -37841,10 +37841,10 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -37977,13 +37977,13 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [reservation] - Name of the reservation to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -38073,14 +38073,14 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38151,14 +38151,14 @@ class ReservationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - The name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38234,7 +38234,7 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -38369,14 +38369,14 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resourcePolicy] - Name of the resource policy to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -38457,14 +38457,14 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resourcePolicy] - Name of the resource policy to retrieve.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38531,14 +38531,14 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -38613,10 +38613,10 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -38697,10 +38697,10 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -38833,14 +38833,14 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38911,14 +38911,14 @@ class ResourcePoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -38994,7 +38994,7 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -39128,14 +39128,14 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -39218,14 +39218,14 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -39289,15 +39289,15 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to query for Nat Mapping
   /// information of VM endpoints.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -39432,14 +39432,14 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to query.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -39508,10 +39508,10 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -39591,10 +39591,10 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -39729,14 +39729,14 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -39825,14 +39825,14 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to query.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -39909,14 +39909,14 @@ class RoutersResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [router] - Name of the Router resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -40007,11 +40007,11 @@ class RoutesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [route] - Name of the Route resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -40088,11 +40088,11 @@ class RoutesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [route] - Name of the Route resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -40153,7 +40153,7 @@ class RoutesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -40226,7 +40226,7 @@ class RoutesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -40355,11 +40355,11 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -40422,11 +40422,11 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -40501,11 +40501,11 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to get.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -40564,12 +40564,12 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to which the queried rule
   /// belongs.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [priority] - The priority of the rule to get from the security policy.
   ///
@@ -40638,7 +40638,7 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -40712,7 +40712,7 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -40836,7 +40836,7 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -40964,11 +40964,11 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -41049,11 +41049,11 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [priority] - The priority of the rule to patch.
   ///
@@ -41122,11 +41122,11 @@ class SecurityPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [securityPolicy] - Name of the security policy to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [priority] - The priority of the rule to remove from the security policy.
   ///
@@ -41204,11 +41204,11 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [snapshot] - Name of the Snapshot resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -41285,11 +41285,11 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [snapshot] - Name of the Snapshot resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -41349,11 +41349,11 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -41421,7 +41421,7 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -41547,11 +41547,11 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -41618,11 +41618,11 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -41687,11 +41687,11 @@ class SnapshotsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -41762,7 +41762,7 @@ class SslCertificatesResource {
   ///
   /// [project] - Name of the project scoping this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -41897,11 +41897,11 @@ class SslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [sslCertificate] - Name of the SslCertificate resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -41978,11 +41978,11 @@ class SslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [sslCertificate] - Name of the SslCertificate resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -42044,7 +42044,7 @@ class SslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -42119,7 +42119,7 @@ class SslCertificatesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -42251,7 +42251,7 @@ class SslPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [sslPolicy] - Name of the SSL policy to delete. The name must be 1-63
   /// characters long, and comply with RFC1035.
@@ -42329,7 +42329,7 @@ class SslPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [sslPolicy] - Name of the SSL policy to update. The name must be 1-63
   /// characters long, and comply with RFC1035.
@@ -42394,7 +42394,7 @@ class SslPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -42468,7 +42468,7 @@ class SslPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -42591,7 +42591,7 @@ class SslPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -42716,7 +42716,7 @@ class SslPoliciesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [sslPolicy] - Name of the SSL policy to update. The name must be 1-63
   /// characters long, and comply with RFC1035.
@@ -42804,7 +42804,7 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -42939,14 +42939,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [subnetwork] - Name of the Subnetwork resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -43029,14 +43029,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [subnetwork] - Name of the Subnetwork resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -43124,14 +43124,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [subnetwork] - Name of the Subnetwork resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43198,14 +43198,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
   ///
@@ -43281,10 +43281,10 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -43364,10 +43364,10 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -43496,7 +43496,7 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -43625,14 +43625,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [subnetwork] - Name of the Subnetwork resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [drainTimeoutSeconds] - The drain timeout specifies the upper bound in
   /// seconds on the amount of time allowed to drain connections from the
@@ -43734,14 +43734,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43813,14 +43813,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [subnetwork] - Name of the Subnetwork resource.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -43908,14 +43908,14 @@ class SubnetworksResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -43991,11 +43991,11 @@ class TargetGrpcProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetGrpcProxy] - Name of the TargetGrpcProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -44070,11 +44070,11 @@ class TargetGrpcProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetGrpcProxy] - Name of the TargetGrpcProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -44136,7 +44136,7 @@ class TargetGrpcProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -44210,7 +44210,7 @@ class TargetGrpcProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -44339,11 +44339,11 @@ class TargetGrpcProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetGrpcProxy] - Name of the TargetGrpcProxy resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -44429,7 +44429,7 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Name of the project scoping this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -44564,11 +44564,11 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -44645,11 +44645,11 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -44711,7 +44711,7 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -44786,7 +44786,7 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -44915,11 +44915,11 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -45000,11 +45000,11 @@ class TargetHttpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy to set a URL map for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -45091,7 +45091,7 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Name of the project scoping this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -45226,11 +45226,11 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -45307,11 +45307,11 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -45373,7 +45373,7 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -45448,7 +45448,7 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -45573,7 +45573,7 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set the QUIC
   /// override policy for. The name should conform to RFC1035.
@@ -45658,12 +45658,12 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set an
   /// SslCertificates resource for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -45750,7 +45750,7 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose SSL
   /// policy is to be set. The name must be 1-63 characters long, and comply
@@ -45836,12 +45836,12 @@ class TargetHttpsProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose URL map
   /// is to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -45927,7 +45927,7 @@ class TargetInstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -46062,14 +46062,14 @@ class TargetInstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetInstance] - Name of the TargetInstance resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -46152,14 +46152,14 @@ class TargetInstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetInstance] - Name of the TargetInstance resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -46227,10 +46227,10 @@ class TargetInstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -46311,10 +46311,10 @@ class TargetInstancesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -46451,14 +46451,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the target pool to add a health check to.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -46546,14 +46546,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the TargetPool resource to add instances to.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -46639,7 +46639,7 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -46774,14 +46774,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the TargetPool resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -46864,14 +46864,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the TargetPool resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -46939,15 +46939,15 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the TargetPool resource to which the queried
   /// instance belongs.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -47020,10 +47020,10 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -47104,10 +47104,10 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -47238,14 +47238,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the target pool to remove health checks from.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -47333,14 +47333,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the TargetPool resource to remove instances from.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -47428,14 +47428,14 @@ class TargetPoolsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetPool] - Name of the TargetPool resource to set a backup pool for.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [failoverRatio] - New failoverRatio value for the target pool.
   ///
@@ -47533,11 +47533,11 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -47614,11 +47614,11 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -47680,7 +47680,7 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -47755,7 +47755,7 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -47880,12 +47880,12 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose
   /// BackendService resource is to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -47967,12 +47967,12 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose ProxyHeader
   /// is to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48054,12 +48054,12 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose
   /// SslCertificate resource is to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48145,7 +48145,7 @@ class TargetSslProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose SSL policy is
   /// to be set. The name must be 1-63 characters long, and comply with RFC1035.
@@ -48234,11 +48234,11 @@ class TargetTcpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48315,11 +48315,11 @@ class TargetTcpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -48381,7 +48381,7 @@ class TargetTcpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48456,7 +48456,7 @@ class TargetTcpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -48581,12 +48581,12 @@ class TargetTcpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource whose
   /// BackendService resource is to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48668,12 +48668,12 @@ class TargetTcpProxiesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource whose ProxyHeader
   /// is to be set.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48759,7 +48759,7 @@ class TargetVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -48894,14 +48894,14 @@ class TargetVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetVpnGateway] - Name of the target VPN gateway to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -48984,14 +48984,14 @@ class TargetVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [targetVpnGateway] - Name of the target VPN gateway to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -49059,10 +49059,10 @@ class TargetVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -49143,10 +49143,10 @@ class TargetVpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -49282,7 +49282,7 @@ class UrlMapsResource {
   ///
   /// [project] - Name of the project scoping this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -49416,11 +49416,11 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [urlMap] - Name of the UrlMap resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -49497,11 +49497,11 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [urlMap] - Name of the UrlMap resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -49562,7 +49562,7 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -49638,11 +49638,11 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [urlMap] - Name of the UrlMap scoping this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -49722,7 +49722,7 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -49850,11 +49850,11 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [urlMap] - Name of the UrlMap resource to patch.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -49936,11 +49936,11 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [urlMap] - Name of the UrlMap resource to update.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -50024,11 +50024,11 @@ class UrlMapsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [urlMap] - Name of the UrlMap resource to be validated as.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -50098,7 +50098,7 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -50233,14 +50233,14 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [vpnGateway] - Name of the VPN gateway to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -50323,14 +50323,14 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [vpnGateway] - Name of the VPN gateway to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -50395,14 +50395,14 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [vpnGateway] - Name of the VPN gateway to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -50471,10 +50471,10 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -50555,10 +50555,10 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -50691,14 +50691,14 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -50786,14 +50786,14 @@ class VpnGatewaysResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - The name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -50869,7 +50869,7 @@ class VpnTunnelsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -51003,14 +51003,14 @@ class VpnTunnelsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [vpnTunnel] - Name of the VpnTunnel resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -51093,14 +51093,14 @@ class VpnTunnelsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [vpnTunnel] - Name of the VpnTunnel resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -51167,10 +51167,10 @@ class VpnTunnelsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -51251,10 +51251,10 @@ class VpnTunnelsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [region] - Name of the region for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -51389,14 +51389,14 @@ class ZoneOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -51460,14 +51460,14 @@ class ZoneOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -51532,10 +51532,10 @@ class ZoneOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -51678,14 +51678,14 @@ class ZoneOperationsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -51758,11 +51758,11 @@ class ZonesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [zone] - Name of the zone resource to return.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -51820,7 +51820,7 @@ class ZonesResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -53954,8 +53954,8 @@ class AttachedDisk {
   /// Output only.
   core.int index;
 
-  /// [Input Only] Specifies the parameters for a new disk that will be created
-  /// alongside the new instance.
+  /// \[Input Only\] Specifies the parameters for a new disk that will be
+  /// created alongside the new instance.
   ///
   /// Use initialization parameters to create boot disks or local SSDs attached
   /// to the new instance.
@@ -54135,7 +54135,7 @@ class AttachedDisk {
   }
 }
 
-/// [Input Only] Specifies the parameters for a new disk that will be created
+/// \[Input Only\] Specifies the parameters for a new disk that will be created
 /// alongside the new instance.
 ///
 /// Use initialization parameters to create boot disks or local SSDs attached to
@@ -54430,7 +54430,7 @@ class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
   ///
-  /// Follows the same format of [Binding.members][].
+  /// Follows the same format of \[Binding.members\][].
   core.List<core.String> exemptedMembers;
   core.bool ignoreChildExemptions;
 
@@ -56080,7 +56080,7 @@ class BackendBucketCdnPolicy {
   /// After this time period, the response will be revalidated before being
   /// served. Defaults to 1hr (3600s). When serving responses to signed URL
   /// requests, Cloud CDN will internally behave as though all responses from
-  /// this backend had a "Cache-Control: public, max-age=[TTL]" header,
+  /// this backend had a "Cache-Control: public, max-age=\[TTL\]" header,
   /// regardless of any existing Cache-Control header. The actual headers served
   /// in responses will not be altered.
   core.String signedUrlCacheMaxAgeSec;
@@ -57111,7 +57111,7 @@ class BackendServiceCdnPolicy {
   /// After this time period, the response will be revalidated before being
   /// served. Defaults to 1hr (3600s). When serving responses to signed URL
   /// requests, Cloud CDN will internally behave as though all responses from
-  /// this backend had a "Cache-Control: public, max-age=[TTL]" header,
+  /// this backend had a "Cache-Control: public, max-age=\[TTL\]" header,
   /// regardless of any existing Cache-Control header. The actual headers served
   /// in responses will not be altered.
   core.String signedUrlCacheMaxAgeSec;
@@ -62582,7 +62582,7 @@ class Firewall {
   ///
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a
+  /// expression `[a-z](\[-a-z0-9\]*\[a-z0-9\])?. The first character must be a
   /// lowercase letter, and all following characters (except for the last
   /// character) must be a dash, lowercase letter, or digit. The last character
   /// must be a lowercase letter or digit.
@@ -66420,8 +66420,9 @@ class HostRule {
   /// The list of host patterns to match.
   ///
   /// They must be valid hostnames with optional port numbers in the format
-  /// host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be
-  /// the first character and must be followed in the pattern by either - or ..
+  /// host:port. * matches any string of (\[a-z0-9-.\]*). In that case, * must
+  /// be the first character and must be followed in the pattern by either - or
+  /// ..
   /// * based matching is not supported when the URL map is bound to target gRPC
   /// proxy that has validateForProxyless field set to true.
   core.List<core.String> hosts;
@@ -69045,9 +69046,9 @@ class Instance {
   /// Specifies the hostname of the instance.
   ///
   /// The specified hostname must be RFC1035 compliant. If hostname is not
-  /// specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal
-  /// when using the global DNS, and
-  /// [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+  /// specified, the default hostname is
+  /// \[INSTANCE_NAME\].c.\[PROJECT_ID\].internal when using the global DNS, and
+  /// \[INSTANCE_NAME\].\[ZONE\].c.\[PROJECT_ID\].internal when using zonal DNS.
   core.String hostname;
 
   /// The unique identifier for the resource.
@@ -71622,7 +71623,7 @@ class InstanceGroupManagersAbandonInstancesRequest {
   /// The URLs of one or more instances to abandon.
   ///
   /// This can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   InstanceGroupManagersAbandonInstancesRequest();
@@ -71650,7 +71651,7 @@ class InstanceGroupManagersApplyUpdatesRequest {
   /// updates.
   ///
   /// Each URL can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   /// The minimal action that you want to perform on each instance during the
@@ -71752,7 +71753,7 @@ class InstanceGroupManagersDeleteInstancesRequest {
   /// The URLs of one or more instances to delete.
   ///
   /// This can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   InstanceGroupManagersDeleteInstancesRequest();
@@ -72097,7 +72098,7 @@ class InstanceGroupManagersRecreateInstancesRequest {
   /// The URLs of one or more instances to recreate.
   ///
   /// This can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   InstanceGroupManagersRecreateInstancesRequest();
@@ -75006,7 +75007,7 @@ class InterconnectAttachment {
   /// Google reference ID, to be used when raising support tickets with Google
   /// or otherwise to debug backend connectivity issues.
   ///
-  /// [Deprecated] This field is not used.
+  /// \[Deprecated\] This field is not used.
   ///
   /// Output only.
   core.String googleReferenceId;
@@ -75053,9 +75054,9 @@ class InterconnectAttachment {
   /// - "OS_UNPROVISIONED"
   core.String operationalStatus;
 
-  /// [Output only for type PARTNER.
+  /// \[Output only for type PARTNER.
   ///
-  /// Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque
+  /// Input only for PARTNER_PROVIDER. Not present for DEDICATED\]. The opaque
   /// identifier of an PARTNER attachment used to initiate provisioning with a
   /// selected partner. Of the form "XXXXX/region/domain"
   core.String pairingKey;
@@ -77818,16 +77819,16 @@ class LogConfigCloudAuditOptions {
 /// Field names correspond to IAM request parameters and field values are their
 /// respective values.
 ///
-/// Supported field names: - "authority", which is "[token]" if IAMContext.token
-/// is present, otherwise the value of IAMContext.authority_selector if present,
-/// and otherwise a representation of IAMContext.principal; or -
-/// "iam_principal", a representation of IAMContext.principal even if a token or
-/// authority selector is present; or - "" (empty string), resulting in a
-/// counter with no fields.
+/// Supported field names: - "authority", which is "\[token\]" if
+/// IAMContext.token is present, otherwise the value of
+/// IAMContext.authority_selector if present, and otherwise a representation of
+/// IAMContext.principal; or - "iam_principal", a representation of
+/// IAMContext.principal even if a token or authority selector is present; or -
+/// "" (empty string), resulting in a counter with no fields.
 ///
 /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
-/// ==> increment counter /iam/policy/debug_access_count {iam_principal=[value
-/// of IAMContext.principal]}
+/// ==> increment counter /iam/policy/debug_access_count {iam_principal=\[value
+/// of IAMContext.principal\]}
 class LogConfigCounterOptions {
   /// Custom fields.
   core.List<LogConfigCounterOptionsCustomField> customFields;
@@ -79165,7 +79166,7 @@ class ManagedInstanceVersion {
 class MetadataItems {
   /// Key for the metadata entry.
   ///
-  /// Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less
+  /// Keys must conform to the following regexp: \[a-zA-Z0-9-_\]+, and be less
   /// than 128 bytes in length. This is reflected as part of a URL in the
   /// metadata server. Additionally, to avoid ambiguity, keys must not conflict
   /// with any other metadata keys for the project.
@@ -82944,7 +82945,7 @@ class NodeTemplate {
   /// Sets the binding properties for the physical server.
   ///
   /// Valid values include:
-  /// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available
+  /// - \[Default\] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available
   /// physical server
   /// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server
   /// whenever possible
@@ -89493,7 +89494,7 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
   /// The URLs of one or more instances to abandon.
   ///
   /// This can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   RegionInstanceGroupManagersAbandonInstancesRequest();
@@ -89521,7 +89522,7 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
   /// updates.
   ///
   /// Each URL can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   /// The minimal action that you want to perform on each instance during the
@@ -89623,7 +89624,7 @@ class RegionInstanceGroupManagersDeleteInstancesRequest {
   /// The URLs of one or more instances to delete.
   ///
   /// This can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   RegionInstanceGroupManagersDeleteInstancesRequest();
@@ -89915,7 +89916,7 @@ class RegionInstanceGroupManagersRecreateRequest {
   /// The URLs of one or more instances to recreate.
   ///
   /// This can be a full URL or a partial URL, such as
-  /// zones/[ZONE]/instances/[INSTANCE_NAME].
+  /// zones/\[ZONE\]/instances/\[INSTANCE_NAME\].
   core.List<core.String> instances;
 
   RegionInstanceGroupManagersRecreateRequest();
@@ -92239,7 +92240,7 @@ class ResourcePolicyHourlyCycle {
 
   /// Time within the window to start the operations.
   ///
-  /// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+  /// It must be in format "HH:MM", where HH : \[00-23\] and MM : \[00-00\] GMT.
   core.String startTime;
 
   ResourcePolicyHourlyCycle();
@@ -92725,7 +92726,7 @@ class ResourcePolicyWeeklyCycleDayOfWeek {
 
   /// Time within the window to start the operations.
   ///
-  /// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+  /// It must be in format "HH:MM", where HH : \[00-23\] and MM : \[00-00\] GMT.
   core.String startTime;
 
   ResourcePolicyWeeklyCycleDayOfWeek();
@@ -94532,7 +94533,7 @@ class RouterNatSubnetworkToNat {
   /// All options of a single value are valid except
   /// NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple
   /// values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default:
-  /// [ALL_IP_RANGES]
+  /// \[ALL_IP_RANGES\]
   core.List<core.String> sourceIpRangesToNat;
 
   RouterNatSubnetworkToNat();
@@ -106197,7 +106198,7 @@ class UsableSubnetworksAggregatedList {
   /// Output only.
   core.String id;
 
-  /// [Output] A list of usable subnetwork URLs.
+  /// \[Output\] A list of usable subnetwork URLs.
   core.List<UsableSubnetwork> items;
 
   /// Type of resource.

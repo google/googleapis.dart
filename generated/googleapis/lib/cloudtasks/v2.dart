@@ -80,7 +80,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -131,7 +131,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -225,7 +225,7 @@ class ProjectsLocationsQueuesResource {
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID` The list of
   /// allowed locations can be obtained by calling Cloud Tasks' implementation
   /// of ListLocations.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -289,7 +289,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -341,7 +342,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The resource name of the queue. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -401,7 +403,8 @@ class ProjectsLocationsQueuesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -461,7 +464,7 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [parent] - Required. The location name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
   /// field can be used as a filter and several operators as supported. For
@@ -559,15 +562,16 @@ class ProjectsLocationsQueuesResource {
   /// becomes output only. The queue name. The queue name must have the
   /// following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
-  /// or periods (.). For more information, see [Identifying
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
+  /// (:), or periods (.). For more information, see [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [updateMask] - A mask used to specify which fields of the queue are being
   /// updated. If empty, then all fields will be updated.
@@ -636,7 +640,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -698,7 +703,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -764,7 +770,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -829,7 +836,8 @@ class ProjectsLocationsQueuesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -895,7 +903,8 @@ class ProjectsLocationsQueuesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -967,7 +976,8 @@ class ProjectsLocationsQueuesTasksResource {
   /// [parent] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must
   /// already exist.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1027,7 +1037,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1080,7 +1090,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [responseView] - The response_view specifies which subset of the Task will
   /// be returned. By default response_view is BASIC; not all information is
@@ -1159,7 +1169,8 @@ class ProjectsLocationsQueuesTasksResource {
   ///
   /// [parent] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum page size. Fewer tasks than requested might be
   /// returned, even if more tasks exist; use next_page_token in the response to
@@ -1269,7 +1280,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2551,13 +2562,13 @@ class Queue {
   ///
   /// The queue name. The queue name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
-  /// or periods (.). For more information, see [Identifying
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
+  /// (:), or periods (.). For more information, see [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters.
   core.String name;
 
@@ -3116,16 +3127,17 @@ class Task {
   ///
   /// The task name. The task name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-  /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens
-  /// (-), colons (:), or periods (.). For more information, see [Identifying
+  /// * `PROJECT_ID` can contain letters (\[A-Za-z\]), numbers (\[0-9\]),
+  /// hyphens (-), colons (:), or periods (.). For more information, see
+  /// [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the task's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters. * `TASK_ID` can contain only letters
-  /// ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum
-  /// length is 500 characters.
+  /// (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or underscores (_). The
+  /// maximum length is 500 characters.
   core.String name;
 
   /// The number of attempts which have received a response.

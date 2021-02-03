@@ -88,7 +88,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -139,7 +139,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -218,7 +218,7 @@ class ProjectsLocationsAcceleratorTypesResource {
   ///
   /// [name] - The resource name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/acceleratorTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/acceleratorTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -270,7 +270,7 @@ class ProjectsLocationsAcceleratorTypesResource {
   /// Request parameters:
   ///
   /// [parent] - The parent resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
   ///
@@ -358,7 +358,7 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [parent] - The parent resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [nodeId] - The unqualified resource name.
   ///
@@ -419,7 +419,8 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [name] - The resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -470,7 +471,8 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [name] - The resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -521,7 +523,7 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [parent] - The parent resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
@@ -588,7 +590,8 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [name] - The resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -645,7 +648,8 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [name] - The resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -702,7 +706,8 @@ class ProjectsLocationsNodesResource {
   /// Request parameters:
   ///
   /// [name] - The resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -774,7 +779,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -830,7 +835,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -885,7 +890,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -945,7 +950,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1024,7 +1029,7 @@ class ProjectsLocationsTensorflowVersionsResource {
   ///
   /// [name] - The resource name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tensorflowVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tensorflowVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1076,7 +1081,7 @@ class ProjectsLocationsTensorflowVersionsResource {
   /// Request parameters:
   ///
   /// [parent] - The parent resource name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
   ///

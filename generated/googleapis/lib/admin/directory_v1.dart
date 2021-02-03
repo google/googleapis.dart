@@ -2918,7 +2918,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2978,7 +2978,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3167,7 +3167,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3233,7 +3233,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8339,10 +8339,10 @@ class ChromeOsDeviceDeviceFiles {
 }
 
 class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
-  /// Free disk space [in bytes]
+  /// Free disk space \[in bytes\]
   core.String storageFree;
 
-  /// Total disk space [in bytes]
+  /// Total disk space \[in bytes\]
   core.String storageTotal;
 
   /// Volume id
@@ -8681,7 +8681,7 @@ class ChromeOsDevice {
   /// Reports of amounts of available RAM memory (Read-only)
   core.List<ChromeOsDeviceSystemRamFreeReports> systemRamFreeReports;
 
-  /// Total RAM on the device [in bytes] (Read-only)
+  /// Total RAM on the device \[in bytes\] (Read-only)
   core.String systemRamTotal;
 
   /// Trusted Platform Module (TPM) (Read-only)

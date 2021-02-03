@@ -140,7 +140,7 @@ class AccessPoliciesResource {
   ///
   /// [name] - Required. Resource name for the access policy to delete. Format
   /// `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -192,7 +192,7 @@ class AccessPoliciesResource {
   ///
   /// [name] - Required. Resource name for the access policy to get. Format
   /// `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -318,7 +318,7 @@ class AccessPoliciesResource {
   ///
   /// [name] - Output only. Resource name of the `AccessPolicy`. Format:
   /// `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
   /// non-empty.
@@ -395,7 +395,7 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// [parent] - Required. Resource name for the access policy which owns this
   /// Access Level. Format: `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -456,7 +456,7 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// [name] - Required. Resource name for the Access Level. Format:
   /// `accessPolicies/{policy_id}/accessLevels/{access_level_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+/accessLevels/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -508,7 +508,7 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// [name] - Required. Resource name for the Access Level. Format:
   /// `accessPolicies/{policy_id}/accessLevels/{access_level_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+/accessLevels/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [accessLevelFormat] - Whether to return `BasicLevels` in the Cloud Common
   /// Expression Language rather than as `BasicLevels`. Defaults to AS_DEFINED,
@@ -578,7 +578,7 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// [parent] - Required. Resource name for the access policy to list Access
   /// Levels from. Format: `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [accessLevelFormat] - Whether to return `BasicLevels` in the Cloud Common
   /// Expression language, as `CustomLevels`, rather than as `BasicLevels`.
@@ -669,7 +669,7 @@ class AccessPoliciesAccessLevelsResource {
   /// component must begin with a letter and only include alphanumeric and '_'.
   /// Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The
   /// maximum length of the `short_name` component is 50 characters.
-  /// Value must have pattern "^accessPolicies/[^/]+/accessLevels/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
   /// non-empty.
@@ -743,7 +743,7 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// [parent] - Required. Resource name for the access policy which owns these
   /// Access Levels. Format: `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -823,7 +823,7 @@ class AccessPoliciesServicePerimetersResource {
   /// [parent] - Required. Resource name for the parent Access Policy which owns
   /// all Service Perimeters in scope for the commit operation. Format:
   /// `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -888,7 +888,7 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// [parent] - Required. Resource name for the access policy which owns this
   /// Service Perimeter. Format: `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -949,7 +949,8 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// [name] - Required. Resource name for the Service Perimeter. Format:
   /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+/servicePerimeters/[^/]+$".
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1001,7 +1002,8 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// [name] - Required. Resource name for the Service Perimeter. Format:
   /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+/servicePerimeters/[^/]+$".
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1054,7 +1056,7 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// [parent] - Required. Resource name for the access policy to list Service
   /// Perimeters from. Format: `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [pageSize] - Number of Service Perimeters to include in the list. Default
   /// 100.
@@ -1132,7 +1134,8 @@ class AccessPoliciesServicePerimetersResource {
   /// `short_name` component must begin with a letter and only include
   /// alphanumeric and '_'. Format:
   /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-  /// Value must have pattern "^accessPolicies/[^/]+/servicePerimeters/[^/]+$".
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
   /// non-empty.
@@ -1205,7 +1208,7 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// [parent] - Required. Resource name for the access policy which owns these
   /// Service Perimeters. Format: `accessPolicies/{policy_id}`
-  /// Value must have pattern "^accessPolicies/[^/]+$".
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1279,7 +1282,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1338,7 +1341,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1392,7 +1395,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1452,7 +1455,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1545,7 +1548,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Example: "organizations/256"
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1608,7 +1611,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [name] - Required. Example:
   /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   /// Value must have pattern
-  /// "^organizations/[^/]+/gcpUserAccessBindings/[^/]+$".
+  /// `^organizations/\[^/\]+/gcpUserAccessBindings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1661,7 +1664,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [name] - Required. Example:
   /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   /// Value must have pattern
-  /// "^organizations/[^/]+/gcpUserAccessBindings/[^/]+$".
+  /// `^organizations/\[^/\]+/gcpUserAccessBindings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1713,7 +1716,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Example: "organizations/256"
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. Maximum number of items to return. The server may
   /// return fewer items. If left blank, the server may return any number of
@@ -1795,7 +1798,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// specified by the client during creation. Example:
   /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   /// Value must have pattern
-  /// "^organizations/[^/]+/gcpUserAccessBindings/[^/]+$".
+  /// `^organizations/\[^/\]+/gcpUserAccessBindings/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
@@ -2459,8 +2462,8 @@ class GcpUserAccessBinding {
 
   /// Google Group id whose members are subject to this binding's restrictions.
   ///
-  /// See "id" in the [G Suite Directory API's Groups resource]
-  /// (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+  /// See "id" in the [G Suite Directory API's Groups
+  /// resource](https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
   /// If a group's email address/alias is changed, this resource will continue
   /// to point at the changed group. This field does not accept group email
   /// addresses or aliases. Example: "01d520gv4vjcrht"

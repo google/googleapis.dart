@@ -81,7 +81,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -132,7 +132,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -216,7 +216,7 @@ class ProjectsSecretsResource {
   ///
   /// [parent] - Required. The resource name of the Secret to associate with the
   /// SecretVersion in the format `projects / * /secrets / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -277,7 +277,7 @@ class ProjectsSecretsResource {
   ///
   /// [parent] - Required. The resource name of the project to associate with
   /// the Secret, in the format `projects / * `.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [secretId] - Required. This must be unique within the project. A secret ID
   /// is a string with a maximum length of 255 characters and can contain
@@ -343,7 +343,7 @@ class ProjectsSecretsResource {
   ///
   /// [name] - Required. The resource name of the Secret to delete in the format
   /// `projects / * /secrets / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -395,7 +395,7 @@ class ProjectsSecretsResource {
   ///
   /// [name] - Required. The resource name of the Secret, in the format
   /// `projects / * /secrets / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -450,7 +450,7 @@ class ProjectsSecretsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -518,7 +518,7 @@ class ProjectsSecretsResource {
   ///
   /// [parent] - Required. The resource name of the project associated with the
   /// Secrets, in the format `projects / * `.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to be returned in a
   /// single page. If set to 0, the server decides the number of results to
@@ -589,7 +589,7 @@ class ProjectsSecretsResource {
   ///
   /// [name] - Output only. The resource name of the Secret in the format
   /// `projects / * /secrets / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Specifies the fields to be updated.
   ///
@@ -657,7 +657,7 @@ class ProjectsSecretsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -723,7 +723,7 @@ class ProjectsSecretsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -792,7 +792,8 @@ class ProjectsSecretsVersionsResource {
   ///
   /// [name] - Required. The resource name of the SecretVersion in the format
   /// `projects / * /secrets / * /versions / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -850,7 +851,8 @@ class ProjectsSecretsVersionsResource {
   ///
   /// [name] - Required. The resource name of the SecretVersion to destroy in
   /// the format `projects / * /secrets / * /versions / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -911,7 +913,8 @@ class ProjectsSecretsVersionsResource {
   ///
   /// [name] - Required. The resource name of the SecretVersion to disable in
   /// the format `projects / * /secrets / * /versions / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -972,7 +975,8 @@ class ProjectsSecretsVersionsResource {
   ///
   /// [name] - Required. The resource name of the SecretVersion to enable in the
   /// format `projects / * /secrets / * /versions / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1033,7 +1037,8 @@ class ProjectsSecretsVersionsResource {
   /// [name] - Required. The resource name of the SecretVersion in the format
   /// `projects / * /secrets / * /versions / * `. `projects / * /secrets / *
   /// /versions/latest` is an alias to the `latest` SecretVersion.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/secrets/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1088,7 +1093,7 @@ class ProjectsSecretsVersionsResource {
   ///
   /// [parent] - Required. The resource name of the Secret associated with the
   /// SecretVersions to list, in the format `projects / * /secrets / * `.
-  /// Value must have pattern "^projects/[^/]+/secrets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/secrets/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to be returned in a
   /// single page. If set to 0, the server decides the number of results to

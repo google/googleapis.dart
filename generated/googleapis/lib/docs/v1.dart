@@ -8188,9 +8188,9 @@ class TableOfContents {
 /// It's important to note that the cells specified by a table range do not
 /// necessarily form a rectangle. For example, let's say we have a 3 x 3 table
 /// where all the cells of the last row are merged together. The table looks
-/// like this: [ ] A table range with table cell location =
+/// like this: \[ \] A table range with table cell location =
 /// (table_start_location, row = 0, column = 0), row span = 3 and column span =
-/// 2 specifies the following cells: x x [ x x x ]
+/// 2 specifies the following cells: x x \[ x x x \]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -9213,7 +9213,7 @@ class WeightedFontFamily {
   /// The font family of the text.
   ///
   /// The font family can be any font from the Font menu in Docs or from [Google
-  /// Fonts] (https://fonts.google.com/). If the font name is unrecognized, the
+  /// Fonts](https://fonts.google.com/). If the font name is unrecognized, the
   /// text is rendered in `Arial`.
   core.String fontFamily;
 

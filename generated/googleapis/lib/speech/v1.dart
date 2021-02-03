@@ -75,7 +75,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -233,7 +233,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -293,7 +293,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///

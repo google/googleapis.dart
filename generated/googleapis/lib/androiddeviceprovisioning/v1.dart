@@ -151,7 +151,7 @@ class CustomersConfigurationsResource {
   ///
   /// [parent] - Required. The customer that manages the configuration. An API
   /// resource name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -214,7 +214,7 @@ class CustomersConfigurationsResource {
   /// [name] - Required. The configuration to delete. An API resource name in
   /// the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If
   /// the configuration is applied to any devices, the API call fails.
-  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -266,7 +266,7 @@ class CustomersConfigurationsResource {
   ///
   /// [name] - Required. The configuration to get. An API resource name in the
   /// format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
-  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -319,7 +319,7 @@ class CustomersConfigurationsResource {
   ///
   /// [parent] - Required. The customer that manages the listed configurations.
   /// An API resource name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -377,7 +377,7 @@ class CustomersConfigurationsResource {
   /// [name] - Output only. The API resource name in the format
   /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
   /// the server.
-  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field mask applied to the target
   /// `Configuration` before updating the fields. To learn more about using
@@ -456,7 +456,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the device. An API resource
   /// name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -514,7 +514,7 @@ class CustomersDevicesResource {
   ///
   /// [name] - Required. The device to get. An API resource name in the format
   /// `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -566,7 +566,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the devices. An API resource
   /// name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of devices to show in a page of results.
   /// Must be between 1 and 100 inclusive.
@@ -635,7 +635,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the device in the format
   /// `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -699,7 +699,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the device. An API resource
   /// name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -764,7 +764,7 @@ class CustomersDpcsResource {
   ///
   /// [parent] - Required. The customer that can use the DPCs in configurations.
   /// An API resource name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -825,7 +825,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -901,7 +901,7 @@ class PartnersCustomersResource {
   ///
   /// [parent] - Required. The parent resource ID in the format
   /// `partners/[PARTNER_ID]` that identifies the reseller.
-  /// Value must have pattern "^partners/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -961,7 +961,7 @@ class PartnersCustomersResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to be returned. If not
   /// specified or 0, all the records are returned.
@@ -1040,7 +1040,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1104,7 +1104,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1163,7 +1163,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1227,7 +1227,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1286,7 +1286,7 @@ class PartnersDevicesResource {
   ///
   /// [name] - Required. The device API resource name in the format
   /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
-  /// Value must have pattern "^partners/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,10 +1340,10 @@ class PartnersDevicesResource {
   ///
   /// [metadataOwnerId] - Required. The owner of the newly set metadata. Set
   /// this to the partner ID.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [deviceId] - Required. The ID of the device.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1410,7 +1410,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1473,7 +1473,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The reseller partner ID.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1536,7 +1536,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The reseller partner ID.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1603,7 +1603,7 @@ class PartnersVendorsResource {
   ///
   /// [parent] - Required. The resource name in the format
   /// `partners/[PARTNER_ID]`.
-  /// Value must have pattern "^partners/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to be returned.
   ///
@@ -1677,7 +1677,7 @@ class PartnersVendorsCustomersResource {
   ///
   /// [parent] - Required. The resource name in the format
   /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
-  /// Value must have pattern "^partners/[^/]+/vendors/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+/vendors/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to be returned.
   ///

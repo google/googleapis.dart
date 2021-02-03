@@ -85,7 +85,7 @@ class ProjectsPatchDeploymentsResource {
   ///
   /// [parent] - Required. The project to apply this patch deployment to in the
   /// form `projects / * `.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [patchDeploymentId] - Required. A name for the patch deployment in the
   /// project. When creating a name the following rules apply: * Must contain
@@ -154,7 +154,7 @@ class ProjectsPatchDeploymentsResource {
   ///
   /// [name] - Required. The resource name of the patch deployment in the form
   /// `projects / * /patchDeployments / * `.
-  /// Value must have pattern "^projects/[^/]+/patchDeployments/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/patchDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -206,7 +206,7 @@ class ProjectsPatchDeploymentsResource {
   ///
   /// [name] - Required. The resource name of the patch deployment in the form
   /// `projects / * /patchDeployments / * `.
-  /// Value must have pattern "^projects/[^/]+/patchDeployments/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/patchDeployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -259,7 +259,7 @@ class ProjectsPatchDeploymentsResource {
   ///
   /// [parent] - Required. The resource name of the parent in the form `projects
   /// / * `.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of patch deployments to return.
   /// Default is 100.
@@ -342,7 +342,7 @@ class ProjectsPatchJobsResource {
   ///
   /// [name] - Required. Name of the patch in the form `projects / * /patchJobs
   /// / * `
-  /// Value must have pattern "^projects/[^/]+/patchJobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/patchJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -400,7 +400,7 @@ class ProjectsPatchJobsResource {
   ///
   /// [parent] - Required. The project in which to run this patch in the form
   /// `projects / * `
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -461,7 +461,7 @@ class ProjectsPatchJobsResource {
   ///
   /// [name] - Required. Name of the patch in the form `projects / * /patchJobs
   /// / * `
-  /// Value must have pattern "^projects/[^/]+/patchJobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/patchJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -512,7 +512,7 @@ class ProjectsPatchJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. In the form of `projects / * `
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If provided, this field specifies the criteria that must be met
   /// by patch jobs to be included in the response. Currently, filtering is only
@@ -594,7 +594,7 @@ class ProjectsPatchJobsInstanceDetailsResource {
   ///
   /// [parent] - Required. The parent for the instances are in the form of
   /// `projects / * /patchJobs / * `.
-  /// Value must have pattern "^projects/[^/]+/patchJobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/patchJobs/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters results listed in the
   /// response. This field supports filtering results by instance zone, name,
@@ -793,7 +793,7 @@ class ExecStep {
 
 /// Common configurations for an ExecStep.
 class ExecStepConfig {
-  /// Defaults to [0].
+  /// Defaults to \[0\].
   ///
   /// A list of possible return values that the execution can return to indicate
   /// a success.
@@ -805,8 +805,8 @@ class ExecStepConfig {
   /// The script interpreter to use to run the script.
   ///
   /// If no interpreter is specified the script will be executed directly, which
-  /// will likely only succeed for scripts with [shebang lines]
-  /// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+  /// will likely only succeed for scripts with [shebang
+  /// lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   /// Possible string values are:
   /// - "INTERPRETER_UNSPECIFIED" : Invalid for a Windows ExecStepConfig. For a
   /// Linux ExecStepConfig, the interpreter will be parsed from the shebang line

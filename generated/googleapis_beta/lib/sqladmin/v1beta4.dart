@@ -7212,7 +7212,7 @@ class SslCert {
 
   /// User supplied name.
   ///
-  /// Constrained to [a-zA-Z.-_ ]+.
+  /// Constrained to \[a-zA-Z.-_ \]+.
   core.String commonName;
 
   /// The time when the certificate was created in RFC 3339 format, for example

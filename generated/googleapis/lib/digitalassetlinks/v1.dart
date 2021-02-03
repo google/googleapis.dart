@@ -113,20 +113,21 @@ class AssetlinksResource {
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  /// the scheme, hostname and port parts. The format is http\[s\]://[:]
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`"). Only the schemes "http" and "https" are currently allowed. Port
+  /// numbers are given as a decimal number, and they must be omitted if the
+  /// standard port numbers are used: 80 for http and 443 for https. We call
+  /// this limited URL the "site". All URLs that share the same scheme, hostname
+  /// and port are considered to be a part of the site and thus belong to the
+  /// web asset. Example: the asset with the site `https://www.google.com`
+  /// contains all these URLs: * `https://www.google.com/` *
+  /// `https://www.google.com:443/` * `https://www.google.com/foo` *
+  /// `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` *
+  /// `https://user@password:www.google.com/` But it does not contain these
+  /// URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/`
+  /// (hostname does not match) * `https://www.google.com:444/` (port does not
+  /// match) REQUIRED
   ///
   /// [target_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
@@ -148,20 +149,21 @@ class AssetlinksResource {
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [target_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  /// the scheme, hostname and port parts. The format is http\[s\]://[:]
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`"). Only the schemes "http" and "https" are currently allowed. Port
+  /// numbers are given as a decimal number, and they must be omitted if the
+  /// standard port numbers are used: 80 for http and 443 for https. We call
+  /// this limited URL the "site". All URLs that share the same scheme, hostname
+  /// and port are considered to be a part of the site and thus belong to the
+  /// web asset. Example: the asset with the site `https://www.google.com`
+  /// contains all these URLs: * `https://www.google.com/` *
+  /// `https://www.google.com:443/` * `https://www.google.com/foo` *
+  /// `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` *
+  /// `https://user@password:www.google.com/` But it does not contain these
+  /// URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/`
+  /// (hostname does not match) * `https://www.google.com:444/` (port does not
+  /// match) REQUIRED
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,20 +296,21 @@ class StatementsResource {
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  /// the scheme, hostname and port parts. The format is http\[s\]://[:]
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`"). Only the schemes "http" and "https" are currently allowed. Port
+  /// numbers are given as a decimal number, and they must be omitted if the
+  /// standard port numbers are used: 80 for http and 443 for https. We call
+  /// this limited URL the "site". All URLs that share the same scheme, hostname
+  /// and port are considered to be a part of the site and thus belong to the
+  /// web asset. Example: the asset with the site `https://www.google.com`
+  /// contains all these URLs: * `https://www.google.com/` *
+  /// `https://www.google.com:443/` * `https://www.google.com/foo` *
+  /// `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` *
+  /// `https://user@password:www.google.com/` But it does not contain these
+  /// URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/`
+  /// (hostname does not match) * `https://www.google.com:444/` (port does not
+  /// match) REQUIRED
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -682,7 +685,7 @@ class WebAsset {
   /// Web assets are identified by a URL that contains only the scheme, hostname
   /// and port parts.
   ///
-  /// The format is http[s]://[:] Hostnames must be fully qualified: they must
+  /// The format is http\[s\]://[:] Hostnames must be fully qualified: they must
   /// end in a single period ("`.`"). Only the schemes "http" and "https" are
   /// currently allowed. Port numbers are given as a decimal number, and they
   /// must be omitted if the standard port numbers are used: 80 for http and 443

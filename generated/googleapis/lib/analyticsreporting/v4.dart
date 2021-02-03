@@ -408,7 +408,7 @@ class Cohort {
 
   /// A unique name for the cohort.
   ///
-  /// If not defined name will be auto-generated with values cohort_[1234...].
+  /// If not defined name will be auto-generated with values cohort_\[1234...\].
   core.String name;
 
   /// Type of the cohort.

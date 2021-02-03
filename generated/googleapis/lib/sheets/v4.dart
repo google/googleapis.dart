@@ -606,7 +606,7 @@ class SpreadsheetsValuesResource {
   /// [responseDateTimeRenderOption] - Determines how dates, times, and
   /// durations in the response should be rendered. This is ignored if
   /// response_value_render_option is FORMATTED_VALUE. The default dateTime
-  /// render option is [DateTimeRenderOption.SERIAL_NUMBER].
+  /// render option is \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -864,7 +864,7 @@ class SpreadsheetsValuesResource {
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
   /// FORMATTED_VALUE. The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -1239,7 +1239,7 @@ class SpreadsheetsValuesResource {
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
   /// FORMATTED_VALUE. The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -3128,7 +3128,7 @@ class BatchGetValuesByDataFilterRequest {
   /// How dates, times, and durations should be represented in the output.
   ///
   /// This is ignored if value_render_option is FORMATTED_VALUE. The default
-  /// dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+  /// dateTime render option is \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -3362,7 +3362,8 @@ class BatchUpdateSpreadsheetResponse {
   /// The spreadsheet after updates were applied.
   ///
   /// This is only set if
-  /// [BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`.
+  /// \[BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response\] is
+  /// `true`.
   Spreadsheet updatedSpreadsheet;
 
   BatchUpdateSpreadsheetResponse();
@@ -5570,29 +5571,29 @@ class ClearValuesResponse {
 /// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
 /// .setValue(((float) alpha) / denominator) .build()); } return
 /// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float
-/// green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-/// alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-/// nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red
-/// green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color)
-/// { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green
-/// blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc]
-/// init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue];
-/// if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; }
-/// [result autorelease]; return result; } // ... Example (JavaScript): // ...
-/// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red ||
-/// 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue
-/// || 0.0; var red = Math.floor(redFrac * 255); var green =
-/// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if
-/// (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); } var
-/// alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
-/// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-/// }; var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new
-/// Number((red << 16) | (green << 8) | blue); var hexString =
-/// rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-/// resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) {
-/// resultBuilder.push('0'); } resultBuilder.push(hexString); return
-/// resultBuilder.join(''); }; // ...
+/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
+/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
+/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return [UIColor
+/// colorWithRed:red green:green blue:blue alpha:alpha]; } static Color*
+/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color
+/// getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color*
+/// result = [\[Color alloc\] init]; [result setRed:red]; [result
+/// setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result
+/// setAlpha:floatWrapperWithValue(alpha)]; } \[result autorelease\]; return
+/// result; } // ... Example (JavaScript): // ... var protoToCssColor =
+/// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
+/// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
+/// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
+/// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
+/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
+/// rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor_ =
+/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
+/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
+/// - hexString.length; var resultBuilder = ['#']; for (var i = 0; i <
+/// missingZeros; i++) { resultBuilder.push('0'); }
+/// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///

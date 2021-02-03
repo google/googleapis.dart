@@ -155,7 +155,7 @@ class FoldersResource {
   ///
   /// [name] - Required. the resource name of the Folder to be deleted. Must be
   /// of the form `folders/{folder_id}`.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -211,7 +211,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name of the Folder to retrieve. Must be of
   /// the form `folders/{folder_id}`.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -272,7 +272,7 @@ class FoldersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -426,7 +426,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name of the Folder to move. Must be of the
   /// form folders/{folder_id}
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -495,7 +495,7 @@ class FoldersResource {
   ///
   /// [name] - Output only. The resource name of the Folder. Its format is
   /// `folders/{folder_id}`, for example: "folders/1234".
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Fields to be updated. Only the `display_name` can
   /// be updated.
@@ -622,7 +622,7 @@ class FoldersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -687,7 +687,7 @@ class FoldersResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -755,7 +755,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name of the Folder to undelete. Must be of
   /// the form `folders/{folder_id}`.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -819,7 +819,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

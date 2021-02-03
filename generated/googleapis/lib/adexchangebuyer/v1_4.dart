@@ -3458,7 +3458,7 @@ class CreativeNativeAd {
 
   /// The app rating in the app store.
   ///
-  /// Must be in the range [0-5].
+  /// Must be in the range \[0-5\].
   core.double starRating;
 
   /// The URL of the XML VAST for a native ad.

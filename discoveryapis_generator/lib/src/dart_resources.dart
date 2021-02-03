@@ -621,7 +621,7 @@ DartResourceMethod _parseMethod(
 
   Comment parameterComment(JsonSchema parameter) {
     final sb = StringBuffer();
-    sb.write(parameter.description);
+    sb.write(bracketClean(parameter.description));
 
     final min = parameter.minimum;
     final max = parameter.maximum;
@@ -629,9 +629,11 @@ DartResourceMethod _parseMethod(
       sb.write('\nValue must be between "$min" and "$max".');
     }
     if (parameter.pattern != null) {
-      sb.write('\nValue must have pattern "${parameter.pattern}".');
+      sb.write(
+        '\nValue must have pattern `${markdownEscape(parameter.pattern)}`.',
+      );
     }
-    return Comment('$sb');
+    return Comment(sb.toString());
   }
 
   DartSchemaType getValidReference(String ref) =>
@@ -695,7 +697,7 @@ DartResourceMethod _parseMethod(
     dartResponseType = getValidReference(method.response.P_ref);
   }
 
-  final comment = Comment.header(method.description);
+  final comment = Comment.header(method.description, true);
 
   bool makeBoolean(bool x) => x ?? false;
 
@@ -808,7 +810,7 @@ DartResourceClass _parseResource(
     });
   }
 
-  final comment = Comment.header(resourceDescription);
+  final comment = Comment.header(resourceDescription, false);
   if (topLevel) {
     final scopes = <OAuth2Scope>[];
 

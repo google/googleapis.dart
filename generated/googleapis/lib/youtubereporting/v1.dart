@@ -518,7 +518,7 @@ class MediaResource {
   /// Request parameters:
   ///
   /// [resourceName] - Name of the media that is being downloaded.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

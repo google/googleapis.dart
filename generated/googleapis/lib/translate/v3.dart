@@ -85,7 +85,7 @@ class ProjectsResource {
   /// `projects/{project-number-or-id}`. Only models within the same region (has
   /// same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error
   /// is returned.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -149,7 +149,7 @@ class ProjectsResource {
   /// `projects/{project-number-or-id}`. Non-global location is required for
   /// AutoML models. Only models within the same region (have same location-id)
   /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [displayLanguageCode] - Optional. The language to use to return localized,
   /// human readable names of supported languages. If missing, then display
@@ -233,7 +233,7 @@ class ProjectsResource {
   /// requests using AutoML models or custom glossaries. Models and glossaries
   /// must be within the same region (have same location-id), otherwise an
   /// INVALID_ARGUMENT (400) error is returned.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -315,7 +315,7 @@ class ProjectsLocationsResource {
   /// location is not supported for batch translation. Only AutoML Translation
   /// models or glossaries within the same region (have the same location-id)
   /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -381,7 +381,7 @@ class ProjectsLocationsResource {
   /// `projects/{project-number-or-id}`. Only models within the same region (has
   /// same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error
   /// is returned.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -439,7 +439,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -496,7 +496,7 @@ class ProjectsLocationsResource {
   /// `projects/{project-number-or-id}`. Non-global location is required for
   /// AutoML models. Only models within the same region (have same location-id)
   /// can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [displayLanguageCode] - Optional. The language to use to return localized,
   /// human readable names of supported languages. If missing, then display
@@ -571,7 +571,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -651,7 +651,7 @@ class ProjectsLocationsResource {
   /// requests using AutoML models or custom glossaries. Models and glossaries
   /// must be within the same region (have same location-id), otherwise an
   /// INVALID_ARGUMENT (400) error is returned.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -720,7 +720,7 @@ class ProjectsLocationsGlossariesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -781,7 +781,7 @@ class ProjectsLocationsGlossariesResource {
   ///
   /// [name] - Required. The name of the glossary to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -835,7 +835,7 @@ class ProjectsLocationsGlossariesResource {
   ///
   /// [name] - Required. The name of the glossary to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/glossaries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -889,7 +889,7 @@ class ProjectsLocationsGlossariesResource {
   ///
   /// [parent] - Required. The name of the project from which to list all of the
   /// glossaries.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter specifying constraints of a list operation.
   /// Specify the constraint by the format of "key=value", where key must be
@@ -913,7 +913,7 @@ class ProjectsLocationsGlossariesResource {
   ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return. Typically, this is the value of
-  /// [ListGlossariesResponse.next_page_token] returned from the previous call
+  /// \[ListGlossariesResponse.next_page_token\] returned from the previous call
   /// to `ListGlossaries` method. The first page is returned if `page_token`is
   /// empty or missing.
   ///
@@ -1000,7 +1000,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1060,7 +1060,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1115,7 +1115,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1175,7 +1175,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1258,7 +1258,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to wait on.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1775,9 +1775,9 @@ class GlossaryInputConfig {
   /// Google Cloud Storage location of glossary data.
   ///
   /// File format is determined based on the filename extension. API returns
-  /// [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats.
-  /// Wildcards are not allowed. This must be a single file in one of the
-  /// following formats: For unidirectional glossaries: - TSV/CSV
+  /// \[google.rpc.Code.INVALID_ARGUMENT\] for unsupported URI-s and file
+  /// formats. Wildcards are not allowed. This must be a single file in one of
+  /// the following formats: For unidirectional glossaries: - TSV/CSV
   /// (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column
   /// is source text. The second column is target text. The file must not
   /// contain headers. That is, the first row is data, not column names. - TMX
@@ -1934,7 +1934,7 @@ class ListGlossariesResponse {
 
   /// A token to retrieve a page of results.
   ///
-  /// Pass this value in the [ListGlossariesRequest.page_token] field in the
+  /// Pass this value in the \[ListGlossariesRequest.page_token\] field in the
   /// subsequent call to `ListGlossaries` method to retrieve the next page of
   /// results.
   core.String nextPageToken;
@@ -2217,7 +2217,7 @@ class Operation {
 class OutputConfig {
   /// Google Cloud Storage destination for output content.
   ///
-  /// For every single input file (for example, gs://a/b/c.[extension]), we
+  /// For every single input file (for example, gs://a/b/c.\[extension\]), we
   /// generate at most 2 * n output files. (n is the # of target_language_codes
   /// in the BatchTranslateTextRequest). Output files (tsv) generated are
   /// compliant with RFC 4180 except that record delimiters are '\n' instead of
@@ -2238,7 +2238,7 @@ class OutputConfig {
   /// should also expect all the content in input_file are processed and ready
   /// to be consumed (that is, no partial output file is written). The format of
   /// translations_file (for target language code 'trg') is:
-  /// gs://translation_test/a_b_c_'trg'_translations.[extension] If the input
+  /// gs://translation_test/a_b_c_'trg'_translations.\[extension\] If the input
   /// file extension is tsv, the output has the following columns: Column 1: ID
   /// of the request provided in the input, if it's not provided in the input,
   /// then the input row number is used (0-based). Column 2: source sentence.
@@ -2249,9 +2249,9 @@ class OutputConfig {
   /// there is no glossary applied. If input file extension is a txt or html,
   /// the translation is directly written to the output file. If glossary is
   /// requested, a separate glossary_translations_file has format of
-  /// gs://translation_test/a_b_c_'trg'_glossary_translations.[extension] The
+  /// gs://translation_test/a_b_c_'trg'_glossary_translations.\[extension\] The
   /// format of errors file (for target language code 'trg') is:
-  /// gs://translation_test/a_b_c_'trg'_errors.[extension] If the input file
+  /// gs://translation_test/a_b_c_'trg'_errors.\[extension\] If the input file
   /// extension is tsv, errors_file contains the following: Column 1: ID of the
   /// request provided in the input, if it's not provided in the input, then the
   /// input row number is used (0-based). Column 2: source sentence. Column 3:
@@ -2259,7 +2259,7 @@ class OutputConfig {
   /// if a glossary is provided in the request): Error when applying the
   /// glossary. If the input file extension is txt or html, glossary_error_file
   /// will be generated that contains error details. glossary_error_file has
-  /// format of gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]
+  /// format of gs://translation_test/a_b_c_'trg'_glossary_errors.\[extension\]
   GcsDestination gcsDestination;
 
   OutputConfig();

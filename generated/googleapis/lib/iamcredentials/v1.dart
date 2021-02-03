@@ -87,7 +87,7 @@ class ProjectsServiceAccountsResource {
   /// credentials are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -150,7 +150,7 @@ class ProjectsServiceAccountsResource {
   /// credentials are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -213,7 +213,7 @@ class ProjectsServiceAccountsResource {
   /// credentials are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -274,7 +274,7 @@ class ProjectsServiceAccountsResource {
   /// credentials are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

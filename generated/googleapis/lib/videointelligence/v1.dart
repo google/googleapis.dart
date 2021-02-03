@@ -123,7 +123,7 @@ class OperationsProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -182,7 +182,7 @@ class OperationsProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,7 +238,7 @@ class OperationsProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -333,7 +333,7 @@ class ProjectsLocationsCorporaOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/corpora/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/corpora/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -406,7 +406,7 @@ class ProjectsLocationsCorpuraOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/corpura/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/corpura/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -477,7 +477,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -538,7 +538,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -594,7 +594,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,7 +655,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///

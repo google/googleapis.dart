@@ -84,7 +84,7 @@ class ActionResultsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [hash] - The hash. In the case of SHA-256, it will always be a lowercase
   /// hex string exactly 64 characters long.
@@ -191,7 +191,7 @@ class ActionResultsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [hash] - The hash. In the case of SHA-256, it will always be a lowercase
   /// hex string exactly 64 characters long.
@@ -333,7 +333,7 @@ class ActionsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -413,7 +413,7 @@ class BlobsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -489,7 +489,7 @@ class BlobsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -558,7 +558,7 @@ class BlobsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -633,7 +633,7 @@ class BlobsResource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [hash] - The hash. In the case of SHA-256, it will always be a lowercase
   /// hex string exactly 64 characters long.
@@ -737,7 +737,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the Operation returned by Execute.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -812,7 +812,7 @@ class V2Resource {
   /// their own workers, storage, caches, etc.). The server MAY require use of
   /// this field to select between them in an implementation-defined fashion,
   /// otherwise it can be omitted.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -865,7 +865,7 @@ class V2Resource {
 /// An `Action` captures all the information about an execution which is
 /// required to reproduce it.
 ///
-/// `Action`s are the core component of the [Execution] service. A single
+/// `Action`s are the core component of the \[Execution\] service. A single
 /// `Action` represents a repeatable action that can be performed by the
 /// execution service. `Action`s can be succinctly identified by the digest of
 /// their wire format encoding and, once an `Action` has been executed, will be

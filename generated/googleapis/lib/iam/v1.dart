@@ -230,7 +230,7 @@ class OrganizationsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -310,7 +310,7 @@ class OrganizationsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [etag] - Used to perform a consistent read-modify-write.
   ///
@@ -388,7 +388,7 @@ class OrganizationsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -459,7 +459,7 @@ class OrganizationsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response. The default is 300, and the maximum is 1,000.
@@ -562,7 +562,7 @@ class OrganizationsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [updateMask] - A mask describing which fields in the Role have changed.
   ///
@@ -641,7 +641,7 @@ class OrganizationsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -788,7 +788,7 @@ class ProjectsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -868,7 +868,7 @@ class ProjectsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [etag] - Used to perform a consistent read-modify-write.
   ///
@@ -946,7 +946,7 @@ class ProjectsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1017,7 +1017,7 @@ class ProjectsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response. The default is 300, and the maximum is 1,000.
@@ -1120,7 +1120,7 @@ class ProjectsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [updateMask] - A mask describing which fields in the Role have changed.
   ///
@@ -1199,7 +1199,7 @@ class ProjectsRolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1267,7 +1267,7 @@ class ProjectsServiceAccountsResource {
   ///
   /// [name] - Required. The resource name of the project associated with the
   /// service accounts, such as `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,7 +1340,7 @@ class ProjectsServiceAccountsResource {
   /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1409,7 +1409,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1475,7 +1475,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1534,7 +1534,7 @@ class ProjectsServiceAccountsResource {
   /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1597,7 +1597,7 @@ class ProjectsServiceAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -1665,7 +1665,7 @@ class ProjectsServiceAccountsResource {
   ///
   /// [name] - Required. The resource name of the project associated with the
   /// service accounts, such as `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional limit on the number of service accounts to include
   /// in the response. Further accounts can subsequently be obtained by
@@ -1748,7 +1748,7 @@ class ProjectsServiceAccountsResource {
   /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
   /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
   /// Found` error.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1819,7 +1819,7 @@ class ProjectsServiceAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1892,7 +1892,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1964,7 +1964,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2025,7 +2025,7 @@ class ProjectsServiceAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2093,7 +2093,7 @@ class ProjectsServiceAccountsResource {
   /// [name] - The resource name of the service account in the following format:
   /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}`. Using `-` as
   /// a wildcard for the `PROJECT_ID` will infer the project from the account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2165,7 +2165,7 @@ class ProjectsServiceAccountsResource {
   /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
   /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
   /// Found` error.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2234,7 +2234,7 @@ class ProjectsServiceAccountsKeysResource {
   /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2299,7 +2299,7 @@ class ProjectsServiceAccountsKeysResource {
   /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
   /// Value must have pattern
-  /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2356,7 +2356,7 @@ class ProjectsServiceAccountsKeysResource {
   /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
   /// Value must have pattern
-  /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [publicKeyType] - The output format of the public key requested. X509_PEM
   /// is the default output format.
@@ -2423,7 +2423,7 @@ class ProjectsServiceAccountsKeysResource {
   /// `-` as a wildcard for the `PROJECT_ID`, will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [keyTypes] - Filters the types of keys the user wants to include in the
   /// list response. Duplicate key types are not allowed. If no key type is
@@ -2489,7 +2489,7 @@ class ProjectsServiceAccountsKeysResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2573,7 +2573,7 @@ class RolesResource {
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^roles/[^/]+$".
+  /// Value must have pattern `^roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

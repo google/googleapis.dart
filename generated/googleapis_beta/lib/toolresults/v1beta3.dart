@@ -1123,7 +1123,7 @@ class ProjectsHistoriesExecutionsStepsResource {
   /// projects/my-project/histories/bh.1234567890abcdef/executions/
   /// 1234567890123456789/steps/bs.1234567890abcdef Required.
   /// Value must have pattern
-  /// "^projects/[^/]+/histories/[^/]+/executions/[^/]+/steps/[^/]+$".
+  /// `^projects/\[^/\]+/histories/\[^/\]+/executions/\[^/\]+/steps/\[^/\]+$`.
   ///
   /// [locale] - The accepted format is the canonical Unicode format with hyphen
   /// as a delimiter. Language must be lowercase, Language Script - Capitalized,

@@ -423,7 +423,7 @@ class AllocateQuotaResponse {
   }
 }
 
-/// The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.
+/// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
 class AttributeValue {
   /// A Boolean value represented by `true` or `false`.
   core.bool boolValue;
@@ -1387,11 +1387,12 @@ class Distribution {
   ///
   /// `bucket_counts` are optional. If present, they must sum to the `count`
   /// value. The buckets are defined below in `bucket_option`. There are N
-  /// buckets. `bucket_counts[0]` is the number of samples in the underflow
-  /// bucket. `bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of
-  /// samples in each of the finite buckets. And `bucket_counts[N] is the number
-  /// of samples in the overflow bucket. See the comments of `bucket_option`
-  /// below for more details. Any suffix of trailing zeros may be omitted.
+  /// buckets. `bucket_counts\[0\]` is the number of samples in the underflow
+  /// bucket. `bucket_counts\[1\]` to `bucket_counts\[N-1\]` are the numbers of
+  /// samples in each of the finite buckets. And `bucket_counts\[N\] is the
+  /// number of samples in the overflow bucket. See the comments of
+  /// `bucket_option` below for more details. Any suffix of trailing zeros may
+  /// be omitted.
   core.List<core.String> bucketCounts;
 
   /// The total number of samples in the distribution.
@@ -1587,13 +1588,13 @@ class ExplicitBuckets {
   ///
   /// Note that a list of length N-1 defines N buckets because of fenceposting.
   /// See comments on `bucket_options` for details. The i'th finite bucket
-  /// covers the interval [bound[i-1], bound[i]) where i ranges from 1 to
+  /// covers the interval [bound\[i-1\], bound\[i\]) where i ranges from 1 to
   /// bound_size() - 1. Note that there are no finite buckets at all if 'bound'
   /// only contains a single element; in that special case the single bound
   /// defines the boundary between the underflow and overflow buckets. bucket
-  /// number lower bound upper bound i == 0 (underflow) -inf bound[i] 0 < i <
-  /// bound_size() bound[i-1] bound[i] i == bound_size() (overflow) bound[i-1]
-  /// +inf
+  /// number lower bound upper bound i == 0 (underflow) -inf bound\[i\] 0 < i <
+  /// bound_size() bound\[i-1\] bound\[i\] i == bound_size() (overflow)
+  /// bound\[i-1\] +inf
   core.List<core.double> bounds;
 
   ExplicitBuckets();
@@ -3718,12 +3719,12 @@ class ServiceAccountDelegationInfo {
 /// aggregation.
 ///
 /// It contains the name of a span with format:
-/// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+/// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class SpanContext {
   /// The resource name of the span.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
   /// `[TRACE_ID]` is a unique identifier for a trace within a project; it is a
   /// 32-character hexadecimal encoding of a 16-byte array. `[SPAN_ID]` is a
   /// unique identifier for a span within a trace; it is a 16-character
@@ -3877,15 +3878,15 @@ class TraceSpan {
   core.String endTime;
 
   /// The resource name of the span in the following format:
-  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project; it is a 32-character hexadecimal
   /// encoding of a 16-byte array.
   ///
-  /// [SPAN_ID] is a unique identifier for a span within a trace; it is a
+  /// \[SPAN_ID\] is a unique identifier for a span within a trace; it is a
   /// 16-character hexadecimal encoding of an 8-byte array.
   core.String name;
 
-  /// The [SPAN_ID] of this span's parent span.
+  /// The \[SPAN_ID\] of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
   core.String parentSpanId;
@@ -3897,7 +3898,7 @@ class TraceSpan {
   /// advantage of this helpful information.
   core.bool sameProcessAsParentSpan;
 
-  /// The [SPAN_ID] portion of the span's resource name.
+  /// The \[SPAN_ID\] portion of the span's resource name.
   core.String spanId;
 
   /// Distinguishes between spans generated in a particular context.

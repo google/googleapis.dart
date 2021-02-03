@@ -149,7 +149,7 @@ class BillingAccountsResource {
   ///
   /// [name] - Required. The resource name of the billing account to retrieve.
   /// For example, `billingAccounts/012345-567890-ABCDEF`.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -207,7 +207,7 @@ class BillingAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -356,7 +356,7 @@ class BillingAccountsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the billing account resource to be updated.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applied to the resource. Only
   /// "display_name" is currently supported.
@@ -428,7 +428,7 @@ class BillingAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -493,7 +493,7 @@ class BillingAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -565,7 +565,7 @@ class BillingAccountsProjectsResource {
   /// [name] - Required. The resource name of the billing account associated
   /// with the projects that you want to list. For example,
   /// `billingAccounts/012345-567890-ABCDEF`.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The maximum page size is 100; this is
   /// also the default.
@@ -644,7 +644,7 @@ class ProjectsResource {
   ///
   /// [name] - Required. The resource name of the project for which billing
   /// information is retrieved. For example, `projects/tokyo-rain-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -726,7 +726,7 @@ class ProjectsResource {
   /// [name] - Required. The resource name of the project associated with the
   /// billing information that you want to update. For example,
   /// `projects/tokyo-rain-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -857,7 +857,7 @@ class ServicesSkusResource {
   ///
   /// [parent] - Required. The name of the service. Example:
   /// "services/DA34-426B-A397"
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
   /// response proto. Will use the conversion rate as of start_time. Optional.

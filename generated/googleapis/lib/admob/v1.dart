@@ -75,7 +75,7 @@ class AccountsResource {
   ///
   /// [name] - Resource name of the publisher account to retrieve. Example:
   /// accounts/pub-9876543210987654
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -200,7 +200,7 @@ class AccountsMediationReportResource {
   ///
   /// [parent] - Resource name of the account to generate the report for.
   /// Example: accounts/pub-9876543210987654
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -269,7 +269,7 @@ class AccountsNetworkReportResource {
   ///
   /// [parent] - Resource name of the account to generate the report for.
   /// Example: accounts/pub-9876543210987654
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

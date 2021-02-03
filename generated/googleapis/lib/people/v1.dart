@@ -231,7 +231,7 @@ class ContactGroupsResource {
   ///
   /// [resourceName] - Required. The resource name of the contact group to
   /// delete.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [deleteContacts] - Optional. Set to true to also delete the contacts in
   /// the specified group.
@@ -290,7 +290,7 @@ class ContactGroupsResource {
   /// Request parameters:
   ///
   /// [resourceName] - Required. The resource name of the contact group to get.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [maxMembers] - Optional. Specifies the maximum number of members to
   /// return. Defaults to 0 if not set, which will return zero members.
@@ -425,7 +425,7 @@ class ContactGroupsResource {
   /// [resourceName] - The resource name for the contact group, assigned by the
   /// server. An ASCII string, in the form of
   /// `contactGroups/{contact_group_id}`.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -495,7 +495,7 @@ class ContactGroupsMembersResource {
   ///
   /// [resourceName] - Required. The resource name of the contact group to
   /// modify.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,7 +563,7 @@ class OtherContactsResource {
   ///
   /// [resourceName] - Required. The resource name of the "Other contact" to
   /// copy.
-  /// Value must have pattern "^otherContacts/[^/]+$".
+  /// Value must have pattern `^otherContacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -799,7 +799,7 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [resourceName] - Required. The resource name of the contact to delete.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -853,7 +853,7 @@ class PeopleResource {
   ///
   /// [resourceName] - Required. The resource name of the contact whose photo
   /// will be deleted.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on the
   /// person are returned. Multiple fields can be specified by separating them
@@ -936,7 +936,7 @@ class PeopleResource {
   /// `people/{account_id}`. - To get information about a contact, specify the
   /// resource name that identifies the contact as returned by
   /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Required. A field mask to restrict which fields on the
   /// person are returned. Multiple fields can be specified by separating them
@@ -1329,7 +1329,7 @@ class PeopleResource {
   /// [resourceName] - The resource name for the person, assigned by the server.
   /// An ASCII string with a max length of 27 characters, in the form of
   /// `people/{person_id}`.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on each
   /// person are returned. Multiple fields can be specified by separating them
@@ -1422,7 +1422,7 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [resourceName] - Required. Person resource name
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1489,7 +1489,7 @@ class PeopleConnectionsResource {
   ///
   /// [resourceName] - Required. The resource name to return connections for.
   /// Only `people/me` is valid.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The number of connections to include in the
   /// response. Valid values are between 1 and 1000, inclusive. Defaults to 100
@@ -4526,8 +4526,8 @@ class PersonMetadata {
 
 /// The response for a single person
 class PersonResponse {
-  /// **DEPRECATED** (Please use status instead) [HTTP 1.1 status code]
-  /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+  /// **DEPRECATED** (Please use status instead) [HTTP 1.1 status
+  /// code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
   core.int httpStatusCode;
 
   /// The person.

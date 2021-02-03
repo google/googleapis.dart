@@ -79,7 +79,7 @@ class ProjectsResource {
   ///
   /// [name] - Required. The resource name of the policy to retrieve, in the
   /// format `projects / * /policy`.
-  /// Value must have pattern "^projects/[^/]+/policy$".
+  /// Value must have pattern `^projects/\[^/\]+/policy$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -139,7 +139,7 @@ class ProjectsResource {
   ///
   /// [name] - Output only. The resource name, in the format `projects / *
   /// /policy`. There is at most one policy per project.
-  /// Value must have pattern "^projects/[^/]+/policy$".
+  /// Value must have pattern `^projects/\[^/\]+/policy$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -205,7 +205,7 @@ class ProjectsAttestorsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent of this attestor.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [attestorId] - Required. The attestors ID.
   ///
@@ -270,7 +270,7 @@ class ProjectsAttestorsResource {
   ///
   /// [name] - Required. The name of the attestors to delete, in the format
   /// `projects / * /attestors / * `.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -324,7 +324,7 @@ class ProjectsAttestorsResource {
   ///
   /// [name] - Required. The name of the attestor to retrieve, in the format
   /// `projects / * /attestors / * `.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -380,7 +380,7 @@ class ProjectsAttestorsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -450,7 +450,7 @@ class ProjectsAttestorsResource {
   ///
   /// [parent] - Required. The resource name of the project associated with the
   /// attestors, in the format `projects / * `.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -526,7 +526,7 @@ class ProjectsAttestorsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -592,7 +592,7 @@ class ProjectsAttestorsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,7 +655,7 @@ class ProjectsAttestorsResource {
   ///
   /// [name] - Required. The resource name, in the format: `projects / *
   /// /attestors / * `. This field may not be updated.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -714,7 +714,7 @@ class ProjectsAttestorsResource {
   ///
   /// [attestor] - Required. The resource name of the Attestor of the
   /// occurrence, in the format `projects / * /attestors / * `.
-  /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/attestors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -784,7 +784,7 @@ class ProjectsPolicyResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/policy$".
+  /// Value must have pattern `^projects/\[^/\]+/policy$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -858,7 +858,7 @@ class ProjectsPolicyResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/policy$".
+  /// Value must have pattern `^projects/\[^/\]+/policy$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -924,7 +924,7 @@ class ProjectsPolicyResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/policy$".
+  /// Value must have pattern `^projects/\[^/\]+/policy$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

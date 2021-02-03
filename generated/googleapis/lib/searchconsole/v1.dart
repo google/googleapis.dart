@@ -1100,7 +1100,7 @@ class SearchAnalyticsQueryRequest {
   /// - "VIDEO"
   core.String searchType;
 
-  /// [Required] Start date of the requested date range, in YYYY-MM-DD format,
+  /// \[Required\] Start date of the requested date range, in YYYY-MM-DD format,
   /// in PST time (UTC - 8:00).
   ///
   /// Must be less than or equal to the end date. This value is included in the

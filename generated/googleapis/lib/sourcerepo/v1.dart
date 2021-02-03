@@ -83,7 +83,7 @@ class ProjectsResource {
   ///
   /// [name] - The name of the requested project. Values are of the form
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -138,7 +138,7 @@ class ProjectsResource {
   ///
   /// [name] - The name of the requested project. Values are of the form
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -206,7 +206,7 @@ class ProjectsReposResource {
   ///
   /// [parent] - The project in which to create the repo. Values are of the form
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -262,7 +262,7 @@ class ProjectsReposResource {
   ///
   /// [name] - The name of the repo to delete. Values are of the form
   /// `projects//repos/`.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -314,7 +314,7 @@ class ProjectsReposResource {
   ///
   /// [name] - The name of the requested repository. Values are of the form
   /// `projects//repos/`.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -370,7 +370,7 @@ class ProjectsReposResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -441,7 +441,7 @@ class ProjectsReposResource {
   ///
   /// [name] - The project ID whose repos should be listed. Values are of the
   /// form `projects/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
   /// If not set or zero, defaults to 100 at the server.
@@ -511,7 +511,7 @@ class ProjectsReposResource {
   ///
   /// [name] - The name of the requested repository. Values are of the form
   /// `projects//repos/`.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -572,7 +572,7 @@ class ProjectsReposResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -634,7 +634,7 @@ class ProjectsReposResource {
   ///
   /// [name] - The name of the repo to synchronize. Values are of the form
   /// `projects//repos/`.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -696,7 +696,7 @@ class ProjectsReposResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/repos/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/repos/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

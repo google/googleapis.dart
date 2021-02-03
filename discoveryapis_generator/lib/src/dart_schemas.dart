@@ -1040,7 +1040,7 @@ DartSchemaTypeDB parseSchemas(
     }
 
     if (schema.type == 'object') {
-      var comment = Comment.header(schema.description);
+      var comment = Comment.header(schema.description, true);
       if (schema.additionalProperties != null) {
         final anonValueClassName = namer.schemaClassName('${className}Value');
         final anonClassScope = namer.newClassScope();
@@ -1099,7 +1099,7 @@ DartSchemaTypeDB parseSchemas(
 
             // TODO: use Comment.header here – but we need to handle things like
             //  'Required.' 'Optional.' etc as a prefix!
-            var comment = Comment.header(value.description);
+            var comment = Comment.header(value.description, true);
             comment = extendEnumComment(comment, propertyType);
             comment = extendAnyTypeComment(comment, propertyType);
             Identifier byteArrayAccessor;
@@ -1117,7 +1117,7 @@ DartSchemaTypeDB parseSchemas(
             ObjectType(imports, classId, properties, comment: comment));
       }
     } else if (schema.type == 'array') {
-      final comment = Comment.header(schema.description);
+      final comment = Comment.header(schema.description, true);
       if (topLevel) {
         final elementClassName = namer.schemaClassName('${className}Element');
         final classId = namer.schemaClass(className);

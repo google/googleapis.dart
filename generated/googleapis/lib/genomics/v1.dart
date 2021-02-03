@@ -77,7 +77,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -137,7 +137,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -192,7 +192,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - A string for filtering Operations. In v2alpha1, the following
   /// filter fields are supported: * createTime: The time this job was created *

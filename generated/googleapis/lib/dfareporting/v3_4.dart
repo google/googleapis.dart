@@ -23401,7 +23401,7 @@ class CustomFloodlightVariable {
 
   /// The type of custom floodlight variable to supply a value for.
   ///
-  /// These map to the "u[1-20]=" in the tags.
+  /// These map to the "u\[1-20\]=" in the tags.
   /// Possible string values are:
   /// - "U1"
   /// - "U2"
@@ -25698,13 +25698,13 @@ class FloodlightActivity {
   ///
   /// This is optional: if empty, a new tag string will be generated for you.
   /// This string must be 1 to 8 characters long, with valid characters being
-  /// a-z0-9[ _ ]. This tag string must also be unique among activities of the
+  /// a-z0-9\[ _ \]. This tag string must also be unique among activities of the
   /// same activity group. This field is read-only after insertion.
   core.String tagString;
 
   /// List of the user-defined variables used by this conversion tag.
   ///
-  /// These map to the "u[1-100]=" in the tags. Each of these can have a user
+  /// These map to the "u\[1-100\]=" in the tags. Each of these can have a user
   /// defined type. Acceptable values are U1 to U100, inclusive.
   core.List<core.String> userDefinedVariableTypes;
 
@@ -26020,8 +26020,8 @@ class FloodlightActivityGroup {
   ///
   /// This is optional: if empty, a new tag string will be generated for you.
   /// This string must be 1 to 8 characters long, with valid characters being
-  /// a-z0-9[ _ ]. This tag string must also be unique among activity groups of
-  /// the same floodlight configuration. This field is read-only after
+  /// a-z0-9\[ _ \]. This tag string must also be unique among activity groups
+  /// of the same floodlight configuration. This field is read-only after
   /// insertion.
   core.String tagString;
 

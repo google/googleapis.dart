@@ -89,7 +89,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -140,7 +140,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -234,7 +234,7 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// [parent] - The name of the project where the server creates the dataset.
   /// For example, `projects/{project_id}/locations/{location_id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [datasetId] - The ID of the dataset that is being created. The string must
   /// match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -309,7 +309,8 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// [sourceDataset] - Source dataset resource name. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -371,7 +372,8 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// [name] - The name of the dataset to delete. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,7 +425,8 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// [name] - The name of the dataset to read. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -479,7 +482,8 @@ class ProjectsLocationsDatasetsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -547,7 +551,7 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// [parent] - The name of the project whose datasets should be listed. For
   /// example, `projects/{project_id}/locations/{location_id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Capped to 100 if not
   /// specified. May not be larger than 1000.
@@ -617,7 +621,8 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// [name] - Resource name of the dataset, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -687,7 +692,8 @@ class ProjectsLocationsDatasetsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -753,7 +759,8 @@ class ProjectsLocationsDatasetsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -823,7 +830,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Request parameters:
   ///
   /// [parent] - The name of the dataset this DICOM store belongs to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [dicomStoreId] - The ID of the DICOM store that is being created. Any
   /// string value up to 256 characters in length.
@@ -901,7 +909,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [sourceStore] - Source DICOM store resource name. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -960,7 +968,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// [name] - The resource name of the DICOM store to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1021,7 +1029,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1077,7 +1085,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   ///
   /// [name] - The resource name of the DICOM store to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1135,7 +1143,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -1211,7 +1219,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// imported. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1266,7 +1274,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Request parameters:
   ///
   /// [parent] - Name of the dataset.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -1346,7 +1355,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [name] - Resource name of the DICOM store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -1407,8 +1416,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// SearchForInstances returns a list of matching instances.
   ///
-  /// See [Search Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// See [Search
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForInstances, see [Search
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -1422,12 +1431,12 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
   /// request. For example, `instances`, `series/{series_uid}/instances`, or
   /// `studies/{study_uid}/instances`.
-  /// Value must have pattern "^instances$".
+  /// Value must have pattern `^instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1482,8 +1491,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// SearchForSeries returns a list of matching series.
   ///
-  /// See [Search Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// See [Search
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForSeries, see [Search
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -1497,11 +1506,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the SearchForSeries DICOMweb request. For
   /// example, `series` or `studies/{study_uid}/series`.
-  /// Value must have pattern "^series$".
+  /// Value must have pattern `^series$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1556,8 +1565,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// SearchForStudies returns a list of matching studies.
   ///
-  /// See [Search Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// See [Search
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForStudies, see [Search
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -1571,11 +1580,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the SearchForStudies DICOMweb request. For
   /// example, `studies`.
-  /// Value must have pattern "^studies$".
+  /// Value must have pattern `^studies$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1641,7 +1650,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1696,8 +1705,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// StoreInstances stores DICOM instances associated with study instance
   /// unique identifiers (SUID).
   ///
-  /// See [Store Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// See [Store
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
   /// For details on the implementation of StoreInstances, see [Store
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -1712,11 +1721,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the StoreInstances DICOMweb request. For
   /// example, `studies/[{study_uid}]`. Note that the `study_uid` is optional.
-  /// Value must have pattern "^studies$".
+  /// Value must have pattern `^studies$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1788,7 +1797,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1867,11 +1876,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   ///
   /// [parent] - null
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the DeleteStudy request. For example,
   /// `studies/{study_uid}`.
-  /// Value must have pattern "^studies/[^/]+$".
+  /// Value must have pattern `^studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1927,8 +1936,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// RetrieveStudyMetadata returns instance associated with the given study
   /// presented as metadata with the bulk data removed.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveStudyMetadata, see [Metadata
   /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -1941,11 +1950,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveStudyMetadata DICOMweb request.
   /// For example, `studies/{study_uid}/metadata`.
-  /// Value must have pattern "^studies/[^/]+/metadata$".
+  /// Value must have pattern `^studies/\[^/\]+/metadata$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2000,8 +2009,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
 
   /// RetrieveStudy returns all instances within the given study.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveStudy, see [DICOM
   /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2014,11 +2023,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveStudy DICOMweb request. For
   /// example, `studies/{study_uid}`.
-  /// Value must have pattern "^studies/[^/]+$".
+  /// Value must have pattern `^studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2073,8 +2082,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
 
   /// SearchForInstances returns a list of matching instances.
   ///
-  /// See [Search Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// See [Search
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForInstances, see [Search
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2088,12 +2097,12 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
   /// request. For example, `instances`, `series/{series_uid}/instances`, or
   /// `studies/{study_uid}/instances`.
-  /// Value must have pattern "^studies/[^/]+/instances$".
+  /// Value must have pattern `^studies/\[^/\]+/instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2148,8 +2157,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
 
   /// SearchForSeries returns a list of matching series.
   ///
-  /// See [Search Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// See [Search
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForSeries, see [Search
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2163,11 +2172,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the SearchForSeries DICOMweb request. For
   /// example, `series` or `studies/{study_uid}/series`.
-  /// Value must have pattern "^studies/[^/]+/series$".
+  /// Value must have pattern `^studies/\[^/\]+/series$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2223,8 +2232,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// StoreInstances stores DICOM instances associated with study instance
   /// unique identifiers (SUID).
   ///
-  /// See [Store Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// See [Store
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
   /// For details on the implementation of StoreInstances, see [Store
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2239,11 +2248,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the StoreInstances DICOMweb request. For
   /// example, `studies/[{study_uid}]`. Note that the `study_uid` is optional.
-  /// Value must have pattern "^studies/[^/]+$".
+  /// Value must have pattern `^studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2330,11 +2339,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the DeleteSeries request. For example,
   /// `studies/{study_uid}/series/{series_uid}`.
-  /// Value must have pattern "^studies/[^/]+/series/[^/]+$".
+  /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2390,8 +2399,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// RetrieveSeriesMetadata returns instance associated with the given study
   /// and series, presented as metadata with the bulk data removed.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveSeriesMetadata, see [Metadata
   /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2404,11 +2413,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveSeriesMetadata DICOMweb request.
   /// For example, `studies/{study_uid}/series/{series_uid}/metadata`.
-  /// Value must have pattern "^studies/[^/]+/series/[^/]+/metadata$".
+  /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+/metadata$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2463,8 +2472,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
 
   /// RetrieveSeries returns all instances within the given study and series.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveSeries, see [DICOM
   /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2477,11 +2486,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveSeries DICOMweb request. For
   /// example, `studies/{study_uid}/series/{series_uid}`.
-  /// Value must have pattern "^studies/[^/]+/series/[^/]+$".
+  /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2536,8 +2545,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
 
   /// SearchForInstances returns a list of matching instances.
   ///
-  /// See [Search Transaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// See [Search
+  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
   /// For details on the implementation of SearchForInstances, see [Search
   /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2551,12 +2560,12 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the SearchForInstancesRequest DICOMweb
   /// request. For example, `instances`, `series/{series_uid}/instances`, or
   /// `studies/{study_uid}/instances`.
-  /// Value must have pattern "^studies/[^/]+/series/[^/]+/instances$".
+  /// Value must have pattern `^studies/\[^/\]+/series/\[^/\]+/instances$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2638,11 +2647,12 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the DeleteInstance request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
-  /// Value must have pattern "^studies/[^/]+/series/[^/]+/instances/[^/]+$".
+  /// Value must have pattern
+  /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2698,8 +2708,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// RetrieveInstance returns instance associated with the given study, series,
   /// and SOP Instance UID.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveInstance, see [DICOM
   /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// and [DICOM
@@ -2714,12 +2724,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveInstance DICOMweb request. For
   /// example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
-  /// Value must have pattern "^studies/[^/]+/series/[^/]+/instances/[^/]+$".
+  /// Value must have pattern
+  /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2776,8 +2787,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// series, and SOP Instance UID presented as metadata with the bulk data
   /// removed.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveInstanceMetadata, see
   /// [Metadata
   /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
@@ -2791,13 +2802,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveInstanceMetadata DICOMweb
   /// request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/metadata`.
   /// Value must have pattern
-  /// "^studies/[^/]+/series/[^/]+/instances/[^/]+/metadata$".
+  /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/metadata$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2853,8 +2864,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// RetrieveRenderedInstance returns instance associated with the given study,
   /// series, and SOP Instance UID in an acceptable Rendered Media Type.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveRenderedInstance, see
   /// [Rendered
   /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
@@ -2868,13 +2879,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveRenderedInstance DICOMweb
   /// request. For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/rendered`.
   /// Value must have pattern
-  /// "^studies/[^/]+/series/[^/]+/instances/[^/]+/rendered$".
+  /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/rendered$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2938,8 +2949,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// RetrieveFrames returns instances associated with the given study, series,
   /// SOP Instance UID and frame numbers.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
   /// For details on the implementation of RetrieveFrames, see [DICOM
   /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in
   /// the Cloud Healthcare API conformance statement. For samples that show how
@@ -2952,13 +2963,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveFrames DICOMweb request. For
   /// example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}`.
   /// Value must have pattern
-  /// "^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+$".
+  /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/frames/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3015,8 +3026,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// series, SOP Instance UID and frame numbers in an acceptable Rendered Media
   /// Type.
   ///
-  /// See [RetrieveTransaction]
-  /// (http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
+  /// See
+  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
   /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -3029,13 +3040,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
   ///
   /// [dicomWebPath] - The path of the RetrieveRenderedFrames DICOMweb request.
   /// For example,
   /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}/rendered`.
   /// Value must have pattern
-  /// "^studies/[^/]+/series/[^/]+/instances/[^/]+/frames/[^/]+/rendered$".
+  /// `^studies/\[^/\]+/series/\[^/\]+/instances/\[^/\]+/frames/\[^/\]+/rendered$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3105,7 +3116,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Request parameters:
   ///
   /// [parent] - The name of the dataset this FHIR store belongs to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [fhirStoreId] - The ID of the FHIR store that is being created. The string
   /// must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -3179,7 +3191,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// [sourceStore] - Source FHIR store resource name. For example,
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3237,7 +3249,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// [name] - The resource name of the FHIR store to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3301,7 +3313,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// of
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3357,7 +3369,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// [name] - The resource name of the FHIR store to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3414,7 +3426,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -3538,7 +3550,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// format of
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3593,7 +3605,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Request parameters:
   ///
   /// [parent] - Name of the dataset.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -3673,7 +3686,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// [name] - Output only. Resource name of the FHIR store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -3744,7 +3757,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3811,7 +3824,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3900,7 +3913,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [name] - Name of the `Patient` resource for which the information is
   /// required.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Patient/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Patient/\[^/\]+$`.
   ///
   /// [P_count] - Maximum number of resources in a page. Defaults to 100.
   ///
@@ -4007,7 +4020,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource to purge.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4073,7 +4086,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - Name of the FHIR store to retrieve the capabilities for.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4145,7 +4158,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [parent] - The name of the FHIR store this resource belongs to.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [type] - The FHIR resource type to create, such as Patient or Observation.
   /// For a complete list, see the FHIR Resource Index
@@ -4153,7 +4166,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
   /// match the resource type in the provided content.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4227,7 +4240,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4308,7 +4321,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [parent] - Name of the FHIR store in which this bundle will be executed.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4378,7 +4391,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
   /// [P_at] - Only include resource versions that were current at some point
   /// during the time period specified in the date time value. The date
@@ -4487,7 +4500,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource to update.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4561,7 +4574,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4659,7 +4672,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [parent] - Name of the FHIR store to retrieve resources from.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4737,7 +4750,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource to update.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4806,7 +4819,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [name] - The name of the resource version to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/[^/]+/[^/]+/_history/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/\[^/\]+/\[^/\]+/_history/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4869,7 +4882,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Request parameters:
   ///
   /// [parent] - The name of the dataset this HL7v2 store belongs to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [hl7V2StoreId] - The ID of the HL7v2 store that is being created. The
   /// string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -4936,7 +4950,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// [name] - The resource name of the HL7v2 store to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4988,7 +5002,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   ///
   /// [name] - The resource name of the HL7v2 store to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5046,7 +5060,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -5113,7 +5127,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Request parameters:
   ///
   /// [parent] - Name of the dataset.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [filter] - Restricts stores returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -5193,7 +5208,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// [name] - Resource name of the HL7v2 store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -5265,7 +5280,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5332,7 +5347,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5408,7 +5423,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// [parent] - The name of the dataset this message belongs to.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5465,7 +5480,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// [name] - The resource name of the HL7v2 message to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5517,7 +5532,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// [name] - The resource name of the HL7v2 message to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [view] - Specifies which parts of the Message resource to return in the
   /// response. When unspecified, equivalent to FULL.
@@ -5596,7 +5611,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// [parent] - The name of the HL7v2 store this message belongs to.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5660,7 +5675,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// [parent] - Name of the HL7v2 store to retrieve messages from.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
   /// [filter] - Restricts messages returned to those matching a filter. Syntax:
   /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -5785,7 +5800,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
   /// Assigned by the server.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+/messages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -5867,7 +5882,7 @@ class ProjectsLocationsDatasetsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5926,7 +5941,7 @@ class ProjectsLocationsDatasetsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5986,7 +6001,8 @@ class ProjectsLocationsDatasetsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/datasets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -7235,10 +7251,10 @@ class FieldMetadata {
   ///
   /// Each path is a period-separated list where each component is either a
   /// field name or FHIR type name, for example: Patient, HumanName. For
-  /// "choice" types (those defined in the FHIR spec with the form: field[x]) we
-  /// use two separate components. For example, "deceasedAge.unit" is matched by
-  /// "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Code,
-  /// Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
+  /// "choice" types (those defined in the FHIR spec with the form: field\[x\])
+  /// we use two separate components. For example, "deceasedAge.unit" is matched
+  /// by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode,
+  /// Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
   /// String, Uri, Uuid, Xhtml. Base64Binary is also supported, but may only be
   /// kept as-is or have all the content removed.
   core.List<core.String> paths;
@@ -8392,9 +8408,9 @@ class Location {
 
 /// A complete HL7v2 message.
 ///
-/// See [Introduction to HL7 Standards]
-/// (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details
-/// on the standard.
+/// See [Introduction to HL7
+/// Standards](https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+/// details on the standard.
 class Message {
   /// The datetime when the message was created.
   ///
@@ -9017,7 +9033,7 @@ class RedactConfig {
 /// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the
 /// name of the info_type.
 ///
-/// For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The
+/// For example, "My name is Jane" becomes "My name is \[PERSON_NAME\]." The
 /// TRANSFORM action is equivalent to redacting.
 class ReplaceWithInfoTypeConfig {
   ReplaceWithInfoTypeConfig();
@@ -9146,7 +9162,7 @@ class Segment {
   /// (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
   /// "hemoglobin") denotes that the first component of Field 0 has the value
   /// "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of
-  /// the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c")
+  /// the first component of Field 1 has the value "CBC". * (1\[0\].1, "HbA1c")
   /// denotes that the first component of the first Instance of Field 1, which
   /// is repeated, has the value "HbA1c".
   core.Map<core.String, core.String> fields;

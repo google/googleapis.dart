@@ -83,7 +83,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -134,7 +134,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -237,7 +237,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   ///
   /// [parent] - Required. The parent resource of the Connectivity Test to
   /// create: `projects/{project_id}/locations/global`
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [testId] - Required. The logical name of the Connectivity Test in your
   /// project with the following restrictions: * Must contain only lowercase
@@ -306,7 +306,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. Connectivity Test resource name using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,7 +359,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. `ConnectivityTest` resource name using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -417,7 +417,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -485,7 +485,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   ///
   /// [parent] - Required. The parent resource of the Connectivity Tests:
   /// `projects/{project_id}/locations/global`
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [filter] - Lists the `ConnectivityTests` that match the filter expression.
   /// A filter expression filters the resources listed in the response. The
@@ -588,7 +588,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. Unique name of the resource using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field.
@@ -663,7 +663,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. Connectivity Test resource name using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -726,7 +726,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -793,7 +793,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -870,7 +870,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -930,7 +930,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -985,7 +985,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1045,7 +1045,7 @@ class ProjectsLocationsGlobalOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [filter] - The standard list filter.
   ///

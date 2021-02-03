@@ -91,7 +91,7 @@ class ProjectsResource {
   /// [name] - Required. The resource name of a model or a version.
   /// Authorization: requires the `predict` permission on the specified
   /// resource.
-  /// Value must have pattern "^projects/.*$".
+  /// Value must have pattern `^projects/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -151,7 +151,7 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project name.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -210,7 +210,7 @@ class ProjectsResource {
   /// [name] - Required. The resource name of a model or a version.
   /// Authorization: requires the `predict` permission on the specified
   /// resource.
-  /// Value must have pattern "^projects/.*$".
+  /// Value must have pattern `^projects/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -274,7 +274,7 @@ class ProjectsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the job to cancel.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -332,7 +332,7 @@ class ProjectsJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project name.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -388,7 +388,7 @@ class ProjectsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the job to get the description of.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -445,7 +445,7 @@ class ProjectsJobsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -516,7 +516,7 @@ class ProjectsJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project for which to list jobs.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Optional. Specifies the subset of jobs to retrieve. You can
   /// filter on the value of one or more attributes of the job object. For
@@ -601,7 +601,7 @@ class ProjectsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The job name.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Specifies the path, relative to `Job`, of the
   /// field to update. To adopt etag mechanism, include `etag` field in the
@@ -679,7 +679,7 @@ class ProjectsJobsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -746,7 +746,7 @@ class ProjectsJobsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -816,7 +816,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -870,7 +870,7 @@ class ProjectsLocationsResource {
   /// [parent] - Required. The name of the project for which available locations
   /// are to be listed (since some locations might be whitelisted for specific
   /// projects).
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The number of locations to retrieve per "page" of
   /// results. If there are more remaining results than this number, the
@@ -957,7 +957,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1013,7 +1013,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1078,7 +1078,7 @@ class ProjectsLocationsStudiesResource {
   ///
   /// [parent] - Required. The project and location that the study belongs to.
   /// Format: projects/{project}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [studyId] - Required. The ID to use for the study, which will become the
   /// final component of the study's resource name.
@@ -1142,7 +1142,8 @@ class ProjectsLocationsStudiesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The study name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/studies/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1194,7 +1195,8 @@ class ProjectsLocationsStudiesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The study name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/studies/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1247,7 +1249,7 @@ class ProjectsLocationsStudiesResource {
   ///
   /// [parent] - Required. The project and location that the study belongs to.
   /// Format: projects/{project}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1313,7 +1315,7 @@ class ProjectsLocationsStudiesTrialsResource {
   ///
   /// [name] - Required. The trial name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1377,7 +1379,7 @@ class ProjectsLocationsStudiesTrialsResource {
   ///
   /// [name] - Required. The trial name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1438,7 +1440,7 @@ class ProjectsLocationsStudiesTrialsResource {
   ///
   /// [name] - Required. The trial name.metat
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1496,7 +1498,8 @@ class ProjectsLocationsStudiesTrialsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the study that the trial belongs to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/studies/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1553,7 +1556,7 @@ class ProjectsLocationsStudiesTrialsResource {
   ///
   /// [name] - Required. The trial name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1606,7 +1609,7 @@ class ProjectsLocationsStudiesTrialsResource {
   ///
   /// [name] - Required. The trial name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1658,7 +1661,8 @@ class ProjectsLocationsStudiesTrialsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the study that the trial belongs to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/studies/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1713,7 +1717,7 @@ class ProjectsLocationsStudiesTrialsResource {
   ///
   /// [name] - Required. The trial name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/studies/[^/]+/trials/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+/trials/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1776,7 +1780,8 @@ class ProjectsLocationsStudiesTrialsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the study that the trial belongs to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/studies/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1848,7 +1853,7 @@ class ProjectsModelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project name.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1907,7 +1912,7 @@ class ProjectsModelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the model.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1961,7 +1966,7 @@ class ProjectsModelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the model.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2018,7 +2023,7 @@ class ProjectsModelsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -2091,7 +2096,7 @@ class ProjectsModelsResource {
   ///
   /// [parent] - Required. The name of the project whose models are to be
   /// listed.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Optional. Specifies the subset of models to retrieve.
   ///
@@ -2171,7 +2176,7 @@ class ProjectsModelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project name.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Specifies the path, relative to `Model`, of the
   /// field to update. For example, to change the description of a model to
@@ -2246,7 +2251,7 @@ class ProjectsModelsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2313,7 +2318,7 @@ class ProjectsModelsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2387,7 +2392,7 @@ class ProjectsModelsVersionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the model.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2450,7 +2455,8 @@ class ProjectsModelsVersionsResource {
   ///
   /// [name] - Required. The name of the version. You can get the names of all
   /// the versions of a model by calling projects.models.versions.list.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/models/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2506,7 +2512,8 @@ class ProjectsModelsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the version.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/models/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2564,7 +2571,7 @@ class ProjectsModelsVersionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the model for which to list the version.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [filter] - Optional. Specifies the subset of versions to retrieve.
   ///
@@ -2645,7 +2652,8 @@ class ProjectsModelsVersionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the model.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/models/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Specifies the path, relative to `Version`, of the
   /// field to update. Must be present and non-empty. For example, to change the
@@ -2724,7 +2732,8 @@ class ProjectsModelsVersionsResource {
   /// [name] - Required. The name of the version to make the default for the
   /// model. You can get the names of all the versions of a model by calling
   /// projects.models.versions.list.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/models/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2796,7 +2805,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2851,7 +2860,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2912,7 +2921,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -5878,7 +5887,7 @@ class GoogleCloudMlV1ReplicaConfig {
   /// you supplied. - If you supply a command and args: The default Entrypoint
   /// and the default Cmd defined in the Docker image are ignored. Your command
   /// is run with your args. It cannot be set if custom container image is not
-  /// provided. Note that this field and [TrainingInput.args] are mutually
+  /// provided. Note that this field and \[TrainingInput.args\] are mutually
   /// exclusive, i.e., both cannot be set at the same time.
   core.List<core.String> containerArgs;
 
@@ -5887,7 +5896,7 @@ class GoogleCloudMlV1ReplicaConfig {
   /// If provided, it will override default ENTRYPOINT of the docker image. If
   /// not provided, the docker image's ENTRYPOINT is used. It cannot be set if
   /// custom container image is not provided. Note that this field and
-  /// [TrainingInput.args] are mutually exclusive, i.e., both cannot be set at
+  /// \[TrainingInput.args\] are mutually exclusive, i.e., both cannot be set at
   /// the same time.
   core.List<core.String> containerCommand;
 

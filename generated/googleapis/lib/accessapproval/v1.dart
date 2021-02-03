@@ -81,7 +81,7 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Name of the AccessApprovalSettings to delete.
-  /// Value must have pattern "^folders/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^folders/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -132,7 +132,7 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Name of the AccessApprovalSettings to retrieve.
-  /// Value must have pattern "^folders/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^folders/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -191,7 +191,7 @@ class FoldersResource {
   /// "projects/{project}/accessApprovalSettings" *
   /// "folders/{folder}/accessApprovalSettings" *
   /// "organizations/{organization}/accessApprovalSettings"
-  /// Value must have pattern "^folders/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^folders/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [updateMask] - The update mask applies to the settings. Only the top level
   /// fields of AccessApprovalSettings (notification_emails & enrolled_services)
@@ -272,7 +272,7 @@ class FoldersApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the approval request to approve.
-  /// Value must have pattern "^folders/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -336,7 +336,7 @@ class FoldersApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the ApprovalRequest to dismiss.
-  /// Value must have pattern "^folders/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -394,7 +394,7 @@ class FoldersApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the approval request to retrieve.
-  /// Value must have pattern "^folders/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -451,10 +451,10 @@ class FoldersApprovalRequestsResource {
   ///
   /// [parent] - The parent resource. This may be "projects/{project}",
   /// "folders/{folder}", or "organizations/{organization}".
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
-  /// one of the following values: * [not set]: Requests that are pending or
+  /// one of the following values: * \[not set\]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
@@ -543,7 +543,7 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the AccessApprovalSettings to delete.
-  /// Value must have pattern "^organizations/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^organizations/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -594,7 +594,7 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the AccessApprovalSettings to retrieve.
-  /// Value must have pattern "^organizations/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^organizations/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -653,7 +653,7 @@ class OrganizationsResource {
   /// "projects/{project}/accessApprovalSettings" *
   /// "folders/{folder}/accessApprovalSettings" *
   /// "organizations/{organization}/accessApprovalSettings"
-  /// Value must have pattern "^organizations/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^organizations/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [updateMask] - The update mask applies to the settings. Only the top level
   /// fields of AccessApprovalSettings (notification_emails & enrolled_services)
@@ -734,7 +734,8 @@ class OrganizationsApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the approval request to approve.
-  /// Value must have pattern "^organizations/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -798,7 +799,8 @@ class OrganizationsApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the ApprovalRequest to dismiss.
-  /// Value must have pattern "^organizations/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -856,7 +858,8 @@ class OrganizationsApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the approval request to retrieve.
-  /// Value must have pattern "^organizations/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -913,10 +916,10 @@ class OrganizationsApprovalRequestsResource {
   ///
   /// [parent] - The parent resource. This may be "projects/{project}",
   /// "folders/{folder}", or "organizations/{organization}".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
-  /// one of the following values: * [not set]: Requests that are pending or
+  /// one of the following values: * \[not set\]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active
@@ -1005,7 +1008,7 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the AccessApprovalSettings to delete.
-  /// Value must have pattern "^projects/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^projects/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1056,7 +1059,7 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the AccessApprovalSettings to retrieve.
-  /// Value must have pattern "^projects/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^projects/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1115,7 +1118,7 @@ class ProjectsResource {
   /// "projects/{project}/accessApprovalSettings" *
   /// "folders/{folder}/accessApprovalSettings" *
   /// "organizations/{organization}/accessApprovalSettings"
-  /// Value must have pattern "^projects/[^/]+/accessApprovalSettings$".
+  /// Value must have pattern `^projects/\[^/\]+/accessApprovalSettings$`.
   ///
   /// [updateMask] - The update mask applies to the settings. Only the top level
   /// fields of AccessApprovalSettings (notification_emails & enrolled_services)
@@ -1196,7 +1199,7 @@ class ProjectsApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the approval request to approve.
-  /// Value must have pattern "^projects/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1260,7 +1263,7 @@ class ProjectsApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the ApprovalRequest to dismiss.
-  /// Value must have pattern "^projects/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1318,7 +1321,7 @@ class ProjectsApprovalRequestsResource {
   /// Request parameters:
   ///
   /// [name] - Name of the approval request to retrieve.
-  /// Value must have pattern "^projects/[^/]+/approvalRequests/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/approvalRequests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1375,10 +1378,10 @@ class ProjectsApprovalRequestsResource {
   ///
   /// [parent] - The parent resource. This may be "projects/{project}",
   /// "folders/{folder}", or "organizations/{organization}".
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter on the type of approval requests to retrieve. Must be
-  /// one of the following values: * [not set]: Requests that are pending or
+  /// one of the following values: * \[not set\]: Requests that are pending or
   /// have active approvals. * ALL: All requests. * PENDING: Only pending
   /// requests. * ACTIVE: Only active (i.e. currently approved) requests. *
   /// DISMISSED: Only dismissed (including expired) requests. * HISTORY: Active

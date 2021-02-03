@@ -587,7 +587,7 @@ class ReportsResource {
   /// [currency] - The currency to which financial metrics should be converted.
   /// The default is US Dollar (USD). If the result contains no financial
   /// metrics, this flag will be ignored. Responds with an error if the
-  /// specified currency is not recognized.", pattern: [A-Z]{3}
+  /// specified currency is not recognized.", pattern: \[A-Z\]{3}
   ///
   /// [dimensions] - A comma-separated list of YouTube Analytics dimensions,
   /// such as `views` or `ageGroup,gender`. See the [Available
@@ -598,7 +598,7 @@ class ReportsResource {
   ///
   /// [endDate] - The end date for fetching YouTube Analytics data. The value
   /// should be in `YYYY-MM-DD` format. required: true, pattern:
-  /// [0-9]{4}-[0-9]{2}-[0-9]{2}
+  /// \[0-9\]{4}-\[0-9\]{2}-\[0-9\]{2}
   ///
   /// [filters] - A list of filters that should be applied when retrieving
   /// YouTube Analytics data. The [Available
@@ -616,7 +616,7 @@ class ReportsResource {
   /// specifies the unique YouTube channel ID. - To request data for a YouTube
   /// CMS content owner, set the `ids` parameter value to
   /// `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name of the
-  /// content owner. required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
+  /// content owner. required: true, pattern: \[a-zA-Z\]+==[a-zA-Z0-9_+-]+
   ///
   /// [includeHistoricalChannelData] - If set to true historical data (i.e.
   /// channel data from before the linking of the channel to the content owner)
@@ -640,7 +640,7 @@ class ReportsResource {
   ///
   /// [startDate] - The start date for fetching YouTube Analytics data. The
   /// value should be in `YYYY-MM-DD` format. required: true, pattern:
-  /// "[0-9]{4}-[0-9]{2}-[0-9]{2}
+  /// "\[0-9\]{4}-\[0-9\]{2}-\[0-9\]{2}
   ///
   /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter
@@ -795,7 +795,7 @@ class ErrorProto {
   /// If location_type is PATH, this should be a path to a field that's relative
   /// to the request, using FieldPath notation
   /// (net/proto2/util/public/field_path.h). Examples:
-  /// authenticated_user.gaia_id resource.address[2].country
+  /// authenticated_user.gaia_id resource.address\[2\].country
   core.String location;
 
   ///

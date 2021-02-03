@@ -102,7 +102,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
   ///
   /// [name] - Required. Name of the insight.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -158,13 +158,13 @@ class ProjectsLocationsInsightTypesInsightsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
   /// supported insight types:
   /// https://cloud.google.com/recommender/docs/insights/insight-types.)
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter expression to restrict the insights returned.
   /// Supported filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
@@ -250,7 +250,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
   ///
   /// [name] - Required. Name of the insight.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -330,7 +330,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -386,13 +386,13 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [parent] - Required. The container resource on which to execute the
   /// request. Acceptable formats: 1.
-  /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
   /// LOCATION here refers to GCP Locations:
   /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
   /// supported recommenders:
   /// https://cloud.google.com/recommender/docs/recommenders.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
   ///
   /// [filter] - Filter expression to restrict the recommendations returned.
   /// Supported filter fields: state_info.state Eg:
@@ -482,7 +482,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -550,7 +550,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -618,7 +618,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -901,7 +901,7 @@ class GoogleCloudRecommenderV1Insight {
 /// Reference to an associated recommendation.
 class GoogleCloudRecommenderV1InsightRecommendationReference {
   /// Recommendation resource name, e.g.
-  /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/recommendations/\[RECOMMENDATION_ID\]
   core.String recommendation;
 
   GoogleCloudRecommenderV1InsightRecommendationReference();
@@ -1603,7 +1603,7 @@ class GoogleCloudRecommenderV1RecommendationContent {
 /// Reference to an associated insight.
 class GoogleCloudRecommenderV1RecommendationInsightReference {
   /// Insight resource name, e.g.
-  /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID]
+  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/insights/\[INSIGHT_ID\]
   core.String insight;
 
   GoogleCloudRecommenderV1RecommendationInsightReference();

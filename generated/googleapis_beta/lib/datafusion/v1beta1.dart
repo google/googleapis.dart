@@ -98,7 +98,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -149,7 +149,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -240,7 +240,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [parent] - The instance's project and location in the format
   /// projects/{project}/locations/{location}.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - The name of the instance to create.
   ///
@@ -305,7 +305,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - The instance resource name in the format
   /// projects/{project}/locations/{location}/instances/{instance}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -358,7 +358,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - The instance resource name in the format
   /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -415,7 +415,7 @@ class ProjectsLocationsInstancesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -485,7 +485,7 @@ class ProjectsLocationsInstancesResource {
   /// information in the format projects/{project}/locations/{location}. If the
   /// location is specified as '-' (wildcard), then all regions available to the
   /// project are queried, and the results are aggregated.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
   ///
@@ -569,7 +569,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Output only. The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask is used to specify the fields that the update
   /// will overwrite in an instance resource. The fields specified in the
@@ -641,7 +641,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Name of the Data Fusion instance which need to be restarted in
   /// the form of projects/{project}/locations/{location}/instances/{instance}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -706,7 +706,7 @@ class ProjectsLocationsInstancesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -773,7 +773,7 @@ class ProjectsLocationsInstancesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,7 +839,7 @@ class ProjectsLocationsInstancesResource {
   /// Instance will be upgraded with the latest stable version of the Data
   /// Fusion.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -915,7 +915,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -976,7 +976,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1031,7 +1031,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1091,7 +1091,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1173,7 +1173,7 @@ class ProjectsLocationsVersionsResource {
   /// [parent] - Required. The project and location for which to retrieve
   /// instance information in the format
   /// projects/{project}/locations/{location}.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [latestPatchOnly] - Whether or not to return the latest patch of every
   /// available minor version. If true, only the latest patch will be returned.

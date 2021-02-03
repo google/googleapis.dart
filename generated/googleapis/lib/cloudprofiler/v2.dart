@@ -94,7 +94,7 @@ class ProjectsProfilesResource {
   /// Request parameters:
   ///
   /// [parent] - Parent project to create the profile in.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -155,7 +155,7 @@ class ProjectsProfilesResource {
   /// Request parameters:
   ///
   /// [parent] - Parent project to create the profile in.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -219,7 +219,7 @@ class ProjectsProfilesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Opaque, server-assigned, unique ID for this profile.
-  /// Value must have pattern "^projects/[^/]+/profiles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/profiles/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask used to specify the fields to be overwritten.
   /// Currently only profile_bytes and labels fields are supported by

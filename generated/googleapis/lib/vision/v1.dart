@@ -340,7 +340,7 @@ class LocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^locations/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -408,7 +408,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -467,7 +467,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -521,7 +521,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/[^/]+$".
+  /// Value must have pattern `^operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -581,7 +581,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -682,7 +682,7 @@ class ProjectsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -753,7 +753,7 @@ class ProjectsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -822,7 +822,7 @@ class ProjectsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -893,7 +893,7 @@ class ProjectsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -986,7 +986,7 @@ class ProjectsLocationsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1057,7 +1057,7 @@ class ProjectsLocationsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1127,7 +1127,7 @@ class ProjectsLocationsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1198,7 +1198,7 @@ class ProjectsLocationsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1266,7 +1266,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1335,7 +1335,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. The resource name for the ProductSet to modify. Format
   /// is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1397,7 +1397,7 @@ class ProjectsLocationsProductSetsResource {
   ///
   /// [parent] - Required. The project in which the ProductSet should be
   /// created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [productSetId] - A user-supplied resource id for this ProductSet. If set,
   /// the server will attempt to use this value as the resource id. If it is
@@ -1469,7 +1469,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. Resource name of the ProductSet to delete. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1524,7 +1524,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. Resource name of the ProductSet to get. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1587,7 +1587,7 @@ class ProjectsLocationsProductSetsResource {
   ///
   /// [parent] - Required. The project in which the ProductSets should be
   /// imported. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1648,7 +1648,7 @@ class ProjectsLocationsProductSetsResource {
   ///
   /// [parent] - Required. The project from which ProductSets should be listed.
   /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -1726,7 +1726,7 @@ class ProjectsLocationsProductSetsResource {
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This
   /// field is ignored when creating a ProductSet.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask that specifies which fields to update. If
   /// update_mask isn't specified, all mutable fields are to be updated. Valid
@@ -1794,7 +1794,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. The resource name for the ProductSet to modify. Format
   /// is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1865,7 +1865,7 @@ class ProjectsLocationsProductSetsProductsResource {
   /// Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -1949,7 +1949,7 @@ class ProjectsLocationsProductsResource {
   ///
   /// [parent] - Required. The project in which the Product should be created.
   /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [productId] - A user-supplied resource id for this Product. If set, the
   /// server will attempt to use this value as the resource id. If it is already
@@ -2019,7 +2019,8 @@ class ProjectsLocationsProductsResource {
   ///
   /// [name] - Required. Resource name of product to delete. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2073,7 +2074,8 @@ class ProjectsLocationsProductsResource {
   ///
   /// [name] - Required. Resource name of the Product to get. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2128,7 +2130,7 @@ class ProjectsLocationsProductsResource {
   ///
   /// [parent] - Required. The project OR ProductSet from which Products should
   /// be listed. Format: `projects/PROJECT_ID/locations/LOC_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -2208,7 +2210,8 @@ class ProjectsLocationsProductsResource {
   /// [name] - The resource name of the product. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is
   /// ignored when creating a product.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask that specifies which fields to update. If
   /// update_mask isn't specified, all mutable fields are to be updated. Valid
@@ -2292,7 +2295,7 @@ class ProjectsLocationsProductsResource {
   ///
   /// [parent] - Required. The project and location in which the Products should
   /// be deleted. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2373,7 +2376,8 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// [parent] - Required. Resource name of the product in which to create the
   /// reference image. Format is
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [referenceImageId] - A user-supplied resource id for the ReferenceImage to
   /// be added. If set, the server will attempt to use this value as the
@@ -2449,7 +2453,7 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+/referenceImages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2506,7 +2510,7 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+/referenceImages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2564,7 +2568,8 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// [parent] - Required. Resource name of the product containing the reference
   /// images. Format is
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -2642,7 +2647,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3661,29 +3666,29 @@ class CancelOperationRequest {
 /// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
 /// .setValue(((float) alpha) / denominator) .build()); } return
 /// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float
-/// green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-/// alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-/// nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red
-/// green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color)
-/// { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green
-/// blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc]
-/// init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue];
-/// if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; }
-/// [result autorelease]; return result; } // ... Example (JavaScript): // ...
-/// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red ||
-/// 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue
-/// || 0.0; var red = Math.floor(redFrac * 255); var green =
-/// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if
-/// (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); } var
-/// alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
-/// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-/// }; var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new
-/// Number((red << 16) | (green << 8) | blue); var hexString =
-/// rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-/// resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) {
-/// resultBuilder.push('0'); } resultBuilder.push(hexString); return
-/// resultBuilder.join(''); }; // ...
+/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
+/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
+/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return [UIColor
+/// colorWithRed:red green:green blue:blue alpha:alpha]; } static Color*
+/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color
+/// getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color*
+/// result = [\[Color alloc\] init]; [result setRed:red]; [result
+/// setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result
+/// setAlpha:floatWrapperWithValue(alpha)]; } \[result autorelease\]; return
+/// result; } // ... Example (JavaScript): // ... var protoToCssColor =
+/// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
+/// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
+/// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
+/// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
+/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
+/// rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor_ =
+/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
+/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
+/// - hexString.length; var resultBuilder = ['#']; for (var i = 0; i <
+/// missingZeros; i++) { resultBuilder.push('0'); }
+/// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
@@ -10988,7 +10993,7 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
   /// and errors.
   ///
   /// The number of statuses here matches the number of lines in the csv file,
-  /// and statuses[i] stores the success or failure status of processing the
+  /// and statuses\[i\] stores the success or failure status of processing the
   /// i-th line of the csv, starting from line 0.
   core.List<Status> statuses;
 
@@ -13949,7 +13954,7 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
   /// and errors.
   ///
   /// The number of statuses here matches the number of lines in the csv file,
-  /// and statuses[i] stores the success or failure status of processing the
+  /// and statuses\[i\] stores the success or failure status of processing the
   /// i-th line of the csv, starting from line 0.
   core.List<Status> statuses;
 
@@ -15961,7 +15966,7 @@ class ImportProductSetsResponse {
   /// and errors.
   ///
   /// The number of statuses here matches the number of lines in the csv file,
-  /// and statuses[i] stores the success or failure status of processing the
+  /// and statuses\[i\] stores the success or failure status of processing the
   /// i-th line of the csv, starting from line 0.
   core.List<Status> statuses;
 

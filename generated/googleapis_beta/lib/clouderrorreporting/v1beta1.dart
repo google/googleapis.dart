@@ -81,7 +81,7 @@ class ProjectsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example:
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -145,7 +145,7 @@ class ProjectsEventsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example:
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [groupId] - Required. The group for which events shall be returned.
   ///
@@ -270,7 +270,7 @@ class ProjectsEventsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example: //
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -338,7 +338,7 @@ class ProjectsGroupStatsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example:
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [alignment] - Optional. The alignment of the timed counts to be returned.
   /// Default is `ALIGNMENT_EQUAL_AT_END`.
@@ -513,7 +513,7 @@ class ProjectsGroupsResource {
   /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
   /// to return a list of groups belonging to this project. Example:
   /// `projects/my-project-123/groups/my-group`
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -570,7 +570,7 @@ class ProjectsGroupsResource {
   ///
   /// [name] - The group resource name. Example:
   /// projects/my-project-123/groups/CNSgkpnppqKCUw
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

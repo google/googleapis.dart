@@ -72,7 +72,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/[^/]+$".
+  /// Value must have pattern `^operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -227,7 +227,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -312,7 +312,7 @@ class ProjectsLocationsFunctionsResource {
   ///
   /// [name] - Required. The name of the function to be called.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -374,7 +374,7 @@ class ProjectsLocationsFunctionsResource {
   ///
   /// [location] - Required. The project and location in which the function
   /// should be created, specified in the format `projects / * /locations / * `
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -435,7 +435,7 @@ class ProjectsLocationsFunctionsResource {
   ///
   /// [name] - Required. The name of the function which should be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -494,7 +494,7 @@ class ProjectsLocationsFunctionsResource {
   /// [name] - The name of function for which source code Google Cloud Storage
   /// signed URL should be generated.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -571,7 +571,7 @@ class ProjectsLocationsFunctionsResource {
   /// [parent] - The project and location in which the Google Cloud Storage
   /// signed URL should be generated, specified in the format `projects / *
   /// /locations / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -631,7 +631,7 @@ class ProjectsLocationsFunctionsResource {
   /// [name] - Required. The name of the function which details should be
   /// obtained.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -689,7 +689,7 @@ class ProjectsLocationsFunctionsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -761,7 +761,7 @@ class ProjectsLocationsFunctionsResource {
   /// listing functions in all locations, if one or more location(s) are
   /// unreachable, the response will contain functions from all reachable
   /// locations along with the names of any unreachable locations.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of functions to return per call.
   ///
@@ -833,7 +833,7 @@ class ProjectsLocationsFunctionsResource {
   /// unique globally and match pattern `projects / * /locations / * /functions
   /// / * `
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [updateMask] - Required list of fields to be updated in this request.
   ///
@@ -901,7 +901,7 @@ class ProjectsLocationsFunctionsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -967,7 +967,7 @@ class ProjectsLocationsFunctionsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/functions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

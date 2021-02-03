@@ -83,7 +83,7 @@ class UsersResource {
   /// Request parameters:
   ///
   /// [name] - Required. The unique ID for the user in format `users/{user}`.
-  /// Value must have pattern "^users/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+$`.
   ///
   /// [operatingSystemType] - The type of operating system associated with the
   /// account.
@@ -166,7 +166,7 @@ class UsersResource {
   /// Request parameters:
   ///
   /// [parent] - The unique ID for the user in format `users/{user}`.
-  /// Value must have pattern "^users/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+$`.
   ///
   /// [projectId] - The project ID of the Google Cloud Platform project.
   ///
@@ -239,7 +239,7 @@ class UsersProjectsResource {
   /// accounts are identified by the project ID they are associated with. A
   /// reference to the POSIX account is in format
   /// `users/{user}/projects/{project}`.
-  /// Value must have pattern "^users/[^/]+/projects/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/projects/\[^/\]+$`.
   ///
   /// [operatingSystemType] - The type of operating system associated with the
   /// account.
@@ -310,7 +310,7 @@ class UsersSshPublicKeysResource {
   /// [name] - Required. The fingerprint of the public key to update. Public
   /// keys are identified by their SHA-256 fingerprint. The fingerprint of the
   /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
-  /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/sshPublicKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -363,7 +363,7 @@ class UsersSshPublicKeysResource {
   /// [name] - Required. The fingerprint of the public key to retrieve. Public
   /// keys are identified by their SHA-256 fingerprint. The fingerprint of the
   /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
-  /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/sshPublicKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,7 +421,7 @@ class UsersSshPublicKeysResource {
   /// [name] - Required. The fingerprint of the public key to update. Public
   /// keys are identified by their SHA-256 fingerprint. The fingerprint of the
   /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
-  /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/sshPublicKeys/\[^/\]+$`.
   ///
   /// [updateMask] - Mask to control which fields get updated. Updates all if
   /// not present.

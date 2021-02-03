@@ -86,8 +86,8 @@ class AvailableProjectsResource {
 
   AvailableProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists each [Google Cloud Platform (GCP) `Project`]
-  /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects)
+  /// Lists each [Google Cloud Platform (GCP)
+  /// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
   /// that can have Firebase resources added to it.
   ///
   /// A Project will only be listed if: - The caller has sufficient [Google
@@ -170,7 +170,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -232,8 +232,8 @@ class ProjectsResource {
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
   /// Adds Firebase resources to the specified existing [Google Cloud Platform
-  /// (GCP) `Project`]
-  /// (https://cloud.google.com/resource-manager/reference/rest/v1/projects).
+  /// (GCP)
+  /// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
   ///
   /// Since a FirebaseProject is actually also a GCP `Project`, a
   /// `FirebaseProject` has the same underlying GCP identifiers (`projectNumber`
@@ -269,7 +269,7 @@ class ProjectsResource {
   /// [`projectId`](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id))
   /// of the underlying GCP `Project` are also the identifiers of the
   /// FirebaseProject.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -367,7 +367,7 @@ class ProjectsResource {
   /// Google Analytics account, in the format: projects/PROJECT_IDENTIFIER Refer
   /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -427,7 +427,7 @@ class ProjectsResource {
   /// projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -487,7 +487,7 @@ class ProjectsResource {
   /// projects/ PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+/adminSdkConfig$".
+  /// Value must have pattern `^projects/\[^/\]+/adminSdkConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -546,7 +546,7 @@ class ProjectsResource {
   /// projects/ PROJECT_IDENTIFIER/analyticsDetails Refer to the
   /// `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field
   /// for details about PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+/analyticsDetails$".
+  /// Value must have pattern `^projects/\[^/\]+/analyticsDetails$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -679,7 +679,7 @@ class ProjectsResource {
   /// about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. If this list is empty,
   /// then no state will be updated. Note that the fields `name`, `projectId`,
@@ -760,7 +760,7 @@ class ProjectsResource {
   /// Google Analytics account, in the format: projects/PROJECT_IDENTIFIER Refer
   /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -824,7 +824,7 @@ class ProjectsResource {
   /// format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A query string compatible with Google's
   /// [AIP-160](https://google.aip.dev/160) standard. Use any of the following
@@ -926,7 +926,7 @@ class ProjectsAndroidAppsResource {
   /// projects/PROJECT_IDENTIFIER/androidApps Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -988,7 +988,7 @@ class ProjectsAndroidAppsResource {
   /// used here, in the format: projects/-/androidApps/APP_ID Refer to the
   /// `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1046,7 +1046,7 @@ class ProjectsAndroidAppsResource {
   /// projects/-/androidApps/APP_ID Refer to the `AndroidApp`
   /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
   /// about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+/config$".
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1105,7 +1105,7 @@ class ProjectsAndroidAppsResource {
   /// projects/PROJECT_IDENTIFIER /androidApps Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this at its discretion. If no value is
@@ -1187,7 +1187,7 @@ class ProjectsAndroidAppsResource {
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
   /// [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
-  /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
   /// `name`, `app_id`, `project_id`, and `package_name` are all immutable.
@@ -1265,7 +1265,7 @@ class ProjectsAndroidAppsShaResource {
   /// projects/-/androidApps/APP_ID Refer to the `AndroidApp`
   /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
   /// about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1329,7 +1329,8 @@ class ProjectsAndroidAppsShaResource {
   /// obtain the full resource name of the `ShaCertificate` from the response of
   /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
   /// [`CreateShaCertificate`](../projects.androidApps.sha/create).
-  /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+/sha/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/androidApps/\[^/\]+/sha/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1386,7 +1387,7 @@ class ProjectsAndroidAppsShaResource {
   /// format: projects/-/androidApps/APP_ID Refer to the `AndroidApp`
   /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
   /// about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1468,7 +1469,7 @@ class ProjectsAvailableLocationsResource {
   /// PROJECT_IDENTIFIER values. If no unique project identifier is specified
   /// (that is, `projects/-`), the returned list does not take into account
   /// org-specific or project-specific location restrictions.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of locations to return in the response.
   /// The server may return fewer than this value at its discretion. If no value
@@ -1581,7 +1582,7 @@ class ProjectsDefaultLocationResource {
   /// projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1653,7 +1654,7 @@ class ProjectsIosAppsResource {
   /// create an IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps Refer
   /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1715,7 +1716,7 @@ class ProjectsIosAppsResource {
   /// used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp`
   /// [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/iosApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1771,7 +1772,7 @@ class ProjectsIosAppsResource {
   /// pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer
   /// to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for
   /// details about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/iosApps/[^/]+/config$".
+  /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1830,7 +1831,7 @@ class ProjectsIosAppsResource {
   /// projects/PROJECT_IDENTIFIER/iosApps Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this at its discretion. If no value is
@@ -1912,7 +1913,7 @@ class ProjectsIosAppsResource {
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
   /// [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
-  /// Value must have pattern "^projects/[^/]+/iosApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
   /// `name`, `appId`, `projectId`, and `bundleId` are all immutable.
@@ -1989,7 +1990,7 @@ class ProjectsWebAppsResource {
   /// create a WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps Refer
   /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2051,7 +2052,7 @@ class ProjectsWebAppsResource {
   /// used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp`
   /// [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/webApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2107,7 +2108,7 @@ class ProjectsWebAppsResource {
   /// pattern may be used here, in the format: projects/-/webApps/APP_ID Refer
   /// to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for
   /// details about PROJECT_IDENTIFIER and APP_ID values.
-  /// Value must have pattern "^projects/[^/]+/webApps/[^/]+/config$".
+  /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2166,7 +2167,7 @@ class ProjectsWebAppsResource {
   /// projects/PROJECT_IDENTIFIER/webApps Refer to the `FirebaseProject`
   /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER values.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
@@ -2248,7 +2249,7 @@ class ProjectsWebAppsResource {
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
   /// [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-  /// Value must have pattern "^projects/[^/]+/webApps/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
   /// `name`, `appId`, and `projectId` are all immutable.

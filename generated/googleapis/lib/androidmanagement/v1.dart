@@ -163,7 +163,7 @@ class EnterprisesResource {
   ///
   /// [name] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -218,7 +218,7 @@ class EnterprisesResource {
   ///
   /// [name] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
@@ -289,7 +289,7 @@ class EnterprisesApplicationsResource {
   ///
   /// [name] - The name of the application in the form
   /// enterprises/{enterpriseId}/applications/{package_name}.
-  /// Value must have pattern "^enterprises/[^/]+/applications/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/applications/\[^/\]+$`.
   ///
   /// [languageCode] - The preferred language for localized application info, as
   /// a BCP47 tag (e.g. "en-US", "de"). If not specified the default language of
@@ -361,7 +361,7 @@ class EnterprisesDevicesResource {
   ///
   /// [name] - The name of the device in the form
   /// enterprises/{enterpriseId}/devices/{deviceId}.
-  /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
   ///
@@ -427,7 +427,7 @@ class EnterprisesDevicesResource {
   ///
   /// [name] - The name of the device in the form
   /// enterprises/{enterpriseId}/devices/{deviceId}.
-  /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -484,7 +484,7 @@ class EnterprisesDevicesResource {
   ///
   /// [name] - The name of the device in the form
   /// enterprises/{enterpriseId}/devices/{deviceId}.
-  /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -542,7 +542,7 @@ class EnterprisesDevicesResource {
   ///
   /// [parent] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
@@ -612,7 +612,7 @@ class EnterprisesDevicesResource {
   ///
   /// [name] - The name of the device in the form
   /// enterprises/{enterpriseId}/devices/{deviceId}.
-  /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
@@ -691,7 +691,7 @@ class EnterprisesDevicesOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$".
+  /// `^enterprises/\[^/\]+/devices/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -747,7 +747,7 @@ class EnterprisesDevicesOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$".
+  /// `^enterprises/\[^/\]+/devices/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -802,7 +802,7 @@ class EnterprisesDevicesOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$".
+  /// `^enterprises/\[^/\]+/devices/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -862,7 +862,8 @@ class EnterprisesDevicesOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+/operations$".
+  /// Value must have pattern
+  /// `^enterprises/\[^/\]+/devices/\[^/\]+/operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -942,7 +943,7 @@ class EnterprisesEnrollmentTokensResource {
   ///
   /// [parent] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1003,7 +1004,7 @@ class EnterprisesEnrollmentTokensResource {
   ///
   /// [name] - The name of the enrollment token in the form
   /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}.
-  /// Value must have pattern "^enterprises/[^/]+/enrollmentTokens/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/enrollmentTokens/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1065,7 +1066,7 @@ class EnterprisesPoliciesResource {
   ///
   /// [name] - The name of the policy in the form
   /// enterprises/{enterpriseId}/policies/{policyId}.
-  /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1117,7 +1118,7 @@ class EnterprisesPoliciesResource {
   ///
   /// [name] - The name of the policy in the form
   /// enterprises/{enterpriseId}/policies/{policyId}.
-  /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1169,7 +1170,7 @@ class EnterprisesPoliciesResource {
   ///
   /// [parent] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
@@ -1239,7 +1240,7 @@ class EnterprisesPoliciesResource {
   ///
   /// [name] - The name of the policy in the form
   /// enterprises/{enterpriseId}/policies/{policyId}.
-  /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
@@ -1310,7 +1311,7 @@ class EnterprisesWebAppsResource {
   ///
   /// [parent] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1367,7 +1368,7 @@ class EnterprisesWebAppsResource {
   ///
   /// [name] - The name of the web app in the form
   /// enterprises/{enterpriseId}/webApps/{packageName}.
-  /// Value must have pattern "^enterprises/[^/]+/webApps/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1419,7 +1420,7 @@ class EnterprisesWebAppsResource {
   ///
   /// [name] - The name of the web app in the form
   /// enterprises/{enterpriseId}/webApp/{packageName}.
-  /// Value must have pattern "^enterprises/[^/]+/webApps/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1471,7 +1472,7 @@ class EnterprisesWebAppsResource {
   ///
   /// [parent] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [pageSize] - The requested page size. The actual page size may be fixed to
   /// a min or max value.
@@ -1541,7 +1542,7 @@ class EnterprisesWebAppsResource {
   ///
   /// [name] - The name of the web app in the form
   /// enterprises/{enterpriseId}/webApps/{packageName}.
-  /// Value must have pattern "^enterprises/[^/]+/webApps/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
@@ -1614,7 +1615,7 @@ class EnterprisesWebTokensResource {
   ///
   /// [parent] - The name of the enterprise in the form
   /// enterprises/{enterpriseId}.
-  /// Value must have pattern "^enterprises/[^/]+$".
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4703,7 +4704,7 @@ class NonComplianceDetail {
   /// fields, the field name is followed by the array index enclosed in
   /// brackets. For example, to indicate a problem with the url field in the
   /// externalData field in the 3rd application, the path would be
-  /// applications[2].externalData.url
+  /// applications\[2\].externalData.url
   core.String fieldPath;
 
   /// If package_name is set and the non-compliance reason is APP_NOT_INSTALLED

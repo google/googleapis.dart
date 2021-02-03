@@ -95,7 +95,7 @@ class ProjectsLocationsEnvironmentsResource {
   ///
   /// [parent] - The parent must be of the form
   /// "projects/{projectId}/locations/{locationId}".
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -154,7 +154,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// [name] - The environment to delete, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -207,7 +207,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// [name] - The resource name of the environment to get, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -260,7 +260,7 @@ class ProjectsLocationsEnvironmentsResource {
   ///
   /// [parent] - List environments in the given project and location, in the
   /// form: "projects/{projectId}/locations/{locationId}"
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of environments to return.
   ///
@@ -332,7 +332,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A comma-separated list of paths, relative to
   /// `Environment`, of fields to update. For example, to set the version of
@@ -463,7 +463,7 @@ class ProjectsLocationsImageVersionsResource {
   ///
   /// [parent] - List ImageVersions in the given project and location, in the
   /// form: "projects/{projectId}/locations/{locationId}"
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of image_versions to return.
   ///
@@ -542,7 +542,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -597,7 +597,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -657,7 +657,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1755,7 +1755,7 @@ class SoftwareConfig {
   ///
   /// Keys refer to the lowercase package name such as "numpy" and values are
   /// the lowercase extras and version specifier such as "==1.12.0",
-  /// "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package
+  /// "[devel,gcp_api]", or "\[devel\]>=1.8.2, <1.9.2". To specify a package
   /// without pinning it to a version specifier, use the empty string as the
   /// value.
   ///

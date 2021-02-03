@@ -77,7 +77,7 @@ class MediaResource {
   ///
   /// [resourceName] - Name of the media that is being downloaded. See
   /// ReadRequest.resource_name.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -154,7 +154,7 @@ class SpacesResource {
   ///
   /// [name] - Required. Resource name of the space, in the form "spaces / * ".
   /// Example: spaces/AAAAMpdlehY
-  /// Value must have pattern "^spaces/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -273,7 +273,7 @@ class SpacesMembersResource {
   /// [name] - Required. Resource name of the membership to be retrieved, in the
   /// form "spaces / * /members / * ". Example:
   /// spaces/AAAAMpdlehY/members/105115627578887013105
-  /// Value must have pattern "^spaces/[^/]+/members/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+/members/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -327,7 +327,7 @@ class SpacesMembersResource {
   /// [parent] - Required. The resource name of the space for which membership
   /// list is to be fetched, in the form "spaces / * ". Example:
   /// spaces/AAAAMpdlehY
-  /// Value must have pattern "^spaces/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The value is capped at 1000. Server may
   /// return fewer results than requested. If unspecified, server will default
@@ -407,7 +407,7 @@ class SpacesMessagesResource {
   ///
   /// [parent] - Required. Space resource name, in the form "spaces / * ".
   /// Example: spaces/AAAAMpdlehY
-  /// Value must have pattern "^spaces/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+$`.
   ///
   /// [threadKey] - Opaque thread identifier string that can be specified to
   /// group messages into a single thread. If this is the first message with a
@@ -478,7 +478,7 @@ class SpacesMessagesResource {
   /// [name] - Required. Resource name of the message to be deleted, in the form
   /// "spaces / * /messages / * " Example:
   /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-  /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -531,7 +531,7 @@ class SpacesMessagesResource {
   /// [name] - Required. Resource name of the message to be retrieved, in the
   /// form "spaces / * /messages / * ". Example:
   /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-  /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -585,7 +585,7 @@ class SpacesMessagesResource {
   ///
   /// [name] - Resource name, in the form "spaces / * /messages / * ". Example:
   /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-  /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
+  /// Value must have pattern `^spaces/\[^/\]+/messages/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field paths to be updated, comma separated if
   /// there are multiple. Currently supported field paths: * text * cards
@@ -657,7 +657,8 @@ class SpacesMessagesAttachmentsResource {
   ///
   /// [name] - Resource name of the attachment, in the form "spaces / *
   /// /messages / * /attachments / * ".
-  /// Value must have pattern "^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$".
+  /// Value must have pattern
+  /// `^spaces/\[^/\]+/messages/\[^/\]+/attachments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

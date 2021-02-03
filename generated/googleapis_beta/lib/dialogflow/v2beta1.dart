@@ -110,7 +110,7 @@ class ProjectsResource {
   ///
   /// [parent] - Required. The project that the agent to delete is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -165,7 +165,7 @@ class ProjectsResource {
   ///
   /// [parent] - Required. The project that the agent to fetch is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -222,7 +222,7 @@ class ProjectsResource {
   ///
   /// [parent] - Required. The project of this agent. Format: `projects/` or
   /// `projects//locations/`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -308,7 +308,7 @@ class ProjectsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to export is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -367,7 +367,7 @@ class ProjectsAgentResource {
   ///
   /// [name] - Required. The name of the fulfillment. Supported formats: -
   /// `projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
-  /// Value must have pattern "^projects/[^/]+/agent/fulfillment$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/fulfillment$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,7 +423,7 @@ class ProjectsAgentResource {
   ///
   /// [parent] - Required. The project that the agent is associated with.
   /// Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language for which you want a validation
   /// result. If not specified, the agent's default language is used. [Many
@@ -501,7 +501,7 @@ class ProjectsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to import is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -571,7 +571,7 @@ class ProjectsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to restore is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -636,7 +636,7 @@ class ProjectsAgentResource {
   ///
   /// [parent] - Required. The project to list agents from. Format: `projects/`
   /// or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -709,7 +709,7 @@ class ProjectsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to train is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -771,7 +771,7 @@ class ProjectsAgentResource {
   /// [name] - Required. The unique identifier of the fulfillment. Supported
   /// formats: - `projects//agent/fulfillment` -
   /// `projects//locations//agent/fulfillment`
-  /// Value must have pattern "^projects/[^/]+/agent/fulfillment$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/fulfillment$`.
   ///
   /// [updateMask] - Required. The mask to control which fields get updated. If
   /// the mask is not present, all fields will be updated.
@@ -850,7 +850,7 @@ class ProjectsAgentEntityTypesResource {
   /// [parent] - Required. The name of the agent to delete all entities types
   /// for. Supported formats: - `projects//agent`, -
   /// `projects//locations//agent`.
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -914,7 +914,7 @@ class ProjectsAgentEntityTypesResource {
   /// [parent] - Required. The name of the agent to update or create entity
   /// types in. Supported formats: - `projects//agent` -
   /// `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -975,7 +975,7 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [parent] - Required. The agent to create a entity type for. Supported
   /// formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -1044,7 +1044,7 @@ class ProjectsAgentEntityTypesResource {
   /// [name] - Required. The name of the entity type to delete. Supported
   /// formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
-  /// Value must have pattern "^projects/[^/]+/agent/entityTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1097,7 +1097,7 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [name] - Required. The name of the entity type. Supported formats: -
   /// `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
-  /// Value must have pattern "^projects/[^/]+/agent/entityTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -1159,7 +1159,7 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [parent] - Required. The agent to list all entity types from. Supported
   /// formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -1241,7 +1241,7 @@ class ProjectsAgentEntityTypesResource {
   /// EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes
   /// methods. Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
-  /// Value must have pattern "^projects/[^/]+/agent/entityTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -1325,7 +1325,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
   /// [parent] - Required. The name of the entity type to create entities in.
   /// Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
-  /// Value must have pattern "^projects/[^/]+/agent/entityTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1389,7 +1389,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
   /// [parent] - Required. The name of the entity type to delete entries for.
   /// Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
-  /// Value must have pattern "^projects/[^/]+/agent/entityTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1454,7 +1454,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
   /// [parent] - Required. The name of the entity type to update or create
   /// entities in. Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
-  /// Value must have pattern "^projects/[^/]+/agent/entityTypes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1523,7 +1523,7 @@ class ProjectsAgentEnvironmentsResource {
   ///
   /// [parent] - Required. The agent to list all environments from. Format: -
   /// `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -1621,7 +1621,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   /// is not specified we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1695,7 +1695,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   /// information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1773,7 +1773,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1839,7 +1839,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1899,7 +1899,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1959,7 +1959,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -2041,7 +2041,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// or create contexts with these names: * `__system_counters__` *
   /// `*_id_dialog_context` * `*_dialog_params_size`
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -2126,7 +2126,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2196,7 +2196,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2260,7 +2260,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2324,7 +2324,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -2410,7 +2410,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// display name of an existing entity type in the same agent that will be
   /// overridden or supplemented.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -2484,7 +2484,7 @@ class ProjectsAgentIntentsResource {
   ///
   /// [parent] - Required. The name of the agent to delete all entities types
   /// for. Supported formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2547,7 +2547,7 @@ class ProjectsAgentIntentsResource {
   ///
   /// [parent] - Required. The name of the agent to update or create intents in.
   /// Supported formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2608,7 +2608,7 @@ class ProjectsAgentIntentsResource {
   ///
   /// [parent] - Required. The agent to create a intent for. Supported formats:
   /// - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -2689,7 +2689,7 @@ class ProjectsAgentIntentsResource {
   /// direct or indirect followup intents, we also delete them. Supported
   /// formats: - `projects//agent/intents/` -
   /// `projects//locations//agent/intents/`
-  /// Value must have pattern "^projects/[^/]+/agent/intents/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2742,7 +2742,7 @@ class ProjectsAgentIntentsResource {
   ///
   /// [name] - Required. The name of the intent. Supported formats: -
   /// `projects//agent/intents/` - `projects//locations//agent/intents/`
-  /// Value must have pattern "^projects/[^/]+/agent/intents/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -2815,7 +2815,7 @@ class ProjectsAgentIntentsResource {
   ///
   /// [parent] - Required. The agent to list all intents from. Format:
   /// `projects//agent`.
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -2908,7 +2908,7 @@ class ProjectsAgentIntentsResource {
   /// Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported
   /// formats: - `projects//agent/intents/` -
   /// `projects//locations//agent/intents/`
-  /// Value must have pattern "^projects/[^/]+/agent/intents/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -3006,7 +3006,7 @@ class ProjectsAgentKnowledgeBasesResource {
   ///
   /// [parent] - Required. The project to create a knowledge base for. Format:
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3068,7 +3068,7 @@ class ProjectsAgentKnowledgeBasesResource {
   ///
   /// [name] - Required. The name of the knowledge base to delete. Format:
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/agent/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [force] - Optional. Force deletes the knowledge base. When set to true,
   /// any documents in the knowledge base are also deleted.
@@ -3131,7 +3131,7 @@ class ProjectsAgentKnowledgeBasesResource {
   ///
   /// [name] - Required. The name of the knowledge base to retrieve. Format
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/agent/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3187,10 +3187,10 @@ class ProjectsAgentKnowledgeBasesResource {
   ///
   /// [parent] - Required. The project to list of knowledge bases for. Format:
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [filter] - The filter expression used to filter knowledge bases returned
-  /// by the list method. The expression has the following syntax: [AND ] ...
+  /// by the list method. The expression has the following syntax: \[AND \] ...
   /// The following fields and operators are supported: * display_name with
   /// has(:) operator * language_code with equals(=) operator Examples: *
   /// 'language_code=en-us' matches knowledge bases with en-us language code. *
@@ -3279,7 +3279,7 @@ class ProjectsAgentKnowledgeBasesResource {
   ///
   /// [name] - The knowledge base resource name. The name must be empty when
   /// creating a knowledge base. Format: `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/agent/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Not specified means `update all`. Currently, only
   /// `display_name` can be updated, an InvalidArgument will be returned for
@@ -3356,7 +3356,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   ///
   /// [parent] - Required. The knoweldge base to create a document for. Format:
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/agent/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3419,7 +3419,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   /// [name] - Required. The name of the document to delete. Format:
   /// `projects//knowledgeBases//documents/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3476,7 +3476,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   /// [name] - Required. The name of the document to retrieve. Format
   /// `projects//knowledgeBases//documents/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3532,10 +3532,10 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   ///
   /// [parent] - Required. The knowledge base to list all documents for. Format:
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/agent/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [filter] - The filter expression used to filter documents returned by the
-  /// list method. The expression has the following syntax: [AND ] ... The
+  /// list method. The expression has the following syntax: \[AND \] ... The
   /// following fields and operators are supported: * knowledge_types with
   /// has(:) operator * display_name with has(:) operator * state with equals(=)
   /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
@@ -3622,7 +3622,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   /// [name] - Optional. The document resource name. The name must be empty when
   /// creating a document. Format: `projects//knowledgeBases//documents/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Not specified means `update all`. Currently, only
   /// `display_name` can be updated, an InvalidArgument will be returned for
@@ -3697,7 +3697,7 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   /// [name] - Required. The name of the document to reload. Format:
   /// `projects//knowledgeBases//documents/`
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3773,7 +3773,7 @@ class ProjectsAgentSessionsResource {
   /// ID` is not specified we assume default 'us' location. If `Environment ID`
   /// is not specified we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
-  /// Value must have pattern "^projects/[^/]+/agent/sessions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3846,7 +3846,7 @@ class ProjectsAgentSessionsResource {
   /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
   /// information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
-  /// Value must have pattern "^projects/[^/]+/agent/sessions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3922,7 +3922,7 @@ class ProjectsAgentSessionsContextsResource {
   /// ID` is not specified we assume default 'us' location. If `Environment ID`
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
-  /// Value must have pattern "^projects/[^/]+/agent/sessions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3988,7 +3988,7 @@ class ProjectsAgentSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4048,7 +4048,7 @@ class ProjectsAgentSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4107,7 +4107,7 @@ class ProjectsAgentSessionsContextsResource {
   /// ID` is not specified we assume default 'us' location. If `Environment ID`
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
-  /// Value must have pattern "^projects/[^/]+/agent/sessions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -4189,7 +4189,7 @@ class ProjectsAgentSessionsContextsResource {
   /// or create contexts with these names: * `__system_counters__` *
   /// `*_id_dialog_context` * `*_dialog_params_size`
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -4272,7 +4272,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// ID` is not specified we assume default 'us' location. If `Environment ID`
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
-  /// Value must have pattern "^projects/[^/]+/agent/sessions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4342,7 +4342,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4406,7 +4406,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4469,7 +4469,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// ID` is not specified we assume default 'us' location. If `Environment ID`
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
-  /// Value must have pattern "^projects/[^/]+/agent/sessions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -4555,7 +4555,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// display name of an existing entity type in the same agent that will be
   /// overridden or supplemented.
   /// Value must have pattern
-  /// "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -4633,7 +4633,7 @@ class ProjectsKnowledgeBasesResource {
   ///
   /// [parent] - Required. The project to create a knowledge base for. Format:
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4695,7 +4695,7 @@ class ProjectsKnowledgeBasesResource {
   ///
   /// [name] - Required. The name of the knowledge base to delete. Format:
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [force] - Optional. Force deletes the knowledge base. When set to true,
   /// any documents in the knowledge base are also deleted.
@@ -4758,7 +4758,7 @@ class ProjectsKnowledgeBasesResource {
   ///
   /// [name] - Required. The name of the knowledge base to retrieve. Format
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4814,10 +4814,10 @@ class ProjectsKnowledgeBasesResource {
   ///
   /// [parent] - Required. The project to list of knowledge bases for. Format:
   /// `projects/`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The filter expression used to filter knowledge bases returned
-  /// by the list method. The expression has the following syntax: [AND ] ...
+  /// by the list method. The expression has the following syntax: \[AND \] ...
   /// The following fields and operators are supported: * display_name with
   /// has(:) operator * language_code with equals(=) operator Examples: *
   /// 'language_code=en-us' matches knowledge bases with en-us language code. *
@@ -4906,7 +4906,7 @@ class ProjectsKnowledgeBasesResource {
   ///
   /// [name] - The knowledge base resource name. The name must be empty when
   /// creating a knowledge base. Format: `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Not specified means `update all`. Currently, only
   /// `display_name` can be updated, an InvalidArgument will be returned for
@@ -4983,7 +4983,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   ///
   /// [parent] - Required. The knoweldge base to create a document for. Format:
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5046,7 +5046,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   /// [name] - Required. The name of the document to delete. Format:
   /// `projects//knowledgeBases//documents/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5103,7 +5103,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   /// [name] - Required. The name of the document to retrieve. Format
   /// `projects//knowledgeBases//documents/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5159,10 +5159,10 @@ class ProjectsKnowledgeBasesDocumentsResource {
   ///
   /// [parent] - Required. The knowledge base to list all documents for. Format:
   /// `projects//knowledgeBases/`.
-  /// Value must have pattern "^projects/[^/]+/knowledgeBases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [filter] - The filter expression used to filter documents returned by the
-  /// list method. The expression has the following syntax: [AND ] ... The
+  /// list method. The expression has the following syntax: \[AND \] ... The
   /// following fields and operators are supported: * knowledge_types with
   /// has(:) operator * display_name with has(:) operator * state with equals(=)
   /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
@@ -5249,7 +5249,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   /// [name] - Optional. The document resource name. The name must be empty when
   /// creating a document. Format: `projects//knowledgeBases//documents/`.
   /// Value must have pattern
-  /// "^projects/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Not specified means `update all`. Currently, only
   /// `display_name` can be updated, an InvalidArgument will be returned for
@@ -5324,7 +5324,7 @@ class ProjectsKnowledgeBasesDocumentsResource {
   /// [name] - Required. The name of the document to reload. Format:
   /// `projects//knowledgeBases//documents/`
   /// Value must have pattern
-  /// "^projects/[^/]+/knowledgeBases/[^/]+/documents/[^/]+$".
+  /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5393,7 +5393,7 @@ class ProjectsLocationsResource {
   ///
   /// [parent] - Required. The project that the agent to delete is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5448,7 +5448,7 @@ class ProjectsLocationsResource {
   ///
   /// [parent] - Required. The project that the agent to fetch is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5505,7 +5505,7 @@ class ProjectsLocationsResource {
   ///
   /// [parent] - Required. The project of this agent. Format: `projects/` or
   /// `projects//locations/`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -5590,7 +5590,7 @@ class ProjectsLocationsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to export is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5650,7 +5650,7 @@ class ProjectsLocationsAgentResource {
   /// [name] - Required. The name of the fulfillment. Supported formats: -
   /// `projects//agent/fulfillment` - `projects//locations//agent/fulfillment`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/fulfillment$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/fulfillment$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5706,7 +5706,7 @@ class ProjectsLocationsAgentResource {
   ///
   /// [parent] - Required. The project that the agent is associated with.
   /// Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language for which you want a validation
   /// result. If not specified, the agent's default language is used. [Many
@@ -5784,7 +5784,7 @@ class ProjectsLocationsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to import is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5854,7 +5854,7 @@ class ProjectsLocationsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to restore is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5919,7 +5919,7 @@ class ProjectsLocationsAgentResource {
   ///
   /// [parent] - Required. The project to list agents from. Format: `projects/`
   /// or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -5992,7 +5992,7 @@ class ProjectsLocationsAgentResource {
   ///
   /// [parent] - Required. The project that the agent to train is associated
   /// with. Format: `projects/` or `projects//locations/`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6055,7 +6055,7 @@ class ProjectsLocationsAgentResource {
   /// formats: - `projects//agent/fulfillment` -
   /// `projects//locations//agent/fulfillment`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/fulfillment$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/fulfillment$`.
   ///
   /// [updateMask] - Required. The mask to control which fields get updated. If
   /// the mask is not present, all fields will be updated.
@@ -6134,7 +6134,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   /// [parent] - Required. The name of the agent to delete all entities types
   /// for. Supported formats: - `projects//agent`, -
   /// `projects//locations//agent`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6198,7 +6198,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   /// [parent] - Required. The name of the agent to update or create entity
   /// types in. Supported formats: - `projects//agent` -
   /// `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6259,7 +6259,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   ///
   /// [parent] - Required. The agent to create a entity type for. Supported
   /// formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -6329,7 +6329,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   /// formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6383,7 +6383,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   /// [name] - Required. The name of the entity type. Supported formats: -
   /// `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -6445,7 +6445,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   ///
   /// [parent] - Required. The agent to list all entity types from. Supported
   /// formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -6528,7 +6528,7 @@ class ProjectsLocationsAgentEntityTypesResource {
   /// methods. Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
@@ -6613,7 +6613,7 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   /// Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6678,7 +6678,7 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   /// Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6744,7 +6744,7 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   /// entities in. Supported formats: - `projects//agent/entityTypes/` -
   /// `projects//locations//agent/entityTypes/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6813,7 +6813,7 @@ class ProjectsLocationsAgentEnvironmentsResource {
   ///
   /// [parent] - Required. The agent to list all environments from. Format: -
   /// `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -6916,7 +6916,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   /// is not specified we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6990,7 +6990,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   /// information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7068,7 +7068,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7134,7 +7134,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7194,7 +7194,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7254,7 +7254,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -7336,7 +7336,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// or create contexts with these names: * `__system_counters__` *
   /// `*_id_dialog_context` * `*_dialog_params_size`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -7421,7 +7421,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7491,7 +7491,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7555,7 +7555,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7619,7 +7619,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -7705,7 +7705,7 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// display name of an existing entity type in the same agent that will be
   /// overridden or supplemented.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -7779,7 +7779,7 @@ class ProjectsLocationsAgentIntentsResource {
   ///
   /// [parent] - Required. The name of the agent to delete all entities types
   /// for. Supported formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7842,7 +7842,7 @@ class ProjectsLocationsAgentIntentsResource {
   ///
   /// [parent] - Required. The name of the agent to update or create intents in.
   /// Supported formats: - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7903,7 +7903,7 @@ class ProjectsLocationsAgentIntentsResource {
   ///
   /// [parent] - Required. The agent to create a intent for. Supported formats:
   /// - `projects//agent` - `projects//locations//agent`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -7985,7 +7985,7 @@ class ProjectsLocationsAgentIntentsResource {
   /// formats: - `projects//agent/intents/` -
   /// `projects//locations//agent/intents/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/intents/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8039,7 +8039,7 @@ class ProjectsLocationsAgentIntentsResource {
   /// [name] - Required. The name of the intent. Supported formats: -
   /// `projects//agent/intents/` - `projects//locations//agent/intents/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/intents/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -8112,7 +8112,7 @@ class ProjectsLocationsAgentIntentsResource {
   ///
   /// [parent] - Required. The agent to list all intents from. Format:
   /// `projects//agent`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/agent$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -8206,7 +8206,7 @@ class ProjectsLocationsAgentIntentsResource {
   /// formats: - `projects//agent/intents/` -
   /// `projects//locations//agent/intents/`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/intents/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
@@ -8308,7 +8308,7 @@ class ProjectsLocationsAgentSessionsResource {
   /// is not specified we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8382,7 +8382,7 @@ class ProjectsLocationsAgentSessionsResource {
   /// information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8459,7 +8459,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8525,7 +8525,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8585,7 +8585,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8645,7 +8645,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -8727,7 +8727,7 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// or create contexts with these names: * `__system_counters__` *
   /// `*_id_dialog_context` * `*_dialog_params_size`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -8811,7 +8811,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8881,7 +8881,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8945,7 +8945,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// `Environment ID` is not specified, we assume default 'draft' environment.
   /// If `User ID` is not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9009,7 +9009,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// is not specified, we assume default 'draft' environment. If `User ID` is
   /// not specified, we assume default '-' user.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -9095,7 +9095,7 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// display name of an existing entity type in the same agent that will be
   /// overridden or supplemented.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -9174,7 +9174,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9231,7 +9231,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9292,7 +9292,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -9379,7 +9379,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9435,7 +9435,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9496,7 +9496,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -13389,7 +13389,7 @@ class GoogleCloudDialogflowV2MessageAnnotation {
   /// message.
   ///
   /// You can recover the annotated message by concatenating
-  /// [AnnotatedMessagePart.text].
+  /// \[AnnotatedMessagePart.text\].
   core.List<GoogleCloudDialogflowV2AnnotatedMessagePart> parts;
 
   GoogleCloudDialogflowV2MessageAnnotation();
@@ -14413,7 +14413,7 @@ class GoogleCloudDialogflowV2beta1AnnotatedConversationDataset {
   }
 }
 
-/// Response message for [Documents.AutoApproveSmartMessagingEntries].
+/// Response message for \[Documents.AutoApproveSmartMessagingEntries\].
 class GoogleCloudDialogflowV2beta1AutoApproveSmartMessagingEntriesResponse {
   /// Number of smart messaging entries disabled.
   core.int disabledCount;
@@ -14856,7 +14856,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
   }
 }
 
-/// Response message for [Documents.BatchUpdateSmartMessagingEntries]
+/// Response message for \[Documents.BatchUpdateSmartMessagingEntries\]
 class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse {
   /// List of updated smart message entries.
   core.List<GoogleCloudDialogflowV2beta1SmartMessagingEntry>
@@ -20474,10 +20474,10 @@ class GoogleCloudDialogflowV2beta1SmartMessagingEntry {
 
   /// The unique identifier of this message entry.
   ///
-  /// Required for [Documents.GetSmartMessagingEntry],
-  /// [Documents.CreateSmartMessagingEntry],
-  /// [Documents.UpdateSmartMessagingEntry], and
-  /// [Documents.DeleteSmartMessagingEntry]. Format:
+  /// Required for \[Documents.GetSmartMessagingEntry\],
+  /// \[Documents.CreateSmartMessagingEntry\],
+  /// \[Documents.UpdateSmartMessagingEntry\], and
+  /// \[Documents.DeleteSmartMessagingEntry\]. Format:
   /// `projects//knowledgeBases//documents//smartMessagingEntries/`
   core.String name;
 

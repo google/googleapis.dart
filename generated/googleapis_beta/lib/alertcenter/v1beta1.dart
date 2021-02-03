@@ -1604,8 +1604,8 @@ class CloudPubsubTopic {
   /// - "JSON" : Use JSON.
   core.String payloadFormat;
 
-  /// The `name` field of a Cloud Pubsub [Topic]
-  /// (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
+  /// The `name` field of a Cloud Pubsub
+  /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String topicName;
 
   CloudPubsubTopic();
