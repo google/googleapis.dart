@@ -7439,8 +7439,8 @@ class Thumbnail {
 /// that no leap second table is needed for interpretation, using a \[24-hour
 /// linear smear\](https://developers.google.com/time/smear). The range is from
 /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to
-/// that range, we ensure that we can convert to and from [RFC
-/// 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
+/// that range, we ensure that we can convert to and from
+/// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
 class Timestamp {
   /// Non-negative fractions of a second at nanosecond resolution.
   ///

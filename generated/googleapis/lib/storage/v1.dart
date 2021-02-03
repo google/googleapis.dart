@@ -5207,8 +5207,8 @@ class BucketBilling {
 }
 
 class BucketCors {
-  /// The value, in seconds, to return in the  Access-Control-Max-Age header
-  /// used in preflight responses.
+  /// The value, in seconds, to return in the Access-Control-Max-Age header used
+  /// in preflight responses.
   core.int maxAgeSeconds;
 
   /// The list of HTTP methods on which to include CORS response headers, (GET,
@@ -5336,7 +5336,7 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
   /// The deadline for changing
   /// iamConfiguration.uniformBucketLevelAccess.enabled from true to false in
-  /// RFC 3339  format.
+  /// RFC 3339 format.
   ///
   /// iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true
   /// to false until the locked time, after which the field is immutable.
@@ -7832,7 +7832,7 @@ class PolicyBindings {
   /// - roles/storage.objectCreator — Access to create objects in Google Cloud
   /// Storage.
   /// - roles/storage.objectAdmin — Full control of Google Cloud Storage
-  /// objects.   The legacy IAM roles are:
+  /// objects. The legacy IAM roles are:
   /// - roles/storage.legacyObjectReader — Read-only access to objects without
   /// listing. Equivalent to an ACL entry on an object with the READER role.
   /// - roles/storage.legacyObjectOwner — Read/write access to existing objects

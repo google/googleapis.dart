@@ -1813,8 +1813,7 @@ class Binding {
   /// of the members in this binding.
   ///
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -3093,7 +3092,7 @@ class OperationWarnings {
 /// - For regional operations, use the `regionOperations` resource.
 /// - For zonal operations, use the `zonalOperations` resource.
 ///
-/// For more information, read  Global, Regional, and Zonal Resources. (==
+/// For more information, read Global, Regional, and Zonal Resources. (==
 /// resource_for {$api_version}.globalOperations ==) (== resource_for
 /// {$api_version}.regionOperations ==) (== resource_for
 /// {$api_version}.zoneOperations ==)
@@ -3454,8 +3453,8 @@ class OperationsListResponse {
 /// `condition`, which is a logical expression that allows access to a resource
 /// only if the expression evaluates to `true`. A condition can add constraints
 /// based on attributes of the request, the resource, or both. To learn which
-/// resources support conditions in their IAM policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// resources support conditions in their IAM policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 ///
 /// **JSON example:**
 ///
@@ -3479,8 +3478,8 @@ class OperationsListResponse {
 /// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') -
 /// etag: BwWWja0YfJA= - version: 3
 ///
-/// For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -3549,8 +3548,7 @@ class Policy {
   /// specify any valid version or leave the field unset.
   ///
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();

@@ -696,8 +696,8 @@ class EditsBundlesResource {
   ///
   /// If you are using the Google API client libraries, please increase the
   /// timeout of the http request before calling this endpoint (a timeout of 2
-  /// minutes is recommended). See [Timeouts and
-  /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
+  /// minutes is recommended). See
+  /// [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
   /// Request parameters:
@@ -3242,8 +3242,8 @@ class InternalappsharingartifactsResource {
   ///
   /// If you are using the Google API client libraries, please increase the
   /// timeout of the http request before calling this endpoint (a timeout of 2
-  /// minutes is recommended). See [Timeouts and
-  /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
+  /// minutes is recommended). See
+  /// [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
   /// Request parameters:
@@ -3323,8 +3323,8 @@ class InternalappsharingartifactsResource {
   ///
   /// If you are using the Google API client libraries, please increase the
   /// timeout of the http request before calling this endpoint (a timeout of 2
-  /// minutes is recommended). See [Timeouts and
-  /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
+  /// minutes is recommended). See
+  /// [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
   /// for an example in java.
   ///
   /// Request parameters:
@@ -5065,8 +5065,8 @@ class Comment {
 
 /// Country targeting specification.
 class CountryTargeting {
-  /// Countries to target, specified as two letter [CLDR
-  /// codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).
+  /// Countries to target, specified as two letter
+  /// [CLDR codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).
   core.List<core.String> countries;
 
   /// Include "rest of world" as well as explicitly targeted countries.

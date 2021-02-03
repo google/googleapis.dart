@@ -805,8 +805,8 @@ class ExecStepConfig {
   /// The script interpreter to use to run the script.
   ///
   /// If no interpreter is specified the script will be executed directly, which
-  /// will likely only succeed for scripts with [shebang
-  /// lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+  /// will likely only succeed for scripts with
+  /// [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   /// Possible string values are:
   /// - "INTERPRETER_UNSPECIFIED" : Invalid for a Windows ExecStepConfig. For a
   /// Linux ExecStepConfig, the interpreter will be parsed from the shebang line
@@ -1338,8 +1338,8 @@ class PatchConfig {
 ///
 /// These configurations include instance filter, package repository settings,
 /// and a schedule. For more information about creating and managing patch
-/// deployments, see [Scheduling patch
-/// jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs).
+/// deployments, see
+/// [Scheduling patch jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs).
 class PatchDeployment {
   /// Time the patch deployment was created.
   ///
@@ -1580,8 +1580,8 @@ class PatchInstanceFilter {
   }
 }
 
-/// Targets a group of VM instances by using their [assigned
-/// labels](https://cloud.google.com/compute/docs/labeling-resources).
+/// Targets a group of VM instances by using their
+/// [assigned labels](https://cloud.google.com/compute/docs/labeling-resources).
 ///
 /// Labels are key-value pairs. A `GroupLabel` is a combination of labels that
 /// is used to target VMs for a patch job. For example, a patch job can target
@@ -1621,8 +1621,8 @@ class PatchInstanceFilterGroupLabel {
 ///
 /// Instance details are not included in the job. To paginate through instance
 /// details, use ListPatchJobInstanceDetails. For more information about patch
-/// jobs, see [Creating patch
-/// jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
+/// jobs, see
+/// [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 class PatchJob {
   /// Time this patch job was created.
   core.String createTime;
@@ -1799,9 +1799,8 @@ class PatchJob {
 
 /// Patch details for a VM instance.
 ///
-/// For more information about reviewing VM instance details, see [Listing all
-/// VM instance details for a specific patch
-/// job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
+/// For more information about reviewing VM instance details, see
+/// [Listing all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
 class PatchJobInstanceDetails {
   /// The number of times the agent that the agent attempts to apply the patch.
   core.String attemptCount;
@@ -2300,8 +2299,8 @@ class TimeOfDay {
   }
 }
 
-/// Represents a time zone from the [IANA Time Zone
-/// Database](https://www.iana.org/time-zones).
+/// Represents a time zone from the
+/// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String id;

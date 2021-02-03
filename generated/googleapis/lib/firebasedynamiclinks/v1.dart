@@ -455,16 +455,14 @@ class AndroidInfo {
 class CreateManagedShortLinkRequest {
   /// Information about the Dynamic Link to be shortened.
   ///
-  /// [Learn
-  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+  /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   DynamicLinkInfo dynamicLinkInfo;
 
   /// Full long Dynamic Link URL with desired query parameters specified.
   ///
   /// For example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
-  /// [Learn
-  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+  /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   core.String longDynamicLink;
 
   /// Link name to associate with the link.
@@ -579,16 +577,14 @@ class CreateManagedShortLinkResponse {
 class CreateShortDynamicLinkRequest {
   /// Information about the Dynamic Link to be shortened.
   ///
-  /// [Learn
-  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+  /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   DynamicLinkInfo dynamicLinkInfo;
 
   /// Full long Dynamic Link URL with desired query parameters specified.
   ///
   /// For example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
-  /// [Learn
-  /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+  /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
   core.String longDynamicLink;
 
   /// Google SDK version.
@@ -873,9 +869,10 @@ class DynamicLinkInfo {
   /// dynamic_link_domain is this field is missing
   core.String domainUriPrefix;
 
-  /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
-  /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on
-  /// how to set up Dynamic Link domain associated with your Firebase project.
+  /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
+  /// [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive)
+  /// on how to set up Dynamic Link domain associated with your Firebase
+  /// project.
   ///
   /// Required if missing domain_uri_prefix.
   core.String dynamicLinkDomain;
@@ -1548,11 +1545,9 @@ class GetIosReopenAttributionResponse {
 
 /// Parameters for Google Play Campaign Measurements.
 ///
-/// [Learn
-/// more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)
+/// [Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)
 class GooglePlayAnalytics {
-  /// [AdWords autotagging
-  /// parameter](https://support.google.com/analytics/answer/1033981?hl=en);
+  /// [AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en);
   /// used to measure Google AdWords ads.
   ///
   /// This value is generated dynamically and should never be modified.

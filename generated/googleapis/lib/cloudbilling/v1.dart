@@ -82,11 +82,11 @@ class BillingAccountsResource {
 
   /// Creates a billing account.
   ///
-  /// This method can only be used to create [billing
-  /// subaccounts](https://cloud.google.com/billing/docs/concepts) by Google
-  /// Cloud resellers. When creating a subaccount, the current authenticated
-  /// user must have the `billing.accounts.update` IAM permission on the master
-  /// account, which is typically given to billing account
+  /// This method can only be used to create
+  /// [billing subaccounts](https://cloud.google.com/billing/docs/concepts) by
+  /// Google Cloud resellers. When creating a subaccount, the current
+  /// authenticated user must have the `billing.accounts.update` IAM permission
+  /// on the master account, which is typically given to billing account
   /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
   /// This method will return an error if the master account has not been
   /// provisioned as a reseller account.
@@ -142,8 +142,8 @@ class BillingAccountsResource {
 
   /// Gets information about a billing account.
   ///
-  /// The current authenticated user must be a [viewer of the billing
-  /// account](https://cloud.google.com/billing/docs/how-to/billing-access).
+  /// The current authenticated user must be a
+  /// [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
   ///
   /// Request parameters:
   ///
@@ -214,8 +214,8 @@ class BillingAccountsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -705,19 +705,20 @@ class ProjectsResource {
   /// occurred before the new billing account was assigned to the project. The
   /// current authenticated user must have ownership privileges for both the
   /// \[project\](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
-  /// ) and the [billing
-  /// account](https://cloud.google.com/billing/docs/how-to/billing-access). You
-  /// can disable billing on the project by setting the `billing_account_name`
-  /// field to empty. This action disassociates the current billing account from
-  /// the project. Any billable activity of your in-use services will stop, and
-  /// your application could stop functioning as expected. Any unbilled charges
-  /// to date will be billed to the previously associated account. The current
-  /// authenticated user must be either an owner of the project or an owner of
-  /// the billing account for the project. Note that associating a project with
-  /// a *closed* billing account will have much the same effect as disabling
-  /// billing on the project: any paid resources used by the project will be
-  /// shut down. Thus, unless you wish to disable billing, you should always
-  /// call this method with the name of an *open* billing account.
+  /// ) and the
+  /// [billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
+  /// You can disable billing on the project by setting the
+  /// `billing_account_name` field to empty. This action disassociates the
+  /// current billing account from the project. Any billable activity of your
+  /// in-use services will stop, and your application could stop functioning as
+  /// expected. Any unbilled charges to date will be billed to the previously
+  /// associated account. The current authenticated user must be either an owner
+  /// of the project or an owner of the billing account for the project. Note
+  /// that associating a project with a *closed* billing account will have much
+  /// the same effect as disabling billing on the project: any paid resources
+  /// used by the project will be shut down. Thus, unless you wish to disable
+  /// billing, you should always call this method with the name of an *open*
+  /// billing account.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1100,8 +1101,8 @@ class AuditLogConfig {
   }
 }
 
-/// A billing account in the [Google Cloud
-/// Console](https://console.cloud.google.com/).
+/// A billing account in the
+/// [Google Cloud Console](https://console.cloud.google.com/).
 ///
 /// You can assign a billing account to one or more projects.
 class BillingAccount {
@@ -1181,8 +1182,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -1645,8 +1645,8 @@ class Money {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -1662,8 +1662,8 @@ class Money {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -1710,8 +1710,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -2215,8 +2215,8 @@ class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

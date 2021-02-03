@@ -109,4 +109,26 @@ This https://example.com/\[this_is_not\]/''',
       });
     }
   });
+
+  group('url split', () {
+    for (var input in const {
+      'this should split': ['this', 'should', 'split'],
+      'this [should not](https://example.com) split': [
+        'this',
+        '[should not](https://example.com)',
+        'split'
+      ],
+      'Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report.':
+          [
+        'Note', 'that', 'you', 'must', 'complete', 'the', // line
+        '[Search Console verification process](https://support.google.com/webmasters/answer/9008080)',
+        'for', 'the', 'site', 'before', 'you', 'can', 'access', 'the', 'full',
+        'report.'
+      ],
+    }.entries) {
+      test('`${input.key}`', () {
+        expect(urlSplit(input.key), input.value);
+      });
+    }
+  });
 }

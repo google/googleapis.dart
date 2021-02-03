@@ -86,8 +86,8 @@ class CatalogResource {
   /// search queries do not guarantee full recall. Query results that match your
   /// query may not be returned, even in subsequent result pages. Also note that
   /// results returned (and not returned) can vary across repeated search
-  /// queries. See [Data Catalog Search
-  /// Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+  /// queries. See
+  /// [Data Catalog Search Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
   /// for more information.
   ///
   /// [request] - The metadata request object.
@@ -255,8 +255,8 @@ class ProjectsLocationsEntryGroupsResource {
   /// all locations.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `parent` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// `parent` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -332,8 +332,8 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// Only entry groups that do not contain entries can be deleted. Users should
   /// enable the Data Catalog API in the project identified by the `name`
-  /// parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// Request parameters:
@@ -599,8 +599,8 @@ class ProjectsLocationsEntryGroupsResource {
   /// Updates an EntryGroup.
   ///
   /// The user should enable the Data Catalog API in the project identified by
-  /// the `entry_group.name` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// the `entry_group.name` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -825,8 +825,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Only entries of 'FILESET' type or user-specified type can be created.
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `parent` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// `parent` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information). A maximum of 100,000 entries may be created per
   /// entry group.
   ///
@@ -903,8 +903,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Only entries created through CreateEntry method can be deleted. Users
   /// should enable the Data Catalog API in the project identified by the `name`
-  /// parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// Request parameters:
@@ -1167,8 +1167,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// Updates an existing entry.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `entry.name` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// `entry.name` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -1326,8 +1326,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   ///
   /// Note: The project identified by the `parent` parameter for the
   /// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)
-  /// and the [tag
-  /// template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
+  /// and the
+  /// [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
   /// used to create the tag must be from the same organization.
   ///
   /// [request] - The metadata request object.
@@ -1597,8 +1597,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
   ///
   /// Note: The project identified by the `parent` parameter for the
   /// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)
-  /// and the [tag
-  /// template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
+  /// and the
+  /// [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)
   /// used to create the tag must be from the same organization.
   ///
   /// [request] - The metadata request object.
@@ -1870,8 +1870,8 @@ class ProjectsLocationsTagTemplatesResource {
   /// Creates a tag template.
   ///
   /// The user should enable the Data Catalog API in the project identified by
-  /// the `parent` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// the `parent` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -1943,8 +1943,8 @@ class ProjectsLocationsTagTemplatesResource {
   /// Deletes a tag template and all tags using the template.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `name` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// `name` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// Request parameters:
@@ -2138,8 +2138,8 @@ class ProjectsLocationsTagTemplatesResource {
   /// template fields are represented as separate resources and should be
   /// updated using their own create/update/delete methods. Users should enable
   /// the Data Catalog API in the project identified by the `tag_template.name`
-  /// parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -2364,8 +2364,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// Creates a field in a tag template.
   ///
   /// The user should enable the Data Catalog API in the project identified by
-  /// the `parent` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// the `parent` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -2443,8 +2443,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// Deletes a field in a tag template and all uses of that field.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `name` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// `name` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// Request parameters:
@@ -2511,8 +2511,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// This method cannot be used to update the field type. Users should enable
   /// the Data Catalog API in the project identified by the `name` parameter
-  /// (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -2589,8 +2589,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// Renames a field in a tag template.
   ///
   /// The user should enable the Data Catalog API in the project identified by
-  /// the `name` parameter (see [Data Catalog Resource
-  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// the `name` parameter (see
+  /// [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
   /// for more information).
   ///
   /// [request] - The metadata request object.
@@ -3889,8 +3889,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -4099,8 +4098,8 @@ class GetPolicyOptions {
   /// rejected. Requests for policies with any conditional bindings must specify
   /// version 3. Policies without any conditional bindings may specify any valid
   /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
   core.int requestedPolicyVersion;
@@ -4364,9 +4363,8 @@ class GoogleCloudDatacatalogV1beta1Entry {
 
   /// The resource this metadata entry refers to.
   ///
-  /// For Google Cloud Platform resources, `linked_resource` is the [full name
-  /// of the
-  /// resource](https://cloud.google.com/apis/design/resource_names#full_resource_name).
+  /// For Google Cloud Platform resources, `linked_resource` is the
+  /// [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name).
   /// For example, the `linked_resource` for a table resource from BigQuery is:
   /// *
   /// //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
@@ -4786,8 +4784,8 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
 class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /// Patterns to identify a set of files in Google Cloud Storage.
   ///
-  /// See [Cloud Storage
-  /// documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
+  /// See
+  /// [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
   /// for more information. Note that bucket wildcards are currently not
   /// supported. Examples of valid file_patterns: * `gs://bucket_name/dir / * `:
   /// matches all files within `bucket_name/dir` directory. *
@@ -5308,8 +5306,8 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// scope) that the user has access to. Query strings can be simple as "x" or
   /// more qualified as: * name:x * column:x * description:y Note: Query tokens
   /// need to have a minimum of 3 characters for substring matching to work
-  /// correctly. See [Data Catalog Search
-  /// Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+  /// correctly. See
+  /// [Data Catalog Search Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
   /// for more information.
   ///
   /// Optional.
@@ -5762,9 +5760,9 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
 
 /// Tags are used to attach custom metadata to Data Catalog resources.
 ///
-/// Tags conform to the specifications within their tag template. See [Data
-/// Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for
-/// information on the permissions needed to create or view tags.
+/// Tags conform to the specifications within their tag template. See
+/// [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam)
+/// for information on the permissions needed to create or view tags.
 class GoogleCloudDatacatalogV1beta1Tag {
   /// Resources like Entry can have schemas associated with them.
   ///
@@ -5964,13 +5962,12 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
 
 /// A tag template defines a tag, which can have one or more typed fields.
 ///
-/// The template is used to create and attach the tag to GCP resources. [Tag
-/// template
-/// roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles)
+/// The template is used to create and attach the tag to GCP resources.
+/// [Tag template roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles)
 /// provide permissions to create, edit, and use the template. See, for example,
-/// the [TagTemplate
-/// User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role,
-/// which includes permission to use the tag template to tag resources.
+/// the
+/// [TagTemplate User](https://cloud.google.com/data-catalog/docs/how-to/template-user)
+/// role, which includes permission to use the tag template to tag resources.
 class GoogleCloudDatacatalogV1beta1TagTemplate {
   /// The display name for this template.
   ///
@@ -6221,8 +6218,8 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -6238,8 +6235,8 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`.
   ///
@@ -6283,8 +6280,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -6351,8 +6348,8 @@ class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

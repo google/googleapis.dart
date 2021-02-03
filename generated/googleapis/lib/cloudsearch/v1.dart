@@ -1491,8 +1491,8 @@ class MediaResource {
   /// Uploads media for indexing.
   ///
   /// The upload endpoint supports direct and resumable upload protocols and is
-  /// intended for large items that can not be [inlined during index
-  /// requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+  /// intended for large items that can not be
+  /// [inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
   /// To index large content: 1. Call indexing.datasources.items.upload with the
   /// item name to begin an upload session and retrieve the UploadItemRef. 1.
   /// Call media.upload to upload the content, as a streaming request, using the
@@ -1500,8 +1500,7 @@ class MediaResource {
   /// indexing.datasources.items.index to index the item. Populate the
   /// \[ItemContent\](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
   /// with the UploadItemRef from step 1. For additional information, see
-  /// [Create a content connector using the REST
-  /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
+  /// [Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
   /// **Note:** This API requires a service account to execute.
   ///
   /// [request] - The metadata request object.
@@ -1876,8 +1875,8 @@ class QuerySourcesResource {
   /// characters in the query.
   ///
   /// [requestOptions_searchApplicationId] - The ID generated when you create a
-  /// search application using the [admin
-  /// console](https://support.google.com/a/answer/9043922).
+  /// search application using the
+  /// [admin console](https://support.google.com/a/answer/9043922).
   ///
   /// [requestOptions_timeZone] - Current user's time zone id, such as
   /// "America/Los_Angeles" or "Australia/Sydney". These IDs are defined by
@@ -3928,9 +3927,9 @@ class DataSourceRestriction {
 /// Represents a whole calendar date, for example a date of birth.
 ///
 /// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the [Proleptic Gregorian
-/// Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The
-/// date must be a valid calendar date between the year 1 and 9999.
+/// significant. The date is relative to the
+/// [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar).
+/// The date must be a valid calendar date between the year 1 and 9999.
 class Date {
   /// Day of month.
   ///
@@ -8176,8 +8175,8 @@ class RequestOptions {
   /// characters in the query.
   core.String languageCode;
 
-  /// The ID generated when you create a search application using the [admin
-  /// console](https://support.google.com/a/answer/9043922).
+  /// The ID generated when you create a search application using the
+  /// [admin console](https://support.google.com/a/answer/9043922).
   core.String searchApplicationId;
 
   /// Current user's time zone id, such as "America/Los_Angeles" or
@@ -8946,8 +8945,8 @@ class SearchRequest {
 
   /// The raw query string.
   ///
-  /// See supported search operators in the [Cloud search Cheat
-  /// Sheet](https://support.google.com/a/users/answer/9299929)
+  /// See supported search operators in the
+  /// [Cloud search Cheat Sheet](https://support.google.com/a/users/answer/9299929)
   core.String query;
 
   /// Options to interpret the user query.

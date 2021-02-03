@@ -185,8 +185,8 @@ class OperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// Authorization requires the following [Google
-  /// IAM](https://cloud.google.com/iam) permission: *
+  /// Authorization requires the following
+  /// [Google IAM](https://cloud.google.com/iam) permission: *
   /// `genomics.operations.list`
   ///
   /// Request parameters:

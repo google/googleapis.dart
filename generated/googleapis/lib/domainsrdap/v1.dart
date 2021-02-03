@@ -687,8 +687,8 @@ class HttpBody {
   }
 }
 
-/// Links object defined in [section 4.2 of RFC
-/// 7483](https://tools.ietf.org/html/rfc7483#section-4.2).
+/// Links object defined in
+/// [section 4.2 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-4.2).
 class Link {
   /// Target URL of a link.
   ///
@@ -778,8 +778,8 @@ class Link {
   }
 }
 
-/// Notices object defined in [section 4.3 of RFC
-/// 7483](https://tools.ietf.org/html/rfc7483#section-4.3).
+/// Notices object defined in
+/// [section 4.3 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-4.3).
 class Notice {
   /// Description of the notice.
   core.List<core.String> description;
@@ -792,10 +792,10 @@ class Notice {
   /// Example: "Terms of Service".
   core.String title;
 
-  /// Type values defined in [section 10.2.1 of RFC
-  /// 7483](https://tools.ietf.org/html/rfc7483#section-10.2.1) specific to a
-  /// whole response: "result set truncated due to authorization", "result set
-  /// truncated due to excessive load", "result set truncated due to
+  /// Type values defined in
+  /// [section 10.2.1 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-10.2.1)
+  /// specific to a whole response: "result set truncated due to authorization",
+  /// "result set truncated due to excessive load", "result set truncated due to
   /// unexplainable reasons".
   core.String type;
 
@@ -854,8 +854,8 @@ class RdapResponse {
 
   /// Error language code.
   ///
-  /// Error response info fields are defined in [section 6 of RFC
-  /// 7483](https://tools.ietf.org/html/rfc7483#section-6).
+  /// Error response info fields are defined in
+  /// [section 6 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-6).
   core.String lang;
 
   /// Notices applying to this response.

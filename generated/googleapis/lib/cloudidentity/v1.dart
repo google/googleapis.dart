@@ -95,10 +95,10 @@ class DevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}`, where device_id is the unique ID
-  /// assigned to the Device, and device_user_id is the unique ID assigned to
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}`, where device_id is the unique
+  /// ID assigned to the Device, and device_user_id is the unique ID assigned to
   /// the User.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
@@ -159,9 +159,9 @@ class DevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -218,15 +218,15 @@ class DevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}`, where device_id is the unique ID
-  /// assigned to the Device.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}`, where device_id is the unique
+  /// ID assigned to the Device.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -283,18 +283,18 @@ class DevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in the format: `devices/{device_id}`, where device_id is the unique ID
-  /// assigned to the Device.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in the format: `devices/{device_id}`, where device_id is the
+  /// unique ID assigned to the Device.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Customer
-  /// in the format: `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs. If you're using this API for your own
-  /// organization, use `customers/my_customer`. If you're using this API to
-  /// manage another organization, use `customers/{customer_id}`, where
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Customer in the format: `customers/{customer_id}`, where customer_id
+  /// is the customer to whom the device belongs. If you're using this API for
+  /// your own organization, use `customers/my_customer`. If you're using this
+  /// API to manage another organization, use `customers/{customer_id}`, where
   /// customer_id is the customer to whom the device belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -350,17 +350,17 @@ class DevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the customer
-  /// in the format: `customers/{customer_id}`, where customer_id is the
-  /// customer to whom the device belongs. If you're using this API for your own
-  /// organization, use `customers/my_customer`. If you're using this API to
-  /// manage another organization, use `customers/{customer_id}`, where
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer in the format: `customers/{customer_id}`, where customer_id
+  /// is the customer to whom the device belongs. If you're using this API for
+  /// your own organization, use `customers/my_customer`. If you're using this
+  /// API to manage another organization, use `customers/{customer_id}`, where
   /// customer_id is the customer to whom the device belongs.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of
-  /// devices. [Help Center article
-  /// link](https://support.google.com/a/answer/7549103)
+  /// devices.
+  /// [Help Center article link](https://support.google.com/a/answer/7549103)
   ///
   /// [orderBy] - Optional. Order specification for devices in the response.
   /// Only one of the following field names may be used to specify the order:
@@ -459,11 +459,11 @@ class DevicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -529,11 +529,11 @@ class DevicesDeviceUsersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -590,11 +590,11 @@ class DevicesDeviceUsersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -654,11 +654,11 @@ class DevicesDeviceUsersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -716,16 +716,16 @@ class DevicesDeviceUsersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -782,16 +782,16 @@ class DevicesDeviceUsersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -854,9 +854,9 @@ class DevicesDeviceUsersResource {
   /// the device. Format: devices/{device}
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -1066,11 +1066,11 @@ class DevicesDeviceUsersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Device
-  /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
-  /// device_id is the unique ID assigned to the Device, and device_user_id is
-  /// the unique ID assigned to the User.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`,
+  /// where device_id is the unique ID assigned to the Device, and
+  /// device_user_id is the unique ID assigned to the User.
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1132,9 +1132,9 @@ class DevicesDeviceUsersClientStatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// ClientState in format:
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the ClientState in format:
   /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`,
   /// where device_id is the unique ID assigned to the Device, device_user_id is
   /// the unique ID assigned to the User and partner_id identifies the partner
@@ -1142,9 +1142,9 @@ class DevicesDeviceUsersClientStatesResource {
   /// Value must have pattern
   /// `^devices/\[^/\]+/deviceUsers/\[^/\]+/clientStates/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -1208,9 +1208,9 @@ class DevicesDeviceUsersClientStatesResource {
   /// devices/{device}/deviceUsers/{deviceUser}
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -1297,9 +1297,9 @@ class DevicesDeviceUsersClientStatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// ClientState in format:
+  /// [name] - Output only.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the ClientState in format:
   /// `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`,
   /// where partner_id corresponds to the partner storing the data. For partners
   /// belonging to the "BeyondCorp Alliance", this is the partner ID specified
@@ -1316,9 +1316,9 @@ class DevicesDeviceUsersClientStatesResource {
   /// Value must have pattern
   /// `^devices/\[^/\]+/deviceUsers/\[^/\]+/clientStates/\[^/\]+$`.
   ///
-  /// [customer] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// customer. If you're using this API for your own organization, use
+  /// [customer] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the customer. If you're using this API for your own organization, use
   /// `customers/my_customer` If you're using this API to manage another
   /// organization, use `customers/{customer_id}`, where customer_id is the
   /// customer to whom the device belongs.
@@ -1459,10 +1459,10 @@ class GroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
-  /// the format: `groups/{group_id}`, where `group_id` is the unique ID
-  /// assigned to the Group.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group in the format: `groups/{group_id}`, where `group_id` is the
+  /// unique ID assigned to the Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1513,10 +1513,10 @@ class GroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
-  /// the format: `groups/{group_id}`, where `group_id` is the unique ID
-  /// assigned to the Group.
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group in the format: `groups/{group_id}`, where `group_id` is the
+  /// unique ID assigned to the Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1638,9 +1638,9 @@ class GroupsResource {
     );
   }
 
-  /// Looks up [resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of a Group by
-  /// its EntityKey.
+  /// Looks up
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of a
+  /// Group by its EntityKey.
   ///
   /// Request parameters:
   ///
@@ -1708,10 +1708,10 @@ class GroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
-  /// the format: `groups/{group_id}`, where group_id is the unique ID assigned
-  /// to the Group. Must be left blank while creating a Group.
+  /// [name] - Output only.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group in the format: `groups/{group_id}`, where group_id is the unique
+  /// ID assigned to the Group. Must be left blank while creating a Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Editable fields: `display_name`, `description`
@@ -1858,10 +1858,10 @@ class GroupsMembershipsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group to
-  /// create Membership within. Format: `groups/{group_id}`, where `group_id` is
-  /// the unique ID assigned to the Group.
+  /// [parent] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group to create Membership within. Format: `groups/{group_id}`, where
+  /// `group_id` is the unique ID assigned to the Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1918,9 +1918,9 @@ class GroupsMembershipsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// Membership to be deleted. Format:
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Membership to be deleted. Format:
   /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
   /// unique ID assigned to the Group to which Membership belongs to, and
   /// member_id is the unique ID assigned to the member.
@@ -1974,9 +1974,9 @@ class GroupsMembershipsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// Membership to be retrieved. Format:
+  /// [name] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Membership to be retrieved. Format:
   /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
   /// unique id assigned to the Group to which Membership belongs to, and
   /// `member_id` is the unique ID assigned to the member.
@@ -2031,10 +2031,10 @@ class GroupsMembershipsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group to
-  /// list Memberships within. Format: `groups/{group_id}`, where `group_id` is
-  /// the unique ID assigned to the Group.
+  /// [parent] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group to list Memberships within. Format: `groups/{group_id}`, where
+  /// `group_id` is the unique ID assigned to the Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
@@ -2108,16 +2108,16 @@ class GroupsMembershipsResource {
     );
   }
 
-  /// Looks up [resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of a Membership
-  /// within a Group by member's EntityKey.
+  /// Looks up
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of a
+  /// Membership within a Group by member's EntityKey.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. [Resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the Group to
-  /// lookup Membership within. Format: `groups/{group_id}`, where `group_id` is
-  /// the unique ID assigned to the Group.
+  /// [parent] - Required.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Group to lookup Membership within. Format: `groups/{group_id}`, where
+  /// `group_id` is the unique ID assigned to the Group.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [memberKey_id] - The ID of the entity within the given namespace. The ID
@@ -2190,9 +2190,9 @@ class GroupsMembershipsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The [resource
-  /// name](https://cloud.google.com/apis/design/resource_names) of the
-  /// `Membership` whose roles are to be modified. Must be of the form
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the `Membership` whose roles are to be modified. Must be of the form
   /// `groups/{group_id}/memberships/{membership_id}`.
   /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///

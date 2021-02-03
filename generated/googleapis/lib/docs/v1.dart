@@ -9214,17 +9214,17 @@ class UpdateTextStyleRequest {
 class WeightedFontFamily {
   /// The font family of the text.
   ///
-  /// The font family can be any font from the Font menu in Docs or from [Google
-  /// Fonts](https://fonts.google.com/). If the font name is unrecognized, the
-  /// text is rendered in `Arial`.
+  /// The font family can be any font from the Font menu in Docs or from
+  /// [Google Fonts](https://fonts.google.com/). If the font name is
+  /// unrecognized, the text is rendered in `Arial`.
   core.String fontFamily;
 
   /// The weight of the font.
   ///
   /// This field can have any value that is a multiple of `100` between `100`
   /// and `900`, inclusive. This range corresponds to the numerical values
-  /// described in the CSS 2.1 Specification, [section
-  /// 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
+  /// described in the CSS 2.1 Specification,
+  /// [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
   /// non-numerical values disallowed. The default value is `400` ("normal").
   /// The font weight makes up just one component of the rendered font weight.
   /// The rendered weight is determined by a combination of the `weight` and the

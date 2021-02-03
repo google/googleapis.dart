@@ -90,11 +90,11 @@ class AvailableProjectsResource {
   /// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
   /// that can have Firebase resources added to it.
   ///
-  /// A Project will only be listed if: - The caller has sufficient [Google
-  /// IAM](https://cloud.google.com/iam) permissions to call AddFirebase. - The
-  /// Project is not already a FirebaseProject. - The Project is not in an
-  /// Organization which has policies that prevent Firebase resources from being
-  /// added.
+  /// A Project will only be listed if: - The caller has sufficient
+  /// [Google IAM](https://cloud.google.com/iam) permissions to call
+  /// AddFirebase. - The Project is not already a FirebaseProject. - The Project
+  /// is not in an Organization which has policies that prevent Firebase
+  /// resources from being added.
   ///
   /// Request parameters:
   ///
@@ -322,8 +322,8 @@ class ProjectsResource {
     );
   }
 
-  /// Links the specified FirebaseProject with an existing [Google Analytics
-  /// account](http://www.google.com/analytics/).
+  /// Links the specified FirebaseProject with an existing
+  /// [Google Analytics account](http://www.google.com/analytics/).
   ///
   /// Using this call, you can either: - Specify an `analyticsAccountId` to
   /// provision a new Google Analytics property within the specified account and
@@ -340,13 +340,14 @@ class ProjectsResource {
   /// for each of the Firebase Apps. Note that a new data stream is always
   /// provisioned for a Web App even if it was previously associated with a data
   /// stream in the Analytics property. Learn more about the hierarchy and
-  /// structure of Google Analytics accounts in the [Analytics
-  /// documentation](https://support.google.com/analytics/answer/9303323). The
-  /// result of this call is an \[`Operation`\](../../v1beta1/operations). Poll
-  /// the `Operation` to track the provisioning process by calling GetOperation
-  /// until \[`done`\](../../v1beta1/operations#Operation.FIELDS.done) is
-  /// `true`. When `done` is `true`, the `Operation` has either succeeded or
-  /// failed. If the `Operation` succeeded, its
+  /// structure of Google Analytics accounts in the
+  /// [Analytics documentation](https://support.google.com/analytics/answer/9303323).
+  /// The result of this call is an \[`Operation`\](../../v1beta1/operations).
+  /// Poll the `Operation` to track the provisioning process by calling
+  /// GetOperation until
+  /// \[`done`\](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When
+  /// `done` is `true`, the `Operation` has either succeeded or failed. If the
+  /// `Operation` succeeded, its
   /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) is set
   /// to an AnalyticsDetails; if the `Operation` failed, its
   /// \[`error`\](../../v1beta1/operations#Operation.FIELDS.error) is set to a
@@ -678,9 +679,9 @@ class ProjectsResource {
   /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. If this list is empty,
@@ -1185,11 +1186,11 @@ class ProjectsAndroidAppsResource {
   /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+  /// about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
@@ -1448,13 +1449,13 @@ class ProjectsAvailableLocationsResource {
   /// Lists the valid Google Cloud Platform (GCP) resource locations for the
   /// specified Project (including a FirebaseProject).
   ///
-  /// One of these locations can be selected as the Project's [_default_ GCP
-  /// resource location](https://firebase.google.com/docs/projects/locations),
+  /// One of these locations can be selected as the Project's
+  /// [_default_ GCP resource location](https://firebase.google.com/docs/projects/locations),
   /// which is the geographical location where the Project's resources, such as
   /// Cloud Firestore, will be provisioned by default. However, if the default
   /// GCP resource location has already been set for the Project, then this
-  /// setting cannot be changed. This call checks for any possible [location
-  /// restrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)
+  /// setting cannot be changed. This call checks for any possible
+  /// [location restrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)
   /// for the specified Project and, thus, might return a subset of all possible
   /// GCP resource locations. To list all GCP resource locations (regardless of
   /// any restrictions), call the endpoint without specifying a unique project
@@ -1548,17 +1549,16 @@ class ProjectsDefaultLocationResource {
   /// Sets the default Google Cloud Platform (GCP) resource location for the
   /// specified FirebaseProject.
   ///
-  /// This method creates an App Engine application with a [default Cloud
-  /// Storage
-  /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
+  /// This method creates an App Engine application with a
+  /// [default Cloud Storage bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
   /// located in the specified
   /// \[`locationId`\](#body.request_body.FIELDS.location_id). This location
-  /// must be one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations). After the
-  /// default GCP resource location is finalized, or if it was already set, it
-  /// cannot be changed. The default GCP resource location for the specified
-  /// `FirebaseProject` might already be set because either the underlying GCP
-  /// `Project` already has an App Engine application or
+  /// must be one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// After the default GCP resource location is finalized, or if it was already
+  /// set, it cannot be changed. The default GCP resource location for the
+  /// specified `FirebaseProject` might already be set because either the
+  /// underlying GCP `Project` already has an App Engine application or
   /// `FinalizeDefaultLocation` was previously called with a specified
   /// `locationId`. Any new calls to `FinalizeDefaultLocation` with a
   /// *different* specified `locationId` will return a 409 error. The result of
@@ -1912,11 +1912,11 @@ class ProjectsIosAppsResource {
   /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
+  /// about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
@@ -2249,11 +2249,11 @@ class ProjectsWebAppsResource {
   /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
-  /// about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
+  /// about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
@@ -2319,8 +2319,8 @@ class AddFirebaseRequest {
   /// you add Firebase resources to the GCP `Project`.
   ///
   /// The ID of the Project's default GCP resource location. The location must
-  /// be one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations).
+  /// be one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
   ///
   /// Deprecated.
   core.String locationId;
@@ -2376,9 +2376,9 @@ class AddFirebaseRequest {
 }
 
 class AddGoogleAnalyticsRequest {
-  /// The ID for the existing [Google Analytics
-  /// account](http://www.google.com/analytics/) that you want to link with the
-  /// `FirebaseProject`.
+  /// The ID for the existing
+  /// [Google Analytics account](http://www.google.com/analytics/) that you want
+  /// to link with the `FirebaseProject`.
   ///
   /// Specifying this field will provision a new Google Analytics property in
   /// your Google Analytics account and associate the new property with the
@@ -2418,9 +2418,9 @@ class AdminSdkConfig {
 
   /// The ID of the Project's default GCP resource location.
   ///
-  /// The location is one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations). This
-  /// field is omitted if the default GCP resource location has not been
+  /// The location is one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// This field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
@@ -2577,11 +2577,11 @@ class AndroidApp {
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
-  /// Learn more about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+  /// Learn more about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
   core.String name;
 
   /// The canonical package name of the Android app as would appear in the
@@ -2693,9 +2693,9 @@ class DefaultResources {
 
   /// The ID of the Project's default GCP resource location.
   ///
-  /// The location is one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations). This
-  /// field is omitted if the default GCP resource location has not been
+  /// The location is one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// This field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
@@ -2704,8 +2704,8 @@ class DefaultResources {
   /// The default Firebase Realtime Database instance name, in the format:
   /// PROJECT_ID Though rare, your `projectId` might already be used as the name
   /// for an existing Realtime Database instance in another project (learn more
-  /// about [database
-  /// sharding](https://firebase.google.com/docs/database/usage/sharding)).
+  /// about
+  /// [database sharding](https://firebase.google.com/docs/database/usage/sharding)).
   ///
   /// In these cases, your `projectId` is appended with a hyphen then five
   /// alphanumeric characters to create your default Realtime Database instance
@@ -2776,8 +2776,8 @@ class Empty {
 class FinalizeDefaultLocationRequest {
   /// The ID of the Project's default GCP resource location.
   ///
-  /// The location must be one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations).
+  /// The location must be one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
   core.String locationId;
 
   FinalizeDefaultLocationRequest();
@@ -2900,9 +2900,9 @@ class FirebaseProject {
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
-  /// Learn more about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// Learn more about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   core.String name;
 
   /// A user-assigned unique identifier for the Project.
@@ -3016,11 +3016,11 @@ class IosApp {
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
-  /// Learn more about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
+  /// Learn more about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
   core.String name;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
@@ -3385,8 +3385,8 @@ class Location {
 
   /// The ID of the GCP resource location.
   ///
-  /// It will be one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations#types).
+  /// It will be one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations#types).
   core.String locationId;
 
   /// Indicates whether the GCP resource location is a \[regional or
@@ -3552,11 +3552,11 @@ class ProjectInfo {
 
   /// The ID of the Project's default GCP resource location.
   ///
-  /// The location is one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations). Not all
-  /// Projects will have this field populated. If it is not populated, it means
-  /// that the Project does not yet have a default GCP resource location. To set
-  /// a Project's default GCP resource location, call
+  /// The location is one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// Not all Projects will have this field populated. If it is not populated,
+  /// it means that the Project does not yet have a default GCP resource
+  /// location. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
   core.String locationId;
@@ -3681,11 +3681,11 @@ class ShaCertificate {
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
-  /// Learn more about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)). *
+  /// Learn more about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)). *
   /// SHA_HASH: the certificate hash for the App (see
   /// \[`shaHash`\](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).
   core.String name;
@@ -3865,15 +3865,15 @@ class StreamMapping {
   /// The unique Google-assigned identifier of the Google Analytics web stream
   /// associated with the Firebase Web App. Firebase SDKs use this ID to
   /// interact with Google Analytics APIs. Learn more about this ID and Google
-  /// Analytics web streams in the [Analytics
-  /// documentation](https://support.google.com/analytics/topic/9303475).
+  /// Analytics web streams in the
+  /// [Analytics documentation](https://support.google.com/analytics/topic/9303475).
   core.String measurementId;
 
   /// The unique Google-assigned identifier of the Google Analytics data stream
   /// associated with the Firebase App.
   ///
-  /// Learn more about Google Analytics data streams in the [Analytics
-  /// documentation](https://support.google.com/analytics/answer/9303323).
+  /// Learn more about Google Analytics data streams in the
+  /// [Analytics documentation](https://support.google.com/analytics/answer/9303323).
   core.String streamId;
 
   StreamMapping();
@@ -3928,11 +3928,11 @@ class WebApp {
   /// ***(recommended)*** or its
   /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
-  /// Learn more about using project identifiers in Google's [AIP 2510
-  /// standard](https://google.aip.dev/cloud/2510). Note that the value for
-  /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
-  /// the globally unique, Firebase-assigned identifier for the App (see
-  /// \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
+  /// Learn more about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
+  /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
+  /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
+  /// (see \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
   core.String name;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
@@ -4019,9 +4019,9 @@ class WebAppConfig {
 
   /// The ID of the Project's default GCP resource location.
   ///
-  /// The location is one of the available [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations). This
-  /// field is omitted if the default GCP resource location has not been
+  /// The location is one of the available
+  /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
+  /// This field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
@@ -4033,10 +4033,10 @@ class WebAppConfig {
   /// Firebase SDKs use this ID to interact with Google Analytics APIs. This
   /// field is only present if the `WebApp` is linked to a web stream in a
   /// Google Analytics App + Web property. Learn more about this ID and Google
-  /// Analytics web streams in the [Analytics
-  /// documentation](https://support.google.com/analytics/topic/9303475). To
-  /// generate a `measurementId` and link the `WebApp` with a Google Analytics
-  /// web stream, call
+  /// Analytics web streams in the
+  /// [Analytics documentation](https://support.google.com/analytics/topic/9303475).
+  /// To generate a `measurementId` and link the `WebApp` with a Google
+  /// Analytics web stream, call
   /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics). For
   /// apps using the Firebase JavaScript SDK v7.20.0 and later, Firebase
   /// dynamically fetches the `measurementId` when your app initializes

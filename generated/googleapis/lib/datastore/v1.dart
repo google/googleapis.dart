@@ -1820,8 +1820,8 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   /// form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name
   /// of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud
   /// Storage namespace path (this is not a Cloud Datastore namespace). For more
-  /// information about Cloud Storage namespace paths, see [Object name
-  /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
+  /// information about Cloud Storage namespace paths, see
+  /// [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
   /// The resulting files will be nested deeper than the specified URL prefix.
   /// The final output URL will be provided in the
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That
@@ -1979,8 +1979,8 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   /// an optional Cloud Storage namespace path (this is not a Cloud Datastore
   /// namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file
   /// written by the ExportEntities operation. For more information about Cloud
-  /// Storage namespace paths, see [Object name
-  /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
+  /// Storage namespace paths, see
+  /// [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
   /// For more information, see
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
   ///
@@ -2748,8 +2748,8 @@ class GoogleLongrunningOperation {
   }
 }
 
-/// A [GQL
-/// query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+/// A
+/// [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
 class GqlQuery {
   /// When false, the query string must not contain any literals and instead
   /// must bind all values.
@@ -3440,9 +3440,8 @@ class Query {
 
   /// An ending point for the query results.
   ///
-  /// Query cursors are returned in query result batches and [can only be used
-  /// to limit the same
-  /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
+  /// Query cursors are returned in query result batches and
+  /// [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
   core.String endCursor;
   core.List<core.int> get endCursorAsBytes => convert.base64.decode(endCursor);
 
@@ -3481,9 +3480,8 @@ class Query {
 
   /// A starting point for the query results.
   ///
-  /// Query cursors are returned in query result batches and [can only be used
-  /// to continue the same
-  /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
+  /// Query cursors are returned in query result batches and
+  /// [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
   core.String startCursor;
   core.List<core.int> get startCursorAsBytes =>
       convert.base64.decode(startCursor);

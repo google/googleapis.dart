@@ -897,8 +897,8 @@ class ClassificationCategory {
   /// represents the given text.
   core.double confidence;
 
-  /// The name of the category representing the document, from the [predefined
-  /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
+  /// The name of the category representing the document, from the
+  /// [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories).
   core.String name;
 
   ClassificationCategory();
@@ -1126,11 +1126,12 @@ class Document {
   /// The language of the document (if not specified, the language is
   /// automatically detected).
   ///
-  /// Both ISO and BCP-47 language codes are accepted. [Language
-  /// Support](https://cloud.google.com/natural-language/docs/languages) lists
-  /// currently supported languages for each API method. If the language (either
-  /// specified by the caller or automatically detected) is not supported by the
-  /// called API method, an `INVALID_ARGUMENT` error is returned.
+  /// Both ISO and BCP-47 language codes are accepted.
+  /// [Language Support](https://cloud.google.com/natural-language/docs/languages)
+  /// lists currently supported languages for each API method. If the language
+  /// (either specified by the caller or automatically detected) is not
+  /// supported by the called API method, an `INVALID_ARGUMENT` error is
+  /// returned.
   core.String language;
 
   /// The web URI where the document comes from.
@@ -1377,8 +1378,8 @@ class Features {
   /// Classify the full document into categories.
   ///
   /// If this is true, the API will use the default model which classifies into
-  /// a [predefined
-  /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
+  /// a
+  /// [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories).
   core.bool classifyText;
 
   /// Extract document-level sentiment.

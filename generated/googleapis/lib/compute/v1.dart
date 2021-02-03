@@ -3275,7 +3275,7 @@ class BackendServicesResource {
   /// Patches the specified BackendService resource with the data included in
   /// the request.
   ///
-  /// For more information, see  Backend services overview. This method supports
+  /// For more information, see Backend services overview. This method supports
   /// PATCH semantics and uses the JSON merge patch format and processing rules.
   ///
   /// [request] - The metadata request object.
@@ -13618,7 +13618,7 @@ class InstanceGroupsResource {
   /// Adds a list of instances to the specified instance group.
   ///
   /// All of the instances in the instance group must be in the same
-  /// network/subnetwork. Read  Adding instances for more information.
+  /// network/subnetwork. Read Adding instances for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13849,7 +13849,7 @@ class InstanceGroupsResource {
   /// Deletes the specified instance group.
   ///
   /// The instances in the group are not deleted. Note that instance group must
-  /// not belong to a backend service. Read  Deleting an instance group for more
+  /// not belong to a backend service. Read Deleting an instance group for more
   /// information.
   ///
   /// Request parameters:
@@ -20389,7 +20389,7 @@ class LicenseCodesResource {
   /// Return a specified license code.
   ///
   /// License codes are mirrored across all projects that have permissions to
-  /// read the License Code.  Caution This resource is intended for use only by
+  /// read the License Code. Caution This resource is intended for use only by
   /// third-party partners who are creating Cloud Marketplace images.
   ///
   /// Request parameters:
@@ -20681,7 +20681,7 @@ class LicensesResource {
 
   /// Gets the access control policy for a resource.
   ///
-  /// May be empty if no such policy or resource exists.  Caution This resource
+  /// May be empty if no such policy or resource exists. Caution This resource
   /// is intended for use only by third-party partners who are creating Cloud
   /// Marketplace images.
   ///
@@ -20838,7 +20838,7 @@ class LicensesResource {
   /// including licenses attached to publicly-available images, like Debian 9.
   /// If you want to get a list of publicly-available licenses, use this method
   /// to make a request to the respective image project, such as debian-cloud or
-  /// windows-cloud.  Caution This resource is intended for use only by
+  /// windows-cloud. Caution This resource is intended for use only by
   /// third-party partners who are creating Cloud Marketplace images.
   ///
   /// Request parameters:
@@ -20963,7 +20963,7 @@ class LicensesResource {
 
   /// Sets the access control policy on the specified resource.
   ///
-  /// Replaces any existing policy.  Caution This resource is intended for use
+  /// Replaces any existing policy. Caution This resource is intended for use
   /// only by third-party partners who are creating Cloud Marketplace images.
   ///
   /// [request] - The metadata request object.
@@ -28510,7 +28510,7 @@ class RegionBackendServicesResource {
   /// Updates the specified regional BackendService resource with the data
   /// included in the request.
   ///
-  /// For more information, see  Understanding backend services This method
+  /// For more information, see Understanding backend services This method
   /// supports PATCH semantics and uses the JSON merge patch format and
   /// processing rules.
   ///
@@ -53942,7 +53942,7 @@ class AttachedDisk {
 
   /// A list of features to enable on the guest operating system.
   ///
-  /// Applicable only for bootable images. Read  Enabling guest operating system
+  /// Applicable only for bootable images. Read Enabling guest operating system
   /// features to see a list of available options.
   core.List<GuestOsFeature> guestOsFeatures;
 
@@ -54176,7 +54176,7 @@ class AttachedDiskInitializeParams {
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/diskType
   /// - projects/project/zones/zone/diskTypes/diskType
-  /// - zones/zone/diskTypes/diskType  Note that for InstanceTemplate, this is
+  /// - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is
   /// the name of the disk type, not URL.
   core.String diskType;
 
@@ -54591,7 +54591,7 @@ class Autoscaler {
   /// - ACTIVE: Configuration is acknowledged to be effective. Some warnings
   /// might be present in the statusDetails field.
   /// - ERROR: Configuration has errors. Actionable for users. Details are
-  /// present in the statusDetails field.  New values might be added in the
+  /// present in the statusDetails field. New values might be added in the
   /// future.
   ///
   /// Output only.
@@ -55199,7 +55199,7 @@ class AutoscalerStatusDetails {
   /// maxRate.
   /// - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a
   /// resource stockout in the chosen zone. For regional autoscalers: in at
-  /// least one of the zones you're using there is a resource stockout.  New
+  /// least one of the zones you're using there is a resource stockout. New
   /// values might be added in the future. Some of the values might not be
   /// available in all API versions.
   /// Possible string values are:
@@ -56450,7 +56450,7 @@ class BackendService {
   /// httpsHealthChecks (legacy) resource for health checking this backend
   /// service.
   ///
-  /// Not all backend services support legacy health checks. See  Load balancer
+  /// Not all backend services support legacy health checks. See Load balancer
   /// guide. Currently, at most one health check can be specified for each
   /// backend service. Backend services with instance group or zonal NEG
   /// backends must have a health check. Backend services with internet or
@@ -56665,7 +56665,7 @@ class BackendService {
   /// The backend service timeout has a different meaning depending on the type
   /// of load balancer.
   ///
-  /// For more information see,  Backend service settings The default is 30
+  /// For more information see, Backend service settings The default is 30
   /// seconds.
   core.int timeoutSec;
 
@@ -57783,8 +57783,7 @@ class Binding {
   /// of the members in this binding.
   ///
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -59418,7 +59417,7 @@ class DeprecationStatus {
 /// read Zonal persistent disks.
 ///
 /// The regionDisks resource represents a regional persistent disk. For more
-/// information, read  Regional resources. (== resource_for {$api_version}.disks
+/// information, read Regional resources. (== resource_for {$api_version}.disks
 /// ==) (== resource_for {$api_version}.regionDisks ==)
 class Disk {
   /// Creation timestamp in RFC3339 text format.
@@ -59448,7 +59447,7 @@ class Disk {
 
   /// A list of features to enable on the guest operating system.
   ///
-  /// Applicable only for bootable images. Read  Enabling guest operating system
+  /// Applicable only for bootable images. Read Enabling guest operating system
   /// features to see a list of available options.
   core.List<GuestOsFeature> guestOsFeatures;
 
@@ -59668,7 +59667,7 @@ class Disk {
   /// the disk.
   ///
   /// Provide this when creating the disk. For example:
-  /// projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
+  /// projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
   core.String type;
 
   /// Links to the users of the disk (attached instances) in form:
@@ -61965,7 +61964,7 @@ class Expr {
 /// gateway or another cloud provider's VPN gateway, you must create a external
 /// VPN gateway resource with information about the other gateway.
 ///
-/// For more information about using external VPN gateways, see  Creating an HA
+/// For more information about using external VPN gateways, see Creating an HA
 /// VPN gateway and tunnel pair to a peer VPN.
 ///
 /// (== resource_for {$api_version}.externalVpnGateways ==)
@@ -64630,7 +64629,7 @@ class GuestAttributesValue {
 class GuestOsFeature {
   /// The ID of a supported feature.
   ///
-  /// Read  Enabling guest operating system features to see a list of available
+  /// Read Enabling guest operating system features to see a list of available
   /// options.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
@@ -67509,7 +67508,7 @@ class HttpRouteAction {
   ///
   /// The weights determine the fraction of traffic that flows to their
   /// corresponding backend service. If all traffic needs to go to a single
-  /// backend service, there must be one  weightedBackendService with weight set
+  /// backend service, there must be one weightedBackendService with weight set
   /// to a non-zero number.
   /// Once a backendService is identified and before forwarding the request to
   /// the backend service, advanced routing actions such as URL rewrites and
@@ -67627,10 +67626,9 @@ class HttpRouteRule {
   /// In response to a matching matchRule, the load balancer performs advanced
   /// routing actions like URL rewrites, header transformations, etc.
   ///
-  /// prior to forwarding the request to the selected backend. If  routeAction
-  /// specifies any  weightedBackendServices, service must not be set.
-  /// Conversely if service is set, routeAction cannot contain any
-  /// weightedBackendServices.
+  /// prior to forwarding the request to the selected backend. If routeAction
+  /// specifies any weightedBackendServices, service must not be set. Conversely
+  /// if service is set, routeAction cannot contain any weightedBackendServices.
   /// Only one of urlRedirect, service or routeAction.weightedBackendService
   /// must be set.
   /// UrlMaps for external HTTP(S) load balancers support only the urlRewrite
@@ -68315,7 +68313,7 @@ class Image {
 
   /// A list of features to enable on the guest operating system.
   ///
-  /// Applicable only for bootable images. Read  Enabling guest operating system
+  /// Applicable only for bootable images. Read Enabling guest operating system
   /// features to see a list of available options.
   core.List<GuestOsFeature> guestOsFeatures;
 
@@ -69702,7 +69700,7 @@ class InstanceAggregatedList {
 ///
 /// Instance groups can either be managed or unmanaged.
 ///
-/// To create  managed instance groups, use the instanceGroupManager or
+/// To create managed instance groups, use the instanceGroupManager or
 /// regionInstanceGroupManager resource instead.
 ///
 /// Use zonal unmanaged instance groups if you need to apply load balancing to
@@ -71473,7 +71471,7 @@ class InstanceGroupManagerUpdatePolicy {
   /// - If there is a health check on the instance group, the instance's
   /// liveness health check result must be HEALTHY at least once. If there is no
   /// health check on the group, then the instance only needs to have a status
-  /// of RUNNING to be considered available.  By default, a fixed value of 1 is
+  /// of RUNNING to be considered available. By default, a fixed value of 1 is
   /// used. This value can be either a fixed number or a percentage if the
   /// instance group has 10 or more instances. If you set a percentage, the
   /// number of instances will be rounded up if necessary.
@@ -71587,7 +71585,7 @@ class InstanceGroupManagerVersion {
   /// or instanceGroupManager.targetSize is used.
   /// - if expressed as a percent, the targetSize would be
   /// (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a
-  /// remainder, the number is rounded up.  If unset, this version will update
+  /// remainder, the number is rounded up. If unset, this version will update
   /// any remaining instances not updated by another version. Read Starting a
   /// canary update for more information.
   FixedOrPercent targetSize;
@@ -71664,10 +71662,9 @@ class InstanceGroupManagersApplyUpdatesRequest {
   ///
   /// - RESTART: Stop the instance and start it again.
   /// - REFRESH: Do not stop the instance.
-  /// - NONE: Do not disrupt the instance at all.  By default, the minimum
-  /// action is NONE. If your update requires a more disruptive action than you
-  /// set with this flag, the necessary action is performed to execute the
-  /// update.
+  /// - NONE: Do not disrupt the instance at all. By default, the minimum action
+  /// is NONE. If your update requires a more disruptive action than you set
+  /// with this flag, the necessary action is performed to execute the update.
   /// Possible string values are:
   /// - "NONE"
   /// - "REFRESH"
@@ -71682,7 +71679,7 @@ class InstanceGroupManagersApplyUpdatesRequest {
   ///
   /// - RESTART: Stop the instance and start it again.
   /// - REFRESH: Do not stop the instance.
-  /// - NONE: Do not disrupt the instance at all.  By default, the most
+  /// - NONE: Do not disrupt the instance at all. By default, the most
   /// disruptive allowed action is REPLACE. If your update requires a more
   /// disruptive action than you set with this flag, the update request will
   /// fail.
@@ -74588,7 +74585,7 @@ class Int64RangeMatch {
 /// An Interconnect resource is a dedicated connection between the GCP network
 /// and your on-premises network.
 ///
-/// For more information, read the  Dedicated Interconnect Overview. (==
+/// For more information, read the Dedicated Interconnect Overview. (==
 /// resource_for {$api_version}.interconnects ==)
 class Interconnect {
   /// Administrative status of the interconnect.
@@ -74918,7 +74915,7 @@ class Interconnect {
 /// You can use Interconnect attachments (VLANS) to connect your Virtual Private
 /// Cloud networks to your on-premises networks through an Interconnect.
 ///
-/// For more information, read  Creating VLAN Attachments. (== resource_for
+/// For more information, read Creating VLAN Attachments. (== resource_for
 /// {$api_version}.interconnectAttachments ==)
 class InterconnectAttachment {
   /// Determines whether this Attachment will carry packets.
@@ -76525,7 +76522,7 @@ class InterconnectList {
 /// You can use this resource to find location details about an Interconnect
 /// attachment (VLAN).
 ///
-/// For more information about interconnect attachments, read  Creating VLAN
+/// For more information about interconnect attachments, read Creating VLAN
 /// Attachments.
 class InterconnectLocation {
   /// The postal address of the Point of Presence, each line in the address is
@@ -79684,8 +79681,8 @@ class NetworkEndpoint {
 /// A network endpoint group (NEG) defines how a set of endpoints should be
 /// reached, whether they are reachable, and where they are located.
 ///
-/// For more information about using NEGs, see  Setting up internet NEGs,
-/// Setting up zonal NEGs, or  Setting up serverless NEGs. (== resource_for
+/// For more information about using NEGs, see Setting up internet NEGs, Setting
+/// up zonal NEGs, or Setting up serverless NEGs. (== resource_for
 /// {$api_version}.networkEndpointGroups ==) (== resource_for
 /// {$api_version}.globalNetworkEndpointGroups ==) (== resource_for
 /// {$api_version}.regionNetworkEndpointGroups ==)
@@ -81723,7 +81720,7 @@ class NodeGroup {
   /// maintenance.
   ///
   /// Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP.
-  /// The default value is DEFAULT. For more information, see  Maintenance
+  /// The default value is DEFAULT. For more information, see Maintenance
   /// policies.
   /// Possible string values are:
   /// - "DEFAULT"
@@ -85096,7 +85093,7 @@ class OperationWarnings {
 /// - For regional operations, use the `regionOperations` resource.
 /// - For zonal operations, use the `zonalOperations` resource.
 ///
-/// For more information, read  Global, Regional, and Zonal Resources. (==
+/// For more information, read Global, Regional, and Zonal Resources. (==
 /// resource_for {$api_version}.globalOperations ==) (== resource_for
 /// {$api_version}.regionOperations ==) (== resource_for
 /// {$api_version}.zoneOperations ==)
@@ -87214,7 +87211,7 @@ class PacketMirroringsScopedList {
 /// The BackendService from the longest-matched rule will serve the URL. If no
 /// rule was matched, the default service will be used.
 class PathMatcher {
-  /// defaultRouteAction takes effect when none of the  pathRules or routeRules
+  /// defaultRouteAction takes effect when none of the pathRules or routeRules
   /// match.
   ///
   /// The load balancer performs advanced routing actions like URL rewrites,
@@ -87236,13 +87233,13 @@ class PathMatcher {
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/global/backendServices/backendService
   /// - compute/v1/projects/project/global/backendServices/backendService
-  /// - global/backendServices/backendService  If defaultRouteAction is
+  /// - global/backendServices/backendService If defaultRouteAction is
   /// additionally specified, advanced routing actions like URL Rewrites, etc.
   /// take effect prior to sending the request to the backend. However, if
   /// defaultService is specified, defaultRouteAction cannot contain any
   /// weightedBackendServices. Conversely, if defaultRouteAction specifies any
   /// weightedBackendServices, defaultService must not be specified.
-  /// Only one of defaultService, defaultUrlRedirect  or
+  /// Only one of defaultService, defaultUrlRedirect or
   /// defaultRouteAction.weightedBackendService must be set.
   /// Authorization requires one or more of the following Google IAM permissions
   /// on the specified resource default_service:
@@ -87281,7 +87278,7 @@ class PathMatcher {
   /// matching is all that's required. The order by which path rules are
   /// specified does not matter. Matches are always done on the
   /// longest-path-first basis.
-  /// For example: a pathRule with a path /a/b/c / *  will match before /a/b / *
+  /// For example: a pathRule with a path /a/b/c / * will match before /a/b / *
   /// irrespective of the order in which those paths appear in this list.
   /// Within a given pathMatcher, only one of pathRules or routeRules must be
   /// set.
@@ -87380,9 +87377,8 @@ class PathRule {
   /// routing actions like URL rewrites, header transformations, etc.
   ///
   /// prior to forwarding the request to the selected backend. If routeAction
-  /// specifies any  weightedBackendServices, service must not be set.
-  /// Conversely if service is set, routeAction cannot contain any
-  /// weightedBackendServices.
+  /// specifies any weightedBackendServices, service must not be set. Conversely
+  /// if service is set, routeAction cannot contain any weightedBackendServices.
   /// Only one of routeAction or urlRedirect must be set.
   /// UrlMaps for external HTTP(S) load balancers support only the urlRewrite
   /// action within a pathRule's routeAction.
@@ -87538,8 +87534,8 @@ class PerInstanceConfig {
 /// `condition`, which is a logical expression that allows access to a resource
 /// only if the expression evaluates to `true`. A condition can add constraints
 /// based on attributes of the request, the resource, or both. To learn which
-/// resources support conditions in their IAM policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// resources support conditions in their IAM policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 ///
 /// **JSON example:**
 ///
@@ -87563,8 +87559,8 @@ class PerInstanceConfig {
 /// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') -
 /// etag: BwWWja0YfJA= - version: 3
 ///
-/// For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -87633,8 +87629,7 @@ class Policy {
   /// specify any valid version or leave the field unset.
   ///
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -87823,7 +87818,7 @@ class PreservedStatePreservedDisk {
 /// A project is used to organize resources in a Google Cloud Platform
 /// environment.
 ///
-/// For more information, read about the  Resource Hierarchy. (== resource_for
+/// For more information, read about the Resource Hierarchy. (== resource_for
 /// {$api_version}.projects ==)
 class Project {
   /// Metadata key/value pairs available to all instances contained in this
@@ -89535,10 +89530,9 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
   ///
   /// - RESTART: Stop the instance and start it again.
   /// - REFRESH: Do not stop the instance.
-  /// - NONE: Do not disrupt the instance at all.  By default, the minimum
-  /// action is NONE. If your update requires a more disruptive action than you
-  /// set with this flag, the necessary action is performed to execute the
-  /// update.
+  /// - NONE: Do not disrupt the instance at all. By default, the minimum action
+  /// is NONE. If your update requires a more disruptive action than you set
+  /// with this flag, the necessary action is performed to execute the update.
   /// Possible string values are:
   /// - "NONE"
   /// - "REFRESH"
@@ -89553,7 +89547,7 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
   ///
   /// - RESTART: Stop the instance and start it again.
   /// - REFRESH: Do not stop the instance.
-  /// - NONE: Do not disrupt the instance at all.  By default, the most
+  /// - NONE: Do not disrupt the instance at all. By default, the most
   /// disruptive allowed action is REPLACE. If your update requires a more
   /// disruptive action than you set with this flag, the update request will
   /// fail.
@@ -90698,7 +90692,7 @@ class RequestMirrorPolicy {
 /// Represents a reservation resource.
 ///
 /// A reservation ensures that capacity is held in a specific zone even if the
-/// reserved VMs are not running. For more information, read  Reserving zonal
+/// reserved VMs are not running. For more information, read Reserving zonal
 /// resources. (== resource_for {$api_version}.reservations ==)
 class Reservation {
   /// Full or partial URL to a parent commitment.
@@ -92936,7 +92930,7 @@ class Route {
   /// The URL to a gateway that should handle matching packets.
   ///
   /// You can only specify the internet gateway using a full or partial valid
-  /// URL:  projects/project/global/gateways/default-internet-gateway
+  /// URL: projects/project/global/gateways/default-internet-gateway
   core.String nextHopGateway;
 
   /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that
@@ -95501,7 +95495,7 @@ class SecurityPoliciesWafConfig {
 /// Only external backend services that use load balancers can reference a
 /// Security Policy.
 ///
-/// For more information, read  Cloud Armor Security Policy Concepts. (==
+/// For more information, read Cloud Armor Security Policy Concepts. (==
 /// resource_for {$api_version}.securityPolicies ==)
 class SecurityPolicy {
   /// Creation timestamp in RFC3339 text format.
@@ -96347,7 +96341,7 @@ class SignedUrlKey {
 ///
 /// You can use snapshots to back up data on a regular interval.
 ///
-/// For more information, read  Creating persistent disk snapshots. (==
+/// For more information, read Creating persistent disk snapshots. (==
 /// resource_for {$api_version}.snapshots ==)
 class Snapshot {
   /// Set to true if snapshots are automatically created by applying resource
@@ -96929,8 +96923,8 @@ class SourceInstanceParams {
 ///
 /// The API call creates an object (sslCertificate) that holds this data. You
 /// can use SSL keys and certificates to secure connections to a load balancer.
-/// For more information, read  Creating and using SSL certificates, SSL
-/// certificates quotas and limits, and  Troubleshooting SSL certificates. (==
+/// For more information, read Creating and using SSL certificates, SSL
+/// certificates quotas and limits, and Troubleshooting SSL certificates. (==
 /// resource_for {$api_version}.sslCertificates ==) (== resource_for
 /// {$api_version}.regionSslCertificates ==)
 class SslCertificate {
@@ -98174,7 +98168,7 @@ class SslPolicyWarnings {
 /// Only external backend services used by HTTP or HTTPS load balancers can
 /// reference a Security Policy.
 ///
-/// For more information, read read  Cloud Armor Security Policy Concepts. (==
+/// For more information, read read Cloud Armor Security Policy Concepts. (==
 /// resource_for {$api_version}.sslPolicies ==)
 class SslPolicy {
   /// Creation timestamp in RFC3339 text format.
@@ -98478,7 +98472,7 @@ class StatefulPolicyPreservedStateDiskDevice {
 /// Private Cloud network with one primary IP range and zero or more secondary
 /// IP ranges.
 ///
-/// For more information, read  Virtual Private Cloud (VPC) Network. (==
+/// For more information, read Virtual Private Cloud (VPC) Network. (==
 /// resource_for {$api_version}.subnetworks ==)
 class Subnetwork {
   /// Creation timestamp in RFC3339 text format.
@@ -104931,8 +104925,8 @@ class TestPermissionsResponse {
 ///
 /// * regionUrlMaps are used by internal HTTP(S) load balancers.
 ///
-/// For a list of supported URL map features by load balancer type, see the
-/// Load balancing features: Routing and traffic management table.
+/// For a list of supported URL map features by load balancer type, see the Load
+/// balancing features: Routing and traffic management table.
 ///
 /// For a list of supported URL map features for Traffic Director, see the
 /// Traffic Director features: Routing and traffic management table.
@@ -104973,7 +104967,7 @@ class UrlMap {
   /// backend. However, if defaultService is specified, defaultRouteAction
   /// cannot contain any weightedBackendServices. Conversely, if routeAction
   /// specifies any weightedBackendServices, service must not be specified.
-  /// Only one of defaultService, defaultUrlRedirect  or
+  /// Only one of defaultService, defaultUrlRedirect or
   /// defaultRouteAction.weightedBackendService must be set.
   /// defaultService has no effect when the URL map is bound to target gRPC
   /// proxy that has validateForProxyless field set to true.
@@ -106673,7 +106667,7 @@ class VmEndpointNatMappingsList {
 /// connect your on-premises network to your Google Cloud Virtual Private Cloud
 /// network through an IPsec VPN connection in a single region.
 ///
-/// For more information about Cloud HA VPN solutions, see  Cloud VPN topologies
+/// For more information about Cloud HA VPN solutions, see Cloud VPN topologies
 /// . (== resource_for {$api_version}.vpnGateways ==)
 class VpnGateway {
   /// Creation timestamp in RFC3339 text format.
@@ -108674,7 +108668,7 @@ class WafExpressionSetExpression {
   }
 }
 
-/// In contrast to a single BackendService in  HttpRouteAction to which all
+/// In contrast to a single BackendService in HttpRouteAction to which all
 /// matching traffic is directed to, WeightedBackendService allows traffic to be
 /// split across multiple BackendServices.
 ///

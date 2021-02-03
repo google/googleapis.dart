@@ -1740,15 +1740,16 @@ class SoftwareConfig {
   /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
   /// When used as input, the server also checks if the provided version is
   /// supported and denies the request for an unsupported version. The Cloud
-  /// Composer portion of the version is a [semantic
-  /// version](https://semver.org) or `latest`. When the patch version is
-  /// omitted, the current Cloud Composer patch version is selected. When
+  /// Composer portion of the version is a
+  /// [semantic version](https://semver.org) or `latest`. When the patch version
+  /// is omitted, the current Cloud Composer patch version is selected. When
   /// `latest` is provided instead of an explicit version number, the server
   /// replaces `latest` with the current Cloud Composer version and stores that
   /// version number in the same field. The portion of the image version that
-  /// follows *airflow-* is an official Apache Airflow repository [release
-  /// name](https://github.com/apache/incubator-airflow/releases). See also
-  /// \[Version List\](/composer/docs/concepts/versioning/composer-versions).
+  /// follows *airflow-* is an official Apache Airflow repository
+  /// [release name](https://github.com/apache/incubator-airflow/releases). See
+  /// also \[Version
+  /// List\](/composer/docs/concepts/versioning/composer-versions).
   core.String imageVersion;
 
   /// Custom Python Package Index (PyPI) packages to be installed in the

@@ -184,9 +184,9 @@ class PlatformSummary {
   /// Not set when the filter_status is OFF.
   core.String enforcementTime;
 
-  /// The site's [enforcement
-  /// status](https://support.google.com/webtools/answer/7308033) on this
-  /// platform.
+  /// The site's
+  /// [enforcement status](https://support.google.com/webtools/answer/7308033)
+  /// on this platform.
   /// Possible string values are:
   /// - "UNKNOWN" : N/A.
   /// - "ON" : Ad filtering is on.
@@ -206,10 +206,9 @@ class PlatformSummary {
 
   /// A link to the full Ad Experience Report for the site on this platform..
   ///
-  /// Not set in ViolatingSitesResponse. Note that you must complete the [Search
-  /// Console verification
-  /// process](https://support.google.com/webmasters/answer/9008080) for the
-  /// site before you can access the full report.
+  /// Not set in ViolatingSitesResponse. Note that you must complete the
+  /// [Search Console verification process](https://support.google.com/webmasters/answer/9008080)
+  /// for the site before you can access the full report.
   core.String reportUrl;
 
   /// Whether the site is currently under review on this platform.

@@ -1060,8 +1060,9 @@ class GoogleCloudDocumentaiV1beta1Document {
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
   ///
-  /// Object versioning is not supported. See [Google Cloud Storage Request
-  /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+  /// Object versioning is not supported. See
+  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
+  /// for more info.
   core.String uri;
 
   GoogleCloudDocumentaiV1beta1Document();
@@ -3573,8 +3574,9 @@ class GoogleCloudDocumentaiV1beta2Document {
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
   ///
-  /// Object versioning is not supported. See [Google Cloud Storage Request
-  /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+  /// Object versioning is not supported. See
+  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
+  /// for more info.
   core.String uri;
 
   GoogleCloudDocumentaiV1beta2Document();
@@ -7318,8 +7320,8 @@ class GoogleTypePostalAddress {
   }
 }
 
-/// Represents a time zone from the [IANA Time Zone
-/// Database](https://www.iana.org/time-zones).
+/// Represents a time zone from the
+/// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class GoogleTypeTimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
   core.String id;

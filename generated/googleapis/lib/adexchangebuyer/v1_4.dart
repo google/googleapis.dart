@@ -2479,7 +2479,7 @@ class AccountBidderLocation {
   /// The protocol that the bidder endpoint is using.
   ///
   /// OpenRTB protocols with prefix PROTOCOL_OPENRTB_PROTOBUF use proto buffer,
-  /// otherwise use JSON.  Allowed values:
+  /// otherwise use JSON. Allowed values:
   /// - PROTOCOL_ADX
   /// - PROTOCOL_OPENRTB_2_2
   /// - PROTOCOL_OPENRTB_2_3
@@ -3097,7 +3097,7 @@ class CreativeAdTechnologyProviders {
   /// of domains which can be attributed to the provider. If this creative
   /// contains provider IDs that are outside of those listed in the
   /// `BidRequest.adslot.consented_providers_settings.consented_providers` field
-  /// on the  Authorized Buyers Real-Time Bidding protocol or the
+  /// on the Authorized Buyers Real-Time Bidding protocol or the
   /// `BidRequest.user.ext.consented_providers_settings.consented_providers`
   /// field on the OpenRTB protocol, a bid submitted for a European Economic
   /// Area (EEA) user with this creative is not compliant with the GDPR policies

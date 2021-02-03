@@ -456,8 +456,8 @@ class ProjectsLocationsJobsResource {
   /// output only. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
-  /// (:), or periods (.). For more information, see [Identifying
-  /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// (:), or periods (.). For more information, see
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the job's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
@@ -831,15 +831,12 @@ class AppEngineHttpTarget {
 
 /// App Engine Routing.
 ///
-/// For more information about services, versions, and instances see [An
-/// Overview of App
-/// Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),
-/// [Microservices Architecture on Google App
-/// Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),
-/// [App Engine Standard request
-/// routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),
-/// and [App Engine Flex request
-/// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
+/// For more information about services, versions, and instances see
+/// [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),
+/// [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),
+/// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),
+/// and
+/// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 class AppEngineRouting {
   /// The host that the job is sent to.
   ///
@@ -873,14 +870,12 @@ class AppEngineRouting {
   /// App instance.
   ///
   /// By default, the job is sent to an instance which is available when the job
-  /// is attempted. Requests can only be sent to a specific instance if [manual
-  /// scaling is used in App Engine
-  /// Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
-  /// App Engine Flex does not support instances. For more information, see [App
-  /// Engine Standard request
-  /// routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
-  /// and [App Engine Flex request
-  /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
+  /// is attempted. Requests can only be sent to a specific instance if
+  /// [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
+  /// App Engine Flex does not support instances. For more information, see
+  /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
+  /// and
+  /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
   core.String instance;
 
   /// App service.
@@ -997,9 +992,10 @@ class HttpTarget {
   /// - "OPTIONS" : HTTP OPTIONS
   core.String httpMethod;
 
-  /// If specified, an [OAuth
-  /// token](https://developers.google.com/identity/protocols/OAuth2) will be
-  /// generated and attached as an `Authorization` header in the HTTP request.
+  /// If specified, an
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+  /// will be generated and attached as an `Authorization` header in the HTTP
+  /// request.
   ///
   /// This type of authorization should generally only be used when calling
   /// Google APIs hosted on *.googleapis.com.
@@ -1118,8 +1114,8 @@ class Job {
   /// The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
-  /// (:), or periods (.). For more information, see [Identifying
-  /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// (:), or periods (.). For more information, see
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the job's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
@@ -1180,9 +1176,9 @@ class Job {
 
   /// Specifies the time zone to be used in interpreting schedule.
   ///
-  /// The value of this field must be a time zone name from the [tz
-  /// database](http://en.wikipedia.org/wiki/Tz_database). Note that some time
-  /// zones include a provision for daylight savings time. The rules for
+  /// The value of this field must be a time zone name from the
+  /// [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some
+  /// time zones include a provision for daylight savings time. The rules for
   /// daylight saving time are determined by the chosen tz. For UTC use the
   /// string "utc". If a time zone is not specified, the default will be in UTC
   /// (also known as GMT).
@@ -1449,8 +1445,8 @@ class Location {
   }
 }
 
-/// Contains information needed for generating an [OAuth
-/// token](https://developers.google.com/identity/protocols/OAuth2).
+/// Contains information needed for generating an
+/// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
 ///
 /// This type of authorization should generally only be used when calling Google
 /// APIs hosted on *.googleapis.com.
@@ -1461,9 +1457,8 @@ class OAuthToken {
   /// used.
   core.String scope;
 
-  /// [Service account
-  /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating OAuth token.
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating OAuth token.
   ///
   /// The service account must be within the same project as the job. The caller
   /// must have iam.serviceAccounts.actAs permission for the service account.
@@ -1492,8 +1487,8 @@ class OAuthToken {
   }
 }
 
-/// Contains information needed for generating an [OpenID Connect
-/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+/// Contains information needed for generating an
+/// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 ///
 /// This type of authorization can be used for many scenarios, including calling
 /// Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -1503,9 +1498,8 @@ class OidcToken {
   /// If not specified, the URI specified in target will be used.
   core.String audience;
 
-  /// [Service account
-  /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating OIDC token.
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating OIDC token.
   ///
   /// The service account must be within the same project as the job. The caller
   /// must have iam.serviceAccounts.actAs permission for the service account.
@@ -1552,11 +1546,11 @@ class PauseJobRequest {
 ///
 /// The message must contain either a non-empty data field or at least one
 /// attribute. Note that client libraries represent this object differently
-/// depending on the language. See the corresponding [client library
-/// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
-/// more information. See [quotas and
-/// limits](https://cloud.google.com/pubsub/quotas) for more information about
-/// message limits.
+/// depending on the language. See the corresponding
+/// [client library documentation](https://cloud.google.com/pubsub/docs/reference/libraries)
+/// for more information. See
+/// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
+/// information about message limits.
 class PubsubMessage {
   /// Attributes for this message.
   ///

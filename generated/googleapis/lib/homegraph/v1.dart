@@ -62,8 +62,8 @@ class AgentUsersResource {
   /// Unlinks the given third-party user from your smart home Action.
   ///
   /// All data related to this user will be deleted. For more details on how
-  /// users link their accounts, see [fulfillment and
-  /// authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
+  /// users link their accounts, see
+  /// [fulfillment and authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
   /// The third-party user's identity is passed in via the `agent_user_id` (see
   /// DeleteAgentUserRequest). This request must be authorized using service
   /// account credentials from your Actions console project.
@@ -189,8 +189,7 @@ class DevicesResource {
   ///
   /// Called by your smart home Action when the state of a third-party device
   /// changes or you need to send a notification about the device. See
-  /// [Implement Report
-  /// State](https://developers.google.com/assistant/smarthome/develop/report-state)
+  /// [Implement Report State](https://developers.google.com/assistant/smarthome/develop/report-state)
   /// for more information. This method updates the device state according to
   /// its declared
   /// [traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits).
@@ -452,8 +451,8 @@ class Device {
 
   /// Alternate IDs associated with this device.
   ///
-  /// This is used to identify cloud synced devices enabled for [local
-  /// fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
+  /// This is used to identify cloud synced devices enabled for
+  /// [local fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
   core.List<AgentOtherDeviceId> otherDeviceIds;
 
   /// Suggested name for the room where this device is installed.
@@ -468,14 +467,14 @@ class Device {
 
   /// Traits supported by the device.
   ///
-  /// See [device
-  /// traits](https://developers.google.com/assistant/smarthome/traits).
+  /// See
+  /// [device traits](https://developers.google.com/assistant/smarthome/traits).
   core.List<core.String> traits;
 
   /// Hardware type of the device.
   ///
-  /// See [device
-  /// types](https://developers.google.com/assistant/smarthome/guides).
+  /// See
+  /// [device types](https://developers.google.com/assistant/smarthome/guides).
   core.String type;
 
   /// Indicates whether your smart home Action will report state of this device
@@ -885,8 +884,7 @@ class ReportStateAndNotificationDevice {
   /// Notifications metadata for devices.
   ///
   /// See the **Device NOTIFICATIONS** section of the individual trait
-  /// [reference
-  /// guides](https://developers.google.com/assistant/smarthome/traits).
+  /// [reference guides](https://developers.google.com/assistant/smarthome/traits).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -894,8 +892,8 @@ class ReportStateAndNotificationDevice {
 
   /// States of devices to update.
   ///
-  /// See the **Device STATES** section of the individual trait [reference
-  /// guides](https://developers.google.com/assistant/smarthome/traits).
+  /// See the **Device STATES** section of the individual trait
+  /// [reference guides](https://developers.google.com/assistant/smarthome/traits).
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -958,8 +956,8 @@ class ReportStateAndNotificationRequest {
 
   /// Token to maintain state in the follow up notification response.
   ///
-  /// Deprecated. See the [notifications
-  /// guide](https://developers.google.com/assistant/smarthome/develop/notifications)
+  /// Deprecated. See the
+  /// [notifications guide](https://developers.google.com/assistant/smarthome/develop/notifications)
   /// for details on implementing follow up notifications.
   core.String followUpToken;
 

@@ -6014,7 +6014,7 @@ class DataExecutionStatus {
   /// - "TOO_MANY_CHARS_PER_CELL" : The data execution returns values that
   /// exceed the maximum characters allowed in a single cell.
   /// - "DATA_NOT_FOUND" : The database referenced by the data source is not
-  /// found.  * /
+  /// found. * /
   /// - "PERMISSION_DENIED" : The user does not have access to the database
   /// referenced by the data source.
   /// - "MISSING_COLUMN_ALIAS" : The data execution returns columns with missing
@@ -6460,8 +6460,8 @@ class DataSourceParameter {
   /// Named parameter.
   ///
   /// Must be a legitimate identifier for the DataSource that supports it. For
-  /// example, [BigQuery
-  /// identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers).
+  /// example,
+  /// [BigQuery identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers).
   core.String name;
 
   /// ID of a NamedRange.

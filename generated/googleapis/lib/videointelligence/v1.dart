@@ -840,9 +840,9 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   /// Currently, only [Cloud Storage](https://cloud.google.com/storage/) URIs
   /// are supported. URIs must be specified in the following format:
   /// `gs://bucket-id/object-id` (other URI formats return
-  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
-  /// URIs](https://cloud.google.com/storage/docs/request-endpoints). To
-  /// identify multiple videos, a video URI may include wildcards in the
+  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see
+  /// [Request URIs](https://cloud.google.com/storage/docs/request-endpoints).
+  /// To identify multiple videos, a video URI may include wildcards in the
   /// `object-id`. Supported wildcards: '*' to match 0 or more characters; '?'
   /// to match 1 character. If unset, the input video should be embedded in the
   /// request as `input_content`. If set, `input_content` must be unset.
@@ -862,8 +862,8 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   /// Currently, only [Cloud Storage](https://cloud.google.com/storage/) URIs
   /// are supported. These must be specified in the following format:
   /// `gs://bucket-id/object-id` (other URI formats return
-  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
-  /// URIs](https://cloud.google.com/storage/docs/request-endpoints).
+  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see
+  /// [Request URIs](https://cloud.google.com/storage/docs/request-endpoints).
   ///
   /// Optional.
   core.String outputUri;
@@ -1052,8 +1052,8 @@ class GoogleCloudVideointelligenceV1Entity {
 
   /// Opaque entity ID.
   ///
-  /// Some IDs may be available in [Google Knowledge Graph Search
-  /// API](https://developers.google.com/knowledge-graph/).
+  /// Some IDs may be available in
+  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -1783,8 +1783,8 @@ class GoogleCloudVideointelligenceV1SpeechContext {
   /// This can be used to improve the accuracy for specific words and phrases,
   /// for example, if specific commands are typically spoken by the user. This
   /// can also be used to add additional words to the vocabulary of the
-  /// recognizer. See [usage
-  /// limits](https://cloud.google.com/speech/limits#content).
+  /// recognizer. See
+  /// [usage limits](https://cloud.google.com/speech/limits#content).
   ///
   /// Optional.
   core.List<core.String> phrases;
@@ -1976,9 +1976,9 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   /// *Required* The language of the supplied audio as a
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   ///
-  /// Example: "en-US". See [Language
-  /// Support](https://cloud.google.com/speech/docs/languages) for a list of the
-  /// currently supported language codes.
+  /// Example: "en-US". See
+  /// [Language Support](https://cloud.google.com/speech/docs/languages) for a
+  /// list of the currently supported language codes.
   ///
   /// Required.
   core.String languageCode;
@@ -3081,8 +3081,8 @@ class GoogleCloudVideointelligenceV1beta2Entity {
 
   /// Opaque entity ID.
   ///
-  /// Some IDs may be available in [Google Knowledge Graph Search
-  /// API](https://developers.google.com/knowledge-graph/).
+  /// Some IDs may be available in
+  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -4621,8 +4621,8 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
 
   /// Opaque entity ID.
   ///
-  /// Some IDs may be available in [Google Knowledge Graph Search
-  /// API](https://developers.google.com/knowledge-graph/).
+  /// Some IDs may be available in
+  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -6168,8 +6168,8 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
 
   /// Opaque entity ID.
   ///
-  /// Some IDs may be available in [Google Knowledge Graph Search
-  /// API](https://developers.google.com/knowledge-graph/).
+  /// Some IDs may be available in
+  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.
@@ -7841,8 +7841,8 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
 
   /// Opaque entity ID.
   ///
-  /// Some IDs may be available in [Google Knowledge Graph Search
-  /// API](https://developers.google.com/knowledge-graph/).
+  /// Some IDs may be available in
+  /// [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/).
   core.String entityId;
 
   /// Language code for `description` in BCP-47 format.

@@ -1012,8 +1012,9 @@ class Alert {
   /// Output only.
   AlertMetadata metadata;
 
-  /// An optional [Security Investigation
-  /// Tool](https://support.google.com/a/answer/7575955) query for this alert.
+  /// An optional
+  /// [Security Investigation Tool](https://support.google.com/a/answer/7575955)
+  /// query for this alert.
   ///
   /// Output only.
   core.String securityInvestigationToolLink;
