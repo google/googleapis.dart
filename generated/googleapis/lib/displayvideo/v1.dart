@@ -13794,9 +13794,10 @@ class Channel {
 class ChannelAssignedTargetingOptionDetails {
   /// ID of the channel.
   ///
-  /// Should refer to the channel ID field on a [Partner-owned
-  /// channel](partners.channels#Channel.FIELDS.channel_id) or [advertiser-owned
-  /// channel](advertisers.channels#Channel.FIELDS.channel_id) resource.
+  /// Should refer to the channel ID field on a \[Partner-owned
+  /// channel\](partners.channels#Channel.FIELDS.channel_id) or
+  /// \[advertiser-owned
+  /// channel\](advertisers.channels#Channel.FIELDS.channel_id) resource.
   ///
   /// Required.
   core.String channelId;

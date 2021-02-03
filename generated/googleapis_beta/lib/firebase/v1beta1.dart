@@ -86,8 +86,8 @@ class AvailableProjectsResource {
 
   AvailableProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists each [Google Cloud Platform (GCP)
-  /// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
+  /// Lists each \[Google Cloud Platform (GCP)
+  /// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
   /// that can have Firebase resources added to it.
   ///
   /// A Project will only be listed if: - The caller has sufficient [Google
@@ -231,21 +231,21 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Adds Firebase resources to the specified existing [Google Cloud Platform
+  /// Adds Firebase resources to the specified existing \[Google Cloud Platform
   /// (GCP)
-  /// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
+  /// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
   ///
   /// Since a FirebaseProject is actually also a GCP `Project`, a
   /// `FirebaseProject` has the same underlying GCP identifiers (`projectNumber`
   /// and `projectId`). This allows for easy interop with Google APIs. The
-  /// result of this call is an [`Operation`](../../v1beta1/operations). Poll
+  /// result of this call is an \[`Operation`\](../../v1beta1/operations). Poll
   /// the `Operation` to track the provisioning process by calling GetOperation
-  /// until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`.
-  /// When `done` is `true`, the `Operation` has either succeeded or failed. If
-  /// the `Operation` succeeded, its
-  /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to
-  /// a FirebaseProject; if the `Operation` failed, its
-  /// [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+  /// until \[`done`\](../../v1beta1/operations#Operation.FIELDS.done) is
+  /// `true`. When `done` is `true`, the `Operation` has either succeeded or
+  /// failed. If the `Operation` succeeded, its
+  /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) is set
+  /// to a FirebaseProject; if the `Operation` failed, its
+  /// \[`error`\](../../v1beta1/operations#Operation.FIELDS.error) is set to a
   /// google.rpc.Status. The `Operation` is automatically deleted after
   /// completion, so there is no need to call DeleteOperation. This method does
   /// not modify any billing account information on the underlying GCP
@@ -261,12 +261,13 @@ class ProjectsResource {
   ///
   /// [project] - The resource name of the GCP `Project` to which Firebase
   /// resources will be added, in the format: projects/PROJECT_IDENTIFIER Refer
-  /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER values. After calling
-  /// `AddFirebase`, the unique Project identifiers (
-  /// [`projectNumber`](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_number)
+  /// to the `FirebaseProject`
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values. After calling `AddFirebase`, the unique
+  /// Project identifiers (
+  /// \[`projectNumber`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_number)
   /// and
-  /// [`projectId`](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id))
+  /// \[`projectId`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id))
   /// of the underlying GCP `Project` are also the identifiers of the
   /// FirebaseProject.
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -341,23 +342,23 @@ class ProjectsResource {
   /// stream in the Analytics property. Learn more about the hierarchy and
   /// structure of Google Analytics accounts in the [Analytics
   /// documentation](https://support.google.com/analytics/answer/9303323). The
-  /// result of this call is an [`Operation`](../../v1beta1/operations). Poll
+  /// result of this call is an \[`Operation`\](../../v1beta1/operations). Poll
   /// the `Operation` to track the provisioning process by calling GetOperation
-  /// until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`.
-  /// When `done` is `true`, the `Operation` has either succeeded or failed. If
-  /// the `Operation` succeeded, its
-  /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to
-  /// an AnalyticsDetails; if the `Operation` failed, its
-  /// [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+  /// until \[`done`\](../../v1beta1/operations#Operation.FIELDS.done) is
+  /// `true`. When `done` is `true`, the `Operation` has either succeeded or
+  /// failed. If the `Operation` succeeded, its
+  /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) is set
+  /// to an AnalyticsDetails; if the `Operation` failed, its
+  /// \[`error`\](../../v1beta1/operations#Operation.FIELDS.error) is set to a
   /// google.rpc.Status. To call `AddGoogleAnalytics`, a project member must be
-  /// an Owner for the existing `FirebaseProject` and have the [`Edit`
-  /// permission](https://support.google.com/analytics/answer/2884495) for the
+  /// an Owner for the existing `FirebaseProject` and have the \[`Edit`
+  /// permission\](https://support.google.com/analytics/answer/2884495) for the
   /// Google Analytics account. If the `FirebaseProject` already has Google
   /// Analytics enabled, and you call `AddGoogleAnalytics` using an
   /// `analyticsPropertyId` that's different from the currently associated
   /// property, then the call will fail. Analytics may have already been enabled
   /// in the Firebase console or by specifying `timeZone` and `regionCode` in
-  /// the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).
+  /// the call to \[`AddFirebase`\](../../v1beta1/projects/addFirebase).
   ///
   /// [request] - The metadata request object.
   ///
@@ -365,8 +366,9 @@ class ProjectsResource {
   ///
   /// [parent] - The resource name of the FirebaseProject to link to an existing
   /// Google Analytics account, in the format: projects/PROJECT_IDENTIFIER Refer
-  /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER values.
+  /// to the `FirebaseProject`
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -425,8 +427,8 @@ class ProjectsResource {
   ///
   /// [name] - The resource name of the FirebaseProject, in the format:
   /// projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -485,8 +487,8 @@ class ProjectsResource {
   ///
   /// [name] - The resource name of the FirebaseProject, in the format:
   /// projects/ PROJECT_IDENTIFIER/adminSdkConfig Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+/adminSdkConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -544,8 +546,8 @@ class ProjectsResource {
   ///
   /// [name] - The resource name of the FirebaseProject, in the format:
   /// projects/ PROJECT_IDENTIFIER/analyticsDetails Refer to the
-  /// `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field
-  /// for details about PROJECT_IDENTIFIER values.
+  /// `FirebaseProject` \[`name`\](../projects#FirebaseProject.FIELDS.name)
+  /// field for details about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+/analyticsDetails$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -665,7 +667,7 @@ class ProjectsResource {
 
   /// Updates the attributes of the specified FirebaseProject.
   ///
-  /// All [query parameters](#query-parameters) are required.
+  /// All \[query parameters\](#query-parameters) are required.
   ///
   /// [request] - The metadata request object.
   ///
@@ -673,9 +675,9 @@ class ProjectsResource {
   ///
   /// [name] - The resource name of the Project, in the format:
   /// projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
   /// about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
@@ -745,7 +747,7 @@ class ProjectsResource {
   /// the Google Analytics resources, such as the Google Analytics property or
   /// any data streams. These resources may be re-associated later to the
   /// `FirebaseProject` by calling
-  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and
+  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) and
   /// specifying the same `analyticsPropertyId`. For Android Apps and iOS Apps,
   /// this call re-links data streams with their corresponding apps. However,
   /// for Web Apps, this call provisions a *new* data stream for each Web App.
@@ -758,8 +760,9 @@ class ProjectsResource {
   ///
   /// [parent] - The resource name of the FirebaseProject to unlink from its
   /// Google Analytics account, in the format: projects/PROJECT_IDENTIFIER Refer
-  /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER values.
+  /// to the `FirebaseProject`
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -822,16 +825,16 @@ class ProjectsResource {
   ///
   /// [parent] - The parent FirebaseProject for which to list Apps, in the
   /// format: projects/ PROJECT_IDENTIFIER Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A query string compatible with Google's
-  /// [AIP-160](https://google.aip.dev/160) standard. Use any of the following
+  /// \[AIP-160\](https://google.aip.dev/160) standard. Use any of the following
   /// fields in a query: *
-  /// [`appId`](../projects.apps#FirebaseProjectInfo.FIELDS.app_id) *
-  /// [`namespace`](../projects.apps#FirebaseProjectInfo.FIELDS.namespace) *
-  /// [`platform`](../projects.apps#FirebaseProjectInfo.FIELDS.platform)
+  /// \[`appId`\](../projects.apps#FirebaseProjectInfo.FIELDS.app_id) *
+  /// \[`namespace`\](../projects.apps#FirebaseProjectInfo.FIELDS.namespace) *
+  /// \[`platform`\](../projects.apps#FirebaseProjectInfo.FIELDS.platform)
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
@@ -924,8 +927,8 @@ class ProjectsAndroidAppsResource {
   /// [parent] - The resource name of the parent FirebaseProject in which to
   /// create an AndroidApp, in the format:
   /// projects/PROJECT_IDENTIFIER/androidApps Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -986,7 +989,7 @@ class ProjectsAndroidAppsResource {
   /// PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique
   /// identifier, the Unique Resource from Sub-Collection access pattern may be
   /// used here, in the format: projects/-/androidApps/APP_ID Refer to the
-  /// `AndroidApp` [`name`](../projects.androidApps#AndroidApp.FIELDS.name)
+  /// `AndroidApp` \[`name`\](../projects.androidApps#AndroidApp.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
@@ -1044,8 +1047,8 @@ class ProjectsAndroidAppsResource {
   /// APP_ID is a unique identifier, the Unique Resource from Sub-Collection
   /// access pattern may be used here, in the format:
   /// projects/-/androidApps/APP_ID Refer to the `AndroidApp`
-  /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
-  /// about PROJECT_IDENTIFIER and APP_ID values.
+  /// \[`name`\](../projects.androidApps#AndroidApp.FIELDS.name) field for
+  /// details about PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1103,8 +1106,8 @@ class ProjectsAndroidAppsResource {
   /// [parent] - The resource name of the parent FirebaseProject for which to
   /// list each associated AndroidApp, in the format:
   /// projects/PROJECT_IDENTIFIER /androidApps Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
@@ -1179,14 +1182,14 @@ class ProjectsAndroidAppsResource {
   /// [name] - The resource name of the AndroidApp, in the format: projects/
   /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent
   /// Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
   /// about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+  /// \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
@@ -1263,8 +1266,8 @@ class ProjectsAndroidAppsShaResource {
   /// APP_ID Since an APP_ID is a unique identifier, the Unique Resource from
   /// Sub-Collection access pattern may be used here, in the format:
   /// projects/-/androidApps/APP_ID Refer to the `AndroidApp`
-  /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
-  /// about PROJECT_IDENTIFIER and APP_ID values.
+  /// \[`name`\](../projects.androidApps#AndroidApp.FIELDS.name) field for
+  /// details about PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1324,11 +1327,11 @@ class ProjectsAndroidAppsShaResource {
   /// [name] - The resource name of the ShaCertificate to remove from the parent
   /// AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID
   /// /sha/SHA_HASH Refer to the `ShaCertificate`
-  /// [`name`](../projects.androidApps.sha#ShaCertificate.FIELDS.name) field for
-  /// details about PROJECT_IDENTIFIER, APP_ID, and SHA_HASH values. You can
+  /// \[`name`\](../projects.androidApps.sha#ShaCertificate.FIELDS.name) field
+  /// for details about PROJECT_IDENTIFIER, APP_ID, and SHA_HASH values. You can
   /// obtain the full resource name of the `ShaCertificate` from the response of
-  /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
-  /// [`CreateShaCertificate`](../projects.androidApps.sha/create).
+  /// \[`ListShaCertificates`\](../projects.androidApps.sha/list) or the
+  /// original \[`CreateShaCertificate`\](../projects.androidApps.sha/create).
   /// Value must have pattern
   /// `^projects/\[^/\]+/androidApps/\[^/\]+/sha/\[^/\]+$`.
   ///
@@ -1385,8 +1388,8 @@ class ProjectsAndroidAppsShaResource {
   /// /androidApps/APP_ID Since an APP_ID is a unique identifier, the Unique
   /// Resource from Sub-Collection access pattern may be used here, in the
   /// format: projects/-/androidApps/APP_ID Refer to the `AndroidApp`
-  /// [`name`](../projects.androidApps#AndroidApp.FIELDS.name) field for details
-  /// about PROJECT_IDENTIFIER and APP_ID values.
+  /// \[`name`\](../projects.androidApps#AndroidApp.FIELDS.name) field for
+  /// details about PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/androidApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1465,10 +1468,10 @@ class ProjectsAvailableLocationsResource {
   ///
   /// [parent] - The FirebaseProject for which to list GCP resource locations,
   /// in the format: projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values. If no unique project identifier is specified
-  /// (that is, `projects/-`), the returned list does not take into account
-  /// org-specific or project-specific location restrictions.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values. If no unique project identifier is
+  /// specified (that is, `projects/-`), the returned list does not take into
+  /// account org-specific or project-specific location restrictions.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of locations to return in the response.
@@ -1549,8 +1552,8 @@ class ProjectsDefaultLocationResource {
   /// Storage
   /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
   /// located in the specified
-  /// [`locationId`](#body.request_body.FIELDS.location_id). This location must
-  /// be one of the available [GCP resource
+  /// \[`locationId`\](#body.request_body.FIELDS.location_id). This location
+  /// must be one of the available [GCP resource
   /// locations](https://firebase.google.com/docs/projects/locations). After the
   /// default GCP resource location is finalized, or if it was already set, it
   /// cannot be changed. The default GCP resource location for the specified
@@ -1559,18 +1562,18 @@ class ProjectsDefaultLocationResource {
   /// `FinalizeDefaultLocation` was previously called with a specified
   /// `locationId`. Any new calls to `FinalizeDefaultLocation` with a
   /// *different* specified `locationId` will return a 409 error. The result of
-  /// this call is an [`Operation`](../../v1beta1/operations), which can be used
-  /// to track the provisioning process. The
-  /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of
+  /// this call is an \[`Operation`\](../../v1beta1/operations), which can be
+  /// used to track the provisioning process. The
+  /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) type of
   /// the `Operation` is google.protobuf.Empty. The `Operation` can be polled by
   /// its `name` using GetOperation until `done` is true. When `done` is true,
   /// the `Operation` has either succeeded or failed. If the `Operation` has
   /// succeeded, its
-  /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be
+  /// \[`response`\](../../v1beta1/operations#Operation.FIELDS.response) will be
   /// set to a google.protobuf.Empty; if the `Operation` has failed, its `error`
   /// will be set to a google.rpc.Status. The `Operation` is automatically
   /// deleted after completion, so there is no need to call DeleteOperation. All
-  /// fields listed in the [request body](#request-body) are required. To call
+  /// fields listed in the \[request body\](#request-body) are required. To call
   /// `FinalizeDefaultLocation`, a member must be an Owner of the Project.
   ///
   /// [request] - The metadata request object.
@@ -1580,8 +1583,8 @@ class ProjectsDefaultLocationResource {
   /// [parent] - The resource name of the FirebaseProject for which the default
   /// GCP resource location will be set, in the format:
   /// projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1652,8 +1655,9 @@ class ProjectsIosAppsResource {
   ///
   /// [parent] - The resource name of the parent FirebaseProject in which to
   /// create an IosApp, in the format: projects/PROJECT_IDENTIFIER/iosApps Refer
-  /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER values.
+  /// to the `FirebaseProject`
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1714,7 +1718,7 @@ class ProjectsIosAppsResource {
   /// projects/PROJECT_IDENTIFIER /iosApps/APP_ID Since an APP_ID is a unique
   /// identifier, the Unique Resource from Sub-Collection access pattern may be
   /// used here, in the format: projects/-/iosApps/APP_ID Refer to the `IosApp`
-  /// [`name`](../projects.iosApps#IosApp.FIELDS.name) field for details about
+  /// \[`name`\](../projects.iosApps#IosApp.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
@@ -1770,8 +1774,8 @@ class ProjectsIosAppsResource {
   /// format: projects/PROJECT_IDENTIFIER/iosApps/APP_ID/config Since an APP_ID
   /// is a unique identifier, the Unique Resource from Sub-Collection access
   /// pattern may be used here, in the format: projects/-/iosApps/APP_ID Refer
-  /// to the `IosApp` [`name`](../projects.iosApps#IosApp.FIELDS.name) field for
-  /// details about PROJECT_IDENTIFIER and APP_ID values.
+  /// to the `IosApp` \[`name`\](../projects.iosApps#IosApp.FIELDS.name) field
+  /// for details about PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1829,8 +1833,8 @@ class ProjectsIosAppsResource {
   /// [parent] - The resource name of the parent FirebaseProject for which to
   /// list each associated IosApp, in the format:
   /// projects/PROJECT_IDENTIFIER/iosApps Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
@@ -1905,14 +1909,14 @@ class ProjectsIosAppsResource {
   /// [name] - The resource name of the IosApp, in the format:
   /// projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
   /// about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+  /// \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/iosApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
@@ -1988,8 +1992,9 @@ class ProjectsWebAppsResource {
   ///
   /// [parent] - The resource name of the parent FirebaseProject in which to
   /// create a WebApp, in the format: projects/PROJECT_IDENTIFIER/webApps Refer
-  /// to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
-  /// field for details about PROJECT_IDENTIFIER values.
+  /// to the `FirebaseProject`
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2050,7 +2055,7 @@ class ProjectsWebAppsResource {
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID Since an APP_ID is a unique
   /// identifier, the Unique Resource from Sub-Collection access pattern may be
   /// used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp`
-  /// [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about
+  /// \[`name`\](../projects.webApps#WebApp.FIELDS.name) field for details about
   /// PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
@@ -2106,8 +2111,8 @@ class ProjectsWebAppsResource {
   /// format: projects/PROJECT_IDENTIFIER/webApps/APP_ID/config Since an APP_ID
   /// is a unique identifier, the Unique Resource from Sub-Collection access
   /// pattern may be used here, in the format: projects/-/webApps/APP_ID Refer
-  /// to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for
-  /// details about PROJECT_IDENTIFIER and APP_ID values.
+  /// to the `WebApp` \[`name`\](../projects.webApps#WebApp.FIELDS.name) field
+  /// for details about PROJECT_IDENTIFIER and APP_ID values.
   /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2165,8 +2170,8 @@ class ProjectsWebAppsResource {
   /// [parent] - The resource name of the parent FirebaseProject for which to
   /// list each associated WebApp, in the format:
   /// projects/PROJECT_IDENTIFIER/webApps Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
@@ -2241,14 +2246,14 @@ class ProjectsWebAppsResource {
   /// [name] - The resource name of the WebApp, in the format:
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id). Learn more
   /// about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
+  /// \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
   /// Value must have pattern `^projects/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [updateMask] - Specifies which fields to update. Note that the fields
@@ -2310,7 +2315,7 @@ class ProjectsWebAppsResource {
 /// All fields are required.
 class AddFirebaseRequest {
   /// Instead, to set a Project's default GCP resource location, call
-  /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
+  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the GCP `Project`.
   ///
   /// The ID of the Project's default GCP resource location. The location must
@@ -2321,7 +2326,7 @@ class AddFirebaseRequest {
   core.String locationId;
 
   /// Instead, to link a Project with a Google Analytics account, call
-  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after
+  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) after
   /// you add Firebase resources to the GCP `Project`.
   ///
   /// The region code (CLDR) that the account will use for Google Analytics data
@@ -2332,7 +2337,7 @@ class AddFirebaseRequest {
   core.String regionCode;
 
   /// Instead, to link a Project with a Google Analytics account, call
-  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after
+  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) after
   /// you add Firebase resources to the GCP `Project`.
   ///
   /// The time zone that the account will use for Google Analytics data. For
@@ -2417,7 +2422,7 @@ class AdminSdkConfig {
   /// locations](https://firebase.google.com/docs/projects/locations). This
   /// field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
-  /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
+  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
   core.String locationId;
 
@@ -2523,9 +2528,9 @@ class AnalyticsProperty {
   /// property associated with the specified `FirebaseProject`.
   ///
   /// If you called
-  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link
-  /// the `FirebaseProject` with a Google Analytics account, the value in this
-  /// `id` field is the same as the ID of the property either specified or
+  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) to
+  /// link the `FirebaseProject` with a Google Analytics account, the value in
+  /// this `id` field is the same as the ID of the property either specified or
   /// provisioned with that call to `AddGoogleAnalytics`.
   core.String id;
 
@@ -2568,15 +2573,15 @@ class AndroidApp {
   /// The resource name of the AndroidApp, in the format: projects/
   /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent
   /// Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
   /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+  /// \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
   core.String name;
 
   /// The canonical package name of the Android app as would appear in the
@@ -2692,7 +2697,7 @@ class DefaultResources {
   /// locations](https://firebase.google.com/docs/projects/locations). This
   /// field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
-  /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
+  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
   core.String locationId;
 
@@ -2879,8 +2884,8 @@ class FirebaseAppInfo {
 /// systems (Firebase Realtime Database, Cloud Firestore, Cloud Storage
 /// buckets), and other Firebase and Google Cloud Platform (GCP) resources. You
 /// create a `FirebaseProject` by calling AddFirebase and specifying an
-/// *existing* [GCP
-/// `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
+/// *existing* \[GCP
+/// `Project`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
 /// This adds Firebase resources to the existing GCP `Project`. Since a
 /// FirebaseProject is actually also a GCP `Project`, a `FirebaseProject` has
 /// the same underlying GCP identifiers (`projectNumber` and `projectId`). This
@@ -2891,9 +2896,9 @@ class FirebaseProject {
 
   /// The resource name of the Project, in the format:
   /// projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
   /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
@@ -3007,15 +3012,15 @@ class IosApp {
   /// The resource name of the IosApp, in the format:
   /// projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
   /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+  /// \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
   core.String name;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
@@ -3384,9 +3389,9 @@ class Location {
   /// locations](https://firebase.google.com/docs/projects/locations#types).
   core.String locationId;
 
-  /// Indicates whether the GCP resource location is a [regional or
+  /// Indicates whether the GCP resource location is a \[regional or
   /// multi-regional
-  /// location](https://firebase.google.com/docs/projects/locations#types) for
+  /// location\](https://firebase.google.com/docs/projects/locations#types) for
   /// data replication.
   /// Possible string values are:
   /// - "LOCATION_TYPE_UNSPECIFIED" : Used internally for distinguishing unset
@@ -3552,14 +3557,14 @@ class ProjectInfo {
   /// Projects will have this field populated. If it is not populated, it means
   /// that the Project does not yet have a default GCP resource location. To set
   /// a Project's default GCP resource location, call
-  /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
+  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
   core.String locationId;
 
   /// The resource name of the GCP `Project` to which Firebase resources can be
   /// added, in the format: projects/PROJECT_IDENTIFIER Refer to the
-  /// `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field
-  /// for details about PROJECT_IDENTIFIER values.
+  /// `FirebaseProject` \[`name`\](../projects#FirebaseProject.FIELDS.name)
+  /// field for details about PROJECT_IDENTIFIER values.
   core.String project;
 
   ProjectInfo();
@@ -3672,17 +3677,17 @@ class ShaCertificate {
   /// The resource name of the ShaCertificate for the AndroidApp, in the format:
   /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH *
   /// PROJECT_IDENTIFIER: the parent Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
   /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)). * SHA_HASH:
-  /// the certificate hash for the App (see
-  /// [`shaHash`](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).
+  /// \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)). *
+  /// SHA_HASH: the certificate hash for the App (see
+  /// \[`shaHash`\](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).
   core.String name;
 
   /// The certificate hash for the `AndroidApp`.
@@ -3851,8 +3856,8 @@ class StreamMapping {
   /// data stream, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID
   /// or projects/PROJECT_IDENTIFIER/iosApps/APP_ID or
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID Refer to the `FirebaseProject`
-  /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about
-  /// PROJECT_IDENTIFIER values.
+  /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
+  /// about PROJECT_IDENTIFIER values.
   core.String app;
 
   /// Applicable for Firebase Web Apps only.
@@ -3919,15 +3924,15 @@ class WebApp {
   /// The resource name of the WebApp, in the format:
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
-  /// [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
+  /// \[`ProjectNumber`\](../projects#FirebaseProject.FIELDS.project_number)
   /// ***(recommended)*** or its
-  /// [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
+  /// \[`ProjectId`\](../projects#FirebaseProject.FIELDS.project_id).
   ///
   /// Learn more about using project identifiers in Google's [AIP 2510
   /// standard](https://google.aip.dev/cloud/2510). Note that the value for
   /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID:
   /// the globally unique, Firebase-assigned identifier for the App (see
-  /// [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
+  /// \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
   core.String name;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
@@ -4018,7 +4023,7 @@ class WebAppConfig {
   /// locations](https://firebase.google.com/docs/projects/locations). This
   /// field is omitted if the default GCP resource location has not been
   /// finalized yet. To set a Project's default GCP resource location, call
-  /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
+  /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
   core.String locationId;
 
@@ -4032,7 +4037,7 @@ class WebAppConfig {
   /// documentation](https://support.google.com/analytics/topic/9303475). To
   /// generate a `measurementId` and link the `WebApp` with a Google Analytics
   /// web stream, call
-  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics). For
+  /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics). For
   /// apps using the Firebase JavaScript SDK v7.20.0 and later, Firebase
   /// dynamically fetches the `measurementId` when your app initializes
   /// Analytics. Having this ID in your config object is optional, but it does

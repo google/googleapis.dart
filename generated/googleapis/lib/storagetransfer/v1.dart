@@ -252,8 +252,8 @@ class TransferJobsResource {
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "job_statuses":["status1","status2",...]}. Since `job_names` and
+  /// "job_names":\["jobid1","jobid2",...\],
+  /// "job_statuses":\["status1","status2",...\]}. Since `job_names` and
   /// `job_statuses` support multiple values, their values must be specified
   /// with array notation. `project``_``id` is required. `job_names` and
   /// `job_statuses` are optional. The valid values for `job_statuses` are
@@ -523,9 +523,9 @@ class TransferOperationsResource {
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "operation_names":["opid1","opid2",...],
-  /// "transfer_statuses":["status1","status2",...]}. Since `job_names`,
+  /// "job_names":\["jobid1","jobid2",...\],
+  /// "operation_names":\["opid1","opid2",...\],
+  /// "transfer_statuses":\["status1","status2",...\]}. Since `job_names`,
   /// `operation_names`, and `transfer_statuses` support multiple values, they
   /// must be specified with array notation. `project``_``id` is required.
   /// `job_names`, `operation_names`, and `transfer_statuses` are optional. The
@@ -849,9 +849,9 @@ class AzureBlobStorageData {
 class AzureCredentials {
   /// Azure shared access signature.
   ///
-  /// (see [Grant limited access to Azure Storage resources using shared access
+  /// (see \[Grant limited access to Azure Storage resources using shared access
   /// signatures
-  /// (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+  /// (SAS)\](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
   ///
   /// Required.
   core.String sasToken;

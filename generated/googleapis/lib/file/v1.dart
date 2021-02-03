@@ -1885,8 +1885,8 @@ class NetworkConfig {
   /// For this version, only MODE_IPV4 is supported.
   core.List<core.String> modes;
 
-  /// The name of the Google Compute Engine [VPC
-  /// network](/compute/docs/networks-and-firewalls#networks) to which the
+  /// The name of the Google Compute Engine \[VPC
+  /// network\](/compute/docs/networks-and-firewalls#networks) to which the
   /// instance is connected.
   core.String network;
 

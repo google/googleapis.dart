@@ -371,7 +371,7 @@ class SpeechResource {
   /// Returns either an `Operation.error` or an `Operation.response` which
   /// contains a `LongRunningRecognizeResponse` message. For more information on
   /// asynchronous speech recognition, see the
-  /// [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
+  /// \[how-to\](https://cloud.google.com/speech-to-text/docs/async-recognize).
   ///
   /// [request] - The metadata request object.
   ///
@@ -872,7 +872,7 @@ class RecognitionConfig {
   core.String encoding;
 
   /// The language of the supplied audio as a
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   ///
   /// Example: "en-US". See [Language
   /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a

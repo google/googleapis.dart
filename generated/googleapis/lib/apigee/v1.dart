@@ -420,7 +420,7 @@ class OrganizationsResource {
   /// Synchronizer to download environment data from the control plane.
   ///
   /// An ETag is returned in the response to `getSyncAuthorization`. Pass that
-  /// ETag when calling [setSyncAuthorization](setSyncAuthorization) to ensure
+  /// ETag when calling \[setSyncAuthorization\](setSyncAuthorization) to ensure
   /// that you are updating the correct version. If you don't pass the ETag in
   /// the call to `setSyncAuthorization`, then the existing authorization is
   /// overwritten indiscriminately. For more information, see [Configure the
@@ -549,7 +549,7 @@ class OrganizationsResource {
   /// You must call this API to enable proper functioning of hybrid. Pass the
   /// ETag when calling `setSyncAuthorization` to ensure that you are updating
   /// the correct version. To get an ETag, call
-  /// [getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag
+  /// \[getSyncAuthorization\](getSyncAuthorization). If you don't pass the ETag
   /// in the call to `setSyncAuthorization`, then the existing authorization is
   /// overwritten indiscriminately. For more information, see [Configure the
   /// Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
@@ -2274,7 +2274,7 @@ class OrganizationsApisRevisionsResource {
   /// curl, specify `-o filename.zip` to save the output to a file; otherwise,
   /// it displays to `stdout`. Then, develop the API proxy configuration locally
   /// and upload the updated API proxy configuration revision, as described in
-  /// [updateApiProxyRevision](updateApiProxyRevision).
+  /// \[updateApiProxyRevision\](updateApiProxyRevision).
   ///
   /// Request parameters:
   ///
@@ -5067,7 +5067,7 @@ class OrganizationsEnvgroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the environment group to update in the format:
-  /// `organizations/{org}/envgroups/{envgroup}.
+  /// \`organizations/{org}/envgroups/{envgroup}.
   /// Value must have pattern `^organizations/\[^/\]+/envgroups/\[^/\]+$`.
   ///
   /// [updateMask] - List of fields to be updated.
@@ -6027,7 +6027,7 @@ class OrganizationsEnvironmentsResource {
   /// When updating properties, you must pass all existing properties to the
   /// API, even if they are not being changed. If you omit properties from the
   /// payload, the properties are removed. To get the current list of properties
-  /// for the environment, use the [Get Environment API](get).
+  /// for the environment, use the \[Get Environment API\](get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6165,7 +6165,7 @@ class OrganizationsEnvironmentsResource {
   /// When updating properties, you must pass all existing properties to the
   /// API, even if they are not being changed. If you omit properties from the
   /// payload, the properties are removed. To get the current list of properties
-  /// for the environment, use the [Get Environment API](get).
+  /// for the environment, use the \[Get Environment API\](get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9041,7 +9041,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   ///
   /// Specify the `Content-Type` as `application/octet-stream` or
   /// `multipart/form-data`. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// \[Resource files\](/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9053,7 +9053,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [name] - Required. Name of the resource file. Must match the regular
-  /// expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
@@ -9118,8 +9118,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Deletes a resource file.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9130,7 +9130,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to delete. Must match the
-  /// regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9192,8 +9192,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Gets the contents of a resource file.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9204,7 +9204,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file. Must match the regular
-  /// expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9266,8 +9266,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Lists all resource files.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9331,8 +9331,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Lists all resource files.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
@@ -9400,7 +9400,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   ///
   /// Specify the `Content-Type` as `application/octet-stream` or
   /// `multipart/form-data`. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// \[Resource files\](/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9413,7 +9413,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to update. Must match the
-  /// regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17723,9 +17723,9 @@ class GoogleCloudApigeeV1Metadata {
   /// List of additional information such as data source, if result was
   /// truncated etc.
   ///
-  /// E.g "notices": [ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net",
+  /// E.g "notices": \[ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net",
   /// "query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table used:
-  /// edge.api.uapgroup2.agg_api" ]
+  /// edge.api.uapgroup2.agg_api" \]
   core.List<core.String> notices;
 
   GoogleCloudApigeeV1Metadata();
@@ -17757,17 +17757,17 @@ class GoogleCloudApigeeV1Metadata {
 
 /// This message type encapsulates the metric data point.
 ///
-/// Example: { "name": "sum(message_count)", "values" : [ { "timestamp":
+/// Example: { "name": "sum(message_count)", "values" : \[ { "timestamp":
 /// 1549004400000, "value": "39.0" }, { "timestamp" : 1548997200000, "value" :
-/// "0.0" } ] } or { "name": "sum(message_count)", "values" : ["39.0"] }
+/// "0.0" } \] } or { "name": "sum(message_count)", "values" : \["39.0"\] }
 class GoogleCloudApigeeV1Metric {
   /// This field contains the metric name.
   core.String name;
 
   /// List of metric values.
   ///
-  /// Possible value format: "values":["39.0"] or "values":[ { "value": "39.0",
-  /// "timestamp": 1232434354} ]
+  /// Possible value format: "values":\["39.0"\] or "values":\[ { "value":
+  /// "39.0", "timestamp": 1232434354} \]
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -18009,15 +18009,15 @@ class GoogleCloudApigeeV1OptimizedStats {
   /// This field wraps the stats response for Js Optimized Scenario with a
   /// Response key.
   ///
-  /// E.g. { "Response": { "TimeUnit": [], "metaData": { "errors": [],
-  /// "notices": [ "Source:Postgres", "Table used:
+  /// E.g. { "Response": { "TimeUnit": \[\], "metaData": { "errors": \[\],
+  /// "notices": \[ "Source:Postgres", "Table used:
   /// edge.api.aaxgroup001.agg_api", "PG
   /// Host:ruappg08-ro.production.apigeeks.net", "query served
-  /// by:80c4ebca-6a10-4a2e-8faf-c60c1ee306ca" ] }, "resultTruncated": false,
-  /// "stats": { "data": [ { "identifier": { "names": [ "apiproxy" ], "values":
-  /// [ "sirjee" ] }, "metric": [ { "env": "prod", "name": "sum(message_count)",
-  /// "values": \[ 36.0 \] }, { "env": "prod", "name": "sum(is_error)",
-  /// "values": \[ 36.0 \] } ] } ] } } }
+  /// by:80c4ebca-6a10-4a2e-8faf-c60c1ee306ca" \] }, "resultTruncated": false,
+  /// "stats": { "data": \[ { "identifier": { "names": \[ "apiproxy" \],
+  /// "values": \[ "sirjee" \] }, "metric": \[ { "env": "prod", "name":
+  /// "sum(message_count)", "values": \[ 36.0 \] }, { "env": "prod", "name":
+  /// "sum(is_error)", "values": \[ 36.0 \] } \] } \] } } }
   GoogleCloudApigeeV1OptimizedStatsResponse Response;
 
   GoogleCloudApigeeV1OptimizedStats();
@@ -18039,12 +18039,12 @@ class GoogleCloudApigeeV1OptimizedStats {
 }
 
 /// This message type encapsulates a data node as represented below: {
-/// "identifier": { "names": [ "apiproxy" ], "values": [ "sirjee" ] }, "metric":
-/// [ { "env": "prod", "name": "sum(message_count)", "values": \[ 36.0 \] } ] }
-/// OR { "env": "prod", "name": "sum(message_count)", "values": \[ 36.0 \] }
-/// Depending on whether a dimension is present in the query or not the data
-/// node type can be a simple metric value or dimension identifier with list of
-/// metrics.
+/// "identifier": { "names": \[ "apiproxy" \], "values": \[ "sirjee" \] },
+/// "metric": \[ { "env": "prod", "name": "sum(message_count)", "values": \[
+/// 36.0 \] } \] } OR { "env": "prod", "name": "sum(message_count)", "values":
+/// \[ 36.0 \] } Depending on whether a dimension is present in the query or not
+/// the data node type can be a simple metric value or dimension identifier with
+/// list of metrics.
 class GoogleCloudApigeeV1OptimizedStatsNode {
   ///
   ///
@@ -18780,7 +18780,7 @@ class GoogleCloudApigeeV1QueryMetadata {
 
   /// Metrics of the AsyncQuery.
   ///
-  /// Example: ["name:message_count,func:sum,alias:sum_message_count"]
+  /// Example: \["name:message_count,func:sum,alias:sum_message_count"\]
   core.List<core.String> metrics;
 
   /// Output format.
@@ -18973,7 +18973,7 @@ class GoogleCloudApigeeV1Reference {
 
   /// The resource id of this reference.
   ///
-  /// Values must match the regular expression [\w\s\-.]+.
+  /// Values must match the regular expression \[\w\s\-.\]+.
   ///
   /// Required.
   core.String name;
@@ -19343,8 +19343,8 @@ class GoogleCloudApigeeV1Result {
 
   /// A list of HTTP headers.
   ///
-  /// for example, '"headers" : [ { "name" : "Content-Length", "value" : "83" },
-  /// { "name" : "Content-Type", "value" : "application/json" } ]'
+  /// for example, '"headers" : \[ { "name" : "Content-Length", "value" : "83"
+  /// }, { "name" : "Content-Type", "value" : "application/json" } \]'
   core.List<GoogleCloudApigeeV1Property> headers;
 
   /// Name value pairs used for DebugInfo ActionResult.
@@ -19836,7 +19836,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
 /// ResponseCodeRange represents a group of response codes to capture, from the
 /// first response code to the last response code.
 ///
-/// Each range is a close interval. For example, if an interval is [400, 403],
+/// Each range is a close interval. For example, if an interval is \[400, 403\],
 /// then that means 400, 401, 402, 403 will be all captured.
 class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
   /// The first response code to capture.
@@ -20313,9 +20313,9 @@ class GoogleCloudApigeeV1Stats {
   }
 }
 
-/// This message type encapsulates the environment wrapper: "environments": [ {
-/// "metrics": [ { "name": "sum(message_count)", "values": [ "2.52056245E8" ] }
-/// ], "name": "prod" } ]
+/// This message type encapsulates the environment wrapper: "environments": \[ {
+/// "metrics": \[ { "name": "sum(message_count)", "values": \[ "2.52056245E8" \]
+/// } \], "name": "prod" } \]
 class GoogleCloudApigeeV1StatsEnvironmentStats {
   /// This field contains the list of metrics grouped under dimensions.
   core.List<GoogleCloudApigeeV1DimensionMetric> dimensions;
@@ -20326,11 +20326,12 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   /// If no dimensions are provided, then only a top level metrics is provided.
   /// If dimensions are included, then there will be a top level dimensions
   /// field under environments which will contain metrics values and the
-  /// dimension name. Example: "environments": [ { "dimensions": [ { "metrics":
-  /// [ { "name": "sum(message_count)", "values": [ "2.14049521E8" ] } ],
-  /// "name": "nit_proxy" } ], "name": "prod" } ] OR "environments": [ {
-  /// "metrics": [ { "name": "sum(message_count)", "values": [ "2.19026331E8" ]
-  /// } ], "name": "prod" } ] This field contains the list of metric values.
+  /// dimension name. Example: "environments": \[ { "dimensions": \[ {
+  /// "metrics": \[ { "name": "sum(message_count)", "values": \[ "2.14049521E8"
+  /// \] } \], "name": "nit_proxy" } \], "name": "prod" } \] OR "environments":
+  /// \[ { "metrics": \[ { "name": "sum(message_count)", "values": \[
+  /// "2.19026331E8" \] } \], "name": "prod" } \] This field contains the list
+  /// of metric values.
   core.List<GoogleCloudApigeeV1Metric> metrics;
   core.String name;
 
@@ -20400,9 +20401,9 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// Entity tag (ETag) used for optimistic concurrency control as a way to help
   /// prevent simultaneous updates from overwriting each other.
   ///
-  /// For example, when you call [getSyncAuthorization](getSyncAuthorization) an
-  /// ETag is returned in the response. Pass that ETag when calling the
-  /// [setSyncAuthorization](setSyncAuthorization) to ensure that you are
+  /// For example, when you call \[getSyncAuthorization\](getSyncAuthorization)
+  /// an ETag is returned in the response. Pass that ETag when calling the
+  /// \[setSyncAuthorization\](setSyncAuthorization) to ensure that you are
   /// updating the correct version. If you don't pass the ETag in the call to
   /// `setSyncAuthorization`, then the existing authorization is overwritten
   /// indiscriminately. **Note**: We strongly recommend that you use the ETag in
@@ -21041,13 +21042,13 @@ class GoogleCloudApigeeV1UpdateError {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
@@ -21090,9 +21091,9 @@ class GoogleIamV1AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -21230,14 +21231,14 @@ class GoogleIamV1Binding {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

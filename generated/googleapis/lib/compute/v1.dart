@@ -12480,7 +12480,7 @@ class InstanceGroupManagersResource {
   /// [instanceGroupManager] - The name of the managed instance group. It must
   /// be a string that meets the requirements in RFC1035, or an unsigned long
   /// integer: must match regexp pattern:
-  /// (?:[a-z](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|\[1-9\]\[0-9\]{0,19}.
+  /// (?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|\[1-9\]\[0-9\]{0,19}.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -32391,7 +32391,7 @@ class RegionInstanceGroupManagersResource {
   /// [instanceGroupManager] - The name of the managed instance group. It must
   /// be a string that meets the requirements in RFC1035, or an unsigned long
   /// integer: must match regexp pattern:
-  /// (?:[a-z](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|\[1-9\]\[0-9\]{0,19}.
+  /// (?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?)|\[1-9\]\[0-9\]{0,19}.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -52183,7 +52183,7 @@ class AcceleratorTypeAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AcceleratorTypeAggregatedListWarningData> data;
@@ -52412,7 +52412,7 @@ class AcceleratorTypeListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AcceleratorTypeListWarningData> data;
@@ -52625,7 +52625,7 @@ class AcceleratorTypesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AcceleratorTypesScopedListWarningData> data;
@@ -53177,7 +53177,7 @@ class AddressAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AddressAggregatedListWarningData> data;
@@ -53405,7 +53405,7 @@ class AddressListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AddressListWarningData> data;
@@ -53618,7 +53618,7 @@ class AddressesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AddressesScopedListWarningData> data;
@@ -54361,12 +54361,12 @@ class AttachedDiskInitializeParams {
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
-/// { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ {
-/// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] },
-/// { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service":
-/// "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type":
-/// "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
-/// "user:aliya@example.com" ] } ] } ] }
+/// { "audit_configs": \[ { "service": "allServices", "audit_log_configs": \[ {
+/// "log_type": "DATA_READ", "exempted_members": \[ "user:jose@example.com" \]
+/// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } \] }, {
+/// "service": "sampleservice.googleapis.com", "audit_log_configs": \[ {
+/// "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members":
+/// \[ "user:aliya@example.com" \] } \] } \] }
 ///
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
@@ -54421,8 +54421,8 @@ class AuditConfig {
 ///
 /// Example:
 ///
-/// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
+/// { "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" } \] }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
 /// jose@example.com from DATA_READ logging.
@@ -54430,7 +54430,7 @@ class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
   ///
-  /// Follows the same format of \[Binding.members\][].
+  /// Follows the same format of \[Binding.members\]\[\].
   core.List<core.String> exemptedMembers;
   core.bool ignoreChildExemptions;
 
@@ -54505,8 +54505,8 @@ class AuthorizationLoggingOptions {
 ///
 /// Google Compute Engine has two Autoscaler resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/autoscalers) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionAutoscalers)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/autoscalers) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionAutoscalers)
 ///
 /// Use autoscalers to automatically add or delete instances from a managed
 /// instance group according to your defined autoscaling policy.
@@ -54795,7 +54795,7 @@ class AutoscalerAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AutoscalerAggregatedListWarningData> data;
@@ -55024,7 +55024,7 @@ class AutoscalerListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AutoscalerListWarningData> data;
@@ -55328,7 +55328,7 @@ class AutoscalersScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<AutoscalersScopedListWarningData> data;
@@ -55530,7 +55530,7 @@ class AutoscalingPolicy {
 class AutoscalingPolicyCpuUtilization {
   /// The target CPU utilization that the autoscaler should maintain.
   ///
-  /// Must be a float value in the range (0, 1]. If not specified, the default
+  /// Must be a float value in the range (0, 1\]. If not specified, the default
   /// is 0.6.
   ///
   /// If the CPU level is below the target utilization, the autoscaler scales
@@ -55734,7 +55734,7 @@ class Backend {
   /// Default value is 1, which means the group will serve up to 100% of its
   /// configured capacity (depending on balancingMode). A setting of 0 means the
   /// group is completely drained, offering 0% of its available capacity. Valid
-  /// range is 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0
+  /// range is 0.0 and \[0.1,1.0\]. You cannot configure a setting larger than 0
   /// and smaller than 0.1. You cannot configure a setting of 0 when there is
   /// only one backend attached to the backend service.
   ///
@@ -55865,7 +55865,7 @@ class Backend {
   /// Defines the maximum average backend utilization of a backend VM in an
   /// instance group.
   ///
-  /// The valid range is [0.0, 1.0]. This is an optional parameter if the
+  /// The valid range is \[0.0, 1.0\]. This is an optional parameter if the
   /// backend's balancingMode is UTILIZATION.
   ///
   /// This parameter can be used in conjunction with maxRate,
@@ -56196,7 +56196,7 @@ class BackendBucketListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<BackendBucketListWarningData> data;
@@ -56338,8 +56338,8 @@ class BackendBucketList {
 /// Backend services in Google Compute Engine can be either regionally or
 /// globally scoped.
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/backendServices) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionBackendServices)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/backendServices) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionBackendServices)
 ///
 /// For more information, see Backend Services.
 ///
@@ -56956,7 +56956,7 @@ class BackendServiceAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<BackendServiceAggregatedListWarningData> data;
@@ -57180,10 +57180,11 @@ class BackendServiceFailoverPolicy {
 
   /// Applicable only to Failover for Internal TCP/UDP Load Balancing.
   ///
-  /// The value of the field must be in the range [0, 1]. If the value is 0, the
-  /// load balancer performs a failover when the number of healthy primary VMs
-  /// equals zero. For all other values, the load balancer performs a failover
-  /// when the total number of healthy primary VMs is less than this ratio.
+  /// The value of the field must be in the range \[0, 1\]. If the value is 0,
+  /// the load balancer performs a failover when the number of healthy primary
+  /// VMs equals zero. For all other values, the load balancer performs a
+  /// failover when the total number of healthy primary VMs is less than this
+  /// ratio.
   core.double failoverRatio;
 
   BackendServiceFailoverPolicy();
@@ -57414,7 +57415,7 @@ class BackendServiceListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<BackendServiceListWarningData> data;
@@ -57555,7 +57556,7 @@ class BackendServiceLogConfig {
   /// This field can only be specified if logging is enabled for this backend
   /// service.
   ///
-  /// The value of the field must be in [0, 1]. This configures the sampling
+  /// The value of the field must be in \[0, 1\]. This configures the sampling
   /// rate of requests to the load balancer where 1.0 means all logged requests
   /// are reported and 0.0 means no logged requests are reported. The default
   /// value is 1.0.
@@ -57684,7 +57685,7 @@ class BackendServicesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<BackendServicesScopedListWarningData> data;
@@ -58361,7 +58362,7 @@ class CommitmentAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<CommitmentAggregatedListWarningData> data;
@@ -58590,7 +58591,7 @@ class CommitmentListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<CommitmentListWarningData> data;
@@ -58803,7 +58804,7 @@ class CommitmentsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<CommitmentsScopedListWarningData> data;
@@ -58997,7 +58998,8 @@ class ConnectionDraining {
   /// The amount of time in seconds to allow existing connections to persist
   /// while on unhealthy backend VMs.
   ///
-  /// Only applicable if the protocol is not UDP. The valid range is [0, 3600].
+  /// Only applicable if the protocol is not UDP. The valid range is \[0,
+  /// 3600\].
   core.int drainingTimeoutSec;
 
   ConnectionDraining();
@@ -59404,8 +59406,8 @@ class DeprecationStatus {
 ///
 /// Google Compute Engine has two Disk resources:
 ///
-/// * [Zonal](/compute/docs/reference/rest/{$api_version}/disks) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionDisks)
+/// * \[Zonal\](/compute/docs/reference/rest/{$api_version}/disks) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionDisks)
 ///
 /// Persistent disks are required for running your VM instances.
 ///
@@ -59993,7 +59995,7 @@ class DiskAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<DiskAggregatedListWarningData> data;
@@ -60297,7 +60299,7 @@ class DiskListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<DiskListWarningData> data;
@@ -60474,8 +60476,8 @@ class DiskMoveRequest {
 ///
 /// Google Compute Engine has two Disk Type resources:
 ///
-/// * [Regional](/compute/docs/reference/rest/{$api_version}/regionDiskTypes) *
-/// [Zonal](/compute/docs/reference/rest/{$api_version}/diskTypes)
+/// * \[Regional\](/compute/docs/reference/rest/{$api_version}/regionDiskTypes)
+/// * \[Zonal\](/compute/docs/reference/rest/{$api_version}/diskTypes)
 ///
 /// You can choose from a variety of disk types based on your needs.
 ///
@@ -60715,7 +60717,7 @@ class DiskTypeAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<DiskTypeAggregatedListWarningData> data;
@@ -60943,7 +60945,7 @@ class DiskTypeListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<DiskTypeListWarningData> data;
@@ -61156,7 +61158,7 @@ class DiskTypesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<DiskTypesScopedListWarningData> data;
@@ -61389,7 +61391,7 @@ class DisksScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<DisksScopedListWarningData> data;
@@ -61731,7 +61733,7 @@ class ExchangedPeeringRoutesListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ExchangedPeeringRoutesListWarningData> data;
@@ -62243,7 +62245,7 @@ class ExternalVpnGatewayListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ExternalVpnGatewayListWarningData> data;
@@ -62436,7 +62438,7 @@ class FirewallAllowed {
   /// be either an integer or a range. If not specified, this rule applies to
   /// connections through any port.
   ///
-  /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+  /// Example inputs include: \["22"\], \["80","443"\], and \["12345-12349"\].
   core.List<core.String> ports;
 
   FirewallAllowed();
@@ -62478,7 +62480,7 @@ class FirewallDenied {
   /// be either an integer or a range. If not specified, this rule applies to
   /// connections through any port.
   ///
-  /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+  /// Example inputs include: \["22"\], \["80","443"\], and \["12345-12349"\].
   core.List<core.String> ports;
 
   FirewallDenied();
@@ -62582,8 +62584,8 @@ class Firewall {
   ///
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression `[a-z](\[-a-z0-9\]*\[a-z0-9\])?. The first character must be a
-  /// lowercase letter, and all following characters (except for the last
+  /// expression \`\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. The first character must be
+  /// a lowercase letter, and all following characters (except for the last
   /// character) must be a dash, lowercase letter, or digit. The last character
   /// must be a lowercase letter or digit.
   core.String name;
@@ -62658,7 +62660,7 @@ class Firewall {
   core.List<core.String> sourceTags;
 
   /// A list of service accounts indicating sets of instances located in the
-  /// network that may make network connections as specified in allowed[].
+  /// network that may make network connections as specified in allowed\[\].
   ///
   /// targetServiceAccounts cannot be used at the same time as targetTags or
   /// sourceTags. If neither targetServiceAccounts nor targetTags are specified,
@@ -62898,7 +62900,7 @@ class FirewallListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<FirewallListWarningData> data;
@@ -63129,8 +63131,8 @@ class FixedOrPercent {
 /// Forwarding rule resources in GCP can be either regional or global in scope:
 ///
 /// *
-/// [Global](/compute/docs/reference/rest/{$api_version}/globalForwardingRules)
-/// * [Regional](/compute/docs/reference/rest/{$api_version}/forwardingRules)
+/// \[Global\](/compute/docs/reference/rest/{$api_version}/globalForwardingRules)
+/// * \[Regional\](/compute/docs/reference/rest/{$api_version}/forwardingRules)
 ///
 /// A forwarding rule and its corresponding IP address represent the frontend
 /// configuration of a Google Cloud Platform load balancer.
@@ -63162,8 +63164,8 @@ class ForwardingRule {
   ///
   /// The loadBalancingScheme and the forwarding rule's target determine the
   /// type of IP address that you can use. For detailed information, refer to
-  /// [IP address
-  /// specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+  /// \[IP address
+  /// specifications\](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
   ///
   /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
   /// validateForProxyless field set to true.
@@ -63366,7 +63368,7 @@ class ForwardingRule {
   ///
   /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
   /// addressed to ports in the specified range will be forwarded to target.
-  /// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
+  /// Forwarding rules with the same \[IPAddress, IPProtocol\] pair must have
   /// disjoint port ranges.
   ///
   /// Some types of forwarding target have constraints on the acceptable ports:
@@ -63384,7 +63386,7 @@ class ForwardingRule {
   /// balancing.
   ///
   /// When the load balancing scheme is INTERNAL, a list of ports can be
-  /// configured, for example, ['80'], ['8000','9000'].
+  /// configured, for example, \['80'\], \['8000','9000'\].
   ///
   /// Only packets addressed to these ports are forwarded to the backends
   /// configured with the forwarding rule.
@@ -63702,7 +63704,7 @@ class ForwardingRuleAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ForwardingRuleAggregatedListWarningData> data;
@@ -63930,7 +63932,7 @@ class ForwardingRuleListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ForwardingRuleListWarningData> data;
@@ -64157,7 +64159,7 @@ class ForwardingRulesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ForwardingRulesScopedListWarningData> data;
@@ -64988,8 +64990,8 @@ class HTTPSHealthCheck {
 ///
 /// Google Compute Engine has two Health Check resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/healthChecks) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionHealthChecks)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/healthChecks) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionHealthChecks)
 ///
 /// Internal HTTP(S) load balancers must use regional health checks.
 ///
@@ -65293,7 +65295,7 @@ class HealthCheckListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<HealthCheckListWarningData> data;
@@ -65756,7 +65758,7 @@ class HealthCheckServicesListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<HealthCheckServicesListWarningData> data;
@@ -65967,7 +65969,7 @@ class HealthChecksAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<HealthChecksAggregatedListWarningData> data;
@@ -66190,7 +66192,7 @@ class HealthChecksScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<HealthChecksScopedListWarningData> data;
@@ -66651,13 +66653,14 @@ class HttpHeaderMatch {
   /// For matching a request's method, use the headerName ":method".
   /// When the URL map is bound to target gRPC proxy that has
   /// validateForProxyless field set to true, only non-binary user-specified
-  /// custom metadata and the `content-type` header are supported.
+  /// custom metadata and the \`content-type\` header are supported.
   ///
   /// The following transport-level headers cannot be used in header matching
-  /// rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`,
-  /// `accept-encoding`, `content-encoding`, `grpc-accept-encoding`,
-  /// `grpc-encoding`, `grpc-previous-rpc-attempts`, `grpc-tags-bin`,
-  /// `grpc-timeout` and `grpc-trace-bin.
+  /// rules: \`:authority\`, \`:method\`, \`:path\`, \`:scheme\`,
+  /// \`user-agent\`, \`accept-encoding\`, \`content-encoding\`,
+  /// \`grpc-accept-encoding\`, \`grpc-encoding\`,
+  /// \`grpc-previous-rpc-attempts\`, \`grpc-tags-bin\`, \`grpc-timeout\` and
+  /// \`grpc-trace-bin.
   core.String headerName;
 
   /// If set to false, the headerMatch is considered a match if the match
@@ -66685,7 +66688,7 @@ class HttpHeaderMatch {
   ///
   /// If the header does not contain an integer, number or is empty, the match
   /// fails.
-  /// For example for a range [-5, 0]
+  /// For example for a range \[-5, 0\]
   /// - -3 will match.
   /// - 0 will not match.
   /// - 0.25 will not match.
@@ -67074,7 +67077,7 @@ class HttpHealthCheckListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<HttpHealthCheckListWarningData> data;
@@ -67588,8 +67591,8 @@ class HttpRouteRule {
   /// Specifies changes to request and response headers that need to take effect
   /// for the selected backendService.
   /// The headerAction specified here are applied before the matching
-  /// pathMatchers[].headerAction and after
-  /// pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction
+  /// pathMatchers\[\].headerAction and after
+  /// pathMatchers\[\].routeRules\[\].routeAction.weightedBackendService.backendServiceWeightAction\[\].headerAction
   /// Note that headerAction is not supported for Loadbalancers that have their
   /// loadBalancingScheme set to EXTERNAL.
   /// Not supported when the URL map is bound to target gRPC proxy that has
@@ -68095,7 +68098,7 @@ class HttpsHealthCheckListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<HttpsHealthCheckListWarningData> data;
@@ -68795,7 +68798,7 @@ class ImageListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ImageListWarningData> data;
@@ -69545,7 +69548,7 @@ class InstanceAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceAggregatedListWarningData> data;
@@ -69760,7 +69763,7 @@ class InstanceGroup {
   ///
   /// This allows the system to reference ports by the assigned name instead of
   /// a port number. Named ports can also contain multiple ports. For example:
-  /// [{name: "http", port: 80},{name: "http", port: 8080}]
+  /// \[{name: "http", port: 80},{name: "http", port: 8080}\]
   ///
   /// Named ports apply to all instances in this instance group.
   core.List<NamedPort> namedPorts;
@@ -69982,7 +69985,7 @@ class InstanceGroupAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupAggregatedListWarningData> data;
@@ -70209,7 +70212,7 @@ class InstanceGroupListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupListWarningData> data;
@@ -70727,7 +70730,7 @@ class InstanceGroupManagerActionsSummary {
   /// The number of instances in the managed instance group that are being
   /// verified.
   ///
-  /// See the managedInstances[].currentAction property in the
+  /// See the managedInstances\[\].currentAction property in the
   /// listManagedInstances method documentation.
   ///
   /// Output only.
@@ -70879,7 +70882,7 @@ class InstanceGroupManagerAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupManagerAggregatedListWarningData> data;
@@ -71037,7 +71040,7 @@ class InstanceGroupManagerAutoHealingPolicy {
   /// This initial delay allows instances to initialize and run their startup
   /// scripts before the instance group determines that they are UNHEALTHY. This
   /// prevents the managed instance group from recreating its instances
-  /// prematurely. This value must be from range [0, 3600].
+  /// prematurely. This value must be from range \[0, 3600\].
   core.int initialDelaySec;
 
   InstanceGroupManagerAutoHealingPolicy();
@@ -71144,7 +71147,7 @@ class InstanceGroupManagerListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupManagerListWarningData> data;
@@ -71968,7 +71971,7 @@ class InstanceGroupManagersListPerInstanceConfigsRespWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupManagersListPerInstanceConfigsRespWarningData> data;
@@ -72202,7 +72205,7 @@ class InstanceGroupManagersScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupManagersScopedListWarningData> data;
@@ -72493,7 +72496,7 @@ class InstanceGroupsListInstancesWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupsListInstancesWarningData> data;
@@ -72756,7 +72759,7 @@ class InstanceGroupsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceGroupsScopedListWarningData> data;
@@ -72967,7 +72970,7 @@ class InstanceListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceListWarningData> data;
@@ -73179,7 +73182,7 @@ class InstanceListReferrersWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceListReferrersWarningData> data;
@@ -73968,7 +73971,7 @@ class InstanceTemplateListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstanceTemplateListWarningData> data;
@@ -74285,7 +74288,7 @@ class InstancesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InstancesScopedListWarningData> data;
@@ -75396,7 +75399,7 @@ class InterconnectAttachmentAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InterconnectAttachmentAggregatedListWarningData> data;
@@ -75625,7 +75628,7 @@ class InterconnectAttachmentListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InterconnectAttachmentListWarningData> data;
@@ -75919,7 +75922,7 @@ class InterconnectAttachmentsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InterconnectAttachmentsScopedListWarningData> data;
@@ -76386,7 +76389,7 @@ class InterconnectListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InterconnectListWarningData> data;
@@ -76828,7 +76831,7 @@ class InterconnectLocationListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<InterconnectLocationListWarningData> data;
@@ -77610,7 +77613,7 @@ class LicensesListResponseWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<LicensesListResponseWarningData> data;
@@ -78285,7 +78288,7 @@ class MachineTypeAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<MachineTypeAggregatedListWarningData> data;
@@ -78514,7 +78517,7 @@ class MachineTypeListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<MachineTypeListWarningData> data;
@@ -78726,7 +78729,7 @@ class MachineTypesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<MachineTypesScopedListWarningData> data;
@@ -79988,7 +79991,7 @@ class NetworkEndpointGroupAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NetworkEndpointGroupAggregatedListWarningData> data;
@@ -80392,7 +80395,7 @@ class NetworkEndpointGroupListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NetworkEndpointGroupListWarningData> data;
@@ -80681,7 +80684,7 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NetworkEndpointGroupsListNetworkEndpointsWarningData> data;
@@ -80883,7 +80886,7 @@ class NetworkEndpointGroupsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NetworkEndpointGroupsScopedListWarningData> data;
@@ -81241,7 +81244,7 @@ class NetworkListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NetworkListWarningData> data;
@@ -81937,7 +81940,7 @@ class NodeGroupAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeGroupAggregatedListWarningData> data;
@@ -82211,7 +82214,7 @@ class NodeGroupListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeGroupListWarningData> data;
@@ -82553,7 +82556,7 @@ class NodeGroupsListNodesWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeGroupsListNodesWarningData> data;
@@ -82763,7 +82766,7 @@ class NodeGroupsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeGroupsScopedListWarningData> data;
@@ -83155,7 +83158,7 @@ class NodeTemplateAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeTemplateAggregatedListWarningData> data;
@@ -83382,7 +83385,7 @@ class NodeTemplateListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeTemplateListWarningData> data;
@@ -83627,7 +83630,7 @@ class NodeTemplatesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeTemplatesScopedListWarningData> data;
@@ -83948,7 +83951,7 @@ class NodeTypeAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeTypeAggregatedListWarningData> data;
@@ -84175,7 +84178,7 @@ class NodeTypeListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeTypeListWarningData> data;
@@ -84385,7 +84388,7 @@ class NodeTypesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NodeTypesScopedListWarningData> data;
@@ -84749,7 +84752,7 @@ class NotificationEndpointListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<NotificationEndpointListWarningData> data;
@@ -85034,7 +85037,7 @@ class OperationWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationWarningsData> data;
@@ -85080,9 +85083,9 @@ class OperationWarnings {
 ///
 /// Google Compute Engine has three Operation resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
-/// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/globalOperations) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionOperations) *
+/// \[Zonal\](/compute/docs/reference/rest/{$api_version}/zoneOperations)
 ///
 /// You can use an operation resource to manage asynchronous API requests.
 ///
@@ -85484,7 +85487,7 @@ class OperationAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationAggregatedListWarningData> data;
@@ -85717,7 +85720,7 @@ class OperationListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationListWarningData> data;
@@ -85934,7 +85937,7 @@ class OperationsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationsScopedListWarningData> data;
@@ -86452,7 +86455,7 @@ class PacketMirroringAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<PacketMirroringAggregatedListWarningData> data;
@@ -86753,7 +86756,7 @@ class PacketMirroringListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<PacketMirroringListWarningData> data;
@@ -87127,7 +87130,7 @@ class PacketMirroringsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<PacketMirroringsScopedListWarningData> data;
@@ -87540,14 +87543,14 @@ class PerInstanceConfig {
 ///
 /// **JSON example:**
 ///
-/// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin",
-/// "members": [ "user:mike@example.com", "group:admins@example.com",
+/// { "bindings": \[ { "role": "roles/resourcemanager.organizationAdmin",
+/// "members": \[ "user:mike@example.com", "group:admins@example.com",
 /// "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 }
 ///
 /// **YAML example:**
@@ -88587,7 +88590,7 @@ class RegionAutoscalerListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionAutoscalerListWarningData> data;
@@ -88795,7 +88798,7 @@ class RegionDiskTypeListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionDiskTypeListWarningData> data;
@@ -89073,7 +89076,7 @@ class RegionInstanceGroupListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionInstanceGroupListWarningData> data;
@@ -89306,7 +89309,7 @@ class RegionInstanceGroupManagerListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionInstanceGroupManagerListWarningData> data;
@@ -89771,7 +89774,7 @@ class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionInstanceGroupManagersListInstanceConfigsRespWarningData> data;
@@ -90088,7 +90091,7 @@ class RegionInstanceGroupsListInstancesWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionInstanceGroupsListInstancesWarningData> data;
@@ -90381,7 +90384,7 @@ class RegionListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RegionListWarningData> data;
@@ -90986,7 +90989,7 @@ class ReservationAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ReservationAggregatedListWarningData> data;
@@ -91211,7 +91214,7 @@ class ReservationListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ReservationListWarningData> data;
@@ -91445,7 +91448,7 @@ class ReservationsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ReservationsScopedListWarningData> data;
@@ -91682,7 +91685,7 @@ class ResourcePoliciesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourcePoliciesScopedListWarningData> data;
@@ -91977,7 +91980,7 @@ class ResourcePolicyAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourcePolicyAggregatedListWarningData> data;
@@ -92353,7 +92356,7 @@ class ResourcePolicyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourcePolicyListWarningData> data;
@@ -92836,7 +92839,7 @@ class RouteWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RouteWarningsData> data;
@@ -93197,7 +93200,7 @@ class RouteListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RouteListWarningData> data;
@@ -93604,7 +93607,7 @@ class RouterAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RouterAggregatedListWarningData> data;
@@ -94152,7 +94155,7 @@ class RouterListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RouterListWarningData> data;
@@ -94532,7 +94535,7 @@ class RouterNatSubnetworkToNat {
   ///
   /// All options of a single value are valid except
   /// NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple
-  /// values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default:
+  /// values is: \["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"\] Default:
   /// \[ALL_IP_RANGES\]
   core.List<core.String> sourceIpRangesToNat;
 
@@ -94757,17 +94760,17 @@ class RouterStatusBgpPeerStatus {
 class RouterStatusNatStatus {
   /// A list of IPs auto-allocated for NAT.
   ///
-  /// Example: ["1.1.1.1", "129.2.16.89"]
+  /// Example: \["1.1.1.1", "129.2.16.89"\]
   core.List<core.String> autoAllocatedNatIps;
 
   /// A list of IPs auto-allocated for NAT that are in drain mode.
   ///
-  /// Example: ["1.1.1.1", "179.12.26.133"].
+  /// Example: \["1.1.1.1", "179.12.26.133"\].
   core.List<core.String> drainAutoAllocatedNatIps;
 
   /// A list of IPs user-allocated for NAT that are in drain mode.
   ///
-  /// Example: ["1.1.1.1", "179.12.26.133"].
+  /// Example: \["1.1.1.1", "179.12.26.133"\].
   core.List<core.String> drainUserAllocatedNatIps;
 
   /// The number of extra IPs to allocate.
@@ -94995,7 +94998,7 @@ class RoutersScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<RoutersScopedListWarningData> data;
@@ -95708,7 +95711,7 @@ class SecurityPolicyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SecurityPolicyListWarningData> data;
@@ -96746,7 +96749,7 @@ class SnapshotListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SnapshotListWarningData> data;
@@ -96910,8 +96913,8 @@ class SourceInstanceParams {
 ///
 /// Google Compute Engine has two SSL Certificate resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/sslCertificates) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionSslCertificates)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/sslCertificates) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionSslCertificates)
 ///
 ///
 ///
@@ -97199,7 +97202,7 @@ class SslCertificateAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SslCertificateAggregatedListWarningData> data;
@@ -97427,7 +97430,7 @@ class SslCertificateListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SslCertificateListWarningData> data;
@@ -97734,7 +97737,7 @@ class SslCertificatesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SslCertificatesScopedListWarningData> data;
@@ -97894,7 +97897,7 @@ class SslPoliciesListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SslPoliciesListWarningData> data;
@@ -98124,7 +98127,7 @@ class SslPolicyWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SslPolicyWarningsData> data;
@@ -98871,7 +98874,7 @@ class SubnetworkAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SubnetworkAggregatedListWarningData> data;
@@ -99100,7 +99103,7 @@ class SubnetworkListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SubnetworkListWarningData> data;
@@ -99260,7 +99263,7 @@ class SubnetworkLogConfig {
 
   /// Can only be specified if VPC flow logging for this subnetwork is enabled.
   ///
-  /// The value of the field must be in [0, 1]. Set the sampling rate of VPC
+  /// The value of the field must be in \[0, 1\]. Set the sampling rate of VPC
   /// flow logs within the subnetwork where 1.0 means all collected logs are
   /// reported and 0.0 means no logs are reported. Default is 0.5, which means
   /// half of all collected logs are reported.
@@ -99474,7 +99477,7 @@ class SubnetworksScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<SubnetworksScopedListWarningData> data;
@@ -99960,7 +99963,7 @@ class TargetGrpcProxyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetGrpcProxyListWarningData> data;
@@ -100170,7 +100173,7 @@ class TargetHttpProxiesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetHttpProxiesScopedListWarningData> data;
@@ -100253,8 +100256,9 @@ class TargetHttpProxiesScopedList {
 ///
 /// Google Compute Engine has two Target HTTP Proxy resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/targetHttpProxies) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionTargetHttpProxies)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/targetHttpProxies)
+/// *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionTargetHttpProxies)
 ///
 /// A target HTTP proxy is a component of GCP HTTP load balancers.
 ///
@@ -100574,7 +100578,7 @@ class TargetHttpProxyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetHttpProxyListWarningData> data;
@@ -100783,7 +100787,7 @@ class TargetHttpsProxiesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetHttpsProxiesScopedListWarningData> data;
@@ -100917,8 +100921,9 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
 ///
 /// Google Compute Engine has two Target HTTPS Proxy resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/targetHttpsProxies) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionTargetHttpsProxies)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/targetHttpsProxies)
+/// *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionTargetHttpsProxies)
 ///
 /// A target HTTPS proxy is a component of GCP HTTPS load balancers.
 ///
@@ -101177,7 +101182,7 @@ class TargetHttpsProxyAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetHttpsProxyAggregatedListWarningData> data;
@@ -101406,7 +101411,7 @@ class TargetHttpsProxyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetHttpsProxyListWarningData> data;
@@ -101756,7 +101761,7 @@ class TargetInstanceAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetInstanceAggregatedListWarningData> data;
@@ -101980,7 +101985,7 @@ class TargetInstanceListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetInstanceListWarningData> data;
@@ -102187,7 +102192,7 @@ class TargetInstancesScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetInstancesScopedListWarningData> data;
@@ -102277,7 +102282,7 @@ class TargetInstancesScopedList {
 class TargetPool {
   /// This field is applicable only when the containing target pool is serving a
   /// forwarding rule as the primary pool, and its failoverRatio field is
-  /// properly set to a value between [0, 1].
+  /// properly set to a value between \[0, 1\].
   ///
   /// backupPool and failoverRatio together define the fallback behavior of the
   /// primary target pool: if the ratio of the healthy instances in the primary
@@ -102305,7 +102310,7 @@ class TargetPool {
   /// forwarding rule as the primary pool (i.e., not as a backup pool to some
   /// other target pool).
   ///
-  /// The value of the field must be in [0, 1].
+  /// The value of the field must be in \[0, 1\].
   ///
   /// If set, backupPool must also be set. They together define the fallback
   /// behavior of the primary target pool: if the ratio of the healthy instances
@@ -102552,7 +102557,7 @@ class TargetPoolAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetPoolAggregatedListWarningData> data;
@@ -102819,7 +102824,7 @@ class TargetPoolListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetPoolListWarningData> data;
@@ -103142,7 +103147,7 @@ class TargetPoolsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetPoolsScopedListWarningData> data;
@@ -103541,7 +103546,7 @@ class TargetSslProxyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetSslProxyListWarningData> data;
@@ -103915,7 +103920,7 @@ class TargetTcpProxyListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetTcpProxyListWarningData> data;
@@ -104290,7 +104295,7 @@ class TargetVpnGatewayAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetVpnGatewayAggregatedListWarningData> data;
@@ -104518,7 +104523,7 @@ class TargetVpnGatewayListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetVpnGatewayListWarningData> data;
@@ -104731,7 +104736,7 @@ class TargetVpnGatewaysScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<TargetVpnGatewaysScopedListWarningData> data;
@@ -104916,8 +104921,8 @@ class TestPermissionsResponse {
 ///
 /// Google Compute Engine has two URL Map resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/urlMaps) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionUrlMaps)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/urlMaps) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionUrlMaps)
 ///
 /// A URL map resource is a component of certain types of GCP load balancers and
 /// Traffic Director.
@@ -105260,7 +105265,7 @@ class UrlMapListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<UrlMapListWarningData> data;
@@ -105597,7 +105602,7 @@ class UrlMapsAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<UrlMapsAggregatedListWarningData> data;
@@ -105820,7 +105825,7 @@ class UrlMapsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<UrlMapsScopedListWarningData> data;
@@ -106147,7 +106152,7 @@ class UsableSubnetworksAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<UsableSubnetworksAggregatedListWarningData> data;
@@ -106364,13 +106369,13 @@ class VmEndpointNatMappingsInterfaceNatMappings {
   /// List of all drain IP:port-range mappings assigned to this interface.
   ///
   /// These ranges are inclusive, that is, both the first and the last ports can
-  /// be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+  /// be used for NAT. Example: \["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"\].
   core.List<core.String> drainNatIpPortRanges;
 
   /// A list of all IP:port-range mappings assigned to this interface.
   ///
   /// These ranges are inclusive, that is, both the first and the last ports can
-  /// be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+  /// be used for NAT. Example: \["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"\].
   core.List<core.String> natIpPortRanges;
 
   /// Total number of drain ports across all NAT IPs allocated to this
@@ -106526,7 +106531,7 @@ class VmEndpointNatMappingsListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VmEndpointNatMappingsListWarningData> data;
@@ -106917,7 +106922,7 @@ class VpnGatewayAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VpnGatewayAggregatedListWarningData> data;
@@ -107145,7 +107150,7 @@ class VpnGatewayListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VpnGatewayListWarningData> data;
@@ -107584,7 +107589,7 @@ class VpnGatewaysScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VpnGatewaysScopedListWarningData> data;
@@ -108073,7 +108078,7 @@ class VpnTunnelAggregatedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VpnTunnelAggregatedListWarningData> data;
@@ -108301,7 +108306,7 @@ class VpnTunnelListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VpnTunnelListWarningData> data;
@@ -108512,7 +108517,7 @@ class VpnTunnelsScopedListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<VpnTunnelsScopedListWarningData> data;
@@ -108813,7 +108818,7 @@ class XpnHostListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<XpnHostListWarningData> data;
@@ -109202,7 +109207,7 @@ class ZoneListWarning {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ZoneListWarningData> data;

@@ -4000,7 +4000,7 @@ class ResourcesCalendarsResource {
   /// [orderBy] - Field(s) to sort results by in either ascending or descending
   /// order. Supported fields include resourceId, resourceName, capacity,
   /// buildingId, and floorName. If no order is specified, defaults to
-  /// ascending. Should be of the form "field [asc|desc], field [asc|desc],
+  /// ascending. Should be of the form "field \[asc|desc\], field \[asc|desc\],
   /// ...". For example buildingId, capacity desc would return results sorted
   /// first by buildingId in ascending order then by capacity in descending
   /// order.
@@ -7590,8 +7590,8 @@ class Building {
   /// The display names for all floors in this building.
   ///
   /// The floors are expected to be sorted in ascending order, from lowest floor
-  /// to highest floor. For example, ["B2", "B1", "L", "1", "2", "2M", "3",
-  /// "PH"] Must contain at least one entry.
+  /// to highest floor. For example, \["B2", "B1", "L", "1", "2", "2M", "3",
+  /// "PH"\] Must contain at least one entry.
   core.List<core.String> floorNames;
 
   /// Kind of resource this is.

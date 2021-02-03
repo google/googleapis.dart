@@ -225,8 +225,8 @@ class ProjectsDataSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned. Must be in the form: `projects/{project_id}` or
-  /// `projects/{project_id}/locations/{location_id}
+  /// be returned. Must be in the form: \`projects/{project_id}\` or
+  /// \`projects/{project_id}/locations/{location_id}
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
@@ -563,8 +563,8 @@ class ProjectsLocationsDataSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned. Must be in the form: `projects/{project_id}` or
-  /// `projects/{project_id}/locations/{location_id}
+  /// be returned. Must be in the form: \`projects/{project_id}\` or
+  /// \`projects/{project_id}/locations/{location_id}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
@@ -1046,7 +1046,7 @@ class ProjectsLocationsTransferConfigsResource {
     );
   }
 
-  /// Creates transfer runs for a time range [start_time, end_time].
+  /// Creates transfer runs for a time range \[start_time, end_time\].
   ///
   /// For each date - or whatever granularity the data source supports - in the
   /// range, one transfer run is created. Note that runs are created per UTC
@@ -1891,7 +1891,7 @@ class ProjectsTransferConfigsResource {
     );
   }
 
-  /// Creates transfer runs for a time range [start_time, end_time].
+  /// Creates transfer runs for a time range \[start_time, end_time\].
   ///
   /// For each date - or whatever granularity the data source supports - in the
   /// range, one transfer run is created. Note that runs are created per UTC
@@ -3399,7 +3399,7 @@ class TransferConfig {
   /// The number of days to look back to automatically refresh the data.
   ///
   /// For example, if `data_refresh_window_days = 10`, then every day BigQuery
-  /// reingests data for [today-10, today-1], rather than ingesting data for
+  /// reingests data for \[today-10, today-1\], rather than ingesting data for
   /// just \[today-1\]. Only valid if the data source supports the feature. Set
   /// the value to 0 to use the default value.
   core.int dataRefreshWindowDays;

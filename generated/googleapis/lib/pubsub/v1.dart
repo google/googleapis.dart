@@ -351,7 +351,7 @@ class ProjectsSnapshotsResource {
 
   /// Lists the existing snapshots.
   ///
-  /// Snapshots are used in [Seek](
+  /// Snapshots are used in \[Seek\](
   /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
   /// allow you to manage message acknowledgments in bulk. That is, you can set
   /// the acknowledgment state of messages in an existing subscription to the
@@ -1336,7 +1336,7 @@ class ProjectsSubscriptionsResource {
   /// Seeks an existing subscription to a point in time or to a given snapshot,
   /// whichever is provided in the request.
   ///
-  /// Snapshots are used in [Seek](
+  /// Snapshots are used in \[Seek\](
   /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
   /// allow you to manage message acknowledgments in bulk. That is, you can set
   /// the acknowledgment state of messages in an existing subscription to the
@@ -1545,7 +1545,7 @@ class ProjectsTopicsResource {
 
   /// Creates the given topic with the given name.
   ///
-  /// See the [resource name rules](
+  /// See the \[resource name rules\](
   /// https://cloud.google.com/pubsub/docs/admin#resource_names).
   ///
   /// [request] - The metadata request object.
@@ -2979,14 +2979,14 @@ class OidcToken {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

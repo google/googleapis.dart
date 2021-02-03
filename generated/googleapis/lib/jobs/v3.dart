@@ -4953,12 +4953,12 @@ class JobQuery {
 class LatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   LatLng();
@@ -5664,9 +5664,9 @@ class NamespacedDebugInput {
 class NumericBucketingOption {
   /// Two adjacent values form a histogram bucket.
   ///
-  /// Values should be in ascending order. For example, if [5, 10, 15] are
-  /// provided, four buckets are created: (-inf, 5), 5, 10), [10, 15), [15,
-  /// inf). At most 20 [buckets_bound is supported.
+  /// Values should be in ascending order. For example, if \[5, 10, 15\] are
+  /// provided, four buckets are created: (-inf, 5), 5, 10), \[10, 15), \[15,
+  /// inf). At most 20 \[buckets_bound is supported.
   ///
   /// Required.
   core.List<core.double> bucketBounds;

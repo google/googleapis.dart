@@ -964,7 +964,7 @@ class DevicesDeviceUsersResource {
   /// Value must have pattern `^devices/\[^/\]+/deviceUsers$`.
   ///
   /// [androidId] - Android Id returned by
-  /// [Settings.Secure#ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
+  /// \[Settings.Secure#ANDROID_ID\](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
   ///
   /// [pageSize] - The maximum number of DeviceUsers to return. If unspecified,
   /// at most 20 DeviceUsers will be returned. The maximum value is 20; values
@@ -1575,7 +1575,7 @@ class GroupsResource {
   ///
   /// [parent] - Required. Customer ID to list all groups from.
   ///
-  /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
+  /// [view] - Group resource view to be returned. Defaults to \[View.BASIC\]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
   /// - "BASIC" : Server responses only include basic information.
@@ -1783,7 +1783,7 @@ class GroupsResource {
   /// match ('==') is supported on parent, and CONTAINS match ('in') is
   /// supported on labels.
   ///
-  /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
+  /// [view] - Group resource view to be returned. Defaults to \[View.BASIC\]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
   /// - "BASIC" : Server responses only include basic information.

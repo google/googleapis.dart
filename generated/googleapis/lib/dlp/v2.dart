@@ -4199,19 +4199,19 @@ class ProjectsJobTriggersResource {
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
-  /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
-  /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values for inspect jobs: - `status` -
-  /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
-  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+  /// \`AND\` or \`OR\` logical operators. A sequence of restrictions implicitly
+  /// uses \`AND\`. * A restriction has the form of \`{field} {operator}
+  /// {value}\`. * Supported fields/values for inspect jobs: - \`status\` -
+  /// HEALTHY|PAUSED|CANCELLED - \`inspected_storage\` -
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
   /// 'error_count' - Number of errors that have occurred while running. * The
-  /// operator must be `=` or `!=` for status and inspected_storage. Examples: *
-  /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage
-  /// = cloud_storage OR inspected_storage = bigquery * inspected_storage =
-  /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time >
-  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
-  /// than 500 characters.
+  /// operator must be \`=\` or \`!=\` for status and inspected_storage.
+  /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
+  /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
+  /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
+  /// * last_run_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+  /// should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -6284,19 +6284,19 @@ class ProjectsLocationsJobTriggersResource {
   ///
   /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
   /// made up of one or more restrictions. * Restrictions can be combined by
-  /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
-  /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values for inspect jobs: - `status` -
-  /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
-  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+  /// \`AND\` or \`OR\` logical operators. A sequence of restrictions implicitly
+  /// uses \`AND\`. * A restriction has the form of \`{field} {operator}
+  /// {value}\`. * Supported fields/values for inspect jobs: - \`status\` -
+  /// HEALTHY|PAUSED|CANCELLED - \`inspected_storage\` -
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
   /// 'error_count' - Number of errors that have occurred while running. * The
-  /// operator must be `=` or `!=` for status and inspected_storage. Examples: *
-  /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage
-  /// = cloud_storage OR inspected_storage = bigquery * inspected_storage =
-  /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time >
-  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
-  /// than 500 characters.
+  /// operator must be \`=\` or \`!=\` for status and inspected_storage.
+  /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
+  /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
+  /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
+  /// * last_run_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+  /// should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -8338,13 +8338,13 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
 
 /// Represents a color in the RGB color space.
 class GooglePrivacyDlpV2Color {
-  /// The amount of blue in the color as a value in the interval [0, 1].
+  /// The amount of blue in the color as a value in the interval \[0, 1\].
   core.double blue;
 
-  /// The amount of green in the color as a value in the interval [0, 1].
+  /// The amount of green in the color as a value in the interval \[0, 1\].
   core.double green;
 
-  /// The amount of red in the color as a value in the interval [0, 1].
+  /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double red;
 
   GooglePrivacyDlpV2Color();
@@ -8412,7 +8412,7 @@ class GooglePrivacyDlpV2Condition {
 
   /// Value to compare against.
   ///
-  /// [Mandatory, except for `EXISTS` tests.]
+  /// \[Mandatory, except for `EXISTS` tests.\]
   GooglePrivacyDlpV2Value value;
 
   GooglePrivacyDlpV2Condition();
@@ -9173,16 +9173,16 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// FFX mode natively supports.
   ///
   /// This happens before/after encryption/decryption. Each character listed
-  /// must appear only once. Number of characters must be in the range [2, 95].
-  /// This must be encoded as ASCII. The order of characters does not matter.
-  /// The full list of allowed characters is:
+  /// must appear only once. Number of characters must be in the range \[2,
+  /// 95\]. This must be encoded as ASCII. The order of characters does not
+  /// matter. The full list of allowed characters is:
   /// 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-  /// ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
+  /// ~\`!@#$%^&*()_-+={\[}\]|\:;"'<,>.?/
   core.String customAlphabet;
 
   /// The native way to select the alphabet.
   ///
-  /// Must be in the range [2, 95].
+  /// Must be in the range \[2, 95\].
   core.int radix;
 
   /// The custom infoType to annotate the surrogate with.
@@ -9195,7 +9195,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc'
   /// This annotation identifies the surrogate when inspecting content using the
   /// custom infoType
-  /// [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype).
+  /// \[`SurrogateType`\](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype).
   /// This facilitates reversal of the surrogate when it occurs in free text. In
   /// order for inspection to work properly, the name of this infoType must not
   /// occur naturally anywhere in your data; otherwise, inspection may find a
@@ -9904,7 +9904,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
 
 /// A DeltaPresenceEstimationHistogramBucket message with the following values:
 /// min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are
-/// 42 records for which δ is in [0.1, 0.2).
+/// 42 records for which δ is in \[0.1, 0.2).
 ///
 /// An important particular case is when min_probability = max_probability = 1:
 /// then, every individual who shares this quasi-identifier combination is in
@@ -10025,14 +10025,14 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
 ///
 /// Note that these results are an estimation, not exact values.
 class GooglePrivacyDlpV2DeltaPresenceEstimationResult {
-  /// The intervals [min_probability, max_probability) do not overlap.
+  /// The intervals \[min_probability, max_probability) do not overlap.
   ///
   /// If a value doesn't correspond to any such interval, the associated
   /// frequency is zero. For example, the following records: {min_probability:
   /// 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2,
   /// max_probability: 0.3, frequency: 42} {min_probability: 0.3,
   /// max_probability: 0.4, frequency: 99} mean that there are no record with an
-  /// estimated probability in [0.1, 0.2) nor larger or equal to 0.4.
+  /// estimated probability in \[0.1, 0.2) nor larger or equal to 0.4.
   core.List<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>
       deltaPresenceEstimationHistogram;
 
@@ -10363,11 +10363,12 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
   /// InfoType list in ExclusionRule rule drops a finding when it overlaps or
   /// contained within with a finding of an infoType from this list.
   ///
-  /// For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`
-  /// and `exclusion_rule` containing `exclude_info_types.info_types` with
-  /// "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with
-  /// EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to
-  /// generate only a single finding, namely email address.
+  /// For example, for \`InspectionRuleSet.info_types\` containing
+  /// "PHONE_NUMBER"\` and \`exclusion_rule\` containing
+  /// \`exclude_info_types.info_types\` with "EMAIL_ADDRESS" the phone number
+  /// findings are dropped if they overlap with EMAIL_ADDRESS finding. That
+  /// leads to "555-222-2222@example.org" to generate only a single finding,
+  /// namely email address.
   core.List<GooglePrivacyDlpV2InfoType> infoTypes;
 
   GooglePrivacyDlpV2ExcludeInfoTypes();
@@ -12613,7 +12614,7 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
 ///
 /// Note that these results are an estimation, not exact values.
 class GooglePrivacyDlpV2KMapEstimationResult {
-  /// The intervals [min_anonymity, max_anonymity] do not overlap.
+  /// The intervals \[min_anonymity, max_anonymity\] do not overlap.
   ///
   /// If a value doesn't correspond to any such interval, the associated
   /// frequency is zero. For example, the following records: {min_anonymity: 1,
@@ -13947,7 +13948,7 @@ class GooglePrivacyDlpV2PublishSummaryToCscc {
 ///
 /// The message contains a single field, `DlpJobName`, which is equal to the
 /// finished job's
-/// [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
+/// \[`DlpJob.name`\](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
 /// Compatible with: Inspect, Risk
 class GooglePrivacyDlpV2PublishToPubSub {
   /// Cloud Pub/Sub topic to send notifications to.
@@ -14147,7 +14148,7 @@ class GooglePrivacyDlpV2QuoteInfo {
   }
 }
 
-/// Generic half-open interval [start, end)
+/// Generic half-open interval \[start, end)
 class GooglePrivacyDlpV2Range {
   /// Index of the last character of the range (exclusive).
   core.String end;
@@ -15411,7 +15412,7 @@ class GooglePrivacyDlpV2SummaryResult {
 }
 
 /// Message for detecting output from deidentification transformations such as
-/// [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
+/// \[`CryptoReplaceFfxFpeConfig`\](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
 ///
 /// These types of transformations are those that perform pseudonymization,
 /// thereby producing a "surrogate" as output. This should be used in

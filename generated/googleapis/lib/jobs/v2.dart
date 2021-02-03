@@ -5007,7 +5007,7 @@ class Job {
   /// Expired jobs are no longer accessible after they are cleaned out. The
   /// format of this field is RFC 3339 date strings. Example:
   /// 2000-01-01T00:00:00.999999999Z See
-  /// [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
+  /// \[https://www.ietf.org/rfc/rfc3339.txt\](https://www.ietf.org/rfc/rfc3339.txt).
   /// A valid date range is between 1970-01-01T00:00:00.0Z and
   /// 2100-12-31T23:59:59.999Z. Invalid dates are ignored and treated as expire
   /// time not provided. If this value is not provided at the time of job
@@ -5070,9 +5070,9 @@ class Job {
   /// experience, use of the structured rather than custom fields is
   /// recommended. Data stored in these custom fields fields are indexed and
   /// searched against by keyword searches (see
-  /// SearchJobsRequest.custom_field_filters][]). The map key must be a number
-  /// between 1-20. If an invalid key is provided on job create or update, an
-  /// error is returned.
+  /// SearchJobsRequest.custom_field_filters\]\[\]). The map key must be a
+  /// number between 1-20. If an invalid key is provided on job create or
+  /// update, an error is returned.
   ///
   /// Deprecated.
   core.Map<core.String, CustomField> filterableCustomFields;
@@ -6231,12 +6231,12 @@ class JobQuery {
 class LatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   LatLng();
@@ -6916,9 +6916,9 @@ class NamespacedDebugInput {
 class NumericBucketingOption {
   /// Two adjacent values form a histogram bucket.
   ///
-  /// Values should be in ascending order. For example, if [5, 10, 15] are
-  /// provided, four buckets are created: (-inf, 5), 5, 10), [10, 15), [15,
-  /// inf). At most 20 [buckets_bound is supported.
+  /// Values should be in ascending order. For example, if \[5, 10, 15\] are
+  /// provided, four buckets are created: (-inf, 5), 5, 10), \[10, 15), \[15,
+  /// inf). At most 20 \[buckets_bound is supported.
   ///
   /// Required.
   core.List<core.double> bucketBounds;

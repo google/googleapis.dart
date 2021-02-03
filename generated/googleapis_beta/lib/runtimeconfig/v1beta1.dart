@@ -747,8 +747,8 @@ class ProjectsConfigsVariablesResource {
   ///
   /// You cannot create a variable with a name that is a prefix of an existing
   /// variable name, or a name that has an existing variable name as a prefix.
-  /// To learn more about creating a variable, read the [Setting and Getting
-  /// Data](/deployment-manager/runtime-configurator/set-and-get-variables)
+  /// To learn more about creating a variable, read the \[Setting and Getting
+  /// Data\](/deployment-manager/runtime-configurator/set-and-get-variables)
   /// documentation.
   ///
   /// [request] - The metadata request object.
@@ -1163,8 +1163,8 @@ class ProjectsConfigsVariablesResource {
   /// If you set the deadline for watching to a larger value than internal
   /// timeout (60 seconds), the current variable value is returned and the
   /// `variableState` will be `VARIABLE_STATE_UNSPECIFIED`. To learn more about
-  /// creating a watcher, read the [Watching a Variable for
-  /// Changes](/deployment-manager/runtime-configurator/watching-a-variable)
+  /// creating a watcher, read the \[Watching a Variable for
+  /// Changes\](/deployment-manager/runtime-configurator/watching-a-variable)
   /// documentation.
   ///
   /// [request] - The metadata request object.
@@ -2055,14 +2055,14 @@ class Operation {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -2354,9 +2354,10 @@ class Variable {
   /// the `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least
   /// one non-slash character. Multiple slashes are coalesced into single slash
   /// character. Each path segment should match
-  /// [0-9A-Za-z](?:\[_.A-Za-z0-9-\]{0,62}\[_.A-Za-z0-9\])? regular expression.
-  /// The length of a `[VARIABLE_NAME]` must be less than 256 characters. Once
-  /// you create a variable, you cannot change the variable name.
+  /// \[0-9A-Za-z\](?:\[_.A-Za-z0-9-\]{0,62}\[_.A-Za-z0-9\])? regular
+  /// expression. The length of a `[VARIABLE_NAME]` must be less than 256
+  /// characters. Once you create a variable, you cannot change the variable
+  /// name.
   core.String name;
 
   /// The current state of the variable.
@@ -2451,8 +2452,8 @@ class Variable {
 /// to wait until some number of nodes have checked in. Afterwards, your
 /// application runs some arbitrary code after the condition has been met and
 /// the waiter returns successfully. Once created, a Waiter resource is
-/// immutable. To learn more about using waiters, read the [Creating a
-/// Waiter](/deployment-manager/runtime-configurator/creating-a-waiter)
+/// immutable. To learn more about using waiters, read the \[Creating a
+/// Waiter\](/deployment-manager/runtime-configurator/creating-a-waiter)
 /// documentation.
 class Waiter {
   /// The instant at which this Waiter resource was created.

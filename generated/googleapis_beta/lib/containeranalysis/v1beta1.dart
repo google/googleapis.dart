@@ -3329,7 +3329,7 @@ class Fingerprint {
   core.List<core.String> v2Blob;
 
   /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
-  /// := sha256(v2_blob\[N\] + " " + v2_name[N+1]) Only the name of the final
+  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
   /// blob is kept.
   ///
   /// Output only.
@@ -4330,8 +4330,8 @@ class Link {
   /// This can also be empty if links are generated for operations that aren't
   /// directly mapped to a specific command. Each term in the command is an
   /// independent string in the list. An example of a command in the in-toto
-  /// metadata field is: "command": ["git", "clone",
-  /// "https://github.com/in-toto/demo-project.git"]
+  /// metadata field is: "command": \["git", "clone",
+  /// "https://github.com/in-toto/demo-project.git"\]
   core.List<core.String> command;
 
   /// This is a field that can be used to capture information about the
@@ -4348,8 +4348,8 @@ class Link {
   /// used for the operation performed.
   ///
   /// The key of the map is the path of the artifact and the structure contains
-  /// the recorded hash information. An example is: "materials": [ {
-  /// "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", : } } ]
+  /// the recorded hash information. An example is: "materials": \[ {
+  /// "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", : } } \]
   core.List<GrafeasV1beta1IntotoArtifact> materials;
 
   /// Products are the supply chain artifacts generated as a result of the step.
@@ -5179,14 +5179,14 @@ class PgpSignedAttestation {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

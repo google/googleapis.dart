@@ -9222,7 +9222,7 @@ class Experiment {
   /// This field is read-only.
   core.String kind;
 
-  /// An integer number in [3, 90].
+  /// An integer number in \[3, 90\].
   ///
   /// Specifies the minimum length of the experiment. Can be changed for a
   /// running experiment. This field may not be changed for an experiments whose
@@ -9314,7 +9314,7 @@ class Experiment {
   /// field is required when creating an experiment.
   core.String status;
 
-  /// A floating-point number in (0, 1].
+  /// A floating-point number in (0, 1\].
   ///
   /// Specifies the fraction of the traffic that participates in the experiment.
   /// Can be changed for a running experiment. This field may not be changed for
@@ -12656,7 +12656,7 @@ class ProfileFilterLink {
   /// to the same profile.
   /// For readonly (i.e., list and get) operations, the rank always starts at 1.
   /// For write (i.e., create, update, or delete) operations, you may specify a
-  /// value between 0 and 255 inclusively, [0, 255].
+  /// value between 0 and 255 inclusively, \[0, 255\].
   ///
   /// In order to insert a link at the end of the list, either don't specify a
   /// rank or set a rank to a number greater than the largest rank in the list.

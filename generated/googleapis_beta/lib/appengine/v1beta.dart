@@ -6638,7 +6638,7 @@ class Status {
 /// Traffic splits define how traffic directed to the service is assigned to
 /// versions.
 class TrafficSplit {
-  /// Mapping from version IDs within the service to fractional (0.000, 1]
+  /// Mapping from version IDs within the service to fractional (0.000, 1\]
   /// allocations of traffic for that version.
   ///
   /// Each version can be specified only once, but some versions in the service

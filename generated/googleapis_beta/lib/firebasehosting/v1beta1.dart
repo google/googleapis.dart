@@ -235,11 +235,11 @@ class ProjectsSitesResource {
   /// format: sites/ site-name/config
   /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+/config$`.
   ///
-  /// [updateMask] - A set of field names from your [site
-  /// configuration](../sites.SiteConfig) that you want to update. A field will
+  /// [updateMask] - A set of field names from your \[site
+  /// configuration\](../sites.SiteConfig) that you want to update. A field will
   /// be overwritten if, and only if, it's in the mask. If a mask is not
   /// provided then a default mask of only
-  /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+  /// \[`max_versions`\](../sites.SiteConfig.max_versions) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1488,8 +1488,8 @@ class ProjectsSitesVersionsResource {
   /// Note that this method will fail with `FAILED_PRECONDITION` in the event of
   /// an invalid state transition. The only valid transition for a version is
   /// currently from a `CREATED` status to a `FINALIZED` status. Use
-  /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
-  /// to `DELETED`.
+  /// \[`DeleteVersion`\](../sites.versions/delete) to set the status of a
+  /// version to `DELETED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1497,15 +1497,16 @@ class ProjectsSitesVersionsResource {
   ///
   /// [name] - The unique identifier for a version, in the format:
   /// sites/site-name /versions/versionID This name is provided in the response
-  /// body when you call the [`CreateVersion`](../sites.versions/create)
+  /// body when you call the \[`CreateVersion`\](../sites.versions/create)
   /// endpoint.
   /// Value must have pattern
   /// `^projects/\[^/\]+/sites/\[^/\]+/versions/\[^/\]+$`.
   ///
-  /// [updateMask] - A set of field names from your [version](../sites.versions)
-  /// that you want to update. A field will be overwritten if, and only if, it's
-  /// in the mask. If a mask is not provided then a default mask of only
-  /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
+  /// [updateMask] - A set of field names from your
+  /// \[version\](../sites.versions) that you want to update. A field will be
+  /// overwritten if, and only if, it's in the mask. If a mask is not provided
+  /// then a default mask of only
+  /// \[`status`\](../sites.versions#Version.FIELDS.status) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1786,11 +1787,11 @@ class SitesResource {
   /// format: sites/ site-name/config
   /// Value must have pattern `^sites/\[^/\]+/config$`.
   ///
-  /// [updateMask] - A set of field names from your [site
-  /// configuration](../sites.SiteConfig) that you want to update. A field will
+  /// [updateMask] - A set of field names from your \[site
+  /// configuration\](../sites.SiteConfig) that you want to update. A field will
   /// be overwritten if, and only if, it's in the mask. If a mask is not
   /// provided then a default mask of only
-  /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+  /// \[`max_versions`\](../sites.SiteConfig.max_versions) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3026,8 +3027,8 @@ class SitesVersionsResource {
   /// Note that this method will fail with `FAILED_PRECONDITION` in the event of
   /// an invalid state transition. The only valid transition for a version is
   /// currently from a `CREATED` status to a `FINALIZED` status. Use
-  /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
-  /// to `DELETED`.
+  /// \[`DeleteVersion`\](../sites.versions/delete) to set the status of a
+  /// version to `DELETED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3035,14 +3036,15 @@ class SitesVersionsResource {
   ///
   /// [name] - The unique identifier for a version, in the format:
   /// sites/site-name /versions/versionID This name is provided in the response
-  /// body when you call the [`CreateVersion`](../sites.versions/create)
+  /// body when you call the \[`CreateVersion`\](../sites.versions/create)
   /// endpoint.
   /// Value must have pattern `^sites/\[^/\]+/versions/\[^/\]+$`.
   ///
-  /// [updateMask] - A set of field names from your [version](../sites.versions)
-  /// that you want to update. A field will be overwritten if, and only if, it's
-  /// in the mask. If a mask is not provided then a default mask of only
-  /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
+  /// [updateMask] - A set of field names from your
+  /// \[version\](../sites.versions) that you want to update. A field will be
+  /// overwritten if, and only if, it's in the mask. If a mask is not provided
+  /// then a default mask of only
+  /// \[`status`\](../sites.versions#Version.FIELDS.status) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3842,12 +3844,13 @@ class Empty {
   }
 }
 
-/// A [`header`](/docs/hosting/full-config#headers) is an object that specifies
-/// a URL pattern that, if matched to the request URL path, triggers Hosting to
-/// apply the specified custom response headers.
+/// A \[`header`\](/docs/hosting/full-config#headers) is an object that
+/// specifies a URL pattern that, if matched to the request URL path, triggers
+/// Hosting to apply the specified custom response headers.
 class Header {
-  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
-  /// to match against the request URL path.
+  /// The user-supplied
+  /// \[glob\](/docs/hosting/full-config#glob_pattern_matching) to match against
+  /// the request URL path.
   core.String glob;
 
   /// The additional headers to add to the response.
@@ -3926,7 +3929,7 @@ class ListChannelsResponse {
 
   /// If there are additional releases remaining beyond the ones in this
   /// response, then supply this token in the next
-  /// [`list`](../sites.channels/list) call to continue with the next set of
+  /// \[`list`\](../sites.channels/list) call to continue with the next set of
   /// releases.
   core.String nextPageToken;
 
@@ -3993,8 +3996,8 @@ class ListDomainsResponse {
 class ListReleasesResponse {
   /// If there are additional releases remaining beyond the ones in this
   /// response, then supply this token in the next
-  /// [`list`](../sites.versions.files/list) call to continue with the next set
-  /// of releases.
+  /// \[`list`\](../sites.versions.files/list) call to continue with the next
+  /// set of releases.
   core.String nextPageToken;
 
   /// The list of hashes of files that still need to be uploaded, if any exist.
@@ -4318,12 +4321,13 @@ class PreviewConfig {
   }
 }
 
-/// A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL
+/// A \[`redirect`\](/docs/hosting/full-config#redirects) object specifies a URL
 /// pattern that, if matched to the request URL path, triggers Hosting to
 /// respond with a redirect to the specified destination path.
 class Redirect {
-  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
-  /// to match against the request URL path.
+  /// The user-supplied
+  /// \[glob\](/docs/hosting/full-config#glob_pattern_matching) to match against
+  /// the request URL path.
   core.String glob;
 
   /// The value to put in the HTTP location header of the response.
@@ -4382,8 +4386,8 @@ class Redirect {
   }
 }
 
-/// A `Release` is a particular [collection of configurations and
-/// files](sites.versions) that is set to be public at a particular time.
+/// A `Release` is a particular \[collection of configurations and
+/// files\](sites.versions) that is set to be public at a particular time.
 class Release {
   /// The deploy description when the release was created.
   ///
@@ -4392,7 +4396,7 @@ class Release {
 
   /// The unique identifier for the release, in the format: sites/
   /// site-name/releases/releaseID This name is provided in the response body
-  /// when you call the [`CreateRelease`](sites.releases/create) endpoint.
+  /// when you call the \[`CreateRelease`\](sites.releases/create) endpoint.
   ///
   /// Output only.
   core.String name;
@@ -4475,7 +4479,7 @@ class Release {
   }
 }
 
-/// A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL
+/// A \[`rewrite`\](/docs/hosting/full-config#rewrites) object specifies a URL
 /// pattern that, if matched to the request URL path, triggers Hosting to
 /// respond as if the service were given the specified destination URL.
 class Rewrite {
@@ -4487,8 +4491,9 @@ class Rewrite {
   /// Must match the exported function name exactly.
   core.String function;
 
-  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
-  /// to match against the request URL path.
+  /// The user-supplied
+  /// \[glob\](/docs/hosting/full-config#glob_pattern_matching) to match against
+  /// the request URL path.
   core.String glob;
 
   /// The URL path to rewrite the request to.
@@ -4554,8 +4559,8 @@ class Rewrite {
 ///
 /// The URL request paths are matched against the specified URL patterns in the
 /// configuration, then Hosting applies the applicable configuration according
-/// to a specific [priority
-/// order](/docs/hosting/full-config#hosting_priority_order).
+/// to a specific \[priority
+/// order\](/docs/hosting/full-config#hosting_priority_order).
 class ServingConfig {
   /// How to handle well known App Association files.
   /// Possible string values are:
@@ -4763,13 +4768,13 @@ class Status {
   }
 }
 
-/// A `Version` is the collection of configuration and [static
-/// files](sites.versions.files) that determine how a site is displayed.
+/// A `Version` is the collection of configuration and \[static
+/// files\](sites.versions.files) that determine how a site is displayed.
 class Version {
   /// The configuration for the behavior of the site.
   ///
   /// This configuration exists in the
-  /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
+  /// \[`firebase.json`\](/docs/cli/#the_firebasejson_file) file.
   ServingConfig config;
 
   /// The time at which the version was created.
@@ -4814,7 +4819,7 @@ class Version {
 
   /// The unique identifier for a version, in the format: sites/site-name
   /// /versions/versionID This name is provided in the response body when you
-  /// call the [`CreateVersion`](../sites.versions/create) endpoint.
+  /// call the \[`CreateVersion`\](../sites.versions/create) endpoint.
   core.String name;
 
   /// Version preview configuration for the site version.
@@ -4826,14 +4831,15 @@ class Version {
 
   /// The deploy status of a version.
   ///
-  /// For a successful deploy, call the [`CreateVersion`](sites.versions/create)
-  /// endpoint to make a new version (`CREATED` status), [upload all desired
-  /// files](sites.versions/populateFiles) to the version, then
-  /// [update](sites.versions/patch) the version to the `FINALIZED` status. Note
-  /// that if you leave the version in the `CREATED` state for more than 12
+  /// For a successful deploy, call the
+  /// \[`CreateVersion`\](sites.versions/create) endpoint to make a new version
+  /// (`CREATED` status), \[upload all desired
+  /// files\](sites.versions/populateFiles) to the version, then
+  /// \[update\](sites.versions/patch) the version to the `FINALIZED` status.
+  /// Note that if you leave the version in the `CREATED` state for more than 12
   /// hours, the system will automatically mark the version as `ABANDONED`. You
   /// can also change the status of a version to `DELETED` by calling the
-  /// [`DeleteVersion`](sites.versions/delete) endpoint.
+  /// \[`DeleteVersion`\](sites.versions/delete) endpoint.
   /// Possible string values are:
   /// - "VERSION_STATUS_UNSPECIFIED" : The default status; should not be
   /// intentionally used.

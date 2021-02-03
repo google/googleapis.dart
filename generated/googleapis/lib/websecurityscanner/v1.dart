@@ -1758,7 +1758,7 @@ class ScanConfig {
   ///
   /// A valid value ranges from 5 to 20 inclusively. If the field is unspecified
   /// or its value is set 0, server will default to 15. Other values outside of
-  /// [5, 20] range will be rejected with INVALID_ARGUMENT error.
+  /// \[5, 20\] range will be rejected with INVALID_ARGUMENT error.
   core.int maxQps;
 
   /// The resource name of the ScanConfig.

@@ -2863,8 +2863,8 @@ class ObbFile {
   FileReference obb;
 
   /// OBB file name which must conform to the format as specified by Android
-  /// e.g. [main|patch].0300110.com.example.android.obb which will be installed
-  /// into \/Android/obb/\/ on the device.
+  /// e.g. \[main|patch\].0300110.com.example.android.obb which will be
+  /// installed into \/Android/obb/\/ on the device.
   ///
   /// Required.
   core.String obbFileName;

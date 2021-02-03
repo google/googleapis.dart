@@ -243,7 +243,7 @@ class ProjectsModelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent to list models for. The parent
-  /// must have the form `projects/{project_id}'
+  /// must have the form \`projects/{project_id}'
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter for the list e.g. 'tags: abc' to list models which are

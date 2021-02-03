@@ -5137,8 +5137,8 @@ class ClusterConfig {
   /// node, as shown below using curl (you can also use wget): ROLE=$(curl -H
   /// Metadata-Flavor:Google
   /// http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if
-  /// [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ...
-  /// worker specific actions ... fi
+  /// \[\[ "${ROLE}" == 'Master' \]\]; then ... master specific actions ... else
+  /// ... worker specific actions ... fi
   ///
   /// Optional.
   core.List<NodeInitializationAction> initializationActions;
@@ -6456,8 +6456,8 @@ class InstanceGroupAutoscalingPolicyConfig {
   ///
   /// Required for primary workers. Note that by default, clusters will not use
   /// secondary workers. Required for secondary workers if the minimum secondary
-  /// instances is set.Primary workers - Bounds: [min_instances, ). Secondary
-  /// workers - Bounds: [min_instances, ). Default: 0.
+  /// instances is set.Primary workers - Bounds: \[min_instances, ). Secondary
+  /// workers - Bounds: \[min_instances, ). Default: 0.
   ///
   /// Required.
   core.int maxInstances;
@@ -8438,14 +8438,14 @@ class PigJob {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the IAM documentation
 /// (https://cloud.google.com/iam/help/conditions/resource-policies).JSON
-/// example: { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// example: { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -8789,8 +8789,8 @@ class QueryList {
   /// You do not need to end a query expression with a semicolon. Multiple
   /// queries can be specified in one string by separating each with a
   /// semicolon. Here is an example of a Dataproc API snippet that uses a
-  /// QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
-  /// "query1", "query2", "query3;query4", ] } }
+  /// QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": \[
+  /// "query1", "query2", "query3;query4", \] } }
   ///
   /// Required.
   core.List<core.String> queries;

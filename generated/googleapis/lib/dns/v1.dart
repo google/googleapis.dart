@@ -1892,7 +1892,7 @@ class DnsKey {
   /// The key tag can be used to identify a DNSKEY more quickly (but it is not a
   /// unique identifier). In particular, the key tag is used in a parent zone's
   /// DS record to point at the DNSKEY in this child ManagedZone. The key tag is
-  /// a number in the range [0, 65535] and the algorithm to calculate it is
+  /// a number in the range \[0, 65535\] and the algorithm to calculate it is
   /// specified in RFC4034 Appendix B. Output only.
   core.int keyTag;
   core.String kind;

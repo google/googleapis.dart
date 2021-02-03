@@ -1191,7 +1191,7 @@ class GoogleCloudDocumentaiV1beta1Document {
 class GoogleCloudDocumentaiV1beta1DocumentEntity {
   /// Confidence of detected Schema entity.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   ///
   /// Optional.
   core.double confidence;
@@ -1801,7 +1801,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
 class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -2017,7 +2017,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   /// is for.
   ///
   /// e.g. confidence can be for a single token, a table, a visual element, etc.
-  /// depending on context. Range [0, 1].
+  /// depending on context. Range \[0, 1\].
   core.double confidence;
 
   /// Detected orientation for the Layout.
@@ -3273,7 +3273,7 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
   /// The max number of pages to include into each output Document shard JSON on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 parsed pages will be
   /// produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each
   /// containing 20 parsed pages will be written under the prefix
@@ -3714,7 +3714,7 @@ class GoogleCloudDocumentaiV1beta2Document {
 class GoogleCloudDocumentaiV1beta2DocumentEntity {
   /// Confidence of detected Schema entity.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   ///
   /// Optional.
   core.double confidence;
@@ -4375,7 +4375,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
 class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -4591,7 +4591,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   /// is for.
   ///
   /// e.g. confidence can be for a single token, a table, a visual element, etc.
-  /// depending on context. Range [0, 1].
+  /// depending on context. Range \[0, 1\].
   core.double confidence;
 
   /// Detected orientation for the Layout.
@@ -6019,7 +6019,7 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
   /// The max number of pages to include into each output Document shard JSON on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 parsed pages will be
   /// produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each
   /// containing 20 parsed pages will be written under the prefix
@@ -6224,7 +6224,7 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
 class GoogleCloudDocumentaiV1beta2TableBoundHint {
   /// Bounding box hint for a table on this page.
   ///
-  /// The coordinates must be normalized to [0,1] and the bounding box must be
+  /// The coordinates must be normalized to \[0,1\] and the bounding box must be
   /// an axis-aligned rectangle.
   GoogleCloudDocumentaiV1beta2BoundingPoly boundingBox;
 
@@ -6798,24 +6798,24 @@ class GoogleRpcStatus {
 /// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
 /// float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
-/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return [UIColor
-/// colorWithRed:red green:green blue:blue alpha:alpha]; } static Color*
-/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color
-/// getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color*
-/// result = [\[Color alloc\] init]; [result setRed:red]; [result
-/// setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result
-/// setAlpha:floatWrapperWithValue(alpha)]; } \[result autorelease\]; return
+/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
+/// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
+/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (!\[color
+/// getRed:&red green:&green blue:&blue alpha:&alpha\]) { return nil; } Color*
+/// result = \[\[Color alloc\] init\]; \[result setRed:red\]; \[result
+/// setGreen:green\]; \[result setBlue:blue\]; if (alpha <= 0.9999) { \[result
+/// setAlpha:floatWrapperWithValue(alpha)\]; } \[result autorelease\]; return
 /// result; } // ... Example (JavaScript): // ... var protoToCssColor =
 /// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
 /// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
 /// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
 /// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
 /// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
-/// 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
-/// rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor_ =
+/// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
+/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor_ =
 /// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
 /// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
-/// - hexString.length; var resultBuilder = ['#']; for (var i = 0; i <
+/// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
 /// missingZeros; i++) { resultBuilder.push('0'); }
 /// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class GoogleTypeColor {
@@ -6831,13 +6831,13 @@ class GoogleTypeColor {
   /// explicitly given with a value of 1.0).
   core.double alpha;
 
-  /// The amount of blue in the color as a value in the interval [0, 1].
+  /// The amount of blue in the color as a value in the interval \[0, 1\].
   core.double blue;
 
-  /// The amount of green in the color as a value in the interval [0, 1].
+  /// The amount of green in the color as a value in the interval \[0, 1\].
   core.double green;
 
-  /// The amount of red in the color as a value in the interval [0, 1].
+  /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double red;
 
   GoogleTypeColor();

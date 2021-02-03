@@ -25,7 +25,12 @@ const _docPrefixes = {
 };
 
 final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
-final _notLinkBrackets = RegExp(r'\[[\w-\. ]+\](?!\()');
+final _validLinkRegexp = RegExp(
+  r"(\[[\w ,'\.]+\])" // the bit in brackets
+  r'[ ]?' // optional one space between, because discovery docs can be weird
+  r'(\(http[s]?://[^\)\s]+\))' // the bit in parens
+  ,
+);
 
 String bracketClean(String input) {
   if (input == null || input.isEmpty) {
@@ -52,10 +57,10 @@ String bracketClean(String input) {
 }
 
 /// Returns [input] with likely invalid markdown `[links]` removed.
-String _bracketClean(String input) => input.replaceAllMapped(
-      _notLinkBrackets,
-      (match) =>
-          match.group(0).replaceFirst('[', r'\[').replaceFirst(']', r'\]'),
+String _bracketClean(String input) => input.splitMapJoin(
+      _validLinkRegexp,
+      onMatch: (match) => '${match[1]}${match[2]}',
+      onNonMatch: markdownEscape,
     );
 
 /// Represents a comment of a dart element (e.g. class, method, ...)

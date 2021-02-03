@@ -1742,8 +1742,8 @@ class ReportRequest {
   /// Determines the type of rows that are returned in the report.
   ///
   /// For example, if you specify `reportType: keyword`, each row in the report
-  /// will contain data about a keyword. See the [Types of
-  /// Reports](/search-ads/v2/report-types/) reference for the columns that are
+  /// will contain data about a keyword. See the \[Types of
+  /// Reports\](/search-ads/v2/report-types/) reference for the columns that are
   /// available for each type.
   core.String reportType;
 

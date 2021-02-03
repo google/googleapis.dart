@@ -812,13 +812,13 @@ class EntityUsageReportsResource {
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
   /// Entities usage report are only gplus. A parameter query string is in the
-  /// CSV form of [app_name1:param_name1], [app_name2:param_name2].... *Note:*
-  /// The API doesn't accept multiple values of a parameter. If a particular
-  /// parameter is supplied more than once in the API request, the API only
-  /// accepts the last value of that request parameter. In addition, if an
-  /// invalid request parameter is supplied in the API request, the API ignores
-  /// that request parameter and returns the response corresponding to the
-  /// remaining valid request parameters. An example of an invalid request
+  /// CSV form of \[app_name1:param_name1\], \[app_name2:param_name2\]....
+  /// *Note:* The API doesn't accept multiple values of a parameter. If a
+  /// particular parameter is supplied more than once in the API request, the
+  /// API only accepts the last value of that request parameter. In addition, if
+  /// an invalid request parameter is supplied in the API request, the API
+  /// ignores that request parameter and returns the response corresponding to
+  /// the remaining valid request parameters. An example of an invalid request
   /// parameter is one that does not belong to the application. If no parameters
   /// are requested, all parameters are returned.
   /// Value must have pattern `(((gplus)):\[^,\]+,)*(((gplus)):\[^,\]+)`.
@@ -1174,8 +1174,8 @@ class ActivityActor {
 /// Nested parameter value pairs associated with this parameter.
 ///
 /// Complex value type for a parameter are returned as a list of parameter
-/// values. For example, the address parameter may have a value as [{parameter:
-/// [{name: city, value: abc}]}]
+/// values. For example, the address parameter may have a value as \[{parameter:
+/// \[{name: city, value: abc}\]}\]
 class ActivityEventsParametersMessageValue {
   /// Parameter values
   core.List<NestedParameter> parameter;
@@ -1235,7 +1235,7 @@ class ActivityEventsParameters {
   ///
   /// Complex value type for a parameter are returned as a list of parameter
   /// values. For example, the address parameter may have a value as
-  /// [{parameter: [{name: city, value: abc}]}]
+  /// \[{parameter: \[{name: city, value: abc}\]}\]
   ActivityEventsParametersMessageValue messageValue;
 
   /// Integer values of the parameter.

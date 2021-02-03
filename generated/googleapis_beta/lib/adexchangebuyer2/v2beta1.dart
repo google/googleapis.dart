@@ -3387,7 +3387,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by creative. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3483,7 +3483,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
@@ -4546,7 +4546,7 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by creative. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4640,7 +4640,7 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
@@ -5092,11 +5092,11 @@ class AdTechnologyProviders {
   /// contains provider IDs that are outside of those listed in the
   /// `BidRequest.adslot.consented_providers_settings.consented_providers` field
   /// on the (Google bid
-  /// protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto]
+  /// protocol)\[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto\]
   /// and the
   /// `BidRequest.user.ext.consented_providers_settings.consented_providers`
   /// field on the (OpenRTB
-  /// protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto],
+  /// protocol)\[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto\],
   /// and a bid is submitted with that creative for an impression that will
   /// serve to an EEA user, the bid will be filtered before the auction.
   core.List<core.String> detectedProviderIds;
@@ -5420,7 +5420,7 @@ class CalloutStatusRow {
   /// The ID of the callout status.
   ///
   /// See
-  /// [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes).
+  /// \[callout-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes).
   core.int calloutStatusId;
 
   /// The number of impressions for which there was a bid request or bid
@@ -6500,7 +6500,7 @@ class CreativeStatusRow {
   /// The ID of the creative status.
   ///
   /// See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   core.int creativeStatusId;
 
   /// The values of all dimensions associated with metric values in this row.
@@ -7642,7 +7642,7 @@ class FilterSet {
   /// be empty. The filters represented by multiple seller network IDs are ORed
   /// together (i.e., if non-empty, results must match any one of the publisher
   /// networks). See
-  /// [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
+  /// \[seller-network-ids\](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
   /// file for the set of existing seller network IDs.
   core.List<core.int> sellerNetworkIds;
 
@@ -9011,7 +9011,7 @@ class LocationContext {
   /// IDs representing the geo location for this context.
   ///
   /// Please refer to the
-  /// [geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
+  /// \[geo-table.csv\](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
   /// file for different geo criteria IDs.
   core.List<core.int> geoCriteriaIds;
 

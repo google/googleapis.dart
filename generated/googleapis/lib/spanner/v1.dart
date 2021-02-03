@@ -4597,12 +4597,13 @@ class CreateDatabaseMetadata {
 
 /// The request for CreateDatabase.
 class CreateDatabaseRequest {
-  /// A `CREATE DATABASE` statement, which specifies the ID of the new database.
+  /// A \`CREATE DATABASE\` statement, which specifies the ID of the new
+  /// database.
   ///
-  /// The database ID must conform to the regular expression `a-z*\[a-z0-9\]`
+  /// The database ID must conform to the regular expression \`a-z*\[a-z0-9\]\`
   /// and be between 2 and 30 characters in length. If the database ID is a
   /// reserved word or if it contains a hyphen, the database ID must be enclosed
-  /// in backticks (`` ` ``).
+  /// in backticks (\`\` \` \`\`).
   ///
   /// Required.
   core.String createStatement;
@@ -5283,10 +5284,10 @@ class Field {
   /// The name of the field.
   ///
   /// For reads, this is the column name. For SQL queries, it is the column
-  /// alias (e.g., `"Word"` in the query `"SELECT 'hello' AS Word"`), or the
-  /// column name (e.g., `"ColName"` in the query `"SELECT ColName FROM
-  /// Table"`). Some columns might have an empty name (e.g., !"SELECT
-  /// UPPER(ColName)"`). Note that a query result can contain multiple fields
+  /// alias (e.g., \`"Word"\` in the query \`"SELECT 'hello' AS Word"\`), or the
+  /// column name (e.g., \`"ColName"\` in the query \`"SELECT ColName FROM
+  /// Table"\`). Some columns might have an empty name (e.g., !"SELECT
+  /// UPPER(ColName)"\`). Note that a query result can contain multiple fields
   /// with the same name.
   core.String name;
 
@@ -5596,26 +5597,27 @@ class InstanceConfig {
 /// components are interpreted lexicographically by component using the table or
 /// index key's declared sort order. For example, the following range returns
 /// all events for user `"Bob"` that occurred in the year 2015: "start_closed":
-/// ["Bob", "2015-01-01"] "end_closed": ["Bob", "2015-12-31"] Start and end keys
-/// can omit trailing key components. This affects the inclusion and exclusion
-/// of rows that exactly match the provided key components: if the key is
-/// closed, then rows that exactly match the provided components are included;
-/// if the key is open, then rows that exactly match are not included. For
-/// example, the following range includes all events for `"Bob"` that occurred
-/// during and after the year 2000: "start_closed": ["Bob", "2000-01-01"]
-/// "end_closed": ["Bob"] The next example retrieves all events for `"Bob"`:
-/// "start_closed": ["Bob"] "end_closed": ["Bob"] To retrieve events before the
-/// year 2000: "start_closed": ["Bob"] "end_open": ["Bob", "2000-01-01"] The
-/// following range includes all rows in the table: "start_closed": []
-/// "end_closed": [] This range returns all users whose `UserName` begins with
-/// any character from A to C: "start_closed": ["A"] "end_open": ["D"] This
-/// range returns all users whose `UserName` begins with B: "start_closed":
-/// ["B"] "end_open": ["C"] Key ranges honor column sort order. For example,
-/// suppose a table is defined as follows: CREATE TABLE DescendingSortedTable {
-/// Key INT64, ... ) PRIMARY KEY(Key DESC); The following range retrieves all
-/// rows with key values between 1 and 100 inclusive: "start_closed": ["100"]
-/// "end_closed": ["1"] Note that 100 is passed as the start, and 1 is passed as
-/// the end, because `Key` is a descending column in the schema.
+/// \["Bob", "2015-01-01"\] "end_closed": \["Bob", "2015-12-31"\] Start and end
+/// keys can omit trailing key components. This affects the inclusion and
+/// exclusion of rows that exactly match the provided key components: if the key
+/// is closed, then rows that exactly match the provided components are
+/// included; if the key is open, then rows that exactly match are not included.
+/// For example, the following range includes all events for `"Bob"` that
+/// occurred during and after the year 2000: "start_closed": \["Bob",
+/// "2000-01-01"\] "end_closed": \["Bob"\] The next example retrieves all events
+/// for `"Bob"`: "start_closed": \["Bob"\] "end_closed": \["Bob"\] To retrieve
+/// events before the year 2000: "start_closed": \["Bob"\] "end_open": \["Bob",
+/// "2000-01-01"\] The following range includes all rows in the table:
+/// "start_closed": \[\] "end_closed": \[\] This range returns all users whose
+/// `UserName` begins with any character from A to C: "start_closed": \["A"\]
+/// "end_open": \["D"\] This range returns all users whose `UserName` begins
+/// with B: "start_closed": \["B"\] "end_open": \["C"\] Key ranges honor column
+/// sort order. For example, suppose a table is defined as follows: CREATE TABLE
+/// DescendingSortedTable { Key INT64, ... ) PRIMARY KEY(Key DESC); The
+/// following range retrieves all rows with key values between 1 and 100
+/// inclusive: "start_closed": \["100"\] "end_closed": \["1"\] Note that 100 is
+/// passed as the start, and 1 is passed as the end, because `Key` is a
+/// descending column in the schema.
 class KeyRange {
   /// If the end is closed, then the range includes all rows whose first
   /// `len(end_closed)` key columns exactly match `end_closed`.
@@ -6365,25 +6367,25 @@ class PartialResultSet {
   /// (field name, field value) pairs. If a field name is duplicated, then apply
   /// these rules recursively to merge the field values. Some examples of
   /// merging: # Strings are concatenated. "foo", "bar" => "foobar" # Lists of
-  /// non-strings are concatenated. [2, 3], \[4\] => [2, 3, 4] # Lists are
+  /// non-strings are concatenated. \[2, 3\], \[4\] => \[2, 3, 4\] # Lists are
   /// concatenated, but the last and first elements are merged # because they
-  /// are strings. ["a", "b"], ["c", "d"] => ["a", "bc", "d"] # Lists are
+  /// are strings. \["a", "b"\], \["c", "d"\] => \["a", "bc", "d"\] # Lists are
   /// concatenated, but the last and first elements are merged # because they
   /// are lists. Recursively, the last and first elements # of the inner lists
-  /// are merged because they are strings. ["a", ["b", "c"]], [["d"], "e"] =>
-  /// ["a", ["b", "cd"], "e"] # Non-overlapping object fields are combined.
-  /// {"a": "1"}, {"b": "2"} => {"a": "1", "b": 2"} # Overlapping object fields
-  /// are merged. {"a": "1"}, {"a": "2"} => {"a": "12"} # Examples of merging
-  /// objects containing lists of strings. {"a": ["1"]}, {"a": ["2"]} => {"a":
-  /// ["12"]} For a more complete example, suppose a streaming SQL query is
-  /// yielding a result set whose rows contain a single string field. The
-  /// following `PartialResultSet`s might be yielded: { "metadata": { ... }
-  /// "values": ["Hello", "W"] "chunked_value": true "resume_token": "Af65..." }
-  /// { "values": ["orl"] "chunked_value": true "resume_token": "Bqp2..." } {
-  /// "values": ["d"] "resume_token": "Zx1B..." } This sequence of
-  /// `PartialResultSet`s encodes two rows, one containing the field value
-  /// `"Hello"`, and a second containing the field value `"World" = "W" + "orl"
-  /// + "d"`.
+  /// are merged because they are strings. \["a", \["b", "c"\]\], \[\["d"\],
+  /// "e"\] => \["a", \["b", "cd"\], "e"\] # Non-overlapping object fields are
+  /// combined. {"a": "1"}, {"b": "2"} => {"a": "1", "b": 2"} # Overlapping
+  /// object fields are merged. {"a": "1"}, {"a": "2"} => {"a": "12"} # Examples
+  /// of merging objects containing lists of strings. {"a": \["1"\]}, {"a":
+  /// \["2"\]} => {"a": \["12"\]} For a more complete example, suppose a
+  /// streaming SQL query is yielding a result set whose rows contain a single
+  /// string field. The following `PartialResultSet`s might be yielded: {
+  /// "metadata": { ... } "values": \["Hello", "W"\] "chunked_value": true
+  /// "resume_token": "Af65..." } { "values": \["orl"\] "chunked_value": true
+  /// "resume_token": "Bqp2..." } { "values": \["d"\] "resume_token": "Zx1B..."
+  /// } This sequence of `PartialResultSet`s encodes two rows, one containing
+  /// the field value `"Hello"`, and a second containing the field value
+  /// `"World" = "W" + "orl" + "d"`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6880,14 +6882,14 @@ class PlanNode {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -7584,9 +7586,9 @@ class ResultSetMetadata {
   /// Indicates the field names and types for the rows in the result set.
   ///
   /// For example, a SQL query like `"SELECT UserId, UserName FROM Users"` could
-  /// return a `row_type` value like: "fields": [ { "name": "UserId", "type": {
+  /// return a `row_type` value like: "fields": \[ { "name": "UserId", "type": {
   /// "code": "INT64" } }, { "name": "UserName", "type": { "code": "STRING" } },
-  /// ]
+  /// \]
   StructType rowType;
 
   /// If the read or SQL query began a transaction as a side-effect, the

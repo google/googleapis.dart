@@ -629,8 +629,8 @@ class ProjectsAgentResource {
   /// Since there is at most one conversational agent per project, this method
   /// is useful primarily for listing all agents across projects the caller has
   /// access to. One can achieve that with a wildcard project collection id "-".
-  /// Refer to [List
-  /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+  /// Refer to \[List
+  /// Sub-Collections\](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
   ///
   /// Request parameters:
   ///
@@ -1613,13 +1613,13 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified we assume default 'draft' environment.
+  /// If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -1682,17 +1682,17 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   /// Request parameters:
   ///
   /// [session] - Required. The name of the session this query is sent to.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the [API interactions
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we are using "-". It's up to
+  /// the API caller to choose an appropriate \`Session ID\` and \`User Id\`.
+  /// They can be a random number or some type of user and session identifiers
+  /// (preferably hashed). The length of the \`Session ID\` and \`User ID\` must
+  /// not exceed 36 characters. For more information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
@@ -1765,13 +1765,13 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a context for. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -1951,13 +1951,13 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all contexts from. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -2118,13 +2118,13 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a session entity type for.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -2316,13 +2316,13 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all session entity types from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -3766,13 +3766,13 @@ class ProjectsAgentSessionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified we assume default 'draft' environment.
+  /// If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3834,17 +3834,17 @@ class ProjectsAgentSessionsResource {
   /// Request parameters:
   ///
   /// [session] - Required. The name of the session this query is sent to.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the [API interactions
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we are using "-". It's up to
+  /// the API caller to choose an appropriate \`Session ID\` and \`User Id\`.
+  /// They can be a random number or some type of user and session identifiers
+  /// (preferably hashed). The length of the \`Session ID\` and \`User ID\` must
+  /// not exceed 36 characters. For more information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -3915,13 +3915,13 @@ class ProjectsAgentSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a context for. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4100,13 +4100,13 @@ class ProjectsAgentSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all contexts from. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
@@ -4265,13 +4265,13 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a session entity type for.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4462,13 +4462,13 @@ class ProjectsAgentSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all session entity types from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
@@ -5912,8 +5912,8 @@ class ProjectsLocationsAgentResource {
   /// Since there is at most one conversational agent per project, this method
   /// is useful primarily for listing all agents across projects the caller has
   /// access to. One can achieve that with a wildcard project collection id "-".
-  /// Refer to [List
-  /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+  /// Refer to \[List
+  /// Sub-Collections\](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
   ///
   /// Request parameters:
   ///
@@ -6908,13 +6908,13 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified we assume default 'draft' environment.
+  /// If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -6977,17 +6977,17 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
   /// Request parameters:
   ///
   /// [session] - Required. The name of the session this query is sent to.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the [API interactions
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we are using "-". It's up to
+  /// the API caller to choose an appropriate \`Session ID\` and \`User Id\`.
+  /// They can be a random number or some type of user and session identifiers
+  /// (preferably hashed). The length of the \`Session ID\` and \`User ID\` must
+  /// not exceed 36 characters. For more information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
@@ -7060,13 +7060,13 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a context for. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -7246,13 +7246,13 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all contexts from. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -7413,13 +7413,13 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a session entity type for.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -7611,13 +7611,13 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all session entity types from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -8300,13 +8300,13 @@ class ProjectsLocationsAgentSessionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified we assume default 'draft' environment.
+  /// If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -8369,17 +8369,17 @@ class ProjectsLocationsAgentSessionsResource {
   /// Request parameters:
   ///
   /// [session] - Required. The name of the session this query is sent to.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the [API interactions
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we are using "-". It's up to
+  /// the API caller to choose an appropriate \`Session ID\` and \`User Id\`.
+  /// They can be a random number or some type of user and session identifiers
+  /// (preferably hashed). The length of the \`Session ID\` and \`User ID\` must
+  /// not exceed 36 characters. For more information, see the [API interactions
   /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
@@ -8451,13 +8451,13 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a context for. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -8637,13 +8637,13 @@ class ProjectsLocationsAgentSessionsContextsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all contexts from. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -8803,13 +8803,13 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to create a session entity type for.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -9001,13 +9001,13 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The session to list all session entity types from.
-  /// Supported formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`, If `Location
-  /// ID` is not specified we assume default 'us' location. If `Environment ID`
-  /// is not specified, we assume default 'draft' environment. If `User ID` is
-  /// not specified, we assume default '-' user.
+  /// Supported formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`, If
+  /// \`Location ID\` is not specified we assume default 'us' location. If
+  /// \`Environment ID\` is not specified, we assume default 'draft'
+  /// environment. If \`User ID\` is not specified, we assume default '-' user.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -10155,7 +10155,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
 
   /// The SSML text to be synthesized.
   ///
-  /// For more information, see [SSML](/speech/text-to-speech/docs/ssml).
+  /// For more information, see \[SSML\](/speech/text-to-speech/docs/ssml).
   core.String ssml;
 
   /// The raw text to be synthesized.
@@ -13293,7 +13293,7 @@ class GoogleCloudDialogflowV2Message {
 
   /// The message language.
   ///
-  /// This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// This should be a \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
   /// language tag. Example: "en-US".
   ///
   /// Optional.
@@ -13737,7 +13737,7 @@ class GoogleCloudDialogflowV2QueryResult {
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
 class GoogleCloudDialogflowV2Sentiment {
-  /// A non-negative number in the [0, +inf) range, which represents the
+  /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
   core.double magnitude;
@@ -16155,10 +16155,10 @@ class GoogleCloudDialogflowV2beta1InputAudioConfig {
   ///
   /// See [the Cloud Speech
   /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
-  /// for more details. This field is deprecated. Please use [speech_contexts]()
-  /// instead. If you specify both [phrase_hints]() and [speech_contexts](),
-  /// Dialogflow will treat the [phrase_hints]() as a single additional
-  /// [SpeechContext]().
+  /// for more details. This field is deprecated. Please use
+  /// \[speech_contexts\]() instead. If you specify both \[phrase_hints\]() and
+  /// \[speech_contexts\](), Dialogflow will treat the \[phrase_hints\]() as a
+  /// single additional \[SpeechContext\]().
   core.List<core.String> phraseHints;
 
   /// Sample rate (in Hertz) of the audio content sent in the query.
@@ -20293,7 +20293,7 @@ class GoogleCloudDialogflowV2beta1SearchAgentsResponse {
 /// The sentiment, such as positive/negative feeling or association, for a unit
 /// of analysis, such as the query text.
 class GoogleCloudDialogflowV2beta1Sentiment {
-  /// A non-negative number in the [0, +inf) range, which represents the
+  /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
   core.double magnitude;
@@ -20585,7 +20585,7 @@ class GoogleCloudDialogflowV2beta1SpeechContext {
   /// this context are recognized over similar sounding phrases.
   ///
   /// * If the boost is unspecified or non-positive, Dialogflow will not apply
-  /// any boost. Dialogflow recommends that you use boosts in the range (0, 20]
+  /// any boost. Dialogflow recommends that you use boosts in the range (0, 20\]
   /// and that you find a value that fits your use case with binary search.
   ///
   /// Optional.
@@ -20679,7 +20679,7 @@ class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
   /// Optional.
   core.List<core.String> effectsProfileId;
 
-  /// Speaking pitch, in the range [-20.0, 20.0].
+  /// Speaking pitch, in the range \[-20.0, 20.0\].
   ///
   /// 20 means increase 20 semitones from the original pitch. -20 means decrease
   /// 20 semitones from the original pitch.
@@ -20687,7 +20687,7 @@ class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
   /// Optional.
   core.double pitch;
 
-  /// Speaking rate/speed, in the range [0.25, 4.0].
+  /// Speaking rate/speed, in the range \[0.25, 4.0\].
   ///
   /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
   /// twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the
@@ -20702,7 +20702,7 @@ class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
   GoogleCloudDialogflowV2beta1VoiceSelectionParams voice;
 
   /// Volume gain (in dB) of the normal native volume supported by the specific
-  /// voice, in the range [-96.0, 16.0].
+  /// voice, in the range \[-96.0, 16.0\].
   ///
   /// If unset, or set to a value of 0.0 (dB), will play at normal native signal
   /// amplitude. A value of -6.0 (dB) will play at approximately half the
@@ -20972,10 +20972,10 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
   /// The unique identifier of detectIntent request session.
   ///
   /// Can be used to identify end-user inside webhook implementation. Supported
-  /// formats: - `projects//agent/sessions/, -
-  /// `projects//locations//agent/sessions/`, -
-  /// `projects//agent/environments//users//sessions/`, -
-  /// `projects//locations//agent/environments//users//sessions/`,
+  /// formats: - \`projects//agent/sessions/, -
+  /// \`projects//locations//agent/sessions/\`, -
+  /// \`projects//agent/environments//users//sessions/\`, -
+  /// \`projects//locations//agent/environments//users//sessions/\`,
   core.String session;
 
   GoogleCloudDialogflowV2beta1WebhookRequest();
@@ -21583,12 +21583,12 @@ class GoogleRpcStatus {
 class GoogleTypeLatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   GoogleTypeLatLng();

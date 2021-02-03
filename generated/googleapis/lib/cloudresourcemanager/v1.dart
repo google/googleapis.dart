@@ -1515,7 +1515,7 @@ class ProjectsResource {
   /// specified ResourceId, which must include both an ID and a type, such as
   /// organization. This method does not associate the new project with a
   /// billing account. You can set or update the billing account associated with
-  /// a project using the [`projects.updateBillingInfo`]
+  /// a project using the \[`projects.updateBillingInfo`\]
   /// (/billing/reference/rest/v1/projects/updateBillingInfo) method.
   ///
   /// [request] - The metadata request object.
@@ -2536,13 +2536,13 @@ class Ancestor {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -2584,9 +2584,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -2837,10 +2837,10 @@ class ClearOrgPolicyRequest {
 /// organization's resource hierarchy. Policies are inherited down the resource
 /// hierarchy from higher levels, but can also be overridden. For details about
 /// the inheritance rules please read about
-/// [Policies](/resource-manager/reference/rest/v1/Policy). `Constraints` have a
-/// default behavior determined by the `constraint_default` field, which is the
-/// enforcement behavior that is used in the absence of a `Policy` being defined
-/// or inherited for the resource in question.
+/// \[Policies\](/resource-manager/reference/rest/v1/Policy). `Constraints` have
+/// a default behavior determined by the `constraint_default` field, which is
+/// the enforcement behavior that is used in the absence of a `Policy` being
+/// defined or inherited for the resource in question.
 class Constraint {
   /// Defines this constraint as being a BooleanConstraint.
   BooleanConstraint booleanConstraint;
@@ -3307,7 +3307,7 @@ class Lien {
   /// Each value should correspond to an IAM permission. The server will
   /// validate the permissions against those for which Liens are supported. An
   /// empty list is meaningless and will be rejected. Example:
-  /// ['resourcemanager.projects.delete']
+  /// \['resourcemanager.projects.delete'\]
   core.List<core.String> restrictions;
 
   Lien();
@@ -3897,8 +3897,8 @@ class OrgPolicy {
   /// The name of the `Constraint` the `Policy` is configuring, for example,
   /// `constraints/serviceuser.services`.
   ///
-  /// A [list of available
-  /// constraints](/resource-manager/docs/organization-policy/org-policy-constraints)
+  /// A \[list of available
+  /// constraints\](/resource-manager/docs/organization-policy/org-policy-constraints)
   /// is available. Immutable after creation.
   core.String constraint;
 
@@ -4120,14 +4120,14 @@ class OrganizationOwner {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

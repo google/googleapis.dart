@@ -1172,15 +1172,15 @@ class CardHeader {
 class DeprecatedEvent {
   /// The form action data associated with an interactive card that was clicked.
   ///
-  /// Only populated for CARD_CLICKED events. See the [Interactive Cards
-  /// guide](/hangouts/chat/how-tos/cards-onclick) for more information.
+  /// Only populated for CARD_CLICKED events. See the \[Interactive Cards
+  /// guide\](/hangouts/chat/how-tos/cards-onclick) for more information.
   FormAction action;
 
   /// The URL the bot should redirect the user to after they have completed an
   /// authorization or configuration flow outside of Google Chat.
   ///
-  /// See the [Authorizing access to 3p services
-  /// guide](/hangouts/chat/how-tos/auth-3p) for more information.
+  /// See the \[Authorizing access to 3p services
+  /// guide\](/hangouts/chat/how-tos/auth-3p) for more information.
   core.String configCompleteRedirectUrl;
 
   /// The timestamp indicating when the event was dispatched.

@@ -1498,7 +1498,7 @@ class MediaResource {
   /// Call media.upload to upload the content, as a streaming request, using the
   /// same resource name from the UploadItemRef from step 1. 1. Call
   /// indexing.datasources.items.index to index the item. Populate the
-  /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
+  /// \[ItemContent\](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
   /// with the UploadItemRef from step 1. For additional information, see
   /// [Create a content connector using the REST
   /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
@@ -1734,9 +1734,9 @@ class QueryResource {
   /// they can come from data that you have indexed from a third party.
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
-  /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// service account to perform queries, set up \[G Suite domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1791,9 +1791,9 @@ class QueryResource {
   ///
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
-  /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// service account to perform queries, set up \[G Suite domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1854,9 +1854,9 @@ class QuerySourcesResource {
   ///
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
-  /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// service account to perform queries, set up \[G Suite domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// Request parameters:
   ///
@@ -1881,7 +1881,7 @@ class QuerySourcesResource {
   ///
   /// [requestOptions_timeZone] - Current user's time zone id, such as
   /// "America/Los_Angeles" or "Australia/Sydney". These IDs are defined by
-  /// [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
+  /// \[Unicode Common Locale Data Repository (CLDR)\](http://cldr.unicode.org/)
   /// project, and currently available in the file
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
   /// This field is used to correctly interpret date and time queries. If this
@@ -4664,7 +4664,7 @@ class FacetBucket {
 
   /// Percent of results that match the bucket value.
   ///
-  /// The returned value is between (0-100], and is rounded down to an integer
+  /// The returned value is between (0-100\], and is rounded down to an integer
   /// if fractional. If the value is not explicitly returned, it represents a
   /// percentage value that rounds to 0. Percentages are returned for all
   /// searches, but are an estimate. Because percentages are always returned,
@@ -5742,7 +5742,7 @@ class Item {
 
 /// Access control list information for the item.
 ///
-/// For more information see [Map ACLs](/cloud-search/docs/guides/acls).
+/// For more information see \[Map ACLs\](/cloud-search/docs/guides/acls).
 class ItemAcl {
   /// Sets the type of access rules to apply when an item inherits its ACL from
   /// a parent.
@@ -6444,7 +6444,7 @@ class ListUnmappedIdentitiesResponse {
   }
 }
 
-/// Matched range of a snippet [start, end).
+/// Matched range of a snippet \[start, end).
 class MatchRange {
   /// End of the match in the snippet.
   core.int end;
@@ -8183,8 +8183,8 @@ class RequestOptions {
   /// Current user's time zone id, such as "America/Los_Angeles" or
   /// "Australia/Sydney".
   ///
-  /// These IDs are defined by [Unicode Common Locale Data Repository
-  /// (CLDR)](http://cldr.unicode.org/) project, and currently available in the
+  /// These IDs are defined by \[Unicode Common Locale Data Repository
+  /// (CLDR)\](http://cldr.unicode.org/) project, and currently available in the
   /// file
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
   /// This field is used to correctly interpret date and time queries. If this

@@ -3816,8 +3816,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
   ///
   /// Currently only RBE-supported registry (gcr.io) is allowed. One can allow
   /// all repositories under a project or one specific repository only. E.g.
-  /// container_image_sources { policy: RESTRICTED allowed_values: [
-  /// "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any
+  /// container_image_sources { policy: RESTRICTED allowed_values: \[
+  /// "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", \] } will allow any
   /// repositories under "gcr.io/project-foo" plus the repository
   /// "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any
   /// source is allowed.
@@ -5249,8 +5249,8 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
 /// contents of a file or a directory. The latter is represented by the
 /// byte-encoded Directory message.
 class GoogleDevtoolsRemoteworkersV1test2Digest {
-  /// A string-encoded hash (eg "1a2b3c", not the byte array [0x1a, 0x2b, 0x3c])
-  /// using an implementation-defined hash algorithm (eg SHA-256).
+  /// A string-encoded hash (eg "1a2b3c", not the byte array \[0x1a, 0x2b,
+  /// 0x3c\]) using an implementation-defined hash algorithm (eg SHA-256).
   core.String hash;
 
   /// The size of the contents.

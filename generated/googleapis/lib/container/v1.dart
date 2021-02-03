@@ -8843,10 +8843,10 @@ class Operation {
 
 /// Information about operation (or operation stage) progress.
 class OperationProgress {
-  /// Progress metric bundle, for example: metrics: [{name: "nodes done",
-  /// int_value: 15}, {name: "nodes total", int_value: 32}] or metrics: [{name:
-  /// "progress", double_value: 0.56}, {name: "progress scale", double_value:
-  /// 1.0}]
+  /// Progress metric bundle, for example: metrics: \[{name: "nodes done",
+  /// int_value: 15}, {name: "nodes total", int_value: 32}\] or metrics:
+  /// \[{name: "progress", double_value: 0.56}, {name: "progress scale",
+  /// double_value: 1.0}\]
   core.List<Metric> metrics;
 
   /// A non-parameterized string describing an operation stage.

@@ -301,7 +301,7 @@ class ProjectsLocationsDatasetsResource {
   /// fails for some DICOM instances. The new de-identified dataset will not
   /// contain these failed resources. Failed resource totals are tracked in
   /// Operation.metadata. Error details are also logged to Cloud Logging. For
-  /// more information, see [Viewing logs](/healthcare/docs/how-tos/logging).
+  /// more information, see \[Viewing logs\](/healthcare/docs/how-tos/logging).
   ///
   /// [request] - The metadata request object.
   ///
@@ -900,7 +900,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// de-identification fails for some DICOM instances. The output DICOM store
   /// will not contain these failed resources. Failed resource totals are
   /// tracked in Operation.metadata. Error details are also logged to Cloud
-  /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+  /// Logging (see \[Viewing logs\](/healthcare/docs/how-tos/logging)).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1018,8 +1018,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// store.
   ///
   /// Errors are also logged to Cloud Logging. For more information, see
-  /// [Viewing logs](/healthcare/docs/how-tos/logging). The metadata field type
-  /// is OperationMetadata.
+  /// \[Viewing logs\](/healthcare/docs/how-tos/logging). The metadata field
+  /// type is OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1207,8 +1207,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// Imports data into the DICOM store by copying it from the specified source.
   ///
-  /// Errors are logged to Cloud Logging. For more information, see [Viewing
-  /// logs](/healthcare/docs/how-tos/logging). The metadata field type is
+  /// Errors are logged to Cloud Logging. For more information, see \[Viewing
+  /// logs\](/healthcare/docs/how-tos/logging). The metadata field type is
   /// OperationMetadata.
   ///
   /// [request] - The metadata request object.
@@ -2011,8 +2011,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveStudy, see [DICOM
-  /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveStudy, see \[DICOM
+  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveStudy, see [Retrieving DICOM
   /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
@@ -2474,8 +2474,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveSeries, see [DICOM
-  /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveSeries, see \[DICOM
+  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveSeries, see [Retrieving DICOM
   /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
@@ -2710,8 +2710,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveInstance, see [DICOM
-  /// study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveInstance, see \[DICOM
+  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// and [DICOM
   /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -2950,7 +2950,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// SOP Instance UID and frame numbers.
   ///
   /// See
-  /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
+  /// \[RetrieveTransaction\](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
   /// For details on the implementation of RetrieveFrames, see [DICOM
   /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in
   /// the Cloud Healthcare API conformance statement. For samples that show how
@@ -3182,7 +3182,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// The metadata field type is OperationMetadata. If the request is
   /// successful, the response field type is DeidentifyFhirStoreSummary. If
   /// errors occur, error is set. Error details are also logged to Cloud Logging
-  /// (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+  /// (see \[Viewing logs\](/healthcare/docs/how-tos/logging)).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3299,8 +3299,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   ///
   /// This method returns an Operation that can be used to track the status of
   /// the export by calling GetOperation. Immediate fatal errors appear in the
-  /// error field, errors are also logged to Cloud Logging (see [Viewing
-  /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation
+  /// error field, errors are also logged to Cloud Logging (see \[Viewing
+  /// logs\](/healthcare/docs/how-tos/logging)). Otherwise, when the operation
   /// finishes, a detailed response of type ExportResourcesResponse is returned
   /// in the response field. The metadata field type for this operation is
   /// OperationMetadata.
@@ -3537,8 +3537,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Patient-everything operation. This method returns an Operation that can be
   /// used to track the status of the import by calling GetOperation. Immediate
   /// fatal errors appear in the error field, errors are also logged to Cloud
-  /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise,
-  /// when the operation finishes, a detailed response of type
+  /// Logging (see \[Viewing logs\](/healthcare/docs/how-tos/logging)).
+  /// Otherwise, when the operation finishes, a detailed response of type
   /// ImportResourcesResponse is returned in the response field. The metadata
   /// field type for this operation is OperationMetadata.
   ///
@@ -3904,9 +3904,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
   /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which
   /// details the eligible resource types and referencing search parameters. For
-  /// samples that show how to call `Patient-everything`, see [Getting all
+  /// samples that show how to call `Patient-everything`, see \[Getting all
   /// patient compartment
-  /// resources](/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
+  /// resources\](/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
   ///
   /// Request parameters:
   ///
@@ -4012,9 +4012,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// To remove all versions of a resource, first delete the current version and
   /// then call this method. This is not a FHIR standard operation. For samples
-  /// that show how to call `Resource-purge`, see [Deleting historical versions
+  /// that show how to call `Resource-purge`, see \[Deleting historical versions
   /// of a FHIR
-  /// resource](/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
+  /// resource\](/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -4149,8 +4149,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
   /// store, a generic GCP error might be returned instead. For samples that
-  /// show how to call `create`, see [Creating a FHIR
-  /// resource](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
+  /// show how to call `create`, see \[Creating a FHIR
+  /// resource\](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4233,8 +4233,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// disable_resource_versioning flag on the FHIR store, the deleted resources
   /// will be moved to a history repository that can still be retrieved through
   /// vread and related methods, unless they are removed by the purge method.
-  /// For samples that show how to call `delete`, see [Deleting a FHIR
-  /// resource](/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
+  /// For samples that show how to call `delete`, see \[Deleting a FHIR
+  /// resource\](/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -4312,8 +4312,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// a JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
   /// store, a generic GCP error might be returned instead. For samples that
-  /// show how to call `executeBundle`, see [Managing FHIR resources using FHIR
-  /// bundles](/healthcare/docs/how-tos/fhir-bundles).
+  /// show how to call `executeBundle`, see \[Managing FHIR resources using FHIR
+  /// bundles\](/healthcare/docs/how-tos/fhir-bundles).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4384,8 +4384,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// will contain a JSON-encoded `OperationOutcome` resource describing the
   /// reason for the error. If the request cannot be mapped to a valid API
   /// method on a FHIR store, a generic GCP error might be returned instead. For
-  /// samples that show how to call `history`, see [Listing FHIR resource
-  /// versions](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
+  /// samples that show how to call `history`, see \[Listing FHIR resource
+  /// versions\](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
   ///
   /// Request parameters:
   ///
@@ -4395,10 +4395,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// [P_at] - Only include resource versions that were current at some point
   /// during the time period specified in the date time value. The date
-  /// parameter format is yyyy-mm-ddThh:mm:ss[Z|(+|-)hh:mm] Clients may specify
-  /// any of the following: * An entire year: `_at=2019` * An entire month:
-  /// `_at=2019-01` * A specific day: `_at=2019-01-20` * A specific second:
-  /// `_at=2018-12-31T23:59:58Z`
+  /// parameter format is yyyy-mm-ddThh:mm:ss\[Z|(+|-)hh:mm\] Clients may
+  /// specify any of the following: * An entire year: `_at=2019` * An entire
+  /// month: `_at=2019-01` * A specific day: `_at=2019-01-20` * A specific
+  /// second: `_at=2018-12-31T23:59:58Z`
   ///
   /// [P_count] - The maximum number of search results on a page. Defaults to
   /// 1000.
@@ -4491,8 +4491,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// contain a JSON-encoded `OperationOutcome` resource describing the reason
   /// for the error. If the request cannot be mapped to a valid API method on a
   /// FHIR store, a generic GCP error might be returned instead. For samples
-  /// that show how to call `patch`, see [Patching a FHIR
-  /// resource](/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
+  /// that show how to call `patch`, see \[Patching a FHIR
+  /// resource\](/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4567,8 +4567,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `read`, see [Getting a FHIR
-  /// resource](/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
+  /// `read`, see \[Getting a FHIR
+  /// resource\](/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -4662,9 +4662,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// might trim its generated search index in those cases. Note: FHIR resources
   /// are indexed asynchronously, so there might be a slight delay between the
   /// time a resource is created or changes and when the change is reflected in
-  /// search results. For samples and detailed information, see [Searching for
-  /// FHIR resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
-  /// search features](/healthcare/docs/how-tos/fhir-advanced-search).
+  /// search results. For samples and detailed information, see \[Searching for
+  /// FHIR resources\](/healthcare/docs/how-tos/fhir-search) and \[Advanced FHIR
+  /// search features\](/healthcare/docs/how-tos/fhir-advanced-search).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4741,8 +4741,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// contain a JSON-encoded `OperationOutcome` resource describing the reason
   /// for the error. If the request cannot be mapped to a valid API method on a
   /// FHIR store, a generic GCP error might be returned instead. For samples
-  /// that show how to call `update`, see [Updating a FHIR
-  /// resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
+  /// that show how to call `update`, see \[Updating a FHIR
+  /// resource\](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4812,8 +4812,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
   /// store, a generic GCP error might be returned instead. For samples that
-  /// show how to call `vread`, see [Retrieving a FHIR resource
-  /// version](/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
+  /// show how to call `vread`, see \[Retrieving a FHIR resource
+  /// version\](/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
   ///
   /// Request parameters:
   ///
@@ -6077,13 +6077,13 @@ class ProjectsLocationsDatasetsOperationsResource {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -6125,9 +6125,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -6716,8 +6716,8 @@ class DicomFilterConfig {
   /// filter configuration file must contain a list of resource paths separated
   /// by newline characters (\n or \r\n). Each resource path must be in the
   /// format
-  /// "/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]" The
-  /// Cloud Healthcare API service account must have the
+  /// "/studies/{studyUID}\[/series/{seriesUID}\[/instances/{instanceUID}\]\]"
+  /// The Cloud Healthcare API service account must have the
   /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage
   /// location.
   core.String resourcePathsGcsUri;
@@ -6748,8 +6748,8 @@ class DicomStore {
   /// expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between
   /// 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and
   /// must conform to the following PCRE regular expression:
-  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
-  /// a given store.
+  /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
+  /// with a given store.
   core.Map<core.String, core.String> labels;
 
   /// Resource name of the DICOM store, of the form
@@ -7116,8 +7116,8 @@ class FhirStore {
   /// expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between
   /// 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and
   /// must conform to the following PCRE regular expression:
-  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
-  /// a given store.
+  /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
+  /// with a given store.
   core.Map<core.String, core.String> labels;
 
   /// Resource name of the FHIR store, of the form
@@ -7142,7 +7142,7 @@ class FhirStore {
   /// location in addition to the existing ones. When a location is removed from
   /// the list, the server stops streaming to that location. Before adding a new
   /// config, you must add the required
-  /// [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor)
+  /// \[`bigquery.dataEditor`\](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor)
   /// role to your project's **Cloud Healthcare Service Agent** [service
   /// account](https://cloud.google.com/iam/docs/service-accounts). Some lag
   /// (typically on the order of dozens of seconds) is expected before the
@@ -7573,7 +7573,7 @@ class Hl7V2NotificationConfig {
   /// existence of a label. For example, `labels."priority":*`.
   core.String filter;
 
-  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+  /// The \[Cloud Pub/Sub\](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
   ///
   /// Supplied by the client. The notification is a `PubsubMessage` with the
@@ -7588,8 +7588,8 @@ class Hl7V2NotificationConfig {
   /// have publisher permissions on the given Pub/Sub topic. Not having adequate
   /// permissions causes the calls that send notifications to fail. If a
   /// notification cannot be published to Cloud Pub/Sub, errors are logged to
-  /// Cloud Logging. For more information, see [Viewing error logs in Cloud
-  /// Logging](/healthcare/docs/how-tos/logging)).
+  /// Cloud Logging. For more information, see \[Viewing error logs in Cloud
+  /// Logging\](/healthcare/docs/how-tos/logging)).
   core.String pubsubTopic;
 
   Hl7V2NotificationConfig();
@@ -7624,8 +7624,8 @@ class Hl7V2Store {
   /// expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between
   /// 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and
   /// must conform to the following PCRE regular expression:
-  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
-  /// a given store.
+  /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
+  /// with a given store.
   core.Map<core.String, core.String> labels;
 
   /// Resource name of the HL7v2 store, of the form
@@ -8435,8 +8435,8 @@ class Message {
   /// expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between
   /// 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and
   /// must conform to the following PCRE regular expression:
-  /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with
-  /// a given store.
+  /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
+  /// with a given store.
   core.Map<core.String, core.String> labels;
 
   /// The message type for this message.
@@ -8546,7 +8546,7 @@ class Message {
 
 /// Specifies where to send notifications upon changes to a data store.
 class NotificationConfig {
-  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+  /// The \[Cloud Pub/Sub\](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
   ///
   /// Supplied by the client. PubsubMessage.Data contains the resource name.
@@ -8559,10 +8559,10 @@ class NotificationConfig {
   /// permissions on the given Cloud Pub/Sub topic. Not having adequate
   /// permissions causes the calls that send notifications to fail. If a
   /// notification can't be published to Cloud Pub/Sub, errors are logged to
-  /// Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). If
+  /// Cloud Logging (see \[Viewing logs\](/healthcare/docs/how-tos/logging)). If
   /// the number of errors exceeds a certain rate, some aren't submitted. Note
-  /// that not all operations trigger notifications, see [Configuring Pub/Sub
-  /// notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+  /// that not all operations trigger notifications, see \[Configuring Pub/Sub
+  /// notifications\](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
   /// for specific details.
   core.String pubsubTopic;
 
@@ -8699,8 +8699,8 @@ class OperationMetadata {
 
   /// A link to audit and error logs in the log viewer.
   ///
-  /// Error logs are generated only by some operations, listed at [Viewing
-  /// logs](/healthcare/docs/how-tos/logging).
+  /// Error logs are generated only by some operations, listed at \[Viewing
+  /// logs\](/healthcare/docs/how-tos/logging).
   core.String logsUrl;
 
   OperationMetadata();
@@ -8864,14 +8864,14 @@ class PatientId {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -9159,7 +9159,7 @@ class Segment {
   /// The key string uses zero-based indexes separated by dots to identify
   /// Fields, components and sub-components. A bracket notation is also used to
   /// identify different instances of a repeated field. Regex for key:
-  /// (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
+  /// (\d+)(\\[\d+\\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
   /// "hemoglobin") denotes that the first component of Field 0 has the value
   /// "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of
   /// the first component of Field 1 has the value "CBC". * (1\[0\].1, "HbA1c")
@@ -9343,8 +9343,8 @@ class StreamConfig {
   /// rows given an id and meta.versionId pair. Alternatively, the server
   /// created view mentioned above also filters out duplicates. If a resource
   /// mutation cannot be streamed to BigQuery, errors are logged to Cloud
-  /// Logging. For more information, see [Viewing error logs in Cloud
-  /// Logging](/healthcare/docs/how-tos/logging)).
+  /// Logging. For more information, see \[Viewing error logs in Cloud
+  /// Logging\](/healthcare/docs/how-tos/logging)).
   GoogleCloudHealthcareV1FhirBigQueryDestination bigqueryDestination;
 
   /// Supply a FHIR resource type (such as "Patient" or "Observation").

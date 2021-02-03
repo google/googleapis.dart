@@ -4822,8 +4822,8 @@ class DeliveryControlFrequencyCap {
 
 /// This message carries publisher provided breakdown.
 ///
-/// E.g. {dimension_type: 'COUNTRY', [{dimension_value: {id: 1, name: 'US'}},
-/// {dimension_value: {id: 2, name: 'UK'}}]}
+/// E.g. {dimension_type: 'COUNTRY', \[{dimension_value: {id: 1, name: 'US'}},
+/// {dimension_value: {id: 2, name: 'UK'}}\]}
 class Dimension {
   core.String dimensionType;
   core.List<DimensionDimensionValue> dimensionValues;
@@ -4869,8 +4869,8 @@ class DimensionDimensionValue {
 
   /// Percent of total impressions for a dimension type.
   ///
-  /// e.g. {dimension_type: 'GENDER', [{dimension_value: {id: 1, name: 'MALE',
-  /// percentage: 60}}]} Gender MALE is 60% of all impressions which have
+  /// e.g. {dimension_type: 'GENDER', \[{dimension_value: {id: 1, name: 'MALE',
+  /// percentage: 60}}\]} Gender MALE is 60% of all impressions which have
   /// gender.
   core.int percentage;
 
@@ -6510,8 +6510,8 @@ class Price {
 
 /// Used to specify pricing rules for buyers.
 ///
-/// Each PricePerBuyer in a product can become [0,1] deals. To check if there is
-/// a PricePerBuyer for a particular buyer we look for the most specific
+/// Each PricePerBuyer in a product can become \[0,1\] deals. To check if there
+/// is a PricePerBuyer for a particular buyer we look for the most specific
 /// matching rule - we first look for a rule matching the buyer and otherwise
 /// look for a matching rule where no buyer is set.
 class PricePerBuyer {

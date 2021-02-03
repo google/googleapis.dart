@@ -1670,12 +1670,12 @@ class TypesResource {
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
-/// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ {
-/// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] },
-/// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, {
-/// "service": "sampleservice.googleapis.com" "audit_log_configs": [ {
+/// { "audit_configs": \[ { "service": "allServices" "audit_log_configs": \[ {
+/// "log_type": "DATA_READ", "exempted_members": \[ "user:jose@example.com" \]
+/// }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } \] }, {
+/// "service": "sampleservice.googleapis.com" "audit_log_configs": \[ {
 /// "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members":
-/// [ "user:aliya@example.com" ] } ] } ] }
+/// \[ "user:aliya@example.com" \] } \] } \] }
 ///
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
@@ -1730,8 +1730,8 @@ class AuditConfig {
 ///
 /// Example:
 ///
-/// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", } ] }
+/// { "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE", } \] }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
 /// jose@example.com from DATA_READ logging.
@@ -1739,7 +1739,7 @@ class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
   ///
-  /// Follows the same format of \[Binding.members\][].
+  /// Follows the same format of \[Binding.members\]\[\].
   core.List<core.String> exemptedMembers;
   core.bool ignoreChildExemptions;
 
@@ -3034,7 +3034,7 @@ class OperationWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationWarningsData> data;
@@ -3080,9 +3080,9 @@ class OperationWarnings {
 ///
 /// Google Compute Engine has three Operation resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
-/// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/globalOperations) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionOperations) *
+/// \[Zonal\](/compute/docs/reference/rest/{$api_version}/zoneOperations)
 ///
 /// You can use an operation resource to manage asynchronous API requests.
 ///
@@ -3459,14 +3459,14 @@ class OperationsListResponse {
 ///
 /// **JSON example:**
 ///
-/// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin",
-/// "members": [ "user:mike@example.com", "group:admins@example.com",
+/// { "bindings": \[ { "role": "roles/resourcemanager.organizationAdmin",
+/// "members": \[ "user:mike@example.com", "group:admins@example.com",
 /// "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 }
 ///
 /// **YAML example:**
@@ -3663,7 +3663,7 @@ class ResourceWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourceWarningsData> data;
@@ -4010,7 +4010,7 @@ class ResourceUpdateWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourceUpdateWarningsData> data;

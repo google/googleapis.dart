@@ -466,7 +466,8 @@ class CustomersDeploymentsDevicesResource {
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -834,7 +835,8 @@ class CustomersDevicesResource {
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -2380,7 +2382,8 @@ class NodesDeploymentsDevicesResource {
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -2748,7 +2751,8 @@ class NodesDevicesResource {
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -3620,7 +3624,8 @@ class NodesNodesDevicesResource {
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -4718,7 +4723,7 @@ class SasPortalFrequencyRange {
   }
 }
 
-/// Request for GenerateSecret method]
+/// Request for GenerateSecret method\]
 /// \[spectrum.sas.portal.v1alpha1.DeviceManager.GenerateSecret\].
 class SasPortalGenerateSecretRequest {
   SasPortalGenerateSecretRequest();
@@ -5631,7 +5636,7 @@ class SasPortalValidateInstallerRequest {
   }
 }
 
-/// Response for ValidateInstaller method]
+/// Response for ValidateInstaller method\]
 /// \[spectrum.sas.portal.v1alpha1.DeviceManager.ValidateInstaller\].
 class SasPortalValidateInstallerResponse {
   SasPortalValidateInstallerResponse();

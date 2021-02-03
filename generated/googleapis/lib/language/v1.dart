@@ -1189,7 +1189,7 @@ class Entity {
   /// The representative name for the entity.
   core.String name;
 
-  /// The salience score associated with the entity in the [0, 1.0] range.
+  /// The salience score associated with the entity in the \[0, 1.0\] range.
   ///
   /// The salience score for an entity provides information about the importance
   /// or centrality of that entity to the entire document text. Scores closer to
@@ -1668,7 +1668,7 @@ class Sentence {
 /// Represents the feeling associated with the entire text or entities in the
 /// text.
 class Sentiment {
-  /// A non-negative number in the [0, +inf) range, which represents the
+  /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment regardless of score (positive or
   /// negative).
   core.double magnitude;

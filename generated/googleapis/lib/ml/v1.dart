@@ -2662,8 +2662,8 @@ class ProjectsModelsVersionsResource {
   /// new value, as follows: ``` { "description": "foo" } ``` Currently the only
   /// supported update mask fields are `description`, `requestLoggingConfig`,
   /// `autoScaling.minNodes`, and `manualScaling.nodes`. However, you can only
-  /// update `manualScaling.nodes` if the version uses a [Compute Engine (N1)
-  /// machine type](/ml-engine/docs/machine-types-online-prediction).
+  /// update `manualScaling.nodes` if the version uses a \[Compute Engine (N1)
+  /// machine type\](/ml-engine/docs/machine-types-online-prediction).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3650,9 +3650,9 @@ class GoogleCloudMlV1TrialParameter {
 /// Represents a hardware accelerator request config.
 ///
 /// Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn
-/// more about [accelerators for training](/ml-engine/docs/using-gpus) and
-/// [accelerators for online
-/// prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
+/// more about \[accelerators for training\](/ml-engine/docs/using-gpus) and
+/// \[accelerators for online
+/// prediction\](/ml-engine/docs/machine-types-online-prediction#gpus).
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
   core.String count;
@@ -3725,23 +3725,23 @@ class GoogleCloudMlV1AutoScaling {
   /// These nodes are always up, starting from the time the model is deployed.
   /// Therefore, the cost of operating this model will be at least `rate` *
   /// `min_nodes` * number of hours since last billing cycle, where `rate` is
-  /// the cost per node-hour as documented in the [pricing
-  /// guide](/ml-engine/docs/pricing), even if no predictions are performed.
+  /// the cost per node-hour as documented in the \[pricing
+  /// guide\](/ml-engine/docs/pricing), even if no predictions are performed.
   /// There is additional cost for each prediction performed. Unlike manual
   /// scaling, if the load gets too heavy for the nodes that are up, the service
   /// will automatically add nodes to handle the increased load as well as scale
   /// back as traffic drops, always maintaining at least `min_nodes`. You will
   /// be charged for the time in which additional nodes are used. If `min_nodes`
-  /// is not specified and AutoScaling is used with a [legacy (MLS1) machine
-  /// type](/ml-engine/docs/machine-types-online-prediction), `min_nodes`
+  /// is not specified and AutoScaling is used with a \[legacy (MLS1) machine
+  /// type\](/ml-engine/docs/machine-types-online-prediction), `min_nodes`
   /// defaults to 0, in which case, when traffic to a model stops (and after a
   /// cool-down period), nodes will be shut down and no charges will be incurred
   /// until traffic to the model resumes. If `min_nodes` is not specified and
-  /// AutoScaling is used with a [Compute Engine (N1) machine
-  /// type](/ml-engine/docs/machine-types-online-prediction), `min_nodes`
+  /// AutoScaling is used with a \[Compute Engine (N1) machine
+  /// type\](/ml-engine/docs/machine-types-online-prediction), `min_nodes`
   /// defaults to 1. `min_nodes` must be at least 1 for use with a Compute
   /// Engine machine type. Note that you cannot use AutoScaling if your version
-  /// uses [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use
+  /// uses \[GPUs\](#Version.FIELDS.accelerator_config). Instead, you must use
   /// ManualScaling. You can set `min_nodes` when creating the model version,
   /// and you can also update `min_nodes` for an existing version:
   /// update_body.json: { 'autoScaling': { 'minNodes': 5 } } HTTP request: PATCH
@@ -4306,8 +4306,8 @@ class GoogleCloudMlV1ExplainRequest {
 /// Message holding configuration options for explaining model predictions.
 ///
 /// There are three feature attribution methods supported for TensorFlow models:
-/// integrated gradients, sampled Shapley, and XRAI. [Learn more about feature
-/// attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
+/// integrated gradients, sampled Shapley, and XRAI. \[Learn more about feature
+/// attributions.\](/ai-platform/prediction/docs/ai-explanations/overview)
 class GoogleCloudMlV1ExplanationConfig {
   /// Attributes credit by computing the Aumann-Shapley value taking advantage
   /// of the model's fully differentiable structure.
@@ -5265,8 +5265,8 @@ class GoogleCloudMlV1Model {
   ///
   /// These can be more verbose than the standard access logs (see
   /// `onlinePredictionLogging`) and can incur higher cost. However, they are
-  /// helpful for debugging. Note that [Stackdriver logs may incur a
-  /// cost](/stackdriver/pricing), especially if your project receives
+  /// helpful for debugging. Note that \[Stackdriver logs may incur a
+  /// cost\](/stackdriver/pricing), especially if your project receives
   /// prediction requests at a high QPS. Estimate your costs before enabling
   /// this option. Default is false.
   ///
@@ -5276,8 +5276,8 @@ class GoogleCloudMlV1Model {
   /// If true, online prediction access logs are sent to StackDriver Logging.
   ///
   /// These logs are like standard server access logs, containing information
-  /// like timestamp and latency for each request. Note that [Stackdriver logs
-  /// may incur a cost](/stackdriver/pricing), especially if your project
+  /// like timestamp and latency for each request. Note that \[Stackdriver logs
+  /// may incur a cost\](/stackdriver/pricing), especially if your project
   /// receives prediction requests at a high queries per second rate (QPS).
   /// Estimate your costs before enabling this option. Default is false.
   ///
@@ -5602,8 +5602,8 @@ class GoogleCloudMlV1ParameterSpec {
 class GoogleCloudMlV1PredictRequest {
   ///  Required.
   ///
-  /// The prediction request body. Refer to the [request body details
-  /// section](#request-body-details) for more information on how to structure
+  /// The prediction request body. Refer to the \[request body details
+  /// section\](#request-body-details) for more information on how to structure
   /// your request.
   GoogleApiHttpBody httpBody;
 
@@ -5872,8 +5872,8 @@ class GoogleCloudMlV1PredictionOutput {
 class GoogleCloudMlV1ReplicaConfig {
   /// Represents the type and number of accelerators used by the replica.
   ///
-  /// [Learn about restrictions on accelerator configurations for
-  /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
+  /// \[Learn about restrictions on accelerator configurations for
+  /// training.\](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
 
   /// Arguments to the entrypoint command.
@@ -5902,18 +5902,18 @@ class GoogleCloudMlV1ReplicaConfig {
 
   /// The Docker image to run on the replica.
   ///
-  /// This image must be in Container Registry. Learn more about [configuring
+  /// This image must be in Container Registry. Learn more about \[configuring
   /// custom
-  /// containers](/ai-platform/training/docs/distributed-training-containers).
+  /// containers\](/ai-platform/training/docs/distributed-training-containers).
   core.String imageUri;
 
   /// The AI Platform runtime version that includes a TensorFlow version
   /// matching the one used in the custom container.
   ///
   /// This field is required if the replica is a TPU worker that uses a custom
-  /// container. Otherwise, do not specify this field. This must be a [runtime
+  /// container. Otherwise, do not specify this field. This must be a \[runtime
   /// version that currently supports training with
-  /// TPUs](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support). Note
+  /// TPUs\](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support). Note
   /// that the version of TensorFlow included in a runtime version may differ
   /// from the numbering of the runtime version itself, because it may have a
   /// different [patch
@@ -5973,11 +5973,11 @@ class GoogleCloudMlV1ReplicaConfig {
 ///
 /// Online prediction requests to a model version and the responses to these
 /// requests are converted to raw strings and saved to the specified BigQuery
-/// table. Logging is constrained by [BigQuery quotas and
-/// limits](/bigquery/quotas). If your project exceeds BigQuery quotas or
+/// table. Logging is constrained by \[BigQuery quotas and
+/// limits\](/bigquery/quotas). If your project exceeds BigQuery quotas or
 /// limits, AI Platform Prediction does not log request-response pairs, but it
-/// continues to serve predictions. If you are using [continuous
-/// evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to
+/// continues to serve predictions. If you are using \[continuous
+/// evaluation\](/ml-engine/docs/continuous-evaluation/), you do not need to
 /// specify this configuration manually. Setting up continuous evaluation
 /// automatically enables logging of request-response pairs.
 class GoogleCloudMlV1RequestLoggingConfig {
@@ -5986,10 +5986,10 @@ class GoogleCloudMlV1RequestLoggingConfig {
   /// exist, and the "Cloud ML Service Agent" for your project must have
   /// permission to write to it.
   ///
-  /// The table must have the following [schema](/bigquery/docs/schemas): Field
-  /// nameType Mode model STRING REQUIRED model_version STRING REQUIRED time
-  /// TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE
-  /// groundtruth STRING NULLABLE
+  /// The table must have the following \[schema\](/bigquery/docs/schemas):
+  /// Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED
+  /// time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING
+  /// NULLABLE groundtruth STRING NULLABLE
   ///
   /// Required.
   core.String bigqueryTableName;
@@ -6096,8 +6096,8 @@ class GoogleCloudMlV1Scheduling {
   /// by Scheduling.max_wait_time. For example, if you want to ensure your job
   /// runs for no more than 2 hours, set this field to `7200s` (2 hours * 60
   /// minutes / hour * 60 seconds / minute). If you submit your training job
-  /// using the `gcloud` tool, you can [specify this field in a `config.yaml`
-  /// file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters).
+  /// using the `gcloud` tool, you can \[specify this field in a `config.yaml`
+  /// file\](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters).
   /// For example: ```yaml trainingInput: scheduling: maxRunningTime: 7200s ```
   ///
   /// Optional.
@@ -6112,8 +6112,8 @@ class GoogleCloudMlV1Scheduling {
   /// After the job begins running, it can no longer be cancelled due to the
   /// maximum wait time. Therefore the duration limited by this field does not
   /// overlap with the duration limited by Scheduling.max_running_time. For
-  /// example, if the job temporarily stops running and retries due to a [VM
-  /// restart](/ai-platform/training/docs/overview#restarts), this cannot lead
+  /// example, if the job temporarily stops running and retries due to a \[VM
+  /// restart\](/ai-platform/training/docs/overview#restarts), this cannot lead
   /// to a maximum wait time cancellation. However, independently of this
   /// constraint, AI Platform Training might stop a job if there are too many
   /// retries due to exhausted resources in a region. The following example
@@ -6122,8 +6122,8 @@ class GoogleCloudMlV1Scheduling {
   /// minutes / hour * 60 seconds / minute). If the job is still in the `QUEUED`
   /// or `PREPARING` state after an hour of waiting, AI Platform Training
   /// cancels the job. If you submit your training job using the `gcloud` tool,
-  /// you can [specify this field in a `config.yaml`
-  /// file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters).
+  /// you can \[specify this field in a `config.yaml`
+  /// file\](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters).
   /// For example: ```yaml trainingInput: scheduling: maxWaitTime: 3600s ```
   ///
   /// Optional.
@@ -6478,8 +6478,8 @@ class GoogleCloudMlV1SuggestTrialsResponse {
 /// When using the gcloud command to submit your training job, you can specify
 /// the input parameters as command-line arguments and/or in a YAML
 /// configuration file referenced from the --config command-line argument. For
-/// details, see the guide to [submitting a training
-/// job](/ai-platform/training/docs/training-jobs).
+/// details, see the guide to \[submitting a training
+/// job\](/ai-platform/training/docs/training-jobs).
 class GoogleCloudMlV1TrainingInput {
   /// Command-line arguments passed to the training application when it starts.
   ///
@@ -6495,8 +6495,8 @@ class GoogleCloudMlV1TrainingInput {
   ///
   /// If this is set, then all resources created by the training job will be
   /// encrypted with the customer-managed encryption key that you specify.
-  /// [Learn how and when to use CMEK with AI Platform
-  /// Training](/ai-platform/training/docs/cmek).
+  /// \[Learn how and when to use CMEK with AI Platform
+  /// Training\](/ai-platform/training/docs/cmek).
   ///
   /// Optional.
   GoogleCloudMlV1EncryptionConfig encryptionConfig;
@@ -6504,14 +6504,14 @@ class GoogleCloudMlV1TrainingInput {
   /// The configuration for evaluators.
   ///
   /// You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType`
-  /// is set to a Compute Engine machine type. [Learn about restrictions on
+  /// is set to a Compute Engine machine type. \[Learn about restrictions on
   /// accelerator configurations for
-  /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
+  /// training.\](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `evaluatorConfig.imageUri` only if you build a custom image for your
   /// evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform
-  /// uses the value of `masterConfig.imageUri`. Learn more about [configuring
+  /// uses the value of `masterConfig.imageUri`. Learn more about \[configuring
   /// custom
-  /// containers](/ai-platform/training/docs/distributed-training-containers).
+  /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
   GoogleCloudMlV1ReplicaConfig evaluatorConfig;
@@ -6557,13 +6557,13 @@ class GoogleCloudMlV1TrainingInput {
   /// The configuration for your master worker.
   ///
   /// You should only set `masterConfig.acceleratorConfig` if `masterType` is
-  /// set to a Compute Engine machine type. Learn about [restrictions on
+  /// set to a Compute Engine machine type. Learn about \[restrictions on
   /// accelerator configurations for
-  /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
+  /// training.\](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `masterConfig.imageUri` only if you build a custom image. Only one of
   /// `masterConfig.imageUri` and `runtimeVersion` should be set. Learn more
-  /// about [configuring custom
-  /// containers](/ai-platform/training/docs/distributed-training-containers).
+  /// about \[configuring custom
+  /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
   GoogleCloudMlV1ReplicaConfig masterConfig;
@@ -6578,31 +6578,31 @@ class GoogleCloudMlV1TrainingInput {
   /// - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` -
   /// `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` -
   /// `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Learn more about
-  /// [using Compute Engine machine
-  /// types](/ml-engine/docs/machine-types#compute-engine-machine-types).
+  /// \[using Compute Engine machine
+  /// types\](/ml-engine/docs/machine-types#compute-engine-machine-types).
   /// Alternatively, you can use the following legacy machine types: -
   /// `standard` - `large_model` - `complex_model_s` - `complex_model_m` -
   /// `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` -
   /// `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` -
   /// `standard_v100` - `large_model_v100` - `complex_model_m_v100` -
-  /// `complex_model_l_v100` Learn more about [using legacy machine
-  /// types](/ml-engine/docs/machine-types#legacy-machine-types). Finally, if
+  /// `complex_model_l_v100` Learn more about \[using legacy machine
+  /// types\](/ml-engine/docs/machine-types#legacy-machine-types). Finally, if
   /// you want to use a TPU for training, specify `cloud_tpu` in this field.
-  /// Learn more about the [special configuration options for training with
-  /// TPUs](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
+  /// Learn more about the \[special configuration options for training with
+  /// TPUs\](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
   ///
   /// Optional.
   core.String masterType;
 
-  /// The full name of the [Compute Engine network](/vpc/docs/vpc) to which the
-  /// Job is peered.
+  /// The full name of the \[Compute Engine network\](/vpc/docs/vpc) to which
+  /// the Job is peered.
   ///
   /// For example, `projects/12345/global/networks/myVPC`. The format of this
   /// field is `projects/{project}/global/networks/{network}`, where {project}
   /// is a project number (like `12345`) and {network} is network name. Private
   /// services access must already be configured for the network. If left
-  /// unspecified, the Job is not peered with any network. [Learn about using
-  /// VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
+  /// unspecified, the Job is not peered with any network. \[Learn about using
+  /// VPC Network Peering.\](/ai-platform/training/docs/vpc-peering).
   ///
   /// Optional.
   core.String network;
@@ -6618,14 +6618,14 @@ class GoogleCloudMlV1TrainingInput {
   /// The configuration for parameter servers.
   ///
   /// You should only set `parameterServerConfig.acceleratorConfig` if
-  /// `parameterServerType` is set to a Compute Engine machine type. [Learn
+  /// `parameterServerType` is set to a Compute Engine machine type. \[Learn
   /// about restrictions on accelerator configurations for
-  /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
+  /// training.\](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `parameterServerConfig.imageUri` only if you build a custom image for
   /// your parameter server. If `parameterServerConfig.imageUri` has not been
   /// set, AI Platform uses the value of `masterConfig.imageUri`. Learn more
-  /// about [configuring custom
-  /// containers](/ai-platform/training/docs/distributed-training-containers).
+  /// about \[configuring custom
+  /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
   GoogleCloudMlV1ReplicaConfig parameterServerConfig;
@@ -6665,15 +6665,15 @@ class GoogleCloudMlV1TrainingInput {
   /// `runtime_version` is set to '1.15' or later. * Python '3.5' is available
   /// when `runtime_version` is set to a version from '1.4' to '1.14'. * Python
   /// '2.7' is available when `runtime_version` is set to '1.15' or earlier.
-  /// Read more about the Python versions available for [each runtime
-  /// version](/ml-engine/docs/runtime-version-list).
+  /// Read more about the Python versions available for \[each runtime
+  /// version\](/ml-engine/docs/runtime-version-list).
   ///
   /// Optional.
   core.String pythonVersion;
 
   /// The region to run the training job in.
   ///
-  /// See the [available regions](/ai-platform/training/docs/regions) for AI
+  /// See the \[available regions\](/ai-platform/training/docs/regions) for AI
   /// Platform Training.
   ///
   /// Required.
@@ -6682,9 +6682,9 @@ class GoogleCloudMlV1TrainingInput {
   /// The AI Platform runtime version to use for training.
   ///
   /// You must either specify this field or specify `masterConfig.imageUri`. For
-  /// more information, see the [runtime version
-  /// list](/ai-platform/training/docs/runtime-version-list) and learn [how to
-  /// manage runtime versions](/ai-platform/training/docs/versioning).
+  /// more information, see the \[runtime version
+  /// list\](/ai-platform/training/docs/runtime-version-list) and learn \[how to
+  /// manage runtime versions\](/ai-platform/training/docs/versioning).
   ///
   /// Optional.
   core.String runtimeVersion;
@@ -6732,8 +6732,8 @@ class GoogleCloudMlV1TrainingInput {
   /// You must have the `iam.serviceAccounts.actAs` permission for the specified
   /// service account. In addition, the AI Platform Training Google-managed
   /// service account must have the `roles/iam.serviceAccountAdmin` role for the
-  /// specified service account. [Learn more about configuring a service
-  /// account.](/ai-platform/training/docs/custom-service-account) If not
+  /// specified service account. \[Learn more about configuring a service
+  /// account.\](/ai-platform/training/docs/custom-service-account) If not
   /// specified, the AI Platform Training Google-managed service account is used
   /// by default.
   ///
@@ -6743,8 +6743,8 @@ class GoogleCloudMlV1TrainingInput {
   /// Use `chief` instead of `master` in the `TF_CONFIG` environment variable
   /// when training with a custom container.
   ///
-  /// Defaults to `false`. [Learn more about this
-  /// field.](/ai-platform/training/docs/distributed-training-details#chief-versus-master)
+  /// Defaults to `false`. \[Learn more about this
+  /// field.\](/ai-platform/training/docs/distributed-training-details#chief-versus-master)
   /// This field has no effect for training jobs that don't use a custom
   /// container.
   ///
@@ -6754,13 +6754,13 @@ class GoogleCloudMlV1TrainingInput {
   /// The configuration for workers.
   ///
   /// You should only set `workerConfig.acceleratorConfig` if `workerType` is
-  /// set to a Compute Engine machine type. [Learn about restrictions on
+  /// set to a Compute Engine machine type. \[Learn about restrictions on
   /// accelerator configurations for
-  /// training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
+  /// training.\](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
   /// Set `workerConfig.imageUri` only if you build a custom image for your
   /// worker. If `workerConfig.imageUri` has not been set, AI Platform uses the
-  /// value of `masterConfig.imageUri`. Learn more about [configuring custom
-  /// containers](/ai-platform/training/docs/distributed-training-containers).
+  /// value of `masterConfig.imageUri`. Learn more about \[configuring custom
+  /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
   GoogleCloudMlV1ReplicaConfig workerConfig;
@@ -6782,8 +6782,8 @@ class GoogleCloudMlV1TrainingInput {
   /// `masterType`. This value must be consistent with the category of machine
   /// type that `masterType` uses. In other words, both must be Compute Engine
   /// machine types or both must be legacy machine types. If you use `cloud_tpu`
-  /// for this value, see special instructions for [configuring a custom TPU
-  /// machine](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
+  /// for this value, see special instructions for \[configuring a custom TPU
+  /// machine\](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
   /// This value must be present when `scaleTier` is set to `CUSTOM` and
   /// `workerCount` is greater than zero.
   ///
@@ -6984,7 +6984,7 @@ class GoogleCloudMlV1TrainingOutput {
   /// trials.
   ///
   /// See
-  /// [`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag)
+  /// \[`HyperparameterSpec.hyperparameterMetricTag`\](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag)
   /// for more information. Only set for hyperparameter tuning jobs.
   core.String hyperparameterMetricTag;
 
@@ -7208,8 +7208,8 @@ class GoogleCloudMlV1Version {
   /// Accelerator config for using GPUs for online prediction (beta).
   ///
   /// Only specify this field if you have specified a Compute Engine (N1)
-  /// machine type in the `machineType` field. Learn more about [using GPUs for
-  /// online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
+  /// machine type in the `machineType` field. Learn more about \[using GPUs for
+  /// online prediction\](/ml-engine/docs/machine-types-online-prediction#gpus).
   ///
   /// Optional.
   GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
@@ -7220,8 +7220,8 @@ class GoogleCloudMlV1Version {
   /// Care should be taken to ramp up traffic according to the model's ability
   /// to scale or you will start seeing increases in latency and 429 response
   /// codes. Note that you cannot use AutoScaling if your version uses
-  /// [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use specify
-  /// `manual_scaling`.
+  /// \[GPUs\](#Version.FIELDS.accelerator_config). Instead, you must use
+  /// specify `manual_scaling`.
   GoogleCloudMlV1AutoScaling autoScaling;
   GoogleCloudMlV1ContainerSpec container;
 
@@ -7233,8 +7233,8 @@ class GoogleCloudMlV1Version {
   /// The Cloud Storage location of the trained model used to create the
   /// version.
   ///
-  /// See the [guide to model
-  /// deployment](/ml-engine/docs/tensorflow/deploying-models) for more
+  /// See the \[guide to model
+  /// deployment\](/ml-engine/docs/tensorflow/deploying-models) for more
   /// information. When passing Version to projects.models.versions.create the
   /// model service uses the specified location as the source of the model. Once
   /// deployed, the model version is hosted by the prediction service, so this
@@ -7285,10 +7285,10 @@ class GoogleCloudMlV1Version {
   /// specify a framework, AI Platform will analyze files in the deployment_uri
   /// to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you
   /// must also set the runtime version of the model to 1.4 or greater. Do
-  /// **not** specify a framework if you're deploying a [custom prediction
-  /// routine](/ml-engine/docs/tensorflow/custom-prediction-routines). If you
-  /// specify a [Compute Engine (N1) machine
-  /// type](/ml-engine/docs/machine-types-online-prediction) in the
+  /// **not** specify a framework if you're deploying a \[custom prediction
+  /// routine\](/ml-engine/docs/tensorflow/custom-prediction-routines). If you
+  /// specify a \[Compute Engine (N1) machine
+  /// type\](/ml-engine/docs/machine-types-online-prediction) in the
   /// `machineType` field, you must specify `TENSORFLOW` for the framework.
   ///
   /// Optional.
@@ -7333,8 +7333,8 @@ class GoogleCloudMlV1Version {
   /// `n1-highmem-32` * `n1-highcpu-2` * `n1-highcpu-4` * `n1-highcpu-8` *
   /// `n1-highcpu-16` * `n1-highcpu-32` `mls1-c1-m2` is generally available. All
   /// other machine types are available in beta. Learn more about the
-  /// [differences between machine
-  /// types](/ml-engine/docs/machine-types-online-prediction).
+  /// \[differences between machine
+  /// types\](/ml-engine/docs/machine-types-online-prediction).
   ///
   /// Optional.
   core.String machineType;
@@ -7355,19 +7355,19 @@ class GoogleCloudMlV1Version {
   /// Required.
   core.String name;
 
-  /// Cloud Storage paths (`gs://…`) of packages for [custom prediction
-  /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or
-  /// [scikit-learn pipelines with custom
-  /// code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).
+  /// Cloud Storage paths (`gs://…`) of packages for \[custom prediction
+  /// routines\](/ml-engine/docs/tensorflow/custom-prediction-routines) or
+  /// \[scikit-learn pipelines with custom
+  /// code\](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).
   ///
   /// For a custom prediction routine, one of these packages must contain your
   /// Predictor class (see
-  /// [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally,
+  /// \[`predictionClass`\](#Version.FIELDS.prediction_class)). Additionally,
   /// include any dependencies used by your Predictor or scikit-learn pipeline
-  /// uses that are not already included in your selected [runtime
-  /// version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify
+  /// uses that are not already included in your selected \[runtime
+  /// version\](/ml-engine/docs/tensorflow/runtime-version-list). If you specify
   /// this field, you must also set
-  /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+  /// \[`runtimeVersion`\](#Version.FIELDS.runtime_version) to 1.4 or greater.
   ///
   /// Optional.
   core.List<core.String> packageUris;
@@ -7376,14 +7376,14 @@ class GoogleCloudMlV1Version {
   /// implements the Predictor interface described in this reference field.
   ///
   /// The module containing this class should be included in a package provided
-  /// to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this
-  /// field if and only if you are deploying a [custom prediction routine
-  /// (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you
+  /// to the \[`packageUris` field\](#Version.FIELDS.package_uris). Specify this
+  /// field if and only if you are deploying a \[custom prediction routine
+  /// (beta)\](/ml-engine/docs/tensorflow/custom-prediction-routines). If you
   /// specify this field, you must set
-  /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and
-  /// you must set `machineType` to a [legacy (MLS1) machine
-  /// type](/ml-engine/docs/machine-types-online-prediction). The following code
-  /// sample provides the Predictor interface: class Predictor(object):
+  /// \[`runtimeVersion`\](#Version.FIELDS.runtime_version) to 1.4 or greater
+  /// and you must set `machineType` to a \[legacy (MLS1) machine
+  /// type\](/ml-engine/docs/machine-types-online-prediction). The following
+  /// code sample provides the Predictor interface: class Predictor(object):
   /// """Interface for constructing custom predictors.""" def predict(self,
   /// instances, **kwargs): """Performs custom prediction. Instances are the
   /// decoded values from the request. They have already been deserialized from
@@ -7397,8 +7397,8 @@ class GoogleCloudMlV1Version {
   /// directory that contains the exported model file along with any additional
   /// files uploaded when creating the version resource. Returns: An instance
   /// implementing this Predictor class. """ raise NotImplementedError() Learn
-  /// more about [the Predictor interface and custom prediction
-  /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
+  /// more about \[the Predictor interface and custom prediction
+  /// routines\](/ml-engine/docs/tensorflow/custom-prediction-routines).
   ///
   /// Optional.
   core.String predictionClass;
@@ -7409,8 +7409,8 @@ class GoogleCloudMlV1Version {
   /// when `runtime_version` is set to '1.15' or later. * Python '3.5' is
   /// available when `runtime_version` is set to a version from '1.4' to '1.14'.
   /// * Python '2.7' is available when `runtime_version` is set to '1.15' or
-  /// earlier. Read more about the Python versions available for [each runtime
-  /// version](/ml-engine/docs/runtime-version-list).
+  /// earlier. Read more about the Python versions available for \[each runtime
+  /// version\](/ml-engine/docs/runtime-version-list).
   ///
   /// Required.
   core.String pythonVersion;
@@ -7427,9 +7427,9 @@ class GoogleCloudMlV1Version {
 
   /// The AI Platform runtime version to use for this deployment.
   ///
-  /// For more information, see the [runtime version
-  /// list](/ml-engine/docs/runtime-version-list) and [how to manage runtime
-  /// versions](/ml-engine/docs/versioning).
+  /// For more information, see the \[runtime version
+  /// list\](/ml-engine/docs/runtime-version-list) and \[how to manage runtime
+  /// versions\](/ml-engine/docs/versioning).
   ///
   /// Required.
   core.String runtimeVersion;
@@ -7662,13 +7662,13 @@ class GoogleCloudMlV1XraiAttribution {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
@@ -7711,9 +7711,9 @@ class GoogleIamV1AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -7862,14 +7862,14 @@ class GoogleIamV1Binding {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

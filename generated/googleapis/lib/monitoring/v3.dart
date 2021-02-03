@@ -2960,7 +2960,7 @@ class ServicesResource {
   ///
   /// [serviceId] - Optional. The Service id to use for this Service. If
   /// omitted, an id will be generated instead. Must match the pattern
-  /// [a-z0-9\-]+
+  /// \[a-z0-9\-\]+
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3292,7 +3292,7 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// [serviceLevelObjectiveId] - Optional. The ServiceLevelObjective id to use
   /// for this ServiceLevelObjective. If omitted, an id will be generated
-  /// instead. Must match the pattern [a-z0-9\-]+
+  /// instead. Must match the pattern \[a-z0-9\-\]+
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5118,7 +5118,7 @@ class Distribution {
   /// The sum of squared deviations from the mean of the values in the
   /// population.
   ///
-  /// For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
+  /// For values x_i this is: Sum\[i=1..n\]((x_i - mean)^2) Knuth, "The Art of
   /// Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
   /// method for accumulating this sum in one pass.If count is zero then this
   /// field must be zero.
@@ -7717,8 +7717,8 @@ class MonitoredResourceMetadata {
   /// System labels are a kind of metadata extracted by Google, including
   /// "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
   /// label values can be only strings, Boolean values, or a list of strings.
-  /// For example: { "name": "my-test-instance", "security_group": ["a", "b",
-  /// "c"], "spot_instance": false }
+  /// For example: { "name": "my-test-instance", "security_group": \["a", "b",
+  /// "c"\], "spot_instance": false }
   ///
   /// Output only.
   ///
@@ -8979,7 +8979,7 @@ class Telemetry {
 /// A closed time interval.
 ///
 /// It extends from the start time to the end time, and includes both:
-/// [startTime, endTime]. Valid time intervals depend on the MetricKind of the
+/// \[startTime, endTime\]. Valid time intervals depend on the MetricKind of the
 /// metric value. The end time must not be earlier than the start time. When
 /// writing data points, the start time must not be more than 25 hours in the
 /// past and the end time must not be more than five minutes in the future. For

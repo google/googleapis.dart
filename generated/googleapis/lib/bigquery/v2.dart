@@ -304,7 +304,7 @@ class DatasetsResource {
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
-  /// label. The syntax is "labels.<name>[:<value>]". Multiple filters can be
+  /// label. The syntax is "labels.<name>\[:<value>\]". Multiple filters can be
   /// ANDed together by connecting with a space. Example:
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
@@ -3239,13 +3239,13 @@ class ArimaSingleModelForecastingMetrics {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -3287,9 +3287,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -3332,12 +3332,12 @@ class AuditLogConfig {
 }
 
 class BigQueryModelTraining {
-  /// [Output-only, Beta] Index of current ML training iteration.
+  /// \[Output-only, Beta\] Index of current ML training iteration.
   ///
   /// Updated during create model query job to show job progress.
   core.int currentIteration;
 
-  /// [Output-only, Beta] Expected number of iterations for the create model
+  /// \[Output-only, Beta\] Expected number of iterations for the create model
   /// query job specified as num_iterations in the input query.
   ///
   /// The actual total number of iterations may be less than this number due to
@@ -3869,29 +3869,29 @@ class Binding {
 }
 
 class BqmlIterationResult {
-  /// [Output-only, Beta] Time taken to run the training iteration in
+  /// \[Output-only, Beta\] Time taken to run the training iteration in
   /// milliseconds.
   core.String durationMs;
 
-  /// [Output-only, Beta] Eval loss computed on the eval data at the end of the
-  /// iteration.
+  /// \[Output-only, Beta\] Eval loss computed on the eval data at the end of
+  /// the iteration.
   ///
   /// The eval loss is used for early stopping to avoid overfitting. No eval
   /// loss if eval_split_method option is specified as no_split or auto_split
   /// with input data size less than 500 rows.
   core.double evalLoss;
 
-  /// [Output-only, Beta] Index of the ML training iteration, starting from zero
-  /// for each training run.
+  /// \[Output-only, Beta\] Index of the ML training iteration, starting from
+  /// zero for each training run.
   core.int index;
 
-  /// [Output-only, Beta] Learning rate used for this iteration, it varies for
+  /// \[Output-only, Beta\] Learning rate used for this iteration, it varies for
   /// different training iterations if learn_rate_strategy option is not
   /// constant.
   core.double learnRate;
 
-  /// [Output-only, Beta] Training loss computed on the training data at the end
-  /// of the iteration.
+  /// \[Output-only, Beta\] Training loss computed on the training data at the
+  /// end of the iteration.
   ///
   /// The training loss function is defined by model type.
   core.double trainingLoss;
@@ -3937,7 +3937,7 @@ class BqmlIterationResult {
   }
 }
 
-/// [Output-only, Beta] Training options used by this training run.
+/// \[Output-only, Beta\] Training options used by this training run.
 ///
 /// These options are mutable for subsequent training runs. Default values are
 /// explicitly stored for options not specified in the input query of the first
@@ -4021,21 +4021,21 @@ class BqmlTrainingRunTrainingOptions {
 }
 
 class BqmlTrainingRun {
-  /// [Output-only, Beta] List of each iteration results.
+  /// \[Output-only, Beta\] List of each iteration results.
   core.List<BqmlIterationResult> iterationResults;
 
-  /// [Output-only, Beta] Training run start time in milliseconds since the
+  /// \[Output-only, Beta\] Training run start time in milliseconds since the
   /// epoch.
   core.DateTime startTime;
 
-  /// [Output-only, Beta] Different state applicable for a training run.
+  /// \[Output-only, Beta\] Different state applicable for a training run.
   ///
   /// IN PROGRESS: Training run is in progress. FAILED: Training run ended due
   /// to a non-retryable failure. SUCCEEDED: Training run successfully
   /// completed. CANCELLED: Training run cancelled by the user.
   core.String state;
 
-  /// [Output-only, Beta] Training options used by this training run.
+  /// \[Output-only, Beta\] Training options used by this training run.
   ///
   /// These options are mutable for subsequent training runs. Default values are
   /// explicitly stored for options not specified in the input query of the
@@ -5714,7 +5714,7 @@ class ExternalDataConfiguration {
   /// Optional.
   core.String compression;
 
-  /// [Optional, Trusted Tester] Connection for external data source.
+  /// \[Optional, Trusted Tester\] Connection for external data source.
   core.String connectionId;
 
   /// Additional properties to set if sourceFormat is set to CSV.
@@ -5725,7 +5725,8 @@ class ExternalDataConfiguration {
   /// Optional.
   GoogleSheetsOptions googleSheetsOptions;
 
-  /// [Optional, Trusted Tester] Options to configure hive partitioning support.
+  /// \[Optional, Trusted Tester\] Options to configure hive partitioning
+  /// support.
   HivePartitioningOptions hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
@@ -6782,15 +6783,16 @@ class JobConfigurationLoad {
   /// values. If none of the listed types supports the precision and the scale,
   /// the type supporting the widest range in the specified list is picked, and
   /// if a value exceeds the supported range when reading the data, an error
-  /// will be thrown. For example: suppose decimal_target_type = ["NUMERIC",
-  /// "BIGNUMERIC"]. Then if (precision,scale) is: * (38,9) -> NUMERIC; * (39,9)
-  /// -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) ->
+  /// will be thrown. For example: suppose decimal_target_type = \["NUMERIC",
+  /// "BIGNUMERIC"\]. Then if (precision,scale) is: * (38,9) -> NUMERIC; *
+  /// (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) ->
   /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) ->
   /// BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported
   /// range). For duplicated types in this field, only one will be considered
   /// and the rest will be ignored. The order of the types in this field is
-  /// ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC",
-  /// "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
+  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
+  /// BIGNUMERIC.
   core.List<core.String> decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -6826,7 +6828,8 @@ class JobConfigurationLoad {
   /// Optional.
   core.String fieldDelimiter;
 
-  /// [Optional, Trusted Tester] Options to configure hive partitioning support.
+  /// \[Optional, Trusted Tester\] Options to configure hive partitioning
+  /// support.
   HivePartitioningOptions hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
@@ -6900,7 +6903,7 @@ class JobConfigurationLoad {
 
   /// The inline schema.
   ///
-  /// For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example,
+  /// For CSV schemas, specify as "Field1:Type1\[,Field2:Type2\]*". For example,
   /// "foo:STRING, bar:INTEGER, baz:FLOAT".
   ///
   /// Deprecated.
@@ -8168,13 +8171,13 @@ class JobStatistics2 {
   /// \[Output-only\] The original estimate of bytes processed for the job.
   core.String estimatedBytesProcessed;
 
-  /// [Output-only, Beta] Information about create model query job progress.
+  /// \[Output-only, Beta\] Information about create model query job progress.
   BigQueryModelTraining modelTraining;
 
-  /// [Output-only, Beta] Deprecated; do not use.
+  /// \[Output-only, Beta\] Deprecated; do not use.
   core.int modelTrainingCurrentIteration;
 
-  /// [Output-only, Beta] Deprecated; do not use.
+  /// \[Output-only, Beta\] Deprecated; do not use.
   core.String modelTrainingExpectedTotalIteration;
 
   /// \[Output-only\] The number of rows affected by a DML statement.
@@ -9020,7 +9023,7 @@ class Model {
   }
 }
 
-/// [Output-only, Beta] Model options used for the first training run.
+/// \[Output-only, Beta\] Model options used for the first training run.
 ///
 /// These options are immutable for subsequent training runs. Default values are
 /// used for any options not specified in the input query.
@@ -9061,16 +9064,16 @@ class ModelDefinitionModelOptions {
 }
 
 class ModelDefinition {
-  /// [Output-only, Beta] Model options used for the first training run.
+  /// \[Output-only, Beta\] Model options used for the first training run.
   ///
   /// These options are immutable for subsequent training runs. Default values
   /// are used for any options not specified in the input query.
   ModelDefinitionModelOptions modelOptions;
 
-  /// [Output-only, Beta] Information about ml training runs, each training run
-  /// comprises of multiple iterations and there may be multiple training runs
-  /// for the model if warm start is used or if a user decides to continue a
-  /// previously cancelled query.
+  /// \[Output-only, Beta\] Information about ml training runs, each training
+  /// run comprises of multiple iterations and there may be multiple training
+  /// runs for the model if warm start is used or if a user decides to continue
+  /// a previously cancelled query.
   core.List<BqmlTrainingRun> trainingRuns;
 
   ModelDefinition();
@@ -9201,14 +9204,14 @@ class MultiClassClassificationMetrics {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -9729,7 +9732,7 @@ class QueryRequest {
   /// A query string, following the BigQuery query syntax, of the query to
   /// execute.
   ///
-  /// Example: "SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]".
+  /// Example: "SELECT count(f1) FROM \[myProjectId:myDatasetId.myTableId\]".
   ///
   /// Required.
   core.String query;
@@ -10845,8 +10848,8 @@ class SnapshotDefinition {
 ///
 /// Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY",
 /// array_element_type="STRING"} STRUCT>: {type_kind="STRUCT",
-/// struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y",
-/// type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+/// struct_type={fields=\[ {name="x", type={type_kind="STRING"}}, {name="y",
+/// type={type_kind="ARRAY", array_element_type="DATE"}} \]}}
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType arrayElementType;
@@ -11099,7 +11102,7 @@ class Table {
   /// Optional.
   MaterializedViewDefinition materializedView;
 
-  /// [Output-only, Beta] Present iff this table represents a ML model.
+  /// \[Output-only, Beta\] Present iff this table represents a ML model.
   ///
   /// Describes the training information for the model, and it is required to
   /// run 'PREDICT' queries.

@@ -6760,7 +6760,7 @@ class GetTemplateResponse {
 /// Histogram of value counts for a distribution.
 ///
 /// Buckets have an inclusive lower bound and exclusive upper bound and use
-/// "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
+/// "1,2,5 bucketing": The first bucket range is from \[0,1) and all subsequent
 /// bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
 /// boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ... Negative
 /// values are not supported.
@@ -6769,13 +6769,13 @@ class Histogram {
   ///
   /// For efficiency, prefix and trailing buckets with count = 0 are elided.
   /// Buckets can store the full range of values of an unsigned long, with
-  /// ULLONG_MAX falling into the 59th bucket with range [1e19, 2e19).
+  /// ULLONG_MAX falling into the 59th bucket with range \[1e19, 2e19).
   core.List<core.String> bucketCounts;
 
   /// Starting index of first stored bucket.
   ///
   /// The non-inclusive upper-bound of the ith bucket is given by:
-  /// pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]
+  /// pow(10,(i-first_bucket_offset)/3) * (1,2,5)\[(i-first_bucket_offset)%3\]
   core.int firstBucketOffset;
 
   Histogram();
@@ -7155,7 +7155,7 @@ class Job {
   /// The labels map can contain no more than 64 entries. Entries of the labels
   /// map are UTF8 strings that comply with the following restrictions: * Keys
   /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
-  /// regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are
+  /// regexp: \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} * Both keys and values are
   /// additionally constrained to be <= 128 bytes in size.
   core.Map<core.String, core.String> labels;
 
@@ -8610,8 +8610,8 @@ class MetricStructuredName {
   /// is associated with, such as the name of a step or collection.
   ///
   /// For example, built-in counters associated with steps will have
-  /// context['step'] = . Counters associated with PCollections in the SDK will
-  /// have context['pcollection'] = .
+  /// context\['step'\] = . Counters associated with PCollections in the SDK
+  /// will have context\['pcollection'\] = .
   core.Map<core.String, core.String> context;
 
   /// Worker-defined metric name.
@@ -9667,7 +9667,7 @@ class Position {
 
 /// Information about the progress of some component of job execution.
 class ProgressTimeseries {
-  /// The current progress of the component, in the range [0,1].
+  /// The current progress of the component, in the range \[0,1\].
   core.double currentProgress;
 
   /// History of progress for the component.
@@ -13573,13 +13573,13 @@ class WorkItemStatus {
   /// either as a position demarcating them (stop_position), or explicitly as
   /// two DerivedSources, if this task consumes a user-defined source type
   /// (dynamic_source_split). The "current" task is adjusted as a result of the
-  /// split: after a task with range [A, B) sends a stop_position update at C,
-  /// its range is considered to be [A, C), e.g.: * Progress should be
+  /// split: after a task with range \[A, B) sends a stop_position update at C,
+  /// its range is considered to be \[A, C), e.g.: * Progress should be
   /// interpreted relative to the new range, e.g. "75% completed" means "75% of
-  /// [A, C) completed" * The worker should interpret proposed_stop_position
+  /// \[A, C) completed" * The worker should interpret proposed_stop_position
   /// relative to the new range, e.g. "split at 68%" should be interpreted as
-  /// "split at 68% of [A, C)". * If the worker chooses to split again using
-  /// stop_position, only stop_positions in [A, C) will be accepted. * Etc.
+  /// "split at 68% of \[A, C)". * If the worker chooses to split again using
+  /// stop_position, only stop_positions in \[A, C) will be accepted. * Etc.
   /// dynamic_source_split has similar semantics: e.g., if a task with source S
   /// splits using dynamic_source_split into {P, R} (where P and R must be
   /// together equivalent to S), then subsequent progress and

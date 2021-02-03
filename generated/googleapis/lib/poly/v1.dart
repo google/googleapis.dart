@@ -472,14 +472,14 @@ class UsersLikedassetsResource {
 /// Represents and describes an asset in the Poly library.
 ///
 /// An asset is a 3D model
-/// or scene created using [Tilt Brush](//www.tiltbrush.com),
-/// [Blocks](//vr.google.com/blocks/), or any 3D program that produces a file
+/// or scene created using \[Tilt Brush\](//www.tiltbrush.com),
+/// \[Blocks\](//vr.google.com/blocks/), or any 3D program that produces a file
 /// that can be upload to Poly.
 class Asset {
   /// The author's publicly visible name.
   ///
   /// Use this name when giving credit to the
-  /// author. For more information, see [Licensing](/poly/discover/licensing).
+  /// author. For more information, see \[Licensing\](/poly/discover/licensing).
   core.String authorName;
 
   /// For published assets, the time when the asset was published.
@@ -752,8 +752,8 @@ class AssetImportMessage {
 class File {
   /// The MIME content-type, such as `image/png`.
   /// For more information, see
-  /// [MIME
-  /// types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
+  /// \[MIME
+  /// types\](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
   core.String contentType;
 
   /// The path of the resource file relative to the
@@ -796,9 +796,9 @@ class File {
 }
 
 /// The same asset can be represented in different formats, for example,
-/// a [WaveFront .obj](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with
+/// a \[WaveFront .obj\](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with
 /// its
-/// corresponding .mtl file or a [Khronos glTF](//www.khronos.org/gltf) file
+/// corresponding .mtl file or a \[Khronos glTF\](//www.khronos.org/gltf) file
 /// with its corresponding .glb binary data.
 ///
 /// A format refers to a specific
@@ -1273,11 +1273,11 @@ class PresentationParams {
   }
 }
 
-/// A [Quaternion](//en.wikipedia.org/wiki/Quaternion).
+/// A \[Quaternion\](//en.wikipedia.org/wiki/Quaternion).
 ///
 /// Please note: if in the
 /// response you see "w: 1" and nothing else this is the default value of
-/// [0, 0, 0, 1] where x,y, and z are 0.
+/// \[0, 0, 0, 1\] where x,y, and z are 0.
 class Quaternion {
   /// The scalar component.
   core.double w;

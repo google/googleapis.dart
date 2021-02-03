@@ -1294,9 +1294,9 @@ class AttachTenantProjectRequest {
   }
 }
 
-/// Configuration for an authentication provider, including support for [JSON
+/// Configuration for an authentication provider, including support for \[JSON
 /// Web Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
@@ -1336,8 +1336,8 @@ class AuthProvider {
   ///
   /// See [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
-  /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Optional if the key set document: - can be retrieved from \[OpenID
+  /// Discovery\](https://openid.net/specs/openid-connect-discovery-1_0.html of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1406,9 +1406,9 @@ class AuthProvider {
   }
 }
 
-/// User-defined authentication requirements, including support for [JSON Web
+/// User-defined authentication requirements, including support for \[JSON Web
 /// Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
   /// implemented and accepted in all the runtime components.
@@ -2186,7 +2186,7 @@ class DeleteTenantProjectRequest {
 /// where documentation provided by config rules overrides IDL provided. A
 /// number of constructs specific to the API platform are supported in
 /// documentation text. In order to reference a proto element, the following
-/// notation can be used: \[fully.qualified.proto.name\][] To override the
+/// notation can be used: \[fully.qualified.proto.name\]\[\] To override the
 /// display text used for the link, this can be used: \[display
 /// text\]\[fully.qualified.proto.name\] Text can be excluded from doc using the
 /// following notation: (-- internal comment --) A few directives are available
@@ -2808,7 +2808,7 @@ class Http {
 /// omitted, there is no HTTP request body, all fields are passed via URL path
 /// and URL query parameters. ### Path template syntax Template = "/" Segments
 /// \[ Verb \] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" |
-/// LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ;
+/// LITERAL | Variable ; Variable = "{" FieldPath \[ "=" Segments \] "}" ;
 /// FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*`
 /// matches a single URL path segment. The syntax `**` matches zero or more URL
 /// path segments, which must be the last part of the URL path except the
@@ -3198,7 +3198,7 @@ class LogDescriptor {
   /// It must be less than 512 characters long and can include the following
   /// characters: upper- and lower-case alphanumeric characters \[A-Za-z0-9\],
   /// and punctuation characters including slash, underscore, hyphen, period
-  /// [/_-.].
+  /// \[/_-.\].
   core.String name;
 
   LogDescriptor();
@@ -5744,8 +5744,8 @@ class Usage {
   /// The full resource name of a channel used for sending notifications to the
   /// service producer.
   ///
-  /// Google Service Management currently only supports [Google Cloud
-  /// Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To
+  /// Google Service Management currently only supports \[Google Cloud
+  /// Pub/Sub\](https://cloud.google.com/pubsub) as a notification channel. To
   /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
   /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
   /// https://cloud.google.com/pubsub/docs/overview.

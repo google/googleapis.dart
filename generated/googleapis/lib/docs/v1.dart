@@ -856,7 +856,7 @@ class CreateHeaderRequest {
   /// The location of the SectionBreak which begins the section this header
   /// should belong to.
   ///
-  /// If `section_break_location' is unset or if it refers to the first section
+  /// If \`section_break_location' is unset or if it refers to the first section
   /// break in the document body, the header applies to the DocumentStyle
   Location sectionBreakLocation;
 
@@ -2936,7 +2936,8 @@ class ImageProperties {
 
   /// The brightness effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect.
   core.double brightness;
 
   /// A URI to the image with a default lifetime of 30 minutes.
@@ -2948,7 +2949,8 @@ class ImageProperties {
 
   /// The contrast effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect.
   core.double contrast;
 
   /// The crop properties of the image.
@@ -2961,7 +2963,7 @@ class ImageProperties {
 
   /// The transparency effect of the image.
   ///
-  /// The value should be in the interval [0.0, 1.0], where 0 means no effect
+  /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
   /// and 1 means completely transparent.
   core.double transparency;
 

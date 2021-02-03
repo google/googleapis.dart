@@ -2215,7 +2215,7 @@ class BuildStep {
   /// the builder service account's credentials if necessary. The Docker
   /// daemon's cache will already have the latest versions of all of the
   /// officially supported build steps
-  /// ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).
+  /// (\[https://github.com/GoogleCloudPlatform/cloud-builders\](https://github.com/GoogleCloudPlatform/cloud-builders)).
   /// The Docker daemon will also have cached many of the layers for some
   /// popular images, like "ubuntu", "debian", but they will be refreshed at the
   /// time you attempt to use them. If you built an image in a previous build

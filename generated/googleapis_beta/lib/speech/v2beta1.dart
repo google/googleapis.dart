@@ -526,8 +526,8 @@ class SpeechRecognitionResult {
   /// Output only.
   core.int channelTag;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.

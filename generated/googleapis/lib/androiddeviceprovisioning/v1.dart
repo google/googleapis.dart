@@ -382,8 +382,8 @@ class CustomersConfigurationsResource {
   /// [updateMask] - Required. The field mask applied to the target
   /// `Configuration` before updating the fields. To learn more about using
   /// field masks, read
-  /// [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in
-  /// the Protocol Buffers documentation.
+  /// \[FieldMask\](/protocol-buffers/docs/reference/google.protobuf#fieldmask)
+  /// in the Protocol Buffers documentation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1096,8 +1096,8 @@ class PartnersDevicesResource {
   /// Claims a batch of devices for a customer asynchronously.
   ///
   /// Adds the devices to zero-touch enrollment. To learn more, read
-  /// [Long‑running batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// \[Long‑running batch
+  /// operations\](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1465,8 +1465,8 @@ class PartnersDevicesResource {
   /// Unclaims a batch of devices for a customer asynchronously.
   ///
   /// Removes the devices from zero-touch enrollment. To learn more, read
-  /// [Long‑running batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// \[Long‑running batch
+  /// operations\](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1528,8 +1528,8 @@ class PartnersDevicesResource {
   /// Updates the reseller metadata attached to a batch of devices.
   ///
   /// This method updates devices asynchronously and returns an `Operation` that
-  /// can be used to track progress. Read [Long‑running batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// can be used to track progress. Read \[Long‑running batch
+  /// operations\](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2471,8 +2471,8 @@ class Device {
 /// A record of a device claimed by a reseller for a customer.
 ///
 /// Devices claimed for zero-touch enrollment have a claim with the type
-/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for
-/// customers](/zero-touch/guides/how-it-works#claim).
+/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read \[Claim devices for
+/// customers\](/zero-touch/guides/how-it-works#claim).
 class DeviceClaim {
   /// The ID of the Customer that purchased the device.
   core.String ownerCompanyId;
@@ -2554,7 +2554,7 @@ class DeviceIdentifier {
   ///
   /// Matches the device's built-in value returned from
   /// `android.os.Build.MANUFACTURER`. Allowed values are listed in
-  /// [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
+  /// \[manufacturers\](/zero-touch/resources/manufacturer-names#manufacturers-names).
   core.String manufacturer;
 
   /// The device’s MEID number.
@@ -2564,7 +2564,7 @@ class DeviceIdentifier {
   ///
   /// Matches the device's built-in value returned from
   /// `android.os.Build.MODEL`. Allowed values are listed in
-  /// [models](/zero-touch/resources/manufacturer-names#model-names).
+  /// \[models\](/zero-touch/resources/manufacturer-names#model-names).
   core.String model;
 
   /// The manufacturer's serial number for the device.
@@ -2687,8 +2687,8 @@ class DeviceReference {
 /// Tracks the status of a long-running operation to asynchronously update a
 /// batch of reseller metadata attached to devices.
 ///
-/// To learn more, read [Long‑running batch
-/// operations](/zero-touch/guides/how-it-works#operations).
+/// To learn more, read \[Long‑running batch
+/// operations\](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationMetadata {
   /// The number of metadata updates in the operation.
   ///
@@ -2744,8 +2744,8 @@ class DevicesLongRunningOperationMetadata {
 /// Tracks the status of a long-running operation to claim, unclaim, or attach
 /// metadata to devices.
 ///
-/// To learn more, read [Long‑running batch
-/// operations](/zero-touch/guides/how-it-works#operations).
+/// To learn more, read \[Long‑running batch
+/// operations\](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationResponse {
   /// The processing status for each device in the operation.
   ///

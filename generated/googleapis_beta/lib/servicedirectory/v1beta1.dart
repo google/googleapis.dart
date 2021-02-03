@@ -1806,7 +1806,7 @@ class Endpoint {
   /// An IPv4 or IPv6 address.
   ///
   /// Service Directory will reject bad addresses like: "8.8.8" "8.8.8.8:53"
-  /// "test:bad:address" "[::1]" "[::1]:8080" Limited to 45 characters.
+  /// "test:bad:address" "\[::1\]" "\[::1\]:8080" Limited to 45 characters.
   ///
   /// Optional.
   core.String address;
@@ -1826,7 +1826,7 @@ class Endpoint {
   /// Immutable.
   core.String name;
 
-  /// Service Directory will reject values outside of [0, 65535].
+  /// Service Directory will reject values outside of \[0, 65535\].
   ///
   /// Optional.
   core.int port;
@@ -2290,14 +2290,14 @@ class Namespace {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

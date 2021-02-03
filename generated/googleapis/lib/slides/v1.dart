@@ -337,7 +337,7 @@ class PresentationsPagesResource {
   /// Generates a thumbnail of the latest version of the specified page in the
   /// presentation and returns a URL to the thumbnail image.
   ///
-  /// This request counts as an [expensive read request](/slides/limits) for
+  /// This request counts as an \[expensive read request\](/slides/limits) for
   /// quota purposes.
   ///
   /// Request parameters:
@@ -729,7 +729,7 @@ class ColorStop {
   /// The relative position of the color stop in the gradient band measured in
   /// percentage.
   ///
-  /// The value should be in the interval [0.0, 1.0].
+  /// The value should be in the interval \[0.0, 1.0\].
   core.double position;
 
   ColorStop();
@@ -1415,8 +1415,8 @@ class CreateSheetsChartRequest {
   /// If specified, the ID must be unique among all pages and page elements in
   /// the presentation. The ID should start with a word character \[a-zA-Z0-9_\]
   /// and then followed by any number of the following characters
-  /// [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater
-  /// than 50. If empty, a unique identifier will be generated.
+  /// \[a-zA-Z0-9_-:\]. The length of the ID should not be less than 5 or
+  /// greater than 50. If empty, a unique identifier will be generated.
   core.String objectId;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
@@ -2315,14 +2315,14 @@ class Image {
 class ImageProperties {
   /// The brightness effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
-  /// This property is read-only.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect. This property is read-only.
   core.double brightness;
 
   /// The contrast effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
-  /// This property is read-only.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect. This property is read-only.
   core.double contrast;
 
   /// The crop properties of the image.
@@ -2352,7 +2352,7 @@ class ImageProperties {
 
   /// The transparency effect of the image.
   ///
-  /// The value should be in the interval [0.0, 1.0], where 0 means no effect
+  /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
   /// and 1 means completely transparent. This property is read-only.
   core.double transparency;
 
@@ -2839,8 +2839,8 @@ class LineConnection {
   /// found in the description of the "cnx" attribute in section 20.1.9.9 and
   /// Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open
   /// XML File Formats-Fundamentals and Markup Language Reference", part 1 of
-  /// [ECMA-376 5th
-  /// edition](http://www.ecma-international.org/publications/standards/Ecma-376.htm).
+  /// \[ECMA-376 5th
+  /// edition\](http://www.ecma-international.org/publications/standards/Ecma-376.htm).
   /// The position of each connection site can also be viewed from Slides
   /// editor.
   core.int connectionSiteIndex;

@@ -1408,10 +1408,10 @@ class ScoresResource {
   /// Get high scores, and optionally ranks, in leaderboards for the currently
   /// authenticated player.
   ///
-  /// For a specific time span, `leaderboardId` can be set to `ALL` to retrieve
-  /// data for all leaderboards in a given time span. `NOTE: You cannot ask for
-  /// 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
-  /// parameter may be set to 'ALL'.
+  /// For a specific time span, \`leaderboardId\` can be set to \`ALL\` to
+  /// retrieve data for all leaderboards in a given time span. \`NOTE: You
+  /// cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request;
+  /// only one parameter may be set to 'ALL'.
   ///
   /// Request parameters:
   ///
